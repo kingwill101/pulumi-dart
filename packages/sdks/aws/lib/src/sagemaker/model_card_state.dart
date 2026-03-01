@@ -1,0 +1,86 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'model_card_security_config.dart';
+import 'model_card_timeouts.dart';
+
+/// Input properties used for looking up and filtering ModelCard resources.
+class ModelCardState {
+  /// Content of the model card in [model card JSON schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema).
+  final pulumi.Input<String>? content;
+  /// The Amazon Resource Name (ARN) of the model card.
+  final pulumi.Input<String>? modelCardArn;
+  /// Name of the model card.
+  final pulumi.Input<String>? modelCardName;
+  /// Approval status of the model card. Valid values: `Draft`, `PendingReview`, `Approved`, `Archived`.
+  final pulumi.Input<String>? modelCardStatus;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
+  final pulumi.Input<ModelCardSecurityConfig>? securityConfig;
+  /// A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  final pulumi.Input<Map<String, String>>? tagsAll;
+  final pulumi.Input<ModelCardTimeouts>? timeouts;
+
+  /// Creates a new [ModelCardState].
+  /// [content] Content of the model card in [model card JSON schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema).
+  /// [modelCardArn] The Amazon Resource Name (ARN) of the model card.
+  /// [modelCardName] Name of the model card.
+  /// [modelCardStatus] Approval status of the model card. Valid values: `Draft`, `PendingReview`, `Approved`, `Archived`.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [securityConfig] KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
+  /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [timeouts] Optional.
+  ModelCardState({
+    pulumi.Output<String>? content,
+    pulumi.Output<String>? modelCardArn,
+    pulumi.Output<String>? modelCardName,
+    pulumi.Output<String>? modelCardStatus,
+    pulumi.Output<String>? region,
+    pulumi.Output<ModelCardSecurityConfig>? securityConfig,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<Map<String, String>>? tagsAll,
+    pulumi.Output<ModelCardTimeouts>? timeouts,
+  }) :
+      content = pulumi.Input.asOptionalInput<String>(content),
+      modelCardArn = pulumi.Input.asOptionalInput<String>(modelCardArn),
+      modelCardName = pulumi.Input.asOptionalInput<String>(modelCardName),
+      modelCardStatus = pulumi.Input.asOptionalInput<String>(modelCardStatus),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      securityConfig = pulumi.Input.asOptionalInput<ModelCardSecurityConfig>(securityConfig),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
+      timeouts = pulumi.Input.asOptionalInput<ModelCardTimeouts>(timeouts);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'content': ?content,
+      'modelCardArn': ?modelCardArn,
+      'modelCardName': ?modelCardName,
+      'modelCardStatus': ?modelCardStatus,
+      'region': ?region,
+      'securityConfig': ?pulumi.Input.mapOptionalInputValue<ModelCardSecurityConfig, Map<String, dynamic>>(securityConfig, (value) => value.toMap()),
+      'tags': ?tags,
+      'tagsAll': ?tagsAll,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<ModelCardTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+    };
+  }
+
+  factory ModelCardState.fromMap(Map<String, dynamic> map) {
+    return ModelCardState(
+      content: map['content'] == null ? null : pulumi.Output.create<String>(map['content'] as String),
+      modelCardArn: map['modelCardArn'] == null ? null : pulumi.Output.create<String>(map['modelCardArn'] as String),
+      modelCardName: map['modelCardName'] == null ? null : pulumi.Output.create<String>(map['modelCardName'] as String),
+      modelCardStatus: map['modelCardStatus'] == null ? null : pulumi.Output.create<String>(map['modelCardStatus'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      securityConfig: map['securityConfig'] == null ? null : pulumi.Output.create<ModelCardSecurityConfig>(ModelCardSecurityConfig.fromMap((map['securityConfig'] as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<ModelCardTimeouts>(ModelCardTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

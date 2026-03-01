@@ -1,0 +1,60 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_chaos_get_target_args_doc}
+/// Arguments for getTarget.
+/// {@endtemplate}
+/// {@macro pulumi_chaos_get_target_args_doc}
+class GetTargetArgs {
+  /// String that represents a resource provider namespace.
+  final pulumi.Input<String> parentProviderNamespace;
+  /// String that represents a resource name.
+  final pulumi.Input<String> parentResourceName;
+  /// String that represents a resource type.
+  final pulumi.Input<String> parentResourceType;
+  /// String that represents an Azure resource group.
+  final pulumi.Input<String> resourceGroupName;
+  /// String that represents a Target resource name.
+  final pulumi.Input<String> targetName;
+
+  /// Creates a new [GetTargetArgs].
+  /// [parentProviderNamespace] String that represents a resource provider namespace.
+  /// [parentResourceName] String that represents a resource name.
+  /// [parentResourceType] String that represents a resource type.
+  /// [resourceGroupName] String that represents an Azure resource group.
+  /// [targetName] String that represents a Target resource name.
+  GetTargetArgs({
+    required pulumi.Output<String> parentProviderNamespace,
+    required pulumi.Output<String> parentResourceName,
+    required pulumi.Output<String> parentResourceType,
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> targetName,
+  }) :
+      parentProviderNamespace = pulumi.Input.asInput<String>(parentProviderNamespace),
+      parentResourceName = pulumi.Input.asInput<String>(parentResourceName),
+      parentResourceType = pulumi.Input.asInput<String>(parentResourceType),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      targetName = pulumi.Input.asInput<String>(targetName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'parentProviderNamespace': parentProviderNamespace,
+      'parentResourceName': parentResourceName,
+      'parentResourceType': parentResourceType,
+      'resourceGroupName': resourceGroupName,
+      'targetName': targetName,
+    };
+  }
+
+  factory GetTargetArgs.fromMap(Map<String, dynamic> map) {
+    return GetTargetArgs(
+      parentProviderNamespace: pulumi.Output.create<String>(map['parentProviderNamespace'] as String),
+      parentResourceName: pulumi.Output.create<String>(map['parentResourceName'] as String),
+      parentResourceType: pulumi.Output.create<String>(map['parentResourceType'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      targetName: pulumi.Output.create<String>(map['targetName'] as String),
+    );
+  }
+}
+

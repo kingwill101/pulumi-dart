@@ -1,0 +1,106 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering DatabaseLogsinkRsyslog resources.
+class DatabaseLogsinkRsyslogState {
+  /// CA certificate for TLS verification in PEM format. Can be specified using `file()` function.
+  final pulumi.Input<String>? caCert;
+  /// Client certificate for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`.
+  final pulumi.Input<String>? clientCert;
+  /// Client private key for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`. This field is marked as sensitive.
+  final pulumi.Input<String>? clientKey;
+  /// UUID of the source database cluster that will forward logs.
+  final pulumi.Input<String>? clusterId;
+  /// Log format to use. Must be one of `rfc5424` (default), `rfc3164`, or `custom`.
+  final pulumi.Input<String>? format;
+  /// Custom logline template. **Required** when `format` is set to `custom`. Supports rsyslog-style templating with the following tokens: `%HOSTNAME%`, `%app-name%`, `%msg%`, `%msgid%`, `%pri%`, `%procid%`, `%structured-data%`, `%timestamp%`, and `%timestamp:::date-rfc3339%`.
+  final pulumi.Input<String>? logline;
+  /// The unique identifier for the logsink as returned by the DigitalOcean API.
+  final pulumi.Input<String>? logsinkId;
+  /// Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
+  final pulumi.Input<String>? name;
+  /// Port number for the rsyslog server. Must be between 1 and 65535.
+  final pulumi.Input<int>? port;
+  /// Hostname or IP address of the rsyslog server.
+  final pulumi.Input<String>? server;
+  /// Content of the structured data block for RFC5424 messages.
+  final pulumi.Input<String>? structuredData;
+  /// Enable TLS encryption for the rsyslog connection. Defaults to `false`. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.
+  final pulumi.Input<bool>? tls;
+
+  /// Creates a new [DatabaseLogsinkRsyslogState].
+  /// [caCert] CA certificate for TLS verification in PEM format. Can be specified using `file()` function.
+  /// [clientCert] Client certificate for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`.
+  /// [clientKey] Client private key for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`. This field is marked as sensitive.
+  /// [clusterId] UUID of the source database cluster that will forward logs.
+  /// [format] Log format to use. Must be one of `rfc5424` (default), `rfc3164`, or `custom`.
+  /// [logline] Custom logline template. **Required** when `format` is set to `custom`. Supports rsyslog-style templating with the following tokens: `%HOSTNAME%`, `%app-name%`, `%msg%`, `%msgid%`, `%pri%`, `%procid%`, `%structured-data%`, `%timestamp%`, and `%timestamp:::date-rfc3339%`.
+  /// [logsinkId] The unique identifier for the logsink as returned by the DigitalOcean API.
+  /// [name] Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
+  /// [port] Port number for the rsyslog server. Must be between 1 and 65535.
+  /// [server] Hostname or IP address of the rsyslog server.
+  /// [structuredData] Content of the structured data block for RFC5424 messages.
+  /// [tls] Enable TLS encryption for the rsyslog connection. Defaults to `false`. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.
+  DatabaseLogsinkRsyslogState({
+    pulumi.Output<String>? caCert,
+    pulumi.Output<String>? clientCert,
+    pulumi.Output<String>? clientKey,
+    pulumi.Output<String>? clusterId,
+    pulumi.Output<String>? format,
+    pulumi.Output<String>? logline,
+    pulumi.Output<String>? logsinkId,
+    pulumi.Output<String>? name,
+    pulumi.Output<int>? port,
+    pulumi.Output<String>? server,
+    pulumi.Output<String>? structuredData,
+    pulumi.Output<bool>? tls,
+  }) :
+      caCert = pulumi.Input.asOptionalInput<String>(caCert),
+      clientCert = pulumi.Input.asOptionalInput<String>(clientCert),
+      clientKey = pulumi.Input.asOptionalInput<String>(clientKey),
+      clusterId = pulumi.Input.asOptionalInput<String>(clusterId),
+      format = pulumi.Input.asOptionalInput<String>(format),
+      logline = pulumi.Input.asOptionalInput<String>(logline),
+      logsinkId = pulumi.Input.asOptionalInput<String>(logsinkId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      port = pulumi.Input.asOptionalInput<int>(port),
+      server = pulumi.Input.asOptionalInput<String>(server),
+      structuredData = pulumi.Input.asOptionalInput<String>(structuredData),
+      tls = pulumi.Input.asOptionalInput<bool>(tls);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'caCert': ?caCert,
+      'clientCert': ?clientCert,
+      'clientKey': ?clientKey,
+      'clusterId': ?clusterId,
+      'format': ?format,
+      'logline': ?logline,
+      'logsinkId': ?logsinkId,
+      'name': ?name,
+      'port': ?port,
+      'server': ?server,
+      'structuredData': ?structuredData,
+      'tls': ?tls,
+    };
+  }
+
+  factory DatabaseLogsinkRsyslogState.fromMap(Map<String, dynamic> map) {
+    return DatabaseLogsinkRsyslogState(
+      caCert: map['caCert'] == null ? null : pulumi.Output.create<String>(map['caCert'] as String),
+      clientCert: map['clientCert'] == null ? null : pulumi.Output.create<String>(map['clientCert'] as String),
+      clientKey: map['clientKey'] == null ? null : pulumi.Output.create<String>(map['clientKey'] as String),
+      clusterId: map['clusterId'] == null ? null : pulumi.Output.create<String>(map['clusterId'] as String),
+      format: map['format'] == null ? null : pulumi.Output.create<String>(map['format'] as String),
+      logline: map['logline'] == null ? null : pulumi.Output.create<String>(map['logline'] as String),
+      logsinkId: map['logsinkId'] == null ? null : pulumi.Output.create<String>(map['logsinkId'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      port: map['port'] == null ? null : pulumi.Output.create<int>(map['port'] as int),
+      server: map['server'] == null ? null : pulumi.Output.create<String>(map['server'] as String),
+      structuredData: map['structuredData'] == null ? null : pulumi.Output.create<String>(map['structuredData'] as String),
+      tls: map['tls'] == null ? null : pulumi.Output.create<bool>(map['tls'] as bool),
+    );
+  }
+}
+

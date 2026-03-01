@@ -1,0 +1,12 @@
+library module_elasticcloud;
+
+export 'elasticcloud/elasticsearch.dart';
+export 'elasticcloud/elasticsearch_args.dart';
+export 'elasticcloud/elasticsearch_logs.dart';
+export 'elasticcloud/elasticsearch_logs_filtering_tag.dart';
+export 'elasticcloud/elasticsearch_state.dart';
+export 'elasticcloud/functions.dart';
+export 'elasticcloud/get_elasticsearch_args.dart';
+export 'elasticcloud/get_elasticsearch_log.dart';
+export 'elasticcloud/get_elasticsearch_log_filtering_tag.dart';
+export 'elasticcloud/get_elasticsearch_result.dart';

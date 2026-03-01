@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_remotebuildexecution_v1alpha_get_instance_args_doc}
+/// Arguments for getInstance.
+/// {@endtemplate}
+/// {@macro pulumi_remotebuildexecution_v1alpha_get_instance_args_doc}
+class GetInstanceArgs {
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetInstanceArgs].
+  /// [instanceId] Required.
+  /// [project] Optional.
+  GetInstanceArgs({
+    required pulumi.Output<String> instanceId,
+    pulumi.Output<String>? project,
+  }) :
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'instanceId': instanceId,
+      'project': ?project,
+    };
+  }
+
+  factory GetInstanceArgs.fromMap(Map<String, dynamic> map) {
+    return GetInstanceArgs(
+      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

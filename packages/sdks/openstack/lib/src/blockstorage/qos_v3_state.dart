@@ -1,0 +1,54 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering QosV3 resources.
+class QosV3State {
+  /// The consumer of qos. Can be one of `front-end`,
+  /// `back-end` or `both`. Changing this updates the `consumer` of an
+  /// existing qos.
+  final pulumi.Input<String>? consumer;
+  /// Name of the qos.  Changing this creates a new qos.
+  final pulumi.Input<String>? name;
+  /// The region in which to create the qos. If omitted,
+  /// the `region` argument of the provider is used. Changing this creates
+  /// a new qos.
+  final pulumi.Input<String>? region;
+  /// Key/Value pairs of specs for the qos.
+  final pulumi.Input<Map<String, String>>? specs;
+
+  /// Creates a new [QosV3State].
+  /// [consumer] The consumer of qos. Can be one of `front-end`,
+  /// [name] Name of the qos.  Changing this creates a new qos.
+  /// [region] The region in which to create the qos. If omitted,
+  /// [specs] Key/Value pairs of specs for the qos.
+  QosV3State({
+    pulumi.Output<String>? consumer,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? region,
+    pulumi.Output<Map<String, String>>? specs,
+  }) :
+      consumer = pulumi.Input.asOptionalInput<String>(consumer),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      specs = pulumi.Input.asOptionalInput<Map<String, String>>(specs);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'consumer': ?consumer,
+      'name': ?name,
+      'region': ?region,
+      'specs': ?specs,
+    };
+  }
+
+  factory QosV3State.fromMap(Map<String, dynamic> map) {
+    return QosV3State(
+      consumer: map['consumer'] == null ? null : pulumi.Output.create<String>(map['consumer'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      specs: map['specs'] == null ? null : pulumi.Output.create<Map<String, String>>((map['specs'] as Map).cast<String, String>()),
+    );
+  }
+}
+

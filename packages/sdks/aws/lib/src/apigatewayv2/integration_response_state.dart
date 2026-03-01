@@ -1,0 +1,71 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering IntegrationResponse resources.
+class IntegrationResponseState {
+  /// API identifier.
+  final pulumi.Input<String>? apiId;
+  /// How to handle response payload content type conversions. Valid values: `CONVERT_TO_BINARY`, `CONVERT_TO_TEXT`.
+  final pulumi.Input<String>? contentHandlingStrategy;
+  /// Identifier of the `aws.apigatewayv2.Integration`.
+  final pulumi.Input<String>? integrationId;
+  /// Integration response key.
+  final pulumi.Input<String>? integrationResponseKey;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
+  final pulumi.Input<Map<String, String>>? responseTemplates;
+  /// The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
+  final pulumi.Input<String>? templateSelectionExpression;
+
+  /// Creates a new [IntegrationResponseState].
+  /// [apiId] API identifier.
+  /// [contentHandlingStrategy] How to handle response payload content type conversions. Valid values: `CONVERT_TO_BINARY`, `CONVERT_TO_TEXT`.
+  /// [integrationId] Identifier of the `aws.apigatewayv2.Integration`.
+  /// [integrationResponseKey] Integration response key.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [responseTemplates] Map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client.
+  /// [templateSelectionExpression] The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration response.
+  IntegrationResponseState({
+    pulumi.Output<String>? apiId,
+    pulumi.Output<String>? contentHandlingStrategy,
+    pulumi.Output<String>? integrationId,
+    pulumi.Output<String>? integrationResponseKey,
+    pulumi.Output<String>? region,
+    pulumi.Output<Map<String, String>>? responseTemplates,
+    pulumi.Output<String>? templateSelectionExpression,
+  }) :
+      apiId = pulumi.Input.asOptionalInput<String>(apiId),
+      contentHandlingStrategy = pulumi.Input.asOptionalInput<String>(contentHandlingStrategy),
+      integrationId = pulumi.Input.asOptionalInput<String>(integrationId),
+      integrationResponseKey = pulumi.Input.asOptionalInput<String>(integrationResponseKey),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      responseTemplates = pulumi.Input.asOptionalInput<Map<String, String>>(responseTemplates),
+      templateSelectionExpression = pulumi.Input.asOptionalInput<String>(templateSelectionExpression);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiId': ?apiId,
+      'contentHandlingStrategy': ?contentHandlingStrategy,
+      'integrationId': ?integrationId,
+      'integrationResponseKey': ?integrationResponseKey,
+      'region': ?region,
+      'responseTemplates': ?responseTemplates,
+      'templateSelectionExpression': ?templateSelectionExpression,
+    };
+  }
+
+  factory IntegrationResponseState.fromMap(Map<String, dynamic> map) {
+    return IntegrationResponseState(
+      apiId: map['apiId'] == null ? null : pulumi.Output.create<String>(map['apiId'] as String),
+      contentHandlingStrategy: map['contentHandlingStrategy'] == null ? null : pulumi.Output.create<String>(map['contentHandlingStrategy'] as String),
+      integrationId: map['integrationId'] == null ? null : pulumi.Output.create<String>(map['integrationId'] as String),
+      integrationResponseKey: map['integrationResponseKey'] == null ? null : pulumi.Output.create<String>(map['integrationResponseKey'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      responseTemplates: map['responseTemplates'] == null ? null : pulumi.Output.create<Map<String, String>>((map['responseTemplates'] as Map).cast<String, String>()),
+      templateSelectionExpression: map['templateSelectionExpression'] == null ? null : pulumi.Output.create<String>(map['templateSelectionExpression'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Execution related settings, like retry and service_account.
+class GoogleCloudDataplexV1TaskExecutionSpecResponse {
+  /// Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
+  final Map<String, String> args;
+  /// Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+  final String kmsKey;
+  /// Optional. The maximum duration after which the job execution is expired.
+  final String maxJobExecutionLifetime;
+  /// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
+  final String project;
+  /// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
+  final String serviceAccount;
+
+  /// Creates a new [GoogleCloudDataplexV1TaskExecutionSpecResponse].
+  /// [args] Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
+  /// [kmsKey] Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+  /// [maxJobExecutionLifetime] Optional. The maximum duration after which the job execution is expired.
+  /// [project] Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
+  /// [serviceAccount] Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
+  GoogleCloudDataplexV1TaskExecutionSpecResponse({
+    required this.args,
+    required this.kmsKey,
+    required this.maxJobExecutionLifetime,
+    required this.project,
+    required this.serviceAccount,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'args': args,
+      'kmsKey': kmsKey,
+      'maxJobExecutionLifetime': maxJobExecutionLifetime,
+      'project': project,
+      'serviceAccount': serviceAccount,
+    };
+  }
+
+  factory GoogleCloudDataplexV1TaskExecutionSpecResponse.fromMap(Map<String, dynamic> map) {
+    return GoogleCloudDataplexV1TaskExecutionSpecResponse(
+      args: (map['args'] as Map).cast<String, String>(),
+      kmsKey: map['kmsKey'] as String,
+      maxJobExecutionLifetime: map['maxJobExecutionLifetime'] as String,
+      project: map['project'] as String,
+      serviceAccount: map['serviceAccount'] as String,
+    );
+  }
+}
+

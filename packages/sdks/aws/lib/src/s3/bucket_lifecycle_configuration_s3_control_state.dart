@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'bucket_lifecycle_configuration_rule_s3_control.dart';
+
+/// Input properties used for looking up and filtering BucketLifecycleConfiguration resources.
+class BucketLifecycleConfigurationS3ControlState {
+  /// Amazon Resource Name (ARN) of the bucket.
+  final pulumi.Input<String>? bucket;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Configuration block(s) containing lifecycle rules for the bucket.
+  final pulumi.Input<List<BucketLifecycleConfigurationRuleS3Control>>? rules;
+
+  /// Creates a new [BucketLifecycleConfigurationS3ControlState].
+  /// [bucket] Amazon Resource Name (ARN) of the bucket.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [rules] Configuration block(s) containing lifecycle rules for the bucket.
+  BucketLifecycleConfigurationS3ControlState({
+    pulumi.Output<String>? bucket,
+    pulumi.Output<String>? region,
+    pulumi.Output<List<BucketLifecycleConfigurationRuleS3Control>>? rules,
+  }) :
+      bucket = pulumi.Input.asOptionalInput<String>(bucket),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      rules = pulumi.Input.asOptionalInput<List<BucketLifecycleConfigurationRuleS3Control>>(rules);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'region': ?region,
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<BucketLifecycleConfigurationRuleS3Control>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<BucketLifecycleConfigurationRuleS3Control, Map<String, dynamic>>(value, (value) => value.toMap())),
+    };
+  }
+
+  factory BucketLifecycleConfigurationS3ControlState.fromMap(Map<String, dynamic> map) {
+    return BucketLifecycleConfigurationS3ControlState(
+      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      rules: map['rules'] == null ? null : pulumi.Output.create<List<BucketLifecycleConfigurationRuleS3Control>>(pulumi.Input.decodeList<BucketLifecycleConfigurationRuleS3Control>(map['rules'], (value) => BucketLifecycleConfigurationRuleS3Control.fromMap((value as Map).cast<String, dynamic>()))),
+    );
+  }
+}
+

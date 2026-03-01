@@ -1,0 +1,84 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'safety_rule_rule_config.dart';
+
+/// {@template pulumi_route53_recovery_control_safety_rule_safety_rule_args_doc}
+/// The set of arguments for SafetyRule.
+/// {@endtemplate}
+/// {@macro pulumi_route53_recovery_control_safety_rule_safety_rule_args_doc}
+class SafetyRuleArgs {
+  /// Routing controls that are part of transactions that are evaluated to determine if a request to change a routing control state is allowed.
+  final pulumi.Input<List<String>>? assertedControls;
+  /// ARN of the control panel in which this safety rule will reside.
+  final pulumi.Input<String> controlPanelArn;
+  /// Gating controls for the new gating rule. That is, routing controls that are evaluated by the rule configuration that you specify.
+  final pulumi.Input<List<String>>? gatingControls;
+  /// Name describing the safety rule.
+  final pulumi.Input<String>? name;
+  /// Configuration block for safety rule criteria. See below.
+  final pulumi.Input<SafetyRuleRuleConfig> ruleConfig;
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// Routing controls that can only be set or unset if the specified `rule_config` evaluates to true for the specified `gating_controls`.
+  final pulumi.Input<List<String>>? targetControls;
+  /// Evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<int> waitPeriodMs;
+
+  /// Creates a new [SafetyRuleArgs].
+  /// [assertedControls] Routing controls that are part of transactions that are evaluated to determine if a request to change a routing control state is allowed.
+  /// [controlPanelArn] ARN of the control panel in which this safety rule will reside.
+  /// [gatingControls] Gating controls for the new gating rule. That is, routing controls that are evaluated by the rule configuration that you specify.
+  /// [name] Name describing the safety rule.
+  /// [ruleConfig] Configuration block for safety rule criteria. See below.
+  /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [targetControls] Routing controls that can only be set or unset if the specified `rule_config` evaluates to true for the specified `gating_controls`.
+  /// [waitPeriodMs] Evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail.
+  SafetyRuleArgs({
+    pulumi.Output<List<String>>? assertedControls,
+    required pulumi.Output<String> controlPanelArn,
+    pulumi.Output<List<String>>? gatingControls,
+    pulumi.Output<String>? name,
+    required pulumi.Output<SafetyRuleRuleConfig> ruleConfig,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<List<String>>? targetControls,
+    required pulumi.Output<int> waitPeriodMs,
+  }) :
+      assertedControls = pulumi.Input.asOptionalInput<List<String>>(assertedControls),
+      controlPanelArn = pulumi.Input.asInput<String>(controlPanelArn),
+      gatingControls = pulumi.Input.asOptionalInput<List<String>>(gatingControls),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      ruleConfig = pulumi.Input.asInput<SafetyRuleRuleConfig>(ruleConfig),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      targetControls = pulumi.Input.asOptionalInput<List<String>>(targetControls),
+      waitPeriodMs = pulumi.Input.asInput<int>(waitPeriodMs);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'assertedControls': ?assertedControls,
+      'controlPanelArn': controlPanelArn,
+      'gatingControls': ?gatingControls,
+      'name': ?name,
+      'ruleConfig': pulumi.Input.mapInputValue<SafetyRuleRuleConfig, Map<String, dynamic>>(ruleConfig, (value) => value.toMap()),
+      'tags': ?tags,
+      'targetControls': ?targetControls,
+      'waitPeriodMs': waitPeriodMs,
+    };
+  }
+
+  factory SafetyRuleArgs.fromMap(Map<String, dynamic> map) {
+    return SafetyRuleArgs(
+      assertedControls: map['assertedControls'] == null ? null : pulumi.Output.create<List<String>>((map['assertedControls'] as List).cast<String>()),
+      controlPanelArn: pulumi.Output.create<String>(map['controlPanelArn'] as String),
+      gatingControls: map['gatingControls'] == null ? null : pulumi.Output.create<List<String>>((map['gatingControls'] as List).cast<String>()),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      ruleConfig: pulumi.Output.create<SafetyRuleRuleConfig>(SafetyRuleRuleConfig.fromMap((map['ruleConfig'] as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      targetControls: map['targetControls'] == null ? null : pulumi.Output.create<List<String>>((map['targetControls'] as List).cast<String>()),
+      waitPeriodMs: pulumi.Output.create<int>(map['waitPeriodMs'] as int),
+    );
+  }
+}
+

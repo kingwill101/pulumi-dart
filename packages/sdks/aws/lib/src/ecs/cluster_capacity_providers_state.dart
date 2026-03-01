@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'cluster_capacity_providers_default_capacity_provider_strategy.dart';
+
+/// Input properties used for looking up and filtering ClusterCapacityProviders resources.
+class ClusterCapacityProvidersState {
+  /// Set of names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
+  final pulumi.Input<List<String>>? capacityProviders;
+  /// Name of the ECS cluster to manage capacity providers for.
+  final pulumi.Input<String>? clusterName;
+  /// Set of capacity provider strategies to use by default for the cluster. Detailed below.
+  final pulumi.Input<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>>? defaultCapacityProviderStrategies;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [ClusterCapacityProvidersState].
+  /// [capacityProviders] Set of names of one or more capacity providers to associate with the cluster. Valid values also include `FARGATE` and `FARGATE_SPOT`.
+  /// [clusterName] Name of the ECS cluster to manage capacity providers for.
+  /// [defaultCapacityProviderStrategies] Set of capacity provider strategies to use by default for the cluster. Detailed below.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  ClusterCapacityProvidersState({
+    pulumi.Output<List<String>>? capacityProviders,
+    pulumi.Output<String>? clusterName,
+    pulumi.Output<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>>? defaultCapacityProviderStrategies,
+    pulumi.Output<String>? region,
+  }) :
+      capacityProviders = pulumi.Input.asOptionalInput<List<String>>(capacityProviders),
+      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
+      defaultCapacityProviderStrategies = pulumi.Input.asOptionalInput<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>>(defaultCapacityProviderStrategies),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'capacityProviders': ?capacityProviders,
+      'clusterName': ?clusterName,
+      'defaultCapacityProviderStrategies': ?pulumi.Input.mapOptionalInputValue<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>, List<Map<String, dynamic>>>(defaultCapacityProviderStrategies, (value) => pulumi.Input.encodeList<ClusterCapacityProvidersDefaultCapacityProviderStrategy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'region': ?region,
+    };
+  }
+
+  factory ClusterCapacityProvidersState.fromMap(Map<String, dynamic> map) {
+    return ClusterCapacityProvidersState(
+      capacityProviders: map['capacityProviders'] == null ? null : pulumi.Output.create<List<String>>((map['capacityProviders'] as List).cast<String>()),
+      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
+      defaultCapacityProviderStrategies: map['defaultCapacityProviderStrategies'] == null ? null : pulumi.Output.create<List<ClusterCapacityProvidersDefaultCapacityProviderStrategy>>(pulumi.Input.decodeList<ClusterCapacityProvidersDefaultCapacityProviderStrategy>(map['defaultCapacityProviderStrategies'], (value) => ClusterCapacityProvidersDefaultCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>()))),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

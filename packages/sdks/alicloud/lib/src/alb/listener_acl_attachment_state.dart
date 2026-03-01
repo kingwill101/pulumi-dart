@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering ListenerAclAttachment resources.
+class ListenerAclAttachmentState {
+  /// The ID list of the access policy group bound by the listener.
+  final pulumi.Input<String>? aclId;
+  /// Access control type:
+  /// - **White**: only requests from IP addresses or address segments in the selected access control list are forwarded. The whitelist applies to scenarios where only specific IP addresses are allowed to access. There are certain business risks in setting up a whitelist. Once the whitelist is set, only the IP addresses in the whitelist can access the load balancer listener. If whitelist access is enabled but no IP addresses are added to the access policy group, the server load balancer listener forwards all requests.
+  /// - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
+  final pulumi.Input<String>? aclType;
+  /// Listener instance ID.
+  final pulumi.Input<String>? listenerId;
+  /// Listener Status.
+  final pulumi.Input<String>? status;
+
+  /// Creates a new [ListenerAclAttachmentState].
+  /// [aclId] The ID list of the access policy group bound by the listener.
+  /// [aclType] Access control type:
+  /// [listenerId] Listener instance ID.
+  /// [status] Listener Status.
+  ListenerAclAttachmentState({
+    pulumi.Output<String>? aclId,
+    pulumi.Output<String>? aclType,
+    pulumi.Output<String>? listenerId,
+    pulumi.Output<String>? status,
+  }) :
+      aclId = pulumi.Input.asOptionalInput<String>(aclId),
+      aclType = pulumi.Input.asOptionalInput<String>(aclType),
+      listenerId = pulumi.Input.asOptionalInput<String>(listenerId),
+      status = pulumi.Input.asOptionalInput<String>(status);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'aclId': ?aclId,
+      'aclType': ?aclType,
+      'listenerId': ?listenerId,
+      'status': ?status,
+    };
+  }
+
+  factory ListenerAclAttachmentState.fromMap(Map<String, dynamic> map) {
+    return ListenerAclAttachmentState(
+      aclId: map['aclId'] == null ? null : pulumi.Output.create<String>(map['aclId'] as String),
+      aclType: map['aclType'] == null ? null : pulumi.Output.create<String>(map['aclType'] as String),
+      listenerId: map['listenerId'] == null ? null : pulumi.Output.create<String>(map['listenerId'] as String),
+      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+    );
+  }
+}
+

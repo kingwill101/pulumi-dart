@@ -1,0 +1,130 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'backend_bucket_cdn_policy.dart';
+import 'backend_bucket_params.dart';
+
+/// Input properties used for looking up and filtering BackendBucket resources.
+class BackendBucketState {
+  /// Cloud Storage bucket name.
+  final pulumi.Input<String>? bucketName;
+  /// Cloud CDN configuration for this Backend Bucket.
+  /// Structure is documented below.
+  final pulumi.Input<BackendBucketCdnPolicy>? cdnPolicy;
+  /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+  /// Possible values are: `AUTOMATIC`, `DISABLED`.
+  final pulumi.Input<String>? compressionMode;
+  /// Creation timestamp in RFC3339 text format.
+  final pulumi.Input<String>? creationTimestamp;
+  /// Headers that the HTTP/S load balancer should add to proxied responses.
+  final pulumi.Input<List<String>>? customResponseHeaders;
+  /// An optional textual description of the resource; provided by the
+  /// client when the resource is created.
+  final pulumi.Input<String>? description;
+  /// The security policy associated with this backend bucket.
+  final pulumi.Input<String>? edgeSecurityPolicy;
+  /// If true, enable Cloud CDN for this BackendBucket.
+  /// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
+  final pulumi.Input<bool>? enableCdn;
+  /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+  /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
+  /// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
+  /// Possible values are: `INTERNAL_MANAGED`.
+  final pulumi.Input<String>? loadBalancingScheme;
+  /// Name of the resource. Provided by the client when the resource is
+  /// created. The name must be 1-63 characters long, and comply with
+  /// RFC1035.  Specifically, the name must be 1-63 characters long and
+  /// match the regular expression `a-z?` which means
+  /// the first character must be a lowercase letter, and all following
+  /// characters must be a dash, lowercase letter, or digit, except the
+  /// last character, which cannot be a dash.
+  final pulumi.Input<String>? name;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  final pulumi.Input<BackendBucketParams>? params;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// The URI of the created resource.
+  final pulumi.Input<String>? selfLink;
+
+  /// Creates a new [BackendBucketState].
+  /// [bucketName] Cloud Storage bucket name.
+  /// [cdnPolicy] Cloud CDN configuration for this Backend Bucket.
+  /// [compressionMode] Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+  /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [customResponseHeaders] Headers that the HTTP/S load balancer should add to proxied responses.
+  /// [description] An optional textual description of the resource; provided by the
+  /// [edgeSecurityPolicy] The security policy associated with this backend bucket.
+  /// [enableCdn] If true, enable Cloud CDN for this BackendBucket.
+  /// [loadBalancingScheme] The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
+  /// [name] Name of the resource. Provided by the client when the resource is
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload
+  /// [project] The ID of the project in which the resource belongs.
+  /// [selfLink] The URI of the created resource.
+  BackendBucketState({
+    pulumi.Output<String>? bucketName,
+    pulumi.Output<BackendBucketCdnPolicy>? cdnPolicy,
+    pulumi.Output<String>? compressionMode,
+    pulumi.Output<String>? creationTimestamp,
+    pulumi.Output<List<String>>? customResponseHeaders,
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? edgeSecurityPolicy,
+    pulumi.Output<bool>? enableCdn,
+    pulumi.Output<String>? loadBalancingScheme,
+    pulumi.Output<String>? name,
+    pulumi.Output<BackendBucketParams>? params,
+    pulumi.Output<String>? project,
+    pulumi.Output<String>? selfLink,
+  }) :
+      bucketName = pulumi.Input.asOptionalInput<String>(bucketName),
+      cdnPolicy = pulumi.Input.asOptionalInput<BackendBucketCdnPolicy>(cdnPolicy),
+      compressionMode = pulumi.Input.asOptionalInput<String>(compressionMode),
+      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
+      customResponseHeaders = pulumi.Input.asOptionalInput<List<String>>(customResponseHeaders),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      edgeSecurityPolicy = pulumi.Input.asOptionalInput<String>(edgeSecurityPolicy),
+      enableCdn = pulumi.Input.asOptionalInput<bool>(enableCdn),
+      loadBalancingScheme = pulumi.Input.asOptionalInput<String>(loadBalancingScheme),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      params = pulumi.Input.asOptionalInput<BackendBucketParams>(params),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'bucketName': ?bucketName,
+      'cdnPolicy': ?pulumi.Input.mapOptionalInputValue<BackendBucketCdnPolicy, Map<String, dynamic>>(cdnPolicy, (value) => value.toMap()),
+      'compressionMode': ?compressionMode,
+      'creationTimestamp': ?creationTimestamp,
+      'customResponseHeaders': ?customResponseHeaders,
+      'description': ?description,
+      'edgeSecurityPolicy': ?edgeSecurityPolicy,
+      'enableCdn': ?enableCdn,
+      'loadBalancingScheme': ?loadBalancingScheme,
+      'name': ?name,
+      'params': ?pulumi.Input.mapOptionalInputValue<BackendBucketParams, Map<String, dynamic>>(params, (value) => value.toMap()),
+      'project': ?project,
+      'selfLink': ?selfLink,
+    };
+  }
+
+  factory BackendBucketState.fromMap(Map<String, dynamic> map) {
+    return BackendBucketState(
+      bucketName: map['bucketName'] == null ? null : pulumi.Output.create<String>(map['bucketName'] as String),
+      cdnPolicy: map['cdnPolicy'] == null ? null : pulumi.Output.create<BackendBucketCdnPolicy>(BackendBucketCdnPolicy.fromMap((map['cdnPolicy'] as Map).cast<String, dynamic>())),
+      compressionMode: map['compressionMode'] == null ? null : pulumi.Output.create<String>(map['compressionMode'] as String),
+      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
+      customResponseHeaders: map['customResponseHeaders'] == null ? null : pulumi.Output.create<List<String>>((map['customResponseHeaders'] as List).cast<String>()),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      edgeSecurityPolicy: map['edgeSecurityPolicy'] == null ? null : pulumi.Output.create<String>(map['edgeSecurityPolicy'] as String),
+      enableCdn: map['enableCdn'] == null ? null : pulumi.Output.create<bool>(map['enableCdn'] as bool),
+      loadBalancingScheme: map['loadBalancingScheme'] == null ? null : pulumi.Output.create<String>(map['loadBalancingScheme'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      params: map['params'] == null ? null : pulumi.Output.create<BackendBucketParams>(BackendBucketParams.fromMap((map['params'] as Map).cast<String, dynamic>())),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+    );
+  }
+}
+

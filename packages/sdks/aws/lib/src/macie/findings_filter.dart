@@ -1,0 +1,284 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'findings_filter_args.dart';
+import 'findings_filter_finding_criteria.dart';
+import 'findings_filter_state.dart';
+
+/// Provides a resource to manage an [Amazon Macie Findings Filter](https://docs.aws.amazon.com/macie/latest/APIReference/findingsfilters-id.html).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.macie2.Account("example", {});
+/// const test = new aws.macie.FindingsFilter("test", {
+///     name: "NAME OF THE FINDINGS FILTER",
+///     description: "DESCRIPTION",
+///     position: 1,
+///     action: "ARCHIVE",
+///     findingCriteria: {
+///         criterions: [{
+///             field: "region",
+///             eqs: [current.region],
+///         }],
+///     },
+/// }, {
+///     dependsOn: [testAwsMacie2Account],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.macie2.Account("example")
+/// test = aws.macie.FindingsFilter("test",
+///     name="NAME OF THE FINDINGS FILTER",
+///     description="DESCRIPTION",
+///     position=1,
+///     action="ARCHIVE",
+///     finding_criteria={
+///         "criterions": [{
+///             "field": "region",
+///             "eqs": [current["region"]],
+///         }],
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[test_aws_macie2_account]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Macie2.Account("example");
+///
+///     var test = new Aws.Macie.FindingsFilter("test", new()
+///     {
+///         Name = "NAME OF THE FINDINGS FILTER",
+///         Description = "DESCRIPTION",
+///         Position = 1,
+///         Action = "ARCHIVE",
+///         FindingCriteria = new Aws.Macie.Inputs.FindingsFilterFindingCriteriaArgs
+///         {
+///             Criterions = new[]
+///             {
+///                 new Aws.Macie.Inputs.FindingsFilterFindingCriteriaCriterionArgs
+///                 {
+///                     Field = "region",
+///                     Eqs = new[]
+///                     {
+///                         current.Region,
+///                     },
+///                 },
+///             },
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             testAwsMacie2Account,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/macie"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/macie2"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := macie2.NewAccount(ctx, "example", nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = macie.NewFindingsFilter(ctx, "test", &macie.FindingsFilterArgs{
+/// 			Name:        pulumi.String("NAME OF THE FINDINGS FILTER"),
+/// 			Description: pulumi.String("DESCRIPTION"),
+/// 			Position:    pulumi.Int(1),
+/// 			Action:      pulumi.String("ARCHIVE"),
+/// 			FindingCriteria: &macie.FindingsFilterFindingCriteriaArgs{
+/// 				Criterions: macie.FindingsFilterFindingCriteriaCriterionArray{
+/// 					&macie.FindingsFilterFindingCriteriaCriterionArgs{
+/// 						Field: pulumi.String("region"),
+/// 						Eqs: pulumi.StringArray{
+/// 							current.Region,
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			testAwsMacie2Account,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.macie2.Account;
+/// import com.pulumi.aws.macie.FindingsFilter;
+/// import com.pulumi.aws.macie.FindingsFilterArgs;
+/// import com.pulumi.aws.macie.inputs.FindingsFilterFindingCriteriaArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Account("example");
+///
+///         var test = new FindingsFilter("test", FindingsFilterArgs.builder()
+///             .name("NAME OF THE FINDINGS FILTER")
+///             .description("DESCRIPTION")
+///             .position(1)
+///             .action("ARCHIVE")
+///             .findingCriteria(FindingsFilterFindingCriteriaArgs.builder()
+///                 .criterions(FindingsFilterFindingCriteriaCriterionArgs.builder()
+///                     .field("region")
+///                     .eqs(current.region())
+///                     .build())
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(testAwsMacie2Account)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:macie2:Account
+///   test:
+///     type: aws:macie:FindingsFilter
+///     properties:
+///       name: NAME OF THE FINDINGS FILTER
+///       description: DESCRIPTION
+///       position: 1
+///       action: ARCHIVE
+///       findingCriteria:
+///         criterions:
+///           - field: region
+///             eqs:
+///               - ${current.region}
+///     options:
+///       dependsOn:
+///         - ${testAwsMacie2Account}
+/// ```
+///
+///
+/// ## Import
+///
+/// Using `pulumi import`, import `aws.macie.FindingsFilter` using the id. For example:
+///
+/// ```sh
+/// $ pulumi import aws:macie/findingsFilter:FindingsFilter example abcd1
+/// ```
+class FindingsFilter extends pulumi.CustomResource {
+  /// The action to perform on findings that meet the filter criteria (`finding_criteria`). Valid values are: `ARCHIVE`, suppress (automatically archive) the findings; and, `NOOP`, don't perform any action on the findings.
+  late final pulumi.Output<String> action;
+  /// The Amazon Resource Name (ARN) of the Findings Filter.
+  late final pulumi.Output<String> arn;
+  /// A custom description of the filter. The description can contain as many as 512 characters.
+  late final pulumi.Output<String?> description;
+  /// The criteria to use to filter findings.
+  late final pulumi.Output<FindingsFilterFindingCriteria> findingCriteria;
+  /// A custom name for the filter. The name must contain at least 3 characters and can contain as many as 64 characters. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  late final pulumi.Output<String> name;
+  /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
+  late final pulumi.Output<String> namePrefix;
+  /// The position of the filter in the list of saved filters on the Amazon Macie console. This value also determines the order in which the filter is applied to findings, relative to other filters that are also applied to the findings.
+  late final pulumi.Output<int> position;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final pulumi.Output<String> region;
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  late final pulumi.Output<Map<String, String>> tagsAll;
+
+  /// Creates a new [FindingsFilter].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [FindingsFilter]. {@macro pulumi_macie_findings_filter_findings_filter_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  FindingsFilter(
+    String name, {
+    FindingsFilterArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:macie/findingsFilter:FindingsFilter',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.action = registerOutput<String>('action');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.findingCriteria = registerOutput<FindingsFilterFindingCriteria>('findingCriteria');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.position = registerOutput<int>('position');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+  }
+
+  /// Gets an existing [FindingsFilter] resource's state with the given [name] and [id].
+  static FindingsFilter get(
+    String name,
+    pulumi.Input<String> id, {
+    FindingsFilterState? state,
+  }) {
+    return FindingsFilter._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id),
+    );
+  }
+
+  FindingsFilter._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:macie/findingsFilter:FindingsFilter',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.action = registerOutput<String>('action');
+    this.arn = registerOutput<String>('arn');
+    this.description = registerOutput<String?>('description');
+    this.findingCriteria = registerOutput<FindingsFilterFindingCriteria>('findingCriteria');
+    this.name = registerOutput<String>('name');
+    this.namePrefix = registerOutput<String>('namePrefix');
+    this.position = registerOutput<int>('position');
+    this.region = registerOutput<String>('region');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+  }
+}

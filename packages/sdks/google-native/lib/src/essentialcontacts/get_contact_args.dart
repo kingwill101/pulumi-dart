@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_essentialcontacts_v1_get_contact_args_doc}
+/// Arguments for getContact.
+/// {@endtemplate}
+/// {@macro pulumi_essentialcontacts_v1_get_contact_args_doc}
+class GetContactArgs {
+  final pulumi.Input<String> contactId;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetContactArgs].
+  /// [contactId] Required.
+  /// [project] Optional.
+  GetContactArgs({
+    required pulumi.Output<String> contactId,
+    pulumi.Output<String>? project,
+  }) :
+      contactId = pulumi.Input.asInput<String>(contactId),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'contactId': contactId,
+      'project': ?project,
+    };
+  }
+
+  factory GetContactArgs.fromMap(Map<String, dynamic> map) {
+    return GetContactArgs(
+      contactId: pulumi.Output.create<String>(map['contactId'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

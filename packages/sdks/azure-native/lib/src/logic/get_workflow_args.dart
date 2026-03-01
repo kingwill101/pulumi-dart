@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_logic_get_workflow_args_doc}
+/// Arguments for getWorkflow.
+/// {@endtemplate}
+/// {@macro pulumi_logic_get_workflow_args_doc}
+class GetWorkflowArgs {
+  /// The resource group name.
+  final pulumi.Input<String> resourceGroupName;
+  /// The workflow name.
+  final pulumi.Input<String> workflowName;
+
+  /// Creates a new [GetWorkflowArgs].
+  /// [resourceGroupName] The resource group name.
+  /// [workflowName] The workflow name.
+  GetWorkflowArgs({
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> workflowName,
+  }) :
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      workflowName = pulumi.Input.asInput<String>(workflowName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'resourceGroupName': resourceGroupName,
+      'workflowName': workflowName,
+    };
+  }
+
+  factory GetWorkflowArgs.fromMap(Map<String, dynamic> map) {
+    return GetWorkflowArgs(
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      workflowName: pulumi.Output.create<String>(map['workflowName'] as String),
+    );
+  }
+}
+

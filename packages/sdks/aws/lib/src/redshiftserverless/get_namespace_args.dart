@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_redshiftserverless_get_namespace_get_namespace_args_doc}
+/// Arguments for getNamespace.
+/// {@endtemplate}
+/// {@macro pulumi_redshiftserverless_get_namespace_get_namespace_args_doc}
+class GetNamespaceArgs {
+  /// The name of the namespace.
+  final pulumi.Input<String> namespaceName;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [GetNamespaceArgs].
+  /// [namespaceName] The name of the namespace.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  GetNamespaceArgs({
+    required pulumi.Output<String> namespaceName,
+    pulumi.Output<String>? region,
+  }) :
+      namespaceName = pulumi.Input.asInput<String>(namespaceName),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'namespaceName': namespaceName,
+      'region': ?region,
+    };
+  }
+
+  factory GetNamespaceArgs.fromMap(Map<String, dynamic> map) {
+    return GetNamespaceArgs(
+      namespaceName: pulumi.Output.create<String>(map['namespaceName'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

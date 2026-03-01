@@ -1,0 +1,26 @@
+library module_privatelink;
+
+export 'privatelink/application_security_group_association.dart';
+export 'privatelink/application_security_group_association_args.dart';
+export 'privatelink/application_security_group_association_state.dart';
+export 'privatelink/endpoint.dart';
+export 'privatelink/endpoint_args.dart';
+export 'privatelink/endpoint_custom_dns_config.dart';
+export 'privatelink/endpoint_ip_configuration.dart';
+export 'privatelink/endpoint_network_interface.dart';
+export 'privatelink/endpoint_private_dns_zone_config.dart';
+export 'privatelink/endpoint_private_dns_zone_config_record_set.dart';
+export 'privatelink/endpoint_private_dns_zone_group.dart';
+export 'privatelink/endpoint_private_service_connection.dart';
+export 'privatelink/endpoint_state.dart';
+export 'privatelink/functions.dart';
+export 'privatelink/get_endpoint_connection_args.dart';
+export 'privatelink/get_endpoint_connection_network_interface.dart';
+export 'privatelink/get_endpoint_connection_private_service_connection.dart';
+export 'privatelink/get_endpoint_connection_result.dart';
+export 'privatelink/get_service_args.dart';
+export 'privatelink/get_service_endpoint_connections_args.dart';
+export 'privatelink/get_service_endpoint_connections_private_endpoint_connection.dart';
+export 'privatelink/get_service_endpoint_connections_result.dart';
+export 'privatelink/get_service_nat_ip_configuration.dart';
+export 'privatelink/get_service_result.dart';

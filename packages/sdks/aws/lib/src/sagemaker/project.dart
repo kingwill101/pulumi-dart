@@ -1,0 +1,200 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'project_args.dart';
+import 'project_service_catalog_provisioning_details.dart';
+import 'project_state.dart';
+
+/// Provides a SageMaker AI Project resource.
+///
+/// > Note: If you are trying to use SageMaker AI projects with SageMaker AI studio you will need to add a tag with the key `sagemaker:studio-visibility` with value `true`. For more on requirements to use projects and permission needed see [AWS Docs](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-projects-templates-custom.html).
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.sagemaker.Project("example", {
+///     projectName: "example",
+///     serviceCatalogProvisioningDetails: {
+///         productId: exampleAwsServicecatalogProduct.id,
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.sagemaker.Project("example",
+///     project_name="example",
+///     service_catalog_provisioning_details={
+///         "product_id": example_aws_servicecatalog_product["id"],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Sagemaker.Project("example", new()
+///     {
+///         ProjectName = "example",
+///         ServiceCatalogProvisioningDetails = new Aws.Sagemaker.Inputs.ProjectServiceCatalogProvisioningDetailsArgs
+///         {
+///             ProductId = exampleAwsServicecatalogProduct.Id,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/sagemaker"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := sagemaker.NewProject(ctx, "example", &sagemaker.ProjectArgs{
+/// 			ProjectName: pulumi.String("example"),
+/// 			ServiceCatalogProvisioningDetails: &sagemaker.ProjectServiceCatalogProvisioningDetailsArgs{
+/// 				ProductId: pulumi.Any(exampleAwsServicecatalogProduct.Id),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.sagemaker.Project;
+/// import com.pulumi.aws.sagemaker.ProjectArgs;
+/// import com.pulumi.aws.sagemaker.inputs.ProjectServiceCatalogProvisioningDetailsArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new Project("example", ProjectArgs.builder()
+///             .projectName("example")
+///             .serviceCatalogProvisioningDetails(ProjectServiceCatalogProvisioningDetailsArgs.builder()
+///                 .productId(exampleAwsServicecatalogProduct.id())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:sagemaker:Project
+///     properties:
+///       projectName: example
+///       serviceCatalogProvisioningDetails:
+///         productId: ${exampleAwsServicecatalogProduct.id}
+/// ```
+///
+///
+/// ## Import
+///
+/// Using `pulumi import`, import SageMaker AI Projects using the `project_name`. For example:
+///
+/// ```sh
+/// $ pulumi import aws:sagemaker/project:Project example example
+/// ```
+class Project extends pulumi.CustomResource {
+  /// The Amazon Resource Name (ARN) assigned by AWS to this Project.
+  late final pulumi.Output<String> arn;
+  /// A description for the project.
+  late final pulumi.Output<String?> projectDescription;
+  /// The ID of the project.
+  late final pulumi.Output<String> projectId;
+  /// The name of the Project.
+  late final pulumi.Output<String> projectName;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final pulumi.Output<String> region;
+  /// The product ID and provisioning artifact ID to provision a service catalog. See Service Catalog Provisioning Details below.
+  late final pulumi.Output<ProjectServiceCatalogProvisioningDetails> serviceCatalogProvisioningDetails;
+  /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  late final pulumi.Output<Map<String, String>> tagsAll;
+
+  /// Creates a new [Project].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [Project]. {@macro pulumi_sagemaker_project_project_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  Project(
+    String name, {
+    ProjectArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:sagemaker/project:Project',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.arn = registerOutput<String>('arn');
+    this.projectDescription = registerOutput<String?>('projectDescription');
+    this.projectId = registerOutput<String>('projectId');
+    this.projectName = registerOutput<String>('projectName');
+    this.region = registerOutput<String>('region');
+    this.serviceCatalogProvisioningDetails = registerOutput<ProjectServiceCatalogProvisioningDetails>('serviceCatalogProvisioningDetails');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+  }
+
+  /// Gets an existing [Project] resource's state with the given [name] and [id].
+  static Project get(
+    String name,
+    pulumi.Input<String> id, {
+    ProjectState? state,
+  }) {
+    return Project._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id),
+    );
+  }
+
+  Project._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:sagemaker/project:Project',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.arn = registerOutput<String>('arn');
+    this.projectDescription = registerOutput<String?>('projectDescription');
+    this.projectId = registerOutput<String>('projectId');
+    this.projectName = registerOutput<String>('projectName');
+    this.region = registerOutput<String>('region');
+    this.serviceCatalogProvisioningDetails = registerOutput<ProjectServiceCatalogProvisioningDetails>('serviceCatalogProvisioningDetails');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+  }
+}

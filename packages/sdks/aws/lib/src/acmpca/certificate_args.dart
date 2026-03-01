@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'certificate_validity.dart';
+
+/// {@template pulumi_acmpca_certificate_certificate_args_doc}
+/// The set of arguments for Certificate.
+/// {@endtemplate}
+/// {@macro pulumi_acmpca_certificate_certificate_args_doc}
+class CertificateArgs {
+  /// Specifies X.509 certificate information to be included in the issued certificate. To use with API Passthrough templates
+  final pulumi.Input<String>? apiPassthrough;
+  /// ARN of the certificate authority.
+  final pulumi.Input<String> certificateAuthorityArn;
+  /// Certificate Signing Request in PEM format.
+  final pulumi.Input<String> certificateSigningRequest;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Algorithm to use to sign certificate requests. Valid values: `SHA256WITHRSA`, `SHA256WITHECDSA`, `SHA384WITHRSA`, `SHA384WITHECDSA`, `SHA512WITHRSA`, `SHA512WITHECDSA`.
+  final pulumi.Input<String> signingAlgorithm;
+  /// Template to use when issuing a certificate.
+  /// See [ACM PCA Documentation](https://docs.aws.amazon.com/privateca/latest/userguide/UsingTemplates.html) for more information.
+  final pulumi.Input<String>? templateArn;
+  /// Configures end of the validity period for the certificate. See validity block below.
+  final pulumi.Input<CertificateValidity> validity;
+
+  /// Creates a new [CertificateArgs].
+  /// [apiPassthrough] Specifies X.509 certificate information to be included in the issued certificate. To use with API Passthrough templates
+  /// [certificateAuthorityArn] ARN of the certificate authority.
+  /// [certificateSigningRequest] Certificate Signing Request in PEM format.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [signingAlgorithm] Algorithm to use to sign certificate requests. Valid values: `SHA256WITHRSA`, `SHA256WITHECDSA`, `SHA384WITHRSA`, `SHA384WITHECDSA`, `SHA512WITHRSA`, `SHA512WITHECDSA`.
+  /// [templateArn] Template to use when issuing a certificate.
+  /// [validity] Configures end of the validity period for the certificate. See validity block below.
+  CertificateArgs({
+    pulumi.Output<String>? apiPassthrough,
+    required pulumi.Output<String> certificateAuthorityArn,
+    required pulumi.Output<String> certificateSigningRequest,
+    pulumi.Output<String>? region,
+    required pulumi.Output<String> signingAlgorithm,
+    pulumi.Output<String>? templateArn,
+    required pulumi.Output<CertificateValidity> validity,
+  }) :
+      apiPassthrough = pulumi.Input.asOptionalInput<String>(apiPassthrough),
+      certificateAuthorityArn = pulumi.Input.asInput<String>(certificateAuthorityArn),
+      certificateSigningRequest = pulumi.Input.asInput<String>(certificateSigningRequest),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      signingAlgorithm = pulumi.Input.asInput<String>(signingAlgorithm),
+      templateArn = pulumi.Input.asOptionalInput<String>(templateArn),
+      validity = pulumi.Input.asInput<CertificateValidity>(validity);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiPassthrough': ?apiPassthrough,
+      'certificateAuthorityArn': certificateAuthorityArn,
+      'certificateSigningRequest': certificateSigningRequest,
+      'region': ?region,
+      'signingAlgorithm': signingAlgorithm,
+      'templateArn': ?templateArn,
+      'validity': pulumi.Input.mapInputValue<CertificateValidity, Map<String, dynamic>>(validity, (value) => value.toMap()),
+    };
+  }
+
+  factory CertificateArgs.fromMap(Map<String, dynamic> map) {
+    return CertificateArgs(
+      apiPassthrough: map['apiPassthrough'] == null ? null : pulumi.Output.create<String>(map['apiPassthrough'] as String),
+      certificateAuthorityArn: pulumi.Output.create<String>(map['certificateAuthorityArn'] as String),
+      certificateSigningRequest: pulumi.Output.create<String>(map['certificateSigningRequest'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      signingAlgorithm: pulumi.Output.create<String>(map['signingAlgorithm'] as String),
+      templateArn: map['templateArn'] == null ? null : pulumi.Output.create<String>(map['templateArn'] as String),
+      validity: pulumi.Output.create<CertificateValidity>(CertificateValidity.fromMap((map['validity'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

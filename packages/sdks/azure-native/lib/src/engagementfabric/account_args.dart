@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'sku.dart';
+
+/// {@template pulumi_engagementfabric_account_args_doc}
+/// The set of arguments for Account.
+/// {@endtemplate}
+/// {@macro pulumi_engagementfabric_account_args_doc}
+class AccountArgs {
+  /// Account Name
+  final pulumi.Input<String>? accountName;
+  /// The location of the resource
+  final pulumi.Input<String>? location;
+  /// Resource Group Name
+  final pulumi.Input<String> resourceGroupName;
+  /// The SKU of the resource
+  final pulumi.Input<SKU> sku;
+  /// The tags of the resource
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [AccountArgs].
+  /// [accountName] Account Name
+  /// [location] The location of the resource
+  /// [resourceGroupName] Resource Group Name
+  /// [sku] The SKU of the resource
+  /// [tags] The tags of the resource
+  AccountArgs({
+    pulumi.Output<String>? accountName,
+    pulumi.Output<String>? location,
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<SKU> sku,
+    pulumi.Output<Map<String, String>>? tags,
+  }) :
+      accountName = pulumi.Input.asOptionalInput<String>(accountName),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      sku = pulumi.Input.asInput<SKU>(sku),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accountName': ?accountName,
+      'location': ?location,
+      'resourceGroupName': resourceGroupName,
+      'sku': pulumi.Input.mapInputValue<SKU, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'tags': ?tags,
+    };
+  }
+
+  factory AccountArgs.fromMap(Map<String, dynamic> map) {
+    return AccountArgs(
+      accountName: map['accountName'] == null ? null : pulumi.Output.create<String>(map['accountName'] as String),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      sku: pulumi.Output.create<SKU>(SKU.fromMap((map['sku'] as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+    );
+  }
+}
+

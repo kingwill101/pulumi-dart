@@ -1,0 +1,447 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'multicast_consumer_association_args.dart';
+import 'multicast_consumer_association_networkservices_state.dart';
+import 'multicast_consumer_association_state.dart';
+
+/// Create a multicast consumer association in the specified location of the current project.
+///
+///
+/// To get more information about MulticastConsumerAssociation, see:
+///
+/// * [API documentation](https://docs.cloud.google.com/vpc/docs/multicast/reference/rest/v1/projects.locations.multicastConsumerAssociations)
+/// * How-to Guides
+/// * [Create Multicast Consumer Association](https://docs.cloud.google.com/vpc/docs/multicast/enable-consumer-network#add-consumer)
+///
+/// ## Example Usage
+///
+/// ### Network Services Multicast Consumer Association Basic
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const network = new gcp.compute.Network("network", {
+///     name: "test-network-mca",
+///     autoCreateSubnetworks: false,
+/// });
+/// const multicastDomain = new gcp.networkservices.MulticastDomain("multicast_domain", {
+///     multicastDomainId: "test-domain-mca",
+///     location: "global",
+///     adminNetwork: network.id,
+///     connectionConfig: {
+///         connectionType: "SAME_VPC",
+///     },
+/// }, {
+///     dependsOn: [network],
+/// });
+/// const multicastDomainActivation = new gcp.networkservices.MulticastDomainActivation("multicast_domain_activation", {
+///     multicastDomainActivationId: "test-domain-activation-mca",
+///     location: "us-central1-b",
+///     multicastDomain: multicastDomain.id,
+/// });
+/// const mcaTest = new gcp.networkservices.MulticastConsumerAssociation("mca_test", {
+///     multicastConsumerAssociationId: "test-consumer-association-mca",
+///     location: "us-central1-b",
+///     network: network.id,
+///     multicastDomainActivation: multicastDomainActivation.id,
+/// }, {
+///     dependsOn: [network],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// network = gcp.compute.Network("network",
+///     name="test-network-mca",
+///     auto_create_subnetworks=False)
+/// multicast_domain = gcp.networkservices.MulticastDomain("multicast_domain",
+///     multicast_domain_id="test-domain-mca",
+///     location="global",
+///     admin_network=network.id,
+///     connection_config={
+///         "connection_type": "SAME_VPC",
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[network]))
+/// multicast_domain_activation = gcp.networkservices.MulticastDomainActivation("multicast_domain_activation",
+///     multicast_domain_activation_id="test-domain-activation-mca",
+///     location="us-central1-b",
+///     multicast_domain=multicast_domain.id)
+/// mca_test = gcp.networkservices.MulticastConsumerAssociation("mca_test",
+///     multicast_consumer_association_id="test-consumer-association-mca",
+///     location="us-central1-b",
+///     network=network.id,
+///     multicast_domain_activation=multicast_domain_activation.id,
+///     opts = pulumi.ResourceOptions(depends_on=[network]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var network = new Gcp.Compute.Network("network", new()
+///     {
+///         Name = "test-network-mca",
+///         AutoCreateSubnetworks = false,
+///     });
+///
+///     var multicastDomain = new Gcp.NetworkServices.MulticastDomain("multicast_domain", new()
+///     {
+///         MulticastDomainId = "test-domain-mca",
+///         Location = "global",
+///         AdminNetwork = network.Id,
+///         ConnectionConfig = new Gcp.NetworkServices.Inputs.MulticastDomainConnectionConfigArgs
+///         {
+///             ConnectionType = "SAME_VPC",
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             network,
+///         },
+///     });
+///
+///     var multicastDomainActivation = new Gcp.NetworkServices.MulticastDomainActivation("multicast_domain_activation", new()
+///     {
+///         MulticastDomainActivationId = "test-domain-activation-mca",
+///         Location = "us-central1-b",
+///         MulticastDomain = multicastDomain.Id,
+///     });
+///
+///     var mcaTest = new Gcp.NetworkServices.MulticastConsumerAssociation("mca_test", new()
+///     {
+///         MulticastConsumerAssociationId = "test-consumer-association-mca",
+///         Location = "us-central1-b",
+///         Network = network.Id,
+///         MulticastDomainActivation = multicastDomainActivation.Id,
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             network,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("test-network-mca"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
+/// 			MulticastDomainId: pulumi.String("test-domain-mca"),
+/// 			Location:          pulumi.String("global"),
+/// 			AdminNetwork:      network.ID(),
+/// 			ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
+/// 				ConnectionType: pulumi.String("SAME_VPC"),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			network,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		multicastDomainActivation, err := networkservices.NewMulticastDomainActivation(ctx, "multicast_domain_activation", &networkservices.MulticastDomainActivationArgs{
+/// 			MulticastDomainActivationId: pulumi.String("test-domain-activation-mca"),
+/// 			Location:                    pulumi.String("us-central1-b"),
+/// 			MulticastDomain:             multicastDomain.ID(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = networkservices.NewMulticastConsumerAssociation(ctx, "mca_test", &networkservices.MulticastConsumerAssociationArgs{
+/// 			MulticastConsumerAssociationId: pulumi.String("test-consumer-association-mca"),
+/// 			Location:                       pulumi.String("us-central1-b"),
+/// 			Network:                        network.ID(),
+/// 			MulticastDomainActivation:      multicastDomainActivation.ID(),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			network,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.networkservices.MulticastDomain;
+/// import com.pulumi.gcp.networkservices.MulticastDomainArgs;
+/// import com.pulumi.gcp.networkservices.inputs.MulticastDomainConnectionConfigArgs;
+/// import com.pulumi.gcp.networkservices.MulticastDomainActivation;
+/// import com.pulumi.gcp.networkservices.MulticastDomainActivationArgs;
+/// import com.pulumi.gcp.networkservices.MulticastConsumerAssociation;
+/// import com.pulumi.gcp.networkservices.MulticastConsumerAssociationArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var network = new Network("network", NetworkArgs.builder()
+///             .name("test-network-mca")
+///             .autoCreateSubnetworks(false)
+///             .build());
+///
+///         var multicastDomain = new MulticastDomain("multicastDomain", MulticastDomainArgs.builder()
+///             .multicastDomainId("test-domain-mca")
+///             .location("global")
+///             .adminNetwork(network.id())
+///             .connectionConfig(MulticastDomainConnectionConfigArgs.builder()
+///                 .connectionType("SAME_VPC")
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(network)
+///                 .build());
+///
+///         var multicastDomainActivation = new MulticastDomainActivation("multicastDomainActivation", MulticastDomainActivationArgs.builder()
+///             .multicastDomainActivationId("test-domain-activation-mca")
+///             .location("us-central1-b")
+///             .multicastDomain(multicastDomain.id())
+///             .build());
+///
+///         var mcaTest = new MulticastConsumerAssociation("mcaTest", MulticastConsumerAssociationArgs.builder()
+///             .multicastConsumerAssociationId("test-consumer-association-mca")
+///             .location("us-central1-b")
+///             .network(network.id())
+///             .multicastDomainActivation(multicastDomainActivation.id())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(network)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   network:
+///     type: gcp:compute:Network
+///     properties:
+///       name: test-network-mca
+///       autoCreateSubnetworks: false
+///   multicastDomain:
+///     type: gcp:networkservices:MulticastDomain
+///     name: multicast_domain
+///     properties:
+///       multicastDomainId: test-domain-mca
+///       location: global
+///       adminNetwork: ${network.id}
+///       connectionConfig:
+///         connectionType: SAME_VPC
+///     options:
+///       dependsOn:
+///         - ${network}
+///   multicastDomainActivation:
+///     type: gcp:networkservices:MulticastDomainActivation
+///     name: multicast_domain_activation
+///     properties:
+///       multicastDomainActivationId: test-domain-activation-mca
+///       location: us-central1-b
+///       multicastDomain: ${multicastDomain.id}
+///   mcaTest:
+///     type: gcp:networkservices:MulticastConsumerAssociation
+///     name: mca_test
+///     properties:
+///       multicastConsumerAssociationId: test-consumer-association-mca
+///       location: us-central1-b
+///       network: ${network.id}
+///       multicastDomainActivation: ${multicastDomainActivation.id}
+///     options:
+///       dependsOn:
+///         - ${network}
+/// ```
+///
+///
+/// ## Import
+///
+/// MulticastConsumerAssociation can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/locations/{{location}}/multicastConsumerAssociations/{{multicast_consumer_association_id}}`
+///
+/// * `{{project}}/{{location}}/{{multicast_consumer_association_id}}`
+///
+/// * `{{location}}/{{multicast_consumer_association_id}}`
+///
+/// When using the `pulumi import` command, MulticastConsumerAssociation can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation default projects/{{project}}/locations/{{location}}/multicastConsumerAssociations/{{multicast_consumer_association_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation default {{project}}/{{location}}/{{multicast_consumer_association_id}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation default {{location}}/{{multicast_consumer_association_id}}
+/// ```
+class MulticastConsumerAssociation extends pulumi.CustomResource {
+  /// [Output only] The timestamp when the multicast consumer association was
+  /// created.
+  late final pulumi.Output<String> createTime;
+  /// An optional text description of the multicast consumer association.
+  late final pulumi.Output<String?> description;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// Labels as key-value pairs
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  late final pulumi.Output<Map<String, String>?> labels;
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  late final pulumi.Output<String> location;
+  /// A unique name for the multicast consumer association.
+  /// The name is restricted to letters, numbers, and hyphen, with the first
+  /// character a letter, and the last a letter or a number. The name must not
+  /// exceed 48 characters.
+  late final pulumi.Output<String> multicastConsumerAssociationId;
+  /// The resource name of the multicast domain activation that is in the
+  /// same zone as this multicast consumer association.
+  /// Use the following format:
+  /// // `projects/*/locations/*/multicastDomainActivations/*`.
+  late final pulumi.Output<String> multicastDomainActivation;
+  /// Identifier. The resource name of the multicast consumer association.
+  /// Use the following format:
+  /// `projects/*/locations/*/multicastConsumerAssociations/*`.
+  late final pulumi.Output<String> name;
+  /// The resource name of the multicast consumer VPC network.
+  /// Use following format:
+  /// `projects/{project}/locations/global/networks/{network}`.
+  late final pulumi.Output<String> network;
+  /// [Output only] A Compute Engine (placement
+  /// policy)[https://cloud.google.com/compute/docs/instances/placement-policies-overview]
+  /// that can be used to place virtual machine (VM) instances as multicast
+  /// consumers close to the multicast infrastructure created for this domain,
+  /// on a best effort basis.
+  late final pulumi.Output<String> placementPolicy;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final pulumi.Output<String> project;
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// (Output)
+  /// The state of the multicast resource.
+  /// Possible values:
+  /// CREATING
+  /// ACTIVE
+  /// DELETING
+  /// DELETE_FAILED
+  /// UPDATING
+  /// UPDATE_FAILED
+  /// INACTIVE
+  late final pulumi.Output<List<MulticastConsumerAssociationState>> states;
+  /// [Output only] The Google-generated UUID for the resource. This value is
+  /// unique across all multicast consumer association resources. If a consumer
+  /// association is deleted and another with the same name is created, the new
+  /// consumer association is assigned a different unique_id.
+  late final pulumi.Output<String> uniqueId;
+  /// [Output only] The timestamp when the Multicast Consumer Association was
+  /// most recently updated.
+  late final pulumi.Output<String> updateTime;
+
+  /// Creates a new [MulticastConsumerAssociation].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [MulticastConsumerAssociation]. {@macro pulumi_networkservices_multicast_consumer_association_multicast_consumer_association_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  MulticastConsumerAssociation(
+    String name, {
+    MulticastConsumerAssociationArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.multicastConsumerAssociationId = registerOutput<String>('multicastConsumerAssociationId');
+    this.multicastDomainActivation = registerOutput<String>('multicastDomainActivation');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.placementPolicy = registerOutput<String>('placementPolicy');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.states = registerOutput<List<MulticastConsumerAssociationState>>('states');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Gets an existing [MulticastConsumerAssociation] resource's state with the given [name] and [id].
+  static MulticastConsumerAssociation get(
+    String name,
+    pulumi.Input<String> id, {
+    MulticastConsumerAssociationNetworkservicesState? state,
+  }) {
+    return MulticastConsumerAssociation._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id),
+    );
+  }
+
+  MulticastConsumerAssociation._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:networkservices/multicastConsumerAssociation:MulticastConsumerAssociation',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.createTime = registerOutput<String>('createTime');
+    this.description = registerOutput<String?>('description');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.location = registerOutput<String>('location');
+    this.multicastConsumerAssociationId = registerOutput<String>('multicastConsumerAssociationId');
+    this.multicastDomainActivation = registerOutput<String>('multicastDomainActivation');
+    this.name = registerOutput<String>('name');
+    this.network = registerOutput<String>('network');
+    this.placementPolicy = registerOutput<String>('placementPolicy');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.states = registerOutput<List<MulticastConsumerAssociationState>>('states');
+    this.uniqueId = registerOutput<String>('uniqueId');
+    this.updateTime = registerOutput<String>('updateTime');
+  }
+}

@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_compute_get_restore_point_collection_args_doc}
+/// Arguments for getRestorePointCollection.
+/// {@endtemplate}
+/// {@macro pulumi_compute_get_restore_point_collection_args_doc}
+class GetRestorePointCollectionArgs {
+  /// The expand expression to apply on the operation. If expand=restorePoints, server will return all contained restore points in the restorePointCollection.
+  final pulumi.Input<String>? expand;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of the restore point collection.
+  final pulumi.Input<String> restorePointCollectionName;
+
+  /// Creates a new [GetRestorePointCollectionArgs].
+  /// [expand] The expand expression to apply on the operation. If expand=restorePoints, server will return all contained restore points in the restorePointCollection.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [restorePointCollectionName] The name of the restore point collection.
+  GetRestorePointCollectionArgs({
+    pulumi.Output<String>? expand,
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> restorePointCollectionName,
+  }) :
+      expand = pulumi.Input.asOptionalInput<String>(expand),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      restorePointCollectionName = pulumi.Input.asInput<String>(restorePointCollectionName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'expand': ?expand,
+      'resourceGroupName': resourceGroupName,
+      'restorePointCollectionName': restorePointCollectionName,
+    };
+  }
+
+  factory GetRestorePointCollectionArgs.fromMap(Map<String, dynamic> map) {
+    return GetRestorePointCollectionArgs(
+      expand: map['expand'] == null ? null : pulumi.Output.create<String>(map['expand'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      restorePointCollectionName: pulumi.Output.create<String>(map['restorePointCollectionName'] as String),
+    );
+  }
+}
+

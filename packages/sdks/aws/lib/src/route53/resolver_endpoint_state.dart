@@ -1,0 +1,118 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'resolver_endpoint_ip_address.dart';
+
+/// Input properties used for looking up and filtering ResolverEndpoint resources.
+class ResolverEndpointState {
+  /// ARN of the Route 53 Resolver endpoint.
+  final pulumi.Input<String>? arn;
+  /// Direction of DNS queries to or from the Route 53 Resolver endpoint.
+  /// Valid values are `INBOUND` (resolver forwards DNS queries to the DNS service for a VPC from your network or another VPC), `OUTBOUND` (resolver forwards DNS queries from the DNS service for a VPC to your network or another VPC) or `INBOUND_DELEGATION` (resolver delegates queries to Route 53 private hosted zones from your network).
+  final pulumi.Input<String>? direction;
+  /// ID of the VPC that you want to create the resolver endpoint in.
+  final pulumi.Input<String>? hostVpcId;
+  /// Subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
+  /// to your network (for outbound endpoints) or on the way from your network to your VPCs (for inbound endpoints). Described below.
+  final pulumi.Input<List<ResolverEndpointIpAddress>>? ipAddresses;
+  /// Friendly name of the Route 53 Resolver endpoint.
+  final pulumi.Input<String>? name;
+  /// Protocols you want to use for the Route 53 Resolver endpoint.
+  /// Valid values are `DoH`, `Do53`, or `DoH-FIPS`.
+  final pulumi.Input<List<String>>? protocols;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Endpoint IP type. This endpoint type is applied to all IP addresses.
+  /// Valid values are `IPV6`,`IPV4` or `DUALSTACK` (both IPv4 and IPv6).
+  final pulumi.Input<String>? resolverEndpointType;
+  /// Boolean indicating whether RNI enhanced metrics are enabled for the Resolver endpoint. Defaults to `false`. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
+  final pulumi.Input<bool>? rniEnhancedMetricsEnabled;
+  /// ID of one or more security groups that you want to use to control access to this VPC.
+  final pulumi.Input<List<String>>? securityGroupIds;
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  final pulumi.Input<Map<String, String>>? tagsAll;
+  /// Boolean indicating whether target name server metrics are enabled for the outbound Resolver endpoints. Defaults to `false`. This argument is supported only for outbound endpoints. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
+  final pulumi.Input<bool>? targetNameServerMetricsEnabled;
+
+  /// Creates a new [ResolverEndpointState].
+  /// [arn] ARN of the Route 53 Resolver endpoint.
+  /// [direction] Direction of DNS queries to or from the Route 53 Resolver endpoint.
+  /// [hostVpcId] ID of the VPC that you want to create the resolver endpoint in.
+  /// [ipAddresses] Subnets and IP addresses in your VPC that you want DNS queries to pass through on the way from your VPCs
+  /// [name] Friendly name of the Route 53 Resolver endpoint.
+  /// [protocols] Protocols you want to use for the Route 53 Resolver endpoint.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [resolverEndpointType] Endpoint IP type. This endpoint type is applied to all IP addresses.
+  /// [rniEnhancedMetricsEnabled] Boolean indicating whether RNI enhanced metrics are enabled for the Resolver endpoint. Defaults to `false`. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
+  /// [securityGroupIds] ID of one or more security groups that you want to use to control access to this VPC.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [targetNameServerMetricsEnabled] Boolean indicating whether target name server metrics are enabled for the outbound Resolver endpoints. Defaults to `false`. This argument is supported only for outbound endpoints. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
+  ResolverEndpointState({
+    pulumi.Output<String>? arn,
+    pulumi.Output<String>? direction,
+    pulumi.Output<String>? hostVpcId,
+    pulumi.Output<List<ResolverEndpointIpAddress>>? ipAddresses,
+    pulumi.Output<String>? name,
+    pulumi.Output<List<String>>? protocols,
+    pulumi.Output<String>? region,
+    pulumi.Output<String>? resolverEndpointType,
+    pulumi.Output<bool>? rniEnhancedMetricsEnabled,
+    pulumi.Output<List<String>>? securityGroupIds,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<Map<String, String>>? tagsAll,
+    pulumi.Output<bool>? targetNameServerMetricsEnabled,
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      direction = pulumi.Input.asOptionalInput<String>(direction),
+      hostVpcId = pulumi.Input.asOptionalInput<String>(hostVpcId),
+      ipAddresses = pulumi.Input.asOptionalInput<List<ResolverEndpointIpAddress>>(ipAddresses),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      protocols = pulumi.Input.asOptionalInput<List<String>>(protocols),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resolverEndpointType = pulumi.Input.asOptionalInput<String>(resolverEndpointType),
+      rniEnhancedMetricsEnabled = pulumi.Input.asOptionalInput<bool>(rniEnhancedMetricsEnabled),
+      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
+      targetNameServerMetricsEnabled = pulumi.Input.asOptionalInput<bool>(targetNameServerMetricsEnabled);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'arn': ?arn,
+      'direction': ?direction,
+      'hostVpcId': ?hostVpcId,
+      'ipAddresses': ?pulumi.Input.mapOptionalInputValue<List<ResolverEndpointIpAddress>, List<Map<String, dynamic>>>(ipAddresses, (value) => pulumi.Input.encodeList<ResolverEndpointIpAddress, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'name': ?name,
+      'protocols': ?protocols,
+      'region': ?region,
+      'resolverEndpointType': ?resolverEndpointType,
+      'rniEnhancedMetricsEnabled': ?rniEnhancedMetricsEnabled,
+      'securityGroupIds': ?securityGroupIds,
+      'tags': ?tags,
+      'tagsAll': ?tagsAll,
+      'targetNameServerMetricsEnabled': ?targetNameServerMetricsEnabled,
+    };
+  }
+
+  factory ResolverEndpointState.fromMap(Map<String, dynamic> map) {
+    return ResolverEndpointState(
+      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
+      direction: map['direction'] == null ? null : pulumi.Output.create<String>(map['direction'] as String),
+      hostVpcId: map['hostVpcId'] == null ? null : pulumi.Output.create<String>(map['hostVpcId'] as String),
+      ipAddresses: map['ipAddresses'] == null ? null : pulumi.Output.create<List<ResolverEndpointIpAddress>>(pulumi.Input.decodeList<ResolverEndpointIpAddress>(map['ipAddresses'], (value) => ResolverEndpointIpAddress.fromMap((value as Map).cast<String, dynamic>()))),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      protocols: map['protocols'] == null ? null : pulumi.Output.create<List<String>>((map['protocols'] as List).cast<String>()),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      resolverEndpointType: map['resolverEndpointType'] == null ? null : pulumi.Output.create<String>(map['resolverEndpointType'] as String),
+      rniEnhancedMetricsEnabled: map['rniEnhancedMetricsEnabled'] == null ? null : pulumi.Output.create<bool>(map['rniEnhancedMetricsEnabled'] as bool),
+      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      targetNameServerMetricsEnabled: map['targetNameServerMetricsEnabled'] == null ? null : pulumi.Output.create<bool>(map['targetNameServerMetricsEnabled'] as bool),
+    );
+  }
+}
+

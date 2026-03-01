@@ -1,0 +1,43 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'attestor_args.dart';
+import 'user_owned_grafeas_note_response.dart';
+
+/// Creates an attestor, and returns a copy of the new attestor. Returns `NOT_FOUND` if the project does not exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the attestor already exists.
+class Attestor extends pulumi.CustomResource {
+  /// Required. The attestors ID.
+  late final pulumi.Output<String> attestorId;
+  /// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+  late final pulumi.Output<String> description;
+  /// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
+  late final pulumi.Output<String> etag;
+  /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+  late final pulumi.Output<String> name;
+  late final pulumi.Output<String> project;
+  /// Time when the attestor was last updated.
+  late final pulumi.Output<String> updateTime;
+  /// This specifies how an attestation will be read, and how it will be used during policy enforcement.
+  late final pulumi.Output<UserOwnedGrafeasNoteResponse> userOwnedGrafeasNote;
+
+  /// Creates a new [Attestor].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [Attestor]. {@macro pulumi_binaryauthorization_v1_attestor_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  Attestor(
+    String name, {
+    AttestorArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'google-native:binaryauthorization/v1:Attestor',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.attestorId = registerOutput<String>('attestorId');
+    this.description = registerOutput<String>('description');
+    this.etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    this.project = registerOutput<String>('project');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.userOwnedGrafeasNote = registerOutput<UserOwnedGrafeasNoteResponse>('userOwnedGrafeasNote');
+  }
+}

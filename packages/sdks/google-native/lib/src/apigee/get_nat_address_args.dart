@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_apigee_v1_get_nat_address_args_doc}
+/// Arguments for getNatAddress.
+/// {@endtemplate}
+/// {@macro pulumi_apigee_v1_get_nat_address_args_doc}
+class GetNatAddressArgs {
+  final pulumi.Input<String> instanceId;
+  final pulumi.Input<String> natAddressId;
+  final pulumi.Input<String> organizationId;
+
+  /// Creates a new [GetNatAddressArgs].
+  /// [instanceId] Required.
+  /// [natAddressId] Required.
+  /// [organizationId] Required.
+  GetNatAddressArgs({
+    required pulumi.Output<String> instanceId,
+    required pulumi.Output<String> natAddressId,
+    required pulumi.Output<String> organizationId,
+  }) :
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      natAddressId = pulumi.Input.asInput<String>(natAddressId),
+      organizationId = pulumi.Input.asInput<String>(organizationId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'instanceId': instanceId,
+      'natAddressId': natAddressId,
+      'organizationId': organizationId,
+    };
+  }
+
+  factory GetNatAddressArgs.fromMap(Map<String, dynamic> map) {
+    return GetNatAddressArgs(
+      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      natAddressId: pulumi.Output.create<String>(map['natAddressId'] as String),
+      organizationId: pulumi.Output.create<String>(map['organizationId'] as String),
+    );
+  }
+}
+

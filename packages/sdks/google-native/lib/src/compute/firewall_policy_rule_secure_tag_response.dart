@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+class FirewallPolicyRuleSecureTagResponse {
+  /// Name of the secure tag, created with TagManager's TagValue API.
+  final String name;
+  /// State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+  final String state;
+
+  /// Creates a new [FirewallPolicyRuleSecureTagResponse].
+  /// [name] Name of the secure tag, created with TagManager's TagValue API.
+  /// [state] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+  FirewallPolicyRuleSecureTagResponse({
+    required this.name,
+    required this.state,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'state': state,
+    };
+  }
+
+  factory FirewallPolicyRuleSecureTagResponse.fromMap(Map<String, dynamic> map) {
+    return FirewallPolicyRuleSecureTagResponse(
+      name: map['name'] as String,
+      state: map['state'] as String,
+    );
+  }
+}
+

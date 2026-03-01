@@ -1,0 +1,60 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_hbase_get_instances_get_instances_args_doc}
+/// Arguments for getInstances.
+/// {@endtemplate}
+/// {@macro pulumi_hbase_get_instances_get_instances_args_doc}
+class GetInstancesArgs {
+  /// Instance availability zone.
+  final pulumi.Input<String>? availabilityZone;
+  /// The ids list of HBase instances
+  final pulumi.Input<List<String>>? ids;
+  /// A regex string to apply to the instance name.
+  final pulumi.Input<String>? nameRegex;
+  /// The name of file that can save the collection of instances after running `pulumi preview`.
+  final pulumi.Input<String>? outputFile;
+  /// A mapping of tags to assign to the resource.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [GetInstancesArgs].
+  /// [availabilityZone] Instance availability zone.
+  /// [ids] The ids list of HBase instances
+  /// [nameRegex] A regex string to apply to the instance name.
+  /// [outputFile] The name of file that can save the collection of instances after running `pulumi preview`.
+  /// [tags] A mapping of tags to assign to the resource.
+  GetInstancesArgs({
+    pulumi.Output<String>? availabilityZone,
+    pulumi.Output<List<String>>? ids,
+    pulumi.Output<String>? nameRegex,
+    pulumi.Output<String>? outputFile,
+    pulumi.Output<Map<String, String>>? tags,
+  }) :
+      availabilityZone = pulumi.Input.asOptionalInput<String>(availabilityZone),
+      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
+      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
+      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'availabilityZone': ?availabilityZone,
+      'ids': ?ids,
+      'nameRegex': ?nameRegex,
+      'outputFile': ?outputFile,
+      'tags': ?tags,
+    };
+  }
+
+  factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
+    return GetInstancesArgs(
+      availabilityZone: map['availabilityZone'] == null ? null : pulumi.Output.create<String>(map['availabilityZone'] as String),
+      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
+      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
+      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+    );
+  }
+}
+

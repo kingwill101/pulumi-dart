@@ -1,0 +1,68 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'schedule_item.dart';
+
+/// {@template pulumi_sql_start_stop_managed_instance_schedule_args_doc}
+/// The set of arguments for StartStopManagedInstanceSchedule.
+/// {@endtemplate}
+/// {@macro pulumi_sql_start_stop_managed_instance_schedule_args_doc}
+class StartStopManagedInstanceScheduleArgs {
+  /// The description of the schedule.
+  final pulumi.Input<String>? description;
+  /// The name of the managed instance.
+  final pulumi.Input<String> managedInstanceName;
+  /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  final pulumi.Input<String> resourceGroupName;
+  /// Schedule list.
+  final pulumi.Input<List<ScheduleItem>> scheduleList;
+  /// Name of the managed instance Start/Stop schedule.
+  final pulumi.Input<String>? startStopScheduleName;
+  /// The time zone of the schedule.
+  final pulumi.Input<String>? timeZoneId;
+
+  /// Creates a new [StartStopManagedInstanceScheduleArgs].
+  /// [description] The description of the schedule.
+  /// [managedInstanceName] The name of the managed instance.
+  /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  /// [scheduleList] Schedule list.
+  /// [startStopScheduleName] Name of the managed instance Start/Stop schedule.
+  /// [timeZoneId] The time zone of the schedule.
+  StartStopManagedInstanceScheduleArgs({
+    pulumi.Output<String>? description,
+    required pulumi.Output<String> managedInstanceName,
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<List<ScheduleItem>> scheduleList,
+    pulumi.Output<String>? startStopScheduleName,
+    pulumi.Output<String>? timeZoneId,
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      managedInstanceName = pulumi.Input.asInput<String>(managedInstanceName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      scheduleList = pulumi.Input.asInput<List<ScheduleItem>>(scheduleList),
+      startStopScheduleName = pulumi.Input.asOptionalInput<String>(startStopScheduleName),
+      timeZoneId = pulumi.Input.asOptionalInput<String>(timeZoneId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'managedInstanceName': managedInstanceName,
+      'resourceGroupName': resourceGroupName,
+      'scheduleList': pulumi.Input.mapInputValue<List<ScheduleItem>, List<Map<String, dynamic>>>(scheduleList, (value) => pulumi.Input.encodeList<ScheduleItem, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'startStopScheduleName': ?startStopScheduleName,
+      'timeZoneId': ?timeZoneId,
+    };
+  }
+
+  factory StartStopManagedInstanceScheduleArgs.fromMap(Map<String, dynamic> map) {
+    return StartStopManagedInstanceScheduleArgs(
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      managedInstanceName: pulumi.Output.create<String>(map['managedInstanceName'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      scheduleList: pulumi.Output.create<List<ScheduleItem>>(pulumi.Input.decodeList<ScheduleItem>(map['scheduleList'], (value) => ScheduleItem.fromMap((value as Map).cast<String, dynamic>()))),
+      startStopScheduleName: map['startStopScheduleName'] == null ? null : pulumi.Output.create<String>(map['startStopScheduleName'] as String),
+      timeZoneId: map['timeZoneId'] == null ? null : pulumi.Output.create<String>(map['timeZoneId'] as String),
+    );
+  }
+}
+

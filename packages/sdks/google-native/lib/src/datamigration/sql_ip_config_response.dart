@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'sql_acl_entry_response.dart';
+
+/// IP Management configuration.
+class SqlIpConfigResponse {
+  /// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+  final String allocatedIpRange;
+  /// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
+  final List<SqlAclEntryResponse> authorizedNetworks;
+  /// Whether the instance should be assigned an IPv4 address or not.
+  final bool enableIpv4;
+  /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+  final String privateNetwork;
+  /// Whether SSL connections over IP should be enforced or not.
+  final bool requireSsl;
+
+  /// Creates a new [SqlIpConfigResponse].
+  /// [allocatedIpRange] Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers to an already allocated IP range address. If set, the instance IP address will be created in the allocated range. Note that this IP address range can't be modified after the instance is created. If you change the VPC when configuring connectivity settings for the migration job, this field is not relevant.
+  /// [authorizedNetworks] The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
+  /// [enableIpv4] Whether the instance should be assigned an IPv4 address or not.
+  /// [privateNetwork] The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+  /// [requireSsl] Whether SSL connections over IP should be enforced or not.
+  SqlIpConfigResponse({
+    required this.allocatedIpRange,
+    required this.authorizedNetworks,
+    required this.enableIpv4,
+    required this.privateNetwork,
+    required this.requireSsl,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'allocatedIpRange': allocatedIpRange,
+      'authorizedNetworks': pulumi.Input.encodeList<SqlAclEntryResponse, Map<String, dynamic>>(authorizedNetworks, (value) => value.toMap()),
+      'enableIpv4': enableIpv4,
+      'privateNetwork': privateNetwork,
+      'requireSsl': requireSsl,
+    };
+  }
+
+  factory SqlIpConfigResponse.fromMap(Map<String, dynamic> map) {
+    return SqlIpConfigResponse(
+      allocatedIpRange: map['allocatedIpRange'] as String,
+      authorizedNetworks: pulumi.Input.decodeList<SqlAclEntryResponse>(map['authorizedNetworks'], (value) => SqlAclEntryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      enableIpv4: map['enableIpv4'] as bool,
+      privateNetwork: map['privateNetwork'] as String,
+      requireSsl: map['requireSsl'] as bool,
+    );
+  }
+}
+

@@ -1,0 +1,99 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'prevention_discovery_config_action.dart';
+import 'prevention_discovery_config_org_config.dart';
+import 'prevention_discovery_config_other_cloud_starting_location.dart';
+import 'prevention_discovery_config_target.dart';
+
+/// {@template pulumi_dataloss_prevention_discovery_config_prevention_discovery_config_args_doc}
+/// The set of arguments for PreventionDiscoveryConfig.
+/// {@endtemplate}
+/// {@macro pulumi_dataloss_prevention_discovery_config_prevention_discovery_config_args_doc}
+class PreventionDiscoveryConfigArgs {
+  /// Actions to execute at the completion of scanning
+  /// Structure is documented below.
+  final pulumi.Input<List<PreventionDiscoveryConfigAction>>? actions;
+  /// Display Name (max 1000 Chars)
+  final pulumi.Input<String>? displayName;
+  /// Detection logic for profile generation
+  final pulumi.Input<List<String>>? inspectTemplates;
+  /// Location to create the discovery config in.
+  final pulumi.Input<String> location;
+  /// A nested object resource.
+  /// Structure is documented below.
+  final pulumi.Input<PreventionDiscoveryConfigOrgConfig>? orgConfig;
+  /// A nested object resource.
+  /// Structure is documented below.
+  final pulumi.Input<PreventionDiscoveryConfigOtherCloudStartingLocation>? otherCloudStartingLocation;
+  /// The parent of the discovery config in any of the following formats:
+  /// * `projects/{{project}}/locations/{{location}}`
+  /// * `organizations/{{organization_id}}/locations/{{location}}`
+  final pulumi.Input<String> parent;
+  /// Required. A status for this configuration
+  /// Possible values are: `RUNNING`, `PAUSED`.
+  final pulumi.Input<String>? status;
+  /// Target to match against for determining what to scan and how frequently
+  /// Structure is documented below.
+  final pulumi.Input<List<PreventionDiscoveryConfigTarget>>? targets;
+
+  /// Creates a new [PreventionDiscoveryConfigArgs].
+  /// [actions] Actions to execute at the completion of scanning
+  /// [displayName] Display Name (max 1000 Chars)
+  /// [inspectTemplates] Detection logic for profile generation
+  /// [location] Location to create the discovery config in.
+  /// [orgConfig] A nested object resource.
+  /// [otherCloudStartingLocation] A nested object resource.
+  /// [parent] The parent of the discovery config in any of the following formats:
+  /// [status] Required. A status for this configuration
+  /// [targets] Target to match against for determining what to scan and how frequently
+  PreventionDiscoveryConfigArgs({
+    pulumi.Output<List<PreventionDiscoveryConfigAction>>? actions,
+    pulumi.Output<String>? displayName,
+    pulumi.Output<List<String>>? inspectTemplates,
+    required pulumi.Output<String> location,
+    pulumi.Output<PreventionDiscoveryConfigOrgConfig>? orgConfig,
+    pulumi.Output<PreventionDiscoveryConfigOtherCloudStartingLocation>? otherCloudStartingLocation,
+    required pulumi.Output<String> parent,
+    pulumi.Output<String>? status,
+    pulumi.Output<List<PreventionDiscoveryConfigTarget>>? targets,
+  }) :
+      actions = pulumi.Input.asOptionalInput<List<PreventionDiscoveryConfigAction>>(actions),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      inspectTemplates = pulumi.Input.asOptionalInput<List<String>>(inspectTemplates),
+      location = pulumi.Input.asInput<String>(location),
+      orgConfig = pulumi.Input.asOptionalInput<PreventionDiscoveryConfigOrgConfig>(orgConfig),
+      otherCloudStartingLocation = pulumi.Input.asOptionalInput<PreventionDiscoveryConfigOtherCloudStartingLocation>(otherCloudStartingLocation),
+      parent = pulumi.Input.asInput<String>(parent),
+      status = pulumi.Input.asOptionalInput<String>(status),
+      targets = pulumi.Input.asOptionalInput<List<PreventionDiscoveryConfigTarget>>(targets);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'actions': ?pulumi.Input.mapOptionalInputValue<List<PreventionDiscoveryConfigAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<PreventionDiscoveryConfigAction, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'displayName': ?displayName,
+      'inspectTemplates': ?inspectTemplates,
+      'location': location,
+      'orgConfig': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigOrgConfig, Map<String, dynamic>>(orgConfig, (value) => value.toMap()),
+      'otherCloudStartingLocation': ?pulumi.Input.mapOptionalInputValue<PreventionDiscoveryConfigOtherCloudStartingLocation, Map<String, dynamic>>(otherCloudStartingLocation, (value) => value.toMap()),
+      'parent': parent,
+      'status': ?status,
+      'targets': ?pulumi.Input.mapOptionalInputValue<List<PreventionDiscoveryConfigTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<PreventionDiscoveryConfigTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
+    };
+  }
+
+  factory PreventionDiscoveryConfigArgs.fromMap(Map<String, dynamic> map) {
+    return PreventionDiscoveryConfigArgs(
+      actions: map['actions'] == null ? null : pulumi.Output.create<List<PreventionDiscoveryConfigAction>>(pulumi.Input.decodeList<PreventionDiscoveryConfigAction>(map['actions'], (value) => PreventionDiscoveryConfigAction.fromMap((value as Map).cast<String, dynamic>()))),
+      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
+      inspectTemplates: map['inspectTemplates'] == null ? null : pulumi.Output.create<List<String>>((map['inspectTemplates'] as List).cast<String>()),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      orgConfig: map['orgConfig'] == null ? null : pulumi.Output.create<PreventionDiscoveryConfigOrgConfig>(PreventionDiscoveryConfigOrgConfig.fromMap((map['orgConfig'] as Map).cast<String, dynamic>())),
+      otherCloudStartingLocation: map['otherCloudStartingLocation'] == null ? null : pulumi.Output.create<PreventionDiscoveryConfigOtherCloudStartingLocation>(PreventionDiscoveryConfigOtherCloudStartingLocation.fromMap((map['otherCloudStartingLocation'] as Map).cast<String, dynamic>())),
+      parent: pulumi.Output.create<String>(map['parent'] as String),
+      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      targets: map['targets'] == null ? null : pulumi.Output.create<List<PreventionDiscoveryConfigTarget>>(pulumi.Input.decodeList<PreventionDiscoveryConfigTarget>(map['targets'], (value) => PreventionDiscoveryConfigTarget.fromMap((value as Map).cast<String, dynamic>()))),
+    );
+  }
+}
+

@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_monitoring_monitored_project_monitored_project_args_doc}
+/// The set of arguments for MonitoredProject.
+/// {@endtemplate}
+/// {@macro pulumi_monitoring_monitored_project_monitored_project_args_doc}
+class MonitoredProjectArgs {
+  /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+  final pulumi.Input<String> metricsScope;
+  /// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+  final pulumi.Input<String>? name;
+
+  /// Creates a new [MonitoredProjectArgs].
+  /// [metricsScope] Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+  /// [name] Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+  MonitoredProjectArgs({
+    required pulumi.Output<String> metricsScope,
+    pulumi.Output<String>? name,
+  }) :
+      metricsScope = pulumi.Input.asInput<String>(metricsScope),
+      name = pulumi.Input.asOptionalInput<String>(name);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'metricsScope': metricsScope,
+      'name': ?name,
+    };
+  }
+
+  factory MonitoredProjectArgs.fromMap(Map<String, dynamic> map) {
+    return MonitoredProjectArgs(
+      metricsScope: pulumi.Output.create<String>(map['metricsScope'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+    );
+  }
+}
+

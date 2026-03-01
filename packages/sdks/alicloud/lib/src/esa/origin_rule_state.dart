@@ -1,0 +1,185 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering OriginRule resources.
+class OriginRuleState {
+  /// Back-to-source rule configuration ID
+  final pulumi.Input<int>? configId;
+  /// Overwrite the DNS resolution record of the origin request.
+  final pulumi.Input<String>? dnsRecord;
+  /// Return Source 302 follow switch. Value range:
+  final pulumi.Input<String>? follow302Enable;
+  /// 302 follows the upper limit of the number of times, with a value range of [1-5].
+  final pulumi.Input<String>? follow302MaxTries;
+  /// Retain the original request parameter switch. Value range:
+  final pulumi.Input<String>? follow302RetainArgs;
+  /// Retain the original request header switch. Value range:
+  final pulumi.Input<String>? follow302RetainHeader;
+  /// Modify the source host after 302.
+  final pulumi.Input<String>? follow302TargetHost;
+  /// The HOST carried in the back-to-origin request.
+  final pulumi.Input<String>? originHost;
+  /// The port of the origin station accessed when the HTTP protocol is used to return to the origin.
+  final pulumi.Input<String>? originHttpPort;
+  /// The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
+  final pulumi.Input<String>? originHttpsPort;
+  /// The mtls switch. Value range:
+  final pulumi.Input<String>? originMtls;
+  /// Read timeout interval of the source station (s).
+  final pulumi.Input<String>? originReadTimeout;
+  /// The protocol used by the back-to-origin request. Value range:
+  final pulumi.Input<String>? originScheme;
+  /// SNI carried in the back-to-origin request.
+  final pulumi.Input<String>? originSni;
+  /// Source station certificate verification switch. Value range:
+  final pulumi.Input<String>? originVerify;
+  /// Use the range sharding method to download the file from the source. Value range:
+  final pulumi.Input<String>? range;
+  /// range shard size.
+  final pulumi.Input<String>? rangeChunkSize;
+  /// Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+  /// - Match all incoming requests: value set to true
+  /// - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
+  final pulumi.Input<String>? rule;
+  /// Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+  final pulumi.Input<String>? ruleEnable;
+  /// Rule name. When adding global configuration, this parameter does not need to be set.
+  final pulumi.Input<String>? ruleName;
+  /// The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+  final pulumi.Input<int>? sequence;
+  /// The site ID.
+  final pulumi.Input<String>? siteId;
+  /// The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
+  final pulumi.Input<int>? siteVersion;
+
+  /// Creates a new [OriginRuleState].
+  /// [configId] Back-to-source rule configuration ID
+  /// [dnsRecord] Overwrite the DNS resolution record of the origin request.
+  /// [follow302Enable] Return Source 302 follow switch. Value range:
+  /// [follow302MaxTries] 302 follows the upper limit of the number of times, with a value range of [1-5].
+  /// [follow302RetainArgs] Retain the original request parameter switch. Value range:
+  /// [follow302RetainHeader] Retain the original request header switch. Value range:
+  /// [follow302TargetHost] Modify the source host after 302.
+  /// [originHost] The HOST carried in the back-to-origin request.
+  /// [originHttpPort] The port of the origin station accessed when the HTTP protocol is used to return to the origin.
+  /// [originHttpsPort] The port of the origin station accessed when the HTTPS protocol is used to return to the origin.
+  /// [originMtls] The mtls switch. Value range:
+  /// [originReadTimeout] Read timeout interval of the source station (s).
+  /// [originScheme] The protocol used by the back-to-origin request. Value range:
+  /// [originSni] SNI carried in the back-to-origin request.
+  /// [originVerify] Source station certificate verification switch. Value range:
+  /// [range] Use the range sharding method to download the file from the source. Value range:
+  /// [rangeChunkSize] range shard size.
+  /// [rule] Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
+  /// [ruleEnable] Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
+  /// [ruleName] Rule name. When adding global configuration, this parameter does not need to be set.
+  /// [sequence] The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
+  /// [siteId] The site ID.
+  /// [siteVersion] The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
+  OriginRuleState({
+    pulumi.Output<int>? configId,
+    pulumi.Output<String>? dnsRecord,
+    pulumi.Output<String>? follow302Enable,
+    pulumi.Output<String>? follow302MaxTries,
+    pulumi.Output<String>? follow302RetainArgs,
+    pulumi.Output<String>? follow302RetainHeader,
+    pulumi.Output<String>? follow302TargetHost,
+    pulumi.Output<String>? originHost,
+    pulumi.Output<String>? originHttpPort,
+    pulumi.Output<String>? originHttpsPort,
+    pulumi.Output<String>? originMtls,
+    pulumi.Output<String>? originReadTimeout,
+    pulumi.Output<String>? originScheme,
+    pulumi.Output<String>? originSni,
+    pulumi.Output<String>? originVerify,
+    pulumi.Output<String>? range,
+    pulumi.Output<String>? rangeChunkSize,
+    pulumi.Output<String>? rule,
+    pulumi.Output<String>? ruleEnable,
+    pulumi.Output<String>? ruleName,
+    pulumi.Output<int>? sequence,
+    pulumi.Output<String>? siteId,
+    pulumi.Output<int>? siteVersion,
+  }) :
+      configId = pulumi.Input.asOptionalInput<int>(configId),
+      dnsRecord = pulumi.Input.asOptionalInput<String>(dnsRecord),
+      follow302Enable = pulumi.Input.asOptionalInput<String>(follow302Enable),
+      follow302MaxTries = pulumi.Input.asOptionalInput<String>(follow302MaxTries),
+      follow302RetainArgs = pulumi.Input.asOptionalInput<String>(follow302RetainArgs),
+      follow302RetainHeader = pulumi.Input.asOptionalInput<String>(follow302RetainHeader),
+      follow302TargetHost = pulumi.Input.asOptionalInput<String>(follow302TargetHost),
+      originHost = pulumi.Input.asOptionalInput<String>(originHost),
+      originHttpPort = pulumi.Input.asOptionalInput<String>(originHttpPort),
+      originHttpsPort = pulumi.Input.asOptionalInput<String>(originHttpsPort),
+      originMtls = pulumi.Input.asOptionalInput<String>(originMtls),
+      originReadTimeout = pulumi.Input.asOptionalInput<String>(originReadTimeout),
+      originScheme = pulumi.Input.asOptionalInput<String>(originScheme),
+      originSni = pulumi.Input.asOptionalInput<String>(originSni),
+      originVerify = pulumi.Input.asOptionalInput<String>(originVerify),
+      range = pulumi.Input.asOptionalInput<String>(range),
+      rangeChunkSize = pulumi.Input.asOptionalInput<String>(rangeChunkSize),
+      rule = pulumi.Input.asOptionalInput<String>(rule),
+      ruleEnable = pulumi.Input.asOptionalInput<String>(ruleEnable),
+      ruleName = pulumi.Input.asOptionalInput<String>(ruleName),
+      sequence = pulumi.Input.asOptionalInput<int>(sequence),
+      siteId = pulumi.Input.asOptionalInput<String>(siteId),
+      siteVersion = pulumi.Input.asOptionalInput<int>(siteVersion);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'configId': ?configId,
+      'dnsRecord': ?dnsRecord,
+      'follow302Enable': ?follow302Enable,
+      'follow302MaxTries': ?follow302MaxTries,
+      'follow302RetainArgs': ?follow302RetainArgs,
+      'follow302RetainHeader': ?follow302RetainHeader,
+      'follow302TargetHost': ?follow302TargetHost,
+      'originHost': ?originHost,
+      'originHttpPort': ?originHttpPort,
+      'originHttpsPort': ?originHttpsPort,
+      'originMtls': ?originMtls,
+      'originReadTimeout': ?originReadTimeout,
+      'originScheme': ?originScheme,
+      'originSni': ?originSni,
+      'originVerify': ?originVerify,
+      'range': ?range,
+      'rangeChunkSize': ?rangeChunkSize,
+      'rule': ?rule,
+      'ruleEnable': ?ruleEnable,
+      'ruleName': ?ruleName,
+      'sequence': ?sequence,
+      'siteId': ?siteId,
+      'siteVersion': ?siteVersion,
+    };
+  }
+
+  factory OriginRuleState.fromMap(Map<String, dynamic> map) {
+    return OriginRuleState(
+      configId: map['configId'] == null ? null : pulumi.Output.create<int>(map['configId'] as int),
+      dnsRecord: map['dnsRecord'] == null ? null : pulumi.Output.create<String>(map['dnsRecord'] as String),
+      follow302Enable: map['follow302Enable'] == null ? null : pulumi.Output.create<String>(map['follow302Enable'] as String),
+      follow302MaxTries: map['follow302MaxTries'] == null ? null : pulumi.Output.create<String>(map['follow302MaxTries'] as String),
+      follow302RetainArgs: map['follow302RetainArgs'] == null ? null : pulumi.Output.create<String>(map['follow302RetainArgs'] as String),
+      follow302RetainHeader: map['follow302RetainHeader'] == null ? null : pulumi.Output.create<String>(map['follow302RetainHeader'] as String),
+      follow302TargetHost: map['follow302TargetHost'] == null ? null : pulumi.Output.create<String>(map['follow302TargetHost'] as String),
+      originHost: map['originHost'] == null ? null : pulumi.Output.create<String>(map['originHost'] as String),
+      originHttpPort: map['originHttpPort'] == null ? null : pulumi.Output.create<String>(map['originHttpPort'] as String),
+      originHttpsPort: map['originHttpsPort'] == null ? null : pulumi.Output.create<String>(map['originHttpsPort'] as String),
+      originMtls: map['originMtls'] == null ? null : pulumi.Output.create<String>(map['originMtls'] as String),
+      originReadTimeout: map['originReadTimeout'] == null ? null : pulumi.Output.create<String>(map['originReadTimeout'] as String),
+      originScheme: map['originScheme'] == null ? null : pulumi.Output.create<String>(map['originScheme'] as String),
+      originSni: map['originSni'] == null ? null : pulumi.Output.create<String>(map['originSni'] as String),
+      originVerify: map['originVerify'] == null ? null : pulumi.Output.create<String>(map['originVerify'] as String),
+      range: map['range'] == null ? null : pulumi.Output.create<String>(map['range'] as String),
+      rangeChunkSize: map['rangeChunkSize'] == null ? null : pulumi.Output.create<String>(map['rangeChunkSize'] as String),
+      rule: map['rule'] == null ? null : pulumi.Output.create<String>(map['rule'] as String),
+      ruleEnable: map['ruleEnable'] == null ? null : pulumi.Output.create<String>(map['ruleEnable'] as String),
+      ruleName: map['ruleName'] == null ? null : pulumi.Output.create<String>(map['ruleName'] as String),
+      sequence: map['sequence'] == null ? null : pulumi.Output.create<int>(map['sequence'] as int),
+      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
+      siteVersion: map['siteVersion'] == null ? null : pulumi.Output.create<int>(map['siteVersion'] as int),
+    );
+  }
+}
+

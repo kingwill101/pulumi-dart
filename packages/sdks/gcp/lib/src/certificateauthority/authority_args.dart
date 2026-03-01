@@ -1,0 +1,177 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'authority_config.dart';
+import 'authority_key_spec.dart';
+import 'authority_subordinate_config.dart';
+import 'authority_user_defined_access_urls.dart';
+
+/// {@template pulumi_certificateauthority_authority_authority_args_doc}
+/// The set of arguments for Authority.
+/// {@endtemplate}
+/// {@macro pulumi_certificateauthority_authority_authority_args_doc}
+class AuthorityArgs {
+  /// The user provided Resource ID for this Certificate Authority.
+  final pulumi.Input<String> certificateAuthorityId;
+  /// The config used to create a self-signed X.509 certificate or CSR.
+  /// Structure is documented below.
+  final pulumi.Input<AuthorityConfig> config;
+  final pulumi.Input<bool>? deletionProtection;
+  /// Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+  /// Possible values: ENABLED, DISABLED, STAGED.
+  final pulumi.Input<String>? desiredState;
+  /// The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
+  /// such as the CA certificate and CRLs. This must be a bucket name, without any prefixes
+  /// (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named
+  /// my-bucket, you would simply specify `my-bucket`. If not specified, a managed bucket will be
+  /// created.
+  final pulumi.Input<String>? gcsBucket;
+  /// This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+  /// Use with care. Defaults to `false`.
+  final pulumi.Input<bool>? ignoreActiveCertificatesOnDeletion;
+  /// Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
+  /// is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA
+  /// certificate. Otherwise, it is used to sign a CSR.
+  /// Structure is documented below.
+  final pulumi.Input<AuthorityKeySpec> keySpec;
+  /// Labels with user-defined metadata.
+  /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
+  /// "1.3kg", "count": "3" }.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>>? labels;
+  /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+  /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+  /// fractional digits, terminated by 's'. Example: "3.5s".
+  final pulumi.Input<String>? lifetime;
+  /// Location of the CertificateAuthority. A full list of valid locations can be found by
+  /// running `gcloud privateca locations list`.
+  final pulumi.Input<String> location;
+  /// The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+  final pulumi.Input<String>? pemCaCertificate;
+  /// The name of the CaPool this Certificate Authority belongs to.
+  final pulumi.Input<String> pool;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// If this flag is set, the Certificate Authority will be deleted as soon as
+  /// possible without a 30-day grace period where undeletion would have been
+  /// allowed. If you proceed, there will be no way to recover this CA.
+  /// Use with care. Defaults to `false`.
+  final pulumi.Input<bool>? skipGracePeriod;
+  /// If this is a subordinate CertificateAuthority, this field will be set
+  /// with the subordinate configuration, which describes its issuers.
+  /// Structure is documented below.
+  final pulumi.Input<AuthoritySubordinateConfig>? subordinateConfig;
+  /// The Type of this CertificateAuthority.
+  /// > **Note:** For `SUBORDINATE` Certificate Authorities, they need to
+  /// be activated before they can issue certificates.
+  /// Default value is `SELF_SIGNED`.
+  /// Possible values are: `SELF_SIGNED`, `SUBORDINATE`.
+  final pulumi.Input<String>? type;
+  /// Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
+  /// that can be specified by users.
+  /// Structure is documented below.
+  final pulumi.Input<AuthorityUserDefinedAccessUrls>? userDefinedAccessUrls;
+
+  /// Creates a new [AuthorityArgs].
+  /// [certificateAuthorityId] The user provided Resource ID for this Certificate Authority.
+  /// [config] The config used to create a self-signed X.509 certificate or CSR.
+  /// [deletionProtection] Optional.
+  /// [desiredState] Desired state of the CertificateAuthority. Set this field to `STAGED` to create a `STAGED` root CA.
+  /// [gcsBucket] The name of a Cloud Storage bucket where this CertificateAuthority will publish content,
+  /// [ignoreActiveCertificatesOnDeletion] This field allows the CA to be deleted even if the CA has active certs. Active certs include both unrevoked and unexpired certs.
+  /// [keySpec] Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority
+  /// [labels] Labels with user-defined metadata.
+  /// [lifetime] The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+  /// [location] Location of the CertificateAuthority. A full list of valid locations can be found by
+  /// [pemCaCertificate] The signed CA certificate issued from the subordinated CA's CSR. This is needed when activating the subordiante CA with a third party issuer.
+  /// [pool] The name of the CaPool this Certificate Authority belongs to.
+  /// [project] The ID of the project in which the resource belongs.
+  /// [skipGracePeriod] If this flag is set, the Certificate Authority will be deleted as soon as
+  /// [subordinateConfig] If this is a subordinate CertificateAuthority, this field will be set
+  /// [type] The Type of this CertificateAuthority.
+  /// [userDefinedAccessUrls] Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
+  AuthorityArgs({
+    required pulumi.Output<String> certificateAuthorityId,
+    required pulumi.Output<AuthorityConfig> config,
+    pulumi.Output<bool>? deletionProtection,
+    pulumi.Output<String>? desiredState,
+    pulumi.Output<String>? gcsBucket,
+    pulumi.Output<bool>? ignoreActiveCertificatesOnDeletion,
+    required pulumi.Output<AuthorityKeySpec> keySpec,
+    pulumi.Output<Map<String, String>>? labels,
+    pulumi.Output<String>? lifetime,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? pemCaCertificate,
+    required pulumi.Output<String> pool,
+    pulumi.Output<String>? project,
+    pulumi.Output<bool>? skipGracePeriod,
+    pulumi.Output<AuthoritySubordinateConfig>? subordinateConfig,
+    pulumi.Output<String>? type,
+    pulumi.Output<AuthorityUserDefinedAccessUrls>? userDefinedAccessUrls,
+  }) :
+      certificateAuthorityId = pulumi.Input.asInput<String>(certificateAuthorityId),
+      config = pulumi.Input.asInput<AuthorityConfig>(config),
+      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
+      desiredState = pulumi.Input.asOptionalInput<String>(desiredState),
+      gcsBucket = pulumi.Input.asOptionalInput<String>(gcsBucket),
+      ignoreActiveCertificatesOnDeletion = pulumi.Input.asOptionalInput<bool>(ignoreActiveCertificatesOnDeletion),
+      keySpec = pulumi.Input.asInput<AuthorityKeySpec>(keySpec),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      lifetime = pulumi.Input.asOptionalInput<String>(lifetime),
+      location = pulumi.Input.asInput<String>(location),
+      pemCaCertificate = pulumi.Input.asOptionalInput<String>(pemCaCertificate),
+      pool = pulumi.Input.asInput<String>(pool),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      skipGracePeriod = pulumi.Input.asOptionalInput<bool>(skipGracePeriod),
+      subordinateConfig = pulumi.Input.asOptionalInput<AuthoritySubordinateConfig>(subordinateConfig),
+      type = pulumi.Input.asOptionalInput<String>(type),
+      userDefinedAccessUrls = pulumi.Input.asOptionalInput<AuthorityUserDefinedAccessUrls>(userDefinedAccessUrls);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'certificateAuthorityId': certificateAuthorityId,
+      'config': pulumi.Input.mapInputValue<AuthorityConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'deletionProtection': ?deletionProtection,
+      'desiredState': ?desiredState,
+      'gcsBucket': ?gcsBucket,
+      'ignoreActiveCertificatesOnDeletion': ?ignoreActiveCertificatesOnDeletion,
+      'keySpec': pulumi.Input.mapInputValue<AuthorityKeySpec, Map<String, dynamic>>(keySpec, (value) => value.toMap()),
+      'labels': ?labels,
+      'lifetime': ?lifetime,
+      'location': location,
+      'pemCaCertificate': ?pemCaCertificate,
+      'pool': pool,
+      'project': ?project,
+      'skipGracePeriod': ?skipGracePeriod,
+      'subordinateConfig': ?pulumi.Input.mapOptionalInputValue<AuthoritySubordinateConfig, Map<String, dynamic>>(subordinateConfig, (value) => value.toMap()),
+      'type': ?type,
+      'userDefinedAccessUrls': ?pulumi.Input.mapOptionalInputValue<AuthorityUserDefinedAccessUrls, Map<String, dynamic>>(userDefinedAccessUrls, (value) => value.toMap()),
+    };
+  }
+
+  factory AuthorityArgs.fromMap(Map<String, dynamic> map) {
+    return AuthorityArgs(
+      certificateAuthorityId: pulumi.Output.create<String>(map['certificateAuthorityId'] as String),
+      config: pulumi.Output.create<AuthorityConfig>(AuthorityConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
+      deletionProtection: map['deletionProtection'] == null ? null : pulumi.Output.create<bool>(map['deletionProtection'] as bool),
+      desiredState: map['desiredState'] == null ? null : pulumi.Output.create<String>(map['desiredState'] as String),
+      gcsBucket: map['gcsBucket'] == null ? null : pulumi.Output.create<String>(map['gcsBucket'] as String),
+      ignoreActiveCertificatesOnDeletion: map['ignoreActiveCertificatesOnDeletion'] == null ? null : pulumi.Output.create<bool>(map['ignoreActiveCertificatesOnDeletion'] as bool),
+      keySpec: pulumi.Output.create<AuthorityKeySpec>(AuthorityKeySpec.fromMap((map['keySpec'] as Map).cast<String, dynamic>())),
+      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
+      lifetime: map['lifetime'] == null ? null : pulumi.Output.create<String>(map['lifetime'] as String),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      pemCaCertificate: map['pemCaCertificate'] == null ? null : pulumi.Output.create<String>(map['pemCaCertificate'] as String),
+      pool: pulumi.Output.create<String>(map['pool'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      skipGracePeriod: map['skipGracePeriod'] == null ? null : pulumi.Output.create<bool>(map['skipGracePeriod'] as bool),
+      subordinateConfig: map['subordinateConfig'] == null ? null : pulumi.Output.create<AuthoritySubordinateConfig>(AuthoritySubordinateConfig.fromMap((map['subordinateConfig'] as Map).cast<String, dynamic>())),
+      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      userDefinedAccessUrls: map['userDefinedAccessUrls'] == null ? null : pulumi.Output.create<AuthorityUserDefinedAccessUrls>(AuthorityUserDefinedAccessUrls.fromMap((map['userDefinedAccessUrls'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

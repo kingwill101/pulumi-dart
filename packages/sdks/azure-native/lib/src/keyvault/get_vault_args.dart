@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_keyvault_get_vault_args_doc}
+/// Arguments for getVault.
+/// {@endtemplate}
+/// {@macro pulumi_keyvault_get_vault_args_doc}
+class GetVaultArgs {
+  /// The name of the Resource Group to which the vault belongs.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of the vault.
+  final pulumi.Input<String> vaultName;
+
+  /// Creates a new [GetVaultArgs].
+  /// [resourceGroupName] The name of the Resource Group to which the vault belongs.
+  /// [vaultName] The name of the vault.
+  GetVaultArgs({
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> vaultName,
+  }) :
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      vaultName = pulumi.Input.asInput<String>(vaultName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'resourceGroupName': resourceGroupName,
+      'vaultName': vaultName,
+    };
+  }
+
+  factory GetVaultArgs.fromMap(Map<String, dynamic> map) {
+    return GetVaultArgs(
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'iam_audit_config_audit_log_config.dart';
+
+/// Input properties used for looking up and filtering IamAuditConfig resources.
+class IamAuditConfigState {
+  /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+  final pulumi.Input<List<IamAuditConfigAuditLogConfig>>? auditLogConfigs;
+  /// (Computed) The etag of the folder's IAM policy.
+  final pulumi.Input<String>? etag;
+  /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+  final pulumi.Input<String>? folder;
+  /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+  final pulumi.Input<String>? service;
+
+  /// Creates a new [IamAuditConfigState].
+  /// [auditLogConfigs] The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
+  /// [etag] (Computed) The etag of the folder's IAM policy.
+  /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
+  /// [service] Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
+  IamAuditConfigState({
+    pulumi.Output<List<IamAuditConfigAuditLogConfig>>? auditLogConfigs,
+    pulumi.Output<String>? etag,
+    pulumi.Output<String>? folder,
+    pulumi.Output<String>? service,
+  }) :
+      auditLogConfigs = pulumi.Input.asOptionalInput<List<IamAuditConfigAuditLogConfig>>(auditLogConfigs),
+      etag = pulumi.Input.asOptionalInput<String>(etag),
+      folder = pulumi.Input.asOptionalInput<String>(folder),
+      service = pulumi.Input.asOptionalInput<String>(service);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'auditLogConfigs': ?pulumi.Input.mapOptionalInputValue<List<IamAuditConfigAuditLogConfig>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<IamAuditConfigAuditLogConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'etag': ?etag,
+      'folder': ?folder,
+      'service': ?service,
+    };
+  }
+
+  factory IamAuditConfigState.fromMap(Map<String, dynamic> map) {
+    return IamAuditConfigState(
+      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Output.create<List<IamAuditConfigAuditLogConfig>>(pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>()))),
+      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
+      folder: map['folder'] == null ? null : pulumi.Output.create<String>(map['folder'] as String),
+      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+    );
+  }
+}
+

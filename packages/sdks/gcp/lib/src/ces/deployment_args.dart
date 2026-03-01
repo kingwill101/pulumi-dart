@@ -1,0 +1,73 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'deployment_channel_profile.dart';
+
+/// {@template pulumi_ces_deployment_deployment_args_doc}
+/// The set of arguments for Deployment.
+/// {@endtemplate}
+/// {@macro pulumi_ces_deployment_deployment_args_doc}
+class DeploymentArgs {
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  final pulumi.Input<String> app;
+  /// The resource name of the app version to deploy.
+  /// Format:
+  /// projects/{project}/locations/{location}/apps/{app}/versions/{version}
+  final pulumi.Input<String> appVersion;
+  /// A ChannelProfile configures the agent's behavior for a specific communication
+  /// channel, such as web UI or telephony.
+  /// Structure is documented below.
+  final pulumi.Input<DeploymentChannelProfile> channelProfile;
+  /// Display name of the deployment.
+  final pulumi.Input<String> displayName;
+  /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  final pulumi.Input<String> location;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [DeploymentArgs].
+  /// [app] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [appVersion] The resource name of the app version to deploy.
+  /// [channelProfile] A ChannelProfile configures the agent's behavior for a specific communication
+  /// [displayName] Display name of the deployment.
+  /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [project] The ID of the project in which the resource belongs.
+  DeploymentArgs({
+    required pulumi.Output<String> app,
+    required pulumi.Output<String> appVersion,
+    required pulumi.Output<DeploymentChannelProfile> channelProfile,
+    required pulumi.Output<String> displayName,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+  }) :
+      app = pulumi.Input.asInput<String>(app),
+      appVersion = pulumi.Input.asInput<String>(appVersion),
+      channelProfile = pulumi.Input.asInput<DeploymentChannelProfile>(channelProfile),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'app': app,
+      'appVersion': appVersion,
+      'channelProfile': pulumi.Input.mapInputValue<DeploymentChannelProfile, Map<String, dynamic>>(channelProfile, (value) => value.toMap()),
+      'displayName': displayName,
+      'location': location,
+      'project': ?project,
+    };
+  }
+
+  factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
+    return DeploymentArgs(
+      app: pulumi.Output.create<String>(map['app'] as String),
+      appVersion: pulumi.Output.create<String>(map['appVersion'] as String),
+      channelProfile: pulumi.Output.create<DeploymentChannelProfile>(DeploymentChannelProfile.fromMap((map['channelProfile'] as Map).cast<String, dynamic>())),
+      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

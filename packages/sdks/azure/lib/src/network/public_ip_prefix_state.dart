@@ -1,0 +1,107 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering PublicIpPrefix resources.
+class PublicIpPrefixState {
+  /// The Custom IP Prefix ID associated with the Public IP Prefix. Changing this forces a new resource to be created.
+  ///
+  /// > **Note:** When `ip_version` is set to `IPv6`, `custom_ip_prefix_id` must reference a regional (child) range rather than a global (parent) range. For more details on creating a Public IP Prefix from a custom IP prefix, see [here](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/manage-custom-ip-address-prefix#create-a-public-ip-prefix-from-a-custom-ip-prefix).
+  final pulumi.Input<String>? customIpPrefixId;
+  /// The IP address prefix value that was allocated.
+  final pulumi.Input<String>? ipPrefix;
+  /// The IP Version to use, `IPv6` or `IPv4`. Changing this forces a new resource to be created. Default is `IPv4`.
+  final pulumi.Input<String>? ipVersion;
+  /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? location;
+  /// Specifies the name of the Public IP Prefix resource . Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// Specifies the number of bits of the prefix. The value can be set between 0 (4,294,967,296 addresses) and 31 (2 addresses). Defaults to `28`(16 addresses). Changing this forces a new resource to be created.
+  ///
+  /// > **Note:** There may be Public IP address limits on the subscription . [More information available here](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address)
+  final pulumi.Input<int>? prefixLength;
+  /// The name of the resource group in which to create the Public IP Prefix. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? resourceGroupName;
+  /// The SKU of the Public IP Prefix. Accepted values are `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
+  ///
+  /// > **Note:** Public IP Prefix can only be created with Standard SKUs at this time.
+  final pulumi.Input<String>? sku;
+  /// The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? skuTier;
+  /// A mapping of tags to assign to the resource.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// Specifies a list of Availability Zones in which this Public IP Prefix should be located. Changing this forces a new Public IP Prefix to be created.
+  ///
+  /// > **Note:** Availability Zones are [only supported in several regions at this time](https://docs.microsoft.com/azure/availability-zones/az-overview).
+  final pulumi.Input<List<String>>? zones;
+
+  /// Creates a new [PublicIpPrefixState].
+  /// [customIpPrefixId] The Custom IP Prefix ID associated with the Public IP Prefix. Changing this forces a new resource to be created.
+  /// [ipPrefix] The IP address prefix value that was allocated.
+  /// [ipVersion] The IP Version to use, `IPv6` or `IPv4`. Changing this forces a new resource to be created. Default is `IPv4`.
+  /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
+  /// [name] Specifies the name of the Public IP Prefix resource . Changing this forces a new resource to be created.
+  /// [prefixLength] Specifies the number of bits of the prefix. The value can be set between 0 (4,294,967,296 addresses) and 31 (2 addresses). Defaults to `28`(16 addresses). Changing this forces a new resource to be created.
+  /// [resourceGroupName] The name of the resource group in which to create the Public IP Prefix. Changing this forces a new resource to be created.
+  /// [sku] The SKU of the Public IP Prefix. Accepted values are `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
+  /// [skuTier] The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
+  /// [tags] A mapping of tags to assign to the resource.
+  /// [zones] Specifies a list of Availability Zones in which this Public IP Prefix should be located. Changing this forces a new Public IP Prefix to be created.
+  PublicIpPrefixState({
+    pulumi.Output<String>? customIpPrefixId,
+    pulumi.Output<String>? ipPrefix,
+    pulumi.Output<String>? ipVersion,
+    pulumi.Output<String>? location,
+    pulumi.Output<String>? name,
+    pulumi.Output<int>? prefixLength,
+    pulumi.Output<String>? resourceGroupName,
+    pulumi.Output<String>? sku,
+    pulumi.Output<String>? skuTier,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<List<String>>? zones,
+  }) :
+      customIpPrefixId = pulumi.Input.asOptionalInput<String>(customIpPrefixId),
+      ipPrefix = pulumi.Input.asOptionalInput<String>(ipPrefix),
+      ipVersion = pulumi.Input.asOptionalInput<String>(ipVersion),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      prefixLength = pulumi.Input.asOptionalInput<int>(prefixLength),
+      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
+      sku = pulumi.Input.asOptionalInput<String>(sku),
+      skuTier = pulumi.Input.asOptionalInput<String>(skuTier),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'customIpPrefixId': ?customIpPrefixId,
+      'ipPrefix': ?ipPrefix,
+      'ipVersion': ?ipVersion,
+      'location': ?location,
+      'name': ?name,
+      'prefixLength': ?prefixLength,
+      'resourceGroupName': ?resourceGroupName,
+      'sku': ?sku,
+      'skuTier': ?skuTier,
+      'tags': ?tags,
+      'zones': ?zones,
+    };
+  }
+
+  factory PublicIpPrefixState.fromMap(Map<String, dynamic> map) {
+    return PublicIpPrefixState(
+      customIpPrefixId: map['customIpPrefixId'] == null ? null : pulumi.Output.create<String>(map['customIpPrefixId'] as String),
+      ipPrefix: map['ipPrefix'] == null ? null : pulumi.Output.create<String>(map['ipPrefix'] as String),
+      ipVersion: map['ipVersion'] == null ? null : pulumi.Output.create<String>(map['ipVersion'] as String),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      prefixLength: map['prefixLength'] == null ? null : pulumi.Output.create<int>(map['prefixLength'] as int),
+      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      sku: map['sku'] == null ? null : pulumi.Output.create<String>(map['sku'] as String),
+      skuTier: map['skuTier'] == null ? null : pulumi.Output.create<String>(map['skuTier'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+    );
+  }
+}
+

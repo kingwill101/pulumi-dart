@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_dialogflow_v2_get_context_args_doc}
+/// Arguments for getContext.
+/// {@endtemplate}
+/// {@macro pulumi_dialogflow_v2_get_context_args_doc}
+class GetContextArgs {
+  final pulumi.Input<String> contextId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> sessionId;
+  final pulumi.Input<String> userId;
+
+  /// Creates a new [GetContextArgs].
+  /// [contextId] Required.
+  /// [environmentId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  /// [sessionId] Required.
+  /// [userId] Required.
+  GetContextArgs({
+    required pulumi.Output<String> contextId,
+    required pulumi.Output<String> environmentId,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+    required pulumi.Output<String> sessionId,
+    required pulumi.Output<String> userId,
+  }) :
+      contextId = pulumi.Input.asInput<String>(contextId),
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sessionId = pulumi.Input.asInput<String>(sessionId),
+      userId = pulumi.Input.asInput<String>(userId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'contextId': contextId,
+      'environmentId': environmentId,
+      'location': location,
+      'project': ?project,
+      'sessionId': sessionId,
+      'userId': userId,
+    };
+  }
+
+  factory GetContextArgs.fromMap(Map<String, dynamic> map) {
+    return GetContextArgs(
+      contextId: pulumi.Output.create<String>(map['contextId'] as String),
+      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      sessionId: pulumi.Output.create<String>(map['sessionId'] as String),
+      userId: pulumi.Output.create<String>(map['userId'] as String),
+    );
+  }
+}
+

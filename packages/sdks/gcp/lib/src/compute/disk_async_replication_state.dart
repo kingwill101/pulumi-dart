@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'disk_async_replication_secondary_disk.dart';
+
+/// Input properties used for looking up and filtering DiskAsyncReplication resources.
+class DiskAsyncReplicationState {
+  /// The primary disk (source of replication).
+  final pulumi.Input<String>? primaryDisk;
+  /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+  ///
+  /// The `secondary_disk` block includes:
+  final pulumi.Input<DiskAsyncReplicationSecondaryDisk>? secondaryDisk;
+
+  /// Creates a new [DiskAsyncReplicationState].
+  /// [primaryDisk] The primary disk (source of replication).
+  /// [secondaryDisk] The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+  DiskAsyncReplicationState({
+    pulumi.Output<String>? primaryDisk,
+    pulumi.Output<DiskAsyncReplicationSecondaryDisk>? secondaryDisk,
+  }) :
+      primaryDisk = pulumi.Input.asOptionalInput<String>(primaryDisk),
+      secondaryDisk = pulumi.Input.asOptionalInput<DiskAsyncReplicationSecondaryDisk>(secondaryDisk);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'primaryDisk': ?primaryDisk,
+      'secondaryDisk': ?pulumi.Input.mapOptionalInputValue<DiskAsyncReplicationSecondaryDisk, Map<String, dynamic>>(secondaryDisk, (value) => value.toMap()),
+    };
+  }
+
+  factory DiskAsyncReplicationState.fromMap(Map<String, dynamic> map) {
+    return DiskAsyncReplicationState(
+      primaryDisk: map['primaryDisk'] == null ? null : pulumi.Output.create<String>(map['primaryDisk'] as String),
+      secondaryDisk: map['secondaryDisk'] == null ? null : pulumi.Output.create<DiskAsyncReplicationSecondaryDisk>(DiskAsyncReplicationSecondaryDisk.fromMap((map['secondaryDisk'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'file_hashes_response.dart';
+import 'time_span_response.dart';
+
+/// A Maven artifact uploaded using the MavenArtifact directive.
+class UploadedMavenArtifactResponse {
+  /// Hash types and values of the Maven Artifact.
+  final FileHashesResponse fileHashes;
+  /// Stores timing information for pushing the specified artifact.
+  final TimeSpanResponse pushTiming;
+  /// URI of the uploaded artifact.
+  final String uri;
+
+  /// Creates a new [UploadedMavenArtifactResponse].
+  /// [fileHashes] Hash types and values of the Maven Artifact.
+  /// [pushTiming] Stores timing information for pushing the specified artifact.
+  /// [uri] URI of the uploaded artifact.
+  UploadedMavenArtifactResponse({
+    required this.fileHashes,
+    required this.pushTiming,
+    required this.uri,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'fileHashes': fileHashes.toMap(),
+      'pushTiming': pushTiming.toMap(),
+      'uri': uri,
+    };
+  }
+
+  factory UploadedMavenArtifactResponse.fromMap(Map<String, dynamic> map) {
+    return UploadedMavenArtifactResponse(
+      fileHashes: FileHashesResponse.fromMap((map['fileHashes'] as Map).cast<String, dynamic>()),
+      pushTiming: TimeSpanResponse.fromMap((map['pushTiming'] as Map).cast<String, dynamic>()),
+      uri: map['uri'] as String,
+    );
+  }
+}
+

@@ -1,0 +1,54 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'cors_rules.dart';
+
+/// {@template pulumi_storage_table_service_properties_args_doc}
+/// The set of arguments for TableServiceProperties.
+/// {@endtemplate}
+/// {@macro pulumi_storage_table_service_properties_args_doc}
+class TableServicePropertiesArgs {
+  /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  final pulumi.Input<String> accountName;
+  /// Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service.
+  final pulumi.Input<CorsRules>? cors;
+  /// The name of the resource group within the user's subscription. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of the Table Service within the specified storage account. Table Service Name must be 'default'
+  final pulumi.Input<String>? tableServiceName;
+
+  /// Creates a new [TableServicePropertiesArgs].
+  /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
+  /// [cors] Specifies CORS rules for the Table service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Table service.
+  /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
+  /// [tableServiceName] The name of the Table Service within the specified storage account. Table Service Name must be 'default'
+  TableServicePropertiesArgs({
+    required pulumi.Output<String> accountName,
+    pulumi.Output<CorsRules>? cors,
+    required pulumi.Output<String> resourceGroupName,
+    pulumi.Output<String>? tableServiceName,
+  }) :
+      accountName = pulumi.Input.asInput<String>(accountName),
+      cors = pulumi.Input.asOptionalInput<CorsRules>(cors),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      tableServiceName = pulumi.Input.asOptionalInput<String>(tableServiceName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accountName': accountName,
+      'cors': ?pulumi.Input.mapOptionalInputValue<CorsRules, Map<String, dynamic>>(cors, (value) => value.toMap()),
+      'resourceGroupName': resourceGroupName,
+      'tableServiceName': ?tableServiceName,
+    };
+  }
+
+  factory TableServicePropertiesArgs.fromMap(Map<String, dynamic> map) {
+    return TableServicePropertiesArgs(
+      accountName: pulumi.Output.create<String>(map['accountName'] as String),
+      cors: map['cors'] == null ? null : pulumi.Output.create<CorsRules>(CorsRules.fromMap((map['cors'] as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      tableServiceName: map['tableServiceName'] == null ? null : pulumi.Output.create<String>(map['tableServiceName'] as String),
+    );
+  }
+}
+

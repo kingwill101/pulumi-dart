@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'bucket_metric_filter.dart';
+
+/// Input properties used for looking up and filtering BucketMetric resources.
+class BucketMetricState {
+  /// Name of the bucket to put metric configuration.
+  final pulumi.Input<String>? bucket;
+  /// [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
+  final pulumi.Input<BucketMetricFilter>? filter;
+  /// Unique identifier of the metrics configuration for the bucket. Must be less than or equal to 64 characters in length.
+  final pulumi.Input<String>? name;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [BucketMetricState].
+  /// [bucket] Name of the bucket to put metric configuration.
+  /// [filter] [Object filtering](http://docs.aws.amazon.com/AmazonS3/latest/dev/metrics-configurations.html#metrics-configurations-filter) that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
+  /// [name] Unique identifier of the metrics configuration for the bucket. Must be less than or equal to 64 characters in length.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  BucketMetricState({
+    pulumi.Output<String>? bucket,
+    pulumi.Output<BucketMetricFilter>? filter,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? region,
+  }) :
+      bucket = pulumi.Input.asOptionalInput<String>(bucket),
+      filter = pulumi.Input.asOptionalInput<BucketMetricFilter>(filter),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'filter': ?pulumi.Input.mapOptionalInputValue<BucketMetricFilter, Map<String, dynamic>>(filter, (value) => value.toMap()),
+      'name': ?name,
+      'region': ?region,
+    };
+  }
+
+  factory BucketMetricState.fromMap(Map<String, dynamic> map) {
+    return BucketMetricState(
+      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
+      filter: map['filter'] == null ? null : pulumi.Output.create<BucketMetricFilter>(BucketMetricFilter.fromMap((map['filter'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

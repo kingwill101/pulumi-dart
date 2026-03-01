@@ -1,0 +1,27 @@
+library module_fis;
+
+export 'fis/experiment_template.dart';
+export 'fis/experiment_template_action.dart';
+export 'fis/experiment_template_action_parameter.dart';
+export 'fis/experiment_template_action_target.dart';
+export 'fis/experiment_template_args.dart';
+export 'fis/experiment_template_experiment_options.dart';
+export 'fis/experiment_template_experiment_report_configuration.dart';
+export 'fis/experiment_template_experiment_report_configuration_data_sources.dart';
+export 'fis/experiment_template_experiment_report_configuration_data_sources_cloudwatch_dashboard.dart';
+export 'fis/experiment_template_experiment_report_configuration_outputs.dart';
+export 'fis/experiment_template_experiment_report_configuration_outputs_s3_configuration.dart';
+export 'fis/experiment_template_log_configuration.dart';
+export 'fis/experiment_template_log_configuration_cloudwatch_logs_configuration.dart';
+export 'fis/experiment_template_log_configuration_s3_configuration.dart';
+export 'fis/experiment_template_state.dart';
+export 'fis/experiment_template_stop_condition.dart';
+export 'fis/experiment_template_target.dart';
+export 'fis/experiment_template_target_filter.dart';
+export 'fis/experiment_template_target_resource_tag.dart';
+export 'fis/functions.dart';
+export 'fis/get_experiment_templates_args.dart';
+export 'fis/get_experiment_templates_result.dart';
+export 'fis/target_account_configuration.dart';
+export 'fis/target_account_configuration_args.dart';
+export 'fis/target_account_configuration_state.dart';

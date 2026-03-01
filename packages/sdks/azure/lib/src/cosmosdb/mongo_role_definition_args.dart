@@ -1,0 +1,56 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'mongo_role_definition_privilege.dart';
+
+/// {@template pulumi_cosmosdb_mongo_role_definition_mongo_role_definition_args_doc}
+/// The set of arguments for MongoRoleDefinition.
+/// {@endtemplate}
+/// {@macro pulumi_cosmosdb_mongo_role_definition_mongo_role_definition_args_doc}
+class MongoRoleDefinitionArgs {
+  /// The resource ID of the Mongo DB. Changing this forces a new resource to be created.
+  final pulumi.Input<String> cosmosMongoDatabaseId;
+  /// A list of Mongo Roles which are inherited to the Mongo Role Definition.
+  ///
+  /// > **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmos_mongo_database_id`.
+  final pulumi.Input<List<String>>? inheritedRoleNames;
+  /// A `privilege` block as defined below.
+  final pulumi.Input<List<MongoRoleDefinitionPrivilege>>? privileges;
+  /// The user-friendly name for the Mongo Role Definition. It must be unique for the database account. Changing this forces a new resource to be created.
+  final pulumi.Input<String> roleName;
+
+  /// Creates a new [MongoRoleDefinitionArgs].
+  /// [cosmosMongoDatabaseId] The resource ID of the Mongo DB. Changing this forces a new resource to be created.
+  /// [inheritedRoleNames] A list of Mongo Roles which are inherited to the Mongo Role Definition.
+  /// [privileges] A `privilege` block as defined below.
+  /// [roleName] The user-friendly name for the Mongo Role Definition. It must be unique for the database account. Changing this forces a new resource to be created.
+  MongoRoleDefinitionArgs({
+    required pulumi.Output<String> cosmosMongoDatabaseId,
+    pulumi.Output<List<String>>? inheritedRoleNames,
+    pulumi.Output<List<MongoRoleDefinitionPrivilege>>? privileges,
+    required pulumi.Output<String> roleName,
+  }) :
+      cosmosMongoDatabaseId = pulumi.Input.asInput<String>(cosmosMongoDatabaseId),
+      inheritedRoleNames = pulumi.Input.asOptionalInput<List<String>>(inheritedRoleNames),
+      privileges = pulumi.Input.asOptionalInput<List<MongoRoleDefinitionPrivilege>>(privileges),
+      roleName = pulumi.Input.asInput<String>(roleName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'cosmosMongoDatabaseId': cosmosMongoDatabaseId,
+      'inheritedRoleNames': ?inheritedRoleNames,
+      'privileges': ?pulumi.Input.mapOptionalInputValue<List<MongoRoleDefinitionPrivilege>, List<Map<String, dynamic>>>(privileges, (value) => pulumi.Input.encodeList<MongoRoleDefinitionPrivilege, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'roleName': roleName,
+    };
+  }
+
+  factory MongoRoleDefinitionArgs.fromMap(Map<String, dynamic> map) {
+    return MongoRoleDefinitionArgs(
+      cosmosMongoDatabaseId: pulumi.Output.create<String>(map['cosmosMongoDatabaseId'] as String),
+      inheritedRoleNames: map['inheritedRoleNames'] == null ? null : pulumi.Output.create<List<String>>((map['inheritedRoleNames'] as List).cast<String>()),
+      privileges: map['privileges'] == null ? null : pulumi.Output.create<List<MongoRoleDefinitionPrivilege>>(pulumi.Input.decodeList<MongoRoleDefinitionPrivilege>(map['privileges'], (value) => MongoRoleDefinitionPrivilege.fromMap((value as Map).cast<String, dynamic>()))),
+      roleName: pulumi.Output.create<String>(map['roleName'] as String),
+    );
+  }
+}
+

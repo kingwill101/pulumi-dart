@@ -1,0 +1,60 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_apigatewayv2_api_mapping_api_mapping_args_doc}
+/// The set of arguments for ApiMapping.
+/// {@endtemplate}
+/// {@macro pulumi_apigatewayv2_api_mapping_api_mapping_args_doc}
+class ApiMappingArgs {
+  /// API identifier.
+  final pulumi.Input<String> apiId;
+  /// The API mapping key. Refer to [REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-mappings.html), [HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mappings.html) or [WebSocket API](https://docs.aws.amazon.com/apigateway/latest/developerguide/websocket-api-mappings.html).
+  final pulumi.Input<String>? apiMappingKey;
+  /// Domain name. Use the `aws.apigatewayv2.DomainName` resource to configure a domain name.
+  final pulumi.Input<String> domainName;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// API stage. Use the `aws.apigatewayv2.Stage` resource to configure an API stage.
+  final pulumi.Input<String> stage;
+
+  /// Creates a new [ApiMappingArgs].
+  /// [apiId] API identifier.
+  /// [apiMappingKey] The API mapping key. Refer to [REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-mappings.html), [HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mappings.html) or [WebSocket API](https://docs.aws.amazon.com/apigateway/latest/developerguide/websocket-api-mappings.html).
+  /// [domainName] Domain name. Use the `aws.apigatewayv2.DomainName` resource to configure a domain name.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [stage] API stage. Use the `aws.apigatewayv2.Stage` resource to configure an API stage.
+  ApiMappingArgs({
+    required pulumi.Output<String> apiId,
+    pulumi.Output<String>? apiMappingKey,
+    required pulumi.Output<String> domainName,
+    pulumi.Output<String>? region,
+    required pulumi.Output<String> stage,
+  }) :
+      apiId = pulumi.Input.asInput<String>(apiId),
+      apiMappingKey = pulumi.Input.asOptionalInput<String>(apiMappingKey),
+      domainName = pulumi.Input.asInput<String>(domainName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      stage = pulumi.Input.asInput<String>(stage);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiId': apiId,
+      'apiMappingKey': ?apiMappingKey,
+      'domainName': domainName,
+      'region': ?region,
+      'stage': stage,
+    };
+  }
+
+  factory ApiMappingArgs.fromMap(Map<String, dynamic> map) {
+    return ApiMappingArgs(
+      apiId: pulumi.Output.create<String>(map['apiId'] as String),
+      apiMappingKey: map['apiMappingKey'] == null ? null : pulumi.Output.create<String>(map['apiMappingKey'] as String),
+      domainName: pulumi.Output.create<String>(map['domainName'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      stage: pulumi.Output.create<String>(map['stage'] as String),
+    );
+  }
+}
+

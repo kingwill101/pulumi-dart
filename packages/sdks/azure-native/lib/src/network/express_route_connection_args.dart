@@ -1,0 +1,111 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'express_route_circuit_peering_id.dart';
+import 'routing_configuration.dart';
+
+/// {@template pulumi_network_express_route_connection_args_doc}
+/// The set of arguments for ExpressRouteConnection.
+/// {@endtemplate}
+/// {@macro pulumi_network_express_route_connection_args_doc}
+class ExpressRouteConnectionArgs {
+  /// Authorization key to establish the connection.
+  final pulumi.Input<String>? authorizationKey;
+  /// The name of the connection subresource.
+  final pulumi.Input<String>? connectionName;
+  /// Enable internet security.
+  final pulumi.Input<bool>? enableInternetSecurity;
+  /// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
+  final pulumi.Input<bool>? enablePrivateLinkFastPath;
+  /// The ExpressRoute circuit peering.
+  final pulumi.Input<ExpressRouteCircuitPeeringId> expressRouteCircuitPeering;
+  /// Enable FastPath to vWan Firewall hub.
+  final pulumi.Input<bool>? expressRouteGatewayBypass;
+  /// The name of the ExpressRoute gateway.
+  final pulumi.Input<String> expressRouteGatewayName;
+  /// Resource ID.
+  final pulumi.Input<String>? id;
+  /// The name of the resource.
+  final pulumi.Input<String> name;
+  /// The name of the resource group.
+  final pulumi.Input<String> resourceGroupName;
+  /// The Routing Configuration indicating the associated and propagated route tables on this connection.
+  final pulumi.Input<RoutingConfiguration>? routingConfiguration;
+  /// The routing weight associated to the connection.
+  final pulumi.Input<int>? routingWeight;
+
+  /// Creates a new [ExpressRouteConnectionArgs].
+  /// [authorizationKey] Authorization key to establish the connection.
+  /// [connectionName] The name of the connection subresource.
+  /// [enableInternetSecurity] Enable internet security.
+  /// [enablePrivateLinkFastPath] Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
+  /// [expressRouteCircuitPeering] The ExpressRoute circuit peering.
+  /// [expressRouteGatewayBypass] Enable FastPath to vWan Firewall hub.
+  /// [expressRouteGatewayName] The name of the ExpressRoute gateway.
+  /// [id] Resource ID.
+  /// [name] The name of the resource.
+  /// [resourceGroupName] The name of the resource group.
+  /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
+  /// [routingWeight] The routing weight associated to the connection.
+  ExpressRouteConnectionArgs({
+    pulumi.Output<String>? authorizationKey,
+    pulumi.Output<String>? connectionName,
+    pulumi.Output<bool>? enableInternetSecurity,
+    pulumi.Output<bool>? enablePrivateLinkFastPath,
+    required pulumi.Output<ExpressRouteCircuitPeeringId> expressRouteCircuitPeering,
+    pulumi.Output<bool>? expressRouteGatewayBypass,
+    required pulumi.Output<String> expressRouteGatewayName,
+    pulumi.Output<String>? id,
+    required pulumi.Output<String> name,
+    required pulumi.Output<String> resourceGroupName,
+    pulumi.Output<RoutingConfiguration>? routingConfiguration,
+    pulumi.Output<int>? routingWeight,
+  }) :
+      authorizationKey = pulumi.Input.asOptionalInput<String>(authorizationKey),
+      connectionName = pulumi.Input.asOptionalInput<String>(connectionName),
+      enableInternetSecurity = pulumi.Input.asOptionalInput<bool>(enableInternetSecurity),
+      enablePrivateLinkFastPath = pulumi.Input.asOptionalInput<bool>(enablePrivateLinkFastPath),
+      expressRouteCircuitPeering = pulumi.Input.asInput<ExpressRouteCircuitPeeringId>(expressRouteCircuitPeering),
+      expressRouteGatewayBypass = pulumi.Input.asOptionalInput<bool>(expressRouteGatewayBypass),
+      expressRouteGatewayName = pulumi.Input.asInput<String>(expressRouteGatewayName),
+      id = pulumi.Input.asOptionalInput<String>(id),
+      name = pulumi.Input.asInput<String>(name),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      routingConfiguration = pulumi.Input.asOptionalInput<RoutingConfiguration>(routingConfiguration),
+      routingWeight = pulumi.Input.asOptionalInput<int>(routingWeight);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'authorizationKey': ?authorizationKey,
+      'connectionName': ?connectionName,
+      'enableInternetSecurity': ?enableInternetSecurity,
+      'enablePrivateLinkFastPath': ?enablePrivateLinkFastPath,
+      'expressRouteCircuitPeering': pulumi.Input.mapInputValue<ExpressRouteCircuitPeeringId, Map<String, dynamic>>(expressRouteCircuitPeering, (value) => value.toMap()),
+      'expressRouteGatewayBypass': ?expressRouteGatewayBypass,
+      'expressRouteGatewayName': expressRouteGatewayName,
+      'id': ?id,
+      'name': name,
+      'resourceGroupName': resourceGroupName,
+      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfiguration, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
+      'routingWeight': ?routingWeight,
+    };
+  }
+
+  factory ExpressRouteConnectionArgs.fromMap(Map<String, dynamic> map) {
+    return ExpressRouteConnectionArgs(
+      authorizationKey: map['authorizationKey'] == null ? null : pulumi.Output.create<String>(map['authorizationKey'] as String),
+      connectionName: map['connectionName'] == null ? null : pulumi.Output.create<String>(map['connectionName'] as String),
+      enableInternetSecurity: map['enableInternetSecurity'] == null ? null : pulumi.Output.create<bool>(map['enableInternetSecurity'] as bool),
+      enablePrivateLinkFastPath: map['enablePrivateLinkFastPath'] == null ? null : pulumi.Output.create<bool>(map['enablePrivateLinkFastPath'] as bool),
+      expressRouteCircuitPeering: pulumi.Output.create<ExpressRouteCircuitPeeringId>(ExpressRouteCircuitPeeringId.fromMap((map['expressRouteCircuitPeering'] as Map).cast<String, dynamic>())),
+      expressRouteGatewayBypass: map['expressRouteGatewayBypass'] == null ? null : pulumi.Output.create<bool>(map['expressRouteGatewayBypass'] as bool),
+      expressRouteGatewayName: pulumi.Output.create<String>(map['expressRouteGatewayName'] as String),
+      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
+      name: pulumi.Output.create<String>(map['name'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      routingConfiguration: map['routingConfiguration'] == null ? null : pulumi.Output.create<RoutingConfiguration>(RoutingConfiguration.fromMap((map['routingConfiguration'] as Map).cast<String, dynamic>())),
+      routingWeight: map['routingWeight'] == null ? null : pulumi.Output.create<int>(map['routingWeight'] as int),
+    );
+  }
+}
+

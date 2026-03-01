@@ -1,0 +1,110 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'managed_redis_customer_managed_key.dart';
+import 'managed_redis_default_database.dart';
+import 'managed_redis_identity.dart';
+
+/// Input properties used for looking up and filtering ManagedRedis resources.
+class ManagedRedisState {
+  /// A `customer_managed_key` block as defined below.
+  final pulumi.Input<ManagedRedisCustomerManagedKey>? customerManagedKey;
+  /// A `default_database` block as defined below.
+  ///
+  /// > **Note:** `default_database` is Required when creating a new Managed Redis.
+  ///
+  /// > **Note:** A `default_database` can be deleted or recreated in-place but most properties will trigger an entire cluster replacement if changed. Data will be lost and Managed Redis will be unavailable during recreation.
+  final pulumi.Input<ManagedRedisDefaultDatabase>? defaultDatabase;
+  /// Whether to enable high availability for the Managed Redis instance. Defaults to `true`. Changing this forces a new Managed Redis instance to be created.
+  final pulumi.Input<bool>? highAvailabilityEnabled;
+  /// DNS name of the cluster endpoint.
+  final pulumi.Input<String>? hostname;
+  /// An `identity` block as defined below.
+  final pulumi.Input<ManagedRedisIdentity>? identity;
+  /// The Azure Region where the Managed Redis instance should exist. Refer to "Redis Cache" on the [product availability documentation](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/table) for supported locations. Changing this forces a new Managed Redis instance to be created.
+  final pulumi.Input<String>? location;
+  /// The name which should be used for this Managed Redis instance. Changing this forces a new Managed Redis instance to be created.
+  final pulumi.Input<String>? name;
+  /// The public network access setting for the Managed Redis instance. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
+  final pulumi.Input<String>? publicNetworkAccess;
+  /// The name of the Resource Group where the Managed Redis instance should exist. Changing this forces a new Managed Redis instance to be created.
+  final pulumi.Input<String>? resourceGroupName;
+  /// The features and specification of the Managed Redis instance to deploy. Possible values are `Balanced_B0`, `Balanced_B1`, `Balanced_B10`, `Balanced_B100`, `Balanced_B1000`, `Balanced_B150`, `Balanced_B20`, `Balanced_B250`, `Balanced_B3`, `Balanced_B350`, `Balanced_B5`, `Balanced_B50`, `Balanced_B500`, `Balanced_B700`, `ComputeOptimized_X10`, `ComputeOptimized_X100`, `ComputeOptimized_X150`, `ComputeOptimized_X20`, `ComputeOptimized_X250`, `ComputeOptimized_X3`, `ComputeOptimized_X350`, `ComputeOptimized_X5`, `ComputeOptimized_X50`, `ComputeOptimized_X500`, `ComputeOptimized_X700`, `FlashOptimized_A1000`, `FlashOptimized_A1500`, `FlashOptimized_A2000`, `FlashOptimized_A250`, `FlashOptimized_A4500`, `FlashOptimized_A500`, `FlashOptimized_A700`, `MemoryOptimized_M10`, `MemoryOptimized_M100`, `MemoryOptimized_M1000`, `MemoryOptimized_M150`, `MemoryOptimized_M1500`, `MemoryOptimized_M20`, `MemoryOptimized_M2000`, `MemoryOptimized_M250`, `MemoryOptimized_M350`, `MemoryOptimized_M50`, `MemoryOptimized_M500` and `MemoryOptimized_M700`. `Balanced_B3` SKU or higher is required for geo-replication.
+  ///
+  /// > **Note:** `Enterprise_` and `EnterpriseFlash_` prefixed SKUs were previously used by Redis Enterprise, and [not supported by Managed Redis](https://learn.microsoft.com/azure/redis/migrate/migrate-overview).
+  ///
+  /// > **Note:** Changing `sku_name` to a lower tier is restricted by Azure under certain conditions, in which case the resource will be marked for recreation. Validation for this is on a best-effort basis, if the provider is unable to determine whether it can change the SKU in-place, it will attempt to do regardless and this request may fail. Please refer to the [Azure documentation](https://learn.microsoft.com/en-us/azure/redis/how-to-scale) for more information.
+  final pulumi.Input<String>? skuName;
+  /// A mapping of tags which should be assigned to the Managed Redis instance.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [ManagedRedisState].
+  /// [customerManagedKey] A `customer_managed_key` block as defined below.
+  /// [defaultDatabase] A `default_database` block as defined below.
+  /// [highAvailabilityEnabled] Whether to enable high availability for the Managed Redis instance. Defaults to `true`. Changing this forces a new Managed Redis instance to be created.
+  /// [hostname] DNS name of the cluster endpoint.
+  /// [identity] An `identity` block as defined below.
+  /// [location] The Azure Region where the Managed Redis instance should exist. Refer to "Redis Cache" on the [product availability documentation](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/table) for supported locations. Changing this forces a new Managed Redis instance to be created.
+  /// [name] The name which should be used for this Managed Redis instance. Changing this forces a new Managed Redis instance to be created.
+  /// [publicNetworkAccess] The public network access setting for the Managed Redis instance. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
+  /// [resourceGroupName] The name of the Resource Group where the Managed Redis instance should exist. Changing this forces a new Managed Redis instance to be created.
+  /// [skuName] The features and specification of the Managed Redis instance to deploy. Possible values are `Balanced_B0`, `Balanced_B1`, `Balanced_B10`, `Balanced_B100`, `Balanced_B1000`, `Balanced_B150`, `Balanced_B20`, `Balanced_B250`, `Balanced_B3`, `Balanced_B350`, `Balanced_B5`, `Balanced_B50`, `Balanced_B500`, `Balanced_B700`, `ComputeOptimized_X10`, `ComputeOptimized_X100`, `ComputeOptimized_X150`, `ComputeOptimized_X20`, `ComputeOptimized_X250`, `ComputeOptimized_X3`, `ComputeOptimized_X350`, `ComputeOptimized_X5`, `ComputeOptimized_X50`, `ComputeOptimized_X500`, `ComputeOptimized_X700`, `FlashOptimized_A1000`, `FlashOptimized_A1500`, `FlashOptimized_A2000`, `FlashOptimized_A250`, `FlashOptimized_A4500`, `FlashOptimized_A500`, `FlashOptimized_A700`, `MemoryOptimized_M10`, `MemoryOptimized_M100`, `MemoryOptimized_M1000`, `MemoryOptimized_M150`, `MemoryOptimized_M1500`, `MemoryOptimized_M20`, `MemoryOptimized_M2000`, `MemoryOptimized_M250`, `MemoryOptimized_M350`, `MemoryOptimized_M50`, `MemoryOptimized_M500` and `MemoryOptimized_M700`. `Balanced_B3` SKU or higher is required for geo-replication.
+  /// [tags] A mapping of tags which should be assigned to the Managed Redis instance.
+  ManagedRedisState({
+    pulumi.Output<ManagedRedisCustomerManagedKey>? customerManagedKey,
+    pulumi.Output<ManagedRedisDefaultDatabase>? defaultDatabase,
+    pulumi.Output<bool>? highAvailabilityEnabled,
+    pulumi.Output<String>? hostname,
+    pulumi.Output<ManagedRedisIdentity>? identity,
+    pulumi.Output<String>? location,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? publicNetworkAccess,
+    pulumi.Output<String>? resourceGroupName,
+    pulumi.Output<String>? skuName,
+    pulumi.Output<Map<String, String>>? tags,
+  }) :
+      customerManagedKey = pulumi.Input.asOptionalInput<ManagedRedisCustomerManagedKey>(customerManagedKey),
+      defaultDatabase = pulumi.Input.asOptionalInput<ManagedRedisDefaultDatabase>(defaultDatabase),
+      highAvailabilityEnabled = pulumi.Input.asOptionalInput<bool>(highAvailabilityEnabled),
+      hostname = pulumi.Input.asOptionalInput<String>(hostname),
+      identity = pulumi.Input.asOptionalInput<ManagedRedisIdentity>(identity),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      publicNetworkAccess = pulumi.Input.asOptionalInput<String>(publicNetworkAccess),
+      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
+      skuName = pulumi.Input.asOptionalInput<String>(skuName),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'customerManagedKey': ?pulumi.Input.mapOptionalInputValue<ManagedRedisCustomerManagedKey, Map<String, dynamic>>(customerManagedKey, (value) => value.toMap()),
+      'defaultDatabase': ?pulumi.Input.mapOptionalInputValue<ManagedRedisDefaultDatabase, Map<String, dynamic>>(defaultDatabase, (value) => value.toMap()),
+      'highAvailabilityEnabled': ?highAvailabilityEnabled,
+      'hostname': ?hostname,
+      'identity': ?pulumi.Input.mapOptionalInputValue<ManagedRedisIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'location': ?location,
+      'name': ?name,
+      'publicNetworkAccess': ?publicNetworkAccess,
+      'resourceGroupName': ?resourceGroupName,
+      'skuName': ?skuName,
+      'tags': ?tags,
+    };
+  }
+
+  factory ManagedRedisState.fromMap(Map<String, dynamic> map) {
+    return ManagedRedisState(
+      customerManagedKey: map['customerManagedKey'] == null ? null : pulumi.Output.create<ManagedRedisCustomerManagedKey>(ManagedRedisCustomerManagedKey.fromMap((map['customerManagedKey'] as Map).cast<String, dynamic>())),
+      defaultDatabase: map['defaultDatabase'] == null ? null : pulumi.Output.create<ManagedRedisDefaultDatabase>(ManagedRedisDefaultDatabase.fromMap((map['defaultDatabase'] as Map).cast<String, dynamic>())),
+      highAvailabilityEnabled: map['highAvailabilityEnabled'] == null ? null : pulumi.Output.create<bool>(map['highAvailabilityEnabled'] as bool),
+      hostname: map['hostname'] == null ? null : pulumi.Output.create<String>(map['hostname'] as String),
+      identity: map['identity'] == null ? null : pulumi.Output.create<ManagedRedisIdentity>(ManagedRedisIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      publicNetworkAccess: map['publicNetworkAccess'] == null ? null : pulumi.Output.create<String>(map['publicNetworkAccess'] as String),
+      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      skuName: map['skuName'] == null ? null : pulumi.Output.create<String>(map['skuName'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+    );
+  }
+}
+

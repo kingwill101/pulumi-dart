@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// VmwareSourceDetails message describes a specific source details for the vmware source type.
+class VmwareSourceDetailsVmmigrationV1alpha1 {
+  /// Input only. The credentials password. This is write only and can not be read in a GET operation.
+  final String? password;
+  /// The hostname of the vcenter.
+  final String? resolvedVcenterHost;
+  /// The thumbprint representing the certificate for the vcenter.
+  final String? thumbprint;
+  /// The credentials username.
+  final String? username;
+  /// The ip address of the vcenter this Source represents.
+  final String? vcenterIp;
+
+  /// Creates a new [VmwareSourceDetailsVmmigrationV1alpha1].
+  /// [password] Input only. The credentials password. This is write only and can not be read in a GET operation.
+  /// [resolvedVcenterHost] The hostname of the vcenter.
+  /// [thumbprint] The thumbprint representing the certificate for the vcenter.
+  /// [username] The credentials username.
+  /// [vcenterIp] The ip address of the vcenter this Source represents.
+  VmwareSourceDetailsVmmigrationV1alpha1({
+    this.password,
+    this.resolvedVcenterHost,
+    this.thumbprint,
+    this.username,
+    this.vcenterIp,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'password': ?password,
+      'resolvedVcenterHost': ?resolvedVcenterHost,
+      'thumbprint': ?thumbprint,
+      'username': ?username,
+      'vcenterIp': ?vcenterIp,
+    };
+  }
+
+  factory VmwareSourceDetailsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+    return VmwareSourceDetailsVmmigrationV1alpha1(
+      password: map['password'] == null ? null : map['password'] as String,
+      resolvedVcenterHost: map['resolvedVcenterHost'] == null ? null : map['resolvedVcenterHost'] as String,
+      thumbprint: map['thumbprint'] == null ? null : map['thumbprint'] as String,
+      username: map['username'] == null ? null : map['username'] as String,
+      vcenterIp: map['vcenterIp'] == null ? null : map['vcenterIp'] as String,
+    );
+  }
+}
+

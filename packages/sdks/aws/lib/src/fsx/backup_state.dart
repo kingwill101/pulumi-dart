@@ -1,0 +1,87 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering Backup resources.
+class BackupState {
+  /// Amazon Resource Name of the backup.
+  final pulumi.Input<String>? arn;
+  /// The ID of the file system to back up. Required if backing up Lustre or Windows file systems.
+  final pulumi.Input<String>? fileSystemId;
+  /// The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the backup of the Amazon FSx file system's data at rest.
+  final pulumi.Input<String>? kmsKeyId;
+  /// AWS account identifier that created the file system.
+  final pulumi.Input<String>? ownerId;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  final pulumi.Input<Map<String, String>>? tagsAll;
+  /// The type of the file system backup.
+  final pulumi.Input<String>? type;
+  /// The ID of the volume to back up. Required if backing up a ONTAP Volume.
+  ///
+  /// Note - One of `file_system_id` or `volume_id` can be specified. `file_system_id` is used for Lustre and Windows, `volume_id` is used for ONTAP.
+  final pulumi.Input<String>? volumeId;
+
+  /// Creates a new [BackupState].
+  /// [arn] Amazon Resource Name of the backup.
+  /// [fileSystemId] The ID of the file system to back up. Required if backing up Lustre or Windows file systems.
+  /// [kmsKeyId] The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the backup of the Amazon FSx file system's data at rest.
+  /// [ownerId] AWS account identifier that created the file system.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [type] The type of the file system backup.
+  /// [volumeId] The ID of the volume to back up. Required if backing up a ONTAP Volume.
+  BackupState({
+    pulumi.Output<String>? arn,
+    pulumi.Output<String>? fileSystemId,
+    pulumi.Output<String>? kmsKeyId,
+    pulumi.Output<String>? ownerId,
+    pulumi.Output<String>? region,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<Map<String, String>>? tagsAll,
+    pulumi.Output<String>? type,
+    pulumi.Output<String>? volumeId,
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
+      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
+      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
+      type = pulumi.Input.asOptionalInput<String>(type),
+      volumeId = pulumi.Input.asOptionalInput<String>(volumeId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'arn': ?arn,
+      'fileSystemId': ?fileSystemId,
+      'kmsKeyId': ?kmsKeyId,
+      'ownerId': ?ownerId,
+      'region': ?region,
+      'tags': ?tags,
+      'tagsAll': ?tagsAll,
+      'type': ?type,
+      'volumeId': ?volumeId,
+    };
+  }
+
+  factory BackupState.fromMap(Map<String, dynamic> map) {
+    return BackupState(
+      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
+      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
+      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
+      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+      volumeId: map['volumeId'] == null ? null : pulumi.Output.create<String>(map['volumeId'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_dialogflow_v3_get_environment_dialogflow_v3_args_doc}
+/// Arguments for getEnvironment.
+/// {@endtemplate}
+/// {@macro pulumi_dialogflow_v3_get_environment_dialogflow_v3_args_doc}
+class GetEnvironmentDialogflowV3Args {
+  final pulumi.Input<String> agentId;
+  final pulumi.Input<String> environmentId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetEnvironmentDialogflowV3Args].
+  /// [agentId] Required.
+  /// [environmentId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  GetEnvironmentDialogflowV3Args({
+    required pulumi.Output<String> agentId,
+    required pulumi.Output<String> environmentId,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+  }) :
+      agentId = pulumi.Input.asInput<String>(agentId),
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'agentId': agentId,
+      'environmentId': environmentId,
+      'location': location,
+      'project': ?project,
+    };
+  }
+
+  factory GetEnvironmentDialogflowV3Args.fromMap(Map<String, dynamic> map) {
+    return GetEnvironmentDialogflowV3Args(
+      agentId: pulumi.Output.create<String>(map['agentId'] as String),
+      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

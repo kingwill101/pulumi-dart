@@ -1,0 +1,60 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'workspace_configuration_limits_per_label_set.dart';
+import 'workspace_configuration_timeouts.dart';
+
+/// Input properties used for looking up and filtering WorkspaceConfiguration resources.
+class WorkspaceConfigurationState {
+  /// Configuration block for setting limits on metrics with specific label sets. Detailed below.
+  final pulumi.Input<List<WorkspaceConfigurationLimitsPerLabelSet>>? limitsPerLabelSets;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Number of days to retain metric data in the workspace.
+  final pulumi.Input<int>? retentionPeriodInDays;
+  final pulumi.Input<WorkspaceConfigurationTimeouts>? timeouts;
+  /// ID of the workspace to configure.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<String>? workspaceId;
+
+  /// Creates a new [WorkspaceConfigurationState].
+  /// [limitsPerLabelSets] Configuration block for setting limits on metrics with specific label sets. Detailed below.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [retentionPeriodInDays] Number of days to retain metric data in the workspace.
+  /// [timeouts] Optional.
+  /// [workspaceId] ID of the workspace to configure.
+  WorkspaceConfigurationState({
+    pulumi.Output<List<WorkspaceConfigurationLimitsPerLabelSet>>? limitsPerLabelSets,
+    pulumi.Output<String>? region,
+    pulumi.Output<int>? retentionPeriodInDays,
+    pulumi.Output<WorkspaceConfigurationTimeouts>? timeouts,
+    pulumi.Output<String>? workspaceId,
+  }) :
+      limitsPerLabelSets = pulumi.Input.asOptionalInput<List<WorkspaceConfigurationLimitsPerLabelSet>>(limitsPerLabelSets),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      retentionPeriodInDays = pulumi.Input.asOptionalInput<int>(retentionPeriodInDays),
+      timeouts = pulumi.Input.asOptionalInput<WorkspaceConfigurationTimeouts>(timeouts),
+      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'limitsPerLabelSets': ?pulumi.Input.mapOptionalInputValue<List<WorkspaceConfigurationLimitsPerLabelSet>, List<Map<String, dynamic>>>(limitsPerLabelSets, (value) => pulumi.Input.encodeList<WorkspaceConfigurationLimitsPerLabelSet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'region': ?region,
+      'retentionPeriodInDays': ?retentionPeriodInDays,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<WorkspaceConfigurationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'workspaceId': ?workspaceId,
+    };
+  }
+
+  factory WorkspaceConfigurationState.fromMap(Map<String, dynamic> map) {
+    return WorkspaceConfigurationState(
+      limitsPerLabelSets: map['limitsPerLabelSets'] == null ? null : pulumi.Output.create<List<WorkspaceConfigurationLimitsPerLabelSet>>(pulumi.Input.decodeList<WorkspaceConfigurationLimitsPerLabelSet>(map['limitsPerLabelSets'], (value) => WorkspaceConfigurationLimitsPerLabelSet.fromMap((value as Map).cast<String, dynamic>()))),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      retentionPeriodInDays: map['retentionPeriodInDays'] == null ? null : pulumi.Output.create<int>(map['retentionPeriodInDays'] as int),
+      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<WorkspaceConfigurationTimeouts>(WorkspaceConfigurationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+    );
+  }
+}
+

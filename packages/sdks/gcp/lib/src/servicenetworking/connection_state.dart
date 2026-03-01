@@ -1,0 +1,68 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering Connection resources.
+class ConnectionState {
+  /// The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+  final pulumi.Input<String>? deletionPolicy;
+  /// Name of VPC network connected with service producers using VPC peering.
+  final pulumi.Input<String>? network;
+  /// (Computed) The name of the VPC Network Peering connection that was created by the service producer.
+  final pulumi.Input<String>? peering;
+  /// Named IP address range(s) of PEERING type reserved for
+  /// this service provider. Note that invoking this method with a different range when connection
+  /// is already established will not reallocate already provisioned service producer subnetworks.
+  final pulumi.Input<List<String>>? reservedPeeringRanges;
+  /// Provider peering service that is managing peering connectivity for a
+  /// service provider organization. For Google services that support this functionality it is
+  /// 'servicenetworking.googleapis.com'.
+  final pulumi.Input<String>? service;
+  /// When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+  final pulumi.Input<bool>? updateOnCreationFail;
+
+  /// Creates a new [ConnectionState].
+  /// [deletionPolicy] The deletion policy for the service networking connection. Setting to ABANDON allows the resource to be abandoned rather than deleted. This will enable a successful pulumi destroy when destroying CloudSQL instances. Use with care as it can lead to dangling resources.
+  /// [network] Name of VPC network connected with service producers using VPC peering.
+  /// [peering] (Computed) The name of the VPC Network Peering connection that was created by the service producer.
+  /// [reservedPeeringRanges] Named IP address range(s) of PEERING type reserved for
+  /// [service] Provider peering service that is managing peering connectivity for a
+  /// [updateOnCreationFail] When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
+  ConnectionState({
+    pulumi.Output<String>? deletionPolicy,
+    pulumi.Output<String>? network,
+    pulumi.Output<String>? peering,
+    pulumi.Output<List<String>>? reservedPeeringRanges,
+    pulumi.Output<String>? service,
+    pulumi.Output<bool>? updateOnCreationFail,
+  }) :
+      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
+      network = pulumi.Input.asOptionalInput<String>(network),
+      peering = pulumi.Input.asOptionalInput<String>(peering),
+      reservedPeeringRanges = pulumi.Input.asOptionalInput<List<String>>(reservedPeeringRanges),
+      service = pulumi.Input.asOptionalInput<String>(service),
+      updateOnCreationFail = pulumi.Input.asOptionalInput<bool>(updateOnCreationFail);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'deletionPolicy': ?deletionPolicy,
+      'network': ?network,
+      'peering': ?peering,
+      'reservedPeeringRanges': ?reservedPeeringRanges,
+      'service': ?service,
+      'updateOnCreationFail': ?updateOnCreationFail,
+    };
+  }
+
+  factory ConnectionState.fromMap(Map<String, dynamic> map) {
+    return ConnectionState(
+      deletionPolicy: map['deletionPolicy'] == null ? null : pulumi.Output.create<String>(map['deletionPolicy'] as String),
+      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
+      peering: map['peering'] == null ? null : pulumi.Output.create<String>(map['peering'] as String),
+      reservedPeeringRanges: map['reservedPeeringRanges'] == null ? null : pulumi.Output.create<List<String>>((map['reservedPeeringRanges'] as List).cast<String>()),
+      service: map['service'] == null ? null : pulumi.Output.create<String>(map['service'] as String),
+      updateOnCreationFail: map['updateOnCreationFail'] == null ? null : pulumi.Output.create<bool>(map['updateOnCreationFail'] as bool),
+    );
+  }
+}
+

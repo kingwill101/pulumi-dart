@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering Target resources.
+class TargetState {
+  /// The Azure Region where the Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
+  final pulumi.Input<String>? location;
+  /// Specifies the Target Resource Id within which this Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
+  final pulumi.Input<String>? targetResourceId;
+  /// The name of the Chaos Studio Target. This has the format of [publisher]-[targetType] e.g. `Microsoft-StorageAccount`. For supported values please see this Target Type column in [this table](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-providers). Changing this forces a new Chaos Studio Target to be created.
+  final pulumi.Input<String>? targetType;
+
+  /// Creates a new [TargetState].
+  /// [location] The Azure Region where the Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
+  /// [targetResourceId] Specifies the Target Resource Id within which this Chaos Studio Target should exist. Changing this forces a new Chaos Studio Target to be created.
+  /// [targetType] The name of the Chaos Studio Target. This has the format of [publisher]-[targetType] e.g. `Microsoft-StorageAccount`. For supported values please see this Target Type column in [this table](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-providers). Changing this forces a new Chaos Studio Target to be created.
+  TargetState({
+    pulumi.Output<String>? location,
+    pulumi.Output<String>? targetResourceId,
+    pulumi.Output<String>? targetType,
+  }) :
+      location = pulumi.Input.asOptionalInput<String>(location),
+      targetResourceId = pulumi.Input.asOptionalInput<String>(targetResourceId),
+      targetType = pulumi.Input.asOptionalInput<String>(targetType);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'location': ?location,
+      'targetResourceId': ?targetResourceId,
+      'targetType': ?targetType,
+    };
+  }
+
+  factory TargetState.fromMap(Map<String, dynamic> map) {
+    return TargetState(
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      targetResourceId: map['targetResourceId'] == null ? null : pulumi.Output.create<String>(map['targetResourceId'] as String),
+      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
+    );
+  }
+}
+

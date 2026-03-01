@@ -1,0 +1,107 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'authz_policy_custom_provider.dart';
+import 'authz_policy_http_rule.dart';
+import 'authz_policy_target.dart';
+
+/// {@template pulumi_networksecurity_authz_policy_authz_policy_args_doc}
+/// The set of arguments for AuthzPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_networksecurity_authz_policy_authz_policy_args_doc}
+class AuthzPolicyArgs {
+  /// When the action is CUSTOM, customProvider must be specified.
+  /// When the action is ALLOW, only requests matching the policy will be allowed.
+  /// When the action is DENY, only requests matching the policy will be denied.
+  /// When a request arrives, the policies are evaluated in the following order:
+  /// 1. If there is a CUSTOM policy that matches the request, the CUSTOM policy is evaluated using the custom authorization providers and the request is denied if the provider rejects the request.
+  /// 2. If there are any DENY policies that match the request, the request is denied.
+  /// 3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
+  /// 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
+  /// Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+  final pulumi.Input<String> action;
+  /// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+  /// Structure is documented below.
+  final pulumi.Input<AuthzPolicyCustomProvider>? customProvider;
+  /// A human-readable description of the resource.
+  final pulumi.Input<String>? description;
+  /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+  /// Limited to 5 rules.
+  /// Structure is documented below.
+  final pulumi.Input<List<AuthzPolicyHttpRule>>? httpRules;
+  /// Set of labels associated with the AuthzExtension resource.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>>? labels;
+  /// The location of the resource.
+  final pulumi.Input<String> location;
+  /// Identifier. Name of the AuthzPolicy resource.
+  final pulumi.Input<String>? name;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// Specifies the set of resources to which this policy should be applied to.
+  /// Structure is documented below.
+  final pulumi.Input<AuthzPolicyTarget> target;
+
+  /// Creates a new [AuthzPolicyArgs].
+  /// [action] When the action is CUSTOM, customProvider must be specified.
+  /// [customProvider] Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
+  /// [description] A human-readable description of the resource.
+  /// [httpRules] A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
+  /// [labels] Set of labels associated with the AuthzExtension resource.
+  /// [location] The location of the resource.
+  /// [name] Identifier. Name of the AuthzPolicy resource.
+  /// [project] The ID of the project in which the resource belongs.
+  /// [target] Specifies the set of resources to which this policy should be applied to.
+  AuthzPolicyArgs({
+    required pulumi.Output<String> action,
+    pulumi.Output<AuthzPolicyCustomProvider>? customProvider,
+    pulumi.Output<String>? description,
+    pulumi.Output<List<AuthzPolicyHttpRule>>? httpRules,
+    pulumi.Output<Map<String, String>>? labels,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? project,
+    required pulumi.Output<AuthzPolicyTarget> target,
+  }) :
+      action = pulumi.Input.asInput<String>(action),
+      customProvider = pulumi.Input.asOptionalInput<AuthzPolicyCustomProvider>(customProvider),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      httpRules = pulumi.Input.asOptionalInput<List<AuthzPolicyHttpRule>>(httpRules),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      target = pulumi.Input.asInput<AuthzPolicyTarget>(target);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'action': action,
+      'customProvider': ?pulumi.Input.mapOptionalInputValue<AuthzPolicyCustomProvider, Map<String, dynamic>>(customProvider, (value) => value.toMap()),
+      'description': ?description,
+      'httpRules': ?pulumi.Input.mapOptionalInputValue<List<AuthzPolicyHttpRule>, List<Map<String, dynamic>>>(httpRules, (value) => pulumi.Input.encodeList<AuthzPolicyHttpRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'labels': ?labels,
+      'location': location,
+      'name': ?name,
+      'project': ?project,
+      'target': pulumi.Input.mapInputValue<AuthzPolicyTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
+    };
+  }
+
+  factory AuthzPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return AuthzPolicyArgs(
+      action: pulumi.Output.create<String>(map['action'] as String),
+      customProvider: map['customProvider'] == null ? null : pulumi.Output.create<AuthzPolicyCustomProvider>(AuthzPolicyCustomProvider.fromMap((map['customProvider'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      httpRules: map['httpRules'] == null ? null : pulumi.Output.create<List<AuthzPolicyHttpRule>>(pulumi.Input.decodeList<AuthzPolicyHttpRule>(map['httpRules'], (value) => AuthzPolicyHttpRule.fromMap((value as Map).cast<String, dynamic>()))),
+      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      target: pulumi.Output.create<AuthzPolicyTarget>(AuthzPolicyTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

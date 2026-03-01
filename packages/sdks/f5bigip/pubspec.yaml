@@ -1,0 +1,17 @@
+name: pulumi_f5bigip
+description: A Pulumi package for creating and managing F5 BigIP resources.
+version: 3.19.3
+license: Apache-2.0
+homepage: https://pulumi.io
+repository: https://github.com/pulumi/pulumi-f5bigip
+topics:
+    - pulumi
+    - f5
+    - bigip
+environment:
+    sdk: ^3.10.0
+resolution: workspace
+dependencies:
+    pulumi: 0.1.0
+dev_dependencies:
+    lints: ^6.1.0

@@ -1,0 +1,48 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_lambda_function_recursion_config_function_recursion_config_args_doc}
+/// The set of arguments for FunctionRecursionConfig.
+/// {@endtemplate}
+/// {@macro pulumi_lambda_function_recursion_config_function_recursion_config_args_doc}
+class FunctionRecursionConfigArgs {
+  /// Name of the Lambda function.
+  final pulumi.Input<String> functionName;
+  /// Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<String> recursiveLoop;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [FunctionRecursionConfigArgs].
+  /// [functionName] Name of the Lambda function.
+  /// [recursiveLoop] Lambda function recursion configuration. Valid values are `Allow` or `Terminate`.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  FunctionRecursionConfigArgs({
+    required pulumi.Output<String> functionName,
+    required pulumi.Output<String> recursiveLoop,
+    pulumi.Output<String>? region,
+  }) :
+      functionName = pulumi.Input.asInput<String>(functionName),
+      recursiveLoop = pulumi.Input.asInput<String>(recursiveLoop),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'functionName': functionName,
+      'recursiveLoop': recursiveLoop,
+      'region': ?region,
+    };
+  }
+
+  factory FunctionRecursionConfigArgs.fromMap(Map<String, dynamic> map) {
+    return FunctionRecursionConfigArgs(
+      functionName: pulumi.Output.create<String>(map['functionName'] as String),
+      recursiveLoop: pulumi.Output.create<String>(map['recursiveLoop'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,31 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_index_get_container_registries_get_container_registries_args_doc}
+/// Arguments for getContainerRegistries.
+/// {@endtemplate}
+/// {@macro pulumi_index_get_container_registries_get_container_registries_args_doc}
+class GetContainerRegistriesArgs {
+  final pulumi.Input<String> name;
+
+  /// Creates a new [GetContainerRegistriesArgs].
+  /// [name] Required.
+  GetContainerRegistriesArgs({
+    required pulumi.Output<String> name,
+  }) :
+      name = pulumi.Input.asInput<String>(name);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+    };
+  }
+
+  factory GetContainerRegistriesArgs.fromMap(Map<String, dynamic> map) {
+    return GetContainerRegistriesArgs(
+      name: pulumi.Output.create<String>(map['name'] as String),
+    );
+  }
+}
+

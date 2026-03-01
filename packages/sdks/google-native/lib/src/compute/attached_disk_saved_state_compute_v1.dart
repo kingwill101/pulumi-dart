@@ -1,0 +1,18 @@
+/// For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED if the LocalSSD data has been saved to a persistent location by customer request. (see the discard_local_ssd option on Stop/Suspend). Read-only in the api.
+enum AttachedDiskSavedStateComputeV1 {
+  diskSavedStateUnspecified("DISK_SAVED_STATE_UNSPECIFIED"),
+  preserved("PRESERVED");
+
+  const AttachedDiskSavedStateComputeV1(this.value);
+  final String value;
+
+  static AttachedDiskSavedStateComputeV1 fromValue(String value) {
+    for (final item in AttachedDiskSavedStateComputeV1.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown AttachedDiskSavedStateComputeV1 value: $value');
+  }
+}
+

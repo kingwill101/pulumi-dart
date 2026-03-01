@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_kinesis_resource_policy_resource_policy_args_doc}
+/// The set of arguments for ResourcePolicy.
+/// {@endtemplate}
+/// {@macro pulumi_kinesis_resource_policy_resource_policy_args_doc}
+class ResourcePolicyArgs {
+  /// The policy document.
+  final pulumi.Input<String> policy;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// The Amazon Resource Name (ARN) of the data stream or consumer.
+  final pulumi.Input<String> resourceArn;
+
+  /// Creates a new [ResourcePolicyArgs].
+  /// [policy] The policy document.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [resourceArn] The Amazon Resource Name (ARN) of the data stream or consumer.
+  ResourcePolicyArgs({
+    required pulumi.Output<String> policy,
+    pulumi.Output<String>? region,
+    required pulumi.Output<String> resourceArn,
+  }) :
+      policy = pulumi.Input.asInput<String>(policy),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      resourceArn = pulumi.Input.asInput<String>(resourceArn);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'policy': policy,
+      'region': ?region,
+      'resourceArn': resourceArn,
+    };
+  }
+
+  factory ResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
+    return ResourcePolicyArgs(
+      policy: pulumi.Output.create<String>(map['policy'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      resourceArn: pulumi.Output.create<String>(map['resourceArn'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_databricks_get_access_connector_get_access_connector_args_doc}
+/// Arguments for getAccessConnector.
+/// {@endtemplate}
+/// {@macro pulumi_databricks_get_access_connector_get_access_connector_args_doc}
+class GetAccessConnectorArgs {
+  /// The name of this Databricks Access Connector.
+  final pulumi.Input<String> name;
+  /// The name of the Resource Group where the Databricks Access Connector exists. Changing this forces a new Databricks Access Connector to be created.
+  final pulumi.Input<String> resourceGroupName;
+
+  /// Creates a new [GetAccessConnectorArgs].
+  /// [name] The name of this Databricks Access Connector.
+  /// [resourceGroupName] The name of the Resource Group where the Databricks Access Connector exists. Changing this forces a new Databricks Access Connector to be created.
+  GetAccessConnectorArgs({
+    required pulumi.Output<String> name,
+    required pulumi.Output<String> resourceGroupName,
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'resourceGroupName': resourceGroupName,
+    };
+  }
+
+  factory GetAccessConnectorArgs.fromMap(Map<String, dynamic> map) {
+    return GetAccessConnectorArgs(
+      name: pulumi.Output.create<String>(map['name'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+    );
+  }
+}
+

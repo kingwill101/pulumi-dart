@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering MoverProject resources.
+class MoverProjectState {
+  /// Specifies a description for this Storage Mover Project.
+  final pulumi.Input<String>? description;
+  /// Specifies the name which should be used for this Storage Mover Project. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// Specifies the ID of the storage mover for this Storage Mover Project. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? storageMoverId;
+
+  /// Creates a new [MoverProjectState].
+  /// [description] Specifies a description for this Storage Mover Project.
+  /// [name] Specifies the name which should be used for this Storage Mover Project. Changing this forces a new resource to be created.
+  /// [storageMoverId] Specifies the ID of the storage mover for this Storage Mover Project. Changing this forces a new resource to be created.
+  MoverProjectState({
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? storageMoverId,
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      storageMoverId = pulumi.Input.asOptionalInput<String>(storageMoverId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'name': ?name,
+      'storageMoverId': ?storageMoverId,
+    };
+  }
+
+  factory MoverProjectState.fromMap(Map<String, dynamic> map) {
+    return MoverProjectState(
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      storageMoverId: map['storageMoverId'] == null ? null : pulumi.Output.create<String>(map['storageMoverId'] as String),
+    );
+  }
+}
+

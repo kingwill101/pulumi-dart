@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'kubernetes_permission_permission.dart';
+
+/// Input properties used for looking up and filtering KubernetesPermission resources.
+class KubernetesPermissionState {
+  /// A list of user permission. See `permissions` below.
+  final pulumi.Input<List<KubernetesPermissionPermission>>? permissions;
+  /// The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+  final pulumi.Input<String>? uid;
+
+  /// Creates a new [KubernetesPermissionState].
+  /// [permissions] A list of user permission. See `permissions` below.
+  /// [uid] The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
+  KubernetesPermissionState({
+    pulumi.Output<List<KubernetesPermissionPermission>>? permissions,
+    pulumi.Output<String>? uid,
+  }) :
+      permissions = pulumi.Input.asOptionalInput<List<KubernetesPermissionPermission>>(permissions),
+      uid = pulumi.Input.asOptionalInput<String>(uid);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'permissions': ?pulumi.Input.mapOptionalInputValue<List<KubernetesPermissionPermission>, List<Map<String, dynamic>>>(permissions, (value) => pulumi.Input.encodeList<KubernetesPermissionPermission, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'uid': ?uid,
+    };
+  }
+
+  factory KubernetesPermissionState.fromMap(Map<String, dynamic> map) {
+    return KubernetesPermissionState(
+      permissions: map['permissions'] == null ? null : pulumi.Output.create<List<KubernetesPermissionPermission>>(pulumi.Input.decodeList<KubernetesPermissionPermission>(map['permissions'], (value) => KubernetesPermissionPermission.fromMap((value as Map).cast<String, dynamic>()))),
+      uid: map['uid'] == null ? null : pulumi.Output.create<String>(map['uid'] as String),
+    );
+  }
+}
+

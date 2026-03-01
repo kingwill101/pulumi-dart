@@ -1,0 +1,67 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_index_custom_image_custom_image_args_doc}
+/// The set of arguments for CustomImage.
+/// {@endtemplate}
+/// {@macro pulumi_index_custom_image_custom_image_args_doc}
+class CustomImageArgs {
+  /// An optional description for the image.
+  final pulumi.Input<String>? description;
+  /// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
+  final pulumi.Input<String>? distribution;
+  /// A name for the Custom Image.
+  final pulumi.Input<String>? name;
+  /// A list of regions. (Currently only one is supported).
+  final pulumi.Input<List<String>> regions;
+  /// A list of optional tags for the image.
+  final pulumi.Input<List<String>>? tags;
+  /// A URL from which the custom Linux virtual machine image may be retrieved.
+  final pulumi.Input<String> url;
+
+  /// Creates a new [CustomImageArgs].
+  /// [description] An optional description for the image.
+  /// [distribution] An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
+  /// [name] A name for the Custom Image.
+  /// [regions] A list of regions. (Currently only one is supported).
+  /// [tags] A list of optional tags for the image.
+  /// [url] A URL from which the custom Linux virtual machine image may be retrieved.
+  CustomImageArgs({
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? distribution,
+    pulumi.Output<String>? name,
+    required pulumi.Output<List<String>> regions,
+    pulumi.Output<List<String>>? tags,
+    required pulumi.Output<String> url,
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      distribution = pulumi.Input.asOptionalInput<String>(distribution),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      regions = pulumi.Input.asInput<List<String>>(regions),
+      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
+      url = pulumi.Input.asInput<String>(url);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'distribution': ?distribution,
+      'name': ?name,
+      'regions': regions,
+      'tags': ?tags,
+      'url': url,
+    };
+  }
+
+  factory CustomImageArgs.fromMap(Map<String, dynamic> map) {
+    return CustomImageArgs(
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      distribution: map['distribution'] == null ? null : pulumi.Output.create<String>(map['distribution'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      regions: pulumi.Output.create<List<String>>((map['regions'] as List).cast<String>()),
+      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      url: pulumi.Output.create<String>(map['url'] as String),
+    );
+  }
+}
+

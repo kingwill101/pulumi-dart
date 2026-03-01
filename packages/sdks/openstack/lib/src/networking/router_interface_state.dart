@@ -1,0 +1,65 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering RouterInterface resources.
+class RouterInterfaceState {
+  /// A boolean indicating whether the routes from the
+  /// corresponding router ID should be deleted so that the router interface can
+  /// be destroyed without any errors. The default value is `false`.
+  final pulumi.Input<bool>? forceDestroy;
+  /// ID of the port this interface connects to. Changing
+  /// this creates a new router interface.
+  final pulumi.Input<String>? portId;
+  /// The region in which to obtain the V2 networking client.
+  /// A networking client is needed to create a router. If omitted, the
+  /// `region` argument of the provider is used. Changing this creates a new
+  /// router interface.
+  final pulumi.Input<String>? region;
+  /// ID of the router this interface belongs to. Changing
+  /// this creates a new router interface.
+  final pulumi.Input<String>? routerId;
+  /// ID of the subnet this interface connects to. Changing
+  /// this creates a new router interface.
+  final pulumi.Input<String>? subnetId;
+
+  /// Creates a new [RouterInterfaceState].
+  /// [forceDestroy] A boolean indicating whether the routes from the
+  /// [portId] ID of the port this interface connects to. Changing
+  /// [region] The region in which to obtain the V2 networking client.
+  /// [routerId] ID of the router this interface belongs to. Changing
+  /// [subnetId] ID of the subnet this interface connects to. Changing
+  RouterInterfaceState({
+    pulumi.Output<bool>? forceDestroy,
+    pulumi.Output<String>? portId,
+    pulumi.Output<String>? region,
+    pulumi.Output<String>? routerId,
+    pulumi.Output<String>? subnetId,
+  }) :
+      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
+      portId = pulumi.Input.asOptionalInput<String>(portId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      routerId = pulumi.Input.asOptionalInput<String>(routerId),
+      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'forceDestroy': ?forceDestroy,
+      'portId': ?portId,
+      'region': ?region,
+      'routerId': ?routerId,
+      'subnetId': ?subnetId,
+    };
+  }
+
+  factory RouterInterfaceState.fromMap(Map<String, dynamic> map) {
+    return RouterInterfaceState(
+      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
+      portId: map['portId'] == null ? null : pulumi.Output.create<String>(map['portId'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      routerId: map['routerId'] == null ? null : pulumi.Output.create<String>(map['routerId'] as String),
+      subnetId: map['subnetId'] == null ? null : pulumi.Output.create<String>(map['subnetId'] as String),
+    );
+  }
+}
+

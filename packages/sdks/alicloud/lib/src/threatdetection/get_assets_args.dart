@@ -1,0 +1,93 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_threatdetection_get_assets_get_assets_args_doc}
+/// Arguments for getAssets.
+/// {@endtemplate}
+/// {@macro pulumi_threatdetection_get_assets_get_assets_args_doc}
+class GetAssetsArgs {
+  /// Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+  final pulumi.Input<String>? criteria;
+  /// A list of Asset IDs.
+  final pulumi.Input<List<String>>? ids;
+  /// Set asset importance. Value:
+  /// - **2**: Significant assets
+  /// - **1**: General assets
+  /// - **0**: Test asset
+  final pulumi.Input<int>? importance;
+  /// Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+  /// - **OR**: indicates that the relationship between multiple search conditions is **OR**.
+  /// - **AND**: indicates that the relationship between multiple search conditions is **AND**.
+  final pulumi.Input<String>? logicalExp;
+  /// The type of asset to query. Value:
+  /// - **ecs**: server.
+  /// - **cloud_product**: Cloud product.
+  final pulumi.Input<String>? machineTypes;
+  /// Specifies whether to internationalize the name of the default group. Default value: false
+  final pulumi.Input<bool>? noGroupTrace;
+  /// File name where to save data source results (after running `pulumi preview`).
+  final pulumi.Input<String>? outputFile;
+  final pulumi.Input<int>? pageNumber;
+  final pulumi.Input<int>? pageSize;
+
+  /// Creates a new [GetAssetsArgs].
+  /// [criteria] Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+  /// [ids] A list of Asset IDs.
+  /// [importance] Set asset importance. Value:
+  /// [logicalExp] Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+  /// [machineTypes] The type of asset to query. Value:
+  /// [noGroupTrace] Specifies whether to internationalize the name of the default group. Default value: false
+  /// [outputFile] File name where to save data source results (after running `pulumi preview`).
+  /// [pageNumber] Optional.
+  /// [pageSize] Optional.
+  GetAssetsArgs({
+    pulumi.Output<String>? criteria,
+    pulumi.Output<List<String>>? ids,
+    pulumi.Output<int>? importance,
+    pulumi.Output<String>? logicalExp,
+    pulumi.Output<String>? machineTypes,
+    pulumi.Output<bool>? noGroupTrace,
+    pulumi.Output<String>? outputFile,
+    pulumi.Output<int>? pageNumber,
+    pulumi.Output<int>? pageSize,
+  }) :
+      criteria = pulumi.Input.asOptionalInput<String>(criteria),
+      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
+      importance = pulumi.Input.asOptionalInput<int>(importance),
+      logicalExp = pulumi.Input.asOptionalInput<String>(logicalExp),
+      machineTypes = pulumi.Input.asOptionalInput<String>(machineTypes),
+      noGroupTrace = pulumi.Input.asOptionalInput<bool>(noGroupTrace),
+      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
+      pageNumber = pulumi.Input.asOptionalInput<int>(pageNumber),
+      pageSize = pulumi.Input.asOptionalInput<int>(pageSize);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'criteria': ?criteria,
+      'ids': ?ids,
+      'importance': ?importance,
+      'logicalExp': ?logicalExp,
+      'machineTypes': ?machineTypes,
+      'noGroupTrace': ?noGroupTrace,
+      'outputFile': ?outputFile,
+      'pageNumber': ?pageNumber,
+      'pageSize': ?pageSize,
+    };
+  }
+
+  factory GetAssetsArgs.fromMap(Map<String, dynamic> map) {
+    return GetAssetsArgs(
+      criteria: map['criteria'] == null ? null : pulumi.Output.create<String>(map['criteria'] as String),
+      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
+      importance: map['importance'] == null ? null : pulumi.Output.create<int>(map['importance'] as int),
+      logicalExp: map['logicalExp'] == null ? null : pulumi.Output.create<String>(map['logicalExp'] as String),
+      machineTypes: map['machineTypes'] == null ? null : pulumi.Output.create<String>(map['machineTypes'] as String),
+      noGroupTrace: map['noGroupTrace'] == null ? null : pulumi.Output.create<bool>(map['noGroupTrace'] as bool),
+      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      pageNumber: map['pageNumber'] == null ? null : pulumi.Output.create<int>(map['pageNumber'] as int),
+      pageSize: map['pageSize'] == null ? null : pulumi.Output.create<int>(map['pageSize'] as int),
+    );
+  }
+}
+

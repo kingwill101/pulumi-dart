@@ -1,0 +1,88 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'provider_args.dart';
+import 'provider_terraform_config_result.dart';
+
+/// The provider type for the aws package. By default, resources use package-wide configuration
+/// settings, however an explicit `Provider` instance may be created and passed during resource
+/// construction to achieve fine-grained programmatic control over provider settings. See the
+/// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
+class ProviderProvider extends pulumi.ProviderResource {
+  /// The access key for API operations. You can retrieve this
+  /// from the 'Security & Credentials' section of the AWS console.
+  late final pulumi.Output<String?> accessKey;
+  /// File containing custom root and intermediate certificates. Can also be configured using the `AWS_CA_BUNDLE` environment variable. (Setting `ca_bundle` in the shared config file is not supported.)
+  late final pulumi.Output<String?> customCaBundle;
+  /// Address of the EC2 metadata service endpoint to use. Can also be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT` environment variable.
+  late final pulumi.Output<String?> ec2MetadataServiceEndpoint;
+  /// Protocol to use with EC2 metadata service endpoint.Valid values are `IPv4` and `IPv6`. Can also be configured using the `AWS_EC2_METADATA_SERVICE_ENDPOINT_MODE` environment variable.
+  late final pulumi.Output<String?> ec2MetadataServiceEndpointMode;
+  /// URL of a proxy to use for HTTP requests when accessing the AWS API. Can also be set using the `HTTP_PROXY` or `http_proxy` environment variables.
+  late final pulumi.Output<String?> httpProxy;
+  /// URL of a proxy to use for HTTPS requests when accessing the AWS API. Can also be set using the `HTTPS_PROXY` or `https_proxy` environment variables.
+  late final pulumi.Output<String?> httpsProxy;
+  /// Comma-separated list of hosts that should not use HTTP or HTTPS proxies. Can also be set using the `NO_PROXY` or `no_proxy` environment variables.
+  late final pulumi.Output<String?> noProxy;
+  /// The profile for API operations. If not set, the default profile
+  /// created with `aws configure` will be used.
+  late final pulumi.Output<String?> profile;
+  /// The region where AWS operations will take place. Examples
+  /// are us-east-1, us-west-2, etc.
+  late final pulumi.Output<String?> region;
+  /// Specifies how retries are attempted. Valid values are `standard` and `adaptive`. Can also be configured using the `AWS_RETRY_MODE` environment variable.
+  late final pulumi.Output<String?> retryMode;
+  /// Specifies whether S3 API calls in the `us-east-1` region use the legacy global endpoint or a regional endpoint. Valid values are `legacy` or `regional`. Can also be configured using the `AWS_S3_US_EAST_1_REGIONAL_ENDPOINT` environment variable or the `s3_us_east_1_regional_endpoint` shared config file parameter
+  late final pulumi.Output<String?> s3UsEast1RegionalEndpoint;
+  /// The secret key for API operations. You can retrieve this
+  /// from the 'Security & Credentials' section of the AWS console.
+  late final pulumi.Output<String?> secretKey;
+  /// The region where AWS STS operations will take place. Examples
+  /// are us-east-1 and us-west-2.
+  late final pulumi.Output<String?> stsRegion;
+  /// The severity with which to enforce organizational tagging policies on resources managed by this provider instance. At this time this only includes compliance with required tag keys by resource type. Valid values are "error", "warning", and "disabled". When unset or "disabled", tag policy compliance will not be enforced by the provider. Can also be configured with the TF_AWS_TAG_POLICY_COMPLIANCE environment variable.
+  late final pulumi.Output<String?> tagPolicyCompliance;
+  /// session token. A session token is only required if you are
+  /// using temporary security credentials.
+  late final pulumi.Output<String?> token;
+
+  /// Creates a new [ProviderProvider].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [ProviderProvider]. {@macro pulumi_providers_provider_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  ProviderProvider(
+    String name, {
+    ProviderArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.accessKey = registerOutput<String?>('accessKey');
+    this.customCaBundle = registerOutput<String?>('customCaBundle');
+    this.ec2MetadataServiceEndpoint = registerOutput<String?>('ec2MetadataServiceEndpoint');
+    this.ec2MetadataServiceEndpointMode = registerOutput<String?>('ec2MetadataServiceEndpointMode');
+    this.httpProxy = registerOutput<String?>('httpProxy');
+    this.httpsProxy = registerOutput<String?>('httpsProxy');
+    this.noProxy = registerOutput<String?>('noProxy');
+    this.profile = registerOutput<String?>('profile');
+    this.region = registerOutput<String?>('region');
+    this.retryMode = registerOutput<String?>('retryMode');
+    this.s3UsEast1RegionalEndpoint = registerOutput<String?>('s3UsEast1RegionalEndpoint');
+    this.secretKey = registerOutput<String?>('secretKey');
+    this.stsRegion = registerOutput<String?>('stsRegion');
+    this.tagPolicyCompliance = registerOutput<String?>('tagPolicyCompliance');
+    this.token = registerOutput<String?>('token');
+  }
+
+  /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+  Future<ProviderTerraformConfigResult> terraformConfig() async {
+    final deployment = pulumi.Deployment.instance;
+    final result = await deployment.callWithResult<Map<String, dynamic>>(
+      'pulumi:providers:aws/terraformConfig',
+      const <String, dynamic>{},
+      self: this,
+    );
+    return ProviderTerraformConfigResult.fromMap(result);
+  }
+}

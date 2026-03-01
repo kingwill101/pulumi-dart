@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_resources_get_deployment_args_doc}
+/// Arguments for getDeployment.
+/// {@endtemplate}
+/// {@macro pulumi_resources_get_deployment_args_doc}
+class GetDeploymentArgs {
+  /// The name of the deployment.
+  final pulumi.Input<String> deploymentName;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+
+  /// Creates a new [GetDeploymentArgs].
+  /// [deploymentName] The name of the deployment.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  GetDeploymentArgs({
+    required pulumi.Output<String> deploymentName,
+    required pulumi.Output<String> resourceGroupName,
+  }) :
+      deploymentName = pulumi.Input.asInput<String>(deploymentName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'deploymentName': deploymentName,
+      'resourceGroupName': resourceGroupName,
+    };
+  }
+
+  factory GetDeploymentArgs.fromMap(Map<String, dynamic> map) {
+    return GetDeploymentArgs(
+      deploymentName: pulumi.Output.create<String>(map['deploymentName'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+    );
+  }
+}
+

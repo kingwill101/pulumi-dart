@@ -1,0 +1,89 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'role.dart';
+
+/// {@template pulumi_cosmosdb_mongo_dbresource_mongo_user_definition_args_doc}
+/// The set of arguments for MongoDBResourceMongoUserDefinition.
+/// {@endtemplate}
+/// {@macro pulumi_cosmosdb_mongo_dbresource_mongo_user_definition_args_doc}
+class MongoDBResourceMongoUserDefinitionArgs {
+  /// Cosmos DB database account name.
+  final pulumi.Input<String> accountName;
+  /// A custom definition for the USer Definition.
+  final pulumi.Input<String>? customData;
+  /// The database name for which access is being granted for this User Definition.
+  final pulumi.Input<String>? databaseName;
+  /// The Mongo Auth mechanism. For now, we only support auth mechanism SCRAM-SHA-256.
+  final pulumi.Input<String>? mechanisms;
+  /// The ID for the User Definition {dbName.userName}.
+  final pulumi.Input<String>? mongoUserDefinitionId;
+  /// The password for User Definition. Response does not contain user password.
+  final pulumi.Input<String>? password;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// The set of roles inherited by the User Definition.
+  final pulumi.Input<List<Role>>? roles;
+  /// The user name for User Definition.
+  final pulumi.Input<String>? userName;
+
+  /// Creates a new [MongoDBResourceMongoUserDefinitionArgs].
+  /// [accountName] Cosmos DB database account name.
+  /// [customData] A custom definition for the USer Definition.
+  /// [databaseName] The database name for which access is being granted for this User Definition.
+  /// [mechanisms] The Mongo Auth mechanism. For now, we only support auth mechanism SCRAM-SHA-256.
+  /// [mongoUserDefinitionId] The ID for the User Definition {dbName.userName}.
+  /// [password] The password for User Definition. Response does not contain user password.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [roles] The set of roles inherited by the User Definition.
+  /// [userName] The user name for User Definition.
+  MongoDBResourceMongoUserDefinitionArgs({
+    required pulumi.Output<String> accountName,
+    pulumi.Output<String>? customData,
+    pulumi.Output<String>? databaseName,
+    pulumi.Output<String>? mechanisms,
+    pulumi.Output<String>? mongoUserDefinitionId,
+    pulumi.Output<String>? password,
+    required pulumi.Output<String> resourceGroupName,
+    pulumi.Output<List<Role>>? roles,
+    pulumi.Output<String>? userName,
+  }) :
+      accountName = pulumi.Input.asInput<String>(accountName),
+      customData = pulumi.Input.asOptionalInput<String>(customData),
+      databaseName = pulumi.Input.asOptionalInput<String>(databaseName),
+      mechanisms = pulumi.Input.asOptionalInput<String>(mechanisms),
+      mongoUserDefinitionId = pulumi.Input.asOptionalInput<String>(mongoUserDefinitionId),
+      password = pulumi.Input.asOptionalInput<String>(password),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      roles = pulumi.Input.asOptionalInput<List<Role>>(roles),
+      userName = pulumi.Input.asOptionalInput<String>(userName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accountName': accountName,
+      'customData': ?customData,
+      'databaseName': ?databaseName,
+      'mechanisms': ?mechanisms,
+      'mongoUserDefinitionId': ?mongoUserDefinitionId,
+      'password': ?password,
+      'resourceGroupName': resourceGroupName,
+      'roles': ?pulumi.Input.mapOptionalInputValue<List<Role>, List<Map<String, dynamic>>>(roles, (value) => pulumi.Input.encodeList<Role, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'userName': ?userName,
+    };
+  }
+
+  factory MongoDBResourceMongoUserDefinitionArgs.fromMap(Map<String, dynamic> map) {
+    return MongoDBResourceMongoUserDefinitionArgs(
+      accountName: pulumi.Output.create<String>(map['accountName'] as String),
+      customData: map['customData'] == null ? null : pulumi.Output.create<String>(map['customData'] as String),
+      databaseName: map['databaseName'] == null ? null : pulumi.Output.create<String>(map['databaseName'] as String),
+      mechanisms: map['mechanisms'] == null ? null : pulumi.Output.create<String>(map['mechanisms'] as String),
+      mongoUserDefinitionId: map['mongoUserDefinitionId'] == null ? null : pulumi.Output.create<String>(map['mongoUserDefinitionId'] as String),
+      password: map['password'] == null ? null : pulumi.Output.create<String>(map['password'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      roles: map['roles'] == null ? null : pulumi.Output.create<List<Role>>(pulumi.Input.decodeList<Role>(map['roles'], (value) => Role.fromMap((value as Map).cast<String, dynamic>()))),
+      userName: map['userName'] == null ? null : pulumi.Output.create<String>(map['userName'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,134 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'server_group_connection_drain_config.dart';
+import 'server_group_health_check_config.dart';
+import 'server_group_server.dart';
+
+/// Input properties used for looking up and filtering ServerGroup resources.
+class ServerGroupState {
+  /// Connected graceful interrupt configuration. See `connection_drain_config` below.
+  final pulumi.Input<ServerGroupConnectionDrainConfig>? connectionDrainConfig;
+  /// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+  final pulumi.Input<String>? createTime;
+  /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+  final pulumi.Input<bool>? dryRun;
+  /// Health check configurations. See `health_check_config` below.
+  final pulumi.Input<ServerGroupHealthCheckConfig>? healthCheckConfig;
+  /// The backend protocol. Valid values:
+  ///
+  /// - `GENEVE`(default)
+  final pulumi.Input<String>? protocol;
+  /// The ID of the resource group.
+  final pulumi.Input<String>? resourceGroupId;
+  /// The scheduling algorithm. Valid values:
+  ///
+  /// - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+  /// - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+  /// - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+  final pulumi.Input<String>? scheduler;
+  /// The server group name.
+  ///
+  /// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+  final pulumi.Input<String>? serverGroupName;
+  /// The type of server group. Valid values:
+  ///
+  /// - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+  /// - `Ip`: allows you to add servers of by specifying IP addresses.
+  final pulumi.Input<String>? serverGroupType;
+  /// The backend servers that you want to remove.
+  ///
+  /// > **NOTE:**  You can remove at most 200 backend servers in each call.
+  /// See `servers` below.
+  final pulumi.Input<List<ServerGroupServer>>? servers;
+  /// Indicates the status of the backend server.
+  final pulumi.Input<String>? status;
+  /// The tag keys.
+  ///
+  /// You can specify at most 20 tags in each call.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// The VPC ID.
+  ///
+  /// > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
+  final pulumi.Input<String>? vpcId;
+
+  /// Creates a new [ServerGroupState].
+  /// [connectionDrainConfig] Connected graceful interrupt configuration. See `connection_drain_config` below.
+  /// [createTime] The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+  /// [dryRun] Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+  /// [healthCheckConfig] Health check configurations. See `health_check_config` below.
+  /// [protocol] The backend protocol. Valid values:
+  /// [resourceGroupId] The ID of the resource group.
+  /// [scheduler] The scheduling algorithm. Valid values:
+  /// [serverGroupName] The server group name.
+  /// [serverGroupType] The type of server group. Valid values:
+  /// [servers] The backend servers that you want to remove.
+  /// [status] Indicates the status of the backend server.
+  /// [tags] The tag keys.
+  /// [vpcId] The VPC ID.
+  ServerGroupState({
+    pulumi.Output<ServerGroupConnectionDrainConfig>? connectionDrainConfig,
+    pulumi.Output<String>? createTime,
+    pulumi.Output<bool>? dryRun,
+    pulumi.Output<ServerGroupHealthCheckConfig>? healthCheckConfig,
+    pulumi.Output<String>? protocol,
+    pulumi.Output<String>? resourceGroupId,
+    pulumi.Output<String>? scheduler,
+    pulumi.Output<String>? serverGroupName,
+    pulumi.Output<String>? serverGroupType,
+    pulumi.Output<List<ServerGroupServer>>? servers,
+    pulumi.Output<String>? status,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<String>? vpcId,
+  }) :
+      connectionDrainConfig = pulumi.Input.asOptionalInput<ServerGroupConnectionDrainConfig>(connectionDrainConfig),
+      createTime = pulumi.Input.asOptionalInput<String>(createTime),
+      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
+      healthCheckConfig = pulumi.Input.asOptionalInput<ServerGroupHealthCheckConfig>(healthCheckConfig),
+      protocol = pulumi.Input.asOptionalInput<String>(protocol),
+      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
+      scheduler = pulumi.Input.asOptionalInput<String>(scheduler),
+      serverGroupName = pulumi.Input.asOptionalInput<String>(serverGroupName),
+      serverGroupType = pulumi.Input.asOptionalInput<String>(serverGroupType),
+      servers = pulumi.Input.asOptionalInput<List<ServerGroupServer>>(servers),
+      status = pulumi.Input.asOptionalInput<String>(status),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'connectionDrainConfig': ?pulumi.Input.mapOptionalInputValue<ServerGroupConnectionDrainConfig, Map<String, dynamic>>(connectionDrainConfig, (value) => value.toMap()),
+      'createTime': ?createTime,
+      'dryRun': ?dryRun,
+      'healthCheckConfig': ?pulumi.Input.mapOptionalInputValue<ServerGroupHealthCheckConfig, Map<String, dynamic>>(healthCheckConfig, (value) => value.toMap()),
+      'protocol': ?protocol,
+      'resourceGroupId': ?resourceGroupId,
+      'scheduler': ?scheduler,
+      'serverGroupName': ?serverGroupName,
+      'serverGroupType': ?serverGroupType,
+      'servers': ?pulumi.Input.mapOptionalInputValue<List<ServerGroupServer>, List<Map<String, dynamic>>>(servers, (value) => pulumi.Input.encodeList<ServerGroupServer, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'status': ?status,
+      'tags': ?tags,
+      'vpcId': ?vpcId,
+    };
+  }
+
+  factory ServerGroupState.fromMap(Map<String, dynamic> map) {
+    return ServerGroupState(
+      connectionDrainConfig: map['connectionDrainConfig'] == null ? null : pulumi.Output.create<ServerGroupConnectionDrainConfig>(ServerGroupConnectionDrainConfig.fromMap((map['connectionDrainConfig'] as Map).cast<String, dynamic>())),
+      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
+      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
+      healthCheckConfig: map['healthCheckConfig'] == null ? null : pulumi.Output.create<ServerGroupHealthCheckConfig>(ServerGroupHealthCheckConfig.fromMap((map['healthCheckConfig'] as Map).cast<String, dynamic>())),
+      protocol: map['protocol'] == null ? null : pulumi.Output.create<String>(map['protocol'] as String),
+      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      scheduler: map['scheduler'] == null ? null : pulumi.Output.create<String>(map['scheduler'] as String),
+      serverGroupName: map['serverGroupName'] == null ? null : pulumi.Output.create<String>(map['serverGroupName'] as String),
+      serverGroupType: map['serverGroupType'] == null ? null : pulumi.Output.create<String>(map['serverGroupType'] as String),
+      servers: map['servers'] == null ? null : pulumi.Output.create<List<ServerGroupServer>>(pulumi.Input.decodeList<ServerGroupServer>(map['servers'], (value) => ServerGroupServer.fromMap((value as Map).cast<String, dynamic>()))),
+      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,123 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'config_blocking_functions.dart';
+import 'config_client.dart';
+import 'config_mfa.dart';
+import 'config_monitoring.dart';
+import 'config_multi_tenant.dart';
+import 'config_quota.dart';
+import 'config_sign_in.dart';
+import 'config_sms_region_config.dart';
+
+/// Input properties used for looking up and filtering Config resources.
+class ConfigState {
+  /// List of domains authorized for OAuth redirects.
+  final pulumi.Input<List<String>>? authorizedDomains;
+  /// Whether anonymous users will be auto-deleted after a period of 30 days
+  final pulumi.Input<bool>? autodeleteAnonymousUsers;
+  /// Configuration related to blocking functions.
+  /// Structure is documented below.
+  final pulumi.Input<ConfigBlockingFunctions>? blockingFunctions;
+  /// Options related to how clients making requests on behalf of a project should be configured.
+  /// Structure is documented below.
+  final pulumi.Input<ConfigClient>? client;
+  /// Options related to how clients making requests on behalf of a project should be configured.
+  /// Structure is documented below.
+  final pulumi.Input<ConfigMfa>? mfa;
+  /// Configuration related to monitoring project activity.
+  /// Structure is documented below.
+  final pulumi.Input<ConfigMonitoring>? monitoring;
+  /// Configuration related to multi-tenant functionality.
+  /// Structure is documented below.
+  final pulumi.Input<ConfigMultiTenant>? multiTenant;
+  /// The name of the Config resource
+  final pulumi.Input<String>? name;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// Configuration related to quotas.
+  /// Structure is documented below.
+  final pulumi.Input<ConfigQuota>? quota;
+  /// Configuration related to local sign in methods.
+  /// Structure is documented below.
+  final pulumi.Input<ConfigSignIn>? signIn;
+  /// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+  /// Structure is documented below.
+  final pulumi.Input<ConfigSmsRegionConfig>? smsRegionConfig;
+
+  /// Creates a new [ConfigState].
+  /// [authorizedDomains] List of domains authorized for OAuth redirects.
+  /// [autodeleteAnonymousUsers] Whether anonymous users will be auto-deleted after a period of 30 days
+  /// [blockingFunctions] Configuration related to blocking functions.
+  /// [client] Options related to how clients making requests on behalf of a project should be configured.
+  /// [mfa] Options related to how clients making requests on behalf of a project should be configured.
+  /// [monitoring] Configuration related to monitoring project activity.
+  /// [multiTenant] Configuration related to multi-tenant functionality.
+  /// [name] The name of the Config resource
+  /// [project] The ID of the project in which the resource belongs.
+  /// [quota] Configuration related to quotas.
+  /// [signIn] Configuration related to local sign in methods.
+  /// [smsRegionConfig] Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
+  ConfigState({
+    pulumi.Output<List<String>>? authorizedDomains,
+    pulumi.Output<bool>? autodeleteAnonymousUsers,
+    pulumi.Output<ConfigBlockingFunctions>? blockingFunctions,
+    pulumi.Output<ConfigClient>? client,
+    pulumi.Output<ConfigMfa>? mfa,
+    pulumi.Output<ConfigMonitoring>? monitoring,
+    pulumi.Output<ConfigMultiTenant>? multiTenant,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? project,
+    pulumi.Output<ConfigQuota>? quota,
+    pulumi.Output<ConfigSignIn>? signIn,
+    pulumi.Output<ConfigSmsRegionConfig>? smsRegionConfig,
+  }) :
+      authorizedDomains = pulumi.Input.asOptionalInput<List<String>>(authorizedDomains),
+      autodeleteAnonymousUsers = pulumi.Input.asOptionalInput<bool>(autodeleteAnonymousUsers),
+      blockingFunctions = pulumi.Input.asOptionalInput<ConfigBlockingFunctions>(blockingFunctions),
+      client = pulumi.Input.asOptionalInput<ConfigClient>(client),
+      mfa = pulumi.Input.asOptionalInput<ConfigMfa>(mfa),
+      monitoring = pulumi.Input.asOptionalInput<ConfigMonitoring>(monitoring),
+      multiTenant = pulumi.Input.asOptionalInput<ConfigMultiTenant>(multiTenant),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      quota = pulumi.Input.asOptionalInput<ConfigQuota>(quota),
+      signIn = pulumi.Input.asOptionalInput<ConfigSignIn>(signIn),
+      smsRegionConfig = pulumi.Input.asOptionalInput<ConfigSmsRegionConfig>(smsRegionConfig);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'authorizedDomains': ?authorizedDomains,
+      'autodeleteAnonymousUsers': ?autodeleteAnonymousUsers,
+      'blockingFunctions': ?pulumi.Input.mapOptionalInputValue<ConfigBlockingFunctions, Map<String, dynamic>>(blockingFunctions, (value) => value.toMap()),
+      'client': ?pulumi.Input.mapOptionalInputValue<ConfigClient, Map<String, dynamic>>(client, (value) => value.toMap()),
+      'mfa': ?pulumi.Input.mapOptionalInputValue<ConfigMfa, Map<String, dynamic>>(mfa, (value) => value.toMap()),
+      'monitoring': ?pulumi.Input.mapOptionalInputValue<ConfigMonitoring, Map<String, dynamic>>(monitoring, (value) => value.toMap()),
+      'multiTenant': ?pulumi.Input.mapOptionalInputValue<ConfigMultiTenant, Map<String, dynamic>>(multiTenant, (value) => value.toMap()),
+      'name': ?name,
+      'project': ?project,
+      'quota': ?pulumi.Input.mapOptionalInputValue<ConfigQuota, Map<String, dynamic>>(quota, (value) => value.toMap()),
+      'signIn': ?pulumi.Input.mapOptionalInputValue<ConfigSignIn, Map<String, dynamic>>(signIn, (value) => value.toMap()),
+      'smsRegionConfig': ?pulumi.Input.mapOptionalInputValue<ConfigSmsRegionConfig, Map<String, dynamic>>(smsRegionConfig, (value) => value.toMap()),
+    };
+  }
+
+  factory ConfigState.fromMap(Map<String, dynamic> map) {
+    return ConfigState(
+      authorizedDomains: map['authorizedDomains'] == null ? null : pulumi.Output.create<List<String>>((map['authorizedDomains'] as List).cast<String>()),
+      autodeleteAnonymousUsers: map['autodeleteAnonymousUsers'] == null ? null : pulumi.Output.create<bool>(map['autodeleteAnonymousUsers'] as bool),
+      blockingFunctions: map['blockingFunctions'] == null ? null : pulumi.Output.create<ConfigBlockingFunctions>(ConfigBlockingFunctions.fromMap((map['blockingFunctions'] as Map).cast<String, dynamic>())),
+      client: map['client'] == null ? null : pulumi.Output.create<ConfigClient>(ConfigClient.fromMap((map['client'] as Map).cast<String, dynamic>())),
+      mfa: map['mfa'] == null ? null : pulumi.Output.create<ConfigMfa>(ConfigMfa.fromMap((map['mfa'] as Map).cast<String, dynamic>())),
+      monitoring: map['monitoring'] == null ? null : pulumi.Output.create<ConfigMonitoring>(ConfigMonitoring.fromMap((map['monitoring'] as Map).cast<String, dynamic>())),
+      multiTenant: map['multiTenant'] == null ? null : pulumi.Output.create<ConfigMultiTenant>(ConfigMultiTenant.fromMap((map['multiTenant'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      quota: map['quota'] == null ? null : pulumi.Output.create<ConfigQuota>(ConfigQuota.fromMap((map['quota'] as Map).cast<String, dynamic>())),
+      signIn: map['signIn'] == null ? null : pulumi.Output.create<ConfigSignIn>(ConfigSignIn.fromMap((map['signIn'] as Map).cast<String, dynamic>())),
+      smsRegionConfig: map['smsRegionConfig'] == null ? null : pulumi.Output.create<ConfigSmsRegionConfig>(ConfigSmsRegionConfig.fromMap((map['smsRegionConfig'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

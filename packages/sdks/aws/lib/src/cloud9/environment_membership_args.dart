@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cloud9_environment_membership_environment_membership_args_doc}
+/// The set of arguments for EnvironmentMembership.
+/// {@endtemplate}
+/// {@macro pulumi_cloud9_environment_membership_environment_membership_args_doc}
+class EnvironmentMembershipArgs {
+  /// The ID of the environment that contains the environment member you want to add.
+  final pulumi.Input<String> environmentId;
+  /// The type of environment member permissions you want to associate with this environment member. Allowed values are `read-only` and `read-write` .
+  final pulumi.Input<String> permissions;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// The Amazon Resource Name (ARN) of the environment member you want to add.
+  final pulumi.Input<String> userArn;
+
+  /// Creates a new [EnvironmentMembershipArgs].
+  /// [environmentId] The ID of the environment that contains the environment member you want to add.
+  /// [permissions] The type of environment member permissions you want to associate with this environment member. Allowed values are `read-only` and `read-write` .
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [userArn] The Amazon Resource Name (ARN) of the environment member you want to add.
+  EnvironmentMembershipArgs({
+    required pulumi.Output<String> environmentId,
+    required pulumi.Output<String> permissions,
+    pulumi.Output<String>? region,
+    required pulumi.Output<String> userArn,
+  }) :
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      permissions = pulumi.Input.asInput<String>(permissions),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      userArn = pulumi.Input.asInput<String>(userArn);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'environmentId': environmentId,
+      'permissions': permissions,
+      'region': ?region,
+      'userArn': userArn,
+    };
+  }
+
+  factory EnvironmentMembershipArgs.fromMap(Map<String, dynamic> map) {
+    return EnvironmentMembershipArgs(
+      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
+      permissions: pulumi.Output.create<String>(map['permissions'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      userArn: pulumi.Output.create<String>(map['userArn'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'route_server_propagation_timeouts.dart';
+
+/// Input properties used for looking up and filtering RouteServerPropagation resources.
+class RouteServerPropagationState {
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// The unique identifier for the route server to be associated.
+  final pulumi.Input<String>? routeServerId;
+  /// The ID of the route table to which route server will propagate routes.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<String>? routeTableId;
+  final pulumi.Input<RouteServerPropagationTimeouts>? timeouts;
+
+  /// Creates a new [RouteServerPropagationState].
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [routeServerId] The unique identifier for the route server to be associated.
+  /// [routeTableId] The ID of the route table to which route server will propagate routes.
+  /// [timeouts] Optional.
+  RouteServerPropagationState({
+    pulumi.Output<String>? region,
+    pulumi.Output<String>? routeServerId,
+    pulumi.Output<String>? routeTableId,
+    pulumi.Output<RouteServerPropagationTimeouts>? timeouts,
+  }) :
+      region = pulumi.Input.asOptionalInput<String>(region),
+      routeServerId = pulumi.Input.asOptionalInput<String>(routeServerId),
+      routeTableId = pulumi.Input.asOptionalInput<String>(routeTableId),
+      timeouts = pulumi.Input.asOptionalInput<RouteServerPropagationTimeouts>(timeouts);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'region': ?region,
+      'routeServerId': ?routeServerId,
+      'routeTableId': ?routeTableId,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<RouteServerPropagationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+    };
+  }
+
+  factory RouteServerPropagationState.fromMap(Map<String, dynamic> map) {
+    return RouteServerPropagationState(
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      routeServerId: map['routeServerId'] == null ? null : pulumi.Output.create<String>(map['routeServerId'] as String),
+      routeTableId: map['routeTableId'] == null ? null : pulumi.Output.create<String>(map['routeTableId'] as String),
+      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<RouteServerPropagationTimeouts>(RouteServerPropagationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

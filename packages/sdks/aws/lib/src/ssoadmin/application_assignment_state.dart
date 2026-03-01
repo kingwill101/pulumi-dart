@@ -1,0 +1,50 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering ApplicationAssignment resources.
+class ApplicationAssignmentState {
+  /// ARN of the application.
+  final pulumi.Input<String>? applicationArn;
+  /// An identifier for an object in IAM Identity Center, such as a user or group.
+  final pulumi.Input<String>? principalId;
+  /// Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
+  final pulumi.Input<String>? principalType;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [ApplicationAssignmentState].
+  /// [applicationArn] ARN of the application.
+  /// [principalId] An identifier for an object in IAM Identity Center, such as a user or group.
+  /// [principalType] Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  ApplicationAssignmentState({
+    pulumi.Output<String>? applicationArn,
+    pulumi.Output<String>? principalId,
+    pulumi.Output<String>? principalType,
+    pulumi.Output<String>? region,
+  }) :
+      applicationArn = pulumi.Input.asOptionalInput<String>(applicationArn),
+      principalId = pulumi.Input.asOptionalInput<String>(principalId),
+      principalType = pulumi.Input.asOptionalInput<String>(principalType),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'applicationArn': ?applicationArn,
+      'principalId': ?principalId,
+      'principalType': ?principalType,
+      'region': ?region,
+    };
+  }
+
+  factory ApplicationAssignmentState.fromMap(Map<String, dynamic> map) {
+    return ApplicationAssignmentState(
+      applicationArn: map['applicationArn'] == null ? null : pulumi.Output.create<String>(map['applicationArn'] as String),
+      principalId: map['principalId'] == null ? null : pulumi.Output.create<String>(map['principalId'] as String),
+      principalType: map['principalType'] == null ? null : pulumi.Output.create<String>(map['principalType'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

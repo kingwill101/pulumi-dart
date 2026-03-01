@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'invitation_message.dart';
+
+/// {@template pulumi_index_invitation_invitation_args_doc}
+/// The set of arguments for Invitation.
+/// {@endtemplate}
+/// {@macro pulumi_index_invitation_invitation_args_doc}
+class InvitationArgs {
+  /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+  final pulumi.Input<InvitationMessage>? message;
+  /// The URL that the user should be redirected to once the invitation is redeemed.
+  final pulumi.Input<String> redirectUrl;
+  /// The display name of the user being invited.
+  final pulumi.Input<String>? userDisplayName;
+  /// The email address of the user being invited.
+  final pulumi.Input<String> userEmailAddress;
+  /// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
+  final pulumi.Input<String>? userType;
+
+  /// Creates a new [InvitationArgs].
+  /// [message] A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+  /// [redirectUrl] The URL that the user should be redirected to once the invitation is redeemed.
+  /// [userDisplayName] The display name of the user being invited.
+  /// [userEmailAddress] The email address of the user being invited.
+  /// [userType] The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
+  InvitationArgs({
+    pulumi.Output<InvitationMessage>? message,
+    required pulumi.Output<String> redirectUrl,
+    pulumi.Output<String>? userDisplayName,
+    required pulumi.Output<String> userEmailAddress,
+    pulumi.Output<String>? userType,
+  }) :
+      message = pulumi.Input.asOptionalInput<InvitationMessage>(message),
+      redirectUrl = pulumi.Input.asInput<String>(redirectUrl),
+      userDisplayName = pulumi.Input.asOptionalInput<String>(userDisplayName),
+      userEmailAddress = pulumi.Input.asInput<String>(userEmailAddress),
+      userType = pulumi.Input.asOptionalInput<String>(userType);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'message': ?pulumi.Input.mapOptionalInputValue<InvitationMessage, Map<String, dynamic>>(message, (value) => value.toMap()),
+      'redirectUrl': redirectUrl,
+      'userDisplayName': ?userDisplayName,
+      'userEmailAddress': userEmailAddress,
+      'userType': ?userType,
+    };
+  }
+
+  factory InvitationArgs.fromMap(Map<String, dynamic> map) {
+    return InvitationArgs(
+      message: map['message'] == null ? null : pulumi.Output.create<InvitationMessage>(InvitationMessage.fromMap((map['message'] as Map).cast<String, dynamic>())),
+      redirectUrl: pulumi.Output.create<String>(map['redirectUrl'] as String),
+      userDisplayName: map['userDisplayName'] == null ? null : pulumi.Output.create<String>(map['userDisplayName'] as String),
+      userEmailAddress: pulumi.Output.create<String>(map['userEmailAddress'] as String),
+      userType: map['userType'] == null ? null : pulumi.Output.create<String>(map['userType'] as String),
+    );
+  }
+}
+

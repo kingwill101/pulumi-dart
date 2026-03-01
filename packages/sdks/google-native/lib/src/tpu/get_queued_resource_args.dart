@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_tpu_v2alpha1_get_queued_resource_args_doc}
+/// Arguments for getQueuedResource.
+/// {@endtemplate}
+/// {@macro pulumi_tpu_v2alpha1_get_queued_resource_args_doc}
+class GetQueuedResourceArgs {
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> queuedResourceId;
+
+  /// Creates a new [GetQueuedResourceArgs].
+  /// [location] Required.
+  /// [project] Optional.
+  /// [queuedResourceId] Required.
+  GetQueuedResourceArgs({
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+    required pulumi.Output<String> queuedResourceId,
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      queuedResourceId = pulumi.Input.asInput<String>(queuedResourceId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'location': location,
+      'project': ?project,
+      'queuedResourceId': queuedResourceId,
+    };
+  }
+
+  factory GetQueuedResourceArgs.fromMap(Map<String, dynamic> map) {
+    return GetQueuedResourceArgs(
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      queuedResourceId: pulumi.Output.create<String>(map['queuedResourceId'] as String),
+    );
+  }
+}
+

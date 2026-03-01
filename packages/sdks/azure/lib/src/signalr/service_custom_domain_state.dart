@@ -1,0 +1,52 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering ServiceCustomDomain resources.
+class ServiceCustomDomainState {
+  /// Specifies the custom domain name of the SignalR Custom Domain. Changing this forces a new resource to be created.
+  ///
+  /// > **Note:** Please ensure the custom domain name is included in the Subject Alternative Names of the selected SignalR Custom Certificate.
+  final pulumi.Input<String>? domainName;
+  /// Specifies the name of the SignalR Custom Domain. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// Specifies the SignalR Custom Certificate ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? signalrCustomCertificateId;
+  /// Specifies the SignalR ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? signalrServiceId;
+
+  /// Creates a new [ServiceCustomDomainState].
+  /// [domainName] Specifies the custom domain name of the SignalR Custom Domain. Changing this forces a new resource to be created.
+  /// [name] Specifies the name of the SignalR Custom Domain. Changing this forces a new resource to be created.
+  /// [signalrCustomCertificateId] Specifies the SignalR Custom Certificate ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
+  /// [signalrServiceId] Specifies the SignalR ID of the SignalR Custom Domain. Changing this forces a new resource to be created.
+  ServiceCustomDomainState({
+    pulumi.Output<String>? domainName,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? signalrCustomCertificateId,
+    pulumi.Output<String>? signalrServiceId,
+  }) :
+      domainName = pulumi.Input.asOptionalInput<String>(domainName),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      signalrCustomCertificateId = pulumi.Input.asOptionalInput<String>(signalrCustomCertificateId),
+      signalrServiceId = pulumi.Input.asOptionalInput<String>(signalrServiceId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'domainName': ?domainName,
+      'name': ?name,
+      'signalrCustomCertificateId': ?signalrCustomCertificateId,
+      'signalrServiceId': ?signalrServiceId,
+    };
+  }
+
+  factory ServiceCustomDomainState.fromMap(Map<String, dynamic> map) {
+    return ServiceCustomDomainState(
+      domainName: map['domainName'] == null ? null : pulumi.Output.create<String>(map['domainName'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      signalrCustomCertificateId: map['signalrCustomCertificateId'] == null ? null : pulumi.Output.create<String>(map['signalrCustomCertificateId'] as String),
+      signalrServiceId: map['signalrServiceId'] == null ? null : pulumi.Output.create<String>(map['signalrServiceId'] as String),
+    );
+  }
+}
+

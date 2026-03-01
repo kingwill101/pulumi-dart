@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_ses_get_email_identity_get_email_identity_args_doc}
+/// Arguments for getEmailIdentity.
+/// {@endtemplate}
+/// {@macro pulumi_ses_get_email_identity_get_email_identity_args_doc}
+class GetEmailIdentityArgs {
+  /// Email identity.
+  final pulumi.Input<String> email;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [GetEmailIdentityArgs].
+  /// [email] Email identity.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  GetEmailIdentityArgs({
+    required pulumi.Output<String> email,
+    pulumi.Output<String>? region,
+  }) :
+      email = pulumi.Input.asInput<String>(email),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'email': email,
+      'region': ?region,
+    };
+  }
+
+  factory GetEmailIdentityArgs.fromMap(Map<String, dynamic> map) {
+    return GetEmailIdentityArgs(
+      email: pulumi.Output.create<String>(map['email'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

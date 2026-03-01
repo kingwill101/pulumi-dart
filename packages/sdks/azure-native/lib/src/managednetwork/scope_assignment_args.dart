@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_managednetwork_scope_assignment_args_doc}
+/// The set of arguments for ScopeAssignment.
+/// {@endtemplate}
+/// {@macro pulumi_managednetwork_scope_assignment_args_doc}
+class ScopeAssignmentArgs {
+  /// The managed network ID with scope will be assigned to.
+  final pulumi.Input<String>? assignedManagedNetwork;
+  /// The geo-location where the resource lives
+  final pulumi.Input<String>? location;
+  /// The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use 'subscriptions/{subscription-id}' for a subscription, 'subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and 'subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
+  final pulumi.Input<String> scope;
+  /// The name of the scope assignment to create.
+  final pulumi.Input<String>? scopeAssignmentName;
+
+  /// Creates a new [ScopeAssignmentArgs].
+  /// [assignedManagedNetwork] The managed network ID with scope will be assigned to.
+  /// [location] The geo-location where the resource lives
+  /// [scope] The base resource of the scope assignment to create. The scope can be any REST resource instance. For example, use 'subscriptions/{subscription-id}' for a subscription, 'subscriptions/{subscription-id}/resourceGroups/{resource-group-name}' for a resource group, and 'subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}' for a resource.
+  /// [scopeAssignmentName] The name of the scope assignment to create.
+  ScopeAssignmentArgs({
+    pulumi.Output<String>? assignedManagedNetwork,
+    pulumi.Output<String>? location,
+    required pulumi.Output<String> scope,
+    pulumi.Output<String>? scopeAssignmentName,
+  }) :
+      assignedManagedNetwork = pulumi.Input.asOptionalInput<String>(assignedManagedNetwork),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      scope = pulumi.Input.asInput<String>(scope),
+      scopeAssignmentName = pulumi.Input.asOptionalInput<String>(scopeAssignmentName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'assignedManagedNetwork': ?assignedManagedNetwork,
+      'location': ?location,
+      'scope': scope,
+      'scopeAssignmentName': ?scopeAssignmentName,
+    };
+  }
+
+  factory ScopeAssignmentArgs.fromMap(Map<String, dynamic> map) {
+    return ScopeAssignmentArgs(
+      assignedManagedNetwork: map['assignedManagedNetwork'] == null ? null : pulumi.Output.create<String>(map['assignedManagedNetwork'] as String),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      scope: pulumi.Output.create<String>(map['scope'] as String),
+      scopeAssignmentName: map['scopeAssignmentName'] == null ? null : pulumi.Output.create<String>(map['scopeAssignmentName'] as String),
+    );
+  }
+}
+

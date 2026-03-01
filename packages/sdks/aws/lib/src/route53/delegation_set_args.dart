@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_route53_delegation_set_delegation_set_args_doc}
+/// The set of arguments for DelegationSet.
+/// {@endtemplate}
+/// {@macro pulumi_route53_delegation_set_delegation_set_args_doc}
+class DelegationSetArgs {
+  /// This is a reference name used in Caller Reference
+  /// (helpful for identifying single delegation set amongst others)
+  final pulumi.Input<String>? referenceName;
+
+  /// Creates a new [DelegationSetArgs].
+  /// [referenceName] This is a reference name used in Caller Reference
+  DelegationSetArgs({
+    pulumi.Output<String>? referenceName,
+  }) :
+      referenceName = pulumi.Input.asOptionalInput<String>(referenceName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'referenceName': ?referenceName,
+    };
+  }
+
+  factory DelegationSetArgs.fromMap(Map<String, dynamic> map) {
+    return DelegationSetArgs(
+      referenceName: map['referenceName'] == null ? null : pulumi.Output.create<String>(map['referenceName'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,36 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering ApplicationIdentifierUri resources.
+class ApplicationIdentifierUriState {
+  /// The resource ID of the application registration. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? applicationId;
+  /// The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? identifierUri;
+
+  /// Creates a new [ApplicationIdentifierUriState].
+  /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
+  /// [identifierUri] The user-defined URI that uniquely identifies an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. Changing this forces a new resource to be created.
+  ApplicationIdentifierUriState({
+    pulumi.Output<String>? applicationId,
+    pulumi.Output<String>? identifierUri,
+  }) :
+      applicationId = pulumi.Input.asOptionalInput<String>(applicationId),
+      identifierUri = pulumi.Input.asOptionalInput<String>(identifierUri);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'applicationId': ?applicationId,
+      'identifierUri': ?identifierUri,
+    };
+  }
+
+  factory ApplicationIdentifierUriState.fromMap(Map<String, dynamic> map) {
+    return ApplicationIdentifierUriState(
+      applicationId: map['applicationId'] == null ? null : pulumi.Output.create<String>(map['applicationId'] as String),
+      identifierUri: map['identifierUri'] == null ? null : pulumi.Output.create<String>(map['identifierUri'] as String),
+    );
+  }
+}
+

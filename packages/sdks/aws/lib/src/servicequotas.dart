@@ -1,0 +1,23 @@
+library module_servicequotas;
+
+export 'servicequotas/functions.dart';
+export 'servicequotas/get_service_args.dart';
+export 'servicequotas/get_service_quota_args.dart';
+export 'servicequotas/get_service_quota_result.dart';
+export 'servicequotas/get_service_quota_usage_metric.dart';
+export 'servicequotas/get_service_quota_usage_metric_metric_dimension.dart';
+export 'servicequotas/get_service_result.dart';
+export 'servicequotas/get_templates_args.dart';
+export 'servicequotas/get_templates_result.dart';
+export 'servicequotas/get_templates_template.dart';
+export 'servicequotas/service_quota.dart';
+export 'servicequotas/service_quota_args.dart';
+export 'servicequotas/service_quota_state.dart';
+export 'servicequotas/service_quota_usage_metric.dart';
+export 'servicequotas/service_quota_usage_metric_metric_dimension.dart';
+export 'servicequotas/template.dart';
+export 'servicequotas/template_args.dart';
+export 'servicequotas/template_association.dart';
+export 'servicequotas/template_association_args.dart';
+export 'servicequotas/template_association_state.dart';
+export 'servicequotas/template_state.dart';

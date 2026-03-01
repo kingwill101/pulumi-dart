@@ -1,0 +1,130 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'ai_endpoint_encryption_spec.dart';
+import 'ai_endpoint_predict_request_response_logging_config.dart';
+import 'ai_endpoint_private_service_connect_config.dart';
+
+/// {@template pulumi_vertex_ai_endpoint_ai_endpoint_args_doc}
+/// The set of arguments for AiEndpoint.
+/// {@endtemplate}
+/// {@macro pulumi_vertex_ai_endpoint_ai_endpoint_args_doc}
+class AiEndpointArgs {
+  /// If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+  final pulumi.Input<bool>? dedicatedEndpointEnabled;
+  /// The description of the Endpoint.
+  final pulumi.Input<String>? description;
+  /// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+  final pulumi.Input<String> displayName;
+  /// Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
+  /// Structure is documented below.
+  final pulumi.Input<AiEndpointEncryptionSpec>? encryptionSpec;
+  /// The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>>? labels;
+  /// The location for the resource
+  final pulumi.Input<String> location;
+  /// The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
+  final pulumi.Input<String>? name;
+  /// The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
+  final pulumi.Input<String>? network;
+  /// Configures the request-response logging for online prediction.
+  /// Structure is documented below.
+  final pulumi.Input<AiEndpointPredictRequestResponseLoggingConfig>? predictRequestResponseLoggingConfig;
+  /// Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+  /// Structure is documented below.
+  final pulumi.Input<AiEndpointPrivateServiceConnectConfig>? privateServiceConnectConfig;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// The region for the resource
+  final pulumi.Input<String>? region;
+  /// A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+  /// If a DeployedModel's id is not listed in this map, then it receives no traffic.
+  /// The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment. See
+  /// the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+  /// [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for more information.
+  /// > **Note:** To set the map to empty, set `"{}"`, apply, and then remove the field from your config.
+  final pulumi.Input<String>? trafficSplit;
+
+  /// Creates a new [AiEndpointArgs].
+  /// [dedicatedEndpointEnabled] If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+  /// [description] The description of the Endpoint.
+  /// [displayName] Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+  /// [encryptionSpec] Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
+  /// [labels] The labels with user-defined metadata to organize your Endpoints. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+  /// [location] The location for the resource
+  /// [name] The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
+  /// [network] The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
+  /// [predictRequestResponseLoggingConfig] Configures the request-response logging for online prediction.
+  /// [privateServiceConnectConfig] Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+  /// [project] The ID of the project in which the resource belongs.
+  /// [region] The region for the resource
+  /// [trafficSplit] A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+  AiEndpointArgs({
+    pulumi.Output<bool>? dedicatedEndpointEnabled,
+    pulumi.Output<String>? description,
+    required pulumi.Output<String> displayName,
+    pulumi.Output<AiEndpointEncryptionSpec>? encryptionSpec,
+    pulumi.Output<Map<String, String>>? labels,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? network,
+    pulumi.Output<AiEndpointPredictRequestResponseLoggingConfig>? predictRequestResponseLoggingConfig,
+    pulumi.Output<AiEndpointPrivateServiceConnectConfig>? privateServiceConnectConfig,
+    pulumi.Output<String>? project,
+    pulumi.Output<String>? region,
+    pulumi.Output<String>? trafficSplit,
+  }) :
+      dedicatedEndpointEnabled = pulumi.Input.asOptionalInput<bool>(dedicatedEndpointEnabled),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      encryptionSpec = pulumi.Input.asOptionalInput<AiEndpointEncryptionSpec>(encryptionSpec),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      network = pulumi.Input.asOptionalInput<String>(network),
+      predictRequestResponseLoggingConfig = pulumi.Input.asOptionalInput<AiEndpointPredictRequestResponseLoggingConfig>(predictRequestResponseLoggingConfig),
+      privateServiceConnectConfig = pulumi.Input.asOptionalInput<AiEndpointPrivateServiceConnectConfig>(privateServiceConnectConfig),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      trafficSplit = pulumi.Input.asOptionalInput<String>(trafficSplit);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dedicatedEndpointEnabled': ?dedicatedEndpointEnabled,
+      'description': ?description,
+      'displayName': displayName,
+      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<AiEndpointEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'labels': ?labels,
+      'location': location,
+      'name': ?name,
+      'network': ?network,
+      'predictRequestResponseLoggingConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointPredictRequestResponseLoggingConfig, Map<String, dynamic>>(predictRequestResponseLoggingConfig, (value) => value.toMap()),
+      'privateServiceConnectConfig': ?pulumi.Input.mapOptionalInputValue<AiEndpointPrivateServiceConnectConfig, Map<String, dynamic>>(privateServiceConnectConfig, (value) => value.toMap()),
+      'project': ?project,
+      'region': ?region,
+      'trafficSplit': ?trafficSplit,
+    };
+  }
+
+  factory AiEndpointArgs.fromMap(Map<String, dynamic> map) {
+    return AiEndpointArgs(
+      dedicatedEndpointEnabled: map['dedicatedEndpointEnabled'] == null ? null : pulumi.Output.create<bool>(map['dedicatedEndpointEnabled'] as bool),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<AiEndpointEncryptionSpec>(AiEndpointEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
+      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
+      predictRequestResponseLoggingConfig: map['predictRequestResponseLoggingConfig'] == null ? null : pulumi.Output.create<AiEndpointPredictRequestResponseLoggingConfig>(AiEndpointPredictRequestResponseLoggingConfig.fromMap((map['predictRequestResponseLoggingConfig'] as Map).cast<String, dynamic>())),
+      privateServiceConnectConfig: map['privateServiceConnectConfig'] == null ? null : pulumi.Output.create<AiEndpointPrivateServiceConnectConfig>(AiEndpointPrivateServiceConnectConfig.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>())),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      trafficSplit: map['trafficSplit'] == null ? null : pulumi.Output.create<String>(map['trafficSplit'] as String),
+    );
+  }
+}
+

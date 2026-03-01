@@ -1,0 +1,72 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'tenant_client.dart';
+
+/// {@template pulumi_identityplatform_tenant_tenant_args_doc}
+/// The set of arguments for Tenant.
+/// {@endtemplate}
+/// {@macro pulumi_identityplatform_tenant_tenant_args_doc}
+class TenantArgs {
+  /// Whether to allow email/password user authentication.
+  final pulumi.Input<bool>? allowPasswordSignup;
+  /// Options related to how clients making requests on behalf of a tenant should be configured.
+  /// Structure is documented below.
+  final pulumi.Input<TenantClient>? client;
+  /// Whether authentication is disabled for the tenant. If true, the users under
+  /// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
+  /// are not able to manage its users.
+  final pulumi.Input<bool>? disableAuth;
+  /// Human friendly display name of the tenant.
+  final pulumi.Input<String> displayName;
+  /// Whether to enable email link user authentication.
+  final pulumi.Input<bool>? enableEmailLinkSignin;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [TenantArgs].
+  /// [allowPasswordSignup] Whether to allow email/password user authentication.
+  /// [client] Options related to how clients making requests on behalf of a tenant should be configured.
+  /// [disableAuth] Whether authentication is disabled for the tenant. If true, the users under
+  /// [displayName] Human friendly display name of the tenant.
+  /// [enableEmailLinkSignin] Whether to enable email link user authentication.
+  /// [project] The ID of the project in which the resource belongs.
+  TenantArgs({
+    pulumi.Output<bool>? allowPasswordSignup,
+    pulumi.Output<TenantClient>? client,
+    pulumi.Output<bool>? disableAuth,
+    required pulumi.Output<String> displayName,
+    pulumi.Output<bool>? enableEmailLinkSignin,
+    pulumi.Output<String>? project,
+  }) :
+      allowPasswordSignup = pulumi.Input.asOptionalInput<bool>(allowPasswordSignup),
+      client = pulumi.Input.asOptionalInput<TenantClient>(client),
+      disableAuth = pulumi.Input.asOptionalInput<bool>(disableAuth),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      enableEmailLinkSignin = pulumi.Input.asOptionalInput<bool>(enableEmailLinkSignin),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'allowPasswordSignup': ?allowPasswordSignup,
+      'client': ?pulumi.Input.mapOptionalInputValue<TenantClient, Map<String, dynamic>>(client, (value) => value.toMap()),
+      'disableAuth': ?disableAuth,
+      'displayName': displayName,
+      'enableEmailLinkSignin': ?enableEmailLinkSignin,
+      'project': ?project,
+    };
+  }
+
+  factory TenantArgs.fromMap(Map<String, dynamic> map) {
+    return TenantArgs(
+      allowPasswordSignup: map['allowPasswordSignup'] == null ? null : pulumi.Output.create<bool>(map['allowPasswordSignup'] as bool),
+      client: map['client'] == null ? null : pulumi.Output.create<TenantClient>(TenantClient.fromMap((map['client'] as Map).cast<String, dynamic>())),
+      disableAuth: map['disableAuth'] == null ? null : pulumi.Output.create<bool>(map['disableAuth'] as bool),
+      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      enableEmailLinkSignin: map['enableEmailLinkSignin'] == null ? null : pulumi.Output.create<bool>(map['enableEmailLinkSignin'] as bool),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

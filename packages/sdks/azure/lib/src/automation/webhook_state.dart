@@ -1,0 +1,85 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering Webhook resources.
+class WebhookState {
+  /// The name of the automation account in which the Webhook is created. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? automationAccountName;
+  /// Controls if Webhook is enabled. Defaults to `true`.
+  final pulumi.Input<bool>? enabled;
+  /// Timestamp when the webhook expires. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? expiryTime;
+  /// Specifies the name of the Webhook. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// Map of input parameters passed to runbook.
+  final pulumi.Input<Map<String, String>>? parameters;
+  /// The name of the resource group in which the Webhook is created. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? resourceGroupName;
+  /// Name of the hybrid worker group the Webhook job will run on.
+  final pulumi.Input<String>? runOnWorkerGroup;
+  /// Name of the Automation Runbook to execute by Webhook.
+  final pulumi.Input<String>? runbookName;
+  /// URI to initiate the webhook. Can be generated using [Generate URI API](https://docs.microsoft.com/rest/api/automation/webhook/generate-uri). By default, new URI is generated on each new resource creation. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? uri;
+
+  /// Creates a new [WebhookState].
+  /// [automationAccountName] The name of the automation account in which the Webhook is created. Changing this forces a new resource to be created.
+  /// [enabled] Controls if Webhook is enabled. Defaults to `true`.
+  /// [expiryTime] Timestamp when the webhook expires. Changing this forces a new resource to be created.
+  /// [name] Specifies the name of the Webhook. Changing this forces a new resource to be created.
+  /// [parameters] Map of input parameters passed to runbook.
+  /// [resourceGroupName] The name of the resource group in which the Webhook is created. Changing this forces a new resource to be created.
+  /// [runOnWorkerGroup] Name of the hybrid worker group the Webhook job will run on.
+  /// [runbookName] Name of the Automation Runbook to execute by Webhook.
+  /// [uri] URI to initiate the webhook. Can be generated using [Generate URI API](https://docs.microsoft.com/rest/api/automation/webhook/generate-uri). By default, new URI is generated on each new resource creation. Changing this forces a new resource to be created.
+  WebhookState({
+    pulumi.Output<String>? automationAccountName,
+    pulumi.Output<bool>? enabled,
+    pulumi.Output<String>? expiryTime,
+    pulumi.Output<String>? name,
+    pulumi.Output<Map<String, String>>? parameters,
+    pulumi.Output<String>? resourceGroupName,
+    pulumi.Output<String>? runOnWorkerGroup,
+    pulumi.Output<String>? runbookName,
+    pulumi.Output<String>? uri,
+  }) :
+      automationAccountName = pulumi.Input.asOptionalInput<String>(automationAccountName),
+      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+      expiryTime = pulumi.Input.asOptionalInput<String>(expiryTime),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      parameters = pulumi.Input.asOptionalInput<Map<String, String>>(parameters),
+      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
+      runOnWorkerGroup = pulumi.Input.asOptionalInput<String>(runOnWorkerGroup),
+      runbookName = pulumi.Input.asOptionalInput<String>(runbookName),
+      uri = pulumi.Input.asOptionalInput<String>(uri);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'automationAccountName': ?automationAccountName,
+      'enabled': ?enabled,
+      'expiryTime': ?expiryTime,
+      'name': ?name,
+      'parameters': ?parameters,
+      'resourceGroupName': ?resourceGroupName,
+      'runOnWorkerGroup': ?runOnWorkerGroup,
+      'runbookName': ?runbookName,
+      'uri': ?uri,
+    };
+  }
+
+  factory WebhookState.fromMap(Map<String, dynamic> map) {
+    return WebhookState(
+      automationAccountName: map['automationAccountName'] == null ? null : pulumi.Output.create<String>(map['automationAccountName'] as String),
+      enabled: map['enabled'] == null ? null : pulumi.Output.create<bool>(map['enabled'] as bool),
+      expiryTime: map['expiryTime'] == null ? null : pulumi.Output.create<String>(map['expiryTime'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      parameters: map['parameters'] == null ? null : pulumi.Output.create<Map<String, String>>((map['parameters'] as Map).cast<String, String>()),
+      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      runOnWorkerGroup: map['runOnWorkerGroup'] == null ? null : pulumi.Output.create<String>(map['runOnWorkerGroup'] as String),
+      runbookName: map['runbookName'] == null ? null : pulumi.Output.create<String>(map['runbookName'] as String),
+      uri: map['uri'] == null ? null : pulumi.Output.create<String>(map['uri'] as String),
+    );
+  }
+}
+

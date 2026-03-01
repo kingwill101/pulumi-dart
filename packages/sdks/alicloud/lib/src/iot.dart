@@ -1,0 +1,11 @@
+library module_iot;
+
+export 'iot/device_group.dart';
+export 'iot/device_group_args.dart';
+export 'iot/device_group_state.dart';
+export 'iot/functions.dart';
+export 'iot/get_device_groups_args.dart';
+export 'iot/get_device_groups_group.dart';
+export 'iot/get_device_groups_result.dart';
+export 'iot/get_service_args.dart';
+export 'iot/get_service_result.dart';

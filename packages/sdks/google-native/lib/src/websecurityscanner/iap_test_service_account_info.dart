@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
+class IapTestServiceAccountInfo {
+  /// Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+  final String targetAudienceClientId;
+
+  /// Creates a new [IapTestServiceAccountInfo].
+  /// [targetAudienceClientId] Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+  IapTestServiceAccountInfo({
+    required this.targetAudienceClientId,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'targetAudienceClientId': targetAudienceClientId,
+    };
+  }
+
+  factory IapTestServiceAccountInfo.fromMap(Map<String, dynamic> map) {
+    return IapTestServiceAccountInfo(
+      targetAudienceClientId: map['targetAudienceClientId'] as String,
+    );
+  }
+}
+

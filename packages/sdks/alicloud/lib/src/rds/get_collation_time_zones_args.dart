@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_collation_time_zones_collation_time_zone.dart';
+
+/// {@template pulumi_rds_get_collation_time_zones_get_collation_time_zones_args_doc}
+/// Arguments for getCollationTimeZones.
+/// {@endtemplate}
+/// {@macro pulumi_rds_get_collation_time_zones_get_collation_time_zones_args_doc}
+class GetCollationTimeZonesArgs {
+  /// An array that consists of the character set collations and time zones that are available for
+  /// use in ApsaraDB RDS.
+  final pulumi.Input<List<GetCollationTimeZonesCollationTimeZone>>? collationTimeZones;
+  /// File name where to save data source results (after running `pulumi up`).
+  final pulumi.Input<String>? outputFile;
+
+  /// Creates a new [GetCollationTimeZonesArgs].
+  /// [collationTimeZones] An array that consists of the character set collations and time zones that are available for
+  /// [outputFile] File name where to save data source results (after running `pulumi up`).
+  GetCollationTimeZonesArgs({
+    pulumi.Output<List<GetCollationTimeZonesCollationTimeZone>>? collationTimeZones,
+    pulumi.Output<String>? outputFile,
+  }) :
+      collationTimeZones = pulumi.Input.asOptionalInput<List<GetCollationTimeZonesCollationTimeZone>>(collationTimeZones),
+      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'collationTimeZones': ?pulumi.Input.mapOptionalInputValue<List<GetCollationTimeZonesCollationTimeZone>, List<Map<String, dynamic>>>(collationTimeZones, (value) => pulumi.Input.encodeList<GetCollationTimeZonesCollationTimeZone, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outputFile': ?outputFile,
+    };
+  }
+
+  factory GetCollationTimeZonesArgs.fromMap(Map<String, dynamic> map) {
+    return GetCollationTimeZonesArgs(
+      collationTimeZones: map['collationTimeZones'] == null ? null : pulumi.Output.create<List<GetCollationTimeZonesCollationTimeZone>>(pulumi.Input.decodeList<GetCollationTimeZonesCollationTimeZone>(map['collationTimeZones'], (value) => GetCollationTimeZonesCollationTimeZone.fromMap((value as Map).cast<String, dynamic>()))),
+      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+    );
+  }
+}
+

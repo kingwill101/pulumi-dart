@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering RecycleBin resources.
+class RecycleBinState {
+  /// The ID of the file system for which you want to enable the recycle bin feature.
+  final pulumi.Input<String>? fileSystemId;
+  /// The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
+  final pulumi.Input<int>? reservedDays;
+  /// The status of the recycle bin.
+  final pulumi.Input<String>? status;
+
+  /// Creates a new [RecycleBinState].
+  /// [fileSystemId] The ID of the file system for which you want to enable the recycle bin feature.
+  /// [reservedDays] The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
+  /// [status] The status of the recycle bin.
+  RecycleBinState({
+    pulumi.Output<String>? fileSystemId,
+    pulumi.Output<int>? reservedDays,
+    pulumi.Output<String>? status,
+  }) :
+      fileSystemId = pulumi.Input.asOptionalInput<String>(fileSystemId),
+      reservedDays = pulumi.Input.asOptionalInput<int>(reservedDays),
+      status = pulumi.Input.asOptionalInput<String>(status);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'fileSystemId': ?fileSystemId,
+      'reservedDays': ?reservedDays,
+      'status': ?status,
+    };
+  }
+
+  factory RecycleBinState.fromMap(Map<String, dynamic> map) {
+    return RecycleBinState(
+      fileSystemId: map['fileSystemId'] == null ? null : pulumi.Output.create<String>(map['fileSystemId'] as String),
+      reservedDays: map['reservedDays'] == null ? null : pulumi.Output.create<int>(map['reservedDays'] as int),
+      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+    );
+  }
+}
+

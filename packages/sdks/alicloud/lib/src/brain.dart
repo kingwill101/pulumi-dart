@@ -1,0 +1,23 @@
+library module_brain;
+
+export 'brain/functions.dart';
+export 'brain/get_industrial_pid_loops_args.dart';
+export 'brain/get_industrial_pid_loops_loop.dart';
+export 'brain/get_industrial_pid_loops_result.dart';
+export 'brain/get_industrial_pid_organizations_args.dart';
+export 'brain/get_industrial_pid_organizations_organization.dart';
+export 'brain/get_industrial_pid_organizations_result.dart';
+export 'brain/get_industrial_pid_projects_args.dart';
+export 'brain/get_industrial_pid_projects_project.dart';
+export 'brain/get_industrial_pid_projects_result.dart';
+export 'brain/get_industrial_serice_args.dart';
+export 'brain/get_industrial_serice_result.dart';
+export 'brain/industrial_pid_loop.dart';
+export 'brain/industrial_pid_loop_args.dart';
+export 'brain/industrial_pid_loop_state.dart';
+export 'brain/industrial_pid_organization.dart';
+export 'brain/industrial_pid_organization_args.dart';
+export 'brain/industrial_pid_organization_state.dart';
+export 'brain/industrial_pid_project.dart';
+export 'brain/industrial_pid_project_args.dart';
+export 'brain/industrial_pid_project_state.dart';

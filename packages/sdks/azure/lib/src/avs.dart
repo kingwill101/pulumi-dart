@@ -1,0 +1,21 @@
+library module_avs;
+
+export 'avs/cluster.dart';
+export 'avs/cluster_args.dart';
+export 'avs/cluster_state.dart';
+export 'avs/express_route_authorization.dart';
+export 'avs/express_route_authorization_args.dart';
+export 'avs/express_route_authorization_state.dart';
+export 'avs/functions.dart';
+export 'avs/get_private_cloud_args.dart';
+export 'avs/get_private_cloud_circuit.dart';
+export 'avs/get_private_cloud_management_cluster.dart';
+export 'avs/get_private_cloud_result.dart';
+export 'avs/netapp_volume_attachment.dart';
+export 'avs/netapp_volume_attachment_args.dart';
+export 'avs/netapp_volume_attachment_state.dart';
+export 'avs/private_cloud.dart';
+export 'avs/private_cloud_args.dart';
+export 'avs/private_cloud_circuit.dart';
+export 'avs/private_cloud_management_cluster.dart';
+export 'avs/private_cloud_state.dart';

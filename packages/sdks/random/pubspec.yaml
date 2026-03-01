@@ -1,0 +1,16 @@
+name: pulumi_random
+description: A Pulumi package to safely use randomness in Pulumi programs.
+version: 4.19.1
+license: Apache-2.0
+homepage: https://pulumi.io
+repository: https://github.com/pulumi/pulumi-random
+topics:
+    - pulumi
+    - random
+environment:
+    sdk: ^3.10.0
+resolution: workspace
+dependencies:
+    pulumi: 0.1.0
+dev_dependencies:
+    lints: ^6.1.0

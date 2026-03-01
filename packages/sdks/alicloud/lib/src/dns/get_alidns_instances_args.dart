@@ -1,0 +1,60 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_dns_get_alidns_instances_get_alidns_instances_args_doc}
+/// Arguments for getAlidnsInstances.
+/// {@endtemplate}
+/// {@macro pulumi_dns_get_alidns_instances_get_alidns_instances_args_doc}
+class GetAlidnsInstancesArgs {
+  /// The type of domain.
+  final pulumi.Input<String>? domainType;
+  /// A list of instance IDs.
+  final pulumi.Input<List<String>>? ids;
+  /// Language.
+  final pulumi.Input<String>? lang;
+  /// File name where to save data source results (after running `pulumi preview`).
+  final pulumi.Input<String>? outputFile;
+  /// The IP address of the client.
+  final pulumi.Input<String>? userClientIp;
+
+  /// Creates a new [GetAlidnsInstancesArgs].
+  /// [domainType] The type of domain.
+  /// [ids] A list of instance IDs.
+  /// [lang] Language.
+  /// [outputFile] File name where to save data source results (after running `pulumi preview`).
+  /// [userClientIp] The IP address of the client.
+  GetAlidnsInstancesArgs({
+    pulumi.Output<String>? domainType,
+    pulumi.Output<List<String>>? ids,
+    pulumi.Output<String>? lang,
+    pulumi.Output<String>? outputFile,
+    pulumi.Output<String>? userClientIp,
+  }) :
+      domainType = pulumi.Input.asOptionalInput<String>(domainType),
+      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
+      lang = pulumi.Input.asOptionalInput<String>(lang),
+      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
+      userClientIp = pulumi.Input.asOptionalInput<String>(userClientIp);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'domainType': ?domainType,
+      'ids': ?ids,
+      'lang': ?lang,
+      'outputFile': ?outputFile,
+      'userClientIp': ?userClientIp,
+    };
+  }
+
+  factory GetAlidnsInstancesArgs.fromMap(Map<String, dynamic> map) {
+    return GetAlidnsInstancesArgs(
+      domainType: map['domainType'] == null ? null : pulumi.Output.create<String>(map['domainType'] as String),
+      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
+      lang: map['lang'] == null ? null : pulumi.Output.create<String>(map['lang'] as String),
+      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      userClientIp: map['userClientIp'] == null ? null : pulumi.Output.create<String>(map['userClientIp'] as String),
+    );
+  }
+}
+

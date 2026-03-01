@@ -1,0 +1,343 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'mx_record_args.dart';
+import 'mx_record_record.dart';
+import 'mx_record_state.dart';
+
+/// Enables you to manage DNS MX Records within Azure DNS.
+///
+/// > **Note:** [The Azure DNS API has a throttle limit of 500 read (GET) operations per 5 minutes](https://docs.microsoft.com/azure/azure-resource-manager/management/request-limits-and-throttling#network-throttling) - whilst the default read timeouts will work for most cases - in larger configurations you may need to set a larger read timeout then the default 5min. Although, we'd generally recommend that you split the resources out into smaller Terraform configurations to avoid the problem entirely.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure from "@pulumi/azure";
+///
+/// const example = new azure.core.ResourceGroup("example", {
+///     name: "example-resources",
+///     location: "West Europe",
+/// });
+/// const exampleZone = new azure.dns.Zone("example", {
+///     name: "mydomain.com",
+///     resourceGroupName: example.name,
+/// });
+/// const exampleMxRecord = new azure.dns.MxRecord("example", {
+///     name: "test",
+///     zoneName: exampleZone.name,
+///     resourceGroupName: example.name,
+///     ttl: 300,
+///     records: [
+///         {
+///             preference: "10",
+///             exchange: "mail1.contoso.com",
+///         },
+///         {
+///             preference: "20",
+///             exchange: "mail2.contoso.com",
+///         },
+///     ],
+///     tags: {
+///         Environment: "Production",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azure as azure
+///
+/// example = azure.core.ResourceGroup("example",
+///     name="example-resources",
+///     location="West Europe")
+/// example_zone = azure.dns.Zone("example",
+///     name="mydomain.com",
+///     resource_group_name=example.name)
+/// example_mx_record = azure.dns.MxRecord("example",
+///     name="test",
+///     zone_name=example_zone.name,
+///     resource_group_name=example.name,
+///     ttl=300,
+///     records=[
+///         {
+///             "preference": "10",
+///             "exchange": "mail1.contoso.com",
+///         },
+///         {
+///             "preference": "20",
+///             "exchange": "mail2.contoso.com",
+///         },
+///     ],
+///     tags={
+///         "Environment": "Production",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Azure = Pulumi.Azure;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Azure.Core.ResourceGroup("example", new()
+///     {
+///         Name = "example-resources",
+///         Location = "West Europe",
+///     });
+///
+///     var exampleZone = new Azure.Dns.Zone("example", new()
+///     {
+///         Name = "mydomain.com",
+///         ResourceGroupName = example.Name,
+///     });
+///
+///     var exampleMxRecord = new Azure.Dns.MxRecord("example", new()
+///     {
+///         Name = "test",
+///         ZoneName = exampleZone.Name,
+///         ResourceGroupName = example.Name,
+///         Ttl = 300,
+///         Records = new[]
+///         {
+///             new Azure.Dns.Inputs.MxRecordRecordArgs
+///             {
+///                 Preference = "10",
+///                 Exchange = "mail1.contoso.com",
+///             },
+///             new Azure.Dns.Inputs.MxRecordRecordArgs
+///             {
+///                 Preference = "20",
+///                 Exchange = "mail2.contoso.com",
+///             },
+///         },
+///         Tags =
+///         {
+///             { "Environment", "Production" },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/core"
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/dns"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
+/// 			Name:     pulumi.String("example-resources"),
+/// 			Location: pulumi.String("West Europe"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleZone, err := dns.NewZone(ctx, "example", &dns.ZoneArgs{
+/// 			Name:              pulumi.String("mydomain.com"),
+/// 			ResourceGroupName: example.Name,
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = dns.NewMxRecord(ctx, "example", &dns.MxRecordArgs{
+/// 			Name:              pulumi.String("test"),
+/// 			ZoneName:          exampleZone.Name,
+/// 			ResourceGroupName: example.Name,
+/// 			Ttl:               pulumi.Int(300),
+/// 			Records: dns.MxRecordRecordArray{
+/// 				&dns.MxRecordRecordArgs{
+/// 					Preference: pulumi.String("10"),
+/// 					Exchange:   pulumi.String("mail1.contoso.com"),
+/// 				},
+/// 				&dns.MxRecordRecordArgs{
+/// 					Preference: pulumi.String("20"),
+/// 					Exchange:   pulumi.String("mail2.contoso.com"),
+/// 				},
+/// 			},
+/// 			Tags: pulumi.StringMap{
+/// 				"Environment": pulumi.String("Production"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azure.core.ResourceGroup;
+/// import com.pulumi.azure.core.ResourceGroupArgs;
+/// import com.pulumi.azure.dns.Zone;
+/// import com.pulumi.azure.dns.ZoneArgs;
+/// import com.pulumi.azure.dns.MxRecord;
+/// import com.pulumi.azure.dns.MxRecordArgs;
+/// import com.pulumi.azure.dns.inputs.MxRecordRecordArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new ResourceGroup("example", ResourceGroupArgs.builder()
+///             .name("example-resources")
+///             .location("West Europe")
+///             .build());
+///
+///         var exampleZone = new Zone("exampleZone", ZoneArgs.builder()
+///             .name("mydomain.com")
+///             .resourceGroupName(example.name())
+///             .build());
+///
+///         var exampleMxRecord = new MxRecord("exampleMxRecord", MxRecordArgs.builder()
+///             .name("test")
+///             .zoneName(exampleZone.name())
+///             .resourceGroupName(example.name())
+///             .ttl(300)
+///             .records(
+///                 MxRecordRecordArgs.builder()
+///                     .preference("10")
+///                     .exchange("mail1.contoso.com")
+///                     .build(),
+///                 MxRecordRecordArgs.builder()
+///                     .preference("20")
+///                     .exchange("mail2.contoso.com")
+///                     .build())
+///             .tags(Map.of("Environment", "Production"))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: azure:core:ResourceGroup
+///     properties:
+///       name: example-resources
+///       location: West Europe
+///   exampleZone:
+///     type: azure:dns:Zone
+///     name: example
+///     properties:
+///       name: mydomain.com
+///       resourceGroupName: ${example.name}
+///   exampleMxRecord:
+///     type: azure:dns:MxRecord
+///     name: example
+///     properties:
+///       name: test
+///       zoneName: ${exampleZone.name}
+///       resourceGroupName: ${example.name}
+///       ttl: 300
+///       records:
+///         - preference: 10
+///           exchange: mail1.contoso.com
+///         - preference: 20
+///           exchange: mail2.contoso.com
+///       tags:
+///         Environment: Production
+/// ```
+///
+///
+/// ## API Providers
+///
+/// <!-- This section is generated, changes will be overwritten -->
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.Network` - 2018-05-01
+///
+/// ## Import
+///
+/// MX records can be imported using the `resource id`, e.g.
+///
+/// ```sh
+/// $ pulumi import azure:dns/mxRecord:MxRecord example /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.Network/dnsZones/zone1/MX/myrecord1
+/// ```
+class MxRecord extends pulumi.CustomResource {
+  /// The FQDN of the DNS MX Record.
+  late final pulumi.Output<String> fqdn;
+  /// The name of the DNS MX Record. Defaults to `@` (root). Changing this forces a new resource to be created.
+  late final pulumi.Output<String> name;
+  /// A list of values that make up the MX record. Each `record` block supports fields documented below.
+  late final pulumi.Output<List<MxRecordRecord>> records;
+  /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
+  late final pulumi.Output<String> resourceGroupName;
+  /// A mapping of tags to assign to the resource.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The Time To Live (TTL) of the DNS record in seconds.
+  late final pulumi.Output<int> ttl;
+  /// Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
+  late final pulumi.Output<String> zoneName;
+
+  /// Creates a new [MxRecord].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [MxRecord]. {@macro pulumi_dns_mx_record_mx_record_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  MxRecord(
+    String name, {
+    MxRecordArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:dns/mxRecord:MxRecord',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.fqdn = registerOutput<String>('fqdn');
+    this.name = registerOutput<String>('name');
+    this.records = registerOutput<List<MxRecordRecord>>('records');
+    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.ttl = registerOutput<int>('ttl');
+    this.zoneName = registerOutput<String>('zoneName');
+  }
+
+  /// Gets an existing [MxRecord] resource's state with the given [name] and [id].
+  static MxRecord get(
+    String name,
+    pulumi.Input<String> id, {
+    MxRecordState? state,
+  }) {
+    return MxRecord._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id),
+    );
+  }
+
+  MxRecord._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:dns/mxRecord:MxRecord',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.fqdn = registerOutput<String>('fqdn');
+    this.name = registerOutput<String>('name');
+    this.records = registerOutput<List<MxRecordRecord>>('records');
+    this.resourceGroupName = registerOutput<String>('resourceGroupName');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.ttl = registerOutput<int>('ttl');
+    this.zoneName = registerOutput<String>('zoneName');
+  }
+}

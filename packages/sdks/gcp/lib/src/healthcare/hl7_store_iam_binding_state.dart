@@ -1,0 +1,69 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'hl7_store_iam_binding_condition.dart';
+
+/// Input properties used for looking up and filtering Hl7StoreIamBinding resources.
+class Hl7StoreIamBindingState {
+  final pulumi.Input<Hl7StoreIamBindingCondition>? condition;
+  /// (Computed) The etag of the HL7v2 store's IAM policy.
+  final pulumi.Input<String>? etag;
+  /// The HL7v2 store ID, in the form
+  /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
+  /// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
+  /// project setting will be used as a fallback.
+  final pulumi.Input<String>? hl7V2StoreId;
+  /// Identities that will be granted the privilege in `role`.
+  /// Each entry can have one of the following values:
+  /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+  /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+  /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+  /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+  /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+  /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+  final pulumi.Input<List<String>>? members;
+  /// The role that should be applied. Only one
+  /// `gcp.healthcare.Hl7StoreIamBinding` can be used per role. Note that custom roles must be of the format
+  /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+  final pulumi.Input<String>? role;
+
+  /// Creates a new [Hl7StoreIamBindingState].
+  /// [condition] Optional.
+  /// [etag] (Computed) The etag of the HL7v2 store's IAM policy.
+  /// [hl7V2StoreId] The HL7v2 store ID, in the form
+  /// [members] Identities that will be granted the privilege in `role`.
+  /// [role] The role that should be applied. Only one
+  Hl7StoreIamBindingState({
+    pulumi.Output<Hl7StoreIamBindingCondition>? condition,
+    pulumi.Output<String>? etag,
+    pulumi.Output<String>? hl7V2StoreId,
+    pulumi.Output<List<String>>? members,
+    pulumi.Output<String>? role,
+  }) :
+      condition = pulumi.Input.asOptionalInput<Hl7StoreIamBindingCondition>(condition),
+      etag = pulumi.Input.asOptionalInput<String>(etag),
+      hl7V2StoreId = pulumi.Input.asOptionalInput<String>(hl7V2StoreId),
+      members = pulumi.Input.asOptionalInput<List<String>>(members),
+      role = pulumi.Input.asOptionalInput<String>(role);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<Hl7StoreIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'etag': ?etag,
+      'hl7V2StoreId': ?hl7V2StoreId,
+      'members': ?members,
+      'role': ?role,
+    };
+  }
+
+  factory Hl7StoreIamBindingState.fromMap(Map<String, dynamic> map) {
+    return Hl7StoreIamBindingState(
+      condition: map['condition'] == null ? null : pulumi.Output.create<Hl7StoreIamBindingCondition>(Hl7StoreIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
+      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
+      hl7V2StoreId: map['hl7V2StoreId'] == null ? null : pulumi.Output.create<String>(map['hl7V2StoreId'] as String),
+      members: map['members'] == null ? null : pulumi.Output.create<List<String>>((map['members'] as List).cast<String>()),
+      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+    );
+  }
+}
+

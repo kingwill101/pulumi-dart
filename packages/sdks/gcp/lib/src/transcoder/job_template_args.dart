@@ -1,0 +1,66 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'job_template_config.dart';
+
+/// {@template pulumi_transcoder_job_template_job_template_args_doc}
+/// The set of arguments for JobTemplate.
+/// {@endtemplate}
+/// {@macro pulumi_transcoder_job_template_job_template_args_doc}
+class JobTemplateArgs {
+  /// The configuration for this template.
+  /// Structure is documented below.
+  final pulumi.Input<JobTemplateConfig>? config;
+  /// ID to use for the Transcoding job template.
+  final pulumi.Input<String> jobTemplateId;
+  /// The labels associated with this job template. You can use these to organize and group your job templates.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>>? labels;
+  /// The location of the transcoding job template resource.
+  final pulumi.Input<String> location;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [JobTemplateArgs].
+  /// [config] The configuration for this template.
+  /// [jobTemplateId] ID to use for the Transcoding job template.
+  /// [labels] The labels associated with this job template. You can use these to organize and group your job templates.
+  /// [location] The location of the transcoding job template resource.
+  /// [project] The ID of the project in which the resource belongs.
+  JobTemplateArgs({
+    pulumi.Output<JobTemplateConfig>? config,
+    required pulumi.Output<String> jobTemplateId,
+    pulumi.Output<Map<String, String>>? labels,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+  }) :
+      config = pulumi.Input.asOptionalInput<JobTemplateConfig>(config),
+      jobTemplateId = pulumi.Input.asInput<String>(jobTemplateId),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'config': ?pulumi.Input.mapOptionalInputValue<JobTemplateConfig, Map<String, dynamic>>(config, (value) => value.toMap()),
+      'jobTemplateId': jobTemplateId,
+      'labels': ?labels,
+      'location': location,
+      'project': ?project,
+    };
+  }
+
+  factory JobTemplateArgs.fromMap(Map<String, dynamic> map) {
+    return JobTemplateArgs(
+      config: map['config'] == null ? null : pulumi.Output.create<JobTemplateConfig>(JobTemplateConfig.fromMap((map['config'] as Map).cast<String, dynamic>())),
+      jobTemplateId: pulumi.Output.create<String>(map['jobTemplateId'] as String),
+      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

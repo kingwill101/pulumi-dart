@@ -1,0 +1,74 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering TagValue resources.
+class TagValueState {
+  /// Output only. Creation time.
+  /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+  final pulumi.Input<String>? createTime;
+  /// User-assigned description of the TagValue. Must not exceed 256 characters.
+  final pulumi.Input<String>? description;
+  /// The generated numeric id for the TagValue.
+  final pulumi.Input<String>? name;
+  /// Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
+  final pulumi.Input<String>? namespacedName;
+  /// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
+  final pulumi.Input<String>? parent;
+  /// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
+  /// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
+  final pulumi.Input<String>? shortName;
+  /// Output only. Update time.
+  /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+  final pulumi.Input<String>? updateTime;
+
+  /// Creates a new [TagValueState].
+  /// [createTime] Output only. Creation time.
+  /// [description] User-assigned description of the TagValue. Must not exceed 256 characters.
+  /// [name] The generated numeric id for the TagValue.
+  /// [namespacedName] Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
+  /// [parent] Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
+  /// [shortName] Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
+  /// [updateTime] Output only. Update time.
+  TagValueState({
+    pulumi.Output<String>? createTime,
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? namespacedName,
+    pulumi.Output<String>? parent,
+    pulumi.Output<String>? shortName,
+    pulumi.Output<String>? updateTime,
+  }) :
+      createTime = pulumi.Input.asOptionalInput<String>(createTime),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      namespacedName = pulumi.Input.asOptionalInput<String>(namespacedName),
+      parent = pulumi.Input.asOptionalInput<String>(parent),
+      shortName = pulumi.Input.asOptionalInput<String>(shortName),
+      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'createTime': ?createTime,
+      'description': ?description,
+      'name': ?name,
+      'namespacedName': ?namespacedName,
+      'parent': ?parent,
+      'shortName': ?shortName,
+      'updateTime': ?updateTime,
+    };
+  }
+
+  factory TagValueState.fromMap(Map<String, dynamic> map) {
+    return TagValueState(
+      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      namespacedName: map['namespacedName'] == null ? null : pulumi.Output.create<String>(map['namespacedName'] as String),
+      parent: map['parent'] == null ? null : pulumi.Output.create<String>(map['parent'] as String),
+      shortName: map['shortName'] == null ? null : pulumi.Output.create<String>(map['shortName'] as String),
+      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+    );
+  }
+}
+

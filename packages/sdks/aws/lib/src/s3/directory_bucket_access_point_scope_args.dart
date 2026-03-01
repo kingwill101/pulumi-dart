@@ -1,0 +1,54 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'directory_bucket_access_point_scope_scope.dart';
+
+/// {@template pulumi_s3_control_directory_bucket_access_point_scope_directory_bucket_access_point_scope_args_doc}
+/// The set of arguments for DirectoryBucketAccessPointScope.
+/// {@endtemplate}
+/// {@macro pulumi_s3_control_directory_bucket_access_point_scope_directory_bucket_access_point_scope_args_doc}
+class DirectoryBucketAccessPointScopeArgs {
+  /// The AWS account ID that owns the specified access point.
+  final pulumi.Input<String> accountId;
+  /// The name of the access point that you want to apply the scope to.
+  final pulumi.Input<String>? name;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the `scope`, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
+  final pulumi.Input<DirectoryBucketAccessPointScopeScope> scope;
+
+  /// Creates a new [DirectoryBucketAccessPointScopeArgs].
+  /// [accountId] The AWS account ID that owns the specified access point.
+  /// [name] The name of the access point that you want to apply the scope to.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [scope] . Scope is used to restrict access to specific prefixes, API operations, or a combination of both. To remove the `scope`, set it to `{permissions=[] prefixes=[]}`. The default scope is `{permissions=[] prefixes=[]}`.
+  DirectoryBucketAccessPointScopeArgs({
+    required pulumi.Output<String> accountId,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? region,
+    required pulumi.Output<DirectoryBucketAccessPointScopeScope> scope,
+  }) :
+      accountId = pulumi.Input.asInput<String>(accountId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      scope = pulumi.Input.asInput<DirectoryBucketAccessPointScopeScope>(scope);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accountId': accountId,
+      'name': ?name,
+      'region': ?region,
+      'scope': pulumi.Input.mapInputValue<DirectoryBucketAccessPointScopeScope, Map<String, dynamic>>(scope, (value) => value.toMap()),
+    };
+  }
+
+  factory DirectoryBucketAccessPointScopeArgs.fromMap(Map<String, dynamic> map) {
+    return DirectoryBucketAccessPointScopeArgs(
+      accountId: pulumi.Output.create<String>(map['accountId'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      scope: pulumi.Output.create<DirectoryBucketAccessPointScopeScope>(DirectoryBucketAccessPointScopeScope.fromMap((map['scope'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

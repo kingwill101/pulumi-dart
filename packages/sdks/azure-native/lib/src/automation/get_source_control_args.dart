@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_automation_get_source_control_args_doc}
+/// Arguments for getSourceControl.
+/// {@endtemplate}
+/// {@macro pulumi_automation_get_source_control_args_doc}
+class GetSourceControlArgs {
+  /// The name of the automation account.
+  final pulumi.Input<String> automationAccountName;
+  /// Name of an Azure Resource group.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of source control.
+  final pulumi.Input<String> sourceControlName;
+
+  /// Creates a new [GetSourceControlArgs].
+  /// [automationAccountName] The name of the automation account.
+  /// [resourceGroupName] Name of an Azure Resource group.
+  /// [sourceControlName] The name of source control.
+  GetSourceControlArgs({
+    required pulumi.Output<String> automationAccountName,
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> sourceControlName,
+  }) :
+      automationAccountName = pulumi.Input.asInput<String>(automationAccountName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      sourceControlName = pulumi.Input.asInput<String>(sourceControlName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'automationAccountName': automationAccountName,
+      'resourceGroupName': resourceGroupName,
+      'sourceControlName': sourceControlName,
+    };
+  }
+
+  factory GetSourceControlArgs.fromMap(Map<String, dynamic> map) {
+    return GetSourceControlArgs(
+      automationAccountName: pulumi.Output.create<String>(map['automationAccountName'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      sourceControlName: pulumi.Output.create<String>(map['sourceControlName'] as String),
+    );
+  }
+}
+

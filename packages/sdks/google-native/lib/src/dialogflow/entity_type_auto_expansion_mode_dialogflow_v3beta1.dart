@@ -1,0 +1,18 @@
+/// Indicates whether the entity type can be automatically expanded.
+enum EntityTypeAutoExpansionModeDialogflowV3beta1 {
+  autoExpansionModeUnspecified("AUTO_EXPANSION_MODE_UNSPECIFIED"),
+  autoExpansionModeDefault("AUTO_EXPANSION_MODE_DEFAULT");
+
+  const EntityTypeAutoExpansionModeDialogflowV3beta1(this.value);
+  final String value;
+
+  static EntityTypeAutoExpansionModeDialogflowV3beta1 fromValue(String value) {
+    for (final item in EntityTypeAutoExpansionModeDialogflowV3beta1.values) {
+      if (item.value == value) {
+        return item;
+      }
+    }
+    throw ArgumentError('Unknown EntityTypeAutoExpansionModeDialogflowV3beta1 value: $value');
+  }
+}
+

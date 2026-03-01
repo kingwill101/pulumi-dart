@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_aiplatform_v1beta1_get_endpoint_aiplatform_v1beta1_args_doc}
+/// Arguments for getEndpoint.
+/// {@endtemplate}
+/// {@macro pulumi_aiplatform_v1beta1_get_endpoint_aiplatform_v1beta1_args_doc}
+class GetEndpointAiplatformV1beta1Args {
+  final pulumi.Input<String> endpointId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetEndpointAiplatformV1beta1Args].
+  /// [endpointId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  GetEndpointAiplatformV1beta1Args({
+    required pulumi.Output<String> endpointId,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+  }) :
+      endpointId = pulumi.Input.asInput<String>(endpointId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'endpointId': endpointId,
+      'location': location,
+      'project': ?project,
+    };
+  }
+
+  factory GetEndpointAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+    return GetEndpointAiplatformV1beta1Args(
+      endpointId: pulumi.Output.create<String>(map['endpointId'] as String),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

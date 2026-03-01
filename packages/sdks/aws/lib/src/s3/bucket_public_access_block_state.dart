@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering BucketPublicAccessBlock resources.
+class BucketPublicAccessBlockState {
+  /// Whether Amazon S3 should block public ACLs for this bucket. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true` causes the following behavior:
+  /// * PUT Bucket ACL and PUT Object ACL calls will fail if the specified ACL allows public access.
+  /// * PUT Object calls will fail if the request includes an object ACL.
+  final pulumi.Input<bool>? blockPublicAcls;
+  /// Whether Amazon S3 should block public bucket policies for this bucket. Defaults to `false`. Enabling this setting does not affect the existing bucket policy. When set to `true` causes Amazon S3 to:
+  /// * Reject calls to PUT Bucket policy if the specified bucket policy allows public access.
+  final pulumi.Input<bool>? blockPublicPolicy;
+  /// S3 Bucket to which this Public Access Block configuration should be applied.
+  final pulumi.Input<String>? bucket;
+  /// Whether Amazon S3 should ignore public ACLs for this bucket. Defaults to `false`. Enabling this setting does not affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being set. When set to `true` causes Amazon S3 to:
+  /// * Ignore public ACLs on this bucket and any objects that it contains.
+  final pulumi.Input<bool>? ignorePublicAcls;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Whether Amazon S3 should restrict public bucket policies for this bucket. Defaults to `false`. Enabling this setting does not affect the previously stored bucket policy, except that public and cross-account access within the public bucket policy, including non-public delegation to specific accounts, is blocked. When set to `true`:
+  /// * Only the bucket owner and AWS Services can access this buckets if it has a public policy.
+  final pulumi.Input<bool>? restrictPublicBuckets;
+  /// Whether to retain the public access block upon destruction. If set to `true`, the resource is simply removed from state instead. This may be desirable in certain scenarios to prevent the removal of a public access block before deletion of the associated bucket.
+  final pulumi.Input<bool>? skipDestroy;
+
+  /// Creates a new [BucketPublicAccessBlockState].
+  /// [blockPublicAcls] Whether Amazon S3 should block public ACLs for this bucket. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true` causes the following behavior:
+  /// [blockPublicPolicy] Whether Amazon S3 should block public bucket policies for this bucket. Defaults to `false`. Enabling this setting does not affect the existing bucket policy. When set to `true` causes Amazon S3 to:
+  /// [bucket] S3 Bucket to which this Public Access Block configuration should be applied.
+  /// [ignorePublicAcls] Whether Amazon S3 should ignore public ACLs for this bucket. Defaults to `false`. Enabling this setting does not affect the persistence of any existing ACLs and doesn't prevent new public ACLs from being set. When set to `true` causes Amazon S3 to:
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [restrictPublicBuckets] Whether Amazon S3 should restrict public bucket policies for this bucket. Defaults to `false`. Enabling this setting does not affect the previously stored bucket policy, except that public and cross-account access within the public bucket policy, including non-public delegation to specific accounts, is blocked. When set to `true`:
+  /// [skipDestroy] Whether to retain the public access block upon destruction. If set to `true`, the resource is simply removed from state instead. This may be desirable in certain scenarios to prevent the removal of a public access block before deletion of the associated bucket.
+  BucketPublicAccessBlockState({
+    pulumi.Output<bool>? blockPublicAcls,
+    pulumi.Output<bool>? blockPublicPolicy,
+    pulumi.Output<String>? bucket,
+    pulumi.Output<bool>? ignorePublicAcls,
+    pulumi.Output<String>? region,
+    pulumi.Output<bool>? restrictPublicBuckets,
+    pulumi.Output<bool>? skipDestroy,
+  }) :
+      blockPublicAcls = pulumi.Input.asOptionalInput<bool>(blockPublicAcls),
+      blockPublicPolicy = pulumi.Input.asOptionalInput<bool>(blockPublicPolicy),
+      bucket = pulumi.Input.asOptionalInput<String>(bucket),
+      ignorePublicAcls = pulumi.Input.asOptionalInput<bool>(ignorePublicAcls),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      restrictPublicBuckets = pulumi.Input.asOptionalInput<bool>(restrictPublicBuckets),
+      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'blockPublicAcls': ?blockPublicAcls,
+      'blockPublicPolicy': ?blockPublicPolicy,
+      'bucket': ?bucket,
+      'ignorePublicAcls': ?ignorePublicAcls,
+      'region': ?region,
+      'restrictPublicBuckets': ?restrictPublicBuckets,
+      'skipDestroy': ?skipDestroy,
+    };
+  }
+
+  factory BucketPublicAccessBlockState.fromMap(Map<String, dynamic> map) {
+    return BucketPublicAccessBlockState(
+      blockPublicAcls: map['blockPublicAcls'] == null ? null : pulumi.Output.create<bool>(map['blockPublicAcls'] as bool),
+      blockPublicPolicy: map['blockPublicPolicy'] == null ? null : pulumi.Output.create<bool>(map['blockPublicPolicy'] as bool),
+      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
+      ignorePublicAcls: map['ignorePublicAcls'] == null ? null : pulumi.Output.create<bool>(map['ignorePublicAcls'] as bool),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      restrictPublicBuckets: map['restrictPublicBuckets'] == null ? null : pulumi.Output.create<bool>(map['restrictPublicBuckets'] as bool),
+      skipDestroy: map['skipDestroy'] == null ? null : pulumi.Output.create<bool>(map['skipDestroy'] as bool),
+    );
+  }
+}
+

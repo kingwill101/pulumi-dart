@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_apikeys_v2_get_key_args_doc}
+/// Arguments for getKey.
+/// {@endtemplate}
+/// {@macro pulumi_apikeys_v2_get_key_args_doc}
+class GetKeyArgs {
+  final pulumi.Input<String> keyId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetKeyArgs].
+  /// [keyId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  GetKeyArgs({
+    required pulumi.Output<String> keyId,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+  }) :
+      keyId = pulumi.Input.asInput<String>(keyId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'keyId': keyId,
+      'location': location,
+      'project': ?project,
+    };
+  }
+
+  factory GetKeyArgs.fromMap(Map<String, dynamic> map) {
+    return GetKeyArgs(
+      keyId: pulumi.Output.create<String>(map['keyId'] as String),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

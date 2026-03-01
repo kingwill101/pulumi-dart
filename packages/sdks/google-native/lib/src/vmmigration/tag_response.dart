@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Tag is an AWS tag representation.
+class TagResponse {
+  /// Key of tag.
+  final String key;
+  /// Value of tag.
+  final String value;
+
+  /// Creates a new [TagResponse].
+  /// [key] Key of tag.
+  /// [value] Value of tag.
+  TagResponse({
+    required this.key,
+    required this.value,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'key': key,
+      'value': value,
+    };
+  }
+
+  factory TagResponse.fromMap(Map<String, dynamic> map) {
+    return TagResponse(
+      key: map['key'] as String,
+      value: map['value'] as String,
+    );
+  }
+}
+

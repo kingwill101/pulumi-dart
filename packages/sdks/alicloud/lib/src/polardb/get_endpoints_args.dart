@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_polardb_get_endpoints_get_endpoints_args_doc}
+/// Arguments for getEndpoints.
+/// {@endtemplate}
+/// {@macro pulumi_polardb_get_endpoints_get_endpoints_args_doc}
+class GetEndpointsArgs {
+  /// PolarDB cluster ID.
+  final pulumi.Input<String> dbClusterId;
+  /// endpoint of the cluster.
+  final pulumi.Input<String>? dbEndpointId;
+
+  /// Creates a new [GetEndpointsArgs].
+  /// [dbClusterId] PolarDB cluster ID.
+  /// [dbEndpointId] endpoint of the cluster.
+  GetEndpointsArgs({
+    required pulumi.Output<String> dbClusterId,
+    pulumi.Output<String>? dbEndpointId,
+  }) :
+      dbClusterId = pulumi.Input.asInput<String>(dbClusterId),
+      dbEndpointId = pulumi.Input.asOptionalInput<String>(dbEndpointId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dbClusterId': dbClusterId,
+      'dbEndpointId': ?dbEndpointId,
+    };
+  }
+
+  factory GetEndpointsArgs.fromMap(Map<String, dynamic> map) {
+    return GetEndpointsArgs(
+      dbClusterId: pulumi.Output.create<String>(map['dbClusterId'] as String),
+      dbEndpointId: map['dbEndpointId'] == null ? null : pulumi.Output.create<String>(map['dbEndpointId'] as String),
+    );
+  }
+}
+

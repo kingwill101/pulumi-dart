@@ -1,0 +1,24 @@
+library module_synthetics;
+
+export 'synthetics/canary.dart';
+export 'synthetics/canary_args.dart';
+export 'synthetics/canary_artifact_config.dart';
+export 'synthetics/canary_artifact_config_s3_encryption.dart';
+export 'synthetics/canary_run_config.dart';
+export 'synthetics/canary_schedule.dart';
+export 'synthetics/canary_schedule_retry_config.dart';
+export 'synthetics/canary_state.dart';
+export 'synthetics/canary_timeline.dart';
+export 'synthetics/canary_vpc_config.dart';
+export 'synthetics/functions.dart';
+export 'synthetics/get_runtime_version_args.dart';
+export 'synthetics/get_runtime_version_result.dart';
+export 'synthetics/get_runtime_versions_args.dart';
+export 'synthetics/get_runtime_versions_result.dart';
+export 'synthetics/get_runtime_versions_runtime_version.dart';
+export 'synthetics/group.dart';
+export 'synthetics/group_args.dart';
+export 'synthetics/group_association.dart';
+export 'synthetics/group_association_args.dart';
+export 'synthetics/group_association_state.dart';
+export 'synthetics/group_state.dart';

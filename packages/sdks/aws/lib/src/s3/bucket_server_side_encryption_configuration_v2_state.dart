@@ -1,0 +1,51 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'bucket_server_side_encryption_configuration_v2_rule.dart';
+
+/// Input properties used for looking up and filtering BucketServerSideEncryptionConfigurationV2 resources.
+class BucketServerSideEncryptionConfigurationV2State {
+  /// ID (name) of the bucket.
+  final pulumi.Input<String>? bucket;
+  /// Account ID of the expected bucket owner.
+  final pulumi.Input<String>? expectedBucketOwner;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Set of server-side encryption configuration rules. See below. Currently, only a single rule is supported.
+  final pulumi.Input<List<BucketServerSideEncryptionConfigurationV2Rule>>? rules;
+
+  /// Creates a new [BucketServerSideEncryptionConfigurationV2State].
+  /// [bucket] ID (name) of the bucket.
+  /// [expectedBucketOwner] Account ID of the expected bucket owner.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [rules] Set of server-side encryption configuration rules. See below. Currently, only a single rule is supported.
+  BucketServerSideEncryptionConfigurationV2State({
+    pulumi.Output<String>? bucket,
+    pulumi.Output<String>? expectedBucketOwner,
+    pulumi.Output<String>? region,
+    pulumi.Output<List<BucketServerSideEncryptionConfigurationV2Rule>>? rules,
+  }) :
+      bucket = pulumi.Input.asOptionalInput<String>(bucket),
+      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      rules = pulumi.Input.asOptionalInput<List<BucketServerSideEncryptionConfigurationV2Rule>>(rules);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'expectedBucketOwner': ?expectedBucketOwner,
+      'region': ?region,
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<BucketServerSideEncryptionConfigurationV2Rule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<BucketServerSideEncryptionConfigurationV2Rule, Map<String, dynamic>>(value, (value) => value.toMap())),
+    };
+  }
+
+  factory BucketServerSideEncryptionConfigurationV2State.fromMap(Map<String, dynamic> map) {
+    return BucketServerSideEncryptionConfigurationV2State(
+      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      rules: map['rules'] == null ? null : pulumi.Output.create<List<BucketServerSideEncryptionConfigurationV2Rule>>(pulumi.Input.decodeList<BucketServerSideEncryptionConfigurationV2Rule>(map['rules'], (value) => BucketServerSideEncryptionConfigurationV2Rule.fromMap((value as Map).cast<String, dynamic>()))),
+    );
+  }
+}
+

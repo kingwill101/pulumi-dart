@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mutations version="1.2">
+  <files>
+    <file>lib/src/callback_server.dart</file>
+    <file>lib/src/deployment/**.dart</file>
+    <file>lib/src/resource/**.dart</file>
+    <file>lib/src/monitor.dart</file>
+    <file>lib/src/serializer.dart</file>
+    <file>lib/src/deserializer.dart</file>
+    <file>lib/src/struct_converter.dart</file>
+    <file>lib/src/input.dart</file>
+    <file>lib/src/output.dart</file>
+  </files>
+
+  <commands>
+    <command group="test" expected-return="0" working-directory="." timeout="900">dart test --reporter compact</command>
+  </commands>
+
+  <exclude>
+    <file>**/*.g.dart</file>
+    <file>**/*.freezed.dart</file>
+    <file>**/*.mocks.dart</file>
+    <file>lib/src/pulumirpc/**.dart</file>
+  </exclude>
+
+  <threshold failure="75">
+    <rating over="95" name="A"/>
+    <rating over="85" name="B"/>
+    <rating over="75" name="C"/>
+    <rating over="60" name="D"/>
+    <rating over="40" name="E"/>
+    <rating over="0" name="F"/>
+  </threshold>
+</mutations>

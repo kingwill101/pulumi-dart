@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image.
+class GoogleCloudDocumentaiV1VertexResponse {
+  /// X coordinate.
+  final int x;
+  /// Y coordinate (starts from the top of the image).
+  final int y;
+
+  /// Creates a new [GoogleCloudDocumentaiV1VertexResponse].
+  /// [x] X coordinate.
+  /// [y] Y coordinate (starts from the top of the image).
+  GoogleCloudDocumentaiV1VertexResponse({
+    required this.x,
+    required this.y,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'x': x,
+      'y': y,
+    };
+  }
+
+  factory GoogleCloudDocumentaiV1VertexResponse.fromMap(Map<String, dynamic> map) {
+    return GoogleCloudDocumentaiV1VertexResponse(
+      x: map['x'] as int,
+      y: map['y'] as int,
+    );
+  }
+}
+

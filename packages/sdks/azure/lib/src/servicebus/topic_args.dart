@@ -1,0 +1,118 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_servicebus_topic_topic_args_doc}
+/// The set of arguments for Topic.
+/// {@endtemplate}
+/// {@macro pulumi_servicebus_topic_topic_args_doc}
+class TopicArgs {
+  /// The ISO 8601 timespan duration of the idle interval after which the Topic is automatically deleted, minimum of 5 minutes. Defaults to `P10675199DT2H48M5.4775807S`.
+  final pulumi.Input<String>? autoDeleteOnIdle;
+  /// Boolean flag which controls if server-side batched operations are enabled.
+  final pulumi.Input<bool>? batchedOperationsEnabled;
+  /// The ISO 8601 timespan duration of TTL of messages sent to this topic if no TTL value is set on the message itself. Defaults to `P10675199DT2H48M5.4775807S`.
+  final pulumi.Input<String>? defaultMessageTtl;
+  /// The ISO 8601 timespan duration during which duplicates can be detected. Defaults to `PT10M` (10 Minutes).
+  final pulumi.Input<String>? duplicateDetectionHistoryTimeWindow;
+  /// Boolean flag which controls whether Express Entities are enabled. An express topic holds a message in memory temporarily before writing it to persistent storage.
+  final pulumi.Input<bool>? expressEnabled;
+  /// Integer value which controls the maximum size of a message allowed on the topic for Premium SKU. For supported values see the "Large messages support" section of [this document](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging#large-messages-support-preview). Defaults to `256`.
+  final pulumi.Input<int>? maxMessageSizeInKilobytes;
+  /// Integer value which controls the size of memory allocated for the topic. For supported values see the "Queue/topic size" section of [this document](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas). Defaults to `5120`.
+  final pulumi.Input<int>? maxSizeInMegabytes;
+  /// Specifies the name of the ServiceBus Topic resource. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// The ID of the ServiceBus Namespace to create this topic in. Changing this forces a new resource to be created.
+  final pulumi.Input<String> namespaceId;
+  /// Boolean flag which controls whether to enable the topic to be partitioned across multiple message brokers. Changing this forces a new resource to be created.
+  ///
+  /// > **Note:** Partitioning is available at entity creation for all queues and topics in Basic or Standard SKUs. It is not available for the Premium messaging SKU, but any previously existing partitioned entities in Premium namespaces continue to work as expected. For premium namespaces, partitioning is available at namespace creation and all queues and topics in the partitioned namespace will be partitioned. Premium namespaces that have `premium_messaging_partitions` set to `1` are not partitioned. Please [see the documentation](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-partitioning) for more information.
+  final pulumi.Input<bool>? partitioningEnabled;
+  /// Boolean flag which controls whether the Topic requires duplicate detection. Defaults to `false`. Changing this forces a new resource to be created.
+  final pulumi.Input<bool>? requiresDuplicateDetection;
+  /// The Status of the Service Bus Topic. Acceptable values are `Active` or `Disabled`. Defaults to `Active`.
+  final pulumi.Input<String>? status;
+  /// Boolean flag which controls whether the Topic supports ordering.
+  final pulumi.Input<bool>? supportOrdering;
+
+  /// Creates a new [TopicArgs].
+  /// [autoDeleteOnIdle] The ISO 8601 timespan duration of the idle interval after which the Topic is automatically deleted, minimum of 5 minutes. Defaults to `P10675199DT2H48M5.4775807S`.
+  /// [batchedOperationsEnabled] Boolean flag which controls if server-side batched operations are enabled.
+  /// [defaultMessageTtl] The ISO 8601 timespan duration of TTL of messages sent to this topic if no TTL value is set on the message itself. Defaults to `P10675199DT2H48M5.4775807S`.
+  /// [duplicateDetectionHistoryTimeWindow] The ISO 8601 timespan duration during which duplicates can be detected. Defaults to `PT10M` (10 Minutes).
+  /// [expressEnabled] Boolean flag which controls whether Express Entities are enabled. An express topic holds a message in memory temporarily before writing it to persistent storage.
+  /// [maxMessageSizeInKilobytes] Integer value which controls the maximum size of a message allowed on the topic for Premium SKU. For supported values see the "Large messages support" section of [this document](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging#large-messages-support-preview). Defaults to `256`.
+  /// [maxSizeInMegabytes] Integer value which controls the size of memory allocated for the topic. For supported values see the "Queue/topic size" section of [this document](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas). Defaults to `5120`.
+  /// [name] Specifies the name of the ServiceBus Topic resource. Changing this forces a new resource to be created.
+  /// [namespaceId] The ID of the ServiceBus Namespace to create this topic in. Changing this forces a new resource to be created.
+  /// [partitioningEnabled] Boolean flag which controls whether to enable the topic to be partitioned across multiple message brokers. Changing this forces a new resource to be created.
+  /// [requiresDuplicateDetection] Boolean flag which controls whether the Topic requires duplicate detection. Defaults to `false`. Changing this forces a new resource to be created.
+  /// [status] The Status of the Service Bus Topic. Acceptable values are `Active` or `Disabled`. Defaults to `Active`.
+  /// [supportOrdering] Boolean flag which controls whether the Topic supports ordering.
+  TopicArgs({
+    pulumi.Output<String>? autoDeleteOnIdle,
+    pulumi.Output<bool>? batchedOperationsEnabled,
+    pulumi.Output<String>? defaultMessageTtl,
+    pulumi.Output<String>? duplicateDetectionHistoryTimeWindow,
+    pulumi.Output<bool>? expressEnabled,
+    pulumi.Output<int>? maxMessageSizeInKilobytes,
+    pulumi.Output<int>? maxSizeInMegabytes,
+    pulumi.Output<String>? name,
+    required pulumi.Output<String> namespaceId,
+    pulumi.Output<bool>? partitioningEnabled,
+    pulumi.Output<bool>? requiresDuplicateDetection,
+    pulumi.Output<String>? status,
+    pulumi.Output<bool>? supportOrdering,
+  }) :
+      autoDeleteOnIdle = pulumi.Input.asOptionalInput<String>(autoDeleteOnIdle),
+      batchedOperationsEnabled = pulumi.Input.asOptionalInput<bool>(batchedOperationsEnabled),
+      defaultMessageTtl = pulumi.Input.asOptionalInput<String>(defaultMessageTtl),
+      duplicateDetectionHistoryTimeWindow = pulumi.Input.asOptionalInput<String>(duplicateDetectionHistoryTimeWindow),
+      expressEnabled = pulumi.Input.asOptionalInput<bool>(expressEnabled),
+      maxMessageSizeInKilobytes = pulumi.Input.asOptionalInput<int>(maxMessageSizeInKilobytes),
+      maxSizeInMegabytes = pulumi.Input.asOptionalInput<int>(maxSizeInMegabytes),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      namespaceId = pulumi.Input.asInput<String>(namespaceId),
+      partitioningEnabled = pulumi.Input.asOptionalInput<bool>(partitioningEnabled),
+      requiresDuplicateDetection = pulumi.Input.asOptionalInput<bool>(requiresDuplicateDetection),
+      status = pulumi.Input.asOptionalInput<String>(status),
+      supportOrdering = pulumi.Input.asOptionalInput<bool>(supportOrdering);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'autoDeleteOnIdle': ?autoDeleteOnIdle,
+      'batchedOperationsEnabled': ?batchedOperationsEnabled,
+      'defaultMessageTtl': ?defaultMessageTtl,
+      'duplicateDetectionHistoryTimeWindow': ?duplicateDetectionHistoryTimeWindow,
+      'expressEnabled': ?expressEnabled,
+      'maxMessageSizeInKilobytes': ?maxMessageSizeInKilobytes,
+      'maxSizeInMegabytes': ?maxSizeInMegabytes,
+      'name': ?name,
+      'namespaceId': namespaceId,
+      'partitioningEnabled': ?partitioningEnabled,
+      'requiresDuplicateDetection': ?requiresDuplicateDetection,
+      'status': ?status,
+      'supportOrdering': ?supportOrdering,
+    };
+  }
+
+  factory TopicArgs.fromMap(Map<String, dynamic> map) {
+    return TopicArgs(
+      autoDeleteOnIdle: map['autoDeleteOnIdle'] == null ? null : pulumi.Output.create<String>(map['autoDeleteOnIdle'] as String),
+      batchedOperationsEnabled: map['batchedOperationsEnabled'] == null ? null : pulumi.Output.create<bool>(map['batchedOperationsEnabled'] as bool),
+      defaultMessageTtl: map['defaultMessageTtl'] == null ? null : pulumi.Output.create<String>(map['defaultMessageTtl'] as String),
+      duplicateDetectionHistoryTimeWindow: map['duplicateDetectionHistoryTimeWindow'] == null ? null : pulumi.Output.create<String>(map['duplicateDetectionHistoryTimeWindow'] as String),
+      expressEnabled: map['expressEnabled'] == null ? null : pulumi.Output.create<bool>(map['expressEnabled'] as bool),
+      maxMessageSizeInKilobytes: map['maxMessageSizeInKilobytes'] == null ? null : pulumi.Output.create<int>(map['maxMessageSizeInKilobytes'] as int),
+      maxSizeInMegabytes: map['maxSizeInMegabytes'] == null ? null : pulumi.Output.create<int>(map['maxSizeInMegabytes'] as int),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      namespaceId: pulumi.Output.create<String>(map['namespaceId'] as String),
+      partitioningEnabled: map['partitioningEnabled'] == null ? null : pulumi.Output.create<bool>(map['partitioningEnabled'] as bool),
+      requiresDuplicateDetection: map['requiresDuplicateDetection'] == null ? null : pulumi.Output.create<bool>(map['requiresDuplicateDetection'] as bool),
+      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      supportOrdering: map['supportOrdering'] == null ? null : pulumi.Output.create<bool>(map['supportOrdering'] as bool),
+    );
+  }
+}
+

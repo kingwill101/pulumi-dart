@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// We currently only support backup retention by specifying the number of backups we will retain.
+class BackupRetentionSettingsResponse {
+  /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
+  final int retainedBackups;
+  /// The unit that 'retained_backups' represents.
+  final String retentionUnit;
+
+  /// Creates a new [BackupRetentionSettingsResponse].
+  /// [retainedBackups] Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
+  /// [retentionUnit] The unit that 'retained_backups' represents.
+  BackupRetentionSettingsResponse({
+    required this.retainedBackups,
+    required this.retentionUnit,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'retainedBackups': retainedBackups,
+      'retentionUnit': retentionUnit,
+    };
+  }
+
+  factory BackupRetentionSettingsResponse.fromMap(Map<String, dynamic> map) {
+    return BackupRetentionSettingsResponse(
+      retainedBackups: map['retainedBackups'] as int,
+      retentionUnit: map['retentionUnit'] as String,
+    );
+  }
+}
+

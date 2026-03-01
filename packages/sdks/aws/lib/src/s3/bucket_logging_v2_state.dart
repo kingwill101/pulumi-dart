@@ -1,0 +1,73 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'bucket_logging_v2_target_grant.dart';
+import 'bucket_logging_v2_target_object_key_format.dart';
+
+/// Input properties used for looking up and filtering BucketLoggingV2 resources.
+class BucketLoggingV2State {
+  /// Name of the bucket.
+  final pulumi.Input<String>? bucket;
+  /// Account ID of the expected bucket owner.
+  final pulumi.Input<String>? expectedBucketOwner;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Name of the bucket where you want Amazon S3 to store server access logs.
+  final pulumi.Input<String>? targetBucket;
+  /// Set of configuration blocks with information for granting permissions. See below.
+  final pulumi.Input<List<BucketLoggingV2TargetGrant>>? targetGrants;
+  /// Amazon S3 key format for log objects. See below.
+  final pulumi.Input<BucketLoggingV2TargetObjectKeyFormat>? targetObjectKeyFormat;
+  /// Prefix for all log object keys.
+  final pulumi.Input<String>? targetPrefix;
+
+  /// Creates a new [BucketLoggingV2State].
+  /// [bucket] Name of the bucket.
+  /// [expectedBucketOwner] Account ID of the expected bucket owner.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [targetBucket] Name of the bucket where you want Amazon S3 to store server access logs.
+  /// [targetGrants] Set of configuration blocks with information for granting permissions. See below.
+  /// [targetObjectKeyFormat] Amazon S3 key format for log objects. See below.
+  /// [targetPrefix] Prefix for all log object keys.
+  BucketLoggingV2State({
+    pulumi.Output<String>? bucket,
+    pulumi.Output<String>? expectedBucketOwner,
+    pulumi.Output<String>? region,
+    pulumi.Output<String>? targetBucket,
+    pulumi.Output<List<BucketLoggingV2TargetGrant>>? targetGrants,
+    pulumi.Output<BucketLoggingV2TargetObjectKeyFormat>? targetObjectKeyFormat,
+    pulumi.Output<String>? targetPrefix,
+  }) :
+      bucket = pulumi.Input.asOptionalInput<String>(bucket),
+      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      targetBucket = pulumi.Input.asOptionalInput<String>(targetBucket),
+      targetGrants = pulumi.Input.asOptionalInput<List<BucketLoggingV2TargetGrant>>(targetGrants),
+      targetObjectKeyFormat = pulumi.Input.asOptionalInput<BucketLoggingV2TargetObjectKeyFormat>(targetObjectKeyFormat),
+      targetPrefix = pulumi.Input.asOptionalInput<String>(targetPrefix);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'bucket': ?bucket,
+      'expectedBucketOwner': ?expectedBucketOwner,
+      'region': ?region,
+      'targetBucket': ?targetBucket,
+      'targetGrants': ?pulumi.Input.mapOptionalInputValue<List<BucketLoggingV2TargetGrant>, List<Map<String, dynamic>>>(targetGrants, (value) => pulumi.Input.encodeList<BucketLoggingV2TargetGrant, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targetObjectKeyFormat': ?pulumi.Input.mapOptionalInputValue<BucketLoggingV2TargetObjectKeyFormat, Map<String, dynamic>>(targetObjectKeyFormat, (value) => value.toMap()),
+      'targetPrefix': ?targetPrefix,
+    };
+  }
+
+  factory BucketLoggingV2State.fromMap(Map<String, dynamic> map) {
+    return BucketLoggingV2State(
+      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
+      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : pulumi.Output.create<String>(map['expectedBucketOwner'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      targetBucket: map['targetBucket'] == null ? null : pulumi.Output.create<String>(map['targetBucket'] as String),
+      targetGrants: map['targetGrants'] == null ? null : pulumi.Output.create<List<BucketLoggingV2TargetGrant>>(pulumi.Input.decodeList<BucketLoggingV2TargetGrant>(map['targetGrants'], (value) => BucketLoggingV2TargetGrant.fromMap((value as Map).cast<String, dynamic>()))),
+      targetObjectKeyFormat: map['targetObjectKeyFormat'] == null ? null : pulumi.Output.create<BucketLoggingV2TargetObjectKeyFormat>(BucketLoggingV2TargetObjectKeyFormat.fromMap((map['targetObjectKeyFormat'] as Map).cast<String, dynamic>())),
+      targetPrefix: map['targetPrefix'] == null ? null : pulumi.Output.create<String>(map['targetPrefix'] as String),
+    );
+  }
+}
+

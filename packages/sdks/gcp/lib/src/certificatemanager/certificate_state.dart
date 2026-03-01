@@ -1,0 +1,121 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'certificate_managed.dart';
+import 'certificate_self_managed.dart';
+
+/// Input properties used for looking up and filtering Certificate resources.
+class CertificateState {
+  /// A human-readable description of the resource.
+  final pulumi.Input<String>? description;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  /// Set of label tags associated with the Certificate resource.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>>? labels;
+  /// The Certificate Manager location. If not specified, "global" is used.
+  final pulumi.Input<String>? location;
+  /// Configuration and state of a Managed Certificate.
+  /// Certificate Manager provisions and renews Managed Certificates
+  /// automatically, for as long as it's authorized to do so.
+  /// Structure is documented below.
+  final pulumi.Input<CertificateManaged>? managed;
+  /// A user-defined name of the certificate. Certificate names must be unique
+  /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+  /// and all following characters must be a dash, underscore, letter or digit.
+  final pulumi.Input<String>? name;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  /// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+  final pulumi.Input<List<String>>? sanDnsnames;
+  /// The scope of the certificate.
+  /// DEFAULT: Certificates with default scope are served from core Google data centers.
+  /// If unsure, choose this option.
+  /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+  /// See https://cloud.google.com/vpc/docs/edge-locations.
+  /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+  /// See https://cloud.google.com/compute/docs/regions-zones.
+  /// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
+  /// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
+  final pulumi.Input<String>? scope;
+  /// Certificate data for a SelfManaged Certificate.
+  /// SelfManaged Certificates are uploaded by the user. Updating such
+  /// certificates before they expire remains the user's responsibility.
+  /// Structure is documented below.
+  final pulumi.Input<CertificateSelfManaged>? selfManaged;
+
+  /// Creates a new [CertificateState].
+  /// [description] A human-readable description of the resource.
+  /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  /// [labels] Set of label tags associated with the Certificate resource.
+  /// [location] The Certificate Manager location. If not specified, "global" is used.
+  /// [managed] Configuration and state of a Managed Certificate.
+  /// [name] A user-defined name of the certificate. Certificate names must be unique
+  /// [project] The ID of the project in which the resource belongs.
+  /// [pulumiLabels] The combination of labels configured directly on the resource
+  /// [sanDnsnames] The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+  /// [scope] The scope of the certificate.
+  /// [selfManaged] Certificate data for a SelfManaged Certificate.
+  CertificateState({
+    pulumi.Output<String>? description,
+    pulumi.Output<Map<String, String>>? effectiveLabels,
+    pulumi.Output<Map<String, String>>? labels,
+    pulumi.Output<String>? location,
+    pulumi.Output<CertificateManaged>? managed,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? project,
+    pulumi.Output<Map<String, String>>? pulumiLabels,
+    pulumi.Output<List<String>>? sanDnsnames,
+    pulumi.Output<String>? scope,
+    pulumi.Output<CertificateSelfManaged>? selfManaged,
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      effectiveLabels = pulumi.Input.asOptionalInput<Map<String, String>>(effectiveLabels),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      managed = pulumi.Input.asOptionalInput<CertificateManaged>(managed),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      pulumiLabels = pulumi.Input.asOptionalInput<Map<String, String>>(pulumiLabels),
+      sanDnsnames = pulumi.Input.asOptionalInput<List<String>>(sanDnsnames),
+      scope = pulumi.Input.asOptionalInput<String>(scope),
+      selfManaged = pulumi.Input.asOptionalInput<CertificateSelfManaged>(selfManaged);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'effectiveLabels': ?effectiveLabels,
+      'labels': ?labels,
+      'location': ?location,
+      'managed': ?pulumi.Input.mapOptionalInputValue<CertificateManaged, Map<String, dynamic>>(managed, (value) => value.toMap()),
+      'name': ?name,
+      'project': ?project,
+      'pulumiLabels': ?pulumiLabels,
+      'sanDnsnames': ?sanDnsnames,
+      'scope': ?scope,
+      'selfManaged': ?pulumi.Input.mapOptionalInputValue<CertificateSelfManaged, Map<String, dynamic>>(selfManaged, (value) => value.toMap()),
+    };
+  }
+
+  factory CertificateState.fromMap(Map<String, dynamic> map) {
+    return CertificateState(
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      effectiveLabels: map['effectiveLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['effectiveLabels'] as Map).cast<String, String>()),
+      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      managed: map['managed'] == null ? null : pulumi.Output.create<CertificateManaged>(CertificateManaged.fromMap((map['managed'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      pulumiLabels: map['pulumiLabels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['pulumiLabels'] as Map).cast<String, String>()),
+      sanDnsnames: map['sanDnsnames'] == null ? null : pulumi.Output.create<List<String>>((map['sanDnsnames'] as List).cast<String>()),
+      scope: map['scope'] == null ? null : pulumi.Output.create<String>(map['scope'] as String),
+      selfManaged: map['selfManaged'] == null ? null : pulumi.Output.create<CertificateSelfManaged>(CertificateSelfManaged.fromMap((map['selfManaged'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

@@ -1,0 +1,33 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Used with unidirectional glossaries.
+class LanguageCodePair {
+  /// The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+  final String sourceLanguageCode;
+  /// The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+  final String targetLanguageCode;
+
+  /// Creates a new [LanguageCodePair].
+  /// [sourceLanguageCode] The ISO-639 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+  /// [targetLanguageCode] The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+  LanguageCodePair({
+    required this.sourceLanguageCode,
+    required this.targetLanguageCode,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'sourceLanguageCode': sourceLanguageCode,
+      'targetLanguageCode': targetLanguageCode,
+    };
+  }
+
+  factory LanguageCodePair.fromMap(Map<String, dynamic> map) {
+    return LanguageCodePair(
+      sourceLanguageCode: map['sourceLanguageCode'] as String,
+      targetLanguageCode: map['targetLanguageCode'] as String,
+    );
+  }
+}
+

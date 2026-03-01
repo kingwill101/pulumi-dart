@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering Gateway resources.
+class GatewayState {
+  /// The description of Gateway.
+  final pulumi.Input<String>? gatewayDesc;
+  /// The name of the Gateway.
+  final pulumi.Input<String>? gatewayName;
+  /// The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+  final pulumi.Input<String>? status;
+
+  /// Creates a new [GatewayState].
+  /// [gatewayDesc] The description of Gateway.
+  /// [gatewayName] The name of the Gateway.
+  /// [status] The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+  GatewayState({
+    pulumi.Output<String>? gatewayDesc,
+    pulumi.Output<String>? gatewayName,
+    pulumi.Output<String>? status,
+  }) :
+      gatewayDesc = pulumi.Input.asOptionalInput<String>(gatewayDesc),
+      gatewayName = pulumi.Input.asOptionalInput<String>(gatewayName),
+      status = pulumi.Input.asOptionalInput<String>(status);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'gatewayDesc': ?gatewayDesc,
+      'gatewayName': ?gatewayName,
+      'status': ?status,
+    };
+  }
+
+  factory GatewayState.fromMap(Map<String, dynamic> map) {
+    return GatewayState(
+      gatewayDesc: map['gatewayDesc'] == null ? null : pulumi.Output.create<String>(map['gatewayDesc'] as String),
+      gatewayName: map['gatewayName'] == null ? null : pulumi.Output.create<String>(map['gatewayName'] as String),
+      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+    );
+  }
+}
+

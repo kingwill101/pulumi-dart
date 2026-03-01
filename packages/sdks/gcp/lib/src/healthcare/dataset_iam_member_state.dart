@@ -1,0 +1,69 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'dataset_iam_member_condition.dart';
+
+/// Input properties used for looking up and filtering DatasetIamMember resources.
+class DatasetIamMemberState {
+  final pulumi.Input<DatasetIamMemberCondition>? condition;
+  /// The dataset ID, in the form
+  /// `{project_id}/{location_name}/{dataset_name}` or
+  /// `{location_name}/{dataset_name}`. In the second form, the provider's
+  /// project setting will be used as a fallback.
+  final pulumi.Input<String>? datasetId;
+  /// (Computed) The etag of the dataset's IAM policy.
+  final pulumi.Input<String>? etag;
+  /// Identities that will be granted the privilege in `role`.
+  /// Each entry can have one of the following values:
+  /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+  /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+  /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+  /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+  /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+  /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+  final pulumi.Input<String>? member;
+  /// The role that should be applied. Only one
+  /// `gcp.healthcare.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
+  /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+  final pulumi.Input<String>? role;
+
+  /// Creates a new [DatasetIamMemberState].
+  /// [condition] Optional.
+  /// [datasetId] The dataset ID, in the form
+  /// [etag] (Computed) The etag of the dataset's IAM policy.
+  /// [member] Identities that will be granted the privilege in `role`.
+  /// [role] The role that should be applied. Only one
+  DatasetIamMemberState({
+    pulumi.Output<DatasetIamMemberCondition>? condition,
+    pulumi.Output<String>? datasetId,
+    pulumi.Output<String>? etag,
+    pulumi.Output<String>? member,
+    pulumi.Output<String>? role,
+  }) :
+      condition = pulumi.Input.asOptionalInput<DatasetIamMemberCondition>(condition),
+      datasetId = pulumi.Input.asOptionalInput<String>(datasetId),
+      etag = pulumi.Input.asOptionalInput<String>(etag),
+      member = pulumi.Input.asOptionalInput<String>(member),
+      role = pulumi.Input.asOptionalInput<String>(role);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'condition': ?pulumi.Input.mapOptionalInputValue<DatasetIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'datasetId': ?datasetId,
+      'etag': ?etag,
+      'member': ?member,
+      'role': ?role,
+    };
+  }
+
+  factory DatasetIamMemberState.fromMap(Map<String, dynamic> map) {
+    return DatasetIamMemberState(
+      condition: map['condition'] == null ? null : pulumi.Output.create<DatasetIamMemberCondition>(DatasetIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>())),
+      datasetId: map['datasetId'] == null ? null : pulumi.Output.create<String>(map['datasetId'] as String),
+      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
+      member: map['member'] == null ? null : pulumi.Output.create<String>(map['member'] as String),
+      role: map['role'] == null ? null : pulumi.Output.create<String>(map['role'] as String),
+    );
+  }
+}
+

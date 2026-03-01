@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_storage_get_managed_folder_iam_policy_get_managed_folder_iam_policy_args_doc}
+/// Arguments for getManagedFolderIamPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_storage_get_managed_folder_iam_policy_get_managed_folder_iam_policy_args_doc}
+class GetManagedFolderIamPolicyArgs {
+  final pulumi.Input<String> bucket;
+  final pulumi.Input<String> managedFolder;
+
+  /// Creates a new [GetManagedFolderIamPolicyArgs].
+  /// [bucket] Required.
+  /// [managedFolder] Required.
+  GetManagedFolderIamPolicyArgs({
+    required pulumi.Output<String> bucket,
+    required pulumi.Output<String> managedFolder,
+  }) :
+      bucket = pulumi.Input.asInput<String>(bucket),
+      managedFolder = pulumi.Input.asInput<String>(managedFolder);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'bucket': bucket,
+      'managedFolder': managedFolder,
+    };
+  }
+
+  factory GetManagedFolderIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return GetManagedFolderIamPolicyArgs(
+      bucket: pulumi.Output.create<String>(map['bucket'] as String),
+      managedFolder: pulumi.Output.create<String>(map['managedFolder'] as String),
+    );
+  }
+}
+

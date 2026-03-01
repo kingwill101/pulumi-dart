@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_databoxedge_get_device_get_device_args_doc}
+/// Arguments for getDevice.
+/// {@endtemplate}
+/// {@macro pulumi_databoxedge_get_device_get_device_args_doc}
+class GetDeviceArgs {
+  /// The name which should be used for this Databox Edge Device. Changing this forces a new Databox Edge Device to be created.
+  final pulumi.Input<String> name;
+  /// The name of the Resource Group where the Databox Edge Device should exist. Changing this forces a new Databox Edge Device to be created.
+  final pulumi.Input<String> resourceGroupName;
+
+  /// Creates a new [GetDeviceArgs].
+  /// [name] The name which should be used for this Databox Edge Device. Changing this forces a new Databox Edge Device to be created.
+  /// [resourceGroupName] The name of the Resource Group where the Databox Edge Device should exist. Changing this forces a new Databox Edge Device to be created.
+  GetDeviceArgs({
+    required pulumi.Output<String> name,
+    required pulumi.Output<String> resourceGroupName,
+  }) :
+      name = pulumi.Input.asInput<String>(name),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': name,
+      'resourceGroupName': resourceGroupName,
+    };
+  }
+
+  factory GetDeviceArgs.fromMap(Map<String, dynamic> map) {
+    return GetDeviceArgs(
+      name: pulumi.Output.create<String>(map['name'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+    );
+  }
+}
+

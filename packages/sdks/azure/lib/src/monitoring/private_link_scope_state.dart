@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering PrivateLinkScope resources.
+class PrivateLinkScopeState {
+  /// The default ingestion access mode for the associated private endpoints in scope. Possible values are `Open` and `PrivateOnly`. Defaults to `Open`.
+  final pulumi.Input<String>? ingestionAccessMode;
+  /// The name of the Azure Monitor Private Link Scope. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// The default query access mode for hte associated private endpoints in scope. Possible values are `Open` and `PrivateOnly`. Defaults to `Open`.
+  final pulumi.Input<String>? queryAccessMode;
+  /// The name of the Resource Group where the Azure Monitor Private Link Scope should exist. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? resourceGroupName;
+  /// A mapping of tags which should be assigned to the Azure Monitor Private Link Scope.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [PrivateLinkScopeState].
+  /// [ingestionAccessMode] The default ingestion access mode for the associated private endpoints in scope. Possible values are `Open` and `PrivateOnly`. Defaults to `Open`.
+  /// [name] The name of the Azure Monitor Private Link Scope. Changing this forces a new resource to be created.
+  /// [queryAccessMode] The default query access mode for hte associated private endpoints in scope. Possible values are `Open` and `PrivateOnly`. Defaults to `Open`.
+  /// [resourceGroupName] The name of the Resource Group where the Azure Monitor Private Link Scope should exist. Changing this forces a new resource to be created.
+  /// [tags] A mapping of tags which should be assigned to the Azure Monitor Private Link Scope.
+  PrivateLinkScopeState({
+    pulumi.Output<String>? ingestionAccessMode,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? queryAccessMode,
+    pulumi.Output<String>? resourceGroupName,
+    pulumi.Output<Map<String, String>>? tags,
+  }) :
+      ingestionAccessMode = pulumi.Input.asOptionalInput<String>(ingestionAccessMode),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      queryAccessMode = pulumi.Input.asOptionalInput<String>(queryAccessMode),
+      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ingestionAccessMode': ?ingestionAccessMode,
+      'name': ?name,
+      'queryAccessMode': ?queryAccessMode,
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
+    };
+  }
+
+  factory PrivateLinkScopeState.fromMap(Map<String, dynamic> map) {
+    return PrivateLinkScopeState(
+      ingestionAccessMode: map['ingestionAccessMode'] == null ? null : pulumi.Output.create<String>(map['ingestionAccessMode'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      queryAccessMode: map['queryAccessMode'] == null ? null : pulumi.Output.create<String>(map['queryAccessMode'] as String),
+      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+    );
+  }
+}
+

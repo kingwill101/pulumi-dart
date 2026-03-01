@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering RequestValidator resources.
+class RequestValidatorState {
+  /// Name of the request validator
+  final pulumi.Input<String>? name;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// ID of the associated Rest API
+  final pulumi.Input<String>? restApi;
+  /// Boolean whether to validate request body. Defaults to `false`.
+  final pulumi.Input<bool>? validateRequestBody;
+  /// Boolean whether to validate request parameters. Defaults to `false`.
+  final pulumi.Input<bool>? validateRequestParameters;
+
+  /// Creates a new [RequestValidatorState].
+  /// [name] Name of the request validator
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [restApi] ID of the associated Rest API
+  /// [validateRequestBody] Boolean whether to validate request body. Defaults to `false`.
+  /// [validateRequestParameters] Boolean whether to validate request parameters. Defaults to `false`.
+  RequestValidatorState({
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? region,
+    pulumi.Output<String>? restApi,
+    pulumi.Output<bool>? validateRequestBody,
+    pulumi.Output<bool>? validateRequestParameters,
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      restApi = pulumi.Input.asOptionalInput<String>(restApi),
+      validateRequestBody = pulumi.Input.asOptionalInput<bool>(validateRequestBody),
+      validateRequestParameters = pulumi.Input.asOptionalInput<bool>(validateRequestParameters);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+      'region': ?region,
+      'restApi': ?restApi,
+      'validateRequestBody': ?validateRequestBody,
+      'validateRequestParameters': ?validateRequestParameters,
+    };
+  }
+
+  factory RequestValidatorState.fromMap(Map<String, dynamic> map) {
+    return RequestValidatorState(
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      restApi: map['restApi'] == null ? null : pulumi.Output.create<String>(map['restApi'] as String),
+      validateRequestBody: map['validateRequestBody'] == null ? null : pulumi.Output.create<bool>(map['validateRequestBody'] as bool),
+      validateRequestParameters: map['validateRequestParameters'] == null ? null : pulumi.Output.create<bool>(map['validateRequestParameters'] as bool),
+    );
+  }
+}
+

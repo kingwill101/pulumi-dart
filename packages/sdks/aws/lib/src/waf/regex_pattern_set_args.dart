@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_waf_regex_pattern_set_regex_pattern_set_args_doc}
+/// The set of arguments for RegexPatternSet.
+/// {@endtemplate}
+/// {@macro pulumi_waf_regex_pattern_set_regex_pattern_set_args_doc}
+class RegexPatternSetArgs {
+  /// The name or description of the Regex Pattern Set.
+  final pulumi.Input<String>? name;
+  /// A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
+  final pulumi.Input<List<String>>? regexPatternStrings;
+
+  /// Creates a new [RegexPatternSetArgs].
+  /// [name] The name or description of the Regex Pattern Set.
+  /// [regexPatternStrings] A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
+  RegexPatternSetArgs({
+    pulumi.Output<String>? name,
+    pulumi.Output<List<String>>? regexPatternStrings,
+  }) :
+      name = pulumi.Input.asOptionalInput<String>(name),
+      regexPatternStrings = pulumi.Input.asOptionalInput<List<String>>(regexPatternStrings);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'name': ?name,
+      'regexPatternStrings': ?regexPatternStrings,
+    };
+  }
+
+  factory RegexPatternSetArgs.fromMap(Map<String, dynamic> map) {
+    return RegexPatternSetArgs(
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      regexPatternStrings: map['regexPatternStrings'] == null ? null : pulumi.Output.create<List<String>>((map['regexPatternStrings'] as List).cast<String>()),
+    );
+  }
+}
+

@@ -1,0 +1,22 @@
+library module_devicefarm;
+
+export 'devicefarm/device_pool.dart';
+export 'devicefarm/device_pool_args.dart';
+export 'devicefarm/device_pool_rule.dart';
+export 'devicefarm/device_pool_state.dart';
+export 'devicefarm/instance_profile.dart';
+export 'devicefarm/instance_profile_args.dart';
+export 'devicefarm/instance_profile_state.dart';
+export 'devicefarm/network_profile.dart';
+export 'devicefarm/network_profile_args.dart';
+export 'devicefarm/network_profile_state.dart';
+export 'devicefarm/project.dart';
+export 'devicefarm/project_args.dart';
+export 'devicefarm/project_state.dart';
+export 'devicefarm/test_grid_project.dart';
+export 'devicefarm/test_grid_project_args.dart';
+export 'devicefarm/test_grid_project_state.dart';
+export 'devicefarm/test_grid_project_vpc_config.dart';
+export 'devicefarm/upload.dart';
+export 'devicefarm/upload_args.dart';
+export 'devicefarm/upload_state.dart';

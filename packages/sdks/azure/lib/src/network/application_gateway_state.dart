@@ -1,0 +1,287 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'application_gateway_authentication_certificate.dart';
+import 'application_gateway_autoscale_configuration.dart';
+import 'application_gateway_backend_address_pool.dart';
+import 'application_gateway_backend_http_setting.dart';
+import 'application_gateway_custom_error_configuration.dart';
+import 'application_gateway_frontend_ip_configuration.dart';
+import 'application_gateway_frontend_port.dart';
+import 'application_gateway_gateway_ip_configuration.dart';
+import 'application_gateway_global.dart';
+import 'application_gateway_http_listener.dart';
+import 'application_gateway_identity.dart';
+import 'application_gateway_private_endpoint_connection.dart';
+import 'application_gateway_private_link_configuration.dart';
+import 'application_gateway_probe.dart';
+import 'application_gateway_redirect_configuration.dart';
+import 'application_gateway_request_routing_rule.dart';
+import 'application_gateway_rewrite_rule_set.dart';
+import 'application_gateway_sku.dart';
+import 'application_gateway_ssl_certificate.dart';
+import 'application_gateway_ssl_policy.dart';
+import 'application_gateway_ssl_profile.dart';
+import 'application_gateway_trusted_client_certificate.dart';
+import 'application_gateway_trusted_root_certificate.dart';
+import 'application_gateway_url_path_map.dart';
+import 'application_gateway_waf_configuration.dart';
+
+/// Input properties used for looking up and filtering ApplicationGateway resources.
+class ApplicationGatewayState {
+  /// One or more `authentication_certificate` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayAuthenticationCertificate>>? authenticationCertificates;
+  /// An `autoscale_configuration` block as defined below.
+  final pulumi.Input<ApplicationGatewayAutoscaleConfiguration>? autoscaleConfiguration;
+  /// One or more `backend_address_pool` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayBackendAddressPool>>? backendAddressPools;
+  /// One or more `backend_http_settings` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayBackendHttpSetting>>? backendHttpSettings;
+  /// One or more `custom_error_configuration` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayCustomErrorConfiguration>>? customErrorConfigurations;
+  /// Is HTTP2 enabled on the application gateway resource? Defaults to `false`.
+  final pulumi.Input<bool>? enableHttp2;
+  /// Is FIPS enabled on the Application Gateway?
+  final pulumi.Input<bool>? fipsEnabled;
+  /// The ID of the Web Application Firewall Policy.
+  final pulumi.Input<String>? firewallPolicyId;
+  /// Is the Firewall Policy associated with the Application Gateway?
+  final pulumi.Input<bool>? forceFirewallPolicyAssociation;
+  /// One or more `frontend_ip_configuration` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayFrontendIpConfiguration>>? frontendIpConfigurations;
+  /// One or more `frontend_port` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayFrontendPort>>? frontendPorts;
+  /// One or more `gateway_ip_configuration` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayGatewayIpConfiguration>>? gatewayIpConfigurations;
+  /// A `global` block as defined below.
+  final pulumi.Input<ApplicationGatewayGlobal>? global;
+  /// One or more `http_listener` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayHttpListener>>? httpListeners;
+  /// An `identity` block as defined below.
+  final pulumi.Input<ApplicationGatewayIdentity>? identity;
+  /// The Azure region where the Application Gateway should exist. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? location;
+  /// The name of the Application Gateway. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// A list of `private_endpoint_connection` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayPrivateEndpointConnection>>? privateEndpointConnections;
+  /// One or more `private_link_configuration` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayPrivateLinkConfiguration>>? privateLinkConfigurations;
+  /// One or more `probe` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayProbe>>? probes;
+  /// One or more `redirect_configuration` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayRedirectConfiguration>>? redirectConfigurations;
+  /// One or more `request_routing_rule` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayRequestRoutingRule>>? requestRoutingRules;
+  /// The name of the resource group in which to the Application Gateway should exist. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? resourceGroupName;
+  /// One or more `rewrite_rule_set` blocks as defined below. Only valid for v2 WAF and Standard SKUs.
+  final pulumi.Input<List<ApplicationGatewayRewriteRuleSet>>? rewriteRuleSets;
+  /// A `sku` block as defined below.
+  final pulumi.Input<ApplicationGatewaySku>? sku;
+  /// One or more `ssl_certificate` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewaySslCertificate>>? sslCertificates;
+  /// a `ssl_policy` block as defined below.
+  final pulumi.Input<ApplicationGatewaySslPolicy>? sslPolicy;
+  /// One or more `ssl_profile` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewaySslProfile>>? sslProfiles;
+  /// A mapping of tags to assign to the resource.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// One or more `trusted_client_certificate` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayTrustedClientCertificate>>? trustedClientCertificates;
+  /// One or more `trusted_root_certificate` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayTrustedRootCertificate>>? trustedRootCertificates;
+  /// One or more `url_path_map` blocks as defined below.
+  final pulumi.Input<List<ApplicationGatewayUrlPathMap>>? urlPathMaps;
+  /// A `waf_configuration` block as defined below.
+  final pulumi.Input<ApplicationGatewayWafConfiguration>? wafConfiguration;
+  /// Specifies a list of Availability Zones in which this Application Gateway should be located. Changing this forces a new Application Gateway to be created.
+  ///
+  /// > **Note:** Availability Zones are not supported in all regions at this time, please check the [official documentation](https://docs.microsoft.com/azure/availability-zones/az-overview) for more information. They are also only supported for [v2 SKUs](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+  final pulumi.Input<List<String>>? zones;
+
+  /// Creates a new [ApplicationGatewayState].
+  /// [authenticationCertificates] One or more `authentication_certificate` blocks as defined below.
+  /// [autoscaleConfiguration] An `autoscale_configuration` block as defined below.
+  /// [backendAddressPools] One or more `backend_address_pool` blocks as defined below.
+  /// [backendHttpSettings] One or more `backend_http_settings` blocks as defined below.
+  /// [customErrorConfigurations] One or more `custom_error_configuration` blocks as defined below.
+  /// [enableHttp2] Is HTTP2 enabled on the application gateway resource? Defaults to `false`.
+  /// [fipsEnabled] Is FIPS enabled on the Application Gateway?
+  /// [firewallPolicyId] The ID of the Web Application Firewall Policy.
+  /// [forceFirewallPolicyAssociation] Is the Firewall Policy associated with the Application Gateway?
+  /// [frontendIpConfigurations] One or more `frontend_ip_configuration` blocks as defined below.
+  /// [frontendPorts] One or more `frontend_port` blocks as defined below.
+  /// [gatewayIpConfigurations] One or more `gateway_ip_configuration` blocks as defined below.
+  /// [global] A `global` block as defined below.
+  /// [httpListeners] One or more `http_listener` blocks as defined below.
+  /// [identity] An `identity` block as defined below.
+  /// [location] The Azure region where the Application Gateway should exist. Changing this forces a new resource to be created.
+  /// [name] The name of the Application Gateway. Changing this forces a new resource to be created.
+  /// [privateEndpointConnections] A list of `private_endpoint_connection` blocks as defined below.
+  /// [privateLinkConfigurations] One or more `private_link_configuration` blocks as defined below.
+  /// [probes] One or more `probe` blocks as defined below.
+  /// [redirectConfigurations] One or more `redirect_configuration` blocks as defined below.
+  /// [requestRoutingRules] One or more `request_routing_rule` blocks as defined below.
+  /// [resourceGroupName] The name of the resource group in which to the Application Gateway should exist. Changing this forces a new resource to be created.
+  /// [rewriteRuleSets] One or more `rewrite_rule_set` blocks as defined below. Only valid for v2 WAF and Standard SKUs.
+  /// [sku] A `sku` block as defined below.
+  /// [sslCertificates] One or more `ssl_certificate` blocks as defined below.
+  /// [sslPolicy] a `ssl_policy` block as defined below.
+  /// [sslProfiles] One or more `ssl_profile` blocks as defined below.
+  /// [tags] A mapping of tags to assign to the resource.
+  /// [trustedClientCertificates] One or more `trusted_client_certificate` blocks as defined below.
+  /// [trustedRootCertificates] One or more `trusted_root_certificate` blocks as defined below.
+  /// [urlPathMaps] One or more `url_path_map` blocks as defined below.
+  /// [wafConfiguration] A `waf_configuration` block as defined below.
+  /// [zones] Specifies a list of Availability Zones in which this Application Gateway should be located. Changing this forces a new Application Gateway to be created.
+  ApplicationGatewayState({
+    pulumi.Output<List<ApplicationGatewayAuthenticationCertificate>>? authenticationCertificates,
+    pulumi.Output<ApplicationGatewayAutoscaleConfiguration>? autoscaleConfiguration,
+    pulumi.Output<List<ApplicationGatewayBackendAddressPool>>? backendAddressPools,
+    pulumi.Output<List<ApplicationGatewayBackendHttpSetting>>? backendHttpSettings,
+    pulumi.Output<List<ApplicationGatewayCustomErrorConfiguration>>? customErrorConfigurations,
+    pulumi.Output<bool>? enableHttp2,
+    pulumi.Output<bool>? fipsEnabled,
+    pulumi.Output<String>? firewallPolicyId,
+    pulumi.Output<bool>? forceFirewallPolicyAssociation,
+    pulumi.Output<List<ApplicationGatewayFrontendIpConfiguration>>? frontendIpConfigurations,
+    pulumi.Output<List<ApplicationGatewayFrontendPort>>? frontendPorts,
+    pulumi.Output<List<ApplicationGatewayGatewayIpConfiguration>>? gatewayIpConfigurations,
+    pulumi.Output<ApplicationGatewayGlobal>? global,
+    pulumi.Output<List<ApplicationGatewayHttpListener>>? httpListeners,
+    pulumi.Output<ApplicationGatewayIdentity>? identity,
+    pulumi.Output<String>? location,
+    pulumi.Output<String>? name,
+    pulumi.Output<List<ApplicationGatewayPrivateEndpointConnection>>? privateEndpointConnections,
+    pulumi.Output<List<ApplicationGatewayPrivateLinkConfiguration>>? privateLinkConfigurations,
+    pulumi.Output<List<ApplicationGatewayProbe>>? probes,
+    pulumi.Output<List<ApplicationGatewayRedirectConfiguration>>? redirectConfigurations,
+    pulumi.Output<List<ApplicationGatewayRequestRoutingRule>>? requestRoutingRules,
+    pulumi.Output<String>? resourceGroupName,
+    pulumi.Output<List<ApplicationGatewayRewriteRuleSet>>? rewriteRuleSets,
+    pulumi.Output<ApplicationGatewaySku>? sku,
+    pulumi.Output<List<ApplicationGatewaySslCertificate>>? sslCertificates,
+    pulumi.Output<ApplicationGatewaySslPolicy>? sslPolicy,
+    pulumi.Output<List<ApplicationGatewaySslProfile>>? sslProfiles,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<List<ApplicationGatewayTrustedClientCertificate>>? trustedClientCertificates,
+    pulumi.Output<List<ApplicationGatewayTrustedRootCertificate>>? trustedRootCertificates,
+    pulumi.Output<List<ApplicationGatewayUrlPathMap>>? urlPathMaps,
+    pulumi.Output<ApplicationGatewayWafConfiguration>? wafConfiguration,
+    pulumi.Output<List<String>>? zones,
+  }) :
+      authenticationCertificates = pulumi.Input.asOptionalInput<List<ApplicationGatewayAuthenticationCertificate>>(authenticationCertificates),
+      autoscaleConfiguration = pulumi.Input.asOptionalInput<ApplicationGatewayAutoscaleConfiguration>(autoscaleConfiguration),
+      backendAddressPools = pulumi.Input.asOptionalInput<List<ApplicationGatewayBackendAddressPool>>(backendAddressPools),
+      backendHttpSettings = pulumi.Input.asOptionalInput<List<ApplicationGatewayBackendHttpSetting>>(backendHttpSettings),
+      customErrorConfigurations = pulumi.Input.asOptionalInput<List<ApplicationGatewayCustomErrorConfiguration>>(customErrorConfigurations),
+      enableHttp2 = pulumi.Input.asOptionalInput<bool>(enableHttp2),
+      fipsEnabled = pulumi.Input.asOptionalInput<bool>(fipsEnabled),
+      firewallPolicyId = pulumi.Input.asOptionalInput<String>(firewallPolicyId),
+      forceFirewallPolicyAssociation = pulumi.Input.asOptionalInput<bool>(forceFirewallPolicyAssociation),
+      frontendIpConfigurations = pulumi.Input.asOptionalInput<List<ApplicationGatewayFrontendIpConfiguration>>(frontendIpConfigurations),
+      frontendPorts = pulumi.Input.asOptionalInput<List<ApplicationGatewayFrontendPort>>(frontendPorts),
+      gatewayIpConfigurations = pulumi.Input.asOptionalInput<List<ApplicationGatewayGatewayIpConfiguration>>(gatewayIpConfigurations),
+      global = pulumi.Input.asOptionalInput<ApplicationGatewayGlobal>(global),
+      httpListeners = pulumi.Input.asOptionalInput<List<ApplicationGatewayHttpListener>>(httpListeners),
+      identity = pulumi.Input.asOptionalInput<ApplicationGatewayIdentity>(identity),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      privateEndpointConnections = pulumi.Input.asOptionalInput<List<ApplicationGatewayPrivateEndpointConnection>>(privateEndpointConnections),
+      privateLinkConfigurations = pulumi.Input.asOptionalInput<List<ApplicationGatewayPrivateLinkConfiguration>>(privateLinkConfigurations),
+      probes = pulumi.Input.asOptionalInput<List<ApplicationGatewayProbe>>(probes),
+      redirectConfigurations = pulumi.Input.asOptionalInput<List<ApplicationGatewayRedirectConfiguration>>(redirectConfigurations),
+      requestRoutingRules = pulumi.Input.asOptionalInput<List<ApplicationGatewayRequestRoutingRule>>(requestRoutingRules),
+      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
+      rewriteRuleSets = pulumi.Input.asOptionalInput<List<ApplicationGatewayRewriteRuleSet>>(rewriteRuleSets),
+      sku = pulumi.Input.asOptionalInput<ApplicationGatewaySku>(sku),
+      sslCertificates = pulumi.Input.asOptionalInput<List<ApplicationGatewaySslCertificate>>(sslCertificates),
+      sslPolicy = pulumi.Input.asOptionalInput<ApplicationGatewaySslPolicy>(sslPolicy),
+      sslProfiles = pulumi.Input.asOptionalInput<List<ApplicationGatewaySslProfile>>(sslProfiles),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      trustedClientCertificates = pulumi.Input.asOptionalInput<List<ApplicationGatewayTrustedClientCertificate>>(trustedClientCertificates),
+      trustedRootCertificates = pulumi.Input.asOptionalInput<List<ApplicationGatewayTrustedRootCertificate>>(trustedRootCertificates),
+      urlPathMaps = pulumi.Input.asOptionalInput<List<ApplicationGatewayUrlPathMap>>(urlPathMaps),
+      wafConfiguration = pulumi.Input.asOptionalInput<ApplicationGatewayWafConfiguration>(wafConfiguration),
+      zones = pulumi.Input.asOptionalInput<List<String>>(zones);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'authenticationCertificates': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayAuthenticationCertificate>, List<Map<String, dynamic>>>(authenticationCertificates, (value) => pulumi.Input.encodeList<ApplicationGatewayAuthenticationCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'autoscaleConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationGatewayAutoscaleConfiguration, Map<String, dynamic>>(autoscaleConfiguration, (value) => value.toMap()),
+      'backendAddressPools': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayBackendAddressPool>, List<Map<String, dynamic>>>(backendAddressPools, (value) => pulumi.Input.encodeList<ApplicationGatewayBackendAddressPool, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'backendHttpSettings': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayBackendHttpSetting>, List<Map<String, dynamic>>>(backendHttpSettings, (value) => pulumi.Input.encodeList<ApplicationGatewayBackendHttpSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customErrorConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayCustomErrorConfiguration>, List<Map<String, dynamic>>>(customErrorConfigurations, (value) => pulumi.Input.encodeList<ApplicationGatewayCustomErrorConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'enableHttp2': ?enableHttp2,
+      'fipsEnabled': ?fipsEnabled,
+      'firewallPolicyId': ?firewallPolicyId,
+      'forceFirewallPolicyAssociation': ?forceFirewallPolicyAssociation,
+      'frontendIpConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayFrontendIpConfiguration>, List<Map<String, dynamic>>>(frontendIpConfigurations, (value) => pulumi.Input.encodeList<ApplicationGatewayFrontendIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'frontendPorts': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayFrontendPort>, List<Map<String, dynamic>>>(frontendPorts, (value) => pulumi.Input.encodeList<ApplicationGatewayFrontendPort, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'gatewayIpConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayGatewayIpConfiguration>, List<Map<String, dynamic>>>(gatewayIpConfigurations, (value) => pulumi.Input.encodeList<ApplicationGatewayGatewayIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'global': ?pulumi.Input.mapOptionalInputValue<ApplicationGatewayGlobal, Map<String, dynamic>>(global, (value) => value.toMap()),
+      'httpListeners': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayHttpListener>, List<Map<String, dynamic>>>(httpListeners, (value) => pulumi.Input.encodeList<ApplicationGatewayHttpListener, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'identity': ?pulumi.Input.mapOptionalInputValue<ApplicationGatewayIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
+      'location': ?location,
+      'name': ?name,
+      'privateEndpointConnections': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayPrivateEndpointConnection>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<ApplicationGatewayPrivateEndpointConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'privateLinkConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayPrivateLinkConfiguration>, List<Map<String, dynamic>>>(privateLinkConfigurations, (value) => pulumi.Input.encodeList<ApplicationGatewayPrivateLinkConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'probes': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayProbe>, List<Map<String, dynamic>>>(probes, (value) => pulumi.Input.encodeList<ApplicationGatewayProbe, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'redirectConfigurations': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayRedirectConfiguration>, List<Map<String, dynamic>>>(redirectConfigurations, (value) => pulumi.Input.encodeList<ApplicationGatewayRedirectConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'requestRoutingRules': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayRequestRoutingRule>, List<Map<String, dynamic>>>(requestRoutingRules, (value) => pulumi.Input.encodeList<ApplicationGatewayRequestRoutingRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'resourceGroupName': ?resourceGroupName,
+      'rewriteRuleSets': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayRewriteRuleSet>, List<Map<String, dynamic>>>(rewriteRuleSets, (value) => pulumi.Input.encodeList<ApplicationGatewayRewriteRuleSet, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sku': ?pulumi.Input.mapOptionalInputValue<ApplicationGatewaySku, Map<String, dynamic>>(sku, (value) => value.toMap()),
+      'sslCertificates': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewaySslCertificate>, List<Map<String, dynamic>>>(sslCertificates, (value) => pulumi.Input.encodeList<ApplicationGatewaySslCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'sslPolicy': ?pulumi.Input.mapOptionalInputValue<ApplicationGatewaySslPolicy, Map<String, dynamic>>(sslPolicy, (value) => value.toMap()),
+      'sslProfiles': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewaySslProfile>, List<Map<String, dynamic>>>(sslProfiles, (value) => pulumi.Input.encodeList<ApplicationGatewaySslProfile, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': ?tags,
+      'trustedClientCertificates': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayTrustedClientCertificate>, List<Map<String, dynamic>>>(trustedClientCertificates, (value) => pulumi.Input.encodeList<ApplicationGatewayTrustedClientCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'trustedRootCertificates': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayTrustedRootCertificate>, List<Map<String, dynamic>>>(trustedRootCertificates, (value) => pulumi.Input.encodeList<ApplicationGatewayTrustedRootCertificate, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'urlPathMaps': ?pulumi.Input.mapOptionalInputValue<List<ApplicationGatewayUrlPathMap>, List<Map<String, dynamic>>>(urlPathMaps, (value) => pulumi.Input.encodeList<ApplicationGatewayUrlPathMap, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'wafConfiguration': ?pulumi.Input.mapOptionalInputValue<ApplicationGatewayWafConfiguration, Map<String, dynamic>>(wafConfiguration, (value) => value.toMap()),
+      'zones': ?zones,
+    };
+  }
+
+  factory ApplicationGatewayState.fromMap(Map<String, dynamic> map) {
+    return ApplicationGatewayState(
+      authenticationCertificates: map['authenticationCertificates'] == null ? null : pulumi.Output.create<List<ApplicationGatewayAuthenticationCertificate>>(pulumi.Input.decodeList<ApplicationGatewayAuthenticationCertificate>(map['authenticationCertificates'], (value) => ApplicationGatewayAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>()))),
+      autoscaleConfiguration: map['autoscaleConfiguration'] == null ? null : pulumi.Output.create<ApplicationGatewayAutoscaleConfiguration>(ApplicationGatewayAutoscaleConfiguration.fromMap((map['autoscaleConfiguration'] as Map).cast<String, dynamic>())),
+      backendAddressPools: map['backendAddressPools'] == null ? null : pulumi.Output.create<List<ApplicationGatewayBackendAddressPool>>(pulumi.Input.decodeList<ApplicationGatewayBackendAddressPool>(map['backendAddressPools'], (value) => ApplicationGatewayBackendAddressPool.fromMap((value as Map).cast<String, dynamic>()))),
+      backendHttpSettings: map['backendHttpSettings'] == null ? null : pulumi.Output.create<List<ApplicationGatewayBackendHttpSetting>>(pulumi.Input.decodeList<ApplicationGatewayBackendHttpSetting>(map['backendHttpSettings'], (value) => ApplicationGatewayBackendHttpSetting.fromMap((value as Map).cast<String, dynamic>()))),
+      customErrorConfigurations: map['customErrorConfigurations'] == null ? null : pulumi.Output.create<List<ApplicationGatewayCustomErrorConfiguration>>(pulumi.Input.decodeList<ApplicationGatewayCustomErrorConfiguration>(map['customErrorConfigurations'], (value) => ApplicationGatewayCustomErrorConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      enableHttp2: map['enableHttp2'] == null ? null : pulumi.Output.create<bool>(map['enableHttp2'] as bool),
+      fipsEnabled: map['fipsEnabled'] == null ? null : pulumi.Output.create<bool>(map['fipsEnabled'] as bool),
+      firewallPolicyId: map['firewallPolicyId'] == null ? null : pulumi.Output.create<String>(map['firewallPolicyId'] as String),
+      forceFirewallPolicyAssociation: map['forceFirewallPolicyAssociation'] == null ? null : pulumi.Output.create<bool>(map['forceFirewallPolicyAssociation'] as bool),
+      frontendIpConfigurations: map['frontendIpConfigurations'] == null ? null : pulumi.Output.create<List<ApplicationGatewayFrontendIpConfiguration>>(pulumi.Input.decodeList<ApplicationGatewayFrontendIpConfiguration>(map['frontendIpConfigurations'], (value) => ApplicationGatewayFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      frontendPorts: map['frontendPorts'] == null ? null : pulumi.Output.create<List<ApplicationGatewayFrontendPort>>(pulumi.Input.decodeList<ApplicationGatewayFrontendPort>(map['frontendPorts'], (value) => ApplicationGatewayFrontendPort.fromMap((value as Map).cast<String, dynamic>()))),
+      gatewayIpConfigurations: map['gatewayIpConfigurations'] == null ? null : pulumi.Output.create<List<ApplicationGatewayGatewayIpConfiguration>>(pulumi.Input.decodeList<ApplicationGatewayGatewayIpConfiguration>(map['gatewayIpConfigurations'], (value) => ApplicationGatewayGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      global: map['global'] == null ? null : pulumi.Output.create<ApplicationGatewayGlobal>(ApplicationGatewayGlobal.fromMap((map['global'] as Map).cast<String, dynamic>())),
+      httpListeners: map['httpListeners'] == null ? null : pulumi.Output.create<List<ApplicationGatewayHttpListener>>(pulumi.Input.decodeList<ApplicationGatewayHttpListener>(map['httpListeners'], (value) => ApplicationGatewayHttpListener.fromMap((value as Map).cast<String, dynamic>()))),
+      identity: map['identity'] == null ? null : pulumi.Output.create<ApplicationGatewayIdentity>(ApplicationGatewayIdentity.fromMap((map['identity'] as Map).cast<String, dynamic>())),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      privateEndpointConnections: map['privateEndpointConnections'] == null ? null : pulumi.Output.create<List<ApplicationGatewayPrivateEndpointConnection>>(pulumi.Input.decodeList<ApplicationGatewayPrivateEndpointConnection>(map['privateEndpointConnections'], (value) => ApplicationGatewayPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))),
+      privateLinkConfigurations: map['privateLinkConfigurations'] == null ? null : pulumi.Output.create<List<ApplicationGatewayPrivateLinkConfiguration>>(pulumi.Input.decodeList<ApplicationGatewayPrivateLinkConfiguration>(map['privateLinkConfigurations'], (value) => ApplicationGatewayPrivateLinkConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      probes: map['probes'] == null ? null : pulumi.Output.create<List<ApplicationGatewayProbe>>(pulumi.Input.decodeList<ApplicationGatewayProbe>(map['probes'], (value) => ApplicationGatewayProbe.fromMap((value as Map).cast<String, dynamic>()))),
+      redirectConfigurations: map['redirectConfigurations'] == null ? null : pulumi.Output.create<List<ApplicationGatewayRedirectConfiguration>>(pulumi.Input.decodeList<ApplicationGatewayRedirectConfiguration>(map['redirectConfigurations'], (value) => ApplicationGatewayRedirectConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      requestRoutingRules: map['requestRoutingRules'] == null ? null : pulumi.Output.create<List<ApplicationGatewayRequestRoutingRule>>(pulumi.Input.decodeList<ApplicationGatewayRequestRoutingRule>(map['requestRoutingRules'], (value) => ApplicationGatewayRequestRoutingRule.fromMap((value as Map).cast<String, dynamic>()))),
+      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      rewriteRuleSets: map['rewriteRuleSets'] == null ? null : pulumi.Output.create<List<ApplicationGatewayRewriteRuleSet>>(pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSet>(map['rewriteRuleSets'], (value) => ApplicationGatewayRewriteRuleSet.fromMap((value as Map).cast<String, dynamic>()))),
+      sku: map['sku'] == null ? null : pulumi.Output.create<ApplicationGatewaySku>(ApplicationGatewaySku.fromMap((map['sku'] as Map).cast<String, dynamic>())),
+      sslCertificates: map['sslCertificates'] == null ? null : pulumi.Output.create<List<ApplicationGatewaySslCertificate>>(pulumi.Input.decodeList<ApplicationGatewaySslCertificate>(map['sslCertificates'], (value) => ApplicationGatewaySslCertificate.fromMap((value as Map).cast<String, dynamic>()))),
+      sslPolicy: map['sslPolicy'] == null ? null : pulumi.Output.create<ApplicationGatewaySslPolicy>(ApplicationGatewaySslPolicy.fromMap((map['sslPolicy'] as Map).cast<String, dynamic>())),
+      sslProfiles: map['sslProfiles'] == null ? null : pulumi.Output.create<List<ApplicationGatewaySslProfile>>(pulumi.Input.decodeList<ApplicationGatewaySslProfile>(map['sslProfiles'], (value) => ApplicationGatewaySslProfile.fromMap((value as Map).cast<String, dynamic>()))),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      trustedClientCertificates: map['trustedClientCertificates'] == null ? null : pulumi.Output.create<List<ApplicationGatewayTrustedClientCertificate>>(pulumi.Input.decodeList<ApplicationGatewayTrustedClientCertificate>(map['trustedClientCertificates'], (value) => ApplicationGatewayTrustedClientCertificate.fromMap((value as Map).cast<String, dynamic>()))),
+      trustedRootCertificates: map['trustedRootCertificates'] == null ? null : pulumi.Output.create<List<ApplicationGatewayTrustedRootCertificate>>(pulumi.Input.decodeList<ApplicationGatewayTrustedRootCertificate>(map['trustedRootCertificates'], (value) => ApplicationGatewayTrustedRootCertificate.fromMap((value as Map).cast<String, dynamic>()))),
+      urlPathMaps: map['urlPathMaps'] == null ? null : pulumi.Output.create<List<ApplicationGatewayUrlPathMap>>(pulumi.Input.decodeList<ApplicationGatewayUrlPathMap>(map['urlPathMaps'], (value) => ApplicationGatewayUrlPathMap.fromMap((value as Map).cast<String, dynamic>()))),
+      wafConfiguration: map['wafConfiguration'] == null ? null : pulumi.Output.create<ApplicationGatewayWafConfiguration>(ApplicationGatewayWafConfiguration.fromMap((map['wafConfiguration'] as Map).cast<String, dynamic>())),
+      zones: map['zones'] == null ? null : pulumi.Output.create<List<String>>((map['zones'] as List).cast<String>()),
+    );
+  }
+}
+

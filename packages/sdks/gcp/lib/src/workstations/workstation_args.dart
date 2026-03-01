@@ -1,0 +1,101 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_workstations_workstation_workstation_args_doc}
+/// The set of arguments for Workstation.
+/// {@endtemplate}
+/// {@macro pulumi_workstations_workstation_workstation_args_doc}
+class WorkstationArgs {
+  /// Client-specified annotations. This is distinct from labels.
+  /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+  /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+  final pulumi.Input<Map<String, String>>? annotations;
+  /// Human-readable name for this resource.
+  final pulumi.Input<String>? displayName;
+  /// 'Client-specified environment variables passed to the workstation container's entrypoint.'
+  final pulumi.Input<Map<String, String>>? env;
+  /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>>? labels;
+  /// The location where the workstation parent resources reside.
+  final pulumi.Input<String> location;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// Full resource name of the source workstation from which the workstation's persistent
+  /// directories will be cloned from during creation.
+  final pulumi.Input<String>? sourceWorkstation;
+  /// The ID of the parent workstation cluster.
+  final pulumi.Input<String> workstationClusterId;
+  /// The ID of the parent workstation cluster config.
+  final pulumi.Input<String> workstationConfigId;
+  /// ID to use for the workstation.
+  final pulumi.Input<String> workstationId;
+
+  /// Creates a new [WorkstationArgs].
+  /// [annotations] Client-specified annotations. This is distinct from labels.
+  /// [displayName] Human-readable name for this resource.
+  /// [env] 'Client-specified environment variables passed to the workstation container's entrypoint.'
+  /// [labels] Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
+  /// [location] The location where the workstation parent resources reside.
+  /// [project] The ID of the project in which the resource belongs.
+  /// [sourceWorkstation] Full resource name of the source workstation from which the workstation's persistent
+  /// [workstationClusterId] The ID of the parent workstation cluster.
+  /// [workstationConfigId] The ID of the parent workstation cluster config.
+  /// [workstationId] ID to use for the workstation.
+  WorkstationArgs({
+    pulumi.Output<Map<String, String>>? annotations,
+    pulumi.Output<String>? displayName,
+    pulumi.Output<Map<String, String>>? env,
+    pulumi.Output<Map<String, String>>? labels,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+    pulumi.Output<String>? sourceWorkstation,
+    required pulumi.Output<String> workstationClusterId,
+    required pulumi.Output<String> workstationConfigId,
+    required pulumi.Output<String> workstationId,
+  }) :
+      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      env = pulumi.Input.asOptionalInput<Map<String, String>>(env),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      sourceWorkstation = pulumi.Input.asOptionalInput<String>(sourceWorkstation),
+      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
+      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
+      workstationId = pulumi.Input.asInput<String>(workstationId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'annotations': ?annotations,
+      'displayName': ?displayName,
+      'env': ?env,
+      'labels': ?labels,
+      'location': location,
+      'project': ?project,
+      'sourceWorkstation': ?sourceWorkstation,
+      'workstationClusterId': workstationClusterId,
+      'workstationConfigId': workstationConfigId,
+      'workstationId': workstationId,
+    };
+  }
+
+  factory WorkstationArgs.fromMap(Map<String, dynamic> map) {
+    return WorkstationArgs(
+      annotations: map['annotations'] == null ? null : pulumi.Output.create<Map<String, String>>((map['annotations'] as Map).cast<String, String>()),
+      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
+      env: map['env'] == null ? null : pulumi.Output.create<Map<String, String>>((map['env'] as Map).cast<String, String>()),
+      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      sourceWorkstation: map['sourceWorkstation'] == null ? null : pulumi.Output.create<String>(map['sourceWorkstation'] as String),
+      workstationClusterId: pulumi.Output.create<String>(map['workstationClusterId'] as String),
+      workstationConfigId: pulumi.Output.create<String>(map['workstationConfigId'] as String),
+      workstationId: pulumi.Output.create<String>(map['workstationId'] as String),
+    );
+  }
+}
+

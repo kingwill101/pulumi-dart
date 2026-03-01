@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_vpc_dhcp_options_set_attachment_dhcp_options_set_attachment_args_doc}
+/// The set of arguments for DhcpOptionsSetAttachment.
+/// {@endtemplate}
+/// {@macro pulumi_vpc_dhcp_options_set_attachment_dhcp_options_set_attachment_args_doc}
+class DhcpOptionsSetAttachmentArgs {
+  /// The ID of the DHCP options set.
+  final pulumi.Input<String> dhcpOptionsSetId;
+  /// Specifies whether to precheck this request only. Default values: `false`. Valid values:
+  final pulumi.Input<bool>? dryRun;
+  /// The ID of the VPC network that is to be associated with the DHCP options set..
+  final pulumi.Input<String> vpcId;
+
+  /// Creates a new [DhcpOptionsSetAttachmentArgs].
+  /// [dhcpOptionsSetId] The ID of the DHCP options set.
+  /// [dryRun] Specifies whether to precheck this request only. Default values: `false`. Valid values:
+  /// [vpcId] The ID of the VPC network that is to be associated with the DHCP options set..
+  DhcpOptionsSetAttachmentArgs({
+    required pulumi.Output<String> dhcpOptionsSetId,
+    pulumi.Output<bool>? dryRun,
+    required pulumi.Output<String> vpcId,
+  }) :
+      dhcpOptionsSetId = pulumi.Input.asInput<String>(dhcpOptionsSetId),
+      dryRun = pulumi.Input.asOptionalInput<bool>(dryRun),
+      vpcId = pulumi.Input.asInput<String>(vpcId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dhcpOptionsSetId': dhcpOptionsSetId,
+      'dryRun': ?dryRun,
+      'vpcId': vpcId,
+    };
+  }
+
+  factory DhcpOptionsSetAttachmentArgs.fromMap(Map<String, dynamic> map) {
+    return DhcpOptionsSetAttachmentArgs(
+      dhcpOptionsSetId: pulumi.Output.create<String>(map['dhcpOptionsSetId'] as String),
+      dryRun: map['dryRun'] == null ? null : pulumi.Output.create<bool>(map['dryRun'] as bool),
+      vpcId: pulumi.Output.create<String>(map['vpcId'] as String),
+    );
+  }
+}
+

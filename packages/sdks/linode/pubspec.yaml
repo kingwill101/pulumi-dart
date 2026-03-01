@@ -1,0 +1,16 @@
+name: pulumi_linode
+description: A Pulumi package for creating and managing linode cloud resources.
+version: 5.8.0
+license: Apache-2.0
+homepage: https://pulumi.io
+repository: https://github.com/pulumi/pulumi-linode
+topics:
+    - pulumi
+    - linode
+environment:
+    sdk: ^3.10.0
+resolution: workspace
+dependencies:
+    pulumi: 0.1.0
+dev_dependencies:
+    lints: ^6.1.0

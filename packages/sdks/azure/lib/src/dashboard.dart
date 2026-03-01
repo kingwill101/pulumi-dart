@@ -1,0 +1,18 @@
+library module_dashboard;
+
+export 'dashboard/azurerm_portal_dashboard_args.dart';
+export 'dashboard/azurerm_portal_dashboard_result.dart';
+export 'dashboard/functions.dart';
+export 'dashboard/get_grafana_args.dart';
+export 'dashboard/get_grafana_azure_monitor_workspace_integration.dart';
+export 'dashboard/get_grafana_identity.dart';
+export 'dashboard/get_grafana_result.dart';
+export 'dashboard/grafana.dart';
+export 'dashboard/grafana_args.dart';
+export 'dashboard/grafana_azure_monitor_workspace_integration.dart';
+export 'dashboard/grafana_identity.dart';
+export 'dashboard/grafana_managed_private_endpoint.dart';
+export 'dashboard/grafana_managed_private_endpoint_args.dart';
+export 'dashboard/grafana_managed_private_endpoint_state.dart';
+export 'dashboard/grafana_smtp.dart';
+export 'dashboard/grafana_state.dart';

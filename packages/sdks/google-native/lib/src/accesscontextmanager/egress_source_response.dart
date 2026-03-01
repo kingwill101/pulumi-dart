@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// The source that EgressPolicy authorizes access from inside the ServicePerimeter to somewhere outside the ServicePerimeter boundaries.
+class EgressSourceResponse {
+  /// An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed.
+  final String accessLevel;
+
+  /// Creates a new [EgressSourceResponse].
+  /// [accessLevel] An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed.
+  EgressSourceResponse({
+    required this.accessLevel,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accessLevel': accessLevel,
+    };
+  }
+
+  factory EgressSourceResponse.fromMap(Map<String, dynamic> map) {
+    return EgressSourceResponse(
+      accessLevel: map['accessLevel'] as String,
+    );
+  }
+}
+

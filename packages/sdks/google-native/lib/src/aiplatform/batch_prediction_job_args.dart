@@ -1,0 +1,150 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_aiplatform_v1_batch_dedicated_resources.dart';
+import 'google_cloud_aiplatform_v1_batch_prediction_job_input_config.dart';
+import 'google_cloud_aiplatform_v1_batch_prediction_job_instance_config.dart';
+import 'google_cloud_aiplatform_v1_batch_prediction_job_output_config.dart';
+import 'google_cloud_aiplatform_v1_encryption_spec.dart';
+import 'google_cloud_aiplatform_v1_explanation_spec.dart';
+import 'google_cloud_aiplatform_v1_manual_batch_tuning_parameters.dart';
+import 'google_cloud_aiplatform_v1_unmanaged_container_model.dart';
+
+/// {@template pulumi_aiplatform_v1_batch_prediction_job_args_doc}
+/// The set of arguments for BatchPredictionJob.
+/// {@endtemplate}
+/// {@macro pulumi_aiplatform_v1_batch_prediction_job_args_doc}
+class BatchPredictionJobArgs {
+  /// The config of resources used by the Model during the batch prediction. If the Model supports DEDICATED_RESOURCES this config may be provided (and the job will use these resources), if the Model doesn't support AUTOMATIC_RESOURCES, this config must be provided.
+  final pulumi.Input<GoogleCloudAiplatformV1BatchDedicatedResources>? dedicatedResources;
+  /// For custom-trained Models and AutoML Tabular Models, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Cloud Logging by default. Please note that the logs incur cost, which are subject to [Cloud Logging pricing](https://cloud.google.com/logging/pricing). User can disable container logging by setting this flag to true.
+  final pulumi.Input<bool>? disableContainerLogging;
+  /// The user-defined name of this BatchPredictionJob.
+  final pulumi.Input<String> displayName;
+  /// Customer-managed encryption key options for a BatchPredictionJob. If this is set, then all resources created by the BatchPredictionJob will be encrypted with the provided encryption key.
+  final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
+  /// Explanation configuration for this BatchPredictionJob. Can be specified only if generate_explanation is set to `true`. This value overrides the value of Model.explanation_spec. All fields of explanation_spec are optional in the request. If a field of the explanation_spec object is not populated, the corresponding field of the Model.explanation_spec object is inherited.
+  final pulumi.Input<GoogleCloudAiplatformV1ExplanationSpec>? explanationSpec;
+  /// Generate explanation with the batch prediction results. When set to `true`, the batch prediction output changes based on the `predictions_format` field of the BatchPredictionJob.output_config object: * `bigquery`: output includes a column named `explanation`. The value is a struct that conforms to the Explanation object. * `jsonl`: The JSON objects on each line include an additional entry keyed `explanation`. The value of the entry is a JSON object that conforms to the Explanation object. * `csv`: Generating explanations for CSV format is not supported. If this field is set to true, either the Model.explanation_spec or explanation_spec must be populated.
+  final pulumi.Input<bool>? generateExplanation;
+  /// Input configuration of the instances on which predictions are performed. The schema of any single instance may be specified via the Model's PredictSchemata's instance_schema_uri.
+  final pulumi.Input<GoogleCloudAiplatformV1BatchPredictionJobInputConfig> inputConfig;
+  /// Configuration for how to convert batch prediction input instances to the prediction instances that are sent to the Model.
+  final pulumi.Input<GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig>? instanceConfig;
+  /// The labels with user-defined metadata to organize BatchPredictionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<String>? location;
+  /// Immutable. Parameters configuring the batch behavior. Currently only applicable when dedicated_resources are used (in other cases Vertex AI does the tuning itself).
+  final pulumi.Input<GoogleCloudAiplatformV1ManualBatchTuningParameters>? manualBatchTuningParameters;
+  /// The name of the Model resource that produces the predictions via this job, must share the same ancestor Location. Starting this job has no impact on any existing deployments of the Model and their resources. Exactly one of model and unmanaged_container_model must be set. The model resource name may contain version id or version alias to specify the version. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` if no version is specified, the default version will be deployed. The model resource could also be a publisher model. Example: `publishers/{publisher}/models/{model}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+  final pulumi.Input<String>? model;
+  /// The parameters that govern the predictions. The schema of the parameters may be specified via the Model's PredictSchemata's parameters_schema_uri.
+  final pulumi.Input<dynamic>? modelParameters;
+  /// The Configuration specifying where output predictions should be written. The schema of any single prediction may be specified as a concatenation of Model's PredictSchemata's instance_schema_uri and prediction_schema_uri.
+  final pulumi.Input<GoogleCloudAiplatformV1BatchPredictionJobOutputConfig> outputConfig;
+  final pulumi.Input<String>? project;
+  /// The service account that the DeployedModel's container runs as. If not specified, a system generated one will be used, which has minimal permissions and the custom container, if used, may not have enough permission to access other Google Cloud resources. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+  final pulumi.Input<String>? serviceAccount;
+  /// Contains model information necessary to perform batch prediction without requiring uploading to model registry. Exactly one of model and unmanaged_container_model must be set.
+  final pulumi.Input<GoogleCloudAiplatformV1UnmanagedContainerModel>? unmanagedContainerModel;
+
+  /// Creates a new [BatchPredictionJobArgs].
+  /// [dedicatedResources] The config of resources used by the Model during the batch prediction. If the Model supports DEDICATED_RESOURCES this config may be provided (and the job will use these resources), if the Model doesn't support AUTOMATIC_RESOURCES, this config must be provided.
+  /// [disableContainerLogging] For custom-trained Models and AutoML Tabular Models, the container of the DeployedModel instances will send `stderr` and `stdout` streams to Cloud Logging by default. Please note that the logs incur cost, which are subject to [Cloud Logging pricing](https://cloud.google.com/logging/pricing). User can disable container logging by setting this flag to true.
+  /// [displayName] The user-defined name of this BatchPredictionJob.
+  /// [encryptionSpec] Customer-managed encryption key options for a BatchPredictionJob. If this is set, then all resources created by the BatchPredictionJob will be encrypted with the provided encryption key.
+  /// [explanationSpec] Explanation configuration for this BatchPredictionJob. Can be specified only if generate_explanation is set to `true`. This value overrides the value of Model.explanation_spec. All fields of explanation_spec are optional in the request. If a field of the explanation_spec object is not populated, the corresponding field of the Model.explanation_spec object is inherited.
+  /// [generateExplanation] Generate explanation with the batch prediction results. When set to `true`, the batch prediction output changes based on the `predictions_format` field of the BatchPredictionJob.output_config object: * `bigquery`: output includes a column named `explanation`. The value is a struct that conforms to the Explanation object. * `jsonl`: The JSON objects on each line include an additional entry keyed `explanation`. The value of the entry is a JSON object that conforms to the Explanation object. * `csv`: Generating explanations for CSV format is not supported. If this field is set to true, either the Model.explanation_spec or explanation_spec must be populated.
+  /// [inputConfig] Input configuration of the instances on which predictions are performed. The schema of any single instance may be specified via the Model's PredictSchemata's instance_schema_uri.
+  /// [instanceConfig] Configuration for how to convert batch prediction input instances to the prediction instances that are sent to the Model.
+  /// [labels] The labels with user-defined metadata to organize BatchPredictionJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
+  /// [location] Optional.
+  /// [manualBatchTuningParameters] Immutable. Parameters configuring the batch behavior. Currently only applicable when dedicated_resources are used (in other cases Vertex AI does the tuning itself).
+  /// [model] The name of the Model resource that produces the predictions via this job, must share the same ancestor Location. Starting this job has no impact on any existing deployments of the Model and their resources. Exactly one of model and unmanaged_container_model must be set. The model resource name may contain version id or version alias to specify the version. Example: `projects/{project}/locations/{location}/models/{model}@2` or `projects/{project}/locations/{location}/models/{model}@golden` if no version is specified, the default version will be deployed. The model resource could also be a publisher model. Example: `publishers/{publisher}/models/{model}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`
+  /// [modelParameters] The parameters that govern the predictions. The schema of the parameters may be specified via the Model's PredictSchemata's parameters_schema_uri.
+  /// [outputConfig] The Configuration specifying where output predictions should be written. The schema of any single prediction may be specified as a concatenation of Model's PredictSchemata's instance_schema_uri and prediction_schema_uri.
+  /// [project] Optional.
+  /// [serviceAccount] The service account that the DeployedModel's container runs as. If not specified, a system generated one will be used, which has minimal permissions and the custom container, if used, may not have enough permission to access other Google Cloud resources. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
+  /// [unmanagedContainerModel] Contains model information necessary to perform batch prediction without requiring uploading to model registry. Exactly one of model and unmanaged_container_model must be set.
+  BatchPredictionJobArgs({
+    pulumi.Output<GoogleCloudAiplatformV1BatchDedicatedResources>? dedicatedResources,
+    pulumi.Output<bool>? disableContainerLogging,
+    required pulumi.Output<String> displayName,
+    pulumi.Output<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec,
+    pulumi.Output<GoogleCloudAiplatformV1ExplanationSpec>? explanationSpec,
+    pulumi.Output<bool>? generateExplanation,
+    required pulumi.Output<GoogleCloudAiplatformV1BatchPredictionJobInputConfig> inputConfig,
+    pulumi.Output<GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig>? instanceConfig,
+    pulumi.Output<Map<String, String>>? labels,
+    pulumi.Output<String>? location,
+    pulumi.Output<GoogleCloudAiplatformV1ManualBatchTuningParameters>? manualBatchTuningParameters,
+    pulumi.Output<String>? model,
+    pulumi.Output<dynamic>? modelParameters,
+    required pulumi.Output<GoogleCloudAiplatformV1BatchPredictionJobOutputConfig> outputConfig,
+    pulumi.Output<String>? project,
+    pulumi.Output<String>? serviceAccount,
+    pulumi.Output<GoogleCloudAiplatformV1UnmanagedContainerModel>? unmanagedContainerModel,
+  }) :
+      dedicatedResources = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1BatchDedicatedResources>(dedicatedResources),
+      disableContainerLogging = pulumi.Input.asOptionalInput<bool>(disableContainerLogging),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(encryptionSpec),
+      explanationSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1ExplanationSpec>(explanationSpec),
+      generateExplanation = pulumi.Input.asOptionalInput<bool>(generateExplanation),
+      inputConfig = pulumi.Input.asInput<GoogleCloudAiplatformV1BatchPredictionJobInputConfig>(inputConfig),
+      instanceConfig = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig>(instanceConfig),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      manualBatchTuningParameters = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1ManualBatchTuningParameters>(manualBatchTuningParameters),
+      model = pulumi.Input.asOptionalInput<String>(model),
+      modelParameters = pulumi.Input.asOptionalInput<dynamic>(modelParameters),
+      outputConfig = pulumi.Input.asInput<GoogleCloudAiplatformV1BatchPredictionJobOutputConfig>(outputConfig),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
+      unmanagedContainerModel = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1UnmanagedContainerModel>(unmanagedContainerModel);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dedicatedResources': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1BatchDedicatedResources, Map<String, dynamic>>(dedicatedResources, (value) => value.toMap()),
+      'disableContainerLogging': ?disableContainerLogging,
+      'displayName': displayName,
+      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1EncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'explanationSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1ExplanationSpec, Map<String, dynamic>>(explanationSpec, (value) => value.toMap()),
+      'generateExplanation': ?generateExplanation,
+      'inputConfig': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1BatchPredictionJobInputConfig, Map<String, dynamic>>(inputConfig, (value) => value.toMap()),
+      'instanceConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig, Map<String, dynamic>>(instanceConfig, (value) => value.toMap()),
+      'labels': ?labels,
+      'location': ?location,
+      'manualBatchTuningParameters': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1ManualBatchTuningParameters, Map<String, dynamic>>(manualBatchTuningParameters, (value) => value.toMap()),
+      'model': ?model,
+      'modelParameters': ?modelParameters,
+      'outputConfig': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1BatchPredictionJobOutputConfig, Map<String, dynamic>>(outputConfig, (value) => value.toMap()),
+      'project': ?project,
+      'serviceAccount': ?serviceAccount,
+      'unmanagedContainerModel': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1UnmanagedContainerModel, Map<String, dynamic>>(unmanagedContainerModel, (value) => value.toMap()),
+    };
+  }
+
+  factory BatchPredictionJobArgs.fromMap(Map<String, dynamic> map) {
+    return BatchPredictionJobArgs(
+      dedicatedResources: map['dedicatedResources'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1BatchDedicatedResources>(GoogleCloudAiplatformV1BatchDedicatedResources.fromMap((map['dedicatedResources'] as Map).cast<String, dynamic>())),
+      disableContainerLogging: map['disableContainerLogging'] == null ? null : pulumi.Output.create<bool>(map['disableContainerLogging'] as bool),
+      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      encryptionSpec: map['encryptionSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1EncryptionSpec>(GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>())),
+      explanationSpec: map['explanationSpec'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1ExplanationSpec>(GoogleCloudAiplatformV1ExplanationSpec.fromMap((map['explanationSpec'] as Map).cast<String, dynamic>())),
+      generateExplanation: map['generateExplanation'] == null ? null : pulumi.Output.create<bool>(map['generateExplanation'] as bool),
+      inputConfig: pulumi.Output.create<GoogleCloudAiplatformV1BatchPredictionJobInputConfig>(GoogleCloudAiplatformV1BatchPredictionJobInputConfig.fromMap((map['inputConfig'] as Map).cast<String, dynamic>())),
+      instanceConfig: map['instanceConfig'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig>(GoogleCloudAiplatformV1BatchPredictionJobInstanceConfig.fromMap((map['instanceConfig'] as Map).cast<String, dynamic>())),
+      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      manualBatchTuningParameters: map['manualBatchTuningParameters'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1ManualBatchTuningParameters>(GoogleCloudAiplatformV1ManualBatchTuningParameters.fromMap((map['manualBatchTuningParameters'] as Map).cast<String, dynamic>())),
+      model: map['model'] == null ? null : pulumi.Output.create<String>(map['model'] as String),
+      modelParameters: map['modelParameters'] == null ? null : pulumi.Output.create<dynamic>(map['modelParameters']),
+      outputConfig: pulumi.Output.create<GoogleCloudAiplatformV1BatchPredictionJobOutputConfig>(GoogleCloudAiplatformV1BatchPredictionJobOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>())),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      serviceAccount: map['serviceAccount'] == null ? null : pulumi.Output.create<String>(map['serviceAccount'] as String),
+      unmanagedContainerModel: map['unmanagedContainerModel'] == null ? null : pulumi.Output.create<GoogleCloudAiplatformV1UnmanagedContainerModel>(GoogleCloudAiplatformV1UnmanagedContainerModel.fromMap((map['unmanagedContainerModel'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

@@ -1,0 +1,59 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'logging_config_dataproc_v1beta2.dart';
+import 'query_list_dataproc_v1beta2.dart';
+
+/// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
+class SparkSqlJobDataprocV1beta2 {
+  /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+  final List<String>? jarFileUris;
+  /// Optional. The runtime log config for job execution.
+  final LoggingConfigDataprocV1beta2? loggingConfig;
+  /// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+  final Map<String, String>? properties;
+  /// The HCFS URI of the script that contains SQL queries.
+  final String? queryFileUri;
+  /// A list of queries.
+  final QueryListDataprocV1beta2? queryList;
+  /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+  final Map<String, String>? scriptVariables;
+
+  /// Creates a new [SparkSqlJobDataprocV1beta2].
+  /// [jarFileUris] Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+  /// [loggingConfig] Optional. The runtime log config for job execution.
+  /// [properties] Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+  /// [queryFileUri] The HCFS URI of the script that contains SQL queries.
+  /// [queryList] A list of queries.
+  /// [scriptVariables] Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+  SparkSqlJobDataprocV1beta2({
+    this.jarFileUris,
+    this.loggingConfig,
+    this.properties,
+    this.queryFileUri,
+    this.queryList,
+    this.scriptVariables,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'jarFileUris': ?jarFileUris,
+      'loggingConfig': ?loggingConfig == null ? null : loggingConfig!.toMap(),
+      'properties': ?properties,
+      'queryFileUri': ?queryFileUri,
+      'queryList': ?queryList == null ? null : queryList!.toMap(),
+      'scriptVariables': ?scriptVariables,
+    };
+  }
+
+  factory SparkSqlJobDataprocV1beta2.fromMap(Map<String, dynamic> map) {
+    return SparkSqlJobDataprocV1beta2(
+      jarFileUris: map['jarFileUris'] == null ? null : (map['jarFileUris'] as List).cast<String>(),
+      loggingConfig: map['loggingConfig'] == null ? null : LoggingConfigDataprocV1beta2.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
+      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
+      queryFileUri: map['queryFileUri'] == null ? null : map['queryFileUri'] as String,
+      queryList: map['queryList'] == null ? null : QueryListDataprocV1beta2.fromMap((map['queryList'] as Map).cast<String, dynamic>()),
+      scriptVariables: map['scriptVariables'] == null ? null : (map['scriptVariables'] as Map).cast<String, String>(),
+    );
+  }
+}
+

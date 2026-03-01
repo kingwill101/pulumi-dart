@@ -1,0 +1,77 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'configured_table_table_reference.dart';
+
+/// {@template pulumi_cleanrooms_configured_table_configured_table_args_doc}
+/// The set of arguments for ConfiguredTable.
+/// {@endtemplate}
+/// {@macro pulumi_cleanrooms_configured_table_configured_table_args_doc}
+class ConfiguredTableArgs {
+  /// The columns of the references table which will be included in the configured table.
+  final pulumi.Input<List<String>> allowedColumns;
+  /// The analysis method for the configured table. The only valid value is currently `DIRECT_QUERY`.
+  final pulumi.Input<String> analysisMethod;
+  /// A description for the configured table.
+  final pulumi.Input<String>? description;
+  /// The name of the configured table.
+  final pulumi.Input<String>? name;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// A reference to the AWS Glue table which will be used to create the configured table.
+  /// * `table_reference.database_name` - (Required - Forces new resource) - The name of the AWS Glue database which contains the table.
+  /// * `table_reference.table_name` - (Required - Forces new resource) - The name of the AWS Glue table which will be used to create the configured table.
+  final pulumi.Input<ConfiguredTableTableReference> tableReference;
+  /// Key value pairs which tag the configured table.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [ConfiguredTableArgs].
+  /// [allowedColumns] The columns of the references table which will be included in the configured table.
+  /// [analysisMethod] The analysis method for the configured table. The only valid value is currently `DIRECT_QUERY`.
+  /// [description] A description for the configured table.
+  /// [name] The name of the configured table.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tableReference] A reference to the AWS Glue table which will be used to create the configured table.
+  /// [tags] Key value pairs which tag the configured table.
+  ConfiguredTableArgs({
+    required pulumi.Output<List<String>> allowedColumns,
+    required pulumi.Output<String> analysisMethod,
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? region,
+    required pulumi.Output<ConfiguredTableTableReference> tableReference,
+    pulumi.Output<Map<String, String>>? tags,
+  }) :
+      allowedColumns = pulumi.Input.asInput<List<String>>(allowedColumns),
+      analysisMethod = pulumi.Input.asInput<String>(analysisMethod),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tableReference = pulumi.Input.asInput<ConfiguredTableTableReference>(tableReference),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'allowedColumns': allowedColumns,
+      'analysisMethod': analysisMethod,
+      'description': ?description,
+      'name': ?name,
+      'region': ?region,
+      'tableReference': pulumi.Input.mapInputValue<ConfiguredTableTableReference, Map<String, dynamic>>(tableReference, (value) => value.toMap()),
+      'tags': ?tags,
+    };
+  }
+
+  factory ConfiguredTableArgs.fromMap(Map<String, dynamic> map) {
+    return ConfiguredTableArgs(
+      allowedColumns: pulumi.Output.create<List<String>>((map['allowedColumns'] as List).cast<String>()),
+      analysisMethod: pulumi.Output.create<String>(map['analysisMethod'] as String),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      tableReference: pulumi.Output.create<ConfiguredTableTableReference>(ConfiguredTableTableReference.fromMap((map['tableReference'] as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+    );
+  }
+}
+

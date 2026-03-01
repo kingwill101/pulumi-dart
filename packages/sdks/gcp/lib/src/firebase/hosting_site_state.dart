@@ -1,0 +1,74 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering HostingSite resources.
+class HostingSiteState {
+  /// Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+  /// associated with the Hosting site.
+  final pulumi.Input<String>? appId;
+  /// The default URL for the site in the form of https://{name}.web.app
+  final pulumi.Input<String>? defaultUrl;
+  /// Output only. The fully-qualified resource name of the Hosting site, in
+  /// the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the
+  /// Firebase project's
+  /// [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its
+  /// [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id).
+  /// Learn more about using project identifiers in Google's
+  /// [AIP 2510 standard](https://google.aip.dev/cloud/2510).
+  final pulumi.Input<String>? name;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
+  /// used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid
+  /// domain name label.
+  final pulumi.Input<String>? siteId;
+  /// The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+  final pulumi.Input<String>? type;
+
+  /// Creates a new [HostingSiteState].
+  /// [appId] Optional. The [ID of a Web App](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id)
+  /// [defaultUrl] The default URL for the site in the form of https://{name}.web.app
+  /// [name] Output only. The fully-qualified resource name of the Hosting site, in
+  /// [project] The ID of the project in which the resource belongs.
+  /// [siteId] Required. Immutable. A globally unique identifier for the Hosting site. This identifier is
+  /// [type] The type of Hosting site, either 'DEFAULT_SITE' or `USER_SITE`
+  HostingSiteState({
+    pulumi.Output<String>? appId,
+    pulumi.Output<String>? defaultUrl,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? project,
+    pulumi.Output<String>? siteId,
+    pulumi.Output<String>? type,
+  }) :
+      appId = pulumi.Input.asOptionalInput<String>(appId),
+      defaultUrl = pulumi.Input.asOptionalInput<String>(defaultUrl),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      siteId = pulumi.Input.asOptionalInput<String>(siteId),
+      type = pulumi.Input.asOptionalInput<String>(type);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'appId': ?appId,
+      'defaultUrl': ?defaultUrl,
+      'name': ?name,
+      'project': ?project,
+      'siteId': ?siteId,
+      'type': ?type,
+    };
+  }
+
+  factory HostingSiteState.fromMap(Map<String, dynamic> map) {
+    return HostingSiteState(
+      appId: map['appId'] == null ? null : pulumi.Output.create<String>(map['appId'] as String),
+      defaultUrl: map['defaultUrl'] == null ? null : pulumi.Output.create<String>(map['defaultUrl'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      siteId: map['siteId'] == null ? null : pulumi.Output.create<String>(map['siteId'] as String),
+      type: map['type'] == null ? null : pulumi.Output.create<String>(map['type'] as String),
+    );
+  }
+}
+

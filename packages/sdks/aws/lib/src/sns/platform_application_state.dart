@@ -1,0 +1,129 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering PlatformApplication resources.
+class PlatformApplicationState {
+  /// The bundle identifier that's assigned to your iOS app. May only include alphanumeric characters, hyphens (-), and periods (.).
+  final pulumi.Input<String>? applePlatformBundleId;
+  /// The identifier that's assigned to your Apple developer account team. Must be 10 alphanumeric characters.
+  final pulumi.Input<String>? applePlatformTeamId;
+  /// The ARN of the SNS platform application
+  final pulumi.Input<String>? arn;
+  /// The ARN of the SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
+  final pulumi.Input<String>? eventDeliveryFailureTopicArn;
+  /// The ARN of the SNS Topic triggered when a new platform endpoint is added to your platform application.
+  final pulumi.Input<String>? eventEndpointCreatedTopicArn;
+  /// The ARN of the SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
+  final pulumi.Input<String>? eventEndpointDeletedTopicArn;
+  /// The ARN of the SNS Topic triggered when an existing platform endpoint is changed from your platform application.
+  final pulumi.Input<String>? eventEndpointUpdatedTopicArn;
+  /// The IAM role ARN permitted to receive failure feedback for this application and give SNS write access to use CloudWatch logs on your behalf.
+  final pulumi.Input<String>? failureFeedbackRoleArn;
+  /// The friendly name for the SNS platform application
+  final pulumi.Input<String>? name;
+  /// The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
+  final pulumi.Input<String>? platform;
+  /// Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
+  final pulumi.Input<String>? platformCredential;
+  /// Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
+  final pulumi.Input<String>? platformPrincipal;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// The IAM role ARN permitted to receive success feedback for this application and give SNS write access to use CloudWatch logs on your behalf.
+  final pulumi.Input<String>? successFeedbackRoleArn;
+  /// The sample rate percentage (0-100) of successfully delivered messages.
+  ///
+  /// The following attributes are needed only when using APNS token credentials:
+  final pulumi.Input<String>? successFeedbackSampleRate;
+
+  /// Creates a new [PlatformApplicationState].
+  /// [applePlatformBundleId] The bundle identifier that's assigned to your iOS app. May only include alphanumeric characters, hyphens (-), and periods (.).
+  /// [applePlatformTeamId] The identifier that's assigned to your Apple developer account team. Must be 10 alphanumeric characters.
+  /// [arn] The ARN of the SNS platform application
+  /// [eventDeliveryFailureTopicArn] The ARN of the SNS Topic triggered when a delivery to any of the platform endpoints associated with your platform application encounters a permanent failure.
+  /// [eventEndpointCreatedTopicArn] The ARN of the SNS Topic triggered when a new platform endpoint is added to your platform application.
+  /// [eventEndpointDeletedTopicArn] The ARN of the SNS Topic triggered when an existing platform endpoint is deleted from your platform application.
+  /// [eventEndpointUpdatedTopicArn] The ARN of the SNS Topic triggered when an existing platform endpoint is changed from your platform application.
+  /// [failureFeedbackRoleArn] The IAM role ARN permitted to receive failure feedback for this application and give SNS write access to use CloudWatch logs on your behalf.
+  /// [name] The friendly name for the SNS platform application
+  /// [platform] The platform that the app is registered with. See [Platform](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for supported platforms.
+  /// [platformCredential] Application Platform credential. See [Credential](http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-register.html) for type of credential required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
+  /// [platformPrincipal] Application Platform principal. See [Principal](http://docs.aws.amazon.com/sns/latest/api/API_CreatePlatformApplication.html) for type of principal required for platform. The value of this attribute when stored into the state is only a hash of the real value, so therefore it is not practical to use this as an attribute for other resources.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [successFeedbackRoleArn] The IAM role ARN permitted to receive success feedback for this application and give SNS write access to use CloudWatch logs on your behalf.
+  /// [successFeedbackSampleRate] The sample rate percentage (0-100) of successfully delivered messages.
+  PlatformApplicationState({
+    pulumi.Output<String>? applePlatformBundleId,
+    pulumi.Output<String>? applePlatformTeamId,
+    pulumi.Output<String>? arn,
+    pulumi.Output<String>? eventDeliveryFailureTopicArn,
+    pulumi.Output<String>? eventEndpointCreatedTopicArn,
+    pulumi.Output<String>? eventEndpointDeletedTopicArn,
+    pulumi.Output<String>? eventEndpointUpdatedTopicArn,
+    pulumi.Output<String>? failureFeedbackRoleArn,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? platform,
+    pulumi.Output<String>? platformCredential,
+    pulumi.Output<String>? platformPrincipal,
+    pulumi.Output<String>? region,
+    pulumi.Output<String>? successFeedbackRoleArn,
+    pulumi.Output<String>? successFeedbackSampleRate,
+  }) :
+      applePlatformBundleId = pulumi.Input.asOptionalInput<String>(applePlatformBundleId),
+      applePlatformTeamId = pulumi.Input.asOptionalInput<String>(applePlatformTeamId),
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      eventDeliveryFailureTopicArn = pulumi.Input.asOptionalInput<String>(eventDeliveryFailureTopicArn),
+      eventEndpointCreatedTopicArn = pulumi.Input.asOptionalInput<String>(eventEndpointCreatedTopicArn),
+      eventEndpointDeletedTopicArn = pulumi.Input.asOptionalInput<String>(eventEndpointDeletedTopicArn),
+      eventEndpointUpdatedTopicArn = pulumi.Input.asOptionalInput<String>(eventEndpointUpdatedTopicArn),
+      failureFeedbackRoleArn = pulumi.Input.asOptionalInput<String>(failureFeedbackRoleArn),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      platform = pulumi.Input.asOptionalInput<String>(platform),
+      platformCredential = pulumi.Input.asOptionalInput<String>(platformCredential),
+      platformPrincipal = pulumi.Input.asOptionalInput<String>(platformPrincipal),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      successFeedbackRoleArn = pulumi.Input.asOptionalInput<String>(successFeedbackRoleArn),
+      successFeedbackSampleRate = pulumi.Input.asOptionalInput<String>(successFeedbackSampleRate);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'applePlatformBundleId': ?applePlatformBundleId,
+      'applePlatformTeamId': ?applePlatformTeamId,
+      'arn': ?arn,
+      'eventDeliveryFailureTopicArn': ?eventDeliveryFailureTopicArn,
+      'eventEndpointCreatedTopicArn': ?eventEndpointCreatedTopicArn,
+      'eventEndpointDeletedTopicArn': ?eventEndpointDeletedTopicArn,
+      'eventEndpointUpdatedTopicArn': ?eventEndpointUpdatedTopicArn,
+      'failureFeedbackRoleArn': ?failureFeedbackRoleArn,
+      'name': ?name,
+      'platform': ?platform,
+      'platformCredential': ?platformCredential,
+      'platformPrincipal': ?platformPrincipal,
+      'region': ?region,
+      'successFeedbackRoleArn': ?successFeedbackRoleArn,
+      'successFeedbackSampleRate': ?successFeedbackSampleRate,
+    };
+  }
+
+  factory PlatformApplicationState.fromMap(Map<String, dynamic> map) {
+    return PlatformApplicationState(
+      applePlatformBundleId: map['applePlatformBundleId'] == null ? null : pulumi.Output.create<String>(map['applePlatformBundleId'] as String),
+      applePlatformTeamId: map['applePlatformTeamId'] == null ? null : pulumi.Output.create<String>(map['applePlatformTeamId'] as String),
+      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
+      eventDeliveryFailureTopicArn: map['eventDeliveryFailureTopicArn'] == null ? null : pulumi.Output.create<String>(map['eventDeliveryFailureTopicArn'] as String),
+      eventEndpointCreatedTopicArn: map['eventEndpointCreatedTopicArn'] == null ? null : pulumi.Output.create<String>(map['eventEndpointCreatedTopicArn'] as String),
+      eventEndpointDeletedTopicArn: map['eventEndpointDeletedTopicArn'] == null ? null : pulumi.Output.create<String>(map['eventEndpointDeletedTopicArn'] as String),
+      eventEndpointUpdatedTopicArn: map['eventEndpointUpdatedTopicArn'] == null ? null : pulumi.Output.create<String>(map['eventEndpointUpdatedTopicArn'] as String),
+      failureFeedbackRoleArn: map['failureFeedbackRoleArn'] == null ? null : pulumi.Output.create<String>(map['failureFeedbackRoleArn'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      platform: map['platform'] == null ? null : pulumi.Output.create<String>(map['platform'] as String),
+      platformCredential: map['platformCredential'] == null ? null : pulumi.Output.create<String>(map['platformCredential'] as String),
+      platformPrincipal: map['platformPrincipal'] == null ? null : pulumi.Output.create<String>(map['platformPrincipal'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      successFeedbackRoleArn: map['successFeedbackRoleArn'] == null ? null : pulumi.Output.create<String>(map['successFeedbackRoleArn'] as String),
+      successFeedbackSampleRate: map['successFeedbackSampleRate'] == null ? null : pulumi.Output.create<String>(map['successFeedbackSampleRate'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,57 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A configuration for running an Apache Spark (https://spark.apache.org/) batch workload.
+class SparkBatchResponse {
+  /// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  final List<String> archiveUris;
+  /// Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+  final List<String> args;
+  /// Optional. HCFS URIs of files to be placed in the working directory of each executor.
+  final List<String> fileUris;
+  /// Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+  final List<String> jarFileUris;
+  /// Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+  final String mainClass;
+  /// Optional. The HCFS URI of the jar file that contains the main class.
+  final String mainJarFileUri;
+
+  /// Creates a new [SparkBatchResponse].
+  /// [archiveUris] Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+  /// [args] Optional. The arguments to pass to the driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+  /// [fileUris] Optional. HCFS URIs of files to be placed in the working directory of each executor.
+  /// [jarFileUris] Optional. HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+  /// [mainClass] Optional. The name of the driver main class. The jar file that contains the class must be in the classpath or specified in jar_file_uris.
+  /// [mainJarFileUri] Optional. The HCFS URI of the jar file that contains the main class.
+  SparkBatchResponse({
+    required this.archiveUris,
+    required this.args,
+    required this.fileUris,
+    required this.jarFileUris,
+    required this.mainClass,
+    required this.mainJarFileUri,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'archiveUris': archiveUris,
+      'args': args,
+      'fileUris': fileUris,
+      'jarFileUris': jarFileUris,
+      'mainClass': mainClass,
+      'mainJarFileUri': mainJarFileUri,
+    };
+  }
+
+  factory SparkBatchResponse.fromMap(Map<String, dynamic> map) {
+    return SparkBatchResponse(
+      archiveUris: (map['archiveUris'] as List).cast<String>(),
+      args: (map['args'] as List).cast<String>(),
+      fileUris: (map['fileUris'] as List).cast<String>(),
+      jarFileUris: (map['jarFileUris'] as List).cast<String>(),
+      mainClass: map['mainClass'] as String,
+      mainJarFileUri: map['mainJarFileUri'] as String,
+    );
+  }
+}
+

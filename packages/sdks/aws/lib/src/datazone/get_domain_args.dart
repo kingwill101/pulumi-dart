@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_datazone_get_domain_get_domain_args_doc}
+/// Arguments for getDomain.
+/// {@endtemplate}
+/// {@macro pulumi_datazone_get_domain_get_domain_args_doc}
+class GetDomainArgs {
+  /// ID of the Domain. One of `name` or `id` is required
+  final pulumi.Input<String>? id;
+  /// Name of the Domain. One of `name` or `id` is required.
+  final pulumi.Input<String>? name;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [GetDomainArgs].
+  /// [id] ID of the Domain. One of `name` or `id` is required
+  /// [name] Name of the Domain. One of `name` or `id` is required.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  GetDomainArgs({
+    pulumi.Output<String>? id,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? region,
+  }) :
+      id = pulumi.Input.asOptionalInput<String>(id),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': ?id,
+      'name': ?name,
+      'region': ?region,
+    };
+  }
+
+  factory GetDomainArgs.fromMap(Map<String, dynamic> map) {
+    return GetDomainArgs(
+      id: map['id'] == null ? null : pulumi.Output.create<String>(map['id'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

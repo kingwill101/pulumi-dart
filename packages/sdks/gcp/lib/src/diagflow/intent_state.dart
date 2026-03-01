@@ -1,0 +1,150 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'intent_followup_intent_info.dart';
+
+/// Input properties used for looking up and filtering Intent resources.
+class IntentState {
+  /// The name of the action associated with the intent.
+  /// Note: The action name must not contain whitespaces.
+  final pulumi.Input<String>? action;
+  /// The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+  /// (i.e. default platform).
+  /// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
+  final pulumi.Input<List<String>>? defaultResponsePlatforms;
+  /// The name of this intent to be displayed on the console.
+  final pulumi.Input<String>? displayName;
+  /// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+  /// the contexts must be present in the active user session for an event to trigger this intent. See the
+  /// [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
+  final pulumi.Input<List<String>>? events;
+  /// Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+  /// only in the output.
+  /// Structure is documented below.
+  final pulumi.Input<List<IntentFollowupIntentInfo>>? followupIntentInfos;
+  /// The list of context names required for this intent to be triggered.
+  /// Format: projects/<Project ID>/agent/sessions/-/contexts/<Context ID>.
+  final pulumi.Input<List<String>>? inputContextNames;
+  /// Indicates whether this is a fallback intent.
+  final pulumi.Input<bool>? isFallback;
+  /// Indicates whether Machine Learning is disabled for the intent.
+  /// Note: If mlDisabled setting is set to true, then this intent is not taken into account during inference in ML
+  /// ONLY match mode. Also, auto-markup in the UI is turned off.
+  final pulumi.Input<bool>? mlDisabled;
+  /// The unique identifier of this intent.
+  /// Format: projects/<Project ID>/agent/intents/<Intent ID>.
+  final pulumi.Input<String>? name;
+  /// The unique identifier of the parent intent in the chain of followup intents.
+  /// Format: projects/<Project ID>/agent/intents/<Intent ID>.
+  final pulumi.Input<String>? parentFollowupIntentName;
+  /// The priority of this intent. Higher numbers represent higher priorities.
+  /// - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
+  /// to the Normal priority in the console.
+  /// - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
+  final pulumi.Input<int>? priority;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// Indicates whether to delete all contexts in the current session when this intent is matched.
+  final pulumi.Input<bool>? resetContexts;
+  /// The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+  /// intents chain for this intent.
+  /// Format: projects/<Project ID>/agent/intents/<Intent ID>.
+  final pulumi.Input<String>? rootFollowupIntentName;
+  /// Indicates whether webhooks are enabled for the intent.
+  /// * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
+  /// * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
+  /// filling prompt is forwarded to the webhook.
+  /// Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+  final pulumi.Input<String>? webhookState;
+
+  /// Creates a new [IntentState].
+  /// [action] The name of the action associated with the intent.
+  /// [defaultResponsePlatforms] The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED
+  /// [displayName] The name of this intent to be displayed on the console.
+  /// [events] The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
+  /// [followupIntentInfos] Information about all followup intents that have this intent as a direct or indirect parent. We populate this field
+  /// [inputContextNames] The list of context names required for this intent to be triggered.
+  /// [isFallback] Indicates whether this is a fallback intent.
+  /// [mlDisabled] Indicates whether Machine Learning is disabled for the intent.
+  /// [name] The unique identifier of this intent.
+  /// [parentFollowupIntentName] The unique identifier of the parent intent in the chain of followup intents.
+  /// [priority] The priority of this intent. Higher numbers represent higher priorities.
+  /// [project] The ID of the project in which the resource belongs.
+  /// [resetContexts] Indicates whether to delete all contexts in the current session when this intent is matched.
+  /// [rootFollowupIntentName] The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup
+  /// [webhookState] Indicates whether webhooks are enabled for the intent.
+  IntentState({
+    pulumi.Output<String>? action,
+    pulumi.Output<List<String>>? defaultResponsePlatforms,
+    pulumi.Output<String>? displayName,
+    pulumi.Output<List<String>>? events,
+    pulumi.Output<List<IntentFollowupIntentInfo>>? followupIntentInfos,
+    pulumi.Output<List<String>>? inputContextNames,
+    pulumi.Output<bool>? isFallback,
+    pulumi.Output<bool>? mlDisabled,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? parentFollowupIntentName,
+    pulumi.Output<int>? priority,
+    pulumi.Output<String>? project,
+    pulumi.Output<bool>? resetContexts,
+    pulumi.Output<String>? rootFollowupIntentName,
+    pulumi.Output<String>? webhookState,
+  }) :
+      action = pulumi.Input.asOptionalInput<String>(action),
+      defaultResponsePlatforms = pulumi.Input.asOptionalInput<List<String>>(defaultResponsePlatforms),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      events = pulumi.Input.asOptionalInput<List<String>>(events),
+      followupIntentInfos = pulumi.Input.asOptionalInput<List<IntentFollowupIntentInfo>>(followupIntentInfos),
+      inputContextNames = pulumi.Input.asOptionalInput<List<String>>(inputContextNames),
+      isFallback = pulumi.Input.asOptionalInput<bool>(isFallback),
+      mlDisabled = pulumi.Input.asOptionalInput<bool>(mlDisabled),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      parentFollowupIntentName = pulumi.Input.asOptionalInput<String>(parentFollowupIntentName),
+      priority = pulumi.Input.asOptionalInput<int>(priority),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      resetContexts = pulumi.Input.asOptionalInput<bool>(resetContexts),
+      rootFollowupIntentName = pulumi.Input.asOptionalInput<String>(rootFollowupIntentName),
+      webhookState = pulumi.Input.asOptionalInput<String>(webhookState);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'action': ?action,
+      'defaultResponsePlatforms': ?defaultResponsePlatforms,
+      'displayName': ?displayName,
+      'events': ?events,
+      'followupIntentInfos': ?pulumi.Input.mapOptionalInputValue<List<IntentFollowupIntentInfo>, List<Map<String, dynamic>>>(followupIntentInfos, (value) => pulumi.Input.encodeList<IntentFollowupIntentInfo, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'inputContextNames': ?inputContextNames,
+      'isFallback': ?isFallback,
+      'mlDisabled': ?mlDisabled,
+      'name': ?name,
+      'parentFollowupIntentName': ?parentFollowupIntentName,
+      'priority': ?priority,
+      'project': ?project,
+      'resetContexts': ?resetContexts,
+      'rootFollowupIntentName': ?rootFollowupIntentName,
+      'webhookState': ?webhookState,
+    };
+  }
+
+  factory IntentState.fromMap(Map<String, dynamic> map) {
+    return IntentState(
+      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
+      defaultResponsePlatforms: map['defaultResponsePlatforms'] == null ? null : pulumi.Output.create<List<String>>((map['defaultResponsePlatforms'] as List).cast<String>()),
+      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
+      events: map['events'] == null ? null : pulumi.Output.create<List<String>>((map['events'] as List).cast<String>()),
+      followupIntentInfos: map['followupIntentInfos'] == null ? null : pulumi.Output.create<List<IntentFollowupIntentInfo>>(pulumi.Input.decodeList<IntentFollowupIntentInfo>(map['followupIntentInfos'], (value) => IntentFollowupIntentInfo.fromMap((value as Map).cast<String, dynamic>()))),
+      inputContextNames: map['inputContextNames'] == null ? null : pulumi.Output.create<List<String>>((map['inputContextNames'] as List).cast<String>()),
+      isFallback: map['isFallback'] == null ? null : pulumi.Output.create<bool>(map['isFallback'] as bool),
+      mlDisabled: map['mlDisabled'] == null ? null : pulumi.Output.create<bool>(map['mlDisabled'] as bool),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      parentFollowupIntentName: map['parentFollowupIntentName'] == null ? null : pulumi.Output.create<String>(map['parentFollowupIntentName'] as String),
+      priority: map['priority'] == null ? null : pulumi.Output.create<int>(map['priority'] as int),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      resetContexts: map['resetContexts'] == null ? null : pulumi.Output.create<bool>(map['resetContexts'] as bool),
+      rootFollowupIntentName: map['rootFollowupIntentName'] == null ? null : pulumi.Output.create<String>(map['rootFollowupIntentName'] as String),
+      webhookState: map['webhookState'] == null ? null : pulumi.Output.create<String>(map['webhookState'] as String),
+    );
+  }
+}
+

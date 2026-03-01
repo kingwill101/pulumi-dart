@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_networksecurity_intercept_endpoint_group_association_intercept_endpoint_group_association_args_doc}
+/// The set of arguments for InterceptEndpointGroupAssociation.
+/// {@endtemplate}
+/// {@macro pulumi_networksecurity_intercept_endpoint_group_association_intercept_endpoint_group_association_args_doc}
+class InterceptEndpointGroupAssociationArgs {
+  /// The endpoint group that this association is connected to, for example:
+  /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
+  /// See https://google.aip.dev/124.
+  final pulumi.Input<String> interceptEndpointGroup;
+  /// The ID to use for the new association, which will become the final
+  /// component of the endpoint group's resource name. If not provided, the
+  /// server will generate a unique ID.
+  final pulumi.Input<String>? interceptEndpointGroupAssociationId;
+  /// Labels are key/value pairs that help to organize and filter resources.
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>>? labels;
+  /// The cloud location of the association, currently restricted to `global`.
+  final pulumi.Input<String> location;
+  /// The VPC network that is associated. for example:
+  /// `projects/123456789/global/networks/my-network`.
+  /// See https://google.aip.dev/124.
+  final pulumi.Input<String> network;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [InterceptEndpointGroupAssociationArgs].
+  /// [interceptEndpointGroup] The endpoint group that this association is connected to, for example:
+  /// [interceptEndpointGroupAssociationId] The ID to use for the new association, which will become the final
+  /// [labels] Labels are key/value pairs that help to organize and filter resources.
+  /// [location] The cloud location of the association, currently restricted to `global`.
+  /// [network] The VPC network that is associated. for example:
+  /// [project] The ID of the project in which the resource belongs.
+  InterceptEndpointGroupAssociationArgs({
+    required pulumi.Output<String> interceptEndpointGroup,
+    pulumi.Output<String>? interceptEndpointGroupAssociationId,
+    pulumi.Output<Map<String, String>>? labels,
+    required pulumi.Output<String> location,
+    required pulumi.Output<String> network,
+    pulumi.Output<String>? project,
+  }) :
+      interceptEndpointGroup = pulumi.Input.asInput<String>(interceptEndpointGroup),
+      interceptEndpointGroupAssociationId = pulumi.Input.asOptionalInput<String>(interceptEndpointGroupAssociationId),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      location = pulumi.Input.asInput<String>(location),
+      network = pulumi.Input.asInput<String>(network),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'interceptEndpointGroup': interceptEndpointGroup,
+      'interceptEndpointGroupAssociationId': ?interceptEndpointGroupAssociationId,
+      'labels': ?labels,
+      'location': location,
+      'network': network,
+      'project': ?project,
+    };
+  }
+
+  factory InterceptEndpointGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
+    return InterceptEndpointGroupAssociationArgs(
+      interceptEndpointGroup: pulumi.Output.create<String>(map['interceptEndpointGroup'] as String),
+      interceptEndpointGroupAssociationId: map['interceptEndpointGroupAssociationId'] == null ? null : pulumi.Output.create<String>(map['interceptEndpointGroupAssociationId'] as String),
+      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      network: pulumi.Output.create<String>(map['network'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

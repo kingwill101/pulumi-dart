@@ -1,0 +1,88 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_appconfig_deployment_deployment_args_doc}
+/// The set of arguments for Deployment.
+/// {@endtemplate}
+/// {@macro pulumi_appconfig_deployment_deployment_args_doc}
+class DeploymentArgs {
+  /// Application ID. Must be between 4 and 7 characters in length.
+  final pulumi.Input<String> applicationId;
+  /// Configuration profile ID. Must be between 4 and 7 characters in length.
+  final pulumi.Input<String> configurationProfileId;
+  /// Configuration version to deploy. Can be at most 1024 characters.
+  final pulumi.Input<String> configurationVersion;
+  /// Deployment strategy ID or name of a predefined deployment strategy. See [Predefined Deployment Strategies](https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-deployment-strategy.html#appconfig-creating-deployment-strategy-predefined) for more details.
+  final pulumi.Input<String> deploymentStrategyId;
+  /// Description of the deployment. Can be at most 1024 characters.
+  final pulumi.Input<String>? description;
+  /// Environment ID. Must be between 4 and 7 characters in length.
+  final pulumi.Input<String> environmentId;
+  /// The KMS key identifier (key ID, key alias, or key ARN). AppConfig uses this to encrypt the configuration data using a customer managed key.
+  final pulumi.Input<String>? kmsKeyIdentifier;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [DeploymentArgs].
+  /// [applicationId] Application ID. Must be between 4 and 7 characters in length.
+  /// [configurationProfileId] Configuration profile ID. Must be between 4 and 7 characters in length.
+  /// [configurationVersion] Configuration version to deploy. Can be at most 1024 characters.
+  /// [deploymentStrategyId] Deployment strategy ID or name of a predefined deployment strategy. See [Predefined Deployment Strategies](https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-deployment-strategy.html#appconfig-creating-deployment-strategy-predefined) for more details.
+  /// [description] Description of the deployment. Can be at most 1024 characters.
+  /// [environmentId] Environment ID. Must be between 4 and 7 characters in length.
+  /// [kmsKeyIdentifier] The KMS key identifier (key ID, key alias, or key ARN). AppConfig uses this to encrypt the configuration data using a customer managed key.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  DeploymentArgs({
+    required pulumi.Output<String> applicationId,
+    required pulumi.Output<String> configurationProfileId,
+    required pulumi.Output<String> configurationVersion,
+    required pulumi.Output<String> deploymentStrategyId,
+    pulumi.Output<String>? description,
+    required pulumi.Output<String> environmentId,
+    pulumi.Output<String>? kmsKeyIdentifier,
+    pulumi.Output<String>? region,
+    pulumi.Output<Map<String, String>>? tags,
+  }) :
+      applicationId = pulumi.Input.asInput<String>(applicationId),
+      configurationProfileId = pulumi.Input.asInput<String>(configurationProfileId),
+      configurationVersion = pulumi.Input.asInput<String>(configurationVersion),
+      deploymentStrategyId = pulumi.Input.asInput<String>(deploymentStrategyId),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      environmentId = pulumi.Input.asInput<String>(environmentId),
+      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'applicationId': applicationId,
+      'configurationProfileId': configurationProfileId,
+      'configurationVersion': configurationVersion,
+      'deploymentStrategyId': deploymentStrategyId,
+      'description': ?description,
+      'environmentId': environmentId,
+      'kmsKeyIdentifier': ?kmsKeyIdentifier,
+      'region': ?region,
+      'tags': ?tags,
+    };
+  }
+
+  factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
+    return DeploymentArgs(
+      applicationId: pulumi.Output.create<String>(map['applicationId'] as String),
+      configurationProfileId: pulumi.Output.create<String>(map['configurationProfileId'] as String),
+      configurationVersion: pulumi.Output.create<String>(map['configurationVersion'] as String),
+      deploymentStrategyId: pulumi.Output.create<String>(map['deploymentStrategyId'] as String),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      environmentId: pulumi.Output.create<String>(map['environmentId'] as String),
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : pulumi.Output.create<String>(map['kmsKeyIdentifier'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+    );
+  }
+}
+

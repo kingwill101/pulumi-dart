@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_compute_beta_get_vpn_gateway_compute_beta_args_doc}
+/// Arguments for getVpnGateway.
+/// {@endtemplate}
+/// {@macro pulumi_compute_beta_get_vpn_gateway_compute_beta_args_doc}
+class GetVpnGatewayComputeBetaArgs {
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
+  final pulumi.Input<String> vpnGateway;
+
+  /// Creates a new [GetVpnGatewayComputeBetaArgs].
+  /// [project] Optional.
+  /// [region] Required.
+  /// [vpnGateway] Required.
+  GetVpnGatewayComputeBetaArgs({
+    pulumi.Output<String>? project,
+    required pulumi.Output<String> region,
+    required pulumi.Output<String> vpnGateway,
+  }) :
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region),
+      vpnGateway = pulumi.Input.asInput<String>(vpnGateway);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'project': ?project,
+      'region': region,
+      'vpnGateway': vpnGateway,
+    };
+  }
+
+  factory GetVpnGatewayComputeBetaArgs.fromMap(Map<String, dynamic> map) {
+    return GetVpnGatewayComputeBetaArgs(
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      region: pulumi.Output.create<String>(map['region'] as String),
+      vpnGateway: pulumi.Output.create<String>(map['vpnGateway'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_controltower_landing_zone_landing_zone_args_doc}
+/// The set of arguments for LandingZone.
+/// {@endtemplate}
+/// {@macro pulumi_controltower_landing_zone_landing_zone_args_doc}
+class LandingZoneArgs {
+  /// The manifest JSON file is a text file that describes your AWS resources. For examples, review [Launch your landing zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch).
+  final pulumi.Input<String> manifestJson;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Tags to apply to the landing zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// The landing zone version.
+  final pulumi.Input<String> version;
+
+  /// Creates a new [LandingZoneArgs].
+  /// [manifestJson] The manifest JSON file is a text file that describes your AWS resources. For examples, review [Launch your landing zone](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch).
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Tags to apply to the landing zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [version] The landing zone version.
+  LandingZoneArgs({
+    required pulumi.Output<String> manifestJson,
+    pulumi.Output<String>? region,
+    pulumi.Output<Map<String, String>>? tags,
+    required pulumi.Output<String> version,
+  }) :
+      manifestJson = pulumi.Input.asInput<String>(manifestJson),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      version = pulumi.Input.asInput<String>(version);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'manifestJson': manifestJson,
+      'region': ?region,
+      'tags': ?tags,
+      'version': version,
+    };
+  }
+
+  factory LandingZoneArgs.fromMap(Map<String, dynamic> map) {
+    return LandingZoneArgs(
+      manifestJson: pulumi.Output.create<String>(map['manifestJson'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      version: pulumi.Output.create<String>(map['version'] as String),
+    );
+  }
+}
+

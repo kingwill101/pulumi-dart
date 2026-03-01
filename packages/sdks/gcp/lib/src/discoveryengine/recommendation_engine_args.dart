@@ -1,0 +1,90 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'recommendation_engine_common_config.dart';
+import 'recommendation_engine_media_recommendation_engine_config.dart';
+
+/// {@template pulumi_discoveryengine_recommendation_engine_recommendation_engine_args_doc}
+/// The set of arguments for RecommendationEngine.
+/// {@endtemplate}
+/// {@macro pulumi_discoveryengine_recommendation_engine_recommendation_engine_args_doc}
+class RecommendationEngineArgs {
+  /// Common config spec that specifies the metadata of the engine.
+  /// Structure is documented below.
+  final pulumi.Input<RecommendationEngineCommonConfig>? commonConfig;
+  /// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
+  final pulumi.Input<List<String>> dataStoreIds;
+  /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
+  final pulumi.Input<String> displayName;
+  /// Unique ID to use for Recommendation Engine.
+  final pulumi.Input<String> engineId;
+  /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+  /// Default value is `GENERIC`.
+  /// Possible values are: `GENERIC`, `MEDIA`.
+  final pulumi.Input<String>? industryVertical;
+  /// The geographic location where the data store should reside. The value can
+  /// only be one of "global", "us" and "eu".
+  final pulumi.Input<String> location;
+  /// Configurations for a Media Recommendation Engine. Only applicable on the data stores
+  /// with SOLUTION_TYPE_RECOMMENDATION solution type and MEDIA industry vertical.
+  /// Structure is documented below.
+  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfig>? mediaRecommendationEngineConfig;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [RecommendationEngineArgs].
+  /// [commonConfig] Common config spec that specifies the metadata of the engine.
+  /// [dataStoreIds] The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
+  /// [displayName] Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
+  /// [engineId] Unique ID to use for Recommendation Engine.
+  /// [industryVertical] The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
+  /// [location] The geographic location where the data store should reside. The value can
+  /// [mediaRecommendationEngineConfig] Configurations for a Media Recommendation Engine. Only applicable on the data stores
+  /// [project] The ID of the project in which the resource belongs.
+  RecommendationEngineArgs({
+    pulumi.Output<RecommendationEngineCommonConfig>? commonConfig,
+    required pulumi.Output<List<String>> dataStoreIds,
+    required pulumi.Output<String> displayName,
+    required pulumi.Output<String> engineId,
+    pulumi.Output<String>? industryVertical,
+    required pulumi.Output<String> location,
+    pulumi.Output<RecommendationEngineMediaRecommendationEngineConfig>? mediaRecommendationEngineConfig,
+    pulumi.Output<String>? project,
+  }) :
+      commonConfig = pulumi.Input.asOptionalInput<RecommendationEngineCommonConfig>(commonConfig),
+      dataStoreIds = pulumi.Input.asInput<List<String>>(dataStoreIds),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      engineId = pulumi.Input.asInput<String>(engineId),
+      industryVertical = pulumi.Input.asOptionalInput<String>(industryVertical),
+      location = pulumi.Input.asInput<String>(location),
+      mediaRecommendationEngineConfig = pulumi.Input.asOptionalInput<RecommendationEngineMediaRecommendationEngineConfig>(mediaRecommendationEngineConfig),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'commonConfig': ?pulumi.Input.mapOptionalInputValue<RecommendationEngineCommonConfig, Map<String, dynamic>>(commonConfig, (value) => value.toMap()),
+      'dataStoreIds': dataStoreIds,
+      'displayName': displayName,
+      'engineId': engineId,
+      'industryVertical': ?industryVertical,
+      'location': location,
+      'mediaRecommendationEngineConfig': ?pulumi.Input.mapOptionalInputValue<RecommendationEngineMediaRecommendationEngineConfig, Map<String, dynamic>>(mediaRecommendationEngineConfig, (value) => value.toMap()),
+      'project': ?project,
+    };
+  }
+
+  factory RecommendationEngineArgs.fromMap(Map<String, dynamic> map) {
+    return RecommendationEngineArgs(
+      commonConfig: map['commonConfig'] == null ? null : pulumi.Output.create<RecommendationEngineCommonConfig>(RecommendationEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>())),
+      dataStoreIds: pulumi.Output.create<List<String>>((map['dataStoreIds'] as List).cast<String>()),
+      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      engineId: pulumi.Output.create<String>(map['engineId'] as String),
+      industryVertical: map['industryVertical'] == null ? null : pulumi.Output.create<String>(map['industryVertical'] as String),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      mediaRecommendationEngineConfig: map['mediaRecommendationEngineConfig'] == null ? null : pulumi.Output.create<RecommendationEngineMediaRecommendationEngineConfig>(RecommendationEngineMediaRecommendationEngineConfig.fromMap((map['mediaRecommendationEngineConfig'] as Map).cast<String, dynamic>())),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,131 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'extended_location.dart';
+
+/// {@template pulumi_azurestackhci_virtual_hard_disk_args_doc}
+/// The set of arguments for VirtualHardDisk.
+/// {@endtemplate}
+/// {@macro pulumi_azurestackhci_virtual_hard_disk_args_doc}
+class VirtualHardDiskArgs {
+  /// Block size in bytes
+  final pulumi.Input<int>? blockSizeBytes;
+  /// Storage ContainerID of the storage container to be used for VHD
+  final pulumi.Input<String>? containerId;
+  /// Boolean indicating whether it is an existing local hard disk or if one should be created.
+  final pulumi.Input<bool>? createFromLocal;
+  /// The format of the actual VHD file [vhd, vhdx]
+  final pulumi.Input<String>? diskFileFormat;
+  /// Size of the disk in GB
+  final pulumi.Input<double>? diskSizeGB;
+  /// URL for downloading or accessing the virtual hard disk. This URL points to a secure link from where the VHD can be downloaded or accessed directly.
+  final pulumi.Input<String>? downloadUrl;
+  /// Boolean for enabling dynamic sizing on the virtual hard disk
+  final pulumi.Input<bool>? dynamic;
+  /// The extendedLocation of the resource.
+  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  /// The hypervisor generation of the Virtual Machine [V1, V2]
+  final pulumi.Input<String>? hyperVGeneration;
+  /// The geo-location where the resource lives
+  final pulumi.Input<String>? location;
+  /// Logical sector in bytes
+  final pulumi.Input<int>? logicalSectorBytes;
+  /// Physical sector in bytes
+  final pulumi.Input<int>? physicalSectorBytes;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// Resource tags.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// Name of the virtual hard disk
+  final pulumi.Input<String>? virtualHardDiskName;
+
+  /// Creates a new [VirtualHardDiskArgs].
+  /// [blockSizeBytes] Block size in bytes
+  /// [containerId] Storage ContainerID of the storage container to be used for VHD
+  /// [createFromLocal] Boolean indicating whether it is an existing local hard disk or if one should be created.
+  /// [diskFileFormat] The format of the actual VHD file [vhd, vhdx]
+  /// [diskSizeGB] Size of the disk in GB
+  /// [downloadUrl] URL for downloading or accessing the virtual hard disk. This URL points to a secure link from where the VHD can be downloaded or accessed directly.
+  /// [dynamic] Boolean for enabling dynamic sizing on the virtual hard disk
+  /// [extendedLocation] The extendedLocation of the resource.
+  /// [hyperVGeneration] The hypervisor generation of the Virtual Machine [V1, V2]
+  /// [location] The geo-location where the resource lives
+  /// [logicalSectorBytes] Logical sector in bytes
+  /// [physicalSectorBytes] Physical sector in bytes
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [tags] Resource tags.
+  /// [virtualHardDiskName] Name of the virtual hard disk
+  VirtualHardDiskArgs({
+    pulumi.Output<int>? blockSizeBytes,
+    pulumi.Output<String>? containerId,
+    pulumi.Output<bool>? createFromLocal,
+    pulumi.Output<String>? diskFileFormat,
+    pulumi.Output<double>? diskSizeGB,
+    pulumi.Output<String>? downloadUrl,
+    pulumi.Output<bool>? dynamic,
+    pulumi.Output<ExtendedLocation>? extendedLocation,
+    pulumi.Output<String>? hyperVGeneration,
+    pulumi.Output<String>? location,
+    pulumi.Output<int>? logicalSectorBytes,
+    pulumi.Output<int>? physicalSectorBytes,
+    required pulumi.Output<String> resourceGroupName,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<String>? virtualHardDiskName,
+  }) :
+      blockSizeBytes = pulumi.Input.asOptionalInput<int>(blockSizeBytes),
+      containerId = pulumi.Input.asOptionalInput<String>(containerId),
+      createFromLocal = pulumi.Input.asOptionalInput<bool>(createFromLocal),
+      diskFileFormat = pulumi.Input.asOptionalInput<String>(diskFileFormat),
+      diskSizeGB = pulumi.Input.asOptionalInput<double>(diskSizeGB),
+      downloadUrl = pulumi.Input.asOptionalInput<String>(downloadUrl),
+      dynamic = pulumi.Input.asOptionalInput<bool>(dynamic),
+      extendedLocation = pulumi.Input.asOptionalInput<ExtendedLocation>(extendedLocation),
+      hyperVGeneration = pulumi.Input.asOptionalInput<String>(hyperVGeneration),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      logicalSectorBytes = pulumi.Input.asOptionalInput<int>(logicalSectorBytes),
+      physicalSectorBytes = pulumi.Input.asOptionalInput<int>(physicalSectorBytes),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      virtualHardDiskName = pulumi.Input.asOptionalInput<String>(virtualHardDiskName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'blockSizeBytes': ?blockSizeBytes,
+      'containerId': ?containerId,
+      'createFromLocal': ?createFromLocal,
+      'diskFileFormat': ?diskFileFormat,
+      'diskSizeGB': ?diskSizeGB,
+      'downloadUrl': ?downloadUrl,
+      'dynamic': ?dynamic,
+      'extendedLocation': ?pulumi.Input.mapOptionalInputValue<ExtendedLocation, Map<String, dynamic>>(extendedLocation, (value) => value.toMap()),
+      'hyperVGeneration': ?hyperVGeneration,
+      'location': ?location,
+      'logicalSectorBytes': ?logicalSectorBytes,
+      'physicalSectorBytes': ?physicalSectorBytes,
+      'resourceGroupName': resourceGroupName,
+      'tags': ?tags,
+      'virtualHardDiskName': ?virtualHardDiskName,
+    };
+  }
+
+  factory VirtualHardDiskArgs.fromMap(Map<String, dynamic> map) {
+    return VirtualHardDiskArgs(
+      blockSizeBytes: map['blockSizeBytes'] == null ? null : pulumi.Output.create<int>(map['blockSizeBytes'] as int),
+      containerId: map['containerId'] == null ? null : pulumi.Output.create<String>(map['containerId'] as String),
+      createFromLocal: map['createFromLocal'] == null ? null : pulumi.Output.create<bool>(map['createFromLocal'] as bool),
+      diskFileFormat: map['diskFileFormat'] == null ? null : pulumi.Output.create<String>(map['diskFileFormat'] as String),
+      diskSizeGB: map['diskSizeGB'] == null ? null : pulumi.Output.create<double>(map['diskSizeGB'] as double),
+      downloadUrl: map['downloadUrl'] == null ? null : pulumi.Output.create<String>(map['downloadUrl'] as String),
+      dynamic: map['dynamic'] == null ? null : pulumi.Output.create<bool>(map['dynamic'] as bool),
+      extendedLocation: map['extendedLocation'] == null ? null : pulumi.Output.create<ExtendedLocation>(ExtendedLocation.fromMap((map['extendedLocation'] as Map).cast<String, dynamic>())),
+      hyperVGeneration: map['hyperVGeneration'] == null ? null : pulumi.Output.create<String>(map['hyperVGeneration'] as String),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      logicalSectorBytes: map['logicalSectorBytes'] == null ? null : pulumi.Output.create<int>(map['logicalSectorBytes'] as int),
+      physicalSectorBytes: map['physicalSectorBytes'] == null ? null : pulumi.Output.create<int>(map['physicalSectorBytes'] as int),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      virtualHardDiskName: map['virtualHardDiskName'] == null ? null : pulumi.Output.create<String>(map['virtualHardDiskName'] as String),
+    );
+  }
+}
+

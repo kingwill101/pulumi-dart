@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'config_map_env_source_response.dart';
+import 'secret_env_source_response.dart';
+
+/// Not supported by Cloud Run. EnvFromSource represents the source of a set of ConfigMaps
+class EnvFromSourceResponse {
+  /// The ConfigMap to select from
+  final ConfigMapEnvSourceResponse configMapRef;
+  /// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+  final String prefix;
+  /// The Secret to select from
+  final SecretEnvSourceResponse secretRef;
+
+  /// Creates a new [EnvFromSourceResponse].
+  /// [configMapRef] The ConfigMap to select from
+  /// [prefix] An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+  /// [secretRef] The Secret to select from
+  EnvFromSourceResponse({
+    required this.configMapRef,
+    required this.prefix,
+    required this.secretRef,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'configMapRef': configMapRef.toMap(),
+      'prefix': prefix,
+      'secretRef': secretRef.toMap(),
+    };
+  }
+
+  factory EnvFromSourceResponse.fromMap(Map<String, dynamic> map) {
+    return EnvFromSourceResponse(
+      configMapRef: ConfigMapEnvSourceResponse.fromMap((map['configMapRef'] as Map).cast<String, dynamic>()),
+      prefix: map['prefix'] as String,
+      secretRef: SecretEnvSourceResponse.fromMap((map['secretRef'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

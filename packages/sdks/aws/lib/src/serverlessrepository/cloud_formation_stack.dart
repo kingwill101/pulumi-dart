@@ -1,0 +1,275 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'cloud_formation_stack_args.dart';
+import 'cloud_formation_stack_state.dart';
+
+/// Deploys an Application CloudFormation Stack from the Serverless Application Repository.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const current = aws.getPartition({});
+/// const currentGetRegion = aws.getRegion({});
+/// const postgres_rotator = new aws.serverlessrepository.CloudFormationStack("postgres-rotator", {
+///     name: "postgres-rotator",
+///     applicationId: "arn:aws:serverlessrepo:us-east-1:297356227824:applications/SecretsManagerRDSPostgreSQLRotationSingleUser",
+///     capabilities: [
+///         "CAPABILITY_IAM",
+///         "CAPABILITY_RESOURCE_POLICY",
+///     ],
+///     parameters: {
+///         functionName: "func-postgres-rotator",
+///         endpoint: Promise.all([currentGetRegion, current]).then(([currentGetRegion, current]) => `secretsmanager.${currentGetRegion.region}.${current.dnsSuffix}`),
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// current = aws.get_partition()
+/// current_get_region = aws.get_region()
+/// postgres_rotator = aws.serverlessrepository.CloudFormationStack("postgres-rotator",
+///     name="postgres-rotator",
+///     application_id="arn:aws:serverlessrepo:us-east-1:297356227824:applications/SecretsManagerRDSPostgreSQLRotationSingleUser",
+///     capabilities=[
+///         "CAPABILITY_IAM",
+///         "CAPABILITY_RESOURCE_POLICY",
+///     ],
+///     parameters={
+///         "functionName": "func-postgres-rotator",
+///         "endpoint": f"secretsmanager.{current_get_region.region}.{current.dns_suffix}",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var current = Aws.GetPartition.Invoke();
+///
+///     var currentGetRegion = Aws.GetRegion.Invoke();
+///
+///     var postgres_rotator = new Aws.ServerlessRepository.CloudFormationStack("postgres-rotator", new()
+///     {
+///         Name = "postgres-rotator",
+///         ApplicationId = "arn:aws:serverlessrepo:us-east-1:297356227824:applications/SecretsManagerRDSPostgreSQLRotationSingleUser",
+///         Capabilities = new[]
+///         {
+///             "CAPABILITY_IAM",
+///             "CAPABILITY_RESOURCE_POLICY",
+///         },
+///         Parameters =
+///         {
+///             { "functionName", "func-postgres-rotator" },
+///             { "endpoint", Output.Tuple(currentGetRegion, current).Apply(values =>
+///             {
+///                 var currentGetRegion = values.Item1;
+///                 var current = values.Item2;
+///                 return $"secretsmanager.{currentGetRegion.Apply(getRegionResult => getRegionResult.Region)}.{current.Apply(getPartitionResult => getPartitionResult.DnsSuffix)}";
+///             }) },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws"
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/serverlessrepository"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		current, err := aws.GetPartition(ctx, &aws.GetPartitionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		currentGetRegion, err := aws.GetRegion(ctx, &aws.GetRegionArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = serverlessrepository.NewCloudFormationStack(ctx, "postgres-rotator", &serverlessrepository.CloudFormationStackArgs{
+/// 			Name:          pulumi.String("postgres-rotator"),
+/// 			ApplicationId: pulumi.String("arn:aws:serverlessrepo:us-east-1:297356227824:applications/SecretsManagerRDSPostgreSQLRotationSingleUser"),
+/// 			Capabilities: pulumi.StringArray{
+/// 				pulumi.String("CAPABILITY_IAM"),
+/// 				pulumi.String("CAPABILITY_RESOURCE_POLICY"),
+/// 			},
+/// 			Parameters: pulumi.StringMap{
+/// 				"functionName": pulumi.String("func-postgres-rotator"),
+/// 				"endpoint":     pulumi.Sprintf("secretsmanager.%v.%v", currentGetRegion.Region, current.DnsSuffix),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.AwsFunctions;
+/// import com.pulumi.aws.inputs.GetPartitionArgs;
+/// import com.pulumi.aws.inputs.GetRegionArgs;
+/// import com.pulumi.aws.serverlessrepository.CloudFormationStack;
+/// import com.pulumi.aws.serverlessrepository.CloudFormationStackArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var current = AwsFunctions.getPartition(GetPartitionArgs.builder()
+///             .build());
+///
+///         final var currentGetRegion = AwsFunctions.getRegion(GetRegionArgs.builder()
+///             .build());
+///
+///         var postgres_rotator = new CloudFormationStack("postgres-rotator", CloudFormationStackArgs.builder()
+///             .name("postgres-rotator")
+///             .applicationId("arn:aws:serverlessrepo:us-east-1:297356227824:applications/SecretsManagerRDSPostgreSQLRotationSingleUser")
+///             .capabilities(
+///                 "CAPABILITY_IAM",
+///                 "CAPABILITY_RESOURCE_POLICY")
+///             .parameters(Map.ofEntries(
+///                 Map.entry("functionName", "func-postgres-rotator"),
+///                 Map.entry("endpoint", String.format("secretsmanager.%s.%s", currentGetRegion.region(),current.dnsSuffix()))
+///             ))
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   postgres-rotator:
+///     type: aws:serverlessrepository:CloudFormationStack
+///     properties:
+///       name: postgres-rotator
+///       applicationId: arn:aws:serverlessrepo:us-east-1:297356227824:applications/SecretsManagerRDSPostgreSQLRotationSingleUser
+///       capabilities:
+///         - CAPABILITY_IAM
+///         - CAPABILITY_RESOURCE_POLICY
+///       parameters:
+///         functionName: func-postgres-rotator
+///         endpoint: secretsmanager.${currentGetRegion.region}.${current.dnsSuffix}
+/// variables:
+///   current:
+///     fn::invoke:
+///       function: aws:getPartition
+///       arguments: {}
+///   currentGetRegion:
+///     fn::invoke:
+///       function: aws:getRegion
+///       arguments: {}
+/// ```
+///
+///
+/// ## Import
+///
+/// Using `pulumi import`, import Serverless Application Repository Stack using the CloudFormation Stack name (with or without the `serverlessrepo-` prefix) or the CloudFormation Stack ID. For example:
+///
+/// ```sh
+/// $ pulumi import aws:serverlessrepository/cloudFormationStack:CloudFormationStack example serverlessrepo-postgres-rotator
+/// ```
+class CloudFormationStack extends pulumi.CustomResource {
+  /// The ARN of the application from the Serverless Application Repository.
+  late final pulumi.Output<String> applicationId;
+  /// A list of capabilities. Valid values are `CAPABILITY_IAM`, `CAPABILITY_NAMED_IAM`, `CAPABILITY_RESOURCE_POLICY`, or `CAPABILITY_AUTO_EXPAND`
+  late final pulumi.Output<List<String>> capabilities;
+  /// The name of the stack to create. The resource deployed in AWS will be prefixed with `serverlessrepo-`
+  late final pulumi.Output<String> name;
+  /// A map of outputs from the stack.
+  late final pulumi.Output<Map<String, String>> outputs;
+  /// A map of Parameter structures that specify input parameters for the stack.
+  late final pulumi.Output<Map<String, String>> parameters;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final pulumi.Output<String> region;
+  /// The version of the application to deploy. If not supplied, deploys the latest version.
+  late final pulumi.Output<String> semanticVersion;
+  /// A list of tags to associate with this stack. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  late final pulumi.Output<Map<String, String>> tagsAll;
+
+  /// Creates a new [CloudFormationStack].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [CloudFormationStack]. {@macro pulumi_serverlessrepository_cloud_formation_stack_cloud_formation_stack_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  CloudFormationStack(
+    String name, {
+    CloudFormationStackArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:serverlessrepository/cloudFormationStack:CloudFormationStack',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.applicationId = registerOutput<String>('applicationId');
+    this.capabilities = registerOutput<List<String>>('capabilities');
+    this.name = registerOutput<String>('name');
+    this.outputs = registerOutput<Map<String, String>>('outputs');
+    this.parameters = registerOutput<Map<String, String>>('parameters');
+    this.region = registerOutput<String>('region');
+    this.semanticVersion = registerOutput<String>('semanticVersion');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+  }
+
+  /// Gets an existing [CloudFormationStack] resource's state with the given [name] and [id].
+  static CloudFormationStack get(
+    String name,
+    pulumi.Input<String> id, {
+    CloudFormationStackState? state,
+  }) {
+    return CloudFormationStack._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id),
+    );
+  }
+
+  CloudFormationStack._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:serverlessrepository/cloudFormationStack:CloudFormationStack',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.applicationId = registerOutput<String>('applicationId');
+    this.capabilities = registerOutput<List<String>>('capabilities');
+    this.name = registerOutput<String>('name');
+    this.outputs = registerOutput<Map<String, String>>('outputs');
+    this.parameters = registerOutput<Map<String, String>>('parameters');
+    this.region = registerOutput<String>('region');
+    this.semanticVersion = registerOutput<String>('semanticVersion');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
+  }
+}

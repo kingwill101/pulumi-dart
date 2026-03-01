@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_index_reserved_ip_reserved_ip_args_doc}
+/// The set of arguments for ReservedIp.
+/// {@endtemplate}
+/// {@macro pulumi_index_reserved_ip_reserved_ip_args_doc}
+class ReservedIpArgs {
+  /// The ID of Droplet that the reserved IP will be assigned to.
+  final pulumi.Input<int>? dropletId;
+  /// The IP Address of the resource
+  final pulumi.Input<String>? ipAddress;
+  /// The region that the reserved IP is reserved to.
+  final pulumi.Input<String> region;
+
+  /// Creates a new [ReservedIpArgs].
+  /// [dropletId] The ID of Droplet that the reserved IP will be assigned to.
+  /// [ipAddress] The IP Address of the resource
+  /// [region] The region that the reserved IP is reserved to.
+  ReservedIpArgs({
+    pulumi.Output<int>? dropletId,
+    pulumi.Output<String>? ipAddress,
+    required pulumi.Output<String> region,
+  }) :
+      dropletId = pulumi.Input.asOptionalInput<int>(dropletId),
+      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
+      region = pulumi.Input.asInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dropletId': ?dropletId,
+      'ipAddress': ?ipAddress,
+      'region': region,
+    };
+  }
+
+  factory ReservedIpArgs.fromMap(Map<String, dynamic> map) {
+    return ReservedIpArgs(
+      dropletId: map['dropletId'] == null ? null : pulumi.Output.create<int>(map['dropletId'] as int),
+      ipAddress: map['ipAddress'] == null ? null : pulumi.Output.create<String>(map['ipAddress'] as String),
+      region: pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

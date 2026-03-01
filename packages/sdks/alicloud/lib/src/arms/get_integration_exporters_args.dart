@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_arms_get_integration_exporters_get_integration_exporters_args_doc}
+/// Arguments for getIntegrationExporters.
+/// {@endtemplate}
+/// {@macro pulumi_arms_get_integration_exporters_get_integration_exporters_args_doc}
+class GetIntegrationExportersArgs {
+  /// The ID of the Prometheus instance.
+  final pulumi.Input<String> clusterId;
+  /// A list of Integration Exporter IDs.
+  final pulumi.Input<List<String>>? ids;
+  /// The type of prometheus integration.
+  final pulumi.Input<String> integrationType;
+  /// File name where to save data source results (after running `pulumi preview`).
+  final pulumi.Input<String>? outputFile;
+
+  /// Creates a new [GetIntegrationExportersArgs].
+  /// [clusterId] The ID of the Prometheus instance.
+  /// [ids] A list of Integration Exporter IDs.
+  /// [integrationType] The type of prometheus integration.
+  /// [outputFile] File name where to save data source results (after running `pulumi preview`).
+  GetIntegrationExportersArgs({
+    required pulumi.Output<String> clusterId,
+    pulumi.Output<List<String>>? ids,
+    required pulumi.Output<String> integrationType,
+    pulumi.Output<String>? outputFile,
+  }) :
+      clusterId = pulumi.Input.asInput<String>(clusterId),
+      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
+      integrationType = pulumi.Input.asInput<String>(integrationType),
+      outputFile = pulumi.Input.asOptionalInput<String>(outputFile);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'clusterId': clusterId,
+      'ids': ?ids,
+      'integrationType': integrationType,
+      'outputFile': ?outputFile,
+    };
+  }
+
+  factory GetIntegrationExportersArgs.fromMap(Map<String, dynamic> map) {
+    return GetIntegrationExportersArgs(
+      clusterId: pulumi.Output.create<String>(map['clusterId'] as String),
+      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
+      integrationType: pulumi.Output.create<String>(map['integrationType'] as String),
+      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+    );
+  }
+}
+

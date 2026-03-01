@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_dialogflow_v3beta1_get_test_case_dialogflow_v3beta1_args_doc}
+/// Arguments for getTestCase.
+/// {@endtemplate}
+/// {@macro pulumi_dialogflow_v3beta1_get_test_case_dialogflow_v3beta1_args_doc}
+class GetTestCaseDialogflowV3beta1Args {
+  final pulumi.Input<String> agentId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> testCaseId;
+
+  /// Creates a new [GetTestCaseDialogflowV3beta1Args].
+  /// [agentId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  /// [testCaseId] Required.
+  GetTestCaseDialogflowV3beta1Args({
+    required pulumi.Output<String> agentId,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+    required pulumi.Output<String> testCaseId,
+  }) :
+      agentId = pulumi.Input.asInput<String>(agentId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      testCaseId = pulumi.Input.asInput<String>(testCaseId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'agentId': agentId,
+      'location': location,
+      'project': ?project,
+      'testCaseId': testCaseId,
+    };
+  }
+
+  factory GetTestCaseDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
+    return GetTestCaseDialogflowV3beta1Args(
+      agentId: pulumi.Output.create<String>(map['agentId'] as String),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      testCaseId: pulumi.Output.create<String>(map['testCaseId'] as String),
+    );
+  }
+}
+

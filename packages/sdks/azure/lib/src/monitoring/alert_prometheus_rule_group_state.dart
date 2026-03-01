@@ -1,0 +1,93 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'alert_prometheus_rule_group_rule.dart';
+
+/// Input properties used for looking up and filtering AlertPrometheusRuleGroup resources.
+class AlertPrometheusRuleGroupState {
+  /// Specifies the name of the Managed Kubernetes Cluster.
+  final pulumi.Input<String>? clusterName;
+  /// The description of the Alert Management Prometheus Rule Group.
+  final pulumi.Input<String>? description;
+  /// Specifies the interval in which to run the Alert Management Prometheus Rule Group represented in ISO 8601 duration format. Possible values are between `PT1M` and `PT15M`.
+  final pulumi.Input<String>? interval;
+  /// Specifies the Azure Region where the Alert Management Prometheus Rule Group should exist. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? location;
+  /// Specifies the name which should be used for this Alert Management Prometheus Rule Group. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// Specifies the name of the Resource Group where the Alert Management Prometheus Rule Group should exist. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? resourceGroupName;
+  /// Is this Alert Management Prometheus Rule Group enabled? Possible values are `true` and `false`.
+  final pulumi.Input<bool>? ruleGroupEnabled;
+  /// One or more `rule` blocks as defined below.
+  final pulumi.Input<List<AlertPrometheusRuleGroupRule>>? rules;
+  /// Specifies the resource ID of the Azure Monitor Workspace.
+  final pulumi.Input<List<String>>? scopes;
+  /// A mapping of tags to assign to the Alert Management Prometheus Rule Group.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [AlertPrometheusRuleGroupState].
+  /// [clusterName] Specifies the name of the Managed Kubernetes Cluster.
+  /// [description] The description of the Alert Management Prometheus Rule Group.
+  /// [interval] Specifies the interval in which to run the Alert Management Prometheus Rule Group represented in ISO 8601 duration format. Possible values are between `PT1M` and `PT15M`.
+  /// [location] Specifies the Azure Region where the Alert Management Prometheus Rule Group should exist. Changing this forces a new resource to be created.
+  /// [name] Specifies the name which should be used for this Alert Management Prometheus Rule Group. Changing this forces a new resource to be created.
+  /// [resourceGroupName] Specifies the name of the Resource Group where the Alert Management Prometheus Rule Group should exist. Changing this forces a new resource to be created.
+  /// [ruleGroupEnabled] Is this Alert Management Prometheus Rule Group enabled? Possible values are `true` and `false`.
+  /// [rules] One or more `rule` blocks as defined below.
+  /// [scopes] Specifies the resource ID of the Azure Monitor Workspace.
+  /// [tags] A mapping of tags to assign to the Alert Management Prometheus Rule Group.
+  AlertPrometheusRuleGroupState({
+    pulumi.Output<String>? clusterName,
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? interval,
+    pulumi.Output<String>? location,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? resourceGroupName,
+    pulumi.Output<bool>? ruleGroupEnabled,
+    pulumi.Output<List<AlertPrometheusRuleGroupRule>>? rules,
+    pulumi.Output<List<String>>? scopes,
+    pulumi.Output<Map<String, String>>? tags,
+  }) :
+      clusterName = pulumi.Input.asOptionalInput<String>(clusterName),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      interval = pulumi.Input.asOptionalInput<String>(interval),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
+      ruleGroupEnabled = pulumi.Input.asOptionalInput<bool>(ruleGroupEnabled),
+      rules = pulumi.Input.asOptionalInput<List<AlertPrometheusRuleGroupRule>>(rules),
+      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'clusterName': ?clusterName,
+      'description': ?description,
+      'interval': ?interval,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'ruleGroupEnabled': ?ruleGroupEnabled,
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<AlertPrometheusRuleGroupRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<AlertPrometheusRuleGroupRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'scopes': ?scopes,
+      'tags': ?tags,
+    };
+  }
+
+  factory AlertPrometheusRuleGroupState.fromMap(Map<String, dynamic> map) {
+    return AlertPrometheusRuleGroupState(
+      clusterName: map['clusterName'] == null ? null : pulumi.Output.create<String>(map['clusterName'] as String),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      interval: map['interval'] == null ? null : pulumi.Output.create<String>(map['interval'] as String),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      ruleGroupEnabled: map['ruleGroupEnabled'] == null ? null : pulumi.Output.create<bool>(map['ruleGroupEnabled'] as bool),
+      rules: map['rules'] == null ? null : pulumi.Output.create<List<AlertPrometheusRuleGroupRule>>(pulumi.Input.decodeList<AlertPrometheusRuleGroupRule>(map['rules'], (value) => AlertPrometheusRuleGroupRule.fromMap((value as Map).cast<String, dynamic>()))),
+      scopes: map['scopes'] == null ? null : pulumi.Output.create<List<String>>((map['scopes'] as List).cast<String>()),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+    );
+  }
+}
+

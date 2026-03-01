@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Configuration for Hierarchy Controller
+class ConfigManagementHierarchyControllerConfig {
+  /// Whether hierarchical resource quota is enabled in this cluster.
+  final bool? enableHierarchicalResourceQuota;
+  /// Whether pod tree labels are enabled in this cluster.
+  final bool? enablePodTreeLabels;
+  /// Whether Hierarchy Controller is enabled in this cluster.
+  final bool? enabled;
+
+  /// Creates a new [ConfigManagementHierarchyControllerConfig].
+  /// [enableHierarchicalResourceQuota] Whether hierarchical resource quota is enabled in this cluster.
+  /// [enablePodTreeLabels] Whether pod tree labels are enabled in this cluster.
+  /// [enabled] Whether Hierarchy Controller is enabled in this cluster.
+  ConfigManagementHierarchyControllerConfig({
+    this.enableHierarchicalResourceQuota,
+    this.enablePodTreeLabels,
+    this.enabled,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enableHierarchicalResourceQuota': ?enableHierarchicalResourceQuota,
+      'enablePodTreeLabels': ?enablePodTreeLabels,
+      'enabled': ?enabled,
+    };
+  }
+
+  factory ConfigManagementHierarchyControllerConfig.fromMap(Map<String, dynamic> map) {
+    return ConfigManagementHierarchyControllerConfig(
+      enableHierarchicalResourceQuota: map['enableHierarchicalResourceQuota'] == null ? null : map['enableHierarchicalResourceQuota'] as bool,
+      enablePodTreeLabels: map['enablePodTreeLabels'] == null ? null : map['enablePodTreeLabels'] as bool,
+      enabled: map['enabled'] == null ? null : map['enabled'] as bool,
+    );
+  }
+}
+

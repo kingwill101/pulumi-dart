@@ -1,0 +1,55 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_workflowexecutions_v1beta_get_execution_workflowexecutions_v1beta_args_doc}
+/// Arguments for getExecution.
+/// {@endtemplate}
+/// {@macro pulumi_workflowexecutions_v1beta_get_execution_workflowexecutions_v1beta_args_doc}
+class GetExecutionWorkflowexecutionsV1betaArgs {
+  final pulumi.Input<String> executionId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
+  final pulumi.Input<String> workflowId;
+
+  /// Creates a new [GetExecutionWorkflowexecutionsV1betaArgs].
+  /// [executionId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  /// [view] Optional.
+  /// [workflowId] Required.
+  GetExecutionWorkflowexecutionsV1betaArgs({
+    required pulumi.Output<String> executionId,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+    pulumi.Output<String>? view,
+    required pulumi.Output<String> workflowId,
+  }) :
+      executionId = pulumi.Input.asInput<String>(executionId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view),
+      workflowId = pulumi.Input.asInput<String>(workflowId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'executionId': executionId,
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+      'workflowId': workflowId,
+    };
+  }
+
+  factory GetExecutionWorkflowexecutionsV1betaArgs.fromMap(Map<String, dynamic> map) {
+    return GetExecutionWorkflowexecutionsV1betaArgs(
+      executionId: pulumi.Output.create<String>(map['executionId'] as String),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+      workflowId: pulumi.Output.create<String>(map['workflowId'] as String),
+    );
+  }
+}
+

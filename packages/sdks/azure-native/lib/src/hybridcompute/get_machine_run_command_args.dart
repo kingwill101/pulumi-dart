@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_hybridcompute_get_machine_run_command_args_doc}
+/// Arguments for getMachineRunCommand.
+/// {@endtemplate}
+/// {@macro pulumi_hybridcompute_get_machine_run_command_args_doc}
+class GetMachineRunCommandArgs {
+  /// The name of the hybrid machine.
+  final pulumi.Input<String> machineName;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of the run command.
+  final pulumi.Input<String> runCommandName;
+
+  /// Creates a new [GetMachineRunCommandArgs].
+  /// [machineName] The name of the hybrid machine.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [runCommandName] The name of the run command.
+  GetMachineRunCommandArgs({
+    required pulumi.Output<String> machineName,
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> runCommandName,
+  }) :
+      machineName = pulumi.Input.asInput<String>(machineName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      runCommandName = pulumi.Input.asInput<String>(runCommandName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'machineName': machineName,
+      'resourceGroupName': resourceGroupName,
+      'runCommandName': runCommandName,
+    };
+  }
+
+  factory GetMachineRunCommandArgs.fromMap(Map<String, dynamic> map) {
+    return GetMachineRunCommandArgs(
+      machineName: pulumi.Output.create<String>(map['machineName'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      runCommandName: pulumi.Output.create<String>(map['runCommandName'] as String),
+    );
+  }
+}
+

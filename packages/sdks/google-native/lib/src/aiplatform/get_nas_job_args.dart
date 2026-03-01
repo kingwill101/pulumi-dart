@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_aiplatform_v1_get_nas_job_args_doc}
+/// Arguments for getNasJob.
+/// {@endtemplate}
+/// {@macro pulumi_aiplatform_v1_get_nas_job_args_doc}
+class GetNasJobArgs {
+  final pulumi.Input<String> location;
+  final pulumi.Input<String> nasJobId;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetNasJobArgs].
+  /// [location] Required.
+  /// [nasJobId] Required.
+  /// [project] Optional.
+  GetNasJobArgs({
+    required pulumi.Output<String> location,
+    required pulumi.Output<String> nasJobId,
+    pulumi.Output<String>? project,
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      nasJobId = pulumi.Input.asInput<String>(nasJobId),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'location': location,
+      'nasJobId': nasJobId,
+      'project': ?project,
+    };
+  }
+
+  factory GetNasJobArgs.fromMap(Map<String, dynamic> map) {
+    return GetNasJobArgs(
+      location: pulumi.Output.create<String>(map['location'] as String),
+      nasJobId: pulumi.Output.create<String>(map['nasJobId'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_dataproc_v1_get_job_args_doc}
+/// Arguments for getJob.
+/// {@endtemplate}
+/// {@macro pulumi_dataproc_v1_get_job_args_doc}
+class GetJobArgs {
+  final pulumi.Input<String> jobId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> region;
+
+  /// Creates a new [GetJobArgs].
+  /// [jobId] Required.
+  /// [project] Optional.
+  /// [region] Required.
+  GetJobArgs({
+    required pulumi.Output<String> jobId,
+    pulumi.Output<String>? project,
+    required pulumi.Output<String> region,
+  }) :
+      jobId = pulumi.Input.asInput<String>(jobId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'jobId': jobId,
+      'project': ?project,
+      'region': region,
+    };
+  }
+
+  factory GetJobArgs.fromMap(Map<String, dynamic> map) {
+    return GetJobArgs(
+      jobId: pulumi.Output.create<String>(map['jobId'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      region: pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

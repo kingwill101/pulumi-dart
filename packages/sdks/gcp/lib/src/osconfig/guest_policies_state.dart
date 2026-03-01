@@ -1,0 +1,123 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'guest_policies_assignment.dart';
+import 'guest_policies_package.dart';
+import 'guest_policies_package_repository.dart';
+import 'guest_policies_recipe.dart';
+
+/// Input properties used for looking up and filtering GuestPolicies resources.
+class GuestPoliciesState {
+  /// Specifies the VM instances that are assigned to this policy. This allows you to target sets
+  /// or groups of VM instances by different parameters such as labels, names, OS, or zones.
+  /// If left empty, all VM instances underneath this policy are targeted.
+  /// At the same level in the resource hierarchy (that is within a project), the service prevents
+  /// the creation of multiple policies that conflict with each other.
+  /// For more information, see how the service
+  /// [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+  /// Structure is documented below.
+  final pulumi.Input<GuestPoliciesAssignment>? assignment;
+  /// Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+  /// Example: "2014-10-02T15:01:23.045123456Z".
+  final pulumi.Input<String>? createTime;
+  /// Description of the guest policy. Length of the description is limited to 1024 characters.
+  final pulumi.Input<String>? description;
+  /// The etag for this guest policy. If this is provided on update, it must match the server's etag.
+  final pulumi.Input<String>? etag;
+  /// The logical name of the guest policy in the project with the following restrictions:
+  /// * Must contain only lowercase letters, numbers, and hyphens.
+  /// * Must start with a letter.
+  /// * Must be between 1-63 characters.
+  /// * Must end with a number or a letter.
+  /// * Must be unique within the project.
+  final pulumi.Input<String>? guestPolicyId;
+  /// Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
+  final pulumi.Input<String>? name;
+  /// A list of package repositories to configure on the VM instance.
+  /// This is done before any other configs are applied so they can use these repos.
+  /// Package repositories are only configured if the corresponding package manager(s) are available.
+  /// Structure is documented below.
+  final pulumi.Input<List<GuestPoliciesPackageRepository>>? packageRepositories;
+  /// The software packages to be managed by this policy.
+  /// Structure is documented below.
+  final pulumi.Input<List<GuestPoliciesPackage>>? packages;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// A list of Recipes to install on the VM instance.
+  /// Structure is documented below.
+  final pulumi.Input<List<GuestPoliciesRecipe>>? recipes;
+  /// Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+  /// Example: "2014-10-02T15:01:23.045123456Z".
+  final pulumi.Input<String>? updateTime;
+
+  /// Creates a new [GuestPoliciesState].
+  /// [assignment] Specifies the VM instances that are assigned to this policy. This allows you to target sets
+  /// [createTime] Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+  /// [description] Description of the guest policy. Length of the description is limited to 1024 characters.
+  /// [etag] The etag for this guest policy. If this is provided on update, it must match the server's etag.
+  /// [guestPolicyId] The logical name of the guest policy in the project with the following restrictions:
+  /// [name] Unique name of the resource in this project using one of the following forms: projects/{project_number}/guestPolicies/{guestPolicyId}.
+  /// [packageRepositories] A list of package repositories to configure on the VM instance.
+  /// [packages] The software packages to be managed by this policy.
+  /// [project] The ID of the project in which the resource belongs.
+  /// [recipes] A list of Recipes to install on the VM instance.
+  /// [updateTime] Last time this guest policy was updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+  GuestPoliciesState({
+    pulumi.Output<GuestPoliciesAssignment>? assignment,
+    pulumi.Output<String>? createTime,
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? etag,
+    pulumi.Output<String>? guestPolicyId,
+    pulumi.Output<String>? name,
+    pulumi.Output<List<GuestPoliciesPackageRepository>>? packageRepositories,
+    pulumi.Output<List<GuestPoliciesPackage>>? packages,
+    pulumi.Output<String>? project,
+    pulumi.Output<List<GuestPoliciesRecipe>>? recipes,
+    pulumi.Output<String>? updateTime,
+  }) :
+      assignment = pulumi.Input.asOptionalInput<GuestPoliciesAssignment>(assignment),
+      createTime = pulumi.Input.asOptionalInput<String>(createTime),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      etag = pulumi.Input.asOptionalInput<String>(etag),
+      guestPolicyId = pulumi.Input.asOptionalInput<String>(guestPolicyId),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      packageRepositories = pulumi.Input.asOptionalInput<List<GuestPoliciesPackageRepository>>(packageRepositories),
+      packages = pulumi.Input.asOptionalInput<List<GuestPoliciesPackage>>(packages),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      recipes = pulumi.Input.asOptionalInput<List<GuestPoliciesRecipe>>(recipes),
+      updateTime = pulumi.Input.asOptionalInput<String>(updateTime);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'assignment': ?pulumi.Input.mapOptionalInputValue<GuestPoliciesAssignment, Map<String, dynamic>>(assignment, (value) => value.toMap()),
+      'createTime': ?createTime,
+      'description': ?description,
+      'etag': ?etag,
+      'guestPolicyId': ?guestPolicyId,
+      'name': ?name,
+      'packageRepositories': ?pulumi.Input.mapOptionalInputValue<List<GuestPoliciesPackageRepository>, List<Map<String, dynamic>>>(packageRepositories, (value) => pulumi.Input.encodeList<GuestPoliciesPackageRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'packages': ?pulumi.Input.mapOptionalInputValue<List<GuestPoliciesPackage>, List<Map<String, dynamic>>>(packages, (value) => pulumi.Input.encodeList<GuestPoliciesPackage, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'project': ?project,
+      'recipes': ?pulumi.Input.mapOptionalInputValue<List<GuestPoliciesRecipe>, List<Map<String, dynamic>>>(recipes, (value) => pulumi.Input.encodeList<GuestPoliciesRecipe, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'updateTime': ?updateTime,
+    };
+  }
+
+  factory GuestPoliciesState.fromMap(Map<String, dynamic> map) {
+    return GuestPoliciesState(
+      assignment: map['assignment'] == null ? null : pulumi.Output.create<GuestPoliciesAssignment>(GuestPoliciesAssignment.fromMap((map['assignment'] as Map).cast<String, dynamic>())),
+      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      etag: map['etag'] == null ? null : pulumi.Output.create<String>(map['etag'] as String),
+      guestPolicyId: map['guestPolicyId'] == null ? null : pulumi.Output.create<String>(map['guestPolicyId'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      packageRepositories: map['packageRepositories'] == null ? null : pulumi.Output.create<List<GuestPoliciesPackageRepository>>(pulumi.Input.decodeList<GuestPoliciesPackageRepository>(map['packageRepositories'], (value) => GuestPoliciesPackageRepository.fromMap((value as Map).cast<String, dynamic>()))),
+      packages: map['packages'] == null ? null : pulumi.Output.create<List<GuestPoliciesPackage>>(pulumi.Input.decodeList<GuestPoliciesPackage>(map['packages'], (value) => GuestPoliciesPackage.fromMap((value as Map).cast<String, dynamic>()))),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      recipes: map['recipes'] == null ? null : pulumi.Output.create<List<GuestPoliciesRecipe>>(pulumi.Input.decodeList<GuestPoliciesRecipe>(map['recipes'], (value) => GuestPoliciesRecipe.fromMap((value as Map).cast<String, dynamic>()))),
+      updateTime: map['updateTime'] == null ? null : pulumi.Output.create<String>(map['updateTime'] as String),
+    );
+  }
+}
+

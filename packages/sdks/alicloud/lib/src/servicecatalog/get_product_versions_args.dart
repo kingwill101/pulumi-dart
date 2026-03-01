@@ -1,0 +1,59 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_servicecatalog_get_product_versions_get_product_versions_args_doc}
+/// Arguments for getProductVersions.
+/// {@endtemplate}
+/// {@macro pulumi_servicecatalog_get_product_versions_get_product_versions_args_doc}
+class GetProductVersionsArgs {
+  final pulumi.Input<bool>? enableDetails;
+  /// A list of Product Version IDs.
+  final pulumi.Input<List<String>>? ids;
+  /// A regex string to filter results by Group Metric Rule name.
+  final pulumi.Input<String>? nameRegex;
+  /// File name where to save data source results (after running `pulumi preview`).
+  final pulumi.Input<String>? outputFile;
+  /// Product ID
+  final pulumi.Input<String> productId;
+
+  /// Creates a new [GetProductVersionsArgs].
+  /// [enableDetails] Optional.
+  /// [ids] A list of Product Version IDs.
+  /// [nameRegex] A regex string to filter results by Group Metric Rule name.
+  /// [outputFile] File name where to save data source results (after running `pulumi preview`).
+  /// [productId] Product ID
+  GetProductVersionsArgs({
+    pulumi.Output<bool>? enableDetails,
+    pulumi.Output<List<String>>? ids,
+    pulumi.Output<String>? nameRegex,
+    pulumi.Output<String>? outputFile,
+    required pulumi.Output<String> productId,
+  }) :
+      enableDetails = pulumi.Input.asOptionalInput<bool>(enableDetails),
+      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
+      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
+      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
+      productId = pulumi.Input.asInput<String>(productId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enableDetails': ?enableDetails,
+      'ids': ?ids,
+      'nameRegex': ?nameRegex,
+      'outputFile': ?outputFile,
+      'productId': productId,
+    };
+  }
+
+  factory GetProductVersionsArgs.fromMap(Map<String, dynamic> map) {
+    return GetProductVersionsArgs(
+      enableDetails: map['enableDetails'] == null ? null : pulumi.Output.create<bool>(map['enableDetails'] as bool),
+      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
+      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
+      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      productId: pulumi.Output.create<String>(map['productId'] as String),
+    );
+  }
+}
+

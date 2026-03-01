@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'alert_configuration.dart';
+import 'alert_schedule.dart';
+
+/// {@template pulumi_sls_alert_alert_args_doc}
+/// The set of arguments for Alert.
+/// {@endtemplate}
+/// {@macro pulumi_sls_alert_alert_args_doc}
+class AlertArgs {
+  /// Alert rule ID, unique under Project.
+  final pulumi.Input<String> alertName;
+  /// Detailed configuration of alarm monitoring rules. See `configuration` below.
+  final pulumi.Input<AlertConfiguration> configuration;
+  /// Compatible fields, set to empty strings.
+  final pulumi.Input<String>? description;
+  /// Display name of the alarm rule.
+  final pulumi.Input<String> displayName;
+  /// Project Name.
+  final pulumi.Input<String> projectName;
+  /// Check the frequency-dependent configuration. See `schedule` below.
+  final pulumi.Input<AlertSchedule> schedule;
+  /// Resource attribute field representing alarm status.
+  final pulumi.Input<String>? status;
+
+  /// Creates a new [AlertArgs].
+  /// [alertName] Alert rule ID, unique under Project.
+  /// [configuration] Detailed configuration of alarm monitoring rules. See `configuration` below.
+  /// [description] Compatible fields, set to empty strings.
+  /// [displayName] Display name of the alarm rule.
+  /// [projectName] Project Name.
+  /// [schedule] Check the frequency-dependent configuration. See `schedule` below.
+  /// [status] Resource attribute field representing alarm status.
+  AlertArgs({
+    required pulumi.Output<String> alertName,
+    required pulumi.Output<AlertConfiguration> configuration,
+    pulumi.Output<String>? description,
+    required pulumi.Output<String> displayName,
+    required pulumi.Output<String> projectName,
+    required pulumi.Output<AlertSchedule> schedule,
+    pulumi.Output<String>? status,
+  }) :
+      alertName = pulumi.Input.asInput<String>(alertName),
+      configuration = pulumi.Input.asInput<AlertConfiguration>(configuration),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asInput<String>(displayName),
+      projectName = pulumi.Input.asInput<String>(projectName),
+      schedule = pulumi.Input.asInput<AlertSchedule>(schedule),
+      status = pulumi.Input.asOptionalInput<String>(status);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'alertName': alertName,
+      'configuration': pulumi.Input.mapInputValue<AlertConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'description': ?description,
+      'displayName': displayName,
+      'projectName': projectName,
+      'schedule': pulumi.Input.mapInputValue<AlertSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'status': ?status,
+    };
+  }
+
+  factory AlertArgs.fromMap(Map<String, dynamic> map) {
+    return AlertArgs(
+      alertName: pulumi.Output.create<String>(map['alertName'] as String),
+      configuration: pulumi.Output.create<AlertConfiguration>(AlertConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      displayName: pulumi.Output.create<String>(map['displayName'] as String),
+      projectName: pulumi.Output.create<String>(map['projectName'] as String),
+      schedule: pulumi.Output.create<AlertSchedule>(AlertSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>())),
+      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+    );
+  }
+}
+

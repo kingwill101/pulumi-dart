@@ -1,0 +1,198 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'bucket_access_monitor.dart';
+import 'bucket_cors_rule.dart';
+import 'bucket_lifecycle_rule.dart';
+import 'bucket_logging.dart';
+import 'bucket_referer_config.dart';
+import 'bucket_server_side_encryption_rule.dart';
+import 'bucket_transfer_acceleration.dart';
+import 'bucket_versioning.dart';
+import 'bucket_website.dart';
+
+/// Input properties used for looking up and filtering Bucket resources.
+class BucketState {
+  /// A access monitor status of a bucket. See `access_monitor` below.
+  final pulumi.Input<BucketAccessMonitor>? accessMonitor;
+  /// The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
+  final pulumi.Input<String>? acl;
+  final pulumi.Input<String>? bucket;
+  /// A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
+  final pulumi.Input<List<BucketCorsRule>>? corsRules;
+  /// The creation date of the bucket.
+  final pulumi.Input<String>? creationDate;
+  /// The extranet access endpoint of the bucket.
+  final pulumi.Input<String>? extranetEndpoint;
+  /// A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+  final pulumi.Input<bool>? forceDestroy;
+  /// The intranet access endpoint of the bucket.
+  final pulumi.Input<String>? intranetEndpoint;
+  /// A boolean that indicates lifecycle rules allow prefix overlap.
+  final pulumi.Input<bool>? lifecycleRuleAllowSameActionOverlap;
+  /// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
+  final pulumi.Input<List<BucketLifecycleRule>>? lifecycleRules;
+  /// The location of the bucket.
+  final pulumi.Input<String>? location;
+  /// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
+  final pulumi.Input<BucketLogging>? logging;
+  /// The flag of using logging enable container. Defaults true.
+  final pulumi.Input<bool>? loggingIsenable;
+  /// The bucket owner.
+  final pulumi.Input<String>? owner;
+  /// Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
+  final pulumi.Input<String>? policy;
+  /// The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+  final pulumi.Input<String>? redundancyType;
+  /// The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
+  final pulumi.Input<BucketRefererConfig>? refererConfig;
+  /// The ID of the resource group to which the bucket belongs.
+  final pulumi.Input<String>? resourceGroupId;
+  /// A configuration of server-side encryption. See `server_side_encryption_rule` below.
+  final pulumi.Input<BucketServerSideEncryptionRule>? serverSideEncryptionRule;
+  /// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
+  final pulumi.Input<String>? storageClass;
+  /// A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// A transfer acceleration status of a bucket. See `transfer_acceleration` below.
+  final pulumi.Input<BucketTransferAcceleration>? transferAcceleration;
+  /// A state of versioning. See `versioning` below.
+  final pulumi.Input<BucketVersioning>? versioning;
+  /// A website configuration. See `website` below.
+  final pulumi.Input<BucketWebsite>? website;
+
+  /// Creates a new [BucketState].
+  /// [accessMonitor] A access monitor status of a bucket. See `access_monitor` below.
+  /// [acl] The [canned ACL](https://www.alibabacloud.com/help/doc-detail/31898.htm) to apply. Can be "private", "public-read" and "public-read-write". This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketAcl` instead.
+  /// [bucket] Optional.
+  /// [corsRules] A rule of  [Cross-Origin Resource Sharing](https://www.alibabacloud.com/help/doc-detail/31903.htm). The items of core rule are no more than 10 for every OSS bucket. See `cors_rule` below.
+  /// [creationDate] The creation date of the bucket.
+  /// [extranetEndpoint] The extranet access endpoint of the bucket.
+  /// [forceDestroy] A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable. Defaults to "false".
+  /// [intranetEndpoint] The intranet access endpoint of the bucket.
+  /// [lifecycleRuleAllowSameActionOverlap] A boolean that indicates lifecycle rules allow prefix overlap.
+  /// [lifecycleRules] A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycle_rule` below.
+  /// [location] The location of the bucket.
+  /// [logging] A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
+  /// [loggingIsenable] The flag of using logging enable container. Defaults true.
+  /// [owner] The bucket owner.
+  /// [policy] Json format text of bucket policy [bucket policy management](https://www.alibabacloud.com/help/doc-detail/100680.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketPolicy` instead.
+  /// [redundancyType] The [redundancy type](https://www.alibabacloud.com/help/doc-detail/90589.htm) to enable. Can be "LRS", and "ZRS". Defaults to "LRS".
+  /// [refererConfig] The configuration of [referer](https://www.alibabacloud.com/help/doc-detail/31901.htm). This property has been deprecated since 1.220.0, please use the resource `alicloud.oss.BucketReferer` instead. See `referer_config` below.
+  /// [resourceGroupId] The ID of the resource group to which the bucket belongs.
+  /// [serverSideEncryptionRule] A configuration of server-side encryption. See `server_side_encryption_rule` below.
+  /// [storageClass] The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
+  /// [tags] A mapping of tags to assign to the bucket. The items are no more than 10 for a bucket.
+  /// [transferAcceleration] A transfer acceleration status of a bucket. See `transfer_acceleration` below.
+  /// [versioning] A state of versioning. See `versioning` below.
+  /// [website] A website configuration. See `website` below.
+  BucketState({
+    pulumi.Output<BucketAccessMonitor>? accessMonitor,
+    pulumi.Output<String>? acl,
+    pulumi.Output<String>? bucket,
+    pulumi.Output<List<BucketCorsRule>>? corsRules,
+    pulumi.Output<String>? creationDate,
+    pulumi.Output<String>? extranetEndpoint,
+    pulumi.Output<bool>? forceDestroy,
+    pulumi.Output<String>? intranetEndpoint,
+    pulumi.Output<bool>? lifecycleRuleAllowSameActionOverlap,
+    pulumi.Output<List<BucketLifecycleRule>>? lifecycleRules,
+    pulumi.Output<String>? location,
+    pulumi.Output<BucketLogging>? logging,
+    pulumi.Output<bool>? loggingIsenable,
+    pulumi.Output<String>? owner,
+    pulumi.Output<String>? policy,
+    pulumi.Output<String>? redundancyType,
+    pulumi.Output<BucketRefererConfig>? refererConfig,
+    pulumi.Output<String>? resourceGroupId,
+    pulumi.Output<BucketServerSideEncryptionRule>? serverSideEncryptionRule,
+    pulumi.Output<String>? storageClass,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<BucketTransferAcceleration>? transferAcceleration,
+    pulumi.Output<BucketVersioning>? versioning,
+    pulumi.Output<BucketWebsite>? website,
+  }) :
+      accessMonitor = pulumi.Input.asOptionalInput<BucketAccessMonitor>(accessMonitor),
+      acl = pulumi.Input.asOptionalInput<String>(acl),
+      bucket = pulumi.Input.asOptionalInput<String>(bucket),
+      corsRules = pulumi.Input.asOptionalInput<List<BucketCorsRule>>(corsRules),
+      creationDate = pulumi.Input.asOptionalInput<String>(creationDate),
+      extranetEndpoint = pulumi.Input.asOptionalInput<String>(extranetEndpoint),
+      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
+      intranetEndpoint = pulumi.Input.asOptionalInput<String>(intranetEndpoint),
+      lifecycleRuleAllowSameActionOverlap = pulumi.Input.asOptionalInput<bool>(lifecycleRuleAllowSameActionOverlap),
+      lifecycleRules = pulumi.Input.asOptionalInput<List<BucketLifecycleRule>>(lifecycleRules),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      logging = pulumi.Input.asOptionalInput<BucketLogging>(logging),
+      loggingIsenable = pulumi.Input.asOptionalInput<bool>(loggingIsenable),
+      owner = pulumi.Input.asOptionalInput<String>(owner),
+      policy = pulumi.Input.asOptionalInput<String>(policy),
+      redundancyType = pulumi.Input.asOptionalInput<String>(redundancyType),
+      refererConfig = pulumi.Input.asOptionalInput<BucketRefererConfig>(refererConfig),
+      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
+      serverSideEncryptionRule = pulumi.Input.asOptionalInput<BucketServerSideEncryptionRule>(serverSideEncryptionRule),
+      storageClass = pulumi.Input.asOptionalInput<String>(storageClass),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      transferAcceleration = pulumi.Input.asOptionalInput<BucketTransferAcceleration>(transferAcceleration),
+      versioning = pulumi.Input.asOptionalInput<BucketVersioning>(versioning),
+      website = pulumi.Input.asOptionalInput<BucketWebsite>(website);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'accessMonitor': ?pulumi.Input.mapOptionalInputValue<BucketAccessMonitor, Map<String, dynamic>>(accessMonitor, (value) => value.toMap()),
+      'acl': ?acl,
+      'bucket': ?bucket,
+      'corsRules': ?pulumi.Input.mapOptionalInputValue<List<BucketCorsRule>, List<Map<String, dynamic>>>(corsRules, (value) => pulumi.Input.encodeList<BucketCorsRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'creationDate': ?creationDate,
+      'extranetEndpoint': ?extranetEndpoint,
+      'forceDestroy': ?forceDestroy,
+      'intranetEndpoint': ?intranetEndpoint,
+      'lifecycleRuleAllowSameActionOverlap': ?lifecycleRuleAllowSameActionOverlap,
+      'lifecycleRules': ?pulumi.Input.mapOptionalInputValue<List<BucketLifecycleRule>, List<Map<String, dynamic>>>(lifecycleRules, (value) => pulumi.Input.encodeList<BucketLifecycleRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'location': ?location,
+      'logging': ?pulumi.Input.mapOptionalInputValue<BucketLogging, Map<String, dynamic>>(logging, (value) => value.toMap()),
+      'loggingIsenable': ?loggingIsenable,
+      'owner': ?owner,
+      'policy': ?policy,
+      'redundancyType': ?redundancyType,
+      'refererConfig': ?pulumi.Input.mapOptionalInputValue<BucketRefererConfig, Map<String, dynamic>>(refererConfig, (value) => value.toMap()),
+      'resourceGroupId': ?resourceGroupId,
+      'serverSideEncryptionRule': ?pulumi.Input.mapOptionalInputValue<BucketServerSideEncryptionRule, Map<String, dynamic>>(serverSideEncryptionRule, (value) => value.toMap()),
+      'storageClass': ?storageClass,
+      'tags': ?tags,
+      'transferAcceleration': ?pulumi.Input.mapOptionalInputValue<BucketTransferAcceleration, Map<String, dynamic>>(transferAcceleration, (value) => value.toMap()),
+      'versioning': ?pulumi.Input.mapOptionalInputValue<BucketVersioning, Map<String, dynamic>>(versioning, (value) => value.toMap()),
+      'website': ?pulumi.Input.mapOptionalInputValue<BucketWebsite, Map<String, dynamic>>(website, (value) => value.toMap()),
+    };
+  }
+
+  factory BucketState.fromMap(Map<String, dynamic> map) {
+    return BucketState(
+      accessMonitor: map['accessMonitor'] == null ? null : pulumi.Output.create<BucketAccessMonitor>(BucketAccessMonitor.fromMap((map['accessMonitor'] as Map).cast<String, dynamic>())),
+      acl: map['acl'] == null ? null : pulumi.Output.create<String>(map['acl'] as String),
+      bucket: map['bucket'] == null ? null : pulumi.Output.create<String>(map['bucket'] as String),
+      corsRules: map['corsRules'] == null ? null : pulumi.Output.create<List<BucketCorsRule>>(pulumi.Input.decodeList<BucketCorsRule>(map['corsRules'], (value) => BucketCorsRule.fromMap((value as Map).cast<String, dynamic>()))),
+      creationDate: map['creationDate'] == null ? null : pulumi.Output.create<String>(map['creationDate'] as String),
+      extranetEndpoint: map['extranetEndpoint'] == null ? null : pulumi.Output.create<String>(map['extranetEndpoint'] as String),
+      forceDestroy: map['forceDestroy'] == null ? null : pulumi.Output.create<bool>(map['forceDestroy'] as bool),
+      intranetEndpoint: map['intranetEndpoint'] == null ? null : pulumi.Output.create<String>(map['intranetEndpoint'] as String),
+      lifecycleRuleAllowSameActionOverlap: map['lifecycleRuleAllowSameActionOverlap'] == null ? null : pulumi.Output.create<bool>(map['lifecycleRuleAllowSameActionOverlap'] as bool),
+      lifecycleRules: map['lifecycleRules'] == null ? null : pulumi.Output.create<List<BucketLifecycleRule>>(pulumi.Input.decodeList<BucketLifecycleRule>(map['lifecycleRules'], (value) => BucketLifecycleRule.fromMap((value as Map).cast<String, dynamic>()))),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      logging: map['logging'] == null ? null : pulumi.Output.create<BucketLogging>(BucketLogging.fromMap((map['logging'] as Map).cast<String, dynamic>())),
+      loggingIsenable: map['loggingIsenable'] == null ? null : pulumi.Output.create<bool>(map['loggingIsenable'] as bool),
+      owner: map['owner'] == null ? null : pulumi.Output.create<String>(map['owner'] as String),
+      policy: map['policy'] == null ? null : pulumi.Output.create<String>(map['policy'] as String),
+      redundancyType: map['redundancyType'] == null ? null : pulumi.Output.create<String>(map['redundancyType'] as String),
+      refererConfig: map['refererConfig'] == null ? null : pulumi.Output.create<BucketRefererConfig>(BucketRefererConfig.fromMap((map['refererConfig'] as Map).cast<String, dynamic>())),
+      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      serverSideEncryptionRule: map['serverSideEncryptionRule'] == null ? null : pulumi.Output.create<BucketServerSideEncryptionRule>(BucketServerSideEncryptionRule.fromMap((map['serverSideEncryptionRule'] as Map).cast<String, dynamic>())),
+      storageClass: map['storageClass'] == null ? null : pulumi.Output.create<String>(map['storageClass'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      transferAcceleration: map['transferAcceleration'] == null ? null : pulumi.Output.create<BucketTransferAcceleration>(BucketTransferAcceleration.fromMap((map['transferAcceleration'] as Map).cast<String, dynamic>())),
+      versioning: map['versioning'] == null ? null : pulumi.Output.create<BucketVersioning>(BucketVersioning.fromMap((map['versioning'] as Map).cast<String, dynamic>())),
+      website: map['website'] == null ? null : pulumi.Output.create<BucketWebsite>(BucketWebsite.fromMap((map['website'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

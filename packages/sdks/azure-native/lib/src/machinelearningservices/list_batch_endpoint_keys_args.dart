@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_machinelearningservices_list_batch_endpoint_keys_args_doc}
+/// Arguments for listBatchEndpointKeys.
+/// {@endtemplate}
+/// {@macro pulumi_machinelearningservices_list_batch_endpoint_keys_args_doc}
+class ListBatchEndpointKeysArgs {
+  /// Inference Endpoint name.
+  final pulumi.Input<String> endpointName;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// Name of Azure Machine Learning workspace.
+  final pulumi.Input<String> workspaceName;
+
+  /// Creates a new [ListBatchEndpointKeysArgs].
+  /// [endpointName] Inference Endpoint name.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [workspaceName] Name of Azure Machine Learning workspace.
+  ListBatchEndpointKeysArgs({
+    required pulumi.Output<String> endpointName,
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> workspaceName,
+  }) :
+      endpointName = pulumi.Input.asInput<String>(endpointName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      workspaceName = pulumi.Input.asInput<String>(workspaceName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'endpointName': endpointName,
+      'resourceGroupName': resourceGroupName,
+      'workspaceName': workspaceName,
+    };
+  }
+
+  factory ListBatchEndpointKeysArgs.fromMap(Map<String, dynamic> map) {
+    return ListBatchEndpointKeysArgs(
+      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      workspaceName: pulumi.Output.create<String>(map['workspaceName'] as String),
+    );
+  }
+}
+

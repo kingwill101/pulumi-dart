@@ -1,0 +1,45 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// Represents a single zypper package repository. These are added to a repo file that is managed at `/etc/zypp/repos.d/google_osconfig.repo`.
+class OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha {
+  /// The location of the repository directory.
+  final String baseUrl;
+  /// The display name of the repository.
+  final String? displayName;
+  /// URIs of GPG keys.
+  final List<String>? gpgKeys;
+  /// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+  final String id;
+
+  /// Creates a new [OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha].
+  /// [baseUrl] The location of the repository directory.
+  /// [displayName] The display name of the repository.
+  /// [gpgKeys] URIs of GPG keys.
+  /// [id] A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+  OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha({
+    required this.baseUrl,
+    this.displayName,
+    this.gpgKeys,
+    required this.id,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'baseUrl': baseUrl,
+      'displayName': ?displayName,
+      'gpgKeys': ?gpgKeys,
+      'id': id,
+    };
+  }
+
+  factory OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+    return OSPolicyResourceRepositoryResourceZypperRepositoryOsconfigV1alpha(
+      baseUrl: map['baseUrl'] as String,
+      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      gpgKeys: map['gpgKeys'] == null ? null : (map['gpgKeys'] as List).cast<String>(),
+      id: map['id'] as String,
+    );
+  }
+}
+

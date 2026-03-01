@@ -1,0 +1,13 @@
+library module_eais;
+
+export 'eais/client_instance_attachment.dart';
+export 'eais/client_instance_attachment_args.dart';
+export 'eais/client_instance_attachment_state.dart';
+export 'eais/functions.dart';
+export 'eais/get_instances_args.dart';
+export 'eais/get_instances_instance.dart';
+export 'eais/get_instances_result.dart';
+export 'eais/instance.dart';
+export 'eais/instance_args.dart';
+export 'eais/instance_environment_var.dart';
+export 'eais/instance_state.dart';

@@ -1,8 +1,0 @@
-library module_bedrockmodel;
-
-export 'bedrockmodel/invocation_logging_configuration.dart';
-export 'bedrockmodel/invocation_logging_configuration_args.dart';
-export 'bedrockmodel/invocation_logging_configuration_logging_config.dart';
-export 'bedrockmodel/invocation_logging_configuration_logging_config_cloudwatch_config.dart';
-export 'bedrockmodel/invocation_logging_configuration_logging_config_cloudwatch_config_large_data_delivery_s3_config.dart';
-export 'bedrockmodel/invocation_logging_configuration_logging_config_s3_config.dart';

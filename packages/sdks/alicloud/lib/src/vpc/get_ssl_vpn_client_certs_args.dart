@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_vpc_get_ssl_vpn_client_certs_get_ssl_vpn_client_certs_args_doc}
+/// Arguments for getSslVpnClientCerts.
+/// {@endtemplate}
+/// {@macro pulumi_vpc_get_ssl_vpn_client_certs_get_ssl_vpn_client_certs_args_doc}
+class GetSslVpnClientCertsArgs {
+  /// IDs of the SSL-VPN client certificates.
+  final pulumi.Input<List<String>>? ids;
+  /// A regex string of SSL-VPN client certificate name.
+  final pulumi.Input<String>? nameRegex;
+  /// Save the result to the file.
+  final pulumi.Input<String>? outputFile;
+  /// Use the SSL-VPN server ID as the search key.
+  final pulumi.Input<String>? sslVpnServerId;
+
+  /// Creates a new [GetSslVpnClientCertsArgs].
+  /// [ids] IDs of the SSL-VPN client certificates.
+  /// [nameRegex] A regex string of SSL-VPN client certificate name.
+  /// [outputFile] Save the result to the file.
+  /// [sslVpnServerId] Use the SSL-VPN server ID as the search key.
+  GetSslVpnClientCertsArgs({
+    pulumi.Output<List<String>>? ids,
+    pulumi.Output<String>? nameRegex,
+    pulumi.Output<String>? outputFile,
+    pulumi.Output<String>? sslVpnServerId,
+  }) :
+      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
+      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
+      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
+      sslVpnServerId = pulumi.Input.asOptionalInput<String>(sslVpnServerId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ids': ?ids,
+      'nameRegex': ?nameRegex,
+      'outputFile': ?outputFile,
+      'sslVpnServerId': ?sslVpnServerId,
+    };
+  }
+
+  factory GetSslVpnClientCertsArgs.fromMap(Map<String, dynamic> map) {
+    return GetSslVpnClientCertsArgs(
+      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
+      nameRegex: map['nameRegex'] == null ? null : pulumi.Output.create<String>(map['nameRegex'] as String),
+      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      sslVpnServerId: map['sslVpnServerId'] == null ? null : pulumi.Output.create<String>(map['sslVpnServerId'] as String),
+    );
+  }
+}
+

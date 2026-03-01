@@ -1,0 +1,60 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_containerservice_trusted_access_role_binding_args_doc}
+/// The set of arguments for TrustedAccessRoleBinding.
+/// {@endtemplate}
+/// {@macro pulumi_containerservice_trusted_access_role_binding_args_doc}
+class TrustedAccessRoleBindingArgs {
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of the managed cluster resource.
+  final pulumi.Input<String> resourceName;
+  /// A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'.
+  final pulumi.Input<List<String>> roles;
+  /// The ARM resource ID of source resource that trusted access is configured for.
+  final pulumi.Input<String> sourceResourceId;
+  /// The name of trusted access role binding.
+  final pulumi.Input<String>? trustedAccessRoleBindingName;
+
+  /// Creates a new [TrustedAccessRoleBindingArgs].
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [resourceName] The name of the managed cluster resource.
+  /// [roles] A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'.
+  /// [sourceResourceId] The ARM resource ID of source resource that trusted access is configured for.
+  /// [trustedAccessRoleBindingName] The name of trusted access role binding.
+  TrustedAccessRoleBindingArgs({
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> resourceName,
+    required pulumi.Output<List<String>> roles,
+    required pulumi.Output<String> sourceResourceId,
+    pulumi.Output<String>? trustedAccessRoleBindingName,
+  }) :
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      resourceName = pulumi.Input.asInput<String>(resourceName),
+      roles = pulumi.Input.asInput<List<String>>(roles),
+      sourceResourceId = pulumi.Input.asInput<String>(sourceResourceId),
+      trustedAccessRoleBindingName = pulumi.Input.asOptionalInput<String>(trustedAccessRoleBindingName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'resourceGroupName': resourceGroupName,
+      'resourceName': resourceName,
+      'roles': roles,
+      'sourceResourceId': sourceResourceId,
+      'trustedAccessRoleBindingName': ?trustedAccessRoleBindingName,
+    };
+  }
+
+  factory TrustedAccessRoleBindingArgs.fromMap(Map<String, dynamic> map) {
+    return TrustedAccessRoleBindingArgs(
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+      roles: pulumi.Output.create<List<String>>((map['roles'] as List).cast<String>()),
+      sourceResourceId: pulumi.Output.create<String>(map['sourceResourceId'] as String),
+      trustedAccessRoleBindingName: map['trustedAccessRoleBindingName'] == null ? null : pulumi.Output.create<String>(map['trustedAccessRoleBindingName'] as String),
+    );
+  }
+}
+

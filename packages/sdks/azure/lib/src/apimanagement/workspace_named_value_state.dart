@@ -1,0 +1,78 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'workspace_named_value_value_from_key_vault.dart';
+
+/// Input properties used for looking up and filtering WorkspaceNamedValue resources.
+class WorkspaceNamedValueState {
+  /// The ID of the API Management Workspace. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? apiManagementWorkspaceId;
+  /// The display name of this API Management Workspace Named Value.
+  final pulumi.Input<String>? displayName;
+  /// The name of the API Management Workspace Named Value. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// Specifies whether the API Management Workspace Named Value is secret. Defaults to `false`.
+  ///
+  /// > **Note:** Setting the field `secret` to `true` does not make this field sensitive in Terraform, instead it marks the value as secret and encrypts the value in Azure.
+  final pulumi.Input<bool>? secret;
+  /// A list of tags to be applied to the API Management Workspace Named Value.
+  final pulumi.Input<List<String>>? tags;
+  /// The value of this API Management Workspace Named Value.
+  ///
+  /// > **Note:** Exactly one of `value` or `value_from_key_vault` must be specified.
+  final pulumi.Input<String>? value;
+  /// A `value_from_key_vault` block as defined below.
+  ///
+  /// > **Note:** Exactly one of `value` or `value_from_key_vault` must be specified. If `value_from_key_vault` is specified, `secret` must also be set to `true`.
+  final pulumi.Input<WorkspaceNamedValueValueFromKeyVault>? valueFromKeyVault;
+
+  /// Creates a new [WorkspaceNamedValueState].
+  /// [apiManagementWorkspaceId] The ID of the API Management Workspace. Changing this forces a new resource to be created.
+  /// [displayName] The display name of this API Management Workspace Named Value.
+  /// [name] The name of the API Management Workspace Named Value. Changing this forces a new resource to be created.
+  /// [secret] Specifies whether the API Management Workspace Named Value is secret. Defaults to `false`.
+  /// [tags] A list of tags to be applied to the API Management Workspace Named Value.
+  /// [value] The value of this API Management Workspace Named Value.
+  /// [valueFromKeyVault] A `value_from_key_vault` block as defined below.
+  WorkspaceNamedValueState({
+    pulumi.Output<String>? apiManagementWorkspaceId,
+    pulumi.Output<String>? displayName,
+    pulumi.Output<String>? name,
+    pulumi.Output<bool>? secret,
+    pulumi.Output<List<String>>? tags,
+    pulumi.Output<String>? value,
+    pulumi.Output<WorkspaceNamedValueValueFromKeyVault>? valueFromKeyVault,
+  }) :
+      apiManagementWorkspaceId = pulumi.Input.asOptionalInput<String>(apiManagementWorkspaceId),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      secret = pulumi.Input.asOptionalInput<bool>(secret),
+      tags = pulumi.Input.asOptionalInput<List<String>>(tags),
+      value = pulumi.Input.asOptionalInput<String>(value),
+      valueFromKeyVault = pulumi.Input.asOptionalInput<WorkspaceNamedValueValueFromKeyVault>(valueFromKeyVault);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'apiManagementWorkspaceId': ?apiManagementWorkspaceId,
+      'displayName': ?displayName,
+      'name': ?name,
+      'secret': ?secret,
+      'tags': ?tags,
+      'value': ?value,
+      'valueFromKeyVault': ?pulumi.Input.mapOptionalInputValue<WorkspaceNamedValueValueFromKeyVault, Map<String, dynamic>>(valueFromKeyVault, (value) => value.toMap()),
+    };
+  }
+
+  factory WorkspaceNamedValueState.fromMap(Map<String, dynamic> map) {
+    return WorkspaceNamedValueState(
+      apiManagementWorkspaceId: map['apiManagementWorkspaceId'] == null ? null : pulumi.Output.create<String>(map['apiManagementWorkspaceId'] as String),
+      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      secret: map['secret'] == null ? null : pulumi.Output.create<bool>(map['secret'] as bool),
+      tags: map['tags'] == null ? null : pulumi.Output.create<List<String>>((map['tags'] as List).cast<String>()),
+      value: map['value'] == null ? null : pulumi.Output.create<String>(map['value'] as String),
+      valueFromKeyVault: map['valueFromKeyVault'] == null ? null : pulumi.Output.create<WorkspaceNamedValueValueFromKeyVault>(WorkspaceNamedValueValueFromKeyVault.fromMap((map['valueFromKeyVault'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

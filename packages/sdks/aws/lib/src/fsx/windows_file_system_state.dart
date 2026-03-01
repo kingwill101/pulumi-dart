@@ -1,0 +1,237 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'windows_file_system_audit_log_configuration.dart';
+import 'windows_file_system_disk_iops_configuration.dart';
+import 'windows_file_system_self_managed_active_directory.dart';
+
+/// Input properties used for looking up and filtering WindowsFileSystem resources.
+class WindowsFileSystemState {
+  /// The ID for an existing Microsoft Active Directory instance that the file system should join when it's created. Cannot be specified with `self_managed_active_directory`.
+  final pulumi.Input<String>? activeDirectoryId;
+  /// An array DNS alias names that you want to associate with the Amazon FSx file system.  For more information, see [Working with DNS Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html)
+  final pulumi.Input<List<String>>? aliases;
+  /// Amazon Resource Name of the file system.
+  final pulumi.Input<String>? arn;
+  /// The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system. See `audit_log_configuration` Block for details.
+  final pulumi.Input<WindowsFileSystemAuditLogConfiguration>? auditLogConfiguration;
+  /// The number of days to retain automatic backups. Minimum of `0` and maximum of `90`. Defaults to `7`. Set to `0` to disable.
+  final pulumi.Input<int>? automaticBackupRetentionDays;
+  /// The ID of the source backup to create the filesystem from.
+  final pulumi.Input<String>? backupId;
+  /// A boolean flag indicating whether tags on the file system should be copied to backups. Defaults to `false`.
+  final pulumi.Input<bool>? copyTagsToBackups;
+  /// The preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
+  final pulumi.Input<String>? dailyAutomaticBackupStartTime;
+  /// Specifies the file system deployment type, valid values are `MULTI_AZ_1`, `SINGLE_AZ_1` and `SINGLE_AZ_2`. Default value is `SINGLE_AZ_1`.
+  final pulumi.Input<String>? deploymentType;
+  /// The SSD IOPS configuration for the Amazon FSx for Windows File Server file system. See `disk_iops_configuration` Block for details.
+  final pulumi.Input<WindowsFileSystemDiskIopsConfiguration>? diskIopsConfiguration;
+  /// DNS name for the file system, e.g., `fs-12345678.corp.example.com` (domain name matching the Active Directory domain name)
+  final pulumi.Input<String>? dnsName;
+  /// A map of tags to apply to the file system's final backup.
+  final pulumi.Input<Map<String, String>>? finalBackupTags;
+  /// ARN for the KMS Key to encrypt the file system at rest. Defaults to an AWS managed KMS Key.
+  final pulumi.Input<String>? kmsKeyId;
+  /// Set of Elastic Network Interface identifiers from which the file system is accessible.
+  final pulumi.Input<List<String>>? networkInterfaceIds;
+  /// AWS account identifier that created the file system.
+  final pulumi.Input<String>? ownerId;
+  /// The IP address of the primary, or preferred, file server.
+  final pulumi.Input<String>? preferredFileServerIp;
+  /// Specifies the subnet in which you want the preferred file server to be located. Required for when deployment type is `MULTI_AZ_1`.
+  final pulumi.Input<String>? preferredSubnetId;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// For `MULTI_AZ_1` deployment types, use this endpoint when performing administrative tasks on the file system using Amazon FSx Remote PowerShell. For `SINGLE_AZ_1` deployment types, this is the DNS name of the file system.
+  final pulumi.Input<String>? remoteAdministrationEndpoint;
+  /// A list of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
+  final pulumi.Input<List<String>>? securityGroupIds;
+  /// Configuration block that Amazon FSx uses to join the Windows File Server instance to your self-managed (including on-premises) Microsoft Active Directory (AD) directory. Cannot be specified with `active_directory_id`. See `self_managed_active_directory` Block for details.
+  final pulumi.Input<WindowsFileSystemSelfManagedActiveDirectory>? selfManagedActiveDirectory;
+  /// When enabled, will skip the default final backup taken when the file system is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
+  final pulumi.Input<bool>? skipFinalBackup;
+  /// Storage capacity (GiB) of the file system. Minimum of 32 and maximum of 65536. If the storage type is set to `HDD` the minimum value is 2000. Required when not creating filesystem for a backup.
+  final pulumi.Input<int>? storageCapacity;
+  /// Specifies the storage type, Valid values are `SSD` and `HDD`. `HDD` is supported on `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types. Default value is `SSD`.
+  final pulumi.Input<String>? storageType;
+  /// A list of IDs for the subnets that the file system will be accessible from. To specify more than a single subnet set `deployment_type` to `MULTI_AZ_1`.
+  final pulumi.Input<List<String>>? subnetIds;
+  /// A map of tags to assign to the file system. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  final pulumi.Input<Map<String, String>>? tagsAll;
+  /// Throughput (megabytes per second) of the file system. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/performance.html).
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<int>? throughputCapacity;
+  /// Identifier of the Virtual Private Cloud for the file system.
+  final pulumi.Input<String>? vpcId;
+  /// The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
+  final pulumi.Input<String>? weeklyMaintenanceStartTime;
+
+  /// Creates a new [WindowsFileSystemState].
+  /// [activeDirectoryId] The ID for an existing Microsoft Active Directory instance that the file system should join when it's created. Cannot be specified with `self_managed_active_directory`.
+  /// [aliases] An array DNS alias names that you want to associate with the Amazon FSx file system.  For more information, see [Working with DNS Aliases](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html)
+  /// [arn] Amazon Resource Name of the file system.
+  /// [auditLogConfiguration] The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system. See `audit_log_configuration` Block for details.
+  /// [automaticBackupRetentionDays] The number of days to retain automatic backups. Minimum of `0` and maximum of `90`. Defaults to `7`. Set to `0` to disable.
+  /// [backupId] The ID of the source backup to create the filesystem from.
+  /// [copyTagsToBackups] A boolean flag indicating whether tags on the file system should be copied to backups. Defaults to `false`.
+  /// [dailyAutomaticBackupStartTime] The preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
+  /// [deploymentType] Specifies the file system deployment type, valid values are `MULTI_AZ_1`, `SINGLE_AZ_1` and `SINGLE_AZ_2`. Default value is `SINGLE_AZ_1`.
+  /// [diskIopsConfiguration] The SSD IOPS configuration for the Amazon FSx for Windows File Server file system. See `disk_iops_configuration` Block for details.
+  /// [dnsName] DNS name for the file system, e.g., `fs-12345678.corp.example.com` (domain name matching the Active Directory domain name)
+  /// [finalBackupTags] A map of tags to apply to the file system's final backup.
+  /// [kmsKeyId] ARN for the KMS Key to encrypt the file system at rest. Defaults to an AWS managed KMS Key.
+  /// [networkInterfaceIds] Set of Elastic Network Interface identifiers from which the file system is accessible.
+  /// [ownerId] AWS account identifier that created the file system.
+  /// [preferredFileServerIp] The IP address of the primary, or preferred, file server.
+  /// [preferredSubnetId] Specifies the subnet in which you want the preferred file server to be located. Required for when deployment type is `MULTI_AZ_1`.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [remoteAdministrationEndpoint] For `MULTI_AZ_1` deployment types, use this endpoint when performing administrative tasks on the file system using Amazon FSx Remote PowerShell. For `SINGLE_AZ_1` deployment types, this is the DNS name of the file system.
+  /// [securityGroupIds] A list of IDs for the security groups that apply to the specified network interfaces created for file system access. These security groups will apply to all network interfaces.
+  /// [selfManagedActiveDirectory] Configuration block that Amazon FSx uses to join the Windows File Server instance to your self-managed (including on-premises) Microsoft Active Directory (AD) directory. Cannot be specified with `active_directory_id`. See `self_managed_active_directory` Block for details.
+  /// [skipFinalBackup] When enabled, will skip the default final backup taken when the file system is deleted. This configuration must be applied separately before attempting to delete the resource to have the desired behavior. Defaults to `false`.
+  /// [storageCapacity] Storage capacity (GiB) of the file system. Minimum of 32 and maximum of 65536. If the storage type is set to `HDD` the minimum value is 2000. Required when not creating filesystem for a backup.
+  /// [storageType] Specifies the storage type, Valid values are `SSD` and `HDD`. `HDD` is supported on `SINGLE_AZ_2` and `MULTI_AZ_1` Windows file system deployment types. Default value is `SSD`.
+  /// [subnetIds] A list of IDs for the subnets that the file system will be accessible from. To specify more than a single subnet set `deployment_type` to `MULTI_AZ_1`.
+  /// [tags] A map of tags to assign to the file system. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  /// [throughputCapacity] Throughput (megabytes per second) of the file system. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/performance.html).
+  /// [vpcId] Identifier of the Virtual Private Cloud for the file system.
+  /// [weeklyMaintenanceStartTime] The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
+  WindowsFileSystemState({
+    pulumi.Output<String>? activeDirectoryId,
+    pulumi.Output<List<String>>? aliases,
+    pulumi.Output<String>? arn,
+    pulumi.Output<WindowsFileSystemAuditLogConfiguration>? auditLogConfiguration,
+    pulumi.Output<int>? automaticBackupRetentionDays,
+    pulumi.Output<String>? backupId,
+    pulumi.Output<bool>? copyTagsToBackups,
+    pulumi.Output<String>? dailyAutomaticBackupStartTime,
+    pulumi.Output<String>? deploymentType,
+    pulumi.Output<WindowsFileSystemDiskIopsConfiguration>? diskIopsConfiguration,
+    pulumi.Output<String>? dnsName,
+    pulumi.Output<Map<String, String>>? finalBackupTags,
+    pulumi.Output<String>? kmsKeyId,
+    pulumi.Output<List<String>>? networkInterfaceIds,
+    pulumi.Output<String>? ownerId,
+    pulumi.Output<String>? preferredFileServerIp,
+    pulumi.Output<String>? preferredSubnetId,
+    pulumi.Output<String>? region,
+    pulumi.Output<String>? remoteAdministrationEndpoint,
+    pulumi.Output<List<String>>? securityGroupIds,
+    pulumi.Output<WindowsFileSystemSelfManagedActiveDirectory>? selfManagedActiveDirectory,
+    pulumi.Output<bool>? skipFinalBackup,
+    pulumi.Output<int>? storageCapacity,
+    pulumi.Output<String>? storageType,
+    pulumi.Output<List<String>>? subnetIds,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<Map<String, String>>? tagsAll,
+    pulumi.Output<int>? throughputCapacity,
+    pulumi.Output<String>? vpcId,
+    pulumi.Output<String>? weeklyMaintenanceStartTime,
+  }) :
+      activeDirectoryId = pulumi.Input.asOptionalInput<String>(activeDirectoryId),
+      aliases = pulumi.Input.asOptionalInput<List<String>>(aliases),
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      auditLogConfiguration = pulumi.Input.asOptionalInput<WindowsFileSystemAuditLogConfiguration>(auditLogConfiguration),
+      automaticBackupRetentionDays = pulumi.Input.asOptionalInput<int>(automaticBackupRetentionDays),
+      backupId = pulumi.Input.asOptionalInput<String>(backupId),
+      copyTagsToBackups = pulumi.Input.asOptionalInput<bool>(copyTagsToBackups),
+      dailyAutomaticBackupStartTime = pulumi.Input.asOptionalInput<String>(dailyAutomaticBackupStartTime),
+      deploymentType = pulumi.Input.asOptionalInput<String>(deploymentType),
+      diskIopsConfiguration = pulumi.Input.asOptionalInput<WindowsFileSystemDiskIopsConfiguration>(diskIopsConfiguration),
+      dnsName = pulumi.Input.asOptionalInput<String>(dnsName),
+      finalBackupTags = pulumi.Input.asOptionalInput<Map<String, String>>(finalBackupTags),
+      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
+      networkInterfaceIds = pulumi.Input.asOptionalInput<List<String>>(networkInterfaceIds),
+      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
+      preferredFileServerIp = pulumi.Input.asOptionalInput<String>(preferredFileServerIp),
+      preferredSubnetId = pulumi.Input.asOptionalInput<String>(preferredSubnetId),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      remoteAdministrationEndpoint = pulumi.Input.asOptionalInput<String>(remoteAdministrationEndpoint),
+      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
+      selfManagedActiveDirectory = pulumi.Input.asOptionalInput<WindowsFileSystemSelfManagedActiveDirectory>(selfManagedActiveDirectory),
+      skipFinalBackup = pulumi.Input.asOptionalInput<bool>(skipFinalBackup),
+      storageCapacity = pulumi.Input.asOptionalInput<int>(storageCapacity),
+      storageType = pulumi.Input.asOptionalInput<String>(storageType),
+      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll),
+      throughputCapacity = pulumi.Input.asOptionalInput<int>(throughputCapacity),
+      vpcId = pulumi.Input.asOptionalInput<String>(vpcId),
+      weeklyMaintenanceStartTime = pulumi.Input.asOptionalInput<String>(weeklyMaintenanceStartTime);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'activeDirectoryId': ?activeDirectoryId,
+      'aliases': ?aliases,
+      'arn': ?arn,
+      'auditLogConfiguration': ?pulumi.Input.mapOptionalInputValue<WindowsFileSystemAuditLogConfiguration, Map<String, dynamic>>(auditLogConfiguration, (value) => value.toMap()),
+      'automaticBackupRetentionDays': ?automaticBackupRetentionDays,
+      'backupId': ?backupId,
+      'copyTagsToBackups': ?copyTagsToBackups,
+      'dailyAutomaticBackupStartTime': ?dailyAutomaticBackupStartTime,
+      'deploymentType': ?deploymentType,
+      'diskIopsConfiguration': ?pulumi.Input.mapOptionalInputValue<WindowsFileSystemDiskIopsConfiguration, Map<String, dynamic>>(diskIopsConfiguration, (value) => value.toMap()),
+      'dnsName': ?dnsName,
+      'finalBackupTags': ?finalBackupTags,
+      'kmsKeyId': ?kmsKeyId,
+      'networkInterfaceIds': ?networkInterfaceIds,
+      'ownerId': ?ownerId,
+      'preferredFileServerIp': ?preferredFileServerIp,
+      'preferredSubnetId': ?preferredSubnetId,
+      'region': ?region,
+      'remoteAdministrationEndpoint': ?remoteAdministrationEndpoint,
+      'securityGroupIds': ?securityGroupIds,
+      'selfManagedActiveDirectory': ?pulumi.Input.mapOptionalInputValue<WindowsFileSystemSelfManagedActiveDirectory, Map<String, dynamic>>(selfManagedActiveDirectory, (value) => value.toMap()),
+      'skipFinalBackup': ?skipFinalBackup,
+      'storageCapacity': ?storageCapacity,
+      'storageType': ?storageType,
+      'subnetIds': ?subnetIds,
+      'tags': ?tags,
+      'tagsAll': ?tagsAll,
+      'throughputCapacity': ?throughputCapacity,
+      'vpcId': ?vpcId,
+      'weeklyMaintenanceStartTime': ?weeklyMaintenanceStartTime,
+    };
+  }
+
+  factory WindowsFileSystemState.fromMap(Map<String, dynamic> map) {
+    return WindowsFileSystemState(
+      activeDirectoryId: map['activeDirectoryId'] == null ? null : pulumi.Output.create<String>(map['activeDirectoryId'] as String),
+      aliases: map['aliases'] == null ? null : pulumi.Output.create<List<String>>((map['aliases'] as List).cast<String>()),
+      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
+      auditLogConfiguration: map['auditLogConfiguration'] == null ? null : pulumi.Output.create<WindowsFileSystemAuditLogConfiguration>(WindowsFileSystemAuditLogConfiguration.fromMap((map['auditLogConfiguration'] as Map).cast<String, dynamic>())),
+      automaticBackupRetentionDays: map['automaticBackupRetentionDays'] == null ? null : pulumi.Output.create<int>(map['automaticBackupRetentionDays'] as int),
+      backupId: map['backupId'] == null ? null : pulumi.Output.create<String>(map['backupId'] as String),
+      copyTagsToBackups: map['copyTagsToBackups'] == null ? null : pulumi.Output.create<bool>(map['copyTagsToBackups'] as bool),
+      dailyAutomaticBackupStartTime: map['dailyAutomaticBackupStartTime'] == null ? null : pulumi.Output.create<String>(map['dailyAutomaticBackupStartTime'] as String),
+      deploymentType: map['deploymentType'] == null ? null : pulumi.Output.create<String>(map['deploymentType'] as String),
+      diskIopsConfiguration: map['diskIopsConfiguration'] == null ? null : pulumi.Output.create<WindowsFileSystemDiskIopsConfiguration>(WindowsFileSystemDiskIopsConfiguration.fromMap((map['diskIopsConfiguration'] as Map).cast<String, dynamic>())),
+      dnsName: map['dnsName'] == null ? null : pulumi.Output.create<String>(map['dnsName'] as String),
+      finalBackupTags: map['finalBackupTags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['finalBackupTags'] as Map).cast<String, String>()),
+      kmsKeyId: map['kmsKeyId'] == null ? null : pulumi.Output.create<String>(map['kmsKeyId'] as String),
+      networkInterfaceIds: map['networkInterfaceIds'] == null ? null : pulumi.Output.create<List<String>>((map['networkInterfaceIds'] as List).cast<String>()),
+      ownerId: map['ownerId'] == null ? null : pulumi.Output.create<String>(map['ownerId'] as String),
+      preferredFileServerIp: map['preferredFileServerIp'] == null ? null : pulumi.Output.create<String>(map['preferredFileServerIp'] as String),
+      preferredSubnetId: map['preferredSubnetId'] == null ? null : pulumi.Output.create<String>(map['preferredSubnetId'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      remoteAdministrationEndpoint: map['remoteAdministrationEndpoint'] == null ? null : pulumi.Output.create<String>(map['remoteAdministrationEndpoint'] as String),
+      securityGroupIds: map['securityGroupIds'] == null ? null : pulumi.Output.create<List<String>>((map['securityGroupIds'] as List).cast<String>()),
+      selfManagedActiveDirectory: map['selfManagedActiveDirectory'] == null ? null : pulumi.Output.create<WindowsFileSystemSelfManagedActiveDirectory>(WindowsFileSystemSelfManagedActiveDirectory.fromMap((map['selfManagedActiveDirectory'] as Map).cast<String, dynamic>())),
+      skipFinalBackup: map['skipFinalBackup'] == null ? null : pulumi.Output.create<bool>(map['skipFinalBackup'] as bool),
+      storageCapacity: map['storageCapacity'] == null ? null : pulumi.Output.create<int>(map['storageCapacity'] as int),
+      storageType: map['storageType'] == null ? null : pulumi.Output.create<String>(map['storageType'] as String),
+      subnetIds: map['subnetIds'] == null ? null : pulumi.Output.create<List<String>>((map['subnetIds'] as List).cast<String>()),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+      throughputCapacity: map['throughputCapacity'] == null ? null : pulumi.Output.create<int>(map['throughputCapacity'] as int),
+      vpcId: map['vpcId'] == null ? null : pulumi.Output.create<String>(map['vpcId'] as String),
+      weeklyMaintenanceStartTime: map['weeklyMaintenanceStartTime'] == null ? null : pulumi.Output.create<String>(map['weeklyMaintenanceStartTime'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,73 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_healthcare_consent_store_consent_store_args_doc}
+/// The set of arguments for ConsentStore.
+/// {@endtemplate}
+/// {@macro pulumi_healthcare_consent_store_consent_store_args_doc}
+class ConsentStoreArgs {
+  /// Identifies the dataset addressed by this request. Must be in the format
+  /// 'projects/{project}/locations/{location}/datasets/{dataset}'
+  final pulumi.Input<String> dataset;
+  /// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
+  /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+  final pulumi.Input<String>? defaultConsentTtl;
+  /// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
+  final pulumi.Input<bool>? enableConsentCreateOnUpdate;
+  /// User-supplied key-value pairs used to organize Consent stores.
+  /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
+  /// conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}`
+  /// Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128
+  /// bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`
+  /// No more than 64 labels can be associated with a given store.
+  /// An object containing a list of "key": value pairs.
+  /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>>? labels;
+  /// The name of this ConsentStore, for example:
+  /// "consent1"
+  final pulumi.Input<String>? name;
+
+  /// Creates a new [ConsentStoreArgs].
+  /// [dataset] Identifies the dataset addressed by this request. Must be in the format
+  /// [defaultConsentTtl] Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
+  /// [enableConsentCreateOnUpdate] If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
+  /// [labels] User-supplied key-value pairs used to organize Consent stores.
+  /// [name] The name of this ConsentStore, for example:
+  ConsentStoreArgs({
+    required pulumi.Output<String> dataset,
+    pulumi.Output<String>? defaultConsentTtl,
+    pulumi.Output<bool>? enableConsentCreateOnUpdate,
+    pulumi.Output<Map<String, String>>? labels,
+    pulumi.Output<String>? name,
+  }) :
+      dataset = pulumi.Input.asInput<String>(dataset),
+      defaultConsentTtl = pulumi.Input.asOptionalInput<String>(defaultConsentTtl),
+      enableConsentCreateOnUpdate = pulumi.Input.asOptionalInput<bool>(enableConsentCreateOnUpdate),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      name = pulumi.Input.asOptionalInput<String>(name);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'dataset': dataset,
+      'defaultConsentTtl': ?defaultConsentTtl,
+      'enableConsentCreateOnUpdate': ?enableConsentCreateOnUpdate,
+      'labels': ?labels,
+      'name': ?name,
+    };
+  }
+
+  factory ConsentStoreArgs.fromMap(Map<String, dynamic> map) {
+    return ConsentStoreArgs(
+      dataset: pulumi.Output.create<String>(map['dataset'] as String),
+      defaultConsentTtl: map['defaultConsentTtl'] == null ? null : pulumi.Output.create<String>(map['defaultConsentTtl'] as String),
+      enableConsentCreateOnUpdate: map['enableConsentCreateOnUpdate'] == null ? null : pulumi.Output.create<bool>(map['enableConsentCreateOnUpdate'] as bool),
+      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+    );
+  }
+}
+

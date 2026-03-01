@@ -1,0 +1,40 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'networking_ip_assignment_assignment.dart';
+
+/// {@template pulumi_index_networking_ip_assignment_networking_ip_assignment_args_doc}
+/// The set of arguments for NetworkingIpAssignment.
+/// {@endtemplate}
+/// {@macro pulumi_index_networking_ip_assignment_networking_ip_assignment_args_doc}
+class NetworkingIpAssignmentArgs {
+  /// A list of IP/Linode assignments to apply.
+  final pulumi.Input<List<NetworkingIpAssignmentAssignment>>? assignments;
+  /// The region where the IP addresses will be assigned.
+  final pulumi.Input<String> region;
+
+  /// Creates a new [NetworkingIpAssignmentArgs].
+  /// [assignments] A list of IP/Linode assignments to apply.
+  /// [region] The region where the IP addresses will be assigned.
+  NetworkingIpAssignmentArgs({
+    pulumi.Output<List<NetworkingIpAssignmentAssignment>>? assignments,
+    required pulumi.Output<String> region,
+  }) :
+      assignments = pulumi.Input.asOptionalInput<List<NetworkingIpAssignmentAssignment>>(assignments),
+      region = pulumi.Input.asInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'assignments': ?pulumi.Input.mapOptionalInputValue<List<NetworkingIpAssignmentAssignment>, List<Map<String, dynamic>>>(assignments, (value) => pulumi.Input.encodeList<NetworkingIpAssignmentAssignment, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'region': region,
+    };
+  }
+
+  factory NetworkingIpAssignmentArgs.fromMap(Map<String, dynamic> map) {
+    return NetworkingIpAssignmentArgs(
+      assignments: map['assignments'] == null ? null : pulumi.Output.create<List<NetworkingIpAssignmentAssignment>>(pulumi.Input.decodeList<NetworkingIpAssignmentAssignment>(map['assignments'], (value) => NetworkingIpAssignmentAssignment.fromMap((value as Map).cast<String, dynamic>()))),
+      region: pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

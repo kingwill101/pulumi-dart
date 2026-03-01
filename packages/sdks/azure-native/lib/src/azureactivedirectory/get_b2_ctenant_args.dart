@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_azureactivedirectory_get_b2_ctenant_args_doc}
+/// Arguments for getB2CTenant.
+/// {@endtemplate}
+/// {@macro pulumi_azureactivedirectory_get_b2_ctenant_args_doc}
+class GetB2CTenantArgs {
+  /// The name of the resource group.
+  final pulumi.Input<String> resourceGroupName;
+  /// The initial domain name of the Azure AD B2C tenant.
+  final pulumi.Input<String> resourceName;
+
+  /// Creates a new [GetB2CTenantArgs].
+  /// [resourceGroupName] The name of the resource group.
+  /// [resourceName] The initial domain name of the Azure AD B2C tenant.
+  GetB2CTenantArgs({
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> resourceName,
+  }) :
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      resourceName = pulumi.Input.asInput<String>(resourceName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'resourceGroupName': resourceGroupName,
+      'resourceName': resourceName,
+    };
+  }
+
+  factory GetB2CTenantArgs.fromMap(Map<String, dynamic> map) {
+    return GetB2CTenantArgs(
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+    );
+  }
+}
+

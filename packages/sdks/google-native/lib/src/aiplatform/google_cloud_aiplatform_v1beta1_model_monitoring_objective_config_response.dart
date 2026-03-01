@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'google_cloud_aiplatform_v1beta1_model_monitoring_objective_config_explanation_config_response.dart';
+import 'google_cloud_aiplatform_v1beta1_model_monitoring_objective_config_prediction_drift_detection_config_response.dart';
+import 'google_cloud_aiplatform_v1beta1_model_monitoring_objective_config_training_dataset_response.dart';
+import 'google_cloud_aiplatform_v1beta1_model_monitoring_objective_config_training_prediction_skew_detection_config_response.dart';
+
+/// The objective configuration for model monitoring, including the information needed to detect anomalies for one particular model.
+class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse {
+  /// The config for integrating with Vertex Explainable AI.
+  final GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse explanationConfig;
+  /// The config for drift of prediction data.
+  final GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse predictionDriftDetectionConfig;
+  /// Training dataset for models. This field has to be set only if TrainingPredictionSkewDetectionConfig is specified.
+  final GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse trainingDataset;
+  /// The config for skew between training data and prediction data.
+  final GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse trainingPredictionSkewDetectionConfig;
+
+  /// Creates a new [GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse].
+  /// [explanationConfig] The config for integrating with Vertex Explainable AI.
+  /// [predictionDriftDetectionConfig] The config for drift of prediction data.
+  /// [trainingDataset] Training dataset for models. This field has to be set only if TrainingPredictionSkewDetectionConfig is specified.
+  /// [trainingPredictionSkewDetectionConfig] The config for skew between training data and prediction data.
+  GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse({
+    required this.explanationConfig,
+    required this.predictionDriftDetectionConfig,
+    required this.trainingDataset,
+    required this.trainingPredictionSkewDetectionConfig,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'explanationConfig': explanationConfig.toMap(),
+      'predictionDriftDetectionConfig': predictionDriftDetectionConfig.toMap(),
+      'trainingDataset': trainingDataset.toMap(),
+      'trainingPredictionSkewDetectionConfig': trainingPredictionSkewDetectionConfig.toMap(),
+    };
+  }
+
+  factory GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse.fromMap(Map<String, dynamic> map) {
+    return GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigResponse(
+      explanationConfig: GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigResponse.fromMap((map['explanationConfig'] as Map).cast<String, dynamic>()),
+      predictionDriftDetectionConfig: GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigPredictionDriftDetectionConfigResponse.fromMap((map['predictionDriftDetectionConfig'] as Map).cast<String, dynamic>()),
+      trainingDataset: GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingDatasetResponse.fromMap((map['trainingDataset'] as Map).cast<String, dynamic>()),
+      trainingPredictionSkewDetectionConfig: GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigTrainingPredictionSkewDetectionConfigResponse.fromMap((map['trainingPredictionSkewDetectionConfig'] as Map).cast<String, dynamic>()),
+    );
+  }
+}
+

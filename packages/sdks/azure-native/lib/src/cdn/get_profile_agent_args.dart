@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cdn_get_profile_agent_args_doc}
+/// Arguments for getProfileAgent.
+/// {@endtemplate}
+/// {@macro pulumi_cdn_get_profile_agent_args_doc}
+class GetProfileAgentArgs {
+  /// Name of the web agent association.
+  final pulumi.Input<String> agentName;
+  /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  final pulumi.Input<String> profileName;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+
+  /// Creates a new [GetProfileAgentArgs].
+  /// [agentName] Name of the web agent association.
+  /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  GetProfileAgentArgs({
+    required pulumi.Output<String> agentName,
+    required pulumi.Output<String> profileName,
+    required pulumi.Output<String> resourceGroupName,
+  }) :
+      agentName = pulumi.Input.asInput<String>(agentName),
+      profileName = pulumi.Input.asInput<String>(profileName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'agentName': agentName,
+      'profileName': profileName,
+      'resourceGroupName': resourceGroupName,
+    };
+  }
+
+  factory GetProfileAgentArgs.fromMap(Map<String, dynamic> map) {
+    return GetProfileAgentArgs(
+      agentName: pulumi.Output.create<String>(map['agentName'] as String),
+      profileName: pulumi.Output.create<String>(map['profileName'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+    );
+  }
+}
+

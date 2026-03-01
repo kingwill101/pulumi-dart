@@ -1,0 +1,78 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering TapePool resources.
+class TapePoolState {
+  /// Volume Amazon Resource Name (ARN), e.g., `aws_storagegateway_tape_pool.example arn:aws:storagegateway:us-east-1:123456789012:tapepool/pool-12345678`.
+  final pulumi.Input<String>? arn;
+  /// The name of the new custom tape pool.
+  final pulumi.Input<String>? poolName;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Tape retention lock time is set in days. Tape retention lock can be enabled for up to 100 years (36,500 days). Default value is 0.
+  final pulumi.Input<int>? retentionLockTimeInDays;
+  /// Tape retention lock can be configured in two modes. When configured in governance mode, AWS accounts with specific IAM permissions are authorized to remove the tape retention lock from archived virtual tapes. When configured in compliance mode, the tape retention lock cannot be removed by any user, including the root AWS account. Possible values are `COMPLIANCE`, `GOVERNANCE`, and `NONE`. Default value is `NONE`.
+  final pulumi.Input<String>? retentionLockType;
+  /// The storage class that is associated with the new custom pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class that corresponds to the pool. Possible values are `DEEP_ARCHIVE` or `GLACIER`.
+  final pulumi.Input<String>? storageClass;
+  /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  final pulumi.Input<Map<String, String>>? tagsAll;
+
+  /// Creates a new [TapePoolState].
+  /// [arn] Volume Amazon Resource Name (ARN), e.g., `aws_storagegateway_tape_pool.example arn:aws:storagegateway:us-east-1:123456789012:tapepool/pool-12345678`.
+  /// [poolName] The name of the new custom tape pool.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [retentionLockTimeInDays] Tape retention lock time is set in days. Tape retention lock can be enabled for up to 100 years (36,500 days). Default value is 0.
+  /// [retentionLockType] Tape retention lock can be configured in two modes. When configured in governance mode, AWS accounts with specific IAM permissions are authorized to remove the tape retention lock from archived virtual tapes. When configured in compliance mode, the tape retention lock cannot be removed by any user, including the root AWS account. Possible values are `COMPLIANCE`, `GOVERNANCE`, and `NONE`. Default value is `NONE`.
+  /// [storageClass] The storage class that is associated with the new custom pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class that corresponds to the pool. Possible values are `DEEP_ARCHIVE` or `GLACIER`.
+  /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  TapePoolState({
+    pulumi.Output<String>? arn,
+    pulumi.Output<String>? poolName,
+    pulumi.Output<String>? region,
+    pulumi.Output<int>? retentionLockTimeInDays,
+    pulumi.Output<String>? retentionLockType,
+    pulumi.Output<String>? storageClass,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<Map<String, String>>? tagsAll,
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      poolName = pulumi.Input.asOptionalInput<String>(poolName),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      retentionLockTimeInDays = pulumi.Input.asOptionalInput<int>(retentionLockTimeInDays),
+      retentionLockType = pulumi.Input.asOptionalInput<String>(retentionLockType),
+      storageClass = pulumi.Input.asOptionalInput<String>(storageClass),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'arn': ?arn,
+      'poolName': ?poolName,
+      'region': ?region,
+      'retentionLockTimeInDays': ?retentionLockTimeInDays,
+      'retentionLockType': ?retentionLockType,
+      'storageClass': ?storageClass,
+      'tags': ?tags,
+      'tagsAll': ?tagsAll,
+    };
+  }
+
+  factory TapePoolState.fromMap(Map<String, dynamic> map) {
+    return TapePoolState(
+      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
+      poolName: map['poolName'] == null ? null : pulumi.Output.create<String>(map['poolName'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      retentionLockTimeInDays: map['retentionLockTimeInDays'] == null ? null : pulumi.Output.create<int>(map['retentionLockTimeInDays'] as int),
+      retentionLockType: map['retentionLockType'] == null ? null : pulumi.Output.create<String>(map['retentionLockType'] as String),
+      storageClass: map['storageClass'] == null ? null : pulumi.Output.create<String>(map['storageClass'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+    );
+  }
+}
+

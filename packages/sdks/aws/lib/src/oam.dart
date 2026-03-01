@@ -1,0 +1,26 @@
+library module_oam;
+
+export 'oam/functions.dart';
+export 'oam/get_link_args.dart';
+export 'oam/get_link_link_configuration.dart';
+export 'oam/get_link_link_configuration_log_group_configuration.dart';
+export 'oam/get_link_link_configuration_metric_configuration.dart';
+export 'oam/get_link_result.dart';
+export 'oam/get_links_args.dart';
+export 'oam/get_links_result.dart';
+export 'oam/get_sink_args.dart';
+export 'oam/get_sink_result.dart';
+export 'oam/get_sinks_args.dart';
+export 'oam/get_sinks_result.dart';
+export 'oam/link.dart';
+export 'oam/link_args.dart';
+export 'oam/link_link_configuration.dart';
+export 'oam/link_link_configuration_log_group_configuration.dart';
+export 'oam/link_link_configuration_metric_configuration.dart';
+export 'oam/link_state.dart';
+export 'oam/sink.dart';
+export 'oam/sink_args.dart';
+export 'oam/sink_policy.dart';
+export 'oam/sink_policy_args.dart';
+export 'oam/sink_policy_state.dart';
+export 'oam/sink_state.dart';

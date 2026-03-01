@@ -1,0 +1,105 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// Input properties used for looking up and filtering VirtualNetworkPeering resources.
+class VirtualNetworkPeeringState {
+  /// A list of address blocks reserved for this virtual network in CIDR notation.
+  final pulumi.Input<List<String>>? addressSpacePrefixes;
+  /// Can the forwarded traffic from the VMs in the local virtual network be forwarded to the remote virtual network? Defaults to `false`.
+  final pulumi.Input<bool>? allowForwardedTraffic;
+  /// Can the gateway links be used in the remote virtual network to link to the Databricks virtual network? Defaults to `false`.
+  final pulumi.Input<bool>? allowGatewayTransit;
+  /// Can the VMs in the local virtual network space access the VMs in the remote virtual network space? Defaults to `true`.
+  final pulumi.Input<bool>? allowVirtualNetworkAccess;
+  /// Specifies the name of the Databricks Virtual Network Peering resource. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// A list of address blocks reserved for the remote virtual network in CIDR notation. Changing this forces a new resource to be created.
+  final pulumi.Input<List<String>>? remoteAddressSpacePrefixes;
+  /// The ID of the remote virtual network. Changing this forces a new resource to be created.
+  ///
+  /// > **Note:** The remote virtual network should be in the same region as the databricks workspace. Please see the [product documentation](https://learn.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering) for more information.
+  final pulumi.Input<String>? remoteVirtualNetworkId;
+  /// The name of the Resource Group in which the Databricks Virtual Network Peering should exist. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? resourceGroupName;
+  /// Can remote gateways be used on the Databricks virtual network? Defaults to `false`.
+  ///
+  /// > **Note:** If the `use_remote_gateways` is set to `true`, and `allow_gateway_transit` on the remote peering is also `true`, the virtual network will use the gateways of the remote virtual network for transit. Only one peering can have this flag set to `true`. `use_remote_gateways` cannot be set if the virtual network already has a gateway.
+  final pulumi.Input<bool>? useRemoteGateways;
+  /// The ID of the internal Virtual Network used by the DataBricks Workspace.
+  ///
+  /// > **Note:** The `virtual_network_id` field is the value you must supply to the `azure.network.VirtualNetworkPeering` resources `remote_virtual_network_id` field to successfully peer the Databricks Virtual Network with the remote virtual network.
+  final pulumi.Input<String>? virtualNetworkId;
+  /// The ID of the Databricks Workspace that this Databricks Virtual Network Peering is bound. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? workspaceId;
+
+  /// Creates a new [VirtualNetworkPeeringState].
+  /// [addressSpacePrefixes] A list of address blocks reserved for this virtual network in CIDR notation.
+  /// [allowForwardedTraffic] Can the forwarded traffic from the VMs in the local virtual network be forwarded to the remote virtual network? Defaults to `false`.
+  /// [allowGatewayTransit] Can the gateway links be used in the remote virtual network to link to the Databricks virtual network? Defaults to `false`.
+  /// [allowVirtualNetworkAccess] Can the VMs in the local virtual network space access the VMs in the remote virtual network space? Defaults to `true`.
+  /// [name] Specifies the name of the Databricks Virtual Network Peering resource. Changing this forces a new resource to be created.
+  /// [remoteAddressSpacePrefixes] A list of address blocks reserved for the remote virtual network in CIDR notation. Changing this forces a new resource to be created.
+  /// [remoteVirtualNetworkId] The ID of the remote virtual network. Changing this forces a new resource to be created.
+  /// [resourceGroupName] The name of the Resource Group in which the Databricks Virtual Network Peering should exist. Changing this forces a new resource to be created.
+  /// [useRemoteGateways] Can remote gateways be used on the Databricks virtual network? Defaults to `false`.
+  /// [virtualNetworkId] The ID of the internal Virtual Network used by the DataBricks Workspace.
+  /// [workspaceId] The ID of the Databricks Workspace that this Databricks Virtual Network Peering is bound. Changing this forces a new resource to be created.
+  VirtualNetworkPeeringState({
+    pulumi.Output<List<String>>? addressSpacePrefixes,
+    pulumi.Output<bool>? allowForwardedTraffic,
+    pulumi.Output<bool>? allowGatewayTransit,
+    pulumi.Output<bool>? allowVirtualNetworkAccess,
+    pulumi.Output<String>? name,
+    pulumi.Output<List<String>>? remoteAddressSpacePrefixes,
+    pulumi.Output<String>? remoteVirtualNetworkId,
+    pulumi.Output<String>? resourceGroupName,
+    pulumi.Output<bool>? useRemoteGateways,
+    pulumi.Output<String>? virtualNetworkId,
+    pulumi.Output<String>? workspaceId,
+  }) :
+      addressSpacePrefixes = pulumi.Input.asOptionalInput<List<String>>(addressSpacePrefixes),
+      allowForwardedTraffic = pulumi.Input.asOptionalInput<bool>(allowForwardedTraffic),
+      allowGatewayTransit = pulumi.Input.asOptionalInput<bool>(allowGatewayTransit),
+      allowVirtualNetworkAccess = pulumi.Input.asOptionalInput<bool>(allowVirtualNetworkAccess),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      remoteAddressSpacePrefixes = pulumi.Input.asOptionalInput<List<String>>(remoteAddressSpacePrefixes),
+      remoteVirtualNetworkId = pulumi.Input.asOptionalInput<String>(remoteVirtualNetworkId),
+      resourceGroupName = pulumi.Input.asOptionalInput<String>(resourceGroupName),
+      useRemoteGateways = pulumi.Input.asOptionalInput<bool>(useRemoteGateways),
+      virtualNetworkId = pulumi.Input.asOptionalInput<String>(virtualNetworkId),
+      workspaceId = pulumi.Input.asOptionalInput<String>(workspaceId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'addressSpacePrefixes': ?addressSpacePrefixes,
+      'allowForwardedTraffic': ?allowForwardedTraffic,
+      'allowGatewayTransit': ?allowGatewayTransit,
+      'allowVirtualNetworkAccess': ?allowVirtualNetworkAccess,
+      'name': ?name,
+      'remoteAddressSpacePrefixes': ?remoteAddressSpacePrefixes,
+      'remoteVirtualNetworkId': ?remoteVirtualNetworkId,
+      'resourceGroupName': ?resourceGroupName,
+      'useRemoteGateways': ?useRemoteGateways,
+      'virtualNetworkId': ?virtualNetworkId,
+      'workspaceId': ?workspaceId,
+    };
+  }
+
+  factory VirtualNetworkPeeringState.fromMap(Map<String, dynamic> map) {
+    return VirtualNetworkPeeringState(
+      addressSpacePrefixes: map['addressSpacePrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['addressSpacePrefixes'] as List).cast<String>()),
+      allowForwardedTraffic: map['allowForwardedTraffic'] == null ? null : pulumi.Output.create<bool>(map['allowForwardedTraffic'] as bool),
+      allowGatewayTransit: map['allowGatewayTransit'] == null ? null : pulumi.Output.create<bool>(map['allowGatewayTransit'] as bool),
+      allowVirtualNetworkAccess: map['allowVirtualNetworkAccess'] == null ? null : pulumi.Output.create<bool>(map['allowVirtualNetworkAccess'] as bool),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      remoteAddressSpacePrefixes: map['remoteAddressSpacePrefixes'] == null ? null : pulumi.Output.create<List<String>>((map['remoteAddressSpacePrefixes'] as List).cast<String>()),
+      remoteVirtualNetworkId: map['remoteVirtualNetworkId'] == null ? null : pulumi.Output.create<String>(map['remoteVirtualNetworkId'] as String),
+      resourceGroupName: map['resourceGroupName'] == null ? null : pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      useRemoteGateways: map['useRemoteGateways'] == null ? null : pulumi.Output.create<bool>(map['useRemoteGateways'] as bool),
+      virtualNetworkId: map['virtualNetworkId'] == null ? null : pulumi.Output.create<String>(map['virtualNetworkId'] as String),
+      workspaceId: map['workspaceId'] == null ? null : pulumi.Output.create<String>(map['workspaceId'] as String),
+    );
+  }
+}
+

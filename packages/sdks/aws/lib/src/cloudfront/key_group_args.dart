@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cloudfront_key_group_key_group_args_doc}
+/// The set of arguments for KeyGroup.
+/// {@endtemplate}
+/// {@macro pulumi_cloudfront_key_group_key_group_args_doc}
+class KeyGroupArgs {
+  /// A comment to describe the key group..
+  final pulumi.Input<String>? comment;
+  /// A list of the identifiers of the public keys in the key group.
+  final pulumi.Input<List<String>> items;
+  /// A name to identify the key group.
+  final pulumi.Input<String>? name;
+
+  /// Creates a new [KeyGroupArgs].
+  /// [comment] A comment to describe the key group..
+  /// [items] A list of the identifiers of the public keys in the key group.
+  /// [name] A name to identify the key group.
+  KeyGroupArgs({
+    pulumi.Output<String>? comment,
+    required pulumi.Output<List<String>> items,
+    pulumi.Output<String>? name,
+  }) :
+      comment = pulumi.Input.asOptionalInput<String>(comment),
+      items = pulumi.Input.asInput<List<String>>(items),
+      name = pulumi.Input.asOptionalInput<String>(name);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'comment': ?comment,
+      'items': items,
+      'name': ?name,
+    };
+  }
+
+  factory KeyGroupArgs.fromMap(Map<String, dynamic> map) {
+    return KeyGroupArgs(
+      comment: map['comment'] == null ? null : pulumi.Output.create<String>(map['comment'] as String),
+      items: pulumi.Output.create<List<String>>((map['items'] as List).cast<String>()),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+    );
+  }
+}
+

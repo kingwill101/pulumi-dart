@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_sqladmin_v1_ssl_cert_args_doc}
+/// The set of arguments for SslCert.
+/// {@endtemplate}
+/// {@macro pulumi_sqladmin_v1_ssl_cert_args_doc}
+class SslCertArgs {
+  /// User supplied name. Must be a distinct name from the other certificates for this instance.
+  final pulumi.Input<String>? commonName;
+  final pulumi.Input<String> instance;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [SslCertArgs].
+  /// [commonName] User supplied name. Must be a distinct name from the other certificates for this instance.
+  /// [instance] Required.
+  /// [project] Optional.
+  SslCertArgs({
+    pulumi.Output<String>? commonName,
+    required pulumi.Output<String> instance,
+    pulumi.Output<String>? project,
+  }) :
+      commonName = pulumi.Input.asOptionalInput<String>(commonName),
+      instance = pulumi.Input.asInput<String>(instance),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'commonName': ?commonName,
+      'instance': instance,
+      'project': ?project,
+    };
+  }
+
+  factory SslCertArgs.fromMap(Map<String, dynamic> map) {
+    return SslCertArgs(
+      commonName: map['commonName'] == null ? null : pulumi.Output.create<String>(map['commonName'] as String),
+      instance: pulumi.Output.create<String>(map['instance'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

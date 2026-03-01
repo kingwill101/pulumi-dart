@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_hybridconnectivity_get_service_configuration_args_doc}
+/// Arguments for getServiceConfiguration.
+/// {@endtemplate}
+/// {@macro pulumi_hybridconnectivity_get_service_configuration_args_doc}
+class GetServiceConfigurationArgs {
+  /// The endpoint name.
+  final pulumi.Input<String> endpointName;
+  /// The fully qualified Azure Resource manager identifier of the resource.
+  final pulumi.Input<String> resourceUri;
+  /// The service name.
+  final pulumi.Input<String> serviceConfigurationName;
+
+  /// Creates a new [GetServiceConfigurationArgs].
+  /// [endpointName] The endpoint name.
+  /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
+  /// [serviceConfigurationName] The service name.
+  GetServiceConfigurationArgs({
+    required pulumi.Output<String> endpointName,
+    required pulumi.Output<String> resourceUri,
+    required pulumi.Output<String> serviceConfigurationName,
+  }) :
+      endpointName = pulumi.Input.asInput<String>(endpointName),
+      resourceUri = pulumi.Input.asInput<String>(resourceUri),
+      serviceConfigurationName = pulumi.Input.asInput<String>(serviceConfigurationName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'endpointName': endpointName,
+      'resourceUri': resourceUri,
+      'serviceConfigurationName': serviceConfigurationName,
+    };
+  }
+
+  factory GetServiceConfigurationArgs.fromMap(Map<String, dynamic> map) {
+    return GetServiceConfigurationArgs(
+      endpointName: pulumi.Output.create<String>(map['endpointName'] as String),
+      resourceUri: pulumi.Output.create<String>(map['resourceUri'] as String),
+      serviceConfigurationName: pulumi.Output.create<String>(map['serviceConfigurationName'] as String),
+    );
+  }
+}
+

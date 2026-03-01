@@ -1,0 +1,47 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'access_policy_entry.dart';
+
+/// {@template pulumi_keyvault_access_policy_args_doc}
+/// The set of arguments for AccessPolicy.
+/// {@endtemplate}
+/// {@macro pulumi_keyvault_access_policy_args_doc}
+class AccessPolicyArgs {
+  /// The definition of the access policy.
+  final pulumi.Input<AccessPolicyEntry> policy;
+  /// Name of the resource group that contains the vault.
+  final pulumi.Input<String> resourceGroupName;
+  /// Name of the Key Vault.
+  final pulumi.Input<String> vaultName;
+
+  /// Creates a new [AccessPolicyArgs].
+  /// [policy] The definition of the access policy.
+  /// [resourceGroupName] Name of the resource group that contains the vault.
+  /// [vaultName] Name of the Key Vault.
+  AccessPolicyArgs({
+    required pulumi.Output<AccessPolicyEntry> policy,
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> vaultName,
+  }) :
+      policy = pulumi.Input.asInput<AccessPolicyEntry>(policy),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      vaultName = pulumi.Input.asInput<String>(vaultName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'policy': pulumi.Input.mapInputValue<AccessPolicyEntry, Map<String, dynamic>>(policy, (value) => value.toMap()),
+      'resourceGroupName': resourceGroupName,
+      'vaultName': vaultName,
+    };
+  }
+
+  factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
+    return AccessPolicyArgs(
+      policy: pulumi.Output.create<AccessPolicyEntry>(AccessPolicyEntry.fromMap((map['policy'] as Map).cast<String, dynamic>())),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      vaultName: pulumi.Output.create<String>(map['vaultName'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_network_get_application_gateway_private_endpoint_connection_args_doc}
+/// Arguments for getApplicationGatewayPrivateEndpointConnection.
+/// {@endtemplate}
+/// {@macro pulumi_network_get_application_gateway_private_endpoint_connection_args_doc}
+class GetApplicationGatewayPrivateEndpointConnectionArgs {
+  /// The name of the application gateway.
+  final pulumi.Input<String> applicationGatewayName;
+  /// The name of the application gateway private endpoint connection.
+  final pulumi.Input<String> connectionName;
+  /// The name of the resource group.
+  final pulumi.Input<String> resourceGroupName;
+
+  /// Creates a new [GetApplicationGatewayPrivateEndpointConnectionArgs].
+  /// [applicationGatewayName] The name of the application gateway.
+  /// [connectionName] The name of the application gateway private endpoint connection.
+  /// [resourceGroupName] The name of the resource group.
+  GetApplicationGatewayPrivateEndpointConnectionArgs({
+    required pulumi.Output<String> applicationGatewayName,
+    required pulumi.Output<String> connectionName,
+    required pulumi.Output<String> resourceGroupName,
+  }) :
+      applicationGatewayName = pulumi.Input.asInput<String>(applicationGatewayName),
+      connectionName = pulumi.Input.asInput<String>(connectionName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'applicationGatewayName': applicationGatewayName,
+      'connectionName': connectionName,
+      'resourceGroupName': resourceGroupName,
+    };
+  }
+
+  factory GetApplicationGatewayPrivateEndpointConnectionArgs.fromMap(Map<String, dynamic> map) {
+    return GetApplicationGatewayPrivateEndpointConnectionArgs(
+      applicationGatewayName: pulumi.Output.create<String>(map['applicationGatewayName'] as String),
+      connectionName: pulumi.Output.create<String>(map['connectionName'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+    );
+  }
+}
+

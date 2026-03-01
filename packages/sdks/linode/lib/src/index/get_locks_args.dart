@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_locks_filter.dart';
+
+/// {@template pulumi_index_get_locks_get_locks_args_doc}
+/// Arguments for getLocks.
+/// {@endtemplate}
+/// {@macro pulumi_index_get_locks_get_locks_args_doc}
+class GetLocksArgs {
+  final pulumi.Input<List<GetLocksFilter>>? filters;
+  /// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+  final pulumi.Input<String>? order;
+  /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+  final pulumi.Input<String>? orderBy;
+
+  /// Creates a new [GetLocksArgs].
+  /// [filters] Optional.
+  /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
+  /// [orderBy] The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+  GetLocksArgs({
+    pulumi.Output<List<GetLocksFilter>>? filters,
+    pulumi.Output<String>? order,
+    pulumi.Output<String>? orderBy,
+  }) :
+      filters = pulumi.Input.asOptionalInput<List<GetLocksFilter>>(filters),
+      order = pulumi.Input.asOptionalInput<String>(order),
+      orderBy = pulumi.Input.asOptionalInput<String>(orderBy);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetLocksFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetLocksFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'order': ?order,
+      'orderBy': ?orderBy,
+    };
+  }
+
+  factory GetLocksArgs.fromMap(Map<String, dynamic> map) {
+    return GetLocksArgs(
+      filters: map['filters'] == null ? null : pulumi.Output.create<List<GetLocksFilter>>(pulumi.Input.decodeList<GetLocksFilter>(map['filters'], (value) => GetLocksFilter.fromMap((value as Map).cast<String, dynamic>()))),
+      order: map['order'] == null ? null : pulumi.Output.create<String>(map['order'] as String),
+      orderBy: map['orderBy'] == null ? null : pulumi.Output.create<String>(map['orderBy'] as String),
+    );
+  }
+}
+

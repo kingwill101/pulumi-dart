@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_artifactregistry_get_package_get_package_args_doc}
+/// Arguments for getPackage.
+/// {@endtemplate}
+/// {@macro pulumi_artifactregistry_get_package_get_package_args_doc}
+class GetPackageArgs {
+  /// The location of the artifact registry.
+  final pulumi.Input<String> location;
+  /// The name of the package.
+  final pulumi.Input<String> name;
+  /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// The last part of the repository name to fetch from.
+  final pulumi.Input<String> repositoryId;
+
+  /// Creates a new [GetPackageArgs].
+  /// [location] The location of the artifact registry.
+  /// [name] The name of the package.
+  /// [project] The project ID in which the resource belongs. If it is not provided, the provider project is used.
+  /// [repositoryId] The last part of the repository name to fetch from.
+  GetPackageArgs({
+    required pulumi.Output<String> location,
+    required pulumi.Output<String> name,
+    pulumi.Output<String>? project,
+    required pulumi.Output<String> repositoryId,
+  }) :
+      location = pulumi.Input.asInput<String>(location),
+      name = pulumi.Input.asInput<String>(name),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'location': location,
+      'name': name,
+      'project': ?project,
+      'repositoryId': repositoryId,
+    };
+  }
+
+  factory GetPackageArgs.fromMap(Map<String, dynamic> map) {
+    return GetPackageArgs(
+      location: pulumi.Output.create<String>(map['location'] as String),
+      name: pulumi.Output.create<String>(map['name'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      repositoryId: pulumi.Output.create<String>(map['repositoryId'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,27 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+
+/// A set of Shielded Instance options.
+class ShieldedInstanceConfigTpuV2alpha1 {
+  /// Defines whether the instance has Secure Boot enabled.
+  final bool? enableSecureBoot;
+
+  /// Creates a new [ShieldedInstanceConfigTpuV2alpha1].
+  /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
+  ShieldedInstanceConfigTpuV2alpha1({
+    this.enableSecureBoot,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'enableSecureBoot': ?enableSecureBoot,
+    };
+  }
+
+  factory ShieldedInstanceConfigTpuV2alpha1.fromMap(Map<String, dynamic> map) {
+    return ShieldedInstanceConfigTpuV2alpha1(
+      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
+    );
+  }
+}
+

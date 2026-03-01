@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_runtimeconfig_v1beta1_get_waiter_args_doc}
+/// Arguments for getWaiter.
+/// {@endtemplate}
+/// {@macro pulumi_runtimeconfig_v1beta1_get_waiter_args_doc}
+class GetWaiterArgs {
+  final pulumi.Input<String> configId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> waiterId;
+
+  /// Creates a new [GetWaiterArgs].
+  /// [configId] Required.
+  /// [project] Optional.
+  /// [waiterId] Required.
+  GetWaiterArgs({
+    required pulumi.Output<String> configId,
+    pulumi.Output<String>? project,
+    required pulumi.Output<String> waiterId,
+  }) :
+      configId = pulumi.Input.asInput<String>(configId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      waiterId = pulumi.Input.asInput<String>(waiterId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'configId': configId,
+      'project': ?project,
+      'waiterId': waiterId,
+    };
+  }
+
+  factory GetWaiterArgs.fromMap(Map<String, dynamic> map) {
+    return GetWaiterArgs(
+      configId: pulumi.Output.create<String>(map['configId'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      waiterId: pulumi.Output.create<String>(map['waiterId'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_ltm_i_rule_irule_args_doc}
+/// The set of arguments for IRule.
+/// {@endtemplate}
+/// {@macro pulumi_ltm_i_rule_irule_args_doc}
+class IRuleArgs {
+  /// Body of the iRule
+  final pulumi.Input<String> irule;
+  /// Name of the iRule
+  final pulumi.Input<String> name;
+
+  /// Creates a new [IRuleArgs].
+  /// [irule] Body of the iRule
+  /// [name] Name of the iRule
+  IRuleArgs({
+    required pulumi.Output<String> irule,
+    required pulumi.Output<String> name,
+  }) :
+      irule = pulumi.Input.asInput<String>(irule),
+      name = pulumi.Input.asInput<String>(name);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'irule': irule,
+      'name': name,
+    };
+  }
+
+  factory IRuleArgs.fromMap(Map<String, dynamic> map) {
+    return IRuleArgs(
+      irule: pulumi.Output.create<String>(map['irule'] as String),
+      name: pulumi.Output.create<String>(map['name'] as String),
+    );
+  }
+}
+

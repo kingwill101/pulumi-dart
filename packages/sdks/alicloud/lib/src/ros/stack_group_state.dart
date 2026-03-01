@@ -1,0 +1,139 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'stack_group_auto_deployment.dart';
+import 'stack_group_parameter.dart';
+
+/// Input properties used for looking up and filtering StackGroup resources.
+class StackGroupState {
+  /// The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
+  final pulumi.Input<String>? administrationRoleName;
+  /// Automatic deployment setting information. Description
+  /// This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
+  final pulumi.Input<StackGroupAutoDeployment>? autoDeployment;
+  /// The list of resource stack group options. The maximum length is 1.
+  final pulumi.Input<List<String>>? capabilities;
+  /// The description of the stack group.
+  final pulumi.Input<String>? description;
+  /// The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
+  final pulumi.Input<String>? executionRoleName;
+  /// Parameters See `parameters` below.
+  final pulumi.Input<List<StackGroupParameter>>? parameters;
+  /// The permission model.
+  final pulumi.Input<String>? permissionModel;
+  /// The ID of the resource group.
+  final pulumi.Input<String>? resourceGroupId;
+  /// The ID of stack group.
+  final pulumi.Input<String>? stackGroupId;
+  /// StackGroupName
+  final pulumi.Input<String>? stackGroupName;
+  /// The status of the stack group.
+  final pulumi.Input<String>? status;
+  /// The label of the resource stack group.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// The template body.
+  final pulumi.Input<String>? templateBody;
+  /// The ID of the template.
+  final pulumi.Input<String>? templateId;
+  /// The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+  ///
+  /// > **NOTE:** You must and can specify only one of the parameters of TemplateBody, TemplateURL, or TemplateId.
+  final pulumi.Input<String>? templateUrl;
+  /// The version of the template.
+  final pulumi.Input<String>? templateVersion;
+
+  /// Creates a new [StackGroupState].
+  /// [administrationRoleName] The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
+  /// [autoDeployment] Automatic deployment setting information. Description
+  /// [capabilities] The list of resource stack group options. The maximum length is 1.
+  /// [description] The description of the stack group.
+  /// [executionRoleName] The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
+  /// [parameters] Parameters See `parameters` below.
+  /// [permissionModel] The permission model.
+  /// [resourceGroupId] The ID of the resource group.
+  /// [stackGroupId] The ID of stack group.
+  /// [stackGroupName] StackGroupName
+  /// [status] The status of the stack group.
+  /// [tags] The label of the resource stack group.
+  /// [templateBody] The template body.
+  /// [templateId] The ID of the template.
+  /// [templateUrl] The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
+  /// [templateVersion] The version of the template.
+  StackGroupState({
+    pulumi.Output<String>? administrationRoleName,
+    pulumi.Output<StackGroupAutoDeployment>? autoDeployment,
+    pulumi.Output<List<String>>? capabilities,
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? executionRoleName,
+    pulumi.Output<List<StackGroupParameter>>? parameters,
+    pulumi.Output<String>? permissionModel,
+    pulumi.Output<String>? resourceGroupId,
+    pulumi.Output<String>? stackGroupId,
+    pulumi.Output<String>? stackGroupName,
+    pulumi.Output<String>? status,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<String>? templateBody,
+    pulumi.Output<String>? templateId,
+    pulumi.Output<String>? templateUrl,
+    pulumi.Output<String>? templateVersion,
+  }) :
+      administrationRoleName = pulumi.Input.asOptionalInput<String>(administrationRoleName),
+      autoDeployment = pulumi.Input.asOptionalInput<StackGroupAutoDeployment>(autoDeployment),
+      capabilities = pulumi.Input.asOptionalInput<List<String>>(capabilities),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      executionRoleName = pulumi.Input.asOptionalInput<String>(executionRoleName),
+      parameters = pulumi.Input.asOptionalInput<List<StackGroupParameter>>(parameters),
+      permissionModel = pulumi.Input.asOptionalInput<String>(permissionModel),
+      resourceGroupId = pulumi.Input.asOptionalInput<String>(resourceGroupId),
+      stackGroupId = pulumi.Input.asOptionalInput<String>(stackGroupId),
+      stackGroupName = pulumi.Input.asOptionalInput<String>(stackGroupName),
+      status = pulumi.Input.asOptionalInput<String>(status),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      templateBody = pulumi.Input.asOptionalInput<String>(templateBody),
+      templateId = pulumi.Input.asOptionalInput<String>(templateId),
+      templateUrl = pulumi.Input.asOptionalInput<String>(templateUrl),
+      templateVersion = pulumi.Input.asOptionalInput<String>(templateVersion);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'administrationRoleName': ?administrationRoleName,
+      'autoDeployment': ?pulumi.Input.mapOptionalInputValue<StackGroupAutoDeployment, Map<String, dynamic>>(autoDeployment, (value) => value.toMap()),
+      'capabilities': ?capabilities,
+      'description': ?description,
+      'executionRoleName': ?executionRoleName,
+      'parameters': ?pulumi.Input.mapOptionalInputValue<List<StackGroupParameter>, List<Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeList<StackGroupParameter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'permissionModel': ?permissionModel,
+      'resourceGroupId': ?resourceGroupId,
+      'stackGroupId': ?stackGroupId,
+      'stackGroupName': ?stackGroupName,
+      'status': ?status,
+      'tags': ?tags,
+      'templateBody': ?templateBody,
+      'templateId': ?templateId,
+      'templateUrl': ?templateUrl,
+      'templateVersion': ?templateVersion,
+    };
+  }
+
+  factory StackGroupState.fromMap(Map<String, dynamic> map) {
+    return StackGroupState(
+      administrationRoleName: map['administrationRoleName'] == null ? null : pulumi.Output.create<String>(map['administrationRoleName'] as String),
+      autoDeployment: map['autoDeployment'] == null ? null : pulumi.Output.create<StackGroupAutoDeployment>(StackGroupAutoDeployment.fromMap((map['autoDeployment'] as Map).cast<String, dynamic>())),
+      capabilities: map['capabilities'] == null ? null : pulumi.Output.create<List<String>>((map['capabilities'] as List).cast<String>()),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      executionRoleName: map['executionRoleName'] == null ? null : pulumi.Output.create<String>(map['executionRoleName'] as String),
+      parameters: map['parameters'] == null ? null : pulumi.Output.create<List<StackGroupParameter>>(pulumi.Input.decodeList<StackGroupParameter>(map['parameters'], (value) => StackGroupParameter.fromMap((value as Map).cast<String, dynamic>()))),
+      permissionModel: map['permissionModel'] == null ? null : pulumi.Output.create<String>(map['permissionModel'] as String),
+      resourceGroupId: map['resourceGroupId'] == null ? null : pulumi.Output.create<String>(map['resourceGroupId'] as String),
+      stackGroupId: map['stackGroupId'] == null ? null : pulumi.Output.create<String>(map['stackGroupId'] as String),
+      stackGroupName: map['stackGroupName'] == null ? null : pulumi.Output.create<String>(map['stackGroupName'] as String),
+      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      templateBody: map['templateBody'] == null ? null : pulumi.Output.create<String>(map['templateBody'] as String),
+      templateId: map['templateId'] == null ? null : pulumi.Output.create<String>(map['templateId'] as String),
+      templateUrl: map['templateUrl'] == null ? null : pulumi.Output.create<String>(map['templateUrl'] as String),
+      templateVersion: map['templateVersion'] == null ? null : pulumi.Output.create<String>(map['templateVersion'] as String),
+    );
+  }
+}
+

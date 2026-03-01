@@ -1,0 +1,26 @@
+library module_communication;
+
+export 'communication/email_service.dart';
+export 'communication/email_service_args.dart';
+export 'communication/email_service_domain.dart';
+export 'communication/email_service_domain_args.dart';
+export 'communication/email_service_domain_sender_username.dart';
+export 'communication/email_service_domain_sender_username_args.dart';
+export 'communication/email_service_domain_sender_username_state.dart';
+export 'communication/email_service_domain_state.dart';
+export 'communication/email_service_domain_verification_record.dart';
+export 'communication/email_service_domain_verification_record_dkim.dart';
+export 'communication/email_service_domain_verification_record_dkim2.dart';
+export 'communication/email_service_domain_verification_record_dmarc.dart';
+export 'communication/email_service_domain_verification_record_domain.dart';
+export 'communication/email_service_domain_verification_record_spf.dart';
+export 'communication/email_service_state.dart';
+export 'communication/functions.dart';
+export 'communication/get_service_args.dart';
+export 'communication/get_service_result.dart';
+export 'communication/service.dart';
+export 'communication/service_args.dart';
+export 'communication/service_email_domain_association.dart';
+export 'communication/service_email_domain_association_args.dart';
+export 'communication/service_email_domain_association_state.dart';
+export 'communication/service_state.dart';

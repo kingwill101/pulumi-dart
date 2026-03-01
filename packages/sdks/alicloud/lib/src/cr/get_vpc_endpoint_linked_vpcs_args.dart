@@ -1,0 +1,62 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_cr_get_vpc_endpoint_linked_vpcs_get_vpc_endpoint_linked_vpcs_args_doc}
+/// Arguments for getVpcEndpointLinkedVpcs.
+/// {@endtemplate}
+/// {@macro pulumi_cr_get_vpc_endpoint_linked_vpcs_get_vpc_endpoint_linked_vpcs_args_doc}
+class GetVpcEndpointLinkedVpcsArgs {
+  /// A list of CR Vpc Endpoint Linked Vpc IDs.
+  final pulumi.Input<List<String>>? ids;
+  /// The ID of the instance.
+  final pulumi.Input<String> instanceId;
+  /// The name of the module that you want to access. Valid Values:
+  /// - `Registry`: the image repository.
+  /// - `Chart`: a Helm chart.
+  final pulumi.Input<String> moduleName;
+  /// File name where to save data source results (after running `pulumi preview`).
+  final pulumi.Input<String>? outputFile;
+  /// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
+  final pulumi.Input<String>? status;
+
+  /// Creates a new [GetVpcEndpointLinkedVpcsArgs].
+  /// [ids] A list of CR Vpc Endpoint Linked Vpc IDs.
+  /// [instanceId] The ID of the instance.
+  /// [moduleName] The name of the module that you want to access. Valid Values:
+  /// [outputFile] File name where to save data source results (after running `pulumi preview`).
+  /// [status] The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
+  GetVpcEndpointLinkedVpcsArgs({
+    pulumi.Output<List<String>>? ids,
+    required pulumi.Output<String> instanceId,
+    required pulumi.Output<String> moduleName,
+    pulumi.Output<String>? outputFile,
+    pulumi.Output<String>? status,
+  }) :
+      ids = pulumi.Input.asOptionalInput<List<String>>(ids),
+      instanceId = pulumi.Input.asInput<String>(instanceId),
+      moduleName = pulumi.Input.asInput<String>(moduleName),
+      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
+      status = pulumi.Input.asOptionalInput<String>(status);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'ids': ?ids,
+      'instanceId': instanceId,
+      'moduleName': moduleName,
+      'outputFile': ?outputFile,
+      'status': ?status,
+    };
+  }
+
+  factory GetVpcEndpointLinkedVpcsArgs.fromMap(Map<String, dynamic> map) {
+    return GetVpcEndpointLinkedVpcsArgs(
+      ids: map['ids'] == null ? null : pulumi.Output.create<List<String>>((map['ids'] as List).cast<String>()),
+      instanceId: pulumi.Output.create<String>(map['instanceId'] as String),
+      moduleName: pulumi.Output.create<String>(map['moduleName'] as String),
+      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      status: map['status'] == null ? null : pulumi.Output.create<String>(map['status'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_opensearch_package_association_package_association_args_doc}
+/// The set of arguments for PackageAssociation.
+/// {@endtemplate}
+/// {@macro pulumi_opensearch_package_association_package_association_args_doc}
+class PackageAssociationArgs {
+  /// Name of the domain to associate the package with.
+  final pulumi.Input<String> domainName;
+  /// Internal ID of the package to associate with a domain.
+  final pulumi.Input<String> packageId;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [PackageAssociationArgs].
+  /// [domainName] Name of the domain to associate the package with.
+  /// [packageId] Internal ID of the package to associate with a domain.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  PackageAssociationArgs({
+    required pulumi.Output<String> domainName,
+    required pulumi.Output<String> packageId,
+    pulumi.Output<String>? region,
+  }) :
+      domainName = pulumi.Input.asInput<String>(domainName),
+      packageId = pulumi.Input.asInput<String>(packageId),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'domainName': domainName,
+      'packageId': packageId,
+      'region': ?region,
+    };
+  }
+
+  factory PackageAssociationArgs.fromMap(Map<String, dynamic> map) {
+    return PackageAssociationArgs(
+      domainName: pulumi.Output.create<String>(map['domainName'] as String),
+      packageId: pulumi.Output.create<String>(map['packageId'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

@@ -1,0 +1,120 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'network_interface_ip_configuration.dart';
+
+/// {@template pulumi_network_network_interface_network_interface_args_doc}
+/// The set of arguments for NetworkInterface.
+/// {@endtemplate}
+/// {@macro pulumi_network_network_interface_network_interface_args_doc}
+class NetworkInterfaceArgs {
+  /// Should Accelerated Networking be enabled? Defaults to `false`.
+  ///
+  /// > **Note:** Only certain Virtual Machine sizes are supported for Accelerated Networking - [more information can be found in this document](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).
+  ///
+  /// > **Note:** To use Accelerated Networking in an Availability Set, the Availability Set must be deployed onto an Accelerated Networking enabled cluster.
+  final pulumi.Input<bool>? acceleratedNetworkingEnabled;
+  /// Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections`, `Floating`, `MaxConnections` and `None`.
+  ///
+  /// > **Note:** `auxiliary_mode` is in **Preview** and requires that the preview is enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
+  final pulumi.Input<String>? auxiliaryMode;
+  /// Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A8`, `A4`, `A1`, `A2` and `None`.
+  ///
+  /// > **Note:** `auxiliary_sku` is in **Preview** and requires that the preview is enabled - [more information can be found in the Azure documentation](https://learn.microsoft.com/azure/networking/nva-accelerated-connections#prerequisites).
+  final pulumi.Input<String>? auxiliarySku;
+  /// A list of IP Addresses defining the DNS Servers which should be used for this Network Interface.
+  ///
+  /// > **Note:** Configuring DNS Servers on the Network Interface will override the DNS Servers defined on the Virtual Network.
+  final pulumi.Input<List<String>>? dnsServers;
+  /// Specifies the Edge Zone within the Azure Region where this Network Interface should exist. Changing this forces a new Network Interface to be created.
+  final pulumi.Input<String>? edgeZone;
+  /// The (relative) DNS Name used for internal communications between Virtual Machines in the same Virtual Network.
+  final pulumi.Input<String>? internalDnsNameLabel;
+  /// One or more `ip_configuration` blocks as defined below.
+  final pulumi.Input<List<NetworkInterfaceIpConfiguration>> ipConfigurations;
+  /// Should IP Forwarding be enabled? Defaults to `false`.
+  final pulumi.Input<bool>? ipForwardingEnabled;
+  /// The location where the Network Interface should exist. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? location;
+  /// The name of the Network Interface. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+  /// The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+  final pulumi.Input<String> resourceGroupName;
+  /// A mapping of tags to assign to the resource.
+  final pulumi.Input<Map<String, String>>? tags;
+
+  /// Creates a new [NetworkInterfaceArgs].
+  /// [acceleratedNetworkingEnabled] Should Accelerated Networking be enabled? Defaults to `false`.
+  /// [auxiliaryMode] Specifies the auxiliary mode used to enable network high-performance feature on Network Virtual Appliances (NVAs). This feature offers competitive performance in Connections Per Second (CPS) optimization, along with improvements to handling large amounts of simultaneous connections. Possible values are `AcceleratedConnections`, `Floating`, `MaxConnections` and `None`.
+  /// [auxiliarySku] Specifies the SKU used for the network high-performance feature on Network Virtual Appliances (NVAs). Possible values are `A8`, `A4`, `A1`, `A2` and `None`.
+  /// [dnsServers] A list of IP Addresses defining the DNS Servers which should be used for this Network Interface.
+  /// [edgeZone] Specifies the Edge Zone within the Azure Region where this Network Interface should exist. Changing this forces a new Network Interface to be created.
+  /// [internalDnsNameLabel] The (relative) DNS Name used for internal communications between Virtual Machines in the same Virtual Network.
+  /// [ipConfigurations] One or more `ip_configuration` blocks as defined below.
+  /// [ipForwardingEnabled] Should IP Forwarding be enabled? Defaults to `false`.
+  /// [location] The location where the Network Interface should exist. Changing this forces a new resource to be created.
+  /// [name] The name of the Network Interface. Changing this forces a new resource to be created.
+  /// [resourceGroupName] The name of the Resource Group in which to create the Network Interface. Changing this forces a new resource to be created.
+  /// [tags] A mapping of tags to assign to the resource.
+  NetworkInterfaceArgs({
+    pulumi.Output<bool>? acceleratedNetworkingEnabled,
+    pulumi.Output<String>? auxiliaryMode,
+    pulumi.Output<String>? auxiliarySku,
+    pulumi.Output<List<String>>? dnsServers,
+    pulumi.Output<String>? edgeZone,
+    pulumi.Output<String>? internalDnsNameLabel,
+    required pulumi.Output<List<NetworkInterfaceIpConfiguration>> ipConfigurations,
+    pulumi.Output<bool>? ipForwardingEnabled,
+    pulumi.Output<String>? location,
+    pulumi.Output<String>? name,
+    required pulumi.Output<String> resourceGroupName,
+    pulumi.Output<Map<String, String>>? tags,
+  }) :
+      acceleratedNetworkingEnabled = pulumi.Input.asOptionalInput<bool>(acceleratedNetworkingEnabled),
+      auxiliaryMode = pulumi.Input.asOptionalInput<String>(auxiliaryMode),
+      auxiliarySku = pulumi.Input.asOptionalInput<String>(auxiliarySku),
+      dnsServers = pulumi.Input.asOptionalInput<List<String>>(dnsServers),
+      edgeZone = pulumi.Input.asOptionalInput<String>(edgeZone),
+      internalDnsNameLabel = pulumi.Input.asOptionalInput<String>(internalDnsNameLabel),
+      ipConfigurations = pulumi.Input.asInput<List<NetworkInterfaceIpConfiguration>>(ipConfigurations),
+      ipForwardingEnabled = pulumi.Input.asOptionalInput<bool>(ipForwardingEnabled),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'acceleratedNetworkingEnabled': ?acceleratedNetworkingEnabled,
+      'auxiliaryMode': ?auxiliaryMode,
+      'auxiliarySku': ?auxiliarySku,
+      'dnsServers': ?dnsServers,
+      'edgeZone': ?edgeZone,
+      'internalDnsNameLabel': ?internalDnsNameLabel,
+      'ipConfigurations': pulumi.Input.mapInputValue<List<NetworkInterfaceIpConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<NetworkInterfaceIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ipForwardingEnabled': ?ipForwardingEnabled,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': resourceGroupName,
+      'tags': ?tags,
+    };
+  }
+
+  factory NetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
+    return NetworkInterfaceArgs(
+      acceleratedNetworkingEnabled: map['acceleratedNetworkingEnabled'] == null ? null : pulumi.Output.create<bool>(map['acceleratedNetworkingEnabled'] as bool),
+      auxiliaryMode: map['auxiliaryMode'] == null ? null : pulumi.Output.create<String>(map['auxiliaryMode'] as String),
+      auxiliarySku: map['auxiliarySku'] == null ? null : pulumi.Output.create<String>(map['auxiliarySku'] as String),
+      dnsServers: map['dnsServers'] == null ? null : pulumi.Output.create<List<String>>((map['dnsServers'] as List).cast<String>()),
+      edgeZone: map['edgeZone'] == null ? null : pulumi.Output.create<String>(map['edgeZone'] as String),
+      internalDnsNameLabel: map['internalDnsNameLabel'] == null ? null : pulumi.Output.create<String>(map['internalDnsNameLabel'] as String),
+      ipConfigurations: pulumi.Output.create<List<NetworkInterfaceIpConfiguration>>(pulumi.Input.decodeList<NetworkInterfaceIpConfiguration>(map['ipConfigurations'], (value) => NetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      ipForwardingEnabled: map['ipForwardingEnabled'] == null ? null : pulumi.Output.create<bool>(map['ipForwardingEnabled'] as bool),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+    );
+  }
+}
+

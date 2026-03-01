@@ -1,0 +1,82 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_dialogflow_cx_v3_advanced_settings.dart';
+import 'google_cloud_dialogflow_cx_v3_event_handler.dart';
+import 'google_cloud_dialogflow_cx_v3_form.dart';
+import 'google_cloud_dialogflow_cx_v3_fulfillment.dart';
+import 'google_cloud_dialogflow_cx_v3_knowledge_connector_settings.dart';
+import 'google_cloud_dialogflow_cx_v3_transition_route.dart';
+
+/// A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
+class GoogleCloudDialogflowCxV3Page {
+  /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+  final GoogleCloudDialogflowCxV3AdvancedSettings? advancedSettings;
+  /// The human-readable name of the page, unique within the flow.
+  final String displayName;
+  /// The fulfillment to call when the session is entering the page.
+  final GoogleCloudDialogflowCxV3Fulfillment? entryFulfillment;
+  /// Handlers associated with the page to handle events such as webhook errors, no match or no input.
+  final List<GoogleCloudDialogflowCxV3EventHandler>? eventHandlers;
+  /// The form associated with the page, used for collecting parameters relevant to the page.
+  final GoogleCloudDialogflowCxV3Form? form;
+  /// Optional. Knowledge connector configuration.
+  final GoogleCloudDialogflowCxV3KnowledgeConnectorSettings? knowledgeConnectorSettings;
+  /// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
+  final String? name;
+  /// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
+  final List<String>? transitionRouteGroups;
+  /// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
+  final List<GoogleCloudDialogflowCxV3TransitionRoute>? transitionRoutes;
+
+  /// Creates a new [GoogleCloudDialogflowCxV3Page].
+  /// [advancedSettings] Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings exposed at the higher level.
+  /// [displayName] The human-readable name of the page, unique within the flow.
+  /// [entryFulfillment] The fulfillment to call when the session is entering the page.
+  /// [eventHandlers] Handlers associated with the page to handle events such as webhook errors, no match or no input.
+  /// [form] The form associated with the page, used for collecting parameters relevant to the page.
+  /// [knowledgeConnectorSettings] Optional. Knowledge connector configuration.
+  /// [name] The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
+  /// [transitionRouteGroups] Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a page. If the page links both flow-level transition route groups and agent-level transition route groups, the flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
+  /// [transitionRoutes] A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
+  GoogleCloudDialogflowCxV3Page({
+    this.advancedSettings,
+    required this.displayName,
+    this.entryFulfillment,
+    this.eventHandlers,
+    this.form,
+    this.knowledgeConnectorSettings,
+    this.name,
+    this.transitionRouteGroups,
+    this.transitionRoutes,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'advancedSettings': ?advancedSettings == null ? null : advancedSettings!.toMap(),
+      'displayName': displayName,
+      'entryFulfillment': ?entryFulfillment == null ? null : entryFulfillment!.toMap(),
+      'eventHandlers': ?eventHandlers == null ? null : pulumi.Input.encodeList<GoogleCloudDialogflowCxV3EventHandler, Map<String, dynamic>>(eventHandlers!, (value) => value.toMap()),
+      'form': ?form == null ? null : form!.toMap(),
+      'knowledgeConnectorSettings': ?knowledgeConnectorSettings == null ? null : knowledgeConnectorSettings!.toMap(),
+      'name': ?name,
+      'transitionRouteGroups': ?transitionRouteGroups,
+      'transitionRoutes': ?transitionRoutes == null ? null : pulumi.Input.encodeList<GoogleCloudDialogflowCxV3TransitionRoute, Map<String, dynamic>>(transitionRoutes!, (value) => value.toMap()),
+    };
+  }
+
+  factory GoogleCloudDialogflowCxV3Page.fromMap(Map<String, dynamic> map) {
+    return GoogleCloudDialogflowCxV3Page(
+      advancedSettings: map['advancedSettings'] == null ? null : GoogleCloudDialogflowCxV3AdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] as String,
+      entryFulfillment: map['entryFulfillment'] == null ? null : GoogleCloudDialogflowCxV3Fulfillment.fromMap((map['entryFulfillment'] as Map).cast<String, dynamic>()),
+      eventHandlers: map['eventHandlers'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EventHandler>(map['eventHandlers'], (value) => GoogleCloudDialogflowCxV3EventHandler.fromMap((value as Map).cast<String, dynamic>())),
+      form: map['form'] == null ? null : GoogleCloudDialogflowCxV3Form.fromMap((map['form'] as Map).cast<String, dynamic>()),
+      knowledgeConnectorSettings: map['knowledgeConnectorSettings'] == null ? null : GoogleCloudDialogflowCxV3KnowledgeConnectorSettings.fromMap((map['knowledgeConnectorSettings'] as Map).cast<String, dynamic>()),
+      name: map['name'] == null ? null : map['name'] as String,
+      transitionRouteGroups: map['transitionRouteGroups'] == null ? null : (map['transitionRouteGroups'] as List).cast<String>(),
+      transitionRoutes: map['transitionRoutes'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3TransitionRoute>(map['transitionRoutes'], (value) => GoogleCloudDialogflowCxV3TransitionRoute.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

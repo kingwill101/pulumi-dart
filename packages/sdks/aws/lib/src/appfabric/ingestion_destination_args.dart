@@ -1,0 +1,76 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'ingestion_destination_destination_configuration.dart';
+import 'ingestion_destination_processing_configuration.dart';
+import 'ingestion_destination_timeouts.dart';
+
+/// {@template pulumi_appfabric_ingestion_destination_ingestion_destination_args_doc}
+/// The set of arguments for IngestionDestination.
+/// {@endtemplate}
+/// {@macro pulumi_appfabric_ingestion_destination_ingestion_destination_args_doc}
+class IngestionDestinationArgs {
+  /// The Amazon Resource Name (ARN) of the app bundle to use for the request.
+  final pulumi.Input<String> appBundleArn;
+  /// Contains information about the destination of ingested data.
+  final pulumi.Input<IngestionDestinationDestinationConfiguration> destinationConfiguration;
+  /// The Amazon Resource Name (ARN) of the ingestion to use for the request.
+  final pulumi.Input<String> ingestionArn;
+  /// Contains information about how ingested data is processed.
+  final pulumi.Input<IngestionDestinationProcessingConfiguration> processingConfiguration;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<IngestionDestinationTimeouts>? timeouts;
+
+  /// Creates a new [IngestionDestinationArgs].
+  /// [appBundleArn] The Amazon Resource Name (ARN) of the app bundle to use for the request.
+  /// [destinationConfiguration] Contains information about the destination of ingested data.
+  /// [ingestionArn] The Amazon Resource Name (ARN) of the ingestion to use for the request.
+  /// [processingConfiguration] Contains information about how ingested data is processed.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [timeouts] Optional.
+  IngestionDestinationArgs({
+    required pulumi.Output<String> appBundleArn,
+    required pulumi.Output<IngestionDestinationDestinationConfiguration> destinationConfiguration,
+    required pulumi.Output<String> ingestionArn,
+    required pulumi.Output<IngestionDestinationProcessingConfiguration> processingConfiguration,
+    pulumi.Output<String>? region,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<IngestionDestinationTimeouts>? timeouts,
+  }) :
+      appBundleArn = pulumi.Input.asInput<String>(appBundleArn),
+      destinationConfiguration = pulumi.Input.asInput<IngestionDestinationDestinationConfiguration>(destinationConfiguration),
+      ingestionArn = pulumi.Input.asInput<String>(ingestionArn),
+      processingConfiguration = pulumi.Input.asInput<IngestionDestinationProcessingConfiguration>(processingConfiguration),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      timeouts = pulumi.Input.asOptionalInput<IngestionDestinationTimeouts>(timeouts);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'appBundleArn': appBundleArn,
+      'destinationConfiguration': pulumi.Input.mapInputValue<IngestionDestinationDestinationConfiguration, Map<String, dynamic>>(destinationConfiguration, (value) => value.toMap()),
+      'ingestionArn': ingestionArn,
+      'processingConfiguration': pulumi.Input.mapInputValue<IngestionDestinationProcessingConfiguration, Map<String, dynamic>>(processingConfiguration, (value) => value.toMap()),
+      'region': ?region,
+      'tags': ?tags,
+      'timeouts': ?pulumi.Input.mapOptionalInputValue<IngestionDestinationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+    };
+  }
+
+  factory IngestionDestinationArgs.fromMap(Map<String, dynamic> map) {
+    return IngestionDestinationArgs(
+      appBundleArn: pulumi.Output.create<String>(map['appBundleArn'] as String),
+      destinationConfiguration: pulumi.Output.create<IngestionDestinationDestinationConfiguration>(IngestionDestinationDestinationConfiguration.fromMap((map['destinationConfiguration'] as Map).cast<String, dynamic>())),
+      ingestionArn: pulumi.Output.create<String>(map['ingestionArn'] as String),
+      processingConfiguration: pulumi.Output.create<IngestionDestinationProcessingConfiguration>(IngestionDestinationProcessingConfiguration.fromMap((map['processingConfiguration'] as Map).cast<String, dynamic>())),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      timeouts: map['timeouts'] == null ? null : pulumi.Output.create<IngestionDestinationTimeouts>(IngestionDestinationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

@@ -1,0 +1,59 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'coo_domain_precise_access_rule_condition.dart';
+
+/// Input properties used for looking up and filtering CooDomainPreciseAccessRule resources.
+class CooDomainPreciseAccessRuleState {
+  /// Action to take on match. Valid values:
+  final pulumi.Input<String>? action;
+  /// List of matching conditions. See `condition` below.
+  final pulumi.Input<List<CooDomainPreciseAccessRuleCondition>>? conditions;
+  /// Domain name of the website service.
+  /// > **NOTE:**  The domain name must already have a website service forwarding rule configured. You can call [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) to query all domain names.
+  final pulumi.Input<String>? domain;
+  /// Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
+  final pulumi.Input<int>? expires;
+  /// Rule name.
+  final pulumi.Input<String>? name;
+
+  /// Creates a new [CooDomainPreciseAccessRuleState].
+  /// [action] Action to take on match. Valid values:
+  /// [conditions] List of matching conditions. See `condition` below.
+  /// [domain] Domain name of the website service.
+  /// [expires] Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
+  /// [name] Rule name.
+  CooDomainPreciseAccessRuleState({
+    pulumi.Output<String>? action,
+    pulumi.Output<List<CooDomainPreciseAccessRuleCondition>>? conditions,
+    pulumi.Output<String>? domain,
+    pulumi.Output<int>? expires,
+    pulumi.Output<String>? name,
+  }) :
+      action = pulumi.Input.asOptionalInput<String>(action),
+      conditions = pulumi.Input.asOptionalInput<List<CooDomainPreciseAccessRuleCondition>>(conditions),
+      domain = pulumi.Input.asOptionalInput<String>(domain),
+      expires = pulumi.Input.asOptionalInput<int>(expires),
+      name = pulumi.Input.asOptionalInput<String>(name);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'action': ?action,
+      'conditions': ?pulumi.Input.mapOptionalInputValue<List<CooDomainPreciseAccessRuleCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<CooDomainPreciseAccessRuleCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'domain': ?domain,
+      'expires': ?expires,
+      'name': ?name,
+    };
+  }
+
+  factory CooDomainPreciseAccessRuleState.fromMap(Map<String, dynamic> map) {
+    return CooDomainPreciseAccessRuleState(
+      action: map['action'] == null ? null : pulumi.Output.create<String>(map['action'] as String),
+      conditions: map['conditions'] == null ? null : pulumi.Output.create<List<CooDomainPreciseAccessRuleCondition>>(pulumi.Input.decodeList<CooDomainPreciseAccessRuleCondition>(map['conditions'], (value) => CooDomainPreciseAccessRuleCondition.fromMap((value as Map).cast<String, dynamic>()))),
+      domain: map['domain'] == null ? null : pulumi.Output.create<String>(map['domain'] as String),
+      expires: map['expires'] == null ? null : pulumi.Output.create<int>(map['expires'] as int),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+    );
+  }
+}
+

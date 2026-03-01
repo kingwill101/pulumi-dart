@@ -1,6 +1,0 @@
-providers:
-  # Maintained Dart-only dependency fallbacks for providers when upstream schema
-  # does not define language.dart.dependencies.
-  policy:
-    dependencies:
-      pulumi_policy: any

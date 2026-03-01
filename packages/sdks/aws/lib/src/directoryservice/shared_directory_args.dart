@@ -1,0 +1,63 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'shared_directory_target.dart';
+
+/// {@template pulumi_directoryservice_shared_directory_shared_directory_args_doc}
+/// The set of arguments for SharedDirectory.
+/// {@endtemplate}
+/// {@macro pulumi_directoryservice_shared_directory_shared_directory_args_doc}
+class SharedDirectoryArgs {
+  /// Identifier of the Managed Microsoft AD directory that you want to share with other accounts.
+  final pulumi.Input<String> directoryId;
+  /// Method used when sharing a directory. Valid values are `ORGANIZATIONS` and `HANDSHAKE`. Default is `HANDSHAKE`.
+  final pulumi.Input<String>? method;
+  /// Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
+  final pulumi.Input<String>? notes;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Identifier for the directory consumer account with whom the directory is to be shared. See below.
+  ///
+  /// The following arguments are optional:
+  final pulumi.Input<SharedDirectoryTarget> target;
+
+  /// Creates a new [SharedDirectoryArgs].
+  /// [directoryId] Identifier of the Managed Microsoft AD directory that you want to share with other accounts.
+  /// [method] Method used when sharing a directory. Valid values are `ORGANIZATIONS` and `HANDSHAKE`. Default is `HANDSHAKE`.
+  /// [notes] Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [target] Identifier for the directory consumer account with whom the directory is to be shared. See below.
+  SharedDirectoryArgs({
+    required pulumi.Output<String> directoryId,
+    pulumi.Output<String>? method,
+    pulumi.Output<String>? notes,
+    pulumi.Output<String>? region,
+    required pulumi.Output<SharedDirectoryTarget> target,
+  }) :
+      directoryId = pulumi.Input.asInput<String>(directoryId),
+      method = pulumi.Input.asOptionalInput<String>(method),
+      notes = pulumi.Input.asOptionalInput<String>(notes),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      target = pulumi.Input.asInput<SharedDirectoryTarget>(target);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'directoryId': directoryId,
+      'method': ?method,
+      'notes': ?notes,
+      'region': ?region,
+      'target': pulumi.Input.mapInputValue<SharedDirectoryTarget, Map<String, dynamic>>(target, (value) => value.toMap()),
+    };
+  }
+
+  factory SharedDirectoryArgs.fromMap(Map<String, dynamic> map) {
+    return SharedDirectoryArgs(
+      directoryId: pulumi.Output.create<String>(map['directoryId'] as String),
+      method: map['method'] == null ? null : pulumi.Output.create<String>(map['method'] as String),
+      notes: map['notes'] == null ? null : pulumi.Output.create<String>(map['notes'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      target: pulumi.Output.create<SharedDirectoryTarget>(SharedDirectoryTarget.fromMap((map['target'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

@@ -1,0 +1,44 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'regex_match_set_regex_match_tuple.dart';
+
+/// Input properties used for looking up and filtering RegexMatchSet resources.
+class RegexMatchSetState {
+  /// Amazon Resource Name (ARN)
+  final pulumi.Input<String>? arn;
+  /// The name or description of the Regex Match Set.
+  final pulumi.Input<String>? name;
+  /// The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
+  final pulumi.Input<List<RegexMatchSetRegexMatchTuple>>? regexMatchTuples;
+
+  /// Creates a new [RegexMatchSetState].
+  /// [arn] Amazon Resource Name (ARN)
+  /// [name] The name or description of the Regex Match Set.
+  /// [regexMatchTuples] The regular expression pattern that you want AWS WAF to search for in web requests, the location in requests that you want AWS WAF to search, and other settings. See below.
+  RegexMatchSetState({
+    pulumi.Output<String>? arn,
+    pulumi.Output<String>? name,
+    pulumi.Output<List<RegexMatchSetRegexMatchTuple>>? regexMatchTuples,
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      regexMatchTuples = pulumi.Input.asOptionalInput<List<RegexMatchSetRegexMatchTuple>>(regexMatchTuples);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'arn': ?arn,
+      'name': ?name,
+      'regexMatchTuples': ?pulumi.Input.mapOptionalInputValue<List<RegexMatchSetRegexMatchTuple>, List<Map<String, dynamic>>>(regexMatchTuples, (value) => pulumi.Input.encodeList<RegexMatchSetRegexMatchTuple, Map<String, dynamic>>(value, (value) => value.toMap())),
+    };
+  }
+
+  factory RegexMatchSetState.fromMap(Map<String, dynamic> map) {
+    return RegexMatchSetState(
+      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      regexMatchTuples: map['regexMatchTuples'] == null ? null : pulumi.Output.create<List<RegexMatchSetRegexMatchTuple>>(pulumi.Input.decodeList<RegexMatchSetRegexMatchTuple>(map['regexMatchTuples'], (value) => RegexMatchSetRegexMatchTuple.fromMap((value as Map).cast<String, dynamic>()))),
+    );
+  }
+}
+

@@ -1,0 +1,32 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_billing_get_views_get_views_args_doc}
+/// Arguments for getViews.
+/// {@endtemplate}
+/// {@macro pulumi_billing_get_views_get_views_args_doc}
+class GetViewsArgs {
+  /// List of billing view types to retrieve. Valid values are `PRIMARY`, `BILLING_GROUP`, `CUSTOM`.
+  final pulumi.Input<List<String>>? billingViewTypes;
+
+  /// Creates a new [GetViewsArgs].
+  /// [billingViewTypes] List of billing view types to retrieve. Valid values are `PRIMARY`, `BILLING_GROUP`, `CUSTOM`.
+  GetViewsArgs({
+    pulumi.Output<List<String>>? billingViewTypes,
+  }) :
+      billingViewTypes = pulumi.Input.asOptionalInput<List<String>>(billingViewTypes);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'billingViewTypes': ?billingViewTypes,
+    };
+  }
+
+  factory GetViewsArgs.fromMap(Map<String, dynamic> map) {
+    return GetViewsArgs(
+      billingViewTypes: map['billingViewTypes'] == null ? null : pulumi.Output.create<List<String>>((map['billingViewTypes'] as List).cast<String>()),
+    );
+  }
+}
+

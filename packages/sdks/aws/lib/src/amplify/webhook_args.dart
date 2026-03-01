@@ -1,0 +1,53 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_amplify_webhook_webhook_args_doc}
+/// The set of arguments for Webhook.
+/// {@endtemplate}
+/// {@macro pulumi_amplify_webhook_webhook_args_doc}
+class WebhookArgs {
+  /// Unique ID for an Amplify app.
+  final pulumi.Input<String> appId;
+  /// Name for a branch that is part of the Amplify app.
+  final pulumi.Input<String> branchName;
+  /// Description for a webhook.
+  final pulumi.Input<String>? description;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [WebhookArgs].
+  /// [appId] Unique ID for an Amplify app.
+  /// [branchName] Name for a branch that is part of the Amplify app.
+  /// [description] Description for a webhook.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  WebhookArgs({
+    required pulumi.Output<String> appId,
+    required pulumi.Output<String> branchName,
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? region,
+  }) :
+      appId = pulumi.Input.asInput<String>(appId),
+      branchName = pulumi.Input.asInput<String>(branchName),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'appId': appId,
+      'branchName': branchName,
+      'description': ?description,
+      'region': ?region,
+    };
+  }
+
+  factory WebhookArgs.fromMap(Map<String, dynamic> map) {
+    return WebhookArgs(
+      appId: pulumi.Output.create<String>(map['appId'] as String),
+      branchName: pulumi.Output.create<String>(map['branchName'] as String),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

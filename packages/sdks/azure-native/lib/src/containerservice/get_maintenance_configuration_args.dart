@@ -1,0 +1,46 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_containerservice_get_maintenance_configuration_args_doc}
+/// Arguments for getMaintenanceConfiguration.
+/// {@endtemplate}
+/// {@macro pulumi_containerservice_get_maintenance_configuration_args_doc}
+class GetMaintenanceConfigurationArgs {
+  /// The name of the maintenance configuration.
+  final pulumi.Input<String> configName;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// The name of the managed cluster resource.
+  final pulumi.Input<String> resourceName;
+
+  /// Creates a new [GetMaintenanceConfigurationArgs].
+  /// [configName] The name of the maintenance configuration.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [resourceName] The name of the managed cluster resource.
+  GetMaintenanceConfigurationArgs({
+    required pulumi.Output<String> configName,
+    required pulumi.Output<String> resourceGroupName,
+    required pulumi.Output<String> resourceName,
+  }) :
+      configName = pulumi.Input.asInput<String>(configName),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      resourceName = pulumi.Input.asInput<String>(resourceName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'configName': configName,
+      'resourceGroupName': resourceGroupName,
+      'resourceName': resourceName,
+    };
+  }
+
+  factory GetMaintenanceConfigurationArgs.fromMap(Map<String, dynamic> map) {
+    return GetMaintenanceConfigurationArgs(
+      configName: pulumi.Output.create<String>(map['configName'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      resourceName: pulumi.Output.create<String>(map['resourceName'] as String),
+    );
+  }
+}
+

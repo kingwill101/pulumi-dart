@@ -1,0 +1,24 @@
+library module_amplify;
+
+export 'amplify/app.dart';
+export 'amplify/app_args.dart';
+export 'amplify/app_auto_branch_creation_config.dart';
+export 'amplify/app_cache_config.dart';
+export 'amplify/app_custom_rule.dart';
+export 'amplify/app_job_config.dart';
+export 'amplify/app_production_branch.dart';
+export 'amplify/app_state.dart';
+export 'amplify/backend_environment.dart';
+export 'amplify/backend_environment_args.dart';
+export 'amplify/backend_environment_state.dart';
+export 'amplify/branch.dart';
+export 'amplify/branch_args.dart';
+export 'amplify/branch_state.dart';
+export 'amplify/domain_association.dart';
+export 'amplify/domain_association_args.dart';
+export 'amplify/domain_association_certificate_settings.dart';
+export 'amplify/domain_association_state.dart';
+export 'amplify/domain_association_sub_domain.dart';
+export 'amplify/webhook.dart';
+export 'amplify/webhook_args.dart';
+export 'amplify/webhook_state.dart';

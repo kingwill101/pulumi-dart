@@ -1,0 +1,37 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_ml_v1_get_model_args_doc}
+/// Arguments for getModel.
+/// {@endtemplate}
+/// {@macro pulumi_ml_v1_get_model_args_doc}
+class GetModelArgs {
+  final pulumi.Input<String> modelId;
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [GetModelArgs].
+  /// [modelId] Required.
+  /// [project] Optional.
+  GetModelArgs({
+    required pulumi.Output<String> modelId,
+    pulumi.Output<String>? project,
+  }) :
+      modelId = pulumi.Input.asInput<String>(modelId),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'modelId': modelId,
+      'project': ?project,
+    };
+  }
+
+  factory GetModelArgs.fromMap(Map<String, dynamic> map) {
+    return GetModelArgs(
+      modelId: pulumi.Output.create<String>(map['modelId'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

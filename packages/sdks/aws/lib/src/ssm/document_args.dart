@@ -1,0 +1,96 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'document_attachments_source.dart';
+
+/// {@template pulumi_ssm_document_document_args_doc}
+/// The set of arguments for Document.
+/// {@endtemplate}
+/// {@macro pulumi_ssm_document_document_args_doc}
+class DocumentArgs {
+  /// One or more configuration blocks describing attachments sources to a version of a document. See `attachments_source` block below for details.
+  final pulumi.Input<List<DocumentAttachmentsSource>>? attachmentsSources;
+  /// The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
+  final pulumi.Input<String> content;
+  /// The format of the document. Valid values: `JSON`, `TEXT`, `YAML`.
+  final pulumi.Input<String>? documentFormat;
+  /// The type of the document. For a list of valid values, see the [API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_CreateDocument.html#systemsmanager-CreateDocument-request-DocumentType).
+  final pulumi.Input<String> documentType;
+  /// The name of the document.
+  final pulumi.Input<String>? name;
+  /// Additional permissions to attach to the document. See Permissions below for details.
+  final pulumi.Input<Map<String, String>>? permissions;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
+  final pulumi.Input<String>? targetType;
+  /// The version of the artifact associated with the document. For example, `12.6`. This value is unique across all versions of a document, and can't be changed.
+  final pulumi.Input<String>? versionName;
+
+  /// Creates a new [DocumentArgs].
+  /// [attachmentsSources] One or more configuration blocks describing attachments sources to a version of a document. See `attachments_source` block below for details.
+  /// [content] The content for the SSM document in JSON or YAML format. The content of the document must not exceed 64KB. This quota also includes the content specified for input parameters at runtime. We recommend storing the contents for your new document in an external JSON or YAML file and referencing the file in a command.
+  /// [documentFormat] The format of the document. Valid values: `JSON`, `TEXT`, `YAML`.
+  /// [documentType] The type of the document. For a list of valid values, see the [API Reference](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_CreateDocument.html#systemsmanager-CreateDocument-request-DocumentType).
+  /// [name] The name of the document.
+  /// [permissions] Additional permissions to attach to the document. See Permissions below for details.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [targetType] The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
+  /// [versionName] The version of the artifact associated with the document. For example, `12.6`. This value is unique across all versions of a document, and can't be changed.
+  DocumentArgs({
+    pulumi.Output<List<DocumentAttachmentsSource>>? attachmentsSources,
+    required pulumi.Output<String> content,
+    pulumi.Output<String>? documentFormat,
+    required pulumi.Output<String> documentType,
+    pulumi.Output<String>? name,
+    pulumi.Output<Map<String, String>>? permissions,
+    pulumi.Output<String>? region,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<String>? targetType,
+    pulumi.Output<String>? versionName,
+  }) :
+      attachmentsSources = pulumi.Input.asOptionalInput<List<DocumentAttachmentsSource>>(attachmentsSources),
+      content = pulumi.Input.asInput<String>(content),
+      documentFormat = pulumi.Input.asOptionalInput<String>(documentFormat),
+      documentType = pulumi.Input.asInput<String>(documentType),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      permissions = pulumi.Input.asOptionalInput<Map<String, String>>(permissions),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      targetType = pulumi.Input.asOptionalInput<String>(targetType),
+      versionName = pulumi.Input.asOptionalInput<String>(versionName);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'attachmentsSources': ?pulumi.Input.mapOptionalInputValue<List<DocumentAttachmentsSource>, List<Map<String, dynamic>>>(attachmentsSources, (value) => pulumi.Input.encodeList<DocumentAttachmentsSource, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'content': content,
+      'documentFormat': ?documentFormat,
+      'documentType': documentType,
+      'name': ?name,
+      'permissions': ?permissions,
+      'region': ?region,
+      'tags': ?tags,
+      'targetType': ?targetType,
+      'versionName': ?versionName,
+    };
+  }
+
+  factory DocumentArgs.fromMap(Map<String, dynamic> map) {
+    return DocumentArgs(
+      attachmentsSources: map['attachmentsSources'] == null ? null : pulumi.Output.create<List<DocumentAttachmentsSource>>(pulumi.Input.decodeList<DocumentAttachmentsSource>(map['attachmentsSources'], (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>()))),
+      content: pulumi.Output.create<String>(map['content'] as String),
+      documentFormat: map['documentFormat'] == null ? null : pulumi.Output.create<String>(map['documentFormat'] as String),
+      documentType: pulumi.Output.create<String>(map['documentType'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      permissions: map['permissions'] == null ? null : pulumi.Output.create<Map<String, String>>((map['permissions'] as Map).cast<String, String>()),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      targetType: map['targetType'] == null ? null : pulumi.Output.create<String>(map['targetType'] as String),
+      versionName: map['versionName'] == null ? null : pulumi.Output.create<String>(map['versionName'] as String),
+    );
+  }
+}
+

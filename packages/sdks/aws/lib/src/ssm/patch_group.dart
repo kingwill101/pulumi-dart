@@ -1,0 +1,193 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'patch_group_args.dart';
+import 'patch_group_state.dart';
+
+/// Provides an SSM Patch Group resource
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const production = new aws.ssm.PatchBaseline("production", {
+///     name: "patch-baseline",
+///     approvedPatches: ["KB123456"],
+/// });
+/// const patchgroup = new aws.ssm.PatchGroup("patchgroup", {
+///     baselineId: production.id,
+///     patchGroup: "patch-group-name",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// production = aws.ssm.PatchBaseline("production",
+///     name="patch-baseline",
+///     approved_patches=["KB123456"])
+/// patchgroup = aws.ssm.PatchGroup("patchgroup",
+///     baseline_id=production.id,
+///     patch_group="patch-group-name")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var production = new Aws.Ssm.PatchBaseline("production", new()
+///     {
+///         Name = "patch-baseline",
+///         ApprovedPatches = new[]
+///         {
+///             "KB123456",
+///         },
+///     });
+///
+///     var patchgroup = new Aws.Ssm.PatchGroup("patchgroup", new()
+///     {
+///         BaselineId = production.Id,
+///         PatchGroupName = "patch-group-name",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/ssm"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		production, err := ssm.NewPatchBaseline(ctx, "production", &ssm.PatchBaselineArgs{
+/// 			Name: pulumi.String("patch-baseline"),
+/// 			ApprovedPatches: pulumi.StringArray{
+/// 				pulumi.String("KB123456"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ssm.NewPatchGroup(ctx, "patchgroup", &ssm.PatchGroupArgs{
+/// 			BaselineId: production.ID(),
+/// 			PatchGroup: pulumi.String("patch-group-name"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.ssm.PatchBaseline;
+/// import com.pulumi.aws.ssm.PatchBaselineArgs;
+/// import com.pulumi.aws.ssm.PatchGroup;
+/// import com.pulumi.aws.ssm.PatchGroupArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var production = new PatchBaseline("production", PatchBaselineArgs.builder()
+///             .name("patch-baseline")
+///             .approvedPatches("KB123456")
+///             .build());
+///
+///         var patchgroup = new PatchGroup("patchgroup", PatchGroupArgs.builder()
+///             .baselineId(production.id())
+///             .patchGroup("patch-group-name")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   production:
+///     type: aws:ssm:PatchBaseline
+///     properties:
+///       name: patch-baseline
+///       approvedPatches:
+///         - KB123456
+///   patchgroup:
+///     type: aws:ssm:PatchGroup
+///     properties:
+///       baselineId: ${production.id}
+///       patchGroup: patch-group-name
+/// ```
+class PatchGroup extends pulumi.CustomResource {
+  /// The ID of the patch baseline to register the patch group with.
+  late final pulumi.Output<String> baselineId;
+  /// The name of the patch group that should be registered with the patch baseline.
+  late final pulumi.Output<String> patchGroup;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  late final pulumi.Output<String> region;
+
+  /// Creates a new [PatchGroup].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [PatchGroup]. {@macro pulumi_ssm_patch_group_patch_group_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  PatchGroup(
+    String name, {
+    PatchGroupArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:ssm/patchGroup:PatchGroup',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.baselineId = registerOutput<String>('baselineId');
+    this.patchGroup = registerOutput<String>('patchGroup');
+    this.region = registerOutput<String>('region');
+  }
+
+  /// Gets an existing [PatchGroup] resource's state with the given [name] and [id].
+  static PatchGroup get(
+    String name,
+    pulumi.Input<String> id, {
+    PatchGroupState? state,
+  }) {
+    return PatchGroup._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id),
+    );
+  }
+
+  PatchGroup._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'aws:ssm/patchGroup:PatchGroup',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.baselineId = registerOutput<String>('baselineId');
+    this.patchGroup = registerOutput<String>('patchGroup');
+    this.region = registerOutput<String>('region');
+  }
+}

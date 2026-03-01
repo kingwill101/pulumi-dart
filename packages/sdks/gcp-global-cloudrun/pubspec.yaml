@@ -1,0 +1,10 @@
+name: pulumi_gcp_global_cloudrun
+description: Generated Pulumi Dart project.
+version: 0.0.3
+environment:
+    sdk: ^3.10.0
+resolution: workspace
+dependencies:
+    pulumi: 0.1.0
+dev_dependencies:
+    lints: ^6.1.0

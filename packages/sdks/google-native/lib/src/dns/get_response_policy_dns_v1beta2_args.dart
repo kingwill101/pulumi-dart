@@ -1,0 +1,43 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_dns_v1beta2_get_response_policy_dns_v1beta2_args_doc}
+/// Arguments for getResponsePolicy.
+/// {@endtemplate}
+/// {@macro pulumi_dns_v1beta2_get_response_policy_dns_v1beta2_args_doc}
+class GetResponsePolicyDnsV1beta2Args {
+  final pulumi.Input<String>? clientOperationId;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String> responsePolicy;
+
+  /// Creates a new [GetResponsePolicyDnsV1beta2Args].
+  /// [clientOperationId] Optional.
+  /// [project] Optional.
+  /// [responsePolicy] Required.
+  GetResponsePolicyDnsV1beta2Args({
+    pulumi.Output<String>? clientOperationId,
+    pulumi.Output<String>? project,
+    required pulumi.Output<String> responsePolicy,
+  }) :
+      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      responsePolicy = pulumi.Input.asInput<String>(responsePolicy);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'clientOperationId': ?clientOperationId,
+      'project': ?project,
+      'responsePolicy': responsePolicy,
+    };
+  }
+
+  factory GetResponsePolicyDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
+    return GetResponsePolicyDnsV1beta2Args(
+      clientOperationId: map['clientOperationId'] == null ? null : pulumi.Output.create<String>(map['clientOperationId'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      responsePolicy: pulumi.Output.create<String>(map['responsePolicy'] as String),
+    );
+  }
+}
+

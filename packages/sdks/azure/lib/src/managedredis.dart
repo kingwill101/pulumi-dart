@@ -1,0 +1,24 @@
+library module_managedredis;
+
+export 'managedredis/access_policy_assignment.dart';
+export 'managedredis/access_policy_assignment_args.dart';
+export 'managedredis/access_policy_assignment_state.dart';
+export 'managedredis/functions.dart';
+export 'managedredis/geo_replication.dart';
+export 'managedredis/geo_replication_args.dart';
+export 'managedredis/geo_replication_state.dart';
+export 'managedredis/get_access_policy_assignment_args.dart';
+export 'managedredis/get_access_policy_assignment_result.dart';
+export 'managedredis/get_args.dart';
+export 'managedredis/get_customer_managed_key.dart';
+export 'managedredis/get_default_database.dart';
+export 'managedredis/get_default_database_module.dart';
+export 'managedredis/get_identity.dart';
+export 'managedredis/get_result.dart';
+export 'managedredis/managed_redis.dart';
+export 'managedredis/managed_redis_args.dart';
+export 'managedredis/managed_redis_customer_managed_key.dart';
+export 'managedredis/managed_redis_default_database.dart';
+export 'managedredis/managed_redis_default_database_module.dart';
+export 'managedredis/managed_redis_identity.dart';
+export 'managedredis/managed_redis_state.dart';

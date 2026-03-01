@@ -1,0 +1,61 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'configuration_configuration.dart';
+import 'configuration_datastore.dart';
+
+/// Input properties used for looking up and filtering Configuration resources.
+class ConfigurationState {
+  /// An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+  final pulumi.Input<List<ConfigurationConfiguration>>? configurations;
+  /// An array of database engine type and version. The datastore
+  /// object structure is documented below. Changing this creates resource.
+  final pulumi.Input<ConfigurationDatastore>? datastore;
+  /// Description of the resource.
+  final pulumi.Input<String>? description;
+  /// A unique name for the resource.
+  final pulumi.Input<String>? name;
+  /// The region in which to create the db instance. Changing this
+  /// creates a new instance.
+  final pulumi.Input<String>? region;
+
+  /// Creates a new [ConfigurationState].
+  /// [configurations] An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
+  /// [datastore] An array of database engine type and version. The datastore
+  /// [description] Description of the resource.
+  /// [name] A unique name for the resource.
+  /// [region] The region in which to create the db instance. Changing this
+  ConfigurationState({
+    pulumi.Output<List<ConfigurationConfiguration>>? configurations,
+    pulumi.Output<ConfigurationDatastore>? datastore,
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? region,
+  }) :
+      configurations = pulumi.Input.asOptionalInput<List<ConfigurationConfiguration>>(configurations),
+      datastore = pulumi.Input.asOptionalInput<ConfigurationDatastore>(datastore),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      region = pulumi.Input.asOptionalInput<String>(region);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'configurations': ?pulumi.Input.mapOptionalInputValue<List<ConfigurationConfiguration>, List<Map<String, dynamic>>>(configurations, (value) => pulumi.Input.encodeList<ConfigurationConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'datastore': ?pulumi.Input.mapOptionalInputValue<ConfigurationDatastore, Map<String, dynamic>>(datastore, (value) => value.toMap()),
+      'description': ?description,
+      'name': ?name,
+      'region': ?region,
+    };
+  }
+
+  factory ConfigurationState.fromMap(Map<String, dynamic> map) {
+    return ConfigurationState(
+      configurations: map['configurations'] == null ? null : pulumi.Output.create<List<ConfigurationConfiguration>>(pulumi.Input.decodeList<ConfigurationConfiguration>(map['configurations'], (value) => ConfigurationConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
+      datastore: map['datastore'] == null ? null : pulumi.Output.create<ConfigurationDatastore>(ConfigurationDatastore.fromMap((map['datastore'] as Map).cast<String, dynamic>())),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+    );
+  }
+}
+

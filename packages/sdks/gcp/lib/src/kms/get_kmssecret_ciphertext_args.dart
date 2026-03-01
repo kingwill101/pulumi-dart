@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_kms_get_kmssecret_ciphertext_get_kmssecret_ciphertext_args_doc}
+/// Arguments for getKMSSecretCiphertext.
+/// {@endtemplate}
+/// {@macro pulumi_kms_get_kmssecret_ciphertext_get_kmssecret_ciphertext_args_doc}
+class GetKMSSecretCiphertextArgs {
+  /// The id of the CryptoKey that will be used to
+  /// encrypt the provided plaintext. This is represented by the format
+  /// `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
+  final pulumi.Input<String> cryptoKey;
+  /// The plaintext to be encrypted
+  final pulumi.Input<String> plaintext;
+
+  /// Creates a new [GetKMSSecretCiphertextArgs].
+  /// [cryptoKey] The id of the CryptoKey that will be used to
+  /// [plaintext] The plaintext to be encrypted
+  GetKMSSecretCiphertextArgs({
+    required pulumi.Output<String> cryptoKey,
+    required pulumi.Output<String> plaintext,
+  }) :
+      cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
+      plaintext = pulumi.Input.asInput<String>(plaintext);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'cryptoKey': cryptoKey,
+      'plaintext': plaintext,
+    };
+  }
+
+  factory GetKMSSecretCiphertextArgs.fromMap(Map<String, dynamic> map) {
+    return GetKMSSecretCiphertextArgs(
+      cryptoKey: pulumi.Output.create<String>(map['cryptoKey'] as String),
+      plaintext: pulumi.Output.create<String>(map['plaintext'] as String),
+    );
+  }
+}
+

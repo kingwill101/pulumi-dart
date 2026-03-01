@@ -1,0 +1,1648 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'instance_accelerator.dart';
+import 'instance_args.dart';
+import 'instance_crypto_key_config.dart';
+import 'instance_event_publish_config.dart';
+import 'instance_network_config.dart';
+import 'instance_state.dart';
+
+/// Represents a Data Fusion instance.
+///
+///
+/// To get more information about Instance, see:
+///
+/// * [API documentation](https://cloud.google.com/data-fusion/docs/reference/rest/v1beta1/projects.locations.instances)
+/// * How-to Guides
+/// * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
+///
+/// ## Example Usage
+///
+/// ### Data Fusion Instance Basic
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const basicInstance = new gcp.datafusion.Instance("basic_instance", {
+///     name: "my-instance",
+///     region: "us-central1",
+///     type: "BASIC",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// basic_instance = gcp.datafusion.Instance("basic_instance",
+///     name="my-instance",
+///     region="us-central1",
+///     type="BASIC")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var basicInstance = new Gcp.DataFusion.Instance("basic_instance", new()
+///     {
+///         Name = "my-instance",
+///         Region = "us-central1",
+///         Type = "BASIC",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := datafusion.NewInstance(ctx, "basic_instance", &datafusion.InstanceArgs{
+/// 			Name:   pulumi.String("my-instance"),
+/// 			Region: pulumi.String("us-central1"),
+/// 			Type:   pulumi.String("BASIC"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.datafusion.Instance;
+/// import com.pulumi.gcp.datafusion.InstanceArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var basicInstance = new Instance("basicInstance", InstanceArgs.builder()
+///             .name("my-instance")
+///             .region("us-central1")
+///             .type("BASIC")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   basicInstance:
+///     type: gcp:datafusion:Instance
+///     name: basic_instance
+///     properties:
+///       name: my-instance
+///       region: us-central1
+///       type: BASIC
+/// ```
+///
+/// ### Data Fusion Instance Full
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = gcp.appengine.getDefaultServiceAccount({});
+/// const network = new gcp.compute.Network("network", {name: "datafusion-full-network"});
+/// const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+///     name: "datafusion-ip-alloc",
+///     addressType: "INTERNAL",
+///     purpose: "VPC_PEERING",
+///     prefixLength: 22,
+///     network: network.id,
+/// });
+/// const extendedInstance = new gcp.datafusion.Instance("extended_instance", {
+///     name: "my-instance",
+///     description: "My Data Fusion instance",
+///     displayName: "My Data Fusion instance",
+///     region: "us-central1",
+///     type: "BASIC",
+///     enableStackdriverLogging: true,
+///     enableStackdriverMonitoring: true,
+///     privateInstance: true,
+///     dataprocServiceAccount: _default.then(_default => _default.email),
+///     labels: {
+///         example_key: "example_value",
+///     },
+///     networkConfig: {
+///         network: "default",
+///         ipAllocation: pulumi.interpolate`${privateIpAlloc.address}/${privateIpAlloc.prefixLength}`,
+///     },
+///     accelerators: [{
+///         acceleratorType: "CDC",
+///         state: "ENABLED",
+///     }],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.appengine.get_default_service_account()
+/// network = gcp.compute.Network("network", name="datafusion-full-network")
+/// private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+///     name="datafusion-ip-alloc",
+///     address_type="INTERNAL",
+///     purpose="VPC_PEERING",
+///     prefix_length=22,
+///     network=network.id)
+/// extended_instance = gcp.datafusion.Instance("extended_instance",
+///     name="my-instance",
+///     description="My Data Fusion instance",
+///     display_name="My Data Fusion instance",
+///     region="us-central1",
+///     type="BASIC",
+///     enable_stackdriver_logging=True,
+///     enable_stackdriver_monitoring=True,
+///     private_instance=True,
+///     dataproc_service_account=default.email,
+///     labels={
+///         "example_key": "example_value",
+///     },
+///     network_config={
+///         "network": "default",
+///         "ip_allocation": pulumi.Output.all(
+///             address=private_ip_alloc.address,
+///             prefix_length=private_ip_alloc.prefix_length
+/// ).apply(lambda resolved_outputs: f"{resolved_outputs['address']}/{resolved_outputs['prefix_length']}")
+/// ,
+///     },
+///     accelerators=[{
+///         "accelerator_type": "CDC",
+///         "state": "ENABLED",
+///     }])
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = Gcp.AppEngine.GetDefaultServiceAccount.Invoke();
+///
+///     var network = new Gcp.Compute.Network("network", new()
+///     {
+///         Name = "datafusion-full-network",
+///     });
+///
+///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
+///     {
+///         Name = "datafusion-ip-alloc",
+///         AddressType = "INTERNAL",
+///         Purpose = "VPC_PEERING",
+///         PrefixLength = 22,
+///         Network = network.Id,
+///     });
+///
+///     var extendedInstance = new Gcp.DataFusion.Instance("extended_instance", new()
+///     {
+///         Name = "my-instance",
+///         Description = "My Data Fusion instance",
+///         DisplayName = "My Data Fusion instance",
+///         Region = "us-central1",
+///         Type = "BASIC",
+///         EnableStackdriverLogging = true,
+///         EnableStackdriverMonitoring = true,
+///         PrivateInstance = true,
+///         DataprocServiceAccount = @default.Apply(@default => @default.Apply(getDefaultServiceAccountResult => getDefaultServiceAccountResult.Email)),
+///         Labels =
+///         {
+///             { "example_key", "example_value" },
+///         },
+///         NetworkConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigArgs
+///         {
+///             Network = "default",
+///             IpAllocation = Output.Tuple(privateIpAlloc.Address, privateIpAlloc.PrefixLength).Apply(values =>
+///             {
+///                 var address = values.Item1;
+///                 var prefixLength = values.Item2;
+///                 return $"{address}/{prefixLength}";
+///             }),
+///         },
+///         Accelerators = new[]
+///         {
+///             new Gcp.DataFusion.Inputs.InstanceAcceleratorArgs
+///             {
+///                 AcceleratorType = "CDC",
+///                 State = "ENABLED",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_default, err := appengine.GetDefaultServiceAccount(ctx, &appengine.GetDefaultServiceAccountArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+/// 			Name: pulumi.String("datafusion-full-network"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+/// 			Name:         pulumi.String("datafusion-ip-alloc"),
+/// 			AddressType:  pulumi.String("INTERNAL"),
+/// 			Purpose:      pulumi.String("VPC_PEERING"),
+/// 			PrefixLength: pulumi.Int(22),
+/// 			Network:      network.ID(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = datafusion.NewInstance(ctx, "extended_instance", &datafusion.InstanceArgs{
+/// 			Name:                        pulumi.String("my-instance"),
+/// 			Description:                 pulumi.String("My Data Fusion instance"),
+/// 			DisplayName:                 pulumi.String("My Data Fusion instance"),
+/// 			Region:                      pulumi.String("us-central1"),
+/// 			Type:                        pulumi.String("BASIC"),
+/// 			EnableStackdriverLogging:    pulumi.Bool(true),
+/// 			EnableStackdriverMonitoring: pulumi.Bool(true),
+/// 			PrivateInstance:             pulumi.Bool(true),
+/// 			DataprocServiceAccount:      pulumi.String(_default.Email),
+/// 			Labels: pulumi.StringMap{
+/// 				"example_key": pulumi.String("example_value"),
+/// 			},
+/// 			NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
+/// 				Network: pulumi.String("default"),
+/// 				IpAllocation: pulumi.All(privateIpAlloc.Address, privateIpAlloc.PrefixLength).ApplyT(func(_args []interface{}) (string, error) {
+/// 					address := _args[0].(string)
+/// 					prefixLength := _args[1].(int)
+/// 					return fmt.Sprintf("%v/%v", address, prefixLength), nil
+/// 				}).(pulumi.StringOutput),
+/// 			},
+/// 			Accelerators: datafusion.InstanceAcceleratorArray{
+/// 				&datafusion.InstanceAcceleratorArgs{
+/// 					AcceleratorType: pulumi.String("CDC"),
+/// 					State:           pulumi.String("ENABLED"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.appengine.AppengineFunctions;
+/// import com.pulumi.gcp.appengine.inputs.GetDefaultServiceAccountArgs;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.GlobalAddress;
+/// import com.pulumi.gcp.compute.GlobalAddressArgs;
+/// import com.pulumi.gcp.datafusion.Instance;
+/// import com.pulumi.gcp.datafusion.InstanceArgs;
+/// import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
+/// import com.pulumi.gcp.datafusion.inputs.InstanceAcceleratorArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var default = AppengineFunctions.getDefaultServiceAccount(GetDefaultServiceAccountArgs.builder()
+///             .build());
+///
+///         var network = new Network("network", NetworkArgs.builder()
+///             .name("datafusion-full-network")
+///             .build());
+///
+///         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
+///             .name("datafusion-ip-alloc")
+///             .addressType("INTERNAL")
+///             .purpose("VPC_PEERING")
+///             .prefixLength(22)
+///             .network(network.id())
+///             .build());
+///
+///         var extendedInstance = new Instance("extendedInstance", InstanceArgs.builder()
+///             .name("my-instance")
+///             .description("My Data Fusion instance")
+///             .displayName("My Data Fusion instance")
+///             .region("us-central1")
+///             .type("BASIC")
+///             .enableStackdriverLogging(true)
+///             .enableStackdriverMonitoring(true)
+///             .privateInstance(true)
+///             .dataprocServiceAccount(default_.email())
+///             .labels(Map.of("example_key", "example_value"))
+///             .networkConfig(InstanceNetworkConfigArgs.builder()
+///                 .network("default")
+///                 .ipAllocation(Output.tuple(privateIpAlloc.address(), privateIpAlloc.prefixLength()).applyValue(values -> {
+///                     var address = values.t1;
+///                     var prefixLength = values.t2;
+///                     return String.format("%s/%s", address,prefixLength);
+///                 }))
+///                 .build())
+///             .accelerators(InstanceAcceleratorArgs.builder()
+///                 .acceleratorType("CDC")
+///                 .state("ENABLED")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   extendedInstance:
+///     type: gcp:datafusion:Instance
+///     name: extended_instance
+///     properties:
+///       name: my-instance
+///       description: My Data Fusion instance
+///       displayName: My Data Fusion instance
+///       region: us-central1
+///       type: BASIC
+///       enableStackdriverLogging: true
+///       enableStackdriverMonitoring: true
+///       privateInstance: true
+///       dataprocServiceAccount: ${default.email}
+///       labels:
+///         example_key: example_value
+///       networkConfig:
+///         network: default
+///         ipAllocation: ${privateIpAlloc.address}/${privateIpAlloc.prefixLength}
+///       accelerators:
+///         - acceleratorType: CDC
+///           state: ENABLED
+///   network:
+///     type: gcp:compute:Network
+///     properties:
+///       name: datafusion-full-network
+///   privateIpAlloc:
+///     type: gcp:compute:GlobalAddress
+///     name: private_ip_alloc
+///     properties:
+///       name: datafusion-ip-alloc
+///       addressType: INTERNAL
+///       purpose: VPC_PEERING
+///       prefixLength: 22
+///       network: ${network.id}
+/// variables:
+///   default:
+///     fn::invoke:
+///       function: gcp:appengine:getDefaultServiceAccount
+///       arguments: {}
+/// ```
+///
+/// ### Data Fusion Instance Psc
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const psc = new gcp.compute.Network("psc", {
+///     name: "datafusion-psc-network",
+///     autoCreateSubnetworks: false,
+/// });
+/// const pscSubnetwork = new gcp.compute.Subnetwork("psc", {
+///     name: "datafusion-psc-subnet",
+///     region: "us-central1",
+///     network: psc.id,
+///     ipCidrRange: "10.0.0.0/16",
+/// });
+/// const pscNetworkAttachment = new gcp.compute.NetworkAttachment("psc", {
+///     name: "datafusion-psc-attachment",
+///     region: "us-central1",
+///     connectionPreference: "ACCEPT_AUTOMATIC",
+///     subnetworks: [pscSubnetwork.selfLink],
+/// });
+/// const pscInstance = new gcp.datafusion.Instance("psc_instance", {
+///     name: "psc-instance",
+///     region: "us-central1",
+///     type: "BASIC",
+///     privateInstance: true,
+///     networkConfig: {
+///         connectionType: "PRIVATE_SERVICE_CONNECT_INTERFACES",
+///         privateServiceConnectConfig: {
+///             networkAttachment: pscNetworkAttachment.id,
+///             unreachableCidrBlock: "192.168.0.0/25",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// psc = gcp.compute.Network("psc",
+///     name="datafusion-psc-network",
+///     auto_create_subnetworks=False)
+/// psc_subnetwork = gcp.compute.Subnetwork("psc",
+///     name="datafusion-psc-subnet",
+///     region="us-central1",
+///     network=psc.id,
+///     ip_cidr_range="10.0.0.0/16")
+/// psc_network_attachment = gcp.compute.NetworkAttachment("psc",
+///     name="datafusion-psc-attachment",
+///     region="us-central1",
+///     connection_preference="ACCEPT_AUTOMATIC",
+///     subnetworks=[psc_subnetwork.self_link])
+/// psc_instance = gcp.datafusion.Instance("psc_instance",
+///     name="psc-instance",
+///     region="us-central1",
+///     type="BASIC",
+///     private_instance=True,
+///     network_config={
+///         "connection_type": "PRIVATE_SERVICE_CONNECT_INTERFACES",
+///         "private_service_connect_config": {
+///             "network_attachment": psc_network_attachment.id,
+///             "unreachable_cidr_block": "192.168.0.0/25",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var psc = new Gcp.Compute.Network("psc", new()
+///     {
+///         Name = "datafusion-psc-network",
+///         AutoCreateSubnetworks = false,
+///     });
+///
+///     var pscSubnetwork = new Gcp.Compute.Subnetwork("psc", new()
+///     {
+///         Name = "datafusion-psc-subnet",
+///         Region = "us-central1",
+///         Network = psc.Id,
+///         IpCidrRange = "10.0.0.0/16",
+///     });
+///
+///     var pscNetworkAttachment = new Gcp.Compute.NetworkAttachment("psc", new()
+///     {
+///         Name = "datafusion-psc-attachment",
+///         Region = "us-central1",
+///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+///         Subnetworks = new[]
+///         {
+///             pscSubnetwork.SelfLink,
+///         },
+///     });
+///
+///     var pscInstance = new Gcp.DataFusion.Instance("psc_instance", new()
+///     {
+///         Name = "psc-instance",
+///         Region = "us-central1",
+///         Type = "BASIC",
+///         PrivateInstance = true,
+///         NetworkConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigArgs
+///         {
+///             ConnectionType = "PRIVATE_SERVICE_CONNECT_INTERFACES",
+///             PrivateServiceConnectConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigPrivateServiceConnectConfigArgs
+///             {
+///                 NetworkAttachment = pscNetworkAttachment.Id,
+///                 UnreachableCidrBlock = "192.168.0.0/25",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		psc, err := compute.NewNetwork(ctx, "psc", &compute.NetworkArgs{
+/// 			Name:                  pulumi.String("datafusion-psc-network"),
+/// 			AutoCreateSubnetworks: pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		pscSubnetwork, err := compute.NewSubnetwork(ctx, "psc", &compute.SubnetworkArgs{
+/// 			Name:        pulumi.String("datafusion-psc-subnet"),
+/// 			Region:      pulumi.String("us-central1"),
+/// 			Network:     psc.ID(),
+/// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		pscNetworkAttachment, err := compute.NewNetworkAttachment(ctx, "psc", &compute.NetworkAttachmentArgs{
+/// 			Name:                 pulumi.String("datafusion-psc-attachment"),
+/// 			Region:               pulumi.String("us-central1"),
+/// 			ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+/// 			Subnetworks: pulumi.StringArray{
+/// 				pscSubnetwork.SelfLink,
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = datafusion.NewInstance(ctx, "psc_instance", &datafusion.InstanceArgs{
+/// 			Name:            pulumi.String("psc-instance"),
+/// 			Region:          pulumi.String("us-central1"),
+/// 			Type:            pulumi.String("BASIC"),
+/// 			PrivateInstance: pulumi.Bool(true),
+/// 			NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
+/// 				ConnectionType: pulumi.String("PRIVATE_SERVICE_CONNECT_INTERFACES"),
+/// 				PrivateServiceConnectConfig: &datafusion.InstanceNetworkConfigPrivateServiceConnectConfigArgs{
+/// 					NetworkAttachment:    pscNetworkAttachment.ID(),
+/// 					UnreachableCidrBlock: pulumi.String("192.168.0.0/25"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Network;
+/// import com.pulumi.gcp.compute.NetworkArgs;
+/// import com.pulumi.gcp.compute.Subnetwork;
+/// import com.pulumi.gcp.compute.SubnetworkArgs;
+/// import com.pulumi.gcp.compute.NetworkAttachment;
+/// import com.pulumi.gcp.compute.NetworkAttachmentArgs;
+/// import com.pulumi.gcp.datafusion.Instance;
+/// import com.pulumi.gcp.datafusion.InstanceArgs;
+/// import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
+/// import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigPrivateServiceConnectConfigArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var psc = new Network("psc", NetworkArgs.builder()
+///             .name("datafusion-psc-network")
+///             .autoCreateSubnetworks(false)
+///             .build());
+///
+///         var pscSubnetwork = new Subnetwork("pscSubnetwork", SubnetworkArgs.builder()
+///             .name("datafusion-psc-subnet")
+///             .region("us-central1")
+///             .network(psc.id())
+///             .ipCidrRange("10.0.0.0/16")
+///             .build());
+///
+///         var pscNetworkAttachment = new NetworkAttachment("pscNetworkAttachment", NetworkAttachmentArgs.builder()
+///             .name("datafusion-psc-attachment")
+///             .region("us-central1")
+///             .connectionPreference("ACCEPT_AUTOMATIC")
+///             .subnetworks(pscSubnetwork.selfLink())
+///             .build());
+///
+///         var pscInstance = new Instance("pscInstance", InstanceArgs.builder()
+///             .name("psc-instance")
+///             .region("us-central1")
+///             .type("BASIC")
+///             .privateInstance(true)
+///             .networkConfig(InstanceNetworkConfigArgs.builder()
+///                 .connectionType("PRIVATE_SERVICE_CONNECT_INTERFACES")
+///                 .privateServiceConnectConfig(InstanceNetworkConfigPrivateServiceConnectConfigArgs.builder()
+///                     .networkAttachment(pscNetworkAttachment.id())
+///                     .unreachableCidrBlock("192.168.0.0/25")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   pscInstance:
+///     type: gcp:datafusion:Instance
+///     name: psc_instance
+///     properties:
+///       name: psc-instance
+///       region: us-central1
+///       type: BASIC
+///       privateInstance: true
+///       networkConfig:
+///         connectionType: PRIVATE_SERVICE_CONNECT_INTERFACES
+///         privateServiceConnectConfig:
+///           networkAttachment: ${pscNetworkAttachment.id}
+///           unreachableCidrBlock: 192.168.0.0/25
+///   psc:
+///     type: gcp:compute:Network
+///     properties:
+///       name: datafusion-psc-network
+///       autoCreateSubnetworks: false
+///   pscSubnetwork:
+///     type: gcp:compute:Subnetwork
+///     name: psc
+///     properties:
+///       name: datafusion-psc-subnet
+///       region: us-central1
+///       network: ${psc.id}
+///       ipCidrRange: 10.0.0.0/16
+///   pscNetworkAttachment:
+///     type: gcp:compute:NetworkAttachment
+///     name: psc
+///     properties:
+///       name: datafusion-psc-attachment
+///       region: us-central1
+///       connectionPreference: ACCEPT_AUTOMATIC
+///       subnetworks:
+///         - ${pscSubnetwork.selfLink}
+/// ```
+///
+/// ### Data Fusion Instance Cmek
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const keyRing = new gcp.kms.KeyRing("key_ring", {
+///     name: "my-instance",
+///     location: "us-central1",
+/// });
+/// const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+///     name: "my-instance",
+///     keyRing: keyRing.id,
+/// });
+/// const project = gcp.organizations.getProject({});
+/// const cryptoKeyMemberCdfSa = new gcp.kms.CryptoKeyIAMMember("crypto_key_member_cdf_sa", {
+///     cryptoKeyId: cryptoKey.id,
+///     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+///     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`),
+/// });
+/// const cryptoKeyMemberGcsSa = new gcp.kms.CryptoKeyIAMMember("crypto_key_member_gcs_sa", {
+///     cryptoKeyId: cryptoKey.id,
+///     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+///     member: project.then(project => `serviceAccount:service-${project.number}@gs-project-accounts.iam.gserviceaccount.com`),
+/// }, {
+///     dependsOn: [cryptoKeyMemberCdfSa],
+/// });
+/// const cmek = new gcp.datafusion.Instance("cmek", {
+///     name: "my-instance",
+///     region: "us-central1",
+///     type: "BASIC",
+///     cryptoKeyConfig: {
+///         keyReference: cryptoKey.id,
+///     },
+/// }, {
+///     dependsOn: [cryptoKeyMemberGcsSa],
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// key_ring = gcp.kms.KeyRing("key_ring",
+///     name="my-instance",
+///     location="us-central1")
+/// crypto_key = gcp.kms.CryptoKey("crypto_key",
+///     name="my-instance",
+///     key_ring=key_ring.id)
+/// project = gcp.organizations.get_project()
+/// crypto_key_member_cdf_sa = gcp.kms.CryptoKeyIAMMember("crypto_key_member_cdf_sa",
+///     crypto_key_id=crypto_key.id,
+///     role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+///     member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
+/// crypto_key_member_gcs_sa = gcp.kms.CryptoKeyIAMMember("crypto_key_member_gcs_sa",
+///     crypto_key_id=crypto_key.id,
+///     role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+///     member=f"serviceAccount:service-{project.number}@gs-project-accounts.iam.gserviceaccount.com",
+///     opts = pulumi.ResourceOptions(depends_on=[crypto_key_member_cdf_sa]))
+/// cmek = gcp.datafusion.Instance("cmek",
+///     name="my-instance",
+///     region="us-central1",
+///     type="BASIC",
+///     crypto_key_config={
+///         "key_reference": crypto_key.id,
+///     },
+///     opts = pulumi.ResourceOptions(depends_on=[crypto_key_member_gcs_sa]))
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
+///     {
+///         Name = "my-instance",
+///         Location = "us-central1",
+///     });
+///
+///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
+///     {
+///         Name = "my-instance",
+///         KeyRing = keyRing.Id,
+///     });
+///
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var cryptoKeyMemberCdfSa = new Gcp.Kms.CryptoKeyIAMMember("crypto_key_member_cdf_sa", new()
+///     {
+///         CryptoKeyId = cryptoKey.Id,
+///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+///         Member = $"serviceAccount:service-{project.Apply(getProjectResult => getProjectResult.Number)}@gcp-sa-datafusion.iam.gserviceaccount.com",
+///     });
+///
+///     var cryptoKeyMemberGcsSa = new Gcp.Kms.CryptoKeyIAMMember("crypto_key_member_gcs_sa", new()
+///     {
+///         CryptoKeyId = cryptoKey.Id,
+///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+///         Member = $"serviceAccount:service-{project.Apply(getProjectResult => getProjectResult.Number)}@gs-project-accounts.iam.gserviceaccount.com",
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             cryptoKeyMemberCdfSa,
+///         },
+///     });
+///
+///     var cmek = new Gcp.DataFusion.Instance("cmek", new()
+///     {
+///         Name = "my-instance",
+///         Region = "us-central1",
+///         Type = "BASIC",
+///         CryptoKeyConfig = new Gcp.DataFusion.Inputs.InstanceCryptoKeyConfigArgs
+///         {
+///             KeyReference = cryptoKey.Id,
+///         },
+///     }, new CustomResourceOptions
+///     {
+///         DependsOn =
+///         {
+///             cryptoKeyMemberGcsSa,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+/// 			Name:     pulumi.String("my-instance"),
+/// 			Location: pulumi.String("us-central1"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+/// 			Name:    pulumi.String("my-instance"),
+/// 			KeyRing: keyRing.ID(),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		cryptoKeyMemberCdfSa, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member_cdf_sa", &kms.CryptoKeyIAMMemberArgs{
+/// 			CryptoKeyId: cryptoKey.ID(),
+/// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+/// 			Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-datafusion.iam.gserviceaccount.com", project.Number),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		cryptoKeyMemberGcsSa, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member_gcs_sa", &kms.CryptoKeyIAMMemberArgs{
+/// 			CryptoKeyId: cryptoKey.ID(),
+/// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+/// 			Member:      pulumi.Sprintf("serviceAccount:service-%v@gs-project-accounts.iam.gserviceaccount.com", project.Number),
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			cryptoKeyMemberCdfSa,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = datafusion.NewInstance(ctx, "cmek", &datafusion.InstanceArgs{
+/// 			Name:   pulumi.String("my-instance"),
+/// 			Region: pulumi.String("us-central1"),
+/// 			Type:   pulumi.String("BASIC"),
+/// 			CryptoKeyConfig: &datafusion.InstanceCryptoKeyConfigArgs{
+/// 				KeyReference: cryptoKey.ID(),
+/// 			},
+/// 		}, pulumi.DependsOn([]pulumi.Resource{
+/// 			cryptoKeyMemberGcsSa,
+/// 		}))
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.kms.KeyRing;
+/// import com.pulumi.gcp.kms.KeyRingArgs;
+/// import com.pulumi.gcp.kms.CryptoKey;
+/// import com.pulumi.gcp.kms.CryptoKeyArgs;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+/// import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+/// import com.pulumi.gcp.datafusion.Instance;
+/// import com.pulumi.gcp.datafusion.InstanceArgs;
+/// import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
+/// import com.pulumi.resources.CustomResourceOptions;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
+///             .name("my-instance")
+///             .location("us-central1")
+///             .build());
+///
+///         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
+///             .name("my-instance")
+///             .keyRing(keyRing.id())
+///             .build());
+///
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var cryptoKeyMemberCdfSa = new CryptoKeyIAMMember("cryptoKeyMemberCdfSa", CryptoKeyIAMMemberArgs.builder()
+///             .cryptoKeyId(cryptoKey.id())
+///             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+///             .member(String.format("serviceAccount:service-%s@gcp-sa-datafusion.iam.gserviceaccount.com", project.number()))
+///             .build());
+///
+///         var cryptoKeyMemberGcsSa = new CryptoKeyIAMMember("cryptoKeyMemberGcsSa", CryptoKeyIAMMemberArgs.builder()
+///             .cryptoKeyId(cryptoKey.id())
+///             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+///             .member(String.format("serviceAccount:service-%s@gs-project-accounts.iam.gserviceaccount.com", project.number()))
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(cryptoKeyMemberCdfSa)
+///                 .build());
+///
+///         var cmek = new Instance("cmek", InstanceArgs.builder()
+///             .name("my-instance")
+///             .region("us-central1")
+///             .type("BASIC")
+///             .cryptoKeyConfig(InstanceCryptoKeyConfigArgs.builder()
+///                 .keyReference(cryptoKey.id())
+///                 .build())
+///             .build(), CustomResourceOptions.builder()
+///                 .dependsOn(cryptoKeyMemberGcsSa)
+///                 .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   cmek:
+///     type: gcp:datafusion:Instance
+///     properties:
+///       name: my-instance
+///       region: us-central1
+///       type: BASIC
+///       cryptoKeyConfig:
+///         keyReference: ${cryptoKey.id}
+///     options:
+///       dependsOn:
+///         - ${cryptoKeyMemberGcsSa}
+///   cryptoKey:
+///     type: gcp:kms:CryptoKey
+///     name: crypto_key
+///     properties:
+///       name: my-instance
+///       keyRing: ${keyRing.id}
+///   keyRing:
+///     type: gcp:kms:KeyRing
+///     name: key_ring
+///     properties:
+///       name: my-instance
+///       location: us-central1
+///   cryptoKeyMemberCdfSa:
+///     type: gcp:kms:CryptoKeyIAMMember
+///     name: crypto_key_member_cdf_sa
+///     properties:
+///       cryptoKeyId: ${cryptoKey.id}
+///       role: roles/cloudkms.cryptoKeyEncrypterDecrypter
+///       member: serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com
+///   cryptoKeyMemberGcsSa:
+///     type: gcp:kms:CryptoKeyIAMMember
+///     name: crypto_key_member_gcs_sa
+///     properties:
+///       cryptoKeyId: ${cryptoKey.id}
+///       role: roles/cloudkms.cryptoKeyEncrypterDecrypter
+///       member: serviceAccount:service-${project.number}@gs-project-accounts.iam.gserviceaccount.com
+///     options:
+///       dependsOn:
+///         - ${cryptoKeyMemberCdfSa}
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
+/// ### Data Fusion Instance Enterprise
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const enterpriseInstance = new gcp.datafusion.Instance("enterprise_instance", {
+///     name: "my-instance",
+///     region: "us-central1",
+///     type: "ENTERPRISE",
+///     enableRbac: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// enterprise_instance = gcp.datafusion.Instance("enterprise_instance",
+///     name="my-instance",
+///     region="us-central1",
+///     type="ENTERPRISE",
+///     enable_rbac=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var enterpriseInstance = new Gcp.DataFusion.Instance("enterprise_instance", new()
+///     {
+///         Name = "my-instance",
+///         Region = "us-central1",
+///         Type = "ENTERPRISE",
+///         EnableRbac = true,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := datafusion.NewInstance(ctx, "enterprise_instance", &datafusion.InstanceArgs{
+/// 			Name:       pulumi.String("my-instance"),
+/// 			Region:     pulumi.String("us-central1"),
+/// 			Type:       pulumi.String("ENTERPRISE"),
+/// 			EnableRbac: pulumi.Bool(true),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.datafusion.Instance;
+/// import com.pulumi.gcp.datafusion.InstanceArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var enterpriseInstance = new Instance("enterpriseInstance", InstanceArgs.builder()
+///             .name("my-instance")
+///             .region("us-central1")
+///             .type("ENTERPRISE")
+///             .enableRbac(true)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   enterpriseInstance:
+///     type: gcp:datafusion:Instance
+///     name: enterprise_instance
+///     properties:
+///       name: my-instance
+///       region: us-central1
+///       type: ENTERPRISE
+///       enableRbac: true
+/// ```
+///
+/// ### Data Fusion Instance Event
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const eventTopic = new gcp.pubsub.Topic("event", {name: "my-instance"});
+/// const event = new gcp.datafusion.Instance("event", {
+///     name: "my-instance",
+///     region: "us-central1",
+///     type: "BASIC",
+///     eventPublishConfig: {
+///         enabled: true,
+///         topic: eventTopic.id,
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// event_topic = gcp.pubsub.Topic("event", name="my-instance")
+/// event = gcp.datafusion.Instance("event",
+///     name="my-instance",
+///     region="us-central1",
+///     type="BASIC",
+///     event_publish_config={
+///         "enabled": True,
+///         "topic": event_topic.id,
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var eventTopic = new Gcp.PubSub.Topic("event", new()
+///     {
+///         Name = "my-instance",
+///     });
+///
+///     var @event = new Gcp.DataFusion.Instance("event", new()
+///     {
+///         Name = "my-instance",
+///         Region = "us-central1",
+///         Type = "BASIC",
+///         EventPublishConfig = new Gcp.DataFusion.Inputs.InstanceEventPublishConfigArgs
+///         {
+///             Enabled = true,
+///             Topic = eventTopic.Id,
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		eventTopic, err := pubsub.NewTopic(ctx, "event", &pubsub.TopicArgs{
+/// 			Name: pulumi.String("my-instance"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = datafusion.NewInstance(ctx, "event", &datafusion.InstanceArgs{
+/// 			Name:   pulumi.String("my-instance"),
+/// 			Region: pulumi.String("us-central1"),
+/// 			Type:   pulumi.String("BASIC"),
+/// 			EventPublishConfig: &datafusion.InstanceEventPublishConfigArgs{
+/// 				Enabled: pulumi.Bool(true),
+/// 				Topic:   eventTopic.ID(),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.pubsub.Topic;
+/// import com.pulumi.gcp.pubsub.TopicArgs;
+/// import com.pulumi.gcp.datafusion.Instance;
+/// import com.pulumi.gcp.datafusion.InstanceArgs;
+/// import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var eventTopic = new Topic("eventTopic", TopicArgs.builder()
+///             .name("my-instance")
+///             .build());
+///
+///         var event = new Instance("event", InstanceArgs.builder()
+///             .name("my-instance")
+///             .region("us-central1")
+///             .type("BASIC")
+///             .eventPublishConfig(InstanceEventPublishConfigArgs.builder()
+///                 .enabled(true)
+///                 .topic(eventTopic.id())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   event:
+///     type: gcp:datafusion:Instance
+///     properties:
+///       name: my-instance
+///       region: us-central1
+///       type: BASIC
+///       eventPublishConfig:
+///         enabled: true
+///         topic: ${eventTopic.id}
+///   eventTopic:
+///     type: gcp:pubsub:Topic
+///     name: event
+///     properties:
+///       name: my-instance
+/// ```
+///
+/// ### Data Fusion Instance Zone
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const zone = new gcp.datafusion.Instance("zone", {
+///     name: "my-instance",
+///     region: "us-central1",
+///     zone: "us-central1-a",
+///     type: "DEVELOPER",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// zone = gcp.datafusion.Instance("zone",
+///     name="my-instance",
+///     region="us-central1",
+///     zone="us-central1-a",
+///     type="DEVELOPER")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var zone = new Gcp.DataFusion.Instance("zone", new()
+///     {
+///         Name = "my-instance",
+///         Region = "us-central1",
+///         Zone = "us-central1-a",
+///         Type = "DEVELOPER",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := datafusion.NewInstance(ctx, "zone", &datafusion.InstanceArgs{
+/// 			Name:   pulumi.String("my-instance"),
+/// 			Region: pulumi.String("us-central1"),
+/// 			Zone:   pulumi.String("us-central1-a"),
+/// 			Type:   pulumi.String("DEVELOPER"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.datafusion.Instance;
+/// import com.pulumi.gcp.datafusion.InstanceArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var zone = new Instance("zone", InstanceArgs.builder()
+///             .name("my-instance")
+///             .region("us-central1")
+///             .zone("us-central1-a")
+///             .type("DEVELOPER")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   zone:
+///     type: gcp:datafusion:Instance
+///     properties:
+///       name: my-instance
+///       region: us-central1
+///       zone: us-central1-a
+///       type: DEVELOPER
+/// ```
+///
+///
+/// ## Import
+///
+/// Instance can be imported using any of these accepted formats:
+///
+/// * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+///
+/// * `{{project}}/{{region}}/{{name}}`
+///
+/// * `{{region}}/{{name}}`
+///
+/// * `{{name}}`
+///
+/// When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
+///
+/// ```sh
+/// $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:datafusion/instance:Instance default {{project}}/{{region}}/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:datafusion/instance:Instance default {{region}}/{{name}}
+/// ```
+///
+/// ```sh
+/// $ pulumi import gcp:datafusion/instance:Instance default {{name}}
+/// ```
+class Instance extends pulumi.CustomResource {
+  /// List of accelerators enabled for this CDF instance.
+  /// If accelerators are enabled it is possible a permadiff will be created with the Options field.
+  /// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+  /// Structure is documented below.
+  late final pulumi.Output<List<InstanceAccelerator>?> accelerators;
+  /// Endpoint on which the REST APIs is accessible.
+  late final pulumi.Output<String> apiEndpoint;
+  /// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+  late final pulumi.Output<String> createTime;
+  /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+  /// Structure is documented below.
+  late final pulumi.Output<InstanceCryptoKeyConfig?> cryptoKeyConfig;
+  /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+  late final pulumi.Output<String?> dataprocServiceAccount;
+  /// An optional description of the instance.
+  late final pulumi.Output<String?> description;
+  /// Display name for an instance.
+  late final pulumi.Output<String?> displayName;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// Option to enable granular role-based access control.
+  late final pulumi.Output<bool?> enableRbac;
+  /// Option to enable Stackdriver Logging.
+  late final pulumi.Output<bool?> enableStackdriverLogging;
+  /// Option to enable Stackdriver Monitoring.
+  late final pulumi.Output<bool?> enableStackdriverMonitoring;
+  /// Option to enable and pass metadata for event publishing.
+  /// Structure is documented below.
+  late final pulumi.Output<InstanceEventPublishConfig?> eventPublishConfig;
+  /// Cloud Storage bucket generated by Data Fusion in the customer project.
+  late final pulumi.Output<String> gcsBucket;
+  /// The resource labels for instance to use to annotate any related underlying resources,
+  /// such as Compute Engine VMs.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  late final pulumi.Output<Map<String, String>?> labels;
+  /// The ID of the instance or a fully qualified identifier for the instance.
+  late final pulumi.Output<String> name;
+  /// Network configuration options. These are required when a private Data Fusion instance is to be created.
+  /// Structure is documented below.
+  late final pulumi.Output<InstanceNetworkConfig?> networkConfig;
+  /// Map of additional options used to configure the behavior of Data Fusion instance.
+  late final pulumi.Output<Map<String, String>> options;
+  /// P4 service account for the customer project.
+  late final pulumi.Output<String> p4ServiceAccount;
+  /// Specifies whether the Data Fusion instance should be private. If set to
+  /// true, all Data Fusion nodes will have private IP addresses and will not be
+  /// able to access the public internet.
+  late final pulumi.Output<bool?> privateInstance;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  late final pulumi.Output<String> project;
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
+  /// The region of the Data Fusion instance.
+  late final pulumi.Output<String> region;
+  /// Service account which will be used to access resources in the customer project.
+  late final pulumi.Output<String> serviceAccount;
+  /// Endpoint on which the Data Fusion UI and REST APIs are accessible.
+  late final pulumi.Output<String> serviceEndpoint;
+  /// The current state of this Data Fusion instance.
+  /// - CREATING: Instance is being created
+  /// - RUNNING: Instance is running and ready for requests
+  /// - FAILED: Instance creation failed
+  /// - DELETING: Instance is being deleted
+  /// - UPGRADING: Instance is being upgraded
+  /// - RESTARTING: Instance is being restarted
+  late final pulumi.Output<String> state;
+  /// Additional information about the current state of this Data Fusion instance if available.
+  late final pulumi.Output<String> stateMessage;
+  /// A map of resource manager tags.
+  /// Resource manager tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+  /// The field is ignored (both PUT & PATCH) when empty.
+  late final pulumi.Output<Map<String, String>?> tags;
+  /// The name of the tenant project.
+  late final pulumi.Output<String> tenantProjectId;
+  /// Represents the type of Data Fusion instance. Each type is configured with
+  /// the default settings for processing and memory.
+  /// - BASIC: Basic Data Fusion instance. In Basic type, the user will be able to create data pipelines
+  /// using point and click UI. However, there are certain limitations, such as fewer number
+  /// of concurrent pipelines, no support for streaming pipelines, etc.
+  /// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
+  /// available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
+  /// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+  /// with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+  /// pipelines at low cost.
+  /// Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
+  late final pulumi.Output<String> type;
+  /// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+  late final pulumi.Output<String> updateTime;
+  /// Current version of the Data Fusion.
+  late final pulumi.Output<String> version;
+  /// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
+  late final pulumi.Output<String> zone;
+
+  /// Creates a new [Instance].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [Instance]. {@macro pulumi_datafusion_instance_instance_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  Instance(
+    String name, {
+    InstanceArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:datafusion/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.accelerators = registerOutput<List<InstanceAccelerator>?>('accelerators');
+    this.apiEndpoint = registerOutput<String>('apiEndpoint');
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoKeyConfig = registerOutput<InstanceCryptoKeyConfig?>('cryptoKeyConfig');
+    this.dataprocServiceAccount = registerOutput<String?>('dataprocServiceAccount');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableRbac = registerOutput<bool?>('enableRbac');
+    this.enableStackdriverLogging = registerOutput<bool?>('enableStackdriverLogging');
+    this.enableStackdriverMonitoring = registerOutput<bool?>('enableStackdriverMonitoring');
+    this.eventPublishConfig = registerOutput<InstanceEventPublishConfig?>('eventPublishConfig');
+    this.gcsBucket = registerOutput<String>('gcsBucket');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.networkConfig = registerOutput<InstanceNetworkConfig?>('networkConfig');
+    this.options = registerOutput<Map<String, String>>('options');
+    this.p4ServiceAccount = registerOutput<String>('p4ServiceAccount');
+    this.privateInstance = registerOutput<bool?>('privateInstance');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.serviceEndpoint = registerOutput<String>('serviceEndpoint');
+    this.state = registerOutput<String>('state');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tenantProjectId = registerOutput<String>('tenantProjectId');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.version = registerOutput<String>('version');
+    this.zone = registerOutput<String>('zone');
+  }
+
+  /// Gets an existing [Instance] resource's state with the given [name] and [id].
+  static Instance get(
+    String name,
+    pulumi.Input<String> id, {
+    InstanceState? state,
+  }) {
+    return Instance._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id),
+    );
+  }
+
+  Instance._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'gcp:datafusion/instance:Instance',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.accelerators = registerOutput<List<InstanceAccelerator>?>('accelerators');
+    this.apiEndpoint = registerOutput<String>('apiEndpoint');
+    this.createTime = registerOutput<String>('createTime');
+    this.cryptoKeyConfig = registerOutput<InstanceCryptoKeyConfig?>('cryptoKeyConfig');
+    this.dataprocServiceAccount = registerOutput<String?>('dataprocServiceAccount');
+    this.description = registerOutput<String?>('description');
+    this.displayName = registerOutput<String?>('displayName');
+    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.enableRbac = registerOutput<bool?>('enableRbac');
+    this.enableStackdriverLogging = registerOutput<bool?>('enableStackdriverLogging');
+    this.enableStackdriverMonitoring = registerOutput<bool?>('enableStackdriverMonitoring');
+    this.eventPublishConfig = registerOutput<InstanceEventPublishConfig?>('eventPublishConfig');
+    this.gcsBucket = registerOutput<String>('gcsBucket');
+    this.labels = registerOutput<Map<String, String>?>('labels');
+    this.name = registerOutput<String>('name');
+    this.networkConfig = registerOutput<InstanceNetworkConfig?>('networkConfig');
+    this.options = registerOutput<Map<String, String>>('options');
+    this.p4ServiceAccount = registerOutput<String>('p4ServiceAccount');
+    this.privateInstance = registerOutput<bool?>('privateInstance');
+    this.project = registerOutput<String>('project');
+    this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    this.region = registerOutput<String>('region');
+    this.serviceAccount = registerOutput<String>('serviceAccount');
+    this.serviceEndpoint = registerOutput<String>('serviceEndpoint');
+    this.state = registerOutput<String>('state');
+    this.stateMessage = registerOutput<String>('stateMessage');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.tenantProjectId = registerOutput<String>('tenantProjectId');
+    this.type = registerOutput<String>('type');
+    this.updateTime = registerOutput<String>('updateTime');
+    this.version = registerOutput<String>('version');
+    this.zone = registerOutput<String>('zone');
+  }
+}

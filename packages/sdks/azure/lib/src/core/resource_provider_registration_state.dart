@@ -1,0 +1,39 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'resource_provider_registration_feature.dart';
+
+/// Input properties used for looking up and filtering ResourceProviderRegistration resources.
+class ResourceProviderRegistrationState {
+  /// A list of `feature` blocks as defined below.
+  ///
+  /// > **Note:** The `feature` block allows a Preview Feature to be explicitly Registered or Unregistered for this Resource Provider - once a Feature has been explicitly Registered or Unregistered, it must be specified in the Terraform Configuration (it's not possible to reset this to the default, unspecified, state).
+  final pulumi.Input<List<ResourceProviderRegistrationFeature>>? features;
+  /// The namespace of the Resource Provider which should be registered. Changing this forces a new resource to be created.
+  final pulumi.Input<String>? name;
+
+  /// Creates a new [ResourceProviderRegistrationState].
+  /// [features] A list of `feature` blocks as defined below.
+  /// [name] The namespace of the Resource Provider which should be registered. Changing this forces a new resource to be created.
+  ResourceProviderRegistrationState({
+    pulumi.Output<List<ResourceProviderRegistrationFeature>>? features,
+    pulumi.Output<String>? name,
+  }) :
+      features = pulumi.Input.asOptionalInput<List<ResourceProviderRegistrationFeature>>(features),
+      name = pulumi.Input.asOptionalInput<String>(name);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'features': ?pulumi.Input.mapOptionalInputValue<List<ResourceProviderRegistrationFeature>, List<Map<String, dynamic>>>(features, (value) => pulumi.Input.encodeList<ResourceProviderRegistrationFeature, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'name': ?name,
+    };
+  }
+
+  factory ResourceProviderRegistrationState.fromMap(Map<String, dynamic> map) {
+    return ResourceProviderRegistrationState(
+      features: map['features'] == null ? null : pulumi.Output.create<List<ResourceProviderRegistrationFeature>>(pulumi.Input.decodeList<ResourceProviderRegistrationFeature>(map['features'], (value) => ResourceProviderRegistrationFeature.fromMap((value as Map).cast<String, dynamic>()))),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+    );
+  }
+}
+

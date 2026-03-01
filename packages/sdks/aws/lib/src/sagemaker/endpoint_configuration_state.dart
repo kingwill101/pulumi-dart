@@ -1,0 +1,110 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'endpoint_configuration_async_inference_config.dart';
+import 'endpoint_configuration_data_capture_config.dart';
+import 'endpoint_configuration_production_variant.dart';
+import 'endpoint_configuration_shadow_production_variant.dart';
+
+/// Input properties used for looking up and filtering EndpointConfiguration resources.
+class EndpointConfigurationState {
+  /// ARN assigned by AWS to this endpoint configuration.
+  final pulumi.Input<String>? arn;
+  /// How an endpoint performs asynchronous inference.
+  final pulumi.Input<EndpointConfigurationAsyncInferenceConfig>? asyncInferenceConfig;
+  /// Parameters to capture input/output of SageMaker AI models endpoints. Fields are documented below.
+  final pulumi.Input<EndpointConfigurationDataCaptureConfig>? dataCaptureConfig;
+  /// ARN of an IAM role that SageMaker AI can assume to perform actions on your behalf. Required when `model_name` is not specified in `production_variants` to support Inference Components.
+  final pulumi.Input<String>? executionRoleArn;
+  /// ARN of a AWS KMS key that SageMaker AI uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
+  final pulumi.Input<String>? kmsKeyArn;
+  /// Name of the endpoint configuration. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  final pulumi.Input<String>? name;
+  /// Unique endpoint configuration name beginning with the specified prefix. Conflicts with `name`.
+  final pulumi.Input<String>? namePrefix;
+  /// List each model that you want to host at this endpoint. See below.
+  final pulumi.Input<List<EndpointConfigurationProductionVariant>>? productionVariants;
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  final pulumi.Input<String>? region;
+  /// Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `production_variants`. If you use this field, you can only specify one variant for `production_variants` and one variant for `shadow_production_variants`. See below (same arguments as `production_variants`).
+  final pulumi.Input<List<EndpointConfigurationShadowProductionVariant>>? shadowProductionVariants;
+  /// Mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>>? tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  final pulumi.Input<Map<String, String>>? tagsAll;
+
+  /// Creates a new [EndpointConfigurationState].
+  /// [arn] ARN assigned by AWS to this endpoint configuration.
+  /// [asyncInferenceConfig] How an endpoint performs asynchronous inference.
+  /// [dataCaptureConfig] Parameters to capture input/output of SageMaker AI models endpoints. Fields are documented below.
+  /// [executionRoleArn] ARN of an IAM role that SageMaker AI can assume to perform actions on your behalf. Required when `model_name` is not specified in `production_variants` to support Inference Components.
+  /// [kmsKeyArn] ARN of a AWS KMS key that SageMaker AI uses to encrypt data on the storage volume attached to the ML compute instance that hosts the endpoint.
+  /// [name] Name of the endpoint configuration. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
+  /// [namePrefix] Unique endpoint configuration name beginning with the specified prefix. Conflicts with `name`.
+  /// [productionVariants] List each model that you want to host at this endpoint. See below.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [shadowProductionVariants] Models that you want to host at this endpoint in shadow mode with production traffic replicated from the model specified on `production_variants`. If you use this field, you can only specify one variant for `production_variants` and one variant for `shadow_production_variants`. See below (same arguments as `production_variants`).
+  /// [tags] Mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
+  EndpointConfigurationState({
+    pulumi.Output<String>? arn,
+    pulumi.Output<EndpointConfigurationAsyncInferenceConfig>? asyncInferenceConfig,
+    pulumi.Output<EndpointConfigurationDataCaptureConfig>? dataCaptureConfig,
+    pulumi.Output<String>? executionRoleArn,
+    pulumi.Output<String>? kmsKeyArn,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? namePrefix,
+    pulumi.Output<List<EndpointConfigurationProductionVariant>>? productionVariants,
+    pulumi.Output<String>? region,
+    pulumi.Output<List<EndpointConfigurationShadowProductionVariant>>? shadowProductionVariants,
+    pulumi.Output<Map<String, String>>? tags,
+    pulumi.Output<Map<String, String>>? tagsAll,
+  }) :
+      arn = pulumi.Input.asOptionalInput<String>(arn),
+      asyncInferenceConfig = pulumi.Input.asOptionalInput<EndpointConfigurationAsyncInferenceConfig>(asyncInferenceConfig),
+      dataCaptureConfig = pulumi.Input.asOptionalInput<EndpointConfigurationDataCaptureConfig>(dataCaptureConfig),
+      executionRoleArn = pulumi.Input.asOptionalInput<String>(executionRoleArn),
+      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
+      productionVariants = pulumi.Input.asOptionalInput<List<EndpointConfigurationProductionVariant>>(productionVariants),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      shadowProductionVariants = pulumi.Input.asOptionalInput<List<EndpointConfigurationShadowProductionVariant>>(shadowProductionVariants),
+      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+      tagsAll = pulumi.Input.asOptionalInput<Map<String, String>>(tagsAll);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'arn': ?arn,
+      'asyncInferenceConfig': ?pulumi.Input.mapOptionalInputValue<EndpointConfigurationAsyncInferenceConfig, Map<String, dynamic>>(asyncInferenceConfig, (value) => value.toMap()),
+      'dataCaptureConfig': ?pulumi.Input.mapOptionalInputValue<EndpointConfigurationDataCaptureConfig, Map<String, dynamic>>(dataCaptureConfig, (value) => value.toMap()),
+      'executionRoleArn': ?executionRoleArn,
+      'kmsKeyArn': ?kmsKeyArn,
+      'name': ?name,
+      'namePrefix': ?namePrefix,
+      'productionVariants': ?pulumi.Input.mapOptionalInputValue<List<EndpointConfigurationProductionVariant>, List<Map<String, dynamic>>>(productionVariants, (value) => pulumi.Input.encodeList<EndpointConfigurationProductionVariant, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'region': ?region,
+      'shadowProductionVariants': ?pulumi.Input.mapOptionalInputValue<List<EndpointConfigurationShadowProductionVariant>, List<Map<String, dynamic>>>(shadowProductionVariants, (value) => pulumi.Input.encodeList<EndpointConfigurationShadowProductionVariant, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'tags': ?tags,
+      'tagsAll': ?tagsAll,
+    };
+  }
+
+  factory EndpointConfigurationState.fromMap(Map<String, dynamic> map) {
+    return EndpointConfigurationState(
+      arn: map['arn'] == null ? null : pulumi.Output.create<String>(map['arn'] as String),
+      asyncInferenceConfig: map['asyncInferenceConfig'] == null ? null : pulumi.Output.create<EndpointConfigurationAsyncInferenceConfig>(EndpointConfigurationAsyncInferenceConfig.fromMap((map['asyncInferenceConfig'] as Map).cast<String, dynamic>())),
+      dataCaptureConfig: map['dataCaptureConfig'] == null ? null : pulumi.Output.create<EndpointConfigurationDataCaptureConfig>(EndpointConfigurationDataCaptureConfig.fromMap((map['dataCaptureConfig'] as Map).cast<String, dynamic>())),
+      executionRoleArn: map['executionRoleArn'] == null ? null : pulumi.Output.create<String>(map['executionRoleArn'] as String),
+      kmsKeyArn: map['kmsKeyArn'] == null ? null : pulumi.Output.create<String>(map['kmsKeyArn'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      namePrefix: map['namePrefix'] == null ? null : pulumi.Output.create<String>(map['namePrefix'] as String),
+      productionVariants: map['productionVariants'] == null ? null : pulumi.Output.create<List<EndpointConfigurationProductionVariant>>(pulumi.Input.decodeList<EndpointConfigurationProductionVariant>(map['productionVariants'], (value) => EndpointConfigurationProductionVariant.fromMap((value as Map).cast<String, dynamic>()))),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      shadowProductionVariants: map['shadowProductionVariants'] == null ? null : pulumi.Output.create<List<EndpointConfigurationShadowProductionVariant>>(pulumi.Input.decodeList<EndpointConfigurationShadowProductionVariant>(map['shadowProductionVariants'], (value) => EndpointConfigurationShadowProductionVariant.fromMap((value as Map).cast<String, dynamic>()))),
+      tags: map['tags'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tags'] as Map).cast<String, String>()),
+      tagsAll: map['tagsAll'] == null ? null : pulumi.Output.create<Map<String, String>>((map['tagsAll'] as Map).cast<String, String>()),
+    );
+  }
+}
+

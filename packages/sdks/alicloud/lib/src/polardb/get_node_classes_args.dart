@@ -1,0 +1,81 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_polardb_get_node_classes_get_node_classes_args_doc}
+/// Arguments for getNodeClasses.
+/// {@endtemplate}
+/// {@macro pulumi_polardb_get_node_classes_get_node_classes_args_doc}
+class GetNodeClassesArgs {
+  /// The PolarDB node cluster series.
+  final pulumi.Input<String>? category;
+  /// The PolarDB node class type by the user.
+  final pulumi.Input<String>? dbNodeClass;
+  /// Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+  final pulumi.Input<String>? dbType;
+  /// Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+  final pulumi.Input<String>? dbVersion;
+  /// File name where to save data source results (after running `pulumi up`).
+  final pulumi.Input<String>? outputFile;
+  /// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
+  final pulumi.Input<String> payType;
+  /// The Region to launch the PolarDB cluster.
+  final pulumi.Input<String>? regionId;
+  /// The Zone to launch the PolarDB cluster.
+  final pulumi.Input<String>? zoneId;
+
+  /// Creates a new [GetNodeClassesArgs].
+  /// [category] The PolarDB node cluster series.
+  /// [dbNodeClass] The PolarDB node class type by the user.
+  /// [dbType] Database type. Options are `MySQL`, `PostgreSQL`, `Oracle`. If db_type is set, db_version also needs to be set.
+  /// [dbVersion] Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/98169.htm) `DBVersion`. If db_version is set, db_type also needs to be set.
+  /// [outputFile] File name where to save data source results (after running `pulumi up`).
+  /// [payType] Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`.
+  /// [regionId] The Region to launch the PolarDB cluster.
+  /// [zoneId] The Zone to launch the PolarDB cluster.
+  GetNodeClassesArgs({
+    pulumi.Output<String>? category,
+    pulumi.Output<String>? dbNodeClass,
+    pulumi.Output<String>? dbType,
+    pulumi.Output<String>? dbVersion,
+    pulumi.Output<String>? outputFile,
+    required pulumi.Output<String> payType,
+    pulumi.Output<String>? regionId,
+    pulumi.Output<String>? zoneId,
+  }) :
+      category = pulumi.Input.asOptionalInput<String>(category),
+      dbNodeClass = pulumi.Input.asOptionalInput<String>(dbNodeClass),
+      dbType = pulumi.Input.asOptionalInput<String>(dbType),
+      dbVersion = pulumi.Input.asOptionalInput<String>(dbVersion),
+      outputFile = pulumi.Input.asOptionalInput<String>(outputFile),
+      payType = pulumi.Input.asInput<String>(payType),
+      regionId = pulumi.Input.asOptionalInput<String>(regionId),
+      zoneId = pulumi.Input.asOptionalInput<String>(zoneId);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'category': ?category,
+      'dbNodeClass': ?dbNodeClass,
+      'dbType': ?dbType,
+      'dbVersion': ?dbVersion,
+      'outputFile': ?outputFile,
+      'payType': payType,
+      'regionId': ?regionId,
+      'zoneId': ?zoneId,
+    };
+  }
+
+  factory GetNodeClassesArgs.fromMap(Map<String, dynamic> map) {
+    return GetNodeClassesArgs(
+      category: map['category'] == null ? null : pulumi.Output.create<String>(map['category'] as String),
+      dbNodeClass: map['dbNodeClass'] == null ? null : pulumi.Output.create<String>(map['dbNodeClass'] as String),
+      dbType: map['dbType'] == null ? null : pulumi.Output.create<String>(map['dbType'] as String),
+      dbVersion: map['dbVersion'] == null ? null : pulumi.Output.create<String>(map['dbVersion'] as String),
+      outputFile: map['outputFile'] == null ? null : pulumi.Output.create<String>(map['outputFile'] as String),
+      payType: pulumi.Output.create<String>(map['payType'] as String),
+      regionId: map['regionId'] == null ? null : pulumi.Output.create<String>(map['regionId'] as String),
+      zoneId: map['zoneId'] == null ? null : pulumi.Output.create<String>(map['zoneId'] as String),
+    );
+  }
+}
+

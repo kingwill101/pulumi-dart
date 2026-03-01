@@ -1,0 +1,92 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'environment_container_image.dart';
+import 'environment_vm_image.dart';
+
+/// Input properties used for looking up and filtering Environment resources.
+class EnvironmentState {
+  /// Use a container image to start the notebook instance.
+  /// Structure is documented below.
+  final pulumi.Input<EnvironmentContainerImage>? containerImage;
+  /// Instance creation time
+  final pulumi.Input<String>? createTime;
+  /// A brief description of this environment.
+  final pulumi.Input<String>? description;
+  /// Display name of this environment for the UI.
+  final pulumi.Input<String>? displayName;
+  /// A reference to the zone where the machine resides.
+  final pulumi.Input<String>? location;
+  /// The name specified for the Environment instance.
+  /// Format: projects/{project_id}/locations/{location}/environments/{environmentId}
+  final pulumi.Input<String>? name;
+  /// Path to a Bash script that automatically runs after a notebook instance fully boots up.
+  /// The path must be a URL or Cloud Storage path. Example: "gs://path-to-file/file-name"
+  final pulumi.Input<String>? postStartupScript;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// Use a Compute Engine VM image to start the notebook instance.
+  /// Structure is documented below.
+  final pulumi.Input<EnvironmentVmImage>? vmImage;
+
+  /// Creates a new [EnvironmentState].
+  /// [containerImage] Use a container image to start the notebook instance.
+  /// [createTime] Instance creation time
+  /// [description] A brief description of this environment.
+  /// [displayName] Display name of this environment for the UI.
+  /// [location] A reference to the zone where the machine resides.
+  /// [name] The name specified for the Environment instance.
+  /// [postStartupScript] Path to a Bash script that automatically runs after a notebook instance fully boots up.
+  /// [project] The ID of the project in which the resource belongs.
+  /// [vmImage] Use a Compute Engine VM image to start the notebook instance.
+  EnvironmentState({
+    pulumi.Output<EnvironmentContainerImage>? containerImage,
+    pulumi.Output<String>? createTime,
+    pulumi.Output<String>? description,
+    pulumi.Output<String>? displayName,
+    pulumi.Output<String>? location,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? postStartupScript,
+    pulumi.Output<String>? project,
+    pulumi.Output<EnvironmentVmImage>? vmImage,
+  }) :
+      containerImage = pulumi.Input.asOptionalInput<EnvironmentContainerImage>(containerImage),
+      createTime = pulumi.Input.asOptionalInput<String>(createTime),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      displayName = pulumi.Input.asOptionalInput<String>(displayName),
+      location = pulumi.Input.asOptionalInput<String>(location),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      postStartupScript = pulumi.Input.asOptionalInput<String>(postStartupScript),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      vmImage = pulumi.Input.asOptionalInput<EnvironmentVmImage>(vmImage);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'containerImage': ?pulumi.Input.mapOptionalInputValue<EnvironmentContainerImage, Map<String, dynamic>>(containerImage, (value) => value.toMap()),
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'location': ?location,
+      'name': ?name,
+      'postStartupScript': ?postStartupScript,
+      'project': ?project,
+      'vmImage': ?pulumi.Input.mapOptionalInputValue<EnvironmentVmImage, Map<String, dynamic>>(vmImage, (value) => value.toMap()),
+    };
+  }
+
+  factory EnvironmentState.fromMap(Map<String, dynamic> map) {
+    return EnvironmentState(
+      containerImage: map['containerImage'] == null ? null : pulumi.Output.create<EnvironmentContainerImage>(EnvironmentContainerImage.fromMap((map['containerImage'] as Map).cast<String, dynamic>())),
+      createTime: map['createTime'] == null ? null : pulumi.Output.create<String>(map['createTime'] as String),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      displayName: map['displayName'] == null ? null : pulumi.Output.create<String>(map['displayName'] as String),
+      location: map['location'] == null ? null : pulumi.Output.create<String>(map['location'] as String),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      postStartupScript: map['postStartupScript'] == null ? null : pulumi.Output.create<String>(map['postStartupScript'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      vmImage: map['vmImage'] == null ? null : pulumi.Output.create<EnvironmentVmImage>(EnvironmentVmImage.fromMap((map['vmImage'] as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

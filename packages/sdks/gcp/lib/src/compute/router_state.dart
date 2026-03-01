@@ -1,0 +1,119 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'router_bgp.dart';
+import 'router_md5_authentication_keys.dart';
+import 'router_params.dart';
+
+/// Input properties used for looking up and filtering Router resources.
+class RouterState {
+  /// BGP information specific to this router.
+  /// Structure is documented below.
+  final pulumi.Input<RouterBgp>? bgp;
+  /// Creation timestamp in RFC3339 text format.
+  final pulumi.Input<String>? creationTimestamp;
+  /// An optional description of this resource.
+  final pulumi.Input<String>? description;
+  /// Indicates if a router is dedicated for use with encrypted VLAN
+  /// attachments (interconnectAttachments).
+  final pulumi.Input<bool>? encryptedInterconnectRouter;
+  /// Keys used for MD5 authentication.
+  /// Structure is documented below.
+  final pulumi.Input<RouterMd5AuthenticationKeys>? md5AuthenticationKeys;
+  /// Name of the resource. The name must be 1-63 characters long, and
+  /// comply with RFC1035. Specifically, the name must be 1-63 characters
+  /// long and match the regular expression `a-z?`
+  /// which means the first character must be a lowercase letter, and all
+  /// following characters must be a dash, lowercase letter, or digit,
+  /// except the last character, which cannot be a dash.
+  final pulumi.Input<String>? name;
+  /// A URI of an NCC Gateway spoke
+  final pulumi.Input<String>? nccGateway;
+  /// A reference to the network to which this router belongs.
+  final pulumi.Input<String>? network;
+  /// Additional params passed with the request, but not persisted as part of resource payload
+  /// Structure is documented below.
+  final pulumi.Input<RouterParams>? params;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+  /// Region where the router resides.
+  final pulumi.Input<String>? region;
+  /// The URI of the created resource.
+  final pulumi.Input<String>? selfLink;
+
+  /// Creates a new [RouterState].
+  /// [bgp] BGP information specific to this router.
+  /// [creationTimestamp] Creation timestamp in RFC3339 text format.
+  /// [description] An optional description of this resource.
+  /// [encryptedInterconnectRouter] Indicates if a router is dedicated for use with encrypted VLAN
+  /// [md5AuthenticationKeys] Keys used for MD5 authentication.
+  /// [name] Name of the resource. The name must be 1-63 characters long, and
+  /// [nccGateway] A URI of an NCC Gateway spoke
+  /// [network] A reference to the network to which this router belongs.
+  /// [params] Additional params passed with the request, but not persisted as part of resource payload
+  /// [project] The ID of the project in which the resource belongs.
+  /// [region] Region where the router resides.
+  /// [selfLink] The URI of the created resource.
+  RouterState({
+    pulumi.Output<RouterBgp>? bgp,
+    pulumi.Output<String>? creationTimestamp,
+    pulumi.Output<String>? description,
+    pulumi.Output<bool>? encryptedInterconnectRouter,
+    pulumi.Output<RouterMd5AuthenticationKeys>? md5AuthenticationKeys,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? nccGateway,
+    pulumi.Output<String>? network,
+    pulumi.Output<RouterParams>? params,
+    pulumi.Output<String>? project,
+    pulumi.Output<String>? region,
+    pulumi.Output<String>? selfLink,
+  }) :
+      bgp = pulumi.Input.asOptionalInput<RouterBgp>(bgp),
+      creationTimestamp = pulumi.Input.asOptionalInput<String>(creationTimestamp),
+      description = pulumi.Input.asOptionalInput<String>(description),
+      encryptedInterconnectRouter = pulumi.Input.asOptionalInput<bool>(encryptedInterconnectRouter),
+      md5AuthenticationKeys = pulumi.Input.asOptionalInput<RouterMd5AuthenticationKeys>(md5AuthenticationKeys),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      nccGateway = pulumi.Input.asOptionalInput<String>(nccGateway),
+      network = pulumi.Input.asOptionalInput<String>(network),
+      params = pulumi.Input.asOptionalInput<RouterParams>(params),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      region = pulumi.Input.asOptionalInput<String>(region),
+      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'bgp': ?pulumi.Input.mapOptionalInputValue<RouterBgp, Map<String, dynamic>>(bgp, (value) => value.toMap()),
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'encryptedInterconnectRouter': ?encryptedInterconnectRouter,
+      'md5AuthenticationKeys': ?pulumi.Input.mapOptionalInputValue<RouterMd5AuthenticationKeys, Map<String, dynamic>>(md5AuthenticationKeys, (value) => value.toMap()),
+      'name': ?name,
+      'nccGateway': ?nccGateway,
+      'network': ?network,
+      'params': ?pulumi.Input.mapOptionalInputValue<RouterParams, Map<String, dynamic>>(params, (value) => value.toMap()),
+      'project': ?project,
+      'region': ?region,
+      'selfLink': ?selfLink,
+    };
+  }
+
+  factory RouterState.fromMap(Map<String, dynamic> map) {
+    return RouterState(
+      bgp: map['bgp'] == null ? null : pulumi.Output.create<RouterBgp>(RouterBgp.fromMap((map['bgp'] as Map).cast<String, dynamic>())),
+      creationTimestamp: map['creationTimestamp'] == null ? null : pulumi.Output.create<String>(map['creationTimestamp'] as String),
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      encryptedInterconnectRouter: map['encryptedInterconnectRouter'] == null ? null : pulumi.Output.create<bool>(map['encryptedInterconnectRouter'] as bool),
+      md5AuthenticationKeys: map['md5AuthenticationKeys'] == null ? null : pulumi.Output.create<RouterMd5AuthenticationKeys>(RouterMd5AuthenticationKeys.fromMap((map['md5AuthenticationKeys'] as Map).cast<String, dynamic>())),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      nccGateway: map['nccGateway'] == null ? null : pulumi.Output.create<String>(map['nccGateway'] as String),
+      network: map['network'] == null ? null : pulumi.Output.create<String>(map['network'] as String),
+      params: map['params'] == null ? null : pulumi.Output.create<RouterParams>(RouterParams.fromMap((map['params'] as Map).cast<String, dynamic>())),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      region: map['region'] == null ? null : pulumi.Output.create<String>(map['region'] as String),
+      selfLink: map['selfLink'] == null ? null : pulumi.Output.create<String>(map['selfLink'] as String),
+    );
+  }
+}
+

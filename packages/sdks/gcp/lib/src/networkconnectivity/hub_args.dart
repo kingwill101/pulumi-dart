@@ -1,0 +1,79 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_networkconnectivity_hub_hub_args_doc}
+/// The set of arguments for Hub.
+/// {@endtemplate}
+/// {@macro pulumi_networkconnectivity_hub_hub_args_doc}
+class HubArgs {
+  /// An optional description of the hub.
+  final pulumi.Input<String>? description;
+  /// Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+  final pulumi.Input<bool>? exportPsc;
+  /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+  final pulumi.Input<Map<String, String>>? labels;
+  /// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+  final pulumi.Input<String>? name;
+  /// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+  /// Possible values are: `CUSTOM`, `PRESET`.
+  final pulumi.Input<String>? policyMode;
+  /// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+  /// Possible values are: `MESH`, `STAR`, `HYBRID_INSPECTION`.
+  final pulumi.Input<String>? presetTopology;
+  /// The ID of the project in which the resource belongs.
+  /// If it is not provided, the provider project is used.
+  final pulumi.Input<String>? project;
+
+  /// Creates a new [HubArgs].
+  /// [description] An optional description of the hub.
+  /// [exportPsc] Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the hub. The default value is false.
+  /// [labels] Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+  /// [name] Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+  /// [policyMode] Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the policyMode defaults to PRESET.
+  /// [presetTopology] Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+  /// [project] The ID of the project in which the resource belongs.
+  HubArgs({
+    pulumi.Output<String>? description,
+    pulumi.Output<bool>? exportPsc,
+    pulumi.Output<Map<String, String>>? labels,
+    pulumi.Output<String>? name,
+    pulumi.Output<String>? policyMode,
+    pulumi.Output<String>? presetTopology,
+    pulumi.Output<String>? project,
+  }) :
+      description = pulumi.Input.asOptionalInput<String>(description),
+      exportPsc = pulumi.Input.asOptionalInput<bool>(exportPsc),
+      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+      name = pulumi.Input.asOptionalInput<String>(name),
+      policyMode = pulumi.Input.asOptionalInput<String>(policyMode),
+      presetTopology = pulumi.Input.asOptionalInput<String>(presetTopology),
+      project = pulumi.Input.asOptionalInput<String>(project);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'description': ?description,
+      'exportPsc': ?exportPsc,
+      'labels': ?labels,
+      'name': ?name,
+      'policyMode': ?policyMode,
+      'presetTopology': ?presetTopology,
+      'project': ?project,
+    };
+  }
+
+  factory HubArgs.fromMap(Map<String, dynamic> map) {
+    return HubArgs(
+      description: map['description'] == null ? null : pulumi.Output.create<String>(map['description'] as String),
+      exportPsc: map['exportPsc'] == null ? null : pulumi.Output.create<bool>(map['exportPsc'] as bool),
+      labels: map['labels'] == null ? null : pulumi.Output.create<Map<String, String>>((map['labels'] as Map).cast<String, String>()),
+      name: map['name'] == null ? null : pulumi.Output.create<String>(map['name'] as String),
+      policyMode: map['policyMode'] == null ? null : pulumi.Output.create<String>(map['policyMode'] as String),
+      presetTopology: map['presetTopology'] == null ? null : pulumi.Output.create<String>(map['presetTopology'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+    );
+  }
+}
+

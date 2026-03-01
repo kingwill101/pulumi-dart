@@ -1,0 +1,131 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'helm_operator_properties.dart';
+
+/// {@template pulumi_kubernetesconfiguration_source_control_configuration_args_doc}
+/// The set of arguments for SourceControlConfiguration.
+/// {@endtemplate}
+/// {@macro pulumi_kubernetesconfiguration_source_control_configuration_args_doc}
+class SourceControlConfigurationArgs {
+  /// The name of the kubernetes cluster.
+  final pulumi.Input<String> clusterName;
+  /// The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+  final pulumi.Input<String> clusterResourceName;
+  /// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
+  final pulumi.Input<String> clusterRp;
+  /// Name-value pairs of protected configuration settings for the configuration
+  final pulumi.Input<Map<String, String>>? configurationProtectedSettings;
+  /// Option to enable Helm Operator for this git configuration.
+  final pulumi.Input<bool>? enableHelmOperator;
+  /// Properties for Helm operator.
+  final pulumi.Input<HelmOperatorProperties>? helmOperatorProperties;
+  /// Instance name of the operator - identifying the specific configuration.
+  final pulumi.Input<String>? operatorInstanceName;
+  /// The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
+  final pulumi.Input<String>? operatorNamespace;
+  /// Any Parameters for the Operator instance in string format.
+  final pulumi.Input<String>? operatorParams;
+  /// Scope at which the operator will be installed.
+  final pulumi.Input<String>? operatorScope;
+  /// Type of the operator
+  final pulumi.Input<String>? operatorType;
+  /// Url of the SourceControl Repository.
+  final pulumi.Input<String>? repositoryUrl;
+  /// The name of the resource group. The name is case insensitive.
+  final pulumi.Input<String> resourceGroupName;
+  /// Name of the Source Control Configuration.
+  final pulumi.Input<String>? sourceControlConfigurationName;
+  /// Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
+  final pulumi.Input<String>? sshKnownHostsContents;
+
+  /// Creates a new [SourceControlConfigurationArgs].
+  /// [clusterName] The name of the kubernetes cluster.
+  /// [clusterResourceName] The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
+  /// [clusterRp] The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
+  /// [configurationProtectedSettings] Name-value pairs of protected configuration settings for the configuration
+  /// [enableHelmOperator] Option to enable Helm Operator for this git configuration.
+  /// [helmOperatorProperties] Properties for Helm operator.
+  /// [operatorInstanceName] Instance name of the operator - identifying the specific configuration.
+  /// [operatorNamespace] The namespace to which this operator is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
+  /// [operatorParams] Any Parameters for the Operator instance in string format.
+  /// [operatorScope] Scope at which the operator will be installed.
+  /// [operatorType] Type of the operator
+  /// [repositoryUrl] Url of the SourceControl Repository.
+  /// [resourceGroupName] The name of the resource group. The name is case insensitive.
+  /// [sourceControlConfigurationName] Name of the Source Control Configuration.
+  /// [sshKnownHostsContents] Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
+  SourceControlConfigurationArgs({
+    required pulumi.Output<String> clusterName,
+    required pulumi.Output<String> clusterResourceName,
+    required pulumi.Output<String> clusterRp,
+    pulumi.Output<Map<String, String>>? configurationProtectedSettings,
+    pulumi.Output<bool>? enableHelmOperator,
+    pulumi.Output<HelmOperatorProperties>? helmOperatorProperties,
+    pulumi.Output<String>? operatorInstanceName,
+    pulumi.Output<String>? operatorNamespace,
+    pulumi.Output<String>? operatorParams,
+    pulumi.Output<String>? operatorScope,
+    pulumi.Output<String>? operatorType,
+    pulumi.Output<String>? repositoryUrl,
+    required pulumi.Output<String> resourceGroupName,
+    pulumi.Output<String>? sourceControlConfigurationName,
+    pulumi.Output<String>? sshKnownHostsContents,
+  }) :
+      clusterName = pulumi.Input.asInput<String>(clusterName),
+      clusterResourceName = pulumi.Input.asInput<String>(clusterResourceName),
+      clusterRp = pulumi.Input.asInput<String>(clusterRp),
+      configurationProtectedSettings = pulumi.Input.asOptionalInput<Map<String, String>>(configurationProtectedSettings),
+      enableHelmOperator = pulumi.Input.asOptionalInput<bool>(enableHelmOperator),
+      helmOperatorProperties = pulumi.Input.asOptionalInput<HelmOperatorProperties>(helmOperatorProperties),
+      operatorInstanceName = pulumi.Input.asOptionalInput<String>(operatorInstanceName),
+      operatorNamespace = pulumi.Input.asOptionalInput<String>(operatorNamespace),
+      operatorParams = pulumi.Input.asOptionalInput<String>(operatorParams),
+      operatorScope = pulumi.Input.asOptionalInput<String>(operatorScope),
+      operatorType = pulumi.Input.asOptionalInput<String>(operatorType),
+      repositoryUrl = pulumi.Input.asOptionalInput<String>(repositoryUrl),
+      resourceGroupName = pulumi.Input.asInput<String>(resourceGroupName),
+      sourceControlConfigurationName = pulumi.Input.asOptionalInput<String>(sourceControlConfigurationName),
+      sshKnownHostsContents = pulumi.Input.asOptionalInput<String>(sshKnownHostsContents);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'clusterName': clusterName,
+      'clusterResourceName': clusterResourceName,
+      'clusterRp': clusterRp,
+      'configurationProtectedSettings': ?configurationProtectedSettings,
+      'enableHelmOperator': ?enableHelmOperator,
+      'helmOperatorProperties': ?pulumi.Input.mapOptionalInputValue<HelmOperatorProperties, Map<String, dynamic>>(helmOperatorProperties, (value) => value.toMap()),
+      'operatorInstanceName': ?operatorInstanceName,
+      'operatorNamespace': ?operatorNamespace,
+      'operatorParams': ?operatorParams,
+      'operatorScope': ?operatorScope,
+      'operatorType': ?operatorType,
+      'repositoryUrl': ?repositoryUrl,
+      'resourceGroupName': resourceGroupName,
+      'sourceControlConfigurationName': ?sourceControlConfigurationName,
+      'sshKnownHostsContents': ?sshKnownHostsContents,
+    };
+  }
+
+  factory SourceControlConfigurationArgs.fromMap(Map<String, dynamic> map) {
+    return SourceControlConfigurationArgs(
+      clusterName: pulumi.Output.create<String>(map['clusterName'] as String),
+      clusterResourceName: pulumi.Output.create<String>(map['clusterResourceName'] as String),
+      clusterRp: pulumi.Output.create<String>(map['clusterRp'] as String),
+      configurationProtectedSettings: map['configurationProtectedSettings'] == null ? null : pulumi.Output.create<Map<String, String>>((map['configurationProtectedSettings'] as Map).cast<String, String>()),
+      enableHelmOperator: map['enableHelmOperator'] == null ? null : pulumi.Output.create<bool>(map['enableHelmOperator'] as bool),
+      helmOperatorProperties: map['helmOperatorProperties'] == null ? null : pulumi.Output.create<HelmOperatorProperties>(HelmOperatorProperties.fromMap((map['helmOperatorProperties'] as Map).cast<String, dynamic>())),
+      operatorInstanceName: map['operatorInstanceName'] == null ? null : pulumi.Output.create<String>(map['operatorInstanceName'] as String),
+      operatorNamespace: map['operatorNamespace'] == null ? null : pulumi.Output.create<String>(map['operatorNamespace'] as String),
+      operatorParams: map['operatorParams'] == null ? null : pulumi.Output.create<String>(map['operatorParams'] as String),
+      operatorScope: map['operatorScope'] == null ? null : pulumi.Output.create<String>(map['operatorScope'] as String),
+      operatorType: map['operatorType'] == null ? null : pulumi.Output.create<String>(map['operatorType'] as String),
+      repositoryUrl: map['repositoryUrl'] == null ? null : pulumi.Output.create<String>(map['repositoryUrl'] as String),
+      resourceGroupName: pulumi.Output.create<String>(map['resourceGroupName'] as String),
+      sourceControlConfigurationName: map['sourceControlConfigurationName'] == null ? null : pulumi.Output.create<String>(map['sourceControlConfigurationName'] as String),
+      sshKnownHostsContents: map['sshKnownHostsContents'] == null ? null : pulumi.Output.create<String>(map['sshKnownHostsContents'] as String),
+    );
+  }
+}
+

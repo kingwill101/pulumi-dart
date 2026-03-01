@@ -1,0 +1,16 @@
+name: pulumi_hcloud
+description: A Pulumi package for creating and managing hcloud cloud resources.
+version: 1.32.1
+license: Apache-2.0
+homepage: https://pulumi.io
+repository: https://github.com/pulumi/pulumi-hcloud
+topics:
+    - pulumi
+    - hcloud
+environment:
+    sdk: ^3.10.0
+resolution: workspace
+dependencies:
+    pulumi: 0.1.0
+dev_dependencies:
+    lints: ^6.1.0

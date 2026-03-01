@@ -1,0 +1,29 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'network_interface.dart';
+
+/// NetworkPolicy describes VM instance network configurations.
+class NetworkPolicy {
+  /// Network configurations.
+  final List<NetworkInterface>? networkInterfaces;
+
+  /// Creates a new [NetworkPolicy].
+  /// [networkInterfaces] Network configurations.
+  NetworkPolicy({
+    this.networkInterfaces,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<NetworkInterface, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
+    };
+  }
+
+  factory NetworkPolicy.fromMap(Map<String, dynamic> map) {
+    return NetworkPolicy(
+      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
+    );
+  }
+}
+

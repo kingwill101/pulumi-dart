@@ -1,0 +1,49 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+/// {@template pulumi_contactcenterinsights_v1_get_conversation_args_doc}
+/// Arguments for getConversation.
+/// {@endtemplate}
+/// {@macro pulumi_contactcenterinsights_v1_get_conversation_args_doc}
+class GetConversationArgs {
+  final pulumi.Input<String> conversationId;
+  final pulumi.Input<String> location;
+  final pulumi.Input<String>? project;
+  final pulumi.Input<String>? view;
+
+  /// Creates a new [GetConversationArgs].
+  /// [conversationId] Required.
+  /// [location] Required.
+  /// [project] Optional.
+  /// [view] Optional.
+  GetConversationArgs({
+    required pulumi.Output<String> conversationId,
+    required pulumi.Output<String> location,
+    pulumi.Output<String>? project,
+    pulumi.Output<String>? view,
+  }) :
+      conversationId = pulumi.Input.asInput<String>(conversationId),
+      location = pulumi.Input.asInput<String>(location),
+      project = pulumi.Input.asOptionalInput<String>(project),
+      view = pulumi.Input.asOptionalInput<String>(view);
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'conversationId': conversationId,
+      'location': location,
+      'project': ?project,
+      'view': ?view,
+    };
+  }
+
+  factory GetConversationArgs.fromMap(Map<String, dynamic> map) {
+    return GetConversationArgs(
+      conversationId: pulumi.Output.create<String>(map['conversationId'] as String),
+      location: pulumi.Output.create<String>(map['location'] as String),
+      project: map['project'] == null ? null : pulumi.Output.create<String>(map['project'] as String),
+      view: map['view'] == null ? null : pulumi.Output.create<String>(map['view'] as String),
+    );
+  }
+}
+

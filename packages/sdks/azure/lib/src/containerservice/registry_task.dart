@@ -1,0 +1,384 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+import 'registry_task_agent_setting.dart';
+import 'registry_task_args.dart';
+import 'registry_task_base_image_trigger.dart';
+import 'registry_task_docker_step.dart';
+import 'registry_task_encoded_step.dart';
+import 'registry_task_file_step.dart';
+import 'registry_task_identity.dart';
+import 'registry_task_platform.dart';
+import 'registry_task_registry_credential.dart';
+import 'registry_task_source_trigger.dart';
+import 'registry_task_state.dart';
+import 'registry_task_timer_trigger.dart';
+
+/// Manages a Container Registry Task.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as azure from "@pulumi/azure";
+///
+/// const example = new azure.core.ResourceGroup("example", {
+///     name: "example-rg",
+///     location: "West Europe",
+/// });
+/// const exampleRegistry = new azure.containerservice.Registry("example", {
+///     name: "example",
+///     resourceGroupName: example.name,
+///     location: example.location,
+///     sku: "Basic",
+/// });
+/// const exampleRegistryTask = new azure.containerservice.RegistryTask("example", {
+///     name: "example-task",
+///     containerRegistryId: exampleRegistry.id,
+///     platform: {
+///         os: "Linux",
+///     },
+///     dockerStep: {
+///         dockerfilePath: "Dockerfile",
+///         contextPath: "https://github.com/<username>/<repository>#<branch>:<folder>",
+///         contextAccessToken: "<github personal access token>",
+///         imageNames: ["helloworld:{{.Run.ID}}"],
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_azure as azure
+///
+/// example = azure.core.ResourceGroup("example",
+///     name="example-rg",
+///     location="West Europe")
+/// example_registry = azure.containerservice.Registry("example",
+///     name="example",
+///     resource_group_name=example.name,
+///     location=example.location,
+///     sku="Basic")
+/// example_registry_task = azure.containerservice.RegistryTask("example",
+///     name="example-task",
+///     container_registry_id=example_registry.id,
+///     platform={
+///         "os": "Linux",
+///     },
+///     docker_step={
+///         "dockerfile_path": "Dockerfile",
+///         "context_path": "https://github.com/<username>/<repository>#<branch>:<folder>",
+///         "context_access_token": "<github personal access token>",
+///         "image_names": ["helloworld:{{.Run.ID}}"],
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Azure = Pulumi.Azure;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Azure.Core.ResourceGroup("example", new()
+///     {
+///         Name = "example-rg",
+///         Location = "West Europe",
+///     });
+///
+///     var exampleRegistry = new Azure.ContainerService.Registry("example", new()
+///     {
+///         Name = "example",
+///         ResourceGroupName = example.Name,
+///         Location = example.Location,
+///         Sku = "Basic",
+///     });
+///
+///     var exampleRegistryTask = new Azure.ContainerService.RegistryTask("example", new()
+///     {
+///         Name = "example-task",
+///         ContainerRegistryId = exampleRegistry.Id,
+///         Platform = new Azure.ContainerService.Inputs.RegistryTaskPlatformArgs
+///         {
+///             Os = "Linux",
+///         },
+///         DockerStep = new Azure.ContainerService.Inputs.RegistryTaskDockerStepArgs
+///         {
+///             DockerfilePath = "Dockerfile",
+///             ContextPath = "https://github.com/<username>/<repository>#<branch>:<folder>",
+///             ContextAccessToken = "<github personal access token>",
+///             ImageNames = new[]
+///             {
+///                 "helloworld:{{.Run.ID}}",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/containerservice"
+/// 	"github.com/pulumi/pulumi-azure/sdk/v6/go/azure/core"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := core.NewResourceGroup(ctx, "example", &core.ResourceGroupArgs{
+/// 			Name:     pulumi.String("example-rg"),
+/// 			Location: pulumi.String("West Europe"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		exampleRegistry, err := containerservice.NewRegistry(ctx, "example", &containerservice.RegistryArgs{
+/// 			Name:              pulumi.String("example"),
+/// 			ResourceGroupName: example.Name,
+/// 			Location:          example.Location,
+/// 			Sku:               pulumi.String("Basic"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = containerservice.NewRegistryTask(ctx, "example", &containerservice.RegistryTaskArgs{
+/// 			Name:                pulumi.String("example-task"),
+/// 			ContainerRegistryId: exampleRegistry.ID(),
+/// 			Platform: &containerservice.RegistryTaskPlatformArgs{
+/// 				Os: pulumi.String("Linux"),
+/// 			},
+/// 			DockerStep: &containerservice.RegistryTaskDockerStepArgs{
+/// 				DockerfilePath:     pulumi.String("Dockerfile"),
+/// 				ContextPath:        pulumi.String("https://github.com/<username>/<repository>#<branch>:<folder>"),
+/// 				ContextAccessToken: pulumi.String("<github personal access token>"),
+/// 				ImageNames: pulumi.StringArray{
+/// 					pulumi.String("helloworld:{{.Run.ID}}"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.azure.core.ResourceGroup;
+/// import com.pulumi.azure.core.ResourceGroupArgs;
+/// import com.pulumi.azure.containerservice.Registry;
+/// import com.pulumi.azure.containerservice.RegistryArgs;
+/// import com.pulumi.azure.containerservice.RegistryTask;
+/// import com.pulumi.azure.containerservice.RegistryTaskArgs;
+/// import com.pulumi.azure.containerservice.inputs.RegistryTaskPlatformArgs;
+/// import com.pulumi.azure.containerservice.inputs.RegistryTaskDockerStepArgs;
+/// import java.util.List;
+/// import java.util.ArrayList;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new ResourceGroup("example", ResourceGroupArgs.builder()
+///             .name("example-rg")
+///             .location("West Europe")
+///             .build());
+///
+///         var exampleRegistry = new Registry("exampleRegistry", RegistryArgs.builder()
+///             .name("example")
+///             .resourceGroupName(example.name())
+///             .location(example.location())
+///             .sku("Basic")
+///             .build());
+///
+///         var exampleRegistryTask = new RegistryTask("exampleRegistryTask", RegistryTaskArgs.builder()
+///             .name("example-task")
+///             .containerRegistryId(exampleRegistry.id())
+///             .platform(RegistryTaskPlatformArgs.builder()
+///                 .os("Linux")
+///                 .build())
+///             .dockerStep(RegistryTaskDockerStepArgs.builder()
+///                 .dockerfilePath("Dockerfile")
+///                 .contextPath("https://github.com/<username>/<repository>#<branch>:<folder>")
+///                 .contextAccessToken("<github personal access token>")
+///                 .imageNames("helloworld:{{.Run.ID}}")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: azure:core:ResourceGroup
+///     properties:
+///       name: example-rg
+///       location: West Europe
+///   exampleRegistry:
+///     type: azure:containerservice:Registry
+///     name: example
+///     properties:
+///       name: example
+///       resourceGroupName: ${example.name}
+///       location: ${example.location}
+///       sku: Basic
+///   exampleRegistryTask:
+///     type: azure:containerservice:RegistryTask
+///     name: example
+///     properties:
+///       name: example-task
+///       containerRegistryId: ${exampleRegistry.id}
+///       platform:
+///         os: Linux
+///       dockerStep:
+///         dockerfilePath: Dockerfile
+///         contextPath: https://github.com/<username>/<repository>#<branch>:<folder>
+///         contextAccessToken: <github personal access token>
+///         imageNames:
+///           - helloworld:{{.Run.ID}}
+/// ```
+///
+///
+/// ## API Providers
+///
+/// <!-- This section is generated, changes will be overwritten -->
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.ContainerRegistry` - 2025-11-01, 2019-06-01-preview
+///
+/// ## Import
+///
+/// Container Registry Tasks can be imported using the `resource id`, e.g.
+///
+/// ```sh
+/// $ pulumi import azure:containerservice/registryTask:RegistryTask example /subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/group1/providers/Microsoft.ContainerRegistry/registries/registry1/tasks/task1
+/// ```
+class RegistryTask extends pulumi.CustomResource {
+  /// The name of the dedicated Container Registry Agent Pool for this Container Registry Task.
+  late final pulumi.Output<String?> agentPoolName;
+  /// A `agent_setting` block as defined below.
+  ///
+  /// > **Note:** Only one of `agent_pool_name` and `agent_setting` can be specified.
+  late final pulumi.Output<RegistryTaskAgentSetting?> agentSetting;
+  /// A `base_image_trigger` block as defined below.
+  late final pulumi.Output<RegistryTaskBaseImageTrigger?> baseImageTrigger;
+  /// The ID of the Container Registry that this Container Registry Task resides in. Changing this forces a new Container Registry Task to be created.
+  late final pulumi.Output<String> containerRegistryId;
+  /// A `docker_step` block as defined below.
+  late final pulumi.Output<RegistryTaskDockerStep?> dockerStep;
+  /// Should this Container Registry Task be enabled? Defaults to `true`.
+  late final pulumi.Output<bool?> enabled;
+  /// A `encoded_step` block as defined below.
+  late final pulumi.Output<RegistryTaskEncodedStep?> encodedStep;
+  /// A `file_step` block as defined below.
+  ///
+  /// > **Note:** For non-system task (when `is_system_task` is set to `false`), one and only one of the `docker_step`, `encoded_step` and `file_step` should be specified.
+  late final pulumi.Output<RegistryTaskFileStep?> fileStep;
+  /// An `identity` block as defined below.
+  late final pulumi.Output<RegistryTaskIdentity?> identity;
+  /// Whether this Container Registry Task is a system task. Changing this forces a new Container Registry Task to be created. Defaults to `false`.
+  late final pulumi.Output<bool?> isSystemTask;
+  late final pulumi.Output<String?> logTemplate;
+  /// The name which should be used for this Container Registry Task. Changing this forces a new Container Registry Task to be created.
+  late final pulumi.Output<String> name;
+  /// A `platform` block as defined below.
+  ///
+  /// > **Note:** The `platform` is required for non-system task (when `is_system_task` is set to `false`).
+  late final pulumi.Output<RegistryTaskPlatform?> platform;
+  late final pulumi.Output<RegistryTaskRegistryCredential?> registryCredential;
+  /// One or more `source_trigger` blocks as defined below.
+  late final pulumi.Output<List<RegistryTaskSourceTrigger>?> sourceTriggers;
+  late final pulumi.Output<Map<String, String>?> tags;
+  late final pulumi.Output<int?> timeoutInSeconds;
+  /// One or more `timer_trigger` blocks as defined below.
+  late final pulumi.Output<List<RegistryTaskTimerTrigger>?> timerTriggers;
+
+  /// Creates a new [RegistryTask].
+  /// [name] The Pulumi resource name.
+  /// [args] Arguments used to configure this [RegistryTask]. {@macro pulumi_containerservice_registry_task_registry_task_args_doc}
+  /// [options] Resource options controlling this resource's behavior.
+  RegistryTask(
+    String name, {
+    RegistryTaskArgs? args,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:containerservice/registryTask:RegistryTask',
+          name,
+          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.agentPoolName = registerOutput<String?>('agentPoolName');
+    this.agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting');
+    this.baseImageTrigger = registerOutput<RegistryTaskBaseImageTrigger?>('baseImageTrigger');
+    this.containerRegistryId = registerOutput<String>('containerRegistryId');
+    this.dockerStep = registerOutput<RegistryTaskDockerStep?>('dockerStep');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.encodedStep = registerOutput<RegistryTaskEncodedStep?>('encodedStep');
+    this.fileStep = registerOutput<RegistryTaskFileStep?>('fileStep');
+    this.identity = registerOutput<RegistryTaskIdentity?>('identity');
+    this.isSystemTask = registerOutput<bool?>('isSystemTask');
+    this.logTemplate = registerOutput<String?>('logTemplate');
+    this.name = registerOutput<String>('name');
+    this.platform = registerOutput<RegistryTaskPlatform?>('platform');
+    this.registryCredential = registerOutput<RegistryTaskRegistryCredential?>('registryCredential');
+    this.sourceTriggers = registerOutput<List<RegistryTaskSourceTrigger>?>('sourceTriggers');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
+    this.timerTriggers = registerOutput<List<RegistryTaskTimerTrigger>?>('timerTriggers');
+  }
+
+  /// Gets an existing [RegistryTask] resource's state with the given [name] and [id].
+  static RegistryTask get(
+    String name,
+    pulumi.Input<String> id, {
+    RegistryTaskState? state,
+  }) {
+    return RegistryTask._get(
+      name,
+      state: state?.toMap(),
+      options: pulumi.CustomResourceOptions(id: id),
+    );
+  }
+
+  RegistryTask._get(
+    String name, {
+    Map<String, dynamic>? state,
+    pulumi.CustomResourceOptions? options,
+  }) : super(
+          'azure:containerservice/registryTask:RegistryTask',
+          name,
+          pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
+          options ?? pulumi.CustomResourceOptions(),
+        ) {
+    this.agentPoolName = registerOutput<String?>('agentPoolName');
+    this.agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting');
+    this.baseImageTrigger = registerOutput<RegistryTaskBaseImageTrigger?>('baseImageTrigger');
+    this.containerRegistryId = registerOutput<String>('containerRegistryId');
+    this.dockerStep = registerOutput<RegistryTaskDockerStep?>('dockerStep');
+    this.enabled = registerOutput<bool?>('enabled');
+    this.encodedStep = registerOutput<RegistryTaskEncodedStep?>('encodedStep');
+    this.fileStep = registerOutput<RegistryTaskFileStep?>('fileStep');
+    this.identity = registerOutput<RegistryTaskIdentity?>('identity');
+    this.isSystemTask = registerOutput<bool?>('isSystemTask');
+    this.logTemplate = registerOutput<String?>('logTemplate');
+    this.name = registerOutput<String>('name');
+    this.platform = registerOutput<RegistryTaskPlatform?>('platform');
+    this.registryCredential = registerOutput<RegistryTaskRegistryCredential?>('registryCredential');
+    this.sourceTriggers = registerOutput<List<RegistryTaskSourceTrigger>?>('sourceTriggers');
+    this.tags = registerOutput<Map<String, String>?>('tags');
+    this.timeoutInSeconds = registerOutput<int?>('timeoutInSeconds');
+    this.timerTriggers = registerOutput<List<RegistryTaskTimerTrigger>?>('timerTriggers');
+  }
+}

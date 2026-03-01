@@ -1,0 +1,16 @@
+name: pulumi_gcp
+description: A Pulumi package for creating and managing Google Cloud Platform resources.
+version: 9.11.0
+license: Apache-2.0
+homepage: https://pulumi.io
+repository: https://github.com/pulumi/pulumi-gcp
+topics:
+    - pulumi
+    - gcp
+environment:
+    sdk: ^3.10.0
+resolution: workspace
+dependencies:
+    pulumi: 0.1.0
+dev_dependencies:
+    lints: ^6.1.0
