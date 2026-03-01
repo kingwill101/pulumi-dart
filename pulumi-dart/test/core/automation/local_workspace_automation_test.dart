@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:pulumi/automation.dart';
@@ -140,6 +141,110 @@ void main() {
           '--non-interactive',
         ]),
       );
+    });
+
+    test('renameResult updates stack name and loads summary', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: 'renamed', stderr: ''),
+        const PulumiCommandResult(
+          exitCode: 0,
+          stdout:
+              '[{"kind":"rename","startTime":"2025-01-01T00:00:00Z","endTime":"2025-01-01T00:01:00Z","result":"succeeded","version":10,"resourceChanges":{"same":1}}]',
+          stderr: '',
+        ),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      final result = await stack.renameResult('prod');
+
+      expect(result.succeeded, isTrue);
+      expect(stack.name, equals('prod'));
+      expect(result.summary?.parsedKind, equals(AutomationUpdateKind.rename));
+      expect(
+        result.summary?.parsedResult,
+        equals(AutomationUpdateResult.succeeded),
+      );
+      expect(result.summary?.resourceChanges['same'], equals(1));
+      expect(
+        runner.requests[0].arguments,
+        equals(<String>['stack', 'rename', 'prod']),
+      );
+      expect(
+        runner.requests[1].arguments,
+        equals(<String>[
+          'stack',
+          'history',
+          '--json',
+          '--stack',
+          'prod',
+          '--page-size',
+          '1',
+        ]),
+      );
+    });
+
+    test(
+      'renameResult rejects showSummarySecrets for remote workspaces',
+      () async {
+        final runner = _FakeRunner(<PulumiCommandResult>[
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+        ]);
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(
+            workDir: tempDir.path,
+            commandRunner: runner.call,
+            remote: true,
+            remoteArgs: const <String>['--remote'],
+          ),
+        );
+        final stack = Stack('dev', workspace);
+
+        await expectLater(
+          stack.renameResult('prod', showSummarySecrets: true),
+          throwsA(isA<ArgumentError>()),
+        );
+        expect(runner.requests, isEmpty);
+      },
+    );
+
+    test('renameResult appends remote args in remote workspaces', () async {
+      final runner = _FakeRunner(<PulumiCommandResult>[
+        const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+      ]);
+      final workspace = await LocalWorkspace.create(
+        LocalWorkspaceOptions(
+          workDir: tempDir.path,
+          commandRunner: runner.call,
+          remote: true,
+          remoteArgs: const <String>[
+            '--remote',
+            '--remote-agent-pool-id',
+            'p1',
+          ],
+        ),
+      );
+      final stack = Stack('dev', workspace);
+
+      await stack.renameResult('prod', includeSummary: false);
+
+      expect(
+        runner.requests.single.arguments,
+        equals(<String>[
+          'stack',
+          'rename',
+          'prod',
+          '--remote',
+          '--remote-agent-pool-id',
+          'p1',
+        ]),
+      );
+      expect(stack.name, equals('prod'));
     });
 
     test('setConfig appends --secret when requested', () async {
@@ -903,6 +1008,155 @@ void main() {
       expect(runner.requests[1].arguments[4], equals('--stack'));
       expect(runner.requests[1].arguments[5], equals('dev'));
     });
+
+    test(
+      'importResources writes import file, reads generated code, and loads summary',
+      () async {
+        Map<String, dynamic>? observedImportPayload;
+        String? observedGeneratedCodePath;
+
+        final runner = _FakeRunner(
+          <PulumiCommandResult>[
+            const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+            const PulumiCommandResult(
+              exitCode: 0,
+              stdout:
+                  '[{"kind":"import","startTime":"2025-01-04T00:00:00Z","endTime":"2025-01-04T00:01:00Z","result":"succeeded","version":45,"resourceChanges":{"import":2}}]',
+              stderr: '',
+            ),
+          ],
+          onRequest: (request) async {
+            if (request.arguments.first != 'import') {
+              return;
+            }
+            final fileIndex = request.arguments.indexOf('--file');
+            if (fileIndex != -1) {
+              final importPath = request.arguments[fileIndex + 1];
+              observedImportPayload =
+                  jsonDecode(await File(importPath).readAsString())
+                      as Map<String, dynamic>;
+            }
+            final outArg = request.arguments.firstWhere(
+              (arg) => arg.startsWith('--out='),
+              orElse: () => '',
+            );
+            if (outArg.isNotEmpty) {
+              observedGeneratedCodePath = outArg.substring('--out='.length);
+              await File(
+                observedGeneratedCodePath!,
+              ).writeAsString('// generated import code\n');
+            }
+          },
+        );
+
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(
+            workDir: tempDir.path,
+            commandRunner: runner.call,
+          ),
+        );
+        final stack = Stack('dev', workspace);
+
+        final result = await stack.importResources(
+          message: 'import resources',
+          resources: const <AutomationImportResource>[
+            AutomationImportResource(
+              type: 'aws:s3/bucket:Bucket',
+              name: 'bucket',
+              id: 'bucket-id',
+              provider: 'default_5_42_0',
+              properties: <String>['acl'],
+            ),
+          ],
+          nameTable: const <String, String>{
+            'default_5_42_0':
+                'urn:pulumi:dev::proj::pulumi:providers:aws::default_5_42_0::provider-id',
+          },
+          protect: false,
+          converter: 'terraform',
+          converterArgs: const <String>['./terraform.tfstate'],
+          showSummarySecrets: true,
+        );
+
+        expect(result.succeeded, isTrue);
+        expect(result.generatedCode, contains('// generated import code'));
+        expect(
+          result.summary?.parsedKind,
+          equals(AutomationUpdateKind.importOperation),
+        );
+        expect(result.summary?.resourceChanges['import'], equals(2));
+        expect(observedGeneratedCodePath, isNotNull);
+        expect(observedImportPayload, isNotNull);
+        expect(observedImportPayload!['resources'], hasLength(1));
+        expect(
+          (observedImportPayload!['nameTable'] as Map)['default_5_42_0'],
+          isNotEmpty,
+        );
+
+        expect(
+          runner.requests[0].arguments,
+          containsAll(<String>[
+            'import',
+            '--stack',
+            'dev',
+            '--yes',
+            '--skip-preview',
+            '--message',
+            'import resources',
+            '--file',
+            '--protect=false',
+            '--from',
+            'terraform',
+            '--',
+            './terraform.tfstate',
+          ]),
+        );
+        expect(
+          runner.requests[1].arguments,
+          equals(<String>[
+            'stack',
+            'history',
+            '--json',
+            '--stack',
+            'dev',
+            '--page-size',
+            '1',
+            '--show-secrets',
+          ]),
+        );
+      },
+    );
+
+    test(
+      'importResources generateCode false skips out file and returns empty generated code',
+      () async {
+        final runner = _FakeRunner(<PulumiCommandResult>[
+          const PulumiCommandResult(exitCode: 0, stdout: '', stderr: ''),
+          const PulumiCommandResult(
+            exitCode: 0,
+            stdout:
+                '[{"kind":"import","startTime":"2025-01-04T00:00:00Z","endTime":"2025-01-04T00:01:00Z","result":"succeeded","version":46,"resourceChanges":{"import":1}}]',
+            stderr: '',
+          ),
+        ]);
+        final workspace = await LocalWorkspace.create(
+          LocalWorkspaceOptions(
+            workDir: tempDir.path,
+            commandRunner: runner.call,
+          ),
+        );
+        final stack = Stack('dev', workspace);
+
+        final result = await stack.importResources(generateCode: false);
+
+        expect(result.generatedCode, isEmpty);
+        expect(runner.requests[0].arguments, contains('--generate-code=false'));
+        expect(
+          runner.requests[0].arguments.any((arg) => arg.startsWith('--out=')),
+          isFalse,
+        );
+      },
+    );
 
     test(
       'previewResult captures event log, serializes extra args, and calls post-command hook',

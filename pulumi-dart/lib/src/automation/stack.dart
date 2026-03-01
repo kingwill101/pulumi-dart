@@ -13,6 +13,51 @@ import 'operation_results.dart';
 typedef AutomationEngineEventHandler =
     void Function(AutomationEngineEvent event);
 
+/// A resource specification passed to `pulumi import`.
+class AutomationImportResource {
+  const AutomationImportResource({
+    required this.type,
+    required this.name,
+    this.id,
+    this.parent,
+    this.provider,
+    this.version,
+    this.pluginDownloadUrl,
+    this.logicalName,
+    this.properties,
+    this.component,
+    this.remote,
+  });
+
+  final String type;
+  final String name;
+  final String? id;
+  final String? parent;
+  final String? provider;
+  final String? version;
+  final String? pluginDownloadUrl;
+  final String? logicalName;
+  final List<String>? properties;
+  final bool? component;
+  final bool? remote;
+
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'type': type,
+      'name': name,
+      if (id != null) 'id': id,
+      if (parent != null) 'parent': parent,
+      if (provider != null) 'provider': provider,
+      if (version != null) 'version': version,
+      if (pluginDownloadUrl != null) 'pluginDownloadURL': pluginDownloadUrl,
+      if (logicalName != null) 'logicalName': logicalName,
+      if (properties != null) 'properties': properties,
+      if (component != null) 'component': component,
+      if (remote != null) 'remote': remote,
+    };
+  }
+}
+
 /// Automation stack handle scoped to a [LocalWorkspace].
 class Stack {
   Stack(this.name, this.workspace);
@@ -44,7 +89,7 @@ class Stack {
   }
 
   /// Stack name.
-  final String name;
+  String name;
 
   /// Parent workspace used to execute commands.
   final LocalWorkspace workspace;
@@ -234,6 +279,25 @@ class Stack {
       check: check,
       captureEvents: false,
     );
+    return result;
+  }
+
+  /// Renames this stack.
+  Future<PulumiCommandResult> rename(
+    String stackName, {
+    bool check = true,
+    List<String> extraArgs = const <String>[],
+  }) async {
+    final args = <String>['stack', 'rename', stackName];
+    args.addAll(extraArgs);
+    final (result, _) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: false,
+    );
+    if (result.succeeded) {
+      name = stackName;
+    }
     return result;
   }
 
@@ -450,6 +514,142 @@ class Stack {
       events: events,
       summary: summary,
     );
+  }
+
+  /// Renames this stack and returns a typed operation result.
+  Future<AutomationRenameResult> renameResult(
+    String stackName, {
+    bool check = true,
+    bool includeSummary = true,
+    bool showSummarySecrets = false,
+    bool captureEvents = false,
+    AutomationEngineEventHandler? onEvent,
+    List<String> extraArgs = const <String>[],
+  }) async {
+    if (workspace.remote && showSummarySecrets) {
+      throw ArgumentError(
+        "can't enable `showSummarySecrets` for remote workspaces",
+      );
+    }
+
+    final args = <String>['stack', 'rename', stackName];
+    args.addAll(extraArgs);
+
+    final (result, events) = await _runStackCommand(
+      args,
+      check: check,
+      captureEvents: captureEvents,
+      onEvent: onEvent,
+    );
+
+    AutomationUpdateSummary? summary;
+    if (result.succeeded) {
+      name = stackName;
+      if (includeSummary) {
+        summary = await infoSummary(showSecrets: showSummarySecrets);
+      }
+    }
+
+    return AutomationRenameResult(
+      commandResult: result,
+      events: events,
+      summary: summary,
+    );
+  }
+
+  /// Imports resources into this stack and returns a typed operation result.
+  Future<AutomationImportResult> importResources({
+    String? message,
+    List<AutomationImportResource>? resources,
+    Map<String, String>? nameTable,
+    bool? protect,
+    bool generateCode = true,
+    String? converter,
+    List<String>? converterArgs,
+    bool check = true,
+    bool includeSummary = true,
+    bool showSummarySecrets = false,
+    bool captureEvents = false,
+    AutomationEngineEventHandler? onEvent,
+    List<String> extraArgs = const <String>[],
+  }) async {
+    final args = <String>['import', '--stack', name, '--yes', '--skip-preview'];
+    if (message != null && message.trim().isNotEmpty) {
+      args.addAll(<String>['--message', message]);
+    }
+    args.addAll(extraArgs);
+
+    Directory? tempDir;
+    String generatedCode = '';
+
+    try {
+      tempDir = await Directory.systemTemp.createTemp('pulumi-import-');
+      final generatedCodePath = p.join(tempDir.path, 'generated_code.txt');
+
+      if (resources != null) {
+        final importFilePath = p.join(tempDir.path, 'import.json');
+        final payload = <String, dynamic>{
+          'resources': resources
+              .map((resource) => resource.toJson())
+              .toList(growable: false),
+        };
+        if (nameTable != null) {
+          payload['nameTable'] = nameTable;
+        }
+        await File(importFilePath).writeAsString(jsonEncode(payload));
+        args.addAll(<String>['--file', importFilePath]);
+      }
+
+      if (protect != null) {
+        args.add('--protect=${protect ? 'true' : 'false'}');
+      }
+
+      if (generateCode) {
+        args.add('--out=$generatedCodePath');
+      } else {
+        args.add('--generate-code=false');
+      }
+
+      if (converter != null && converter.trim().isNotEmpty) {
+        args.addAll(<String>['--from', converter]);
+        if (converterArgs != null && converterArgs.isNotEmpty) {
+          args.add('--');
+          args.addAll(converterArgs);
+        }
+      }
+
+      final (result, events) = await _runStackCommand(
+        args,
+        check: check,
+        captureEvents: captureEvents,
+        onEvent: onEvent,
+      );
+
+      if (generateCode && result.succeeded) {
+        final generatedCodeFile = File(generatedCodePath);
+        if (await generatedCodeFile.exists()) {
+          generatedCode = await generatedCodeFile.readAsString();
+        }
+      }
+
+      AutomationUpdateSummary? summary;
+      if (includeSummary && result.succeeded) {
+        summary = await infoSummary(
+          showSecrets: showSummarySecrets && !workspace.remote,
+        );
+      }
+
+      return AutomationImportResult(
+        commandResult: result,
+        events: events,
+        generatedCode: generatedCode,
+        summary: summary,
+      );
+    } finally {
+      if (tempDir != null && await tempDir.exists()) {
+        await tempDir.delete(recursive: true);
+      }
+    }
   }
 
   /// Returns stack outputs from the last successful update.

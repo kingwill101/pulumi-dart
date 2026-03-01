@@ -390,7 +390,8 @@ class LocalWorkspace {
     final pulumiYamlPath = p.join(resolvedDir, 'Pulumi.yaml');
     final pulumiYaml = File(pulumiYamlPath);
     if (!await pulumiYaml.exists()) {
-      final descriptionLine = args.description == null || args.description!.isEmpty
+      final descriptionLine =
+          args.description == null || args.description!.isEmpty
           ? ''
           : 'description: ${args.description}\n';
       await pulumiYaml.writeAsString(
@@ -404,8 +405,10 @@ class LocalWorkspace {
     final pubspecPath = p.join(resolvedDir, 'pubspec.yaml');
     final pubspec = File(pubspecPath);
     if (!await pubspec.exists()) {
-      final pulumiPathDependency = Platform.environment['PULUMI_DART_PULUMI_DEPENDENCY_PATH'];
-      final pulumiDependency = (pulumiPathDependency != null &&
+      final pulumiPathDependency =
+          Platform.environment['PULUMI_DART_PULUMI_DEPENDENCY_PATH'];
+      final pulumiDependency =
+          (pulumiPathDependency != null &&
               pulumiPathDependency.trim().isNotEmpty)
           ? "  pulumi:\n    path: '${pulumiPathDependency.replaceAll("'", "''")}'\n"
           : '  pulumi: ^0.0.1-dev\n';
@@ -574,7 +577,9 @@ class LocalWorkspace {
     }
     if (command == 'stack' && arguments.length > 1) {
       final stackCommand = arguments[1];
-      return stackCommand == 'init' || stackCommand == 'select';
+      return stackCommand == 'init' ||
+          stackCommand == 'select' ||
+          stackCommand == 'rename';
     }
     return false;
   }

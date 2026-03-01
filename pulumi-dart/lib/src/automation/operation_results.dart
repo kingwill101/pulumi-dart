@@ -330,3 +330,27 @@ class AutomationDestroyResult extends AutomationOperationResult {
 
   final AutomationUpdateSummary? summary;
 }
+
+/// Result for `pulumi stack rename`.
+class AutomationRenameResult extends AutomationOperationResult {
+  const AutomationRenameResult({
+    required super.commandResult,
+    super.events = const <AutomationEngineEvent>[],
+    this.summary,
+  });
+
+  final AutomationUpdateSummary? summary;
+}
+
+/// Result for `pulumi import`.
+class AutomationImportResult extends AutomationOperationResult {
+  const AutomationImportResult({
+    required super.commandResult,
+    super.events = const <AutomationEngineEvent>[],
+    this.generatedCode = '',
+    this.summary,
+  });
+
+  final String generatedCode;
+  final AutomationUpdateSummary? summary;
+}
