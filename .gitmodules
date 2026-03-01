@@ -1,3 +1,9 @@
 [submodule "pulumi"]
 	path = pulumi
 	url = https://github.com/pulumi/pulumi.git
+[submodule "pulumi_examples"]
+	path = pulumi_examples
+	url = git@github.com:kingwill101/pulumi-examples.git
+[submodule "pulumi_automation_api_examples"]
+	path = pulumi_automation_api_examples
+	url = git@github.com:kingwill101/pulumi-automation-api-examples.git
