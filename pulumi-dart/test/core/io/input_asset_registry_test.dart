@@ -161,8 +161,14 @@ void main() {
         final fromValue = Input.fromValue(123);
         final fromInput = Input.asInput<int>(fromValue);
         final fromRaw = Input.asInput<int>(456);
+        final fromOutput = Input.asInput<int>(Output.create(654));
+        final fromDynamicInput = Input.asInput<int>(Input.fromValue(987));
         final optionalNull = Input.asOptionalInput<int>(null);
         final optionalRaw = Input.asOptionalInput<int>(789);
+        final optionalOutput = Input.asOptionalInput<int>(Output.create(321));
+        final nullableFromOutput = Input.asInput<String?>(
+          Output.create<String?>('nullable'),
+        );
         final mapped = Input.mapInputValue<int, String>(fromRaw, (v) => 'v:$v');
         final mappedOptional = Input.mapOptionalInputValue<int, String>(
           optionalRaw,
@@ -185,11 +191,22 @@ void main() {
           'already': fromValue,
           'raw': 'text',
         });
+        final extensionInput = 10.input();
+        final extensionOutput = 'ext'.output();
+        final outputAsInput = extensionOutput.input();
+        final outputIdentity = extensionOutput.output();
+        final staticInput = Input.input<int>(111);
+        final staticOutput = Input.output<String>('static');
+        final staticOutputFromOutput = Input.output<int>(Output.create(222));
 
         expect(identical(fromInput, fromValue), isTrue);
         expect(await fromRaw.toOutput().getValue(), 456);
+        expect(await fromOutput.toOutput().getValue(), 654);
+        expect(await fromDynamicInput.toOutput().getValue(), 987);
         expect(optionalNull, isNull);
         expect(await optionalRaw!.toOutput().getValue(), 789);
+        expect(await optionalOutput!.toOutput().getValue(), 321);
+        expect(await nullableFromOutput.toOutput().getValue(), 'nullable');
         expect(await mapped.toOutput().getValue(), 'v:456');
         expect(await mappedOptional!.toOutput().getValue(), 'o:789');
         expect(decodedList, ['n:1', 'n:2']);
@@ -198,6 +215,13 @@ void main() {
         expect(encodedMap, {'x': 'e:5', 'y': 'e:6'});
         expect(mappedInputs['already'], same(fromValue));
         expect(await mappedInputs['raw']!.toOutput().getValue(), 'text');
+        expect(await extensionInput.toOutput().getValue(), 10);
+        expect(await extensionOutput.getValue(), 'ext');
+        expect(await outputAsInput.toOutput().getValue(), 'ext');
+        expect(identical(outputIdentity, extensionOutput), isTrue);
+        expect(await staticInput.toOutput().getValue(), 111);
+        expect(await staticOutput.getValue(), 'static');
+        expect(await staticOutputFromOutput.getValue(), 222);
       },
     );
 

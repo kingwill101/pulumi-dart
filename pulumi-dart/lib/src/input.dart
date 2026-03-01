@@ -48,11 +48,25 @@ abstract class Input<T> {
     if (value is Input<T>) {
       return value;
     }
+    if (value is Input) {
+      final input = value as Input<dynamic>;
+      return Input.fromOutput(input.toOutput().apply<T>((v) => v as T));
+    }
+    if (value is Output) {
+      final output = value as Output<dynamic>;
+      return Input.fromOutput(output.apply<T>((v) => v as T));
+    }
     if (value is T) {
       return Input.fromValue(value);
     }
     throw ArgumentError.value(value, 'value', 'Expected Input<$T> or $T');
   }
+
+  /// Convenience alias for [asInput].
+  static Input<T> input<T>(Object? value) => asInput<T>(value);
+
+  /// Converts [value] to an [Input] and then to an [Output].
+  static Output<T> output<T>(Object? value) => asInput<T>(value).toOutput();
 
   /// Like [asInput], but returns `null` when [value] is `null`.
   ///
@@ -63,6 +77,14 @@ abstract class Input<T> {
     }
     if (value is Input<T>) {
       return value;
+    }
+    if (value is Input) {
+      final input = value as Input<dynamic>;
+      return Input.fromOutput(input.toOutput().apply<T>((v) => v as T));
+    }
+    if (value is Output) {
+      final output = value as Output<dynamic>;
+      return Input.fromOutput(output.apply<T>((v) => v as T));
     }
     if (value is T) {
       return Input.fromValue(value as T);
@@ -171,4 +193,22 @@ class _ValueInput<T> implements Input<T> {
 
   @override
   Output<T> toOutput() => Output.create(_value);
+}
+
+/// Ergonomic value/output conversions for Pulumi program code.
+extension PulumiInputOutputExtensions<T> on T {
+  /// Converts this value into a Pulumi [Input].
+  Input<T> input() => Input.fromValue(this);
+
+  /// Converts this value into a Pulumi [Output].
+  Output<T> output() => Output.create(this);
+}
+
+/// Makes `.input()`/`.output()` chain-friendly on already-computed outputs.
+extension PulumiOutputExtensions<T> on Output<T> {
+  /// Converts this [Output] into an [Input].
+  Input<T> input() => Input.fromOutput(this);
+
+  /// Returns this output unchanged.
+  Output<T> output() => this;
 }
