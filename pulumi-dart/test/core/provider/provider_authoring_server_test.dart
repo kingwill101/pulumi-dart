@@ -4,6 +4,7 @@ import 'package:grpc/grpc.dart';
 import 'package:grpc/src/generated/google/rpc/status.pb.dart' as grpcstatuspb;
 import 'package:mockito/mockito.dart';
 import 'package:pulumi/provider.dart';
+import 'package:pulumi/src/constants.dart';
 import 'package:pulumi/src/input.dart';
 import 'package:pulumi/src/output.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/callback.pb.dart' as callbackpb;
@@ -520,6 +521,103 @@ void main() {
         expect(urn, equals('urn:pulumi:dev::proj::pkg:type::res'));
       },
     );
+
+    test(
+      'deserializeInputs preserves output envelopes without adding callback deps',
+      () async {
+        final struct = await StructConverter.toStruct(<String, dynamic>{
+          'value': <String, dynamic>{
+            Constants.specialSigKey: Constants.specialOutputValueSig,
+            Constants.valueName: 'from-envelope',
+            Constants.dependenciesName: <String>[
+              'urn:pulumi:dev::proj::pkg:index:EnvelopeDep::dep',
+            ],
+          },
+        });
+        final inputs = await deserializeInputs(
+          struct,
+          (_) => const <String>[
+            'urn:pulumi:dev::proj::pkg:index:CallbackDep::dep',
+          ],
+        );
+
+        final outputData = await inputs['value']!.toOutput().getData();
+        expect(outputData.value, equals('from-envelope'));
+        expect(outputData.resources, hasLength(1));
+        expect(
+          await outputData.resources.single.urn.getValue(),
+          equals('urn:pulumi:dev::proj::pkg:index:EnvelopeDep::dep'),
+        );
+      },
+    );
+
+    test(
+      'deserializeInputs keeps matching resource references unwrapped',
+      () async {
+        const urn = 'urn:pulumi:dev::proj::pkg:index:Ref::id-1';
+        final struct = await StructConverter.toStruct(<String, dynamic>{
+          'ref': <String, dynamic>{
+            Constants.specialSigKey: Constants.specialResourceSig,
+            Constants.resourceUrnName: urn,
+            Constants.resourceIdName: 'id-1',
+          },
+        });
+        final inputs = await deserializeInputs(
+          struct,
+          (_) => const <String>[urn],
+        );
+
+        final outputData = await inputs['ref']!.toOutput().getData();
+        expect(outputData.value, isA<DependencyResource>());
+        expect(outputData.resources, isEmpty);
+        expect(
+          await (outputData.value as DependencyResource).urn.getValue(),
+          equals(urn),
+        );
+      },
+    );
+
+    test(
+      'deserializeInputs wraps mismatched resource references with callback deps',
+      () async {
+        const valueUrn = 'urn:pulumi:dev::proj::pkg:index:Ref::id-1';
+        const callbackDep = 'urn:pulumi:dev::proj::pkg:index:CallbackDep::dep';
+        final struct = await StructConverter.toStruct(<String, dynamic>{
+          'ref': <String, dynamic>{
+            Constants.specialSigKey: Constants.specialResourceSig,
+            Constants.resourceUrnName: valueUrn,
+            Constants.resourceIdName: 'id-1',
+          },
+        });
+        final inputs = await deserializeInputs(
+          struct,
+          (_) => const <String>[callbackDep],
+        );
+
+        final outputData = await inputs['ref']!.toOutput().getData();
+        expect(outputData.value, isA<DependencyResource>());
+        expect(outputData.resources, hasLength(1));
+        expect(
+          await outputData.resources.single.urn.getValue(),
+          equals(callbackDep),
+        );
+      },
+    );
+
+    test('deserializeInputs preserves secret metadata without deps', () async {
+      final struct = await StructConverter.toStruct(<String, dynamic>{
+        'token': <String, dynamic>{
+          Constants.specialSigKey: Constants.specialSecretSig,
+          Constants.valueName: 'super-secret',
+        },
+      });
+      final inputs = await deserializeInputs(struct, (_) => const <String>[]);
+
+      final outputData = await inputs['token']!.toOutput().getData();
+      expect(outputData.value, equals('super-secret'));
+      expect(outputData.isSecret, isTrue);
+      expect(outputData.resources, isEmpty);
+    });
   });
 
   group('ProviderServer', () {
