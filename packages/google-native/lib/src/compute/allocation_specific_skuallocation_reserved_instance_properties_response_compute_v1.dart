@@ -8,12 +8,19 @@ import 'allocation_specific_skuallocation_allocated_instance_properties_reserved
 class AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeV1 {
   /// Specifies accelerator type and count.
   final List<AcceleratorConfigResponseComputeV1> guestAccelerators;
+
   /// Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
-  final List<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeV1> localSsds;
+  final List<
+    AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeV1
+  >
+  localSsds;
+
   /// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
   final String locationHint;
+
   /// Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
   final String machineType;
+
   /// Minimum cpu platform the reservation.
   final String minCpuPlatform;
 
@@ -33,22 +40,46 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeV1
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'guestAccelerators': pulumi.Input.encodeList<AcceleratorConfigResponseComputeV1, Map<String, dynamic>>(guestAccelerators, (value) => value.toMap()),
-      'localSsds': pulumi.Input.encodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeV1, Map<String, dynamic>>(localSsds, (value) => value.toMap()),
+      'guestAccelerators':
+          pulumi.Input.encodeList<
+            AcceleratorConfigResponseComputeV1,
+            Map<String, dynamic>
+          >(guestAccelerators, (value) => value.toMap()),
+      'localSsds':
+          pulumi.Input.encodeList<
+            AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeV1,
+            Map<String, dynamic>
+          >(localSsds, (value) => value.toMap()),
       'locationHint': locationHint,
       'machineType': machineType,
       'minCpuPlatform': minCpuPlatform,
     };
   }
 
-  factory AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeV1(
-      guestAccelerators: pulumi.Input.decodeList<AcceleratorConfigResponseComputeV1>(map['guestAccelerators'], (value) => AcceleratorConfigResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())),
-      localSsds: pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeV1>(map['localSsds'], (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())),
+      guestAccelerators:
+          pulumi.Input.decodeList<AcceleratorConfigResponseComputeV1>(
+            map['guestAccelerators'],
+            (value) => AcceleratorConfigResponseComputeV1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      localSsds:
+          pulumi.Input.decodeList<
+            AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeV1
+          >(
+            map['localSsds'],
+            (value) =>
+                AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseComputeV1.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       locationHint: map['locationHint'] as String,
       machineType: map['machineType'] as String,
       minCpuPlatform: map['minCpuPlatform'] as String,
     );
   }
 }
-

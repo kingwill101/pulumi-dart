@@ -7,13 +7,17 @@ enum UriOverrideUriOverrideEnforceModeCloudtasksV2beta3 {
   const UriOverrideUriOverrideEnforceModeCloudtasksV2beta3(this.value);
   final String value;
 
-  static UriOverrideUriOverrideEnforceModeCloudtasksV2beta3 fromValue(String value) {
-    for (final item in UriOverrideUriOverrideEnforceModeCloudtasksV2beta3.values) {
+  static UriOverrideUriOverrideEnforceModeCloudtasksV2beta3 fromValue(
+    String value,
+  ) {
+    for (final item
+        in UriOverrideUriOverrideEnforceModeCloudtasksV2beta3.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown UriOverrideUriOverrideEnforceModeCloudtasksV2beta3 value: $value');
+    throw ArgumentError(
+      'Unknown UriOverrideUriOverrideEnforceModeCloudtasksV2beta3 value: $value',
+    );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
 class GitSourceContextResponseContaineranalysisV1beta1 {
   /// Git commit hash.
   final String revisionId;
+
   /// Git repository URL.
   final String url;
 
@@ -17,17 +17,15 @@ class GitSourceContextResponseContaineranalysisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'revisionId': revisionId,
-      'url': url,
-    };
+    return <String, dynamic>{'revisionId': revisionId, 'url': url};
   }
 
-  factory GitSourceContextResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory GitSourceContextResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GitSourceContextResponseContaineranalysisV1beta1(
       revisionId: map['revisionId'] as String,
       url: map['url'] as String,
     );
   }
 }
-

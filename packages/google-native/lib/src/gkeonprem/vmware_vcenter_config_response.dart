@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents configuration for the VMware VCenter for the user cluster.
 class VmwareVCenterConfigResponse {
   /// The vCenter IP address.
   final String address;
+
   /// Contains the vCenter CA certificate public key for SSL verification.
   final String caCertData;
+
   /// The name of the vCenter cluster for the user cluster.
   final String cluster;
+
   /// The name of the vCenter datacenter for the user cluster.
   final String datacenter;
+
   /// The name of the vCenter datastore for the user cluster.
   final String datastore;
+
   /// The name of the vCenter folder for the user cluster.
   final String folder;
+
   /// The name of the vCenter resource pool for the user cluster.
   final String resourcePool;
+
   /// The name of the vCenter storage policy for the user cluster.
   final String storagePolicyName;
 
@@ -66,4 +72,3 @@ class VmwareVCenterConfigResponse {
     );
   }
 }
-

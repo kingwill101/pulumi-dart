@@ -7,11 +7,18 @@ import 'application_application_configuration_sql_application_configuration_refe
 
 class ApplicationApplicationConfigurationSqlApplicationConfiguration {
   /// The input stream used by the application.
-  final ApplicationApplicationConfigurationSqlApplicationConfigurationInput? input;
+  final ApplicationApplicationConfigurationSqlApplicationConfigurationInput?
+  input;
+
   /// The destination streams used by the application.
-  final List<ApplicationApplicationConfigurationSqlApplicationConfigurationOutput>? outputs;
+  final List<
+    ApplicationApplicationConfigurationSqlApplicationConfigurationOutput
+  >?
+  outputs;
+
   /// The reference data source used by the application.
-  final ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource? referenceDataSource;
+  final ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource?
+  referenceDataSource;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfiguration].
   /// [input] The input stream used by the application.
@@ -26,17 +33,43 @@ class ApplicationApplicationConfigurationSqlApplicationConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'input': ?input == null ? null : input!.toMap(),
-      'outputs': ?outputs == null ? null : pulumi.Input.encodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationOutput, Map<String, dynamic>>(outputs!, (value) => value.toMap()),
-      'referenceDataSource': ?referenceDataSource == null ? null : referenceDataSource!.toMap(),
+      'outputs': ?outputs == null
+          ? null
+          : pulumi.Input.encodeList<
+              ApplicationApplicationConfigurationSqlApplicationConfigurationOutput,
+              Map<String, dynamic>
+            >(outputs!, (value) => value.toMap()),
+      'referenceDataSource': ?referenceDataSource == null
+          ? null
+          : referenceDataSource!.toMap(),
     };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationSqlApplicationConfiguration(
-      input: map['input'] == null ? null : ApplicationApplicationConfigurationSqlApplicationConfigurationInput.fromMap((map['input'] as Map).cast<String, dynamic>()),
-      outputs: map['outputs'] == null ? null : pulumi.Input.decodeList<ApplicationApplicationConfigurationSqlApplicationConfigurationOutput>(map['outputs'], (value) => ApplicationApplicationConfigurationSqlApplicationConfigurationOutput.fromMap((value as Map).cast<String, dynamic>())),
-      referenceDataSource: map['referenceDataSource'] == null ? null : ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource.fromMap((map['referenceDataSource'] as Map).cast<String, dynamic>()),
+      input: map['input'] == null
+          ? null
+          : ApplicationApplicationConfigurationSqlApplicationConfigurationInput.fromMap(
+              (map['input'] as Map).cast<String, dynamic>(),
+            ),
+      outputs: map['outputs'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              ApplicationApplicationConfigurationSqlApplicationConfigurationOutput
+            >(
+              map['outputs'],
+              (value) =>
+                  ApplicationApplicationConfigurationSqlApplicationConfigurationOutput.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      referenceDataSource: map['referenceDataSource'] == null
+          ? null
+          : ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource.fromMap(
+              (map['referenceDataSource'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

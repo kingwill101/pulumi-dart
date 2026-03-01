@@ -6,16 +6,22 @@ enum GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction {
   uniqueModelRestriction("UNIQUE_MODEL_RESTRICTION"),
   uniqueModelTypeRestriction("UNIQUE_MODEL_TYPE_RESTRICTION");
 
-  const GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction(this.value);
+  const GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction(
+    this.value,
+  );
   final String value;
 
-  static GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction fromValue(String value) {
-    for (final item in GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction.values) {
+  static GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction value: $value',
+    );
   }
 }
-

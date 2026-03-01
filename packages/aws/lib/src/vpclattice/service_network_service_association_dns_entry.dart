@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServiceNetworkServiceAssociationDnsEntry {
   /// The domain name of the service.
   final String? domainName;
+
   /// The ID of the hosted zone.
   final String? hostedZoneId;
 
@@ -22,11 +22,16 @@ class ServiceNetworkServiceAssociationDnsEntry {
     };
   }
 
-  factory ServiceNetworkServiceAssociationDnsEntry.fromMap(Map<String, dynamic> map) {
+  factory ServiceNetworkServiceAssociationDnsEntry.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceNetworkServiceAssociationDnsEntry(
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      hostedZoneId: map['hostedZoneId'] == null ? null : map['hostedZoneId'] as String,
+      domainName: map['domainName'] == null
+          ? null
+          : map['domainName'] as String,
+      hostedZoneId: map['hostedZoneId'] == null
+          ? null
+          : map['hostedZoneId'] as String,
     );
   }
 }
-

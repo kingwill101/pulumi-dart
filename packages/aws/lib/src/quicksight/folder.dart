@@ -423,30 +423,42 @@ import 'folder_permission.dart';
 class Folder extends pulumi.CustomResource {
   /// ARN of the folder.
   late final pulumi.Output<String> arn;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
+
   /// The time that the folder was created.
   late final pulumi.Output<String> createdTime;
+
   /// Identifier for the folder.
   late final pulumi.Output<String> folderId;
+
   /// An array of ancestor ARN strings for the folder. Empty for root-level folders.
   late final pulumi.Output<List<String>> folderPaths;
+
   /// The type of folder. By default, it is `SHARED`. Valid values are: `SHARED`.
   late final pulumi.Output<String?> folderType;
+
   /// The time that the folder was last updated.
   late final pulumi.Output<String> lastUpdatedTime;
+
   /// Display name for the folder.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// The Amazon Resource Name (ARN) for the parent folder. If not set, creates a root-level folder.
   late final pulumi.Output<String?> parentFolderArn;
+
   /// A set of resource permissions on the folder. Maximum of 64 items. See permissions.
   late final pulumi.Output<List<FolderPermission>?> permissions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -454,16 +466,13 @@ class Folder extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Folder]. {@macro pulumi_quicksight_folder_folder_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Folder(
-    String name, {
-    FolderArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:quicksight/folder:Folder',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Folder(String name, {FolderArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:quicksight/folder:Folder',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.arn = registerOutput<String>('arn');
     this.awsAccountId = registerOutput<String>('awsAccountId');
     this.createdTime = registerOutput<String>('createdTime');

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration options for the KALM addon.
 class KalmConfig {
   /// Whether KALM is enabled for this cluster.
@@ -8,14 +7,10 @@ class KalmConfig {
 
   /// Creates a new [KalmConfig].
   /// [enabled] Whether KALM is enabled for this cluster.
-  KalmConfig({
-    this.enabled,
-  });
+  KalmConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory KalmConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class KalmConfig {
     );
   }
 }
-

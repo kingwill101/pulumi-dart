@@ -1,19 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getBucketObjects.
 class GetBucketObjectsResult {
   final String bucket;
+
   /// List of any keys between `prefix` and the next occurrence of `delimiter` (i.e., similar to subdirectories of the `prefix` "directory"); the list is only returned when you specify `delimiter`
   final List<String> commonPrefixes;
   final String? delimiter;
   final String? encodingType;
   final bool? fetchOwner;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// List of strings representing object keys
   final List<String> keys;
   final int? maxKeys;
+
   /// List of strings representing object owner IDs (see `fetch_owner` above)
   final List<String> owners;
   final String? prefix;
@@ -70,7 +73,9 @@ class GetBucketObjectsResult {
       bucket: map['bucket'] as String,
       commonPrefixes: (map['commonPrefixes'] as List).cast<String>(),
       delimiter: map['delimiter'] == null ? null : map['delimiter'] as String,
-      encodingType: map['encodingType'] == null ? null : map['encodingType'] as String,
+      encodingType: map['encodingType'] == null
+          ? null
+          : map['encodingType'] as String,
       fetchOwner: map['fetchOwner'] == null ? null : map['fetchOwner'] as bool,
       id: map['id'] as String,
       keys: (map['keys'] as List).cast<String>(),
@@ -78,8 +83,9 @@ class GetBucketObjectsResult {
       owners: (map['owners'] as List).cast<String>(),
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
       region: map['region'] as String,
-      startAfter: map['startAfter'] == null ? null : map['startAfter'] as String,
+      startAfter: map['startAfter'] == null
+          ? null
+          : map['startAfter'] as String,
     );
   }
 }
-

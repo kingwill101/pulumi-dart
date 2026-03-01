@@ -22,11 +22,10 @@ class GetAppGroupAppKeyArgs {
     required String appgroupId,
     required String keyId,
     required String organizationId,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      appgroupId = pulumi.Input.asInput<String>(appgroupId),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : appId = pulumi.Input.asInput<String>(appId),
+       appgroupId = pulumi.Input.asInput<String>(appgroupId),
+       keyId = pulumi.Input.asInput<String>(keyId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetAppGroupAppKeyArgs {
     );
   }
 }
-

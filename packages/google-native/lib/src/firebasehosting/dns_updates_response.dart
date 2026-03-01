@@ -7,8 +7,10 @@ import 'dns_record_set_response.dart';
 class DnsUpdatesResponse {
   /// The last time Hosting checked your custom domain's DNS records.
   final String checkTime;
+
   /// The set of DNS records Hosting needs to serve secure content on the domain.
   final List<DnsRecordSetResponse> desired;
+
   /// The set of DNS records Hosting discovered when inspecting a domain.
   final List<DnsRecordSetResponse> discovered;
 
@@ -25,17 +27,34 @@ class DnsUpdatesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'checkTime': checkTime,
-      'desired': pulumi.Input.encodeList<DnsRecordSetResponse, Map<String, dynamic>>(desired, (value) => value.toMap()),
-      'discovered': pulumi.Input.encodeList<DnsRecordSetResponse, Map<String, dynamic>>(discovered, (value) => value.toMap()),
+      'desired':
+          pulumi.Input.encodeList<DnsRecordSetResponse, Map<String, dynamic>>(
+            desired,
+            (value) => value.toMap(),
+          ),
+      'discovered':
+          pulumi.Input.encodeList<DnsRecordSetResponse, Map<String, dynamic>>(
+            discovered,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory DnsUpdatesResponse.fromMap(Map<String, dynamic> map) {
     return DnsUpdatesResponse(
       checkTime: map['checkTime'] as String,
-      desired: pulumi.Input.decodeList<DnsRecordSetResponse>(map['desired'], (value) => DnsRecordSetResponse.fromMap((value as Map).cast<String, dynamic>())),
-      discovered: pulumi.Input.decodeList<DnsRecordSetResponse>(map['discovered'], (value) => DnsRecordSetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      desired: pulumi.Input.decodeList<DnsRecordSetResponse>(
+        map['desired'],
+        (value) => DnsRecordSetResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      discovered: pulumi.Input.decodeList<DnsRecordSetResponse>(
+        map['discovered'],
+        (value) => DnsRecordSetResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

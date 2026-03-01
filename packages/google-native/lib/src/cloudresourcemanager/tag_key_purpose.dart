@@ -16,4 +16,3 @@ enum TagKeyPurpose {
     throw ArgumentError('Unknown TagKeyPurpose value: $value');
   }
 }
-

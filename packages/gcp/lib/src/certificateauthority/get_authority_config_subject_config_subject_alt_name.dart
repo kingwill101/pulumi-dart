@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetAuthorityConfigSubjectConfigSubjectAltName {
   /// Contains only valid, fully-qualified host names.
   final List<String> dnsNames;
+
   /// Contains only valid RFC 2822 E-mail addresses.
   final List<String> emailAddresses;
+
   /// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
   final List<String> ipAddresses;
+
   /// Contains only valid RFC 3986 URIs.
   final List<String> uris;
 
@@ -32,7 +34,9 @@ class GetAuthorityConfigSubjectConfigSubjectAltName {
     };
   }
 
-  factory GetAuthorityConfigSubjectConfigSubjectAltName.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorityConfigSubjectConfigSubjectAltName.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorityConfigSubjectConfigSubjectAltName(
       dnsNames: (map['dnsNames'] as List).cast<String>(),
       emailAddresses: (map['emailAddresses'] as List).cast<String>(),
@@ -41,4 +45,3 @@ class GetAuthorityConfigSubjectConfigSubjectAltName {
     );
   }
 }
-

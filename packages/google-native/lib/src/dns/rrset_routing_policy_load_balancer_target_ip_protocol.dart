@@ -7,13 +7,16 @@ enum RRSetRoutingPolicyLoadBalancerTargetIpProtocol {
   const RRSetRoutingPolicyLoadBalancerTargetIpProtocol(this.value);
   final String value;
 
-  static RRSetRoutingPolicyLoadBalancerTargetIpProtocol fromValue(String value) {
+  static RRSetRoutingPolicyLoadBalancerTargetIpProtocol fromValue(
+    String value,
+  ) {
     for (final item in RRSetRoutingPolicyLoadBalancerTargetIpProtocol.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RRSetRoutingPolicyLoadBalancerTargetIpProtocol value: $value');
+    throw ArgumentError(
+      'Unknown RRSetRoutingPolicyLoadBalancerTargetIpProtocol value: $value',
+    );
   }
 }
-

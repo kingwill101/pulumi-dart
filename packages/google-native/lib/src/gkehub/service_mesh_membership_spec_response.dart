@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
 class ServiceMeshMembershipSpecResponse {
   /// Deprecated: use `management` instead Enables automatic control plane management.
   final String controlPlane;
+
   /// Enables automatic Service Mesh management.
   final String management;
 
@@ -30,4 +30,3 @@ class ServiceMeshMembershipSpecResponse {
     );
   }
 }
-

@@ -12,13 +12,17 @@ enum FolderContactNotificationCategorySubscriptionsItem {
   const FolderContactNotificationCategorySubscriptionsItem(this.value);
   final String value;
 
-  static FolderContactNotificationCategorySubscriptionsItem fromValue(String value) {
-    for (final item in FolderContactNotificationCategorySubscriptionsItem.values) {
+  static FolderContactNotificationCategorySubscriptionsItem fromValue(
+    String value,
+  ) {
+    for (final item
+        in FolderContactNotificationCategorySubscriptionsItem.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown FolderContactNotificationCategorySubscriptionsItem value: $value');
+    throw ArgumentError(
+      'Unknown FolderContactNotificationCategorySubscriptionsItem value: $value',
+    );
   }
 }
-

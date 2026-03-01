@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo {
   /// The output type of the delegated group info.
   /// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
@@ -13,15 +12,16 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputType': ?outputType,
-    };
+    return <String, dynamic>{'outputType': ?outputType};
   }
 
-  factory SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo.fromMap(Map<String, dynamic> map) {
+  factory SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo(
-      outputType: map['outputType'] == null ? null : map['outputType'] as String,
+      outputType: map['outputType'] == null
+          ? null
+          : map['outputType'] as String,
     );
   }
 }
-

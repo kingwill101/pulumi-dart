@@ -212,12 +212,15 @@ import 'object_aclargs.dart';
 class ObjectACL extends pulumi.CustomResource {
   /// The name of the bucket the object is stored in.
   late final pulumi.Output<String> bucket;
+
   /// The name of the object to apply the acl to.
   ///
   /// - - -
   late final pulumi.Output<String> object;
+
   /// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
   late final pulumi.Output<String?> predefinedAcl;
+
   /// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   /// Must be set if `predefined_acl` is not.
   late final pulumi.Output<List<String>> roleEntities;
@@ -231,11 +234,11 @@ class ObjectACL extends pulumi.CustomResource {
     ObjectACLArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/objectACL:ObjectACL',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:storage/objectACL:ObjectACL',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucket = registerOutput<String>('bucket');
     this.object = registerOutput<String>('object');
     this.predefinedAcl = registerOutput<String?>('predefinedAcl');

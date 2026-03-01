@@ -17,4 +17,3 @@ enum ExecStepConfigInterpreter {
     throw ArgumentError('Unknown ExecStepConfigInterpreter value: $value');
   }
 }
-

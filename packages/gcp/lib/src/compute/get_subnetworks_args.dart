@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSubnetworksArgs {
   /// A string filter as defined in the [REST API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list#query-parameters).
   final pulumi.Input<String>? filter;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region this subnetwork has been created in. If
   /// unspecified, this defaults to the region configured in the provider.
   final pulumi.Input<String>? region;
@@ -20,12 +22,8 @@ class GetSubnetworksArgs {
   /// [filter] A string filter as defined in the [REST API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list#query-parameters).
   /// [project] The ID of the project in which the resource belongs. If it
   /// [region] The region this subnetwork has been created in. If
-  GetSubnetworksArgs({
-    String? filter,
-    String? project,
-    String? region,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
+  GetSubnetworksArgs({String? filter, String? project, String? region})
+    : filter = pulumi.Input.asOptionalInput<String>(filter),
       project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
@@ -45,4 +43,3 @@ class GetSubnetworksArgs {
     );
   }
 }
-

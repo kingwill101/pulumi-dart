@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SecurityProfileThreatPreventionProfileSeverityOverride {
   /// Threat action override.
   /// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
   final String action;
+
   /// Severity level to match.
   /// Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
   final String severity;
@@ -18,17 +18,15 @@ class SecurityProfileThreatPreventionProfileSeverityOverride {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': action,
-      'severity': severity,
-    };
+    return <String, dynamic>{'action': action, 'severity': severity};
   }
 
-  factory SecurityProfileThreatPreventionProfileSeverityOverride.fromMap(Map<String, dynamic> map) {
+  factory SecurityProfileThreatPreventionProfileSeverityOverride.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityProfileThreatPreventionProfileSeverityOverride(
       action: map['action'] as String,
       severity: map['severity'] as String,
     );
   }
 }
-

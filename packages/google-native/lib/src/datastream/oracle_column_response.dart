@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Oracle Column.
 class OracleColumnResponse {
   /// Column name.
   final String column;
+
   /// The Oracle data type.
   final String dataType;
+
   /// Column encoding.
   final String encoding;
+
   /// Column length.
   final int length;
+
   /// Whether or not the column can accept a null value.
   final bool nullable;
+
   /// The ordinal position of the column in the table.
   final int ordinalPosition;
+
   /// Column precision.
   final int precision;
+
   /// Whether or not the column represents a primary key.
   final bool primaryKey;
+
   /// Column scale.
   final int scale;
 
@@ -72,4 +79,3 @@ class OracleColumnResponse {
     );
   }
 }
-

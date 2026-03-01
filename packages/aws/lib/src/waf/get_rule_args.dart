@@ -12,21 +12,14 @@ class GetRuleArgs {
 
   /// Creates a new [GetRuleArgs].
   /// [name] Name of the WAF rule.
-  GetRuleArgs({
-    required String name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+  GetRuleArgs({required String name})
+    : name = pulumi.Input.asInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory GetRuleArgs.fromMap(Map<String, dynamic> map) {
-    return GetRuleArgs(
-      name: map['name'] as String,
-    );
+    return GetRuleArgs(name: map['name'] as String);
   }
 }
-

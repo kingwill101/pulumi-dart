@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotArgs {
   /// The DB Instance Identifier from which to take the snapshot.
   final pulumi.Input<String> dbInstanceIdentifier;
+
   /// The Identifier for the snapshot.
   final pulumi.Input<String> dbSnapshotIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of AWS Account IDs to share the snapshot with. Use `all` to make the snapshot public.
   final pulumi.Input<List<String>>? sharedAccounts;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -30,12 +34,17 @@ class SnapshotArgs {
     String? region,
     List<String>? sharedAccounts,
     Map<String, String>? tags,
-  }) :
-      dbInstanceIdentifier = pulumi.Input.asInput<String>(dbInstanceIdentifier),
-      dbSnapshotIdentifier = pulumi.Input.asInput<String>(dbSnapshotIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sharedAccounts = pulumi.Input.asOptionalInput<List<String>>(sharedAccounts),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : dbInstanceIdentifier = pulumi.Input.asInput<String>(
+         dbInstanceIdentifier,
+       ),
+       dbSnapshotIdentifier = pulumi.Input.asInput<String>(
+         dbSnapshotIdentifier,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       sharedAccounts = pulumi.Input.asOptionalInput<List<String>>(
+         sharedAccounts,
+       ),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,9 +61,12 @@ class SnapshotArgs {
       dbInstanceIdentifier: map['dbInstanceIdentifier'] as String,
       dbSnapshotIdentifier: map['dbSnapshotIdentifier'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      sharedAccounts: map['sharedAccounts'] == null ? null : (map['sharedAccounts'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      sharedAccounts: map['sharedAccounts'] == null
+          ? null
+          : (map['sharedAccounts'] as List).cast<String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

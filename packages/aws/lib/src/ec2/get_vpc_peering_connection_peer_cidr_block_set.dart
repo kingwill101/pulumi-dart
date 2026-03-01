@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetVpcPeeringConnectionPeerCidrBlockSet {
   /// Primary CIDR block of the requester VPC of the specific VPC Peering Connection to retrieve.
   final String cidrBlock;
 
   /// Creates a new [GetVpcPeeringConnectionPeerCidrBlockSet].
   /// [cidrBlock] Primary CIDR block of the requester VPC of the specific VPC Peering Connection to retrieve.
-  GetVpcPeeringConnectionPeerCidrBlockSet({
-    required this.cidrBlock,
-  });
+  GetVpcPeeringConnectionPeerCidrBlockSet({required this.cidrBlock});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cidrBlock': cidrBlock,
-    };
+    return <String, dynamic>{'cidrBlock': cidrBlock};
   }
 
-  factory GetVpcPeeringConnectionPeerCidrBlockSet.fromMap(Map<String, dynamic> map) {
+  factory GetVpcPeeringConnectionPeerCidrBlockSet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVpcPeeringConnectionPeerCidrBlockSet(
       cidrBlock: map['cidrBlock'] as String,
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getClientConfig.
 class GetClientConfigResult {
   /// Project of the current user.
   final String project;
+
   /// Google Cloud region
   final String region;
+
   /// Google Cloud zone
   final String? zone;
 
@@ -36,4 +37,3 @@ class GetClientConfigResult {
     );
   }
 }
-

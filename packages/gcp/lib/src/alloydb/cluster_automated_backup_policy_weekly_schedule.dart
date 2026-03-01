@@ -7,6 +7,7 @@ class ClusterAutomatedBackupPolicyWeeklySchedule {
   /// The days of the week to perform a backup. At least one day of the week must be provided.
   /// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final List<String>? daysOfWeeks;
+
   /// The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
   /// Structure is documented below.
   final List<ClusterAutomatedBackupPolicyWeeklyScheduleStartTime> startTimes;
@@ -22,15 +23,31 @@ class ClusterAutomatedBackupPolicyWeeklySchedule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'daysOfWeeks': ?daysOfWeeks,
-      'startTimes': pulumi.Input.encodeList<ClusterAutomatedBackupPolicyWeeklyScheduleStartTime, Map<String, dynamic>>(startTimes, (value) => value.toMap()),
+      'startTimes':
+          pulumi.Input.encodeList<
+            ClusterAutomatedBackupPolicyWeeklyScheduleStartTime,
+            Map<String, dynamic>
+          >(startTimes, (value) => value.toMap()),
     };
   }
 
-  factory ClusterAutomatedBackupPolicyWeeklySchedule.fromMap(Map<String, dynamic> map) {
+  factory ClusterAutomatedBackupPolicyWeeklySchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterAutomatedBackupPolicyWeeklySchedule(
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : (map['daysOfWeeks'] as List).cast<String>(),
-      startTimes: pulumi.Input.decodeList<ClusterAutomatedBackupPolicyWeeklyScheduleStartTime>(map['startTimes'], (value) => ClusterAutomatedBackupPolicyWeeklyScheduleStartTime.fromMap((value as Map).cast<String, dynamic>())),
+      daysOfWeeks: map['daysOfWeeks'] == null
+          ? null
+          : (map['daysOfWeeks'] as List).cast<String>(),
+      startTimes:
+          pulumi.Input.decodeList<
+            ClusterAutomatedBackupPolicyWeeklyScheduleStartTime
+          >(
+            map['startTimes'],
+            (value) =>
+                ClusterAutomatedBackupPolicyWeeklyScheduleStartTime.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

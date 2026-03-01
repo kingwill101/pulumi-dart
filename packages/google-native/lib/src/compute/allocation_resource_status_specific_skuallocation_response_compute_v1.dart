@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Contains Properties set for the reservation.
 class AllocationResourceStatusSpecificSKUAllocationResponseComputeV1 {
   /// ID of the instance template used to populate reservation properties.
@@ -18,10 +17,11 @@ class AllocationResourceStatusSpecificSKUAllocationResponseComputeV1 {
     };
   }
 
-  factory AllocationResourceStatusSpecificSKUAllocationResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory AllocationResourceStatusSpecificSKUAllocationResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllocationResourceStatusSpecificSKUAllocationResponseComputeV1(
       sourceInstanceTemplateId: map['sourceInstanceTemplateId'] as String,
     );
   }
 }
-

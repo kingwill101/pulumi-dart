@@ -11,14 +11,18 @@ class TablePolicyArgs {
   /// Must be between 1 and 255 characters in length.
   /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   final pulumi.Input<String>? name;
+
   /// Name of the namespace for this table.
   /// Must be between 1 and 255 characters in length.
   /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   final pulumi.Input<String> namespace;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Amazon Web Services resource-based policy document in JSON format.
   final pulumi.Input<String> resourcePolicy;
+
   /// ARN referencing the Table Bucket that contains this Namespace.
   final pulumi.Input<String> tableBucketArn;
 
@@ -34,12 +38,11 @@ class TablePolicyArgs {
     String? region,
     required String resourcePolicy,
     required String tableBucketArn,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namespace = pulumi.Input.asInput<String>(namespace),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy),
-      tableBucketArn = pulumi.Input.asInput<String>(tableBucketArn);
+  }) : name = pulumi.Input.asOptionalInput<String>(name),
+       namespace = pulumi.Input.asInput<String>(namespace),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy),
+       tableBucketArn = pulumi.Input.asInput<String>(tableBucketArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,4 +64,3 @@ class TablePolicyArgs {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum RatePlanConsumptionPricingType {
     throw ArgumentError('Unknown RatePlanConsumptionPricingType value: $value');
   }
 }
-

@@ -10,20 +10,32 @@ class EnterpriseCrmEventbusProtoTaskUiConfig {
 
   /// Creates a new [EnterpriseCrmEventbusProtoTaskUiConfig].
   /// [taskUiModuleConfigs] Configurations of included config modules.
-  EnterpriseCrmEventbusProtoTaskUiConfig({
-    this.taskUiModuleConfigs,
-  });
+  EnterpriseCrmEventbusProtoTaskUiConfig({this.taskUiModuleConfigs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'taskUiModuleConfigs': ?taskUiModuleConfigs == null ? null : pulumi.Input.encodeList<EnterpriseCrmEventbusProtoTaskUiModuleConfig, Map<String, dynamic>>(taskUiModuleConfigs!, (value) => value.toMap()),
+      'taskUiModuleConfigs': ?taskUiModuleConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              EnterpriseCrmEventbusProtoTaskUiModuleConfig,
+              Map<String, dynamic>
+            >(taskUiModuleConfigs!, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoTaskUiConfig.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoTaskUiConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoTaskUiConfig(
-      taskUiModuleConfigs: map['taskUiModuleConfigs'] == null ? null : pulumi.Input.decodeList<EnterpriseCrmEventbusProtoTaskUiModuleConfig>(map['taskUiModuleConfigs'], (value) => EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromMap((value as Map).cast<String, dynamic>())),
+      taskUiModuleConfigs: map['taskUiModuleConfigs'] == null
+          ? null
+          : pulumi
+                .Input.decodeList<EnterpriseCrmEventbusProtoTaskUiModuleConfig>(
+              map['taskUiModuleConfigs'],
+              (value) => EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

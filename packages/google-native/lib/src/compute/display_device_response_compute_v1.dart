@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A set of Display Device options
 class DisplayDeviceResponseComputeV1 {
   /// Defines whether the instance has Display enabled.
@@ -8,14 +7,10 @@ class DisplayDeviceResponseComputeV1 {
 
   /// Creates a new [DisplayDeviceResponseComputeV1].
   /// [enableDisplay] Defines whether the instance has Display enabled.
-  DisplayDeviceResponseComputeV1({
-    required this.enableDisplay,
-  });
+  DisplayDeviceResponseComputeV1({required this.enableDisplay});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableDisplay': enableDisplay,
-    };
+    return <String, dynamic>{'enableDisplay': enableDisplay};
   }
 
   factory DisplayDeviceResponseComputeV1.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class DisplayDeviceResponseComputeV1 {
     );
   }
 }
-

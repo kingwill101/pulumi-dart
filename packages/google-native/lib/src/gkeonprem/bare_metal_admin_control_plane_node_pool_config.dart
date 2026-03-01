@@ -9,20 +9,19 @@ class BareMetalAdminControlPlaneNodePoolConfig {
 
   /// Creates a new [BareMetalAdminControlPlaneNodePoolConfig].
   /// [nodePoolConfig] The generic configuration for a node pool running the control plane.
-  BareMetalAdminControlPlaneNodePoolConfig({
-    required this.nodePoolConfig,
-  });
+  BareMetalAdminControlPlaneNodePoolConfig({required this.nodePoolConfig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nodePoolConfig': nodePoolConfig.toMap(),
-    };
+    return <String, dynamic>{'nodePoolConfig': nodePoolConfig.toMap()};
   }
 
-  factory BareMetalAdminControlPlaneNodePoolConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminControlPlaneNodePoolConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminControlPlaneNodePoolConfig(
-      nodePoolConfig: BareMetalNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
+      nodePoolConfig: BareMetalNodePoolConfig.fromMap(
+        (map['nodePoolConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

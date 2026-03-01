@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UptimeCheckConfigContentMatcherJsonPathMatcher {
   /// Options to perform JSONPath content matching.
   /// Default value is `EXACT_MATCH`.
   /// Possible values are: `EXACT_MATCH`, `REGEX_MATCH`.
   final String? jsonMatcher;
+
   /// JSONPath within the response output pointing to the expected `ContentMatcher::content` to match against.
   final String jsonPath;
 
@@ -18,17 +18,17 @@ class UptimeCheckConfigContentMatcherJsonPathMatcher {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'jsonMatcher': ?jsonMatcher,
-      'jsonPath': jsonPath,
-    };
+    return <String, dynamic>{'jsonMatcher': ?jsonMatcher, 'jsonPath': jsonPath};
   }
 
-  factory UptimeCheckConfigContentMatcherJsonPathMatcher.fromMap(Map<String, dynamic> map) {
+  factory UptimeCheckConfigContentMatcherJsonPathMatcher.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UptimeCheckConfigContentMatcherJsonPathMatcher(
-      jsonMatcher: map['jsonMatcher'] == null ? null : map['jsonMatcher'] as String,
+      jsonMatcher: map['jsonMatcher'] == null
+          ? null
+          : map['jsonMatcher'] as String,
       jsonPath: map['jsonPath'] as String,
     );
   }
 }
-

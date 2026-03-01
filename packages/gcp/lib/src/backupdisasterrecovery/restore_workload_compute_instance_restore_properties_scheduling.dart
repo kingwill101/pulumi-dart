@@ -8,24 +8,38 @@ import 'restore_workload_compute_instance_restore_properties_scheduling_node_aff
 class RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
   /// (Optional)
   final bool? automaticRestart;
+
   /// Possible values are: `INSTANCE_TERMINATION_ACTION_UNSPECIFIED`, `DELETE`, `STOP`.
   final String? instanceTerminationAction;
+
   /// A nested object resource.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout? localSsdRecoveryTimeout;
+  final RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout?
+  localSsdRecoveryTimeout;
+
   /// A nested object resource.
   /// Structure is documented below.
-  final RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration? maxRunDuration;
+  final RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration?
+  maxRunDuration;
+
   /// (Optional)
   final int? minNodeCpus;
+
   /// Structure is documented below.
-  final List<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity>? nodeAffinities;
+  final List<
+    RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity
+  >?
+  nodeAffinities;
+
   /// Possible values are: `ON_HOST_MAINTENANCE_UNSPECIFIED`, `TERMINATE`, `MIGRATE`.
   final String? onHostMaintenance;
+
   /// (Optional)
   final bool? preemptible;
+
   /// Possible values are: `PROVISIONING_MODEL_UNSPECIFIED`, `STANDARD`, `SPOT`.
   final String? provisioningModel;
+
   /// (Optional)
   final String? terminationTime;
 
@@ -57,10 +71,19 @@ class RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
     return <String, dynamic>{
       'automaticRestart': ?automaticRestart,
       'instanceTerminationAction': ?instanceTerminationAction,
-      'localSsdRecoveryTimeout': ?localSsdRecoveryTimeout == null ? null : localSsdRecoveryTimeout!.toMap(),
-      'maxRunDuration': ?maxRunDuration == null ? null : maxRunDuration!.toMap(),
+      'localSsdRecoveryTimeout': ?localSsdRecoveryTimeout == null
+          ? null
+          : localSsdRecoveryTimeout!.toMap(),
+      'maxRunDuration': ?maxRunDuration == null
+          ? null
+          : maxRunDuration!.toMap(),
       'minNodeCpus': ?minNodeCpus,
-      'nodeAffinities': ?nodeAffinities == null ? null : pulumi.Input.encodeList<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity, Map<String, dynamic>>(nodeAffinities!, (value) => value.toMap()),
+      'nodeAffinities': ?nodeAffinities == null
+          ? null
+          : pulumi.Input.encodeList<
+              RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity,
+              Map<String, dynamic>
+            >(nodeAffinities!, (value) => value.toMap()),
       'onHostMaintenance': ?onHostMaintenance,
       'preemptible': ?preemptible,
       'provisioningModel': ?provisioningModel,
@@ -68,19 +91,52 @@ class RestoreWorkloadComputeInstanceRestorePropertiesScheduling {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesScheduling.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesScheduling.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesScheduling(
-      automaticRestart: map['automaticRestart'] == null ? null : map['automaticRestart'] as bool,
-      instanceTerminationAction: map['instanceTerminationAction'] == null ? null : map['instanceTerminationAction'] as String,
-      localSsdRecoveryTimeout: map['localSsdRecoveryTimeout'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout.fromMap((map['localSsdRecoveryTimeout'] as Map).cast<String, dynamic>()),
-      maxRunDuration: map['maxRunDuration'] == null ? null : RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration.fromMap((map['maxRunDuration'] as Map).cast<String, dynamic>()),
-      minNodeCpus: map['minNodeCpus'] == null ? null : map['minNodeCpus'] as int,
-      nodeAffinities: map['nodeAffinities'] == null ? null : pulumi.Input.decodeList<RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity>(map['nodeAffinities'], (value) => RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>())),
-      onHostMaintenance: map['onHostMaintenance'] == null ? null : map['onHostMaintenance'] as String,
-      preemptible: map['preemptible'] == null ? null : map['preemptible'] as bool,
-      provisioningModel: map['provisioningModel'] == null ? null : map['provisioningModel'] as String,
-      terminationTime: map['terminationTime'] == null ? null : map['terminationTime'] as String,
+      automaticRestart: map['automaticRestart'] == null
+          ? null
+          : map['automaticRestart'] as bool,
+      instanceTerminationAction: map['instanceTerminationAction'] == null
+          ? null
+          : map['instanceTerminationAction'] as String,
+      localSsdRecoveryTimeout: map['localSsdRecoveryTimeout'] == null
+          ? null
+          : RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeout.fromMap(
+              (map['localSsdRecoveryTimeout'] as Map).cast<String, dynamic>(),
+            ),
+      maxRunDuration: map['maxRunDuration'] == null
+          ? null
+          : RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration.fromMap(
+              (map['maxRunDuration'] as Map).cast<String, dynamic>(),
+            ),
+      minNodeCpus: map['minNodeCpus'] == null
+          ? null
+          : map['minNodeCpus'] as int,
+      nodeAffinities: map['nodeAffinities'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity
+            >(
+              map['nodeAffinities'],
+              (value) =>
+                  RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinity.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      onHostMaintenance: map['onHostMaintenance'] == null
+          ? null
+          : map['onHostMaintenance'] as String,
+      preemptible: map['preemptible'] == null
+          ? null
+          : map['preemptible'] as bool,
+      provisioningModel: map['provisioningModel'] == null
+          ? null
+          : map['provisioningModel'] as String,
+      terminationTime: map['terminationTime'] == null
+          ? null
+          : map['terminationTime'] as String,
     );
   }
 }
-

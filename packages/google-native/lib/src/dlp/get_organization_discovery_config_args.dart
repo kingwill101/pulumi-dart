@@ -19,10 +19,9 @@ class GetOrganizationDiscoveryConfigArgs {
     required String discoveryConfigId,
     required String location,
     required String organizationId,
-  }) :
-      discoveryConfigId = pulumi.Input.asInput<String>(discoveryConfigId),
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : discoveryConfigId = pulumi.Input.asInput<String>(discoveryConfigId),
+       location = pulumi.Input.asInput<String>(location),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetOrganizationDiscoveryConfigArgs {
     );
   }
 }
-

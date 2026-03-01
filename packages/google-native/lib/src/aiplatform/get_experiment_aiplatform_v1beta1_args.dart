@@ -22,11 +22,10 @@ class GetExperimentAiplatformV1beta1Args {
     required String location,
     String? project,
     required String tensorboardId,
-  }) :
-      experimentId = pulumi.Input.asInput<String>(experimentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
+  }) : experimentId = pulumi.Input.asInput<String>(experimentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetExperimentAiplatformV1beta1Args {
     );
   }
 }
-

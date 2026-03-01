@@ -9,20 +9,19 @@ class GrafeasV1beta1DiscoveryDetailsResponse {
 
   /// Creates a new [GrafeasV1beta1DiscoveryDetailsResponse].
   /// [discovered] Analysis status for the discovered resource.
-  GrafeasV1beta1DiscoveryDetailsResponse({
-    required this.discovered,
-  });
+  GrafeasV1beta1DiscoveryDetailsResponse({required this.discovered});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'discovered': discovered.toMap(),
-    };
+    return <String, dynamic>{'discovered': discovered.toMap()};
   }
 
-  factory GrafeasV1beta1DiscoveryDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1beta1DiscoveryDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1beta1DiscoveryDetailsResponse(
-      discovered: DiscoveredResponseContaineranalysisV1beta1.fromMap((map['discovered'] as Map).cast<String, dynamic>()),
+      discovered: DiscoveredResponseContaineranalysisV1beta1.fromMap(
+        (map['discovered'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

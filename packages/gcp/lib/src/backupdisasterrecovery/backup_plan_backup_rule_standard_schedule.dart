@@ -8,22 +8,29 @@ class BackupPlanBackupRuleStandardSchedule {
   /// `NOT_RUN` if they do not start by the end of the window.
   /// Structure is documented below.
   final BackupPlanBackupRuleStandardScheduleBackupWindow? backupWindow;
+
   /// Specifies days of months like 1, 5, or 14 on which jobs will run.
   final List<int>? daysOfMonths;
+
   /// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
   /// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final List<String>? daysOfWeeks;
+
   /// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
   /// This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
   final int? hourlyFrequency;
+
   /// Specifies values of months
   /// Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
   final List<String>? months;
+
   /// RecurrenceType enumerates the applicable periodicity for the schedule.
   /// Possible values are: `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY`.
   final String recurrenceType;
+
   /// The time zone to be used when interpreting the schedule.
   final String timeZone;
+
   /// Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
   /// Structure is documented below.
   final BackupPlanBackupRuleStandardScheduleWeekDayOfMonth? weekDayOfMonth;
@@ -57,21 +64,40 @@ class BackupPlanBackupRuleStandardSchedule {
       'months': ?months,
       'recurrenceType': recurrenceType,
       'timeZone': timeZone,
-      'weekDayOfMonth': ?weekDayOfMonth == null ? null : weekDayOfMonth!.toMap(),
+      'weekDayOfMonth': ?weekDayOfMonth == null
+          ? null
+          : weekDayOfMonth!.toMap(),
     };
   }
 
-  factory BackupPlanBackupRuleStandardSchedule.fromMap(Map<String, dynamic> map) {
+  factory BackupPlanBackupRuleStandardSchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupPlanBackupRuleStandardSchedule(
-      backupWindow: map['backupWindow'] == null ? null : BackupPlanBackupRuleStandardScheduleBackupWindow.fromMap((map['backupWindow'] as Map).cast<String, dynamic>()),
-      daysOfMonths: map['daysOfMonths'] == null ? null : (map['daysOfMonths'] as List).cast<int>(),
-      daysOfWeeks: map['daysOfWeeks'] == null ? null : (map['daysOfWeeks'] as List).cast<String>(),
-      hourlyFrequency: map['hourlyFrequency'] == null ? null : map['hourlyFrequency'] as int,
-      months: map['months'] == null ? null : (map['months'] as List).cast<String>(),
+      backupWindow: map['backupWindow'] == null
+          ? null
+          : BackupPlanBackupRuleStandardScheduleBackupWindow.fromMap(
+              (map['backupWindow'] as Map).cast<String, dynamic>(),
+            ),
+      daysOfMonths: map['daysOfMonths'] == null
+          ? null
+          : (map['daysOfMonths'] as List).cast<int>(),
+      daysOfWeeks: map['daysOfWeeks'] == null
+          ? null
+          : (map['daysOfWeeks'] as List).cast<String>(),
+      hourlyFrequency: map['hourlyFrequency'] == null
+          ? null
+          : map['hourlyFrequency'] as int,
+      months: map['months'] == null
+          ? null
+          : (map['months'] as List).cast<String>(),
       recurrenceType: map['recurrenceType'] as String,
       timeZone: map['timeZone'] as String,
-      weekDayOfMonth: map['weekDayOfMonth'] == null ? null : BackupPlanBackupRuleStandardScheduleWeekDayOfMonth.fromMap((map['weekDayOfMonth'] as Map).cast<String, dynamic>()),
+      weekDayOfMonth: map['weekDayOfMonth'] == null
+          ? null
+          : BackupPlanBackupRuleStandardScheduleWeekDayOfMonth.fromMap(
+              (map['weekDayOfMonth'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

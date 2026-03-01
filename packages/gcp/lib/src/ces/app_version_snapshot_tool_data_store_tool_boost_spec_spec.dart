@@ -7,24 +7,41 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpec {
   /// (Output)
   /// A list of boosting specifications.
   /// Structure is documented below.
-  final List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec>? conditionBoostSpecs;
+  final List<
+    AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec
+  >?
+  conditionBoostSpecs;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpecSpec].
   /// [conditionBoostSpecs] (Output)
-  AppVersionSnapshotToolDataStoreToolBoostSpecSpec({
-    this.conditionBoostSpecs,
-  });
+  AppVersionSnapshotToolDataStoreToolBoostSpecSpec({this.conditionBoostSpecs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditionBoostSpecs': ?conditionBoostSpecs == null ? null : pulumi.Input.encodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec, Map<String, dynamic>>(conditionBoostSpecs!, (value) => value.toMap()),
+      'conditionBoostSpecs': ?conditionBoostSpecs == null
+          ? null
+          : pulumi.Input.encodeList<
+              AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec,
+              Map<String, dynamic>
+            >(conditionBoostSpecs!, (value) => value.toMap()),
     };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolBoostSpecSpec.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotToolDataStoreToolBoostSpecSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotToolDataStoreToolBoostSpecSpec(
-      conditionBoostSpecs: map['conditionBoostSpecs'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec>(map['conditionBoostSpecs'], (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap((value as Map).cast<String, dynamic>())),
+      conditionBoostSpecs: map['conditionBoostSpecs'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec
+            >(
+              map['conditionBoostSpecs'],
+              (value) =>
+                  AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

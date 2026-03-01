@@ -14,7 +14,8 @@ enum RegionSecurityPolicyTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionSecurityPolicyTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionSecurityPolicyTypeComputeBeta value: $value',
+    );
   }
 }
-

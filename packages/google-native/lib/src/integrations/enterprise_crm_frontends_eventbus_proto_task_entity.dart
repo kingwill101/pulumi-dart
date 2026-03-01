@@ -10,14 +10,19 @@ import 'enterprise_crm_frontends_eventbus_proto_task_entity_task_type.dart';
 class EnterpriseCrmFrontendsEventbusProtoTaskEntity {
   /// True if the task has conflict with vpcsc
   final bool? disabledForVpcSc;
+
   /// Metadata inclueds the task name, author and so on.
   final EnterpriseCrmEventbusProtoTaskMetadata? metadata;
+
   /// Declarations for inputs/outputs for a TypedTask. This is also associated with the METADATA mask.
   final EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage? paramSpecs;
+
   /// Deprecated - statistics from the Monarch query.
   final EnterpriseCrmEventbusStats? stats;
+
   /// Defines the type of the task
   final EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType? taskType;
+
   /// UI configuration for this task Also associated with the METADATA mask.
   final EnterpriseCrmEventbusProtoTaskUiConfig? uiConfig;
 
@@ -48,15 +53,38 @@ class EnterpriseCrmFrontendsEventbusProtoTaskEntity {
     };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoTaskEntity.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoTaskEntity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmFrontendsEventbusProtoTaskEntity(
-      disabledForVpcSc: map['disabledForVpcSc'] == null ? null : map['disabledForVpcSc'] as bool,
-      metadata: map['metadata'] == null ? null : EnterpriseCrmEventbusProtoTaskMetadata.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      paramSpecs: map['paramSpecs'] == null ? null : EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage.fromMap((map['paramSpecs'] as Map).cast<String, dynamic>()),
-      stats: map['stats'] == null ? null : EnterpriseCrmEventbusStats.fromMap((map['stats'] as Map).cast<String, dynamic>()),
-      taskType: map['taskType'] == null ? null : EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType.fromValue(map['taskType'] as String),
-      uiConfig: map['uiConfig'] == null ? null : EnterpriseCrmEventbusProtoTaskUiConfig.fromMap((map['uiConfig'] as Map).cast<String, dynamic>()),
+      disabledForVpcSc: map['disabledForVpcSc'] == null
+          ? null
+          : map['disabledForVpcSc'] as bool,
+      metadata: map['metadata'] == null
+          ? null
+          : EnterpriseCrmEventbusProtoTaskMetadata.fromMap(
+              (map['metadata'] as Map).cast<String, dynamic>(),
+            ),
+      paramSpecs: map['paramSpecs'] == null
+          ? null
+          : EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage.fromMap(
+              (map['paramSpecs'] as Map).cast<String, dynamic>(),
+            ),
+      stats: map['stats'] == null
+          ? null
+          : EnterpriseCrmEventbusStats.fromMap(
+              (map['stats'] as Map).cast<String, dynamic>(),
+            ),
+      taskType: map['taskType'] == null
+          ? null
+          : EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType.fromValue(
+              map['taskType'] as String,
+            ),
+      uiConfig: map['uiConfig'] == null
+          ? null
+          : EnterpriseCrmEventbusProtoTaskUiConfig.fromMap(
+              (map['uiConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

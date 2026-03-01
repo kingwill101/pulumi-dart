@@ -12,15 +12,11 @@ class GetInstancesArgs {
 
   /// Creates a new [GetInstancesArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetInstancesArgs({
-    String? region,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region);
+  GetInstancesArgs({String? region})
+    : region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-    };
+    return <String, dynamic>{'region': ?region};
   }
 
   factory GetInstancesArgs.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class GetInstancesArgs {
     );
   }
 }
-

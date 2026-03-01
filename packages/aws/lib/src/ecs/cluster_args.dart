@@ -12,16 +12,21 @@ import 'cluster_setting.dart';
 class ClusterArgs {
   /// Execute command configuration for the cluster. See `configuration` Block for details.
   final pulumi.Input<ClusterConfiguration>? configuration;
+
   /// Name of the cluster (up to 255 letters, numbers, hyphens, and underscores)
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Default Service Connect namespace. See `service_connect_defaults` Block for details.
   final pulumi.Input<ClusterServiceConnectDefaults>? serviceConnectDefaults;
+
   /// Configuration block(s) with cluster settings. For example, this can be used to enable CloudWatch Container Insights for a cluster. See `setting` Block for details.
   final pulumi.Input<List<ClusterSetting>>? settings;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -39,34 +44,73 @@ class ClusterArgs {
     ClusterServiceConnectDefaults? serviceConnectDefaults,
     List<ClusterSetting>? settings,
     Map<String, String>? tags,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<ClusterConfiguration>(configuration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceConnectDefaults = pulumi.Input.asOptionalInput<ClusterServiceConnectDefaults>(serviceConnectDefaults),
-      settings = pulumi.Input.asOptionalInput<List<ClusterSetting>>(settings),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : configuration = pulumi.Input.asOptionalInput<ClusterConfiguration>(
+         configuration,
+       ),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       serviceConnectDefaults =
+           pulumi.Input.asOptionalInput<ClusterServiceConnectDefaults>(
+             serviceConnectDefaults,
+           ),
+       settings = pulumi.Input.asOptionalInput<List<ClusterSetting>>(settings),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<ClusterConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
       'name': ?name,
       'region': ?region,
-      'serviceConnectDefaults': ?pulumi.Input.mapOptionalInputValue<ClusterServiceConnectDefaults, Map<String, dynamic>>(serviceConnectDefaults, (value) => value.toMap()),
-      'settings': ?pulumi.Input.mapOptionalInputValue<List<ClusterSetting>, List<Map<String, dynamic>>>(settings, (value) => pulumi.Input.encodeList<ClusterSetting, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'serviceConnectDefaults':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterServiceConnectDefaults,
+            Map<String, dynamic>
+          >(serviceConnectDefaults, (value) => value.toMap()),
+      'settings':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ClusterSetting>,
+            List<Map<String, dynamic>>
+          >(
+            settings,
+            (value) =>
+                pulumi.Input.encodeList<ClusterSetting, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'tags': ?tags,
     };
   }
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      configuration: map['configuration'] == null ? null : ClusterConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
+      configuration: map['configuration'] == null
+          ? null
+          : ClusterConfiguration.fromMap(
+              (map['configuration'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      serviceConnectDefaults: map['serviceConnectDefaults'] == null ? null : ClusterServiceConnectDefaults.fromMap((map['serviceConnectDefaults'] as Map).cast<String, dynamic>()),
-      settings: map['settings'] == null ? null : pulumi.Input.decodeList<ClusterSetting>(map['settings'], (value) => ClusterSetting.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      serviceConnectDefaults: map['serviceConnectDefaults'] == null
+          ? null
+          : ClusterServiceConnectDefaults.fromMap(
+              (map['serviceConnectDefaults'] as Map).cast<String, dynamic>(),
+            ),
+      settings: map['settings'] == null
+          ? null
+          : pulumi.Input.decodeList<ClusterSetting>(
+              map['settings'],
+              (value) => ClusterSetting.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

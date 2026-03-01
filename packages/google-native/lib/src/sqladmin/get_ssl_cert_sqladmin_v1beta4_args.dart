@@ -19,10 +19,9 @@ class GetSslCertSqladminV1beta4Args {
     required String instance,
     String? project,
     required String sha1Fingerprint,
-  }) :
-      instance = pulumi.Input.asInput<String>(instance),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sha1Fingerprint = pulumi.Input.asInput<String>(sha1Fingerprint);
+  }) : instance = pulumi.Input.asInput<String>(instance),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sha1Fingerprint = pulumi.Input.asInput<String>(sha1Fingerprint);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetSslCertSqladminV1beta4Args {
     );
   }
 }
-

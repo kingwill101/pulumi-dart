@@ -19,10 +19,9 @@ class GetRatePlanArgs {
     required String apiproductId,
     required String organizationId,
     required String rateplanId,
-  }) :
-      apiproductId = pulumi.Input.asInput<String>(apiproductId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      rateplanId = pulumi.Input.asInput<String>(rateplanId);
+  }) : apiproductId = pulumi.Input.asInput<String>(apiproductId),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       rateplanId = pulumi.Input.asInput<String>(rateplanId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRatePlanArgs {
     );
   }
 }
-

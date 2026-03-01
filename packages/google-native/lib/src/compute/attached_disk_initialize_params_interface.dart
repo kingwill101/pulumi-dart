@@ -13,7 +13,8 @@ enum AttachedDiskInitializeParamsInterface {
         return item;
       }
     }
-    throw ArgumentError('Unknown AttachedDiskInitializeParamsInterface value: $value');
+    throw ArgumentError(
+      'Unknown AttachedDiskInitializeParamsInterface value: $value',
+    );
   }
 }
-

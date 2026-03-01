@@ -22,11 +22,10 @@ class GetDeveloperAppKeyArgs {
     required String developerId,
     required String keyId,
     required String organizationId,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      developerId = pulumi.Input.asInput<String>(developerId),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : appId = pulumi.Input.asInput<String>(appId),
+       developerId = pulumi.Input.asInput<String>(developerId),
+       keyId = pulumi.Input.asInput<String>(keyId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetDeveloperAppKeyArgs {
     );
   }
 }
-

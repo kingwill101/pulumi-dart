@@ -12,7 +12,8 @@ enum BareMetalNodePoolConfigOperatingSystem {
         return item;
       }
     }
-    throw ArgumentError('Unknown BareMetalNodePoolConfigOperatingSystem value: $value');
+    throw ArgumentError(
+      'Unknown BareMetalNodePoolConfigOperatingSystem value: $value',
+    );
   }
 }
-

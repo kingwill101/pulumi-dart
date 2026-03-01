@@ -7,9 +7,11 @@ class TableMaintenanceConfiguration {
   /// A single Iceberg compaction settings object.
   /// See `iceberg_compaction` below.
   final TableMaintenanceConfigurationIcebergCompaction icebergCompaction;
+
   /// A single Iceberg snapshot management settings object.
   /// See `iceberg_snapshot_management` below.
-  final TableMaintenanceConfigurationIcebergSnapshotManagement icebergSnapshotManagement;
+  final TableMaintenanceConfigurationIcebergSnapshotManagement
+  icebergSnapshotManagement;
 
   /// Creates a new [TableMaintenanceConfiguration].
   /// [icebergCompaction] A single Iceberg compaction settings object.
@@ -28,9 +30,13 @@ class TableMaintenanceConfiguration {
 
   factory TableMaintenanceConfiguration.fromMap(Map<String, dynamic> map) {
     return TableMaintenanceConfiguration(
-      icebergCompaction: TableMaintenanceConfigurationIcebergCompaction.fromMap((map['icebergCompaction'] as Map).cast<String, dynamic>()),
-      icebergSnapshotManagement: TableMaintenanceConfigurationIcebergSnapshotManagement.fromMap((map['icebergSnapshotManagement'] as Map).cast<String, dynamic>()),
+      icebergCompaction: TableMaintenanceConfigurationIcebergCompaction.fromMap(
+        (map['icebergCompaction'] as Map).cast<String, dynamic>(),
+      ),
+      icebergSnapshotManagement:
+          TableMaintenanceConfigurationIcebergSnapshotManagement.fromMap(
+            (map['icebergSnapshotManagement'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

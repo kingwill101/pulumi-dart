@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetApiKeysItem {
   /// Date and time when the API Key was created.
   final String createdDate;
+
   /// Amazon Web Services Marketplace customer identifier, when integrating with the Amazon Web Services SaaS Marketplace.
   final String customerId;
+
   /// Description of the API Key.
   final String description;
+
   /// Whether the API Key is enabled.
   final bool enabled;
+
   /// ID of the API Key.
   final String id;
+
   /// Date and time when the API Key was last updated.
   final String lastUpdatedDate;
+
   /// Name of the API Key.
   final String name;
   final List<String> stageKeys;
+
   /// Map of tags for the resource.
   final Map<String, String> tags;
+
   /// Value of the API Key.
   final String value;
 
@@ -76,4 +83,3 @@ class GetApiKeysItem {
     );
   }
 }
-

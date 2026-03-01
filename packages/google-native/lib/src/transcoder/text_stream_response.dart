@@ -7,10 +7,13 @@ import 'text_mapping_response.dart';
 class TextStreamResponse {
   /// The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
   final String codec;
+
   /// The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
   final String displayName;
+
   /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
   final String languageCode;
+
   /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
   final List<TextMappingResponse> mapping;
 
@@ -31,7 +34,11 @@ class TextStreamResponse {
       'codec': codec,
       'displayName': displayName,
       'languageCode': languageCode,
-      'mapping': pulumi.Input.encodeList<TextMappingResponse, Map<String, dynamic>>(mapping, (value) => value.toMap()),
+      'mapping':
+          pulumi.Input.encodeList<TextMappingResponse, Map<String, dynamic>>(
+            mapping,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -40,8 +47,11 @@ class TextStreamResponse {
       codec: map['codec'] as String,
       displayName: map['displayName'] as String,
       languageCode: map['languageCode'] as String,
-      mapping: pulumi.Input.decodeList<TextMappingResponse>(map['mapping'], (value) => TextMappingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      mapping: pulumi.Input.decodeList<TextMappingResponse>(
+        map['mapping'],
+        (value) =>
+            TextMappingResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

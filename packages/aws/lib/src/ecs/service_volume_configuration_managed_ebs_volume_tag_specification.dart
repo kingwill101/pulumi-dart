@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServiceVolumeConfigurationManagedEbsVolumeTagSpecification {
   /// Determines whether to propagate the tags from the task definition to the Amazon EBS volume.
   final String? propagateTags;
+
   /// The type of volume resource. Valid values, `volume`.
   final String resourceType;
+
   /// The tags applied to this Amazon EBS volume. `AmazonECSCreated` and `AmazonECSManaged` are reserved tags that can't be used.
   final Map<String, String>? tags;
 
@@ -27,12 +28,17 @@ class ServiceVolumeConfigurationManagedEbsVolumeTagSpecification {
     };
   }
 
-  factory ServiceVolumeConfigurationManagedEbsVolumeTagSpecification.fromMap(Map<String, dynamic> map) {
+  factory ServiceVolumeConfigurationManagedEbsVolumeTagSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceVolumeConfigurationManagedEbsVolumeTagSpecification(
-      propagateTags: map['propagateTags'] == null ? null : map['propagateTags'] as String,
+      propagateTags: map['propagateTags'] == null
+          ? null
+          : map['propagateTags'] as String,
       resourceType: map['resourceType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'encryption_config_response_alloydb_v1beta.dart';
 class ContinuousBackupConfigResponseAlloydbV1beta {
   /// Whether ContinuousBackup is enabled.
   final bool enabled;
+
   /// The encryption config can be specified to encrypt the backups with a customer-managed encryption key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect the user data.
   final EncryptionConfigResponseAlloydbV1beta encryptionConfig;
+
   /// The number of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window. If not set, defaults to 14 days.
   final int recoveryWindowDays;
 
@@ -29,12 +31,15 @@ class ContinuousBackupConfigResponseAlloydbV1beta {
     };
   }
 
-  factory ContinuousBackupConfigResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
+  factory ContinuousBackupConfigResponseAlloydbV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContinuousBackupConfigResponseAlloydbV1beta(
       enabled: map['enabled'] as bool,
-      encryptionConfig: EncryptionConfigResponseAlloydbV1beta.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
+      encryptionConfig: EncryptionConfigResponseAlloydbV1beta.fromMap(
+        (map['encryptionConfig'] as Map).cast<String, dynamic>(),
+      ),
       recoveryWindowDays: map['recoveryWindowDays'] as int,
     );
   }
 }
-

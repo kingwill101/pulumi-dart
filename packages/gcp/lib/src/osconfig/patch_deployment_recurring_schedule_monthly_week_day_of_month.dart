@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
   /// A day of the week.
   /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final String dayOfWeek;
+
   /// Represents the number of days before or after the given week day of month that the patch deployment is scheduled for.
   final int? dayOffset;
+
   /// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
   final int weekOrdinal;
 
@@ -28,7 +29,9 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
     };
   }
 
-  factory PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap(Map<String, dynamic> map) {
+  factory PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(
       dayOfWeek: map['dayOfWeek'] as String,
       dayOffset: map['dayOffset'] == null ? null : map['dayOffset'] as int,
@@ -36,4 +39,3 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
     );
   }
 }
-

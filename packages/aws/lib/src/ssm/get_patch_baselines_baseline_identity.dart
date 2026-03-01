@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetPatchBaselinesBaselineIdentity {
   /// Description of the patch baseline.
   final String baselineDescription;
+
   /// ID of the patch baseline.
   final String baselineId;
+
   /// Name of the patch baseline.
   final String baselineName;
+
   /// Indicates whether this is the default baseline. AWS Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.
   final bool defaultBaseline;
+
   /// Operating system the patch baseline applies to.
   final String operatingSystem;
 
@@ -47,4 +50,3 @@ class GetPatchBaselinesBaselineIdentity {
     );
   }
 }
-

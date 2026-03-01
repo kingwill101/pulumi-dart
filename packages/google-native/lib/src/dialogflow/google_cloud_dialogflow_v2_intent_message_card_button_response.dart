@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Contains information about a button.
 class GoogleCloudDialogflowV2IntentMessageCardButtonResponse {
   /// Optional. The text to send back to the Dialogflow API or a URI to open.
   final String postback;
+
   /// Optional. The text to show on the button.
   final String text;
 
@@ -17,17 +17,15 @@ class GoogleCloudDialogflowV2IntentMessageCardButtonResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'postback': postback,
-      'text': text,
-    };
+    return <String, dynamic>{'postback': postback, 'text': text};
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageCardButtonResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageCardButtonResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageCardButtonResponse(
       postback: map['postback'] as String,
       text: map['text'] as String,
     );
   }
 }
-

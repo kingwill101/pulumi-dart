@@ -12,16 +12,22 @@ import 'pad.dart';
 class PreprocessingConfig {
   /// Audio preprocessing configuration.
   final Audio? audio;
+
   /// Color preprocessing configuration.
   final Color? color;
+
   /// Specify the video cropping configuration.
   final Crop? crop;
+
   /// Deblock preprocessing configuration.
   final Deblock? deblock;
+
   /// Specify the video deinterlace configuration.
   final Deinterlace? deinterlace;
+
   /// Denoise preprocessing configuration.
   final Denoise? denoise;
+
   /// Specify the video pad filter configuration.
   final Pad? pad;
 
@@ -57,14 +63,29 @@ class PreprocessingConfig {
 
   factory PreprocessingConfig.fromMap(Map<String, dynamic> map) {
     return PreprocessingConfig(
-      audio: map['audio'] == null ? null : Audio.fromMap((map['audio'] as Map).cast<String, dynamic>()),
-      color: map['color'] == null ? null : Color.fromMap((map['color'] as Map).cast<String, dynamic>()),
-      crop: map['crop'] == null ? null : Crop.fromMap((map['crop'] as Map).cast<String, dynamic>()),
-      deblock: map['deblock'] == null ? null : Deblock.fromMap((map['deblock'] as Map).cast<String, dynamic>()),
-      deinterlace: map['deinterlace'] == null ? null : Deinterlace.fromMap((map['deinterlace'] as Map).cast<String, dynamic>()),
-      denoise: map['denoise'] == null ? null : Denoise.fromMap((map['denoise'] as Map).cast<String, dynamic>()),
-      pad: map['pad'] == null ? null : Pad.fromMap((map['pad'] as Map).cast<String, dynamic>()),
+      audio: map['audio'] == null
+          ? null
+          : Audio.fromMap((map['audio'] as Map).cast<String, dynamic>()),
+      color: map['color'] == null
+          ? null
+          : Color.fromMap((map['color'] as Map).cast<String, dynamic>()),
+      crop: map['crop'] == null
+          ? null
+          : Crop.fromMap((map['crop'] as Map).cast<String, dynamic>()),
+      deblock: map['deblock'] == null
+          ? null
+          : Deblock.fromMap((map['deblock'] as Map).cast<String, dynamic>()),
+      deinterlace: map['deinterlace'] == null
+          ? null
+          : Deinterlace.fromMap(
+              (map['deinterlace'] as Map).cast<String, dynamic>(),
+            ),
+      denoise: map['denoise'] == null
+          ? null
+          : Denoise.fromMap((map['denoise'] as Map).cast<String, dynamic>()),
+      pad: map['pad'] == null
+          ? null
+          : Pad.fromMap((map['pad'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

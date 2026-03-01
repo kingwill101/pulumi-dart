@@ -6,10 +6,13 @@ import 'google_firestore_admin_v1_vector_config_response.dart';
 class GoogleFirestoreAdminV1IndexFieldResponse {
   /// Indicates that this field supports operations on `array_value`s.
   final String arrayConfig;
+
   /// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
   final String fieldPath;
+
   /// Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
   final String order;
+
   /// Indicates that this field supports nearest neighbors and distance operations on vector.
   final GoogleFirestoreAdminV1VectorConfigResponse vectorConfig;
 
@@ -34,13 +37,16 @@ class GoogleFirestoreAdminV1IndexFieldResponse {
     };
   }
 
-  factory GoogleFirestoreAdminV1IndexFieldResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleFirestoreAdminV1IndexFieldResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleFirestoreAdminV1IndexFieldResponse(
       arrayConfig: map['arrayConfig'] as String,
       fieldPath: map['fieldPath'] as String,
       order: map['order'] as String,
-      vectorConfig: GoogleFirestoreAdminV1VectorConfigResponse.fromMap((map['vectorConfig'] as Map).cast<String, dynamic>()),
+      vectorConfig: GoogleFirestoreAdminV1VectorConfigResponse.fromMap(
+        (map['vectorConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

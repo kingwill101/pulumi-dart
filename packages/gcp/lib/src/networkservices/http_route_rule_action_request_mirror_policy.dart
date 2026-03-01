@@ -9,9 +9,7 @@ class HttpRouteRuleActionRequestMirrorPolicy {
 
   /// Creates a new [HttpRouteRuleActionRequestMirrorPolicy].
   /// [destination] The destination the requests will be mirrored to.
-  HttpRouteRuleActionRequestMirrorPolicy({
-    this.destination,
-  });
+  HttpRouteRuleActionRequestMirrorPolicy({this.destination});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class HttpRouteRuleActionRequestMirrorPolicy {
     };
   }
 
-  factory HttpRouteRuleActionRequestMirrorPolicy.fromMap(Map<String, dynamic> map) {
+  factory HttpRouteRuleActionRequestMirrorPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HttpRouteRuleActionRequestMirrorPolicy(
-      destination: map['destination'] == null ? null : HttpRouteRuleActionRequestMirrorPolicyDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      destination: map['destination'] == null
+          ? null
+          : HttpRouteRuleActionRequestMirrorPolicyDestination.fromMap(
+              (map['destination'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

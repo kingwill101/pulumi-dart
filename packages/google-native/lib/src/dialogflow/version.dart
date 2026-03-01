@@ -6,14 +6,18 @@ import 'version_args.dart';
 class Version extends pulumi.CustomResource {
   /// The creation time of this version. This field is read-only, i.e., it cannot be set by create and update methods.
   late final pulumi.Output<String> createTime;
+
   /// Optional. The developer-provided description of this version.
   late final pulumi.Output<String> description;
   late final pulumi.Output<String> location;
+
   /// The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// The status of this version. This field is read-only and cannot be set by create and update methods.
   late final pulumi.Output<String> status;
+
   /// The sequential number of this version. This field is read-only which means it cannot be set by create and update methods.
   late final pulumi.Output<int> versionNumber;
 
@@ -26,11 +30,11 @@ class Version extends pulumi.CustomResource {
     VersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:dialogflow/v2:Version',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:dialogflow/v2:Version',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String>('description');
     this.location = registerOutput<String>('location');

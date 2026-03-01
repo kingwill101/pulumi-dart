@@ -316,10 +316,13 @@ import 'dashboard_args.dart';
 class Dashboard extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the dashboard.
   late final pulumi.Output<String> dashboardArn;
+
   /// The detailed information about the dashboard, including what widgets are included and their location on the dashboard. You can read more about the body structure in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/CloudWatch-Dashboard-Body-Structure.html).
   late final pulumi.Output<String> dashboardBody;
+
   /// The name of the dashboard.
   late final pulumi.Output<String> dashboardName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -332,11 +335,11 @@ class Dashboard extends pulumi.CustomResource {
     DashboardArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/dashboard:Dashboard',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:cloudwatch/dashboard:Dashboard',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.dashboardArn = registerOutput<String>('dashboardArn');
     this.dashboardBody = registerOutput<String>('dashboardBody');
     this.dashboardName = registerOutput<String>('dashboardName');

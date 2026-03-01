@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
   /// Bucket of the Cloud Storage object.
   final String bucket;
+
   /// Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
   final String generationNumber;
+
   /// Name of the Cloud Storage object.
   final String object;
 
@@ -27,7 +28,9 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
     };
   }
 
-  factory PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject.fromMap(Map<String, dynamic> map) {
+  factory PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject(
       bucket: map['bucket'] as String,
       generationNumber: map['generationNumber'] as String,
@@ -35,4 +38,3 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject {
     );
   }
 }
-

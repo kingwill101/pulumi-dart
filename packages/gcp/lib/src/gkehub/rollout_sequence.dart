@@ -36,34 +36,46 @@ import 'rollout_sequence_stage.dart';
 class RolloutSequence extends pulumi.CustomResource {
   /// The timestamp at which the Rollout Sequence was created.
   late final pulumi.Output<String> createTime;
+
   /// The timestamp at the Rollout Sequence was deleted.
   late final pulumi.Output<String> deleteTime;
+
   /// Human readable display name of the Rollout Sequence.
   late final pulumi.Output<String?> displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// etag of the Rollout Sequence.
   late final pulumi.Output<String> etag;
+
   /// Labels for this Rollout Sequence.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The full resource name of the RolloutSequence.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The user-provided identifier of the RolloutSequence.
   late final pulumi.Output<String> rolloutSequenceId;
+
   /// Ordered list of stages that constitute this Rollout Sequence.
   /// Structure is documented below.
   late final pulumi.Output<List<RolloutSequenceStage>> stages;
+
   /// Google-generated UUID for this resource.
   late final pulumi.Output<String> uid;
+
   /// The timestamp at which the Rollout Sequence was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -76,15 +88,17 @@ class RolloutSequence extends pulumi.CustomResource {
     RolloutSequenceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:gkehub/rolloutSequence:RolloutSequence',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:gkehub/rolloutSequence:RolloutSequence',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');
     this.displayName = registerOutput<String?>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.etag = registerOutput<String>('etag');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

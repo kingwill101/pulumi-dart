@@ -12,7 +12,8 @@ enum NetworkRoutingConfigRoutingModeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkRoutingConfigRoutingModeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown NetworkRoutingConfigRoutingModeComputeBeta value: $value',
+    );
   }
 }
-

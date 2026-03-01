@@ -10,19 +10,26 @@ import 'resource_gateway_timeouts.dart';
 class ResourceGatewayArgs {
   /// IP address type used by the resource gateway. Valid values are `IPV4`, `IPV6`, and `DUALSTACK`. The IP address type of a resource gateway must be compatible with the subnets of the resource gateway and the IP address type of the resource.
   final pulumi.Input<String>? ipAddressType;
+
   /// The number of IPv4 addresses per ENI for your resource. This argument is only applicable to `IPV4` and `DUALSTACK` IP address types. Defaults to `16`.
   final pulumi.Input<int>? ipv4AddressesPerEni;
+
   /// Name of the resource gateway.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Security group IDs associated with the resource gateway. The security groups must be in the same VPC.
   final pulumi.Input<List<String>>? securityGroupIds;
+
   /// IDs of the VPC subnets in which to create the resource gateway.
   final pulumi.Input<List<String>> subnetIds;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<ResourceGatewayTimeouts>? timeouts;
+
   /// ID of the VPC for the resource gateway.
   ///
   /// The following arguments are optional:
@@ -48,16 +55,21 @@ class ResourceGatewayArgs {
     Map<String, String>? tags,
     ResourceGatewayTimeouts? timeouts,
     required String vpcId,
-  }) :
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      ipv4AddressesPerEni = pulumi.Input.asOptionalInput<int>(ipv4AddressesPerEni),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      subnetIds = pulumi.Input.asInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<ResourceGatewayTimeouts>(timeouts),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+  }) : ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
+       ipv4AddressesPerEni = pulumi.Input.asOptionalInput<int>(
+         ipv4AddressesPerEni,
+       ),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(
+         securityGroupIds,
+       ),
+       subnetIds = pulumi.Input.asInput<List<String>>(subnetIds),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       timeouts = pulumi.Input.asOptionalInput<ResourceGatewayTimeouts>(
+         timeouts,
+       ),
+       vpcId = pulumi.Input.asInput<String>(vpcId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,23 +80,38 @@ class ResourceGatewayArgs {
       'securityGroupIds': ?securityGroupIds,
       'subnetIds': subnetIds,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ResourceGatewayTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceGatewayTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'vpcId': vpcId,
     };
   }
 
   factory ResourceGatewayArgs.fromMap(Map<String, dynamic> map) {
     return ResourceGatewayArgs(
-      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
-      ipv4AddressesPerEni: map['ipv4AddressesPerEni'] == null ? null : map['ipv4AddressesPerEni'] as int,
+      ipAddressType: map['ipAddressType'] == null
+          ? null
+          : map['ipAddressType'] as String,
+      ipv4AddressesPerEni: map['ipv4AddressesPerEni'] == null
+          ? null
+          : map['ipv4AddressesPerEni'] as int,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
+      securityGroupIds: map['securityGroupIds'] == null
+          ? null
+          : (map['securityGroupIds'] as List).cast<String>(),
       subnetIds: (map['subnetIds'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      timeouts: map['timeouts'] == null ? null : ResourceGatewayTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+      timeouts: map['timeouts'] == null
+          ? null
+          : ResourceGatewayTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
       vpcId: map['vpcId'] as String,
     );
   }
 }
-

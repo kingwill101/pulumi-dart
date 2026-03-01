@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DataSourceParametersPresto {
   /// The catalog to which to connect.
   final String catalog;
+
   /// The host to which to connect.
   final String host;
+
   /// The port to which to connect.
   final int port;
 
@@ -20,11 +21,7 @@ class DataSourceParametersPresto {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'catalog': catalog,
-      'host': host,
-      'port': port,
-    };
+    return <String, dynamic>{'catalog': catalog, 'host': host, 'port': port};
   }
 
   factory DataSourceParametersPresto.fromMap(Map<String, dynamic> map) {
@@ -35,4 +32,3 @@ class DataSourceParametersPresto {
     );
   }
 }
-

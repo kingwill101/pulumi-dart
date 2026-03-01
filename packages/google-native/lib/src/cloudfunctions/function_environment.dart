@@ -16,4 +16,3 @@ enum FunctionEnvironment {
     throw ArgumentError('Unknown FunctionEnvironment value: $value');
   }
 }
-

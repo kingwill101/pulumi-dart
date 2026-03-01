@@ -13,7 +13,8 @@ enum NotebookRuntimeTemplateNotebookRuntimeType {
         return item;
       }
     }
-    throw ArgumentError('Unknown NotebookRuntimeTemplateNotebookRuntimeType value: $value');
+    throw ArgumentError(
+      'Unknown NotebookRuntimeTemplateNotebookRuntimeType value: $value',
+    );
   }
 }
-

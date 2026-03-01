@@ -18,16 +18,27 @@ class SlsaProvenanceV1ContaineranalysisV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildDefinition': ?buildDefinition == null ? null : buildDefinition!.toMap(),
+      'buildDefinition': ?buildDefinition == null
+          ? null
+          : buildDefinition!.toMap(),
       'runDetails': ?runDetails == null ? null : runDetails!.toMap(),
     };
   }
 
-  factory SlsaProvenanceV1ContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory SlsaProvenanceV1ContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SlsaProvenanceV1ContaineranalysisV1beta1(
-      buildDefinition: map['buildDefinition'] == null ? null : BuildDefinitionContaineranalysisV1beta1.fromMap((map['buildDefinition'] as Map).cast<String, dynamic>()),
-      runDetails: map['runDetails'] == null ? null : RunDetailsContaineranalysisV1beta1.fromMap((map['runDetails'] as Map).cast<String, dynamic>()),
+      buildDefinition: map['buildDefinition'] == null
+          ? null
+          : BuildDefinitionContaineranalysisV1beta1.fromMap(
+              (map['buildDefinition'] as Map).cast<String, dynamic>(),
+            ),
+      runDetails: map['runDetails'] == null
+          ? null
+          : RunDetailsContaineranalysisV1beta1.fromMap(
+              (map['runDetails'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

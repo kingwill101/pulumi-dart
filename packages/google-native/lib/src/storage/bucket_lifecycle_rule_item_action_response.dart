@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The action to take.
 class BucketLifecycleRuleItemActionResponse {
   /// Target storage class. Required iff the type of the action is SetStorageClass.
   final String storageClass;
+
   /// Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported.
   final String type;
 
@@ -17,17 +17,15 @@ class BucketLifecycleRuleItemActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'storageClass': storageClass,
-      'type': type,
-    };
+    return <String, dynamic>{'storageClass': storageClass, 'type': type};
   }
 
-  factory BucketLifecycleRuleItemActionResponse.fromMap(Map<String, dynamic> map) {
+  factory BucketLifecycleRuleItemActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketLifecycleRuleItemActionResponse(
       storageClass: map['storageClass'] as String,
       type: map['type'] as String,
     );
   }
 }
-

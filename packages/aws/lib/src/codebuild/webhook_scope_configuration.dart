@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WebhookScopeConfiguration {
   /// The domain of the GitHub Enterprise organization. Required if your project's source type is GITHUB_ENTERPRISE.
   final String? domain;
+
   /// The name of either the enterprise or organization.
   final String name;
+
   /// The type of scope for a GitHub webhook. Valid values for this parameter are: `GITHUB_ORGANIZATION`, `GITHUB_GLOBAL`.
   final String scope;
 
@@ -20,11 +21,7 @@ class WebhookScopeConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': ?domain,
-      'name': name,
-      'scope': scope,
-    };
+    return <String, dynamic>{'domain': ?domain, 'name': name, 'scope': scope};
   }
 
   factory WebhookScopeConfiguration.fromMap(Map<String, dynamic> map) {
@@ -35,4 +32,3 @@ class WebhookScopeConfiguration {
     );
   }
 }
-

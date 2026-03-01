@@ -10,6 +10,7 @@ import 'job_iambinding_condition.dart';
 class JobIAMBindingArgs {
   final pulumi.Input<JobIAMBindingCondition>? condition;
   final pulumi.Input<String> jobId;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -19,12 +20,15 @@ class JobIAMBindingArgs {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final pulumi.Input<List<String>> members;
+
   /// The project in which the job belongs. If it
   /// is not provided, the provider will use a default.
   final pulumi.Input<String>? project;
+
   /// The region in which the job belongs. If it
   /// is not provided, the provider will use a default.
   final pulumi.Input<String>? region;
+
   /// The role that should be applied. Only one
   /// `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -46,17 +50,22 @@ class JobIAMBindingArgs {
     String? project,
     String? region,
     required String role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<JobIAMBindingCondition>(condition),
-      jobId = pulumi.Input.asInput<String>(jobId),
-      members = pulumi.Input.asInput<List<String>>(members),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      role = pulumi.Input.asInput<String>(role);
+  }) : condition = pulumi.Input.asOptionalInput<JobIAMBindingCondition>(
+         condition,
+       ),
+       jobId = pulumi.Input.asInput<String>(jobId),
+       members = pulumi.Input.asInput<List<String>>(members),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<JobIAMBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobIAMBindingCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'jobId': jobId,
       'members': members,
       'project': ?project,
@@ -67,7 +76,11 @@ class JobIAMBindingArgs {
 
   factory JobIAMBindingArgs.fromMap(Map<String, dynamic> map) {
     return JobIAMBindingArgs(
-      condition: map['condition'] == null ? null : JobIAMBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null
+          ? null
+          : JobIAMBindingCondition.fromMap(
+              (map['condition'] as Map).cast<String, dynamic>(),
+            ),
       jobId: map['jobId'] as String,
       members: (map['members'] as List).cast<String>(),
       project: map['project'] == null ? null : map['project'] as String,
@@ -76,4 +89,3 @@ class JobIAMBindingArgs {
     );
   }
 }
-

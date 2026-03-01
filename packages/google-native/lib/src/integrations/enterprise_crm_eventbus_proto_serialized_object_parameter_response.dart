@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EnterpriseCrmEventbusProtoSerializedObjectParameterResponse {
   final String objectValue;
 
@@ -11,15 +10,14 @@ class EnterpriseCrmEventbusProtoSerializedObjectParameterResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectValue': objectValue,
-    };
+    return <String, dynamic>{'objectValue': objectValue};
   }
 
-  factory EnterpriseCrmEventbusProtoSerializedObjectParameterResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoSerializedObjectParameterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoSerializedObjectParameterResponse(
       objectValue: map['objectValue'] as String,
     );
   }
 }
-

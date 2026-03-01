@@ -16,4 +16,3 @@ enum EndpointPolicyType {
     throw ArgumentError('Unknown EndpointPolicyType value: $value');
   }
 }
-

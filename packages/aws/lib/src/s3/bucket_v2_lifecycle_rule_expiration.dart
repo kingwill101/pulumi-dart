@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BucketV2LifecycleRuleExpiration {
   /// Specifies the date after which you want the corresponding action to take effect.
   final String? date;
+
   /// Specifies the number of days after object creation when the specific rule action takes effect.
   final int? days;
+
   /// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Amazon S3 to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
   final bool? expiredObjectDeleteMarker;
 
@@ -31,8 +32,9 @@ class BucketV2LifecycleRuleExpiration {
     return BucketV2LifecycleRuleExpiration(
       date: map['date'] == null ? null : map['date'] as String,
       days: map['days'] == null ? null : map['days'] as int,
-      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : map['expiredObjectDeleteMarker'] as bool,
+      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null
+          ? null
+          : map['expiredObjectDeleteMarker'] as bool,
     );
   }
 }
-

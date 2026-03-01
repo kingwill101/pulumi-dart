@@ -8,10 +8,13 @@ class GetKeyHandlesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetKeyHandlesKeyHandle> keyHandles;
+
   /// The location of the KMS Key and KeyHandle.
   final String location;
+
   /// The identifier of the project where KMS KeyHandle is created.
   final String? project;
+
   /// Indicates the resource type that the resulting CryptoKey is meant to protect, e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
   final String resourceTypeSelector;
 
@@ -32,7 +35,11 @@ class GetKeyHandlesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'keyHandles': pulumi.Input.encodeList<GetKeyHandlesKeyHandle, Map<String, dynamic>>(keyHandles, (value) => value.toMap()),
+      'keyHandles':
+          pulumi.Input.encodeList<GetKeyHandlesKeyHandle, Map<String, dynamic>>(
+            keyHandles,
+            (value) => value.toMap(),
+          ),
       'location': location,
       'project': ?project,
       'resourceTypeSelector': resourceTypeSelector,
@@ -42,11 +49,15 @@ class GetKeyHandlesResult {
   factory GetKeyHandlesResult.fromMap(Map<String, dynamic> map) {
     return GetKeyHandlesResult(
       id: map['id'] as String,
-      keyHandles: pulumi.Input.decodeList<GetKeyHandlesKeyHandle>(map['keyHandles'], (value) => GetKeyHandlesKeyHandle.fromMap((value as Map).cast<String, dynamic>())),
+      keyHandles: pulumi.Input.decodeList<GetKeyHandlesKeyHandle>(
+        map['keyHandles'],
+        (value) => GetKeyHandlesKeyHandle.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       resourceTypeSelector: map['resourceTypeSelector'] as String,
     );
   }
 }
-

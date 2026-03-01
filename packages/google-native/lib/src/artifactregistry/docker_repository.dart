@@ -9,20 +9,23 @@ class DockerRepository {
 
   /// Creates a new [DockerRepository].
   /// [publicRepository] One of the publicly available Docker repositories supported by Artifact Registry.
-  DockerRepository({
-    this.publicRepository,
-  });
+  DockerRepository({this.publicRepository});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository': ?publicRepository == null ? null : publicRepository!.value,
+      'publicRepository': ?publicRepository == null
+          ? null
+          : publicRepository!.value,
     };
   }
 
   factory DockerRepository.fromMap(Map<String, dynamic> map) {
     return DockerRepository(
-      publicRepository: map['publicRepository'] == null ? null : DockerRepositoryPublicRepository.fromValue(map['publicRepository'] as String),
+      publicRepository: map['publicRepository'] == null
+          ? null
+          : DockerRepositoryPublicRepository.fromValue(
+              map['publicRepository'] as String,
+            ),
     );
   }
 }
-

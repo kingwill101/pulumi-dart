@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Defines a query on a resource.
 class DynamicGroupQueryResponseCloudidentityV1beta1 {
   /// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')` All users with any variation of the name John Doe (case-insensitive queries add `equalsIgnoreCase()` to the value being queried). `user.name.value.equalsIgnoreCase('jOhn DoE')`
@@ -16,17 +15,15 @@ class DynamicGroupQueryResponseCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'query': query,
-      'resourceType': resourceType,
-    };
+    return <String, dynamic>{'query': query, 'resourceType': resourceType};
   }
 
-  factory DynamicGroupQueryResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
+  factory DynamicGroupQueryResponseCloudidentityV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DynamicGroupQueryResponseCloudidentityV1beta1(
       query: map['query'] as String,
       resourceType: map['resourceType'] as String,
     );
   }
 }
-

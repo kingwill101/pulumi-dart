@@ -6,6 +6,7 @@ import 'google_cloud_billing_budgets_v1_threshold_rule_spend_basis.dart';
 class GoogleCloudBillingBudgetsV1ThresholdRule {
   /// Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
   final GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis? spendBasis;
+
   /// Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
   final double thresholdPercent;
 
@@ -24,11 +25,16 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
     };
   }
 
-  factory GoogleCloudBillingBudgetsV1ThresholdRule.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBillingBudgetsV1ThresholdRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBillingBudgetsV1ThresholdRule(
-      spendBasis: map['spendBasis'] == null ? null : GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis.fromValue(map['spendBasis'] as String),
+      spendBasis: map['spendBasis'] == null
+          ? null
+          : GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis.fromValue(
+              map['spendBasis'] as String,
+            ),
       thresholdPercent: map['thresholdPercent'] as double,
     );
   }
 }
-

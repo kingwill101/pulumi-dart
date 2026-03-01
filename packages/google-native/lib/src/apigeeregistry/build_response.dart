@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Build information of the Instance if it's in `ACTIVE` state.
 class BuildResponse {
   /// Commit ID of the latest commit in the build.
   final String commitId;
+
   /// Commit time of the latest commit in the build.
   final String commitTime;
+
   /// Path of the open source repository: github.com/apigee/registry.
   final String repo;
 
@@ -36,4 +37,3 @@ class BuildResponse {
     );
   }
 }
-

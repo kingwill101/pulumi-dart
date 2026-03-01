@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ApiConfigGatewayConfigBackendConfig {
   /// Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
   /// (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
@@ -8,20 +7,17 @@ class ApiConfigGatewayConfigBackendConfig {
 
   /// Creates a new [ApiConfigGatewayConfigBackendConfig].
   /// [googleServiceAccount] Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured
-  ApiConfigGatewayConfigBackendConfig({
-    required this.googleServiceAccount,
-  });
+  ApiConfigGatewayConfigBackendConfig({required this.googleServiceAccount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'googleServiceAccount': googleServiceAccount,
-    };
+    return <String, dynamic>{'googleServiceAccount': googleServiceAccount};
   }
 
-  factory ApiConfigGatewayConfigBackendConfig.fromMap(Map<String, dynamic> map) {
+  factory ApiConfigGatewayConfigBackendConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApiConfigGatewayConfigBackendConfig(
       googleServiceAccount: map['googleServiceAccount'] as String,
     );
   }
 }
-

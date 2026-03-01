@@ -9,13 +9,22 @@ import 'organization_replay_policysimulator_v1alpha_args.dart';
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class OrganizationReplayPolicysimulatorV1alpha extends pulumi.CustomResource {
   /// The configuration used for the `Replay`.
-  late final pulumi.Output<GoogleCloudPolicysimulatorV1alphaReplayConfigResponse> config;
+  late final pulumi.Output<
+    GoogleCloudPolicysimulatorV1alphaReplayConfigResponse
+  >
+  config;
   late final pulumi.Output<String> location;
+
   /// The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
+
   /// Summary statistics about the replayed log entries.
-  late final pulumi.Output<GoogleCloudPolicysimulatorV1alphaReplayResultsSummaryResponse> resultsSummary;
+  late final pulumi.Output<
+    GoogleCloudPolicysimulatorV1alphaReplayResultsSummaryResponse
+  >
+  resultsSummary;
+
   /// The current state of the `Replay`.
   late final pulumi.Output<String> state;
 
@@ -28,16 +37,22 @@ class OrganizationReplayPolicysimulatorV1alpha extends pulumi.CustomResource {
     OrganizationReplayPolicysimulatorV1alphaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:policysimulator/v1alpha:OrganizationReplay',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.config = registerOutput<GoogleCloudPolicysimulatorV1alphaReplayConfigResponse>('config');
+         'google-native:policysimulator/v1alpha:OrganizationReplay',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.config =
+        registerOutput<GoogleCloudPolicysimulatorV1alphaReplayConfigResponse>(
+          'config',
+        );
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.organizationId = registerOutput<String>('organizationId');
-    this.resultsSummary = registerOutput<GoogleCloudPolicysimulatorV1alphaReplayResultsSummaryResponse>('resultsSummary');
+    this.resultsSummary =
+        registerOutput<
+          GoogleCloudPolicysimulatorV1alphaReplayResultsSummaryResponse
+        >('resultsSummary');
     this.state = registerOutput<String>('state');
   }
 }

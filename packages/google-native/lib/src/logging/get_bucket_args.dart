@@ -19,10 +19,9 @@ class GetBucketArgs {
     required String bucketId,
     required String location,
     String? project,
-  }) :
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : bucketId = pulumi.Input.asInput<String>(bucketId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetBucketArgs {
     );
   }
 }
-

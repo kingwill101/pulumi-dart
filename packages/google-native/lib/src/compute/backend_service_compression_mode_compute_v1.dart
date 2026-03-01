@@ -12,7 +12,8 @@ enum BackendServiceCompressionModeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendServiceCompressionModeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown BackendServiceCompressionModeComputeV1 value: $value',
+    );
   }
 }
-

@@ -10,12 +10,16 @@ import 'vmware_vip_config_response.dart';
 class VmwareLoadBalancerConfigResponse {
   /// Configuration for F5 Big IP typed load balancers.
   final VmwareF5BigIpConfigResponse f5Config;
+
   /// Manually configured load balancers.
   final VmwareManualLbConfigResponse manualLbConfig;
+
   /// Configuration for MetalLB typed load balancers.
   final VmwareMetalLbConfigResponse metalLbConfig;
+
   /// Configuration for Seesaw typed load balancers.
   final VmwareSeesawConfigResponse seesawConfig;
+
   /// The VIPs used by the load balancer.
   final VmwareVipConfigResponse vipConfig;
 
@@ -45,12 +49,21 @@ class VmwareLoadBalancerConfigResponse {
 
   factory VmwareLoadBalancerConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareLoadBalancerConfigResponse(
-      f5Config: VmwareF5BigIpConfigResponse.fromMap((map['f5Config'] as Map).cast<String, dynamic>()),
-      manualLbConfig: VmwareManualLbConfigResponse.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>()),
-      metalLbConfig: VmwareMetalLbConfigResponse.fromMap((map['metalLbConfig'] as Map).cast<String, dynamic>()),
-      seesawConfig: VmwareSeesawConfigResponse.fromMap((map['seesawConfig'] as Map).cast<String, dynamic>()),
-      vipConfig: VmwareVipConfigResponse.fromMap((map['vipConfig'] as Map).cast<String, dynamic>()),
+      f5Config: VmwareF5BigIpConfigResponse.fromMap(
+        (map['f5Config'] as Map).cast<String, dynamic>(),
+      ),
+      manualLbConfig: VmwareManualLbConfigResponse.fromMap(
+        (map['manualLbConfig'] as Map).cast<String, dynamic>(),
+      ),
+      metalLbConfig: VmwareMetalLbConfigResponse.fromMap(
+        (map['metalLbConfig'] as Map).cast<String, dynamic>(),
+      ),
+      seesawConfig: VmwareSeesawConfigResponse.fromMap(
+        (map['seesawConfig'] as Map).cast<String, dynamic>(),
+      ),
+      vipConfig: VmwareVipConfigResponse.fromMap(
+        (map['vipConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

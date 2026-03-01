@@ -9,12 +9,16 @@ import 'zip_info_appengine_v1beta.dart';
 class DeploymentAppengineV1beta {
   /// Google Cloud Build build information. Only applicable for instances running in the App Engine flexible environment.
   final BuildInfo? build;
+
   /// Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
   final CloudBuildOptionsAppengineV1beta? cloudBuildOptions;
+
   /// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
   final ContainerInfoAppengineV1beta? container;
+
   /// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
   final Map<String, String>? files;
+
   /// The zip file for this deployment, if this is a zip deployment.
   final ZipInfoAppengineV1beta? zip;
 
@@ -35,7 +39,9 @@ class DeploymentAppengineV1beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'build': ?build == null ? null : build!.toMap(),
-      'cloudBuildOptions': ?cloudBuildOptions == null ? null : cloudBuildOptions!.toMap(),
+      'cloudBuildOptions': ?cloudBuildOptions == null
+          ? null
+          : cloudBuildOptions!.toMap(),
       'container': ?container == null ? null : container!.toMap(),
       'files': ?files,
       'zip': ?zip == null ? null : zip!.toMap(),
@@ -44,12 +50,27 @@ class DeploymentAppengineV1beta {
 
   factory DeploymentAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return DeploymentAppengineV1beta(
-      build: map['build'] == null ? null : BuildInfo.fromMap((map['build'] as Map).cast<String, dynamic>()),
-      cloudBuildOptions: map['cloudBuildOptions'] == null ? null : CloudBuildOptionsAppengineV1beta.fromMap((map['cloudBuildOptions'] as Map).cast<String, dynamic>()),
-      container: map['container'] == null ? null : ContainerInfoAppengineV1beta.fromMap((map['container'] as Map).cast<String, dynamic>()),
-      files: map['files'] == null ? null : (map['files'] as Map).cast<String, String>(),
-      zip: map['zip'] == null ? null : ZipInfoAppengineV1beta.fromMap((map['zip'] as Map).cast<String, dynamic>()),
+      build: map['build'] == null
+          ? null
+          : BuildInfo.fromMap((map['build'] as Map).cast<String, dynamic>()),
+      cloudBuildOptions: map['cloudBuildOptions'] == null
+          ? null
+          : CloudBuildOptionsAppengineV1beta.fromMap(
+              (map['cloudBuildOptions'] as Map).cast<String, dynamic>(),
+            ),
+      container: map['container'] == null
+          ? null
+          : ContainerInfoAppengineV1beta.fromMap(
+              (map['container'] as Map).cast<String, dynamic>(),
+            ),
+      files: map['files'] == null
+          ? null
+          : (map['files'] as Map).cast<String, String>(),
+      zip: map['zip'] == null
+          ? null
+          : ZipInfoAppengineV1beta.fromMap(
+              (map['zip'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

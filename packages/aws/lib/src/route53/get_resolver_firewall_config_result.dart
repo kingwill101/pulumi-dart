@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getResolverFirewallConfig.
 class GetResolverFirewallConfigResult {
   /// Determines how DNS Firewall operates during failures, for example when all traffic that is sent to DNS Firewall fails to receive a reply.
   final String firewallFailOpen;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Amazon Web Services account ID of the owner of the VPC that this firewall configuration applies to.
   final String ownerId;
   final String region;
@@ -46,4 +47,3 @@ class GetResolverFirewallConfigResult {
     );
   }
 }
-

@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class QueryTimelineSampleResponse {
   /// Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.
   final String activeUnits;
+
   /// Total parallel units of work completed by this query.
   final String completedUnits;
+
   /// Milliseconds elapsed since the start of query execution.
   final String elapsedMs;
+
   /// Units of work that can be scheduled immediately. Providing additional slots for these units of work will speed up the query, provided no other query in the reservation needs additional slots.
   final String estimatedRunnableUnits;
+
   /// Total units of work remaining for the query. This number can be revised (increased or decreased) while the query is running.
   final String pendingUnits;
+
   /// Cumulative slot-ms consumed by the query.
   final String totalSlotMs;
 
@@ -53,4 +57,3 @@ class QueryTimelineSampleResponse {
     );
   }
 }
-

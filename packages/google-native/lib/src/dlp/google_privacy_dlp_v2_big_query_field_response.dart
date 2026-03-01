@@ -7,6 +7,7 @@ import 'google_privacy_dlp_v2_field_id_response.dart';
 class GooglePrivacyDlpV2BigQueryFieldResponse {
   /// Designated field in the BigQuery table.
   final GooglePrivacyDlpV2FieldIdResponse field;
+
   /// Source table of the field.
   final GooglePrivacyDlpV2BigQueryTableResponse table;
 
@@ -19,17 +20,19 @@ class GooglePrivacyDlpV2BigQueryFieldResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'field': field.toMap(),
-      'table': table.toMap(),
-    };
+    return <String, dynamic>{'field': field.toMap(), 'table': table.toMap()};
   }
 
-  factory GooglePrivacyDlpV2BigQueryFieldResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryFieldResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2BigQueryFieldResponse(
-      field: GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field'] as Map).cast<String, dynamic>()),
-      table: GooglePrivacyDlpV2BigQueryTableResponse.fromMap((map['table'] as Map).cast<String, dynamic>()),
+      field: GooglePrivacyDlpV2FieldIdResponse.fromMap(
+        (map['field'] as Map).cast<String, dynamic>(),
+      ),
+      table: GooglePrivacyDlpV2BigQueryTableResponse.fromMap(
+        (map['table'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

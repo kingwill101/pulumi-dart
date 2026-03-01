@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRegionalSecretCustomerManagedEncryption {
   /// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
   final String kmsKeyName;
 
   /// Creates a new [GetRegionalSecretCustomerManagedEncryption].
   /// [kmsKeyName] The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
-  GetRegionalSecretCustomerManagedEncryption({
-    required this.kmsKeyName,
-  });
+  GetRegionalSecretCustomerManagedEncryption({required this.kmsKeyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kmsKeyName': kmsKeyName};
   }
 
-  factory GetRegionalSecretCustomerManagedEncryption.fromMap(Map<String, dynamic> map) {
+  factory GetRegionalSecretCustomerManagedEncryption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionalSecretCustomerManagedEncryption(
       kmsKeyName: map['kmsKeyName'] as String,
     );
   }
 }
-

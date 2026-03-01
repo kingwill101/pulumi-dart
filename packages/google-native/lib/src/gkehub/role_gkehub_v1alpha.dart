@@ -9,9 +9,7 @@ class RoleGkehubV1alpha {
 
   /// Creates a new [RoleGkehubV1alpha].
   /// [predefinedRole] predefined_role is the Kubernetes default role to use
-  RoleGkehubV1alpha({
-    this.predefinedRole,
-  });
+  RoleGkehubV1alpha({this.predefinedRole});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class RoleGkehubV1alpha {
 
   factory RoleGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return RoleGkehubV1alpha(
-      predefinedRole: map['predefinedRole'] == null ? null : RolePredefinedRoleGkehubV1alpha.fromValue(map['predefinedRole'] as String),
+      predefinedRole: map['predefinedRole'] == null
+          ? null
+          : RolePredefinedRoleGkehubV1alpha.fromValue(
+              map['predefinedRole'] as String,
+            ),
     );
   }
 }
-

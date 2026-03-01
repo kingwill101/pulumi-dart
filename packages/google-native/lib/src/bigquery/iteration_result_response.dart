@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class IterationResultResponse {
   /// Time taken to run the iteration in milliseconds.
   final String durationMs;
+
   /// Loss computed on the eval data at the end of iteration.
   final double evalLoss;
+
   /// Index of the iteration, 0 based.
   final int index;
+
   /// Learn rate used for this iteration.
   final double learnRate;
+
   /// Loss computed on the training data at the end of iteration.
   final double trainingLoss;
 
@@ -47,4 +50,3 @@ class IterationResultResponse {
     );
   }
 }
-

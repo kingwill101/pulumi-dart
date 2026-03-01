@@ -15,25 +15,31 @@ class RegionUrlMapPathMatcher {
   /// Only one of defaultRouteAction or defaultUrlRedirect must be set.
   /// Structure is documented below.
   final RegionUrlMapPathMatcherDefaultRouteAction? defaultRouteAction;
+
   /// A reference to a RegionBackendService resource. This will be used if
   /// none of the pathRules defined by this PathMatcher is matched by
   /// the URL's path portion.
   final String? defaultService;
+
   /// When none of the specified hostRules match, the request is redirected to a URL specified
   /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
   /// defaultRouteAction must not be set.
   /// Structure is documented below.
   final RegionUrlMapPathMatcherDefaultUrlRedirect? defaultUrlRedirect;
+
   /// An optional description of this resource.
   final String? description;
+
   /// Specifies changes to request and response headers that need to take effect for the selected backendService.
   /// headerAction specified here take effect before headerAction in the enclosing HttpRouteRule, PathMatcher and UrlMap.
   /// headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL.
   /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   /// Structure is documented below.
   final RegionUrlMapPathMatcherHeaderAction? headerAction;
+
   /// The name to which this PathMatcher is referred by the HostRule.
   final String name;
+
   /// The list of path rules. Use this list instead of routeRules when routing based
   /// on simple path matching is all that's required. The order by which path rules
   /// are specified does not matter. Matches are always done on the longest-path-first
@@ -42,6 +48,7 @@ class RegionUrlMapPathMatcher {
   /// given pathMatcher, only one of pathRules or routeRules must be set.
   /// Structure is documented below.
   final List<RegionUrlMapPathMatcherPathRule>? pathRules;
+
   /// The list of ordered HTTP route rules. Use this list instead of pathRules when
   /// advanced route matching and routing actions are desired. The order of specifying
   /// routeRules matters: the first rule that matches will cause its specified routing
@@ -73,28 +80,71 @@ class RegionUrlMapPathMatcher {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultRouteAction': ?defaultRouteAction == null ? null : defaultRouteAction!.toMap(),
+      'defaultRouteAction': ?defaultRouteAction == null
+          ? null
+          : defaultRouteAction!.toMap(),
       'defaultService': ?defaultService,
-      'defaultUrlRedirect': ?defaultUrlRedirect == null ? null : defaultUrlRedirect!.toMap(),
+      'defaultUrlRedirect': ?defaultUrlRedirect == null
+          ? null
+          : defaultUrlRedirect!.toMap(),
       'description': ?description,
       'headerAction': ?headerAction == null ? null : headerAction!.toMap(),
       'name': name,
-      'pathRules': ?pathRules == null ? null : pulumi.Input.encodeList<RegionUrlMapPathMatcherPathRule, Map<String, dynamic>>(pathRules!, (value) => value.toMap()),
-      'routeRules': ?routeRules == null ? null : pulumi.Input.encodeList<RegionUrlMapPathMatcherRouteRule, Map<String, dynamic>>(routeRules!, (value) => value.toMap()),
+      'pathRules': ?pathRules == null
+          ? null
+          : pulumi.Input.encodeList<
+              RegionUrlMapPathMatcherPathRule,
+              Map<String, dynamic>
+            >(pathRules!, (value) => value.toMap()),
+      'routeRules': ?routeRules == null
+          ? null
+          : pulumi.Input.encodeList<
+              RegionUrlMapPathMatcherRouteRule,
+              Map<String, dynamic>
+            >(routeRules!, (value) => value.toMap()),
     };
   }
 
   factory RegionUrlMapPathMatcher.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcher(
-      defaultRouteAction: map['defaultRouteAction'] == null ? null : RegionUrlMapPathMatcherDefaultRouteAction.fromMap((map['defaultRouteAction'] as Map).cast<String, dynamic>()),
-      defaultService: map['defaultService'] == null ? null : map['defaultService'] as String,
-      defaultUrlRedirect: map['defaultUrlRedirect'] == null ? null : RegionUrlMapPathMatcherDefaultUrlRedirect.fromMap((map['defaultUrlRedirect'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      headerAction: map['headerAction'] == null ? null : RegionUrlMapPathMatcherHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>()),
+      defaultRouteAction: map['defaultRouteAction'] == null
+          ? null
+          : RegionUrlMapPathMatcherDefaultRouteAction.fromMap(
+              (map['defaultRouteAction'] as Map).cast<String, dynamic>(),
+            ),
+      defaultService: map['defaultService'] == null
+          ? null
+          : map['defaultService'] as String,
+      defaultUrlRedirect: map['defaultUrlRedirect'] == null
+          ? null
+          : RegionUrlMapPathMatcherDefaultUrlRedirect.fromMap(
+              (map['defaultUrlRedirect'] as Map).cast<String, dynamic>(),
+            ),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      headerAction: map['headerAction'] == null
+          ? null
+          : RegionUrlMapPathMatcherHeaderAction.fromMap(
+              (map['headerAction'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] as String,
-      pathRules: map['pathRules'] == null ? null : pulumi.Input.decodeList<RegionUrlMapPathMatcherPathRule>(map['pathRules'], (value) => RegionUrlMapPathMatcherPathRule.fromMap((value as Map).cast<String, dynamic>())),
-      routeRules: map['routeRules'] == null ? null : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRule>(map['routeRules'], (value) => RegionUrlMapPathMatcherRouteRule.fromMap((value as Map).cast<String, dynamic>())),
+      pathRules: map['pathRules'] == null
+          ? null
+          : pulumi.Input.decodeList<RegionUrlMapPathMatcherPathRule>(
+              map['pathRules'],
+              (value) => RegionUrlMapPathMatcherPathRule.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      routeRules: map['routeRules'] == null
+          ? null
+          : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRule>(
+              map['routeRules'],
+              (value) => RegionUrlMapPathMatcherRouteRule.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

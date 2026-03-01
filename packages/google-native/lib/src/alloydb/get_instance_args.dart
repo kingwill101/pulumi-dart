@@ -25,12 +25,11 @@ class GetInstanceArgs {
     required String location,
     String? project,
     String? view,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : clusterId = pulumi.Input.asInput<String>(clusterId),
+       instanceId = pulumi.Input.asInput<String>(instanceId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetInstanceArgs {
     );
   }
 }
-

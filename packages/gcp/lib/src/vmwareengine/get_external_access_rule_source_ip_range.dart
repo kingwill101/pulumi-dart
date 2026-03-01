@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetExternalAccessRuleSourceIpRange {
   /// A single IP address.
   final String ipAddress;
+
   /// An IP address range in the CIDR format.
   final String ipAddressRange;
 
@@ -29,4 +29,3 @@ class GetExternalAccessRuleSourceIpRange {
     );
   }
 }
-

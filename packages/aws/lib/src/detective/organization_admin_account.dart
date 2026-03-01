@@ -157,6 +157,7 @@ import 'organization_admin_account_args.dart';
 class OrganizationAdminAccount extends pulumi.CustomResource {
   /// AWS account identifier to designate as a delegated administrator for Detective.
   late final pulumi.Output<String> accountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -169,11 +170,11 @@ class OrganizationAdminAccount extends pulumi.CustomResource {
     OrganizationAdminAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:detective/organizationAdminAccount:OrganizationAdminAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:detective/organizationAdminAccount:OrganizationAdminAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.accountId = registerOutput<String>('accountId');
     this.region = registerOutput<String>('region');
   }

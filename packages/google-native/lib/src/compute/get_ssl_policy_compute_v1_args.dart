@@ -13,18 +13,12 @@ class GetSslPolicyComputeV1Args {
   /// Creates a new [GetSslPolicyComputeV1Args].
   /// [project] Optional.
   /// [sslPolicy] Required.
-  GetSslPolicyComputeV1Args({
-    String? project,
-    required String sslPolicy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetSslPolicyComputeV1Args({String? project, required String sslPolicy})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       sslPolicy = pulumi.Input.asInput<String>(sslPolicy);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'sslPolicy': sslPolicy,
-    };
+    return <String, dynamic>{'project': ?project, 'sslPolicy': sslPolicy};
   }
 
   factory GetSslPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetSslPolicyComputeV1Args {
     );
   }
 }
-

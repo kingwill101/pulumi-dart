@@ -10,15 +10,23 @@ import 'organization_event_threat_detection_setting_custom_module_enablement_sta
 class OrganizationEventThreatDetectionSettingCustomModuleArgs {
   /// Config for the module. For the resident module, its config value is defined at this level. For the inherited module, its config value is inherited from the ancestor module.
   final pulumi.Input<Map<String, String>>? config;
+
   /// The description for the module.
   final pulumi.Input<String>? description;
+
   /// The human readable name to be displayed for the module.
   final pulumi.Input<String>? displayName;
+
   /// The state of enablement for the module at the given level of the hierarchy.
-  final pulumi.Input<OrganizationEventThreatDetectionSettingCustomModuleEnablementState>? enablementState;
+  final pulumi.Input<
+    OrganizationEventThreatDetectionSettingCustomModuleEnablementState
+  >?
+  enablementState;
+
   /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: * "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". * "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
+
   /// Type for the module. e.g. CONFIGURABLE_BAD_IP.
   final pulumi.Input<String>? type;
 
@@ -34,41 +42,59 @@ class OrganizationEventThreatDetectionSettingCustomModuleArgs {
     Map<String, String>? config,
     String? description,
     String? displayName,
-    OrganizationEventThreatDetectionSettingCustomModuleEnablementState? enablementState,
+    OrganizationEventThreatDetectionSettingCustomModuleEnablementState?
+    enablementState,
     String? name,
     required String organizationId,
     String? type,
-  }) :
-      config = pulumi.Input.asOptionalInput<Map<String, String>>(config),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enablementState = pulumi.Input.asOptionalInput<OrganizationEventThreatDetectionSettingCustomModuleEnablementState>(enablementState),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      type = pulumi.Input.asOptionalInput<String>(type);
+  }) : config = pulumi.Input.asOptionalInput<Map<String, String>>(config),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       enablementState =
+           pulumi.Input.asOptionalInput<
+             OrganizationEventThreatDetectionSettingCustomModuleEnablementState
+           >(enablementState),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       type = pulumi.Input.asOptionalInput<String>(type);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'config': ?config,
       'description': ?description,
       'displayName': ?displayName,
-      'enablementState': ?pulumi.Input.mapOptionalInputValue<OrganizationEventThreatDetectionSettingCustomModuleEnablementState, String>(enablementState, (value) => value.value),
+      'enablementState':
+          ?pulumi.Input.mapOptionalInputValue<
+            OrganizationEventThreatDetectionSettingCustomModuleEnablementState,
+            String
+          >(enablementState, (value) => value.value),
       'name': ?name,
       'organizationId': organizationId,
       'type': ?type,
     };
   }
 
-  factory OrganizationEventThreatDetectionSettingCustomModuleArgs.fromMap(Map<String, dynamic> map) {
+  factory OrganizationEventThreatDetectionSettingCustomModuleArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationEventThreatDetectionSettingCustomModuleArgs(
-      config: map['config'] == null ? null : (map['config'] as Map).cast<String, String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      enablementState: map['enablementState'] == null ? null : OrganizationEventThreatDetectionSettingCustomModuleEnablementState.fromValue(map['enablementState'] as String),
+      config: map['config'] == null
+          ? null
+          : (map['config'] as Map).cast<String, String>(),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      enablementState: map['enablementState'] == null
+          ? null
+          : OrganizationEventThreatDetectionSettingCustomModuleEnablementState.fromValue(
+              map['enablementState'] as String,
+            ),
       name: map['name'] == null ? null : map['name'] as String,
       organizationId: map['organizationId'] as String,
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'env_var_source.dart';
 class EnvVar {
   /// Name of the environment variable.
   final String name;
+
   /// Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
   final String? value;
+
   /// Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
   final EnvVarSource? valueFrom;
 
@@ -15,11 +17,7 @@ class EnvVar {
   /// [name] Name of the environment variable.
   /// [value] Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
   /// [valueFrom] Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
-  EnvVar({
-    required this.name,
-    this.value,
-    this.valueFrom,
-  });
+  EnvVar({required this.name, this.value, this.valueFrom});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,11 @@ class EnvVar {
     return EnvVar(
       name: map['name'] as String,
       value: map['value'] == null ? null : map['value'] as String,
-      valueFrom: map['valueFrom'] == null ? null : EnvVarSource.fromMap((map['valueFrom'] as Map).cast<String, dynamic>()),
+      valueFrom: map['valueFrom'] == null
+          ? null
+          : EnvVarSource.fromMap(
+              (map['valueFrom'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

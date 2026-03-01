@@ -7,6 +7,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTable {
   /// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
   final List<StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn>? columns;
+
   /// Table name.
   final String table;
 
@@ -20,16 +21,32 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': ?columns == null ? null : pulumi.Input.encodeList<StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn, Map<String, dynamic>>(columns!, (value) => value.toMap()),
+      'columns': ?columns == null
+          ? null
+          : pulumi.Input.encodeList<
+              StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn,
+              Map<String, dynamic>
+            >(columns!, (value) => value.toMap()),
       'table': table,
     };
   }
 
-  factory StreamBackfillAllSpannerExcludedObjectsSchemaTable.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllSpannerExcludedObjectsSchemaTable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllSpannerExcludedObjectsSchemaTable(
-      columns: map['columns'] == null ? null : pulumi.Input.decodeList<StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn>(map['columns'], (value) => StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn.fromMap((value as Map).cast<String, dynamic>())),
+      columns: map['columns'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn
+            >(
+              map['columns'],
+              (value) =>
+                  StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       table: map['table'] as String,
     );
   }
 }
-

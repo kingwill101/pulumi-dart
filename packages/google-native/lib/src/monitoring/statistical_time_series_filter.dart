@@ -6,16 +6,14 @@ import 'statistical_time_series_filter_ranking_method.dart';
 class StatisticalTimeSeriesFilter {
   /// How many time series to output.
   final int? numTimeSeries;
+
   /// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
   final StatisticalTimeSeriesFilterRankingMethod? rankingMethod;
 
   /// Creates a new [StatisticalTimeSeriesFilter].
   /// [numTimeSeries] How many time series to output.
   /// [rankingMethod] rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
-  StatisticalTimeSeriesFilter({
-    this.numTimeSeries,
-    this.rankingMethod,
-  });
+  StatisticalTimeSeriesFilter({this.numTimeSeries, this.rankingMethod});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class StatisticalTimeSeriesFilter {
 
   factory StatisticalTimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return StatisticalTimeSeriesFilter(
-      numTimeSeries: map['numTimeSeries'] == null ? null : map['numTimeSeries'] as int,
-      rankingMethod: map['rankingMethod'] == null ? null : StatisticalTimeSeriesFilterRankingMethod.fromValue(map['rankingMethod'] as String),
+      numTimeSeries: map['numTimeSeries'] == null
+          ? null
+          : map['numTimeSeries'] as int,
+      rankingMethod: map['rankingMethod'] == null
+          ? null
+          : StatisticalTimeSeriesFilterRankingMethod.fromValue(
+              map['rankingMethod'] as String,
+            ),
     );
   }
 }
-

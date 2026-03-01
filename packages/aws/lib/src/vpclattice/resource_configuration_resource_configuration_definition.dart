@@ -6,11 +6,16 @@ import 'resource_configuration_resource_configuration_definition_ip_resource.dar
 
 class ResourceConfigurationResourceConfigurationDefinition {
   /// Resource DNS Configuration. See `arn_resource` Block for details.
-  final ResourceConfigurationResourceConfigurationDefinitionArnResource? arnResource;
+  final ResourceConfigurationResourceConfigurationDefinitionArnResource?
+  arnResource;
+
   /// Resource DNS Configuration. See `dns_resource` Block for details.
-  final ResourceConfigurationResourceConfigurationDefinitionDnsResource? dnsResource;
+  final ResourceConfigurationResourceConfigurationDefinitionDnsResource?
+  dnsResource;
+
   /// Resource DNS Configuration. See `ip_resource` Block for details.
-  final ResourceConfigurationResourceConfigurationDefinitionIpResource? ipResource;
+  final ResourceConfigurationResourceConfigurationDefinitionIpResource?
+  ipResource;
 
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinition].
   /// [arnResource] Resource DNS Configuration. See `arn_resource` Block for details.
@@ -30,12 +35,25 @@ class ResourceConfigurationResourceConfigurationDefinition {
     };
   }
 
-  factory ResourceConfigurationResourceConfigurationDefinition.fromMap(Map<String, dynamic> map) {
+  factory ResourceConfigurationResourceConfigurationDefinition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceConfigurationResourceConfigurationDefinition(
-      arnResource: map['arnResource'] == null ? null : ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap((map['arnResource'] as Map).cast<String, dynamic>()),
-      dnsResource: map['dnsResource'] == null ? null : ResourceConfigurationResourceConfigurationDefinitionDnsResource.fromMap((map['dnsResource'] as Map).cast<String, dynamic>()),
-      ipResource: map['ipResource'] == null ? null : ResourceConfigurationResourceConfigurationDefinitionIpResource.fromMap((map['ipResource'] as Map).cast<String, dynamic>()),
+      arnResource: map['arnResource'] == null
+          ? null
+          : ResourceConfigurationResourceConfigurationDefinitionArnResource.fromMap(
+              (map['arnResource'] as Map).cast<String, dynamic>(),
+            ),
+      dnsResource: map['dnsResource'] == null
+          ? null
+          : ResourceConfigurationResourceConfigurationDefinitionDnsResource.fromMap(
+              (map['dnsResource'] as Map).cast<String, dynamic>(),
+            ),
+      ipResource: map['ipResource'] == null
+          ? null
+          : ResourceConfigurationResourceConfigurationDefinitionIpResource.fromMap(
+              (map['ipResource'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

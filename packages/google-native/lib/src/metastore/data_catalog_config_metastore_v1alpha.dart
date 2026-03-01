@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies how metastore metadata should be integrated with the Data Catalog service.
 class DataCatalogConfigMetastoreV1alpha {
   /// Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
@@ -8,14 +7,10 @@ class DataCatalogConfigMetastoreV1alpha {
 
   /// Creates a new [DataCatalogConfigMetastoreV1alpha].
   /// [enabled] Optional. Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
-  DataCatalogConfigMetastoreV1alpha({
-    this.enabled,
-  });
+  DataCatalogConfigMetastoreV1alpha({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory DataCatalogConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class DataCatalogConfigMetastoreV1alpha {
     );
   }
 }
-

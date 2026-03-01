@@ -25,12 +25,13 @@ class GetApiConfigIamPolicyApigatewayV1betaArgs {
     required String location,
     int? optionsRequestedPolicyVersion,
     String? project,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      configId = pulumi.Input.asInput<String>(configId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : apiId = pulumi.Input.asInput<String>(apiId),
+       configId = pulumi.Input.asInput<String>(configId),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,14 +43,18 @@ class GetApiConfigIamPolicyApigatewayV1betaArgs {
     };
   }
 
-  factory GetApiConfigIamPolicyApigatewayV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetApiConfigIamPolicyApigatewayV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApiConfigIamPolicyApigatewayV1betaArgs(
       apiId: map['apiId'] as String,
       configId: map['configId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

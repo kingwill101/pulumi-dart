@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// [TrustedTester] [Required] Defines the ranges for range partitioning.
 class RangePartitioningRange {
   /// [TrustedTester] [Required] The end of range partitioning, exclusive.
   final String? end;
+
   /// [TrustedTester] [Required] The width of each interval.
   final String? interval;
+
   /// [TrustedTester] [Required] The start of range partitioning, inclusive.
   final String? start;
 
@@ -14,11 +15,7 @@ class RangePartitioningRange {
   /// [end] [TrustedTester] [Required] The end of range partitioning, exclusive.
   /// [interval] [TrustedTester] [Required] The width of each interval.
   /// [start] [TrustedTester] [Required] The start of range partitioning, inclusive.
-  RangePartitioningRange({
-    this.end,
-    this.interval,
-    this.start,
-  });
+  RangePartitioningRange({this.end, this.interval, this.start});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,4 +33,3 @@ class RangePartitioningRange {
     );
   }
 }
-

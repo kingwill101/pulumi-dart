@@ -10,40 +10,58 @@ import 'network_interface_response.dart';
 class ComputeEngineTargetDefaultsResponse {
   /// Additional licenses to assign to the VM.
   final List<String> additionalLicenses;
+
   /// The OS license returned from the adaptation module report.
   final AppliedLicenseResponse appliedLicense;
+
   /// The VM Boot Option, as set in the source VM.
   final String bootOption;
+
   /// Compute instance scheduling information (if empty default is used).
   final ComputeSchedulingResponse computeScheduling;
+
   /// The disk type to use in the VM.
   final String diskType;
+
   /// Optional. Immutable. The encryption to apply to the VM disks.
   final EncryptionResponse encryption;
+
   /// The hostname to assign to the VM.
   final String hostname;
+
   /// A map of labels to associate with the VM.
   final Map<String, String> labels;
+
   /// The license type to use in OS adaptation.
   final String licenseType;
+
   /// The machine type to create the VM with.
   final String machineType;
+
   /// The machine type series to create the VM with.
   final String machineTypeSeries;
+
   /// The metadata key/value pairs to assign to the VM.
   final Map<String, String> metadata;
+
   /// List of NICs connected to this VM.
   final List<NetworkInterfaceResponse> networkInterfaces;
+
   /// A list of network tags to associate with the VM.
   final List<String> networkTags;
+
   /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
   final bool secureBoot;
+
   /// The service account to associate the VM with.
   final String serviceAccount;
+
   /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
   final String targetProject;
+
   /// The name of the VM to create.
   final String vmName;
+
   /// The zone in which to create the VM.
   final String zone;
 
@@ -103,7 +121,11 @@ class ComputeEngineTargetDefaultsResponse {
       'machineType': machineType,
       'machineTypeSeries': machineTypeSeries,
       'metadata': metadata,
-      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces':
+          pulumi.Input.encodeList<
+            NetworkInterfaceResponse,
+            Map<String, dynamic>
+          >(networkInterfaces, (value) => value.toMap()),
       'networkTags': networkTags,
       'secureBoot': secureBoot,
       'serviceAccount': serviceAccount,
@@ -113,21 +135,34 @@ class ComputeEngineTargetDefaultsResponse {
     };
   }
 
-  factory ComputeEngineTargetDefaultsResponse.fromMap(Map<String, dynamic> map) {
+  factory ComputeEngineTargetDefaultsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ComputeEngineTargetDefaultsResponse(
       additionalLicenses: (map['additionalLicenses'] as List).cast<String>(),
-      appliedLicense: AppliedLicenseResponse.fromMap((map['appliedLicense'] as Map).cast<String, dynamic>()),
+      appliedLicense: AppliedLicenseResponse.fromMap(
+        (map['appliedLicense'] as Map).cast<String, dynamic>(),
+      ),
       bootOption: map['bootOption'] as String,
-      computeScheduling: ComputeSchedulingResponse.fromMap((map['computeScheduling'] as Map).cast<String, dynamic>()),
+      computeScheduling: ComputeSchedulingResponse.fromMap(
+        (map['computeScheduling'] as Map).cast<String, dynamic>(),
+      ),
       diskType: map['diskType'] as String,
-      encryption: EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
+      encryption: EncryptionResponse.fromMap(
+        (map['encryption'] as Map).cast<String, dynamic>(),
+      ),
       hostname: map['hostname'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       licenseType: map['licenseType'] as String,
       machineType: map['machineType'] as String,
       machineTypeSeries: map['machineTypeSeries'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(
+        map['networkInterfaces'],
+        (value) => NetworkInterfaceResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       networkTags: (map['networkTags'] as List).cast<String>(),
       secureBoot: map['secureBoot'] as bool,
       serviceAccount: map['serviceAccount'] as String,
@@ -137,4 +172,3 @@ class ComputeEngineTargetDefaultsResponse {
     );
   }
 }
-

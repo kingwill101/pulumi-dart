@@ -280,15 +280,20 @@ class LiteSubscription extends pulumi.CustomResource {
   /// The settings for this subscription's message delivery.
   /// Structure is documented below.
   late final pulumi.Output<LiteSubscriptionDeliveryConfig?> deliveryConfig;
+
   /// Name of the subscription.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the pubsub lite topic.
   late final pulumi.Output<String?> region;
+
   /// A reference to a Topic resource.
   late final pulumi.Output<String> topic;
+
   /// The zone of the pubsub lite topic.
   late final pulumi.Output<String?> zone;
 
@@ -301,12 +306,14 @@ class LiteSubscription extends pulumi.CustomResource {
     LiteSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:pubsub/liteSubscription:LiteSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>('deliveryConfig');
+         'gcp:pubsub/liteSubscription:LiteSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.deliveryConfig = registerOutput<LiteSubscriptionDeliveryConfig?>(
+      'deliveryConfig',
+    );
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String?>('region');

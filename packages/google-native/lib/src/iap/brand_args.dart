@@ -10,6 +10,7 @@ class BrandArgs {
   /// Application name displayed on OAuth consent screen.
   final pulumi.Input<String>? applicationTitle;
   final pulumi.Input<String>? project;
+
   /// Support email displayed on the OAuth consent screen.
   final pulumi.Input<String>? supportEmail;
 
@@ -17,12 +18,8 @@ class BrandArgs {
   /// [applicationTitle] Application name displayed on OAuth consent screen.
   /// [project] Optional.
   /// [supportEmail] Support email displayed on the OAuth consent screen.
-  BrandArgs({
-    String? applicationTitle,
-    String? project,
-    String? supportEmail,
-  }) :
-      applicationTitle = pulumi.Input.asOptionalInput<String>(applicationTitle),
+  BrandArgs({String? applicationTitle, String? project, String? supportEmail})
+    : applicationTitle = pulumi.Input.asOptionalInput<String>(applicationTitle),
       project = pulumi.Input.asOptionalInput<String>(project),
       supportEmail = pulumi.Input.asOptionalInput<String>(supportEmail);
 
@@ -36,10 +33,13 @@ class BrandArgs {
 
   factory BrandArgs.fromMap(Map<String, dynamic> map) {
     return BrandArgs(
-      applicationTitle: map['applicationTitle'] == null ? null : map['applicationTitle'] as String,
+      applicationTitle: map['applicationTitle'] == null
+          ? null
+          : map['applicationTitle'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      supportEmail: map['supportEmail'] == null ? null : map['supportEmail'] as String,
+      supportEmail: map['supportEmail'] == null
+          ? null
+          : map['supportEmail'] as String,
     );
   }
 }
-

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getActiveReceiptRuleSet.
 class GetActiveReceiptRuleSetResult {
   /// SES receipt rule set ARN.
   final String arn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// Name of the rule set
   final String ruleSetName;
 
@@ -41,4 +42,3 @@ class GetActiveReceiptRuleSetResult {
     );
   }
 }
-

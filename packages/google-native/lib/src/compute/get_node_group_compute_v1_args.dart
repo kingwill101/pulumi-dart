@@ -19,10 +19,9 @@ class GetNodeGroupComputeV1Args {
     required String nodeGroup,
     String? project,
     required String zone,
-  }) :
-      nodeGroup = pulumi.Input.asInput<String>(nodeGroup),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : nodeGroup = pulumi.Input.asInput<String>(nodeGroup),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetNodeGroupComputeV1Args {
     );
   }
 }
-

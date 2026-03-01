@@ -16,4 +16,3 @@ enum InstanceConfigNetworkConfig {
     throw ArgumentError('Unknown InstanceConfigNetworkConfig value: $value');
   }
 }
-

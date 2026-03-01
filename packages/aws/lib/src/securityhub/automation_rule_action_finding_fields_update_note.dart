@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AutomationRuleActionFindingFieldsUpdateNote {
   /// The updated note text.
   final String text;
+
   /// The principal that updated the note.
   final String updatedBy;
 
@@ -16,17 +16,15 @@ class AutomationRuleActionFindingFieldsUpdateNote {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'text': text,
-      'updatedBy': updatedBy,
-    };
+    return <String, dynamic>{'text': text, 'updatedBy': updatedBy};
   }
 
-  factory AutomationRuleActionFindingFieldsUpdateNote.fromMap(Map<String, dynamic> map) {
+  factory AutomationRuleActionFindingFieldsUpdateNote.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomationRuleActionFindingFieldsUpdateNote(
       text: map['text'] as String,
       updatedBy: map['updatedBy'] as String,
     );
   }
 }
-

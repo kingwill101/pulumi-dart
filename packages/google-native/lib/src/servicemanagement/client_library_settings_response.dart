@@ -13,24 +13,34 @@ import 'ruby_settings_response.dart';
 class ClientLibrarySettingsResponse {
   /// Settings for C++ client libraries.
   final CppSettingsResponse cppSettings;
+
   /// Settings for .NET client libraries.
   final DotnetSettingsResponse dotnetSettings;
+
   /// Settings for Go client libraries.
   final GoSettingsResponse goSettings;
+
   /// Settings for legacy Java features, supported in the Service YAML.
   final JavaSettingsResponse javaSettings;
+
   /// Launch stage of this version of the API.
   final String launchStage;
+
   /// Settings for Node client libraries.
   final NodeSettingsResponse nodeSettings;
+
   /// Settings for PHP client libraries.
   final PhpSettingsResponse phpSettings;
+
   /// Settings for Python client libraries.
   final PythonSettingsResponse pythonSettings;
+
   /// When using transport=rest, the client request will encode enums as numbers rather than strings.
   final bool restNumericEnums;
+
   /// Settings for Ruby client libraries.
   final RubySettingsResponse rubySettings;
+
   /// Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
   final String version;
 
@@ -78,18 +88,33 @@ class ClientLibrarySettingsResponse {
 
   factory ClientLibrarySettingsResponse.fromMap(Map<String, dynamic> map) {
     return ClientLibrarySettingsResponse(
-      cppSettings: CppSettingsResponse.fromMap((map['cppSettings'] as Map).cast<String, dynamic>()),
-      dotnetSettings: DotnetSettingsResponse.fromMap((map['dotnetSettings'] as Map).cast<String, dynamic>()),
-      goSettings: GoSettingsResponse.fromMap((map['goSettings'] as Map).cast<String, dynamic>()),
-      javaSettings: JavaSettingsResponse.fromMap((map['javaSettings'] as Map).cast<String, dynamic>()),
+      cppSettings: CppSettingsResponse.fromMap(
+        (map['cppSettings'] as Map).cast<String, dynamic>(),
+      ),
+      dotnetSettings: DotnetSettingsResponse.fromMap(
+        (map['dotnetSettings'] as Map).cast<String, dynamic>(),
+      ),
+      goSettings: GoSettingsResponse.fromMap(
+        (map['goSettings'] as Map).cast<String, dynamic>(),
+      ),
+      javaSettings: JavaSettingsResponse.fromMap(
+        (map['javaSettings'] as Map).cast<String, dynamic>(),
+      ),
       launchStage: map['launchStage'] as String,
-      nodeSettings: NodeSettingsResponse.fromMap((map['nodeSettings'] as Map).cast<String, dynamic>()),
-      phpSettings: PhpSettingsResponse.fromMap((map['phpSettings'] as Map).cast<String, dynamic>()),
-      pythonSettings: PythonSettingsResponse.fromMap((map['pythonSettings'] as Map).cast<String, dynamic>()),
+      nodeSettings: NodeSettingsResponse.fromMap(
+        (map['nodeSettings'] as Map).cast<String, dynamic>(),
+      ),
+      phpSettings: PhpSettingsResponse.fromMap(
+        (map['phpSettings'] as Map).cast<String, dynamic>(),
+      ),
+      pythonSettings: PythonSettingsResponse.fromMap(
+        (map['pythonSettings'] as Map).cast<String, dynamic>(),
+      ),
       restNumericEnums: map['restNumericEnums'] as bool,
-      rubySettings: RubySettingsResponse.fromMap((map['rubySettings'] as Map).cast<String, dynamic>()),
+      rubySettings: RubySettingsResponse.fromMap(
+        (map['rubySettings'] as Map).cast<String, dynamic>(),
+      ),
       version: map['version'] as String,
     );
   }
 }
-

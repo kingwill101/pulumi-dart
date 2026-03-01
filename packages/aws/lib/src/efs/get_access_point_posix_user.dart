@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetAccessPointPosixUser {
   /// Group ID
   final int gid;
+
   /// Secondary group IDs
   final List<int> secondaryGids;
+
   /// User Id
   final int uid;
 
@@ -35,4 +36,3 @@ class GetAccessPointPosixUser {
     );
   }
 }
-

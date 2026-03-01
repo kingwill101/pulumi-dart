@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
   /// Number of blue nodes to drain in a batch.
   final int batchNodeCount;
+
   /// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
   final double batchPercentage;
+
   /// Soak time after each batch gets drained.
   ///
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -29,7 +30,9 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
     };
   }
 
-  factory GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy.fromMap(Map<String, dynamic> map) {
+  factory GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy(
       batchNodeCount: map['batchNodeCount'] as int,
       batchPercentage: map['batchPercentage'] as double,
@@ -37,4 +40,3 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
     );
   }
 }
-

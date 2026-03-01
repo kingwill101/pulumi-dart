@@ -19,10 +19,9 @@ class GetInboundSamlConfigArgs {
     required String inboundSamlConfigId,
     String? project,
     required String tenantId,
-  }) :
-      inboundSamlConfigId = pulumi.Input.asInput<String>(inboundSamlConfigId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+  }) : inboundSamlConfigId = pulumi.Input.asInput<String>(inboundSamlConfigId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tenantId = pulumi.Input.asInput<String>(tenantId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetInboundSamlConfigArgs {
     );
   }
 }
-

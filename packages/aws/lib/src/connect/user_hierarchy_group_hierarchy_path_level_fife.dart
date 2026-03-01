@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UserHierarchyGroupHierarchyPathLevelFife {
   /// The Amazon Resource Name (ARN) of the hierarchy group.
   final String? arn;
+
   /// The identifier of the hierarchy group.
   final String? id;
+
   /// The name of the user hierarchy group. Must not be more than 100 characters.
   final String? name;
 
@@ -13,21 +14,15 @@ class UserHierarchyGroupHierarchyPathLevelFife {
   /// [arn] The Amazon Resource Name (ARN) of the hierarchy group.
   /// [id] The identifier of the hierarchy group.
   /// [name] The name of the user hierarchy group. Must not be more than 100 characters.
-  UserHierarchyGroupHierarchyPathLevelFife({
-    this.arn,
-    this.id,
-    this.name,
-  });
+  UserHierarchyGroupHierarchyPathLevelFife({this.arn, this.id, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': ?arn,
-      'id': ?id,
-      'name': ?name,
-    };
+    return <String, dynamic>{'arn': ?arn, 'id': ?id, 'name': ?name};
   }
 
-  factory UserHierarchyGroupHierarchyPathLevelFife.fromMap(Map<String, dynamic> map) {
+  factory UserHierarchyGroupHierarchyPathLevelFife.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserHierarchyGroupHierarchyPathLevelFife(
       arn: map['arn'] == null ? null : map['arn'] as String,
       id: map['id'] == null ? null : map['id'] as String,
@@ -35,4 +30,3 @@ class UserHierarchyGroupHierarchyPathLevelFife {
     );
   }
 }
-

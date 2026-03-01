@@ -13,11 +13,10 @@ class GetPolicyIamPolicyArgs {
   /// Creates a new [GetPolicyIamPolicyArgs].
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetPolicyIamPolicyArgs({
-    int? optionsRequestedPolicyVersion,
-    String? project,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
+  GetPolicyIamPolicyArgs({int? optionsRequestedPolicyVersion, String? project})
+    : optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+        optionsRequestedPolicyVersion,
+      ),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -29,9 +28,11 @@ class GetPolicyIamPolicyArgs {
 
   factory GetPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

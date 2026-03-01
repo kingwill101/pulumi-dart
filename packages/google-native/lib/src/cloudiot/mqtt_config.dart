@@ -9,20 +9,23 @@ class MqttConfig {
 
   /// Creates a new [MqttConfig].
   /// [mqttEnabledState] If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
-  MqttConfig({
-    this.mqttEnabledState,
-  });
+  MqttConfig({this.mqttEnabledState});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mqttEnabledState': ?mqttEnabledState == null ? null : mqttEnabledState!.value,
+      'mqttEnabledState': ?mqttEnabledState == null
+          ? null
+          : mqttEnabledState!.value,
     };
   }
 
   factory MqttConfig.fromMap(Map<String, dynamic> map) {
     return MqttConfig(
-      mqttEnabledState: map['mqttEnabledState'] == null ? null : MqttConfigMqttEnabledState.fromValue(map['mqttEnabledState'] as String),
+      mqttEnabledState: map['mqttEnabledState'] == null
+          ? null
+          : MqttConfigMqttEnabledState.fromValue(
+              map['mqttEnabledState'] as String,
+            ),
     );
   }
 }
-

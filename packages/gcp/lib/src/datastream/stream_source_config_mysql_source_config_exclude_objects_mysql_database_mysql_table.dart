@@ -6,7 +6,11 @@ import 'stream_source_config_mysql_source_config_exclude_objects_mysql_database_
 class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable {
   /// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final List<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn>? mysqlColumns;
+  final List<
+    StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn
+  >?
+  mysqlColumns;
+
   /// Table name.
   final String table;
 
@@ -20,16 +24,32 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlColumns': ?mysqlColumns == null ? null : pulumi.Input.encodeList<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn, Map<String, dynamic>>(mysqlColumns!, (value) => value.toMap()),
+      'mysqlColumns': ?mysqlColumns == null
+          ? null
+          : pulumi.Input.encodeList<
+              StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn,
+              Map<String, dynamic>
+            >(mysqlColumns!, (value) => value.toMap()),
       'table': table,
     };
   }
 
-  factory StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable.fromMap(Map<String, dynamic> map) {
+  factory StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable(
-      mysqlColumns: map['mysqlColumns'] == null ? null : pulumi.Input.decodeList<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn>(map['mysqlColumns'], (value) => StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn.fromMap((value as Map).cast<String, dynamic>())),
+      mysqlColumns: map['mysqlColumns'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn
+            >(
+              map['mysqlColumns'],
+              (value) =>
+                  StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       table: map['table'] as String,
     );
   }
 }
-

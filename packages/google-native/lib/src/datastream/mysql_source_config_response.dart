@@ -6,10 +6,13 @@ import 'mysql_rdbms_response.dart';
 class MysqlSourceConfigResponse {
   /// MySQL objects to exclude from the stream.
   final MysqlRdbmsResponse excludeObjects;
+
   /// MySQL objects to retrieve from the source.
   final MysqlRdbmsResponse includeObjects;
+
   /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
   final int maxConcurrentBackfillTasks;
+
   /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
   final int maxConcurrentCdcTasks;
 
@@ -36,11 +39,14 @@ class MysqlSourceConfigResponse {
 
   factory MysqlSourceConfigResponse.fromMap(Map<String, dynamic> map) {
     return MysqlSourceConfigResponse(
-      excludeObjects: MysqlRdbmsResponse.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>()),
-      includeObjects: MysqlRdbmsResponse.fromMap((map['includeObjects'] as Map).cast<String, dynamic>()),
+      excludeObjects: MysqlRdbmsResponse.fromMap(
+        (map['excludeObjects'] as Map).cast<String, dynamic>(),
+      ),
+      includeObjects: MysqlRdbmsResponse.fromMap(
+        (map['includeObjects'] as Map).cast<String, dynamic>(),
+      ),
       maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] as int,
       maxConcurrentCdcTasks: map['maxConcurrentCdcTasks'] as int,
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
   /// The list of APIs usable within the Service Perimeter.
   /// Must be empty unless `enableRestriction` is True.
   final List<String>? allowedServices;
+
   /// Whether to restrict API calls within the Service Perimeter to the
   /// list of APIs specified in 'allowedServices'.
   final bool? enableRestriction;
@@ -24,11 +24,16 @@ class ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
     };
   }
 
-  factory ServicePerimetersServicePerimeterStatusVpcAccessibleServices.fromMap(Map<String, dynamic> map) {
+  factory ServicePerimetersServicePerimeterStatusVpcAccessibleServices.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePerimetersServicePerimeterStatusVpcAccessibleServices(
-      allowedServices: map['allowedServices'] == null ? null : (map['allowedServices'] as List).cast<String>(),
-      enableRestriction: map['enableRestriction'] == null ? null : map['enableRestriction'] as bool,
+      allowedServices: map['allowedServices'] == null
+          ? null
+          : (map['allowedServices'] as List).cast<String>(),
+      enableRestriction: map['enableRestriction'] == null
+          ? null
+          : map['enableRestriction'] as bool,
     );
   }
 }
-

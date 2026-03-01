@@ -1,19 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UnitCondition {
   /// Last time the condition transited from one status to another.
   final String lastTransitionTime;
+
   /// Human readable message indicating details about the last transition.
   final String message;
+
   /// Brief reason for the condition's last transition.
   final String reason;
+
   /// Status of the condition.
   /// Possible values:
   /// STATUS_UNKNOWN
   /// STATUS_TRUE
   /// STATUS_FALSE
   final String status;
+
   /// Name of a supported variable type. Supported types are string, int, bool.
   /// Possible values:
   /// STRING
@@ -55,4 +58,3 @@ class UnitCondition {
     );
   }
 }
-

@@ -12,7 +12,8 @@ enum GooglePrivacyDlpV2BigQueryTableTypesTypesItem {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2BigQueryTableTypesTypesItem value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2BigQueryTableTypesTypesItem value: $value',
+    );
   }
 }
-

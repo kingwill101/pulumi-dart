@@ -19,10 +19,9 @@ class GetRegionNetworkFirewallPolicyArgs {
     required String firewallPolicy,
     String? project,
     required String region,
-  }) :
-      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionNetworkFirewallPolicyArgs {
     );
   }
 }
-

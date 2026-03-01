@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetResponseHeadersPolicySecurityHeadersConfigFrameOption {
   /// Value of the X-Frame-Options HTTP response header. Valid values: `DENY` | `SAMEORIGIN`
   final String frameOption;
+
   /// Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
   final bool override;
 
@@ -16,17 +16,15 @@ class GetResponseHeadersPolicySecurityHeadersConfigFrameOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'frameOption': frameOption,
-      'override': override,
-    };
+    return <String, dynamic>{'frameOption': frameOption, 'override': override};
   }
 
-  factory GetResponseHeadersPolicySecurityHeadersConfigFrameOption.fromMap(Map<String, dynamic> map) {
+  factory GetResponseHeadersPolicySecurityHeadersConfigFrameOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResponseHeadersPolicySecurityHeadersConfigFrameOption(
       frameOption: map['frameOption'] as String,
       override: map['override'] as bool,
     );
   }
 }
-

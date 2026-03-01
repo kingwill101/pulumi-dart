@@ -22,11 +22,12 @@ class GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String regionId,
-  }) :
-      autoscalingPolicyId = pulumi.Input.asInput<String>(autoscalingPolicyId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regionId = pulumi.Input.asInput<String>(regionId);
+  }) : autoscalingPolicyId = pulumi.Input.asInput<String>(autoscalingPolicyId),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       regionId = pulumi.Input.asInput<String>(regionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,13 +38,17 @@ class GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args {
     };
   }
 
-  factory GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
+  factory GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args(
       autoscalingPolicyId: map['autoscalingPolicyId'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       regionId: map['regionId'] as String,
     );
   }
 }
-

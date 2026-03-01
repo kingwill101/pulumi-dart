@@ -18,16 +18,39 @@ class GetVirtualNodeSpecListenerTimeoutHttp2 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'idles': pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutHttp2Idle, Map<String, dynamic>>(idles, (value) => value.toMap()),
-      'perRequests': pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutHttp2PerRequest, Map<String, dynamic>>(perRequests, (value) => value.toMap()),
+      'idles':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecListenerTimeoutHttp2Idle,
+            Map<String, dynamic>
+          >(idles, (value) => value.toMap()),
+      'perRequests':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecListenerTimeoutHttp2PerRequest,
+            Map<String, dynamic>
+          >(perRequests, (value) => value.toMap()),
     };
   }
 
-  factory GetVirtualNodeSpecListenerTimeoutHttp2.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerTimeoutHttp2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecListenerTimeoutHttp2(
-      idles: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2Idle>(map['idles'], (value) => GetVirtualNodeSpecListenerTimeoutHttp2Idle.fromMap((value as Map).cast<String, dynamic>())),
-      perRequests: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2PerRequest>(map['perRequests'], (value) => GetVirtualNodeSpecListenerTimeoutHttp2PerRequest.fromMap((value as Map).cast<String, dynamic>())),
+      idles:
+          pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutHttp2Idle>(
+            map['idles'],
+            (value) => GetVirtualNodeSpecListenerTimeoutHttp2Idle.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      perRequests:
+          pulumi.Input.decodeList<
+            GetVirtualNodeSpecListenerTimeoutHttp2PerRequest
+          >(
+            map['perRequests'],
+            (value) => GetVirtualNodeSpecListenerTimeoutHttp2PerRequest.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

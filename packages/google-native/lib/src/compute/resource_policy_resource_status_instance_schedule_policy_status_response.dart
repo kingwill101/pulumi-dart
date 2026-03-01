@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse {
   /// The last time the schedule successfully ran. The timestamp is an RFC3339 string.
   final String lastRunStartTime;
+
   /// The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
   final String nextRunStartTime;
 
@@ -22,11 +22,12 @@ class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse {
     };
   }
 
-  factory ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse(
       lastRunStartTime: map['lastRunStartTime'] as String,
       nextRunStartTime: map['nextRunStartTime'] as String,
     );
   }
 }
-

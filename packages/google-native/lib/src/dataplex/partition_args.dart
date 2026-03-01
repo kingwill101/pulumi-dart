@@ -8,12 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataplex_v1_partition_args_doc}
 class PartitionArgs {
   final pulumi.Input<String> entityId;
+
   /// Optional. The etag for this partition.
   final pulumi.Input<String>? etag;
   final pulumi.Input<String> lakeId;
+
   /// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
+
   /// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
   final pulumi.Input<List<String>> values;
   final pulumi.Input<String>? zone;
@@ -34,14 +37,13 @@ class PartitionArgs {
     String? project,
     required List<String> values,
     String? zone,
-  }) :
-      entityId = pulumi.Input.asInput<String>(entityId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      values = pulumi.Input.asInput<List<String>>(values),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+  }) : entityId = pulumi.Input.asInput<String>(entityId),
+       etag = pulumi.Input.asOptionalInput<String>(etag),
+       lakeId = pulumi.Input.asInput<String>(lakeId),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       values = pulumi.Input.asInput<List<String>>(values),
+       zone = pulumi.Input.asOptionalInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,4 +69,3 @@ class PartitionArgs {
     );
   }
 }
-

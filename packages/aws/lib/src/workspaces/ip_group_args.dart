@@ -10,12 +10,16 @@ import 'ip_group_rule.dart';
 class IpGroupArgs {
   /// The description of the IP group.
   final pulumi.Input<String>? description;
+
   /// The name of the IP group.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// One or more pairs specifying the IP group rule (in CIDR format) from which web requests originate.
   final pulumi.Input<List<IpGroupRule>>? rules;
+
   /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -31,31 +35,50 @@ class IpGroupArgs {
     String? region,
     List<IpGroupRule>? rules,
     Map<String, String>? tags,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asOptionalInput<List<IpGroupRule>>(rules),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       rules = pulumi.Input.asOptionalInput<List<IpGroupRule>>(rules),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
       'name': ?name,
       'region': ?region,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<IpGroupRule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<IpGroupRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<IpGroupRule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<IpGroupRule, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'tags': ?tags,
     };
   }
 
   factory IpGroupArgs.fromMap(Map<String, dynamic> map) {
     return IpGroupArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<IpGroupRule>(map['rules'], (value) => IpGroupRule.fromMap((value as Map).cast<String, dynamic>())),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      rules: map['rules'] == null
+          ? null
+          : pulumi.Input.decodeList<IpGroupRule>(
+              map['rules'],
+              (value) =>
+                  IpGroupRule.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

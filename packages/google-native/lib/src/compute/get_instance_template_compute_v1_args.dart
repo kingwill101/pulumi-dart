@@ -16,9 +16,8 @@ class GetInstanceTemplateComputeV1Args {
   GetInstanceTemplateComputeV1Args({
     required String instanceTemplate,
     String? project,
-  }) :
-      instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetInstanceTemplateComputeV1Args {
     );
   }
 }
-

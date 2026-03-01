@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteTableAssociationArgs {
   /// The gateway ID to create an association. Conflicts with `subnet_id`.
   final pulumi.Input<String>? gatewayId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the routing table to associate with.
   ///
   /// > **NOTE:** Please note that one of either `subnet_id` or `gateway_id` is required.
   final pulumi.Input<String> routeTableId;
+
   /// The subnet ID to create an association. Conflicts with `gateway_id`.
   final pulumi.Input<String>? subnetId;
 
@@ -28,11 +31,10 @@ class RouteTableAssociationArgs {
     String? region,
     required String routeTableId,
     String? subnetId,
-  }) :
-      gatewayId = pulumi.Input.asOptionalInput<String>(gatewayId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      routeTableId = pulumi.Input.asInput<String>(routeTableId),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
+  }) : gatewayId = pulumi.Input.asOptionalInput<String>(gatewayId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       routeTableId = pulumi.Input.asInput<String>(routeTableId),
+       subnetId = pulumi.Input.asOptionalInput<String>(subnetId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +54,3 @@ class RouteTableAssociationArgs {
     );
   }
 }
-

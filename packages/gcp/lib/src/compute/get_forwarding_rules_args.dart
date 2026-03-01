@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetForwardingRulesArgs {
   /// The name of the project.
   final pulumi.Input<String>? project;
+
   /// The region you want to get the forwarding rules from.
   ///
   /// These arguments must be set in either the provider or the resource in order for the information to be queried.
@@ -17,18 +18,12 @@ class GetForwardingRulesArgs {
   /// Creates a new [GetForwardingRulesArgs].
   /// [project] The name of the project.
   /// [region] The region you want to get the forwarding rules from.
-  GetForwardingRulesArgs({
-    String? project,
-    String? region,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetForwardingRulesArgs({String? project, String? region})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'region': ?region,
-    };
+    return <String, dynamic>{'project': ?project, 'region': ?region};
   }
 
   factory GetForwardingRulesArgs.fromMap(Map<String, dynamic> map) {
@@ -38,4 +33,3 @@ class GetForwardingRulesArgs {
     );
   }
 }
-

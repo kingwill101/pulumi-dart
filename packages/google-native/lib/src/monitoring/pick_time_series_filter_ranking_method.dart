@@ -16,7 +16,8 @@ enum PickTimeSeriesFilterRankingMethod {
         return item;
       }
     }
-    throw ArgumentError('Unknown PickTimeSeriesFilterRankingMethod value: $value');
+    throw ArgumentError(
+      'Unknown PickTimeSeriesFilterRankingMethod value: $value',
+    );
   }
 }
-

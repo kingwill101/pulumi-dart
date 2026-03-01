@@ -6,6 +6,7 @@ import 'endpoint_info_response.dart';
 class ConnectionInfoResponse {
   /// The endpoint information through which to interact with a blockchain node.
   final EndpointInfoResponse endpointInfo;
+
   /// A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
   final String serviceAttachment;
 
@@ -26,9 +27,10 @@ class ConnectionInfoResponse {
 
   factory ConnectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionInfoResponse(
-      endpointInfo: EndpointInfoResponse.fromMap((map['endpointInfo'] as Map).cast<String, dynamic>()),
+      endpointInfo: EndpointInfoResponse.fromMap(
+        (map['endpointInfo'] as Map).cast<String, dynamic>(),
+      ),
       serviceAttachment: map['serviceAttachment'] as String,
     );
   }
 }
-

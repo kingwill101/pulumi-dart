@@ -46,4 +46,3 @@ enum TestIssueType {
     throw ArgumentError('Unknown TestIssueType value: $value');
   }
 }
-

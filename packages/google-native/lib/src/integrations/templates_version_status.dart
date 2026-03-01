@@ -18,4 +18,3 @@ enum TemplatesVersionStatus {
     throw ArgumentError('Unknown TemplatesVersionStatus value: $value');
   }
 }
-

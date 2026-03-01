@@ -7,6 +7,7 @@ import 'security_posture_config_response_gkehub_v1beta.dart';
 class DefaultClusterConfigResponseGkehubV1beta {
   /// Optional. Enable/Disable binary authorization features for the cluster.
   final BinaryAuthorizationConfigResponseGkehubV1beta binaryAuthorizationConfig;
+
   /// Enable/Disable Security Posture features for the cluster.
   final SecurityPostureConfigResponseGkehubV1beta securityPostureConfig;
 
@@ -25,11 +26,17 @@ class DefaultClusterConfigResponseGkehubV1beta {
     };
   }
 
-  factory DefaultClusterConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory DefaultClusterConfigResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefaultClusterConfigResponseGkehubV1beta(
-      binaryAuthorizationConfig: BinaryAuthorizationConfigResponseGkehubV1beta.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>()),
-      securityPostureConfig: SecurityPostureConfigResponseGkehubV1beta.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>()),
+      binaryAuthorizationConfig:
+          BinaryAuthorizationConfigResponseGkehubV1beta.fromMap(
+            (map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>(),
+          ),
+      securityPostureConfig: SecurityPostureConfigResponseGkehubV1beta.fromMap(
+        (map['securityPostureConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -28,12 +28,19 @@ class ResourcePolicySnapshotSchedulePolicyScheduleResponse {
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicyScheduleResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicyScheduleResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicySnapshotSchedulePolicyScheduleResponse(
-      dailySchedule: ResourcePolicyDailyCycleResponse.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>()),
-      hourlySchedule: ResourcePolicyHourlyCycleResponse.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>()),
-      weeklySchedule: ResourcePolicyWeeklyCycleResponse.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
+      dailySchedule: ResourcePolicyDailyCycleResponse.fromMap(
+        (map['dailySchedule'] as Map).cast<String, dynamic>(),
+      ),
+      hourlySchedule: ResourcePolicyHourlyCycleResponse.fromMap(
+        (map['hourlySchedule'] as Map).cast<String, dynamic>(),
+      ),
+      weeklySchedule: ResourcePolicyWeeklyCycleResponse.fromMap(
+        (map['weeklySchedule'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

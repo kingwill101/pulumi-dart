@@ -8,10 +8,13 @@ import 'layer_response_containeranalysis_v1alpha1.dart';
 class DerivedResponse {
   /// This contains the base image URL for the derived image occurrence.
   final String baseResourceUrl;
+
   /// The number of layers by which this image differs from the associated image basis.
   final int distance;
+
   /// The fingerprint of the derived image.
   final FingerprintResponseContaineranalysisV1alpha1 fingerprint;
+
   /// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
   final List<LayerResponseContaineranalysisV1alpha1> layerInfo;
 
@@ -32,7 +35,11 @@ class DerivedResponse {
       'baseResourceUrl': baseResourceUrl,
       'distance': distance,
       'fingerprint': fingerprint.toMap(),
-      'layerInfo': pulumi.Input.encodeList<LayerResponseContaineranalysisV1alpha1, Map<String, dynamic>>(layerInfo, (value) => value.toMap()),
+      'layerInfo':
+          pulumi.Input.encodeList<
+            LayerResponseContaineranalysisV1alpha1,
+            Map<String, dynamic>
+          >(layerInfo, (value) => value.toMap()),
     };
   }
 
@@ -40,9 +47,16 @@ class DerivedResponse {
     return DerivedResponse(
       baseResourceUrl: map['baseResourceUrl'] as String,
       distance: map['distance'] as int,
-      fingerprint: FingerprintResponseContaineranalysisV1alpha1.fromMap((map['fingerprint'] as Map).cast<String, dynamic>()),
-      layerInfo: pulumi.Input.decodeList<LayerResponseContaineranalysisV1alpha1>(map['layerInfo'], (value) => LayerResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      fingerprint: FingerprintResponseContaineranalysisV1alpha1.fromMap(
+        (map['fingerprint'] as Map).cast<String, dynamic>(),
+      ),
+      layerInfo:
+          pulumi.Input.decodeList<LayerResponseContaineranalysisV1alpha1>(
+            map['layerInfo'],
+            (value) => LayerResponseContaineranalysisV1alpha1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

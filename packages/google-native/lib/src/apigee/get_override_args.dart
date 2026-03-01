@@ -19,10 +19,9 @@ class GetOverrideArgs {
     required String environmentId,
     required String organizationId,
     required String overrideId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      overrideId = pulumi.Input.asInput<String>(overrideId);
+  }) : environmentId = pulumi.Input.asInput<String>(environmentId),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       overrideId = pulumi.Input.asInput<String>(overrideId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetOverrideArgs {
     );
   }
 }
-

@@ -10,20 +10,30 @@ class StreamBackfillAllSpannerExcludedObjects {
 
   /// Creates a new [StreamBackfillAllSpannerExcludedObjects].
   /// [schemas] Spanner schemas in the database
-  StreamBackfillAllSpannerExcludedObjects({
-    required this.schemas,
-  });
+  StreamBackfillAllSpannerExcludedObjects({required this.schemas});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schemas': pulumi.Input.encodeList<StreamBackfillAllSpannerExcludedObjectsSchema, Map<String, dynamic>>(schemas, (value) => value.toMap()),
+      'schemas':
+          pulumi.Input.encodeList<
+            StreamBackfillAllSpannerExcludedObjectsSchema,
+            Map<String, dynamic>
+          >(schemas, (value) => value.toMap()),
     };
   }
 
-  factory StreamBackfillAllSpannerExcludedObjects.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllSpannerExcludedObjects.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllSpannerExcludedObjects(
-      schemas: pulumi.Input.decodeList<StreamBackfillAllSpannerExcludedObjectsSchema>(map['schemas'], (value) => StreamBackfillAllSpannerExcludedObjectsSchema.fromMap((value as Map).cast<String, dynamic>())),
+      schemas:
+          pulumi
+              .Input.decodeList<StreamBackfillAllSpannerExcludedObjectsSchema>(
+            map['schemas'],
+            (value) => StreamBackfillAllSpannerExcludedObjectsSchema.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

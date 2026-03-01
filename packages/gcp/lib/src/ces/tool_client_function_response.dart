@@ -1,22 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ToolClientFunctionResponse {
   /// Defines the schema for additional properties allowed in an object.
   /// The value must be a valid JSON string representing the Schema object.
   /// (Note: OpenAPI also allows a boolean, this definition expects a Schema JSON).
   final String? additionalProperties;
+
   /// The instance value should be valid against at least one of the schemas in this list.
   final String? anyOf;
+
   /// Default value of the data. Represents a dynamically typed value
   /// which can be either null, a number, a string, a boolean, a struct,
   /// or a list of values. The provided default value must be compatible
   /// with the defined 'type' and other schema constraints.
   final String? default_;
+
   /// A map of definitions for use by ref. Only allowed at the root of the schema.
   final String? defs;
+
   /// The description of the data.
   final String? description;
+
   /// Possible values of the element of primitive type with enum format.
   /// Examples:
   /// 1. We can define direction as :
@@ -24,22 +28,31 @@ class ToolClientFunctionResponse {
   /// 2. We can define apartment number as :
   /// {type:INTEGER, format:enum, enum:["101", "201", "301"]}
   final List<String>? enums;
+
   /// Schema of the elements of Type.ARRAY.
   final String? items;
+
   /// Maximum number of the elements for Type.ARRAY. (int64 format)
   final int? maxItems;
+
   /// Maximum value for Type.INTEGER and Type.NUMBER.
   final double? maximum;
+
   /// Minimum number of the elements for Type.ARRAY. (int64 format)
   final int? minItems;
+
   /// Minimum value for Type.INTEGER and Type.NUMBER.
   final double? minimum;
+
   /// Indicates if the value may be null.
   final bool? nullable;
+
   /// Schemas of initial elements of Type.ARRAY.
   final String? prefixItems;
+
   /// Properties of Type.OBJECT.
   final String? properties;
+
   /// Allows indirect references between schema nodes. The value should be a
   /// valid reference to a child of the root `defs`.
   /// For example, the following schema defines a reference to a schema node
@@ -59,10 +72,13 @@ class ToolClientFunctionResponse {
   /// See details in
   /// https://json-schema.org/understanding-json-schema/structuring.
   final String? ref;
+
   /// Required properties of Type.OBJECT.
   final List<String>? requireds;
+
   /// The title of the schema.
   final String? title;
+
   /// The type of the data.
   /// Possible values:
   /// STRING
@@ -72,6 +88,7 @@ class ToolClientFunctionResponse {
   /// OBJECT
   /// ARRAY
   final String type;
+
   /// Indicate the items in the array must be unique. Only applies to TYPE.ARRAY.
   final bool? uniqueItems;
 
@@ -143,26 +160,39 @@ class ToolClientFunctionResponse {
 
   factory ToolClientFunctionResponse.fromMap(Map<String, dynamic> map) {
     return ToolClientFunctionResponse(
-      additionalProperties: map['additionalProperties'] == null ? null : map['additionalProperties'] as String,
+      additionalProperties: map['additionalProperties'] == null
+          ? null
+          : map['additionalProperties'] as String,
       anyOf: map['anyOf'] == null ? null : map['anyOf'] as String,
       default_: map['default'] == null ? null : map['default'] as String,
       defs: map['defs'] == null ? null : map['defs'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      enums: map['enums'] == null ? null : (map['enums'] as List).cast<String>(),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      enums: map['enums'] == null
+          ? null
+          : (map['enums'] as List).cast<String>(),
       items: map['items'] == null ? null : map['items'] as String,
       maxItems: map['maxItems'] == null ? null : map['maxItems'] as int,
       maximum: map['maximum'] == null ? null : map['maximum'] as double,
       minItems: map['minItems'] == null ? null : map['minItems'] as int,
       minimum: map['minimum'] == null ? null : map['minimum'] as double,
       nullable: map['nullable'] == null ? null : map['nullable'] as bool,
-      prefixItems: map['prefixItems'] == null ? null : map['prefixItems'] as String,
-      properties: map['properties'] == null ? null : map['properties'] as String,
+      prefixItems: map['prefixItems'] == null
+          ? null
+          : map['prefixItems'] as String,
+      properties: map['properties'] == null
+          ? null
+          : map['properties'] as String,
       ref: map['ref'] == null ? null : map['ref'] as String,
-      requireds: map['requireds'] == null ? null : (map['requireds'] as List).cast<String>(),
+      requireds: map['requireds'] == null
+          ? null
+          : (map['requireds'] as List).cast<String>(),
       title: map['title'] == null ? null : map['title'] as String,
       type: map['type'] as String,
-      uniqueItems: map['uniqueItems'] == null ? null : map['uniqueItems'] as bool,
+      uniqueItems: map['uniqueItems'] == null
+          ? null
+          : map['uniqueItems'] as bool,
     );
   }
 }
-

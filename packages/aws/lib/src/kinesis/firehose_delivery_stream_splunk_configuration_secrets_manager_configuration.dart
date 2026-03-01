@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration {
   /// Enables or disables the Secrets Manager configuration.
   final bool? enabled;
+
   /// The ARN of the role the stream assumes.
   final String? roleArn;
+
   /// The ARN of the Secrets Manager secret. This value is required if `enabled` is true.
   final String? secretArn;
 
@@ -27,7 +28,9 @@ class FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration {
     };
   }
 
-  factory FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration.fromMap(Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
@@ -35,4 +38,3 @@ class FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration {
     );
   }
 }
-

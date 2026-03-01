@@ -22,11 +22,10 @@ class GetEvaluationArgs {
     required String evaluationId,
     required String location,
     String? project,
-  }) :
-      conversationModelId = pulumi.Input.asInput<String>(conversationModelId),
-      evaluationId = pulumi.Input.asInput<String>(evaluationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : conversationModelId = pulumi.Input.asInput<String>(conversationModelId),
+       evaluationId = pulumi.Input.asInput<String>(evaluationId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetEvaluationArgs {
     );
   }
 }
-

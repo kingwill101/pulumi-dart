@@ -6,8 +6,10 @@ import 'time_of_day_response.dart';
 class WeeklyMaintenanceWindowResponse {
   /// The day of week that maintenance updates occur.
   final String day;
+
   /// Duration of the maintenance window. The current window is fixed at 1 hour.
   final String duration;
+
   /// Start time of the window in UTC time.
   final TimeOfDayResponse startTime;
 
@@ -33,8 +35,9 @@ class WeeklyMaintenanceWindowResponse {
     return WeeklyMaintenanceWindowResponse(
       day: map['day'] as String,
       duration: map['duration'] as String,
-      startTime: TimeOfDayResponse.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      startTime: TimeOfDayResponse.fromMap(
+        (map['startTime'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

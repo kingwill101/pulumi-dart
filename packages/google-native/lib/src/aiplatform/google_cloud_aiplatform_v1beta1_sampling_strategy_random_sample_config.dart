@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Requests are randomly selected.
 class GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig {
   /// Sample rate (0, 1]
@@ -13,15 +12,16 @@ class GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sampleRate': ?sampleRate,
-    };
+    return <String, dynamic>{'sampleRate': ?sampleRate};
   }
 
-  factory GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfig(
-      sampleRate: map['sampleRate'] == null ? null : map['sampleRate'] as double,
+      sampleRate: map['sampleRate'] == null
+          ? null
+          : map['sampleRate'] as double,
     );
   }
 }
-

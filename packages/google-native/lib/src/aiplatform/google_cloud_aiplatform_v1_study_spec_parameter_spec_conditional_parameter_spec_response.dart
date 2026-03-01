@@ -9,12 +9,18 @@ import 'google_cloud_aiplatform_v1_study_spec_parameter_spec_response.dart';
 class GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecResponse {
   /// The spec for a conditional parameter.
   final GoogleCloudAiplatformV1StudySpecParameterSpecResponse parameterSpec;
+
   /// The spec for matching values from a parent parameter of `CATEGORICAL` type.
-  final GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse parentCategoricalValues;
+  final GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse
+  parentCategoricalValues;
+
   /// The spec for matching values from a parent parameter of `DISCRETE` type.
-  final GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionResponse parentDiscreteValues;
+  final GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionResponse
+  parentDiscreteValues;
+
   /// The spec for matching values from a parent parameter of `INTEGER` type.
-  final GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse parentIntValues;
+  final GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse
+  parentIntValues;
 
   /// Creates a new [GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecResponse].
   /// [parameterSpec] The spec for a conditional parameter.
@@ -37,13 +43,26 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecRespo
     };
   }
 
-  factory GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecResponse(
-      parameterSpec: GoogleCloudAiplatformV1StudySpecParameterSpecResponse.fromMap((map['parameterSpec'] as Map).cast<String, dynamic>()),
-      parentCategoricalValues: GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse.fromMap((map['parentCategoricalValues'] as Map).cast<String, dynamic>()),
-      parentDiscreteValues: GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionResponse.fromMap((map['parentDiscreteValues'] as Map).cast<String, dynamic>()),
-      parentIntValues: GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse.fromMap((map['parentIntValues'] as Map).cast<String, dynamic>()),
+      parameterSpec:
+          GoogleCloudAiplatformV1StudySpecParameterSpecResponse.fromMap(
+            (map['parameterSpec'] as Map).cast<String, dynamic>(),
+          ),
+      parentCategoricalValues:
+          GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecCategoricalValueConditionResponse.fromMap(
+            (map['parentCategoricalValues'] as Map).cast<String, dynamic>(),
+          ),
+      parentDiscreteValues:
+          GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecDiscreteValueConditionResponse.fromMap(
+            (map['parentDiscreteValues'] as Map).cast<String, dynamic>(),
+          ),
+      parentIntValues:
+          GoogleCloudAiplatformV1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse.fromMap(
+            (map['parentIntValues'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

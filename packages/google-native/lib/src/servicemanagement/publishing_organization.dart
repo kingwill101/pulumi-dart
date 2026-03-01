@@ -1,6 +1,8 @@
 /// For whom the client library is being published.
 enum PublishingOrganization {
-  clientLibraryOrganizationUnspecified("CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED"),
+  clientLibraryOrganizationUnspecified(
+    "CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED",
+  ),
   cloud("CLOUD"),
   ads("ADS"),
   photos("PHOTOS"),
@@ -21,4 +23,3 @@ enum PublishingOrganization {
     throw ArgumentError('Unknown PublishingOrganization value: $value');
   }
 }
-

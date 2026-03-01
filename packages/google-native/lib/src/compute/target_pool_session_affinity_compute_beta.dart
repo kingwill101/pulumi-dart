@@ -18,7 +18,8 @@ enum TargetPoolSessionAffinityComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetPoolSessionAffinityComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown TargetPoolSessionAffinityComputeBeta value: $value',
+    );
   }
 }
-

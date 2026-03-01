@@ -22,11 +22,10 @@ class GetSnapshotArgs {
     String? project,
     required String snapshotId,
     required String volumeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      snapshotId = pulumi.Input.asInput<String>(snapshotId),
-      volumeId = pulumi.Input.asInput<String>(volumeId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       snapshotId = pulumi.Input.asInput<String>(snapshotId),
+       volumeId = pulumi.Input.asInput<String>(volumeId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetSnapshotArgs {
     );
   }
 }
-

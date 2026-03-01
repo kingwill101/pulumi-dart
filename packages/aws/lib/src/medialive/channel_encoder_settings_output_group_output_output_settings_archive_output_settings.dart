@@ -4,9 +4,12 @@ import 'channel_encoder_settings_output_group_output_output_settings_archive_out
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings {
   /// Settings specific to the container type of the file. See Container Settings for more details.
-  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings? containerSettings;
+  final ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings?
+  containerSettings;
+
   /// Output file extension.
   final String? extension;
+
   /// String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
   final String? nameModifier;
 
@@ -22,18 +25,27 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerSettings': ?containerSettings == null ? null : containerSettings!.toMap(),
+      'containerSettings': ?containerSettings == null
+          ? null
+          : containerSettings!.toMap(),
       'extension': ?extension,
       'nameModifier': ?nameModifier,
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings(
-      containerSettings: map['containerSettings'] == null ? null : ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings.fromMap((map['containerSettings'] as Map).cast<String, dynamic>()),
+      containerSettings: map['containerSettings'] == null
+          ? null
+          : ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings.fromMap(
+              (map['containerSettings'] as Map).cast<String, dynamic>(),
+            ),
       extension: map['extension'] == null ? null : map['extension'] as String,
-      nameModifier: map['nameModifier'] == null ? null : map['nameModifier'] as String,
+      nameModifier: map['nameModifier'] == null
+          ? null
+          : map['nameModifier'] as String,
     );
   }
 }
-

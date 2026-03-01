@@ -8,8 +8,10 @@ import 'iap_credential_response.dart';
 class AuthenticationResponse {
   /// Authentication using a custom account.
   final CustomAccountResponse customAccount;
+
   /// Authentication using a Google account.
   final GoogleAccountResponse googleAccount;
+
   /// Authentication using Identity-Aware-Proxy (IAP).
   final IapCredentialResponse iapCredential;
 
@@ -33,10 +35,15 @@ class AuthenticationResponse {
 
   factory AuthenticationResponse.fromMap(Map<String, dynamic> map) {
     return AuthenticationResponse(
-      customAccount: CustomAccountResponse.fromMap((map['customAccount'] as Map).cast<String, dynamic>()),
-      googleAccount: GoogleAccountResponse.fromMap((map['googleAccount'] as Map).cast<String, dynamic>()),
-      iapCredential: IapCredentialResponse.fromMap((map['iapCredential'] as Map).cast<String, dynamic>()),
+      customAccount: CustomAccountResponse.fromMap(
+        (map['customAccount'] as Map).cast<String, dynamic>(),
+      ),
+      googleAccount: GoogleAccountResponse.fromMap(
+        (map['googleAccount'] as Map).cast<String, dynamic>(),
+      ),
+      iapCredential: IapCredentialResponse.fromMap(
+        (map['iapCredential'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

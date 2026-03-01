@@ -10,9 +10,11 @@ class GetInstanceArgs {
   /// The ID of the memorystore instance.
   /// 'memorystore_instance_id'
   final pulumi.Input<String> instanceId;
+
   /// (optional)
   /// The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
   final pulumi.Input<String>? location;
+
   /// (optional)
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -25,10 +27,9 @@ class GetInstanceArgs {
     required String instanceId,
     String? location,
     String? project,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : instanceId = pulumi.Input.asInput<String>(instanceId),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +47,3 @@ class GetInstanceArgs {
     );
   }
 }
-

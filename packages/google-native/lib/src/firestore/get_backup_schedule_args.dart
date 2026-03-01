@@ -19,10 +19,9 @@ class GetBackupScheduleArgs {
     required String backupScheduleId,
     required String databaseId,
     String? project,
-  }) :
-      backupScheduleId = pulumi.Input.asInput<String>(backupScheduleId),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : backupScheduleId = pulumi.Input.asInput<String>(backupScheduleId),
+       databaseId = pulumi.Input.asInput<String>(databaseId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetBackupScheduleArgs {
     );
   }
 }
-

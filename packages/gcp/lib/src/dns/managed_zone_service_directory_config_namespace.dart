@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ManagedZoneServiceDirectoryConfigNamespace {
   /// The fully qualified or partial URL of the service directory namespace that should be
   /// associated with the zone. This should be formatted like
@@ -11,20 +10,17 @@ class ManagedZoneServiceDirectoryConfigNamespace {
 
   /// Creates a new [ManagedZoneServiceDirectoryConfigNamespace].
   /// [namespaceUrl] The fully qualified or partial URL of the service directory namespace that should be
-  ManagedZoneServiceDirectoryConfigNamespace({
-    required this.namespaceUrl,
-  });
+  ManagedZoneServiceDirectoryConfigNamespace({required this.namespaceUrl});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespaceUrl': namespaceUrl,
-    };
+    return <String, dynamic>{'namespaceUrl': namespaceUrl};
   }
 
-  factory ManagedZoneServiceDirectoryConfigNamespace.fromMap(Map<String, dynamic> map) {
+  factory ManagedZoneServiceDirectoryConfigNamespace.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZoneServiceDirectoryConfigNamespace(
       namespaceUrl: map['namespaceUrl'] as String,
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'weekly_maintenance_window_day_redis_v1beta1.dart';
 class WeeklyMaintenanceWindowRedisV1beta1 {
   /// The day of week that maintenance updates occur.
   final WeeklyMaintenanceWindowDayRedisV1beta1 day;
+
   /// Start time of the window in UTC time.
   final TimeOfDayRedisV1beta1 startTime;
 
@@ -19,17 +20,19 @@ class WeeklyMaintenanceWindowRedisV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'day': day.value,
-      'startTime': startTime.toMap(),
-    };
+    return <String, dynamic>{'day': day.value, 'startTime': startTime.toMap()};
   }
 
-  factory WeeklyMaintenanceWindowRedisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WeeklyMaintenanceWindowRedisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WeeklyMaintenanceWindowRedisV1beta1(
-      day: WeeklyMaintenanceWindowDayRedisV1beta1.fromValue(map['day'] as String),
-      startTime: TimeOfDayRedisV1beta1.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      day: WeeklyMaintenanceWindowDayRedisV1beta1.fromValue(
+        map['day'] as String,
+      ),
+      startTime: TimeOfDayRedisV1beta1.fromMap(
+        (map['startTime'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

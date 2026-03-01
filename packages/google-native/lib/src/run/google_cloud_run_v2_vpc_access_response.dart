@@ -7,8 +7,10 @@ import 'google_cloud_run_v2_network_interface_response.dart';
 class GoogleCloudRunV2VpcAccessResponse {
   /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
   final String connector;
+
   /// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
   final String egress;
+
   /// Direct VPC egress settings. Currently only single network interface is supported.
   final List<GoogleCloudRunV2NetworkInterfaceResponse> networkInterfaces;
 
@@ -26,7 +28,11 @@ class GoogleCloudRunV2VpcAccessResponse {
     return <String, dynamic>{
       'connector': connector,
       'egress': egress,
-      'networkInterfaces': pulumi.Input.encodeList<GoogleCloudRunV2NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces':
+          pulumi.Input.encodeList<
+            GoogleCloudRunV2NetworkInterfaceResponse,
+            Map<String, dynamic>
+          >(networkInterfaces, (value) => value.toMap()),
     };
   }
 
@@ -34,8 +40,13 @@ class GoogleCloudRunV2VpcAccessResponse {
     return GoogleCloudRunV2VpcAccessResponse(
       connector: map['connector'] as String,
       egress: map['egress'] as String,
-      networkInterfaces: pulumi.Input.decodeList<GoogleCloudRunV2NetworkInterfaceResponse>(map['networkInterfaces'], (value) => GoogleCloudRunV2NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces:
+          pulumi.Input.decodeList<GoogleCloudRunV2NetworkInterfaceResponse>(
+            map['networkInterfaces'],
+            (value) => GoogleCloudRunV2NetworkInterfaceResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

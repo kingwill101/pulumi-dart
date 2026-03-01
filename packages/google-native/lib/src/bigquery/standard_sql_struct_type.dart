@@ -10,20 +10,29 @@ class StandardSqlStructType {
 
   /// Creates a new [StandardSqlStructType].
   /// [fields] Fields within the struct.
-  StandardSqlStructType({
-    this.fields,
-  });
+  StandardSqlStructType({this.fields});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': ?fields == null ? null : pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(fields!, (value) => value.toMap()),
+      'fields': ?fields == null
+          ? null
+          : pulumi.Input.encodeList<StandardSqlField, Map<String, dynamic>>(
+              fields!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory StandardSqlStructType.fromMap(Map<String, dynamic> map) {
     return StandardSqlStructType(
-      fields: map['fields'] == null ? null : pulumi.Input.decodeList<StandardSqlField>(map['fields'], (value) => StandardSqlField.fromMap((value as Map).cast<String, dynamic>())),
+      fields: map['fields'] == null
+          ? null
+          : pulumi.Input.decodeList<StandardSqlField>(
+              map['fields'],
+              (value) => StandardSqlField.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

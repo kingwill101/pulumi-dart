@@ -8,8 +8,10 @@ import 'sbom_reference_intoto_payload_response_containeranalysis_v1alpha1.dart';
 class SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1 {
   /// The actual payload that contains the SBOM reference data.
   final SbomReferenceIntotoPayloadResponseContaineranalysisV1alpha1 payload;
+
   /// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
   final String payloadType;
+
   /// The signatures over the payload.
   final List<EnvelopeSignatureResponseContaineranalysisV1alpha1> signatures;
 
@@ -27,16 +29,33 @@ class SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1 {
     return <String, dynamic>{
       'payload': payload.toMap(),
       'payloadType': payloadType,
-      'signatures': pulumi.Input.encodeList<EnvelopeSignatureResponseContaineranalysisV1alpha1, Map<String, dynamic>>(signatures, (value) => value.toMap()),
+      'signatures':
+          pulumi.Input.encodeList<
+            EnvelopeSignatureResponseContaineranalysisV1alpha1,
+            Map<String, dynamic>
+          >(signatures, (value) => value.toMap()),
     };
   }
 
-  factory SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SBOMReferenceOccurrenceResponseContaineranalysisV1alpha1(
-      payload: SbomReferenceIntotoPayloadResponseContaineranalysisV1alpha1.fromMap((map['payload'] as Map).cast<String, dynamic>()),
+      payload:
+          SbomReferenceIntotoPayloadResponseContaineranalysisV1alpha1.fromMap(
+            (map['payload'] as Map).cast<String, dynamic>(),
+          ),
       payloadType: map['payloadType'] as String,
-      signatures: pulumi.Input.decodeList<EnvelopeSignatureResponseContaineranalysisV1alpha1>(map['signatures'], (value) => EnvelopeSignatureResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      signatures:
+          pulumi.Input.decodeList<
+            EnvelopeSignatureResponseContaineranalysisV1alpha1
+          >(
+            map['signatures'],
+            (value) =>
+                EnvelopeSignatureResponseContaineranalysisV1alpha1.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

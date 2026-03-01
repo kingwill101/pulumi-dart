@@ -462,10 +462,13 @@ import 'vpngateway_args.dart';
 class VPNGateway extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// The unique identifier for the resource.
   late final pulumi.Output<int> gatewayId;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -474,13 +477,17 @@ class VPNGateway extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The network this VPN gateway is accepting traffic for.
   late final pulumi.Output<String> network;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region this gateway should sit in.
   late final pulumi.Output<String> region;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -493,11 +500,11 @@ class VPNGateway extends pulumi.CustomResource {
     VPNGatewayArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/vPNGateway:VPNGateway',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/vPNGateway:VPNGateway',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');
     this.gatewayId = registerOutput<int>('gatewayId');

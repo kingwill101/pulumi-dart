@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLaunchTemplateTagSpecification {
   final String resourceType;
+
   /// Map of tags, each pair of which must exactly match a pair on the desired Launch Template.
   final Map<String, String> tags;
 
@@ -15,10 +15,7 @@ class GetLaunchTemplateTagSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceType': resourceType,
-      'tags': tags,
-    };
+    return <String, dynamic>{'resourceType': resourceType, 'tags': tags};
   }
 
   factory GetLaunchTemplateTagSpecification.fromMap(Map<String, dynamic> map) {
@@ -28,4 +25,3 @@ class GetLaunchTemplateTagSpecification {
     );
   }
 }
-

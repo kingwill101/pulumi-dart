@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ComputeEnvironmentEksConfiguration {
   /// The Amazon Resource Name (ARN) of the Amazon EKS cluster.
   final String eksClusterArn;
+
   /// The namespace of the Amazon EKS cluster. AWS Batch manages pods in this namespace.
   final String kubernetesNamespace;
 
@@ -29,4 +29,3 @@ class ComputeEnvironmentEksConfiguration {
     );
   }
 }
-

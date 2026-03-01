@@ -12,13 +12,17 @@ enum BackendServiceLocalityLoadBalancingPolicyConfigPolicyName {
   const BackendServiceLocalityLoadBalancingPolicyConfigPolicyName(this.value);
   final String value;
 
-  static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName fromValue(String value) {
-    for (final item in BackendServiceLocalityLoadBalancingPolicyConfigPolicyName.values) {
+  static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName fromValue(
+    String value,
+  ) {
+    for (final item
+        in BackendServiceLocalityLoadBalancingPolicyConfigPolicyName.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendServiceLocalityLoadBalancingPolicyConfigPolicyName value: $value');
+    throw ArgumentError(
+      'Unknown BackendServiceLocalityLoadBalancingPolicyConfigPolicyName value: $value',
+    );
   }
 }
-

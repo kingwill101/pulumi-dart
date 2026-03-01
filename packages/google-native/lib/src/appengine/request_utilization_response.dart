@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Target scaling by request utilization. Only applicable in the App Engine flexible environment.
 class RequestUtilizationResponse {
   /// Target number of concurrent requests.
   final int targetConcurrentRequests;
+
   /// Target requests per second.
   final int targetRequestCountPerSecond;
 
@@ -30,4 +30,3 @@ class RequestUtilizationResponse {
     );
   }
 }
-

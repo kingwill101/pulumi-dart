@@ -22,11 +22,12 @@ class GetReusableConfigIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String reusableConfigId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reusableConfigId = pulumi.Input.asInput<String>(reusableConfigId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       reusableConfigId = pulumi.Input.asInput<String>(reusableConfigId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +41,12 @@ class GetReusableConfigIamPolicyArgs {
   factory GetReusableConfigIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetReusableConfigIamPolicyArgs(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       reusableConfigId: map['reusableConfigId'] as String,
     );
   }
 }
-

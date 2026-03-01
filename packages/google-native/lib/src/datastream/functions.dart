@@ -83,7 +83,8 @@ Future<GetStreamResult> getStream(
 /// Use this method to get details about a connection profile.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datastream_v1alpha1_get_connection_profile_datastream_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConnectionProfileDatastreamV1alpha1Result> getConnectionProfileDatastreamV1alpha1(
+Future<GetConnectionProfileDatastreamV1alpha1Result>
+getConnectionProfileDatastreamV1alpha1(
   GetConnectionProfileDatastreamV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -99,7 +100,8 @@ Future<GetConnectionProfileDatastreamV1alpha1Result> getConnectionProfileDatastr
 /// Use this method to get details about a private connectivity configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_datastream_v1alpha1_get_private_connection_datastream_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPrivateConnectionDatastreamV1alpha1Result> getPrivateConnectionDatastreamV1alpha1(
+Future<GetPrivateConnectionDatastreamV1alpha1Result>
+getPrivateConnectionDatastreamV1alpha1(
   GetPrivateConnectionDatastreamV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

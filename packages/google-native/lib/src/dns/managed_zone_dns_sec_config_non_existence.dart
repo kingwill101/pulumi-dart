@@ -12,7 +12,8 @@ enum ManagedZoneDnsSecConfigNonExistence {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagedZoneDnsSecConfigNonExistence value: $value');
+    throw ArgumentError(
+      'Unknown ManagedZoneDnsSecConfigNonExistence value: $value',
+    );
   }
 }
-

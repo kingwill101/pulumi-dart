@@ -14,41 +14,64 @@ import 'google_cloud_dialogflow_cx_v3beta1_text_to_speech_settings.dart';
 /// {@macro pulumi_dialogflow_v3beta1_agent_dialogflow_v3beta1_args_doc}
 class AgentDialogflowV3beta1Args {
   /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AdvancedSettings>? advancedSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AdvancedSettings>?
+  advancedSettings;
+
   /// Optional. Answer feedback collection settings.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings>? answerFeedbackSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings>?
+  answerFeedbackSettings;
+
   /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
   final pulumi.Input<String>? avatarUri;
+
   /// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
   final pulumi.Input<String> defaultLanguageCode;
+
   /// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
   final pulumi.Input<String>? description;
+
   /// The human-readable name of the agent, unique within the location.
   final pulumi.Input<String> displayName;
+
   /// Indicates if automatic spell correction is enabled in detect intent requests.
   final pulumi.Input<bool>? enableSpellCorrection;
+
   /// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
   final pulumi.Input<bool>? enableStackdriverLogging;
+
   /// Gen App Builder-related agent-level settings.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings>? genAppBuilderSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings>?
+  genAppBuilderSettings;
+
   /// Git integration settings for this agent.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings>? gitIntegrationSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings>?
+  gitIntegrationSettings;
   final pulumi.Input<String>? location;
+
   /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
   final pulumi.Input<bool>? locked;
+
   /// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
   final pulumi.Input<String>? securitySettings;
+
   /// Speech recognition related settings.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1SpeechToTextSettings>? speechToTextSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1SpeechToTextSettings>?
+  speechToTextSettings;
+
   /// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
   final pulumi.Input<String>? startFlow;
+
   /// The list of all languages supported by the agent (except for the `default_language_code`).
   final pulumi.Input<List<String>>? supportedLanguageCodes;
+
   /// Settings on instructing the speech synthesizer on how to generate the output audio content.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1TextToSpeechSettings>? textToSpeechSettings;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1TextToSpeechSettings>?
+  textToSpeechSettings;
+
   /// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
   final pulumi.Input<String> timeZone;
 
@@ -75,15 +98,18 @@ class AgentDialogflowV3beta1Args {
   /// [timeZone] The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
   AgentDialogflowV3beta1Args({
     GoogleCloudDialogflowCxV3beta1AdvancedSettings? advancedSettings,
-    GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings? answerFeedbackSettings,
+    GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings?
+    answerFeedbackSettings,
     String? avatarUri,
     required String defaultLanguageCode,
     String? description,
     required String displayName,
     bool? enableSpellCorrection,
     bool? enableStackdriverLogging,
-    GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings? genAppBuilderSettings,
-    GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings? gitIntegrationSettings,
+    GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings?
+    genAppBuilderSettings,
+    GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings?
+    gitIntegrationSettings,
     String? location,
     bool? locked,
     String? name,
@@ -94,76 +120,158 @@ class AgentDialogflowV3beta1Args {
     List<String>? supportedLanguageCodes,
     GoogleCloudDialogflowCxV3beta1TextToSpeechSettings? textToSpeechSettings,
     required String timeZone,
-  }) :
-      advancedSettings = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1AdvancedSettings>(advancedSettings),
-      answerFeedbackSettings = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings>(answerFeedbackSettings),
-      avatarUri = pulumi.Input.asOptionalInput<String>(avatarUri),
-      defaultLanguageCode = pulumi.Input.asInput<String>(defaultLanguageCode),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      enableSpellCorrection = pulumi.Input.asOptionalInput<bool>(enableSpellCorrection),
-      enableStackdriverLogging = pulumi.Input.asOptionalInput<bool>(enableStackdriverLogging),
-      genAppBuilderSettings = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings>(genAppBuilderSettings),
-      gitIntegrationSettings = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings>(gitIntegrationSettings),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      locked = pulumi.Input.asOptionalInput<bool>(locked),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      securitySettings = pulumi.Input.asOptionalInput<String>(securitySettings),
-      speechToTextSettings = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1SpeechToTextSettings>(speechToTextSettings),
-      startFlow = pulumi.Input.asOptionalInput<String>(startFlow),
-      supportedLanguageCodes = pulumi.Input.asOptionalInput<List<String>>(supportedLanguageCodes),
-      textToSpeechSettings = pulumi.Input.asOptionalInput<GoogleCloudDialogflowCxV3beta1TextToSpeechSettings>(textToSpeechSettings),
-      timeZone = pulumi.Input.asInput<String>(timeZone);
+  }) : advancedSettings =
+           pulumi.Input.asOptionalInput<
+             GoogleCloudDialogflowCxV3beta1AdvancedSettings
+           >(advancedSettings),
+       answerFeedbackSettings =
+           pulumi.Input.asOptionalInput<
+             GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings
+           >(answerFeedbackSettings),
+       avatarUri = pulumi.Input.asOptionalInput<String>(avatarUri),
+       defaultLanguageCode = pulumi.Input.asInput<String>(defaultLanguageCode),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       displayName = pulumi.Input.asInput<String>(displayName),
+       enableSpellCorrection = pulumi.Input.asOptionalInput<bool>(
+         enableSpellCorrection,
+       ),
+       enableStackdriverLogging = pulumi.Input.asOptionalInput<bool>(
+         enableStackdriverLogging,
+       ),
+       genAppBuilderSettings =
+           pulumi.Input.asOptionalInput<
+             GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings
+           >(genAppBuilderSettings),
+       gitIntegrationSettings =
+           pulumi.Input.asOptionalInput<
+             GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings
+           >(gitIntegrationSettings),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       locked = pulumi.Input.asOptionalInput<bool>(locked),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       securitySettings = pulumi.Input.asOptionalInput<String>(
+         securitySettings,
+       ),
+       speechToTextSettings =
+           pulumi.Input.asOptionalInput<
+             GoogleCloudDialogflowCxV3beta1SpeechToTextSettings
+           >(speechToTextSettings),
+       startFlow = pulumi.Input.asOptionalInput<String>(startFlow),
+       supportedLanguageCodes = pulumi.Input.asOptionalInput<List<String>>(
+         supportedLanguageCodes,
+       ),
+       textToSpeechSettings =
+           pulumi.Input.asOptionalInput<
+             GoogleCloudDialogflowCxV3beta1TextToSpeechSettings
+           >(textToSpeechSettings),
+       timeZone = pulumi.Input.asInput<String>(timeZone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1AdvancedSettings, Map<String, dynamic>>(advancedSettings, (value) => value.toMap()),
-      'answerFeedbackSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings, Map<String, dynamic>>(answerFeedbackSettings, (value) => value.toMap()),
+      'advancedSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1AdvancedSettings,
+            Map<String, dynamic>
+          >(advancedSettings, (value) => value.toMap()),
+      'answerFeedbackSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings,
+            Map<String, dynamic>
+          >(answerFeedbackSettings, (value) => value.toMap()),
       'avatarUri': ?avatarUri,
       'defaultLanguageCode': defaultLanguageCode,
       'description': ?description,
       'displayName': displayName,
       'enableSpellCorrection': ?enableSpellCorrection,
       'enableStackdriverLogging': ?enableStackdriverLogging,
-      'genAppBuilderSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings, Map<String, dynamic>>(genAppBuilderSettings, (value) => value.toMap()),
-      'gitIntegrationSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings, Map<String, dynamic>>(gitIntegrationSettings, (value) => value.toMap()),
+      'genAppBuilderSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings,
+            Map<String, dynamic>
+          >(genAppBuilderSettings, (value) => value.toMap()),
+      'gitIntegrationSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings,
+            Map<String, dynamic>
+          >(gitIntegrationSettings, (value) => value.toMap()),
       'location': ?location,
       'locked': ?locked,
       'name': ?name,
       'project': ?project,
       'securitySettings': ?securitySettings,
-      'speechToTextSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1SpeechToTextSettings, Map<String, dynamic>>(speechToTextSettings, (value) => value.toMap()),
+      'speechToTextSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1SpeechToTextSettings,
+            Map<String, dynamic>
+          >(speechToTextSettings, (value) => value.toMap()),
       'startFlow': ?startFlow,
       'supportedLanguageCodes': ?supportedLanguageCodes,
-      'textToSpeechSettings': ?pulumi.Input.mapOptionalInputValue<GoogleCloudDialogflowCxV3beta1TextToSpeechSettings, Map<String, dynamic>>(textToSpeechSettings, (value) => value.toMap()),
+      'textToSpeechSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudDialogflowCxV3beta1TextToSpeechSettings,
+            Map<String, dynamic>
+          >(textToSpeechSettings, (value) => value.toMap()),
       'timeZone': timeZone,
     };
   }
 
   factory AgentDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
     return AgentDialogflowV3beta1Args(
-      advancedSettings: map['advancedSettings'] == null ? null : GoogleCloudDialogflowCxV3beta1AdvancedSettings.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>()),
-      answerFeedbackSettings: map['answerFeedbackSettings'] == null ? null : GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings.fromMap((map['answerFeedbackSettings'] as Map).cast<String, dynamic>()),
+      advancedSettings: map['advancedSettings'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3beta1AdvancedSettings.fromMap(
+              (map['advancedSettings'] as Map).cast<String, dynamic>(),
+            ),
+      answerFeedbackSettings: map['answerFeedbackSettings'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3beta1AgentAnswerFeedbackSettings.fromMap(
+              (map['answerFeedbackSettings'] as Map).cast<String, dynamic>(),
+            ),
       avatarUri: map['avatarUri'] == null ? null : map['avatarUri'] as String,
       defaultLanguageCode: map['defaultLanguageCode'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       displayName: map['displayName'] as String,
-      enableSpellCorrection: map['enableSpellCorrection'] == null ? null : map['enableSpellCorrection'] as bool,
-      enableStackdriverLogging: map['enableStackdriverLogging'] == null ? null : map['enableStackdriverLogging'] as bool,
-      genAppBuilderSettings: map['genAppBuilderSettings'] == null ? null : GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings.fromMap((map['genAppBuilderSettings'] as Map).cast<String, dynamic>()),
-      gitIntegrationSettings: map['gitIntegrationSettings'] == null ? null : GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings.fromMap((map['gitIntegrationSettings'] as Map).cast<String, dynamic>()),
+      enableSpellCorrection: map['enableSpellCorrection'] == null
+          ? null
+          : map['enableSpellCorrection'] as bool,
+      enableStackdriverLogging: map['enableStackdriverLogging'] == null
+          ? null
+          : map['enableStackdriverLogging'] as bool,
+      genAppBuilderSettings: map['genAppBuilderSettings'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings.fromMap(
+              (map['genAppBuilderSettings'] as Map).cast<String, dynamic>(),
+            ),
+      gitIntegrationSettings: map['gitIntegrationSettings'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings.fromMap(
+              (map['gitIntegrationSettings'] as Map).cast<String, dynamic>(),
+            ),
       location: map['location'] == null ? null : map['location'] as String,
       locked: map['locked'] == null ? null : map['locked'] as bool,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      securitySettings: map['securitySettings'] == null ? null : map['securitySettings'] as String,
-      speechToTextSettings: map['speechToTextSettings'] == null ? null : GoogleCloudDialogflowCxV3beta1SpeechToTextSettings.fromMap((map['speechToTextSettings'] as Map).cast<String, dynamic>()),
+      securitySettings: map['securitySettings'] == null
+          ? null
+          : map['securitySettings'] as String,
+      speechToTextSettings: map['speechToTextSettings'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3beta1SpeechToTextSettings.fromMap(
+              (map['speechToTextSettings'] as Map).cast<String, dynamic>(),
+            ),
       startFlow: map['startFlow'] == null ? null : map['startFlow'] as String,
-      supportedLanguageCodes: map['supportedLanguageCodes'] == null ? null : (map['supportedLanguageCodes'] as List).cast<String>(),
-      textToSpeechSettings: map['textToSpeechSettings'] == null ? null : GoogleCloudDialogflowCxV3beta1TextToSpeechSettings.fromMap((map['textToSpeechSettings'] as Map).cast<String, dynamic>()),
+      supportedLanguageCodes: map['supportedLanguageCodes'] == null
+          ? null
+          : (map['supportedLanguageCodes'] as List).cast<String>(),
+      textToSpeechSettings: map['textToSpeechSettings'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3beta1TextToSpeechSettings.fromMap(
+              (map['textToSpeechSettings'] as Map).cast<String, dynamic>(),
+            ),
       timeZone: map['timeZone'] as String,
     );
   }
 }
-

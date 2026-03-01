@@ -16,4 +16,3 @@ enum ComputeSchedulingRestartType {
     throw ArgumentError('Unknown ComputeSchedulingRestartType value: $value');
   }
 }
-

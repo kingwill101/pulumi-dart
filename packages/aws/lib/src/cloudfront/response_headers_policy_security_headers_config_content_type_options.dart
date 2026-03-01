@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResponseHeadersPolicySecurityHeadersConfigContentTypeOptions {
   /// Whether CloudFront overrides the `X-Content-Type-Options` HTTP response header received from the origin with the one specified in this response headers policy.
   final bool override;
@@ -12,15 +11,14 @@ class ResponseHeadersPolicySecurityHeadersConfigContentTypeOptions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'override': override,
-    };
+    return <String, dynamic>{'override': override};
   }
 
-  factory ResponseHeadersPolicySecurityHeadersConfigContentTypeOptions.fromMap(Map<String, dynamic> map) {
+  factory ResponseHeadersPolicySecurityHeadersConfigContentTypeOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResponseHeadersPolicySecurityHeadersConfigContentTypeOptions(
       override: map['override'] as bool,
     );
   }
 }
-

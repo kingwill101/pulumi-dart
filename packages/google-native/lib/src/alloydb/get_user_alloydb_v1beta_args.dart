@@ -22,11 +22,10 @@ class GetUserAlloydbV1betaArgs {
     required String location,
     String? project,
     required String userId,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userId = pulumi.Input.asInput<String>(userId);
+  }) : clusterId = pulumi.Input.asInput<String>(clusterId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       userId = pulumi.Input.asInput<String>(userId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetUserAlloydbV1betaArgs {
     );
   }
 }
-

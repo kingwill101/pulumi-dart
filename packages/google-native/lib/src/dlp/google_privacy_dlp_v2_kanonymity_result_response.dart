@@ -6,7 +6,8 @@ import 'google_privacy_dlp_v2_kanonymity_histogram_bucket_response.dart';
 /// Result of the k-anonymity computation.
 class GooglePrivacyDlpV2KAnonymityResultResponse {
   /// Histogram of k-anonymity equivalence classes.
-  final List<GooglePrivacyDlpV2KAnonymityHistogramBucketResponse> equivalenceClassHistogramBuckets;
+  final List<GooglePrivacyDlpV2KAnonymityHistogramBucketResponse>
+  equivalenceClassHistogramBuckets;
 
   /// Creates a new [GooglePrivacyDlpV2KAnonymityResultResponse].
   /// [equivalenceClassHistogramBuckets] Histogram of k-anonymity equivalence classes.
@@ -16,14 +17,28 @@ class GooglePrivacyDlpV2KAnonymityResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'equivalenceClassHistogramBuckets': pulumi.Input.encodeList<GooglePrivacyDlpV2KAnonymityHistogramBucketResponse, Map<String, dynamic>>(equivalenceClassHistogramBuckets, (value) => value.toMap()),
+      'equivalenceClassHistogramBuckets':
+          pulumi.Input.encodeList<
+            GooglePrivacyDlpV2KAnonymityHistogramBucketResponse,
+            Map<String, dynamic>
+          >(equivalenceClassHistogramBuckets, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2KAnonymityResultResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2KAnonymityResultResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2KAnonymityResultResponse(
-      equivalenceClassHistogramBuckets: pulumi.Input.decodeList<GooglePrivacyDlpV2KAnonymityHistogramBucketResponse>(map['equivalenceClassHistogramBuckets'], (value) => GooglePrivacyDlpV2KAnonymityHistogramBucketResponse.fromMap((value as Map).cast<String, dynamic>())),
+      equivalenceClassHistogramBuckets:
+          pulumi.Input.decodeList<
+            GooglePrivacyDlpV2KAnonymityHistogramBucketResponse
+          >(
+            map['equivalenceClassHistogramBuckets'],
+            (value) =>
+                GooglePrivacyDlpV2KAnonymityHistogramBucketResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

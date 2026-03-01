@@ -13,7 +13,8 @@ enum WindowsNodeConfigOsVersionContainerV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown WindowsNodeConfigOsVersionContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown WindowsNodeConfigOsVersionContainerV1beta1 value: $value',
+    );
   }
 }
-

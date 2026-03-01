@@ -26,7 +26,8 @@ enum GoogleCloudDataplexV1SchemaPartitionFieldType {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1SchemaPartitionFieldType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1SchemaPartitionFieldType value: $value',
+    );
   }
 }
-

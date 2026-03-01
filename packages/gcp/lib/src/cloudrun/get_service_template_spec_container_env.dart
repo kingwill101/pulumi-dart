@@ -6,8 +6,10 @@ import 'get_service_template_spec_container_env_value_from.dart';
 class GetServiceTemplateSpecContainerEnv {
   /// The name of the Cloud Run Service.
   final String name;
+
   /// Defaults to "".
   final String value;
+
   /// Source for the environment variable's value. Only supports secret_key_ref.
   final List<GetServiceTemplateSpecContainerEnvValueFrom> valueFroms;
 
@@ -25,7 +27,11 @@ class GetServiceTemplateSpecContainerEnv {
     return <String, dynamic>{
       'name': name,
       'value': value,
-      'valueFroms': pulumi.Input.encodeList<GetServiceTemplateSpecContainerEnvValueFrom, Map<String, dynamic>>(valueFroms, (value) => value.toMap()),
+      'valueFroms':
+          pulumi.Input.encodeList<
+            GetServiceTemplateSpecContainerEnvValueFrom,
+            Map<String, dynamic>
+          >(valueFroms, (value) => value.toMap()),
     };
   }
 
@@ -33,8 +39,13 @@ class GetServiceTemplateSpecContainerEnv {
     return GetServiceTemplateSpecContainerEnv(
       name: map['name'] as String,
       value: map['value'] as String,
-      valueFroms: pulumi.Input.decodeList<GetServiceTemplateSpecContainerEnvValueFrom>(map['valueFroms'], (value) => GetServiceTemplateSpecContainerEnvValueFrom.fromMap((value as Map).cast<String, dynamic>())),
+      valueFroms:
+          pulumi.Input.decodeList<GetServiceTemplateSpecContainerEnvValueFrom>(
+            map['valueFroms'],
+            (value) => GetServiceTemplateSpecContainerEnvValueFrom.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

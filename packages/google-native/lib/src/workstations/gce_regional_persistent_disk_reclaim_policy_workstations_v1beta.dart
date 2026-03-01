@@ -7,13 +7,17 @@ enum GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta {
   const GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta(this.value);
   final String value;
 
-  static GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta fromValue(String value) {
-    for (final item in GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta.values) {
+  static GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta value: $value');
+    throw ArgumentError(
+      'Unknown GceRegionalPersistentDiskReclaimPolicyWorkstationsV1beta value: $value',
+    );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDatabaseInstancesInstanceSettingDatabaseFlag {
   /// Name of the flag.
   final String name;
+
   /// Value of the flag.
   final String value;
 
@@ -16,17 +16,15 @@ class GetDatabaseInstancesInstanceSettingDatabaseFlag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GetDatabaseInstancesInstanceSettingDatabaseFlag.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstancesInstanceSettingDatabaseFlag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstancesInstanceSettingDatabaseFlag(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

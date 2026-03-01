@@ -19,10 +19,9 @@ class GetAgentDialogflowV3beta1Args {
     required String agentId,
     required String location,
     String? project,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : agentId = pulumi.Input.asInput<String>(agentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetAgentDialogflowV3beta1Args {
     );
   }
 }
-

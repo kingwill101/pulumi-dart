@@ -12,7 +12,8 @@ enum FirewallPolicyRuleDirectionComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallPolicyRuleDirectionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown FirewallPolicyRuleDirectionComputeBeta value: $value',
+    );
   }
 }
-

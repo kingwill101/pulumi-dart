@@ -6,16 +6,22 @@ import 'nfs_export_permissions.dart';
 class NfsExport {
   /// Allow dev flag in NfsShare AllowedClientsRequest.
   final bool? allowDev;
+
   /// Allow the setuid flag.
   final bool? allowSuid;
+
   /// A CIDR range.
   final String? cidr;
+
   /// Either a single machine, identified by an ID, or a comma-separated list of machine IDs.
   final String? machineId;
+
   /// Network to use to publish the export.
   final String? networkId;
+
   /// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
   final bool? noRootSquash;
+
   /// Export permissions.
   final NfsExportPermissions? permissions;
 
@@ -56,9 +62,12 @@ class NfsExport {
       cidr: map['cidr'] == null ? null : map['cidr'] as String,
       machineId: map['machineId'] == null ? null : map['machineId'] as String,
       networkId: map['networkId'] == null ? null : map['networkId'] as String,
-      noRootSquash: map['noRootSquash'] == null ? null : map['noRootSquash'] as bool,
-      permissions: map['permissions'] == null ? null : NfsExportPermissions.fromValue(map['permissions'] as String),
+      noRootSquash: map['noRootSquash'] == null
+          ? null
+          : map['noRootSquash'] as bool,
+      permissions: map['permissions'] == null
+          ? null
+          : NfsExportPermissions.fromValue(map['permissions'] as String),
     );
   }
 }
-

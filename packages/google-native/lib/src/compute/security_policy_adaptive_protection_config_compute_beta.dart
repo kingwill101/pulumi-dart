@@ -5,9 +5,12 @@ import 'security_policy_adaptive_protection_config_layer7_ddos_defense_config_co
 
 /// Configuration options for Cloud Armor Adaptive Protection (CAAP).
 class SecurityPolicyAdaptiveProtectionConfigComputeBeta {
-  final SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta? autoDeployConfig;
+  final SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta?
+  autoDeployConfig;
+
   /// If set to true, enables Cloud Armor Machine Learning.
-  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta? layer7DdosDefenseConfig;
+  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta?
+  layer7DdosDefenseConfig;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigComputeBeta].
   /// [autoDeployConfig] Optional.
@@ -19,16 +22,29 @@ class SecurityPolicyAdaptiveProtectionConfigComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoDeployConfig': ?autoDeployConfig == null ? null : autoDeployConfig!.toMap(),
-      'layer7DdosDefenseConfig': ?layer7DdosDefenseConfig == null ? null : layer7DdosDefenseConfig!.toMap(),
+      'autoDeployConfig': ?autoDeployConfig == null
+          ? null
+          : autoDeployConfig!.toMap(),
+      'layer7DdosDefenseConfig': ?layer7DdosDefenseConfig == null
+          ? null
+          : layer7DdosDefenseConfig!.toMap(),
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdaptiveProtectionConfigComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdaptiveProtectionConfigComputeBeta(
-      autoDeployConfig: map['autoDeployConfig'] == null ? null : SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta.fromMap((map['autoDeployConfig'] as Map).cast<String, dynamic>()),
-      layer7DdosDefenseConfig: map['layer7DdosDefenseConfig'] == null ? null : SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta.fromMap((map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>()),
+      autoDeployConfig: map['autoDeployConfig'] == null
+          ? null
+          : SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta.fromMap(
+              (map['autoDeployConfig'] as Map).cast<String, dynamic>(),
+            ),
+      layer7DdosDefenseConfig: map['layer7DdosDefenseConfig'] == null
+          ? null
+          : SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta.fromMap(
+              (map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

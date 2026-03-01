@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomRoutingAcceleratorArgs {
   /// Full ARN of the custom routing accelerator.
   final pulumi.Input<String>? arn;
+
   /// Unique name of the custom routing accelerator.
   ///
   /// > **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence.
@@ -23,25 +24,21 @@ class GetCustomRoutingAcceleratorArgs {
     String? arn,
     String? name,
     Map<String, String>? tags,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : arn = pulumi.Input.asOptionalInput<String>(arn),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': ?arn,
-      'name': ?name,
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'arn': ?arn, 'name': ?name, 'tags': ?tags};
   }
 
   factory GetCustomRoutingAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomRoutingAcceleratorArgs(
       arn: map['arn'] == null ? null : map['arn'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

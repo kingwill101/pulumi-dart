@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class OperationErrorErrorsItemResponse {
   /// The error type identifier for this error.
   final String code;
+
   /// Indicates the field in the request that caused the error. This property is optional.
   final String location;
+
   /// An optional, human-readable error message.
   final String message;
 
@@ -35,4 +36,3 @@ class OperationErrorErrorsItemResponse {
     );
   }
 }
-

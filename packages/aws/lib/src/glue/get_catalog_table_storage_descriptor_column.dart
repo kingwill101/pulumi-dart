@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetCatalogTableStorageDescriptorColumn {
   /// Free-form text comment.
   final String comment;
+
   /// Name of the table.
   final String name;
+
   /// Map of initialization parameters for the SerDe, in key-value form.
   final Map<String, String> parameters;
+
   /// Datatype of data in the Column.
   final String type;
 
@@ -32,7 +34,9 @@ class GetCatalogTableStorageDescriptorColumn {
     };
   }
 
-  factory GetCatalogTableStorageDescriptorColumn.fromMap(Map<String, dynamic> map) {
+  factory GetCatalogTableStorageDescriptorColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCatalogTableStorageDescriptorColumn(
       comment: map['comment'] as String,
       name: map['name'] as String,
@@ -41,4 +45,3 @@ class GetCatalogTableStorageDescriptorColumn {
     );
   }
 }
-

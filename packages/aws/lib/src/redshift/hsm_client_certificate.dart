@@ -100,14 +100,19 @@ import 'hsm_client_certificate_args.dart';
 class HsmClientCertificate extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the Hsm Client Certificate.
   late final pulumi.Output<String> arn;
+
   /// The identifier of the HSM client certificate.
   late final pulumi.Output<String> hsmClientCertificateIdentifier;
+
   /// The public key that the Amazon Redshift cluster will use to connect to the HSM. You must register the public key in the HSM.
   late final pulumi.Output<String> hsmClientCertificatePublicKey;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -120,14 +125,18 @@ class HsmClientCertificate extends pulumi.CustomResource {
     HsmClientCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:redshift/hsmClientCertificate:HsmClientCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:redshift/hsmClientCertificate:HsmClientCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
-    this.hsmClientCertificateIdentifier = registerOutput<String>('hsmClientCertificateIdentifier');
-    this.hsmClientCertificatePublicKey = registerOutput<String>('hsmClientCertificatePublicKey');
+    this.hsmClientCertificateIdentifier = registerOutput<String>(
+      'hsmClientCertificateIdentifier',
+    );
+    this.hsmClientCertificatePublicKey = registerOutput<String>(
+      'hsmClientCertificatePublicKey',
+    );
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');

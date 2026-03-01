@@ -8,8 +8,10 @@ import 'log_config_data_access_options_response_compute_beta.dart';
 class LogConfigResponseComputeBeta {
   /// This is deprecated and has no effect. Do not use.
   final LogConfigCloudAuditOptionsResponseComputeBeta cloudAudit;
+
   /// This is deprecated and has no effect. Do not use.
   final LogConfigCounterOptionsResponseComputeBeta counter;
+
   /// This is deprecated and has no effect. Do not use.
   final LogConfigDataAccessOptionsResponseComputeBeta dataAccess;
 
@@ -33,10 +35,15 @@ class LogConfigResponseComputeBeta {
 
   factory LogConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return LogConfigResponseComputeBeta(
-      cloudAudit: LogConfigCloudAuditOptionsResponseComputeBeta.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>()),
-      counter: LogConfigCounterOptionsResponseComputeBeta.fromMap((map['counter'] as Map).cast<String, dynamic>()),
-      dataAccess: LogConfigDataAccessOptionsResponseComputeBeta.fromMap((map['dataAccess'] as Map).cast<String, dynamic>()),
+      cloudAudit: LogConfigCloudAuditOptionsResponseComputeBeta.fromMap(
+        (map['cloudAudit'] as Map).cast<String, dynamic>(),
+      ),
+      counter: LogConfigCounterOptionsResponseComputeBeta.fromMap(
+        (map['counter'] as Map).cast<String, dynamic>(),
+      ),
+      dataAccess: LogConfigDataAccessOptionsResponseComputeBeta.fromMap(
+        (map['dataAccess'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

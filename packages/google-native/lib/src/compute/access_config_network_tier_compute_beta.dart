@@ -14,7 +14,8 @@ enum AccessConfigNetworkTierComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown AccessConfigNetworkTierComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown AccessConfigNetworkTierComputeBeta value: $value',
+    );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig {
   /// The email address of the service account used for authenticatation. CES
   /// uses this service account to exchange an access token and the access token
@@ -18,15 +17,14 @@ class ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccount': serviceAccount,
-    };
+    return <String, dynamic>{'serviceAccount': serviceAccount};
   }
 
-  factory ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
+  factory ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfig(
       serviceAccount: map['serviceAccount'] as String,
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A set of Shielded VM options.
 class ShieldedVmConfigResponse {
   /// Defines whether the instance has integrity monitoring enabled.
   final bool enableIntegrityMonitoring;
+
   /// Defines whether the instance has Secure Boot enabled.
   final bool enableSecureBoot;
+
   /// Defines whether the instance has the vTPM enabled.
   final bool enableVtpm;
 
@@ -36,4 +37,3 @@ class ShieldedVmConfigResponse {
     );
   }
 }
-

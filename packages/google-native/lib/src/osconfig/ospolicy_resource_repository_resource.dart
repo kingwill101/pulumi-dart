@@ -9,10 +9,13 @@ import 'ospolicy_resource_repository_resource_zypper_repository.dart';
 class OSPolicyResourceRepositoryResource {
   /// An Apt Repository.
   final OSPolicyResourceRepositoryResourceAptRepository? apt;
+
   /// A Goo Repository.
   final OSPolicyResourceRepositoryResourceGooRepository? goo;
+
   /// A Yum Repository.
   final OSPolicyResourceRepositoryResourceYumRepository? yum;
+
   /// A Zypper Repository.
   final OSPolicyResourceRepositoryResourceZypperRepository? zypper;
 
@@ -39,11 +42,26 @@ class OSPolicyResourceRepositoryResource {
 
   factory OSPolicyResourceRepositoryResource.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceRepositoryResource(
-      apt: map['apt'] == null ? null : OSPolicyResourceRepositoryResourceAptRepository.fromMap((map['apt'] as Map).cast<String, dynamic>()),
-      goo: map['goo'] == null ? null : OSPolicyResourceRepositoryResourceGooRepository.fromMap((map['goo'] as Map).cast<String, dynamic>()),
-      yum: map['yum'] == null ? null : OSPolicyResourceRepositoryResourceYumRepository.fromMap((map['yum'] as Map).cast<String, dynamic>()),
-      zypper: map['zypper'] == null ? null : OSPolicyResourceRepositoryResourceZypperRepository.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
+      apt: map['apt'] == null
+          ? null
+          : OSPolicyResourceRepositoryResourceAptRepository.fromMap(
+              (map['apt'] as Map).cast<String, dynamic>(),
+            ),
+      goo: map['goo'] == null
+          ? null
+          : OSPolicyResourceRepositoryResourceGooRepository.fromMap(
+              (map['goo'] as Map).cast<String, dynamic>(),
+            ),
+      yum: map['yum'] == null
+          ? null
+          : OSPolicyResourceRepositoryResourceYumRepository.fromMap(
+              (map['yum'] as Map).cast<String, dynamic>(),
+            ),
+      zypper: map['zypper'] == null
+          ? null
+          : OSPolicyResourceRepositoryResourceZypperRepository.fromMap(
+              (map['zypper'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

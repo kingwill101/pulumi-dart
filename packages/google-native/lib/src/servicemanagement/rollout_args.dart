@@ -10,14 +10,19 @@ import 'traffic_percent_strategy.dart';
 class RolloutArgs {
   /// Creation time of the rollout. Readonly.
   final pulumi.Input<String>? createTime;
+
   /// The user who created the Rollout. Readonly.
   final pulumi.Input<String>? createdBy;
+
   /// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
   final pulumi.Input<Map<String, dynamic>>? deleteServiceStrategy;
+
   /// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
   final pulumi.Input<String>? rolloutId;
+
   /// The name of the service associated with this Rollout.
   final pulumi.Input<String> serviceName;
+
   /// Google Service Control selects service configurations based on traffic percentage.
   final pulumi.Input<TrafficPercentStrategy>? trafficPercentStrategy;
 
@@ -35,13 +40,16 @@ class RolloutArgs {
     String? rolloutId,
     required String serviceName,
     TrafficPercentStrategy? trafficPercentStrategy,
-  }) :
-      createTime = pulumi.Input.asOptionalInput<String>(createTime),
-      createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
-      deleteServiceStrategy = pulumi.Input.asOptionalInput<Map<String, dynamic>>(deleteServiceStrategy),
-      rolloutId = pulumi.Input.asOptionalInput<String>(rolloutId),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      trafficPercentStrategy = pulumi.Input.asOptionalInput<TrafficPercentStrategy>(trafficPercentStrategy);
+  }) : createTime = pulumi.Input.asOptionalInput<String>(createTime),
+       createdBy = pulumi.Input.asOptionalInput<String>(createdBy),
+       deleteServiceStrategy = pulumi
+           .Input.asOptionalInput<Map<String, dynamic>>(deleteServiceStrategy),
+       rolloutId = pulumi.Input.asOptionalInput<String>(rolloutId),
+       serviceName = pulumi.Input.asInput<String>(serviceName),
+       trafficPercentStrategy =
+           pulumi.Input.asOptionalInput<TrafficPercentStrategy>(
+             trafficPercentStrategy,
+           );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,19 +58,30 @@ class RolloutArgs {
       'deleteServiceStrategy': ?deleteServiceStrategy,
       'rolloutId': ?rolloutId,
       'serviceName': serviceName,
-      'trafficPercentStrategy': ?pulumi.Input.mapOptionalInputValue<TrafficPercentStrategy, Map<String, dynamic>>(trafficPercentStrategy, (value) => value.toMap()),
+      'trafficPercentStrategy':
+          ?pulumi.Input.mapOptionalInputValue<
+            TrafficPercentStrategy,
+            Map<String, dynamic>
+          >(trafficPercentStrategy, (value) => value.toMap()),
     };
   }
 
   factory RolloutArgs.fromMap(Map<String, dynamic> map) {
     return RolloutArgs(
-      createTime: map['createTime'] == null ? null : map['createTime'] as String,
+      createTime: map['createTime'] == null
+          ? null
+          : map['createTime'] as String,
       createdBy: map['createdBy'] == null ? null : map['createdBy'] as String,
-      deleteServiceStrategy: map['deleteServiceStrategy'] == null ? null : (map['deleteServiceStrategy'] as Map).cast<String, dynamic>(),
+      deleteServiceStrategy: map['deleteServiceStrategy'] == null
+          ? null
+          : (map['deleteServiceStrategy'] as Map).cast<String, dynamic>(),
       rolloutId: map['rolloutId'] == null ? null : map['rolloutId'] as String,
       serviceName: map['serviceName'] as String,
-      trafficPercentStrategy: map['trafficPercentStrategy'] == null ? null : TrafficPercentStrategy.fromMap((map['trafficPercentStrategy'] as Map).cast<String, dynamic>()),
+      trafficPercentStrategy: map['trafficPercentStrategy'] == null
+          ? null
+          : TrafficPercentStrategy.fromMap(
+              (map['trafficPercentStrategy'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

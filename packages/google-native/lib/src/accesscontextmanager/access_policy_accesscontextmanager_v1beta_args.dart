@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPolicyAccesscontextmanagerV1betaArgs {
   /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
   final pulumi.Input<String> parent;
+
   /// Human readable title. Does not affect behavior.
   final pulumi.Input<String> title;
 
@@ -18,22 +19,19 @@ class AccessPolicyAccesscontextmanagerV1betaArgs {
   AccessPolicyAccesscontextmanagerV1betaArgs({
     required String parent,
     required String title,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      title = pulumi.Input.asInput<String>(title);
+  }) : parent = pulumi.Input.asInput<String>(parent),
+       title = pulumi.Input.asInput<String>(title);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parent': parent,
-      'title': title,
-    };
+    return <String, dynamic>{'parent': parent, 'title': title};
   }
 
-  factory AccessPolicyAccesscontextmanagerV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory AccessPolicyAccesscontextmanagerV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessPolicyAccesscontextmanagerV1betaArgs(
       parent: map['parent'] as String,
       title: map['title'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents state information for a MetadataStore.
 class GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse {
   /// The disk utilization of the MetadataStore in bytes.
@@ -13,15 +12,14 @@ class GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'diskUtilizationBytes': diskUtilizationBytes,
-    };
+    return <String, dynamic>{'diskUtilizationBytes': diskUtilizationBytes};
   }
 
-  factory GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse(
       diskUtilizationBytes: map['diskUtilizationBytes'] as String,
     );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class QueueReservationPlanSettings {
   /// The length of the term of your reserved queue pricing plan commitment. Valid value is `ONE_YEAR`.
   final String commitment;
+
   /// Specifies whether the term of your reserved queue pricing plan. Valid values are `AUTO_RENEW` or `EXPIRE`.
   final String renewalType;
+
   /// Specifies the number of reserved transcode slots (RTS) for queue.
   final int reservedSlots;
 
@@ -35,4 +36,3 @@ class QueueReservationPlanSettings {
     );
   }
 }
-

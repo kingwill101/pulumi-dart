@@ -16,4 +16,3 @@ enum MethodSyntax {
     throw ArgumentError('Unknown MethodSyntax value: $value');
   }
 }
-

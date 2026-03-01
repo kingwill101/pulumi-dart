@@ -10,16 +10,22 @@ import 'rewrite_response.dart';
 class ServingConfigResponse {
   /// How to handle well known App Association files.
   final String appAssociation;
+
   /// Defines whether to drop the file extension from uploaded files.
   final bool cleanUrls;
+
   /// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
   final List<HeaderResponse> headers;
+
   /// Optional. Defines i18n rewrite behavior.
   final I18nConfigResponse i18n;
+
   /// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
   final List<RedirectResponse> redirects;
+
   /// An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
   final List<RewriteResponse> rewrites;
+
   /// Defines how to handle a trailing slash in the URL path.
   final String trailingSlashBehavior;
 
@@ -45,10 +51,21 @@ class ServingConfigResponse {
     return <String, dynamic>{
       'appAssociation': appAssociation,
       'cleanUrls': cleanUrls,
-      'headers': pulumi.Input.encodeList<HeaderResponse, Map<String, dynamic>>(headers, (value) => value.toMap()),
+      'headers': pulumi.Input.encodeList<HeaderResponse, Map<String, dynamic>>(
+        headers,
+        (value) => value.toMap(),
+      ),
       'i18n': i18n.toMap(),
-      'redirects': pulumi.Input.encodeList<RedirectResponse, Map<String, dynamic>>(redirects, (value) => value.toMap()),
-      'rewrites': pulumi.Input.encodeList<RewriteResponse, Map<String, dynamic>>(rewrites, (value) => value.toMap()),
+      'redirects':
+          pulumi.Input.encodeList<RedirectResponse, Map<String, dynamic>>(
+            redirects,
+            (value) => value.toMap(),
+          ),
+      'rewrites':
+          pulumi.Input.encodeList<RewriteResponse, Map<String, dynamic>>(
+            rewrites,
+            (value) => value.toMap(),
+          ),
       'trailingSlashBehavior': trailingSlashBehavior,
     };
   }
@@ -57,12 +74,25 @@ class ServingConfigResponse {
     return ServingConfigResponse(
       appAssociation: map['appAssociation'] as String,
       cleanUrls: map['cleanUrls'] as bool,
-      headers: pulumi.Input.decodeList<HeaderResponse>(map['headers'], (value) => HeaderResponse.fromMap((value as Map).cast<String, dynamic>())),
-      i18n: I18nConfigResponse.fromMap((map['i18n'] as Map).cast<String, dynamic>()),
-      redirects: pulumi.Input.decodeList<RedirectResponse>(map['redirects'], (value) => RedirectResponse.fromMap((value as Map).cast<String, dynamic>())),
-      rewrites: pulumi.Input.decodeList<RewriteResponse>(map['rewrites'], (value) => RewriteResponse.fromMap((value as Map).cast<String, dynamic>())),
+      headers: pulumi.Input.decodeList<HeaderResponse>(
+        map['headers'],
+        (value) =>
+            HeaderResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      i18n: I18nConfigResponse.fromMap(
+        (map['i18n'] as Map).cast<String, dynamic>(),
+      ),
+      redirects: pulumi.Input.decodeList<RedirectResponse>(
+        map['redirects'],
+        (value) =>
+            RedirectResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      rewrites: pulumi.Input.decodeList<RewriteResponse>(
+        map['rewrites'],
+        (value) =>
+            RewriteResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       trailingSlashBehavior: map['trailingSlashBehavior'] as String,
     );
   }
 }
-

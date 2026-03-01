@@ -25,12 +25,11 @@ class GetIntentDialogflowV3Args {
     String? languageCode,
     required String location,
     String? project,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      intentId = pulumi.Input.asInput<String>(intentId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : agentId = pulumi.Input.asInput<String>(agentId),
+       intentId = pulumi.Input.asInput<String>(intentId),
+       languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +45,11 @@ class GetIntentDialogflowV3Args {
     return GetIntentDialogflowV3Args(
       agentId: map['agentId'] as String,
       intentId: map['intentId'] as String,
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
+      languageCode: map['languageCode'] == null
+          ? null
+          : map['languageCode'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

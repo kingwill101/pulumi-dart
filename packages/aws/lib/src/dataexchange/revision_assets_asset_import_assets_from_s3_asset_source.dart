@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RevisionAssetsAssetImportAssetsFromS3AssetSource {
   /// The name of the S3 bucket.
   final String bucket;
+
   /// The key of the object in the S3 bucket.
   final String key;
 
@@ -16,17 +16,15 @@ class RevisionAssetsAssetImportAssetsFromS3AssetSource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-      'key': key,
-    };
+    return <String, dynamic>{'bucket': bucket, 'key': key};
   }
 
-  factory RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap(Map<String, dynamic> map) {
+  factory RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RevisionAssetsAssetImportAssetsFromS3AssetSource(
       bucket: map['bucket'] as String,
       key: map['key'] as String,
     );
   }
 }
-

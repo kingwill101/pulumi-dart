@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Cloud Scheduler Trigger configuration
 class EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse {
   /// The cron tab of cloud scheduler trigger.
   final String cronTab;
+
   /// Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations
   final String errorMessage;
+
   /// The location where associated cloud scheduler job will be created
   final String location;
+
   /// Service account used by Cloud Scheduler to trigger the integration at scheduled time
   final String serviceAccountEmail;
 
@@ -33,7 +35,9 @@ class EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse(
       cronTab: map['cronTab'] as String,
       errorMessage: map['errorMessage'] as String,
@@ -42,4 +46,3 @@ class EnterpriseCrmEventbusProtoCloudSchedulerConfigResponse {
     );
   }
 }
-

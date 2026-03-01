@@ -8,16 +8,22 @@ import 'page.dart';
 class Documentation {
   /// The URL to the root of documentation.
   final String? documentationRootUrl;
+
   /// Declares a single overview page. For example: documentation: summary: ... overview: (== include overview.md ==) This is a shortcut for the following declaration (using pages style): documentation: summary: ... pages: - name: Overview content: (== include overview.md ==) Note: you cannot specify both `overview` field and `pages` field.
   final String? overview;
+
   /// The top level pages for the documentation set.
   final List<Page>? pages;
+
   /// A list of documentation rules that apply to individual API elements. **NOTE:** All service configuration rules follow "last one wins" order.
   final List<DocumentationRule>? rules;
+
   /// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
   final List<Page>? sectionOverrides;
+
   /// Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
   final String? serviceRootUrl;
+
   /// A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
   final String? summary;
 
@@ -43,9 +49,24 @@ class Documentation {
     return <String, dynamic>{
       'documentationRootUrl': ?documentationRootUrl,
       'overview': ?overview,
-      'pages': ?pages == null ? null : pulumi.Input.encodeList<Page, Map<String, dynamic>>(pages!, (value) => value.toMap()),
-      'rules': ?rules == null ? null : pulumi.Input.encodeList<DocumentationRule, Map<String, dynamic>>(rules!, (value) => value.toMap()),
-      'sectionOverrides': ?sectionOverrides == null ? null : pulumi.Input.encodeList<Page, Map<String, dynamic>>(sectionOverrides!, (value) => value.toMap()),
+      'pages': ?pages == null
+          ? null
+          : pulumi.Input.encodeList<Page, Map<String, dynamic>>(
+              pages!,
+              (value) => value.toMap(),
+            ),
+      'rules': ?rules == null
+          ? null
+          : pulumi.Input.encodeList<DocumentationRule, Map<String, dynamic>>(
+              rules!,
+              (value) => value.toMap(),
+            ),
+      'sectionOverrides': ?sectionOverrides == null
+          ? null
+          : pulumi.Input.encodeList<Page, Map<String, dynamic>>(
+              sectionOverrides!,
+              (value) => value.toMap(),
+            ),
       'serviceRootUrl': ?serviceRootUrl,
       'summary': ?summary,
     };
@@ -53,14 +74,34 @@ class Documentation {
 
   factory Documentation.fromMap(Map<String, dynamic> map) {
     return Documentation(
-      documentationRootUrl: map['documentationRootUrl'] == null ? null : map['documentationRootUrl'] as String,
+      documentationRootUrl: map['documentationRootUrl'] == null
+          ? null
+          : map['documentationRootUrl'] as String,
       overview: map['overview'] == null ? null : map['overview'] as String,
-      pages: map['pages'] == null ? null : pulumi.Input.decodeList<Page>(map['pages'], (value) => Page.fromMap((value as Map).cast<String, dynamic>())),
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<DocumentationRule>(map['rules'], (value) => DocumentationRule.fromMap((value as Map).cast<String, dynamic>())),
-      sectionOverrides: map['sectionOverrides'] == null ? null : pulumi.Input.decodeList<Page>(map['sectionOverrides'], (value) => Page.fromMap((value as Map).cast<String, dynamic>())),
-      serviceRootUrl: map['serviceRootUrl'] == null ? null : map['serviceRootUrl'] as String,
+      pages: map['pages'] == null
+          ? null
+          : pulumi.Input.decodeList<Page>(
+              map['pages'],
+              (value) => Page.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      rules: map['rules'] == null
+          ? null
+          : pulumi.Input.decodeList<DocumentationRule>(
+              map['rules'],
+              (value) => DocumentationRule.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      sectionOverrides: map['sectionOverrides'] == null
+          ? null
+          : pulumi.Input.decodeList<Page>(
+              map['sectionOverrides'],
+              (value) => Page.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      serviceRootUrl: map['serviceRootUrl'] == null
+          ? null
+          : map['serviceRootUrl'] as String,
       summary: map['summary'] == null ? null : map['summary'] as String,
     );
   }
 }
-

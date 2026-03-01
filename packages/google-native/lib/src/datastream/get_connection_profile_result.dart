@@ -11,28 +11,40 @@ import 'private_connectivity_response.dart';
 class GetConnectionProfileResult {
   /// BigQuery Connection Profile configuration.
   final Map<String, dynamic> bigqueryProfile;
+
   /// The create time of the resource.
   final String createTime;
+
   /// Display name.
   final String displayName;
+
   /// Forward SSH tunnel connectivity.
   final ForwardSshTunnelConnectivityResponse forwardSshConnectivity;
+
   /// Cloud Storage ConnectionProfile configuration.
   final GcsProfileResponse gcsProfile;
+
   /// Labels.
   final Map<String, String> labels;
+
   /// MySQL ConnectionProfile configuration.
   final MysqlProfileResponse mysqlProfile;
+
   /// The resource's name.
   final String name;
+
   /// Oracle ConnectionProfile configuration.
   final OracleProfileResponse oracleProfile;
+
   /// PostgreSQL Connection Profile configuration.
   final PostgresqlProfileResponse postgresqlProfile;
+
   /// Private connectivity.
   final PrivateConnectivityResponse privateConnectivity;
+
   /// Static Service IP connectivity.
   final Map<String, dynamic> staticServiceIpConnectivity;
+
   /// The update time of the resource.
   final String updateTime;
 
@@ -89,17 +101,29 @@ class GetConnectionProfileResult {
       bigqueryProfile: (map['bigqueryProfile'] as Map).cast<String, dynamic>(),
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
-      forwardSshConnectivity: ForwardSshTunnelConnectivityResponse.fromMap((map['forwardSshConnectivity'] as Map).cast<String, dynamic>()),
-      gcsProfile: GcsProfileResponse.fromMap((map['gcsProfile'] as Map).cast<String, dynamic>()),
+      forwardSshConnectivity: ForwardSshTunnelConnectivityResponse.fromMap(
+        (map['forwardSshConnectivity'] as Map).cast<String, dynamic>(),
+      ),
+      gcsProfile: GcsProfileResponse.fromMap(
+        (map['gcsProfile'] as Map).cast<String, dynamic>(),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
-      mysqlProfile: MysqlProfileResponse.fromMap((map['mysqlProfile'] as Map).cast<String, dynamic>()),
+      mysqlProfile: MysqlProfileResponse.fromMap(
+        (map['mysqlProfile'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
-      oracleProfile: OracleProfileResponse.fromMap((map['oracleProfile'] as Map).cast<String, dynamic>()),
-      postgresqlProfile: PostgresqlProfileResponse.fromMap((map['postgresqlProfile'] as Map).cast<String, dynamic>()),
-      privateConnectivity: PrivateConnectivityResponse.fromMap((map['privateConnectivity'] as Map).cast<String, dynamic>()),
-      staticServiceIpConnectivity: (map['staticServiceIpConnectivity'] as Map).cast<String, dynamic>(),
+      oracleProfile: OracleProfileResponse.fromMap(
+        (map['oracleProfile'] as Map).cast<String, dynamic>(),
+      ),
+      postgresqlProfile: PostgresqlProfileResponse.fromMap(
+        (map['postgresqlProfile'] as Map).cast<String, dynamic>(),
+      ),
+      privateConnectivity: PrivateConnectivityResponse.fromMap(
+        (map['privateConnectivity'] as Map).cast<String, dynamic>(),
+      ),
+      staticServiceIpConnectivity: (map['staticServiceIpConnectivity'] as Map)
+          .cast<String, dynamic>(),
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

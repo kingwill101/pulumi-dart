@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PolicyDryRunSpecRuleValues {
   /// List of values allowed at this resource.
   final List<String>? allowedValues;
+
   /// List of values denied at this resource.
   final List<String>? deniedValues;
 
   /// Creates a new [PolicyDryRunSpecRuleValues].
   /// [allowedValues] List of values allowed at this resource.
   /// [deniedValues] List of values denied at this resource.
-  PolicyDryRunSpecRuleValues({
-    this.allowedValues,
-    this.deniedValues,
-  });
+  PolicyDryRunSpecRuleValues({this.allowedValues, this.deniedValues});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,9 +21,12 @@ class PolicyDryRunSpecRuleValues {
 
   factory PolicyDryRunSpecRuleValues.fromMap(Map<String, dynamic> map) {
     return PolicyDryRunSpecRuleValues(
-      allowedValues: map['allowedValues'] == null ? null : (map['allowedValues'] as List).cast<String>(),
-      deniedValues: map['deniedValues'] == null ? null : (map['deniedValues'] as List).cast<String>(),
+      allowedValues: map['allowedValues'] == null
+          ? null
+          : (map['allowedValues'] as List).cast<String>(),
+      deniedValues: map['deniedValues'] == null
+          ? null
+          : (map['deniedValues'] as List).cast<String>(),
     );
   }
 }
-

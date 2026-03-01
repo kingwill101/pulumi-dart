@@ -1086,31 +1086,44 @@ import 'plan_workflow.dart';
 class Plan extends pulumi.CustomResource {
   /// ARN of the plan.
   late final pulumi.Output<String> arn;
+
   /// Set of CloudWatch alarms associated with the plan. See Associated Alarms below.
   late final pulumi.Output<List<PlanAssociatedAlarm>?> associatedAlarms;
+
   /// Description of the plan.
   late final pulumi.Output<String?> description;
+
   /// ARN of the IAM role that ARC Region Switch will assume to execute the plan.
   late final pulumi.Output<String> executionRole;
+
   /// Name of the plan. Must be unique within the account.
   late final pulumi.Output<String> name;
+
   /// Primary region for the plan.
   late final pulumi.Output<String?> primaryRegion;
+
   /// Recovery approach for the plan. Valid values: `activeActive`, `activePassive`.
   late final pulumi.Output<String> recoveryApproach;
+
   /// Recovery time objective in minutes.
   late final pulumi.Output<int?> recoveryTimeObjectiveMinutes;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// List of AWS regions involved in the plan.
   late final pulumi.Output<List<String>> regions;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<PlanTimeouts?> timeouts;
+
   /// Set of triggers that can initiate the plan execution. See Triggers below.
   late final pulumi.Output<List<PlanTrigger>?> triggers;
+
   /// List of workflows that define the steps to execute. See Workflow below.
   ///
   /// The following arguments are optional:
@@ -1120,24 +1133,25 @@ class Plan extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Plan]. {@macro pulumi_arcregionswitch_plan_plan_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Plan(
-    String name, {
-    PlanArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:arcregionswitch/plan:Plan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Plan(String name, {PlanArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:arcregionswitch/plan:Plan',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.arn = registerOutput<String>('arn');
-    this.associatedAlarms = registerOutput<List<PlanAssociatedAlarm>?>('associatedAlarms');
+    this.associatedAlarms = registerOutput<List<PlanAssociatedAlarm>?>(
+      'associatedAlarms',
+    );
     this.description = registerOutput<String?>('description');
     this.executionRole = registerOutput<String>('executionRole');
     this.name = registerOutput<String>('name');
     this.primaryRegion = registerOutput<String?>('primaryRegion');
     this.recoveryApproach = registerOutput<String>('recoveryApproach');
-    this.recoveryTimeObjectiveMinutes = registerOutput<int?>('recoveryTimeObjectiveMinutes');
+    this.recoveryTimeObjectiveMinutes = registerOutput<int?>(
+      'recoveryTimeObjectiveMinutes',
+    );
     this.region = registerOutput<String>('region');
     this.regions = registerOutput<List<String>>('regions');
     this.tags = registerOutput<Map<String, String>?>('tags');

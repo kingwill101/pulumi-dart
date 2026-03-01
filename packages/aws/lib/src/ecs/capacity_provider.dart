@@ -535,18 +535,27 @@ import 'capacity_provider_managed_instances_provider.dart';
 class CapacityProvider extends pulumi.CustomResource {
   /// ARN that identifies the capacity provider.
   late final pulumi.Output<String> arn;
+
   /// Configuration block for the provider for the ECS auto scaling group. Detailed below. Exactly one of `auto_scaling_group_provider` or `managed_instances_provider` must be specified.
-  late final pulumi.Output<CapacityProviderAutoScalingGroupProvider?> autoScalingGroupProvider;
+  late final pulumi.Output<CapacityProviderAutoScalingGroupProvider?>
+  autoScalingGroupProvider;
+
   /// Name of the ECS cluster. Required when using `managed_instances_provider`. Must not be set when using `auto_scaling_group_provider`.
   late final pulumi.Output<String?> cluster;
+
   /// Configuration block for the managed instances provider. Detailed below. Exactly one of `auto_scaling_group_provider` or `managed_instances_provider` must be specified.
-  late final pulumi.Output<CapacityProviderManagedInstancesProvider?> managedInstancesProvider;
+  late final pulumi.Output<CapacityProviderManagedInstancesProvider?>
+  managedInstancesProvider;
+
   /// Name of the capacity provider.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -559,15 +568,21 @@ class CapacityProvider extends pulumi.CustomResource {
     CapacityProviderArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ecs/capacityProvider:CapacityProvider',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ecs/capacityProvider:CapacityProvider',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
-    this.autoScalingGroupProvider = registerOutput<CapacityProviderAutoScalingGroupProvider?>('autoScalingGroupProvider');
+    this.autoScalingGroupProvider =
+        registerOutput<CapacityProviderAutoScalingGroupProvider?>(
+          'autoScalingGroupProvider',
+        );
     this.cluster = registerOutput<String?>('cluster');
-    this.managedInstancesProvider = registerOutput<CapacityProviderManagedInstancesProvider?>('managedInstancesProvider');
+    this.managedInstancesProvider =
+        registerOutput<CapacityProviderManagedInstancesProvider?>(
+          'managedInstancesProvider',
+        );
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');

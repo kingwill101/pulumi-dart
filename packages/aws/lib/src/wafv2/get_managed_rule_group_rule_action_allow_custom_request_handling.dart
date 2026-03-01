@@ -4,7 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_managed_rule_group_rule_action_allow_custom_request_handling_insert_header.dart';
 
 class GetManagedRuleGroupRuleActionAllowCustomRequestHandling {
-  final List<GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader> insertHeaders;
+  final List<
+    GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader
+  >
+  insertHeaders;
 
   /// Creates a new [GetManagedRuleGroupRuleActionAllowCustomRequestHandling].
   /// [insertHeaders] Required.
@@ -14,14 +17,28 @@ class GetManagedRuleGroupRuleActionAllowCustomRequestHandling {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'insertHeaders': pulumi.Input.encodeList<GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader, Map<String, dynamic>>(insertHeaders, (value) => value.toMap()),
+      'insertHeaders':
+          pulumi.Input.encodeList<
+            GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader,
+            Map<String, dynamic>
+          >(insertHeaders, (value) => value.toMap()),
     };
   }
 
-  factory GetManagedRuleGroupRuleActionAllowCustomRequestHandling.fromMap(Map<String, dynamic> map) {
+  factory GetManagedRuleGroupRuleActionAllowCustomRequestHandling.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedRuleGroupRuleActionAllowCustomRequestHandling(
-      insertHeaders: pulumi.Input.decodeList<GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>())),
+      insertHeaders:
+          pulumi.Input.decodeList<
+            GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader
+          >(
+            map['insertHeaders'],
+            (value) =>
+                GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

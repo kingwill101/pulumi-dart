@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TopicRuleErrorActionRepublish {
   /// The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
   final int? qos;
+
   /// The ARN of the IAM role that grants access.
   final String roleArn;
+
   /// The name of the MQTT topic the message should be republished to.
   final String topic;
 
@@ -20,11 +21,7 @@ class TopicRuleErrorActionRepublish {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'qos': ?qos,
-      'roleArn': roleArn,
-      'topic': topic,
-    };
+    return <String, dynamic>{'qos': ?qos, 'roleArn': roleArn, 'topic': topic};
   }
 
   factory TopicRuleErrorActionRepublish.fromMap(Map<String, dynamic> map) {
@@ -35,4 +32,3 @@ class TopicRuleErrorActionRepublish {
     );
   }
 }
-

@@ -1,24 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getApprovalRuleTemplate.
 class GetApprovalRuleTemplateResult {
   /// The ID of the approval rule template.
   final String approvalRuleTemplateId;
+
   /// Content of the approval rule template.
   final String content;
+
   /// Date the approval rule template was created, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   final String creationDate;
+
   /// Description of the approval rule template.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Date the approval rule template was most recently changed, in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
   final String lastModifiedDate;
+
   /// ARN of the user who made the most recent changes to the approval rule template.
   final String lastModifiedUser;
   final String name;
   final String region;
+
   /// SHA-256 hash signature for the content of the approval rule template.
   final String ruleContentSha256;
 
@@ -76,4 +82,3 @@ class GetApprovalRuleTemplateResult {
     );
   }
 }
-

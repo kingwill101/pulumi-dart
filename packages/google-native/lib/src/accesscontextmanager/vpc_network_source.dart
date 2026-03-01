@@ -9,9 +9,7 @@ class VpcNetworkSource {
 
   /// Creates a new [VpcNetworkSource].
   /// [vpcSubnetwork] Sub-segment ranges of a VPC network.
-  VpcNetworkSource({
-    this.vpcSubnetwork,
-  });
+  VpcNetworkSource({this.vpcSubnetwork});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class VpcNetworkSource {
 
   factory VpcNetworkSource.fromMap(Map<String, dynamic> map) {
     return VpcNetworkSource(
-      vpcSubnetwork: map['vpcSubnetwork'] == null ? null : VpcSubNetwork.fromMap((map['vpcSubnetwork'] as Map).cast<String, dynamic>()),
+      vpcSubnetwork: map['vpcSubnetwork'] == null
+          ? null
+          : VpcSubNetwork.fromMap(
+              (map['vpcSubnetwork'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

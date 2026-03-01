@@ -7,6 +7,7 @@ import 'google_cloud_documentai_v1_document_page_layout_response.dart';
 class GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse {
   /// Detailed barcode information of the DetectedBarcode.
   final GoogleCloudDocumentaiV1BarcodeResponse barcode;
+
   /// Layout for DetectedBarcode.
   final GoogleCloudDocumentaiV1DocumentPageLayoutResponse layout;
 
@@ -25,11 +26,16 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponse(
-      barcode: GoogleCloudDocumentaiV1BarcodeResponse.fromMap((map['barcode'] as Map).cast<String, dynamic>()),
-      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['layout'] as Map).cast<String, dynamic>()),
+      barcode: GoogleCloudDocumentaiV1BarcodeResponse.fromMap(
+        (map['barcode'] as Map).cast<String, dynamic>(),
+      ),
+      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
+        (map['layout'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

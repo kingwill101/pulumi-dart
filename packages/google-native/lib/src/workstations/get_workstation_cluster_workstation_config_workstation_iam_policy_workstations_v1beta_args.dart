@@ -28,13 +28,16 @@ class GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1be
     required String workstationClusterId,
     required String workstationConfigId,
     required String workstationId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
-      workstationId = pulumi.Input.asInput<String>(workstationId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       workstationClusterId = pulumi.Input.asInput<String>(
+         workstationClusterId,
+       ),
+       workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
+       workstationId = pulumi.Input.asInput<String>(workstationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +50,15 @@ class GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1be
     };
   }
 
-  factory GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1betaArgs(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       workstationClusterId: map['workstationClusterId'] as String,
       workstationConfigId: map['workstationConfigId'] as String,
@@ -58,4 +66,3 @@ class GetWorkstationClusterWorkstationConfigWorkstationIamPolicyWorkstationsV1be
     );
   }
 }
-

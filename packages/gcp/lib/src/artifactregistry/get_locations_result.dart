@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLocations.
 class GetLocationsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The list of Artifact Registry locations available for the given project.
   final List<String> locations;
   final String project;
@@ -35,4 +35,3 @@ class GetLocationsResult {
     );
   }
 }
-

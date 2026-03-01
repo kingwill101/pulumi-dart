@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Metadata associated with a Cloud Run revision.
 class CloudRunRevisionInfoResponse {
   /// Name of a Cloud Run revision.
   final String displayName;
+
   /// Location in which this revision is deployed.
   final String location;
+
   /// URI of Cloud Run service this revision belongs to.
   final String serviceUri;
+
   /// URI of a Cloud Run revision.
   final String uri;
 
@@ -42,4 +44,3 @@ class CloudRunRevisionInfoResponse {
     );
   }
 }
-

@@ -7,14 +7,19 @@ import 'version.dart';
 class Distribution {
   /// The CPU architecture for which packages in this distribution channel were built.
   final DistributionArchitecture? architecture;
+
   /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
   final String cpeUri;
+
   /// The distribution channel-specific description of this package.
   final String? description;
+
   /// The latest available version of this package in this distribution channel.
   final Version? latestVersion;
+
   /// A freeform string denoting the maintainer of this package.
   final String? maintainer;
+
   /// The distribution channel-specific homepage for this package.
   final String? url;
 
@@ -47,13 +52,22 @@ class Distribution {
 
   factory Distribution.fromMap(Map<String, dynamic> map) {
     return Distribution(
-      architecture: map['architecture'] == null ? null : DistributionArchitecture.fromValue(map['architecture'] as String),
+      architecture: map['architecture'] == null
+          ? null
+          : DistributionArchitecture.fromValue(map['architecture'] as String),
       cpeUri: map['cpeUri'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      latestVersion: map['latestVersion'] == null ? null : Version.fromMap((map['latestVersion'] as Map).cast<String, dynamic>()),
-      maintainer: map['maintainer'] == null ? null : map['maintainer'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      latestVersion: map['latestVersion'] == null
+          ? null
+          : Version.fromMap(
+              (map['latestVersion'] as Map).cast<String, dynamic>(),
+            ),
+      maintainer: map['maintainer'] == null
+          ? null
+          : map['maintainer'] as String,
       url: map['url'] == null ? null : map['url'] as String,
     );
   }
 }
-

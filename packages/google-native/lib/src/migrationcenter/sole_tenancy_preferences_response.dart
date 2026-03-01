@@ -7,10 +7,13 @@ import 'sole_tenant_node_type_response.dart';
 class SoleTenancyPreferencesResponse {
   /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with.
   final String commitmentPlan;
+
   /// CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
   final double cpuOvercommitRatio;
+
   /// Sole Tenancy nodes maintenance policy.
   final String hostMaintenancePolicy;
+
   /// A list of sole tenant node types. An empty list means that all possible node types will be considered.
   final List<SoleTenantNodeTypeResponse> nodeTypes;
 
@@ -31,7 +34,11 @@ class SoleTenancyPreferencesResponse {
       'commitmentPlan': commitmentPlan,
       'cpuOvercommitRatio': cpuOvercommitRatio,
       'hostMaintenancePolicy': hostMaintenancePolicy,
-      'nodeTypes': pulumi.Input.encodeList<SoleTenantNodeTypeResponse, Map<String, dynamic>>(nodeTypes, (value) => value.toMap()),
+      'nodeTypes':
+          pulumi.Input.encodeList<
+            SoleTenantNodeTypeResponse,
+            Map<String, dynamic>
+          >(nodeTypes, (value) => value.toMap()),
     };
   }
 
@@ -40,8 +47,12 @@ class SoleTenancyPreferencesResponse {
       commitmentPlan: map['commitmentPlan'] as String,
       cpuOvercommitRatio: map['cpuOvercommitRatio'] as double,
       hostMaintenancePolicy: map['hostMaintenancePolicy'] as String,
-      nodeTypes: pulumi.Input.decodeList<SoleTenantNodeTypeResponse>(map['nodeTypes'], (value) => SoleTenantNodeTypeResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nodeTypes: pulumi.Input.decodeList<SoleTenantNodeTypeResponse>(
+        map['nodeTypes'],
+        (value) => SoleTenantNodeTypeResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

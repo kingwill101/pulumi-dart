@@ -22,11 +22,10 @@ class GetServiceServicedirectoryV1beta1Args {
     required String namespaceId,
     String? project,
     required String serviceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       namespaceId = pulumi.Input.asInput<String>(namespaceId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,7 +36,9 @@ class GetServiceServicedirectoryV1beta1Args {
     };
   }
 
-  factory GetServiceServicedirectoryV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetServiceServicedirectoryV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceServicedirectoryV1beta1Args(
       location: map['location'] as String,
       namespaceId: map['namespaceId'] as String,
@@ -46,4 +47,3 @@ class GetServiceServicedirectoryV1beta1Args {
     );
   }
 }
-

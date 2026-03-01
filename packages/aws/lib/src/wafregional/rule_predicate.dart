@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RulePredicate {
   final String dataId;
   final bool negated;
@@ -32,4 +31,3 @@ class RulePredicate {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TableExternalDataConfigurationParquetOptions {
   /// Indicates whether to use schema inference specifically for Parquet LIST logical type.
   final bool? enableListInference;
+
   /// Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
   final bool? enumAsString;
 
@@ -22,11 +22,16 @@ class TableExternalDataConfigurationParquetOptions {
     };
   }
 
-  factory TableExternalDataConfigurationParquetOptions.fromMap(Map<String, dynamic> map) {
+  factory TableExternalDataConfigurationParquetOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableExternalDataConfigurationParquetOptions(
-      enableListInference: map['enableListInference'] == null ? null : map['enableListInference'] as bool,
-      enumAsString: map['enumAsString'] == null ? null : map['enumAsString'] as bool,
+      enableListInference: map['enableListInference'] == null
+          ? null
+          : map['enableListInference'] as bool,
+      enumAsString: map['enumAsString'] == null
+          ? null
+          : map['enumAsString'] as bool,
     );
   }
 }
-

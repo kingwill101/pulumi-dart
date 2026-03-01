@@ -6,10 +6,13 @@ import 'start_activity_intent.dart';
 class RoboStartingIntent {
   /// An intent that starts the main launcher activity.
   final Map<String, dynamic>? launcherActivity;
+
   /// Skips the starting activity
   final Map<String, dynamic>? noActivity;
+
   /// An intent that starts an activity with specific details.
   final StartActivityIntent? startActivity;
+
   /// Timeout in seconds for each intent.
   final String? timeout;
 
@@ -36,11 +39,18 @@ class RoboStartingIntent {
 
   factory RoboStartingIntent.fromMap(Map<String, dynamic> map) {
     return RoboStartingIntent(
-      launcherActivity: map['launcherActivity'] == null ? null : (map['launcherActivity'] as Map).cast<String, dynamic>(),
-      noActivity: map['noActivity'] == null ? null : (map['noActivity'] as Map).cast<String, dynamic>(),
-      startActivity: map['startActivity'] == null ? null : StartActivityIntent.fromMap((map['startActivity'] as Map).cast<String, dynamic>()),
+      launcherActivity: map['launcherActivity'] == null
+          ? null
+          : (map['launcherActivity'] as Map).cast<String, dynamic>(),
+      noActivity: map['noActivity'] == null
+          ? null
+          : (map['noActivity'] as Map).cast<String, dynamic>(),
+      startActivity: map['startActivity'] == null
+          ? null
+          : StartActivityIntent.fromMap(
+              (map['startActivity'] as Map).cast<String, dynamic>(),
+            ),
       timeout: map['timeout'] == null ? null : map['timeout'] as String,
     );
   }
 }
-

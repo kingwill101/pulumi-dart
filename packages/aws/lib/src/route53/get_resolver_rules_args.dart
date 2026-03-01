@@ -11,14 +11,19 @@ class GetResolverRulesArgs {
   /// The filtering is done locally, so could have a performance impact if the result is large.
   /// This argument should be used along with other arguments to limit the number of results returned.
   final pulumi.Input<String>? nameRegex;
+
   /// When the desired resolver rules are shared with another AWS account, the account ID of the account that the rules are shared with.
   final pulumi.Input<String>? ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the outbound resolver endpoint for the desired resolver rules.
   final pulumi.Input<String>? resolverEndpointId;
+
   /// Rule type of the desired resolver rules. Valid values are `FORWARD`, `SYSTEM` and `RECURSIVE`.
   final pulumi.Input<String>? ruleType;
+
   /// Whether the desired resolver rules are shared and, if so, whether the current account is sharing the rules with another account, or another account is sharing the rules with the current account. Valid values are `NOT_SHARED`, `SHARED_BY_ME` or `SHARED_WITH_ME`
   final pulumi.Input<String>? shareStatus;
 
@@ -36,13 +41,14 @@ class GetResolverRulesArgs {
     String? resolverEndpointId,
     String? ruleType,
     String? shareStatus,
-  }) :
-      nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolverEndpointId = pulumi.Input.asOptionalInput<String>(resolverEndpointId),
-      ruleType = pulumi.Input.asOptionalInput<String>(ruleType),
-      shareStatus = pulumi.Input.asOptionalInput<String>(shareStatus);
+  }) : nameRegex = pulumi.Input.asOptionalInput<String>(nameRegex),
+       ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       resolverEndpointId = pulumi.Input.asOptionalInput<String>(
+         resolverEndpointId,
+       ),
+       ruleType = pulumi.Input.asOptionalInput<String>(ruleType),
+       shareStatus = pulumi.Input.asOptionalInput<String>(shareStatus);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,10 +66,13 @@ class GetResolverRulesArgs {
       nameRegex: map['nameRegex'] == null ? null : map['nameRegex'] as String,
       ownerId: map['ownerId'] == null ? null : map['ownerId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      resolverEndpointId: map['resolverEndpointId'] == null ? null : map['resolverEndpointId'] as String,
+      resolverEndpointId: map['resolverEndpointId'] == null
+          ? null
+          : map['resolverEndpointId'] as String,
       ruleType: map['ruleType'] == null ? null : map['ruleType'] as String,
-      shareStatus: map['shareStatus'] == null ? null : map['shareStatus'] as String,
+      shareStatus: map['shareStatus'] == null
+          ? null
+          : map['shareStatus'] as String,
     );
   }
 }
-

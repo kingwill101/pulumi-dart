@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// TargetsTypeCondition contains information on whether the Targets defined in the Delivery Pipeline are of the same type.
 class TargetsTypeConditionResponse {
   /// Human readable error message.
   final String errorDetails;
+
   /// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
   final bool status;
 
@@ -17,10 +17,7 @@ class TargetsTypeConditionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'errorDetails': errorDetails,
-      'status': status,
-    };
+    return <String, dynamic>{'errorDetails': errorDetails, 'status': status};
   }
 
   factory TargetsTypeConditionResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class TargetsTypeConditionResponse {
     );
   }
 }
-

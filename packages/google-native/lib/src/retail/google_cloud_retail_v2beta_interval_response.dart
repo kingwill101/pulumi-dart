@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A floating point interval.
 class GoogleCloudRetailV2betaIntervalResponse {
   /// Exclusive upper bound.
   final double exclusiveMaximum;
+
   /// Exclusive lower bound.
   final double exclusiveMinimum;
+
   /// Inclusive upper bound.
   final double maximum;
+
   /// Inclusive lower bound.
   final double minimum;
 
@@ -33,7 +35,9 @@ class GoogleCloudRetailV2betaIntervalResponse {
     };
   }
 
-  factory GoogleCloudRetailV2betaIntervalResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2betaIntervalResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2betaIntervalResponse(
       exclusiveMaximum: map['exclusiveMaximum'] as double,
       exclusiveMinimum: map['exclusiveMinimum'] as double,
@@ -42,4 +46,3 @@ class GoogleCloudRetailV2betaIntervalResponse {
     );
   }
 }
-

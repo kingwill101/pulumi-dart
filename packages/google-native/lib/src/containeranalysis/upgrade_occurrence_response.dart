@@ -8,10 +8,13 @@ import 'windows_update_response.dart';
 class UpgradeOccurrenceResponse {
   /// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
   final UpgradeDistributionResponse distribution;
+
   /// Required for non-Windows OS. The package this Upgrade is for.
   final String package;
+
   /// Required for non-Windows OS. The version of the package in a machine + human readable form.
   final VersionResponse parsedVersion;
+
   /// Required for Windows OS. Represents the metadata about the Windows update.
   final WindowsUpdateResponse windowsUpdate;
 
@@ -38,11 +41,16 @@ class UpgradeOccurrenceResponse {
 
   factory UpgradeOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeOccurrenceResponse(
-      distribution: UpgradeDistributionResponse.fromMap((map['distribution'] as Map).cast<String, dynamic>()),
+      distribution: UpgradeDistributionResponse.fromMap(
+        (map['distribution'] as Map).cast<String, dynamic>(),
+      ),
       package: map['package'] as String,
-      parsedVersion: VersionResponse.fromMap((map['parsedVersion'] as Map).cast<String, dynamic>()),
-      windowsUpdate: WindowsUpdateResponse.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>()),
+      parsedVersion: VersionResponse.fromMap(
+        (map['parsedVersion'] as Map).cast<String, dynamic>(),
+      ),
+      windowsUpdate: WindowsUpdateResponse.fromMap(
+        (map['windowsUpdate'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

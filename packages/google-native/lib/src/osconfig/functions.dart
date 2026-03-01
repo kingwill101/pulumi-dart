@@ -45,7 +45,8 @@ Future<GetPatchDeploymentResult> getPatchDeployment(
 /// Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter.
 /// [args] Arguments passed to this invoke. {@macro pulumi_osconfig_v1alpha_get_os_policy_assignment_osconfig_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOsPolicyAssignmentOsconfigV1alphaResult> getOsPolicyAssignmentOsconfigV1alpha(
+Future<GetOsPolicyAssignmentOsconfigV1alphaResult>
+getOsPolicyAssignmentOsconfigV1alpha(
   GetOsPolicyAssignmentOsconfigV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -9,11 +9,15 @@ import 'google_cloud_aiplatform_v1_feature_online_store_bigtable.dart';
 /// {@macro pulumi_aiplatform_v1_feature_online_store_args_doc}
 class FeatureOnlineStoreArgs {
   /// Contains settings for the Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
-  final pulumi.Input<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>? bigtable;
+  final pulumi.Input<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>?
+  bigtable;
+
   /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final pulumi.Input<String>? etag;
+
   /// Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location.
   final pulumi.Input<String> featureOnlineStoreId;
+
   /// Optional. The labels with user-defined metadata to organize your FeatureOnlineStore. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureOnlineStore(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
@@ -33,17 +37,25 @@ class FeatureOnlineStoreArgs {
     Map<String, String>? labels,
     String? location,
     String? project,
-  }) :
-      bigtable = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable>(bigtable),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      featureOnlineStoreId = pulumi.Input.asInput<String>(featureOnlineStoreId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : bigtable =
+           pulumi.Input.asOptionalInput<
+             GoogleCloudAiplatformV1FeatureOnlineStoreBigtable
+           >(bigtable),
+       etag = pulumi.Input.asOptionalInput<String>(etag),
+       featureOnlineStoreId = pulumi.Input.asInput<String>(
+         featureOnlineStoreId,
+       ),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigtable': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1FeatureOnlineStoreBigtable, Map<String, dynamic>>(bigtable, (value) => value.toMap()),
+      'bigtable':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1FeatureOnlineStoreBigtable,
+            Map<String, dynamic>
+          >(bigtable, (value) => value.toMap()),
       'etag': ?etag,
       'featureOnlineStoreId': featureOnlineStoreId,
       'labels': ?labels,
@@ -54,13 +66,18 @@ class FeatureOnlineStoreArgs {
 
   factory FeatureOnlineStoreArgs.fromMap(Map<String, dynamic> map) {
     return FeatureOnlineStoreArgs(
-      bigtable: map['bigtable'] == null ? null : GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromMap((map['bigtable'] as Map).cast<String, dynamic>()),
+      bigtable: map['bigtable'] == null
+          ? null
+          : GoogleCloudAiplatformV1FeatureOnlineStoreBigtable.fromMap(
+              (map['bigtable'] as Map).cast<String, dynamic>(),
+            ),
       etag: map['etag'] == null ? null : map['etag'] as String,
       featureOnlineStoreId: map['featureOnlineStoreId'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

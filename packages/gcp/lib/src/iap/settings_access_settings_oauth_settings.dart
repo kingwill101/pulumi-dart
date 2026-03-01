@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SettingsAccessSettingsOauthSettings {
   /// Domain hint to send as hd=? parameter in OAuth request flow.
   /// Enables redirect to primary IDP by skipping Google's login screen.
@@ -9,6 +8,7 @@ class SettingsAccessSettingsOauthSettings {
   /// since access behavior is managed by IAM policies.
   /// * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
   final String? loginHint;
+
   /// List of client ids allowed to use IAP programmatically.
   final List<String>? programmaticClients;
 
@@ -27,11 +27,14 @@ class SettingsAccessSettingsOauthSettings {
     };
   }
 
-  factory SettingsAccessSettingsOauthSettings.fromMap(Map<String, dynamic> map) {
+  factory SettingsAccessSettingsOauthSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SettingsAccessSettingsOauthSettings(
       loginHint: map['loginHint'] == null ? null : map['loginHint'] as String,
-      programmaticClients: map['programmaticClients'] == null ? null : (map['programmaticClients'] as List).cast<String>(),
+      programmaticClients: map['programmaticClients'] == null
+          ? null
+          : (map['programmaticClients'] as List).cast<String>(),
     );
   }
 }
-

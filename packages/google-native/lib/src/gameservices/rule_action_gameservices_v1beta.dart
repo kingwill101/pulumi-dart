@@ -19,4 +19,3 @@ enum RuleActionGameservicesV1beta {
     throw ArgumentError('Unknown RuleActionGameservicesV1beta value: $value');
   }
 }
-

@@ -19,10 +19,9 @@ class GetOauthIdpConfigArgs {
     required String oauthIdpConfigId,
     String? project,
     required String tenantId,
-  }) :
-      oauthIdpConfigId = pulumi.Input.asInput<String>(oauthIdpConfigId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+  }) : oauthIdpConfigId = pulumi.Input.asInput<String>(oauthIdpConfigId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tenantId = pulumi.Input.asInput<String>(tenantId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetOauthIdpConfigArgs {
     );
   }
 }
-

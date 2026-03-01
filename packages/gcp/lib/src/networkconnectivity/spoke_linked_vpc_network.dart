@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SpokeLinkedVpcNetwork {
   /// IP ranges encompassing the subnets to be excluded from peering.
   final List<String>? excludeExportRanges;
+
   /// IP ranges allowed to be included from peering.
   final List<String>? includeExportRanges;
+
   /// The URI of the VPC network resource.
   final String uri;
 
@@ -29,10 +30,13 @@ class SpokeLinkedVpcNetwork {
 
   factory SpokeLinkedVpcNetwork.fromMap(Map<String, dynamic> map) {
     return SpokeLinkedVpcNetwork(
-      excludeExportRanges: map['excludeExportRanges'] == null ? null : (map['excludeExportRanges'] as List).cast<String>(),
-      includeExportRanges: map['includeExportRanges'] == null ? null : (map['includeExportRanges'] as List).cast<String>(),
+      excludeExportRanges: map['excludeExportRanges'] == null
+          ? null
+          : (map['excludeExportRanges'] as List).cast<String>(),
+      includeExportRanges: map['includeExportRanges'] == null
+          ? null
+          : (map['includeExportRanges'] as List).cast<String>(),
       uri: map['uri'] as String,
     );
   }
 }
-

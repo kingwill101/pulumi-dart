@@ -25,12 +25,11 @@ class GetTaskCloudtasksV2beta2Args {
     required String queueId,
     String? responseView,
     required String taskId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queueId = pulumi.Input.asInput<String>(queueId),
-      responseView = pulumi.Input.asOptionalInput<String>(responseView),
-      taskId = pulumi.Input.asInput<String>(taskId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       queueId = pulumi.Input.asInput<String>(queueId),
+       responseView = pulumi.Input.asOptionalInput<String>(responseView),
+       taskId = pulumi.Input.asInput<String>(taskId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,9 +46,10 @@ class GetTaskCloudtasksV2beta2Args {
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       queueId: map['queueId'] as String,
-      responseView: map['responseView'] == null ? null : map['responseView'] as String,
+      responseView: map['responseView'] == null
+          ? null
+          : map['responseView'] as String,
       taskId: map['taskId'] as String,
     );
   }
 }
-

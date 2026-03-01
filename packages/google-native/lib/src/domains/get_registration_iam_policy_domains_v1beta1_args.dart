@@ -22,11 +22,12 @@ class GetRegistrationIamPolicyDomainsV1beta1Args {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String registrationId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      registrationId = pulumi.Input.asInput<String>(registrationId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       registrationId = pulumi.Input.asInput<String>(registrationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,13 +38,17 @@ class GetRegistrationIamPolicyDomainsV1beta1Args {
     };
   }
 
-  factory GetRegistrationIamPolicyDomainsV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetRegistrationIamPolicyDomainsV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegistrationIamPolicyDomainsV1beta1Args(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       registrationId: map['registrationId'] as String,
     );
   }
 }
-

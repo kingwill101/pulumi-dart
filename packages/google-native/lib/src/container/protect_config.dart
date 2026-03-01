@@ -7,29 +7,38 @@ import 'workload_config.dart';
 class ProtectConfig {
   /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
   final WorkloadConfig? workloadConfig;
+
   /// Sets which mode to use for Protect workload vulnerability scanning feature.
   final ProtectConfigWorkloadVulnerabilityMode? workloadVulnerabilityMode;
 
   /// Creates a new [ProtectConfig].
   /// [workloadConfig] WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
   /// [workloadVulnerabilityMode] Sets which mode to use for Protect workload vulnerability scanning feature.
-  ProtectConfig({
-    this.workloadConfig,
-    this.workloadVulnerabilityMode,
-  });
+  ProtectConfig({this.workloadConfig, this.workloadVulnerabilityMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'workloadConfig': ?workloadConfig == null ? null : workloadConfig!.toMap(),
-      'workloadVulnerabilityMode': ?workloadVulnerabilityMode == null ? null : workloadVulnerabilityMode!.value,
+      'workloadConfig': ?workloadConfig == null
+          ? null
+          : workloadConfig!.toMap(),
+      'workloadVulnerabilityMode': ?workloadVulnerabilityMode == null
+          ? null
+          : workloadVulnerabilityMode!.value,
     };
   }
 
   factory ProtectConfig.fromMap(Map<String, dynamic> map) {
     return ProtectConfig(
-      workloadConfig: map['workloadConfig'] == null ? null : WorkloadConfig.fromMap((map['workloadConfig'] as Map).cast<String, dynamic>()),
-      workloadVulnerabilityMode: map['workloadVulnerabilityMode'] == null ? null : ProtectConfigWorkloadVulnerabilityMode.fromValue(map['workloadVulnerabilityMode'] as String),
+      workloadConfig: map['workloadConfig'] == null
+          ? null
+          : WorkloadConfig.fromMap(
+              (map['workloadConfig'] as Map).cast<String, dynamic>(),
+            ),
+      workloadVulnerabilityMode: map['workloadVulnerabilityMode'] == null
+          ? null
+          : ProtectConfigWorkloadVulnerabilityMode.fromValue(
+              map['workloadVulnerabilityMode'] as String,
+            ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Wrapper for Cloud Run revision attributes.
 class CloudRunRevisionEndpoint {
   /// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
@@ -8,14 +7,10 @@ class CloudRunRevisionEndpoint {
 
   /// Creates a new [CloudRunRevisionEndpoint].
   /// [uri] A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
-  CloudRunRevisionEndpoint({
-    this.uri,
-  });
+  CloudRunRevisionEndpoint({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
   factory CloudRunRevisionEndpoint.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class CloudRunRevisionEndpoint {
     );
   }
 }
-

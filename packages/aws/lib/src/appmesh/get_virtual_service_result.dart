@@ -7,20 +7,26 @@ import 'get_virtual_service_spec.dart';
 class GetVirtualServiceResult {
   /// ARN of the virtual service.
   final String arn;
+
   /// Creation date of the virtual service.
   final String createdDate;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Last update date of the virtual service.
   final String lastUpdatedDate;
   final String meshName;
   final String meshOwner;
   final String name;
   final String region;
+
   /// Resource owner's AWS account ID.
   final String resourceOwner;
+
   /// Virtual service specification. See the `aws.appmesh.VirtualService` resource for details.
   final List<GetVirtualServiceSpec> specs;
+
   /// Map of tags.
   final Map<String, String> tags;
 
@@ -61,7 +67,11 @@ class GetVirtualServiceResult {
       'name': name,
       'region': region,
       'resourceOwner': resourceOwner,
-      'specs': pulumi.Input.encodeList<GetVirtualServiceSpec, Map<String, dynamic>>(specs, (value) => value.toMap()),
+      'specs':
+          pulumi.Input.encodeList<GetVirtualServiceSpec, Map<String, dynamic>>(
+            specs,
+            (value) => value.toMap(),
+          ),
       'tags': tags,
     };
   }
@@ -77,9 +87,13 @@ class GetVirtualServiceResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: pulumi.Input.decodeList<GetVirtualServiceSpec>(map['specs'], (value) => GetVirtualServiceSpec.fromMap((value as Map).cast<String, dynamic>())),
+      specs: pulumi.Input.decodeList<GetVirtualServiceSpec>(
+        map['specs'],
+        (value) => GetVirtualServiceSpec.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

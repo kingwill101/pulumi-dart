@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetCatalogTableTargetTable {
   /// ID of the Glue Catalog and database where the table metadata resides. If omitted, this defaults to the current AWS Account ID.
   final String catalogId;
+
   /// Name of the metadata database where the table metadata resides.
   final String databaseName;
+
   /// Name of the table.
   final String name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final String region;
 
@@ -41,4 +43,3 @@ class GetCatalogTableTargetTable {
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'google_cloud_identitytoolkit_admin_v2_totp_mfa_provider_config_response.
 class GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse {
   /// Describes the state of the MultiFactor Authentication type.
   final String state;
+
   /// TOTP MFA provider config for this project.
-  final GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse totpProviderConfig;
+  final GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse
+  totpProviderConfig;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse].
   /// [state] Describes the state of the MultiFactor Authentication type.
@@ -24,11 +26,15 @@ class GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2ProviderConfigResponse(
       state: map['state'] as String,
-      totpProviderConfig: GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse.fromMap((map['totpProviderConfig'] as Map).cast<String, dynamic>()),
+      totpProviderConfig:
+          GoogleCloudIdentitytoolkitAdminV2TotpMfaProviderConfigResponse.fromMap(
+            (map['totpProviderConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

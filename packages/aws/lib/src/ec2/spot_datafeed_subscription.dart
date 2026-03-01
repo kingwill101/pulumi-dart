@@ -137,8 +137,10 @@ import 'spot_datafeed_subscription_args.dart';
 class SpotDatafeedSubscription extends pulumi.CustomResource {
   /// The Amazon S3 bucket in which to store the Spot instance data feed.
   late final pulumi.Output<String> bucket;
+
   /// Path of folder inside bucket to place spot pricing data.
   late final pulumi.Output<String?> prefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -151,11 +153,11 @@ class SpotDatafeedSubscription extends pulumi.CustomResource {
     SpotDatafeedSubscriptionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ec2/spotDatafeedSubscription:SpotDatafeedSubscription',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucket = registerOutput<String>('bucket');
     this.prefix = registerOutput<String?>('prefix');
     this.region = registerOutput<String>('region');

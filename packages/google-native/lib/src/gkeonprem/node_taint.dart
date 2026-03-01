@@ -6,8 +6,10 @@ import 'node_taint_effect.dart';
 class NodeTaint {
   /// The taint effect.
   final NodeTaintEffect? effect;
+
   /// Key associated with the effect.
   final String? key;
+
   /// Value associated with the effect.
   final String? value;
 
@@ -15,11 +17,7 @@ class NodeTaint {
   /// [effect] The taint effect.
   /// [key] Key associated with the effect.
   /// [value] Value associated with the effect.
-  NodeTaint({
-    this.effect,
-    this.key,
-    this.value,
-  });
+  NodeTaint({this.effect, this.key, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,11 @@ class NodeTaint {
 
   factory NodeTaint.fromMap(Map<String, dynamic> map) {
     return NodeTaint(
-      effect: map['effect'] == null ? null : NodeTaintEffect.fromValue(map['effect'] as String),
+      effect: map['effect'] == null
+          ? null
+          : NodeTaintEffect.fromValue(map['effect'] as String),
       key: map['key'] == null ? null : map['key'] as String,
       value: map['value'] == null ? null : map['value'] as String,
     );
   }
 }
-

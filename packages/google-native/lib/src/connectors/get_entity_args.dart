@@ -25,12 +25,11 @@ class GetEntityArgs {
     required String entityTypeId,
     required String location,
     String? project,
-  }) :
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      entityId = pulumi.Input.asInput<String>(entityId),
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : connectionId = pulumi.Input.asInput<String>(connectionId),
+       entityId = pulumi.Input.asInput<String>(entityId),
+       entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetEntityArgs {
     );
   }
 }
-

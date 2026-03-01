@@ -8,6 +8,7 @@ import 'report_summary_group_finding_response.dart';
 class ReportSummaryResponse {
   /// Aggregate statistics for all the assets across all the groups.
   final ReportSummaryAssetAggregateStatsResponse allAssetsStats;
+
   /// Findings for each Group included in this report.
   final List<ReportSummaryGroupFindingResponse> groupFindings;
 
@@ -22,15 +23,25 @@ class ReportSummaryResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allAssetsStats': allAssetsStats.toMap(),
-      'groupFindings': pulumi.Input.encodeList<ReportSummaryGroupFindingResponse, Map<String, dynamic>>(groupFindings, (value) => value.toMap()),
+      'groupFindings':
+          pulumi.Input.encodeList<
+            ReportSummaryGroupFindingResponse,
+            Map<String, dynamic>
+          >(groupFindings, (value) => value.toMap()),
     };
   }
 
   factory ReportSummaryResponse.fromMap(Map<String, dynamic> map) {
     return ReportSummaryResponse(
-      allAssetsStats: ReportSummaryAssetAggregateStatsResponse.fromMap((map['allAssetsStats'] as Map).cast<String, dynamic>()),
-      groupFindings: pulumi.Input.decodeList<ReportSummaryGroupFindingResponse>(map['groupFindings'], (value) => ReportSummaryGroupFindingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      allAssetsStats: ReportSummaryAssetAggregateStatsResponse.fromMap(
+        (map['allAssetsStats'] as Map).cast<String, dynamic>(),
+      ),
+      groupFindings: pulumi.Input.decodeList<ReportSummaryGroupFindingResponse>(
+        map['groupFindings'],
+        (value) => ReportSummaryGroupFindingResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

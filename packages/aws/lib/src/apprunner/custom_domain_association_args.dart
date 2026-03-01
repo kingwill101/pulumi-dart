@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomDomainAssociationArgs {
   /// Custom domain endpoint to association. Specify a base domain e.g., `example.com` or a subdomain e.g., `subdomain.example.com`.
   final pulumi.Input<String> domainName;
+
   /// Whether to associate the subdomain with the App Runner service in addition to the base domain. Defaults to `true`.
   final pulumi.Input<bool>? enableWwwSubdomain;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of the App Runner service.
   final pulumi.Input<String> serviceArn;
 
@@ -26,11 +29,12 @@ class CustomDomainAssociationArgs {
     bool? enableWwwSubdomain,
     String? region,
     required String serviceArn,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      enableWwwSubdomain = pulumi.Input.asOptionalInput<bool>(enableWwwSubdomain),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      serviceArn = pulumi.Input.asInput<String>(serviceArn);
+  }) : domainName = pulumi.Input.asInput<String>(domainName),
+       enableWwwSubdomain = pulumi.Input.asOptionalInput<bool>(
+         enableWwwSubdomain,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       serviceArn = pulumi.Input.asInput<String>(serviceArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +48,11 @@ class CustomDomainAssociationArgs {
   factory CustomDomainAssociationArgs.fromMap(Map<String, dynamic> map) {
     return CustomDomainAssociationArgs(
       domainName: map['domainName'] as String,
-      enableWwwSubdomain: map['enableWwwSubdomain'] == null ? null : map['enableWwwSubdomain'] as bool,
+      enableWwwSubdomain: map['enableWwwSubdomain'] == null
+          ? null
+          : map['enableWwwSubdomain'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
       serviceArn: map['serviceArn'] as String,
     );
   }
 }
-

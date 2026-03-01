@@ -7,8 +7,10 @@ import 'group_kind.dart';
 class ResourceFilter {
   /// Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
   final List<GroupKind>? groupKinds;
+
   /// Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation).
   final String? jsonPath;
+
   /// Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation).
   final List<String>? namespaces;
 
@@ -16,15 +18,16 @@ class ResourceFilter {
   /// [groupKinds] Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If this field is not provided, no type filtering will be performed (all resources of all types matching previous filtering parameters will be candidates for transformation).
   /// [jsonPath] Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches specific fields of candidate resources and it operates as a filtering parameter (resources that are not matched with this expression will not be candidates for transformation).
   /// [namespaces] Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for transformation).
-  ResourceFilter({
-    this.groupKinds,
-    this.jsonPath,
-    this.namespaces,
-  });
+  ResourceFilter({this.groupKinds, this.jsonPath, this.namespaces});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groupKinds': ?groupKinds == null ? null : pulumi.Input.encodeList<GroupKind, Map<String, dynamic>>(groupKinds!, (value) => value.toMap()),
+      'groupKinds': ?groupKinds == null
+          ? null
+          : pulumi.Input.encodeList<GroupKind, Map<String, dynamic>>(
+              groupKinds!,
+              (value) => value.toMap(),
+            ),
       'jsonPath': ?jsonPath,
       'namespaces': ?namespaces,
     };
@@ -32,10 +35,17 @@ class ResourceFilter {
 
   factory ResourceFilter.fromMap(Map<String, dynamic> map) {
     return ResourceFilter(
-      groupKinds: map['groupKinds'] == null ? null : pulumi.Input.decodeList<GroupKind>(map['groupKinds'], (value) => GroupKind.fromMap((value as Map).cast<String, dynamic>())),
+      groupKinds: map['groupKinds'] == null
+          ? null
+          : pulumi.Input.decodeList<GroupKind>(
+              map['groupKinds'],
+              (value) =>
+                  GroupKind.fromMap((value as Map).cast<String, dynamic>()),
+            ),
       jsonPath: map['jsonPath'] == null ? null : map['jsonPath'] as String,
-      namespaces: map['namespaces'] == null ? null : (map['namespaces'] as List).cast<String>(),
+      namespaces: map['namespaces'] == null
+          ? null
+          : (map['namespaces'] as List).cast<String>(),
     );
   }
 }
-

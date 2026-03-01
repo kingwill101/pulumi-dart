@@ -6,10 +6,16 @@ import 'get_network_insights_analysis_forward_path_component_outbound_header_sou
 
 class GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader {
   final List<String> destinationAddresses;
-  final List<GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange> destinationPortRanges;
+  final List<
+    GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange
+  >
+  destinationPortRanges;
   final String protocol;
   final List<String> sourceAddresses;
-  final List<GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange> sourcePortRanges;
+  final List<
+    GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange
+  >
+  sourcePortRanges;
 
   /// Creates a new [GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader].
   /// [destinationAddresses] Required.
@@ -28,21 +34,49 @@ class GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationAddresses': destinationAddresses,
-      'destinationPortRanges': pulumi.Input.encodeList<GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange, Map<String, dynamic>>(destinationPortRanges, (value) => value.toMap()),
+      'destinationPortRanges':
+          pulumi.Input.encodeList<
+            GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange,
+            Map<String, dynamic>
+          >(destinationPortRanges, (value) => value.toMap()),
       'protocol': protocol,
       'sourceAddresses': sourceAddresses,
-      'sourcePortRanges': pulumi.Input.encodeList<GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange, Map<String, dynamic>>(sourcePortRanges, (value) => value.toMap()),
+      'sourcePortRanges':
+          pulumi.Input.encodeList<
+            GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange,
+            Map<String, dynamic>
+          >(sourcePortRanges, (value) => value.toMap()),
     };
   }
 
-  factory GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkInsightsAnalysisForwardPathComponentOutboundHeader(
-      destinationAddresses: (map['destinationAddresses'] as List).cast<String>(),
-      destinationPortRanges: pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange>(map['destinationPortRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange.fromMap((value as Map).cast<String, dynamic>())),
+      destinationAddresses: (map['destinationAddresses'] as List)
+          .cast<String>(),
+      destinationPortRanges:
+          pulumi.Input.decodeList<
+            GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange
+          >(
+            map['destinationPortRanges'],
+            (value) =>
+                GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderDestinationPortRange.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       protocol: map['protocol'] as String,
       sourceAddresses: (map['sourceAddresses'] as List).cast<String>(),
-      sourcePortRanges: pulumi.Input.decodeList<GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange>(map['sourcePortRanges'], (value) => GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange.fromMap((value as Map).cast<String, dynamic>())),
+      sourcePortRanges:
+          pulumi.Input.decodeList<
+            GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange
+          >(
+            map['sourcePortRanges'],
+            (value) =>
+                GetNetworkInsightsAnalysisForwardPathComponentOutboundHeaderSourcePortRange.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

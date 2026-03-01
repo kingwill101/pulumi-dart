@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a combination of a group with a preference set.
 class ReportConfigGroupPreferenceSetAssignment {
   /// Name of the group.
   final String group;
+
   /// Name of the Preference Set.
   final String preferenceSet;
 
@@ -17,17 +17,15 @@ class ReportConfigGroupPreferenceSetAssignment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'group': group,
-      'preferenceSet': preferenceSet,
-    };
+    return <String, dynamic>{'group': group, 'preferenceSet': preferenceSet};
   }
 
-  factory ReportConfigGroupPreferenceSetAssignment.fromMap(Map<String, dynamic> map) {
+  factory ReportConfigGroupPreferenceSetAssignment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReportConfigGroupPreferenceSetAssignment(
       group: map['group'] as String,
       preferenceSet: map['preferenceSet'] as String,
     );
   }
 }
-

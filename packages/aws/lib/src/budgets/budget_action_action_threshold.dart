@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BudgetActionActionThreshold {
   /// The type of threshold for a notification. Valid values are `PERCENTAGE` or `ABSOLUTE_VALUE`.
   final String actionThresholdType;
+
   /// The threshold of a notification.
   final double actionThresholdValue;
 
@@ -29,4 +29,3 @@ class BudgetActionActionThreshold {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling {
   /// The maximum number of nodes in the node pool. Must be >= minNodeCount, and must be > 0.
   final int? maxNodeCount;
+
   /// The minimum number of nodes in the node pool. Must be >= 0 and <= maxNodeCount.
   final int? minNodeCount;
 
@@ -22,11 +22,16 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     };
   }
 
-  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling.fromMap(Map<String, dynamic> map) {
+  factory ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling(
-      maxNodeCount: map['maxNodeCount'] == null ? null : map['maxNodeCount'] as int,
-      minNodeCount: map['minNodeCount'] == null ? null : map['minNodeCount'] as int,
+      maxNodeCount: map['maxNodeCount'] == null
+          ? null
+          : map['maxNodeCount'] as int,
+      minNodeCount: map['minNodeCount'] == null
+          ? null
+          : map['minNodeCount'] as int,
     );
   }
 }
-

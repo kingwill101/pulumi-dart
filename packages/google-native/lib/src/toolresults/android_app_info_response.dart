@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Android app information.
 class AndroidAppInfoResponse {
   /// The name of the app. Optional
   final String name;
+
   /// The package name of the app. Required.
   final String packageName;
+
   /// The internal version code of the app. Optional.
   final String versionCode;
+
   /// The version name of the app. Optional.
   final String versionName;
 
@@ -42,4 +44,3 @@ class AndroidAppInfoResponse {
     );
   }
 }
-

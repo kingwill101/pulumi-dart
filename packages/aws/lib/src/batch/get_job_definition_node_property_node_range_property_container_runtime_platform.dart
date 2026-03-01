@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform {
   /// The vCPU architecture. The default value is X86_64. Valid values are X86_64 and ARM64.
   final String cpuArchitecture;
+
   /// The operating system for the compute environment. V
   final String operatingSystemFamily;
 
@@ -22,11 +22,12 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform {
     };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerRuntimePlatform(
       cpuArchitecture: map['cpuArchitecture'] as String,
       operatingSystemFamily: map['operatingSystemFamily'] as String,
     );
   }
 }
-

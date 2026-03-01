@@ -22,4 +22,3 @@ enum SourcePredefinedSource {
     throw ArgumentError('Unknown SourcePredefinedSource value: $value');
   }
 }
-

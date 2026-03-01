@@ -9,14 +9,20 @@ import 'config_management_policy_controller_response_gkehub_v1alpha.dart';
 class ConfigManagementMembershipSpecResponseGkehubV1alpha {
   /// Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.
   final ConfigManagementBinauthzConfigResponse binauthz;
+
   /// The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or ClusterSelector.
   final String cluster;
+
   /// Config Sync configuration for the cluster.
   final ConfigManagementConfigSyncResponseGkehubV1alpha configSync;
+
   /// Hierarchy Controller configuration for the cluster.
-  final ConfigManagementHierarchyControllerConfigResponseGkehubV1alpha hierarchyController;
+  final ConfigManagementHierarchyControllerConfigResponseGkehubV1alpha
+  hierarchyController;
+
   /// Policy Controller configuration for the cluster.
   final ConfigManagementPolicyControllerResponseGkehubV1alpha policyController;
+
   /// Version of ACM installed.
   final String version;
 
@@ -47,15 +53,26 @@ class ConfigManagementMembershipSpecResponseGkehubV1alpha {
     };
   }
 
-  factory ConfigManagementMembershipSpecResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ConfigManagementMembershipSpecResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigManagementMembershipSpecResponseGkehubV1alpha(
-      binauthz: ConfigManagementBinauthzConfigResponse.fromMap((map['binauthz'] as Map).cast<String, dynamic>()),
+      binauthz: ConfigManagementBinauthzConfigResponse.fromMap(
+        (map['binauthz'] as Map).cast<String, dynamic>(),
+      ),
       cluster: map['cluster'] as String,
-      configSync: ConfigManagementConfigSyncResponseGkehubV1alpha.fromMap((map['configSync'] as Map).cast<String, dynamic>()),
-      hierarchyController: ConfigManagementHierarchyControllerConfigResponseGkehubV1alpha.fromMap((map['hierarchyController'] as Map).cast<String, dynamic>()),
-      policyController: ConfigManagementPolicyControllerResponseGkehubV1alpha.fromMap((map['policyController'] as Map).cast<String, dynamic>()),
+      configSync: ConfigManagementConfigSyncResponseGkehubV1alpha.fromMap(
+        (map['configSync'] as Map).cast<String, dynamic>(),
+      ),
+      hierarchyController:
+          ConfigManagementHierarchyControllerConfigResponseGkehubV1alpha.fromMap(
+            (map['hierarchyController'] as Map).cast<String, dynamic>(),
+          ),
+      policyController:
+          ConfigManagementPolicyControllerResponseGkehubV1alpha.fromMap(
+            (map['policyController'] as Map).cast<String, dynamic>(),
+          ),
       version: map['version'] as String,
     );
   }
 }
-

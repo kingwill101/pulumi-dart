@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A description of a label.
 class LabelDescriptorResponse {
   /// A human-readable description for the label.
   final String description;
+
   /// The label key.
   final String key;
+
   /// The type of data that can be assigned to the label.
   final String valueType;
 
@@ -36,4 +37,3 @@ class LabelDescriptorResponse {
     );
   }
 }
-

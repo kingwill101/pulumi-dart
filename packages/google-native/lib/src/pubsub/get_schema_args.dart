@@ -15,12 +15,8 @@ class GetSchemaArgs {
   /// [project] Optional.
   /// [schemaId] Required.
   /// [view] Optional.
-  GetSchemaArgs({
-    String? project,
-    required String schemaId,
-    String? view,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetSchemaArgs({String? project, required String schemaId, String? view})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       schemaId = pulumi.Input.asInput<String>(schemaId),
       view = pulumi.Input.asOptionalInput<String>(view);
 
@@ -40,4 +36,3 @@ class GetSchemaArgs {
     );
   }
 }
-

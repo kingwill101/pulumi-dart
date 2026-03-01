@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ManagedZonePeeringConfigTargetNetworkResponse {
   /// The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only.
   final String deactivateTime;
   final String kind;
+
   /// The fully qualified URL of the VPC network to forward queries to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
   final String networkUrl;
 
@@ -26,7 +26,9 @@ class ManagedZonePeeringConfigTargetNetworkResponse {
     };
   }
 
-  factory ManagedZonePeeringConfigTargetNetworkResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedZonePeeringConfigTargetNetworkResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZonePeeringConfigTargetNetworkResponse(
       deactivateTime: map['deactivateTime'] as String,
       kind: map['kind'] as String,
@@ -34,4 +36,3 @@ class ManagedZonePeeringConfigTargetNetworkResponse {
     );
   }
 }
-

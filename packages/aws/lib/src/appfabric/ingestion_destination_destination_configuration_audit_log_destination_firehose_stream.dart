@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream {
   final String streamName;
 
@@ -11,15 +10,14 @@ class IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStr
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'streamName': streamName,
-    };
+    return <String, dynamic>{'streamName': streamName};
   }
 
-  factory IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream.fromMap(Map<String, dynamic> map) {
+  factory IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IngestionDestinationDestinationConfigurationAuditLogDestinationFirehoseStream(
       streamName: map['streamName'] as String,
     );
   }
 }
-

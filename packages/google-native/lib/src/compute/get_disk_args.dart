@@ -15,21 +15,13 @@ class GetDiskArgs {
   /// [disk] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetDiskArgs({
-    required String disk,
-    String? project,
-    required String zone,
-  }) :
-      disk = pulumi.Input.asInput<String>(disk),
+  GetDiskArgs({required String disk, String? project, required String zone})
+    : disk = pulumi.Input.asInput<String>(disk),
       project = pulumi.Input.asOptionalInput<String>(project),
       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disk': disk,
-      'project': ?project,
-      'zone': zone,
-    };
+    return <String, dynamic>{'disk': disk, 'project': ?project, 'zone': zone};
   }
 
   factory GetDiskArgs.fromMap(Map<String, dynamic> map) {
@@ -40,4 +32,3 @@ class GetDiskArgs {
     );
   }
 }
-

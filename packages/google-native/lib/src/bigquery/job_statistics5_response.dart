@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class JobStatistics5Response {
   /// Number of logical bytes copied to the destination table.
   final String copiedLogicalBytes;
+
   /// Number of rows copied to the destination table.
   final String copiedRows;
 
@@ -29,4 +29,3 @@ class JobStatistics5Response {
     );
   }
 }
-

@@ -7,16 +7,14 @@ import 'service_mesh_membership_spec_management.dart';
 class ServiceMeshMembershipSpec {
   /// Deprecated: use `management` instead Enables automatic control plane management.
   final ServiceMeshMembershipSpecControlPlane? controlPlane;
+
   /// Enables automatic Service Mesh management.
   final ServiceMeshMembershipSpecManagement? management;
 
   /// Creates a new [ServiceMeshMembershipSpec].
   /// [controlPlane] Deprecated: use `management` instead Enables automatic control plane management.
   /// [management] Enables automatic Service Mesh management.
-  ServiceMeshMembershipSpec({
-    this.controlPlane,
-    this.management,
-  });
+  ServiceMeshMembershipSpec({this.controlPlane, this.management});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class ServiceMeshMembershipSpec {
 
   factory ServiceMeshMembershipSpec.fromMap(Map<String, dynamic> map) {
     return ServiceMeshMembershipSpec(
-      controlPlane: map['controlPlane'] == null ? null : ServiceMeshMembershipSpecControlPlane.fromValue(map['controlPlane'] as String),
-      management: map['management'] == null ? null : ServiceMeshMembershipSpecManagement.fromValue(map['management'] as String),
+      controlPlane: map['controlPlane'] == null
+          ? null
+          : ServiceMeshMembershipSpecControlPlane.fromValue(
+              map['controlPlane'] as String,
+            ),
+      management: map['management'] == null
+          ? null
+          : ServiceMeshMembershipSpecManagement.fromValue(
+              map['management'] as String,
+            ),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'google_cloud_dialogflow_cx_v3beta1_version_variants_response.dart';
 class GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse {
   /// Update time of the variants.
   final String updateTime;
+
   /// The flow versions as the variants.
   final GoogleCloudDialogflowCxV3beta1VersionVariantsResponse versionVariants;
 
@@ -24,11 +25,15 @@ class GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse(
       updateTime: map['updateTime'] as String,
-      versionVariants: GoogleCloudDialogflowCxV3beta1VersionVariantsResponse.fromMap((map['versionVariants'] as Map).cast<String, dynamic>()),
+      versionVariants:
+          GoogleCloudDialogflowCxV3beta1VersionVariantsResponse.fromMap(
+            (map['versionVariants'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

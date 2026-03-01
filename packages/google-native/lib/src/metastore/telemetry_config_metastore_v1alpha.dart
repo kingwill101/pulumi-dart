@@ -9,9 +9,7 @@ class TelemetryConfigMetastoreV1alpha {
 
   /// Creates a new [TelemetryConfigMetastoreV1alpha].
   /// [logFormat] The output format of the Dataproc Metastore service's logs.
-  TelemetryConfigMetastoreV1alpha({
-    this.logFormat,
-  });
+  TelemetryConfigMetastoreV1alpha({this.logFormat});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class TelemetryConfigMetastoreV1alpha {
 
   factory TelemetryConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return TelemetryConfigMetastoreV1alpha(
-      logFormat: map['logFormat'] == null ? null : TelemetryConfigLogFormatMetastoreV1alpha.fromValue(map['logFormat'] as String),
+      logFormat: map['logFormat'] == null
+          ? null
+          : TelemetryConfigLogFormatMetastoreV1alpha.fromValue(
+              map['logFormat'] as String,
+            ),
     );
   }
 }
-

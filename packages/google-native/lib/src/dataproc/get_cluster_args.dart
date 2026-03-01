@@ -19,10 +19,9 @@ class GetClusterArgs {
     required String clusterName,
     String? project,
     required String region,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : clusterName = pulumi.Input.asInput<String>(clusterName),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetClusterArgs {
     );
   }
 }
-

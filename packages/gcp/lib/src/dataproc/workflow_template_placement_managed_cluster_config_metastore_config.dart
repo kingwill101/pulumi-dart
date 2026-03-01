@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
   /// Required. Resource name of an existing Dataproc Metastore service. Example: * `projects/`
   final String dataprocMetastoreService;
@@ -17,10 +16,11 @@ class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig {
     };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig(
       dataprocMetastoreService: map['dataprocMetastoreService'] as String,
     );
   }
 }
-

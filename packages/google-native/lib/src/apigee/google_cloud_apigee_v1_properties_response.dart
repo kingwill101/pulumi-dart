@@ -10,20 +10,28 @@ class GoogleCloudApigeeV1PropertiesResponse {
 
   /// Creates a new [GoogleCloudApigeeV1PropertiesResponse].
   /// [property] List of all properties in the object
-  GoogleCloudApigeeV1PropertiesResponse({
-    required this.property,
-  });
+  GoogleCloudApigeeV1PropertiesResponse({required this.property});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'property': pulumi.Input.encodeList<GoogleCloudApigeeV1PropertyResponse, Map<String, dynamic>>(property, (value) => value.toMap()),
+      'property':
+          pulumi.Input.encodeList<
+            GoogleCloudApigeeV1PropertyResponse,
+            Map<String, dynamic>
+          >(property, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudApigeeV1PropertiesResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1PropertiesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1PropertiesResponse(
-      property: pulumi.Input.decodeList<GoogleCloudApigeeV1PropertyResponse>(map['property'], (value) => GoogleCloudApigeeV1PropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      property: pulumi.Input.decodeList<GoogleCloudApigeeV1PropertyResponse>(
+        map['property'],
+        (value) => GoogleCloudApigeeV1PropertyResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// MonitoringComponentConfig is cluster monitoring component configuration.
 class MonitoringComponentConfigResponseContainerV1beta1 {
   /// Select components to collect metrics. An empty set would disable all monitoring.
@@ -13,15 +12,14 @@ class MonitoringComponentConfigResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableComponents': enableComponents,
-    };
+    return <String, dynamic>{'enableComponents': enableComponents};
   }
 
-  factory MonitoringComponentConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory MonitoringComponentConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitoringComponentConfigResponseContainerV1beta1(
       enableComponents: (map['enableComponents'] as List).cast<String>(),
     );
   }
 }
-

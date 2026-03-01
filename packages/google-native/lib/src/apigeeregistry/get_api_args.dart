@@ -15,12 +15,8 @@ class GetApiArgs {
   /// [apiId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetApiArgs({
-    required String apiId,
-    required String location,
-    String? project,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
+  GetApiArgs({required String apiId, required String location, String? project})
+    : apiId = pulumi.Input.asInput<String>(apiId),
       location = pulumi.Input.asInput<String>(location),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -40,4 +36,3 @@ class GetApiArgs {
     );
   }
 }
-

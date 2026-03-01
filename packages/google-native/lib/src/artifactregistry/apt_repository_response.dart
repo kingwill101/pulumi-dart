@@ -5,24 +5,23 @@ import 'google_devtools_artifactregistry_v1_remote_repository_config_apt_reposit
 /// Configuration for an Apt remote repository.
 class AptRepositoryResponse {
   /// One of the publicly available Apt repositories supported by Artifact Registry.
-  final GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse publicRepository;
+  final GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse
+  publicRepository;
 
   /// Creates a new [AptRepositoryResponse].
   /// [publicRepository] One of the publicly available Apt repositories supported by Artifact Registry.
-  AptRepositoryResponse({
-    required this.publicRepository,
-  });
+  AptRepositoryResponse({required this.publicRepository});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'publicRepository': publicRepository.toMap(),
-    };
+    return <String, dynamic>{'publicRepository': publicRepository.toMap()};
   }
 
   factory AptRepositoryResponse.fromMap(Map<String, dynamic> map) {
     return AptRepositoryResponse(
-      publicRepository: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse.fromMap((map['publicRepository'] as Map).cast<String, dynamic>()),
+      publicRepository:
+          GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse.fromMap(
+            (map['publicRepository'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

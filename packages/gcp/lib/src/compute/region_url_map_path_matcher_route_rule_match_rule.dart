@@ -12,13 +12,17 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
   /// and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
   /// be specified.
   final String? fullPathMatch;
+
   /// Specifies a list of header match criteria, all of which must match corresponding
   /// headers in the request.
   /// Structure is documented below.
-  final List<RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch>? headerMatches;
+  final List<RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch>?
+  headerMatches;
+
   /// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
   /// Defaults to false.
   final bool? ignoreCase;
+
   /// Opaque filter criteria used by Loadbalancer to restrict routing configuration to
   /// a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
   /// clients present node metadata. If a match takes place, the relevant routing
@@ -31,7 +35,9 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
   /// UrlMap. metadataFilters only applies to Loadbalancers that have their
   /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
-  final List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>? metadataFilters;
+  final List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>?
+  metadataFilters;
+
   /// For satisfying the matchRule condition, the path of the request
   /// must match the wildcard pattern specified in pathTemplateMatch
   /// after removing any query parameters and anchor that may be part
@@ -41,15 +47,19 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
   /// have at most 5 wildcard operators and at most 5 variable
   /// captures in total.
   final String? pathTemplateMatch;
+
   /// For satisfying the matchRule condition, the request's path must begin with the
   /// specified prefixMatch. prefixMatch must begin with a /. The value must be
   /// between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
   /// regexMatch must be specified.
   final String? prefixMatch;
+
   /// Specifies a list of query parameter match criteria, all of which must match
   /// corresponding query parameters in the request.
   /// Structure is documented below.
-  final List<RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch>? queryParameterMatches;
+  final List<RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch>?
+  queryParameterMatches;
+
   /// For satisfying the matchRule condition, the path of the request must satisfy the
   /// regular expression specified in regexMatch after removing any query parameters
   /// and anchor supplied with the original URL. For regular expression grammar please
@@ -80,27 +90,81 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fullPathMatch': ?fullPathMatch,
-      'headerMatches': ?headerMatches == null ? null : pulumi.Input.encodeList<RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch, Map<String, dynamic>>(headerMatches!, (value) => value.toMap()),
+      'headerMatches': ?headerMatches == null
+          ? null
+          : pulumi.Input.encodeList<
+              RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch,
+              Map<String, dynamic>
+            >(headerMatches!, (value) => value.toMap()),
       'ignoreCase': ?ignoreCase,
-      'metadataFilters': ?metadataFilters == null ? null : pulumi.Input.encodeList<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter, Map<String, dynamic>>(metadataFilters!, (value) => value.toMap()),
+      'metadataFilters': ?metadataFilters == null
+          ? null
+          : pulumi.Input.encodeList<
+              RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter,
+              Map<String, dynamic>
+            >(metadataFilters!, (value) => value.toMap()),
       'pathTemplateMatch': ?pathTemplateMatch,
       'prefixMatch': ?prefixMatch,
-      'queryParameterMatches': ?queryParameterMatches == null ? null : pulumi.Input.encodeList<RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch, Map<String, dynamic>>(queryParameterMatches!, (value) => value.toMap()),
+      'queryParameterMatches': ?queryParameterMatches == null
+          ? null
+          : pulumi.Input.encodeList<
+              RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch,
+              Map<String, dynamic>
+            >(queryParameterMatches!, (value) => value.toMap()),
       'regexMatch': ?regexMatch,
     };
   }
 
-  factory RegionUrlMapPathMatcherRouteRuleMatchRule.fromMap(Map<String, dynamic> map) {
+  factory RegionUrlMapPathMatcherRouteRuleMatchRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionUrlMapPathMatcherRouteRuleMatchRule(
-      fullPathMatch: map['fullPathMatch'] == null ? null : map['fullPathMatch'] as String,
-      headerMatches: map['headerMatches'] == null ? null : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch>(map['headerMatches'], (value) => RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch.fromMap((value as Map).cast<String, dynamic>())),
+      fullPathMatch: map['fullPathMatch'] == null
+          ? null
+          : map['fullPathMatch'] as String,
+      headerMatches: map['headerMatches'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch
+            >(
+              map['headerMatches'],
+              (value) =>
+                  RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       ignoreCase: map['ignoreCase'] == null ? null : map['ignoreCase'] as bool,
-      metadataFilters: map['metadataFilters'] == null ? null : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>(map['metadataFilters'], (value) => RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter.fromMap((value as Map).cast<String, dynamic>())),
-      pathTemplateMatch: map['pathTemplateMatch'] == null ? null : map['pathTemplateMatch'] as String,
-      prefixMatch: map['prefixMatch'] == null ? null : map['prefixMatch'] as String,
-      queryParameterMatches: map['queryParameterMatches'] == null ? null : pulumi.Input.decodeList<RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch>(map['queryParameterMatches'], (value) => RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch.fromMap((value as Map).cast<String, dynamic>())),
-      regexMatch: map['regexMatch'] == null ? null : map['regexMatch'] as String,
+      metadataFilters: map['metadataFilters'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter
+            >(
+              map['metadataFilters'],
+              (value) =>
+                  RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      pathTemplateMatch: map['pathTemplateMatch'] == null
+          ? null
+          : map['pathTemplateMatch'] as String,
+      prefixMatch: map['prefixMatch'] == null
+          ? null
+          : map['prefixMatch'] as String,
+      queryParameterMatches: map['queryParameterMatches'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch
+            >(
+              map['queryParameterMatches'],
+              (value) =>
+                  RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      regexMatch: map['regexMatch'] == null
+          ? null
+          : map['regexMatch'] as String,
     );
   }
 }
-

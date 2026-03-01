@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DistributionCacheBehaviorSettingsForwardedCookies {
   /// Specific cookies to forward to your distribution's origin.
   final List<String>? cookiesAllowLists;
+
   /// Which cookies to forward to the distribution's origin for a cache behavior. Valid values: `all`, `none`, `allow-list`.
   final String? option;
 
@@ -22,11 +22,14 @@ class DistributionCacheBehaviorSettingsForwardedCookies {
     };
   }
 
-  factory DistributionCacheBehaviorSettingsForwardedCookies.fromMap(Map<String, dynamic> map) {
+  factory DistributionCacheBehaviorSettingsForwardedCookies.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionCacheBehaviorSettingsForwardedCookies(
-      cookiesAllowLists: map['cookiesAllowLists'] == null ? null : (map['cookiesAllowLists'] as List).cast<String>(),
+      cookiesAllowLists: map['cookiesAllowLists'] == null
+          ? null
+          : (map['cookiesAllowLists'] as List).cast<String>(),
       option: map['option'] == null ? null : map['option'] as String,
     );
   }
 }
-

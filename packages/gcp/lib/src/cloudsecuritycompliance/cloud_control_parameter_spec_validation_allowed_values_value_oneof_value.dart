@@ -5,9 +5,11 @@ import 'cloud_control_parameter_spec_validation_allowed_values_value_oneof_value
 class CloudControlParameterSpecValidationAllowedValuesValueOneofValue {
   /// The name of the parameter.
   final String? name;
+
   /// The value of the parameter.
   /// Structure is documented below.
-  final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue? parameterValue;
+  final CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue?
+  parameterValue;
 
   /// Creates a new [CloudControlParameterSpecValidationAllowedValuesValueOneofValue].
   /// [name] The name of the parameter.
@@ -20,15 +22,22 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValue {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'parameterValue': ?parameterValue == null ? null : parameterValue!.toMap(),
+      'parameterValue': ?parameterValue == null
+          ? null
+          : parameterValue!.toMap(),
     };
   }
 
-  factory CloudControlParameterSpecValidationAllowedValuesValueOneofValue.fromMap(Map<String, dynamic> map) {
+  factory CloudControlParameterSpecValidationAllowedValuesValueOneofValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudControlParameterSpecValidationAllowedValuesValueOneofValue(
       name: map['name'] == null ? null : map['name'] as String,
-      parameterValue: map['parameterValue'] == null ? null : CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
+      parameterValue: map['parameterValue'] == null
+          ? null
+          : CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue.fromMap(
+              (map['parameterValue'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

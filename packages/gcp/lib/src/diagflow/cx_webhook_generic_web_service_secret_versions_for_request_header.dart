@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CxWebhookGenericWebServiceSecretVersionsForRequestHeader {
   /// The identifier for this object. Format specified above.
   final String key;
+
   /// The SecretManager secret version resource storing the header value.
   /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
   final String secretVersion;
@@ -17,17 +17,15 @@ class CxWebhookGenericWebServiceSecretVersionsForRequestHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'secretVersion': secretVersion,
-    };
+    return <String, dynamic>{'key': key, 'secretVersion': secretVersion};
   }
 
-  factory CxWebhookGenericWebServiceSecretVersionsForRequestHeader.fromMap(Map<String, dynamic> map) {
+  factory CxWebhookGenericWebServiceSecretVersionsForRequestHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxWebhookGenericWebServiceSecretVersionsForRequestHeader(
       key: map['key'] as String,
       secretVersion: map['secretVersion'] as String,
     );
   }
 }
-

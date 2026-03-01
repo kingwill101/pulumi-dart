@@ -11,9 +11,11 @@ class GetAddressArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The Region in which the created address reside.
   /// If it is not provided, the provider region is used.
   final pulumi.Input<String>? region;
@@ -22,12 +24,8 @@ class GetAddressArgs {
   /// [name] A unique name for the resource, required by GCE.
   /// [project] The project in which the resource belongs. If it
   /// [region] The Region in which the created address reside.
-  GetAddressArgs({
-    required String name,
-    String? project,
-    String? region,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
+  GetAddressArgs({required String name, String? project, String? region})
+    : name = pulumi.Input.asInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
@@ -47,4 +45,3 @@ class GetAddressArgs {
     );
   }
 }
-

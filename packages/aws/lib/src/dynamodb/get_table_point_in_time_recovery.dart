@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTablePointInTimeRecovery {
   final bool enabled;
   final int recoveryPeriodInDays;
@@ -27,4 +26,3 @@ class GetTablePointInTimeRecovery {
     );
   }
 }
-

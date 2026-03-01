@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FlexibleAppVersionDeploymentFile {
   /// The identifier for this object. Format specified above.
   final String name;
+
   /// SHA1 checksum of the file
   final String? sha1Sum;
+
   /// Source URL
   final String sourceUrl;
 
@@ -35,4 +36,3 @@ class FlexibleAppVersionDeploymentFile {
     );
   }
 }
-

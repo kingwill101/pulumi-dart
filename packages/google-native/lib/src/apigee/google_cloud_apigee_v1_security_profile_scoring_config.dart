@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Security configurations to manage scoring.
 class GoogleCloudApigeeV1SecurityProfileScoringConfig {
   /// Description of the config.
   final String? description;
+
   /// Path of the component config used for scoring.
   final String? scorePath;
+
   /// Title of the config.
   final String? title;
 
@@ -28,12 +29,15 @@ class GoogleCloudApigeeV1SecurityProfileScoringConfig {
     };
   }
 
-  factory GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1SecurityProfileScoringConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1SecurityProfileScoringConfig(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       scorePath: map['scorePath'] == null ? null : map['scorePath'] as String,
       title: map['title'] == null ? null : map['title'] as String,
     );
   }
 }
-

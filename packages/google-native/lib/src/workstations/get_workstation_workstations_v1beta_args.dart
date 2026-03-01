@@ -25,12 +25,13 @@ class GetWorkstationWorkstationsV1betaArgs {
     required String workstationClusterId,
     required String workstationConfigId,
     required String workstationId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
-      workstationId = pulumi.Input.asInput<String>(workstationId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       workstationClusterId = pulumi.Input.asInput<String>(
+         workstationClusterId,
+       ),
+       workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
+       workstationId = pulumi.Input.asInput<String>(workstationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +43,9 @@ class GetWorkstationWorkstationsV1betaArgs {
     };
   }
 
-  factory GetWorkstationWorkstationsV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWorkstationWorkstationsV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkstationWorkstationsV1betaArgs(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -52,4 +55,3 @@ class GetWorkstationWorkstationsV1betaArgs {
     );
   }
 }
-

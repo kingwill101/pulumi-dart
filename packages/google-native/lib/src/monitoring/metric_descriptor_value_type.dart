@@ -20,4 +20,3 @@ enum MetricDescriptorValueType {
     throw ArgumentError('Unknown MetricDescriptorValueType value: $value');
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name.
 class TestCaseReferenceResponse {
   /// The name of the class.
   final String className;
+
   /// The name of the test case. Required.
   final String name;
+
   /// The name of the test suite to which this test case belongs.
   final String testSuiteName;
 
@@ -36,4 +37,3 @@ class TestCaseReferenceResponse {
     );
   }
 }
-

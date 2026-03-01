@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message containing connection draining configuration.
 class ConnectionDraining {
   /// Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
@@ -8,20 +7,17 @@ class ConnectionDraining {
 
   /// Creates a new [ConnectionDraining].
   /// [drainingTimeoutSec] Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
-  ConnectionDraining({
-    this.drainingTimeoutSec,
-  });
+  ConnectionDraining({this.drainingTimeoutSec});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'drainingTimeoutSec': ?drainingTimeoutSec,
-    };
+    return <String, dynamic>{'drainingTimeoutSec': ?drainingTimeoutSec};
   }
 
   factory ConnectionDraining.fromMap(Map<String, dynamic> map) {
     return ConnectionDraining(
-      drainingTimeoutSec: map['drainingTimeoutSec'] == null ? null : map['drainingTimeoutSec'] as int,
+      drainingTimeoutSec: map['drainingTimeoutSec'] == null
+          ? null
+          : map['drainingTimeoutSec'] as int,
     );
   }
 }
-

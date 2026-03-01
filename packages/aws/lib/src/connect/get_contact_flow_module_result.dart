@@ -1,24 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getContactFlowModule.
 class GetContactFlowModuleResult {
   /// ARN of the Contact Flow Module.
   final String arn;
   final String contactFlowModuleId;
+
   /// Logic of the Contact Flow Module.
   final String content;
+
   /// Description of the Contact Flow Module.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
   final String name;
   final String region;
+
   /// Type of Contact Flow Module Module. Values are either `ACTIVE` or `ARCHIVED`.
   final String state;
+
   /// Status of the Contact Flow Module Module. Values are either `PUBLISHED` or `SAVED`.
   final String status;
+
   /// Map of tags to assign to the Contact Flow Module.
   final Map<String, String> tags;
 
@@ -80,4 +85,3 @@ class GetContactFlowModuleResult {
     );
   }
 }
-

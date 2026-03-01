@@ -6,6 +6,7 @@ import 'google_cloud_discoveryengine_v1beta_conversation_context_response.dart';
 class GoogleCloudDiscoveryengineV1betaTextInputResponse {
   /// Conversation context of the input.
   final GoogleCloudDiscoveryengineV1betaConversationContextResponse context;
+
   /// Text input.
   final String input;
 
@@ -18,17 +19,18 @@ class GoogleCloudDiscoveryengineV1betaTextInputResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'context': context.toMap(),
-      'input': input,
-    };
+    return <String, dynamic>{'context': context.toMap(), 'input': input};
   }
 
-  factory GoogleCloudDiscoveryengineV1betaTextInputResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1betaTextInputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1betaTextInputResponse(
-      context: GoogleCloudDiscoveryengineV1betaConversationContextResponse.fromMap((map['context'] as Map).cast<String, dynamic>()),
+      context:
+          GoogleCloudDiscoveryengineV1betaConversationContextResponse.fromMap(
+            (map['context'] as Map).cast<String, dynamic>(),
+          ),
       input: map['input'] as String,
     );
   }
 }
-

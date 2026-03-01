@@ -8,16 +8,22 @@ enum GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance {
   low("LOW"),
   lowest("LOWEST");
 
-  const GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance(this.value);
+  const GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance(
+    this.value,
+  );
   final String value;
 
-  static GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance fromValue(String value) {
-    for (final item in GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance.values) {
+  static GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance value: $value',
+    );
   }
 }
-

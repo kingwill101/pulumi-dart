@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
 class EdgeLocationResponse {
   /// Name of the metropolitan area.
@@ -8,14 +7,10 @@ class EdgeLocationResponse {
 
   /// Creates a new [EdgeLocationResponse].
   /// [metropolitanArea] Name of the metropolitan area.
-  EdgeLocationResponse({
-    required this.metropolitanArea,
-  });
+  EdgeLocationResponse({required this.metropolitanArea});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metropolitanArea': metropolitanArea,
-    };
+    return <String, dynamic>{'metropolitanArea': metropolitanArea};
   }
 
   factory EdgeLocationResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class EdgeLocationResponse {
     );
   }
 }
-

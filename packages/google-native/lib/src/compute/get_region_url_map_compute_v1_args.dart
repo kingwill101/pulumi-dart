@@ -19,10 +19,9 @@ class GetRegionUrlMapComputeV1Args {
     String? project,
     required String region,
     required String urlMap,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      urlMap = pulumi.Input.asInput<String>(urlMap);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       urlMap = pulumi.Input.asInput<String>(urlMap);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionUrlMapComputeV1Args {
     );
   }
 }
-

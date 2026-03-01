@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents an intent parameter.
 class GoogleCloudDialogflowCxV3beta1IntentParameterResponse {
   /// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
   final String entityType;
+
   /// Indicates whether the parameter represents a list of values.
   final bool isList;
+
   /// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
   final bool redact;
 
@@ -28,7 +29,9 @@ class GoogleCloudDialogflowCxV3beta1IntentParameterResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1IntentParameterResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1IntentParameterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1IntentParameterResponse(
       entityType: map['entityType'] as String,
       isList: map['isList'] as bool,
@@ -36,4 +39,3 @@ class GoogleCloudDialogflowCxV3beta1IntentParameterResponse {
     );
   }
 }
-

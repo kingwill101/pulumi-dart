@@ -7,16 +7,14 @@ import 'standard.dart';
 class Strategy {
   /// Canary deployment strategy provides progressive percentage based deployments to a Target.
   final Canary? canary;
+
   /// Standard deployment strategy executes a single deploy and allows verifying the deployment.
   final Standard? standard;
 
   /// Creates a new [Strategy].
   /// [canary] Canary deployment strategy provides progressive percentage based deployments to a Target.
   /// [standard] Standard deployment strategy executes a single deploy and allows verifying the deployment.
-  Strategy({
-    this.canary,
-    this.standard,
-  });
+  Strategy({this.canary, this.standard});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,12 @@ class Strategy {
 
   factory Strategy.fromMap(Map<String, dynamic> map) {
     return Strategy(
-      canary: map['canary'] == null ? null : Canary.fromMap((map['canary'] as Map).cast<String, dynamic>()),
-      standard: map['standard'] == null ? null : Standard.fromMap((map['standard'] as Map).cast<String, dynamic>()),
+      canary: map['canary'] == null
+          ? null
+          : Canary.fromMap((map['canary'] as Map).cast<String, dynamic>()),
+      standard: map['standard'] == null
+          ? null
+          : Standard.fromMap((map['standard'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

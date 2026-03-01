@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The Google Cloud Storage location for the input content.
 class GoogleCloudAiplatformV1GcsSource {
   /// Google Cloud Storage URI(-s) to the input file(s). May contain wildcards. For more information on wildcards, see https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames.
@@ -8,14 +7,10 @@ class GoogleCloudAiplatformV1GcsSource {
 
   /// Creates a new [GoogleCloudAiplatformV1GcsSource].
   /// [uris] Google Cloud Storage URI(-s) to the input file(s). May contain wildcards. For more information on wildcards, see https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames.
-  GoogleCloudAiplatformV1GcsSource({
-    required this.uris,
-  });
+  GoogleCloudAiplatformV1GcsSource({required this.uris});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uris': uris,
-    };
+    return <String, dynamic>{'uris': uris};
   }
 
   factory GoogleCloudAiplatformV1GcsSource.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class GoogleCloudAiplatformV1GcsSource {
     );
   }
 }
-

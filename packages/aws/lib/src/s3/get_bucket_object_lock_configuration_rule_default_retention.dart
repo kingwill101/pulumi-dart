@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetBucketObjectLockConfigurationRuleDefaultRetention {
   /// Default retention period in days.
   final int days;
+
   /// Default object lock retention mode. Valid values are `GOVERNANCE` and `COMPLIANCE`.
   final String mode;
+
   /// Default retention period in years.
   final int years;
 
@@ -20,14 +21,12 @@ class GetBucketObjectLockConfigurationRuleDefaultRetention {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'days': days,
-      'mode': mode,
-      'years': years,
-    };
+    return <String, dynamic>{'days': days, 'mode': mode, 'years': years};
   }
 
-  factory GetBucketObjectLockConfigurationRuleDefaultRetention.fromMap(Map<String, dynamic> map) {
+  factory GetBucketObjectLockConfigurationRuleDefaultRetention.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBucketObjectLockConfigurationRuleDefaultRetention(
       days: map['days'] as int,
       mode: map['mode'] as String,
@@ -35,4 +34,3 @@ class GetBucketObjectLockConfigurationRuleDefaultRetention {
     );
   }
 }
-

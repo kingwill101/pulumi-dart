@@ -9,10 +9,13 @@ import 'service_mesh_membership_spec_response.dart';
 class CommonFleetDefaultMemberConfigSpecResponse {
   /// Config Management-specific spec.
   final ConfigManagementMembershipSpecResponse configmanagement;
+
   /// Identity Service-specific spec.
   final IdentityServiceMembershipSpecResponse identityservice;
+
   /// Anthos Service Mesh-specific spec
   final ServiceMeshMembershipSpecResponse mesh;
+
   /// Policy Controller spec.
   final PolicyControllerMembershipSpecResponse policycontroller;
 
@@ -37,13 +40,22 @@ class CommonFleetDefaultMemberConfigSpecResponse {
     };
   }
 
-  factory CommonFleetDefaultMemberConfigSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory CommonFleetDefaultMemberConfigSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CommonFleetDefaultMemberConfigSpecResponse(
-      configmanagement: ConfigManagementMembershipSpecResponse.fromMap((map['configmanagement'] as Map).cast<String, dynamic>()),
-      identityservice: IdentityServiceMembershipSpecResponse.fromMap((map['identityservice'] as Map).cast<String, dynamic>()),
-      mesh: ServiceMeshMembershipSpecResponse.fromMap((map['mesh'] as Map).cast<String, dynamic>()),
-      policycontroller: PolicyControllerMembershipSpecResponse.fromMap((map['policycontroller'] as Map).cast<String, dynamic>()),
+      configmanagement: ConfigManagementMembershipSpecResponse.fromMap(
+        (map['configmanagement'] as Map).cast<String, dynamic>(),
+      ),
+      identityservice: IdentityServiceMembershipSpecResponse.fromMap(
+        (map['identityservice'] as Map).cast<String, dynamic>(),
+      ),
+      mesh: ServiceMeshMembershipSpecResponse.fromMap(
+        (map['mesh'] as Map).cast<String, dynamic>(),
+      ),
+      policycontroller: PolicyControllerMembershipSpecResponse.fromMap(
+        (map['policycontroller'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

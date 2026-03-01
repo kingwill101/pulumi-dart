@@ -15,19 +15,26 @@ class V2PolicyOrchestratorArgs {
   /// - `UPSERT` - Orchestrator will create or update target resources.
   /// - `DELETE` - Orchestrator will delete target resources, if they exist
   final pulumi.Input<String> action;
+
   /// Optional. Freeform text describing the purpose of the resource.
   final pulumi.Input<String>? description;
+
   /// Optional. Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Represents a resource that is being orchestrated by the policy orchestrator.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestratedResource> orchestratedResource;
+  final pulumi.Input<V2PolicyOrchestratorOrchestratedResource>
+  orchestratedResource;
+
   /// Defines a set of selectors which drive which resources are in scope of policy
   /// orchestration.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorOrchestrationScope>? orchestrationScope;
+  final pulumi.Input<V2PolicyOrchestratorOrchestrationScope>?
+  orchestrationScope;
+
   /// Required. The logical identifier of the policy orchestrator, with the following
   /// restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
@@ -36,9 +43,11 @@ class V2PolicyOrchestratorArgs {
   /// * Must end with a number or a letter.
   /// * Must be unique within the parent.
   final pulumi.Input<String> policyOrchestratorId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// Allowed values:
   /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
@@ -66,23 +75,38 @@ class V2PolicyOrchestratorArgs {
     required String policyOrchestratorId,
     String? project,
     String? state,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      orchestratedResource = pulumi.Input.asInput<V2PolicyOrchestratorOrchestratedResource>(orchestratedResource),
-      orchestrationScope = pulumi.Input.asOptionalInput<V2PolicyOrchestratorOrchestrationScope>(orchestrationScope),
-      policyOrchestratorId = pulumi.Input.asInput<String>(policyOrchestratorId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      state = pulumi.Input.asOptionalInput<String>(state);
+  }) : action = pulumi.Input.asInput<String>(action),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       orchestratedResource =
+           pulumi.Input.asInput<V2PolicyOrchestratorOrchestratedResource>(
+             orchestratedResource,
+           ),
+       orchestrationScope =
+           pulumi.Input.asOptionalInput<V2PolicyOrchestratorOrchestrationScope>(
+             orchestrationScope,
+           ),
+       policyOrchestratorId = pulumi.Input.asInput<String>(
+         policyOrchestratorId,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       state = pulumi.Input.asOptionalInput<String>(state);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
       'description': ?description,
       'labels': ?labels,
-      'orchestratedResource': pulumi.Input.mapInputValue<V2PolicyOrchestratorOrchestratedResource, Map<String, dynamic>>(orchestratedResource, (value) => value.toMap()),
-      'orchestrationScope': ?pulumi.Input.mapOptionalInputValue<V2PolicyOrchestratorOrchestrationScope, Map<String, dynamic>>(orchestrationScope, (value) => value.toMap()),
+      'orchestratedResource':
+          pulumi.Input.mapInputValue<
+            V2PolicyOrchestratorOrchestratedResource,
+            Map<String, dynamic>
+          >(orchestratedResource, (value) => value.toMap()),
+      'orchestrationScope':
+          ?pulumi.Input.mapOptionalInputValue<
+            V2PolicyOrchestratorOrchestrationScope,
+            Map<String, dynamic>
+          >(orchestrationScope, (value) => value.toMap()),
       'policyOrchestratorId': policyOrchestratorId,
       'project': ?project,
       'state': ?state,
@@ -92,14 +116,23 @@ class V2PolicyOrchestratorArgs {
   factory V2PolicyOrchestratorArgs.fromMap(Map<String, dynamic> map) {
     return V2PolicyOrchestratorArgs(
       action: map['action'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      orchestratedResource: V2PolicyOrchestratorOrchestratedResource.fromMap((map['orchestratedResource'] as Map).cast<String, dynamic>()),
-      orchestrationScope: map['orchestrationScope'] == null ? null : V2PolicyOrchestratorOrchestrationScope.fromMap((map['orchestrationScope'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
+      orchestratedResource: V2PolicyOrchestratorOrchestratedResource.fromMap(
+        (map['orchestratedResource'] as Map).cast<String, dynamic>(),
+      ),
+      orchestrationScope: map['orchestrationScope'] == null
+          ? null
+          : V2PolicyOrchestratorOrchestrationScope.fromMap(
+              (map['orchestrationScope'] as Map).cast<String, dynamic>(),
+            ),
       policyOrchestratorId: map['policyOrchestratorId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
-

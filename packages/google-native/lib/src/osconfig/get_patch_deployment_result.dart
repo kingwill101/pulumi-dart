@@ -10,26 +10,37 @@ import 'recurring_schedule_response.dart';
 class GetPatchDeploymentResult {
   /// Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   final String createTime;
+
   /// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
   final String description;
+
   /// Optional. Duration of the patch. After the duration ends, the patch times out.
   final String duration;
+
   /// VM instances to patch.
   final PatchInstanceFilterResponse instanceFilter;
+
   /// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   final String lastExecuteTime;
+
   /// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
   final String name;
+
   /// Schedule a one-time execution.
   final OneTimeScheduleResponse oneTimeSchedule;
+
   /// Optional. Patch configuration that is applied.
   final PatchConfigResponse patchConfig;
+
   /// Schedule recurring executions.
   final RecurringScheduleResponse recurringSchedule;
+
   /// Optional. Rollout strategy of the patch job.
   final PatchRolloutResponse rollout;
+
   /// Current state of the patch deployment.
   final String state;
+
   /// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   final String updateTime;
 
@@ -83,16 +94,25 @@ class GetPatchDeploymentResult {
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       duration: map['duration'] as String,
-      instanceFilter: PatchInstanceFilterResponse.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>()),
+      instanceFilter: PatchInstanceFilterResponse.fromMap(
+        (map['instanceFilter'] as Map).cast<String, dynamic>(),
+      ),
       lastExecuteTime: map['lastExecuteTime'] as String,
       name: map['name'] as String,
-      oneTimeSchedule: OneTimeScheduleResponse.fromMap((map['oneTimeSchedule'] as Map).cast<String, dynamic>()),
-      patchConfig: PatchConfigResponse.fromMap((map['patchConfig'] as Map).cast<String, dynamic>()),
-      recurringSchedule: RecurringScheduleResponse.fromMap((map['recurringSchedule'] as Map).cast<String, dynamic>()),
-      rollout: PatchRolloutResponse.fromMap((map['rollout'] as Map).cast<String, dynamic>()),
+      oneTimeSchedule: OneTimeScheduleResponse.fromMap(
+        (map['oneTimeSchedule'] as Map).cast<String, dynamic>(),
+      ),
+      patchConfig: PatchConfigResponse.fromMap(
+        (map['patchConfig'] as Map).cast<String, dynamic>(),
+      ),
+      recurringSchedule: RecurringScheduleResponse.fromMap(
+        (map['recurringSchedule'] as Map).cast<String, dynamic>(),
+      ),
+      rollout: PatchRolloutResponse.fromMap(
+        (map['rollout'] as Map).cast<String, dynamic>(),
+      ),
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

@@ -8,6 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigee_v1_nat_address_args_doc}
 class NatAddressArgs {
   final pulumi.Input<String> instanceId;
+
   /// Resource ID of the NAT address.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
@@ -20,10 +21,9 @@ class NatAddressArgs {
     required String instanceId,
     String? name,
     required String organizationId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : instanceId = pulumi.Input.asInput<String>(instanceId),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,4 +41,3 @@ class NatAddressArgs {
     );
   }
 }
-

@@ -14,35 +14,51 @@ import 'operation_error_sqladmin_v1beta4.dart';
 class BackupRunSqladminV1beta4Args {
   /// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
   final pulumi.Input<BackupRunBackupKindSqladminV1beta4>? backupKind;
+
   /// The description of this run, only applicable to on-demand backups.
   final pulumi.Input<String>? description;
+
   /// Encryption configuration specific to a backup.
-  final pulumi.Input<DiskEncryptionConfigurationSqladminV1beta4>? diskEncryptionConfiguration;
+  final pulumi.Input<DiskEncryptionConfigurationSqladminV1beta4>?
+  diskEncryptionConfiguration;
+
   /// Encryption status specific to a backup.
   final pulumi.Input<DiskEncryptionStatusSqladminV1beta4>? diskEncryptionStatus;
+
   /// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final pulumi.Input<String>? endTime;
+
   /// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final pulumi.Input<String>? enqueuedTime;
+
   /// Information about why the backup operation failed. This is only present if the run has the FAILED status.
   final pulumi.Input<OperationErrorSqladminV1beta4>? error;
+
   /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
   final pulumi.Input<String>? id;
+
   /// Name of the database instance.
   final pulumi.Input<String> instance;
+
   /// This is always `sql#backupRun`.
   final pulumi.Input<String>? kind;
+
   /// Location of the backups.
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
+
   /// The URI of this resource.
   final pulumi.Input<String>? selfLink;
+
   /// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final pulumi.Input<String>? startTime;
+
   /// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
   final pulumi.Input<String>? timeZone;
+
   /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
   final pulumi.Input<BackupRunTypeSqladminV1beta4>? type;
+
   /// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
   final pulumi.Input<String>? windowStartTime;
 
@@ -82,34 +98,60 @@ class BackupRunSqladminV1beta4Args {
     String? timeZone,
     BackupRunTypeSqladminV1beta4? type,
     String? windowStartTime,
-  }) :
-      backupKind = pulumi.Input.asOptionalInput<BackupRunBackupKindSqladminV1beta4>(backupKind),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      diskEncryptionConfiguration = pulumi.Input.asOptionalInput<DiskEncryptionConfigurationSqladminV1beta4>(diskEncryptionConfiguration),
-      diskEncryptionStatus = pulumi.Input.asOptionalInput<DiskEncryptionStatusSqladminV1beta4>(diskEncryptionStatus),
-      endTime = pulumi.Input.asOptionalInput<String>(endTime),
-      enqueuedTime = pulumi.Input.asOptionalInput<String>(enqueuedTime),
-      error = pulumi.Input.asOptionalInput<OperationErrorSqladminV1beta4>(error),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      instance = pulumi.Input.asInput<String>(instance),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      startTime = pulumi.Input.asOptionalInput<String>(startTime),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone),
-      type = pulumi.Input.asOptionalInput<BackupRunTypeSqladminV1beta4>(type),
-      windowStartTime = pulumi.Input.asOptionalInput<String>(windowStartTime);
+  }) : backupKind =
+           pulumi.Input.asOptionalInput<BackupRunBackupKindSqladminV1beta4>(
+             backupKind,
+           ),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       diskEncryptionConfiguration =
+           pulumi.Input.asOptionalInput<
+             DiskEncryptionConfigurationSqladminV1beta4
+           >(diskEncryptionConfiguration),
+       diskEncryptionStatus =
+           pulumi.Input.asOptionalInput<DiskEncryptionStatusSqladminV1beta4>(
+             diskEncryptionStatus,
+           ),
+       endTime = pulumi.Input.asOptionalInput<String>(endTime),
+       enqueuedTime = pulumi.Input.asOptionalInput<String>(enqueuedTime),
+       error = pulumi.Input.asOptionalInput<OperationErrorSqladminV1beta4>(
+         error,
+       ),
+       id = pulumi.Input.asOptionalInput<String>(id),
+       instance = pulumi.Input.asInput<String>(instance),
+       kind = pulumi.Input.asOptionalInput<String>(kind),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
+       startTime = pulumi.Input.asOptionalInput<String>(startTime),
+       timeZone = pulumi.Input.asOptionalInput<String>(timeZone),
+       type = pulumi.Input.asOptionalInput<BackupRunTypeSqladminV1beta4>(type),
+       windowStartTime = pulumi.Input.asOptionalInput<String>(windowStartTime);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupKind': ?pulumi.Input.mapOptionalInputValue<BackupRunBackupKindSqladminV1beta4, String>(backupKind, (value) => value.value),
+      'backupKind':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackupRunBackupKindSqladminV1beta4,
+            String
+          >(backupKind, (value) => value.value),
       'description': ?description,
-      'diskEncryptionConfiguration': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionConfigurationSqladminV1beta4, Map<String, dynamic>>(diskEncryptionConfiguration, (value) => value.toMap()),
-      'diskEncryptionStatus': ?pulumi.Input.mapOptionalInputValue<DiskEncryptionStatusSqladminV1beta4, Map<String, dynamic>>(diskEncryptionStatus, (value) => value.toMap()),
+      'diskEncryptionConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskEncryptionConfigurationSqladminV1beta4,
+            Map<String, dynamic>
+          >(diskEncryptionConfiguration, (value) => value.toMap()),
+      'diskEncryptionStatus':
+          ?pulumi.Input.mapOptionalInputValue<
+            DiskEncryptionStatusSqladminV1beta4,
+            Map<String, dynamic>
+          >(diskEncryptionStatus, (value) => value.toMap()),
       'endTime': ?endTime,
       'enqueuedTime': ?enqueuedTime,
-      'error': ?pulumi.Input.mapOptionalInputValue<OperationErrorSqladminV1beta4, Map<String, dynamic>>(error, (value) => value.toMap()),
+      'error':
+          ?pulumi.Input.mapOptionalInputValue<
+            OperationErrorSqladminV1beta4,
+            Map<String, dynamic>
+          >(error, (value) => value.toMap()),
       'id': ?id,
       'instance': instance,
       'kind': ?kind,
@@ -118,20 +160,45 @@ class BackupRunSqladminV1beta4Args {
       'selfLink': ?selfLink,
       'startTime': ?startTime,
       'timeZone': ?timeZone,
-      'type': ?pulumi.Input.mapOptionalInputValue<BackupRunTypeSqladminV1beta4, String>(type, (value) => value.value),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            BackupRunTypeSqladminV1beta4,
+            String
+          >(type, (value) => value.value),
       'windowStartTime': ?windowStartTime,
     };
   }
 
   factory BackupRunSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
     return BackupRunSqladminV1beta4Args(
-      backupKind: map['backupKind'] == null ? null : BackupRunBackupKindSqladminV1beta4.fromValue(map['backupKind'] as String),
-      description: map['description'] == null ? null : map['description'] as String,
-      diskEncryptionConfiguration: map['diskEncryptionConfiguration'] == null ? null : DiskEncryptionConfigurationSqladminV1beta4.fromMap((map['diskEncryptionConfiguration'] as Map).cast<String, dynamic>()),
-      diskEncryptionStatus: map['diskEncryptionStatus'] == null ? null : DiskEncryptionStatusSqladminV1beta4.fromMap((map['diskEncryptionStatus'] as Map).cast<String, dynamic>()),
+      backupKind: map['backupKind'] == null
+          ? null
+          : BackupRunBackupKindSqladminV1beta4.fromValue(
+              map['backupKind'] as String,
+            ),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      diskEncryptionConfiguration: map['diskEncryptionConfiguration'] == null
+          ? null
+          : DiskEncryptionConfigurationSqladminV1beta4.fromMap(
+              (map['diskEncryptionConfiguration'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      diskEncryptionStatus: map['diskEncryptionStatus'] == null
+          ? null
+          : DiskEncryptionStatusSqladminV1beta4.fromMap(
+              (map['diskEncryptionStatus'] as Map).cast<String, dynamic>(),
+            ),
       endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      enqueuedTime: map['enqueuedTime'] == null ? null : map['enqueuedTime'] as String,
-      error: map['error'] == null ? null : OperationErrorSqladminV1beta4.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      enqueuedTime: map['enqueuedTime'] == null
+          ? null
+          : map['enqueuedTime'] as String,
+      error: map['error'] == null
+          ? null
+          : OperationErrorSqladminV1beta4.fromMap(
+              (map['error'] as Map).cast<String, dynamic>(),
+            ),
       id: map['id'] == null ? null : map['id'] as String,
       instance: map['instance'] as String,
       kind: map['kind'] == null ? null : map['kind'] as String,
@@ -140,9 +207,12 @@ class BackupRunSqladminV1beta4Args {
       selfLink: map['selfLink'] == null ? null : map['selfLink'] as String,
       startTime: map['startTime'] == null ? null : map['startTime'] as String,
       timeZone: map['timeZone'] == null ? null : map['timeZone'] as String,
-      type: map['type'] == null ? null : BackupRunTypeSqladminV1beta4.fromValue(map['type'] as String),
-      windowStartTime: map['windowStartTime'] == null ? null : map['windowStartTime'] as String,
+      type: map['type'] == null
+          ? null
+          : BackupRunTypeSqladminV1beta4.fromValue(map['type'] as String),
+      windowStartTime: map['windowStartTime'] == null
+          ? null
+          : map['windowStartTime'] as String,
     );
   }
 }
-

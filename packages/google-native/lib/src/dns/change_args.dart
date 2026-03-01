@@ -10,10 +10,13 @@ import 'resource_record_set_dns_v1.dart';
 class ChangeArgs {
   /// Which ResourceRecordSets to add?
   final pulumi.Input<List<ResourceRecordSetDnsV1>>? additions;
+
   /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
   final pulumi.Input<String>? clientOperationId;
+
   /// Which ResourceRecordSets to remove? Must match existing data exactly.
   final pulumi.Input<List<ResourceRecordSetDnsV1>>? deletions;
+
   /// If the DNS queries for the zone will be served.
   final pulumi.Input<bool>? isServing;
   final pulumi.Input<String>? kind;
@@ -36,14 +39,19 @@ class ChangeArgs {
     String? kind,
     required String managedZone,
     String? project,
-  }) :
-      additions = pulumi.Input.asOptionalInput<List<ResourceRecordSetDnsV1>>(additions),
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      deletions = pulumi.Input.asOptionalInput<List<ResourceRecordSetDnsV1>>(deletions),
-      isServing = pulumi.Input.asOptionalInput<bool>(isServing),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      managedZone = pulumi.Input.asInput<String>(managedZone),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : additions = pulumi.Input.asOptionalInput<List<ResourceRecordSetDnsV1>>(
+         additions,
+       ),
+       clientOperationId = pulumi.Input.asOptionalInput<String>(
+         clientOperationId,
+       ),
+       deletions = pulumi.Input.asOptionalInput<List<ResourceRecordSetDnsV1>>(
+         deletions,
+       ),
+       isServing = pulumi.Input.asOptionalInput<bool>(isServing),
+       kind = pulumi.Input.asOptionalInput<String>(kind),
+       managedZone = pulumi.Input.asInput<String>(managedZone),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,9 +67,15 @@ class ChangeArgs {
 
   factory ChangeArgs.fromMap(Map<String, dynamic> map) {
     return ChangeArgs(
-      additions: map['additions'] == null ? null : (map['additions'] as List).cast<ResourceRecordSetDnsV1>(),
-      clientOperationId: map['clientOperationId'] == null ? null : map['clientOperationId'] as String,
-      deletions: map['deletions'] == null ? null : (map['deletions'] as List).cast<ResourceRecordSetDnsV1>(),
+      additions: map['additions'] == null
+          ? null
+          : (map['additions'] as List).cast<ResourceRecordSetDnsV1>(),
+      clientOperationId: map['clientOperationId'] == null
+          ? null
+          : map['clientOperationId'] as String,
+      deletions: map['deletions'] == null
+          ? null
+          : (map['deletions'] as List).cast<ResourceRecordSetDnsV1>(),
       isServing: map['isServing'] == null ? null : map['isServing'] as bool,
       kind: map['kind'] == null ? null : map['kind'] as String,
       managedZone: map['managedZone'] as String,
@@ -69,4 +83,3 @@ class ChangeArgs {
     );
   }
 }
-

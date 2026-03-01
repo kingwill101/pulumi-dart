@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLaunchTemplateInstanceRequirementMemoryMib {
   final int max;
   final int min;
@@ -14,17 +13,15 @@ class GetLaunchTemplateInstanceRequirementMemoryMib {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': max,
-      'min': min,
-    };
+    return <String, dynamic>{'max': max, 'min': min};
   }
 
-  factory GetLaunchTemplateInstanceRequirementMemoryMib.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplateInstanceRequirementMemoryMib.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplateInstanceRequirementMemoryMib(
       max: map['max'] as int,
       min: map['min'] as int,
     );
   }
 }
-

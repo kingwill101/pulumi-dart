@@ -6,16 +6,14 @@ import 'audit_log_config_log_type_metastore_v1alpha.dart';
 class AuditLogConfigMetastoreV1alpha {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final List<String>? exemptedMembers;
+
   /// The log type that this config enables.
   final AuditLogConfigLogTypeMetastoreV1alpha? logType;
 
   /// Creates a new [AuditLogConfigMetastoreV1alpha].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigMetastoreV1alpha({
-    this.exemptedMembers,
-    this.logType,
-  });
+  AuditLogConfigMetastoreV1alpha({this.exemptedMembers, this.logType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class AuditLogConfigMetastoreV1alpha {
 
   factory AuditLogConfigMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return AuditLogConfigMetastoreV1alpha(
-      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
-      logType: map['logType'] == null ? null : AuditLogConfigLogTypeMetastoreV1alpha.fromValue(map['logType'] as String),
+      exemptedMembers: map['exemptedMembers'] == null
+          ? null
+          : (map['exemptedMembers'] as List).cast<String>(),
+      logType: map['logType'] == null
+          ? null
+          : AuditLogConfigLogTypeMetastoreV1alpha.fromValue(
+              map['logType'] as String,
+            ),
     );
   }
 }
-

@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExperimentTemplatesArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired experiment templates.
   final pulumi.Input<Map<String, String>>? tags;
@@ -16,25 +17,20 @@ class GetExperimentTemplatesArgs {
   /// Creates a new [GetExperimentTemplatesArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags, each pair of which must exactly match
-  GetExperimentTemplatesArgs({
-    String? region,
-    Map<String, String>? tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
+  GetExperimentTemplatesArgs({String? region, Map<String, String>? tags})
+    : region = pulumi.Input.asOptionalInput<String>(region),
       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'region': ?region, 'tags': ?tags};
   }
 
   factory GetExperimentTemplatesArgs.fromMap(Map<String, dynamic> map) {
     return GetExperimentTemplatesArgs(
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

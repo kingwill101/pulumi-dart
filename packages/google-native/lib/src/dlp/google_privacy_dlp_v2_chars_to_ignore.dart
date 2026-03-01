@@ -6,8 +6,10 @@ import 'google_privacy_dlp_v2_chars_to_ignore_common_characters_to_ignore.dart';
 class GooglePrivacyDlpV2CharsToIgnore {
   /// Characters to not transform when masking.
   final String? charactersToSkip;
+
   /// Common characters to not transform when masking. Useful to avoid removing punctuation.
-  final GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore? commonCharactersToIgnore;
+  final GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore?
+  commonCharactersToIgnore;
 
   /// Creates a new [GooglePrivacyDlpV2CharsToIgnore].
   /// [charactersToSkip] Characters to not transform when masking.
@@ -20,15 +22,22 @@ class GooglePrivacyDlpV2CharsToIgnore {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'charactersToSkip': ?charactersToSkip,
-      'commonCharactersToIgnore': ?commonCharactersToIgnore == null ? null : commonCharactersToIgnore!.value,
+      'commonCharactersToIgnore': ?commonCharactersToIgnore == null
+          ? null
+          : commonCharactersToIgnore!.value,
     };
   }
 
   factory GooglePrivacyDlpV2CharsToIgnore.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CharsToIgnore(
-      charactersToSkip: map['charactersToSkip'] == null ? null : map['charactersToSkip'] as String,
-      commonCharactersToIgnore: map['commonCharactersToIgnore'] == null ? null : GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore.fromValue(map['commonCharactersToIgnore'] as String),
+      charactersToSkip: map['charactersToSkip'] == null
+          ? null
+          : map['charactersToSkip'] as String,
+      commonCharactersToIgnore: map['commonCharactersToIgnore'] == null
+          ? null
+          : GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnore.fromValue(
+              map['commonCharactersToIgnore'] as String,
+            ),
     );
   }
 }
-

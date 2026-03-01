@@ -7,22 +7,29 @@ import 'get_service_quota_usage_metric.dart';
 class GetServiceQuotaResult {
   /// Whether the service quota is adjustable.
   final bool adjustable;
+
   /// ARN of the service quota.
   final String arn;
+
   /// Default value of the service quota.
   final double defaultValue;
+
   /// Whether the service quota is global for the AWS account.
   final bool globalQuota;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String quotaCode;
   final String quotaName;
   final String region;
   final String serviceCode;
+
   /// Name of the service.
   final String serviceName;
+
   /// Information about the measurement.
   final List<GetServiceQuotaUsageMetric> usageMetrics;
+
   /// Current value of the service quota.
   final double value;
 
@@ -66,7 +73,11 @@ class GetServiceQuotaResult {
       'region': region,
       'serviceCode': serviceCode,
       'serviceName': serviceName,
-      'usageMetrics': pulumi.Input.encodeList<GetServiceQuotaUsageMetric, Map<String, dynamic>>(usageMetrics, (value) => value.toMap()),
+      'usageMetrics':
+          pulumi.Input.encodeList<
+            GetServiceQuotaUsageMetric,
+            Map<String, dynamic>
+          >(usageMetrics, (value) => value.toMap()),
       'value': value,
     };
   }
@@ -83,9 +94,13 @@ class GetServiceQuotaResult {
       region: map['region'] as String,
       serviceCode: map['serviceCode'] as String,
       serviceName: map['serviceName'] as String,
-      usageMetrics: pulumi.Input.decodeList<GetServiceQuotaUsageMetric>(map['usageMetrics'], (value) => GetServiceQuotaUsageMetric.fromMap((value as Map).cast<String, dynamic>())),
+      usageMetrics: pulumi.Input.decodeList<GetServiceQuotaUsageMetric>(
+        map['usageMetrics'],
+        (value) => GetServiceQuotaUsageMetric.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       value: map['value'] as double,
     );
   }
 }
-

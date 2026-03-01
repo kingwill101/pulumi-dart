@@ -25,9 +25,12 @@ class SlsaProvenanceV1Response {
 
   factory SlsaProvenanceV1Response.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceV1Response(
-      buildDefinition: BuildDefinitionResponse.fromMap((map['buildDefinition'] as Map).cast<String, dynamic>()),
-      runDetails: RunDetailsResponse.fromMap((map['runDetails'] as Map).cast<String, dynamic>()),
+      buildDefinition: BuildDefinitionResponse.fromMap(
+        (map['buildDefinition'] as Map).cast<String, dynamic>(),
+      ),
+      runDetails: RunDetailsResponse.fromMap(
+        (map['runDetails'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

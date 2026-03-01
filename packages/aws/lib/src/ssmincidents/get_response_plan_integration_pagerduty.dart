@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetResponsePlanIntegrationPagerduty {
   /// The name of the PagerDuty configuration.
   final String name;
+
   /// The ID of the AWS Secrets Manager secret that stores your PagerDuty key &mdash; either a General Access REST API Key or User Token REST API Key &mdash; and other user credentials.
   final String secretId;
+
   /// The ID of the PagerDuty service that the response plan associates with an incident when it launches.
   final String serviceId;
 
@@ -27,7 +28,9 @@ class GetResponsePlanIntegrationPagerduty {
     };
   }
 
-  factory GetResponsePlanIntegrationPagerduty.fromMap(Map<String, dynamic> map) {
+  factory GetResponsePlanIntegrationPagerduty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResponsePlanIntegrationPagerduty(
       name: map['name'] as String,
       secretId: map['secretId'] as String,
@@ -35,4 +38,3 @@ class GetResponsePlanIntegrationPagerduty {
     );
   }
 }
-

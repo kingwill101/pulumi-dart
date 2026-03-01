@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTopicIngestionDataSourceSettingConfluentCloud {
   /// The Confluent Cloud bootstrap server. The format is url:port.
   final String bootstrapServer;
+
   /// The Confluent Cloud cluster ID.
   final String clusterId;
+
   /// The GCP service account to be used for Federated Identity authentication
   /// with Confluent Cloud.
   final String gcpServiceAccount;
+
   /// Identity pool ID to be used for Federated Identity authentication with Confluent Cloud.
   final String identityPoolId;
+
   /// Name of the Confluent Cloud topic that Pub/Sub will import from.
   final String topic;
 
@@ -38,7 +41,9 @@ class GetTopicIngestionDataSourceSettingConfluentCloud {
     };
   }
 
-  factory GetTopicIngestionDataSourceSettingConfluentCloud.fromMap(Map<String, dynamic> map) {
+  factory GetTopicIngestionDataSourceSettingConfluentCloud.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTopicIngestionDataSourceSettingConfluentCloud(
       bootstrapServer: map['bootstrapServer'] as String,
       clusterId: map['clusterId'] as String,
@@ -48,4 +53,3 @@ class GetTopicIngestionDataSourceSettingConfluentCloud {
     );
   }
 }
-

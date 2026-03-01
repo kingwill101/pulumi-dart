@@ -7,12 +7,16 @@ import 'schema_config.dart';
 class GoogleCloudHealthcareV1FhirBigQueryDestination {
   /// BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`.
   final String? datasetUri;
+
   /// If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
   final bool? force;
+
   /// The configuration for the exported BigQuery schema.
   final SchemaConfig? schemaConfig;
+
   /// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-  final GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition? writeDisposition;
+  final GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition?
+  writeDisposition;
 
   /// Creates a new [GoogleCloudHealthcareV1FhirBigQueryDestination].
   /// [datasetUri] BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`.
@@ -31,17 +35,30 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
       'datasetUri': ?datasetUri,
       'force': ?force,
       'schemaConfig': ?schemaConfig == null ? null : schemaConfig!.toMap(),
-      'writeDisposition': ?writeDisposition == null ? null : writeDisposition!.value,
+      'writeDisposition': ?writeDisposition == null
+          ? null
+          : writeDisposition!.value,
     };
   }
 
-  factory GoogleCloudHealthcareV1FhirBigQueryDestination.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudHealthcareV1FhirBigQueryDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudHealthcareV1FhirBigQueryDestination(
-      datasetUri: map['datasetUri'] == null ? null : map['datasetUri'] as String,
+      datasetUri: map['datasetUri'] == null
+          ? null
+          : map['datasetUri'] as String,
       force: map['force'] == null ? null : map['force'] as bool,
-      schemaConfig: map['schemaConfig'] == null ? null : SchemaConfig.fromMap((map['schemaConfig'] as Map).cast<String, dynamic>()),
-      writeDisposition: map['writeDisposition'] == null ? null : GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition.fromValue(map['writeDisposition'] as String),
+      schemaConfig: map['schemaConfig'] == null
+          ? null
+          : SchemaConfig.fromMap(
+              (map['schemaConfig'] as Map).cast<String, dynamic>(),
+            ),
+      writeDisposition: map['writeDisposition'] == null
+          ? null
+          : GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition.fromValue(
+              map['writeDisposition'] as String,
+            ),
     );
   }
 }
-

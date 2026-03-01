@@ -4,24 +4,28 @@ import 'vpn_connection_tunnel1_log_options_cloudwatch_log_options.dart';
 
 class VpnConnectionTunnel1LogOptions {
   /// Options for sending VPN tunnel logs to CloudWatch. See CloudWatch Log Options below for more details.
-  final VpnConnectionTunnel1LogOptionsCloudwatchLogOptions? cloudwatchLogOptions;
+  final VpnConnectionTunnel1LogOptionsCloudwatchLogOptions?
+  cloudwatchLogOptions;
 
   /// Creates a new [VpnConnectionTunnel1LogOptions].
   /// [cloudwatchLogOptions] Options for sending VPN tunnel logs to CloudWatch. See CloudWatch Log Options below for more details.
-  VpnConnectionTunnel1LogOptions({
-    this.cloudwatchLogOptions,
-  });
+  VpnConnectionTunnel1LogOptions({this.cloudwatchLogOptions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudwatchLogOptions': ?cloudwatchLogOptions == null ? null : cloudwatchLogOptions!.toMap(),
+      'cloudwatchLogOptions': ?cloudwatchLogOptions == null
+          ? null
+          : cloudwatchLogOptions!.toMap(),
     };
   }
 
   factory VpnConnectionTunnel1LogOptions.fromMap(Map<String, dynamic> map) {
     return VpnConnectionTunnel1LogOptions(
-      cloudwatchLogOptions: map['cloudwatchLogOptions'] == null ? null : VpnConnectionTunnel1LogOptionsCloudwatchLogOptions.fromMap((map['cloudwatchLogOptions'] as Map).cast<String, dynamic>()),
+      cloudwatchLogOptions: map['cloudwatchLogOptions'] == null
+          ? null
+          : VpnConnectionTunnel1LogOptionsCloudwatchLogOptions.fromMap(
+              (map['cloudwatchLogOptions'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

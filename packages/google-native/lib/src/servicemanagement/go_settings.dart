@@ -9,9 +9,7 @@ class GoSettings {
 
   /// Creates a new [GoSettings].
   /// [common] Some settings.
-  GoSettings({
-    this.common,
-  });
+  GoSettings({this.common});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class GoSettings {
 
   factory GoSettings.fromMap(Map<String, dynamic> map) {
     return GoSettings(
-      common: map['common'] == null ? null : CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: map['common'] == null
+          ? null
+          : CommonLanguageSettings.fromMap(
+              (map['common'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -22,11 +22,10 @@ class GetUserSqladminV1beta4Args {
     required String instance,
     required String name,
     String? project,
-  }) :
-      host = pulumi.Input.asOptionalInput<String>(host),
-      instance = pulumi.Input.asInput<String>(instance),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : host = pulumi.Input.asOptionalInput<String>(host),
+       instance = pulumi.Input.asInput<String>(instance),
+       name = pulumi.Input.asInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetUserSqladminV1beta4Args {
     );
   }
 }
-

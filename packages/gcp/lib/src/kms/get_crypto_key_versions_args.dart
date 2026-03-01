@@ -10,6 +10,7 @@ class GetCryptoKeyVersionsArgs {
   /// The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// `gcp.kms.CryptoKey` resource/datasource.
   final pulumi.Input<String> cryptoKey;
+
   /// The filter argument is used to add a filter query parameter that limits which versions are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
   ///
   /// Example filter values if filtering on name. Note: names take the form projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}/cryptoKeyVersions.
@@ -23,18 +24,12 @@ class GetCryptoKeyVersionsArgs {
   /// Creates a new [GetCryptoKeyVersionsArgs].
   /// [cryptoKey] The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// [filter] The filter argument is used to add a filter query parameter that limits which versions are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
-  GetCryptoKeyVersionsArgs({
-    required String cryptoKey,
-    String? filter,
-  }) :
-      cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
+  GetCryptoKeyVersionsArgs({required String cryptoKey, String? filter})
+    : cryptoKey = pulumi.Input.asInput<String>(cryptoKey),
       filter = pulumi.Input.asOptionalInput<String>(filter);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cryptoKey': cryptoKey,
-      'filter': ?filter,
-    };
+    return <String, dynamic>{'cryptoKey': cryptoKey, 'filter': ?filter};
   }
 
   factory GetCryptoKeyVersionsArgs.fromMap(Map<String, dynamic> map) {
@@ -44,4 +39,3 @@ class GetCryptoKeyVersionsArgs {
     );
   }
 }
-

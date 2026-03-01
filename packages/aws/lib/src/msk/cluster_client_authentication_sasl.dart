@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterClientAuthenticationSasl {
   final bool? iam;
   final bool? scram;
@@ -8,16 +7,10 @@ class ClusterClientAuthenticationSasl {
   /// Creates a new [ClusterClientAuthenticationSasl].
   /// [iam] Optional.
   /// [scram] Optional.
-  ClusterClientAuthenticationSasl({
-    this.iam,
-    this.scram,
-  });
+  ClusterClientAuthenticationSasl({this.iam, this.scram});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'iam': ?iam,
-      'scram': ?scram,
-    };
+    return <String, dynamic>{'iam': ?iam, 'scram': ?scram};
   }
 
   factory ClusterClientAuthenticationSasl.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class ClusterClientAuthenticationSasl {
     );
   }
 }
-

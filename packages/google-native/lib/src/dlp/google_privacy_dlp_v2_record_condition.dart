@@ -9,9 +9,7 @@ class GooglePrivacyDlpV2RecordCondition {
 
   /// Creates a new [GooglePrivacyDlpV2RecordCondition].
   /// [expressions] An expression.
-  GooglePrivacyDlpV2RecordCondition({
-    this.expressions,
-  });
+  GooglePrivacyDlpV2RecordCondition({this.expressions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class GooglePrivacyDlpV2RecordCondition {
 
   factory GooglePrivacyDlpV2RecordCondition.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2RecordCondition(
-      expressions: map['expressions'] == null ? null : GooglePrivacyDlpV2Expressions.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
+      expressions: map['expressions'] == null
+          ? null
+          : GooglePrivacyDlpV2Expressions.fromMap(
+              (map['expressions'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

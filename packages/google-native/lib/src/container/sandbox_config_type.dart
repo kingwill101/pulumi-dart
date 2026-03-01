@@ -15,4 +15,3 @@ enum SandboxConfigType {
     throw ArgumentError('Unknown SandboxConfigType value: $value');
   }
 }
-

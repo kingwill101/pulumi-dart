@@ -16,4 +16,3 @@ enum RegionDiskInterface {
     throw ArgumentError('Unknown RegionDiskInterface value: $value');
   }
 }
-

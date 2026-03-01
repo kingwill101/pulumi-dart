@@ -7,20 +7,28 @@ import 'geth_details_response.dart';
 class EthereumDetailsResponse {
   /// Ethereum-specific endpoint information.
   final EthereumEndpointsResponse additionalEndpoints;
+
   /// Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`.
   final bool apiEnableAdmin;
+
   /// Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`.
   final bool apiEnableDebug;
+
   /// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
   final String beaconFeeRecipient;
+
   /// Immutable. The consensus client.
   final String consensusClient;
+
   /// Immutable. The execution client
   final String executionClient;
+
   /// Details for the Geth execution client.
   final GethDetailsResponse gethDetails;
+
   /// Immutable. The Ethereum environment being accessed.
   final String network;
+
   /// Immutable. The type of Ethereum node.
   final String nodeType;
 
@@ -62,16 +70,19 @@ class EthereumDetailsResponse {
 
   factory EthereumDetailsResponse.fromMap(Map<String, dynamic> map) {
     return EthereumDetailsResponse(
-      additionalEndpoints: EthereumEndpointsResponse.fromMap((map['additionalEndpoints'] as Map).cast<String, dynamic>()),
+      additionalEndpoints: EthereumEndpointsResponse.fromMap(
+        (map['additionalEndpoints'] as Map).cast<String, dynamic>(),
+      ),
       apiEnableAdmin: map['apiEnableAdmin'] as bool,
       apiEnableDebug: map['apiEnableDebug'] as bool,
       beaconFeeRecipient: map['beaconFeeRecipient'] as String,
       consensusClient: map['consensusClient'] as String,
       executionClient: map['executionClient'] as String,
-      gethDetails: GethDetailsResponse.fromMap((map['gethDetails'] as Map).cast<String, dynamic>()),
+      gethDetails: GethDetailsResponse.fromMap(
+        (map['gethDetails'] as Map).cast<String, dynamic>(),
+      ),
       network: map['network'] as String,
       nodeType: map['nodeType'] as String,
     );
   }
 }
-

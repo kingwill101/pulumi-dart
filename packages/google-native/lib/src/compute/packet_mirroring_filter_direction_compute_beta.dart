@@ -13,7 +13,8 @@ enum PacketMirroringFilterDirectionComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown PacketMirroringFilterDirectionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown PacketMirroringFilterDirectionComputeBeta value: $value',
+    );
   }
 }
-

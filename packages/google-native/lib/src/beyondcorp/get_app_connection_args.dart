@@ -19,10 +19,9 @@ class GetAppConnectionArgs {
     required String appConnectionId,
     required String location,
     String? project,
-  }) :
-      appConnectionId = pulumi.Input.asInput<String>(appConnectionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : appConnectionId = pulumi.Input.asInput<String>(appConnectionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetAppConnectionArgs {
     );
   }
 }
-

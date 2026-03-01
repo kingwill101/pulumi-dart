@@ -19,10 +19,9 @@ class GetProcessArgs {
     required String location,
     required String processId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      processId = pulumi.Input.asInput<String>(processId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       processId = pulumi.Input.asInput<String>(processId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetProcessArgs {
     );
   }
 }
-

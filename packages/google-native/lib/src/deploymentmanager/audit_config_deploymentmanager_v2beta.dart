@@ -7,29 +7,38 @@ import 'audit_log_config_deploymentmanager_v2beta.dart';
 class AuditConfigDeploymentmanagerV2beta {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigDeploymentmanagerV2beta>? auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
   /// Creates a new [AuditConfigDeploymentmanagerV2beta].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigDeploymentmanagerV2beta({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfigDeploymentmanagerV2beta({this.auditLogConfigs, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<AuditLogConfigDeploymentmanagerV2beta, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'auditLogConfigs': ?auditLogConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              AuditLogConfigDeploymentmanagerV2beta,
+              Map<String, dynamic>
+            >(auditLogConfigs!, (value) => value.toMap()),
       'service': ?service,
     };
   }
 
   factory AuditConfigDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return AuditConfigDeploymentmanagerV2beta(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<AuditLogConfigDeploymentmanagerV2beta>(map['auditLogConfigs'], (value) => AuditLogConfigDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigs: map['auditLogConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<AuditLogConfigDeploymentmanagerV2beta>(
+              map['auditLogConfigs'],
+              (value) => AuditLogConfigDeploymentmanagerV2beta.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
-

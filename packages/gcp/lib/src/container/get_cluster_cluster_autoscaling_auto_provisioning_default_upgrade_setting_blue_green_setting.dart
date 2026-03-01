@@ -8,8 +8,12 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
   ///
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   final String nodePoolSoakDuration;
+
   /// Standard policy for the blue-green upgrade.
-  final List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy> standardRolloutPolicies;
+  final List<
+    GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy
+  >
+  standardRolloutPolicies;
 
   /// Creates a new [GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting].
   /// [nodePoolSoakDuration] Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
@@ -22,15 +26,29 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nodePoolSoakDuration': nodePoolSoakDuration,
-      'standardRolloutPolicies': pulumi.Input.encodeList<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy, Map<String, dynamic>>(standardRolloutPolicies, (value) => value.toMap()),
+      'standardRolloutPolicies':
+          pulumi.Input.encodeList<
+            GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy,
+            Map<String, dynamic>
+          >(standardRolloutPolicies, (value) => value.toMap()),
     };
   }
 
-  factory GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting.fromMap(Map<String, dynamic> map) {
+  factory GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting(
       nodePoolSoakDuration: map['nodePoolSoakDuration'] as String,
-      standardRolloutPolicies: pulumi.Input.decodeList<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy>(map['standardRolloutPolicies'], (value) => GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      standardRolloutPolicies:
+          pulumi.Input.decodeList<
+            GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy
+          >(
+            map['standardRolloutPolicies'],
+            (value) =>
+                GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

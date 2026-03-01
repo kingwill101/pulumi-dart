@@ -10,10 +10,12 @@ class ConfigArgs {
   /// The description to associate with the runtime
   /// config.
   final pulumi.Input<String>? description;
+
   /// The name of the runtime config.
   ///
   /// - - -
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -22,12 +24,8 @@ class ConfigArgs {
   /// [description] The description to associate with the runtime
   /// [name] The name of the runtime config.
   /// [project] The ID of the project in which the resource belongs. If it
-  ConfigArgs({
-    String? description,
-    String? name,
-    String? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
+  ConfigArgs({String? description, String? name, String? project})
+    : description = pulumi.Input.asOptionalInput<String>(description),
       name = pulumi.Input.asOptionalInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -41,10 +39,11 @@ class ConfigArgs {
 
   factory ConfigArgs.fromMap(Map<String, dynamic> map) {
     return ConfigArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

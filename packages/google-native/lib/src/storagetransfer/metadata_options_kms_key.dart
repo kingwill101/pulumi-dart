@@ -16,4 +16,3 @@ enum MetadataOptionsKmsKey {
     throw ArgumentError('Unknown MetadataOptionsKmsKey value: $value');
   }
 }
-

@@ -9,20 +9,23 @@ class PipelineMediation {
 
   /// Creates a new [PipelineMediation].
   /// [transformation] Transformation defines the way to transform an incoming message.
-  PipelineMediation({
-    this.transformation,
-  });
+  PipelineMediation({this.transformation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'transformation': ?transformation == null ? null : transformation!.toMap(),
+      'transformation': ?transformation == null
+          ? null
+          : transformation!.toMap(),
     };
   }
 
   factory PipelineMediation.fromMap(Map<String, dynamic> map) {
     return PipelineMediation(
-      transformation: map['transformation'] == null ? null : PipelineMediationTransformation.fromMap((map['transformation'] as Map).cast<String, dynamic>()),
+      transformation: map['transformation'] == null
+          ? null
+          : PipelineMediationTransformation.fromMap(
+              (map['transformation'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

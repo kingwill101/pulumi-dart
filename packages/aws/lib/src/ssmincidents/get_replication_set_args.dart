@@ -12,21 +12,18 @@ class GetReplicationSetArgs {
 
   /// Creates a new [GetReplicationSetArgs].
   /// [tags] All tags applied to the replication set.
-  GetReplicationSetArgs({
-    Map<String, String>? tags,
-  }) :
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  GetReplicationSetArgs({Map<String, String>? tags})
+    : tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'tags': ?tags};
   }
 
   factory GetReplicationSetArgs.fromMap(Map<String, dynamic> map) {
     return GetReplicationSetArgs(
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

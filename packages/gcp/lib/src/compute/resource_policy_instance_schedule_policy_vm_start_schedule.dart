@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResourcePolicyInstanceSchedulePolicyVmStartSchedule {
   /// Specifies the frequency for the operation, using the unix-cron format.
   final String schedule;
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicyVmStartSchedule].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
-  ResourcePolicyInstanceSchedulePolicyVmStartSchedule({
-    required this.schedule,
-  });
+  ResourcePolicyInstanceSchedulePolicyVmStartSchedule({required this.schedule});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'schedule': schedule,
-    };
+    return <String, dynamic>{'schedule': schedule};
   }
 
-  factory ResourcePolicyInstanceSchedulePolicyVmStartSchedule.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyInstanceSchedulePolicyVmStartSchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyInstanceSchedulePolicyVmStartSchedule(
       schedule: map['schedule'] as String,
     );
   }
 }
-

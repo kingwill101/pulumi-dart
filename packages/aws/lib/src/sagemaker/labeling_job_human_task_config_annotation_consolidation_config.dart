@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LabelingJobHumanTaskConfigAnnotationConsolidationConfig {
   /// ARN of a Lambda function that implements the logic for annotation consolidation and to process output data.
   final String annotationConsolidationLambdaArn;
@@ -17,10 +16,12 @@ class LabelingJobHumanTaskConfigAnnotationConsolidationConfig {
     };
   }
 
-  factory LabelingJobHumanTaskConfigAnnotationConsolidationConfig.fromMap(Map<String, dynamic> map) {
+  factory LabelingJobHumanTaskConfigAnnotationConsolidationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LabelingJobHumanTaskConfigAnnotationConsolidationConfig(
-      annotationConsolidationLambdaArn: map['annotationConsolidationLambdaArn'] as String,
+      annotationConsolidationLambdaArn:
+          map['annotationConsolidationLambdaArn'] as String,
     );
   }
 }
-

@@ -10,20 +10,32 @@ class GoogleCloudDialogflowCxV3beta1FormResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1FormResponse].
   /// [parameters] Parameters to collect from the user.
-  GoogleCloudDialogflowCxV3beta1FormResponse({
-    required this.parameters,
-  });
+  GoogleCloudDialogflowCxV3beta1FormResponse({required this.parameters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1FormParameterResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowCxV3beta1FormParameterResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1FormResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1FormResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1FormResponse(
-      parameters: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1FormParameterResponse>(map['parameters'], (value) => GoogleCloudDialogflowCxV3beta1FormParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
+      parameters:
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowCxV3beta1FormParameterResponse
+          >(
+            map['parameters'],
+            (value) =>
+                GoogleCloudDialogflowCxV3beta1FormParameterResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

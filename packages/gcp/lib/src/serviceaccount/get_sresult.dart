@@ -7,6 +7,7 @@ import 'get_saccount.dart';
 class GetSResult {
   /// A list of all retrieved service accounts. Structure is defined below.
   final List<GetSAccount> accounts;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? prefix;
@@ -29,7 +30,10 @@ class GetSResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accounts': pulumi.Input.encodeList<GetSAccount, Map<String, dynamic>>(accounts, (value) => value.toMap()),
+      'accounts': pulumi.Input.encodeList<GetSAccount, Map<String, dynamic>>(
+        accounts,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'prefix': ?prefix,
       'project': ?project,
@@ -39,7 +43,10 @@ class GetSResult {
 
   factory GetSResult.fromMap(Map<String, dynamic> map) {
     return GetSResult(
-      accounts: pulumi.Input.decodeList<GetSAccount>(map['accounts'], (value) => GetSAccount.fromMap((value as Map).cast<String, dynamic>())),
+      accounts: pulumi.Input.decodeList<GetSAccount>(
+        map['accounts'],
+        (value) => GetSAccount.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -47,4 +54,3 @@ class GetSResult {
     );
   }
 }
-

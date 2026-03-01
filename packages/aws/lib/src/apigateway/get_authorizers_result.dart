@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAuthorizers.
 class GetAuthorizersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// List of Authorizer identifiers.
   final List<String> ids;
   final String region;
@@ -40,4 +40,3 @@ class GetAuthorizersResult {
     );
   }
 }
-

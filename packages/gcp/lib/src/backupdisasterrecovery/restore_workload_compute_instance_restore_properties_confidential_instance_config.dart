@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig {
   /// Optional. Defines whether the instance should have confidential compute enabled.
   final bool? enableConfidentialCompute;
@@ -17,10 +16,13 @@ class RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig 
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : map['enableConfidentialCompute'] as bool,
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null
+          ? null
+          : map['enableConfidentialCompute'] as bool,
     );
   }
 }
-

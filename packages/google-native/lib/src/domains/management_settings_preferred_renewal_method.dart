@@ -14,7 +14,8 @@ enum ManagementSettingsPreferredRenewalMethod {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagementSettingsPreferredRenewalMethod value: $value');
+    throw ArgumentError(
+      'Unknown ManagementSettingsPreferredRenewalMethod value: $value',
+    );
   }
 }
-

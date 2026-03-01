@@ -7,13 +7,17 @@ enum InstanceGroupConfigPreemptibilityDataprocV1beta2 {
   const InstanceGroupConfigPreemptibilityDataprocV1beta2(this.value);
   final String value;
 
-  static InstanceGroupConfigPreemptibilityDataprocV1beta2 fromValue(String value) {
-    for (final item in InstanceGroupConfigPreemptibilityDataprocV1beta2.values) {
+  static InstanceGroupConfigPreemptibilityDataprocV1beta2 fromValue(
+    String value,
+  ) {
+    for (final item
+        in InstanceGroupConfigPreemptibilityDataprocV1beta2.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupConfigPreemptibilityDataprocV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupConfigPreemptibilityDataprocV1beta2 value: $value',
+    );
   }
 }
-

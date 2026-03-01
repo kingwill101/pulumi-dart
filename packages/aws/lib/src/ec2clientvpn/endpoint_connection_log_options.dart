@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EndpointConnectionLogOptions {
   /// The name of the CloudWatch Logs log group.
   final String? cloudwatchLogGroup;
+
   /// The name of the CloudWatch Logs log stream to which the connection data is published.
   final String? cloudwatchLogStream;
+
   /// Indicates whether connection logging is enabled.
   final bool enabled;
 
@@ -29,10 +30,13 @@ class EndpointConnectionLogOptions {
 
   factory EndpointConnectionLogOptions.fromMap(Map<String, dynamic> map) {
     return EndpointConnectionLogOptions(
-      cloudwatchLogGroup: map['cloudwatchLogGroup'] == null ? null : map['cloudwatchLogGroup'] as String,
-      cloudwatchLogStream: map['cloudwatchLogStream'] == null ? null : map['cloudwatchLogStream'] as String,
+      cloudwatchLogGroup: map['cloudwatchLogGroup'] == null
+          ? null
+          : map['cloudwatchLogGroup'] as String,
+      cloudwatchLogStream: map['cloudwatchLogStream'] == null
+          ? null
+          : map['cloudwatchLogStream'] as String,
       enabled: map['enabled'] as bool,
     );
   }
 }
-

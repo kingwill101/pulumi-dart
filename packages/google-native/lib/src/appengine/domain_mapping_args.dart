@@ -9,10 +9,13 @@ import 'ssl_settings.dart';
 /// {@macro pulumi_appengine_v1_domain_mapping_args_doc}
 class DomainMappingArgs {
   final pulumi.Input<String> appId;
+
   /// Relative name of the domain serving the application. Example: example.com.
   final pulumi.Input<String>? id;
+
   /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
   final pulumi.Input<String>? overrideStrategy;
+
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   final pulumi.Input<SslSettings>? sslSettings;
 
@@ -26,18 +29,23 @@ class DomainMappingArgs {
     String? id,
     String? overrideStrategy,
     SslSettings? sslSettings,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      overrideStrategy = pulumi.Input.asOptionalInput<String>(overrideStrategy),
-      sslSettings = pulumi.Input.asOptionalInput<SslSettings>(sslSettings);
+  }) : appId = pulumi.Input.asInput<String>(appId),
+       id = pulumi.Input.asOptionalInput<String>(id),
+       overrideStrategy = pulumi.Input.asOptionalInput<String>(
+         overrideStrategy,
+       ),
+       sslSettings = pulumi.Input.asOptionalInput<SslSettings>(sslSettings);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appId': appId,
       'id': ?id,
       'overrideStrategy': ?overrideStrategy,
-      'sslSettings': ?pulumi.Input.mapOptionalInputValue<SslSettings, Map<String, dynamic>>(sslSettings, (value) => value.toMap()),
+      'sslSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            SslSettings,
+            Map<String, dynamic>
+          >(sslSettings, (value) => value.toMap()),
     };
   }
 
@@ -45,9 +53,14 @@ class DomainMappingArgs {
     return DomainMappingArgs(
       appId: map['appId'] as String,
       id: map['id'] == null ? null : map['id'] as String,
-      overrideStrategy: map['overrideStrategy'] == null ? null : map['overrideStrategy'] as String,
-      sslSettings: map['sslSettings'] == null ? null : SslSettings.fromMap((map['sslSettings'] as Map).cast<String, dynamic>()),
+      overrideStrategy: map['overrideStrategy'] == null
+          ? null
+          : map['overrideStrategy'] as String,
+      sslSettings: map['sslSettings'] == null
+          ? null
+          : SslSettings.fromMap(
+              (map['sslSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

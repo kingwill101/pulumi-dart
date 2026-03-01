@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Target scaling by network usage. Only applicable in the App Engine flexible environment.
 class NetworkUtilizationAppengineV1beta {
   /// Target bytes received per second.
   final int? targetReceivedBytesPerSecond;
+
   /// Target packets received per second.
   final int? targetReceivedPacketsPerSecond;
+
   /// Target bytes sent per second.
   final int? targetSentBytesPerSecond;
+
   /// Target packets sent per second.
   final int? targetSentPacketsPerSecond;
 
@@ -35,11 +37,19 @@ class NetworkUtilizationAppengineV1beta {
 
   factory NetworkUtilizationAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return NetworkUtilizationAppengineV1beta(
-      targetReceivedBytesPerSecond: map['targetReceivedBytesPerSecond'] == null ? null : map['targetReceivedBytesPerSecond'] as int,
-      targetReceivedPacketsPerSecond: map['targetReceivedPacketsPerSecond'] == null ? null : map['targetReceivedPacketsPerSecond'] as int,
-      targetSentBytesPerSecond: map['targetSentBytesPerSecond'] == null ? null : map['targetSentBytesPerSecond'] as int,
-      targetSentPacketsPerSecond: map['targetSentPacketsPerSecond'] == null ? null : map['targetSentPacketsPerSecond'] as int,
+      targetReceivedBytesPerSecond: map['targetReceivedBytesPerSecond'] == null
+          ? null
+          : map['targetReceivedBytesPerSecond'] as int,
+      targetReceivedPacketsPerSecond:
+          map['targetReceivedPacketsPerSecond'] == null
+          ? null
+          : map['targetReceivedPacketsPerSecond'] as int,
+      targetSentBytesPerSecond: map['targetSentBytesPerSecond'] == null
+          ? null
+          : map['targetSentBytesPerSecond'] as int,
+      targetSentPacketsPerSecond: map['targetSentPacketsPerSecond'] == null
+          ? null
+          : map['targetSentPacketsPerSecond'] as int,
     );
   }
 }
-

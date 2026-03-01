@@ -8,8 +8,10 @@ import 'data_access_options.dart';
 class LogConfig {
   /// Cloud audit options.
   final CloudAuditOptions? cloudAudit;
+
   /// Counter options.
   final CounterOptions? counter;
+
   /// Data access options.
   final DataAccessOptions? dataAccess;
 
@@ -17,11 +19,7 @@ class LogConfig {
   /// [cloudAudit] Cloud audit options.
   /// [counter] Counter options.
   /// [dataAccess] Data access options.
-  LogConfig({
-    this.cloudAudit,
-    this.counter,
-    this.dataAccess,
-  });
+  LogConfig({this.cloudAudit, this.counter, this.dataAccess});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,21 @@ class LogConfig {
 
   factory LogConfig.fromMap(Map<String, dynamic> map) {
     return LogConfig(
-      cloudAudit: map['cloudAudit'] == null ? null : CloudAuditOptions.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>()),
-      counter: map['counter'] == null ? null : CounterOptions.fromMap((map['counter'] as Map).cast<String, dynamic>()),
-      dataAccess: map['dataAccess'] == null ? null : DataAccessOptions.fromMap((map['dataAccess'] as Map).cast<String, dynamic>()),
+      cloudAudit: map['cloudAudit'] == null
+          ? null
+          : CloudAuditOptions.fromMap(
+              (map['cloudAudit'] as Map).cast<String, dynamic>(),
+            ),
+      counter: map['counter'] == null
+          ? null
+          : CounterOptions.fromMap(
+              (map['counter'] as Map).cast<String, dynamic>(),
+            ),
+      dataAccess: map['dataAccess'] == null
+          ? null
+          : DataAccessOptions.fromMap(
+              (map['dataAccess'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

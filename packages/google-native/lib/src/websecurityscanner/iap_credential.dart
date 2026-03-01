@@ -9,20 +9,23 @@ class IapCredential {
 
   /// Creates a new [IapCredential].
   /// [iapTestServiceAccountInfo] Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
-  IapCredential({
-    this.iapTestServiceAccountInfo,
-  });
+  IapCredential({this.iapTestServiceAccountInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iapTestServiceAccountInfo': ?iapTestServiceAccountInfo == null ? null : iapTestServiceAccountInfo!.toMap(),
+      'iapTestServiceAccountInfo': ?iapTestServiceAccountInfo == null
+          ? null
+          : iapTestServiceAccountInfo!.toMap(),
     };
   }
 
   factory IapCredential.fromMap(Map<String, dynamic> map) {
     return IapCredential(
-      iapTestServiceAccountInfo: map['iapTestServiceAccountInfo'] == null ? null : IapTestServiceAccountInfo.fromMap((map['iapTestServiceAccountInfo'] as Map).cast<String, dynamic>()),
+      iapTestServiceAccountInfo: map['iapTestServiceAccountInfo'] == null
+          ? null
+          : IapTestServiceAccountInfo.fromMap(
+              (map['iapTestServiceAccountInfo'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum ServiceTier {
     throw ArgumentError('Unknown ServiceTier value: $value');
   }
 }
-

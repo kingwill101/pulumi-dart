@@ -8,42 +8,54 @@ import 'db_system_properties_time_zone.dart';
 class DbSystemProperties {
   /// The number of CPU cores to enable for the DbSystem.
   final int computeCount;
+
   /// The compute model of the DbSystem.
   /// Possible values:
   /// ECPU
   /// OCPU
   final String? computeModel;
+
   /// Data collection options for DbSystem.
   /// Structure is documented below.
   final DbSystemPropertiesDataCollectionOptions? dataCollectionOptions;
+
   /// The data storage size in GB that is currently available to DbSystems.
   final int? dataStorageSizeGb;
+
   /// The database edition of the DbSystem.
   /// Possible values:
   /// STANDARD_EDITION
   /// ENTERPRISE_EDITION
   /// ENTERPRISE_EDITION_HIGH_PERFORMANCE
   final String databaseEdition;
+
   /// Details of the Database Home resource.
   /// Structure is documented below.
   final DbSystemPropertiesDbHome? dbHome;
+
   /// Details of the DbSystem Options.
   /// Structure is documented below.
   final DbSystemPropertiesDbSystemOptions? dbSystemOptions;
+
   /// The host domain name of the DbSystem.
   final String? domain;
+
   /// (Output)
   /// The hostname of the DbSystem.
   final String? hostname;
+
   /// Prefix for DB System host names.
   final String? hostnamePrefix;
+
   /// The initial data storage size in GB.
   final int initialDataStorageSizeGb;
+
   /// The license model of the DbSystem.
   /// Possible values:
   /// LICENSE_INCLUDED
   /// BRING_YOUR_OWN_LICENSE
   final String licenseModel;
+
   /// (Output)
   /// State of the DbSystem.
   /// Possible values:
@@ -58,21 +70,29 @@ class DbSystemProperties {
   /// NEEDS_ATTENTION
   /// UPGRADING
   final String? lifecycleState;
+
   /// The memory size in GB.
   final int? memorySizeGb;
+
   /// The number of nodes in the DbSystem.
   final int? nodeCount;
+
   /// (Output)
   /// OCID of the DbSystem.
   final String? ocid;
+
   /// The private IP address of the DbSystem.
   final String? privateIp;
+
   /// The reco/redo storage size in GB.
   final int? recoStorageSizeGb;
+
   /// Shape of DB System.
   final String shape;
+
   /// SSH public keys to be stored with the DbSystem.
   final List<String> sshPublicKeys;
+
   /// Represents a time zone from the
   /// [IANA Time Zone Database](https://www.iana.org/time-zones).
   /// Structure is documented below.
@@ -128,11 +148,15 @@ class DbSystemProperties {
     return <String, dynamic>{
       'computeCount': computeCount,
       'computeModel': ?computeModel,
-      'dataCollectionOptions': ?dataCollectionOptions == null ? null : dataCollectionOptions!.toMap(),
+      'dataCollectionOptions': ?dataCollectionOptions == null
+          ? null
+          : dataCollectionOptions!.toMap(),
       'dataStorageSizeGb': ?dataStorageSizeGb,
       'databaseEdition': databaseEdition,
       'dbHome': ?dbHome == null ? null : dbHome!.toMap(),
-      'dbSystemOptions': ?dbSystemOptions == null ? null : dbSystemOptions!.toMap(),
+      'dbSystemOptions': ?dbSystemOptions == null
+          ? null
+          : dbSystemOptions!.toMap(),
       'domain': ?domain,
       'hostname': ?hostname,
       'hostnamePrefix': ?hostnamePrefix,
@@ -153,27 +177,54 @@ class DbSystemProperties {
   factory DbSystemProperties.fromMap(Map<String, dynamic> map) {
     return DbSystemProperties(
       computeCount: map['computeCount'] as int,
-      computeModel: map['computeModel'] == null ? null : map['computeModel'] as String,
-      dataCollectionOptions: map['dataCollectionOptions'] == null ? null : DbSystemPropertiesDataCollectionOptions.fromMap((map['dataCollectionOptions'] as Map).cast<String, dynamic>()),
-      dataStorageSizeGb: map['dataStorageSizeGb'] == null ? null : map['dataStorageSizeGb'] as int,
+      computeModel: map['computeModel'] == null
+          ? null
+          : map['computeModel'] as String,
+      dataCollectionOptions: map['dataCollectionOptions'] == null
+          ? null
+          : DbSystemPropertiesDataCollectionOptions.fromMap(
+              (map['dataCollectionOptions'] as Map).cast<String, dynamic>(),
+            ),
+      dataStorageSizeGb: map['dataStorageSizeGb'] == null
+          ? null
+          : map['dataStorageSizeGb'] as int,
       databaseEdition: map['databaseEdition'] as String,
-      dbHome: map['dbHome'] == null ? null : DbSystemPropertiesDbHome.fromMap((map['dbHome'] as Map).cast<String, dynamic>()),
-      dbSystemOptions: map['dbSystemOptions'] == null ? null : DbSystemPropertiesDbSystemOptions.fromMap((map['dbSystemOptions'] as Map).cast<String, dynamic>()),
+      dbHome: map['dbHome'] == null
+          ? null
+          : DbSystemPropertiesDbHome.fromMap(
+              (map['dbHome'] as Map).cast<String, dynamic>(),
+            ),
+      dbSystemOptions: map['dbSystemOptions'] == null
+          ? null
+          : DbSystemPropertiesDbSystemOptions.fromMap(
+              (map['dbSystemOptions'] as Map).cast<String, dynamic>(),
+            ),
       domain: map['domain'] == null ? null : map['domain'] as String,
       hostname: map['hostname'] == null ? null : map['hostname'] as String,
-      hostnamePrefix: map['hostnamePrefix'] == null ? null : map['hostnamePrefix'] as String,
+      hostnamePrefix: map['hostnamePrefix'] == null
+          ? null
+          : map['hostnamePrefix'] as String,
       initialDataStorageSizeGb: map['initialDataStorageSizeGb'] as int,
       licenseModel: map['licenseModel'] as String,
-      lifecycleState: map['lifecycleState'] == null ? null : map['lifecycleState'] as String,
-      memorySizeGb: map['memorySizeGb'] == null ? null : map['memorySizeGb'] as int,
+      lifecycleState: map['lifecycleState'] == null
+          ? null
+          : map['lifecycleState'] as String,
+      memorySizeGb: map['memorySizeGb'] == null
+          ? null
+          : map['memorySizeGb'] as int,
       nodeCount: map['nodeCount'] == null ? null : map['nodeCount'] as int,
       ocid: map['ocid'] == null ? null : map['ocid'] as String,
       privateIp: map['privateIp'] == null ? null : map['privateIp'] as String,
-      recoStorageSizeGb: map['recoStorageSizeGb'] == null ? null : map['recoStorageSizeGb'] as int,
+      recoStorageSizeGb: map['recoStorageSizeGb'] == null
+          ? null
+          : map['recoStorageSizeGb'] as int,
       shape: map['shape'] as String,
       sshPublicKeys: (map['sshPublicKeys'] as List).cast<String>(),
-      timeZone: map['timeZone'] == null ? null : DbSystemPropertiesTimeZone.fromMap((map['timeZone'] as Map).cast<String, dynamic>()),
+      timeZone: map['timeZone'] == null
+          ? null
+          : DbSystemPropertiesTimeZone.fromMap(
+              (map['timeZone'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'sdk_bug_response.dart';
 class SdkVersionResponse {
   /// Known bugs found in this SDK version.
   final List<SdkBugResponse> bugs;
+
   /// The support status for this SDK version.
   final String sdkSupportStatus;
+
   /// The version of the SDK used to run the job.
   final String version;
+
   /// A readable string describing the version of the SDK.
   final String versionDisplayName;
 
@@ -28,7 +31,10 @@ class SdkVersionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bugs': pulumi.Input.encodeList<SdkBugResponse, Map<String, dynamic>>(bugs, (value) => value.toMap()),
+      'bugs': pulumi.Input.encodeList<SdkBugResponse, Map<String, dynamic>>(
+        bugs,
+        (value) => value.toMap(),
+      ),
       'sdkSupportStatus': sdkSupportStatus,
       'version': version,
       'versionDisplayName': versionDisplayName,
@@ -37,11 +43,14 @@ class SdkVersionResponse {
 
   factory SdkVersionResponse.fromMap(Map<String, dynamic> map) {
     return SdkVersionResponse(
-      bugs: pulumi.Input.decodeList<SdkBugResponse>(map['bugs'], (value) => SdkBugResponse.fromMap((value as Map).cast<String, dynamic>())),
+      bugs: pulumi.Input.decodeList<SdkBugResponse>(
+        map['bugs'],
+        (value) =>
+            SdkBugResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       sdkSupportStatus: map['sdkSupportStatus'] as String,
       version: map['version'] as String,
       versionDisplayName: map['versionDisplayName'] as String,
     );
   }
 }
-

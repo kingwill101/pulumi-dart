@@ -7,13 +7,17 @@ enum ManagementSettingsTransferLockStateDomainsV1alpha2 {
   const ManagementSettingsTransferLockStateDomainsV1alpha2(this.value);
   final String value;
 
-  static ManagementSettingsTransferLockStateDomainsV1alpha2 fromValue(String value) {
-    for (final item in ManagementSettingsTransferLockStateDomainsV1alpha2.values) {
+  static ManagementSettingsTransferLockStateDomainsV1alpha2 fromValue(
+    String value,
+  ) {
+    for (final item
+        in ManagementSettingsTransferLockStateDomainsV1alpha2.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ManagementSettingsTransferLockStateDomainsV1alpha2 value: $value');
+    throw ArgumentError(
+      'Unknown ManagementSettingsTransferLockStateDomainsV1alpha2 value: $value',
+    );
   }
 }
-

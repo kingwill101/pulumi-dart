@@ -22,11 +22,12 @@ class GetRuleArgs {
     required String location,
     String? project,
     required String ruleId,
-  }) :
-      gatewaySecurityPolicyId = pulumi.Input.asInput<String>(gatewaySecurityPolicyId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      ruleId = pulumi.Input.asInput<String>(ruleId);
+  }) : gatewaySecurityPolicyId = pulumi.Input.asInput<String>(
+         gatewaySecurityPolicyId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       ruleId = pulumi.Input.asInput<String>(ruleId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +47,3 @@ class GetRuleArgs {
     );
   }
 }
-

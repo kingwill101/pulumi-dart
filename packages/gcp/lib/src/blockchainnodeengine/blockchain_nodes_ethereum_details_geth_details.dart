@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BlockchainNodesEthereumDetailsGethDetails {
   /// Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
   /// Possible values are: `FULL`, `ARCHIVE`.
@@ -10,20 +9,19 @@ class BlockchainNodesEthereumDetailsGethDetails {
 
   /// Creates a new [BlockchainNodesEthereumDetailsGethDetails].
   /// [garbageCollectionMode] Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
-  BlockchainNodesEthereumDetailsGethDetails({
-    this.garbageCollectionMode,
-  });
+  BlockchainNodesEthereumDetailsGethDetails({this.garbageCollectionMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'garbageCollectionMode': ?garbageCollectionMode,
-    };
+    return <String, dynamic>{'garbageCollectionMode': ?garbageCollectionMode};
   }
 
-  factory BlockchainNodesEthereumDetailsGethDetails.fromMap(Map<String, dynamic> map) {
+  factory BlockchainNodesEthereumDetailsGethDetails.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BlockchainNodesEthereumDetailsGethDetails(
-      garbageCollectionMode: map['garbageCollectionMode'] == null ? null : map['garbageCollectionMode'] as String,
+      garbageCollectionMode: map['garbageCollectionMode'] == null
+          ? null
+          : map['garbageCollectionMode'] as String,
     );
   }
 }
-

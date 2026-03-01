@@ -12,7 +12,8 @@ enum RouteIlbRouteBehaviorOnUnhealthy {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouteIlbRouteBehaviorOnUnhealthy value: $value');
+    throw ArgumentError(
+      'Unknown RouteIlbRouteBehaviorOnUnhealthy value: $value',
+    );
   }
 }
-

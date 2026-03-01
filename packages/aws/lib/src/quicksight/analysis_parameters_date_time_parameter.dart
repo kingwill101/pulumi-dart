@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AnalysisParametersDateTimeParameter {
   /// Display name for the analysis.
   ///
@@ -17,17 +16,15 @@ class AnalysisParametersDateTimeParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
-  factory AnalysisParametersDateTimeParameter.fromMap(Map<String, dynamic> map) {
+  factory AnalysisParametersDateTimeParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalysisParametersDateTimeParameter(
       name: map['name'] as String,
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
-

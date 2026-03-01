@@ -13,11 +13,8 @@ class GetDeviceSessionArgs {
   /// Creates a new [GetDeviceSessionArgs].
   /// [deviceSessionId] Required.
   /// [project] Optional.
-  GetDeviceSessionArgs({
-    required String deviceSessionId,
-    String? project,
-  }) :
-      deviceSessionId = pulumi.Input.asInput<String>(deviceSessionId),
+  GetDeviceSessionArgs({required String deviceSessionId, String? project})
+    : deviceSessionId = pulumi.Input.asInput<String>(deviceSessionId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetDeviceSessionArgs {
     );
   }
 }
-

@@ -11,14 +11,20 @@ import 'google_privacy_dlp_v2_numerical_stats_config.dart';
 class GooglePrivacyDlpV2PrivacyMetric {
   /// Categorical stats
   final GooglePrivacyDlpV2CategoricalStatsConfig? categoricalStatsConfig;
+
   /// delta-presence
-  final GooglePrivacyDlpV2DeltaPresenceEstimationConfig? deltaPresenceEstimationConfig;
+  final GooglePrivacyDlpV2DeltaPresenceEstimationConfig?
+  deltaPresenceEstimationConfig;
+
   /// K-anonymity
   final GooglePrivacyDlpV2KAnonymityConfig? kAnonymityConfig;
+
   /// k-map
   final GooglePrivacyDlpV2KMapEstimationConfig? kMapEstimationConfig;
+
   /// l-diversity
   final GooglePrivacyDlpV2LDiversityConfig? lDiversityConfig;
+
   /// Numerical stats
   final GooglePrivacyDlpV2NumericalStatsConfig? numericalStatsConfig;
 
@@ -40,24 +46,61 @@ class GooglePrivacyDlpV2PrivacyMetric {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'categoricalStatsConfig': ?categoricalStatsConfig == null ? null : categoricalStatsConfig!.toMap(),
-      'deltaPresenceEstimationConfig': ?deltaPresenceEstimationConfig == null ? null : deltaPresenceEstimationConfig!.toMap(),
-      'kAnonymityConfig': ?kAnonymityConfig == null ? null : kAnonymityConfig!.toMap(),
-      'kMapEstimationConfig': ?kMapEstimationConfig == null ? null : kMapEstimationConfig!.toMap(),
-      'lDiversityConfig': ?lDiversityConfig == null ? null : lDiversityConfig!.toMap(),
-      'numericalStatsConfig': ?numericalStatsConfig == null ? null : numericalStatsConfig!.toMap(),
+      'categoricalStatsConfig': ?categoricalStatsConfig == null
+          ? null
+          : categoricalStatsConfig!.toMap(),
+      'deltaPresenceEstimationConfig': ?deltaPresenceEstimationConfig == null
+          ? null
+          : deltaPresenceEstimationConfig!.toMap(),
+      'kAnonymityConfig': ?kAnonymityConfig == null
+          ? null
+          : kAnonymityConfig!.toMap(),
+      'kMapEstimationConfig': ?kMapEstimationConfig == null
+          ? null
+          : kMapEstimationConfig!.toMap(),
+      'lDiversityConfig': ?lDiversityConfig == null
+          ? null
+          : lDiversityConfig!.toMap(),
+      'numericalStatsConfig': ?numericalStatsConfig == null
+          ? null
+          : numericalStatsConfig!.toMap(),
     };
   }
 
   factory GooglePrivacyDlpV2PrivacyMetric.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2PrivacyMetric(
-      categoricalStatsConfig: map['categoricalStatsConfig'] == null ? null : GooglePrivacyDlpV2CategoricalStatsConfig.fromMap((map['categoricalStatsConfig'] as Map).cast<String, dynamic>()),
-      deltaPresenceEstimationConfig: map['deltaPresenceEstimationConfig'] == null ? null : GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromMap((map['deltaPresenceEstimationConfig'] as Map).cast<String, dynamic>()),
-      kAnonymityConfig: map['kAnonymityConfig'] == null ? null : GooglePrivacyDlpV2KAnonymityConfig.fromMap((map['kAnonymityConfig'] as Map).cast<String, dynamic>()),
-      kMapEstimationConfig: map['kMapEstimationConfig'] == null ? null : GooglePrivacyDlpV2KMapEstimationConfig.fromMap((map['kMapEstimationConfig'] as Map).cast<String, dynamic>()),
-      lDiversityConfig: map['lDiversityConfig'] == null ? null : GooglePrivacyDlpV2LDiversityConfig.fromMap((map['lDiversityConfig'] as Map).cast<String, dynamic>()),
-      numericalStatsConfig: map['numericalStatsConfig'] == null ? null : GooglePrivacyDlpV2NumericalStatsConfig.fromMap((map['numericalStatsConfig'] as Map).cast<String, dynamic>()),
+      categoricalStatsConfig: map['categoricalStatsConfig'] == null
+          ? null
+          : GooglePrivacyDlpV2CategoricalStatsConfig.fromMap(
+              (map['categoricalStatsConfig'] as Map).cast<String, dynamic>(),
+            ),
+      deltaPresenceEstimationConfig:
+          map['deltaPresenceEstimationConfig'] == null
+          ? null
+          : GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromMap(
+              (map['deltaPresenceEstimationConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      kAnonymityConfig: map['kAnonymityConfig'] == null
+          ? null
+          : GooglePrivacyDlpV2KAnonymityConfig.fromMap(
+              (map['kAnonymityConfig'] as Map).cast<String, dynamic>(),
+            ),
+      kMapEstimationConfig: map['kMapEstimationConfig'] == null
+          ? null
+          : GooglePrivacyDlpV2KMapEstimationConfig.fromMap(
+              (map['kMapEstimationConfig'] as Map).cast<String, dynamic>(),
+            ),
+      lDiversityConfig: map['lDiversityConfig'] == null
+          ? null
+          : GooglePrivacyDlpV2LDiversityConfig.fromMap(
+              (map['lDiversityConfig'] as Map).cast<String, dynamic>(),
+            ),
+      numericalStatsConfig: map['numericalStatsConfig'] == null
+          ? null
+          : GooglePrivacyDlpV2NumericalStatsConfig.fromMap(
+              (map['numericalStatsConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

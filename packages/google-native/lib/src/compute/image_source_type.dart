@@ -14,4 +14,3 @@ enum ImageSourceType {
     throw ArgumentError('Unknown ImageSourceType value: $value');
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The text response message.
 class GoogleCloudDialogflowCxV3ResponseMessageTextResponse {
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
   final bool allowPlaybackInterruption;
+
   /// A collection of text responses.
   final List<String> text;
 
@@ -23,11 +23,12 @@ class GoogleCloudDialogflowCxV3ResponseMessageTextResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3ResponseMessageTextResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ResponseMessageTextResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3ResponseMessageTextResponse(
       allowPlaybackInterruption: map['allowPlaybackInterruption'] as bool,
       text: (map['text'] as List).cast<String>(),
     );
   }
 }
-

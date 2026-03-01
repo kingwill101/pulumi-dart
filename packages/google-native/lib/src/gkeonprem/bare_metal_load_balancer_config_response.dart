@@ -10,12 +10,16 @@ import 'bare_metal_vip_config_response.dart';
 class BareMetalLoadBalancerConfigResponse {
   /// Configuration for BGP typed load balancers. When set network_config.advanced_networking is automatically set to true.
   final BareMetalBgpLbConfigResponse bgpLbConfig;
+
   /// Manually configured load balancers.
   final BareMetalManualLbConfigResponse manualLbConfig;
+
   /// Configuration for MetalLB load balancers.
   final BareMetalMetalLbConfigResponse metalLbConfig;
+
   /// Configures the ports that the load balancer will listen on.
   final BareMetalPortConfigResponse portConfig;
+
   /// The VIPs used by the load balancer.
   final BareMetalVipConfigResponse vipConfig;
 
@@ -43,14 +47,25 @@ class BareMetalLoadBalancerConfigResponse {
     };
   }
 
-  factory BareMetalLoadBalancerConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory BareMetalLoadBalancerConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalLoadBalancerConfigResponse(
-      bgpLbConfig: BareMetalBgpLbConfigResponse.fromMap((map['bgpLbConfig'] as Map).cast<String, dynamic>()),
-      manualLbConfig: BareMetalManualLbConfigResponse.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>()),
-      metalLbConfig: BareMetalMetalLbConfigResponse.fromMap((map['metalLbConfig'] as Map).cast<String, dynamic>()),
-      portConfig: BareMetalPortConfigResponse.fromMap((map['portConfig'] as Map).cast<String, dynamic>()),
-      vipConfig: BareMetalVipConfigResponse.fromMap((map['vipConfig'] as Map).cast<String, dynamic>()),
+      bgpLbConfig: BareMetalBgpLbConfigResponse.fromMap(
+        (map['bgpLbConfig'] as Map).cast<String, dynamic>(),
+      ),
+      manualLbConfig: BareMetalManualLbConfigResponse.fromMap(
+        (map['manualLbConfig'] as Map).cast<String, dynamic>(),
+      ),
+      metalLbConfig: BareMetalMetalLbConfigResponse.fromMap(
+        (map['metalLbConfig'] as Map).cast<String, dynamic>(),
+      ),
+      portConfig: BareMetalPortConfigResponse.fromMap(
+        (map['portConfig'] as Map).cast<String, dynamic>(),
+      ),
+      vipConfig: BareMetalVipConfigResponse.fromMap(
+        (map['vipConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

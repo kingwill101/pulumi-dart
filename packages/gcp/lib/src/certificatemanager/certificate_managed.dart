@@ -12,20 +12,26 @@ class CertificateManaged {
   ///
   ///
   /// <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
-  final List<CertificateManagedAuthorizationAttemptInfo>? authorizationAttemptInfos;
+  final List<CertificateManagedAuthorizationAttemptInfo>?
+  authorizationAttemptInfos;
+
   /// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
   final List<String>? dnsAuthorizations;
+
   /// The domains for which a managed SSL certificate will be generated.
   /// Wildcard domains are only supported with DNS challenge resolution
   final List<String>? domains;
+
   /// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
   /// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
   /// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
   final String? issuanceConfig;
+
   /// (Output)
   /// Information about issues with provisioning this Managed Certificate.
   /// Structure is documented below.
   final List<CertificateManagedProvisioningIssue>? provisioningIssues;
+
   /// (Output)
   /// State of the domain for managed certificate issuance.
   final String? state;
@@ -48,24 +54,53 @@ class CertificateManaged {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationAttemptInfos': ?authorizationAttemptInfos == null ? null : pulumi.Input.encodeList<CertificateManagedAuthorizationAttemptInfo, Map<String, dynamic>>(authorizationAttemptInfos!, (value) => value.toMap()),
+      'authorizationAttemptInfos': ?authorizationAttemptInfos == null
+          ? null
+          : pulumi.Input.encodeList<
+              CertificateManagedAuthorizationAttemptInfo,
+              Map<String, dynamic>
+            >(authorizationAttemptInfos!, (value) => value.toMap()),
       'dnsAuthorizations': ?dnsAuthorizations,
       'domains': ?domains,
       'issuanceConfig': ?issuanceConfig,
-      'provisioningIssues': ?provisioningIssues == null ? null : pulumi.Input.encodeList<CertificateManagedProvisioningIssue, Map<String, dynamic>>(provisioningIssues!, (value) => value.toMap()),
+      'provisioningIssues': ?provisioningIssues == null
+          ? null
+          : pulumi.Input.encodeList<
+              CertificateManagedProvisioningIssue,
+              Map<String, dynamic>
+            >(provisioningIssues!, (value) => value.toMap()),
       'state': ?state,
     };
   }
 
   factory CertificateManaged.fromMap(Map<String, dynamic> map) {
     return CertificateManaged(
-      authorizationAttemptInfos: map['authorizationAttemptInfos'] == null ? null : pulumi.Input.decodeList<CertificateManagedAuthorizationAttemptInfo>(map['authorizationAttemptInfos'], (value) => CertificateManagedAuthorizationAttemptInfo.fromMap((value as Map).cast<String, dynamic>())),
-      dnsAuthorizations: map['dnsAuthorizations'] == null ? null : (map['dnsAuthorizations'] as List).cast<String>(),
-      domains: map['domains'] == null ? null : (map['domains'] as List).cast<String>(),
-      issuanceConfig: map['issuanceConfig'] == null ? null : map['issuanceConfig'] as String,
-      provisioningIssues: map['provisioningIssues'] == null ? null : pulumi.Input.decodeList<CertificateManagedProvisioningIssue>(map['provisioningIssues'], (value) => CertificateManagedProvisioningIssue.fromMap((value as Map).cast<String, dynamic>())),
+      authorizationAttemptInfos: map['authorizationAttemptInfos'] == null
+          ? null
+          : pulumi.Input.decodeList<CertificateManagedAuthorizationAttemptInfo>(
+              map['authorizationAttemptInfos'],
+              (value) => CertificateManagedAuthorizationAttemptInfo.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      dnsAuthorizations: map['dnsAuthorizations'] == null
+          ? null
+          : (map['dnsAuthorizations'] as List).cast<String>(),
+      domains: map['domains'] == null
+          ? null
+          : (map['domains'] as List).cast<String>(),
+      issuanceConfig: map['issuanceConfig'] == null
+          ? null
+          : map['issuanceConfig'] as String,
+      provisioningIssues: map['provisioningIssues'] == null
+          ? null
+          : pulumi.Input.decodeList<CertificateManagedProvisioningIssue>(
+              map['provisioningIssues'],
+              (value) => CertificateManagedProvisioningIssue.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
-

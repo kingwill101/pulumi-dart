@@ -10,10 +10,13 @@ import 'mesh_spec.dart';
 class MeshArgs {
   /// Name to use for the service mesh. Must be between 1 and 255 characters in length.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Service mesh specification to apply.
   final pulumi.Input<MeshSpec>? spec;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -27,17 +30,20 @@ class MeshArgs {
     String? region,
     MeshSpec? spec,
     Map<String, String>? tags,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      spec = pulumi.Input.asOptionalInput<MeshSpec>(spec),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       spec = pulumi.Input.asOptionalInput<MeshSpec>(spec),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
       'region': ?region,
-      'spec': ?pulumi.Input.mapOptionalInputValue<MeshSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<MeshSpec, Map<String, dynamic>>(
+            spec,
+            (value) => value.toMap(),
+          ),
       'tags': ?tags,
     };
   }
@@ -46,9 +52,12 @@ class MeshArgs {
     return MeshArgs(
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      spec: map['spec'] == null ? null : MeshSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      spec: map['spec'] == null
+          ? null
+          : MeshSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

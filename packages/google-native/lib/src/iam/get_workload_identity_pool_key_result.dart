@@ -6,12 +6,16 @@ import 'key_data_response.dart';
 class GetWorkloadIdentityPoolKeyResult {
   /// Time after which the key will be permanently purged and cannot be recovered. Note that the key may get purged before this timestamp if the total limit of keys per provider is crossed.
   final String expireTime;
+
   /// Immutable. Public half of the asymmetric key.
   final KeyDataResponse keyData;
+
   /// The resource name of the key.
   final String name;
+
   /// The state of the key.
   final String state;
+
   /// The purpose of the key.
   final String use;
 
@@ -42,11 +46,12 @@ class GetWorkloadIdentityPoolKeyResult {
   factory GetWorkloadIdentityPoolKeyResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadIdentityPoolKeyResult(
       expireTime: map['expireTime'] as String,
-      keyData: KeyDataResponse.fromMap((map['keyData'] as Map).cast<String, dynamic>()),
+      keyData: KeyDataResponse.fromMap(
+        (map['keyData'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       state: map['state'] as String,
       use: map['use'] as String,
     );
   }
 }
-

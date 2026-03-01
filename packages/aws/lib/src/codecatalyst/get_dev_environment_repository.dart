@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDevEnvironmentRepository {
   final String branchName;
   final String repositoryName;
@@ -27,4 +26,3 @@ class GetDevEnvironmentRepository {
     );
   }
 }
-

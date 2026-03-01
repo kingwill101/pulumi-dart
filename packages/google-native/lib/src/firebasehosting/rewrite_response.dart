@@ -6,16 +6,22 @@ import 'cloud_run_rewrite_response.dart';
 class RewriteResponse {
   /// The request will be forwarded to Firebase Dynamic Links.
   final bool dynamicLinks;
+
   /// The function to proxy requests to. Must match the exported function name exactly.
   final String function;
+
   /// Optional. Specify a Cloud region for rewritten Functions invocations. If not provided, defaults to us-central1.
   final String functionRegion;
+
   /// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
   final String glob;
+
   /// The URL path to rewrite the request to.
   final String path;
+
   /// The user-supplied RE2 regular expression to match against the request URL path.
   final String regex;
+
   /// The request will be forwarded to Cloud Run.
   final CloudRunRewriteResponse run;
 
@@ -57,8 +63,9 @@ class RewriteResponse {
       glob: map['glob'] as String,
       path: map['path'] as String,
       regex: map['regex'] as String,
-      run: CloudRunRewriteResponse.fromMap((map['run'] as Map).cast<String, dynamic>()),
+      run: CloudRunRewriteResponse.fromMap(
+        (map['run'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

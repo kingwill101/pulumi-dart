@@ -9,20 +9,19 @@ class CustomLevelAccesscontextmanagerV1beta {
 
   /// Creates a new [CustomLevelAccesscontextmanagerV1beta].
   /// [expr] A Cloud CEL expression evaluating to a boolean.
-  CustomLevelAccesscontextmanagerV1beta({
-    required this.expr,
-  });
+  CustomLevelAccesscontextmanagerV1beta({required this.expr});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expr': expr.toMap(),
-    };
+    return <String, dynamic>{'expr': expr.toMap()};
   }
 
-  factory CustomLevelAccesscontextmanagerV1beta.fromMap(Map<String, dynamic> map) {
+  factory CustomLevelAccesscontextmanagerV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomLevelAccesscontextmanagerV1beta(
-      expr: ExprAccesscontextmanagerV1beta.fromMap((map['expr'] as Map).cast<String, dynamic>()),
+      expr: ExprAccesscontextmanagerV1beta.fromMap(
+        (map['expr'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

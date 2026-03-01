@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class KxVolumeAttachedCluster {
   final String clusterName;
   final String clusterStatus;
@@ -32,4 +31,3 @@ class KxVolumeAttachedCluster {
     );
   }
 }
-

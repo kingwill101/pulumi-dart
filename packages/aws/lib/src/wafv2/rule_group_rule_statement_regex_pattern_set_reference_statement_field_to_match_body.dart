@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody {
   final String? oversizeHandling;
 
@@ -11,15 +10,16 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'oversizeHandling': ?oversizeHandling,
-    };
+    return <String, dynamic>{'oversizeHandling': ?oversizeHandling};
   }
 
-  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : map['oversizeHandling'] as String,
+      oversizeHandling: map['oversizeHandling'] == null
+          ? null
+          : map['oversizeHandling'] as String,
     );
   }
 }
-

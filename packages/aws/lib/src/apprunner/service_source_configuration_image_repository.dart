@@ -4,10 +4,13 @@ import 'service_source_configuration_image_repository_image_configuration.dart';
 
 class ServiceSourceConfigurationImageRepository {
   /// Configuration for running the identified image. See Image Configuration below for more details.
-  final ServiceSourceConfigurationImageRepositoryImageConfiguration? imageConfiguration;
+  final ServiceSourceConfigurationImageRepositoryImageConfiguration?
+  imageConfiguration;
+
   /// Identifier of an image. For an image in Amazon Elastic Container Registry (Amazon ECR), this is an image name. For the
   /// image name format, see Pulling an image in the Amazon ECR User Guide.
   final String imageIdentifier;
+
   /// Type of the image repository. This reflects the repository provider and whether the repository is private or public. Valid values: `ECR` , `ECR_PUBLIC`.
   final String imageRepositoryType;
 
@@ -23,18 +26,25 @@ class ServiceSourceConfigurationImageRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imageConfiguration': ?imageConfiguration == null ? null : imageConfiguration!.toMap(),
+      'imageConfiguration': ?imageConfiguration == null
+          ? null
+          : imageConfiguration!.toMap(),
       'imageIdentifier': imageIdentifier,
       'imageRepositoryType': imageRepositoryType,
     };
   }
 
-  factory ServiceSourceConfigurationImageRepository.fromMap(Map<String, dynamic> map) {
+  factory ServiceSourceConfigurationImageRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceSourceConfigurationImageRepository(
-      imageConfiguration: map['imageConfiguration'] == null ? null : ServiceSourceConfigurationImageRepositoryImageConfiguration.fromMap((map['imageConfiguration'] as Map).cast<String, dynamic>()),
+      imageConfiguration: map['imageConfiguration'] == null
+          ? null
+          : ServiceSourceConfigurationImageRepositoryImageConfiguration.fromMap(
+              (map['imageConfiguration'] as Map).cast<String, dynamic>(),
+            ),
       imageIdentifier: map['imageIdentifier'] as String,
       imageRepositoryType: map['imageRepositoryType'] as String,
     );
   }
 }
-

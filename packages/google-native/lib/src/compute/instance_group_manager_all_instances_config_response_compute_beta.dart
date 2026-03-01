@@ -13,15 +13,16 @@ class InstanceGroupManagerAllInstancesConfigResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'properties': properties.toMap(),
-    };
+    return <String, dynamic>{'properties': properties.toMap()};
   }
 
-  factory InstanceGroupManagerAllInstancesConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerAllInstancesConfigResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerAllInstancesConfigResponseComputeBeta(
-      properties: InstancePropertiesPatchResponseComputeBeta.fromMap((map['properties'] as Map).cast<String, dynamic>()),
+      properties: InstancePropertiesPatchResponseComputeBeta.fromMap(
+        (map['properties'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -24,11 +24,20 @@ class DSSEAttestationOccurrenceContaineranalysisV1alpha1 {
     };
   }
 
-  factory DSSEAttestationOccurrenceContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory DSSEAttestationOccurrenceContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DSSEAttestationOccurrenceContaineranalysisV1alpha1(
-      envelope: map['envelope'] == null ? null : EnvelopeContaineranalysisV1alpha1.fromMap((map['envelope'] as Map).cast<String, dynamic>()),
-      statement: map['statement'] == null ? null : InTotoStatementContaineranalysisV1alpha1.fromMap((map['statement'] as Map).cast<String, dynamic>()),
+      envelope: map['envelope'] == null
+          ? null
+          : EnvelopeContaineranalysisV1alpha1.fromMap(
+              (map['envelope'] as Map).cast<String, dynamic>(),
+            ),
+      statement: map['statement'] == null
+          ? null
+          : InTotoStatementContaineranalysisV1alpha1.fromMap(
+              (map['statement'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

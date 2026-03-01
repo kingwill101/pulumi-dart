@@ -25,12 +25,11 @@ class GetVmwareNodePoolArgs {
     String? view,
     required String vmwareClusterId,
     required String vmwareNodePoolId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view),
-      vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
-      vmwareNodePoolId = pulumi.Input.asInput<String>(vmwareNodePoolId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view),
+       vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
+       vmwareNodePoolId = pulumi.Input.asInput<String>(vmwareNodePoolId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetVmwareNodePoolArgs {
     );
   }
 }
-

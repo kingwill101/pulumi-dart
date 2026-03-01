@@ -19,4 +19,3 @@ enum ConsentState {
     throw ArgumentError('Unknown ConsentState value: $value');
   }
 }
-

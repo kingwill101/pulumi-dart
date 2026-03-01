@@ -6,13 +6,17 @@ enum GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction {
   const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction(this.value);
   final String value;
 
-  static GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction fromValue(String value) {
-    for (final item in GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction.values) {
+  static GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction value: $value',
+    );
   }
 }
-

@@ -13,11 +13,8 @@ class GetInstanceConfigArgs {
   /// Creates a new [GetInstanceConfigArgs].
   /// [instanceConfigId] Required.
   /// [project] Optional.
-  GetInstanceConfigArgs({
-    required String instanceConfigId,
-    String? project,
-  }) :
-      instanceConfigId = pulumi.Input.asInput<String>(instanceConfigId),
+  GetInstanceConfigArgs({required String instanceConfigId, String? project})
+    : instanceConfigId = pulumi.Input.asInput<String>(instanceConfigId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetInstanceConfigArgs {
     );
   }
 }
-

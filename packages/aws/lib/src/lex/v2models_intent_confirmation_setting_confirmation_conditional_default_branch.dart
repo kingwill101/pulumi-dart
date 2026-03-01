@@ -5,9 +5,12 @@ import 'v2models_intent_confirmation_setting_confirmation_conditional_default_br
 
 class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch {
   /// Configuration block for the next step in the conversation. See `next_step`.
-  final V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep? nextStep;
+  final V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep?
+  nextStep;
+
   /// Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  final V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponse? response;
+  final V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponse?
+  response;
 
   /// Creates a new [V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch].
   /// [nextStep] Configuration block for the next step in the conversation. See `next_step`.
@@ -24,11 +27,20 @@ class V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch {
     };
   }
 
-  factory V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranch(
-      nextStep: map['nextStep'] == null ? null : V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep.fromMap((map['nextStep'] as Map).cast<String, dynamic>()),
-      response: map['response'] == null ? null : V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponse.fromMap((map['response'] as Map).cast<String, dynamic>()),
+      nextStep: map['nextStep'] == null
+          ? null
+          : V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchNextStep.fromMap(
+              (map['nextStep'] as Map).cast<String, dynamic>(),
+            ),
+      response: map['response'] == null
+          ? null
+          : V2modelsIntentConfirmationSettingConfirmationConditionalDefaultBranchResponse.fromMap(
+              (map['response'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

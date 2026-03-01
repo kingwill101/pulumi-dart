@@ -8,20 +8,23 @@ class AnalysisSourceEntity {
 
   /// Creates a new [AnalysisSourceEntity].
   /// [sourceTemplate] The source template. See source_template.
-  AnalysisSourceEntity({
-    this.sourceTemplate,
-  });
+  AnalysisSourceEntity({this.sourceTemplate});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceTemplate': ?sourceTemplate == null ? null : sourceTemplate!.toMap(),
+      'sourceTemplate': ?sourceTemplate == null
+          ? null
+          : sourceTemplate!.toMap(),
     };
   }
 
   factory AnalysisSourceEntity.fromMap(Map<String, dynamic> map) {
     return AnalysisSourceEntity(
-      sourceTemplate: map['sourceTemplate'] == null ? null : AnalysisSourceEntitySourceTemplate.fromMap((map['sourceTemplate'] as Map).cast<String, dynamic>()),
+      sourceTemplate: map['sourceTemplate'] == null
+          ? null
+          : AnalysisSourceEntitySourceTemplate.fromMap(
+              (map['sourceTemplate'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

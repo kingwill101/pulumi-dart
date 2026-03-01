@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Required Edu Attributes
 class GoogleCloudChannelV1EduDataResponse {
   /// Size of the institute.
   final String instituteSize;
+
   /// Designated institute type of customer.
   final String instituteType;
+
   /// Web address for the edu customer's institution.
   final String website;
 
@@ -28,7 +29,9 @@ class GoogleCloudChannelV1EduDataResponse {
     };
   }
 
-  factory GoogleCloudChannelV1EduDataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1EduDataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1EduDataResponse(
       instituteSize: map['instituteSize'] as String,
       instituteType: map['instituteType'] as String,
@@ -36,4 +39,3 @@ class GoogleCloudChannelV1EduDataResponse {
     );
   }
 }
-

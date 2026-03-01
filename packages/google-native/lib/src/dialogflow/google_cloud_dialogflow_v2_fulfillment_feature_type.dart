@@ -12,7 +12,8 @@ enum GoogleCloudDialogflowV2FulfillmentFeatureType {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2FulfillmentFeatureType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2FulfillmentFeatureType value: $value',
+    );
   }
 }
-

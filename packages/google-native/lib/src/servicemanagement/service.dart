@@ -6,6 +6,7 @@ import 'service_args.dart';
 class Service extends pulumi.CustomResource {
   /// ID of the project that produces and owns this service.
   late final pulumi.Output<String> producerProjectId;
+
   /// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
   late final pulumi.Output<String> serviceName;
 
@@ -18,11 +19,11 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:servicemanagement/v1:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:servicemanagement/v1:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.producerProjectId = registerOutput<String>('producerProjectId');
     this.serviceName = registerOutput<String>('serviceName');
   }

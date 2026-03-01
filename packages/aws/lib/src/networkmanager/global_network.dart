@@ -102,10 +102,13 @@ import 'global_network_args.dart';
 class GlobalNetwork extends pulumi.CustomResource {
   /// Global Network ARN.
   late final pulumi.Output<String> arn;
+
   /// Description of the Global Network.
   late final pulumi.Output<String?> description;
+
   /// Key-value tags for the Global Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -118,11 +121,11 @@ class GlobalNetwork extends pulumi.CustomResource {
     GlobalNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/globalNetwork:GlobalNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:networkmanager/globalNetwork:GlobalNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');
     this.tags = registerOutput<Map<String, String>?>('tags');

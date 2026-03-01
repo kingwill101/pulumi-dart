@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TaskSetCapacityProviderStrategy {
   /// The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined.
   final int? base;
+
   /// The short name or full Amazon Resource Name (ARN) of the capacity provider.
   final String capacityProvider;
+
   /// The relative percentage of the total number of launched tasks that should use the specified capacity provider.
   final int weight;
 
@@ -35,4 +36,3 @@ class TaskSetCapacityProviderStrategy {
     );
   }
 }
-

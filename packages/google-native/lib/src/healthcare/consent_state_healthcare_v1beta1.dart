@@ -19,4 +19,3 @@ enum ConsentStateHealthcareV1beta1 {
     throw ArgumentError('Unknown ConsentStateHealthcareV1beta1 value: $value');
   }
 }
-

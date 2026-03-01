@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RouteAsPath {
   /// (Output)
   /// The AS numbers of the AS Path.
   final List<int>? asLists;
+
   /// (Output)
   /// The type of the AS Path, which can be one of the following values:
   /// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
@@ -16,10 +16,7 @@ class RouteAsPath {
   /// Creates a new [RouteAsPath].
   /// [asLists] (Output)
   /// [pathSegmentType] (Output)
-  RouteAsPath({
-    this.asLists,
-    this.pathSegmentType,
-  });
+  RouteAsPath({this.asLists, this.pathSegmentType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,9 +27,12 @@ class RouteAsPath {
 
   factory RouteAsPath.fromMap(Map<String, dynamic> map) {
     return RouteAsPath(
-      asLists: map['asLists'] == null ? null : (map['asLists'] as List).cast<int>(),
-      pathSegmentType: map['pathSegmentType'] == null ? null : map['pathSegmentType'] as String,
+      asLists: map['asLists'] == null
+          ? null
+          : (map['asLists'] as List).cast<int>(),
+      pathSegmentType: map['pathSegmentType'] == null
+          ? null
+          : map['pathSegmentType'] as String,
     );
   }
 }
-

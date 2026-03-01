@@ -13,7 +13,8 @@ enum CloudAuditOptionsLogNameGameservicesV1beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown CloudAuditOptionsLogNameGameservicesV1beta value: $value');
+    throw ArgumentError(
+      'Unknown CloudAuditOptionsLogNameGameservicesV1beta value: $value',
+    );
   }
 }
-

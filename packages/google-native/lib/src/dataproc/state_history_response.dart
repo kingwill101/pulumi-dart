@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Historical state information.
 class StateHistoryResponse {
   /// The state of the batch at this point in history.
   final String state;
+
   /// Details about the state at this point in history.
   final String stateMessage;
+
   /// The time when the batch entered the historical state.
   final String stateStartTime;
 
@@ -36,4 +37,3 @@ class StateHistoryResponse {
     );
   }
 }
-

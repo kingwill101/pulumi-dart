@@ -187,8 +187,10 @@ import 'bucket_resource_access_args.dart';
 class BucketResourceAccess extends pulumi.CustomResource {
   /// Name of the bucket to grant access to.
   late final pulumi.Output<String> bucketName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Name of the resource to grant bucket access.
   late final pulumi.Output<String> resourceName;
 
@@ -201,11 +203,11 @@ class BucketResourceAccess extends pulumi.CustomResource {
     BucketResourceAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lightsail/bucketResourceAccess:BucketResourceAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:lightsail/bucketResourceAccess:BucketResourceAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucketName = registerOutput<String>('bucketName');
     this.region = registerOutput<String>('region');
     this.resourceName = registerOutput<String>('resourceName');

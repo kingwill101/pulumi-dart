@@ -6,10 +6,13 @@ import 'alias_context_response_containeranalysis_v1beta1.dart';
 class GerritSourceContextResponseContaineranalysisV1beta1 {
   /// An alias, which may be a branch or tag.
   final AliasContextResponseContaineranalysisV1beta1 aliasContext;
+
   /// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
   final String gerritProject;
+
   /// The URI of a running Gerrit instance.
   final String hostUri;
+
   /// A revision (commit) ID.
   final String revisionId;
 
@@ -34,13 +37,16 @@ class GerritSourceContextResponseContaineranalysisV1beta1 {
     };
   }
 
-  factory GerritSourceContextResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory GerritSourceContextResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GerritSourceContextResponseContaineranalysisV1beta1(
-      aliasContext: AliasContextResponseContaineranalysisV1beta1.fromMap((map['aliasContext'] as Map).cast<String, dynamic>()),
+      aliasContext: AliasContextResponseContaineranalysisV1beta1.fromMap(
+        (map['aliasContext'] as Map).cast<String, dynamic>(),
+      ),
       gerritProject: map['gerritProject'] as String,
       hostUri: map['hostUri'] as String,
       revisionId: map['revisionId'] as String,
     );
   }
 }
-

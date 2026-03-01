@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRoutersRouterBgpPeer {
   final String advertiseMode;
   final int advertisedRoutePriority;
@@ -67,4 +66,3 @@ class GetRoutersRouterBgpPeer {
     );
   }
 }
-

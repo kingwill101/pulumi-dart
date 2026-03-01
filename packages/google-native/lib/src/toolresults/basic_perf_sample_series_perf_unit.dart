@@ -18,4 +18,3 @@ enum BasicPerfSampleSeriesPerfUnit {
     throw ArgumentError('Unknown BasicPerfSampleSeriesPerfUnit value: $value');
   }
 }
-

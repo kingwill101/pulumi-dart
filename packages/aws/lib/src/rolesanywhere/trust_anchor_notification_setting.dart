@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TrustAnchorNotificationSetting {
   final String? channel;
   final String? configuredBy;
+
   /// Whether or not the Trust Anchor should be enabled.
   final bool? enabled;
   final String? event;
@@ -36,11 +36,12 @@ class TrustAnchorNotificationSetting {
   factory TrustAnchorNotificationSetting.fromMap(Map<String, dynamic> map) {
     return TrustAnchorNotificationSetting(
       channel: map['channel'] == null ? null : map['channel'] as String,
-      configuredBy: map['configuredBy'] == null ? null : map['configuredBy'] as String,
+      configuredBy: map['configuredBy'] == null
+          ? null
+          : map['configuredBy'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       event: map['event'] == null ? null : map['event'] as String,
       threshold: map['threshold'] == null ? null : map['threshold'] as int,
     );
   }
 }
-

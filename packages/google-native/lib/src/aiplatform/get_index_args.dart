@@ -19,10 +19,9 @@ class GetIndexArgs {
     required String indexId,
     required String location,
     String? project,
-  }) :
-      indexId = pulumi.Input.asInput<String>(indexId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : indexId = pulumi.Input.asInput<String>(indexId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetIndexArgs {
     );
   }
 }
-

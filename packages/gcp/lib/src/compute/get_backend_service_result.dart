@@ -21,11 +21,13 @@ import 'get_backend_service_tls_setting.dart';
 /// Result data returned by getBackendService.
 class GetBackendServiceResult {
   final int affinityCookieTtlSec;
+
   /// The set of backends that serve this Backend Service.
   final List<GetBackendServiceBackend> backends;
   final List<GetBackendServiceCdnPolicy> cdnPolicies;
   final List<GetBackendServiceCircuitBreaker> circuitBreakers;
   final String compressionMode;
+
   /// Time for which instance will be drained (not accept new connections, but still work to finish started ones).
   final int connectionDrainingTimeoutSec;
   final List<GetBackendServiceConsistentHash> consistentHash;
@@ -33,21 +35,27 @@ class GetBackendServiceResult {
   final List<GetBackendServiceCustomMetric> customMetrics;
   final List<String> customRequestHeaders;
   final List<String> customResponseHeaders;
+
   /// Textual description for the Backend Service.
   final String description;
   final List<GetBackendServiceDynamicForwarding> dynamicForwardings;
   final String edgeSecurityPolicy;
+
   /// Whether or not Cloud CDN is enabled on the Backend Service.
   final bool enableCdn;
   final String externalManagedMigrationState;
   final double externalManagedMigrationTestingPercentage;
+
   /// The fingerprint of the Backend Service.
   final String fingerprint;
+
   /// The unique identifier for the resource. This identifier is defined by the server.
   final int generatedId;
+
   /// The set of HTTP/HTTPS health checks used by the Backend Service.
   final List<String> healthChecks;
   final List<GetBackendServiceIap> iaps;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipAddressSelectionPolicy;
@@ -57,22 +65,29 @@ class GetBackendServiceResult {
   final List<GetBackendServiceLogConfig> logConfigs;
   final List<GetBackendServiceMaxStreamDuration> maxStreamDurations;
   final String name;
-  final List<GetBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies;
+  final List<GetBackendServiceNetworkPassThroughLbTrafficPolicy>
+  networkPassThroughLbTrafficPolicies;
   final List<GetBackendServiceOutlierDetection> outlierDetections;
   final List<GetBackendServiceParam> params;
+
   /// The name of a service that has been added to an instance group in this backend.
   final String portName;
   final String? project;
+
   /// The protocol for incoming requests.
   final String protocol;
   final String securityPolicy;
   final List<GetBackendServiceSecuritySetting> securitySettings;
+
   /// The URI of the Backend Service.
   final String selfLink;
   final String serviceLbPolicy;
+
   /// The Backend Service session stickiness configuration.
   final String sessionAffinity;
-  final List<GetBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies;
+  final List<GetBackendServiceStrongSessionAffinityCooky>
+  strongSessionAffinityCookies;
+
   /// The number of seconds to wait for a backend to respond to a request before considering the request failed.
   final int timeoutSec;
   final List<GetBackendServiceTlsSetting> tlsSettings;
@@ -170,97 +185,255 @@ class GetBackendServiceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'affinityCookieTtlSec': affinityCookieTtlSec,
-      'backends': pulumi.Input.encodeList<GetBackendServiceBackend, Map<String, dynamic>>(backends, (value) => value.toMap()),
-      'cdnPolicies': pulumi.Input.encodeList<GetBackendServiceCdnPolicy, Map<String, dynamic>>(cdnPolicies, (value) => value.toMap()),
-      'circuitBreakers': pulumi.Input.encodeList<GetBackendServiceCircuitBreaker, Map<String, dynamic>>(circuitBreakers, (value) => value.toMap()),
+      'backends':
+          pulumi.Input.encodeList<
+            GetBackendServiceBackend,
+            Map<String, dynamic>
+          >(backends, (value) => value.toMap()),
+      'cdnPolicies':
+          pulumi.Input.encodeList<
+            GetBackendServiceCdnPolicy,
+            Map<String, dynamic>
+          >(cdnPolicies, (value) => value.toMap()),
+      'circuitBreakers':
+          pulumi.Input.encodeList<
+            GetBackendServiceCircuitBreaker,
+            Map<String, dynamic>
+          >(circuitBreakers, (value) => value.toMap()),
       'compressionMode': compressionMode,
       'connectionDrainingTimeoutSec': connectionDrainingTimeoutSec,
-      'consistentHash': pulumi.Input.encodeList<GetBackendServiceConsistentHash, Map<String, dynamic>>(consistentHash, (value) => value.toMap()),
+      'consistentHash':
+          pulumi.Input.encodeList<
+            GetBackendServiceConsistentHash,
+            Map<String, dynamic>
+          >(consistentHash, (value) => value.toMap()),
       'creationTimestamp': creationTimestamp,
-      'customMetrics': pulumi.Input.encodeList<GetBackendServiceCustomMetric, Map<String, dynamic>>(customMetrics, (value) => value.toMap()),
+      'customMetrics':
+          pulumi.Input.encodeList<
+            GetBackendServiceCustomMetric,
+            Map<String, dynamic>
+          >(customMetrics, (value) => value.toMap()),
       'customRequestHeaders': customRequestHeaders,
       'customResponseHeaders': customResponseHeaders,
       'description': description,
-      'dynamicForwardings': pulumi.Input.encodeList<GetBackendServiceDynamicForwarding, Map<String, dynamic>>(dynamicForwardings, (value) => value.toMap()),
+      'dynamicForwardings':
+          pulumi.Input.encodeList<
+            GetBackendServiceDynamicForwarding,
+            Map<String, dynamic>
+          >(dynamicForwardings, (value) => value.toMap()),
       'edgeSecurityPolicy': edgeSecurityPolicy,
       'enableCdn': enableCdn,
       'externalManagedMigrationState': externalManagedMigrationState,
-      'externalManagedMigrationTestingPercentage': externalManagedMigrationTestingPercentage,
+      'externalManagedMigrationTestingPercentage':
+          externalManagedMigrationTestingPercentage,
       'fingerprint': fingerprint,
       'generatedId': generatedId,
       'healthChecks': healthChecks,
-      'iaps': pulumi.Input.encodeList<GetBackendServiceIap, Map<String, dynamic>>(iaps, (value) => value.toMap()),
+      'iaps':
+          pulumi.Input.encodeList<GetBackendServiceIap, Map<String, dynamic>>(
+            iaps,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'ipAddressSelectionPolicy': ipAddressSelectionPolicy,
       'loadBalancingScheme': loadBalancingScheme,
-      'localityLbPolicies': pulumi.Input.encodeList<GetBackendServiceLocalityLbPolicy, Map<String, dynamic>>(localityLbPolicies, (value) => value.toMap()),
+      'localityLbPolicies':
+          pulumi.Input.encodeList<
+            GetBackendServiceLocalityLbPolicy,
+            Map<String, dynamic>
+          >(localityLbPolicies, (value) => value.toMap()),
       'localityLbPolicy': localityLbPolicy,
-      'logConfigs': pulumi.Input.encodeList<GetBackendServiceLogConfig, Map<String, dynamic>>(logConfigs, (value) => value.toMap()),
-      'maxStreamDurations': pulumi.Input.encodeList<GetBackendServiceMaxStreamDuration, Map<String, dynamic>>(maxStreamDurations, (value) => value.toMap()),
+      'logConfigs':
+          pulumi.Input.encodeList<
+            GetBackendServiceLogConfig,
+            Map<String, dynamic>
+          >(logConfigs, (value) => value.toMap()),
+      'maxStreamDurations':
+          pulumi.Input.encodeList<
+            GetBackendServiceMaxStreamDuration,
+            Map<String, dynamic>
+          >(maxStreamDurations, (value) => value.toMap()),
       'name': name,
-      'networkPassThroughLbTrafficPolicies': pulumi.Input.encodeList<GetBackendServiceNetworkPassThroughLbTrafficPolicy, Map<String, dynamic>>(networkPassThroughLbTrafficPolicies, (value) => value.toMap()),
-      'outlierDetections': pulumi.Input.encodeList<GetBackendServiceOutlierDetection, Map<String, dynamic>>(outlierDetections, (value) => value.toMap()),
-      'params': pulumi.Input.encodeList<GetBackendServiceParam, Map<String, dynamic>>(params, (value) => value.toMap()),
+      'networkPassThroughLbTrafficPolicies':
+          pulumi.Input.encodeList<
+            GetBackendServiceNetworkPassThroughLbTrafficPolicy,
+            Map<String, dynamic>
+          >(networkPassThroughLbTrafficPolicies, (value) => value.toMap()),
+      'outlierDetections':
+          pulumi.Input.encodeList<
+            GetBackendServiceOutlierDetection,
+            Map<String, dynamic>
+          >(outlierDetections, (value) => value.toMap()),
+      'params':
+          pulumi.Input.encodeList<GetBackendServiceParam, Map<String, dynamic>>(
+            params,
+            (value) => value.toMap(),
+          ),
       'portName': portName,
       'project': ?project,
       'protocol': protocol,
       'securityPolicy': securityPolicy,
-      'securitySettings': pulumi.Input.encodeList<GetBackendServiceSecuritySetting, Map<String, dynamic>>(securitySettings, (value) => value.toMap()),
+      'securitySettings':
+          pulumi.Input.encodeList<
+            GetBackendServiceSecuritySetting,
+            Map<String, dynamic>
+          >(securitySettings, (value) => value.toMap()),
       'selfLink': selfLink,
       'serviceLbPolicy': serviceLbPolicy,
       'sessionAffinity': sessionAffinity,
-      'strongSessionAffinityCookies': pulumi.Input.encodeList<GetBackendServiceStrongSessionAffinityCooky, Map<String, dynamic>>(strongSessionAffinityCookies, (value) => value.toMap()),
+      'strongSessionAffinityCookies':
+          pulumi.Input.encodeList<
+            GetBackendServiceStrongSessionAffinityCooky,
+            Map<String, dynamic>
+          >(strongSessionAffinityCookies, (value) => value.toMap()),
       'timeoutSec': timeoutSec,
-      'tlsSettings': pulumi.Input.encodeList<GetBackendServiceTlsSetting, Map<String, dynamic>>(tlsSettings, (value) => value.toMap()),
+      'tlsSettings':
+          pulumi.Input.encodeList<
+            GetBackendServiceTlsSetting,
+            Map<String, dynamic>
+          >(tlsSettings, (value) => value.toMap()),
     };
   }
 
   factory GetBackendServiceResult.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceResult(
       affinityCookieTtlSec: map['affinityCookieTtlSec'] as int,
-      backends: pulumi.Input.decodeList<GetBackendServiceBackend>(map['backends'], (value) => GetBackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())),
-      cdnPolicies: pulumi.Input.decodeList<GetBackendServiceCdnPolicy>(map['cdnPolicies'], (value) => GetBackendServiceCdnPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      circuitBreakers: pulumi.Input.decodeList<GetBackendServiceCircuitBreaker>(map['circuitBreakers'], (value) => GetBackendServiceCircuitBreaker.fromMap((value as Map).cast<String, dynamic>())),
+      backends: pulumi.Input.decodeList<GetBackendServiceBackend>(
+        map['backends'],
+        (value) => GetBackendServiceBackend.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      cdnPolicies: pulumi.Input.decodeList<GetBackendServiceCdnPolicy>(
+        map['cdnPolicies'],
+        (value) => GetBackendServiceCdnPolicy.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      circuitBreakers: pulumi.Input.decodeList<GetBackendServiceCircuitBreaker>(
+        map['circuitBreakers'],
+        (value) => GetBackendServiceCircuitBreaker.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       compressionMode: map['compressionMode'] as String,
       connectionDrainingTimeoutSec: map['connectionDrainingTimeoutSec'] as int,
-      consistentHash: pulumi.Input.decodeList<GetBackendServiceConsistentHash>(map['consistentHash'], (value) => GetBackendServiceConsistentHash.fromMap((value as Map).cast<String, dynamic>())),
+      consistentHash: pulumi.Input.decodeList<GetBackendServiceConsistentHash>(
+        map['consistentHash'],
+        (value) => GetBackendServiceConsistentHash.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       creationTimestamp: map['creationTimestamp'] as String,
-      customMetrics: pulumi.Input.decodeList<GetBackendServiceCustomMetric>(map['customMetrics'], (value) => GetBackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>())),
-      customRequestHeaders: (map['customRequestHeaders'] as List).cast<String>(),
-      customResponseHeaders: (map['customResponseHeaders'] as List).cast<String>(),
+      customMetrics: pulumi.Input.decodeList<GetBackendServiceCustomMetric>(
+        map['customMetrics'],
+        (value) => GetBackendServiceCustomMetric.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      customRequestHeaders: (map['customRequestHeaders'] as List)
+          .cast<String>(),
+      customResponseHeaders: (map['customResponseHeaders'] as List)
+          .cast<String>(),
       description: map['description'] as String,
-      dynamicForwardings: pulumi.Input.decodeList<GetBackendServiceDynamicForwarding>(map['dynamicForwardings'], (value) => GetBackendServiceDynamicForwarding.fromMap((value as Map).cast<String, dynamic>())),
+      dynamicForwardings:
+          pulumi.Input.decodeList<GetBackendServiceDynamicForwarding>(
+            map['dynamicForwardings'],
+            (value) => GetBackendServiceDynamicForwarding.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       edgeSecurityPolicy: map['edgeSecurityPolicy'] as String,
       enableCdn: map['enableCdn'] as bool,
-      externalManagedMigrationState: map['externalManagedMigrationState'] as String,
-      externalManagedMigrationTestingPercentage: map['externalManagedMigrationTestingPercentage'] as double,
+      externalManagedMigrationState:
+          map['externalManagedMigrationState'] as String,
+      externalManagedMigrationTestingPercentage:
+          map['externalManagedMigrationTestingPercentage'] as double,
       fingerprint: map['fingerprint'] as String,
       generatedId: map['generatedId'] as int,
       healthChecks: (map['healthChecks'] as List).cast<String>(),
-      iaps: pulumi.Input.decodeList<GetBackendServiceIap>(map['iaps'], (value) => GetBackendServiceIap.fromMap((value as Map).cast<String, dynamic>())),
+      iaps: pulumi.Input.decodeList<GetBackendServiceIap>(
+        map['iaps'],
+        (value) => GetBackendServiceIap.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       ipAddressSelectionPolicy: map['ipAddressSelectionPolicy'] as String,
       loadBalancingScheme: map['loadBalancingScheme'] as String,
-      localityLbPolicies: pulumi.Input.decodeList<GetBackendServiceLocalityLbPolicy>(map['localityLbPolicies'], (value) => GetBackendServiceLocalityLbPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      localityLbPolicies:
+          pulumi.Input.decodeList<GetBackendServiceLocalityLbPolicy>(
+            map['localityLbPolicies'],
+            (value) => GetBackendServiceLocalityLbPolicy.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       localityLbPolicy: map['localityLbPolicy'] as String,
-      logConfigs: pulumi.Input.decodeList<GetBackendServiceLogConfig>(map['logConfigs'], (value) => GetBackendServiceLogConfig.fromMap((value as Map).cast<String, dynamic>())),
-      maxStreamDurations: pulumi.Input.decodeList<GetBackendServiceMaxStreamDuration>(map['maxStreamDurations'], (value) => GetBackendServiceMaxStreamDuration.fromMap((value as Map).cast<String, dynamic>())),
+      logConfigs: pulumi.Input.decodeList<GetBackendServiceLogConfig>(
+        map['logConfigs'],
+        (value) => GetBackendServiceLogConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      maxStreamDurations:
+          pulumi.Input.decodeList<GetBackendServiceMaxStreamDuration>(
+            map['maxStreamDurations'],
+            (value) => GetBackendServiceMaxStreamDuration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       name: map['name'] as String,
-      networkPassThroughLbTrafficPolicies: pulumi.Input.decodeList<GetBackendServiceNetworkPassThroughLbTrafficPolicy>(map['networkPassThroughLbTrafficPolicies'], (value) => GetBackendServiceNetworkPassThroughLbTrafficPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      outlierDetections: pulumi.Input.decodeList<GetBackendServiceOutlierDetection>(map['outlierDetections'], (value) => GetBackendServiceOutlierDetection.fromMap((value as Map).cast<String, dynamic>())),
-      params: pulumi.Input.decodeList<GetBackendServiceParam>(map['params'], (value) => GetBackendServiceParam.fromMap((value as Map).cast<String, dynamic>())),
+      networkPassThroughLbTrafficPolicies:
+          pulumi.Input.decodeList<
+            GetBackendServiceNetworkPassThroughLbTrafficPolicy
+          >(
+            map['networkPassThroughLbTrafficPolicies'],
+            (value) =>
+                GetBackendServiceNetworkPassThroughLbTrafficPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      outlierDetections:
+          pulumi.Input.decodeList<GetBackendServiceOutlierDetection>(
+            map['outlierDetections'],
+            (value) => GetBackendServiceOutlierDetection.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      params: pulumi.Input.decodeList<GetBackendServiceParam>(
+        map['params'],
+        (value) => GetBackendServiceParam.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       portName: map['portName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       protocol: map['protocol'] as String,
       securityPolicy: map['securityPolicy'] as String,
-      securitySettings: pulumi.Input.decodeList<GetBackendServiceSecuritySetting>(map['securitySettings'], (value) => GetBackendServiceSecuritySetting.fromMap((value as Map).cast<String, dynamic>())),
+      securitySettings:
+          pulumi.Input.decodeList<GetBackendServiceSecuritySetting>(
+            map['securitySettings'],
+            (value) => GetBackendServiceSecuritySetting.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       selfLink: map['selfLink'] as String,
       serviceLbPolicy: map['serviceLbPolicy'] as String,
       sessionAffinity: map['sessionAffinity'] as String,
-      strongSessionAffinityCookies: pulumi.Input.decodeList<GetBackendServiceStrongSessionAffinityCooky>(map['strongSessionAffinityCookies'], (value) => GetBackendServiceStrongSessionAffinityCooky.fromMap((value as Map).cast<String, dynamic>())),
+      strongSessionAffinityCookies:
+          pulumi.Input.decodeList<GetBackendServiceStrongSessionAffinityCooky>(
+            map['strongSessionAffinityCookies'],
+            (value) => GetBackendServiceStrongSessionAffinityCooky.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       timeoutSec: map['timeoutSec'] as int,
-      tlsSettings: pulumi.Input.decodeList<GetBackendServiceTlsSetting>(map['tlsSettings'], (value) => GetBackendServiceTlsSetting.fromMap((value as Map).cast<String, dynamic>())),
+      tlsSettings: pulumi.Input.decodeList<GetBackendServiceTlsSetting>(
+        map['tlsSettings'],
+        (value) => GetBackendServiceTlsSetting.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -8,17 +8,27 @@ import 'google_cloud_contactcenterinsights_v1_issue_model_result_response.dart';
 /// Call-specific metadata created during analysis.
 class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse {
   /// A list of call annotations that apply to this call.
-  final List<GoogleCloudContactcenterinsightsV1CallAnnotationResponse> annotations;
+  final List<GoogleCloudContactcenterinsightsV1CallAnnotationResponse>
+  annotations;
+
   /// All the entities in the call.
   final Map<String, String> entities;
+
   /// All the matched intents in the call.
   final Map<String, String> intents;
+
   /// Overall conversation-level issue modeling result.
-  final GoogleCloudContactcenterinsightsV1IssueModelResultResponse issueModelResult;
+  final GoogleCloudContactcenterinsightsV1IssueModelResultResponse
+  issueModelResult;
+
   /// All the matched phrase matchers in the call.
   final Map<String, String> phraseMatchers;
+
   /// Overall conversation-level sentiment for each channel of the call.
-  final List<GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse> sentiments;
+  final List<
+    GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse
+  >
+  sentiments;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse].
   /// [annotations] A list of call annotations that apply to this call.
@@ -38,24 +48,54 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'annotations': pulumi.Input.encodeList<GoogleCloudContactcenterinsightsV1CallAnnotationResponse, Map<String, dynamic>>(annotations, (value) => value.toMap()),
+      'annotations':
+          pulumi.Input.encodeList<
+            GoogleCloudContactcenterinsightsV1CallAnnotationResponse,
+            Map<String, dynamic>
+          >(annotations, (value) => value.toMap()),
       'entities': entities,
       'intents': intents,
       'issueModelResult': issueModelResult.toMap(),
       'phraseMatchers': phraseMatchers,
-      'sentiments': pulumi.Input.encodeList<GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse, Map<String, dynamic>>(sentiments, (value) => value.toMap()),
+      'sentiments':
+          pulumi.Input.encodeList<
+            GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse,
+            Map<String, dynamic>
+          >(sentiments, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse(
-      annotations: pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1CallAnnotationResponse>(map['annotations'], (value) => GoogleCloudContactcenterinsightsV1CallAnnotationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      annotations:
+          pulumi.Input.decodeList<
+            GoogleCloudContactcenterinsightsV1CallAnnotationResponse
+          >(
+            map['annotations'],
+            (value) =>
+                GoogleCloudContactcenterinsightsV1CallAnnotationResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       entities: (map['entities'] as Map).cast<String, String>(),
       intents: (map['intents'] as Map).cast<String, String>(),
-      issueModelResult: GoogleCloudContactcenterinsightsV1IssueModelResultResponse.fromMap((map['issueModelResult'] as Map).cast<String, dynamic>()),
+      issueModelResult:
+          GoogleCloudContactcenterinsightsV1IssueModelResultResponse.fromMap(
+            (map['issueModelResult'] as Map).cast<String, dynamic>(),
+          ),
       phraseMatchers: (map['phraseMatchers'] as Map).cast<String, String>(),
-      sentiments: pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse>(map['sentiments'], (value) => GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sentiments:
+          pulumi.Input.decodeList<
+            GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse
+          >(
+            map['sentiments'],
+            (value) =>
+                GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

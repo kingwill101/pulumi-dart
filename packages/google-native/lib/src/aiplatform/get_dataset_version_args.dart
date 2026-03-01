@@ -25,12 +25,11 @@ class GetDatasetVersionArgs {
     required String location,
     String? project,
     String? readMask,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      datasetVersionId = pulumi.Input.asInput<String>(datasetVersionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      readMask = pulumi.Input.asOptionalInput<String>(readMask);
+  }) : datasetId = pulumi.Input.asInput<String>(datasetId),
+       datasetVersionId = pulumi.Input.asInput<String>(datasetVersionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       readMask = pulumi.Input.asOptionalInput<String>(readMask);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetDatasetVersionArgs {
     );
   }
 }
-

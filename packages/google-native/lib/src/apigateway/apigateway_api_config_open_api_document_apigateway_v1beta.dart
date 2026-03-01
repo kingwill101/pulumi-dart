@@ -9,9 +9,7 @@ class ApigatewayApiConfigOpenApiDocumentApigatewayV1beta {
 
   /// Creates a new [ApigatewayApiConfigOpenApiDocumentApigatewayV1beta].
   /// [document] The OpenAPI Specification document file.
-  ApigatewayApiConfigOpenApiDocumentApigatewayV1beta({
-    this.document,
-  });
+  ApigatewayApiConfigOpenApiDocumentApigatewayV1beta({this.document});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class ApigatewayApiConfigOpenApiDocumentApigatewayV1beta {
     };
   }
 
-  factory ApigatewayApiConfigOpenApiDocumentApigatewayV1beta.fromMap(Map<String, dynamic> map) {
+  factory ApigatewayApiConfigOpenApiDocumentApigatewayV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApigatewayApiConfigOpenApiDocumentApigatewayV1beta(
-      document: map['document'] == null ? null : ApigatewayApiConfigFileApigatewayV1beta.fromMap((map['document'] as Map).cast<String, dynamic>()),
+      document: map['document'] == null
+          ? null
+          : ApigatewayApiConfigFileApigatewayV1beta.fromMap(
+              (map['document'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -7,20 +7,27 @@ import 'get_access_point_root_directory.dart';
 /// Result data returned by getAccessPoint.
 class GetAccessPointResult {
   final String accessPointId;
+
   /// Amazon Resource Name of the file system.
   final String arn;
+
   /// Amazon Resource Name of the file system.
   final String fileSystemArn;
+
   /// ID of the file system for which the access point is intended.
   final String fileSystemId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ownerId;
+
   /// Single element list containing operating system user and group applied to all file system requests made using the access point.
   final List<GetAccessPointPosixUser> posixUsers;
   final String region;
+
   /// Single element list containing information on the directory on the Amazon EFS file system that the access point provides access to.
   final List<GetAccessPointRootDirectory> rootDirectories;
+
   /// Key-value mapping of resource tags.
   final Map<String, String> tags;
 
@@ -56,9 +63,17 @@ class GetAccessPointResult {
       'fileSystemId': fileSystemId,
       'id': id,
       'ownerId': ownerId,
-      'posixUsers': pulumi.Input.encodeList<GetAccessPointPosixUser, Map<String, dynamic>>(posixUsers, (value) => value.toMap()),
+      'posixUsers':
+          pulumi.Input.encodeList<
+            GetAccessPointPosixUser,
+            Map<String, dynamic>
+          >(posixUsers, (value) => value.toMap()),
       'region': region,
-      'rootDirectories': pulumi.Input.encodeList<GetAccessPointRootDirectory, Map<String, dynamic>>(rootDirectories, (value) => value.toMap()),
+      'rootDirectories':
+          pulumi.Input.encodeList<
+            GetAccessPointRootDirectory,
+            Map<String, dynamic>
+          >(rootDirectories, (value) => value.toMap()),
       'tags': tags,
     };
   }
@@ -71,11 +86,20 @@ class GetAccessPointResult {
       fileSystemId: map['fileSystemId'] as String,
       id: map['id'] as String,
       ownerId: map['ownerId'] as String,
-      posixUsers: pulumi.Input.decodeList<GetAccessPointPosixUser>(map['posixUsers'], (value) => GetAccessPointPosixUser.fromMap((value as Map).cast<String, dynamic>())),
+      posixUsers: pulumi.Input.decodeList<GetAccessPointPosixUser>(
+        map['posixUsers'],
+        (value) => GetAccessPointPosixUser.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       region: map['region'] as String,
-      rootDirectories: pulumi.Input.decodeList<GetAccessPointRootDirectory>(map['rootDirectories'], (value) => GetAccessPointRootDirectory.fromMap((value as Map).cast<String, dynamic>())),
+      rootDirectories: pulumi.Input.decodeList<GetAccessPointRootDirectory>(
+        map['rootDirectories'],
+        (value) => GetAccessPointRootDirectory.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

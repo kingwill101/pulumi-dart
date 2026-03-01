@@ -19,10 +19,13 @@ class AppDevExperienceFeatureStateResponseGkehubV1alpha {
     };
   }
 
-  factory AppDevExperienceFeatureStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory AppDevExperienceFeatureStateResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppDevExperienceFeatureStateResponseGkehubV1alpha(
-      networkingInstallSucceeded: StatusResponseGkehubV1alpha.fromMap((map['networkingInstallSucceeded'] as Map).cast<String, dynamic>()),
+      networkingInstallSucceeded: StatusResponseGkehubV1alpha.fromMap(
+        (map['networkingInstallSucceeded'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

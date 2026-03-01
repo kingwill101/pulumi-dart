@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Database instance operation error.
 class OperationErrorResponse {
   /// Identifies the specific error that occurred.
   final String code;
+
   /// This is always `sql#operationError`.
   final String kind;
+
   /// Additional information about the error encountered.
   final String message;
 
@@ -21,11 +22,7 @@ class OperationErrorResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'kind': kind,
-      'message': message,
-    };
+    return <String, dynamic>{'code': code, 'kind': kind, 'message': message};
   }
 
   factory OperationErrorResponse.fromMap(Map<String, dynamic> map) {
@@ -36,4 +33,3 @@ class OperationErrorResponse {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterEncryptionDetail {
   /// The status of encryption for the DSQL Cluster.
   final String encryptionStatus;
+
   /// The type of encryption that protects the data on the DSQL Cluster.
   final String encryptionType;
 
@@ -29,4 +29,3 @@ class ClusterEncryptionDetail {
     );
   }
 }
-

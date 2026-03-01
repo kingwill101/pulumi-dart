@@ -10,20 +10,32 @@ class GoogleCloudApigeeV1SecurityActionFlag {
 
   /// Creates a new [GoogleCloudApigeeV1SecurityActionFlag].
   /// [headers] Optional. A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction. Limit 5 headers per SecurityAction. At least one is mandatory.
-  GoogleCloudApigeeV1SecurityActionFlag({
-    this.headers,
-  });
+  GoogleCloudApigeeV1SecurityActionFlag({this.headers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<GoogleCloudApigeeV1SecurityActionHttpHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'headers': ?headers == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudApigeeV1SecurityActionHttpHeader,
+              Map<String, dynamic>
+            >(headers!, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudApigeeV1SecurityActionFlag.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1SecurityActionFlag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1SecurityActionFlag(
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<GoogleCloudApigeeV1SecurityActionHttpHeader>(map['headers'], (value) => GoogleCloudApigeeV1SecurityActionHttpHeader.fromMap((value as Map).cast<String, dynamic>())),
+      headers: map['headers'] == null
+          ? null
+          : pulumi
+                .Input.decodeList<GoogleCloudApigeeV1SecurityActionHttpHeader>(
+              map['headers'],
+              (value) => GoogleCloudApigeeV1SecurityActionHttpHeader.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

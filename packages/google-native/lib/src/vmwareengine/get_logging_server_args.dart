@@ -22,11 +22,10 @@ class GetLoggingServerArgs {
     required String loggingServerId,
     required String privateCloudId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      loggingServerId = pulumi.Input.asInput<String>(loggingServerId),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       loggingServerId = pulumi.Input.asInput<String>(loggingServerId),
+       privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetLoggingServerArgs {
     );
   }
 }
-

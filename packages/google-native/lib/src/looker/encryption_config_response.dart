@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Encryption configuration (i.e. CMEK).
 class EncryptionConfigResponse {
   /// Name of the CMEK key in KMS (input parameter).
   final String kmsKeyName;
+
   /// Full name and version of the CMEK key currently in use to encrypt Looker data. Format: `projects/{project}/locations/{location}/keyRings/{ring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`. Empty if CMEK is not configured in this instance.
   final String kmsKeyNameVersion;
+
   /// Status of the CMEK key.
   final String kmsKeyState;
 
@@ -36,4 +37,3 @@ class EncryptionConfigResponse {
     );
   }
 }
-

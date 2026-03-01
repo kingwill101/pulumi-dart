@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// RangeInfo contains the range name and the range utilization by this cluster.
 class RangeInfoResponseContainerV1beta1 {
   /// [Output only] Name of a range.
   final String rangeName;
+
   /// [Output only] The utilization of the range.
   final double utilization;
 
@@ -30,4 +30,3 @@ class RangeInfoResponseContainerV1beta1 {
     );
   }
 }
-

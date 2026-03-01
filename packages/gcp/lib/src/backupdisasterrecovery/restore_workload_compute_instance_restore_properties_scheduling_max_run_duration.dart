@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration {
   /// (Optional)
   final int? nanos;
+
   /// (Optional)
   final int? seconds;
 
@@ -16,17 +16,15 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nanos': ?nanos,
-      'seconds': ?seconds,
-    };
+    return <String, dynamic>{'nanos': ?nanos, 'seconds': ?seconds};
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDuration(
       nanos: map['nanos'] == null ? null : map['nanos'] as int,
       seconds: map['seconds'] == null ? null : map['seconds'] as int,
     );
   }
 }
-

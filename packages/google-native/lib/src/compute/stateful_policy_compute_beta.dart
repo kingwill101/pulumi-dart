@@ -7,20 +7,23 @@ class StatefulPolicyComputeBeta {
 
   /// Creates a new [StatefulPolicyComputeBeta].
   /// [preservedState] Optional.
-  StatefulPolicyComputeBeta({
-    this.preservedState,
-  });
+  StatefulPolicyComputeBeta({this.preservedState});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'preservedState': ?preservedState == null ? null : preservedState!.toMap(),
+      'preservedState': ?preservedState == null
+          ? null
+          : preservedState!.toMap(),
     };
   }
 
   factory StatefulPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
     return StatefulPolicyComputeBeta(
-      preservedState: map['preservedState'] == null ? null : StatefulPolicyPreservedStateComputeBeta.fromMap((map['preservedState'] as Map).cast<String, dynamic>()),
+      preservedState: map['preservedState'] == null
+          ? null
+          : StatefulPolicyPreservedStateComputeBeta.fromMap(
+              (map['preservedState'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

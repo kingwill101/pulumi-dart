@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDefaultVpc.
 class GetDefaultVpcResult {
   final List<String> privateSubnetIds;
   final List<String> publicSubnetIds;
+
   /// The VPC ID for the default VPC
   final String vpcId;
 
@@ -34,4 +34,3 @@ class GetDefaultVpcResult {
     );
   }
 }
-

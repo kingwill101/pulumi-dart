@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResourceDescriptorContaineranalysisV1beta1 {
   final Map<String, String>? annotations;
   final String? content;
@@ -40,16 +39,23 @@ class ResourceDescriptorContaineranalysisV1beta1 {
     };
   }
 
-  factory ResourceDescriptorContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ResourceDescriptorContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceDescriptorContaineranalysisV1beta1(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
+      annotations: map['annotations'] == null
+          ? null
+          : (map['annotations'] as Map).cast<String, String>(),
       content: map['content'] == null ? null : map['content'] as String,
-      digest: map['digest'] == null ? null : (map['digest'] as Map).cast<String, String>(),
-      downloadLocation: map['downloadLocation'] == null ? null : map['downloadLocation'] as String,
+      digest: map['digest'] == null
+          ? null
+          : (map['digest'] as Map).cast<String, String>(),
+      downloadLocation: map['downloadLocation'] == null
+          ? null
+          : map['downloadLocation'] as String,
       mediaType: map['mediaType'] == null ? null : map['mediaType'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       uri: map['uri'] == null ? null : map['uri'] as String,
     );
   }
 }
-

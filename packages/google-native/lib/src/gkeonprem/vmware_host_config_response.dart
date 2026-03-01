@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents the common parameters for all the hosts irrespective of their IP address.
 class VmwareHostConfigResponse {
   /// DNS search domains.
   final List<String> dnsSearchDomains;
+
   /// DNS servers.
   final List<String> dnsServers;
+
   /// NTP servers.
   final List<String> ntpServers;
 
@@ -36,4 +37,3 @@ class VmwareHostConfigResponse {
     );
   }
 }
-

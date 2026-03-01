@@ -13,11 +13,8 @@ class GetTargetTcpProxyArgs {
   /// Creates a new [GetTargetTcpProxyArgs].
   /// [project] Optional.
   /// [targetTcpProxy] Required.
-  GetTargetTcpProxyArgs({
-    String? project,
-    required String targetTcpProxy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetTargetTcpProxyArgs({String? project, required String targetTcpProxy})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       targetTcpProxy = pulumi.Input.asInput<String>(targetTcpProxy);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetTargetTcpProxyArgs {
     );
   }
 }
-

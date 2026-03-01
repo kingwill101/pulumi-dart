@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTargetGroupHealthCheck {
   final bool enabled;
   final int healthyThreshold;
@@ -62,4 +61,3 @@ class GetTargetGroupHealthCheck {
     );
   }
 }
-

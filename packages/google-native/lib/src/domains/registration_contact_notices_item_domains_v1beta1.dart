@@ -11,7 +11,8 @@ enum RegistrationContactNoticesItemDomainsV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegistrationContactNoticesItemDomainsV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown RegistrationContactNoticesItemDomainsV1beta1 value: $value',
+    );
   }
 }
-

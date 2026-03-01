@@ -10,20 +10,26 @@ class StackTraceResponse {
 
   /// Creates a new [StackTraceResponse].
   /// [elements] An array of stack elements.
-  StackTraceResponse({
-    required this.elements,
-  });
+  StackTraceResponse({required this.elements});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'elements': pulumi.Input.encodeList<StackTraceElementResponse, Map<String, dynamic>>(elements, (value) => value.toMap()),
+      'elements':
+          pulumi.Input.encodeList<
+            StackTraceElementResponse,
+            Map<String, dynamic>
+          >(elements, (value) => value.toMap()),
     };
   }
 
   factory StackTraceResponse.fromMap(Map<String, dynamic> map) {
     return StackTraceResponse(
-      elements: pulumi.Input.decodeList<StackTraceElementResponse>(map['elements'], (value) => StackTraceElementResponse.fromMap((value as Map).cast<String, dynamic>())),
+      elements: pulumi.Input.decodeList<StackTraceElementResponse>(
+        map['elements'],
+        (value) => StackTraceElementResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

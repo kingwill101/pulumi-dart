@@ -5,6 +5,7 @@ import 'managed_zone_service_directory_config_namespace_response.dart';
 /// Contains information about Service Directory-backed zones.
 class ManagedZoneServiceDirectoryConfigResponse {
   final String kind;
+
   /// Contains information about the namespace associated with the zone.
   final ManagedZoneServiceDirectoryConfigNamespaceResponse namespace;
 
@@ -17,17 +18,17 @@ class ManagedZoneServiceDirectoryConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kind': kind,
-      'namespace': namespace.toMap(),
-    };
+    return <String, dynamic>{'kind': kind, 'namespace': namespace.toMap()};
   }
 
-  factory ManagedZoneServiceDirectoryConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory ManagedZoneServiceDirectoryConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZoneServiceDirectoryConfigResponse(
       kind: map['kind'] as String,
-      namespace: ManagedZoneServiceDirectoryConfigNamespaceResponse.fromMap((map['namespace'] as Map).cast<String, dynamic>()),
+      namespace: ManagedZoneServiceDirectoryConfigNamespaceResponse.fromMap(
+        (map['namespace'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

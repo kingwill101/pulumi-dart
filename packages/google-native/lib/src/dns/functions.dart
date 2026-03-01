@@ -175,7 +175,8 @@ Future<GetManagedZoneDnsV1beta2Result> getManagedZoneDnsV1beta2(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_dns_v1beta2_get_managed_zone_iam_policy_dns_v1beta2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetManagedZoneIamPolicyDnsV1beta2Result> getManagedZoneIamPolicyDnsV1beta2(
+Future<GetManagedZoneIamPolicyDnsV1beta2Result>
+getManagedZoneIamPolicyDnsV1beta2(
   GetManagedZoneIamPolicyDnsV1beta2Args args, {
   pulumi.InvokeOptions? options,
 }) async {

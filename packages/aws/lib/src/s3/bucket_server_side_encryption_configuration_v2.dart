@@ -437,12 +437,16 @@ import 'bucket_server_side_encryption_configuration_v2_rule.dart';
 class BucketServerSideEncryptionConfigurationV2 extends pulumi.CustomResource {
   /// ID (name) of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Set of server-side encryption configuration rules. See below. Currently, only a single rule is supported.
-  late final pulumi.Output<List<BucketServerSideEncryptionConfigurationV2Rule>> rules;
+  late final pulumi.Output<List<BucketServerSideEncryptionConfigurationV2Rule>>
+  rules;
 
   /// Creates a new [BucketServerSideEncryptionConfigurationV2].
   /// [name] The Pulumi resource name.
@@ -453,14 +457,17 @@ class BucketServerSideEncryptionConfigurationV2 extends pulumi.CustomResource {
     BucketServerSideEncryptionConfigurationV2Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketServerSideEncryptionConfigurationV2:BucketServerSideEncryptionConfigurationV2',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:s3/bucketServerSideEncryptionConfigurationV2:BucketServerSideEncryptionConfigurationV2',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucket = registerOutput<String>('bucket');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     this.region = registerOutput<String>('region');
-    this.rules = registerOutput<List<BucketServerSideEncryptionConfigurationV2Rule>>('rules');
+    this.rules =
+        registerOutput<List<BucketServerSideEncryptionConfigurationV2Rule>>(
+          'rules',
+        );
   }
 }

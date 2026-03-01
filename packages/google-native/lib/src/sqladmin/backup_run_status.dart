@@ -23,4 +23,3 @@ enum BackupRunStatus {
     throw ArgumentError('Unknown BackupRunStatus value: $value');
   }
 }
-

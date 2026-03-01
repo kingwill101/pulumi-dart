@@ -16,4 +16,3 @@ enum NodeGroupStatusComputeBeta {
     throw ArgumentError('Unknown NodeGroupStatusComputeBeta value: $value');
   }
 }
-

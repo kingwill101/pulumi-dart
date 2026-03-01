@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNamedQuery.
 class GetNamedQueryResult {
   /// Database to which the query belongs.
   final String database;
+
   /// Brief explanation of the query.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -56,4 +57,3 @@ class GetNamedQueryResult {
     );
   }
 }
-

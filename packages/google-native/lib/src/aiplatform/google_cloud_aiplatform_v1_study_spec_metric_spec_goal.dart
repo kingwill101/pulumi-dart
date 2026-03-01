@@ -7,13 +7,16 @@ enum GoogleCloudAiplatformV1StudySpecMetricSpecGoal {
   const GoogleCloudAiplatformV1StudySpecMetricSpecGoal(this.value);
   final String value;
 
-  static GoogleCloudAiplatformV1StudySpecMetricSpecGoal fromValue(String value) {
+  static GoogleCloudAiplatformV1StudySpecMetricSpecGoal fromValue(
+    String value,
+  ) {
     for (final item in GoogleCloudAiplatformV1StudySpecMetricSpecGoal.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudAiplatformV1StudySpecMetricSpecGoal value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudAiplatformV1StudySpecMetricSpecGoal value: $value',
+    );
   }
 }
-

@@ -6,8 +6,10 @@ import 'preprocessing_config.dart';
 class InputType {
   /// A unique key for this input. Must be specified when using advanced mapping and edit lists.
   final String? key;
+
   /// Preprocessing configurations.
   final PreprocessingConfig? preprocessingConfig;
+
   /// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
   final String? uri;
 
@@ -15,16 +17,14 @@ class InputType {
   /// [key] A unique key for this input. Must be specified when using advanced mapping and edit lists.
   /// [preprocessingConfig] Preprocessing configurations.
   /// [uri] URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
-  InputType({
-    this.key,
-    this.preprocessingConfig,
-    this.uri,
-  });
+  InputType({this.key, this.preprocessingConfig, this.uri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'key': ?key,
-      'preprocessingConfig': ?preprocessingConfig == null ? null : preprocessingConfig!.toMap(),
+      'preprocessingConfig': ?preprocessingConfig == null
+          ? null
+          : preprocessingConfig!.toMap(),
       'uri': ?uri,
     };
   }
@@ -32,9 +32,12 @@ class InputType {
   factory InputType.fromMap(Map<String, dynamic> map) {
     return InputType(
       key: map['key'] == null ? null : map['key'] as String,
-      preprocessingConfig: map['preprocessingConfig'] == null ? null : PreprocessingConfig.fromMap((map['preprocessingConfig'] as Map).cast<String, dynamic>()),
+      preprocessingConfig: map['preprocessingConfig'] == null
+          ? null
+          : PreprocessingConfig.fromMap(
+              (map['preprocessingConfig'] as Map).cast<String, dynamic>(),
+            ),
       uri: map['uri'] == null ? null : map['uri'] as String,
     );
   }
 }
-

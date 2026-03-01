@@ -8,22 +8,31 @@ import 'report_summary_utilization_chart_data_response.dart';
 class ReportSummaryAssetAggregateStatsResponse {
   /// Histogram showing a distribution of CPU core counts.
   final ReportSummaryHistogramChartDataResponse coreCountHistogram;
+
   /// Histogram showing a distribution of memory sizes.
   final ReportSummaryHistogramChartDataResponse memoryBytesHistogram;
+
   /// Total memory split into Used/Free buckets.
   final ReportSummaryUtilizationChartDataResponse memoryUtilizationChart;
+
   /// Count of assets grouped by Operating System families.
   final ReportSummaryChartDataResponse operatingSystem;
+
   /// Histogram showing a distribution of memory sizes.
   final ReportSummaryHistogramChartDataResponse storageBytesHistogram;
+
   /// Total memory split into Used/Free buckets.
   final ReportSummaryUtilizationChartDataResponse storageUtilizationChart;
+
   /// Count of the number of unique assets in this collection.
   final String totalAssets;
+
   /// Sum of the CPU core count of all the assets in this collection.
   final String totalCores;
+
   /// Sum of the memory in bytes of all the assets in this collection.
   final String totalMemoryBytes;
+
   /// Sum of persistent storage in bytes of all the assets in this collection.
   final String totalStorageBytes;
 
@@ -66,14 +75,29 @@ class ReportSummaryAssetAggregateStatsResponse {
     };
   }
 
-  factory ReportSummaryAssetAggregateStatsResponse.fromMap(Map<String, dynamic> map) {
+  factory ReportSummaryAssetAggregateStatsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReportSummaryAssetAggregateStatsResponse(
-      coreCountHistogram: ReportSummaryHistogramChartDataResponse.fromMap((map['coreCountHistogram'] as Map).cast<String, dynamic>()),
-      memoryBytesHistogram: ReportSummaryHistogramChartDataResponse.fromMap((map['memoryBytesHistogram'] as Map).cast<String, dynamic>()),
-      memoryUtilizationChart: ReportSummaryUtilizationChartDataResponse.fromMap((map['memoryUtilizationChart'] as Map).cast<String, dynamic>()),
-      operatingSystem: ReportSummaryChartDataResponse.fromMap((map['operatingSystem'] as Map).cast<String, dynamic>()),
-      storageBytesHistogram: ReportSummaryHistogramChartDataResponse.fromMap((map['storageBytesHistogram'] as Map).cast<String, dynamic>()),
-      storageUtilizationChart: ReportSummaryUtilizationChartDataResponse.fromMap((map['storageUtilizationChart'] as Map).cast<String, dynamic>()),
+      coreCountHistogram: ReportSummaryHistogramChartDataResponse.fromMap(
+        (map['coreCountHistogram'] as Map).cast<String, dynamic>(),
+      ),
+      memoryBytesHistogram: ReportSummaryHistogramChartDataResponse.fromMap(
+        (map['memoryBytesHistogram'] as Map).cast<String, dynamic>(),
+      ),
+      memoryUtilizationChart: ReportSummaryUtilizationChartDataResponse.fromMap(
+        (map['memoryUtilizationChart'] as Map).cast<String, dynamic>(),
+      ),
+      operatingSystem: ReportSummaryChartDataResponse.fromMap(
+        (map['operatingSystem'] as Map).cast<String, dynamic>(),
+      ),
+      storageBytesHistogram: ReportSummaryHistogramChartDataResponse.fromMap(
+        (map['storageBytesHistogram'] as Map).cast<String, dynamic>(),
+      ),
+      storageUtilizationChart:
+          ReportSummaryUtilizationChartDataResponse.fromMap(
+            (map['storageUtilizationChart'] as Map).cast<String, dynamic>(),
+          ),
       totalAssets: map['totalAssets'] as String,
       totalCores: map['totalCores'] as String,
       totalMemoryBytes: map['totalMemoryBytes'] as String,
@@ -81,4 +105,3 @@ class ReportSummaryAssetAggregateStatsResponse {
     );
   }
 }
-

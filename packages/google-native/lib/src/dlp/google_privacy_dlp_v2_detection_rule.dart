@@ -9,9 +9,7 @@ class GooglePrivacyDlpV2DetectionRule {
 
   /// Creates a new [GooglePrivacyDlpV2DetectionRule].
   /// [hotwordRule] Hotword-based detection rule.
-  GooglePrivacyDlpV2DetectionRule({
-    this.hotwordRule,
-  });
+  GooglePrivacyDlpV2DetectionRule({this.hotwordRule});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class GooglePrivacyDlpV2DetectionRule {
 
   factory GooglePrivacyDlpV2DetectionRule.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2DetectionRule(
-      hotwordRule: map['hotwordRule'] == null ? null : GooglePrivacyDlpV2HotwordRule.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>()),
+      hotwordRule: map['hotwordRule'] == null
+          ? null
+          : GooglePrivacyDlpV2HotwordRule.fromMap(
+              (map['hotwordRule'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

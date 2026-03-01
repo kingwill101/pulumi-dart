@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PlanWorkflowStepEksResourceScalingConfigScalingResourceResource {
   /// Name of the Horizontal Pod Autoscaler.
   final String? hpaName;
+
   /// Name of the Kubernetes object.
   final String name;
+
   /// Kubernetes namespace.
   final String namespace;
+
   /// Name of the resource.
   final String resourceName;
 
@@ -32,7 +34,9 @@ class PlanWorkflowStepEksResourceScalingConfigScalingResourceResource {
     };
   }
 
-  factory PlanWorkflowStepEksResourceScalingConfigScalingResourceResource.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepEksResourceScalingConfigScalingResourceResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepEksResourceScalingConfigScalingResourceResource(
       hpaName: map['hpaName'] == null ? null : map['hpaName'] as String,
       name: map['name'] as String,
@@ -41,4 +45,3 @@ class PlanWorkflowStepEksResourceScalingConfigScalingResourceResource {
     );
   }
 }
-

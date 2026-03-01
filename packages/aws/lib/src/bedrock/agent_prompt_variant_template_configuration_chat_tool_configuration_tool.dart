@@ -5,9 +5,12 @@ import 'agent_prompt_variant_template_configuration_chat_tool_configuration_tool
 
 class AgentPromptVariantTemplateConfigurationChatToolConfigurationTool {
   /// Creates a cache checkpoint within a tool designation. See Cache Point for more information.
-  final AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint? cachePoint;
+  final AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint?
+  cachePoint;
+
   /// The specification for the tool. See Tool Specification for more information.
-  final AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec? toolSpec;
+  final AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec?
+  toolSpec;
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatToolConfigurationTool].
   /// [cachePoint] Creates a cache checkpoint within a tool designation. See Cache Point for more information.
@@ -24,11 +27,20 @@ class AgentPromptVariantTemplateConfigurationChatToolConfigurationTool {
     };
   }
 
-  factory AgentPromptVariantTemplateConfigurationChatToolConfigurationTool.fromMap(Map<String, dynamic> map) {
+  factory AgentPromptVariantTemplateConfigurationChatToolConfigurationTool.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentPromptVariantTemplateConfigurationChatToolConfigurationTool(
-      cachePoint: map['cachePoint'] == null ? null : AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint.fromMap((map['cachePoint'] as Map).cast<String, dynamic>()),
-      toolSpec: map['toolSpec'] == null ? null : AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap((map['toolSpec'] as Map).cast<String, dynamic>()),
+      cachePoint: map['cachePoint'] == null
+          ? null
+          : AgentPromptVariantTemplateConfigurationChatToolConfigurationToolCachePoint.fromMap(
+              (map['cachePoint'] as Map).cast<String, dynamic>(),
+            ),
+      toolSpec: map['toolSpec'] == null
+          ? null
+          : AgentPromptVariantTemplateConfigurationChatToolConfigurationToolToolSpec.fromMap(
+              (map['toolSpec'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

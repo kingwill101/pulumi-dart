@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetMetastoreServiceMaintenanceWindow {
   /// The day of week, when the window starts. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
   final String dayOfWeek;
+
   /// The hour of day (0-23) when the window starts.
   final int hourOfDay;
 
@@ -16,17 +16,15 @@ class GetMetastoreServiceMaintenanceWindow {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dayOfWeek': dayOfWeek,
-      'hourOfDay': hourOfDay,
-    };
+    return <String, dynamic>{'dayOfWeek': dayOfWeek, 'hourOfDay': hourOfDay};
   }
 
-  factory GetMetastoreServiceMaintenanceWindow.fromMap(Map<String, dynamic> map) {
+  factory GetMetastoreServiceMaintenanceWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMetastoreServiceMaintenanceWindow(
       dayOfWeek: map['dayOfWeek'] as String,
       hourOfDay: map['hourOfDay'] as int,
     );
   }
 }
-

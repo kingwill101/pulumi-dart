@@ -7,19 +7,25 @@ import 'get_mesh_spec.dart';
 class GetMeshResult {
   /// ARN of the service mesh.
   final String arn;
+
   /// Creation date of the service mesh.
   final String createdDate;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Last update date of the service mesh.
   final String lastUpdatedDate;
   final String meshOwner;
   final String name;
   final String region;
+
   /// Resource owner's AWS account ID.
   final String resourceOwner;
+
   /// Service mesh specification. See the `aws.appmesh.Mesh` resource for details.
   final List<GetMeshSpec> specs;
+
   /// Map of tags.
   final Map<String, String> tags;
 
@@ -57,7 +63,10 @@ class GetMeshResult {
       'name': name,
       'region': region,
       'resourceOwner': resourceOwner,
-      'specs': pulumi.Input.encodeList<GetMeshSpec, Map<String, dynamic>>(specs, (value) => value.toMap()),
+      'specs': pulumi.Input.encodeList<GetMeshSpec, Map<String, dynamic>>(
+        specs,
+        (value) => value.toMap(),
+      ),
       'tags': tags,
     };
   }
@@ -72,9 +81,11 @@ class GetMeshResult {
       name: map['name'] as String,
       region: map['region'] as String,
       resourceOwner: map['resourceOwner'] as String,
-      specs: pulumi.Input.decodeList<GetMeshSpec>(map['specs'], (value) => GetMeshSpec.fromMap((value as Map).cast<String, dynamic>())),
+      specs: pulumi.Input.decodeList<GetMeshSpec>(
+        map['specs'],
+        (value) => GetMeshSpec.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

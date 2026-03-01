@@ -14,7 +14,8 @@ enum ServiceMeshMembershipSpecDefaultChannel {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceMeshMembershipSpecDefaultChannel value: $value');
+    throw ArgumentError(
+      'Unknown ServiceMeshMembershipSpecDefaultChannel value: $value',
+    );
   }
 }
-

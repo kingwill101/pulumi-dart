@@ -13,7 +13,8 @@ enum SchemaPackageSchematizedParsingType {
         return item;
       }
     }
-    throw ArgumentError('Unknown SchemaPackageSchematizedParsingType value: $value');
+    throw ArgumentError(
+      'Unknown SchemaPackageSchematizedParsingType value: $value',
+    );
   }
 }
-

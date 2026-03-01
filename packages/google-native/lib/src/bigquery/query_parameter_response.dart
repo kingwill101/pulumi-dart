@@ -6,8 +6,10 @@ import 'query_parameter_value_response.dart';
 class QueryParameterResponse {
   /// [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
   final String name;
+
   /// [Required] The type of this parameter.
   final QueryParameterTypeResponse parameterType;
+
   /// [Required] The value of this parameter.
   final QueryParameterValueResponse parameterValue;
 
@@ -32,9 +34,12 @@ class QueryParameterResponse {
   factory QueryParameterResponse.fromMap(Map<String, dynamic> map) {
     return QueryParameterResponse(
       name: map['name'] as String,
-      parameterType: QueryParameterTypeResponse.fromMap((map['parameterType'] as Map).cast<String, dynamic>()),
-      parameterValue: QueryParameterValueResponse.fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
+      parameterType: QueryParameterTypeResponse.fromMap(
+        (map['parameterType'] as Map).cast<String, dynamic>(),
+      ),
+      parameterValue: QueryParameterValueResponse.fromMap(
+        (map['parameterValue'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

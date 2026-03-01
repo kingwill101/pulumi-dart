@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetScriptDagEdge {
   /// ID of the node at which the edge starts.
   final String source;
+
   /// ID of the node at which the edge ends.
   final String target;
+
   /// Target of the edge.
   final String? targetParameter;
 
@@ -31,8 +32,9 @@ class GetScriptDagEdge {
     return GetScriptDagEdge(
       source: map['source'] as String,
       target: map['target'] as String,
-      targetParameter: map['targetParameter'] == null ? null : map['targetParameter'] as String,
+      targetParameter: map['targetParameter'] == null
+          ? null
+          : map['targetParameter'] as String,
     );
   }
 }
-

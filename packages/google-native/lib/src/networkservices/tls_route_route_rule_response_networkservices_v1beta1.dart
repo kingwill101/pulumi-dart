@@ -8,6 +8,7 @@ import 'tls_route_route_match_response_networkservices_v1beta1.dart';
 class TlsRouteRouteRuleResponseNetworkservicesV1beta1 {
   /// The detailed rule defining how to route matched traffic.
   final TlsRouteRouteActionResponseNetworkservicesV1beta1 action;
+
   /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
   final List<TlsRouteRouteMatchResponseNetworkservicesV1beta1> matches;
 
@@ -22,15 +23,30 @@ class TlsRouteRouteRuleResponseNetworkservicesV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action.toMap(),
-      'matches': pulumi.Input.encodeList<TlsRouteRouteMatchResponseNetworkservicesV1beta1, Map<String, dynamic>>(matches, (value) => value.toMap()),
+      'matches':
+          pulumi.Input.encodeList<
+            TlsRouteRouteMatchResponseNetworkservicesV1beta1,
+            Map<String, dynamic>
+          >(matches, (value) => value.toMap()),
     };
   }
 
-  factory TlsRouteRouteRuleResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory TlsRouteRouteRuleResponseNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TlsRouteRouteRuleResponseNetworkservicesV1beta1(
-      action: TlsRouteRouteActionResponseNetworkservicesV1beta1.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      matches: pulumi.Input.decodeList<TlsRouteRouteMatchResponseNetworkservicesV1beta1>(map['matches'], (value) => TlsRouteRouteMatchResponseNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      action: TlsRouteRouteActionResponseNetworkservicesV1beta1.fromMap(
+        (map['action'] as Map).cast<String, dynamic>(),
+      ),
+      matches:
+          pulumi.Input.decodeList<
+            TlsRouteRouteMatchResponseNetworkservicesV1beta1
+          >(
+            map['matches'],
+            (value) => TlsRouteRouteMatchResponseNetworkservicesV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

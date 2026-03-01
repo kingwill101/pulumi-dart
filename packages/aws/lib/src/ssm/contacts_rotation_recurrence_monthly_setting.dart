@@ -5,6 +5,7 @@ import 'contacts_rotation_recurrence_monthly_setting_hand_off_time.dart';
 class ContactsRotationRecurrenceMonthlySetting {
   /// (Required) The day of the month when monthly recurring on-call rotations begin.
   final int dayOfMonth;
+
   /// (Required) The hand off time. See Hand Off Time for more details.
   final ContactsRotationRecurrenceMonthlySettingHandOffTime? handOffTime;
 
@@ -23,11 +24,16 @@ class ContactsRotationRecurrenceMonthlySetting {
     };
   }
 
-  factory ContactsRotationRecurrenceMonthlySetting.fromMap(Map<String, dynamic> map) {
+  factory ContactsRotationRecurrenceMonthlySetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContactsRotationRecurrenceMonthlySetting(
       dayOfMonth: map['dayOfMonth'] as int,
-      handOffTime: map['handOffTime'] == null ? null : ContactsRotationRecurrenceMonthlySettingHandOffTime.fromMap((map['handOffTime'] as Map).cast<String, dynamic>()),
+      handOffTime: map['handOffTime'] == null
+          ? null
+          : ContactsRotationRecurrenceMonthlySettingHandOffTime.fromMap(
+              (map['handOffTime'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

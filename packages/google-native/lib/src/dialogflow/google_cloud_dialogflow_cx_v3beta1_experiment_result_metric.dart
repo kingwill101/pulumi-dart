@@ -7,13 +7,19 @@ import 'google_cloud_dialogflow_cx_v3beta1_experiment_result_metric_type.dart';
 /// Metric and corresponding confidence intervals.
 class GoogleCloudDialogflowCxV3beta1ExperimentResultMetric {
   /// The probability that the treatment is better than all other treatments in the experiment
-  final GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval? confidenceInterval;
+  final GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval?
+  confidenceInterval;
+
   /// Count value of a metric.
   final double? count;
+
   /// Count-based metric type. Only one of type or count_type is specified in each Metric.
-  final GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType? countType;
+  final GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType?
+  countType;
+
   /// Ratio value of a metric.
   final double? ratio;
+
   /// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
   final GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType? type;
 
@@ -33,7 +39,9 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetric {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'confidenceInterval': ?confidenceInterval == null ? null : confidenceInterval!.toMap(),
+      'confidenceInterval': ?confidenceInterval == null
+          ? null
+          : confidenceInterval!.toMap(),
       'count': ?count,
       'countType': ?countType == null ? null : countType!.value,
       'ratio': ?ratio,
@@ -41,14 +49,27 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetric {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1ExperimentResultMetric.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1ExperimentResultMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultMetric(
-      confidenceInterval: map['confidenceInterval'] == null ? null : GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval.fromMap((map['confidenceInterval'] as Map).cast<String, dynamic>()),
+      confidenceInterval: map['confidenceInterval'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceInterval.fromMap(
+              (map['confidenceInterval'] as Map).cast<String, dynamic>(),
+            ),
       count: map['count'] == null ? null : map['count'] as double,
-      countType: map['countType'] == null ? null : GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType.fromValue(map['countType'] as String),
+      countType: map['countType'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType.fromValue(
+              map['countType'] as String,
+            ),
       ratio: map['ratio'] == null ? null : map['ratio'] as double,
-      type: map['type'] == null ? null : GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType.fromValue(
+              map['type'] as String,
+            ),
     );
   }
 }
-

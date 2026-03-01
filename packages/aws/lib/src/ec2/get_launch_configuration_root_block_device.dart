@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLaunchConfigurationRootBlockDevice {
   /// Whether the EBS Volume will be deleted on instance termination.
   final bool deleteOnTermination;
+
   /// Whether the volume is Encrypted.
   final bool encrypted;
+
   /// Provisioned IOPs of the volume.
   final int iops;
+
   /// Throughput of the volume.
   final int throughput;
+
   /// Size of the volume.
   final int volumeSize;
+
   /// Type of the volume.
   final String volumeType;
 
@@ -42,7 +46,9 @@ class GetLaunchConfigurationRootBlockDevice {
     };
   }
 
-  factory GetLaunchConfigurationRootBlockDevice.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchConfigurationRootBlockDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchConfigurationRootBlockDevice(
       deleteOnTermination: map['deleteOnTermination'] as bool,
       encrypted: map['encrypted'] as bool,
@@ -53,4 +59,3 @@ class GetLaunchConfigurationRootBlockDevice {
     );
   }
 }
-

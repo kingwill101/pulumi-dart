@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections {
   /// The selected sections chosen to return when requesting a summary of a conversation
   /// If not provided the default selection will be "{SITUATION, ACTION, RESULT}".
@@ -14,15 +13,16 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sectionTypes': ?sectionTypes,
-    };
+    return <String, dynamic>{'sectionTypes': ?sectionTypes};
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections(
-      sectionTypes: map['sectionTypes'] == null ? null : (map['sectionTypes'] as List).cast<String>(),
+      sectionTypes: map['sectionTypes'] == null
+          ? null
+          : (map['sectionTypes'] as List).cast<String>(),
     );
   }
 }
-

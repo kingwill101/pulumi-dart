@@ -17,4 +17,3 @@ enum OrganizationType {
     throw ArgumentError('Unknown OrganizationType value: $value');
   }
 }
-

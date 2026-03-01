@@ -8,20 +8,17 @@ class AttestationAuthorityResponse {
 
   /// Creates a new [AttestationAuthorityResponse].
   /// [hint] Required.
-  AttestationAuthorityResponse({
-    required this.hint,
-  });
+  AttestationAuthorityResponse({required this.hint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hint': hint.toMap(),
-    };
+    return <String, dynamic>{'hint': hint.toMap()};
   }
 
   factory AttestationAuthorityResponse.fromMap(Map<String, dynamic> map) {
     return AttestationAuthorityResponse(
-      hint: AttestationAuthorityHintResponse.fromMap((map['hint'] as Map).cast<String, dynamic>()),
+      hint: AttestationAuthorityHintResponse.fromMap(
+        (map['hint'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

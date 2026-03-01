@@ -9,22 +9,28 @@ class VMwareClusterNetworkConfig {
   /// Configuration for control plane V2 mode.
   /// Structure is documented below.
   final VMwareClusterNetworkConfigControlPlaneV2Config? controlPlaneV2Config;
+
   /// Configuration settings for a DHCP IP configuration.
   /// Structure is documented below.
   final VMwareClusterNetworkConfigDhcpIpConfig? dhcpIpConfig;
+
   /// Represents common network settings irrespective of the host's IP address.
   /// Structure is documented below.
   final VMwareClusterNetworkConfigHostConfig? hostConfig;
+
   /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
   /// Only a single range is supported. This field cannot be changed after creation.
   final List<String> podAddressCidrBlocks;
+
   /// All services in the cluster are assigned an RFC1918 IPv4 address
   /// from these ranges. Only a single range is supported.. This field
   /// cannot be changed after creation.
   final List<String> serviceAddressCidrBlocks;
+
   /// Configuration settings for a static IP configuration.
   /// Structure is documented below.
   final VMwareClusterNetworkConfigStaticIpConfig? staticIpConfig;
+
   /// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
   final String? vcenterNetwork;
 
@@ -48,26 +54,49 @@ class VMwareClusterNetworkConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'controlPlaneV2Config': ?controlPlaneV2Config == null ? null : controlPlaneV2Config!.toMap(),
+      'controlPlaneV2Config': ?controlPlaneV2Config == null
+          ? null
+          : controlPlaneV2Config!.toMap(),
       'dhcpIpConfig': ?dhcpIpConfig == null ? null : dhcpIpConfig!.toMap(),
       'hostConfig': ?hostConfig == null ? null : hostConfig!.toMap(),
       'podAddressCidrBlocks': podAddressCidrBlocks,
       'serviceAddressCidrBlocks': serviceAddressCidrBlocks,
-      'staticIpConfig': ?staticIpConfig == null ? null : staticIpConfig!.toMap(),
+      'staticIpConfig': ?staticIpConfig == null
+          ? null
+          : staticIpConfig!.toMap(),
       'vcenterNetwork': ?vcenterNetwork,
     };
   }
 
   factory VMwareClusterNetworkConfig.fromMap(Map<String, dynamic> map) {
     return VMwareClusterNetworkConfig(
-      controlPlaneV2Config: map['controlPlaneV2Config'] == null ? null : VMwareClusterNetworkConfigControlPlaneV2Config.fromMap((map['controlPlaneV2Config'] as Map).cast<String, dynamic>()),
-      dhcpIpConfig: map['dhcpIpConfig'] == null ? null : VMwareClusterNetworkConfigDhcpIpConfig.fromMap((map['dhcpIpConfig'] as Map).cast<String, dynamic>()),
-      hostConfig: map['hostConfig'] == null ? null : VMwareClusterNetworkConfigHostConfig.fromMap((map['hostConfig'] as Map).cast<String, dynamic>()),
-      podAddressCidrBlocks: (map['podAddressCidrBlocks'] as List).cast<String>(),
-      serviceAddressCidrBlocks: (map['serviceAddressCidrBlocks'] as List).cast<String>(),
-      staticIpConfig: map['staticIpConfig'] == null ? null : VMwareClusterNetworkConfigStaticIpConfig.fromMap((map['staticIpConfig'] as Map).cast<String, dynamic>()),
-      vcenterNetwork: map['vcenterNetwork'] == null ? null : map['vcenterNetwork'] as String,
+      controlPlaneV2Config: map['controlPlaneV2Config'] == null
+          ? null
+          : VMwareClusterNetworkConfigControlPlaneV2Config.fromMap(
+              (map['controlPlaneV2Config'] as Map).cast<String, dynamic>(),
+            ),
+      dhcpIpConfig: map['dhcpIpConfig'] == null
+          ? null
+          : VMwareClusterNetworkConfigDhcpIpConfig.fromMap(
+              (map['dhcpIpConfig'] as Map).cast<String, dynamic>(),
+            ),
+      hostConfig: map['hostConfig'] == null
+          ? null
+          : VMwareClusterNetworkConfigHostConfig.fromMap(
+              (map['hostConfig'] as Map).cast<String, dynamic>(),
+            ),
+      podAddressCidrBlocks: (map['podAddressCidrBlocks'] as List)
+          .cast<String>(),
+      serviceAddressCidrBlocks: (map['serviceAddressCidrBlocks'] as List)
+          .cast<String>(),
+      staticIpConfig: map['staticIpConfig'] == null
+          ? null
+          : VMwareClusterNetworkConfigStaticIpConfig.fromMap(
+              (map['staticIpConfig'] as Map).cast<String, dynamic>(),
+            ),
+      vcenterNetwork: map['vcenterNetwork'] == null
+          ? null
+          : map['vcenterNetwork'] as String,
     );
   }
 }
-

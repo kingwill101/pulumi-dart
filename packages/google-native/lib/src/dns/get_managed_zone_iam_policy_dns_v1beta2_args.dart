@@ -16,22 +16,19 @@ class GetManagedZoneIamPolicyDnsV1beta2Args {
   GetManagedZoneIamPolicyDnsV1beta2Args({
     required String managedZone,
     String? project,
-  }) :
-      managedZone = pulumi.Input.asInput<String>(managedZone),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : managedZone = pulumi.Input.asInput<String>(managedZone),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'managedZone': managedZone,
-      'project': ?project,
-    };
+    return <String, dynamic>{'managedZone': managedZone, 'project': ?project};
   }
 
-  factory GetManagedZoneIamPolicyDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
+  factory GetManagedZoneIamPolicyDnsV1beta2Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedZoneIamPolicyDnsV1beta2Args(
       managedZone: map['managedZone'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

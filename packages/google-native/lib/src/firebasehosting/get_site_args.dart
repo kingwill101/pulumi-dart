@@ -13,18 +13,12 @@ class GetSiteArgs {
   /// Creates a new [GetSiteArgs].
   /// [project] Optional.
   /// [siteId] Required.
-  GetSiteArgs({
-    String? project,
-    required String siteId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetSiteArgs({String? project, required String siteId})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       siteId = pulumi.Input.asInput<String>(siteId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'siteId': siteId,
-    };
+    return <String, dynamic>{'project': ?project, 'siteId': siteId};
   }
 
   factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetSiteArgs {
     );
   }
 }
-

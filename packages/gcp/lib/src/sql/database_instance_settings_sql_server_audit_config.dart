@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DatabaseInstanceSettingsSqlServerAuditConfig {
   /// The name of the destination bucket (e.g., gs://mybucket).
   final String? bucket;
+
   /// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   final String? retentionInterval;
+
   /// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   final String? uploadInterval;
 
@@ -27,12 +28,17 @@ class DatabaseInstanceSettingsSqlServerAuditConfig {
     };
   }
 
-  factory DatabaseInstanceSettingsSqlServerAuditConfig.fromMap(Map<String, dynamic> map) {
+  factory DatabaseInstanceSettingsSqlServerAuditConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseInstanceSettingsSqlServerAuditConfig(
       bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      retentionInterval: map['retentionInterval'] == null ? null : map['retentionInterval'] as String,
-      uploadInterval: map['uploadInterval'] == null ? null : map['uploadInterval'] as String,
+      retentionInterval: map['retentionInterval'] == null
+          ? null
+          : map['retentionInterval'] as String,
+      uploadInterval: map['uploadInterval'] == null
+          ? null
+          : map['uploadInterval'] as String,
     );
   }
 }
-

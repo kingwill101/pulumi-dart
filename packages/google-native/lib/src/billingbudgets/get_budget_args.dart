@@ -13,11 +13,8 @@ class GetBudgetArgs {
   /// Creates a new [GetBudgetArgs].
   /// [billingAccountId] Required.
   /// [budgetId] Required.
-  GetBudgetArgs({
-    required String billingAccountId,
-    required String budgetId,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
+  GetBudgetArgs({required String billingAccountId, required String budgetId})
+    : billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
       budgetId = pulumi.Input.asInput<String>(budgetId);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetBudgetArgs {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDomainNameEndpointConfiguration {
   /// The IP address types that can invoke an API (RestApi).
   final String ipAddressType;
+
   /// List of endpoint types.
   final List<String> types;
 
@@ -16,10 +16,7 @@ class GetDomainNameEndpointConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipAddressType': ipAddressType,
-      'types': types,
-    };
+    return <String, dynamic>{'ipAddressType': ipAddressType, 'types': types};
   }
 
   factory GetDomainNameEndpointConfiguration.fromMap(Map<String, dynamic> map) {
@@ -29,4 +26,3 @@ class GetDomainNameEndpointConfiguration {
     );
   }
 }
-

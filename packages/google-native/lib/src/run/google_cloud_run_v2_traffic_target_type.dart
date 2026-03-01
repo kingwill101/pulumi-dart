@@ -1,8 +1,12 @@
 /// The allocation type for this traffic target.
 enum GoogleCloudRunV2TrafficTargetType {
-  trafficTargetAllocationTypeUnspecified("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"),
+  trafficTargetAllocationTypeUnspecified(
+    "TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED",
+  ),
   trafficTargetAllocationTypeLatest("TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"),
-  trafficTargetAllocationTypeRevision("TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION");
+  trafficTargetAllocationTypeRevision(
+    "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+  );
 
   const GoogleCloudRunV2TrafficTargetType(this.value);
   final String value;
@@ -13,7 +17,8 @@ enum GoogleCloudRunV2TrafficTargetType {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudRunV2TrafficTargetType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudRunV2TrafficTargetType value: $value',
+    );
   }
 }
-

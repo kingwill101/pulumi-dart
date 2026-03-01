@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstancePrivateConfig {
   /// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
   final String? caPool;
+
   /// (Output)
   /// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
   final String? httpServiceAttachment;
+
   /// 'Indicate if it's private instance.'
   final bool isPrivate;
+
   /// (Output)
   /// Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
   final String? sshServiceAttachment;
@@ -37,10 +39,13 @@ class InstancePrivateConfig {
   factory InstancePrivateConfig.fromMap(Map<String, dynamic> map) {
     return InstancePrivateConfig(
       caPool: map['caPool'] == null ? null : map['caPool'] as String,
-      httpServiceAttachment: map['httpServiceAttachment'] == null ? null : map['httpServiceAttachment'] as String,
+      httpServiceAttachment: map['httpServiceAttachment'] == null
+          ? null
+          : map['httpServiceAttachment'] as String,
       isPrivate: map['isPrivate'] as bool,
-      sshServiceAttachment: map['sshServiceAttachment'] == null ? null : map['sshServiceAttachment'] as String,
+      sshServiceAttachment: map['sshServiceAttachment'] == null
+          ? null
+          : map['sshServiceAttachment'] as String,
     );
   }
 }
-

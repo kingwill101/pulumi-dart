@@ -7,12 +7,16 @@ import 'google_cloud_beyondcorp_appconnectors_v1alpha_resource_info_status.dart'
 class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo {
   /// Unique Id for the resource.
   final String id;
+
   /// Specific details for the resource. This is for internal use only.
   final Map<String, String>? resource;
+
   /// Overall health status. Overall status is derived based on the status of each sub level resources.
   final GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus? status;
+
   /// List of Info for the sub level resources.
   final List<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>? sub;
+
   /// The timestamp to collect the info. It is suggested to be set by the topmost level resource only.
   final String? time;
 
@@ -35,19 +39,41 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo {
       'id': id,
       'resource': ?resource,
       'status': ?status == null ? null : status!.value,
-      'sub': ?sub == null ? null : pulumi.Input.encodeList<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo, Map<String, dynamic>>(sub!, (value) => value.toMap()),
+      'sub': ?sub == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo,
+              Map<String, dynamic>
+            >(sub!, (value) => value.toMap()),
       'time': ?time,
     };
   }
 
-  factory GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo(
       id: map['id'] as String,
-      resource: map['resource'] == null ? null : (map['resource'] as Map).cast<String, String>(),
-      status: map['status'] == null ? null : GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus.fromValue(map['status'] as String),
-      sub: map['sub'] == null ? null : pulumi.Input.decodeList<GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo>(map['sub'], (value) => GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo.fromMap((value as Map).cast<String, dynamic>())),
+      resource: map['resource'] == null
+          ? null
+          : (map['resource'] as Map).cast<String, String>(),
+      status: map['status'] == null
+          ? null
+          : GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatus.fromValue(
+              map['status'] as String,
+            ),
+      sub: map['sub'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo
+            >(
+              map['sub'],
+              (value) =>
+                  GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       time: map['time'] == null ? null : map['time'] as String,
     );
   }
 }
-

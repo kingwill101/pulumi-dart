@@ -10,8 +10,10 @@ import 'default_credit_specification_timeouts.dart';
 class DefaultCreditSpecificationArgs {
   /// Credit option for CPU usage of the instance family. Valid values: `standard`, `unlimited`.
   final pulumi.Input<String> cpuCredits;
+
   /// Instance family. Valid values are `t2`, `t3`, `t3a`, `t4g`.
   final pulumi.Input<String> instanceFamily;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<DefaultCreditSpecificationTimeouts>? timeouts;
@@ -26,18 +28,22 @@ class DefaultCreditSpecificationArgs {
     required String instanceFamily,
     String? region,
     DefaultCreditSpecificationTimeouts? timeouts,
-  }) :
-      cpuCredits = pulumi.Input.asInput<String>(cpuCredits),
-      instanceFamily = pulumi.Input.asInput<String>(instanceFamily),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<DefaultCreditSpecificationTimeouts>(timeouts);
+  }) : cpuCredits = pulumi.Input.asInput<String>(cpuCredits),
+       instanceFamily = pulumi.Input.asInput<String>(instanceFamily),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       timeouts = pulumi
+           .Input.asOptionalInput<DefaultCreditSpecificationTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cpuCredits': cpuCredits,
       'instanceFamily': instanceFamily,
       'region': ?region,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<DefaultCreditSpecificationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            DefaultCreditSpecificationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
@@ -46,8 +52,11 @@ class DefaultCreditSpecificationArgs {
       cpuCredits: map['cpuCredits'] as String,
       instanceFamily: map['instanceFamily'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      timeouts: map['timeouts'] == null ? null : DefaultCreditSpecificationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null
+          ? null
+          : DefaultCreditSpecificationTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

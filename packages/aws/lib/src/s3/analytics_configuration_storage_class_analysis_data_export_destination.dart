@@ -4,7 +4,8 @@ import 'analytics_configuration_storage_class_analysis_data_export_destination_s
 
 class AnalyticsConfigurationStorageClassAnalysisDataExportDestination {
   /// Analytics data export currently only supports an S3 bucket destination (documented below).
-  final AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination s3BucketDestination;
+  final AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination
+  s3BucketDestination;
 
   /// Creates a new [AnalyticsConfigurationStorageClassAnalysisDataExportDestination].
   /// [s3BucketDestination] Analytics data export currently only supports an S3 bucket destination (documented below).
@@ -18,10 +19,14 @@ class AnalyticsConfigurationStorageClassAnalysisDataExportDestination {
     };
   }
 
-  factory AnalyticsConfigurationStorageClassAnalysisDataExportDestination.fromMap(Map<String, dynamic> map) {
+  factory AnalyticsConfigurationStorageClassAnalysisDataExportDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalyticsConfigurationStorageClassAnalysisDataExportDestination(
-      s3BucketDestination: AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination.fromMap((map['s3BucketDestination'] as Map).cast<String, dynamic>()),
+      s3BucketDestination:
+          AnalyticsConfigurationStorageClassAnalysisDataExportDestinationS3BucketDestination.fromMap(
+            (map['s3BucketDestination'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

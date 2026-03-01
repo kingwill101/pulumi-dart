@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The image response message.
 class GoogleCloudDialogflowV2IntentMessageImage {
   /// Optional. A text description of the image to be used for accessibility, e.g., screen readers.
   final String? accessibilityText;
+
   /// Optional. The public URI to an image file.
   final String? imageUri;
 
@@ -23,11 +23,14 @@ class GoogleCloudDialogflowV2IntentMessageImage {
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageImage.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageImage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageImage(
-      accessibilityText: map['accessibilityText'] == null ? null : map['accessibilityText'] as String,
+      accessibilityText: map['accessibilityText'] == null
+          ? null
+          : map['accessibilityText'] as String,
       imageUri: map['imageUri'] == null ? null : map['imageUri'] as String,
     );
   }
 }
-

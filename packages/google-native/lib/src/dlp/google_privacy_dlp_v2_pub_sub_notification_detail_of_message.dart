@@ -7,13 +7,17 @@ enum GooglePrivacyDlpV2PubSubNotificationDetailOfMessage {
   const GooglePrivacyDlpV2PubSubNotificationDetailOfMessage(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2PubSubNotificationDetailOfMessage fromValue(String value) {
-    for (final item in GooglePrivacyDlpV2PubSubNotificationDetailOfMessage.values) {
+  static GooglePrivacyDlpV2PubSubNotificationDetailOfMessage fromValue(
+    String value,
+  ) {
+    for (final item
+        in GooglePrivacyDlpV2PubSubNotificationDetailOfMessage.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2PubSubNotificationDetailOfMessage value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2PubSubNotificationDetailOfMessage value: $value',
+    );
   }
 }
-

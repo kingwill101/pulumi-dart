@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BareMetalClusterLoadBalancerPortConfig {
   /// The port that control plane hosted load balancers will listen on.
   final int controlPlaneLoadBalancerPort;
@@ -17,10 +16,11 @@ class BareMetalClusterLoadBalancerPortConfig {
     };
   }
 
-  factory BareMetalClusterLoadBalancerPortConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalClusterLoadBalancerPortConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalClusterLoadBalancerPortConfig(
       controlPlaneLoadBalancerPort: map['controlPlaneLoadBalancerPort'] as int,
     );
   }
 }
-

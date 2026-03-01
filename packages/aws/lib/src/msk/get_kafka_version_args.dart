@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKafkaVersionArgs {
   /// Ordered list of preferred Kafka versions. The first match in this list will be returned. Either `preferred_versions` or `version` must be set.
   final pulumi.Input<List<String>>? preferredVersions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Version of MSK Kafka. For example 2.4.1.1 or "2.2.1" etc. Either `preferred_versions` or `version` must be set.
   final pulumi.Input<String>? version;
 
@@ -22,10 +24,11 @@ class GetKafkaVersionArgs {
     List<String>? preferredVersions,
     String? region,
     String? version,
-  }) :
-      preferredVersions = pulumi.Input.asOptionalInput<List<String>>(preferredVersions),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      version = pulumi.Input.asOptionalInput<String>(version);
+  }) : preferredVersions = pulumi.Input.asOptionalInput<List<String>>(
+         preferredVersions,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       version = pulumi.Input.asOptionalInput<String>(version);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +40,11 @@ class GetKafkaVersionArgs {
 
   factory GetKafkaVersionArgs.fromMap(Map<String, dynamic> map) {
     return GetKafkaVersionArgs(
-      preferredVersions: map['preferredVersions'] == null ? null : (map['preferredVersions'] as List).cast<String>(),
+      preferredVersions: map['preferredVersions'] == null
+          ? null
+          : (map['preferredVersions'] as List).cast<String>(),
       region: map['region'] == null ? null : map['region'] as String,
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
-

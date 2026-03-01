@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WorkloadWorkloadPropertyIdentity {
   /// (Output)
   /// The principal of the identity.
@@ -8,14 +7,10 @@ class WorkloadWorkloadPropertyIdentity {
 
   /// Creates a new [WorkloadWorkloadPropertyIdentity].
   /// [principal] (Output)
-  WorkloadWorkloadPropertyIdentity({
-    this.principal,
-  });
+  WorkloadWorkloadPropertyIdentity({this.principal});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'principal': ?principal,
-    };
+    return <String, dynamic>{'principal': ?principal};
   }
 
   factory WorkloadWorkloadPropertyIdentity.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class WorkloadWorkloadPropertyIdentity {
     );
   }
 }
-

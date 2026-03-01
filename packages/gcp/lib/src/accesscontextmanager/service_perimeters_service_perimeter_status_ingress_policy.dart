@@ -7,11 +7,15 @@ class ServicePerimetersServicePerimeterStatusIngressPolicy {
   /// Defines the conditions on the source of a request causing this `IngressPolicy`
   /// to apply.
   /// Structure is documented below.
-  final ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom? ingressFrom;
+  final ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom?
+  ingressFrom;
+
   /// Defines the conditions on the `ApiOperation` and request destination that cause
   /// this `IngressPolicy` to apply.
   /// Structure is documented below.
-  final ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo? ingressTo;
+  final ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo?
+  ingressTo;
+
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
   final String? title;
 
@@ -33,12 +37,21 @@ class ServicePerimetersServicePerimeterStatusIngressPolicy {
     };
   }
 
-  factory ServicePerimetersServicePerimeterStatusIngressPolicy.fromMap(Map<String, dynamic> map) {
+  factory ServicePerimetersServicePerimeterStatusIngressPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePerimetersServicePerimeterStatusIngressPolicy(
-      ingressFrom: map['ingressFrom'] == null ? null : ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom.fromMap((map['ingressFrom'] as Map).cast<String, dynamic>()),
-      ingressTo: map['ingressTo'] == null ? null : ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo.fromMap((map['ingressTo'] as Map).cast<String, dynamic>()),
+      ingressFrom: map['ingressFrom'] == null
+          ? null
+          : ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom.fromMap(
+              (map['ingressFrom'] as Map).cast<String, dynamic>(),
+            ),
+      ingressTo: map['ingressTo'] == null
+          ? null
+          : ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo.fromMap(
+              (map['ingressTo'] as Map).cast<String, dynamic>(),
+            ),
       title: map['title'] == null ? null : map['title'] as String,
     );
   }
 }
-

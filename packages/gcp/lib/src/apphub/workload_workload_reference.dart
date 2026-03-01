@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WorkloadWorkloadReference {
   /// (Output)
   /// Output only. The underlying compute resource uri.
@@ -8,14 +7,10 @@ class WorkloadWorkloadReference {
 
   /// Creates a new [WorkloadWorkloadReference].
   /// [uri] (Output)
-  WorkloadWorkloadReference({
-    this.uri,
-  });
+  WorkloadWorkloadReference({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
   factory WorkloadWorkloadReference.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class WorkloadWorkloadReference {
     );
   }
 }
-

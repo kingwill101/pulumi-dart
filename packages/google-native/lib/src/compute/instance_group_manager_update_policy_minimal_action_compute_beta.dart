@@ -8,13 +8,17 @@ enum InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta {
   const InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta(this.value);
   final String value;
 
-  static InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta fromValue(String value) {
-    for (final item in InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta.values) {
+  static InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerUpdatePolicyMinimalActionComputeBeta value: $value',
+    );
   }
 }
-

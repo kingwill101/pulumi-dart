@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SmbFileShareCacheAttributes {
   /// Refreshes a file share's cache by using Time To Live (TTL).
   /// TTL is the length of time since the last refresh after which access to the directory would cause the file gateway
@@ -9,9 +8,7 @@ class SmbFileShareCacheAttributes {
 
   /// Creates a new [SmbFileShareCacheAttributes].
   /// [cacheStaleTimeoutInSeconds] Refreshes a file share's cache by using Time To Live (TTL).
-  SmbFileShareCacheAttributes({
-    this.cacheStaleTimeoutInSeconds,
-  });
+  SmbFileShareCacheAttributes({this.cacheStaleTimeoutInSeconds});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +18,9 @@ class SmbFileShareCacheAttributes {
 
   factory SmbFileShareCacheAttributes.fromMap(Map<String, dynamic> map) {
     return SmbFileShareCacheAttributes(
-      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null ? null : map['cacheStaleTimeoutInSeconds'] as int,
+      cacheStaleTimeoutInSeconds: map['cacheStaleTimeoutInSeconds'] == null
+          ? null
+          : map['cacheStaleTimeoutInSeconds'] as int,
     );
   }
 }
-

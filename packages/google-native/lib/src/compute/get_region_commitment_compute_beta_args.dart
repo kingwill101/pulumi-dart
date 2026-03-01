@@ -19,10 +19,9 @@ class GetRegionCommitmentComputeBetaArgs {
     required String commitment,
     String? project,
     required String region,
-  }) :
-      commitment = pulumi.Input.asInput<String>(commitment),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : commitment = pulumi.Input.asInput<String>(commitment),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionCommitmentComputeBetaArgs {
     );
   }
 }
-

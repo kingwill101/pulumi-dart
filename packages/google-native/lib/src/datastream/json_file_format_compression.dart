@@ -16,4 +16,3 @@ enum JsonFileFormatCompression {
     throw ArgumentError('Unknown JsonFileFormatCompression value: $value');
   }
 }
-

@@ -10,13 +10,17 @@ enum EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType {
   const EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType(this.value);
   final String value;
 
-  static EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType fromValue(String value) {
-    for (final item in EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType.values) {
+  static EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmLoggingGwsSanitizeOptionsSanitizeType value: $value',
+    );
   }
 }
-

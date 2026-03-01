@@ -10,9 +10,11 @@ import 'gke_policy.dart';
 class PolicyArgs {
   /// Optional. A description comment about the policy.
   final pulumi.Input<String>? description;
+
   /// Optional. GKE platform-specific policy.
   final pulumi.Input<GkePolicy>? gkePolicy;
   final pulumi.Input<String> platformId;
+
   /// Required. The platform policy ID.
   final pulumi.Input<String> policyId;
   final pulumi.Input<String>? project;
@@ -29,17 +31,20 @@ class PolicyArgs {
     required String platformId,
     required String policyId,
     String? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      gkePolicy = pulumi.Input.asOptionalInput<GkePolicy>(gkePolicy),
-      platformId = pulumi.Input.asInput<String>(platformId),
-      policyId = pulumi.Input.asInput<String>(policyId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       gkePolicy = pulumi.Input.asOptionalInput<GkePolicy>(gkePolicy),
+       platformId = pulumi.Input.asInput<String>(platformId),
+       policyId = pulumi.Input.asInput<String>(policyId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'gkePolicy': ?pulumi.Input.mapOptionalInputValue<GkePolicy, Map<String, dynamic>>(gkePolicy, (value) => value.toMap()),
+      'gkePolicy':
+          ?pulumi.Input.mapOptionalInputValue<GkePolicy, Map<String, dynamic>>(
+            gkePolicy,
+            (value) => value.toMap(),
+          ),
       'platformId': platformId,
       'policyId': policyId,
       'project': ?project,
@@ -48,12 +53,17 @@ class PolicyArgs {
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      description: map['description'] == null ? null : map['description'] as String,
-      gkePolicy: map['gkePolicy'] == null ? null : GkePolicy.fromMap((map['gkePolicy'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      gkePolicy: map['gkePolicy'] == null
+          ? null
+          : GkePolicy.fromMap(
+              (map['gkePolicy'] as Map).cast<String, dynamic>(),
+            ),
       platformId: map['platformId'] as String,
       policyId: map['policyId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

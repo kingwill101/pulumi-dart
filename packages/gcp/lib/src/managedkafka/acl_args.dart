@@ -11,16 +11,20 @@ class AclArgs {
   /// The acl entries that apply to the resource pattern. The maximum number of allowed entries is 100.
   /// Structure is documented below.
   final pulumi.Input<List<AclAclEntry>> aclEntries;
+
   /// The ID to use for the acl, which will become the final component of the acl's name. The structure of `aclId` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `aclId` is structured like one of the following:
   /// For acls on the cluster: `cluster`
   /// For acls on a single resource within the cluster: `topic/{resource_name}` `consumerGroup/{resource_name}` `transactionalId/{resource_name}`
   /// For acls on all resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}` `transactionalIdPrefixed/{resource_name}`
   /// For acls on all resources of a given type (i.e. the wildcard literal '*''): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`).
   final pulumi.Input<String> aclId;
+
   /// The cluster name.
   final pulumi.Input<String> cluster;
+
   /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -37,16 +41,26 @@ class AclArgs {
     required String cluster,
     required String location,
     String? project,
-  }) :
-      aclEntries = pulumi.Input.asInput<List<AclAclEntry>>(aclEntries),
-      aclId = pulumi.Input.asInput<String>(aclId),
-      cluster = pulumi.Input.asInput<String>(cluster),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : aclEntries = pulumi.Input.asInput<List<AclAclEntry>>(aclEntries),
+       aclId = pulumi.Input.asInput<String>(aclId),
+       cluster = pulumi.Input.asInput<String>(cluster),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'aclEntries': pulumi.Input.mapInputValue<List<AclAclEntry>, List<Map<String, dynamic>>>(aclEntries, (value) => pulumi.Input.encodeList<AclAclEntry, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'aclEntries':
+          pulumi.Input.mapInputValue<
+            List<AclAclEntry>,
+            List<Map<String, dynamic>>
+          >(
+            aclEntries,
+            (value) =>
+                pulumi.Input.encodeList<AclAclEntry, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'aclId': aclId,
       'cluster': cluster,
       'location': location,
@@ -56,7 +70,10 @@ class AclArgs {
 
   factory AclArgs.fromMap(Map<String, dynamic> map) {
     return AclArgs(
-      aclEntries: pulumi.Input.decodeList<AclAclEntry>(map['aclEntries'], (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>())),
+      aclEntries: pulumi.Input.decodeList<AclAclEntry>(
+        map['aclEntries'],
+        (value) => AclAclEntry.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       aclId: map['aclId'] as String,
       cluster: map['cluster'] as String,
       location: map['location'] as String,
@@ -64,4 +81,3 @@ class AclArgs {
     );
   }
 }
-

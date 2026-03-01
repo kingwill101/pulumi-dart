@@ -1,26 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A patient identifier and associated type.
 class PatientIdHealthcareV1beta1 {
   /// ID type. For example, MRN or NHS.
   final String? type;
+
   /// The patient's unique identifier.
   final String? value;
 
   /// Creates a new [PatientIdHealthcareV1beta1].
   /// [type] ID type. For example, MRN or NHS.
   /// [value] The patient's unique identifier.
-  PatientIdHealthcareV1beta1({
-    this.type,
-    this.value,
-  });
+  PatientIdHealthcareV1beta1({this.type, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-      'value': ?value,
-    };
+    return <String, dynamic>{'type': ?type, 'value': ?value};
   }
 
   factory PatientIdHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
@@ -30,4 +24,3 @@ class PatientIdHealthcareV1beta1 {
     );
   }
 }
-

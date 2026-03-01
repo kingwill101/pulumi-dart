@@ -6,6 +6,7 @@ import 'google_cloud_aiplatform_v1_big_query_source.dart';
 class GoogleCloudAiplatformV1FeatureGroupBigQuery {
   /// Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
   final GoogleCloudAiplatformV1BigQuerySource bigQuerySource;
+
   /// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
   final List<String>? entityIdColumns;
 
@@ -24,11 +25,16 @@ class GoogleCloudAiplatformV1FeatureGroupBigQuery {
     };
   }
 
-  factory GoogleCloudAiplatformV1FeatureGroupBigQuery.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1FeatureGroupBigQuery.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1FeatureGroupBigQuery(
-      bigQuerySource: GoogleCloudAiplatformV1BigQuerySource.fromMap((map['bigQuerySource'] as Map).cast<String, dynamic>()),
-      entityIdColumns: map['entityIdColumns'] == null ? null : (map['entityIdColumns'] as List).cast<String>(),
+      bigQuerySource: GoogleCloudAiplatformV1BigQuerySource.fromMap(
+        (map['bigQuerySource'] as Map).cast<String, dynamic>(),
+      ),
+      entityIdColumns: map['entityIdColumns'] == null
+          ? null
+          : (map['entityIdColumns'] as List).cast<String>(),
     );
   }
 }
-

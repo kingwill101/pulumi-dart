@@ -19,10 +19,9 @@ class GetRouterComputeV1Args {
     String? project,
     required String region,
     required String router,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      router = pulumi.Input.asInput<String>(router);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       router = pulumi.Input.asInput<String>(router);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRouterComputeV1Args {
     );
   }
 }
-

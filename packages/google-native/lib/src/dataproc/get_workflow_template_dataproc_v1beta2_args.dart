@@ -22,11 +22,10 @@ class GetWorkflowTemplateDataprocV1beta2Args {
     String? project,
     int? version,
     required String workflowTemplateId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      version = pulumi.Input.asOptionalInput<int>(version),
-      workflowTemplateId = pulumi.Input.asInput<String>(workflowTemplateId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       version = pulumi.Input.asOptionalInput<int>(version),
+       workflowTemplateId = pulumi.Input.asInput<String>(workflowTemplateId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,7 +36,9 @@ class GetWorkflowTemplateDataprocV1beta2Args {
     };
   }
 
-  factory GetWorkflowTemplateDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
+  factory GetWorkflowTemplateDataprocV1beta2Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkflowTemplateDataprocV1beta2Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -46,4 +47,3 @@ class GetWorkflowTemplateDataprocV1beta2Args {
     );
   }
 }
-

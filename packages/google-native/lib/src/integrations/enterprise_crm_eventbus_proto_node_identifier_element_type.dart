@@ -7,13 +7,17 @@ enum EnterpriseCrmEventbusProtoNodeIdentifierElementType {
   const EnterpriseCrmEventbusProtoNodeIdentifierElementType(this.value);
   final String value;
 
-  static EnterpriseCrmEventbusProtoNodeIdentifierElementType fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoNodeIdentifierElementType.values) {
+  static EnterpriseCrmEventbusProtoNodeIdentifierElementType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusProtoNodeIdentifierElementType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoNodeIdentifierElementType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoNodeIdentifierElementType value: $value',
+    );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class VmwareAdminClusterControlPlaneNode {
   /// The number of vCPUs for the control-plane node of the admin cluster.
   final int? cpus;
+
   /// The number of mebibytes of memory for the control-plane node of the admin cluster.
   final int? memory;
+
   /// The number of control plane nodes for this VMware admin cluster.
   final int? replicas;
 
@@ -13,11 +14,7 @@ class VmwareAdminClusterControlPlaneNode {
   /// [cpus] The number of vCPUs for the control-plane node of the admin cluster.
   /// [memory] The number of mebibytes of memory for the control-plane node of the admin cluster.
   /// [replicas] The number of control plane nodes for this VMware admin cluster.
-  VmwareAdminClusterControlPlaneNode({
-    this.cpus,
-    this.memory,
-    this.replicas,
-  });
+  VmwareAdminClusterControlPlaneNode({this.cpus, this.memory, this.replicas});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,4 +32,3 @@ class VmwareAdminClusterControlPlaneNode {
     );
   }
 }
-

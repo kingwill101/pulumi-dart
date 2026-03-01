@@ -7,9 +7,12 @@ class SecurityPolicyAdaptiveProtectionConfig {
   /// Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
   ///
   /// <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
-  final SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig? autoDeployConfig;
+  final SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig?
+  autoDeployConfig;
+
   /// Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
-  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig? layer7DdosDefenseConfig;
+  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig?
+  layer7DdosDefenseConfig;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfig].
   /// [autoDeployConfig] Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
@@ -21,16 +24,29 @@ class SecurityPolicyAdaptiveProtectionConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoDeployConfig': ?autoDeployConfig == null ? null : autoDeployConfig!.toMap(),
-      'layer7DdosDefenseConfig': ?layer7DdosDefenseConfig == null ? null : layer7DdosDefenseConfig!.toMap(),
+      'autoDeployConfig': ?autoDeployConfig == null
+          ? null
+          : autoDeployConfig!.toMap(),
+      'layer7DdosDefenseConfig': ?layer7DdosDefenseConfig == null
+          ? null
+          : layer7DdosDefenseConfig!.toMap(),
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfig.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdaptiveProtectionConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdaptiveProtectionConfig(
-      autoDeployConfig: map['autoDeployConfig'] == null ? null : SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap((map['autoDeployConfig'] as Map).cast<String, dynamic>()),
-      layer7DdosDefenseConfig: map['layer7DdosDefenseConfig'] == null ? null : SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig.fromMap((map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>()),
+      autoDeployConfig: map['autoDeployConfig'] == null
+          ? null
+          : SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig.fromMap(
+              (map['autoDeployConfig'] as Map).cast<String, dynamic>(),
+            ),
+      layer7DdosDefenseConfig: map['layer7DdosDefenseConfig'] == null
+          ? null
+          : SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig.fromMap(
+              (map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

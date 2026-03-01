@@ -300,28 +300,35 @@ import 'database_hive_options.dart';
 class Database extends pulumi.CustomResource {
   /// The parent catalog.
   late final pulumi.Output<String> catalog;
+
   /// Output only. The creation time of the database. A timestamp in RFC3339
   /// UTC "Zulu" format, with nanosecond resolution and up to nine fractional
   /// digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> createTime;
+
   /// Output only. The deletion time of the database. Only set after the
   /// database is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
   /// nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> deleteTime;
+
   /// Output only. The time when this database is considered expired. Only set
   /// after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> expireTime;
+
   /// Options of a Hive database.
   /// Structure is documented below.
   late final pulumi.Output<DatabaseHiveOptions> hiveOptions;
+
   /// The name of the database.
   late final pulumi.Output<String> name;
+
   /// The database type.
   late final pulumi.Output<String> type;
+
   /// Output only. The last modification time of the database. A timestamp in
   /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and
@@ -337,11 +344,11 @@ class Database extends pulumi.CustomResource {
     DatabaseArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:biglake/database:Database',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:biglake/database:Database',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.catalog = registerOutput<String>('catalog');
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');

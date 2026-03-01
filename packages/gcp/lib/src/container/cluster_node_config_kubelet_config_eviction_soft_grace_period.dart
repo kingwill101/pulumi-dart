@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod {
   /// Defines grace period for the imagefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
   final String? imagefsAvailable;
+
   /// Defines grace period for the imagefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
   final String? imagefsInodesFree;
+
   /// Defines grace period for the memory.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`, such as `"30s"`, `"1m30s"`, `"2.5m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
   final String? memoryAvailable;
+
   /// Defines grace period for the nodefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
   final String? nodefsAvailable;
+
   /// Defines grace period for the nodefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
   final String? nodefsInodesFree;
+
   /// Defines grace period for the pid.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
   final String? pidAvailable;
 
@@ -42,15 +46,28 @@ class ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod {
     };
   }
 
-  factory ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod(
-      imagefsAvailable: map['imagefsAvailable'] == null ? null : map['imagefsAvailable'] as String,
-      imagefsInodesFree: map['imagefsInodesFree'] == null ? null : map['imagefsInodesFree'] as String,
-      memoryAvailable: map['memoryAvailable'] == null ? null : map['memoryAvailable'] as String,
-      nodefsAvailable: map['nodefsAvailable'] == null ? null : map['nodefsAvailable'] as String,
-      nodefsInodesFree: map['nodefsInodesFree'] == null ? null : map['nodefsInodesFree'] as String,
-      pidAvailable: map['pidAvailable'] == null ? null : map['pidAvailable'] as String,
+      imagefsAvailable: map['imagefsAvailable'] == null
+          ? null
+          : map['imagefsAvailable'] as String,
+      imagefsInodesFree: map['imagefsInodesFree'] == null
+          ? null
+          : map['imagefsInodesFree'] as String,
+      memoryAvailable: map['memoryAvailable'] == null
+          ? null
+          : map['memoryAvailable'] as String,
+      nodefsAvailable: map['nodefsAvailable'] == null
+          ? null
+          : map['nodefsAvailable'] as String,
+      nodefsInodesFree: map['nodefsInodesFree'] == null
+          ? null
+          : map['nodefsInodesFree'] as String,
+      pidAvailable: map['pidAvailable'] == null
+          ? null
+          : map['pidAvailable'] as String,
     );
   }
 }
-

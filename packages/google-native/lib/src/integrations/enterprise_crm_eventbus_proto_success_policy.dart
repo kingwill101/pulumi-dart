@@ -9,9 +9,7 @@ class EnterpriseCrmEventbusProtoSuccessPolicy {
 
   /// Creates a new [EnterpriseCrmEventbusProtoSuccessPolicy].
   /// [finalState] State to which the execution snapshot status will be set if the task succeeds.
-  EnterpriseCrmEventbusProtoSuccessPolicy({
-    this.finalState,
-  });
+  EnterpriseCrmEventbusProtoSuccessPolicy({this.finalState});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class EnterpriseCrmEventbusProtoSuccessPolicy {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoSuccessPolicy.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoSuccessPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoSuccessPolicy(
-      finalState: map['finalState'] == null ? null : EnterpriseCrmEventbusProtoSuccessPolicyFinalState.fromValue(map['finalState'] as String),
+      finalState: map['finalState'] == null
+          ? null
+          : EnterpriseCrmEventbusProtoSuccessPolicyFinalState.fromValue(
+              map['finalState'] as String,
+            ),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'tls_certificate_paths_response.dart';
 class TlsCertificateContextResponse {
   /// Specifies the certificate and private key paths. This field is applicable only if tlsCertificateSource is set to USE_PATH.
   final TlsCertificatePathsResponse certificatePaths;
+
   /// Defines how TLS certificates are obtained.
   final String certificateSource;
+
   /// Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.
   final SdsConfigResponse sdsConfig;
 
@@ -32,10 +34,13 @@ class TlsCertificateContextResponse {
 
   factory TlsCertificateContextResponse.fromMap(Map<String, dynamic> map) {
     return TlsCertificateContextResponse(
-      certificatePaths: TlsCertificatePathsResponse.fromMap((map['certificatePaths'] as Map).cast<String, dynamic>()),
+      certificatePaths: TlsCertificatePathsResponse.fromMap(
+        (map['certificatePaths'] as Map).cast<String, dynamic>(),
+      ),
       certificateSource: map['certificateSource'] as String,
-      sdsConfig: SdsConfigResponse.fromMap((map['sdsConfig'] as Map).cast<String, dynamic>()),
+      sdsConfig: SdsConfigResponse.fromMap(
+        (map['sdsConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

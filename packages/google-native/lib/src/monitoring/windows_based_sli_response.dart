@@ -7,12 +7,16 @@ import 'performance_threshold_response.dart';
 class WindowsBasedSliResponse {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
   final String goodBadMetricFilter;
+
   /// A window is good if its performance is high enough.
   final PerformanceThresholdResponse goodTotalRatioThreshold;
+
   /// A window is good if the metric's value is in a good range, averaged across returned streams.
   final MetricRangeResponse metricMeanInRange;
+
   /// A window is good if the metric's value is in a good range, summed across returned streams.
   final MetricRangeResponse metricSumInRange;
+
   /// Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
   final String windowPeriod;
 
@@ -43,11 +47,16 @@ class WindowsBasedSliResponse {
   factory WindowsBasedSliResponse.fromMap(Map<String, dynamic> map) {
     return WindowsBasedSliResponse(
       goodBadMetricFilter: map['goodBadMetricFilter'] as String,
-      goodTotalRatioThreshold: PerformanceThresholdResponse.fromMap((map['goodTotalRatioThreshold'] as Map).cast<String, dynamic>()),
-      metricMeanInRange: MetricRangeResponse.fromMap((map['metricMeanInRange'] as Map).cast<String, dynamic>()),
-      metricSumInRange: MetricRangeResponse.fromMap((map['metricSumInRange'] as Map).cast<String, dynamic>()),
+      goodTotalRatioThreshold: PerformanceThresholdResponse.fromMap(
+        (map['goodTotalRatioThreshold'] as Map).cast<String, dynamic>(),
+      ),
+      metricMeanInRange: MetricRangeResponse.fromMap(
+        (map['metricMeanInRange'] as Map).cast<String, dynamic>(),
+      ),
+      metricSumInRange: MetricRangeResponse.fromMap(
+        (map['metricSumInRange'] as Map).cast<String, dynamic>(),
+      ),
       windowPeriod: map['windowPeriod'] as String,
     );
   }
 }
-

@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Target scaling by disk usage. Only applicable in the App Engine flexible environment.
 class DiskUtilizationResponse {
   /// Target bytes read per second.
   final int targetReadBytesPerSecond;
+
   /// Target ops read per seconds.
   final int targetReadOpsPerSecond;
+
   /// Target bytes written per second.
   final int targetWriteBytesPerSecond;
+
   /// Target ops written per second.
   final int targetWriteOpsPerSecond;
 
@@ -42,4 +44,3 @@ class DiskUtilizationResponse {
     );
   }
 }
-

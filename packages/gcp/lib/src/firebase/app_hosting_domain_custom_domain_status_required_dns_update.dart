@@ -8,15 +8,20 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
   /// (Output)
   /// The last time App Hosting checked your custom domain's DNS records.
   final String? checkTime;
+
   /// (Output)
   /// The set of DNS records App Hosting needs in order to be able to serve
   /// secure content on the domain.
   /// Structure is documented below.
-  final List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired>? desireds;
+  final List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired>?
+  desireds;
+
   /// (Output)
   /// The set of DNS records App Hosting discovered when inspecting a domain.
   /// Structure is documented below.
-  final List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered>? discovereds;
+  final List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered>?
+  discovereds;
+
   /// (Output)
   /// The domain the record pertains to, e.g. `foo.bar.com.`.
   final String? domainName;
@@ -36,19 +41,52 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'checkTime': ?checkTime,
-      'desireds': ?desireds == null ? null : pulumi.Input.encodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired, Map<String, dynamic>>(desireds!, (value) => value.toMap()),
-      'discovereds': ?discovereds == null ? null : pulumi.Input.encodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered, Map<String, dynamic>>(discovereds!, (value) => value.toMap()),
+      'desireds': ?desireds == null
+          ? null
+          : pulumi.Input.encodeList<
+              AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired,
+              Map<String, dynamic>
+            >(desireds!, (value) => value.toMap()),
+      'discovereds': ?discovereds == null
+          ? null
+          : pulumi.Input.encodeList<
+              AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered,
+              Map<String, dynamic>
+            >(discovereds!, (value) => value.toMap()),
       'domainName': ?domainName,
     };
   }
 
-  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdate.fromMap(Map<String, dynamic> map) {
+  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppHostingDomainCustomDomainStatusRequiredDnsUpdate(
       checkTime: map['checkTime'] == null ? null : map['checkTime'] as String,
-      desireds: map['desireds'] == null ? null : pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired>(map['desireds'], (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired.fromMap((value as Map).cast<String, dynamic>())),
-      discovereds: map['discovereds'] == null ? null : pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered>(map['discovereds'], (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered.fromMap((value as Map).cast<String, dynamic>())),
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
+      desireds: map['desireds'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired
+            >(
+              map['desireds'],
+              (value) =>
+                  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      discovereds: map['discovereds'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered
+            >(
+              map['discovereds'],
+              (value) =>
+                  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      domainName: map['domainName'] == null
+          ? null
+          : map['domainName'] as String,
     );
   }
 }
-

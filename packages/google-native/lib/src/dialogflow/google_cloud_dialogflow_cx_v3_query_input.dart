@@ -10,14 +10,19 @@ import 'google_cloud_dialogflow_cx_v3_text_input.dart';
 class GoogleCloudDialogflowCxV3QueryInput {
   /// The natural language speech audio to be processed.
   final GoogleCloudDialogflowCxV3AudioInput? audio;
+
   /// The DTMF event to be handled.
   final GoogleCloudDialogflowCxV3DtmfInput? dtmf;
+
   /// The event to be triggered.
   final GoogleCloudDialogflowCxV3EventInput? event;
+
   /// The intent to be triggered.
   final GoogleCloudDialogflowCxV3IntentInput? intent;
+
   /// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
   final String languageCode;
+
   /// The natural language text to be processed.
   final GoogleCloudDialogflowCxV3TextInput? text;
 
@@ -48,15 +53,36 @@ class GoogleCloudDialogflowCxV3QueryInput {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3QueryInput.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3QueryInput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3QueryInput(
-      audio: map['audio'] == null ? null : GoogleCloudDialogflowCxV3AudioInput.fromMap((map['audio'] as Map).cast<String, dynamic>()),
-      dtmf: map['dtmf'] == null ? null : GoogleCloudDialogflowCxV3DtmfInput.fromMap((map['dtmf'] as Map).cast<String, dynamic>()),
-      event: map['event'] == null ? null : GoogleCloudDialogflowCxV3EventInput.fromMap((map['event'] as Map).cast<String, dynamic>()),
-      intent: map['intent'] == null ? null : GoogleCloudDialogflowCxV3IntentInput.fromMap((map['intent'] as Map).cast<String, dynamic>()),
+      audio: map['audio'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3AudioInput.fromMap(
+              (map['audio'] as Map).cast<String, dynamic>(),
+            ),
+      dtmf: map['dtmf'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3DtmfInput.fromMap(
+              (map['dtmf'] as Map).cast<String, dynamic>(),
+            ),
+      event: map['event'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3EventInput.fromMap(
+              (map['event'] as Map).cast<String, dynamic>(),
+            ),
+      intent: map['intent'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3IntentInput.fromMap(
+              (map['intent'] as Map).cast<String, dynamic>(),
+            ),
       languageCode: map['languageCode'] as String,
-      text: map['text'] == null ? null : GoogleCloudDialogflowCxV3TextInput.fromMap((map['text'] as Map).cast<String, dynamic>()),
+      text: map['text'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3TextInput.fromMap(
+              (map['text'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

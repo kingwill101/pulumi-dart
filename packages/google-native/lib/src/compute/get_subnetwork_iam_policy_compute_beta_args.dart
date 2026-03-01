@@ -22,11 +22,12 @@ class GetSubnetworkIamPolicyComputeBetaArgs {
     String? project,
     required String region,
     required String resource,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      resource = pulumi.Input.asInput<String>(resource);
+  }) : optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       resource = pulumi.Input.asInput<String>(resource);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,13 +38,17 @@ class GetSubnetworkIamPolicyComputeBetaArgs {
     };
   }
 
-  factory GetSubnetworkIamPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetSubnetworkIamPolicyComputeBetaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSubnetworkIamPolicyComputeBetaArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] as String,
       resource: map['resource'] as String,
     );
   }
 }
-

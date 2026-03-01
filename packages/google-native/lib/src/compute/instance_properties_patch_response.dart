@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents the change that you want to make to the instance properties.
 class InstancePropertiesPatchResponse {
   /// The label key-value pairs that you want to patch onto the instance.
   final Map<String, String> labels;
+
   /// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
   final Map<String, String> metadata;
 
@@ -17,10 +17,7 @@ class InstancePropertiesPatchResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': labels,
-      'metadata': metadata,
-    };
+    return <String, dynamic>{'labels': labels, 'metadata': metadata};
   }
 
   factory InstancePropertiesPatchResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class InstancePropertiesPatchResponse {
     );
   }
 }
-

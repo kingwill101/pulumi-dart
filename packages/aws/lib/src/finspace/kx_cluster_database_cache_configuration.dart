@@ -1,32 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class KxClusterDatabaseCacheConfiguration {
   /// Type of disk cache.
   final String cacheType;
+
   /// Paths within the database to cache.
   final List<String>? dbPaths;
 
   /// Creates a new [KxClusterDatabaseCacheConfiguration].
   /// [cacheType] Type of disk cache.
   /// [dbPaths] Paths within the database to cache.
-  KxClusterDatabaseCacheConfiguration({
-    required this.cacheType,
-    this.dbPaths,
-  });
+  KxClusterDatabaseCacheConfiguration({required this.cacheType, this.dbPaths});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cacheType': cacheType,
-      'dbPaths': ?dbPaths,
-    };
+    return <String, dynamic>{'cacheType': cacheType, 'dbPaths': ?dbPaths};
   }
 
-  factory KxClusterDatabaseCacheConfiguration.fromMap(Map<String, dynamic> map) {
+  factory KxClusterDatabaseCacheConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KxClusterDatabaseCacheConfiguration(
       cacheType: map['cacheType'] as String,
-      dbPaths: map['dbPaths'] == null ? null : (map['dbPaths'] as List).cast<String>(),
+      dbPaths: map['dbPaths'] == null
+          ? null
+          : (map['dbPaths'] as List).cast<String>(),
     );
   }
 }
-

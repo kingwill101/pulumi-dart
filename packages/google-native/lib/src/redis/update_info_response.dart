@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents information about an updating cluster.
 class UpdateInfoResponse {
   /// Target number of replica nodes per shard.
   final int targetReplicaCount;
+
   /// Target number of shards for redis cluster
   final int targetShardCount;
 
@@ -30,4 +30,3 @@ class UpdateInfoResponse {
     );
   }
 }
-

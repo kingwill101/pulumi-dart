@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy {
   /// Whether CloudFront overrides the `Referrer-Policy` HTTP response header received from the origin with the one specified in this response headers policy.
   final bool override;
+
   /// The value of the `Referrer-Policy` HTTP response header. Valid Values: `no-referrer` | `no-referrer-when-downgrade` | `origin` | `origin-when-cross-origin` | `same-origin` | `strict-origin` | `strict-origin-when-cross-origin` | `unsafe-url`
   final String referrerPolicy;
 
@@ -22,11 +22,12 @@ class ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy {
     };
   }
 
-  factory ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy.fromMap(Map<String, dynamic> map) {
+  factory ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResponseHeadersPolicySecurityHeadersConfigReferrerPolicy(
       override: map['override'] as bool,
       referrerPolicy: map['referrerPolicy'] as String,
     );
   }
 }
-

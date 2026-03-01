@@ -13,7 +13,8 @@ enum GoogleCloudMlV1StudyConfigMetricSpecGoal {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1StudyConfigMetricSpecGoal value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1StudyConfigMetricSpecGoal value: $value',
+    );
   }
 }
-

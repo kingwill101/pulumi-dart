@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SnapshotImportDiskContainerUserBucket {
   /// The name of the Amazon S3 bucket where the disk image is located.
   final String s3Bucket;
+
   /// The file name of the disk image.
   final String s3Key;
 
@@ -16,17 +16,15 @@ class SnapshotImportDiskContainerUserBucket {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      's3Bucket': s3Bucket,
-      's3Key': s3Key,
-    };
+    return <String, dynamic>{'s3Bucket': s3Bucket, 's3Key': s3Key};
   }
 
-  factory SnapshotImportDiskContainerUserBucket.fromMap(Map<String, dynamic> map) {
+  factory SnapshotImportDiskContainerUserBucket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SnapshotImportDiskContainerUserBucket(
       s3Bucket: map['s3Bucket'] as String,
       s3Key: map['s3Key'] as String,
     );
   }
 }
-

@@ -7,13 +7,17 @@ import 'history_args.dart';
 class History extends pulumi.CustomResource {
   /// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
   late final pulumi.Output<String> displayName;
+
   /// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
   late final pulumi.Output<String> historyId;
+
   /// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
   late final pulumi.Output<String?> requestId;
+
   /// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
   late final pulumi.Output<String> testPlatform;
 
@@ -26,11 +30,11 @@ class History extends pulumi.CustomResource {
     HistoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:toolresults/v1beta3:History',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:toolresults/v1beta3:History',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.displayName = registerOutput<String>('displayName');
     this.historyId = registerOutput<String>('historyId');
     this.name = registerOutput<String>('name');

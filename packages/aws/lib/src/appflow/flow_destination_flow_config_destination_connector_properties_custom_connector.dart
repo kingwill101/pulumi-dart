@@ -5,7 +5,8 @@ import 'flow_destination_flow_config_destination_connector_properties_custom_con
 class FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector {
   final Map<String, String>? customProperties;
   final String entityName;
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnectorErrorHandlingConfig? errorHandlingConfig;
+  final FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnectorErrorHandlingConfig?
+  errorHandlingConfig;
   final List<String>? idFieldNames;
   final String? writeOperationType;
 
@@ -27,20 +28,33 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector {
     return <String, dynamic>{
       'customProperties': ?customProperties,
       'entityName': entityName,
-      'errorHandlingConfig': ?errorHandlingConfig == null ? null : errorHandlingConfig!.toMap(),
+      'errorHandlingConfig': ?errorHandlingConfig == null
+          ? null
+          : errorHandlingConfig!.toMap(),
       'idFieldNames': ?idFieldNames,
       'writeOperationType': ?writeOperationType,
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector.fromMap(Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnector(
-      customProperties: map['customProperties'] == null ? null : (map['customProperties'] as Map).cast<String, String>(),
+      customProperties: map['customProperties'] == null
+          ? null
+          : (map['customProperties'] as Map).cast<String, String>(),
       entityName: map['entityName'] as String,
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnectorErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
-      idFieldNames: map['idFieldNames'] == null ? null : (map['idFieldNames'] as List).cast<String>(),
-      writeOperationType: map['writeOperationType'] == null ? null : map['writeOperationType'] as String,
+      errorHandlingConfig: map['errorHandlingConfig'] == null
+          ? null
+          : FlowDestinationFlowConfigDestinationConnectorPropertiesCustomConnectorErrorHandlingConfig.fromMap(
+              (map['errorHandlingConfig'] as Map).cast<String, dynamic>(),
+            ),
+      idFieldNames: map['idFieldNames'] == null
+          ? null
+          : (map['idFieldNames'] as List).cast<String>(),
+      writeOperationType: map['writeOperationType'] == null
+          ? null
+          : map['writeOperationType'] as String,
     );
   }
 }
-

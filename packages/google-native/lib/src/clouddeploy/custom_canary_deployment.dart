@@ -10,20 +10,24 @@ class CustomCanaryDeployment {
 
   /// Creates a new [CustomCanaryDeployment].
   /// [phaseConfigs] Configuration for each phase in the canary deployment in the order executed.
-  CustomCanaryDeployment({
-    required this.phaseConfigs,
-  });
+  CustomCanaryDeployment({required this.phaseConfigs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'phaseConfigs': pulumi.Input.encodeList<PhaseConfig, Map<String, dynamic>>(phaseConfigs, (value) => value.toMap()),
+      'phaseConfigs':
+          pulumi.Input.encodeList<PhaseConfig, Map<String, dynamic>>(
+            phaseConfigs,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory CustomCanaryDeployment.fromMap(Map<String, dynamic> map) {
     return CustomCanaryDeployment(
-      phaseConfigs: pulumi.Input.decodeList<PhaseConfig>(map['phaseConfigs'], (value) => PhaseConfig.fromMap((value as Map).cast<String, dynamic>())),
+      phaseConfigs: pulumi.Input.decodeList<PhaseConfig>(
+        map['phaseConfigs'],
+        (value) => PhaseConfig.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

@@ -28,7 +28,11 @@ class GetRoutersRouterBgp {
     return <String, dynamic>{
       'advertiseMode': advertiseMode,
       'advertisedGroups': advertisedGroups,
-      'advertisedIpRanges': pulumi.Input.encodeList<GetRoutersRouterBgpAdvertisedIpRange, Map<String, dynamic>>(advertisedIpRanges, (value) => value.toMap()),
+      'advertisedIpRanges':
+          pulumi.Input.encodeList<
+            GetRoutersRouterBgpAdvertisedIpRange,
+            Map<String, dynamic>
+          >(advertisedIpRanges, (value) => value.toMap()),
       'asn': asn,
       'keepaliveInterval': keepaliveInterval,
     };
@@ -38,10 +42,15 @@ class GetRoutersRouterBgp {
     return GetRoutersRouterBgp(
       advertiseMode: map['advertiseMode'] as String,
       advertisedGroups: (map['advertisedGroups'] as List).cast<String>(),
-      advertisedIpRanges: pulumi.Input.decodeList<GetRoutersRouterBgpAdvertisedIpRange>(map['advertisedIpRanges'], (value) => GetRoutersRouterBgpAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>())),
+      advertisedIpRanges:
+          pulumi.Input.decodeList<GetRoutersRouterBgpAdvertisedIpRange>(
+            map['advertisedIpRanges'],
+            (value) => GetRoutersRouterBgpAdvertisedIpRange.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       asn: map['asn'] as int,
       keepaliveInterval: map['keepaliveInterval'] as int,
     );
   }
 }
-

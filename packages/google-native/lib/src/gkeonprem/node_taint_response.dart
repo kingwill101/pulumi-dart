@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// NodeTaint applied to every Kubernetes node in a node pool. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes. Node taints are permanent.
 class NodeTaintResponse {
   /// The taint effect.
   final String effect;
+
   /// Key associated with the effect.
   final String key;
+
   /// Value associated with the effect.
   final String value;
 
@@ -21,11 +22,7 @@ class NodeTaintResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'effect': effect,
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'effect': effect, 'key': key, 'value': value};
   }
 
   factory NodeTaintResponse.fromMap(Map<String, dynamic> map) {
@@ -36,4 +33,3 @@ class NodeTaintResponse {
     );
   }
 }
-

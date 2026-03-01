@@ -8,10 +8,16 @@ import 'security_policy_adaptive_protection_config_layer7_ddos_defense_config_th
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta {
   /// If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   final bool? enable;
+
   /// Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityComputeBeta? ruleVisibility;
+  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityComputeBeta?
+  ruleVisibility;
+
   /// Configuration options for layer7 adaptive protection for various customizable thresholds.
-  final List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta>? thresholdConfigs;
+  final List<
+    SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta
+  >?
+  thresholdConfigs;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta].
   /// [enable] If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
@@ -27,16 +33,36 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta {
     return <String, dynamic>{
       'enable': ?enable,
       'ruleVisibility': ?ruleVisibility == null ? null : ruleVisibility!.value,
-      'thresholdConfigs': ?thresholdConfigs == null ? null : pulumi.Input.encodeList<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta, Map<String, dynamic>>(thresholdConfigs!, (value) => value.toMap()),
+      'thresholdConfigs': ?thresholdConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta,
+              Map<String, dynamic>
+            >(thresholdConfigs!, (value) => value.toMap()),
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigComputeBeta(
       enable: map['enable'] == null ? null : map['enable'] as bool,
-      ruleVisibility: map['ruleVisibility'] == null ? null : SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityComputeBeta.fromValue(map['ruleVisibility'] as String),
-      thresholdConfigs: map['thresholdConfigs'] == null ? null : pulumi.Input.decodeList<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta>(map['thresholdConfigs'], (value) => SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
+      ruleVisibility: map['ruleVisibility'] == null
+          ? null
+          : SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityComputeBeta.fromValue(
+              map['ruleVisibility'] as String,
+            ),
+      thresholdConfigs: map['thresholdConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta
+            >(
+              map['thresholdConfigs'],
+              (value) =>
+                  SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigComputeBeta.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

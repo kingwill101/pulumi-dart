@@ -6,7 +6,9 @@ import 'google_cloud_networksecurity_v1beta1_grpc_endpoint_response.dart';
 /// Specification of ValidationCA. Defines the mechanism to obtain the Certificate Authority certificate to validate the peer certificate.
 class ValidationCAResponseNetworksecurityV1beta1 {
   /// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
-  final CertificateProviderInstanceResponseNetworksecurityV1beta1 certificateProviderInstance;
+  final CertificateProviderInstanceResponseNetworksecurityV1beta1
+  certificateProviderInstance;
+
   /// gRPC specific configuration to access the gRPC server to obtain the CA certificate.
   final GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse grpcEndpoint;
 
@@ -25,11 +27,18 @@ class ValidationCAResponseNetworksecurityV1beta1 {
     };
   }
 
-  factory ValidationCAResponseNetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ValidationCAResponseNetworksecurityV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ValidationCAResponseNetworksecurityV1beta1(
-      certificateProviderInstance: CertificateProviderInstanceResponseNetworksecurityV1beta1.fromMap((map['certificateProviderInstance'] as Map).cast<String, dynamic>()),
-      grpcEndpoint: GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse.fromMap((map['grpcEndpoint'] as Map).cast<String, dynamic>()),
+      certificateProviderInstance:
+          CertificateProviderInstanceResponseNetworksecurityV1beta1.fromMap(
+            (map['certificateProviderInstance'] as Map).cast<String, dynamic>(),
+          ),
+      grpcEndpoint:
+          GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse.fromMap(
+            (map['grpcEndpoint'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

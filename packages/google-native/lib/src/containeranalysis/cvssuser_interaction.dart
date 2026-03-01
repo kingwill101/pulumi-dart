@@ -15,4 +15,3 @@ enum CVSSUserInteraction {
     throw ArgumentError('Unknown CVSSUserInteraction value: $value');
   }
 }
-

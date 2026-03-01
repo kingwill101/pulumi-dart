@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSolutionStack.
 class GetSolutionStackResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? mostRecent;
+
   /// Name of the solution stack.
   final String name;
   final String nameRegex;
@@ -45,4 +45,3 @@ class GetSolutionStackResult {
     );
   }
 }
-

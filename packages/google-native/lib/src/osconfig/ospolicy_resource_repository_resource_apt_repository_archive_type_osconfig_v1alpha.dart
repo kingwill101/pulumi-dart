@@ -4,16 +4,22 @@ enum OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha {
   deb("DEB"),
   debSrc("DEB_SRC");
 
-  const OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha(this.value);
+  const OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha(
+    this.value,
+  );
   final String value;
 
-  static OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha fromValue(String value) {
-    for (final item in OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha.values) {
+  static OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha
+  fromValue(String value) {
+    for (final item
+        in OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha value: $value',
+    );
   }
 }
-

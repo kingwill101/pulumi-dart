@@ -6,8 +6,10 @@ import 'filter.dart';
 class PubSub {
   /// Enable notifications for Pub/Sub.
   final bool? enabled;
+
   /// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
   final Filter? filter;
+
   /// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
   final String? topic;
 
@@ -15,11 +17,7 @@ class PubSub {
   /// [enabled] Enable notifications for Pub/Sub.
   /// [filter] Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
   /// [topic] The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
-  PubSub({
-    this.enabled,
-    this.filter,
-    this.topic,
-  });
+  PubSub({this.enabled, this.filter, this.topic});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,9 +30,10 @@ class PubSub {
   factory PubSub.fromMap(Map<String, dynamic> map) {
     return PubSub(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      filter: map['filter'] == null ? null : Filter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
+      filter: map['filter'] == null
+          ? null
+          : Filter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
       topic: map['topic'] == null ? null : map['topic'] as String,
     );
   }
 }
-

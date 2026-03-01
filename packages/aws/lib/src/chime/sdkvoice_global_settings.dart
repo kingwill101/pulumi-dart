@@ -126,11 +126,13 @@ class SdkvoiceGlobalSettings extends pulumi.CustomResource {
     SdkvoiceGlobalSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/sdkvoiceGlobalSettings:SdkvoiceGlobalSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>('voiceConnector');
+         'aws:chime/sdkvoiceGlobalSettings:SdkvoiceGlobalSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.voiceConnector = registerOutput<SdkvoiceGlobalSettingsVoiceConnector>(
+      'voiceConnector',
+    );
   }
 }

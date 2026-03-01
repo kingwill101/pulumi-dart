@@ -508,42 +508,57 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String?> certificateAuthorityArn;
   late final pulumi.Output<String?> certificateBody;
   late final pulumi.Output<String?> certificateChain;
+
   /// Fully qualified domain name (FQDN) in the certificate.
   late final pulumi.Output<String> domainName;
+
   /// Set of domain validation objects which can be used to complete certificate validation.
   /// Can have more than one element, e.g., if SANs are defined.
   /// Only set if `DNS`-validation was used.
-  late final pulumi.Output<List<CertificateDomainValidationOption>> domainValidationOptions;
+  late final pulumi.Output<List<CertificateDomainValidationOption>>
+  domainValidationOptions;
   late final pulumi.Output<String?> earlyRenewalDuration;
   late final pulumi.Output<String> keyAlgorithm;
+
   /// Expiration date and time of the certificate.
   late final pulumi.Output<String> notAfter;
+
   /// Start of the validity period of the certificate.
   late final pulumi.Output<String> notBefore;
   late final pulumi.Output<CertificateOptions> options;
+
   /// `true` if a Private certificate eligible for managed renewal is within the `early_renewal_duration` period.
   late final pulumi.Output<bool> pendingRenewal;
   late final pulumi.Output<String?> privateKey;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// * Creating an Amazon issued certificate
   late final pulumi.Output<String> region;
+
   /// Whether the certificate is eligible for managed renewal.
   late final pulumi.Output<String> renewalEligibility;
+
   /// Contains information about the status of ACM's [managed renewal](https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html) for the certificate.
   late final pulumi.Output<List<CertificateRenewalSummary>> renewalSummaries;
+
   /// Status of the certificate.
   late final pulumi.Output<String> status;
   late final pulumi.Output<List<String>> subjectAlternativeNames;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Source of the certificate.
   late final pulumi.Output<String> type;
+
   /// List of addresses that received a validation email. Only set if `EMAIL` validation was used.
   late final pulumi.Output<List<String>> validationEmails;
   late final pulumi.Output<String> validationMethod;
-  late final pulumi.Output<List<CertificateValidationOption>?> validationOptions;
+  late final pulumi.Output<List<CertificateValidationOption>?>
+  validationOptions;
 
   /// Creates a new [Certificate].
   /// [name] The Pulumi resource name.
@@ -554,17 +569,22 @@ class Certificate extends pulumi.CustomResource {
     CertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:acm/certificate:Certificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:acm/certificate:Certificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
-    this.certificateAuthorityArn = registerOutput<String?>('certificateAuthorityArn');
+    this.certificateAuthorityArn = registerOutput<String?>(
+      'certificateAuthorityArn',
+    );
     this.certificateBody = registerOutput<String?>('certificateBody');
     this.certificateChain = registerOutput<String?>('certificateChain');
     this.domainName = registerOutput<String>('domainName');
-    this.domainValidationOptions = registerOutput<List<CertificateDomainValidationOption>>('domainValidationOptions');
+    this.domainValidationOptions =
+        registerOutput<List<CertificateDomainValidationOption>>(
+          'domainValidationOptions',
+        );
     this.earlyRenewalDuration = registerOutput<String?>('earlyRenewalDuration');
     this.keyAlgorithm = registerOutput<String>('keyAlgorithm');
     this.notAfter = registerOutput<String>('notAfter');
@@ -574,14 +594,20 @@ class Certificate extends pulumi.CustomResource {
     this.privateKey = registerOutput<String?>('privateKey');
     this.region = registerOutput<String>('region');
     this.renewalEligibility = registerOutput<String>('renewalEligibility');
-    this.renewalSummaries = registerOutput<List<CertificateRenewalSummary>>('renewalSummaries');
+    this.renewalSummaries = registerOutput<List<CertificateRenewalSummary>>(
+      'renewalSummaries',
+    );
     this.status = registerOutput<String>('status');
-    this.subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
+    this.subjectAlternativeNames = registerOutput<List<String>>(
+      'subjectAlternativeNames',
+    );
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.type = registerOutput<String>('type');
     this.validationEmails = registerOutput<List<String>>('validationEmails');
     this.validationMethod = registerOutput<String>('validationMethod');
-    this.validationOptions = registerOutput<List<CertificateValidationOption>?>('validationOptions');
+    this.validationOptions = registerOutput<List<CertificateValidationOption>?>(
+      'validationOptions',
+    );
   }
 }

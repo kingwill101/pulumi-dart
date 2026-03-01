@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupManagedidentitiesV1beta1Args {
   /// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
   final pulumi.Input<String> backupId;
+
   /// Optional. A short description of the backup.
   final pulumi.Input<String>? description;
   final pulumi.Input<String> domainId;
+
   /// Optional. Resource labels to represent user provided metadata.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? project;
@@ -28,12 +30,11 @@ class BackupManagedidentitiesV1beta1Args {
     required String domainId,
     Map<String, String>? labels,
     String? project,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      domainId = pulumi.Input.asInput<String>(domainId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : backupId = pulumi.Input.asInput<String>(backupId),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       domainId = pulumi.Input.asInput<String>(domainId),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,11 +49,14 @@ class BackupManagedidentitiesV1beta1Args {
   factory BackupManagedidentitiesV1beta1Args.fromMap(Map<String, dynamic> map) {
     return BackupManagedidentitiesV1beta1Args(
       backupId: map['backupId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       domainId: map['domainId'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

@@ -12,21 +12,18 @@ class GetGlobalNetworksArgs {
 
   /// Creates a new [GetGlobalNetworksArgs].
   /// [tags] Restricts the list to the global networks with these tags.
-  GetGlobalNetworksArgs({
-    Map<String, String>? tags,
-  }) :
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  GetGlobalNetworksArgs({Map<String, String>? tags})
+    : tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'tags': ?tags};
   }
 
   factory GetGlobalNetworksArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworksArgs(
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

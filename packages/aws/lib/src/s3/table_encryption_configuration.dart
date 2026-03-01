@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TableEncryptionConfiguration {
   /// The ARN of a KMS Key to be used with `aws:kms` `sse_algorithm`
   final String kmsKeyArn;
+
   /// One of `aws:kms` or `AES256`
   final String sseAlgorithm;
 
@@ -29,4 +29,3 @@ class TableEncryptionConfiguration {
     );
   }
 }
-

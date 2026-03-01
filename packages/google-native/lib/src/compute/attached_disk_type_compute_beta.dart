@@ -15,4 +15,3 @@ enum AttachedDiskTypeComputeBeta {
     throw ArgumentError('Unknown AttachedDiskTypeComputeBeta value: $value');
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for resources used by Airflow triggerers.
 class TriggererResourceComposerV1beta1 {
   /// Optional. The number of triggerers.
   final int? count;
+
   /// Optional. CPU request and limit for a single Airflow triggerer replica.
   final double? cpu;
+
   /// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
   final double? memoryGb;
 
@@ -14,11 +15,7 @@ class TriggererResourceComposerV1beta1 {
   /// [count] Optional. The number of triggerers.
   /// [cpu] Optional. CPU request and limit for a single Airflow triggerer replica.
   /// [memoryGb] Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
-  TriggererResourceComposerV1beta1({
-    this.count,
-    this.cpu,
-    this.memoryGb,
-  });
+  TriggererResourceComposerV1beta1({this.count, this.cpu, this.memoryGb});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,4 +33,3 @@ class TriggererResourceComposerV1beta1 {
     );
   }
 }
-

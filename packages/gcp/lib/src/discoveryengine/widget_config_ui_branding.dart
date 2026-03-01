@@ -9,20 +9,19 @@ class WidgetConfigUiBranding {
 
   /// Creates a new [WidgetConfigUiBranding].
   /// [logo] Logo image.
-  WidgetConfigUiBranding({
-    this.logo,
-  });
+  WidgetConfigUiBranding({this.logo});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'logo': ?logo == null ? null : logo!.toMap(),
-    };
+    return <String, dynamic>{'logo': ?logo == null ? null : logo!.toMap()};
   }
 
   factory WidgetConfigUiBranding.fromMap(Map<String, dynamic> map) {
     return WidgetConfigUiBranding(
-      logo: map['logo'] == null ? null : WidgetConfigUiBrandingLogo.fromMap((map['logo'] as Map).cast<String, dynamic>()),
+      logo: map['logo'] == null
+          ? null
+          : WidgetConfigUiBrandingLogo.fromMap(
+              (map['logo'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -8,11 +8,18 @@ class V2PolicyOrchestratorForFolderOrchestrationState {
   /// (Output)
   /// Describes the state of a single iteration of the orchestrator.
   /// Structure is documented below.
-  final List<V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState>? currentIterationStates;
+  final List<
+    V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState
+  >?
+  currentIterationStates;
+
   /// (Output)
   /// Describes the state of a single iteration of the orchestrator.
   /// Structure is documented below.
-  final List<V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState>? previousIterationStates;
+  final List<
+    V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState
+  >?
+  previousIterationStates;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationState].
   /// [currentIterationStates] (Output)
@@ -24,16 +31,47 @@ class V2PolicyOrchestratorForFolderOrchestrationState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'currentIterationStates': ?currentIterationStates == null ? null : pulumi.Input.encodeList<V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState, Map<String, dynamic>>(currentIterationStates!, (value) => value.toMap()),
-      'previousIterationStates': ?previousIterationStates == null ? null : pulumi.Input.encodeList<V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState, Map<String, dynamic>>(previousIterationStates!, (value) => value.toMap()),
+      'currentIterationStates': ?currentIterationStates == null
+          ? null
+          : pulumi.Input.encodeList<
+              V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState,
+              Map<String, dynamic>
+            >(currentIterationStates!, (value) => value.toMap()),
+      'previousIterationStates': ?previousIterationStates == null
+          ? null
+          : pulumi.Input.encodeList<
+              V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState,
+              Map<String, dynamic>
+            >(previousIterationStates!, (value) => value.toMap()),
     };
   }
 
-  factory V2PolicyOrchestratorForFolderOrchestrationState.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForFolderOrchestrationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorForFolderOrchestrationState(
-      currentIterationStates: map['currentIterationStates'] == null ? null : pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState>(map['currentIterationStates'], (value) => V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState.fromMap((value as Map).cast<String, dynamic>())),
-      previousIterationStates: map['previousIterationStates'] == null ? null : pulumi.Input.decodeList<V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState>(map['previousIterationStates'], (value) => V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState.fromMap((value as Map).cast<String, dynamic>())),
+      currentIterationStates: map['currentIterationStates'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState
+            >(
+              map['currentIterationStates'],
+              (value) =>
+                  V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationState.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      previousIterationStates: map['previousIterationStates'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState
+            >(
+              map['previousIterationStates'],
+              (value) =>
+                  V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationState.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

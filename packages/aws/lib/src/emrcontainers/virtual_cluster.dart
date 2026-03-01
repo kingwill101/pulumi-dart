@@ -163,14 +163,19 @@ import 'virtual_cluster_container_provider.dart';
 class VirtualCluster extends pulumi.CustomResource {
   /// ARN of the cluster.
   late final pulumi.Output<String> arn;
+
   /// Configuration block for the container provider associated with your cluster.
   late final pulumi.Output<VirtualClusterContainerProvider> containerProvider;
+
   /// Name of the virtual cluster.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -183,13 +188,15 @@ class VirtualCluster extends pulumi.CustomResource {
     VirtualClusterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:emrcontainers/virtualCluster:VirtualCluster',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:emrcontainers/virtualCluster:VirtualCluster',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
-    this.containerProvider = registerOutput<VirtualClusterContainerProvider>('containerProvider');
+    this.containerProvider = registerOutput<VirtualClusterContainerProvider>(
+      'containerProvider',
+    );
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');

@@ -5,9 +5,11 @@ import 'framework_deployment_cloud_control_metadata_cloud_control_details_parame
 class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter {
   /// The name of the parameter.
   final String name;
+
   /// Possible parameter value types.
   /// Structure is documented below.
-  final FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue parameterValue;
+  final FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue
+  parameterValue;
 
   /// Creates a new [FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter].
   /// [name] The name of the parameter.
@@ -24,11 +26,15 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter {
     };
   }
 
-  factory FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter.fromMap(Map<String, dynamic> map) {
+  factory FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter(
       name: map['name'] as String,
-      parameterValue: FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue.fromMap((map['parameterValue'] as Map).cast<String, dynamic>()),
+      parameterValue:
+          FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValue.fromMap(
+            (map['parameterValue'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

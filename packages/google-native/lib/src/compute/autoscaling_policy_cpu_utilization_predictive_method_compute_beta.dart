@@ -7,13 +7,17 @@ enum AutoscalingPolicyCpuUtilizationPredictiveMethodComputeBeta {
   const AutoscalingPolicyCpuUtilizationPredictiveMethodComputeBeta(this.value);
   final String value;
 
-  static AutoscalingPolicyCpuUtilizationPredictiveMethodComputeBeta fromValue(String value) {
-    for (final item in AutoscalingPolicyCpuUtilizationPredictiveMethodComputeBeta.values) {
+  static AutoscalingPolicyCpuUtilizationPredictiveMethodComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in AutoscalingPolicyCpuUtilizationPredictiveMethodComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AutoscalingPolicyCpuUtilizationPredictiveMethodComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown AutoscalingPolicyCpuUtilizationPredictiveMethodComputeBeta value: $value',
+    );
   }
 }
-

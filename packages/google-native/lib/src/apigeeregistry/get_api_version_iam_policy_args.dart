@@ -25,12 +25,13 @@ class GetApiVersionIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String versionId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      versionId = pulumi.Input.asInput<String>(versionId);
+  }) : apiId = pulumi.Input.asInput<String>(apiId),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +47,12 @@ class GetApiVersionIamPolicyArgs {
     return GetApiVersionIamPolicyArgs(
       apiId: map['apiId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       versionId: map['versionId'] as String,
     );
   }
 }
-

@@ -233,8 +233,10 @@ import 'registry_policy_args.dart';
 class RegistryPolicy extends pulumi.CustomResource {
   /// Resource Policy for EventBridge Schema Registry
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Name of EventBridge Schema Registry
   late final pulumi.Output<String> registryName;
 
@@ -247,11 +249,11 @@ class RegistryPolicy extends pulumi.CustomResource {
     RegistryPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:schemas/registryPolicy:RegistryPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:schemas/registryPolicy:RegistryPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');
     this.registryName = registerOutput<String>('registryName');

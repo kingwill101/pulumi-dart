@@ -7,29 +7,27 @@ import 'value_validation_response.dart';
 class ParameterValidationResponse {
   /// Validation based on regular expressions.
   final RegexValidationResponse regex;
+
   /// Validation based on a list of allowed values.
   final ValueValidationResponse values;
 
   /// Creates a new [ParameterValidationResponse].
   /// [regex] Validation based on regular expressions.
   /// [values] Validation based on a list of allowed values.
-  ParameterValidationResponse({
-    required this.regex,
-    required this.values,
-  });
+  ParameterValidationResponse({required this.regex, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'regex': regex.toMap(),
-      'values': values.toMap(),
-    };
+    return <String, dynamic>{'regex': regex.toMap(), 'values': values.toMap()};
   }
 
   factory ParameterValidationResponse.fromMap(Map<String, dynamic> map) {
     return ParameterValidationResponse(
-      regex: RegexValidationResponse.fromMap((map['regex'] as Map).cast<String, dynamic>()),
-      values: ValueValidationResponse.fromMap((map['values'] as Map).cast<String, dynamic>()),
+      regex: RegexValidationResponse.fromMap(
+        (map['regex'] as Map).cast<String, dynamic>(),
+      ),
+      values: ValueValidationResponse.fromMap(
+        (map['values'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

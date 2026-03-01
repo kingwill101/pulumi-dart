@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// HTTP headers used in UrlMapTests.
 class UrlMapTestHeaderResponseComputeBeta {
   /// Header name.
   final String name;
+
   /// Header value.
   final String value;
 
@@ -17,17 +17,15 @@ class UrlMapTestHeaderResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory UrlMapTestHeaderResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory UrlMapTestHeaderResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UrlMapTestHeaderResponseComputeBeta(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

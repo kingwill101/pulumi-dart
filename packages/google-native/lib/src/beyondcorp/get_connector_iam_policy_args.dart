@@ -22,11 +22,12 @@ class GetConnectorIamPolicyArgs {
     required String location,
     int? optionsRequestedPolicyVersion,
     String? project,
-  }) :
-      connectorId = pulumi.Input.asInput<String>(connectorId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : connectorId = pulumi.Input.asInput<String>(connectorId),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +42,11 @@ class GetConnectorIamPolicyArgs {
     return GetConnectorIamPolicyArgs(
       connectorId: map['connectorId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

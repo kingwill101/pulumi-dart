@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
 class BuildNote {
   /// Immutable. Version of the builder which produced this build.
@@ -8,20 +7,13 @@ class BuildNote {
 
   /// Creates a new [BuildNote].
   /// [builderVersion] Immutable. Version of the builder which produced this build.
-  BuildNote({
-    required this.builderVersion,
-  });
+  BuildNote({required this.builderVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'builderVersion': builderVersion,
-    };
+    return <String, dynamic>{'builderVersion': builderVersion};
   }
 
   factory BuildNote.fromMap(Map<String, dynamic> map) {
-    return BuildNote(
-      builderVersion: map['builderVersion'] as String,
-    );
+    return BuildNote(builderVersion: map['builderVersion'] as String);
   }
 }
-

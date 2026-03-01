@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings {
   final String? convert608To708;
   final int? source608ChannelNumber;
@@ -20,11 +19,16 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20So
     };
   }
 
-  factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings(
-      convert608To708: map['convert608To708'] == null ? null : map['convert608To708'] as String,
-      source608ChannelNumber: map['source608ChannelNumber'] == null ? null : map['source608ChannelNumber'] as int,
+      convert608To708: map['convert608To708'] == null
+          ? null
+          : map['convert608To708'] as String,
+      source608ChannelNumber: map['source608ChannelNumber'] == null
+          ? null
+          : map['source608ChannelNumber'] as int,
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'position_response.dart';
 class StackTraceElementResponse {
   /// The source position information of the stack trace element.
   final PositionResponse position;
+
   /// The routine where the error occurred.
   final String routine;
+
   /// The step the error occurred at.
   final String step;
 
@@ -31,10 +33,11 @@ class StackTraceElementResponse {
 
   factory StackTraceElementResponse.fromMap(Map<String, dynamic> map) {
     return StackTraceElementResponse(
-      position: PositionResponse.fromMap((map['position'] as Map).cast<String, dynamic>()),
+      position: PositionResponse.fromMap(
+        (map['position'] as Map).cast<String, dynamic>(),
+      ),
       routine: map['routine'] as String,
       step: map['step'] as String,
     );
   }
 }
-

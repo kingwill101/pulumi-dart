@@ -5,7 +5,11 @@ import 'cluster_node_pool_defaults_node_config_defaults_containerd_config_privat
 
 class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig {
   /// List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
-  final List<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>? certificateAuthorityDomainConfigs;
+  final List<
+    ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig
+  >?
+  certificateAuthorityDomainConfigs;
+
   /// Enables private registry config. If set to false, all other fields in this object must not be set.
   final bool enabled;
 
@@ -19,16 +23,34 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateAuthorityDomainConfigs': ?certificateAuthorityDomainConfigs == null ? null : pulumi.Input.encodeList<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig, Map<String, dynamic>>(certificateAuthorityDomainConfigs!, (value) => value.toMap()),
+      'certificateAuthorityDomainConfigs':
+          ?certificateAuthorityDomainConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig,
+              Map<String, dynamic>
+            >(certificateAuthorityDomainConfigs!, (value) => value.toMap()),
       'enabled': enabled,
     };
   }
 
-  factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfig(
-      certificateAuthorityDomainConfigs: map['certificateAuthorityDomainConfigs'] == null ? null : pulumi.Input.decodeList<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>(map['certificateAuthorityDomainConfigs'], (value) => ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.fromMap((value as Map).cast<String, dynamic>())),
+      certificateAuthorityDomainConfigs:
+          map['certificateAuthorityDomainConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig
+            >(
+              map['certificateAuthorityDomainConfigs'],
+              (value) =>
+                  ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       enabled: map['enabled'] as bool,
     );
   }
 }
-

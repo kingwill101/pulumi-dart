@@ -7,17 +7,23 @@ import 'enterprise_crm_eventbus_proto_value_type_response.dart';
 class EnterpriseCrmEventbusProtoAttributesResponse {
   /// Things like URL, Email, Currency, Timestamp (rather than string, int64...)
   final String dataType;
+
   /// Used to define defaults.
   final EnterpriseCrmEventbusProtoValueTypeResponse defaultValue;
+
   /// Required for event execution. The validation will be done by the event bus when the event is triggered.
   final bool isRequired;
+
   /// Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
   final bool isSearchable;
+
   /// See
   final EnterpriseCrmEventbusProtoLogSettingsResponse logSettings;
+
   /// Used to indicate if the ParameterEntry is a read only field or not.
   final bool readOnly;
   final String searchable;
+
   /// List of tasks that can view this property, if empty then all.
   final List<String> taskVisibility;
 
@@ -54,17 +60,22 @@ class EnterpriseCrmEventbusProtoAttributesResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoAttributesResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoAttributesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoAttributesResponse(
       dataType: map['dataType'] as String,
-      defaultValue: EnterpriseCrmEventbusProtoValueTypeResponse.fromMap((map['defaultValue'] as Map).cast<String, dynamic>()),
+      defaultValue: EnterpriseCrmEventbusProtoValueTypeResponse.fromMap(
+        (map['defaultValue'] as Map).cast<String, dynamic>(),
+      ),
       isRequired: map['isRequired'] as bool,
       isSearchable: map['isSearchable'] as bool,
-      logSettings: EnterpriseCrmEventbusProtoLogSettingsResponse.fromMap((map['logSettings'] as Map).cast<String, dynamic>()),
+      logSettings: EnterpriseCrmEventbusProtoLogSettingsResponse.fromMap(
+        (map['logSettings'] as Map).cast<String, dynamic>(),
+      ),
       readOnly: map['readOnly'] as bool,
       searchable: map['searchable'] as String,
       taskVisibility: (map['taskVisibility'] as List).cast<String>(),
     );
   }
 }
-

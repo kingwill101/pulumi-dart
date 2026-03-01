@@ -8,10 +8,13 @@ import 'tool_results_history_response.dart';
 class ResultStorageResponse {
   /// Required.
   final GoogleCloudStorageResponse googleCloudStorage;
+
   /// URL to the results in the Firebase Web Console.
   final String resultsUrl;
+
   /// The tool results execution that results are written to.
   final ToolResultsExecutionResponse toolResultsExecution;
+
   /// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
   final ToolResultsHistoryResponse toolResultsHistory;
 
@@ -38,11 +41,16 @@ class ResultStorageResponse {
 
   factory ResultStorageResponse.fromMap(Map<String, dynamic> map) {
     return ResultStorageResponse(
-      googleCloudStorage: GoogleCloudStorageResponse.fromMap((map['googleCloudStorage'] as Map).cast<String, dynamic>()),
+      googleCloudStorage: GoogleCloudStorageResponse.fromMap(
+        (map['googleCloudStorage'] as Map).cast<String, dynamic>(),
+      ),
       resultsUrl: map['resultsUrl'] as String,
-      toolResultsExecution: ToolResultsExecutionResponse.fromMap((map['toolResultsExecution'] as Map).cast<String, dynamic>()),
-      toolResultsHistory: ToolResultsHistoryResponse.fromMap((map['toolResultsHistory'] as Map).cast<String, dynamic>()),
+      toolResultsExecution: ToolResultsExecutionResponse.fromMap(
+        (map['toolResultsExecution'] as Map).cast<String, dynamic>(),
+      ),
+      toolResultsHistory: ToolResultsHistoryResponse.fromMap(
+        (map['toolResultsHistory'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

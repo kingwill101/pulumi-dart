@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FilterFilterCriteriaEcrImageInUseCount {
   /// (Optional) Lower bound of the range, inclusive.
   final double lowerInclusive;
+
   /// (Optional) Upper bound of the range, inclusive.
   final double upperInclusive;
 
@@ -22,11 +22,12 @@ class FilterFilterCriteriaEcrImageInUseCount {
     };
   }
 
-  factory FilterFilterCriteriaEcrImageInUseCount.fromMap(Map<String, dynamic> map) {
+  factory FilterFilterCriteriaEcrImageInUseCount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FilterFilterCriteriaEcrImageInUseCount(
       lowerInclusive: map['lowerInclusive'] as double,
       upperInclusive: map['upperInclusive'] as double,
     );
   }
 }
-

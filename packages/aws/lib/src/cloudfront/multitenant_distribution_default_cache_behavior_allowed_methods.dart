@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MultitenantDistributionDefaultCacheBehaviorAllowedMethods {
   /// Controls whether CloudFront caches the response to requests using the specified HTTP methods.
   final List<String> cachedMethods;
@@ -15,17 +14,15 @@ class MultitenantDistributionDefaultCacheBehaviorAllowedMethods {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cachedMethods': cachedMethods,
-      'items': items,
-    };
+    return <String, dynamic>{'cachedMethods': cachedMethods, 'items': items};
   }
 
-  factory MultitenantDistributionDefaultCacheBehaviorAllowedMethods.fromMap(Map<String, dynamic> map) {
+  factory MultitenantDistributionDefaultCacheBehaviorAllowedMethods.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MultitenantDistributionDefaultCacheBehaviorAllowedMethods(
       cachedMethods: (map['cachedMethods'] as List).cast<String>(),
       items: (map['items'] as List).cast<String>(),
     );
   }
 }
-

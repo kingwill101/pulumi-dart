@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies options for controlling advanced machine features.
 class AdvancedMachineFeaturesResponse {
   /// The number of threads per physical core.
@@ -8,14 +7,10 @@ class AdvancedMachineFeaturesResponse {
 
   /// Creates a new [AdvancedMachineFeaturesResponse].
   /// [threadsPerCore] The number of threads per physical core.
-  AdvancedMachineFeaturesResponse({
-    required this.threadsPerCore,
-  });
+  AdvancedMachineFeaturesResponse({required this.threadsPerCore});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'threadsPerCore': threadsPerCore,
-    };
+    return <String, dynamic>{'threadsPerCore': threadsPerCore};
   }
 
   factory AdvancedMachineFeaturesResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class AdvancedMachineFeaturesResponse {
     );
   }
 }
-

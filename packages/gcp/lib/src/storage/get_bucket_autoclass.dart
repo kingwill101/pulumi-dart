@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetBucketAutoclass {
   /// While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
   final bool enabled;
+
   /// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
   final String terminalStorageClass;
 
@@ -29,4 +29,3 @@ class GetBucketAutoclass {
     );
   }
 }
-

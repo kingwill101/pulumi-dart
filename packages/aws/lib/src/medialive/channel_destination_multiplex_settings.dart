@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChannelDestinationMultiplexSettings {
   /// The ID of the Multiplex that the encoder is providing output to.
   final String multiplexId;
+
   /// The program name of the Multiplex program that the encoder is providing output to.
   final String programName;
 
@@ -22,11 +22,12 @@ class ChannelDestinationMultiplexSettings {
     };
   }
 
-  factory ChannelDestinationMultiplexSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelDestinationMultiplexSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelDestinationMultiplexSettings(
       multiplexId: map['multiplexId'] as String,
       programName: map['programName'] as String,
     );
   }
 }
-

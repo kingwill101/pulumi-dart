@@ -6,12 +6,16 @@ import 'cloud_sql_settings_response.dart';
 class CloudSqlConnectionProfileResponse {
   /// The Cloud SQL database instance's additional (outgoing) public IP. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
   final String additionalPublicIp;
+
   /// The Cloud SQL instance ID that this connection profile is associated with.
   final String cloudSqlId;
+
   /// The Cloud SQL database instance's private IP.
   final String privateIp;
+
   /// The Cloud SQL database instance's public IP.
   final String publicIp;
+
   /// Immutable. Metadata used to create the destination Cloud SQL database.
   final CloudSqlSettingsResponse settings;
 
@@ -45,8 +49,9 @@ class CloudSqlConnectionProfileResponse {
       cloudSqlId: map['cloudSqlId'] as String,
       privateIp: map['privateIp'] as String,
       publicIp: map['publicIp'] as String,
-      settings: CloudSqlSettingsResponse.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      settings: CloudSqlSettingsResponse.fromMap(
+        (map['settings'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

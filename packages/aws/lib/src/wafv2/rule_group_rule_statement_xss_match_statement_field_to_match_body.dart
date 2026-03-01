@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RuleGroupRuleStatementXssMatchStatementFieldToMatchBody {
   final String? oversizeHandling;
 
@@ -11,15 +10,16 @@ class RuleGroupRuleStatementXssMatchStatementFieldToMatchBody {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'oversizeHandling': ?oversizeHandling,
-    };
+    return <String, dynamic>{'oversizeHandling': ?oversizeHandling};
   }
 
-  factory RuleGroupRuleStatementXssMatchStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementXssMatchStatementFieldToMatchBody.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementXssMatchStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : map['oversizeHandling'] as String,
+      oversizeHandling: map['oversizeHandling'] == null
+          ? null
+          : map['oversizeHandling'] as String,
     );
   }
 }
-

@@ -13,7 +13,8 @@ enum DiscoveryOccurrenceContinuousAnalysis {
         return item;
       }
     }
-    throw ArgumentError('Unknown DiscoveryOccurrenceContinuousAnalysis value: $value');
+    throw ArgumentError(
+      'Unknown DiscoveryOccurrenceContinuousAnalysis value: $value',
+    );
   }
 }
-

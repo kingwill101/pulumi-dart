@@ -5,8 +5,10 @@ import 'data_set_logical_table_map_source_join_instruction.dart';
 class DataSetLogicalTableMapSource {
   /// ARN of the parent data set.
   final String? dataSetArn;
+
   /// Specifies the result of a join of two logical tables. See join_instruction.
   final DataSetLogicalTableMapSourceJoinInstruction? joinInstruction;
+
   /// Physical table ID.
   final String? physicalTableId;
 
@@ -23,17 +25,26 @@ class DataSetLogicalTableMapSource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataSetArn': ?dataSetArn,
-      'joinInstruction': ?joinInstruction == null ? null : joinInstruction!.toMap(),
+      'joinInstruction': ?joinInstruction == null
+          ? null
+          : joinInstruction!.toMap(),
       'physicalTableId': ?physicalTableId,
     };
   }
 
   factory DataSetLogicalTableMapSource.fromMap(Map<String, dynamic> map) {
     return DataSetLogicalTableMapSource(
-      dataSetArn: map['dataSetArn'] == null ? null : map['dataSetArn'] as String,
-      joinInstruction: map['joinInstruction'] == null ? null : DataSetLogicalTableMapSourceJoinInstruction.fromMap((map['joinInstruction'] as Map).cast<String, dynamic>()),
-      physicalTableId: map['physicalTableId'] == null ? null : map['physicalTableId'] as String,
+      dataSetArn: map['dataSetArn'] == null
+          ? null
+          : map['dataSetArn'] as String,
+      joinInstruction: map['joinInstruction'] == null
+          ? null
+          : DataSetLogicalTableMapSourceJoinInstruction.fromMap(
+              (map['joinInstruction'] as Map).cast<String, dynamic>(),
+            ),
+      physicalTableId: map['physicalTableId'] == null
+          ? null
+          : map['physicalTableId'] as String,
     );
   }
 }
-

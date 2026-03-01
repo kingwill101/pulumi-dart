@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BudgetThresholdRule {
   /// The type of basis used to determine if spend has passed
   /// the threshold.
   /// Default value is `CURRENT_SPEND`.
   /// Possible values are: `CURRENT_SPEND`, `FORECASTED_SPEND`.
   final String? spendBasis;
+
   /// Send an alert when this threshold is exceeded. This is a
   /// 1.0-based percentage, so 0.5 = 50%. Must be >= 0.
   final double thresholdPercent;
@@ -14,10 +14,7 @@ class BudgetThresholdRule {
   /// Creates a new [BudgetThresholdRule].
   /// [spendBasis] The type of basis used to determine if spend has passed
   /// [thresholdPercent] Send an alert when this threshold is exceeded. This is a
-  BudgetThresholdRule({
-    this.spendBasis,
-    required this.thresholdPercent,
-  });
+  BudgetThresholdRule({this.spendBasis, required this.thresholdPercent});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +25,10 @@ class BudgetThresholdRule {
 
   factory BudgetThresholdRule.fromMap(Map<String, dynamic> map) {
     return BudgetThresholdRule(
-      spendBasis: map['spendBasis'] == null ? null : map['spendBasis'] as String,
+      spendBasis: map['spendBasis'] == null
+          ? null
+          : map['spendBasis'] as String,
       thresholdPercent: map['thresholdPercent'] as double,
     );
   }
 }
-

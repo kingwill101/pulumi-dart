@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GuardrailWordPolicyConfigManagedWordListsConfig {
   /// Action to take when harmful content is detected in the input. Valid values: `BLOCK`, `NONE`.
   final String? inputAction;
+
   /// Whether to enable guardrail evaluation on the input. When disabled, you aren't charged for the evaluation.
   final bool? inputEnabled;
+
   /// Action to take when harmful content is detected in the output. Valid values: `BLOCK`, `NONE`.
   final String? outputAction;
+
   /// Whether to enable guardrail evaluation on the output. When disabled, you aren't charged for the evaluation.
   final bool? outputEnabled;
+
   /// Options for managed words.
   final String type;
 
@@ -37,14 +40,23 @@ class GuardrailWordPolicyConfigManagedWordListsConfig {
     };
   }
 
-  factory GuardrailWordPolicyConfigManagedWordListsConfig.fromMap(Map<String, dynamic> map) {
+  factory GuardrailWordPolicyConfigManagedWordListsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GuardrailWordPolicyConfigManagedWordListsConfig(
-      inputAction: map['inputAction'] == null ? null : map['inputAction'] as String,
-      inputEnabled: map['inputEnabled'] == null ? null : map['inputEnabled'] as bool,
-      outputAction: map['outputAction'] == null ? null : map['outputAction'] as String,
-      outputEnabled: map['outputEnabled'] == null ? null : map['outputEnabled'] as bool,
+      inputAction: map['inputAction'] == null
+          ? null
+          : map['inputAction'] as String,
+      inputEnabled: map['inputEnabled'] == null
+          ? null
+          : map['inputEnabled'] as bool,
+      outputAction: map['outputAction'] == null
+          ? null
+          : map['outputAction'] as String,
+      outputEnabled: map['outputEnabled'] == null
+          ? null
+          : map['outputEnabled'] as bool,
       type: map['type'] as String,
     );
   }
 }
-

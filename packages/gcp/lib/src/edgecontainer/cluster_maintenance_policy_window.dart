@@ -9,20 +9,17 @@ class ClusterMaintenancePolicyWindow {
 
   /// Creates a new [ClusterMaintenancePolicyWindow].
   /// [recurringWindow] Represents an arbitrary window of time that recurs.
-  ClusterMaintenancePolicyWindow({
-    required this.recurringWindow,
-  });
+  ClusterMaintenancePolicyWindow({required this.recurringWindow});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'recurringWindow': recurringWindow.toMap(),
-    };
+    return <String, dynamic>{'recurringWindow': recurringWindow.toMap()};
   }
 
   factory ClusterMaintenancePolicyWindow.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenancePolicyWindow(
-      recurringWindow: ClusterMaintenancePolicyWindowRecurringWindow.fromMap((map['recurringWindow'] as Map).cast<String, dynamic>()),
+      recurringWindow: ClusterMaintenancePolicyWindowRecurringWindow.fromMap(
+        (map['recurringWindow'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

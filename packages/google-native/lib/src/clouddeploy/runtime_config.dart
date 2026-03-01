@@ -7,16 +7,14 @@ import 'kubernetes_config.dart';
 class RuntimeConfig {
   /// Cloud Run runtime configuration.
   final CloudRunConfig? cloudRun;
+
   /// Kubernetes runtime configuration.
   final KubernetesConfig? kubernetes;
 
   /// Creates a new [RuntimeConfig].
   /// [cloudRun] Cloud Run runtime configuration.
   /// [kubernetes] Kubernetes runtime configuration.
-  RuntimeConfig({
-    this.cloudRun,
-    this.kubernetes,
-  });
+  RuntimeConfig({this.cloudRun, this.kubernetes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class RuntimeConfig {
 
   factory RuntimeConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeConfig(
-      cloudRun: map['cloudRun'] == null ? null : CloudRunConfig.fromMap((map['cloudRun'] as Map).cast<String, dynamic>()),
-      kubernetes: map['kubernetes'] == null ? null : KubernetesConfig.fromMap((map['kubernetes'] as Map).cast<String, dynamic>()),
+      cloudRun: map['cloudRun'] == null
+          ? null
+          : CloudRunConfig.fromMap(
+              (map['cloudRun'] as Map).cast<String, dynamic>(),
+            ),
+      kubernetes: map['kubernetes'] == null
+          ? null
+          : KubernetesConfig.fromMap(
+              (map['kubernetes'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -8,14 +8,18 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
   /// subject to validations based on the file type: Remote: A checksum must be
   /// specified. Cloud Storage: An object generation number must be specified.
   final bool? allowInsecure;
+
   /// A Cloud Storage object. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs? gcs;
+
   /// A local path within the VM to use.
   final String? localPath;
+
   /// A generic remote file. Structure is
   /// documented below.
-  final OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote? remote;
+  final OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote?
+  remote;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile].
   /// [allowInsecure] Defaults to false. When false, files are
@@ -38,13 +42,24 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile.fromMap(Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile(
-      allowInsecure: map['allowInsecure'] == null ? null : map['allowInsecure'] as bool,
-      gcs: map['gcs'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
+      allowInsecure: map['allowInsecure'] == null
+          ? null
+          : map['allowInsecure'] as bool,
+      gcs: map['gcs'] == null
+          ? null
+          : OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs.fromMap(
+              (map['gcs'] as Map).cast<String, dynamic>(),
+            ),
       localPath: map['localPath'] == null ? null : map['localPath'] as String,
-      remote: map['remote'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote.fromMap((map['remote'] as Map).cast<String, dynamic>()),
+      remote: map['remote'] == null
+          ? null
+          : OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote.fromMap(
+              (map['remote'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

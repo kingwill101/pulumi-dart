@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDirectorySelfServicePermission {
   /// Whether WorkSpaces directory users can change the compute type (bundle) for their workspace.
   final bool changeComputeType;
+
   /// Whether WorkSpaces directory users can increase the volume size of the drives on their workspace.
   final bool increaseVolumeSize;
+
   /// Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state.
   final bool rebuildWorkspace;
+
   /// Whether WorkSpaces directory users can restart their workspace.
   final bool restartWorkspace;
+
   /// Whether WorkSpaces directory users can switch the running mode of their workspace.
   final bool switchRunningMode;
 
@@ -47,4 +50,3 @@ class GetDirectorySelfServicePermission {
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Describes authentication configuration that uses a custom account.
 class CustomAccountResponseWebsecurityscannerV1beta {
   /// The login form URL of the website.
   final String loginUrl;
+
   /// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
   final String password;
+
   /// The user name of the custom account.
   final String username;
 
@@ -28,7 +29,9 @@ class CustomAccountResponseWebsecurityscannerV1beta {
     };
   }
 
-  factory CustomAccountResponseWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
+  factory CustomAccountResponseWebsecurityscannerV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomAccountResponseWebsecurityscannerV1beta(
       loginUrl: map['loginUrl'] as String,
       password: map['password'] as String,
@@ -36,4 +39,3 @@ class CustomAccountResponseWebsecurityscannerV1beta {
     );
   }
 }
-

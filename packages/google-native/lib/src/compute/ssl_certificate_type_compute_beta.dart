@@ -16,4 +16,3 @@ enum SslCertificateTypeComputeBeta {
     throw ArgumentError('Unknown SslCertificateTypeComputeBeta value: $value');
   }
 }
-

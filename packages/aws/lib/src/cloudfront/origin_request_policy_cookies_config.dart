@@ -24,8 +24,11 @@ class OriginRequestPolicyCookiesConfig {
   factory OriginRequestPolicyCookiesConfig.fromMap(Map<String, dynamic> map) {
     return OriginRequestPolicyCookiesConfig(
       cookieBehavior: map['cookieBehavior'] as String,
-      cookies: map['cookies'] == null ? null : OriginRequestPolicyCookiesConfigCookies.fromMap((map['cookies'] as Map).cast<String, dynamic>()),
+      cookies: map['cookies'] == null
+          ? null
+          : OriginRequestPolicyCookiesConfigCookies.fromMap(
+              (map['cookies'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

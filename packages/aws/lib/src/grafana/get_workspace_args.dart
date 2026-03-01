@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWorkspaceArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Tags assigned to the resource
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Grafana workspace ID.
   final pulumi.Input<String> workspaceId;
 
@@ -22,10 +24,9 @@ class GetWorkspaceArgs {
     String? region,
     Map<String, String>? tags,
     required String workspaceId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+  }) : region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       workspaceId = pulumi.Input.asInput<String>(workspaceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +39,10 @@ class GetWorkspaceArgs {
   factory GetWorkspaceArgs.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceArgs(
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
       workspaceId: map['workspaceId'] as String,
     );
   }
 }
-

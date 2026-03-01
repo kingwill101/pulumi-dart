@@ -12,7 +12,8 @@ enum BackupRetentionSettingsRetentionUnit {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackupRetentionSettingsRetentionUnit value: $value');
+    throw ArgumentError(
+      'Unknown BackupRetentionSettingsRetentionUnit value: $value',
+    );
   }
 }
-

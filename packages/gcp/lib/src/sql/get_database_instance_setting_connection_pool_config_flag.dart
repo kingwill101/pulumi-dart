@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDatabaseInstanceSettingConnectionPoolConfigFlag {
   /// The name of the instance.
   final String name;
+
   /// Value of the flag.
   final String value;
 
@@ -16,17 +16,15 @@ class GetDatabaseInstanceSettingConnectionPoolConfigFlag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GetDatabaseInstanceSettingConnectionPoolConfigFlag.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstanceSettingConnectionPoolConfigFlag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstanceSettingConnectionPoolConfigFlag(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

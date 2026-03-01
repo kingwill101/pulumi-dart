@@ -19,10 +19,9 @@ class GetInstanceAttachmentArgs {
     required String attachmentId,
     required String instanceId,
     required String organizationId,
-  }) :
-      attachmentId = pulumi.Input.asInput<String>(attachmentId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : attachmentId = pulumi.Input.asInput<String>(attachmentId),
+       instanceId = pulumi.Input.asInput<String>(instanceId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetInstanceAttachmentArgs {
     );
   }
 }
-

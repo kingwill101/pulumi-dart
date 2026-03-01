@@ -1,21 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetOrganizationAccount {
   /// ARN of the root.
   final String arn;
+
   /// Email of the account.
   final String email;
+
   /// Identifier of the root.
   final String id;
+
   /// Method by which the account joined the organization.
   final String joinedMethod;
+
   /// Date the account became a part of the organization.
   final String joinedTimestamp;
+
   /// Name of the policy type.
   final String name;
+
   /// State of the account.
   final String state;
+
   /// Status of the policy type as it relates to the associated root.
   final String status;
 
@@ -65,4 +71,3 @@ class GetOrganizationAccount {
     );
   }
 }
-

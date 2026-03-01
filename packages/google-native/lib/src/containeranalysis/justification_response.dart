@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
 class JustificationResponse {
   /// Additional details on why this justification was chosen.
   final String details;
+
   /// The justification type for this vulnerability.
   final String justificationType;
 
@@ -30,4 +30,3 @@ class JustificationResponse {
     );
   }
 }
-

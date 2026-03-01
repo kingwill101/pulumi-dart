@@ -1,19 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UserName {
   /// The family name of the user.
   final String familyName;
+
   /// The name that is typically displayed when the name is shown for display.
   final String? formatted;
+
   /// The given name of the user.
   ///
   /// The following arguments are optional:
   final String givenName;
+
   /// The honorific prefix of the user.
   final String? honorificPrefix;
+
   /// The honorific suffix of the user.
   final String? honorificSuffix;
+
   /// The middle name of the user.
   final String? middleName;
 
@@ -49,10 +53,15 @@ class UserName {
       familyName: map['familyName'] as String,
       formatted: map['formatted'] == null ? null : map['formatted'] as String,
       givenName: map['givenName'] as String,
-      honorificPrefix: map['honorificPrefix'] == null ? null : map['honorificPrefix'] as String,
-      honorificSuffix: map['honorificSuffix'] == null ? null : map['honorificSuffix'] as String,
-      middleName: map['middleName'] == null ? null : map['middleName'] as String,
+      honorificPrefix: map['honorificPrefix'] == null
+          ? null
+          : map['honorificPrefix'] as String,
+      honorificSuffix: map['honorificSuffix'] == null
+          ? null
+          : map['honorificSuffix'] as String,
+      middleName: map['middleName'] == null
+          ? null
+          : map['middleName'] as String,
     );
   }
 }
-

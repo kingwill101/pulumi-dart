@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FrameworkDeploymentFramework {
   /// In the format:
   /// organizations/{org}/locations/{location}/frameworks/{framework}
   final String framework;
+
   /// Major revision id of the framework.
   final String majorRevisionId;
 
@@ -30,4 +30,3 @@ class FrameworkDeploymentFramework {
     );
   }
 }
-

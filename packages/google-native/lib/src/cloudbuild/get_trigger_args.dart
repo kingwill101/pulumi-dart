@@ -22,11 +22,10 @@ class GetTriggerArgs {
     String? project,
     required String projectId,
     required String triggerId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      projectId = pulumi.Input.asInput<String>(projectId),
-      triggerId = pulumi.Input.asInput<String>(triggerId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       projectId = pulumi.Input.asInput<String>(projectId),
+       triggerId = pulumi.Input.asInput<String>(triggerId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetTriggerArgs {
     );
   }
 }
-

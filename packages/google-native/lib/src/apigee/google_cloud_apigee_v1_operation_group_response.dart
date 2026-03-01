@@ -7,6 +7,7 @@ import 'google_cloud_apigee_v1_operation_config_response.dart';
 class GoogleCloudApigeeV1OperationGroupResponse {
   /// Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
   final String operationConfigType;
+
   /// List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
   final List<GoogleCloudApigeeV1OperationConfigResponse> operationConfigs;
 
@@ -21,15 +22,26 @@ class GoogleCloudApigeeV1OperationGroupResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'operationConfigType': operationConfigType,
-      'operationConfigs': pulumi.Input.encodeList<GoogleCloudApigeeV1OperationConfigResponse, Map<String, dynamic>>(operationConfigs, (value) => value.toMap()),
+      'operationConfigs':
+          pulumi.Input.encodeList<
+            GoogleCloudApigeeV1OperationConfigResponse,
+            Map<String, dynamic>
+          >(operationConfigs, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudApigeeV1OperationGroupResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1OperationGroupResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1OperationGroupResponse(
       operationConfigType: map['operationConfigType'] as String,
-      operationConfigs: pulumi.Input.decodeList<GoogleCloudApigeeV1OperationConfigResponse>(map['operationConfigs'], (value) => GoogleCloudApigeeV1OperationConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
+      operationConfigs:
+          pulumi.Input.decodeList<GoogleCloudApigeeV1OperationConfigResponse>(
+            map['operationConfigs'],
+            (value) => GoogleCloudApigeeV1OperationConfigResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

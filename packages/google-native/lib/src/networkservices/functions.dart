@@ -305,7 +305,8 @@ Future<GetTlsRouteResult> getTlsRoute(
 /// Gets details of a single EndpointPolicy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkservices_v1beta1_get_endpoint_policy_networkservices_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEndpointPolicyNetworkservicesV1beta1Result> getEndpointPolicyNetworkservicesV1beta1(
+Future<GetEndpointPolicyNetworkservicesV1beta1Result>
+getEndpointPolicyNetworkservicesV1beta1(
   GetEndpointPolicyNetworkservicesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -321,7 +322,8 @@ Future<GetEndpointPolicyNetworkservicesV1beta1Result> getEndpointPolicyNetworkse
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkservices_v1beta1_get_endpoint_policy_iam_policy_networkservices_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEndpointPolicyIamPolicyNetworkservicesV1beta1Result> getEndpointPolicyIamPolicyNetworkservicesV1beta1(
+Future<GetEndpointPolicyIamPolicyNetworkservicesV1beta1Result>
+getEndpointPolicyIamPolicyNetworkservicesV1beta1(
   GetEndpointPolicyIamPolicyNetworkservicesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -353,7 +355,8 @@ Future<GetGatewayNetworkservicesV1beta1Result> getGatewayNetworkservicesV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkservices_v1beta1_get_gateway_iam_policy_networkservices_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGatewayIamPolicyNetworkservicesV1beta1Result> getGatewayIamPolicyNetworkservicesV1beta1(
+Future<GetGatewayIamPolicyNetworkservicesV1beta1Result>
+getGatewayIamPolicyNetworkservicesV1beta1(
   GetGatewayIamPolicyNetworkservicesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -369,7 +372,8 @@ Future<GetGatewayIamPolicyNetworkservicesV1beta1Result> getGatewayIamPolicyNetwo
 /// Gets details of a single GrpcRoute.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkservices_v1beta1_get_grpc_route_networkservices_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetGrpcRouteNetworkservicesV1beta1Result> getGrpcRouteNetworkservicesV1beta1(
+Future<GetGrpcRouteNetworkservicesV1beta1Result>
+getGrpcRouteNetworkservicesV1beta1(
   GetGrpcRouteNetworkservicesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -385,7 +389,8 @@ Future<GetGrpcRouteNetworkservicesV1beta1Result> getGrpcRouteNetworkservicesV1be
 /// Gets details of a single HttpRoute.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkservices_v1beta1_get_http_route_networkservices_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetHttpRouteNetworkservicesV1beta1Result> getHttpRouteNetworkservicesV1beta1(
+Future<GetHttpRouteNetworkservicesV1beta1Result>
+getHttpRouteNetworkservicesV1beta1(
   GetHttpRouteNetworkservicesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -449,7 +454,8 @@ Future<GetMeshNetworkservicesV1beta1Result> getMeshNetworkservicesV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkservices_v1beta1_get_mesh_iam_policy_networkservices_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMeshIamPolicyNetworkservicesV1beta1Result> getMeshIamPolicyNetworkservicesV1beta1(
+Future<GetMeshIamPolicyNetworkservicesV1beta1Result>
+getMeshIamPolicyNetworkservicesV1beta1(
   GetMeshIamPolicyNetworkservicesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -465,7 +471,8 @@ Future<GetMeshIamPolicyNetworkservicesV1beta1Result> getMeshIamPolicyNetworkserv
 /// Gets details of a single ServiceBinding.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkservices_v1beta1_get_service_binding_networkservices_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceBindingNetworkservicesV1beta1Result> getServiceBindingNetworkservicesV1beta1(
+Future<GetServiceBindingNetworkservicesV1beta1Result>
+getServiceBindingNetworkservicesV1beta1(
   GetServiceBindingNetworkservicesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -481,7 +488,8 @@ Future<GetServiceBindingNetworkservicesV1beta1Result> getServiceBindingNetworkse
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkservices_v1beta1_get_service_binding_iam_policy_networkservices_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetServiceBindingIamPolicyNetworkservicesV1beta1Result> getServiceBindingIamPolicyNetworkservicesV1beta1(
+Future<GetServiceBindingIamPolicyNetworkservicesV1beta1Result>
+getServiceBindingIamPolicyNetworkservicesV1beta1(
   GetServiceBindingIamPolicyNetworkservicesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -529,7 +537,8 @@ Future<GetServiceLbPolicyIamPolicyResult> getServiceLbPolicyIamPolicy(
 /// Gets details of a single TcpRoute.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkservices_v1beta1_get_tcp_route_networkservices_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTcpRouteNetworkservicesV1beta1Result> getTcpRouteNetworkservicesV1beta1(
+Future<GetTcpRouteNetworkservicesV1beta1Result>
+getTcpRouteNetworkservicesV1beta1(
   GetTcpRouteNetworkservicesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -545,7 +554,8 @@ Future<GetTcpRouteNetworkservicesV1beta1Result> getTcpRouteNetworkservicesV1beta
 /// Gets details of a single TlsRoute.
 /// [args] Arguments passed to this invoke. {@macro pulumi_networkservices_v1beta1_get_tls_route_networkservices_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTlsRouteNetworkservicesV1beta1Result> getTlsRouteNetworkservicesV1beta1(
+Future<GetTlsRouteNetworkservicesV1beta1Result>
+getTlsRouteNetworkservicesV1beta1(
   GetTlsRouteNetworkservicesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

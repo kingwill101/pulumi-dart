@@ -19,10 +19,11 @@ class GetCertificateTemplateArgs {
     required String certificateTemplateId,
     required String location,
     String? project,
-  }) :
-      certificateTemplateId = pulumi.Input.asInput<String>(certificateTemplateId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : certificateTemplateId = pulumi.Input.asInput<String>(
+         certificateTemplateId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetCertificateTemplateArgs {
     );
   }
 }
-

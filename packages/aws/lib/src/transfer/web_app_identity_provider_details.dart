@@ -8,20 +8,23 @@ class WebAppIdentityProviderDetails {
 
   /// Creates a new [WebAppIdentityProviderDetails].
   /// [identityCenterConfig] Block that describes the values to use for the IAM Identity Center settings. See Identity center config below.
-  WebAppIdentityProviderDetails({
-    this.identityCenterConfig,
-  });
+  WebAppIdentityProviderDetails({this.identityCenterConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identityCenterConfig': ?identityCenterConfig == null ? null : identityCenterConfig!.toMap(),
+      'identityCenterConfig': ?identityCenterConfig == null
+          ? null
+          : identityCenterConfig!.toMap(),
     };
   }
 
   factory WebAppIdentityProviderDetails.fromMap(Map<String, dynamic> map) {
     return WebAppIdentityProviderDetails(
-      identityCenterConfig: map['identityCenterConfig'] == null ? null : WebAppIdentityProviderDetailsIdentityCenterConfig.fromMap((map['identityCenterConfig'] as Map).cast<String, dynamic>()),
+      identityCenterConfig: map['identityCenterConfig'] == null
+          ? null
+          : WebAppIdentityProviderDetailsIdentityCenterConfig.fromMap(
+              (map['identityCenterConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

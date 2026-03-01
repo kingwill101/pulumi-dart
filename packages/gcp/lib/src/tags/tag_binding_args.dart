@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagBindingArgs {
   /// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
   final pulumi.Input<String> parent;
+
   /// The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
   final pulumi.Input<String> tagValue;
 
   /// Creates a new [TagBindingArgs].
   /// [parent] The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
   /// [tagValue] The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
-  TagBindingArgs({
-    required String parent,
-    required String tagValue,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
+  TagBindingArgs({required String parent, required String tagValue})
+    : parent = pulumi.Input.asInput<String>(parent),
       tagValue = pulumi.Input.asInput<String>(tagValue);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parent': parent,
-      'tagValue': tagValue,
-    };
+    return <String, dynamic>{'parent': parent, 'tagValue': tagValue};
   }
 
   factory TagBindingArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class TagBindingArgs {
     );
   }
 }
-

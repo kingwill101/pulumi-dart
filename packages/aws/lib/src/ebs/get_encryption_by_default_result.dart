@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getEncryptionByDefault.
 class GetEncryptionByDefaultResult {
   /// Whether or not default EBS encryption is enabled. Returns as `true` or `false`.
   final bool enabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -20,11 +20,7 @@ class GetEncryptionByDefaultResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-      'id': id,
-      'region': region,
-    };
+    return <String, dynamic>{'enabled': enabled, 'id': id, 'region': region};
   }
 
   factory GetEncryptionByDefaultResult.fromMap(Map<String, dynamic> map) {
@@ -35,4 +31,3 @@ class GetEncryptionByDefaultResult {
     );
   }
 }
-

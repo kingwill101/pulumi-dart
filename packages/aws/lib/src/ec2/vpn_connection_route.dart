@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class VpnConnectionRoute {
   /// The CIDR block associated with the local subnet of the customer data center.
   final String? destinationCidrBlock;
+
   /// Indicates how the routes were provided.
   final String? source;
+
   /// The current state of the static route.
   final String? state;
 
@@ -13,11 +14,7 @@ class VpnConnectionRoute {
   /// [destinationCidrBlock] The CIDR block associated with the local subnet of the customer data center.
   /// [source] Indicates how the routes were provided.
   /// [state] The current state of the static route.
-  VpnConnectionRoute({
-    this.destinationCidrBlock,
-    this.source,
-    this.state,
-  });
+  VpnConnectionRoute({this.destinationCidrBlock, this.source, this.state});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,10 +26,11 @@ class VpnConnectionRoute {
 
   factory VpnConnectionRoute.fromMap(Map<String, dynamic> map) {
     return VpnConnectionRoute(
-      destinationCidrBlock: map['destinationCidrBlock'] == null ? null : map['destinationCidrBlock'] as String,
+      destinationCidrBlock: map['destinationCidrBlock'] == null
+          ? null
+          : map['destinationCidrBlock'] as String,
       source: map['source'] == null ? null : map['source'] as String,
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
-

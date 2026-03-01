@@ -7,9 +7,12 @@ import 'get_inference_profiles_inference_profile_summary.dart';
 class GetInferenceProfilesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// List of inference profile summary objects. See `inference_profile_summaries`.
-  final List<GetInferenceProfilesInferenceProfileSummary> inferenceProfileSummaries;
+  final List<GetInferenceProfilesInferenceProfileSummary>
+  inferenceProfileSummaries;
   final String region;
+
   /// Type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means the inference profile was created by a user.
   final String? type;
 
@@ -28,7 +31,11 @@ class GetInferenceProfilesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'inferenceProfileSummaries': pulumi.Input.encodeList<GetInferenceProfilesInferenceProfileSummary, Map<String, dynamic>>(inferenceProfileSummaries, (value) => value.toMap()),
+      'inferenceProfileSummaries':
+          pulumi.Input.encodeList<
+            GetInferenceProfilesInferenceProfileSummary,
+            Map<String, dynamic>
+          >(inferenceProfileSummaries, (value) => value.toMap()),
       'region': region,
       'type': ?type,
     };
@@ -37,10 +44,15 @@ class GetInferenceProfilesResult {
   factory GetInferenceProfilesResult.fromMap(Map<String, dynamic> map) {
     return GetInferenceProfilesResult(
       id: map['id'] as String,
-      inferenceProfileSummaries: pulumi.Input.decodeList<GetInferenceProfilesInferenceProfileSummary>(map['inferenceProfileSummaries'], (value) => GetInferenceProfilesInferenceProfileSummary.fromMap((value as Map).cast<String, dynamic>())),
+      inferenceProfileSummaries:
+          pulumi.Input.decodeList<GetInferenceProfilesInferenceProfileSummary>(
+            map['inferenceProfileSummaries'],
+            (value) => GetInferenceProfilesInferenceProfileSummary.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       region: map['region'] as String,
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
-

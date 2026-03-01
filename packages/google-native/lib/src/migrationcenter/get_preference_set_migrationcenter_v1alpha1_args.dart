@@ -19,10 +19,9 @@ class GetPreferenceSetMigrationcenterV1alpha1Args {
     required String location,
     required String preferenceSetId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      preferenceSetId = pulumi.Input.asInput<String>(preferenceSetId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       preferenceSetId = pulumi.Input.asInput<String>(preferenceSetId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetPreferenceSetMigrationcenterV1alpha1Args {
     };
   }
 
-  factory GetPreferenceSetMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetPreferenceSetMigrationcenterV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPreferenceSetMigrationcenterV1alpha1Args(
       location: map['location'] as String,
       preferenceSetId: map['preferenceSetId'] as String,
@@ -40,4 +41,3 @@ class GetPreferenceSetMigrationcenterV1alpha1Args {
     );
   }
 }
-

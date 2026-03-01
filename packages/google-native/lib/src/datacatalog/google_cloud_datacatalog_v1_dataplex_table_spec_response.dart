@@ -8,8 +8,11 @@ import 'google_cloud_datacatalog_v1_dataplex_spec_response.dart';
 class GoogleCloudDatacatalogV1DataplexTableSpecResponse {
   /// Common Dataplex fields.
   final GoogleCloudDatacatalogV1DataplexSpecResponse dataplexSpec;
+
   /// List of external tables registered by Dataplex in other systems based on the same underlying data. External tables allow to query this data in those systems.
-  final List<GoogleCloudDatacatalogV1DataplexExternalTableResponse> externalTables;
+  final List<GoogleCloudDatacatalogV1DataplexExternalTableResponse>
+  externalTables;
+
   /// Indicates if the table schema is managed by the user or not.
   final bool userManaged;
 
@@ -26,17 +29,33 @@ class GoogleCloudDatacatalogV1DataplexTableSpecResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataplexSpec': dataplexSpec.toMap(),
-      'externalTables': pulumi.Input.encodeList<GoogleCloudDatacatalogV1DataplexExternalTableResponse, Map<String, dynamic>>(externalTables, (value) => value.toMap()),
+      'externalTables':
+          pulumi.Input.encodeList<
+            GoogleCloudDatacatalogV1DataplexExternalTableResponse,
+            Map<String, dynamic>
+          >(externalTables, (value) => value.toMap()),
       'userManaged': userManaged,
     };
   }
 
-  factory GoogleCloudDatacatalogV1DataplexTableSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DataplexTableSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1DataplexTableSpecResponse(
-      dataplexSpec: GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap((map['dataplexSpec'] as Map).cast<String, dynamic>()),
-      externalTables: pulumi.Input.decodeList<GoogleCloudDatacatalogV1DataplexExternalTableResponse>(map['externalTables'], (value) => GoogleCloudDatacatalogV1DataplexExternalTableResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dataplexSpec: GoogleCloudDatacatalogV1DataplexSpecResponse.fromMap(
+        (map['dataplexSpec'] as Map).cast<String, dynamic>(),
+      ),
+      externalTables:
+          pulumi.Input.decodeList<
+            GoogleCloudDatacatalogV1DataplexExternalTableResponse
+          >(
+            map['externalTables'],
+            (value) =>
+                GoogleCloudDatacatalogV1DataplexExternalTableResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       userManaged: map['userManaged'] as bool,
     );
   }
 }
-

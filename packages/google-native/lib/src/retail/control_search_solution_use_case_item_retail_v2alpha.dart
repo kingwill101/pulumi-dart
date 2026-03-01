@@ -12,7 +12,8 @@ enum ControlSearchSolutionUseCaseItemRetailV2alpha {
         return item;
       }
     }
-    throw ArgumentError('Unknown ControlSearchSolutionUseCaseItemRetailV2alpha value: $value');
+    throw ArgumentError(
+      'Unknown ControlSearchSolutionUseCaseItemRetailV2alpha value: $value',
+    );
   }
 }
-

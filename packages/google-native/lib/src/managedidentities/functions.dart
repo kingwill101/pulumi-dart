@@ -135,7 +135,8 @@ Future<GetPeeringIamPolicyResult> getPeeringIamPolicy(
 /// Gets details of a single Backup.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1alpha1_get_backup_managedidentities_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBackupManagedidentitiesV1alpha1Result> getBackupManagedidentitiesV1alpha1(
+Future<GetBackupManagedidentitiesV1alpha1Result>
+getBackupManagedidentitiesV1alpha1(
   GetBackupManagedidentitiesV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -151,7 +152,8 @@ Future<GetBackupManagedidentitiesV1alpha1Result> getBackupManagedidentitiesV1alp
 /// Gets details of a single Domain.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1alpha1_get_domain_managedidentities_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDomainManagedidentitiesV1alpha1Result> getDomainManagedidentitiesV1alpha1(
+Future<GetDomainManagedidentitiesV1alpha1Result>
+getDomainManagedidentitiesV1alpha1(
   GetDomainManagedidentitiesV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -167,7 +169,8 @@ Future<GetDomainManagedidentitiesV1alpha1Result> getDomainManagedidentitiesV1alp
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1alpha1_get_domain_backup_iam_policy_managedidentities_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDomainBackupIamPolicyManagedidentitiesV1alpha1Result> getDomainBackupIamPolicyManagedidentitiesV1alpha1(
+Future<GetDomainBackupIamPolicyManagedidentitiesV1alpha1Result>
+getDomainBackupIamPolicyManagedidentitiesV1alpha1(
   GetDomainBackupIamPolicyManagedidentitiesV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -177,13 +180,16 @@ Future<GetDomainBackupIamPolicyManagedidentitiesV1alpha1Result> getDomainBackupI
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetDomainBackupIamPolicyManagedidentitiesV1alpha1Result.fromMap(result);
+  return GetDomainBackupIamPolicyManagedidentitiesV1alpha1Result.fromMap(
+    result,
+  );
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1alpha1_get_domain_iam_policy_managedidentities_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDomainIamPolicyManagedidentitiesV1alpha1Result> getDomainIamPolicyManagedidentitiesV1alpha1(
+Future<GetDomainIamPolicyManagedidentitiesV1alpha1Result>
+getDomainIamPolicyManagedidentitiesV1alpha1(
   GetDomainIamPolicyManagedidentitiesV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -199,7 +205,8 @@ Future<GetDomainIamPolicyManagedidentitiesV1alpha1Result> getDomainIamPolicyMana
 /// Gets details of a single Peering.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1alpha1_get_peering_managedidentities_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPeeringManagedidentitiesV1alpha1Result> getPeeringManagedidentitiesV1alpha1(
+Future<GetPeeringManagedidentitiesV1alpha1Result>
+getPeeringManagedidentitiesV1alpha1(
   GetPeeringManagedidentitiesV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -215,7 +222,8 @@ Future<GetPeeringManagedidentitiesV1alpha1Result> getPeeringManagedidentitiesV1a
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1alpha1_get_peering_iam_policy_managedidentities_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPeeringIamPolicyManagedidentitiesV1alpha1Result> getPeeringIamPolicyManagedidentitiesV1alpha1(
+Future<GetPeeringIamPolicyManagedidentitiesV1alpha1Result>
+getPeeringIamPolicyManagedidentitiesV1alpha1(
   GetPeeringIamPolicyManagedidentitiesV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -231,7 +239,8 @@ Future<GetPeeringIamPolicyManagedidentitiesV1alpha1Result> getPeeringIamPolicyMa
 /// Gets details of a single Backup.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1beta1_get_backup_managedidentities_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBackupManagedidentitiesV1beta1Result> getBackupManagedidentitiesV1beta1(
+Future<GetBackupManagedidentitiesV1beta1Result>
+getBackupManagedidentitiesV1beta1(
   GetBackupManagedidentitiesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -247,7 +256,8 @@ Future<GetBackupManagedidentitiesV1beta1Result> getBackupManagedidentitiesV1beta
 /// Gets information about a domain.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1beta1_get_domain_managedidentities_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDomainManagedidentitiesV1beta1Result> getDomainManagedidentitiesV1beta1(
+Future<GetDomainManagedidentitiesV1beta1Result>
+getDomainManagedidentitiesV1beta1(
   GetDomainManagedidentitiesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -263,7 +273,8 @@ Future<GetDomainManagedidentitiesV1beta1Result> getDomainManagedidentitiesV1beta
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1beta1_get_domain_backup_iam_policy_managedidentities_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDomainBackupIamPolicyManagedidentitiesV1beta1Result> getDomainBackupIamPolicyManagedidentitiesV1beta1(
+Future<GetDomainBackupIamPolicyManagedidentitiesV1beta1Result>
+getDomainBackupIamPolicyManagedidentitiesV1beta1(
   GetDomainBackupIamPolicyManagedidentitiesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -279,7 +290,8 @@ Future<GetDomainBackupIamPolicyManagedidentitiesV1beta1Result> getDomainBackupIa
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1beta1_get_domain_iam_policy_managedidentities_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDomainIamPolicyManagedidentitiesV1beta1Result> getDomainIamPolicyManagedidentitiesV1beta1(
+Future<GetDomainIamPolicyManagedidentitiesV1beta1Result>
+getDomainIamPolicyManagedidentitiesV1beta1(
   GetDomainIamPolicyManagedidentitiesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -295,7 +307,8 @@ Future<GetDomainIamPolicyManagedidentitiesV1beta1Result> getDomainIamPolicyManag
 /// Gets details of a single Peering.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1beta1_get_peering_managedidentities_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPeeringManagedidentitiesV1beta1Result> getPeeringManagedidentitiesV1beta1(
+Future<GetPeeringManagedidentitiesV1beta1Result>
+getPeeringManagedidentitiesV1beta1(
   GetPeeringManagedidentitiesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -311,7 +324,8 @@ Future<GetPeeringManagedidentitiesV1beta1Result> getPeeringManagedidentitiesV1be
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_managedidentities_v1beta1_get_peering_iam_policy_managedidentities_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPeeringIamPolicyManagedidentitiesV1beta1Result> getPeeringIamPolicyManagedidentitiesV1beta1(
+Future<GetPeeringIamPolicyManagedidentitiesV1beta1Result>
+getPeeringIamPolicyManagedidentitiesV1beta1(
   GetPeeringIamPolicyManagedidentitiesV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

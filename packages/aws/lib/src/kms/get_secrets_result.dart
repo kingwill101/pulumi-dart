@@ -7,6 +7,7 @@ import 'get_secrets_secret.dart';
 class GetSecretsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Map containing each `secret` `name` as the key with its decrypted plaintext value
   final Map<String, String> plaintext;
   final String region;
@@ -29,7 +30,11 @@ class GetSecretsResult {
       'id': id,
       'plaintext': plaintext,
       'region': region,
-      'secrets': pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'secrets':
+          pulumi.Input.encodeList<GetSecretsSecret, Map<String, dynamic>>(
+            secrets,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -38,8 +43,11 @@ class GetSecretsResult {
       id: map['id'] as String,
       plaintext: (map['plaintext'] as Map).cast<String, String>(),
       region: map['region'] as String,
-      secrets: pulumi.Input.decodeList<GetSecretsSecret>(map['secrets'], (value) => GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
+      secrets: pulumi.Input.decodeList<GetSecretsSecret>(
+        map['secrets'],
+        (value) =>
+            GetSecretsSecret.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

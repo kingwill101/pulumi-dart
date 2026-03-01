@@ -6,8 +6,10 @@ import 'file_note_file_type.dart';
 class FileNote {
   /// Provide a unique identifier to match analysis information on each specific file in a package
   final List<String>? checksum;
+
   /// This field provides information about the type of file identified
   final FileNoteFileType? fileType;
+
   /// Identify the full path and filename that corresponds to the file information in this section
   final String? title;
 
@@ -15,11 +17,7 @@ class FileNote {
   /// [checksum] Provide a unique identifier to match analysis information on each specific file in a package
   /// [fileType] This field provides information about the type of file identified
   /// [title] Identify the full path and filename that corresponds to the file information in this section
-  FileNote({
-    this.checksum,
-    this.fileType,
-    this.title,
-  });
+  FileNote({this.checksum, this.fileType, this.title});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,13 @@ class FileNote {
 
   factory FileNote.fromMap(Map<String, dynamic> map) {
     return FileNote(
-      checksum: map['checksum'] == null ? null : (map['checksum'] as List).cast<String>(),
-      fileType: map['fileType'] == null ? null : FileNoteFileType.fromValue(map['fileType'] as String),
+      checksum: map['checksum'] == null
+          ? null
+          : (map['checksum'] as List).cast<String>(),
+      fileType: map['fileType'] == null
+          ? null
+          : FileNoteFileType.fromValue(map['fileType'] as String),
       title: map['title'] == null ? null : map['title'] as String,
     );
   }
 }
-

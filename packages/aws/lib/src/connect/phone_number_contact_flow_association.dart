@@ -115,10 +115,13 @@ import 'phone_number_contact_flow_association_args.dart';
 class PhoneNumberContactFlowAssociation extends pulumi.CustomResource {
   /// Contact flow ID.
   late final pulumi.Output<String> contactFlowId;
+
   /// Amazon Connect instance ID.
   late final pulumi.Output<String> instanceId;
+
   /// Phone number ID.
   late final pulumi.Output<String> phoneNumberId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -131,11 +134,11 @@ class PhoneNumberContactFlowAssociation extends pulumi.CustomResource {
     PhoneNumberContactFlowAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:connect/phoneNumberContactFlowAssociation:PhoneNumberContactFlowAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:connect/phoneNumberContactFlowAssociation:PhoneNumberContactFlowAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.contactFlowId = registerOutput<String>('contactFlowId');
     this.instanceId = registerOutput<String>('instanceId');
     this.phoneNumberId = registerOutput<String>('phoneNumberId');

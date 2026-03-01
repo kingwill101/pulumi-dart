@@ -25,12 +25,11 @@ class GetTableArgs {
     String? selectedFields,
     required String tableId,
     String? view,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selectedFields = pulumi.Input.asOptionalInput<String>(selectedFields),
-      tableId = pulumi.Input.asInput<String>(tableId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : datasetId = pulumi.Input.asInput<String>(datasetId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       selectedFields = pulumi.Input.asOptionalInput<String>(selectedFields),
+       tableId = pulumi.Input.asInput<String>(tableId),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +45,11 @@ class GetTableArgs {
     return GetTableArgs(
       datasetId: map['datasetId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      selectedFields: map['selectedFields'] == null ? null : map['selectedFields'] as String,
+      selectedFields: map['selectedFields'] == null
+          ? null
+          : map['selectedFields'] as String,
       tableId: map['tableId'] as String,
       view: map['view'] == null ? null : map['view'] as String,
     );
   }
 }
-

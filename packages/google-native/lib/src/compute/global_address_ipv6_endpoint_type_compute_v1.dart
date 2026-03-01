@@ -12,7 +12,8 @@ enum GlobalAddressIpv6EndpointTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalAddressIpv6EndpointTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown GlobalAddressIpv6EndpointTypeComputeV1 value: $value',
+    );
   }
 }
-

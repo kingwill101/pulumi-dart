@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
   /// Name for pod secondary ipv4 range which has the actual range defined ahead.
   final List<String> podRangeNames;
@@ -12,15 +11,14 @@ class GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'podRangeNames': podRangeNames,
-    };
+    return <String, dynamic>{'podRangeNames': podRangeNames};
   }
 
-  factory GetClusterIpAllocationPolicyAdditionalPodRangesConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterIpAllocationPolicyAdditionalPodRangesConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterIpAllocationPolicyAdditionalPodRangesConfig(
       podRangeNames: (map['podRangeNames'] as List).cast<String>(),
     );
   }
 }
-

@@ -8,8 +8,10 @@ class RRSetRoutingPolicyPrimaryBackupPolicy {
   /// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
   final RRSetRoutingPolicyGeoPolicy? backupGeoTargets;
   final String? kind;
+
   /// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
   final RRSetRoutingPolicyHealthCheckTargets? primaryTargets;
+
   /// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
   final double? trickleTraffic;
 
@@ -27,20 +29,35 @@ class RRSetRoutingPolicyPrimaryBackupPolicy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupGeoTargets': ?backupGeoTargets == null ? null : backupGeoTargets!.toMap(),
+      'backupGeoTargets': ?backupGeoTargets == null
+          ? null
+          : backupGeoTargets!.toMap(),
       'kind': ?kind,
-      'primaryTargets': ?primaryTargets == null ? null : primaryTargets!.toMap(),
+      'primaryTargets': ?primaryTargets == null
+          ? null
+          : primaryTargets!.toMap(),
       'trickleTraffic': ?trickleTraffic,
     };
   }
 
-  factory RRSetRoutingPolicyPrimaryBackupPolicy.fromMap(Map<String, dynamic> map) {
+  factory RRSetRoutingPolicyPrimaryBackupPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RRSetRoutingPolicyPrimaryBackupPolicy(
-      backupGeoTargets: map['backupGeoTargets'] == null ? null : RRSetRoutingPolicyGeoPolicy.fromMap((map['backupGeoTargets'] as Map).cast<String, dynamic>()),
+      backupGeoTargets: map['backupGeoTargets'] == null
+          ? null
+          : RRSetRoutingPolicyGeoPolicy.fromMap(
+              (map['backupGeoTargets'] as Map).cast<String, dynamic>(),
+            ),
       kind: map['kind'] == null ? null : map['kind'] as String,
-      primaryTargets: map['primaryTargets'] == null ? null : RRSetRoutingPolicyHealthCheckTargets.fromMap((map['primaryTargets'] as Map).cast<String, dynamic>()),
-      trickleTraffic: map['trickleTraffic'] == null ? null : map['trickleTraffic'] as double,
+      primaryTargets: map['primaryTargets'] == null
+          ? null
+          : RRSetRoutingPolicyHealthCheckTargets.fromMap(
+              (map['primaryTargets'] as Map).cast<String, dynamic>(),
+            ),
+      trickleTraffic: map['trickleTraffic'] == null
+          ? null
+          : map['trickleTraffic'] as double,
     );
   }
 }
-

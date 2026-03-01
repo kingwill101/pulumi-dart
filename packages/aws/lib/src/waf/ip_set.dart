@@ -162,8 +162,10 @@ import 'ip_set_ip_set_descriptor.dart';
 class IpSet extends pulumi.CustomResource {
   /// The ARN of the WAF IPSet.
   late final pulumi.Output<String> arn;
+
   /// One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) from which web requests originate.
   late final pulumi.Output<List<IpSetIpSetDescriptor>?> ipSetDescriptors;
+
   /// The name or description of the IPSet.
   late final pulumi.Output<String> name;
 
@@ -171,18 +173,17 @@ class IpSet extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [IpSet]. {@macro pulumi_waf_ip_set_ip_set_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  IpSet(
-    String name, {
-    IpSetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:waf/ipSet:IpSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  IpSet(String name, {IpSetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:waf/ipSet:IpSet',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.arn = registerOutput<String>('arn');
-    this.ipSetDescriptors = registerOutput<List<IpSetIpSetDescriptor>?>('ipSetDescriptors');
+    this.ipSetDescriptors = registerOutput<List<IpSetIpSetDescriptor>?>(
+      'ipSetDescriptors',
+    );
     this.name = registerOutput<String>('name');
   }
 }

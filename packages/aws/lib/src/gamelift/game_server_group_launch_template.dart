@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GameServerGroupLaunchTemplate {
   /// A unique identifier for an existing EC2 launch template.
   final String? id;
+
   /// A readable identifier for an existing EC2 launch template.
   final String? name;
+
   /// The version of the EC2 launch template to use. If none is set, the default is the first version created.
   final String? version;
 
@@ -13,18 +14,10 @@ class GameServerGroupLaunchTemplate {
   /// [id] A unique identifier for an existing EC2 launch template.
   /// [name] A readable identifier for an existing EC2 launch template.
   /// [version] The version of the EC2 launch template to use. If none is set, the default is the first version created.
-  GameServerGroupLaunchTemplate({
-    this.id,
-    this.name,
-    this.version,
-  });
+  GameServerGroupLaunchTemplate({this.id, this.name, this.version});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': ?name,
-      'version': ?version,
-    };
+    return <String, dynamic>{'id': ?id, 'name': ?name, 'version': ?version};
   }
 
   factory GameServerGroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
@@ -35,4 +28,3 @@ class GameServerGroupLaunchTemplate {
     );
   }
 }
-

@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Metadata associated with a Cloud SQL instance.
 class CloudSQLInstanceInfoResponseNetworkmanagementV1beta1 {
   /// Name of a Cloud SQL instance.
   final String displayName;
+
   /// External IP address of a Cloud SQL instance.
   final String externalIp;
+
   /// Internal IP address of a Cloud SQL instance.
   final String internalIp;
+
   /// URI of a Cloud SQL instance network or empty string if the instance does not have one.
   final String networkUri;
+
   /// Region in which the Cloud SQL instance is running.
   final String region;
+
   /// URI of a Cloud SQL instance.
   final String uri;
 
@@ -43,7 +47,9 @@ class CloudSQLInstanceInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory CloudSQLInstanceInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CloudSQLInstanceInfoResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudSQLInstanceInfoResponseNetworkmanagementV1beta1(
       displayName: map['displayName'] as String,
       externalIp: map['externalIp'] as String,
@@ -54,4 +60,3 @@ class CloudSQLInstanceInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

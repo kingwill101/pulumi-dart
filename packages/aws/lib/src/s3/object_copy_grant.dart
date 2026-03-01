@@ -1,17 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ObjectCopyGrant {
   /// Email address of the grantee. Used only when `type` is `AmazonCustomerByEmail`.
   final String? email;
+
   /// Canonical user ID of the grantee. Used only when `type` is `CanonicalUser`.
   final String? id;
+
   /// List of permissions to grant to grantee. Valid values are `READ`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
   final List<String> permissions;
+
   /// Type of grantee. Valid values are `CanonicalUser`, `Group`, and `AmazonCustomerByEmail`.
   ///
   /// This configuration block has the following optional arguments (one of the three is required):
   final String type;
+
   /// URI of the grantee group. Used only when `type` is `Group`.
   final String? uri;
 
@@ -49,4 +52,3 @@ class ObjectCopyGrant {
     );
   }
 }
-

@@ -28,13 +28,12 @@ class GetEntityArgs {
     String? project,
     String? view,
     required String zone,
-  }) :
-      entityId = pulumi.Input.asInput<String>(entityId),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : entityId = pulumi.Input.asInput<String>(entityId),
+       lakeId = pulumi.Input.asInput<String>(lakeId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,4 +57,3 @@ class GetEntityArgs {
     );
   }
 }
-

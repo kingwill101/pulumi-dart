@@ -19,10 +19,9 @@ class GetDataExchangeIamPolicyArgs {
     required String dataExchangeId,
     required String location,
     String? project,
-  }) :
-      dataExchangeId = pulumi.Input.asInput<String>(dataExchangeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : dataExchangeId = pulumi.Input.asInput<String>(dataExchangeId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetDataExchangeIamPolicyArgs {
     );
   }
 }
-

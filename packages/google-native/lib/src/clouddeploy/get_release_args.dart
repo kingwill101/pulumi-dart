@@ -22,11 +22,10 @@ class GetReleaseArgs {
     required String location,
     String? project,
     required String releaseId,
-  }) :
-      deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      releaseId = pulumi.Input.asInput<String>(releaseId);
+  }) : deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       releaseId = pulumi.Input.asInput<String>(releaseId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetReleaseArgs {
     );
   }
 }
-

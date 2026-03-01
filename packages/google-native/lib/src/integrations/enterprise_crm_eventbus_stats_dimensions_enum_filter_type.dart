@@ -6,13 +6,17 @@ enum EnterpriseCrmEventbusStatsDimensionsEnumFilterType {
   const EnterpriseCrmEventbusStatsDimensionsEnumFilterType(this.value);
   final String value;
 
-  static EnterpriseCrmEventbusStatsDimensionsEnumFilterType fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusStatsDimensionsEnumFilterType.values) {
+  static EnterpriseCrmEventbusStatsDimensionsEnumFilterType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusStatsDimensionsEnumFilterType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusStatsDimensionsEnumFilterType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusStatsDimensionsEnumFilterType value: $value',
+    );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig {
   /// A flag that indicates whether additional CloudWatch metrics are enabled for a given CloudFront distribution. Valid values are `Enabled` and `Disabled`. See below.
   final String realtimeMetricsSubscriptionStatus;
@@ -17,10 +16,12 @@ class MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionCon
     };
   }
 
-  factory MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig.fromMap(Map<String, dynamic> map) {
+  factory MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitoringSubscriptionMonitoringSubscriptionRealtimeMetricsSubscriptionConfig(
-      realtimeMetricsSubscriptionStatus: map['realtimeMetricsSubscriptionStatus'] as String,
+      realtimeMetricsSubscriptionStatus:
+          map['realtimeMetricsSubscriptionStatus'] as String,
     );
   }
 }
-

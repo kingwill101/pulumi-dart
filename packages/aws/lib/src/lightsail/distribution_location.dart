@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DistributionLocation {
   /// Availability Zone. Follows the format us-east-2a (case-sensitive).
   final String availabilityZone;
+
   /// AWS Region name.
   final String regionName;
 
@@ -29,4 +29,3 @@ class DistributionLocation {
     );
   }
 }
-

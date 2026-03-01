@@ -10,20 +10,28 @@ import 'zypper_settings_response.dart';
 class PatchConfigResponse {
   /// Apt update settings. Use this setting to override the default `apt` patch rules.
   final AptSettingsResponse apt;
+
   /// Goo update settings. Use this setting to override the default `goo` patch rules.
   final Map<String, dynamic> goo;
+
   /// Allows the patch job to run on Managed instance groups (MIGs).
   final bool migInstancesAllowed;
+
   /// The `ExecStep` to run after the patch update.
   final ExecStepResponse postStep;
+
   /// The `ExecStep` to run before the patch update.
   final ExecStepResponse preStep;
+
   /// Post-patch reboot settings.
   final String rebootConfig;
+
   /// Windows update settings. Use this override the default windows patch rules.
   final WindowsUpdateSettingsResponse windowsUpdate;
+
   /// Yum update settings. Use this setting to override the default `yum` patch rules.
   final YumSettingsResponse yum;
+
   /// Zypper update settings. Use this setting to override the default `zypper` patch rules.
   final ZypperSettingsResponse zypper;
 
@@ -65,16 +73,27 @@ class PatchConfigResponse {
 
   factory PatchConfigResponse.fromMap(Map<String, dynamic> map) {
     return PatchConfigResponse(
-      apt: AptSettingsResponse.fromMap((map['apt'] as Map).cast<String, dynamic>()),
+      apt: AptSettingsResponse.fromMap(
+        (map['apt'] as Map).cast<String, dynamic>(),
+      ),
       goo: (map['goo'] as Map).cast<String, dynamic>(),
       migInstancesAllowed: map['migInstancesAllowed'] as bool,
-      postStep: ExecStepResponse.fromMap((map['postStep'] as Map).cast<String, dynamic>()),
-      preStep: ExecStepResponse.fromMap((map['preStep'] as Map).cast<String, dynamic>()),
+      postStep: ExecStepResponse.fromMap(
+        (map['postStep'] as Map).cast<String, dynamic>(),
+      ),
+      preStep: ExecStepResponse.fromMap(
+        (map['preStep'] as Map).cast<String, dynamic>(),
+      ),
       rebootConfig: map['rebootConfig'] as String,
-      windowsUpdate: WindowsUpdateSettingsResponse.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>()),
-      yum: YumSettingsResponse.fromMap((map['yum'] as Map).cast<String, dynamic>()),
-      zypper: ZypperSettingsResponse.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
+      windowsUpdate: WindowsUpdateSettingsResponse.fromMap(
+        (map['windowsUpdate'] as Map).cast<String, dynamic>(),
+      ),
+      yum: YumSettingsResponse.fromMap(
+        (map['yum'] as Map).cast<String, dynamic>(),
+      ),
+      zypper: ZypperSettingsResponse.fromMap(
+        (map['zypper'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

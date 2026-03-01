@@ -9,9 +9,7 @@ class WindowsNodeConfigContainerV1beta1 {
 
   /// Creates a new [WindowsNodeConfigContainerV1beta1].
   /// [osVersion] OSVersion specifies the Windows node config to be used on the node
-  WindowsNodeConfigContainerV1beta1({
-    this.osVersion,
-  });
+  WindowsNodeConfigContainerV1beta1({this.osVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class WindowsNodeConfigContainerV1beta1 {
 
   factory WindowsNodeConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return WindowsNodeConfigContainerV1beta1(
-      osVersion: map['osVersion'] == null ? null : WindowsNodeConfigOsVersionContainerV1beta1.fromValue(map['osVersion'] as String),
+      osVersion: map['osVersion'] == null
+          ? null
+          : WindowsNodeConfigOsVersionContainerV1beta1.fromValue(
+              map['osVersion'] as String,
+            ),
     );
   }
 }
-

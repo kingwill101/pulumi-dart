@@ -9,20 +9,23 @@ class SignInBehaviorCloudidentityV1beta1 {
 
   /// Creates a new [SignInBehaviorCloudidentityV1beta1].
   /// [redirectCondition] When to redirect sign-ins to the IdP.
-  SignInBehaviorCloudidentityV1beta1({
-    this.redirectCondition,
-  });
+  SignInBehaviorCloudidentityV1beta1({this.redirectCondition});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'redirectCondition': ?redirectCondition == null ? null : redirectCondition!.value,
+      'redirectCondition': ?redirectCondition == null
+          ? null
+          : redirectCondition!.value,
     };
   }
 
   factory SignInBehaviorCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return SignInBehaviorCloudidentityV1beta1(
-      redirectCondition: map['redirectCondition'] == null ? null : SignInBehaviorRedirectConditionCloudidentityV1beta1.fromValue(map['redirectCondition'] as String),
+      redirectCondition: map['redirectCondition'] == null
+          ? null
+          : SignInBehaviorRedirectConditionCloudidentityV1beta1.fromValue(
+              map['redirectCondition'] as String,
+            ),
     );
   }
 }
-

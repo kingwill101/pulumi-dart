@@ -9,18 +9,27 @@ import 'google_cloud_documentai_v1_document_provenance_response.dart';
 class GoogleCloudDocumentaiV1DocumentPageFormFieldResponse {
   /// Created for Labeling UI to export key text. If corrections were made to the text identified by the `field_name.text_anchor`, this field will contain the correction.
   final String correctedKeyText;
+
   /// Created for Labeling UI to export value text. If corrections were made to the text identified by the `field_value.text_anchor`, this field will contain the correction.
   final String correctedValueText;
+
   /// Layout for the FormField name. e.g. `Address`, `Email`, `Grand total`, `Phone number`, etc.
   final GoogleCloudDocumentaiV1DocumentPageLayoutResponse fieldName;
+
   /// Layout for the FormField value.
   final GoogleCloudDocumentaiV1DocumentPageLayoutResponse fieldValue;
+
   /// A list of detected languages for name together with confidence.
-  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse> nameDetectedLanguages;
+  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>
+  nameDetectedLanguages;
+
   /// The history of this annotation.
   final GoogleCloudDocumentaiV1DocumentProvenanceResponse provenance;
+
   /// A list of detected languages for value together with confidence.
-  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse> valueDetectedLanguages;
+  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>
+  valueDetectedLanguages;
+
   /// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
   final String valueType;
 
@@ -50,24 +59,57 @@ class GoogleCloudDocumentaiV1DocumentPageFormFieldResponse {
       'correctedValueText': correctedValueText,
       'fieldName': fieldName.toMap(),
       'fieldValue': fieldValue.toMap(),
-      'nameDetectedLanguages': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse, Map<String, dynamic>>(nameDetectedLanguages, (value) => value.toMap()),
+      'nameDetectedLanguages':
+          pulumi.Input.encodeList<
+            GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
+            Map<String, dynamic>
+          >(nameDetectedLanguages, (value) => value.toMap()),
       'provenance': provenance.toMap(),
-      'valueDetectedLanguages': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse, Map<String, dynamic>>(valueDetectedLanguages, (value) => value.toMap()),
+      'valueDetectedLanguages':
+          pulumi.Input.encodeList<
+            GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
+            Map<String, dynamic>
+          >(valueDetectedLanguages, (value) => value.toMap()),
       'valueType': valueType,
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageFormFieldResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageFormFieldResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageFormFieldResponse(
       correctedKeyText: map['correctedKeyText'] as String,
       correctedValueText: map['correctedValueText'] as String,
-      fieldName: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['fieldName'] as Map).cast<String, dynamic>()),
-      fieldValue: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['fieldValue'] as Map).cast<String, dynamic>()),
-      nameDetectedLanguages: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(map['nameDetectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provenance: GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap((map['provenance'] as Map).cast<String, dynamic>()),
-      valueDetectedLanguages: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(map['valueDetectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      fieldName: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
+        (map['fieldName'] as Map).cast<String, dynamic>(),
+      ),
+      fieldValue: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
+        (map['fieldValue'] as Map).cast<String, dynamic>(),
+      ),
+      nameDetectedLanguages:
+          pulumi.Input.decodeList<
+            GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse
+          >(
+            map['nameDetectedLanguages'],
+            (value) =>
+                GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      provenance: GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap(
+        (map['provenance'] as Map).cast<String, dynamic>(),
+      ),
+      valueDetectedLanguages:
+          pulumi.Input.decodeList<
+            GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse
+          >(
+            map['valueDetectedLanguages'],
+            (value) =>
+                GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       valueType: map['valueType'] as String,
     );
   }
 }
-

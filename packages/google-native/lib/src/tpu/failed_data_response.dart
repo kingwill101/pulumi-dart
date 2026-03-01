@@ -9,20 +9,17 @@ class FailedDataResponse {
 
   /// Creates a new [FailedDataResponse].
   /// [error] The error that caused the queued resource to enter the FAILED state.
-  FailedDataResponse({
-    required this.error,
-  });
+  FailedDataResponse({required this.error});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'error': error.toMap(),
-    };
+    return <String, dynamic>{'error': error.toMap()};
   }
 
   factory FailedDataResponse.fromMap(Map<String, dynamic> map) {
     return FailedDataResponse(
-      error: StatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error: StatusResponse.fromMap(
+        (map['error'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

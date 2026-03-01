@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstanceFromMachineImageSchedulingNodeAffinity {
   final String key;
   final String operator;
@@ -24,7 +23,9 @@ class InstanceFromMachineImageSchedulingNodeAffinity {
     };
   }
 
-  factory InstanceFromMachineImageSchedulingNodeAffinity.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromMachineImageSchedulingNodeAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromMachineImageSchedulingNodeAffinity(
       key: map['key'] as String,
       operator: map['operator'] as String,
@@ -32,4 +33,3 @@ class InstanceFromMachineImageSchedulingNodeAffinity {
     );
   }
 }
-

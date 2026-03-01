@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetServiceDeploymentConfigurationLifecycleHook {
   /// Additional details for the hook
   final String hookDetails;
+
   /// ARN of the Lambda function to invoke
   final String hookTargetArn;
+
   /// Deployment stages when hook is invoked
   final List<String> lifecycleStages;
+
   /// ARN of the IAM role that allows ECS to manage the target groups.
   final String roleArn;
 
@@ -32,7 +34,9 @@ class GetServiceDeploymentConfigurationLifecycleHook {
     };
   }
 
-  factory GetServiceDeploymentConfigurationLifecycleHook.fromMap(Map<String, dynamic> map) {
+  factory GetServiceDeploymentConfigurationLifecycleHook.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceDeploymentConfigurationLifecycleHook(
       hookDetails: map['hookDetails'] as String,
       hookTargetArn: map['hookTargetArn'] as String,
@@ -41,4 +45,3 @@ class GetServiceDeploymentConfigurationLifecycleHook {
     );
   }
 }
-

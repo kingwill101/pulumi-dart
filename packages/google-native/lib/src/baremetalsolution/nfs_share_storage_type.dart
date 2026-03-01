@@ -16,4 +16,3 @@ enum NfsShareStorageType {
     throw ArgumentError('Unknown NfsShareStorageType value: $value');
   }
 }
-

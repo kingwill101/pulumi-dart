@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Details for the VM created VM as part of disks migration.
 class DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1 {
   /// The URI of the Compute Engine VM.
@@ -13,15 +12,14 @@ class DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vmUri': vmUri,
-    };
+    return <String, dynamic>{'vmUri': vmUri};
   }
 
-  factory DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DisksMigrationVmTargetDetailsResponseVmmigrationV1alpha1(
       vmUri: map['vmUri'] as String,
     );
   }
 }
-

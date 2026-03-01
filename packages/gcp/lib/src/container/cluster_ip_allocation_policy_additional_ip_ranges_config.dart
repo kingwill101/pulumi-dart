@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
   /// List of secondary ranges names within this subnetwork that can be used for pod IPs.
   final List<String>? podIpv4RangeNames;
+
   /// Name of the subnetwork. This can be the full path of the subnetwork or just the name.
   final String subnetwork;
 
@@ -22,11 +22,14 @@ class ClusterIpAllocationPolicyAdditionalIpRangesConfig {
     };
   }
 
-  factory ClusterIpAllocationPolicyAdditionalIpRangesConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterIpAllocationPolicyAdditionalIpRangesConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterIpAllocationPolicyAdditionalIpRangesConfig(
-      podIpv4RangeNames: map['podIpv4RangeNames'] == null ? null : (map['podIpv4RangeNames'] as List).cast<String>(),
+      podIpv4RangeNames: map['podIpv4RangeNames'] == null
+          ? null
+          : (map['podIpv4RangeNames'] as List).cast<String>(),
       subnetwork: map['subnetwork'] as String,
     );
   }
 }
-

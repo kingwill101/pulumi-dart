@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDomainClusterConfigZoneAwarenessConfig {
   /// Number of availability zones used.
   final int availabilityZoneCount;
@@ -12,15 +11,14 @@ class GetDomainClusterConfigZoneAwarenessConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'availabilityZoneCount': availabilityZoneCount,
-    };
+    return <String, dynamic>{'availabilityZoneCount': availabilityZoneCount};
   }
 
-  factory GetDomainClusterConfigZoneAwarenessConfig.fromMap(Map<String, dynamic> map) {
+  factory GetDomainClusterConfigZoneAwarenessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDomainClusterConfigZoneAwarenessConfig(
       availabilityZoneCount: map['availabilityZoneCount'] as int,
     );
   }
 }
-

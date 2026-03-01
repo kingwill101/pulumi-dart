@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BuildMetadataResponse {
   final String finishedOn;
   final String invocationId;
@@ -32,4 +31,3 @@ class BuildMetadataResponse {
     );
   }
 }
-

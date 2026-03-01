@@ -8,8 +8,10 @@ import 'persistent_disk_response.dart';
 class ComputeEngineDisksTargetDetailsResponse {
   /// The details of each created Persistent Disk.
   final List<PersistentDiskResponse> disks;
+
   /// Details of the disks-only migration target.
   final Map<String, dynamic> disksTargetDetails;
+
   /// Details for the VM the migrated data disks are attached to.
   final DisksMigrationVmTargetDetailsResponse vmTargetDetails;
 
@@ -25,18 +27,31 @@ class ComputeEngineDisksTargetDetailsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': pulumi.Input.encodeList<PersistentDiskResponse, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'disks':
+          pulumi.Input.encodeList<PersistentDiskResponse, Map<String, dynamic>>(
+            disks,
+            (value) => value.toMap(),
+          ),
       'disksTargetDetails': disksTargetDetails,
       'vmTargetDetails': vmTargetDetails.toMap(),
     };
   }
 
-  factory ComputeEngineDisksTargetDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory ComputeEngineDisksTargetDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ComputeEngineDisksTargetDetailsResponse(
-      disks: pulumi.Input.decodeList<PersistentDiskResponse>(map['disks'], (value) => PersistentDiskResponse.fromMap((value as Map).cast<String, dynamic>())),
-      disksTargetDetails: (map['disksTargetDetails'] as Map).cast<String, dynamic>(),
-      vmTargetDetails: DisksMigrationVmTargetDetailsResponse.fromMap((map['vmTargetDetails'] as Map).cast<String, dynamic>()),
+      disks: pulumi.Input.decodeList<PersistentDiskResponse>(
+        map['disks'],
+        (value) => PersistentDiskResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      disksTargetDetails: (map['disksTargetDetails'] as Map)
+          .cast<String, dynamic>(),
+      vmTargetDetails: DisksMigrationVmTargetDetailsResponse.fromMap(
+        (map['vmTargetDetails'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

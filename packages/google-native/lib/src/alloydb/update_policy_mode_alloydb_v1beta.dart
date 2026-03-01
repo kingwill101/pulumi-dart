@@ -16,4 +16,3 @@ enum UpdatePolicyModeAlloydbV1beta {
     throw ArgumentError('Unknown UpdatePolicyModeAlloydbV1beta value: $value');
   }
 }
-

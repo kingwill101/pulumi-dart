@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Rendered image contents for this page.
 class GoogleCloudDocumentaiV1DocumentPageImage {
   /// Raw byte content of the image.
   final String? content;
+
   /// Height of the image in pixels.
   final int? height;
+
   /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
   final String? mimeType;
+
   /// Width of the image in pixels.
   final int? width;
 
@@ -33,7 +35,9 @@ class GoogleCloudDocumentaiV1DocumentPageImage {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageImage.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageImage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageImage(
       content: map['content'] == null ? null : map['content'] as String,
       height: map['height'] == null ? null : map['height'] as int,
@@ -42,4 +46,3 @@ class GoogleCloudDocumentaiV1DocumentPageImage {
     );
   }
 }
-

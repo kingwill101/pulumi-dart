@@ -16,14 +16,25 @@ class WebServerNetworkAccessControlResponseComposerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedIpRanges': pulumi.Input.encodeList<AllowedIpRangeResponseComposerV1beta1, Map<String, dynamic>>(allowedIpRanges, (value) => value.toMap()),
+      'allowedIpRanges':
+          pulumi.Input.encodeList<
+            AllowedIpRangeResponseComposerV1beta1,
+            Map<String, dynamic>
+          >(allowedIpRanges, (value) => value.toMap()),
     };
   }
 
-  factory WebServerNetworkAccessControlResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WebServerNetworkAccessControlResponseComposerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebServerNetworkAccessControlResponseComposerV1beta1(
-      allowedIpRanges: pulumi.Input.decodeList<AllowedIpRangeResponseComposerV1beta1>(map['allowedIpRanges'], (value) => AllowedIpRangeResponseComposerV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      allowedIpRanges:
+          pulumi.Input.decodeList<AllowedIpRangeResponseComposerV1beta1>(
+            map['allowedIpRanges'],
+            (value) => AllowedIpRangeResponseComposerV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

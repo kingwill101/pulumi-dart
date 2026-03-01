@@ -12,8 +12,10 @@ class BackupScheduleArgs {
   final pulumi.Input<Map<String, dynamic>>? dailyRecurrence;
   final pulumi.Input<String> databaseId;
   final pulumi.Input<String>? project;
+
   /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   final pulumi.Input<String>? retention;
+
   /// For a schedule that runs weekly on a specific day and time.
   final pulumi.Input<GoogleFirestoreAdminV1WeeklyRecurrence>? weeklyRecurrence;
 
@@ -29,12 +31,16 @@ class BackupScheduleArgs {
     String? project,
     String? retention,
     GoogleFirestoreAdminV1WeeklyRecurrence? weeklyRecurrence,
-  }) :
-      dailyRecurrence = pulumi.Input.asOptionalInput<Map<String, dynamic>>(dailyRecurrence),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      retention = pulumi.Input.asOptionalInput<String>(retention),
-      weeklyRecurrence = pulumi.Input.asOptionalInput<GoogleFirestoreAdminV1WeeklyRecurrence>(weeklyRecurrence);
+  }) : dailyRecurrence = pulumi.Input.asOptionalInput<Map<String, dynamic>>(
+         dailyRecurrence,
+       ),
+       databaseId = pulumi.Input.asInput<String>(databaseId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       retention = pulumi.Input.asOptionalInput<String>(retention),
+       weeklyRecurrence =
+           pulumi.Input.asOptionalInput<GoogleFirestoreAdminV1WeeklyRecurrence>(
+             weeklyRecurrence,
+           );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,18 +48,27 @@ class BackupScheduleArgs {
       'databaseId': databaseId,
       'project': ?project,
       'retention': ?retention,
-      'weeklyRecurrence': ?pulumi.Input.mapOptionalInputValue<GoogleFirestoreAdminV1WeeklyRecurrence, Map<String, dynamic>>(weeklyRecurrence, (value) => value.toMap()),
+      'weeklyRecurrence':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleFirestoreAdminV1WeeklyRecurrence,
+            Map<String, dynamic>
+          >(weeklyRecurrence, (value) => value.toMap()),
     };
   }
 
   factory BackupScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BackupScheduleArgs(
-      dailyRecurrence: map['dailyRecurrence'] == null ? null : (map['dailyRecurrence'] as Map).cast<String, dynamic>(),
+      dailyRecurrence: map['dailyRecurrence'] == null
+          ? null
+          : (map['dailyRecurrence'] as Map).cast<String, dynamic>(),
       databaseId: map['databaseId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       retention: map['retention'] == null ? null : map['retention'] as String,
-      weeklyRecurrence: map['weeklyRecurrence'] == null ? null : GoogleFirestoreAdminV1WeeklyRecurrence.fromMap((map['weeklyRecurrence'] as Map).cast<String, dynamic>()),
+      weeklyRecurrence: map['weeklyRecurrence'] == null
+          ? null
+          : GoogleFirestoreAdminV1WeeklyRecurrence.fromMap(
+              (map['weeklyRecurrence'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

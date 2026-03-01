@@ -10,17 +10,22 @@ class JobTemplateTemplateVolume {
   /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
   /// Structure is documented below.
   final JobTemplateTemplateVolumeCloudSqlInstance? cloudSqlInstance;
+
   /// Ephemeral storage used as a shared volume.
   /// Structure is documented below.
   final JobTemplateTemplateVolumeEmptyDir? emptyDir;
+
   /// Cloud Storage bucket mounted as a volume using GCSFuse.
   /// Structure is documented below.
   final JobTemplateTemplateVolumeGcs? gcs;
+
   /// Volume's name.
   final String name;
+
   /// NFS share mounted as a volume.
   /// Structure is documented below.
   final JobTemplateTemplateVolumeNfs? nfs;
+
   /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
   /// Structure is documented below.
   final JobTemplateTemplateVolumeSecret? secret;
@@ -43,7 +48,9 @@ class JobTemplateTemplateVolume {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudSqlInstance': ?cloudSqlInstance == null ? null : cloudSqlInstance!.toMap(),
+      'cloudSqlInstance': ?cloudSqlInstance == null
+          ? null
+          : cloudSqlInstance!.toMap(),
       'emptyDir': ?emptyDir == null ? null : emptyDir!.toMap(),
       'gcs': ?gcs == null ? null : gcs!.toMap(),
       'name': name,
@@ -54,13 +61,32 @@ class JobTemplateTemplateVolume {
 
   factory JobTemplateTemplateVolume.fromMap(Map<String, dynamic> map) {
     return JobTemplateTemplateVolume(
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : JobTemplateTemplateVolumeCloudSqlInstance.fromMap((map['cloudSqlInstance'] as Map).cast<String, dynamic>()),
-      emptyDir: map['emptyDir'] == null ? null : JobTemplateTemplateVolumeEmptyDir.fromMap((map['emptyDir'] as Map).cast<String, dynamic>()),
-      gcs: map['gcs'] == null ? null : JobTemplateTemplateVolumeGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
+      cloudSqlInstance: map['cloudSqlInstance'] == null
+          ? null
+          : JobTemplateTemplateVolumeCloudSqlInstance.fromMap(
+              (map['cloudSqlInstance'] as Map).cast<String, dynamic>(),
+            ),
+      emptyDir: map['emptyDir'] == null
+          ? null
+          : JobTemplateTemplateVolumeEmptyDir.fromMap(
+              (map['emptyDir'] as Map).cast<String, dynamic>(),
+            ),
+      gcs: map['gcs'] == null
+          ? null
+          : JobTemplateTemplateVolumeGcs.fromMap(
+              (map['gcs'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] as String,
-      nfs: map['nfs'] == null ? null : JobTemplateTemplateVolumeNfs.fromMap((map['nfs'] as Map).cast<String, dynamic>()),
-      secret: map['secret'] == null ? null : JobTemplateTemplateVolumeSecret.fromMap((map['secret'] as Map).cast<String, dynamic>()),
+      nfs: map['nfs'] == null
+          ? null
+          : JobTemplateTemplateVolumeNfs.fromMap(
+              (map['nfs'] as Map).cast<String, dynamic>(),
+            ),
+      secret: map['secret'] == null
+          ? null
+          : JobTemplateTemplateVolumeSecret.fromMap(
+              (map['secret'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

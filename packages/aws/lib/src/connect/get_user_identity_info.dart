@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetUserIdentityInfo {
   /// The email address.
   final String email;
+
   /// The first name.
   final String firstName;
+
   /// The last name.
   final String lastName;
+
   /// The secondary email address. If present, email notifications will be sent to this email address instead of the primary one.
   final String secondaryEmail;
 
@@ -41,4 +43,3 @@ class GetUserIdentityInfo {
     );
   }
 }
-

@@ -13,11 +13,8 @@ class GetPolicyBasedRouteArgs {
   /// Creates a new [GetPolicyBasedRouteArgs].
   /// [policyBasedRouteId] Required.
   /// [project] Optional.
-  GetPolicyBasedRouteArgs({
-    required String policyBasedRouteId,
-    String? project,
-  }) :
-      policyBasedRouteId = pulumi.Input.asInput<String>(policyBasedRouteId),
+  GetPolicyBasedRouteArgs({required String policyBasedRouteId, String? project})
+    : policyBasedRouteId = pulumi.Input.asInput<String>(policyBasedRouteId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetPolicyBasedRouteArgs {
     );
   }
 }
-

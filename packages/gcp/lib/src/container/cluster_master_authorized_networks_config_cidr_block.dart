@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterMasterAuthorizedNetworksConfigCidrBlock {
   /// External network that can access Kubernetes master through HTTPS.
   /// Must be specified in CIDR notation.
   final String cidrBlock;
+
   /// Field for users to identify CIDR blocks.
   final String? displayName;
 
@@ -23,11 +23,14 @@ class ClusterMasterAuthorizedNetworksConfigCidrBlock {
     };
   }
 
-  factory ClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap(Map<String, dynamic> map) {
+  factory ClusterMasterAuthorizedNetworksConfigCidrBlock.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterMasterAuthorizedNetworksConfigCidrBlock(
       cidrBlock: map['cidrBlock'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
     );
   }
 }
-

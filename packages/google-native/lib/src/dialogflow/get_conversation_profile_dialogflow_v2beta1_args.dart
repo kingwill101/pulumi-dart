@@ -19,10 +19,11 @@ class GetConversationProfileDialogflowV2beta1Args {
     required String conversationProfileId,
     required String location,
     String? project,
-  }) :
-      conversationProfileId = pulumi.Input.asInput<String>(conversationProfileId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : conversationProfileId = pulumi.Input.asInput<String>(
+         conversationProfileId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +33,9 @@ class GetConversationProfileDialogflowV2beta1Args {
     };
   }
 
-  factory GetConversationProfileDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetConversationProfileDialogflowV2beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConversationProfileDialogflowV2beta1Args(
       conversationProfileId: map['conversationProfileId'] as String,
       location: map['location'] as String,
@@ -40,4 +43,3 @@ class GetConversationProfileDialogflowV2beta1Args {
     );
   }
 }
-

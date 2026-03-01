@@ -13,7 +13,8 @@ enum TlsValidationContextValidationSource {
         return item;
       }
     }
-    throw ArgumentError('Unknown TlsValidationContextValidationSource value: $value');
+    throw ArgumentError(
+      'Unknown TlsValidationContextValidationSource value: $value',
+    );
   }
 }
-

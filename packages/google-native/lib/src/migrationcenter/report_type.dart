@@ -15,4 +15,3 @@ enum ReportType {
     throw ArgumentError('Unknown ReportType value: $value');
   }
 }
-

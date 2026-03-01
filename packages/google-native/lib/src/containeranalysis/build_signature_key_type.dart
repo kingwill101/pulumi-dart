@@ -16,4 +16,3 @@ enum BuildSignatureKeyType {
     throw ArgumentError('Unknown BuildSignatureKeyType value: $value');
   }
 }
-

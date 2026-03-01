@@ -5,7 +5,8 @@ import 'enterprise_crm_eventbus_proto_teardown_task_config_response.dart';
 
 class EnterpriseCrmEventbusProtoTeardownResponse {
   /// Required.
-  final List<EnterpriseCrmEventbusProtoTeardownTaskConfigResponse> teardownTaskConfigs;
+  final List<EnterpriseCrmEventbusProtoTeardownTaskConfigResponse>
+  teardownTaskConfigs;
 
   /// Creates a new [EnterpriseCrmEventbusProtoTeardownResponse].
   /// [teardownTaskConfigs] Required.
@@ -15,14 +16,28 @@ class EnterpriseCrmEventbusProtoTeardownResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'teardownTaskConfigs': pulumi.Input.encodeList<EnterpriseCrmEventbusProtoTeardownTaskConfigResponse, Map<String, dynamic>>(teardownTaskConfigs, (value) => value.toMap()),
+      'teardownTaskConfigs':
+          pulumi.Input.encodeList<
+            EnterpriseCrmEventbusProtoTeardownTaskConfigResponse,
+            Map<String, dynamic>
+          >(teardownTaskConfigs, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoTeardownResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoTeardownResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoTeardownResponse(
-      teardownTaskConfigs: pulumi.Input.decodeList<EnterpriseCrmEventbusProtoTeardownTaskConfigResponse>(map['teardownTaskConfigs'], (value) => EnterpriseCrmEventbusProtoTeardownTaskConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
+      teardownTaskConfigs:
+          pulumi.Input.decodeList<
+            EnterpriseCrmEventbusProtoTeardownTaskConfigResponse
+          >(
+            map['teardownTaskConfigs'],
+            (value) =>
+                EnterpriseCrmEventbusProtoTeardownTaskConfigResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

@@ -15,4 +15,3 @@ enum RouterBgpPeerEnable {
     throw ArgumentError('Unknown RouterBgpPeerEnable value: $value');
   }
 }
-

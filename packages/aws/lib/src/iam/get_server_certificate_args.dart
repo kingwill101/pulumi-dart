@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerCertificateArgs {
   /// sort results by expiration date. returns the certificate with expiration date in furthest in the future.
   final pulumi.Input<bool>? latest;
+
   /// exact name of the cert to lookup
   final pulumi.Input<String>? name;
+
   /// prefix of cert to filter by
   final pulumi.Input<String>? namePrefix;
+
   /// prefix of path to filter by
   final pulumi.Input<String>? pathPrefix;
 
@@ -26,11 +29,10 @@ class GetServerCertificateArgs {
     String? name,
     String? namePrefix,
     String? pathPrefix,
-  }) :
-      latest = pulumi.Input.asOptionalInput<bool>(latest),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
-      pathPrefix = pulumi.Input.asOptionalInput<String>(pathPrefix);
+  }) : latest = pulumi.Input.asOptionalInput<bool>(latest),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       namePrefix = pulumi.Input.asOptionalInput<String>(namePrefix),
+       pathPrefix = pulumi.Input.asOptionalInput<String>(pathPrefix);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,9 +47,12 @@ class GetServerCertificateArgs {
     return GetServerCertificateArgs(
       latest: map['latest'] == null ? null : map['latest'] as bool,
       name: map['name'] == null ? null : map['name'] as String,
-      namePrefix: map['namePrefix'] == null ? null : map['namePrefix'] as String,
-      pathPrefix: map['pathPrefix'] == null ? null : map['pathPrefix'] as String,
+      namePrefix: map['namePrefix'] == null
+          ? null
+          : map['namePrefix'] as String,
+      pathPrefix: map['pathPrefix'] == null
+          ? null
+          : map['pathPrefix'] as String,
     );
   }
 }
-

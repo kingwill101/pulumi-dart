@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConfiguredTableTableReference {
   final String databaseName;
   final String tableName;
@@ -27,4 +26,3 @@ class ConfiguredTableTableReference {
     );
   }
 }
-

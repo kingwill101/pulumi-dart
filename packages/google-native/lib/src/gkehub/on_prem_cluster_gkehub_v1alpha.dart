@@ -6,8 +6,10 @@ import 'on_prem_cluster_cluster_type_gkehub_v1alpha.dart';
 class OnPremClusterGkehubV1alpha {
   /// Immutable. Whether the cluster is an admin cluster.
   final bool? adminCluster;
+
   /// Immutable. The on prem cluster's type.
   final OnPremClusterClusterTypeGkehubV1alpha? clusterType;
+
   /// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
   final String? resourceLink;
 
@@ -31,10 +33,17 @@ class OnPremClusterGkehubV1alpha {
 
   factory OnPremClusterGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return OnPremClusterGkehubV1alpha(
-      adminCluster: map['adminCluster'] == null ? null : map['adminCluster'] as bool,
-      clusterType: map['clusterType'] == null ? null : OnPremClusterClusterTypeGkehubV1alpha.fromValue(map['clusterType'] as String),
-      resourceLink: map['resourceLink'] == null ? null : map['resourceLink'] as String,
+      adminCluster: map['adminCluster'] == null
+          ? null
+          : map['adminCluster'] as bool,
+      clusterType: map['clusterType'] == null
+          ? null
+          : OnPremClusterClusterTypeGkehubV1alpha.fromValue(
+              map['clusterType'] as String,
+            ),
+      resourceLink: map['resourceLink'] == null
+          ? null
+          : map['resourceLink'] as String,
     );
   }
 }
-

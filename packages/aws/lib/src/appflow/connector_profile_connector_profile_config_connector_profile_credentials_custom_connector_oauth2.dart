@@ -6,7 +6,8 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   final String? accessToken;
   final String? clientId;
   final String? clientSecret;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest? oauthRequest;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest?
+  oauthRequest;
   final String? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2].
@@ -33,14 +34,25 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2(
-      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
+      accessToken: map['accessToken'] == null
+          ? null
+          : map['accessToken'] as String,
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
+      clientSecret: map['clientSecret'] == null
+          ? null
+          : map['clientSecret'] as String,
+      oauthRequest: map['oauthRequest'] == null
+          ? null
+          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest.fromMap(
+              (map['oauthRequest'] as Map).cast<String, dynamic>(),
+            ),
+      refreshToken: map['refreshToken'] == null
+          ? null
+          : map['refreshToken'] as String,
     );
   }
 }
-

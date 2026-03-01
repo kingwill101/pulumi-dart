@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// State of the Membership resource.
 class MembershipStateResponseGkehubV1beta1 {
   /// The current state of the Membership resource.
   final String code;
+
   /// This field is never set by the Hub Service.
   final String description;
+
   /// This field is never set by the Hub Service.
   final String updateTime;
 
@@ -28,7 +29,9 @@ class MembershipStateResponseGkehubV1beta1 {
     };
   }
 
-  factory MembershipStateResponseGkehubV1beta1.fromMap(Map<String, dynamic> map) {
+  factory MembershipStateResponseGkehubV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MembershipStateResponseGkehubV1beta1(
       code: map['code'] as String,
       description: map['description'] as String,
@@ -36,4 +39,3 @@ class MembershipStateResponseGkehubV1beta1 {
     );
   }
 }
-

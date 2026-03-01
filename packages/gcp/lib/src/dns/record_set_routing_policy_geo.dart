@@ -6,8 +6,10 @@ class RecordSetRoutingPolicyGeo {
   /// For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
   /// Structure is documented below.
   final RecordSetRoutingPolicyGeoHealthCheckedTargets? healthCheckedTargets;
+
   /// The location name defined in Google Cloud.
   final String location;
+
   /// Same as `rrdatas` above.
   final List<String>? rrdatas;
 
@@ -23,7 +25,9 @@ class RecordSetRoutingPolicyGeo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'healthCheckedTargets': ?healthCheckedTargets == null ? null : healthCheckedTargets!.toMap(),
+      'healthCheckedTargets': ?healthCheckedTargets == null
+          ? null
+          : healthCheckedTargets!.toMap(),
       'location': location,
       'rrdatas': ?rrdatas,
     };
@@ -31,10 +35,15 @@ class RecordSetRoutingPolicyGeo {
 
   factory RecordSetRoutingPolicyGeo.fromMap(Map<String, dynamic> map) {
     return RecordSetRoutingPolicyGeo(
-      healthCheckedTargets: map['healthCheckedTargets'] == null ? null : RecordSetRoutingPolicyGeoHealthCheckedTargets.fromMap((map['healthCheckedTargets'] as Map).cast<String, dynamic>()),
+      healthCheckedTargets: map['healthCheckedTargets'] == null
+          ? null
+          : RecordSetRoutingPolicyGeoHealthCheckedTargets.fromMap(
+              (map['healthCheckedTargets'] as Map).cast<String, dynamic>(),
+            ),
       location: map['location'] as String,
-      rrdatas: map['rrdatas'] == null ? null : (map['rrdatas'] as List).cast<String>(),
+      rrdatas: map['rrdatas'] == null
+          ? null
+          : (map['rrdatas'] as List).cast<String>(),
     );
   }
 }
-

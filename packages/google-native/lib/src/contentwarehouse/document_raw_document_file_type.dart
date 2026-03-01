@@ -20,4 +20,3 @@ enum DocumentRawDocumentFileType {
     throw ArgumentError('Unknown DocumentRawDocumentFileType value: $value');
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetEndpointPostgresSetting {
   final String afterConnectScript;
   final String authenticationMethod;
@@ -107,4 +106,3 @@ class GetEndpointPostgresSetting {
     );
   }
 }
-

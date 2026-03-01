@@ -19,10 +19,9 @@ class GetViewArgs {
     required String location,
     String? project,
     required String viewId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      viewId = pulumi.Input.asInput<String>(viewId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       viewId = pulumi.Input.asInput<String>(viewId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetViewArgs {
     );
   }
 }
-

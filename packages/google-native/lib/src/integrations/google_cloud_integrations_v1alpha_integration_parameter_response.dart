@@ -6,20 +6,28 @@ import 'google_cloud_integrations_v1alpha_value_type_response.dart';
 class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse {
   /// Type of the parameter.
   final String dataType;
+
   /// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
   final GoogleCloudIntegrationsV1alphaValueTypeResponse defaultValue;
+
   /// The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is "foo.bar.myName", then the name would be "myName".
   final String displayName;
+
   /// Specifies the input/output type for the parameter.
   final String inputOutputType;
+
   /// Whether this parameter is a transient parameter.
   final bool isTransient;
+
   /// This schema will be used to validate runtime JSON-typed values of this parameter.
   final String jsonSchema;
+
   /// Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
   final String key;
+
   /// The identifier of the node (TaskConfig/TriggerConfig) this parameter was produced by, if it is a transient param or a copy of an input param.
   final String producer;
+
   /// Searchable in the execution log or not.
   final bool searchable;
 
@@ -59,10 +67,14 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaIntegrationParameterResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaIntegrationParameterResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaIntegrationParameterResponse(
       dataType: map['dataType'] as String,
-      defaultValue: GoogleCloudIntegrationsV1alphaValueTypeResponse.fromMap((map['defaultValue'] as Map).cast<String, dynamic>()),
+      defaultValue: GoogleCloudIntegrationsV1alphaValueTypeResponse.fromMap(
+        (map['defaultValue'] as Map).cast<String, dynamic>(),
+      ),
       displayName: map['displayName'] as String,
       inputOutputType: map['inputOutputType'] as String,
       isTransient: map['isTransient'] as bool,
@@ -73,4 +85,3 @@ class GoogleCloudIntegrationsV1alphaIntegrationParameterResponse {
     );
   }
 }
-

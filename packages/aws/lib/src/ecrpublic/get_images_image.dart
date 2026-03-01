@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetImagesImage {
   /// Media type of the artifact.
   final String artifactMediaType;
+
   /// Digest of the image manifest.
   final String imageDigest;
+
   /// Media type of the image manifest.
   final String imageManifestMediaType;
   final String imagePushedAt;
   final int imageSizeInBytes;
   final List<String> imageTags;
+
   /// AWS account ID associated with the public registry that contains the repository. If not specified, the default public registry is assumed.
   final String registryId;
+
   /// Name of the public repository.
   final String repositoryName;
 
@@ -62,4 +65,3 @@ class GetImagesImage {
     );
   }
 }
-

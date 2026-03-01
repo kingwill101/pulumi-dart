@@ -4,9 +4,11 @@ import 'security_policy_advanced_options_config_json_custom_config_response_comp
 
 class SecurityPolicyAdvancedOptionsConfigResponseComputeV1 {
   /// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
-  final SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1 jsonCustomConfig;
+  final SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1
+  jsonCustomConfig;
   final String jsonParsing;
   final String logLevel;
+
   /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
   final List<String> userIpRequestHeaders;
 
@@ -31,13 +33,18 @@ class SecurityPolicyAdvancedOptionsConfigResponseComputeV1 {
     };
   }
 
-  factory SecurityPolicyAdvancedOptionsConfigResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdvancedOptionsConfigResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdvancedOptionsConfigResponseComputeV1(
-      jsonCustomConfig: SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1.fromMap((map['jsonCustomConfig'] as Map).cast<String, dynamic>()),
+      jsonCustomConfig:
+          SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseComputeV1.fromMap(
+            (map['jsonCustomConfig'] as Map).cast<String, dynamic>(),
+          ),
       jsonParsing: map['jsonParsing'] as String,
       logLevel: map['logLevel'] as String,
-      userIpRequestHeaders: (map['userIpRequestHeaders'] as List).cast<String>(),
+      userIpRequestHeaders: (map['userIpRequestHeaders'] as List)
+          .cast<String>(),
     );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WireGroupEndpointInterconnect {
   /// (Optional)
   final String? interconnect;
+
   /// The identifier for this object. Format specified above.
   final String interconnectName;
+
   /// VLAN tags for the interconnect.
   final List<int>? vlanTags;
 
@@ -29,10 +30,13 @@ class WireGroupEndpointInterconnect {
 
   factory WireGroupEndpointInterconnect.fromMap(Map<String, dynamic> map) {
     return WireGroupEndpointInterconnect(
-      interconnect: map['interconnect'] == null ? null : map['interconnect'] as String,
+      interconnect: map['interconnect'] == null
+          ? null
+          : map['interconnect'] as String,
       interconnectName: map['interconnectName'] as String,
-      vlanTags: map['vlanTags'] == null ? null : (map['vlanTags'] as List).cast<int>(),
+      vlanTags: map['vlanTags'] == null
+          ? null
+          : (map['vlanTags'] as List).cast<int>(),
     );
   }
 }
-

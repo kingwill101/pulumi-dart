@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration {
   /// The AWS Fargate platform version where the jobs are running. A platform version is specified only for jobs that are running on Fargate resources.
   final String platformVersion;
@@ -12,15 +11,14 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'platformVersion': platformVersion,
-    };
+    return <String, dynamic>{'platformVersion': platformVersion};
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerFargatePlatformConfiguration(
       platformVersion: map['platformVersion'] as String,
     );
   }
 }
-

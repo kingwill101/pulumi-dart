@@ -7,6 +7,7 @@ import 'security_posture_config.dart';
 class DefaultClusterConfig {
   /// Optional. Enable/Disable binary authorization features for the cluster.
   final BinaryAuthorizationConfig? binaryAuthorizationConfig;
+
   /// Enable/Disable Security Posture features for the cluster.
   final SecurityPostureConfig? securityPostureConfig;
 
@@ -20,16 +21,27 @@ class DefaultClusterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'binaryAuthorizationConfig': ?binaryAuthorizationConfig == null ? null : binaryAuthorizationConfig!.toMap(),
-      'securityPostureConfig': ?securityPostureConfig == null ? null : securityPostureConfig!.toMap(),
+      'binaryAuthorizationConfig': ?binaryAuthorizationConfig == null
+          ? null
+          : binaryAuthorizationConfig!.toMap(),
+      'securityPostureConfig': ?securityPostureConfig == null
+          ? null
+          : securityPostureConfig!.toMap(),
     };
   }
 
   factory DefaultClusterConfig.fromMap(Map<String, dynamic> map) {
     return DefaultClusterConfig(
-      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : BinaryAuthorizationConfig.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>()),
-      securityPostureConfig: map['securityPostureConfig'] == null ? null : SecurityPostureConfig.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>()),
+      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null
+          ? null
+          : BinaryAuthorizationConfig.fromMap(
+              (map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>(),
+            ),
+      securityPostureConfig: map['securityPostureConfig'] == null
+          ? null
+          : SecurityPostureConfig.fromMap(
+              (map['securityPostureConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

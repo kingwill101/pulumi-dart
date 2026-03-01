@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDestGroup.
 class GetDestGroupResult {
   /// Unordered list. List of CIDRs that this group applies to.
   final List<String> cidrs;
+
   /// Unordered list. List of FQDNs that this group applies to.
   final List<String> fqdns;
+
   /// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
   final String name;
 
@@ -21,11 +22,7 @@ class GetDestGroupResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cidrs': cidrs,
-      'fqdns': fqdns,
-      'name': name,
-    };
+    return <String, dynamic>{'cidrs': cidrs, 'fqdns': fqdns, 'name': name};
   }
 
   factory GetDestGroupResult.fromMap(Map<String, dynamic> map) {
@@ -36,4 +33,3 @@ class GetDestGroupResult {
     );
   }
 }
-

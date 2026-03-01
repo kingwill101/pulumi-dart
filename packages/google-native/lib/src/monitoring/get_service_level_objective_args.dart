@@ -25,12 +25,13 @@ class GetServiceLevelObjectiveArgs {
     required String v3Id,
     required String v3Id1,
     String? view,
-  }) :
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      serviceLevelObjectiveId = pulumi.Input.asInput<String>(serviceLevelObjectiveId),
-      v3Id = pulumi.Input.asInput<String>(v3Id),
-      v3Id1 = pulumi.Input.asInput<String>(v3Id1),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : serviceId = pulumi.Input.asInput<String>(serviceId),
+       serviceLevelObjectiveId = pulumi.Input.asInput<String>(
+         serviceLevelObjectiveId,
+       ),
+       v3Id = pulumi.Input.asInput<String>(v3Id),
+       v3Id1 = pulumi.Input.asInput<String>(v3Id1),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +53,3 @@ class GetServiceLevelObjectiveArgs {
     );
   }
 }
-

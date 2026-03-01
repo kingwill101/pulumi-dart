@@ -13,7 +13,8 @@ enum GlobalAddressIpVersionComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalAddressIpVersionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalAddressIpVersionComputeBeta value: $value',
+    );
   }
 }
-

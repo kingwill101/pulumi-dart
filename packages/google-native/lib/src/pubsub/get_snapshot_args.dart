@@ -13,18 +13,12 @@ class GetSnapshotArgs {
   /// Creates a new [GetSnapshotArgs].
   /// [project] Optional.
   /// [snapshotId] Required.
-  GetSnapshotArgs({
-    String? project,
-    required String snapshotId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetSnapshotArgs({String? project, required String snapshotId})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       snapshotId = pulumi.Input.asInput<String>(snapshotId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'snapshotId': snapshotId,
-    };
+    return <String, dynamic>{'project': ?project, 'snapshotId': snapshotId};
   }
 
   factory GetSnapshotArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetSnapshotArgs {
     );
   }
 }
-

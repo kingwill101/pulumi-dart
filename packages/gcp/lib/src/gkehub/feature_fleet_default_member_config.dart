@@ -8,9 +8,11 @@ class FeatureFleetDefaultMemberConfig {
   /// Config Management spec
   /// Structure is documented below.
   final FeatureFleetDefaultMemberConfigConfigmanagement? configmanagement;
+
   /// Service Mesh spec
   /// Structure is documented below.
   final FeatureFleetDefaultMemberConfigMesh? mesh;
+
   /// Policy Controller spec
   /// Structure is documented below.
   final FeatureFleetDefaultMemberConfigPolicycontroller? policycontroller;
@@ -27,18 +29,33 @@ class FeatureFleetDefaultMemberConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configmanagement': ?configmanagement == null ? null : configmanagement!.toMap(),
+      'configmanagement': ?configmanagement == null
+          ? null
+          : configmanagement!.toMap(),
       'mesh': ?mesh == null ? null : mesh!.toMap(),
-      'policycontroller': ?policycontroller == null ? null : policycontroller!.toMap(),
+      'policycontroller': ?policycontroller == null
+          ? null
+          : policycontroller!.toMap(),
     };
   }
 
   factory FeatureFleetDefaultMemberConfig.fromMap(Map<String, dynamic> map) {
     return FeatureFleetDefaultMemberConfig(
-      configmanagement: map['configmanagement'] == null ? null : FeatureFleetDefaultMemberConfigConfigmanagement.fromMap((map['configmanagement'] as Map).cast<String, dynamic>()),
-      mesh: map['mesh'] == null ? null : FeatureFleetDefaultMemberConfigMesh.fromMap((map['mesh'] as Map).cast<String, dynamic>()),
-      policycontroller: map['policycontroller'] == null ? null : FeatureFleetDefaultMemberConfigPolicycontroller.fromMap((map['policycontroller'] as Map).cast<String, dynamic>()),
+      configmanagement: map['configmanagement'] == null
+          ? null
+          : FeatureFleetDefaultMemberConfigConfigmanagement.fromMap(
+              (map['configmanagement'] as Map).cast<String, dynamic>(),
+            ),
+      mesh: map['mesh'] == null
+          ? null
+          : FeatureFleetDefaultMemberConfigMesh.fromMap(
+              (map['mesh'] as Map).cast<String, dynamic>(),
+            ),
+      policycontroller: map['policycontroller'] == null
+          ? null
+          : FeatureFleetDefaultMemberConfigPolicycontroller.fromMap(
+              (map['policycontroller'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

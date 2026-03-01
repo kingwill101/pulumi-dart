@@ -12,17 +12,22 @@ class FeatureArgs {
   /// Optional. Fleet Default Membership Configuration.
   /// Structure is documented below.
   final pulumi.Input<FeatureFleetDefaultMemberConfig>? fleetDefaultMemberConfig;
+
   /// GCP labels for this Feature.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location for the resource
   final pulumi.Input<String> location;
+
   /// The full, unique name of this Feature resource
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
   /// Structure is documented below.
   final pulumi.Input<FeatureSpec>? spec;
@@ -41,34 +46,51 @@ class FeatureArgs {
     String? name,
     String? project,
     FeatureSpec? spec,
-  }) :
-      fleetDefaultMemberConfig = pulumi.Input.asOptionalInput<FeatureFleetDefaultMemberConfig>(fleetDefaultMemberConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spec = pulumi.Input.asOptionalInput<FeatureSpec>(spec);
+  }) : fleetDefaultMemberConfig =
+           pulumi.Input.asOptionalInput<FeatureFleetDefaultMemberConfig>(
+             fleetDefaultMemberConfig,
+           ),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       spec = pulumi.Input.asOptionalInput<FeatureSpec>(spec);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fleetDefaultMemberConfig': ?pulumi.Input.mapOptionalInputValue<FeatureFleetDefaultMemberConfig, Map<String, dynamic>>(fleetDefaultMemberConfig, (value) => value.toMap()),
+      'fleetDefaultMemberConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            FeatureFleetDefaultMemberConfig,
+            Map<String, dynamic>
+          >(fleetDefaultMemberConfig, (value) => value.toMap()),
       'labels': ?labels,
       'location': location,
       'name': ?name,
       'project': ?project,
-      'spec': ?pulumi.Input.mapOptionalInputValue<FeatureSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            FeatureSpec,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
     };
   }
 
   factory FeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureArgs(
-      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : FeatureFleetDefaultMemberConfig.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null
+          ? null
+          : FeatureFleetDefaultMemberConfig.fromMap(
+              (map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>(),
+            ),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      spec: map['spec'] == null ? null : FeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      spec: map['spec'] == null
+          ? null
+          : FeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

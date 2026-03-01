@@ -5,29 +5,39 @@ import 'connection_github_enterprise_config_service_directory_config.dart';
 class ConnectionGithubEnterpriseConfig {
   /// Optional. ID of the GitHub App created from the manifest.
   final String? appId;
+
   /// Optional. ID of the installation of the GitHub App.
   final String? appInstallationId;
+
   /// (Output)
   /// Output only. The URL-friendly name of the GitHub App.
   final String? appSlug;
+
   /// Required. The URI of the GitHub Enterprise host this connection is for.
   final String hostUri;
+
   /// (Output)
   /// Output only. The URI to navigate to in order to manage the installation associated
   /// with this GitHubEnterpriseConfig.
   final String? installationUri;
+
   /// Optional. SecretManager resource containing the private key of the GitHub App,
   /// formatted as `projects/*/secrets/*/versions/*`.
   final String? privateKeySecretVersion;
+
   /// (Output)
   /// Output only. GitHub Enterprise version installed at the host_uri.
   final String? serverVersion;
+
   /// ServiceDirectoryConfig represents Service Directory configuration for a
   /// connection.
   /// Structure is documented below.
-  final ConnectionGithubEnterpriseConfigServiceDirectoryConfig? serviceDirectoryConfig;
+  final ConnectionGithubEnterpriseConfigServiceDirectoryConfig?
+  serviceDirectoryConfig;
+
   /// Optional. SSL certificate to use for requests to GitHub Enterprise.
   final String? sslCaCertificate;
+
   /// Optional. SecretManager resource containing the webhook secret of the GitHub App,
   /// formatted as `projects/*/secrets/*/versions/*`.
   final String? webhookSecretSecretVersion;
@@ -65,7 +75,9 @@ class ConnectionGithubEnterpriseConfig {
       'installationUri': ?installationUri,
       'privateKeySecretVersion': ?privateKeySecretVersion,
       'serverVersion': ?serverVersion,
-      'serviceDirectoryConfig': ?serviceDirectoryConfig == null ? null : serviceDirectoryConfig!.toMap(),
+      'serviceDirectoryConfig': ?serviceDirectoryConfig == null
+          ? null
+          : serviceDirectoryConfig!.toMap(),
       'sslCaCertificate': ?sslCaCertificate,
       'webhookSecretSecretVersion': ?webhookSecretSecretVersion,
     };
@@ -74,16 +86,31 @@ class ConnectionGithubEnterpriseConfig {
   factory ConnectionGithubEnterpriseConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionGithubEnterpriseConfig(
       appId: map['appId'] == null ? null : map['appId'] as String,
-      appInstallationId: map['appInstallationId'] == null ? null : map['appInstallationId'] as String,
+      appInstallationId: map['appInstallationId'] == null
+          ? null
+          : map['appInstallationId'] as String,
       appSlug: map['appSlug'] == null ? null : map['appSlug'] as String,
       hostUri: map['hostUri'] as String,
-      installationUri: map['installationUri'] == null ? null : map['installationUri'] as String,
-      privateKeySecretVersion: map['privateKeySecretVersion'] == null ? null : map['privateKeySecretVersion'] as String,
-      serverVersion: map['serverVersion'] == null ? null : map['serverVersion'] as String,
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : ConnectionGithubEnterpriseConfigServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>()),
-      sslCaCertificate: map['sslCaCertificate'] == null ? null : map['sslCaCertificate'] as String,
-      webhookSecretSecretVersion: map['webhookSecretSecretVersion'] == null ? null : map['webhookSecretSecretVersion'] as String,
+      installationUri: map['installationUri'] == null
+          ? null
+          : map['installationUri'] as String,
+      privateKeySecretVersion: map['privateKeySecretVersion'] == null
+          ? null
+          : map['privateKeySecretVersion'] as String,
+      serverVersion: map['serverVersion'] == null
+          ? null
+          : map['serverVersion'] as String,
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null
+          ? null
+          : ConnectionGithubEnterpriseConfigServiceDirectoryConfig.fromMap(
+              (map['serviceDirectoryConfig'] as Map).cast<String, dynamic>(),
+            ),
+      sslCaCertificate: map['sslCaCertificate'] == null
+          ? null
+          : map['sslCaCertificate'] as String,
+      webhookSecretSecretVersion: map['webhookSecretSecretVersion'] == null
+          ? null
+          : map['webhookSecretSecretVersion'] as String,
     );
   }
 }
-

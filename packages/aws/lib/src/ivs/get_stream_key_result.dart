@@ -1,16 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getStreamKey.
 class GetStreamKeyResult {
   /// ARN of the Stream Key.
   final String arn;
   final String channelArn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// Map of tags assigned to the resource.
   final Map<String, String> tags;
+
   /// Stream Key value.
   final String value;
 
@@ -52,4 +54,3 @@ class GetStreamKeyResult {
     );
   }
 }
-

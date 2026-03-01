@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CatalogDatabaseCreateTableDefaultPermissionPrincipal {
   /// An identifier for the Lake Formation principal.
   final String? dataLakePrincipalIdentifier;
@@ -17,10 +16,13 @@ class CatalogDatabaseCreateTableDefaultPermissionPrincipal {
     };
   }
 
-  factory CatalogDatabaseCreateTableDefaultPermissionPrincipal.fromMap(Map<String, dynamic> map) {
+  factory CatalogDatabaseCreateTableDefaultPermissionPrincipal.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CatalogDatabaseCreateTableDefaultPermissionPrincipal(
-      dataLakePrincipalIdentifier: map['dataLakePrincipalIdentifier'] == null ? null : map['dataLakePrincipalIdentifier'] as String,
+      dataLakePrincipalIdentifier: map['dataLakePrincipalIdentifier'] == null
+          ? null
+          : map['dataLakePrincipalIdentifier'] as String,
     );
   }
 }
-

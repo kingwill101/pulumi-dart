@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WebAclCustomResponseBody {
   /// Payload of the custom response.
   final String content;
+
   /// Type of content in the payload that you are defining in the `content` argument. Valid values are `TEXT_PLAIN`, `TEXT_HTML`, or `APPLICATION_JSON`.
   final String contentType;
+
   /// Unique key identifying the custom response body. This is referenced by the `custom_response_body_key` argument in the `custom_response` block.
   final String key;
 
@@ -35,4 +36,3 @@ class WebAclCustomResponseBody {
     );
   }
 }
-

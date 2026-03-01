@@ -6,8 +6,10 @@ import 'google_cloud_datacatalog_v1_routine_spec_argument_mode.dart';
 class GoogleCloudDatacatalogV1RoutineSpecArgument {
   /// Specifies whether the argument is input or output.
   final GoogleCloudDatacatalogV1RoutineSpecArgumentMode? mode;
+
   /// The name of the argument. A return argument of a function might not have a name.
   final String? name;
+
   /// Type of the argument. The exact value depends on the source system and the language.
   final String? type;
 
@@ -29,12 +31,17 @@ class GoogleCloudDatacatalogV1RoutineSpecArgument {
     };
   }
 
-  factory GoogleCloudDatacatalogV1RoutineSpecArgument.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1RoutineSpecArgument.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1RoutineSpecArgument(
-      mode: map['mode'] == null ? null : GoogleCloudDatacatalogV1RoutineSpecArgumentMode.fromValue(map['mode'] as String),
+      mode: map['mode'] == null
+          ? null
+          : GoogleCloudDatacatalogV1RoutineSpecArgumentMode.fromValue(
+              map['mode'] as String,
+            ),
       name: map['name'] == null ? null : map['name'] as String,
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
-

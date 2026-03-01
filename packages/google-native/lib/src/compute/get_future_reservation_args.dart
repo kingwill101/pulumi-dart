@@ -19,10 +19,9 @@ class GetFutureReservationArgs {
     required String futureReservation,
     String? project,
     required String zone,
-  }) :
-      futureReservation = pulumi.Input.asInput<String>(futureReservation),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : futureReservation = pulumi.Input.asInput<String>(futureReservation),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetFutureReservationArgs {
     );
   }
 }
-

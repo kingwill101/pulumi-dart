@@ -9,20 +9,31 @@ class ResponsePolicyRuleLocalDataDnsV1beta2 {
 
   /// Creates a new [ResponsePolicyRuleLocalDataDnsV1beta2].
   /// [localDatas] All resource record sets for this selector, one per resource record type. The name must match the dns_name.
-  ResponsePolicyRuleLocalDataDnsV1beta2({
-    this.localDatas,
-  });
+  ResponsePolicyRuleLocalDataDnsV1beta2({this.localDatas});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'localDatas': ?localDatas == null ? null : pulumi.Input.encodeList<ResourceRecordSetDnsV1beta2, Map<String, dynamic>>(localDatas!, (value) => value.toMap()),
+      'localDatas': ?localDatas == null
+          ? null
+          : pulumi.Input.encodeList<
+              ResourceRecordSetDnsV1beta2,
+              Map<String, dynamic>
+            >(localDatas!, (value) => value.toMap()),
     };
   }
 
-  factory ResponsePolicyRuleLocalDataDnsV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ResponsePolicyRuleLocalDataDnsV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResponsePolicyRuleLocalDataDnsV1beta2(
-      localDatas: map['localDatas'] == null ? null : pulumi.Input.decodeList<ResourceRecordSetDnsV1beta2>(map['localDatas'], (value) => ResourceRecordSetDnsV1beta2.fromMap((value as Map).cast<String, dynamic>())),
+      localDatas: map['localDatas'] == null
+          ? null
+          : pulumi.Input.decodeList<ResourceRecordSetDnsV1beta2>(
+              map['localDatas'],
+              (value) => ResourceRecordSetDnsV1beta2.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

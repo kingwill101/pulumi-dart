@@ -19,10 +19,9 @@ class GetBackupManagedidentitiesV1beta1Args {
     required String backupId,
     required String domainId,
     String? project,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      domainId = pulumi.Input.asInput<String>(domainId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : backupId = pulumi.Input.asInput<String>(backupId),
+       domainId = pulumi.Input.asInput<String>(domainId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetBackupManagedidentitiesV1beta1Args {
     };
   }
 
-  factory GetBackupManagedidentitiesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetBackupManagedidentitiesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBackupManagedidentitiesV1beta1Args(
       backupId: map['backupId'] as String,
       domainId: map['domainId'] as String,
@@ -40,4 +41,3 @@ class GetBackupManagedidentitiesV1beta1Args {
     );
   }
 }
-

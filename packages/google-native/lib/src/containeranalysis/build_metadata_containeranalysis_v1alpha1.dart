@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BuildMetadataContaineranalysisV1alpha1 {
   final String? finishedOn;
   final String? invocationId;
@@ -24,12 +23,17 @@ class BuildMetadataContaineranalysisV1alpha1 {
     };
   }
 
-  factory BuildMetadataContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory BuildMetadataContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BuildMetadataContaineranalysisV1alpha1(
-      finishedOn: map['finishedOn'] == null ? null : map['finishedOn'] as String,
-      invocationId: map['invocationId'] == null ? null : map['invocationId'] as String,
+      finishedOn: map['finishedOn'] == null
+          ? null
+          : map['finishedOn'] as String,
+      invocationId: map['invocationId'] == null
+          ? null
+          : map['invocationId'] as String,
       startedOn: map['startedOn'] == null ? null : map['startedOn'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds {
   /// Name of the secret for a virtual node's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
   final String secretName;
@@ -12,15 +11,14 @@ class VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretName': secretName,
-    };
+    return <String, dynamic>{'secretName': secretName};
   }
 
-  factory VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds.fromMap(Map<String, dynamic> map) {
+  factory VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNodeSpecBackendVirtualServiceClientPolicyTlsCertificateSds(
       secretName: map['secretName'] as String,
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum BuildOptionsLogStreamingOption {
     throw ArgumentError('Unknown BuildOptionsLogStreamingOption value: $value');
   }
 }
-

@@ -19,10 +19,9 @@ class GetCustomJobArgs {
     required String customJobId,
     required String location,
     String? project,
-  }) :
-      customJobId = pulumi.Input.asInput<String>(customJobId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : customJobId = pulumi.Input.asInput<String>(customJobId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetCustomJobArgs {
     );
   }
 }
-

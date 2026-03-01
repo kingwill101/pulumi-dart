@@ -19,10 +19,11 @@ class GetSubscriptionIamPolicyPubsubV1beta2Args {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String subscriptionId,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+  }) : optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,12 +33,16 @@ class GetSubscriptionIamPolicyPubsubV1beta2Args {
     };
   }
 
-  factory GetSubscriptionIamPolicyPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
+  factory GetSubscriptionIamPolicyPubsubV1beta2Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSubscriptionIamPolicyPubsubV1beta2Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       subscriptionId: map['subscriptionId'] as String,
     );
   }
 }
-

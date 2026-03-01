@@ -7,16 +7,22 @@ import 'security_gateway_application_upstream_proxy_protocol_contextual_headers_
 class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders {
   /// Device info configuration.
   /// Structure is documented below.
-  final SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo? deviceInfo;
+  final SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo?
+  deviceInfo;
+
   /// Group info configuration.
   /// Structure is documented below.
-  final SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo? groupInfo;
+  final SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo?
+  groupInfo;
+
   /// Default output type for all enabled headers.
   /// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
   final String? outputType;
+
   /// User info configuration.
   /// Structure is documented below.
-  final SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo? userInfo;
+  final SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo?
+  userInfo;
 
   /// Creates a new [SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders].
   /// [deviceInfo] Device info configuration.
@@ -39,13 +45,28 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders {
     };
   }
 
-  factory SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders.fromMap(Map<String, dynamic> map) {
+  factory SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityGatewayApplicationUpstreamProxyProtocolContextualHeaders(
-      deviceInfo: map['deviceInfo'] == null ? null : SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo.fromMap((map['deviceInfo'] as Map).cast<String, dynamic>()),
-      groupInfo: map['groupInfo'] == null ? null : SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo.fromMap((map['groupInfo'] as Map).cast<String, dynamic>()),
-      outputType: map['outputType'] == null ? null : map['outputType'] as String,
-      userInfo: map['userInfo'] == null ? null : SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>()),
+      deviceInfo: map['deviceInfo'] == null
+          ? null
+          : SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfo.fromMap(
+              (map['deviceInfo'] as Map).cast<String, dynamic>(),
+            ),
+      groupInfo: map['groupInfo'] == null
+          ? null
+          : SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfo.fromMap(
+              (map['groupInfo'] as Map).cast<String, dynamic>(),
+            ),
+      outputType: map['outputType'] == null
+          ? null
+          : map['outputType'] as String,
+      userInfo: map['userInfo'] == null
+          ? null
+          : SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfo.fromMap(
+              (map['userInfo'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -3,7 +3,9 @@
 import 'membership_default_result_configuration_output_configuration.dart';
 
 class MembershipDefaultResultConfiguration {
-  final MembershipDefaultResultConfigurationOutputConfiguration outputConfiguration;
+  final MembershipDefaultResultConfigurationOutputConfiguration
+  outputConfiguration;
+
   /// The ARN of the IAM role which will be used to create the membership.
   /// - `output_configuration.s3.bucket` - (Required) - The name of the S3 bucket where the query results will be stored.
   /// - `output_configuration.s3.result_format` - (Required) - The format of the query results. Valid values are `PARQUET` and `CSV`.
@@ -25,11 +27,15 @@ class MembershipDefaultResultConfiguration {
     };
   }
 
-  factory MembershipDefaultResultConfiguration.fromMap(Map<String, dynamic> map) {
+  factory MembershipDefaultResultConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MembershipDefaultResultConfiguration(
-      outputConfiguration: MembershipDefaultResultConfigurationOutputConfiguration.fromMap((map['outputConfiguration'] as Map).cast<String, dynamic>()),
+      outputConfiguration:
+          MembershipDefaultResultConfigurationOutputConfiguration.fromMap(
+            (map['outputConfiguration'] as Map).cast<String, dynamic>(),
+          ),
       roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
     );
   }
 }
-

@@ -625,32 +625,42 @@ import 'global_secondary_index_warm_throughput.dart';
 class GlobalSecondaryIndex extends pulumi.CustomResource {
   /// ARN of the GSI.
   late final pulumi.Output<String> arn;
+
   /// Name of the index.
   late final pulumi.Output<String> indexName;
+
   /// Set of nested attribute definitions.
   /// At least 1 element defining a `HASH` is required.
   /// All elements with the `key_type` of `HASH` must precede elements with `key_type` of `RANGE`.
   /// Changing any values in `key_schema` will re-create the resource.
   /// See `key_schema` below.
   late final pulumi.Output<List<GlobalSecondaryIndexKeySchema>?> keySchemas;
+
   /// Sets the maximum number of read and write units for the index.
   /// See `on_demand_throughput` below.
   /// Only valid if the table's `billing_mode` is `PAY_PER_REQUEST`.
-  late final pulumi.Output<GlobalSecondaryIndexOnDemandThroughput?> onDemandThroughput;
+  late final pulumi.Output<GlobalSecondaryIndexOnDemandThroughput?>
+  onDemandThroughput;
+
   /// Describes which attributes from the table are represented in the index.
   /// See `projection` below.
   late final pulumi.Output<GlobalSecondaryIndexProjection?> projection;
+
   /// Provisioned throughput for the index.
   /// See `provisioned_throughput` below.
   /// Required if the table's `billing_mode` is `PROVISIONED`.
-  late final pulumi.Output<GlobalSecondaryIndexProvisionedThroughput?> provisionedThroughput;
+  late final pulumi.Output<GlobalSecondaryIndexProvisionedThroughput?>
+  provisionedThroughput;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Name of the table this index belongs to.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> tableName;
   late final pulumi.Output<GlobalSecondaryIndexTimeouts?> timeouts;
+
   /// Sets the number of warm read and write units for this index.
   /// See `warm_throughput` below.
   late final pulumi.Output<GlobalSecondaryIndexWarmThroughput> warmThroughput;
@@ -664,20 +674,32 @@ class GlobalSecondaryIndex extends pulumi.CustomResource {
     GlobalSecondaryIndexArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:dynamodb/globalSecondaryIndex:GlobalSecondaryIndex',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.indexName = registerOutput<String>('indexName');
-    this.keySchemas = registerOutput<List<GlobalSecondaryIndexKeySchema>?>('keySchemas');
-    this.onDemandThroughput = registerOutput<GlobalSecondaryIndexOnDemandThroughput?>('onDemandThroughput');
-    this.projection = registerOutput<GlobalSecondaryIndexProjection?>('projection');
-    this.provisionedThroughput = registerOutput<GlobalSecondaryIndexProvisionedThroughput?>('provisionedThroughput');
+    this.keySchemas = registerOutput<List<GlobalSecondaryIndexKeySchema>?>(
+      'keySchemas',
+    );
+    this.onDemandThroughput =
+        registerOutput<GlobalSecondaryIndexOnDemandThroughput?>(
+          'onDemandThroughput',
+        );
+    this.projection = registerOutput<GlobalSecondaryIndexProjection?>(
+      'projection',
+    );
+    this.provisionedThroughput =
+        registerOutput<GlobalSecondaryIndexProvisionedThroughput?>(
+          'provisionedThroughput',
+        );
     this.region = registerOutput<String>('region');
     this.tableName = registerOutput<String>('tableName');
     this.timeouts = registerOutput<GlobalSecondaryIndexTimeouts?>('timeouts');
-    this.warmThroughput = registerOutput<GlobalSecondaryIndexWarmThroughput>('warmThroughput');
+    this.warmThroughput = registerOutput<GlobalSecondaryIndexWarmThroughput>(
+      'warmThroughput',
+    );
   }
 }

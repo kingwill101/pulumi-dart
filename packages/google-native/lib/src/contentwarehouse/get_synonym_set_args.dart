@@ -19,10 +19,9 @@ class GetSynonymSetArgs {
     required String location,
     String? project,
     required String synonymSetId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      synonymSetId = pulumi.Input.asInput<String>(synonymSetId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       synonymSetId = pulumi.Input.asInput<String>(synonymSetId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetSynonymSetArgs {
     );
   }
 }
-

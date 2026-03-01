@@ -17,4 +17,3 @@ enum TextStyleVerticalAlignment {
     throw ArgumentError('Unknown TextStyleVerticalAlignment value: $value');
   }
 }
-

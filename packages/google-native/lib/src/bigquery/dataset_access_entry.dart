@@ -12,23 +12,34 @@ class DatasetAccessEntry {
   /// Creates a new [DatasetAccessEntry].
   /// [dataset] [Required] The dataset this entry applies to.
   /// [targetTypes] Optional.
-  DatasetAccessEntry({
-    this.dataset,
-    this.targetTypes,
-  });
+  DatasetAccessEntry({this.dataset, this.targetTypes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataset': ?dataset == null ? null : dataset!.toMap(),
-      'targetTypes': ?targetTypes == null ? null : pulumi.Input.encodeList<DatasetAccessEntryTargetTypesItem, String>(targetTypes!, (value) => value.value),
+      'targetTypes': ?targetTypes == null
+          ? null
+          : pulumi.Input.encodeList<DatasetAccessEntryTargetTypesItem, String>(
+              targetTypes!,
+              (value) => value.value,
+            ),
     };
   }
 
   factory DatasetAccessEntry.fromMap(Map<String, dynamic> map) {
     return DatasetAccessEntry(
-      dataset: map['dataset'] == null ? null : DatasetReference.fromMap((map['dataset'] as Map).cast<String, dynamic>()),
-      targetTypes: map['targetTypes'] == null ? null : pulumi.Input.decodeList<DatasetAccessEntryTargetTypesItem>(map['targetTypes'], (value) => DatasetAccessEntryTargetTypesItem.fromValue(value as String)),
+      dataset: map['dataset'] == null
+          ? null
+          : DatasetReference.fromMap(
+              (map['dataset'] as Map).cast<String, dynamic>(),
+            ),
+      targetTypes: map['targetTypes'] == null
+          ? null
+          : pulumi.Input.decodeList<DatasetAccessEntryTargetTypesItem>(
+              map['targetTypes'],
+              (value) =>
+                  DatasetAccessEntryTargetTypesItem.fromValue(value as String),
+            ),
     );
   }
 }
-

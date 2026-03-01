@@ -1,25 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CaCertificateValidity {
   /// The certificate is not valid after this date.
   final String? notAfter;
+
   /// The certificate is not valid before this date.
   final String? notBefore;
 
   /// Creates a new [CaCertificateValidity].
   /// [notAfter] The certificate is not valid after this date.
   /// [notBefore] The certificate is not valid before this date.
-  CaCertificateValidity({
-    this.notAfter,
-    this.notBefore,
-  });
+  CaCertificateValidity({this.notAfter, this.notBefore});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'notAfter': ?notAfter,
-      'notBefore': ?notBefore,
-    };
+    return <String, dynamic>{'notAfter': ?notAfter, 'notBefore': ?notBefore};
   }
 
   factory CaCertificateValidity.fromMap(Map<String, dynamic> map) {
@@ -29,4 +23,3 @@ class CaCertificateValidity {
     );
   }
 }
-

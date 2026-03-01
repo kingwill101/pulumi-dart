@@ -7,9 +7,12 @@ import 'google_cloud_discoveryengine_v1alpha_search_response_summary_response.da
 /// Defines a reply message to user.
 class GoogleCloudDiscoveryengineV1alphaReplyResponse {
   /// References in the reply.
-  final List<GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse> references;
+  final List<GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse>
+  references;
+
   /// DEPRECATED: use `summary` instead. Text reply.
   final String reply;
+
   /// Summary based on search results.
   final GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse summary;
 
@@ -25,18 +28,35 @@ class GoogleCloudDiscoveryengineV1alphaReplyResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'references': pulumi.Input.encodeList<GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse, Map<String, dynamic>>(references, (value) => value.toMap()),
+      'references':
+          pulumi.Input.encodeList<
+            GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse,
+            Map<String, dynamic>
+          >(references, (value) => value.toMap()),
       'reply': reply,
       'summary': summary.toMap(),
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaReplyResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaReplyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1alphaReplyResponse(
-      references: pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse>(map['references'], (value) => GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      references:
+          pulumi.Input.decodeList<
+            GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse
+          >(
+            map['references'],
+            (value) =>
+                GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       reply: map['reply'] as String,
-      summary: GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse.fromMap((map['summary'] as Map).cast<String, dynamic>()),
+      summary:
+          GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryResponse.fromMap(
+            (map['summary'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

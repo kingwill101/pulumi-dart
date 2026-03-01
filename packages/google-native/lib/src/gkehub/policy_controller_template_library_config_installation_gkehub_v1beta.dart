@@ -4,16 +4,22 @@ enum PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta {
   notInstalled("NOT_INSTALLED"),
   all("ALL");
 
-  const PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta(this.value);
+  const PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta(
+    this.value,
+  );
   final String value;
 
-  static PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta fromValue(String value) {
-    for (final item in PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta.values) {
+  static PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta
+  fromValue(String value) {
+    for (final item
+        in PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta value: $value');
+    throw ArgumentError(
+      'Unknown PolicyControllerTemplateLibraryConfigInstallationGkehubV1beta value: $value',
+    );
   }
 }
-

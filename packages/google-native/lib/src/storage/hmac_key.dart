@@ -6,21 +6,29 @@ import 'hmac_key_args.dart';
 class HmacKey extends pulumi.CustomResource {
   /// The ID of the HMAC Key.
   late final pulumi.Output<String> accessId;
+
   /// HTTP 1.1 Entity tag for the HMAC key.
   late final pulumi.Output<String> etag;
+
   /// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
   late final pulumi.Output<String> kind;
   late final pulumi.Output<String> project;
+
   /// The link to this resource.
   late final pulumi.Output<String> selfLink;
+
   /// Email address of the service account.
   late final pulumi.Output<String> serviceAccountEmail;
+
   /// The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
   late final pulumi.Output<String> state;
+
   /// The creation time of the HMAC key in RFC 3339 format.
   late final pulumi.Output<String> timeCreated;
+
   /// The last modification time of the HMAC key metadata in RFC 3339 format.
   late final pulumi.Output<String> updated;
+
   /// The project to be billed for this request.
   late final pulumi.Output<String?> userProject;
 
@@ -33,11 +41,11 @@ class HmacKey extends pulumi.CustomResource {
     HmacKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:storage/v1:HmacKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:storage/v1:HmacKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.accessId = registerOutput<String>('accessId');
     this.etag = registerOutput<String>('etag');
     this.kind = registerOutput<String>('kind');

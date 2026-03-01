@@ -32,13 +32,20 @@ class QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse {
     };
   }
 
-  factory QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse.fromMap(Map<String, dynamic> map) {
+  factory QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return QueuedResourceStatusFailedDataErrorErrorsItemErrorDetailsItemResponse(
-      errorInfo: ErrorInfoResponse.fromMap((map['errorInfo'] as Map).cast<String, dynamic>()),
+      errorInfo: ErrorInfoResponse.fromMap(
+        (map['errorInfo'] as Map).cast<String, dynamic>(),
+      ),
       help: HelpResponse.fromMap((map['help'] as Map).cast<String, dynamic>()),
-      localizedMessage: LocalizedMessageResponse.fromMap((map['localizedMessage'] as Map).cast<String, dynamic>()),
-      quotaInfo: QuotaExceededInfoResponse.fromMap((map['quotaInfo'] as Map).cast<String, dynamic>()),
+      localizedMessage: LocalizedMessageResponse.fromMap(
+        (map['localizedMessage'] as Map).cast<String, dynamic>(),
+      ),
+      quotaInfo: QuotaExceededInfoResponse.fromMap(
+        (map['quotaInfo'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

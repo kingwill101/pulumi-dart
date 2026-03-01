@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
 class MaintenanceScheduleResponse {
   /// If the scheduled maintenance can be rescheduled, default is true.
   final bool canReschedule;
+
   /// The end time of any upcoming scheduled maintenance for this instance.
   final String endTime;
+
   /// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
   final String scheduleDeadlineTime;
+
   /// The start time of any upcoming scheduled maintenance for this instance.
   final String startTime;
 
@@ -42,4 +44,3 @@ class MaintenanceScheduleResponse {
     );
   }
 }
-

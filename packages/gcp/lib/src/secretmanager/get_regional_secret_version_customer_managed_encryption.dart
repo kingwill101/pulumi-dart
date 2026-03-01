@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRegionalSecretVersionCustomerManagedEncryption {
   /// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
   final String kmsKeyVersionName;
@@ -12,15 +11,14 @@ class GetRegionalSecretVersionCustomerManagedEncryption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyVersionName': kmsKeyVersionName,
-    };
+    return <String, dynamic>{'kmsKeyVersionName': kmsKeyVersionName};
   }
 
-  factory GetRegionalSecretVersionCustomerManagedEncryption.fromMap(Map<String, dynamic> map) {
+  factory GetRegionalSecretVersionCustomerManagedEncryption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionalSecretVersionCustomerManagedEncryption(
       kmsKeyVersionName: map['kmsKeyVersionName'] as String,
     );
   }
 }
-

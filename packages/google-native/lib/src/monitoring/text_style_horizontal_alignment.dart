@@ -17,4 +17,3 @@ enum TextStyleHorizontalAlignment {
     throw ArgumentError('Unknown TextStyleHorizontalAlignment value: $value');
   }
 }
-

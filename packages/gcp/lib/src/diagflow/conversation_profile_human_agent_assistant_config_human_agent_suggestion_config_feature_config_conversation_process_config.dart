@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig {
   /// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
   final int? recentSentencesCount;
@@ -12,15 +11,16 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'recentSentencesCount': ?recentSentencesCount,
-    };
+    return <String, dynamic>{'recentSentencesCount': ?recentSentencesCount};
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigConversationProcessConfig(
-      recentSentencesCount: map['recentSentencesCount'] == null ? null : map['recentSentencesCount'] as int,
+      recentSentencesCount: map['recentSentencesCount'] == null
+          ? null
+          : map['recentSentencesCount'] as int,
     );
   }
 }
-

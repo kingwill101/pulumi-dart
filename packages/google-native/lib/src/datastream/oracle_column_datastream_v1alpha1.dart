@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Oracle Column.
 class OracleColumnDatastreamV1alpha1 {
   /// Column name.
   final String? columnName;
+
   /// The Oracle data type.
   final String? dataType;
+
   /// Column encoding.
   final String? encoding;
+
   /// Column length.
   final int? length;
+
   /// Whether or not the column can accept a null value.
   final bool? nullable;
+
   /// The ordinal position of the column in the table.
   final int? ordinalPosition;
+
   /// Column precision.
   final int? precision;
+
   /// Whether or not the column represents a primary key.
   final bool? primaryKey;
+
   /// Column scale.
   final int? scale;
 
@@ -60,16 +67,19 @@ class OracleColumnDatastreamV1alpha1 {
 
   factory OracleColumnDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleColumnDatastreamV1alpha1(
-      columnName: map['columnName'] == null ? null : map['columnName'] as String,
+      columnName: map['columnName'] == null
+          ? null
+          : map['columnName'] as String,
       dataType: map['dataType'] == null ? null : map['dataType'] as String,
       encoding: map['encoding'] == null ? null : map['encoding'] as String,
       length: map['length'] == null ? null : map['length'] as int,
       nullable: map['nullable'] == null ? null : map['nullable'] as bool,
-      ordinalPosition: map['ordinalPosition'] == null ? null : map['ordinalPosition'] as int,
+      ordinalPosition: map['ordinalPosition'] == null
+          ? null
+          : map['ordinalPosition'] as int,
       precision: map['precision'] == null ? null : map['precision'] as int,
       primaryKey: map['primaryKey'] == null ? null : map['primaryKey'] as bool,
       scale: map['scale'] == null ? null : map['scale'] as int,
     );
   }
 }
-

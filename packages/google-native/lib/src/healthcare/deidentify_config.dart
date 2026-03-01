@@ -9,12 +9,16 @@ import 'text_config.dart';
 class DeidentifyConfig {
   /// Configures de-id of application/DICOM content.
   final DicomConfig? dicom;
+
   /// Configures de-id of application/FHIR content.
   final FhirConfig? fhir;
+
   /// Configures de-identification of image pixels wherever they are found in the source_dataset.
   final ImageConfig? image;
+
   /// Configures de-identification of text wherever it is found in the source_dataset.
   final TextConfig? text;
+
   /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME` infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
   final bool? useRegionalDataProcessing;
 
@@ -44,12 +48,21 @@ class DeidentifyConfig {
 
   factory DeidentifyConfig.fromMap(Map<String, dynamic> map) {
     return DeidentifyConfig(
-      dicom: map['dicom'] == null ? null : DicomConfig.fromMap((map['dicom'] as Map).cast<String, dynamic>()),
-      fhir: map['fhir'] == null ? null : FhirConfig.fromMap((map['fhir'] as Map).cast<String, dynamic>()),
-      image: map['image'] == null ? null : ImageConfig.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      text: map['text'] == null ? null : TextConfig.fromMap((map['text'] as Map).cast<String, dynamic>()),
-      useRegionalDataProcessing: map['useRegionalDataProcessing'] == null ? null : map['useRegionalDataProcessing'] as bool,
+      dicom: map['dicom'] == null
+          ? null
+          : DicomConfig.fromMap((map['dicom'] as Map).cast<String, dynamic>()),
+      fhir: map['fhir'] == null
+          ? null
+          : FhirConfig.fromMap((map['fhir'] as Map).cast<String, dynamic>()),
+      image: map['image'] == null
+          ? null
+          : ImageConfig.fromMap((map['image'] as Map).cast<String, dynamic>()),
+      text: map['text'] == null
+          ? null
+          : TextConfig.fromMap((map['text'] as Map).cast<String, dynamic>()),
+      useRegionalDataProcessing: map['useRegionalDataProcessing'] == null
+          ? null
+          : map['useRegionalDataProcessing'] as bool,
     );
   }
 }
-

@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message storing SAML params to enable Google as IDP.
 class SAMLParamsResponse {
   /// SAML certificate
   final String certificate;
+
   /// IdP field that maps to the user’s email address
   final String emailMapping;
+
   /// Entity id URL
   final String entityId;
+
   /// Single sign-on URL
   final String ssoUri;
+
   /// Email address of the first admin users.
   final String userEmail;
 
@@ -48,4 +51,3 @@ class SAMLParamsResponse {
     );
   }
 }
-

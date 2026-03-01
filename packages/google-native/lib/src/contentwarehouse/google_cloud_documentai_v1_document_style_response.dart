@@ -8,18 +8,25 @@ import 'google_type_color_response.dart';
 class GoogleCloudDocumentaiV1DocumentStyleResponse {
   /// Text background color.
   final GoogleTypeColorResponse backgroundColor;
+
   /// Text color.
   final GoogleTypeColorResponse color;
+
   /// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
   final String fontFamily;
+
   /// Font size.
   final GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse fontSize;
+
   /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`, `bolder`, and `lighter`.
   final String fontWeight;
+
   /// Text anchor indexing into the Document.text.
   final GoogleCloudDocumentaiV1DocumentTextAnchorResponse textAnchor;
+
   /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
   final String textDecoration;
+
   /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`, `italic`, and `oblique`.
   final String textStyle;
 
@@ -56,17 +63,26 @@ class GoogleCloudDocumentaiV1DocumentStyleResponse {
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentStyleResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentStyleResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentStyleResponse(
-      backgroundColor: GoogleTypeColorResponse.fromMap((map['backgroundColor'] as Map).cast<String, dynamic>()),
-      color: GoogleTypeColorResponse.fromMap((map['color'] as Map).cast<String, dynamic>()),
+      backgroundColor: GoogleTypeColorResponse.fromMap(
+        (map['backgroundColor'] as Map).cast<String, dynamic>(),
+      ),
+      color: GoogleTypeColorResponse.fromMap(
+        (map['color'] as Map).cast<String, dynamic>(),
+      ),
       fontFamily: map['fontFamily'] as String,
-      fontSize: GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse.fromMap((map['fontSize'] as Map).cast<String, dynamic>()),
+      fontSize: GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse.fromMap(
+        (map['fontSize'] as Map).cast<String, dynamic>(),
+      ),
       fontWeight: map['fontWeight'] as String,
-      textAnchor: GoogleCloudDocumentaiV1DocumentTextAnchorResponse.fromMap((map['textAnchor'] as Map).cast<String, dynamic>()),
+      textAnchor: GoogleCloudDocumentaiV1DocumentTextAnchorResponse.fromMap(
+        (map['textAnchor'] as Map).cast<String, dynamic>(),
+      ),
       textDecoration: map['textDecoration'] as String,
       textStyle: map['textStyle'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetCloudVmClusterDataCollectionOption {
   final bool isDiagnosticsEventsEnabled;
   final bool isHealthMonitoringEnabled;
@@ -24,7 +23,9 @@ class GetCloudVmClusterDataCollectionOption {
     };
   }
 
-  factory GetCloudVmClusterDataCollectionOption.fromMap(Map<String, dynamic> map) {
+  factory GetCloudVmClusterDataCollectionOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCloudVmClusterDataCollectionOption(
       isDiagnosticsEventsEnabled: map['isDiagnosticsEventsEnabled'] as bool,
       isHealthMonitoringEnabled: map['isHealthMonitoringEnabled'] as bool,
@@ -32,4 +33,3 @@ class GetCloudVmClusterDataCollectionOption {
     );
   }
 }
-

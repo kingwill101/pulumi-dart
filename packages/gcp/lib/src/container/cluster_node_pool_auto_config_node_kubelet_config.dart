@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterNodePoolAutoConfigNodeKubeletConfig {
   /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
   final String? insecureKubeletReadonlyPortEnabled;
@@ -17,10 +16,14 @@ class ClusterNodePoolAutoConfigNodeKubeletConfig {
     };
   }
 
-  factory ClusterNodePoolAutoConfigNodeKubeletConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolAutoConfigNodeKubeletConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolAutoConfigNodeKubeletConfig(
-      insecureKubeletReadonlyPortEnabled: map['insecureKubeletReadonlyPortEnabled'] == null ? null : map['insecureKubeletReadonlyPortEnabled'] as String,
+      insecureKubeletReadonlyPortEnabled:
+          map['insecureKubeletReadonlyPortEnabled'] == null
+          ? null
+          : map['insecureKubeletReadonlyPortEnabled'] as String,
     );
   }
 }
-

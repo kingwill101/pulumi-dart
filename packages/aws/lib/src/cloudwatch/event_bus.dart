@@ -1763,24 +1763,33 @@ import 'event_bus_log_config.dart';
 class EventBus extends pulumi.CustomResource {
   /// ARN of the event bus.
   late final pulumi.Output<String> arn;
+
   /// Configuration details of the Amazon SQS queue for EventBridge to use as a dead-letter queue (DLQ). This block supports the following arguments:
   late final pulumi.Output<EventBusDeadLetterConfig?> deadLetterConfig;
+
   /// Event bus description.
   late final pulumi.Output<String?> description;
+
   /// Partner event source that the new event bus will be matched with. Must match `name`.
   late final pulumi.Output<String?> eventSourceName;
+
   /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
   late final pulumi.Output<String?> kmsKeyIdentifier;
+
   /// Block for logging configuration settings for the event bus.
   late final pulumi.Output<EventBusLogConfig?> logConfig;
+
   /// Name of the new event bus. The names of custom event buses can't contain the / character. To create a partner event bus, ensure that the `name` matches the `event_source_name`.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -1793,13 +1802,15 @@ class EventBus extends pulumi.CustomResource {
     EventBusArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloudwatch/eventBus:EventBus',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:cloudwatch/eventBus:EventBus',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
-    this.deadLetterConfig = registerOutput<EventBusDeadLetterConfig?>('deadLetterConfig');
+    this.deadLetterConfig = registerOutput<EventBusDeadLetterConfig?>(
+      'deadLetterConfig',
+    );
     this.description = registerOutput<String?>('description');
     this.eventSourceName = registerOutput<String?>('eventSourceName');
     this.kmsKeyIdentifier = registerOutput<String?>('kmsKeyIdentifier');

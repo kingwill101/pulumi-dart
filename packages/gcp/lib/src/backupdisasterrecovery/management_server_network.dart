@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ManagementServerNetwork {
   /// Network with format `projects/{{project_id}}/global/networks/{{network_id}}`
   final String network;
+
   /// Type of Network peeringMode
   /// Default value is `PRIVATE_SERVICE_ACCESS`.
   /// Possible values are: `PRIVATE_SERVICE_ACCESS`.
@@ -12,23 +12,18 @@ class ManagementServerNetwork {
   /// Creates a new [ManagementServerNetwork].
   /// [network] Network with format `projects/{{project_id}}/global/networks/{{network_id}}`
   /// [peeringMode] Type of Network peeringMode
-  ManagementServerNetwork({
-    required this.network,
-    this.peeringMode,
-  });
+  ManagementServerNetwork({required this.network, this.peeringMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'network': network,
-      'peeringMode': ?peeringMode,
-    };
+    return <String, dynamic>{'network': network, 'peeringMode': ?peeringMode};
   }
 
   factory ManagementServerNetwork.fromMap(Map<String, dynamic> map) {
     return ManagementServerNetwork(
       network: map['network'] as String,
-      peeringMode: map['peeringMode'] == null ? null : map['peeringMode'] as String,
+      peeringMode: map['peeringMode'] == null
+          ? null
+          : map['peeringMode'] as String,
     );
   }
 }
-

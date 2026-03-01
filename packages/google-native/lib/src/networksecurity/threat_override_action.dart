@@ -18,4 +18,3 @@ enum ThreatOverrideAction {
     throw ArgumentError('Unknown ThreatOverrideAction value: $value');
   }
 }
-

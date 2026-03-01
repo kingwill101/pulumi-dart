@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Confirguration of PubSubEventWriter.
 class EventPublishConfigResponseDatafusionV1beta1 {
   /// Option to enable Event Publishing.
   final bool enabled;
+
   /// The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
   final String topic;
 
@@ -17,17 +17,15 @@ class EventPublishConfigResponseDatafusionV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-      'topic': topic,
-    };
+    return <String, dynamic>{'enabled': enabled, 'topic': topic};
   }
 
-  factory EventPublishConfigResponseDatafusionV1beta1.fromMap(Map<String, dynamic> map) {
+  factory EventPublishConfigResponseDatafusionV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EventPublishConfigResponseDatafusionV1beta1(
       enabled: map['enabled'] as bool,
       topic: map['topic'] as String,
     );
   }
 }
-

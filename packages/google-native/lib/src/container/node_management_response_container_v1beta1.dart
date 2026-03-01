@@ -6,8 +6,10 @@ import 'auto_upgrade_options_response_container_v1beta1.dart';
 class NodeManagementResponseContainerV1beta1 {
   /// Whether the nodes will be automatically repaired.
   final bool autoRepair;
+
   /// Whether the nodes will be automatically upgraded.
   final bool autoUpgrade;
+
   /// Specifies the Auto Upgrade knobs for the node pool.
   final AutoUpgradeOptionsResponseContainerV1beta1 upgradeOptions;
 
@@ -29,12 +31,15 @@ class NodeManagementResponseContainerV1beta1 {
     };
   }
 
-  factory NodeManagementResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory NodeManagementResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodeManagementResponseContainerV1beta1(
       autoRepair: map['autoRepair'] as bool,
       autoUpgrade: map['autoUpgrade'] as bool,
-      upgradeOptions: AutoUpgradeOptionsResponseContainerV1beta1.fromMap((map['upgradeOptions'] as Map).cast<String, dynamic>()),
+      upgradeOptions: AutoUpgradeOptionsResponseContainerV1beta1.fromMap(
+        (map['upgradeOptions'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

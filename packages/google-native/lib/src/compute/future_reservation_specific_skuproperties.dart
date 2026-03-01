@@ -4,9 +4,12 @@ import 'allocation_specific_skuallocation_reserved_instance_properties.dart';
 
 class FutureReservationSpecificSKUProperties {
   /// Properties of the SKU instances being reserved.
-  final AllocationSpecificSKUAllocationReservedInstanceProperties? instanceProperties;
+  final AllocationSpecificSKUAllocationReservedInstanceProperties?
+  instanceProperties;
+
   /// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
   final String? sourceInstanceTemplate;
+
   /// Total number of instances for which capacity assurance is requested at a future time period.
   final String? totalCount;
 
@@ -22,18 +25,29 @@ class FutureReservationSpecificSKUProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'instanceProperties': ?instanceProperties == null ? null : instanceProperties!.toMap(),
+      'instanceProperties': ?instanceProperties == null
+          ? null
+          : instanceProperties!.toMap(),
       'sourceInstanceTemplate': ?sourceInstanceTemplate,
       'totalCount': ?totalCount,
     };
   }
 
-  factory FutureReservationSpecificSKUProperties.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationSpecificSKUProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationSpecificSKUProperties(
-      instanceProperties: map['instanceProperties'] == null ? null : AllocationSpecificSKUAllocationReservedInstanceProperties.fromMap((map['instanceProperties'] as Map).cast<String, dynamic>()),
-      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null ? null : map['sourceInstanceTemplate'] as String,
-      totalCount: map['totalCount'] == null ? null : map['totalCount'] as String,
+      instanceProperties: map['instanceProperties'] == null
+          ? null
+          : AllocationSpecificSKUAllocationReservedInstanceProperties.fromMap(
+              (map['instanceProperties'] as Map).cast<String, dynamic>(),
+            ),
+      sourceInstanceTemplate: map['sourceInstanceTemplate'] == null
+          ? null
+          : map['sourceInstanceTemplate'] as String,
+      totalCount: map['totalCount'] == null
+          ? null
+          : map['totalCount'] as String,
     );
   }
 }
-

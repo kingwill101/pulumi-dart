@@ -11,14 +11,18 @@ import 'inference_profile_timeouts.dart';
 class InferenceProfileArgs {
   /// The description of the inference profile.
   final pulumi.Input<String>? description;
+
   /// The source of the model this inference profile will track metrics and cost for. See `model_source`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<InferenceProfileModelSource>? modelSource;
+
   /// The name of the inference profile.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value mapping of resource tags for the inference profile.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<InferenceProfileTimeouts>? timeouts;
@@ -37,34 +41,56 @@ class InferenceProfileArgs {
     String? region,
     Map<String, String>? tags,
     InferenceProfileTimeouts? timeouts,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      modelSource = pulumi.Input.asOptionalInput<InferenceProfileModelSource>(modelSource),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<InferenceProfileTimeouts>(timeouts);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       modelSource = pulumi.Input.asOptionalInput<InferenceProfileModelSource>(
+         modelSource,
+       ),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       timeouts = pulumi.Input.asOptionalInput<InferenceProfileTimeouts>(
+         timeouts,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'modelSource': ?pulumi.Input.mapOptionalInputValue<InferenceProfileModelSource, Map<String, dynamic>>(modelSource, (value) => value.toMap()),
+      'modelSource':
+          ?pulumi.Input.mapOptionalInputValue<
+            InferenceProfileModelSource,
+            Map<String, dynamic>
+          >(modelSource, (value) => value.toMap()),
       'name': ?name,
       'region': ?region,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<InferenceProfileTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            InferenceProfileTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory InferenceProfileArgs.fromMap(Map<String, dynamic> map) {
     return InferenceProfileArgs(
-      description: map['description'] == null ? null : map['description'] as String,
-      modelSource: map['modelSource'] == null ? null : InferenceProfileModelSource.fromMap((map['modelSource'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      modelSource: map['modelSource'] == null
+          ? null
+          : InferenceProfileModelSource.fromMap(
+              (map['modelSource'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      timeouts: map['timeouts'] == null ? null : InferenceProfileTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+      timeouts: map['timeouts'] == null
+          ? null
+          : InferenceProfileTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

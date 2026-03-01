@@ -7,16 +7,14 @@ import 'ingress_to_response.dart';
 class IngressPolicyResponse {
   /// Defines the conditions on the source of a request causing this IngressPolicy to apply.
   final IngressFromResponse ingressFrom;
+
   /// Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply.
   final IngressToResponse ingressTo;
 
   /// Creates a new [IngressPolicyResponse].
   /// [ingressFrom] Defines the conditions on the source of a request causing this IngressPolicy to apply.
   /// [ingressTo] Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply.
-  IngressPolicyResponse({
-    required this.ingressFrom,
-    required this.ingressTo,
-  });
+  IngressPolicyResponse({required this.ingressFrom, required this.ingressTo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,12 @@ class IngressPolicyResponse {
 
   factory IngressPolicyResponse.fromMap(Map<String, dynamic> map) {
     return IngressPolicyResponse(
-      ingressFrom: IngressFromResponse.fromMap((map['ingressFrom'] as Map).cast<String, dynamic>()),
-      ingressTo: IngressToResponse.fromMap((map['ingressTo'] as Map).cast<String, dynamic>()),
+      ingressFrom: IngressFromResponse.fromMap(
+        (map['ingressFrom'] as Map).cast<String, dynamic>(),
+      ),
+      ingressTo: IngressToResponse.fromMap(
+        (map['ingressTo'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

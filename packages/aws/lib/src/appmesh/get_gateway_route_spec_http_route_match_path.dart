@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetGatewayRouteSpecHttpRouteMatchPath {
   final String exact;
   final String regex;
@@ -14,17 +13,15 @@ class GetGatewayRouteSpecHttpRouteMatchPath {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'exact': exact,
-      'regex': regex,
-    };
+    return <String, dynamic>{'exact': exact, 'regex': regex};
   }
 
-  factory GetGatewayRouteSpecHttpRouteMatchPath.fromMap(Map<String, dynamic> map) {
+  factory GetGatewayRouteSpecHttpRouteMatchPath.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGatewayRouteSpecHttpRouteMatchPath(
       exact: map['exact'] as String,
       regex: map['regex'] as String,
     );
   }
 }
-

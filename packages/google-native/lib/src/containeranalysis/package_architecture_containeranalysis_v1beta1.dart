@@ -13,7 +13,8 @@ enum PackageArchitectureContaineranalysisV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown PackageArchitectureContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown PackageArchitectureContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

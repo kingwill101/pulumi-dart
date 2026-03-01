@@ -11,6 +11,7 @@ class GetAppleAppConfigArgs {
   ///
   /// - - -
   final pulumi.Input<String> appId;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -18,18 +19,12 @@ class GetAppleAppConfigArgs {
   /// Creates a new [GetAppleAppConfigArgs].
   /// [appId] The id of the Firebase iOS App.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetAppleAppConfigArgs({
-    required String appId,
-    String? project,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
+  GetAppleAppConfigArgs({required String appId, String? project})
+    : appId = pulumi.Input.asInput<String>(appId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'appId': appId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'appId': appId, 'project': ?project};
   }
 
   factory GetAppleAppConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -39,4 +34,3 @@ class GetAppleAppConfigArgs {
     );
   }
 }
-

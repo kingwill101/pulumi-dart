@@ -20,12 +20,14 @@ class DeliveryPipelineIamBinding extends pulumi.CustomResource {
     DeliveryPipelineIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<DeliveryPipelineIamBindingCondition?>('condition');
+         'gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.condition = registerOutput<DeliveryPipelineIamBindingCondition?>(
+      'condition',
+    );
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');
     this.members = registerOutput<List<String>>('members');

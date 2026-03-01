@@ -12,7 +12,8 @@ enum RouterNatEndpointTypesItemComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterNatEndpointTypesItemComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RouterNatEndpointTypesItemComputeV1 value: $value',
+    );
   }
 }
-

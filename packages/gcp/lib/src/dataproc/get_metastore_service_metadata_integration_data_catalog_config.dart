@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetMetastoreServiceMetadataIntegrationDataCatalogConfig {
   /// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
   final bool enabled;
@@ -12,15 +11,14 @@ class GetMetastoreServiceMetadataIntegrationDataCatalogConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetMetastoreServiceMetadataIntegrationDataCatalogConfig.fromMap(Map<String, dynamic> map) {
+  factory GetMetastoreServiceMetadataIntegrationDataCatalogConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMetastoreServiceMetadataIntegrationDataCatalogConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
-

@@ -3,7 +3,9 @@
 import 'disk_resource_status_async_replication_status_response_compute_beta.dart';
 
 class DiskResourceStatusResponseComputeBeta {
-  final DiskResourceStatusAsyncReplicationStatusResponseComputeBeta asyncPrimaryDisk;
+  final DiskResourceStatusAsyncReplicationStatusResponseComputeBeta
+  asyncPrimaryDisk;
+
   /// Key: disk, value: AsyncReplicationStatus message
   final Map<String, String> asyncSecondaryDisks;
 
@@ -22,11 +24,16 @@ class DiskResourceStatusResponseComputeBeta {
     };
   }
 
-  factory DiskResourceStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory DiskResourceStatusResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiskResourceStatusResponseComputeBeta(
-      asyncPrimaryDisk: DiskResourceStatusAsyncReplicationStatusResponseComputeBeta.fromMap((map['asyncPrimaryDisk'] as Map).cast<String, dynamic>()),
-      asyncSecondaryDisks: (map['asyncSecondaryDisks'] as Map).cast<String, String>(),
+      asyncPrimaryDisk:
+          DiskResourceStatusAsyncReplicationStatusResponseComputeBeta.fromMap(
+            (map['asyncPrimaryDisk'] as Map).cast<String, dynamic>(),
+          ),
+      asyncSecondaryDisks: (map['asyncSecondaryDisks'] as Map)
+          .cast<String, String>(),
     );
   }
 }
-

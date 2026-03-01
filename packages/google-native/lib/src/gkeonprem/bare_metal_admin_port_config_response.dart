@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// BareMetalAdminPortConfig is the specification of load balancer ports.
 class BareMetalAdminPortConfigResponse {
   /// The port that control plane hosted load balancers will listen on.
@@ -24,4 +23,3 @@ class BareMetalAdminPortConfigResponse {
     );
   }
 }
-

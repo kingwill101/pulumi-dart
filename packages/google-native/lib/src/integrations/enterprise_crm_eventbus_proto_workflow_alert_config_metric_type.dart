@@ -14,13 +14,17 @@ enum EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType {
   const EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType(this.value);
   final String value;
 
-  static EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType.values) {
+  static EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoWorkflowAlertConfigMetricType value: $value',
+    );
   }
 }
-

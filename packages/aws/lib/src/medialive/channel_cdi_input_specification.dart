@@ -1,20 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChannelCdiInputSpecification {
   /// Maximum CDI input resolution.
   final String resolution;
 
   /// Creates a new [ChannelCdiInputSpecification].
   /// [resolution] Maximum CDI input resolution.
-  ChannelCdiInputSpecification({
-    required this.resolution,
-  });
+  ChannelCdiInputSpecification({required this.resolution});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resolution': resolution,
-    };
+    return <String, dynamic>{'resolution': resolution};
   }
 
   factory ChannelCdiInputSpecification.fromMap(Map<String, dynamic> map) {
@@ -23,4 +18,3 @@ class ChannelCdiInputSpecification {
     );
   }
 }
-

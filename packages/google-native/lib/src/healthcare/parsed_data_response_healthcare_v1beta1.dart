@@ -9,20 +9,28 @@ class ParsedDataResponseHealthcareV1beta1 {
 
   /// Creates a new [ParsedDataResponseHealthcareV1beta1].
   /// [segments] Required.
-  ParsedDataResponseHealthcareV1beta1({
-    required this.segments,
-  });
+  ParsedDataResponseHealthcareV1beta1({required this.segments});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'segments': pulumi.Input.encodeList<SegmentResponseHealthcareV1beta1, Map<String, dynamic>>(segments, (value) => value.toMap()),
+      'segments':
+          pulumi.Input.encodeList<
+            SegmentResponseHealthcareV1beta1,
+            Map<String, dynamic>
+          >(segments, (value) => value.toMap()),
     };
   }
 
-  factory ParsedDataResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ParsedDataResponseHealthcareV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ParsedDataResponseHealthcareV1beta1(
-      segments: pulumi.Input.decodeList<SegmentResponseHealthcareV1beta1>(map['segments'], (value) => SegmentResponseHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      segments: pulumi.Input.decodeList<SegmentResponseHealthcareV1beta1>(
+        map['segments'],
+        (value) => SegmentResponseHealthcareV1beta1.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

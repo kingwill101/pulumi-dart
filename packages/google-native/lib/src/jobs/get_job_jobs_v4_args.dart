@@ -19,10 +19,9 @@ class GetJobJobsV4Args {
     required String jobId,
     String? project,
     required String tenantId,
-  }) :
-      jobId = pulumi.Input.asInput<String>(jobId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+  }) : jobId = pulumi.Input.asInput<String>(jobId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tenantId = pulumi.Input.asInput<String>(tenantId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetJobJobsV4Args {
     );
   }
 }
-

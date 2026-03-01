@@ -16,4 +16,3 @@ enum WorkloadMetadataConfigMode {
     throw ArgumentError('Unknown WorkloadMetadataConfigMode value: $value');
   }
 }
-

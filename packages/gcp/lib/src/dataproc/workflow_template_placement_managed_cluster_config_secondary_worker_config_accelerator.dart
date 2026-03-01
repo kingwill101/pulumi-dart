@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator {
   /// The number of the accelerator cards of this type exposed to this instance.
   final int? acceleratorCount;
+
   /// Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, `nvidia-tesla-k80`.
   final String? acceleratorType;
 
@@ -22,11 +22,16 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelera
     };
   }
 
-  factory WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator(
-      acceleratorCount: map['acceleratorCount'] == null ? null : map['acceleratorCount'] as int,
-      acceleratorType: map['acceleratorType'] == null ? null : map['acceleratorType'] as String,
+      acceleratorCount: map['acceleratorCount'] == null
+          ? null
+          : map['acceleratorCount'] as int,
+      acceleratorType: map['acceleratorType'] == null
+          ? null
+          : map['acceleratorType'] as String,
     );
   }
 }
-

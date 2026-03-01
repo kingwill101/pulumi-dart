@@ -13,11 +13,8 @@ class GetBackendServiceArgs {
   /// Creates a new [GetBackendServiceArgs].
   /// [backendService] Required.
   /// [project] Optional.
-  GetBackendServiceArgs({
-    required String backendService,
-    String? project,
-  }) :
-      backendService = pulumi.Input.asInput<String>(backendService),
+  GetBackendServiceArgs({required String backendService, String? project})
+    : backendService = pulumi.Input.asInput<String>(backendService),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetBackendServiceArgs {
     );
   }
 }
-

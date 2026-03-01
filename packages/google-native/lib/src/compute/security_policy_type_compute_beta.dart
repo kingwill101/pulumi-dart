@@ -17,4 +17,3 @@ enum SecurityPolicyTypeComputeBeta {
     throw ArgumentError('Unknown SecurityPolicyTypeComputeBeta value: $value');
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet {
   /// The url, in the format `gs://<bucket>/<path>`. Trailing wildcard in the path is allowed.
   final String url;
@@ -12,15 +11,14 @@ class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': url,
-    };
+    return <String, dynamic>{'url': url};
   }
 
-  factory PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet.fromMap(Map<String, dynamic> map) {
+  factory PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet(
       url: map['url'] as String,
     );
   }
 }
-

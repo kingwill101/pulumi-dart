@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// AppliedLicense holds the license data returned by adaptation module report.
 class AppliedLicenseResponseVmmigrationV1alpha1 {
   /// The OS license returned from the adaptation module's report.
   final String osLicense;
+
   /// The license type that was used in OS adaptation.
   final String type;
 
@@ -17,17 +17,15 @@ class AppliedLicenseResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'osLicense': osLicense,
-      'type': type,
-    };
+    return <String, dynamic>{'osLicense': osLicense, 'type': type};
   }
 
-  factory AppliedLicenseResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory AppliedLicenseResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppliedLicenseResponseVmmigrationV1alpha1(
       osLicense: map['osLicense'] as String,
       type: map['type'] as String,
     );
   }
 }
-

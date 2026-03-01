@@ -9,20 +9,25 @@ class AnthosObservabilityFeatureSpecGkehubV1beta {
 
   /// Creates a new [AnthosObservabilityFeatureSpecGkehubV1beta].
   /// [defaultMembershipSpec] Default membership spec for unconfigured memberships
-  AnthosObservabilityFeatureSpecGkehubV1beta({
-    this.defaultMembershipSpec,
-  });
+  AnthosObservabilityFeatureSpecGkehubV1beta({this.defaultMembershipSpec});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultMembershipSpec': ?defaultMembershipSpec == null ? null : defaultMembershipSpec!.toMap(),
+      'defaultMembershipSpec': ?defaultMembershipSpec == null
+          ? null
+          : defaultMembershipSpec!.toMap(),
     };
   }
 
-  factory AnthosObservabilityFeatureSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory AnthosObservabilityFeatureSpecGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnthosObservabilityFeatureSpecGkehubV1beta(
-      defaultMembershipSpec: map['defaultMembershipSpec'] == null ? null : AnthosObservabilityMembershipSpecGkehubV1beta.fromMap((map['defaultMembershipSpec'] as Map).cast<String, dynamic>()),
+      defaultMembershipSpec: map['defaultMembershipSpec'] == null
+          ? null
+          : AnthosObservabilityMembershipSpecGkehubV1beta.fromMap(
+              (map['defaultMembershipSpec'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

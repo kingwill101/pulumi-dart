@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies a Metastore configuration.
 class MetastoreConfigDataprocV1beta2 {
   /// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
@@ -8,9 +7,7 @@ class MetastoreConfigDataprocV1beta2 {
 
   /// Creates a new [MetastoreConfigDataprocV1beta2].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
-  MetastoreConfigDataprocV1beta2({
-    required this.dataprocMetastoreService,
-  });
+  MetastoreConfigDataprocV1beta2({required this.dataprocMetastoreService});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,4 +21,3 @@ class MetastoreConfigDataprocV1beta2 {
     );
   }
 }
-

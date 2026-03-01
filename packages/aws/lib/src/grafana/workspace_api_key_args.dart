@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkspaceApiKeyArgs {
   /// Specifies the name of the API key. Key names must be unique to the workspace.
   final pulumi.Input<String> keyName;
+
   /// Specifies the permission level of the API key. Valid values are `VIEWER`, `EDITOR`, or `ADMIN`.
   final pulumi.Input<String> keyRole;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Specifies the time in seconds until the API key expires. Keys can be valid for up to 30 days.
   final pulumi.Input<int> secondsToLive;
+
   /// The ID of the workspace that the API key is valid for.
   final pulumi.Input<String> workspaceId;
 
@@ -30,12 +34,11 @@ class WorkspaceApiKeyArgs {
     String? region,
     required int secondsToLive,
     required String workspaceId,
-  }) :
-      keyName = pulumi.Input.asInput<String>(keyName),
-      keyRole = pulumi.Input.asInput<String>(keyRole),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secondsToLive = pulumi.Input.asInput<int>(secondsToLive),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+  }) : keyName = pulumi.Input.asInput<String>(keyName),
+       keyRole = pulumi.Input.asInput<String>(keyRole),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       secondsToLive = pulumi.Input.asInput<int>(secondsToLive),
+       workspaceId = pulumi.Input.asInput<String>(workspaceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,4 +60,3 @@ class WorkspaceApiKeyArgs {
     );
   }
 }
-

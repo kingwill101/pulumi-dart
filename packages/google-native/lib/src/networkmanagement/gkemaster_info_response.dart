@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Metadata associated with a Google Kubernetes Engine (GKE) cluster master.
 class GKEMasterInfoResponse {
   /// URI of a GKE cluster network.
   final String clusterNetworkUri;
+
   /// URI of a GKE cluster.
   final String clusterUri;
+
   /// External IP address of a GKE cluster master.
   final String externalIp;
+
   /// Internal IP address of a GKE cluster master.
   final String internalIp;
 
@@ -42,4 +44,3 @@ class GKEMasterInfoResponse {
     );
   }
 }
-

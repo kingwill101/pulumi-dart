@@ -19,10 +19,9 @@ class GetRuntimeArgs {
     required String location,
     String? project,
     required String runtimeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeId = pulumi.Input.asInput<String>(runtimeId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       runtimeId = pulumi.Input.asInput<String>(runtimeId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRuntimeArgs {
     );
   }
 }
-

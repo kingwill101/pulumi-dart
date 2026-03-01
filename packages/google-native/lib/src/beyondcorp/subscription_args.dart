@@ -10,13 +10,17 @@ import 'subscription_type.dart';
 /// {@macro pulumi_beyondcorp_v1alpha_subscription_args_doc}
 class SubscriptionArgs {
   final pulumi.Input<String>? location;
+
   /// Unique resource name of the Subscription. The name is ignored when creating a subscription.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
+
   /// Optional. Number of seats in the subscription.
   final pulumi.Input<String>? seatCount;
+
   /// SKU of subscription.
   final pulumi.Input<SubscriptionSku> sku;
+
   /// Type of subscription.
   final pulumi.Input<SubscriptionType> type;
 
@@ -34,13 +38,12 @@ class SubscriptionArgs {
     String? seatCount,
     required SubscriptionSku sku,
     required SubscriptionType type,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      seatCount = pulumi.Input.asOptionalInput<String>(seatCount),
-      sku = pulumi.Input.asInput<SubscriptionSku>(sku),
-      type = pulumi.Input.asInput<SubscriptionType>(type);
+  }) : location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       seatCount = pulumi.Input.asOptionalInput<String>(seatCount),
+       sku = pulumi.Input.asInput<SubscriptionSku>(sku),
+       type = pulumi.Input.asInput<SubscriptionType>(type);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,8 +51,14 @@ class SubscriptionArgs {
       'name': ?name,
       'organizationId': organizationId,
       'seatCount': ?seatCount,
-      'sku': pulumi.Input.mapInputValue<SubscriptionSku, String>(sku, (value) => value.value),
-      'type': pulumi.Input.mapInputValue<SubscriptionType, String>(type, (value) => value.value),
+      'sku': pulumi.Input.mapInputValue<SubscriptionSku, String>(
+        sku,
+        (value) => value.value,
+      ),
+      'type': pulumi.Input.mapInputValue<SubscriptionType, String>(
+        type,
+        (value) => value.value,
+      ),
     };
   }
 
@@ -64,4 +73,3 @@ class SubscriptionArgs {
     );
   }
 }
-

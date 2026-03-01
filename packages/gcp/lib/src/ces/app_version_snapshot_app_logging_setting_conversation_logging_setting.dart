@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AppVersionSnapshotAppLoggingSettingConversationLoggingSetting {
   /// (Output)
   /// Whether to disable conversation logging for the sessions.
@@ -18,10 +17,13 @@ class AppVersionSnapshotAppLoggingSettingConversationLoggingSetting {
     };
   }
 
-  factory AppVersionSnapshotAppLoggingSettingConversationLoggingSetting.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppLoggingSettingConversationLoggingSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotAppLoggingSettingConversationLoggingSetting(
-      disableConversationLogging: map['disableConversationLogging'] == null ? null : map['disableConversationLogging'] as bool,
+      disableConversationLogging: map['disableConversationLogging'] == null
+          ? null
+          : map['disableConversationLogging'] as bool,
     );
   }
 }
-

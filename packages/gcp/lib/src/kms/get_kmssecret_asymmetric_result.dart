@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getKMSSecretAsymmetric.
 class GetKMSSecretAsymmetricResult {
   final String ciphertext;
+
   /// Contains the crc32 checksum of the provided ciphertext.
   final String? crc32;
   final String cryptoKeyVersion;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Contains the result of decrypting the provided ciphertext.
   final String plaintext;
 
@@ -46,4 +48,3 @@ class GetKMSSecretAsymmetricResult {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum GitFileSourceRepoType {
     throw ArgumentError('Unknown GitFileSourceRepoType value: $value');
   }
 }
-

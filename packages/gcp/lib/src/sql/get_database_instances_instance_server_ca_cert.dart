@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDatabaseInstancesInstanceServerCaCert {
   /// The CA Certificate used to connect to the SQL Instance via SSL.
   final String cert;
+
   /// The CN valid for the CA Cert.
   final String commonName;
+
   /// Creation time of the CA Cert.
   final String createTime;
+
   /// Expiration time of the CA Cert.
   final String expirationTime;
+
   /// SHA Fingerprint of the CA Cert.
   final String sha1Fingerprint;
 
@@ -37,7 +40,9 @@ class GetDatabaseInstancesInstanceServerCaCert {
     };
   }
 
-  factory GetDatabaseInstancesInstanceServerCaCert.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstancesInstanceServerCaCert.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstancesInstanceServerCaCert(
       cert: map['cert'] as String,
       commonName: map['commonName'] as String,
@@ -47,4 +52,3 @@ class GetDatabaseInstancesInstanceServerCaCert {
     );
   }
 }
-

@@ -9,20 +9,19 @@ class ApigatewayApiConfigOpenApiDocumentResponse {
 
   /// Creates a new [ApigatewayApiConfigOpenApiDocumentResponse].
   /// [document] The OpenAPI Specification document file.
-  ApigatewayApiConfigOpenApiDocumentResponse({
-    required this.document,
-  });
+  ApigatewayApiConfigOpenApiDocumentResponse({required this.document});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'document': document.toMap(),
-    };
+    return <String, dynamic>{'document': document.toMap()};
   }
 
-  factory ApigatewayApiConfigOpenApiDocumentResponse.fromMap(Map<String, dynamic> map) {
+  factory ApigatewayApiConfigOpenApiDocumentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApigatewayApiConfigOpenApiDocumentResponse(
-      document: ApigatewayApiConfigFileResponse.fromMap((map['document'] as Map).cast<String, dynamic>()),
+      document: ApigatewayApiConfigFileResponse.fromMap(
+        (map['document'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

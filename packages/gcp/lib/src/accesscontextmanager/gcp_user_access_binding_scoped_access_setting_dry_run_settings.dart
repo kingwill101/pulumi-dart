@@ -1,26 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GcpUserAccessBindingScopedAccessSettingDryRunSettings {
   /// Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
   final String? accessLevels;
 
   /// Creates a new [GcpUserAccessBindingScopedAccessSettingDryRunSettings].
   /// [accessLevels] Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-  GcpUserAccessBindingScopedAccessSettingDryRunSettings({
-    this.accessLevels,
-  });
+  GcpUserAccessBindingScopedAccessSettingDryRunSettings({this.accessLevels});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accessLevels': ?accessLevels,
-    };
+    return <String, dynamic>{'accessLevels': ?accessLevels};
   }
 
-  factory GcpUserAccessBindingScopedAccessSettingDryRunSettings.fromMap(Map<String, dynamic> map) {
+  factory GcpUserAccessBindingScopedAccessSettingDryRunSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GcpUserAccessBindingScopedAccessSettingDryRunSettings(
-      accessLevels: map['accessLevels'] == null ? null : map['accessLevels'] as String,
+      accessLevels: map['accessLevels'] == null
+          ? null
+          : map['accessLevels'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterPrivateClusterConfigMasterGlobalAccessConfig {
   /// Whether the cluster master is accessible globally or
   /// not.
@@ -8,20 +7,17 @@ class ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 
   /// Creates a new [ClusterPrivateClusterConfigMasterGlobalAccessConfig].
   /// [enabled] Whether the cluster master is accessible globally or
-  ClusterPrivateClusterConfigMasterGlobalAccessConfig({
-    required this.enabled,
-  });
+  ClusterPrivateClusterConfigMasterGlobalAccessConfig({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory ClusterPrivateClusterConfigMasterGlobalAccessConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterPrivateClusterConfigMasterGlobalAccessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterPrivateClusterConfigMasterGlobalAccessConfig(
       enabled: map['enabled'] as bool,
     );
   }
 }
-

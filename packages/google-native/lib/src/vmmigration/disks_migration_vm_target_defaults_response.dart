@@ -10,30 +10,43 @@ import 'network_interface_response.dart';
 class DisksMigrationVmTargetDefaultsResponse {
   /// Optional. Additional licenses to assign to the VM.
   final List<String> additionalLicenses;
+
   /// Optional. Details of the boot disk of the VM.
   final BootDiskDefaultsResponse bootDiskDefaults;
+
   /// Optional. Compute instance scheduling information (if empty default is used).
   final ComputeSchedulingResponse computeScheduling;
+
   /// Optional. The encryption to apply to the VM.
   final EncryptionResponse encryption;
+
   /// Optional. The hostname to assign to the VM.
   final String hostname;
+
   /// Optional. A map of labels to associate with the VM.
   final Map<String, String> labels;
+
   /// The machine type to create the VM with.
   final String machineType;
+
   /// Optional. The machine type series to create the VM with. For presentation only.
   final String machineTypeSeries;
+
   /// Optional. The metadata key/value pairs to assign to the VM.
   final Map<String, String> metadata;
+
   /// Optional. NICs to attach to the VM.
   final List<NetworkInterfaceResponse> networkInterfaces;
+
   /// Optional. A list of network tags to associate with the VM.
   final List<String> networkTags;
+
   /// Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
   final bool secureBoot;
+
   /// Optional. The service account to associate the VM with.
   final String serviceAccount;
+
   /// The name of the VM to create.
   final String vmName;
 
@@ -80,7 +93,11 @@ class DisksMigrationVmTargetDefaultsResponse {
       'machineType': machineType,
       'machineTypeSeries': machineTypeSeries,
       'metadata': metadata,
-      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces':
+          pulumi.Input.encodeList<
+            NetworkInterfaceResponse,
+            Map<String, dynamic>
+          >(networkInterfaces, (value) => value.toMap()),
       'networkTags': networkTags,
       'secureBoot': secureBoot,
       'serviceAccount': serviceAccount,
@@ -88,18 +105,31 @@ class DisksMigrationVmTargetDefaultsResponse {
     };
   }
 
-  factory DisksMigrationVmTargetDefaultsResponse.fromMap(Map<String, dynamic> map) {
+  factory DisksMigrationVmTargetDefaultsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DisksMigrationVmTargetDefaultsResponse(
       additionalLicenses: (map['additionalLicenses'] as List).cast<String>(),
-      bootDiskDefaults: BootDiskDefaultsResponse.fromMap((map['bootDiskDefaults'] as Map).cast<String, dynamic>()),
-      computeScheduling: ComputeSchedulingResponse.fromMap((map['computeScheduling'] as Map).cast<String, dynamic>()),
-      encryption: EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
+      bootDiskDefaults: BootDiskDefaultsResponse.fromMap(
+        (map['bootDiskDefaults'] as Map).cast<String, dynamic>(),
+      ),
+      computeScheduling: ComputeSchedulingResponse.fromMap(
+        (map['computeScheduling'] as Map).cast<String, dynamic>(),
+      ),
+      encryption: EncryptionResponse.fromMap(
+        (map['encryption'] as Map).cast<String, dynamic>(),
+      ),
       hostname: map['hostname'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       machineType: map['machineType'] as String,
       machineTypeSeries: map['machineTypeSeries'] as String,
       metadata: (map['metadata'] as Map).cast<String, String>(),
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(map['networkInterfaces'], (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponse>(
+        map['networkInterfaces'],
+        (value) => NetworkInterfaceResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       networkTags: (map['networkTags'] as List).cast<String>(),
       secureBoot: map['secureBoot'] as bool,
       serviceAccount: map['serviceAccount'] as String,
@@ -107,4 +137,3 @@ class DisksMigrationVmTargetDefaultsResponse {
     );
   }
 }
-

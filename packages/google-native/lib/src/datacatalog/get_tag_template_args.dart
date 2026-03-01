@@ -19,10 +19,9 @@ class GetTagTemplateArgs {
     required String location,
     String? project,
     required String tagTemplateId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tagTemplateId = pulumi.Input.asInput<String>(tagTemplateId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tagTemplateId = pulumi.Input.asInput<String>(tagTemplateId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTagTemplateArgs {
     );
   }
 }
-

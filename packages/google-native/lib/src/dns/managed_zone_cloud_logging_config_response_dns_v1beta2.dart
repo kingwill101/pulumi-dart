@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Cloud Logging configurations for publicly visible zones.
 class ManagedZoneCloudLoggingConfigResponseDnsV1beta2 {
   /// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
@@ -16,17 +15,15 @@ class ManagedZoneCloudLoggingConfigResponseDnsV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableLogging': enableLogging,
-      'kind': kind,
-    };
+    return <String, dynamic>{'enableLogging': enableLogging, 'kind': kind};
   }
 
-  factory ManagedZoneCloudLoggingConfigResponseDnsV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ManagedZoneCloudLoggingConfigResponseDnsV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZoneCloudLoggingConfigResponseDnsV1beta2(
       enableLogging: map['enableLogging'] as bool,
       kind: map['kind'] as String,
     );
   }
 }
-

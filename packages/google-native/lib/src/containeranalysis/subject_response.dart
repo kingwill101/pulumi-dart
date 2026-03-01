@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SubjectResponse {
   /// `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
   final Map<String, String> digest;
@@ -9,16 +8,10 @@ class SubjectResponse {
   /// Creates a new [SubjectResponse].
   /// [digest] `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
   /// [name] Required.
-  SubjectResponse({
-    required this.digest,
-    required this.name,
-  });
+  SubjectResponse({required this.digest, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'digest': digest,
-      'name': name,
-    };
+    return <String, dynamic>{'digest': digest, 'name': name};
   }
 
   factory SubjectResponse.fromMap(Map<String, dynamic> map) {
@@ -28,4 +21,3 @@ class SubjectResponse {
     );
   }
 }
-

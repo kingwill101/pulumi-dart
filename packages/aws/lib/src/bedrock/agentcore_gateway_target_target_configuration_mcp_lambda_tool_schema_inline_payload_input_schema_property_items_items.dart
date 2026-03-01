@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItemsItems {
   /// Description of the array items.
   final String? description;
+
   /// JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `properties_json`.
   final String? itemsJson;
+
   /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `items_json`.
   final String? propertiesJson;
+
   /// Data type of the array items.
   final String type;
 
@@ -32,13 +34,18 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadI
     };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItemsItems.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItemsItems.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadInputSchemaPropertyItemsItems(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       itemsJson: map['itemsJson'] == null ? null : map['itemsJson'] as String,
-      propertiesJson: map['propertiesJson'] == null ? null : map['propertiesJson'] as String,
+      propertiesJson: map['propertiesJson'] == null
+          ? null
+          : map['propertiesJson'] as String,
       type: map['type'] as String,
     );
   }
 }
-

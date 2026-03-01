@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration {
   /// The type of topic configuration name. Supports `PREFIXED_WITH_SOURCE_CLUSTER_ALIAS` and `IDENTICAL`.
   final String? type;
@@ -12,15 +11,14 @@ class ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
-  factory ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration(
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
-

@@ -18,21 +18,13 @@ class GetSinkArgs {
 
   /// Creates a new [GetSinkArgs].
   /// [id] The identifier for the resource.
-  GetSinkArgs({
-    required String id,
-  }) :
-      id = pulumi.Input.asInput<String>(id);
+  GetSinkArgs({required String id}) : id = pulumi.Input.asInput<String>(id);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetSinkArgs.fromMap(Map<String, dynamic> map) {
-    return GetSinkArgs(
-      id: map['id'] as String,
-    );
+    return GetSinkArgs(id: map['id'] as String);
   }
 }
-

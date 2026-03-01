@@ -5,7 +5,11 @@ import 'get_repository_remote_repository_config_docker_repository_custom_reposit
 
 class GetRepositoryRemoteRepositoryConfigDockerRepository {
   /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
-  final List<GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository> customRepositories;
+  final List<
+    GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository
+  >
+  customRepositories;
+
   /// Address of the remote repository. Possible values: ["DOCKER_HUB"]
   final String publicRepository;
 
@@ -19,16 +23,30 @@ class GetRepositoryRemoteRepositoryConfigDockerRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRepositories': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository, Map<String, dynamic>>(customRepositories, (value) => value.toMap()),
+      'customRepositories':
+          pulumi.Input.encodeList<
+            GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository,
+            Map<String, dynamic>
+          >(customRepositories, (value) => value.toMap()),
       'publicRepository': publicRepository,
     };
   }
 
-  factory GetRepositoryRemoteRepositoryConfigDockerRepository.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryRemoteRepositoryConfigDockerRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryRemoteRepositoryConfigDockerRepository(
-      customRepositories: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository>(map['customRepositories'], (value) => GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap((value as Map).cast<String, dynamic>())),
+      customRepositories:
+          pulumi.Input.decodeList<
+            GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository
+          >(
+            map['customRepositories'],
+            (value) =>
+                GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       publicRepository: map['publicRepository'] as String,
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'file_reference.dart';
 class IosRoboTest {
   /// The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
   final String? appBundleId;
+
   /// The ipa stored at this file should be used to run the test.
   final FileReference appIpa;
+
   /// An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
   final FileReference? roboScript;
 
@@ -15,11 +17,7 @@ class IosRoboTest {
   /// [appBundleId] The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
   /// [appIpa] The ipa stored at this file should be used to run the test.
   /// [roboScript] An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
-  IosRoboTest({
-    this.appBundleId,
-    required this.appIpa,
-    this.roboScript,
-  });
+  IosRoboTest({this.appBundleId, required this.appIpa, this.roboScript});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,17 @@ class IosRoboTest {
 
   factory IosRoboTest.fromMap(Map<String, dynamic> map) {
     return IosRoboTest(
-      appBundleId: map['appBundleId'] == null ? null : map['appBundleId'] as String,
-      appIpa: FileReference.fromMap((map['appIpa'] as Map).cast<String, dynamic>()),
-      roboScript: map['roboScript'] == null ? null : FileReference.fromMap((map['roboScript'] as Map).cast<String, dynamic>()),
+      appBundleId: map['appBundleId'] == null
+          ? null
+          : map['appBundleId'] as String,
+      appIpa: FileReference.fromMap(
+        (map['appIpa'] as Map).cast<String, dynamic>(),
+      ),
+      roboScript: map['roboScript'] == null
+          ? null
+          : FileReference.fromMap(
+              (map['roboScript'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

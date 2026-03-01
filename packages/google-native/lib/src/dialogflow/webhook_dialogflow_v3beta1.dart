@@ -6,18 +6,30 @@ import 'webhook_dialogflow_v3beta1_args.dart';
 /// Creates a webhook in the specified agent.
 class WebhookDialogflowV3beta1 extends pulumi.CustomResource {
   late final pulumi.Output<String> agentId;
+
   /// Indicates whether the webhook is disabled.
   late final pulumi.Output<bool> disabled;
+
   /// The human-readable name of the webhook, unique within the agent.
   late final pulumi.Output<String> displayName;
+
   /// Configuration for a generic web service.
-  late final pulumi.Output<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse> genericWebService;
+  late final pulumi.Output<
+    GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse
+  >
+  genericWebService;
   late final pulumi.Output<String> location;
+
   /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
-  late final pulumi.Output<GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse> serviceDirectory;
+  late final pulumi.Output<
+    GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse
+  >
+  serviceDirectory;
+
   /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
   late final pulumi.Output<String> timeout;
 
@@ -30,19 +42,25 @@ class WebhookDialogflowV3beta1 extends pulumi.CustomResource {
     WebhookDialogflowV3beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:dialogflow/v3beta1:Webhook',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:dialogflow/v3beta1:Webhook',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.agentId = registerOutput<String>('agentId');
     this.disabled = registerOutput<bool>('disabled');
     this.displayName = registerOutput<String>('displayName');
-    this.genericWebService = registerOutput<GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse>('genericWebService');
+    this.genericWebService =
+        registerOutput<
+          GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse
+        >('genericWebService');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.serviceDirectory = registerOutput<GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse>('serviceDirectory');
+    this.serviceDirectory =
+        registerOutput<
+          GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse
+        >('serviceDirectory');
     this.timeout = registerOutput<String>('timeout');
   }
 }

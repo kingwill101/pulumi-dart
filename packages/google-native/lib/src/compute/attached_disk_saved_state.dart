@@ -15,4 +15,3 @@ enum AttachedDiskSavedState {
     throw ArgumentError('Unknown AttachedDiskSavedState value: $value');
   }
 }
-

@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRouteTableAssociation {
   /// ID of an Internet Gateway or Virtual Private Gateway which is connected to the Route Table (not exported if not passed as a parameter).
   final String gatewayId;
+
   /// Whether the association is due to the main route table.
   final bool main;
+
   /// Association ID.
   final String routeTableAssociationId;
+
   /// ID of the specific Route Table to retrieve.
   final String routeTableId;
+
   /// ID of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
   final String subnetId;
 
@@ -47,4 +50,3 @@ class GetRouteTableAssociation {
     );
   }
 }
-

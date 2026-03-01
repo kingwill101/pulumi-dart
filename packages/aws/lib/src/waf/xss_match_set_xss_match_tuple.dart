@@ -5,6 +5,7 @@ import 'xss_match_set_xss_match_tuple_field_to_match.dart';
 class XssMatchSetXssMatchTuple {
   /// Specifies where in a web request to look for cross-site scripting attacks.
   final XssMatchSetXssMatchTupleFieldToMatch fieldToMatch;
+
   /// Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
   /// If you specify a transformation, AWS WAF performs the transformation on `target_string` before inspecting a request for a match.
   /// e.g., `CMD_LINE`, `HTML_ENTITY_DECODE` or `NONE`.
@@ -29,9 +30,10 @@ class XssMatchSetXssMatchTuple {
 
   factory XssMatchSetXssMatchTuple.fromMap(Map<String, dynamic> map) {
     return XssMatchSetXssMatchTuple(
-      fieldToMatch: XssMatchSetXssMatchTupleFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
+      fieldToMatch: XssMatchSetXssMatchTupleFieldToMatch.fromMap(
+        (map['fieldToMatch'] as Map).cast<String, dynamic>(),
+      ),
       textTransformation: map['textTransformation'] as String,
     );
   }
 }
-

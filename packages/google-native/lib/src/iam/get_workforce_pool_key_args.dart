@@ -22,11 +22,10 @@ class GetWorkforcePoolKeyArgs {
     required String location,
     required String providerId,
     required String workforcePoolId,
-  }) :
-      keyId = pulumi.Input.asInput<String>(keyId),
-      location = pulumi.Input.asInput<String>(location),
-      providerId = pulumi.Input.asInput<String>(providerId),
-      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+  }) : keyId = pulumi.Input.asInput<String>(keyId),
+       location = pulumi.Input.asInput<String>(location),
+       providerId = pulumi.Input.asInput<String>(providerId),
+       workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetWorkforcePoolKeyArgs {
     );
   }
 }
-

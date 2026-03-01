@@ -6,12 +6,16 @@ import 'google_cloud_dialogflow_v2_intent_message_image.dart';
 class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
   /// Url where the media is stored.
   final String contentUrl;
+
   /// Optional. Description of media card.
   final String? description;
+
   /// Optional. Icon to display above media content.
   final GoogleCloudDialogflowV2IntentMessageImage? icon;
+
   /// Optional. Image to display above media content.
   final GoogleCloudDialogflowV2IntentMessageImage? largeImage;
+
   /// Name of media card.
   final String name;
 
@@ -39,14 +43,25 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject(
       contentUrl: map['contentUrl'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      icon: map['icon'] == null ? null : GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['icon'] as Map).cast<String, dynamic>()),
-      largeImage: map['largeImage'] == null ? null : GoogleCloudDialogflowV2IntentMessageImage.fromMap((map['largeImage'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      icon: map['icon'] == null
+          ? null
+          : GoogleCloudDialogflowV2IntentMessageImage.fromMap(
+              (map['icon'] as Map).cast<String, dynamic>(),
+            ),
+      largeImage: map['largeImage'] == null
+          ? null
+          : GoogleCloudDialogflowV2IntentMessageImage.fromMap(
+              (map['largeImage'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] as String,
     );
   }
 }
-

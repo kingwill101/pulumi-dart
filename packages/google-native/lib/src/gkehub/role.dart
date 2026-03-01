@@ -9,9 +9,7 @@ class Role {
 
   /// Creates a new [Role].
   /// [predefinedRole] predefined_role is the Kubernetes default role to use
-  Role({
-    this.predefinedRole,
-  });
+  Role({this.predefinedRole});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class Role {
 
   factory Role.fromMap(Map<String, dynamic> map) {
     return Role(
-      predefinedRole: map['predefinedRole'] == null ? null : RolePredefinedRole.fromValue(map['predefinedRole'] as String),
+      predefinedRole: map['predefinedRole'] == null
+          ? null
+          : RolePredefinedRole.fromValue(map['predefinedRole'] as String),
     );
   }
 }
-

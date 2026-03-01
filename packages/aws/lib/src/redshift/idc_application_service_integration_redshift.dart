@@ -8,9 +8,7 @@ class IdcApplicationServiceIntegrationRedshift {
 
   /// Creates a new [IdcApplicationServiceIntegrationRedshift].
   /// [connect] Amazon Redshift connect service integration scope.
-  IdcApplicationServiceIntegrationRedshift({
-    this.connect,
-  });
+  IdcApplicationServiceIntegrationRedshift({this.connect});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,10 +16,15 @@ class IdcApplicationServiceIntegrationRedshift {
     };
   }
 
-  factory IdcApplicationServiceIntegrationRedshift.fromMap(Map<String, dynamic> map) {
+  factory IdcApplicationServiceIntegrationRedshift.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdcApplicationServiceIntegrationRedshift(
-      connect: map['connect'] == null ? null : IdcApplicationServiceIntegrationRedshiftConnect.fromMap((map['connect'] as Map).cast<String, dynamic>()),
+      connect: map['connect'] == null
+          ? null
+          : IdcApplicationServiceIntegrationRedshiftConnect.fromMap(
+              (map['connect'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Filter for fixed point number data types such as NUMERIC/NUMBER
 class SourceNumericFilterResponse {
   /// Enum to set the option defining the datatypes numeric filter has to be applied to
   final String numericFilterOption;
+
   /// Optional. The filter will match columns with precision smaller than or equal to this number.
   final int sourceMaxPrecisionFilter;
+
   /// Optional. The filter will match columns with scale smaller than or equal to this number.
   final int sourceMaxScaleFilter;
+
   /// Optional. The filter will match columns with precision greater than or equal to this number.
   final int sourceMinPrecisionFilter;
+
   /// Optional. The filter will match columns with scale greater than or equal to this number.
   final int sourceMinScaleFilter;
 
@@ -48,4 +51,3 @@ class SourceNumericFilterResponse {
     );
   }
 }
-

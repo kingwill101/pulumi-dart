@@ -7,9 +7,7 @@ class InternetMonitorInternetMeasurementsLogDelivery {
 
   /// Creates a new [InternetMonitorInternetMeasurementsLogDelivery].
   /// [s3Config] Optional.
-  InternetMonitorInternetMeasurementsLogDelivery({
-    this.s3Config,
-  });
+  InternetMonitorInternetMeasurementsLogDelivery({this.s3Config});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,10 +15,15 @@ class InternetMonitorInternetMeasurementsLogDelivery {
     };
   }
 
-  factory InternetMonitorInternetMeasurementsLogDelivery.fromMap(Map<String, dynamic> map) {
+  factory InternetMonitorInternetMeasurementsLogDelivery.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InternetMonitorInternetMeasurementsLogDelivery(
-      s3Config: map['s3Config'] == null ? null : InternetMonitorInternetMeasurementsLogDeliveryS3Config.fromMap((map['s3Config'] as Map).cast<String, dynamic>()),
+      s3Config: map['s3Config'] == null
+          ? null
+          : InternetMonitorInternetMeasurementsLogDeliveryS3Config.fromMap(
+              (map['s3Config'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

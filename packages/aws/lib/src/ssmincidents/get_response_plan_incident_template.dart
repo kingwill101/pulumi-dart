@@ -6,14 +6,20 @@ import 'get_response_plan_incident_template_notification_target.dart';
 class GetResponsePlanIncidentTemplate {
   /// A string used to stop Incident Manager from creating multiple incident records for the same incident.
   final String dedupeString;
+
   /// The impact value of a generated incident. The following values are supported:
   final int impact;
+
   /// The tags assigned to an incident template. When an incident starts, Incident Manager assigns the tags specified in the template to the incident.
   final Map<String, String> incidentTags;
+
   /// The Amazon Simple Notification Service (Amazon SNS) targets that this incident notifies when it is updated. The `notification_target` configuration block supports the following argument:
-  final List<GetResponsePlanIncidentTemplateNotificationTarget> notificationTargets;
+  final List<GetResponsePlanIncidentTemplateNotificationTarget>
+  notificationTargets;
+
   /// The summary of an incident.
   final String summary;
+
   /// The title of a generated incident.
   final String title;
 
@@ -38,7 +44,11 @@ class GetResponsePlanIncidentTemplate {
       'dedupeString': dedupeString,
       'impact': impact,
       'incidentTags': incidentTags,
-      'notificationTargets': pulumi.Input.encodeList<GetResponsePlanIncidentTemplateNotificationTarget, Map<String, dynamic>>(notificationTargets, (value) => value.toMap()),
+      'notificationTargets':
+          pulumi.Input.encodeList<
+            GetResponsePlanIncidentTemplateNotificationTarget,
+            Map<String, dynamic>
+          >(notificationTargets, (value) => value.toMap()),
       'summary': summary,
       'title': title,
     };
@@ -49,10 +59,18 @@ class GetResponsePlanIncidentTemplate {
       dedupeString: map['dedupeString'] as String,
       impact: map['impact'] as int,
       incidentTags: (map['incidentTags'] as Map).cast<String, String>(),
-      notificationTargets: pulumi.Input.decodeList<GetResponsePlanIncidentTemplateNotificationTarget>(map['notificationTargets'], (value) => GetResponsePlanIncidentTemplateNotificationTarget.fromMap((value as Map).cast<String, dynamic>())),
+      notificationTargets:
+          pulumi.Input.decodeList<
+            GetResponsePlanIncidentTemplateNotificationTarget
+          >(
+            map['notificationTargets'],
+            (value) =>
+                GetResponsePlanIncidentTemplateNotificationTarget.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       summary: map['summary'] as String,
       title: map['title'] as String,
     );
   }
 }
-

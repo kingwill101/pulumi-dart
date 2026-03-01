@@ -19,4 +19,3 @@ enum RuleActionComputeV1 {
     throw ArgumentError('Unknown RuleActionComputeV1 value: $value');
   }
 }
-

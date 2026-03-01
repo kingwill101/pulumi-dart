@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies a file available via some URI.
 class OSPolicyResourceFileRemoteResponse {
   /// SHA256 checksum of the remote file.
   final String sha256Checksum;
+
   /// URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
   final String uri;
 
@@ -17,10 +17,7 @@ class OSPolicyResourceFileRemoteResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sha256Checksum': sha256Checksum,
-      'uri': uri,
-    };
+    return <String, dynamic>{'sha256Checksum': sha256Checksum, 'uri': uri};
   }
 
   factory OSPolicyResourceFileRemoteResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class OSPolicyResourceFileRemoteResponse {
     );
   }
 }
-

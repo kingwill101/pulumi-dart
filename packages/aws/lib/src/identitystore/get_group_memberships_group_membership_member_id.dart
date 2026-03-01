@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetGroupMembershipsGroupMembershipMemberId {
   /// User identifier of the group member.
   final String userId;
 
   /// Creates a new [GetGroupMembershipsGroupMembershipMemberId].
   /// [userId] User identifier of the group member.
-  GetGroupMembershipsGroupMembershipMemberId({
-    required this.userId,
-  });
+  GetGroupMembershipsGroupMembershipMemberId({required this.userId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'userId': userId,
-    };
+    return <String, dynamic>{'userId': userId};
   }
 
-  factory GetGroupMembershipsGroupMembershipMemberId.fromMap(Map<String, dynamic> map) {
+  factory GetGroupMembershipsGroupMembershipMemberId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupMembershipsGroupMembershipMemberId(
       userId: map['userId'] as String,
     );
   }
 }
-

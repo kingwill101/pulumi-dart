@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterArgs {
   /// Name of the cluster.
   final pulumi.Input<String> clusterName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of key-value pairs assigned to the cluster.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -22,10 +24,9 @@ class GetClusterArgs {
     required String clusterName,
     String? region,
     Map<String, String>? tags,
-  }) :
-      clusterName = pulumi.Input.asInput<String>(clusterName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : clusterName = pulumi.Input.asInput<String>(clusterName),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,8 +40,9 @@ class GetClusterArgs {
     return GetClusterArgs(
       clusterName: map['clusterName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

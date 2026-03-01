@@ -9,9 +9,7 @@ class FleetObservabilityFeatureSpecGkehubV1alpha {
 
   /// Creates a new [FleetObservabilityFeatureSpecGkehubV1alpha].
   /// [loggingConfig] Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
-  FleetObservabilityFeatureSpecGkehubV1alpha({
-    this.loggingConfig,
-  });
+  FleetObservabilityFeatureSpecGkehubV1alpha({this.loggingConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class FleetObservabilityFeatureSpecGkehubV1alpha {
     };
   }
 
-  factory FleetObservabilityFeatureSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFeatureSpecGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFeatureSpecGkehubV1alpha(
-      loggingConfig: map['loggingConfig'] == null ? null : FleetObservabilityLoggingConfigGkehubV1alpha.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: map['loggingConfig'] == null
+          ? null
+          : FleetObservabilityLoggingConfigGkehubV1alpha.fromMap(
+              (map['loggingConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

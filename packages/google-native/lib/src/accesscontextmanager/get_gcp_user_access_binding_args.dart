@@ -16,9 +16,10 @@ class GetGcpUserAccessBindingArgs {
   GetGcpUserAccessBindingArgs({
     required String gcpUserAccessBindingId,
     required String organizationId,
-  }) :
-      gcpUserAccessBindingId = pulumi.Input.asInput<String>(gcpUserAccessBindingId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : gcpUserAccessBindingId = pulumi.Input.asInput<String>(
+         gcpUserAccessBindingId,
+       ),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +35,3 @@ class GetGcpUserAccessBindingArgs {
     );
   }
 }
-

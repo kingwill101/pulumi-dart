@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AppVersionSnapshotExampleMessageChunkAgentTransfer {
   /// The display name of the app version.
   final String? displayName;
+
   /// (Output)
   /// The agent to which the conversation is being transferred. The agent will
   /// handle the conversation from this point forward.
@@ -25,11 +25,16 @@ class AppVersionSnapshotExampleMessageChunkAgentTransfer {
     };
   }
 
-  factory AppVersionSnapshotExampleMessageChunkAgentTransfer.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotExampleMessageChunkAgentTransfer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotExampleMessageChunkAgentTransfer(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      targetAgent: map['targetAgent'] == null ? null : map['targetAgent'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      targetAgent: map['targetAgent'] == null
+          ? null
+          : map['targetAgent'] as String,
     );
   }
 }
-

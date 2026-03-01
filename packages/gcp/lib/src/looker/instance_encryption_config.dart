@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstanceEncryptionConfig {
   /// Name of the customer managed encryption key (CMEK) in KMS.
   final String? kmsKeyName;
+
   /// (Output)
   /// Full name and version of the CMEK key currently in use to encrypt Looker data.
   final String? kmsKeyNameVersion;
+
   /// (Output)
   /// Status of the customer managed encryption key (CMEK) in KMS.
   final String? kmsKeyState;
@@ -31,10 +32,15 @@ class InstanceEncryptionConfig {
 
   factory InstanceEncryptionConfig.fromMap(Map<String, dynamic> map) {
     return InstanceEncryptionConfig(
-      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
-      kmsKeyNameVersion: map['kmsKeyNameVersion'] == null ? null : map['kmsKeyNameVersion'] as String,
-      kmsKeyState: map['kmsKeyState'] == null ? null : map['kmsKeyState'] as String,
+      kmsKeyName: map['kmsKeyName'] == null
+          ? null
+          : map['kmsKeyName'] as String,
+      kmsKeyNameVersion: map['kmsKeyNameVersion'] == null
+          ? null
+          : map['kmsKeyNameVersion'] as String,
+      kmsKeyState: map['kmsKeyState'] == null
+          ? null
+          : map['kmsKeyState'] as String,
     );
   }
 }
-

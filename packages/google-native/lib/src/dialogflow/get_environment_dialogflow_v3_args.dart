@@ -22,11 +22,10 @@ class GetEnvironmentDialogflowV3Args {
     required String environmentId,
     required String location,
     String? project,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : agentId = pulumi.Input.asInput<String>(agentId),
+       environmentId = pulumi.Input.asInput<String>(environmentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetEnvironmentDialogflowV3Args {
     );
   }
 }
-

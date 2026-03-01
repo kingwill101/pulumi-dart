@@ -19,10 +19,9 @@ class GetRegionClusterIamPolicyArgs {
     required String clusterId,
     String? project,
     required String regionId,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regionId = pulumi.Input.asInput<String>(regionId);
+  }) : clusterId = pulumi.Input.asInput<String>(clusterId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       regionId = pulumi.Input.asInput<String>(regionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionClusterIamPolicyArgs {
     );
   }
 }
-

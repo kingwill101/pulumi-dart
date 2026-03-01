@@ -12,7 +12,8 @@ enum SecurityPolicyRuleDirectionComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPolicyRuleDirectionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPolicyRuleDirectionComputeBeta value: $value',
+    );
   }
 }
-

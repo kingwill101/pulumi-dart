@@ -32,7 +32,11 @@ class EnvironmentLastDeployment {
       'deploymentId': deploymentId,
       'deploymentStatus': deploymentStatus,
       'deploymentType': deploymentType,
-      'failureReasons': pulumi.Input.encodeList<EnvironmentLastDeploymentFailureReason, Map<String, dynamic>>(failureReasons, (value) => value.toMap()),
+      'failureReasons':
+          pulumi.Input.encodeList<
+            EnvironmentLastDeploymentFailureReason,
+            Map<String, dynamic>
+          >(failureReasons, (value) => value.toMap()),
       'isDeploymentComplete': isDeploymentComplete,
       'messages': messages,
     };
@@ -43,10 +47,15 @@ class EnvironmentLastDeployment {
       deploymentId: map['deploymentId'] as String,
       deploymentStatus: map['deploymentStatus'] as String,
       deploymentType: map['deploymentType'] as String,
-      failureReasons: pulumi.Input.decodeList<EnvironmentLastDeploymentFailureReason>(map['failureReasons'], (value) => EnvironmentLastDeploymentFailureReason.fromMap((value as Map).cast<String, dynamic>())),
+      failureReasons:
+          pulumi.Input.decodeList<EnvironmentLastDeploymentFailureReason>(
+            map['failureReasons'],
+            (value) => EnvironmentLastDeploymentFailureReason.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       isDeploymentComplete: map['isDeploymentComplete'] as bool,
       messages: (map['messages'] as List).cast<String>(),
     );
   }
 }
-

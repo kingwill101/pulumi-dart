@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// CertificateTemplate (v3 Extension in X.509).
 class CertificateTemplateResponse {
   /// The Major version of the template. Example: 100.
   final int majorVersion;
+
   /// The minor version of the template. Example: 12.
   final int minorVersion;
 
@@ -30,4 +30,3 @@ class CertificateTemplateResponse {
     );
   }
 }
-

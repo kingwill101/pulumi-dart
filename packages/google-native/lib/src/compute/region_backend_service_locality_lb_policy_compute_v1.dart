@@ -18,7 +18,8 @@ enum RegionBackendServiceLocalityLbPolicyComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionBackendServiceLocalityLbPolicyComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionBackendServiceLocalityLbPolicyComputeV1 value: $value',
+    );
   }
 }
-

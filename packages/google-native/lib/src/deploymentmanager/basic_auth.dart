@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Basic Auth used as a credential.
 class BasicAuth {
   final String? password;
@@ -9,16 +8,10 @@ class BasicAuth {
   /// Creates a new [BasicAuth].
   /// [password] Optional.
   /// [user] Optional.
-  BasicAuth({
-    this.password,
-    this.user,
-  });
+  BasicAuth({this.password, this.user});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': ?password,
-      'user': ?user,
-    };
+    return <String, dynamic>{'password': ?password, 'user': ?user};
   }
 
   factory BasicAuth.fromMap(Map<String, dynamic> map) {
@@ -28,4 +21,3 @@ class BasicAuth {
     );
   }
 }
-

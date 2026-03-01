@@ -25,12 +25,13 @@ class GetWorkloadIdentityPoolKeyArgs {
     String? project,
     required String providerId,
     required String workloadIdentityPoolId,
-  }) :
-      keyId = pulumi.Input.asInput<String>(keyId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      providerId = pulumi.Input.asInput<String>(providerId),
-      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId);
+  }) : keyId = pulumi.Input.asInput<String>(keyId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       providerId = pulumi.Input.asInput<String>(providerId),
+       workloadIdentityPoolId = pulumi.Input.asInput<String>(
+         workloadIdentityPoolId,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +53,3 @@ class GetWorkloadIdentityPoolKeyArgs {
     );
   }
 }
-

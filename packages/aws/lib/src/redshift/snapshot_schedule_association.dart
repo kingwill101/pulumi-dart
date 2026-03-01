@@ -203,8 +203,10 @@ import 'snapshot_schedule_association_args.dart';
 class SnapshotScheduleAssociation extends pulumi.CustomResource {
   /// The cluster identifier.
   late final pulumi.Output<String> clusterIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The snapshot schedule identifier.
   late final pulumi.Output<String> scheduleIdentifier;
 
@@ -217,11 +219,11 @@ class SnapshotScheduleAssociation extends pulumi.CustomResource {
     SnapshotScheduleAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:redshift/snapshotScheduleAssociation:SnapshotScheduleAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.clusterIdentifier = registerOutput<String>('clusterIdentifier');
     this.region = registerOutput<String>('region');
     this.scheduleIdentifier = registerOutput<String>('scheduleIdentifier');

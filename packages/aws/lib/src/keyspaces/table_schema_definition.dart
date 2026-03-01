@@ -9,10 +9,13 @@ import 'table_schema_definition_static_column.dart';
 class TableSchemaDefinition {
   /// The columns that are part of the clustering key of the table.
   final List<TableSchemaDefinitionClusteringKey>? clusteringKeys;
+
   /// The regular columns of the table.
   final List<TableSchemaDefinitionColumn> columns;
+
   /// The columns that are part of the partition key of the table .
   final List<TableSchemaDefinitionPartitionKey> partitionKeys;
+
   /// The columns that have been defined as `STATIC`. Static columns store values that are shared by all rows in the same partition.
   final List<TableSchemaDefinitionStaticColumn>? staticColumns;
 
@@ -30,20 +33,61 @@ class TableSchemaDefinition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusteringKeys': ?clusteringKeys == null ? null : pulumi.Input.encodeList<TableSchemaDefinitionClusteringKey, Map<String, dynamic>>(clusteringKeys!, (value) => value.toMap()),
-      'columns': pulumi.Input.encodeList<TableSchemaDefinitionColumn, Map<String, dynamic>>(columns, (value) => value.toMap()),
-      'partitionKeys': pulumi.Input.encodeList<TableSchemaDefinitionPartitionKey, Map<String, dynamic>>(partitionKeys, (value) => value.toMap()),
-      'staticColumns': ?staticColumns == null ? null : pulumi.Input.encodeList<TableSchemaDefinitionStaticColumn, Map<String, dynamic>>(staticColumns!, (value) => value.toMap()),
+      'clusteringKeys': ?clusteringKeys == null
+          ? null
+          : pulumi.Input.encodeList<
+              TableSchemaDefinitionClusteringKey,
+              Map<String, dynamic>
+            >(clusteringKeys!, (value) => value.toMap()),
+      'columns':
+          pulumi.Input.encodeList<
+            TableSchemaDefinitionColumn,
+            Map<String, dynamic>
+          >(columns, (value) => value.toMap()),
+      'partitionKeys':
+          pulumi.Input.encodeList<
+            TableSchemaDefinitionPartitionKey,
+            Map<String, dynamic>
+          >(partitionKeys, (value) => value.toMap()),
+      'staticColumns': ?staticColumns == null
+          ? null
+          : pulumi.Input.encodeList<
+              TableSchemaDefinitionStaticColumn,
+              Map<String, dynamic>
+            >(staticColumns!, (value) => value.toMap()),
     };
   }
 
   factory TableSchemaDefinition.fromMap(Map<String, dynamic> map) {
     return TableSchemaDefinition(
-      clusteringKeys: map['clusteringKeys'] == null ? null : pulumi.Input.decodeList<TableSchemaDefinitionClusteringKey>(map['clusteringKeys'], (value) => TableSchemaDefinitionClusteringKey.fromMap((value as Map).cast<String, dynamic>())),
-      columns: pulumi.Input.decodeList<TableSchemaDefinitionColumn>(map['columns'], (value) => TableSchemaDefinitionColumn.fromMap((value as Map).cast<String, dynamic>())),
-      partitionKeys: pulumi.Input.decodeList<TableSchemaDefinitionPartitionKey>(map['partitionKeys'], (value) => TableSchemaDefinitionPartitionKey.fromMap((value as Map).cast<String, dynamic>())),
-      staticColumns: map['staticColumns'] == null ? null : pulumi.Input.decodeList<TableSchemaDefinitionStaticColumn>(map['staticColumns'], (value) => TableSchemaDefinitionStaticColumn.fromMap((value as Map).cast<String, dynamic>())),
+      clusteringKeys: map['clusteringKeys'] == null
+          ? null
+          : pulumi.Input.decodeList<TableSchemaDefinitionClusteringKey>(
+              map['clusteringKeys'],
+              (value) => TableSchemaDefinitionClusteringKey.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      columns: pulumi.Input.decodeList<TableSchemaDefinitionColumn>(
+        map['columns'],
+        (value) => TableSchemaDefinitionColumn.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      partitionKeys: pulumi.Input.decodeList<TableSchemaDefinitionPartitionKey>(
+        map['partitionKeys'],
+        (value) => TableSchemaDefinitionPartitionKey.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      staticColumns: map['staticColumns'] == null
+          ? null
+          : pulumi.Input.decodeList<TableSchemaDefinitionStaticColumn>(
+              map['staticColumns'],
+              (value) => TableSchemaDefinitionStaticColumn.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

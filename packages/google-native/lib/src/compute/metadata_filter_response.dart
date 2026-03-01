@@ -7,6 +7,7 @@ import 'metadata_filter_label_match_response.dart';
 class MetadataFilterResponse {
   /// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
   final List<MetadataFilterLabelMatchResponse> filterLabels;
+
   /// Specifies how individual filter label matches within the list of filterLabels and contributes toward the overall metadataFilter match. Supported values are: - MATCH_ANY: at least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: all filterLabels must have matching labels in the provided metadata.
   final String filterMatchCriteria;
 
@@ -20,16 +21,24 @@ class MetadataFilterResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filterLabels': pulumi.Input.encodeList<MetadataFilterLabelMatchResponse, Map<String, dynamic>>(filterLabels, (value) => value.toMap()),
+      'filterLabels':
+          pulumi.Input.encodeList<
+            MetadataFilterLabelMatchResponse,
+            Map<String, dynamic>
+          >(filterLabels, (value) => value.toMap()),
       'filterMatchCriteria': filterMatchCriteria,
     };
   }
 
   factory MetadataFilterResponse.fromMap(Map<String, dynamic> map) {
     return MetadataFilterResponse(
-      filterLabels: pulumi.Input.decodeList<MetadataFilterLabelMatchResponse>(map['filterLabels'], (value) => MetadataFilterLabelMatchResponse.fromMap((value as Map).cast<String, dynamic>())),
+      filterLabels: pulumi.Input.decodeList<MetadataFilterLabelMatchResponse>(
+        map['filterLabels'],
+        (value) => MetadataFilterLabelMatchResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       filterMatchCriteria: map['filterMatchCriteria'] as String,
     );
   }
 }
-

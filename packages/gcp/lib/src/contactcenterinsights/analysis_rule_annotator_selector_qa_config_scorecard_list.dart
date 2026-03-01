@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AnalysisRuleAnnotatorSelectorQaConfigScorecardList {
   /// List of QaScorecardRevisions.
   final List<String>? qaScorecardRevisions;
@@ -12,15 +11,16 @@ class AnalysisRuleAnnotatorSelectorQaConfigScorecardList {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'qaScorecardRevisions': ?qaScorecardRevisions,
-    };
+    return <String, dynamic>{'qaScorecardRevisions': ?qaScorecardRevisions};
   }
 
-  factory AnalysisRuleAnnotatorSelectorQaConfigScorecardList.fromMap(Map<String, dynamic> map) {
+  factory AnalysisRuleAnnotatorSelectorQaConfigScorecardList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalysisRuleAnnotatorSelectorQaConfigScorecardList(
-      qaScorecardRevisions: map['qaScorecardRevisions'] == null ? null : (map['qaScorecardRevisions'] as List).cast<String>(),
+      qaScorecardRevisions: map['qaScorecardRevisions'] == null
+          ? null
+          : (map['qaScorecardRevisions'] as List).cast<String>(),
     );
   }
 }
-

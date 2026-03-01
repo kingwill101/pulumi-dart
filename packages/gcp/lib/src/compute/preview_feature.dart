@@ -170,11 +170,14 @@ class PreviewFeature extends pulumi.CustomResource {
   /// The activation status of the preview feature.
   /// Possible values are: `ENABLED`, `ACTIVATION_STATE_UNSPECIFIED`.
   late final pulumi.Output<String> activationStatus;
+
   /// The name of the preview feature.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The rollout operation of the feature.
   /// Structure is documented below.
   late final pulumi.Output<PreviewFeatureRolloutOperation?> rolloutOperation;
@@ -188,14 +191,16 @@ class PreviewFeature extends pulumi.CustomResource {
     PreviewFeatureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/previewFeature:PreviewFeature',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/previewFeature:PreviewFeature',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.activationStatus = registerOutput<String>('activationStatus');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.rolloutOperation = registerOutput<PreviewFeatureRolloutOperation?>('rolloutOperation');
+    this.rolloutOperation = registerOutput<PreviewFeatureRolloutOperation?>(
+      'rolloutOperation',
+    );
   }
 }

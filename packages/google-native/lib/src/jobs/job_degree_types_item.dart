@@ -21,4 +21,3 @@ enum JobDegreeTypesItem {
     throw ArgumentError('Unknown JobDegreeTypesItem value: $value');
   }
 }
-

@@ -16,9 +16,11 @@ class GetRepositoryIamPolicyArgs {
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
   final pulumi.Input<String>? location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> repository;
 
@@ -30,10 +32,9 @@ class GetRepositoryIamPolicyArgs {
     String? location,
     String? project,
     required String repository,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repository = pulumi.Input.asInput<String>(repository);
+  }) : location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       repository = pulumi.Input.asInput<String>(repository);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,4 +52,3 @@ class GetRepositoryIamPolicyArgs {
     );
   }
 }
-

@@ -25,12 +25,11 @@ class GetUtilizationReportVmmigrationV1alpha1Args {
     required String sourceId,
     required String utilizationReportId,
     String? view,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceId = pulumi.Input.asInput<String>(sourceId),
-      utilizationReportId = pulumi.Input.asInput<String>(utilizationReportId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sourceId = pulumi.Input.asInput<String>(sourceId),
+       utilizationReportId = pulumi.Input.asInput<String>(utilizationReportId),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +41,9 @@ class GetUtilizationReportVmmigrationV1alpha1Args {
     };
   }
 
-  factory GetUtilizationReportVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetUtilizationReportVmmigrationV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetUtilizationReportVmmigrationV1alpha1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -52,4 +53,3 @@ class GetUtilizationReportVmmigrationV1alpha1Args {
     );
   }
 }
-

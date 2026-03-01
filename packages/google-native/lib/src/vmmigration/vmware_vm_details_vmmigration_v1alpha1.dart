@@ -6,26 +6,37 @@ import 'vmware_vm_details_power_state_vmmigration_v1alpha1.dart';
 class VmwareVmDetailsVmmigrationV1alpha1 {
   /// The total size of the storage allocated to the VM in MB.
   final String? committedStorage;
+
   /// The total size of the storage allocated to the VM in MB.
   final String? committedStorageMb;
+
   /// The number of cpus in the VM.
   final int? cpuCount;
+
   /// The descriptive name of the vCenter's datacenter this VM is contained in.
   final String? datacenterDescription;
+
   /// The id of the vCenter's datacenter this VM is contained in.
   final String? datacenterId;
+
   /// The number of disks the VM has.
   final int? diskCount;
+
   /// The display name of the VM. Note that this is not necessarily unique.
   final String? displayName;
+
   /// The VM's OS. See for example https://vdc-repo.vmware.com/vmwb-repository/dcr-public/da47f910-60ac-438b-8b9b-6122f4d14524/16b7274a-bf8b-4b4c-a05e-746f2aa93c8c/doc/vim.vm.GuestOsDescriptor.GuestOsIdentifier.html for types of strings this might hold.
   final String? guestDescription;
+
   /// The size of the memory of the VM in MB.
   final int? memoryMb;
+
   /// The power state of the VM at the moment list was taken.
   final VmwareVmDetailsPowerStateVmmigrationV1alpha1? powerState;
+
   /// The unique identifier of the VM in vCenter.
   final String? uuid;
+
   /// The VM's id in the source (note that this is not the MigratingVm's id). This is the moref id of the VM.
   final String? vmId;
 
@@ -76,19 +87,34 @@ class VmwareVmDetailsVmmigrationV1alpha1 {
 
   factory VmwareVmDetailsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmwareVmDetailsVmmigrationV1alpha1(
-      committedStorage: map['committedStorage'] == null ? null : map['committedStorage'] as String,
-      committedStorageMb: map['committedStorageMb'] == null ? null : map['committedStorageMb'] as String,
+      committedStorage: map['committedStorage'] == null
+          ? null
+          : map['committedStorage'] as String,
+      committedStorageMb: map['committedStorageMb'] == null
+          ? null
+          : map['committedStorageMb'] as String,
       cpuCount: map['cpuCount'] == null ? null : map['cpuCount'] as int,
-      datacenterDescription: map['datacenterDescription'] == null ? null : map['datacenterDescription'] as String,
-      datacenterId: map['datacenterId'] == null ? null : map['datacenterId'] as String,
+      datacenterDescription: map['datacenterDescription'] == null
+          ? null
+          : map['datacenterDescription'] as String,
+      datacenterId: map['datacenterId'] == null
+          ? null
+          : map['datacenterId'] as String,
       diskCount: map['diskCount'] == null ? null : map['diskCount'] as int,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      guestDescription: map['guestDescription'] == null ? null : map['guestDescription'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      guestDescription: map['guestDescription'] == null
+          ? null
+          : map['guestDescription'] as String,
       memoryMb: map['memoryMb'] == null ? null : map['memoryMb'] as int,
-      powerState: map['powerState'] == null ? null : VmwareVmDetailsPowerStateVmmigrationV1alpha1.fromValue(map['powerState'] as String),
+      powerState: map['powerState'] == null
+          ? null
+          : VmwareVmDetailsPowerStateVmmigrationV1alpha1.fromValue(
+              map['powerState'] as String,
+            ),
       uuid: map['uuid'] == null ? null : map['uuid'] as String,
       vmId: map['vmId'] == null ? null : map['vmId'] as String,
     );
   }
 }
-

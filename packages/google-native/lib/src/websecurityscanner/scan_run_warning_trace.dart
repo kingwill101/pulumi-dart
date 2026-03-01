@@ -9,20 +9,17 @@ class ScanRunWarningTrace {
 
   /// Creates a new [ScanRunWarningTrace].
   /// [code] Indicates the warning code.
-  ScanRunWarningTrace({
-    this.code,
-  });
+  ScanRunWarningTrace({this.code});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code == null ? null : code!.value,
-    };
+    return <String, dynamic>{'code': ?code == null ? null : code!.value};
   }
 
   factory ScanRunWarningTrace.fromMap(Map<String, dynamic> map) {
     return ScanRunWarningTrace(
-      code: map['code'] == null ? null : ScanRunWarningTraceCode.fromValue(map['code'] as String),
+      code: map['code'] == null
+          ? null
+          : ScanRunWarningTraceCode.fromValue(map['code'] as String),
     );
   }
 }
-

@@ -6,7 +6,10 @@ import 'prevention_deidentify_template_deidentify_config_info_type_transformatio
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
   /// Transformation for each infoType. Cannot specify more than one for a given infoType.
   /// Structure is documented below.
-  final List<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation> transformations;
+  final List<
+    PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation
+  >
+  transformations;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations].
   /// [transformations] Transformation for each infoType. Cannot specify more than one for a given infoType.
@@ -16,14 +19,28 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'transformations': pulumi.Input.encodeList<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation, Map<String, dynamic>>(transformations, (value) => value.toMap()),
+      'transformations':
+          pulumi.Input.encodeList<
+            PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation,
+            Map<String, dynamic>
+          >(transformations, (value) => value.toMap()),
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations.fromMap(Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations(
-      transformations: pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation>(map['transformations'], (value) => PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation.fromMap((value as Map).cast<String, dynamic>())),
+      transformations:
+          pulumi.Input.decodeList<
+            PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation
+          >(
+            map['transformations'],
+            (value) =>
+                PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

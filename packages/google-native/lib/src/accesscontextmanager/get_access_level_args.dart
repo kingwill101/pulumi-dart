@@ -19,10 +19,11 @@ class GetAccessLevelArgs {
     String? accessLevelFormat,
     required String accessLevelId,
     required String accessPolicyId,
-  }) :
-      accessLevelFormat = pulumi.Input.asOptionalInput<String>(accessLevelFormat),
-      accessLevelId = pulumi.Input.asInput<String>(accessLevelId),
-      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId);
+  }) : accessLevelFormat = pulumi.Input.asOptionalInput<String>(
+         accessLevelFormat,
+       ),
+       accessLevelId = pulumi.Input.asInput<String>(accessLevelId),
+       accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +35,11 @@ class GetAccessLevelArgs {
 
   factory GetAccessLevelArgs.fromMap(Map<String, dynamic> map) {
     return GetAccessLevelArgs(
-      accessLevelFormat: map['accessLevelFormat'] == null ? null : map['accessLevelFormat'] as String,
+      accessLevelFormat: map['accessLevelFormat'] == null
+          ? null
+          : map['accessLevelFormat'] as String,
       accessLevelId: map['accessLevelId'] as String,
       accessPolicyId: map['accessPolicyId'] as String,
     );
   }
 }
-

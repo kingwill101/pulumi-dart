@@ -9,9 +9,7 @@ class GatewayAPIConfig {
 
   /// Creates a new [GatewayAPIConfig].
   /// [channel] The Gateway API release channel to use for Gateway API.
-  GatewayAPIConfig({
-    this.channel,
-  });
+  GatewayAPIConfig({this.channel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class GatewayAPIConfig {
 
   factory GatewayAPIConfig.fromMap(Map<String, dynamic> map) {
     return GatewayAPIConfig(
-      channel: map['channel'] == null ? null : GatewayAPIConfigChannel.fromValue(map['channel'] as String),
+      channel: map['channel'] == null
+          ? null
+          : GatewayAPIConfigChannel.fromValue(map['channel'] as String),
     );
   }
 }
-

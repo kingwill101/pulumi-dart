@@ -14,7 +14,8 @@ enum BackendBucketCdnPolicyCacheModeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendBucketCdnPolicyCacheModeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown BackendBucketCdnPolicyCacheModeComputeBeta value: $value',
+    );
   }
 }
-

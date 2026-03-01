@@ -16,9 +16,8 @@ class GetOrganizationPolicyArgs {
   GetOrganizationPolicyArgs({
     required String organizationId,
     required String policyId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      policyId = pulumi.Input.asInput<String>(policyId);
+  }) : organizationId = pulumi.Input.asInput<String>(organizationId),
+       policyId = pulumi.Input.asInput<String>(policyId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetOrganizationPolicyArgs {
     );
   }
 }
-

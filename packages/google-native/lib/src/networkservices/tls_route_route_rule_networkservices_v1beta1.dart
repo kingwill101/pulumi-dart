@@ -8,6 +8,7 @@ import 'tls_route_route_match_networkservices_v1beta1.dart';
 class TlsRouteRouteRuleNetworkservicesV1beta1 {
   /// The detailed rule defining how to route matched traffic.
   final TlsRouteRouteActionNetworkservicesV1beta1 action;
+
   /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
   final List<TlsRouteRouteMatchNetworkservicesV1beta1> matches;
 
@@ -22,15 +23,28 @@ class TlsRouteRouteRuleNetworkservicesV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action.toMap(),
-      'matches': pulumi.Input.encodeList<TlsRouteRouteMatchNetworkservicesV1beta1, Map<String, dynamic>>(matches, (value) => value.toMap()),
+      'matches':
+          pulumi.Input.encodeList<
+            TlsRouteRouteMatchNetworkservicesV1beta1,
+            Map<String, dynamic>
+          >(matches, (value) => value.toMap()),
     };
   }
 
-  factory TlsRouteRouteRuleNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory TlsRouteRouteRuleNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TlsRouteRouteRuleNetworkservicesV1beta1(
-      action: TlsRouteRouteActionNetworkservicesV1beta1.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      matches: pulumi.Input.decodeList<TlsRouteRouteMatchNetworkservicesV1beta1>(map['matches'], (value) => TlsRouteRouteMatchNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      action: TlsRouteRouteActionNetworkservicesV1beta1.fromMap(
+        (map['action'] as Map).cast<String, dynamic>(),
+      ),
+      matches:
+          pulumi.Input.decodeList<TlsRouteRouteMatchNetworkservicesV1beta1>(
+            map['matches'],
+            (value) => TlsRouteRouteMatchNetworkservicesV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

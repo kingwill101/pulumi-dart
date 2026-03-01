@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DeploymentGroupEcsService {
   /// The name of the ECS cluster.
   final String clusterName;
+
   /// The name of the ECS service.
   final String serviceName;
 
@@ -29,4 +29,3 @@ class DeploymentGroupEcsService {
     );
   }
 }
-

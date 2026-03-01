@@ -16,14 +16,28 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'suggestions': pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageSuggestion, Map<String, dynamic>>(suggestions, (value) => value.toMap()),
+      'suggestions':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowV2beta1IntentMessageSuggestion,
+            Map<String, dynamic>
+          >(suggestions, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageSuggestions.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageSuggestions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageSuggestions(
-      suggestions: pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageSuggestion>(map['suggestions'], (value) => GoogleCloudDialogflowV2beta1IntentMessageSuggestion.fromMap((value as Map).cast<String, dynamic>())),
+      suggestions:
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowV2beta1IntentMessageSuggestion
+          >(
+            map['suggestions'],
+            (value) =>
+                GoogleCloudDialogflowV2beta1IntentMessageSuggestion.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

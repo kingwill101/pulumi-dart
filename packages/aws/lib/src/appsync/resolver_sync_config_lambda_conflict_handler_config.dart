@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResolverSyncConfigLambdaConflictHandlerConfig {
   /// ARN for the Lambda function to use as the Conflict Handler.
   final String? lambdaConflictHandlerArn;
@@ -17,10 +16,13 @@ class ResolverSyncConfigLambdaConflictHandlerConfig {
     };
   }
 
-  factory ResolverSyncConfigLambdaConflictHandlerConfig.fromMap(Map<String, dynamic> map) {
+  factory ResolverSyncConfigLambdaConflictHandlerConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResolverSyncConfigLambdaConflictHandlerConfig(
-      lambdaConflictHandlerArn: map['lambdaConflictHandlerArn'] == null ? null : map['lambdaConflictHandlerArn'] as String,
+      lambdaConflictHandlerArn: map['lambdaConflictHandlerArn'] == null
+          ? null
+          : map['lambdaConflictHandlerArn'] as String,
     );
   }
 }
-

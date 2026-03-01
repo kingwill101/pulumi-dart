@@ -8,20 +8,17 @@ class OriginAuthenticationMethod {
 
   /// Creates a new [OriginAuthenticationMethod].
   /// [jwt] Optional.
-  OriginAuthenticationMethod({
-    this.jwt,
-  });
+  OriginAuthenticationMethod({this.jwt});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'jwt': ?jwt == null ? null : jwt!.toMap(),
-    };
+    return <String, dynamic>{'jwt': ?jwt == null ? null : jwt!.toMap()};
   }
 
   factory OriginAuthenticationMethod.fromMap(Map<String, dynamic> map) {
     return OriginAuthenticationMethod(
-      jwt: map['jwt'] == null ? null : Jwt.fromMap((map['jwt'] as Map).cast<String, dynamic>()),
+      jwt: map['jwt'] == null
+          ? null
+          : Jwt.fromMap((map['jwt'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

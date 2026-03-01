@@ -12,7 +12,8 @@ enum RegionNetworkFirewallPolicyVpcNetworkScope {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionNetworkFirewallPolicyVpcNetworkScope value: $value');
+    throw ArgumentError(
+      'Unknown RegionNetworkFirewallPolicyVpcNetworkScope value: $value',
+    );
   }
 }
-

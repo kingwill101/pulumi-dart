@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message that should be set in case of a Deny Action.
 class GoogleCloudApigeeV1SecurityActionDenyResponse {
   /// Optional. The HTTP response code if the Action = DENY.
@@ -8,20 +7,17 @@ class GoogleCloudApigeeV1SecurityActionDenyResponse {
 
   /// Creates a new [GoogleCloudApigeeV1SecurityActionDenyResponse].
   /// [responseCode] Optional. The HTTP response code if the Action = DENY.
-  GoogleCloudApigeeV1SecurityActionDenyResponse({
-    required this.responseCode,
-  });
+  GoogleCloudApigeeV1SecurityActionDenyResponse({required this.responseCode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'responseCode': responseCode,
-    };
+    return <String, dynamic>{'responseCode': responseCode};
   }
 
-  factory GoogleCloudApigeeV1SecurityActionDenyResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1SecurityActionDenyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1SecurityActionDenyResponse(
       responseCode: map['responseCode'] as int,
     );
   }
 }
-

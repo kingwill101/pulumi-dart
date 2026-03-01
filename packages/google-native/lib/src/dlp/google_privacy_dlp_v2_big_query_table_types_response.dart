@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The types of BigQuery tables supported by Cloud DLP.
 class GooglePrivacyDlpV2BigQueryTableTypesResponse {
   /// A set of BigQuery table types.
@@ -8,20 +7,17 @@ class GooglePrivacyDlpV2BigQueryTableTypesResponse {
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryTableTypesResponse].
   /// [types] A set of BigQuery table types.
-  GooglePrivacyDlpV2BigQueryTableTypesResponse({
-    required this.types,
-  });
+  GooglePrivacyDlpV2BigQueryTableTypesResponse({required this.types});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'types': types,
-    };
+    return <String, dynamic>{'types': types};
   }
 
-  factory GooglePrivacyDlpV2BigQueryTableTypesResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryTableTypesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2BigQueryTableTypesResponse(
       types: (map['types'] as List).cast<String>(),
     );
   }
 }
-

@@ -6,12 +6,18 @@ import 'stored_info_type_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class StoredInfoType extends pulumi.CustomResource {
   /// Current version of the stored info type.
-  late final pulumi.Output<GooglePrivacyDlpV2StoredInfoTypeVersionResponse> currentVersion;
+  late final pulumi.Output<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>
+  currentVersion;
   late final pulumi.Output<String> location;
+
   /// Resource name.
   late final pulumi.Output<String> name;
+
   /// Pending versions of the stored info type. Empty if no versions are pending.
-  late final pulumi.Output<List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>> pendingVersions;
+  late final pulumi.Output<
+    List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>
+  >
+  pendingVersions;
   late final pulumi.Output<String> project;
 
   /// Creates a new [StoredInfoType].
@@ -23,15 +29,21 @@ class StoredInfoType extends pulumi.CustomResource {
     StoredInfoTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:dlp/v2:StoredInfoType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.currentVersion = registerOutput<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>('currentVersion');
+         'google-native:dlp/v2:StoredInfoType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.currentVersion =
+        registerOutput<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>(
+          'currentVersion',
+        );
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.pendingVersions = registerOutput<List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>>('pendingVersions');
+    this.pendingVersions =
+        registerOutput<List<GooglePrivacyDlpV2StoredInfoTypeVersionResponse>>(
+          'pendingVersions',
+        );
     this.project = registerOutput<String>('project');
   }
 }

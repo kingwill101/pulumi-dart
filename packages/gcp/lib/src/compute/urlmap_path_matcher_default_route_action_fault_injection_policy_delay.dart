@@ -5,7 +5,9 @@ import 'urlmap_path_matcher_default_route_action_fault_injection_policy_delay_fi
 class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay {
   /// Specifies the value of the fixed delay interval.
   /// Structure is documented below.
-  final URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay? fixedDelay;
+  final URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay?
+  fixedDelay;
+
   /// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
   /// The value must be between 0.0 and 100.0 inclusive.
   final double? percentage;
@@ -25,11 +27,18 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay {
     };
   }
 
-  factory URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay.fromMap(Map<String, dynamic> map) {
+  factory URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay(
-      fixedDelay: map['fixedDelay'] == null ? null : URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap((map['fixedDelay'] as Map).cast<String, dynamic>()),
-      percentage: map['percentage'] == null ? null : map['percentage'] as double,
+      fixedDelay: map['fixedDelay'] == null
+          ? null
+          : URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay.fromMap(
+              (map['fixedDelay'] as Map).cast<String, dynamic>(),
+            ),
+      percentage: map['percentage'] == null
+          ? null
+          : map['percentage'] as double,
     );
   }
 }
-

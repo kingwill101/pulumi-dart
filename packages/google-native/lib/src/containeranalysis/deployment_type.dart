@@ -6,16 +6,22 @@ import 'deployment_platform.dart';
 class DeploymentType {
   /// Address of the runtime element hosting this deployment.
   final String? address;
+
   /// Configuration used to create this deployment.
   final String? config;
+
   /// Beginning of the lifetime of this deployment.
   final String? deployTime;
+
   /// Platform hosting this deployment.
   final DeploymentPlatform? platform;
+
   /// Resource URI for the artifact being deployed taken from the deployable field with the same name.
   final List<String>? resourceUri;
+
   /// End of the lifetime of this deployment.
   final String? undeployTime;
+
   /// Identity of the user that triggered this deployment.
   final String? userEmail;
 
@@ -53,12 +59,19 @@ class DeploymentType {
     return DeploymentType(
       address: map['address'] == null ? null : map['address'] as String,
       config: map['config'] == null ? null : map['config'] as String,
-      deployTime: map['deployTime'] == null ? null : map['deployTime'] as String,
-      platform: map['platform'] == null ? null : DeploymentPlatform.fromValue(map['platform'] as String),
-      resourceUri: map['resourceUri'] == null ? null : (map['resourceUri'] as List).cast<String>(),
-      undeployTime: map['undeployTime'] == null ? null : map['undeployTime'] as String,
+      deployTime: map['deployTime'] == null
+          ? null
+          : map['deployTime'] as String,
+      platform: map['platform'] == null
+          ? null
+          : DeploymentPlatform.fromValue(map['platform'] as String),
+      resourceUri: map['resourceUri'] == null
+          ? null
+          : (map['resourceUri'] as List).cast<String>(),
+      undeployTime: map['undeployTime'] == null
+          ? null
+          : map['undeployTime'] as String,
       userEmail: map['userEmail'] == null ? null : map['userEmail'] as String,
     );
   }
 }
-

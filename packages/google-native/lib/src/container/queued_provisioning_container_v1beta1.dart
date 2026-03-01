@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// QueuedProvisioning defines the queued provisioning used by the node pool.
 class QueuedProvisioningContainerV1beta1 {
   /// Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
@@ -8,14 +7,10 @@ class QueuedProvisioningContainerV1beta1 {
 
   /// Creates a new [QueuedProvisioningContainerV1beta1].
   /// [enabled] Denotes that this nodepool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API.
-  QueuedProvisioningContainerV1beta1({
-    this.enabled,
-  });
+  QueuedProvisioningContainerV1beta1({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory QueuedProvisioningContainerV1beta1.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class QueuedProvisioningContainerV1beta1 {
     );
   }
 }
-

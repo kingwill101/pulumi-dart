@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Properties that determine how the title and content are styled
 class TextStyleResponse {
   /// The background color as a hex string. "#RRGGBB" or "#RGB"
   final String backgroundColor;
+
   /// Font sizes for both the title and content. The title will still be larger relative to the content.
   final String fontSize;
+
   /// The horizontal alignment of both the title and content
   final String horizontalAlignment;
+
   /// The amount of padding around the widget
   final String padding;
+
   /// The pointer location for this widget (also sometimes called a "tail")
   final String pointerLocation;
+
   /// The text color as a hex string. "#RRGGBB" or "#RGB"
   final String textColor;
+
   /// The vertical alignment of both the title and content
   final String verticalAlignment;
 
@@ -60,4 +65,3 @@ class TextStyleResponse {
     );
   }
 }
-

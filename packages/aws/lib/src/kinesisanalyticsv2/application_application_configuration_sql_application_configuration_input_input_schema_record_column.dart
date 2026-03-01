@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn {
   /// A reference to the data element in the streaming input or the reference data source.
   final String? mapping;
+
   /// The name of the column that is created in the in-application input stream or reference table.
   final String name;
+
   /// The type of column created in the in-application input stream or reference table.
   final String sqlType;
 
@@ -27,7 +28,9 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
     };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn(
       mapping: map['mapping'] == null ? null : map['mapping'] as String,
       name: map['name'] as String,
@@ -35,4 +38,3 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
     );
   }
 }
-

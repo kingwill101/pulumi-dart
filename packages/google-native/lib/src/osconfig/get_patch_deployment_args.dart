@@ -13,11 +13,8 @@ class GetPatchDeploymentArgs {
   /// Creates a new [GetPatchDeploymentArgs].
   /// [patchDeploymentId] Required.
   /// [project] Optional.
-  GetPatchDeploymentArgs({
-    required String patchDeploymentId,
-    String? project,
-  }) :
-      patchDeploymentId = pulumi.Input.asInput<String>(patchDeploymentId),
+  GetPatchDeploymentArgs({required String patchDeploymentId, String? project})
+    : patchDeploymentId = pulumi.Input.asInput<String>(patchDeploymentId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetPatchDeploymentArgs {
     );
   }
 }
-

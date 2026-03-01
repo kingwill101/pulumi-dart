@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetCertificateMapGclbTargetIpConfig {
   /// An external IP address
   final String ipAddress;
+
   /// A list of ports
   final List<int> ports;
 
@@ -16,17 +16,15 @@ class GetCertificateMapGclbTargetIpConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipAddress': ipAddress,
-      'ports': ports,
-    };
+    return <String, dynamic>{'ipAddress': ipAddress, 'ports': ports};
   }
 
-  factory GetCertificateMapGclbTargetIpConfig.fromMap(Map<String, dynamic> map) {
+  factory GetCertificateMapGclbTargetIpConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificateMapGclbTargetIpConfig(
       ipAddress: map['ipAddress'] as String,
       ports: (map['ports'] as List).cast<int>(),
     );
   }
 }
-

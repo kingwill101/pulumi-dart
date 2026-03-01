@@ -9,13 +9,17 @@ enum GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus {
   const GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus(this.value);
   final String value;
 
-  static GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus fromValue(String value) {
-    for (final item in GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus.values) {
+  static GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoStatus value: $value',
+    );
   }
 }
-

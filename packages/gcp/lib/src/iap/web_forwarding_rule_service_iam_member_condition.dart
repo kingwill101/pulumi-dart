@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WebForwardingRuleServiceIamMemberCondition {
   final String? description;
+
   /// Textual representation of an expression in Common Expression Language syntax.
   final String expression;
+
   /// A title for the expression, i.e. a short string describing its purpose.
   final String title;
 
@@ -26,12 +27,15 @@ class WebForwardingRuleServiceIamMemberCondition {
     };
   }
 
-  factory WebForwardingRuleServiceIamMemberCondition.fromMap(Map<String, dynamic> map) {
+  factory WebForwardingRuleServiceIamMemberCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebForwardingRuleServiceIamMemberCondition(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
-

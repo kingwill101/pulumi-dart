@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BackendServiceLocalityLbPolicyCustomPolicy {
   /// An optional, arbitrary JSON object with configuration data, understood
   /// by a locally installed custom policy implementation.
   final String? data;
+
   /// Identifies the custom policy.
   /// The value should match the type the custom implementation is registered
   /// with on the gRPC clients. It should follow protocol buffer
@@ -17,23 +17,18 @@ class BackendServiceLocalityLbPolicyCustomPolicy {
   /// Creates a new [BackendServiceLocalityLbPolicyCustomPolicy].
   /// [data] An optional, arbitrary JSON object with configuration data, understood
   /// [name] Identifies the custom policy.
-  BackendServiceLocalityLbPolicyCustomPolicy({
-    this.data,
-    required this.name,
-  });
+  BackendServiceLocalityLbPolicyCustomPolicy({this.data, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'data': ?data,
-      'name': name,
-    };
+    return <String, dynamic>{'data': ?data, 'name': name};
   }
 
-  factory BackendServiceLocalityLbPolicyCustomPolicy.fromMap(Map<String, dynamic> map) {
+  factory BackendServiceLocalityLbPolicyCustomPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackendServiceLocalityLbPolicyCustomPolicy(
       data: map['data'] == null ? null : map['data'] as String,
       name: map['name'] as String,
     );
   }
 }
-

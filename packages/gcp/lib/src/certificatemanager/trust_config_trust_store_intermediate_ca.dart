@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TrustConfigTrustStoreIntermediateCa {
   /// PEM intermediate certificate used for building up paths for validation.
   /// Each certificate provided in PEM format may occupy up to 5kB.
@@ -9,20 +8,19 @@ class TrustConfigTrustStoreIntermediateCa {
 
   /// Creates a new [TrustConfigTrustStoreIntermediateCa].
   /// [pemCertificate] PEM intermediate certificate used for building up paths for validation.
-  TrustConfigTrustStoreIntermediateCa({
-    this.pemCertificate,
-  });
+  TrustConfigTrustStoreIntermediateCa({this.pemCertificate});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pemCertificate': ?pemCertificate,
-    };
+    return <String, dynamic>{'pemCertificate': ?pemCertificate};
   }
 
-  factory TrustConfigTrustStoreIntermediateCa.fromMap(Map<String, dynamic> map) {
+  factory TrustConfigTrustStoreIntermediateCa.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TrustConfigTrustStoreIntermediateCa(
-      pemCertificate: map['pemCertificate'] == null ? null : map['pemCertificate'] as String,
+      pemCertificate: map['pemCertificate'] == null
+          ? null
+          : map['pemCertificate'] as String,
     );
   }
 }
-

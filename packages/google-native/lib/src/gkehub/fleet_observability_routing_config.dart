@@ -9,20 +9,19 @@ class FleetObservabilityRoutingConfig {
 
   /// Creates a new [FleetObservabilityRoutingConfig].
   /// [mode] mode configures the logs routing mode.
-  FleetObservabilityRoutingConfig({
-    this.mode,
-  });
+  FleetObservabilityRoutingConfig({this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': ?mode == null ? null : mode!.value,
-    };
+    return <String, dynamic>{'mode': ?mode == null ? null : mode!.value};
   }
 
   factory FleetObservabilityRoutingConfig.fromMap(Map<String, dynamic> map) {
     return FleetObservabilityRoutingConfig(
-      mode: map['mode'] == null ? null : FleetObservabilityRoutingConfigMode.fromValue(map['mode'] as String),
+      mode: map['mode'] == null
+          ? null
+          : FleetObservabilityRoutingConfigMode.fromValue(
+              map['mode'] as String,
+            ),
     );
   }
 }
-

@@ -24,7 +24,8 @@ enum AggregationCrossSeriesReducerMonitoringV3 {
         return item;
       }
     }
-    throw ArgumentError('Unknown AggregationCrossSeriesReducerMonitoringV3 value: $value');
+    throw ArgumentError(
+      'Unknown AggregationCrossSeriesReducerMonitoringV3 value: $value',
+    );
   }
 }
-

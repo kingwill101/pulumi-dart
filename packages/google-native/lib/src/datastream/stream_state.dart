@@ -22,4 +22,3 @@ enum StreamState {
     throw ArgumentError('Unknown StreamState value: $value');
   }
 }
-

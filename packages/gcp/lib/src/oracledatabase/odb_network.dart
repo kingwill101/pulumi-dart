@@ -372,37 +372,48 @@ class OdbNetwork extends pulumi.CustomResource {
   /// The date and time that the OdbNetwork was created.
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<bool?> deletionProtection;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// The ID of the subscription entitlement associated with the OdbNetwork.
   late final pulumi.Output<String> entitlementId;
+
   /// The GCP Oracle zone where OdbNetwork is hosted.
   /// Example: us-east4-b-r2.
   /// If not specified, the system will pick a zone based on availability.
   late final pulumi.Output<String> gcpOracleZone;
+
   /// Labels or tags associated with the resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
+
   /// Identifier. The name of the OdbNetwork resource in the following format:
   /// projects/{project}/locations/{region}/odbNetworks/{odb_network}
   late final pulumi.Output<String> name;
+
   /// The name of the VPC network in the following format:
   /// projects/{project}/global/networks/{network}
   late final pulumi.Output<String> network;
+
   /// The ID of the OdbNetwork to create. This value is restricted
   /// to (^a-z?$) and must be a maximum of 63
   /// characters in length. The value must start with a letter and end with
   /// a letter or a number.
   late final pulumi.Output<String> odbNetworkId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// State of the ODB Network.
   /// Possible values:
   /// PROVISIONING
@@ -420,14 +431,16 @@ class OdbNetwork extends pulumi.CustomResource {
     OdbNetworkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:oracledatabase/odbNetwork:OdbNetwork',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:oracledatabase/odbNetwork:OdbNetwork',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.deletionProtection = registerOutput<bool?>('deletionProtection');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.entitlementId = registerOutput<String>('entitlementId');
     this.gcpOracleZone = registerOutput<String>('gcpOracleZone');
     this.labels = registerOutput<Map<String, String>?>('labels');

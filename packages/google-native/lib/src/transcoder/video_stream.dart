@@ -8,8 +8,10 @@ import 'vp9_codec_settings.dart';
 class VideoStream {
   /// H264 codec settings.
   final H264CodecSettings? h264;
+
   /// H265 codec settings.
   final H265CodecSettings? h265;
+
   /// VP9 codec settings.
   final Vp9CodecSettings? vp9;
 
@@ -17,11 +19,7 @@ class VideoStream {
   /// [h264] H264 codec settings.
   /// [h265] H265 codec settings.
   /// [vp9] VP9 codec settings.
-  VideoStream({
-    this.h264,
-    this.h265,
-    this.vp9,
-  });
+  VideoStream({this.h264, this.h265, this.vp9});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,21 @@ class VideoStream {
 
   factory VideoStream.fromMap(Map<String, dynamic> map) {
     return VideoStream(
-      h264: map['h264'] == null ? null : H264CodecSettings.fromMap((map['h264'] as Map).cast<String, dynamic>()),
-      h265: map['h265'] == null ? null : H265CodecSettings.fromMap((map['h265'] as Map).cast<String, dynamic>()),
-      vp9: map['vp9'] == null ? null : Vp9CodecSettings.fromMap((map['vp9'] as Map).cast<String, dynamic>()),
+      h264: map['h264'] == null
+          ? null
+          : H264CodecSettings.fromMap(
+              (map['h264'] as Map).cast<String, dynamic>(),
+            ),
+      h265: map['h265'] == null
+          ? null
+          : H265CodecSettings.fromMap(
+              (map['h265'] as Map).cast<String, dynamic>(),
+            ),
+      vp9: map['vp9'] == null
+          ? null
+          : Vp9CodecSettings.fromMap(
+              (map['vp9'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

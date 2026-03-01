@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
 class TextMapping {
   /// The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
   final String atomKey;
+
   /// The Input.key that identifies the input file.
   final String inputKey;
+
   /// The zero-based index of the track in the input file.
   final int inputTrack;
 
@@ -36,4 +37,3 @@ class TextMapping {
     );
   }
 }
-

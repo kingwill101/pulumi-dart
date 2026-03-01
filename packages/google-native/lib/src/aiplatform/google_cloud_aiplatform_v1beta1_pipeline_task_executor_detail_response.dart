@@ -6,9 +6,12 @@ import 'google_cloud_aiplatform_v1beta1_pipeline_task_executor_detail_custom_job
 /// The runtime detail of a pipeline executor.
 class GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse {
   /// The detailed info for a container executor.
-  final GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse containerDetail;
+  final GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse
+  containerDetail;
+
   /// The detailed info for a custom job executor.
-  final GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse customJobDetail;
+  final GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse
+  customJobDetail;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse].
   /// [containerDetail] The detailed info for a container executor.
@@ -25,11 +28,18 @@ class GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse(
-      containerDetail: GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse.fromMap((map['containerDetail'] as Map).cast<String, dynamic>()),
-      customJobDetail: GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse.fromMap((map['customJobDetail'] as Map).cast<String, dynamic>()),
+      containerDetail:
+          GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailContainerDetailResponse.fromMap(
+            (map['containerDetail'] as Map).cast<String, dynamic>(),
+          ),
+      customJobDetail:
+          GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse.fromMap(
+            (map['customJobDetail'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

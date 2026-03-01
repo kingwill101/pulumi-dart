@@ -1,28 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetConnectivityTestRunReachabilityDetailTraceEndpointInfo {
   /// (Output)
   /// Destination IP address.
   final String destinationIp;
+
   /// (Output)
   /// URI of the network where this packet is sent to.
   final String destinationNetworkUri;
+
   /// (Output)
   /// Destination port. Only valid when protocol is TCP or UDP.
   final int destinationPort;
+
   /// (Output)
   /// IP protocol in string format, for example: "TCP", "UDP", "ICMP".
   final String protocol;
+
   /// (Output)
   /// URI of the source telemetry agent this packet originates from.
   final String sourceAgentUri;
+
   /// (Output)
   /// Source IP address.
   final String sourceIp;
+
   /// (Output)
   /// URI of the network where this packet originates from.
   final String sourceNetworkUri;
+
   /// (Output)
   /// Source port. Only valid when protocol is TCP or UDP.
   final int sourcePort;
@@ -60,7 +66,9 @@ class GetConnectivityTestRunReachabilityDetailTraceEndpointInfo {
     };
   }
 
-  factory GetConnectivityTestRunReachabilityDetailTraceEndpointInfo.fromMap(Map<String, dynamic> map) {
+  factory GetConnectivityTestRunReachabilityDetailTraceEndpointInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectivityTestRunReachabilityDetailTraceEndpointInfo(
       destinationIp: map['destinationIp'] as String,
       destinationNetworkUri: map['destinationNetworkUri'] as String,
@@ -73,4 +81,3 @@ class GetConnectivityTestRunReachabilityDetailTraceEndpointInfo {
     );
   }
 }
-

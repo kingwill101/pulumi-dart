@@ -9,20 +9,17 @@ class SandboxConfig {
 
   /// Creates a new [SandboxConfig].
   /// [type] Type of the sandbox to use for the node.
-  SandboxConfig({
-    this.type,
-  });
+  SandboxConfig({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type == null ? null : type!.value,
-    };
+    return <String, dynamic>{'type': ?type == null ? null : type!.value};
   }
 
   factory SandboxConfig.fromMap(Map<String, dynamic> map) {
     return SandboxConfig(
-      type: map['type'] == null ? null : SandboxConfigType.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : SandboxConfigType.fromValue(map['type'] as String),
     );
   }
 }
-

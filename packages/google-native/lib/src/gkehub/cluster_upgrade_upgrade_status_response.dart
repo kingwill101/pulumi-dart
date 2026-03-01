@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// UpgradeStatus provides status information for each upgrade.
 class ClusterUpgradeUpgradeStatusResponse {
   /// Status code of the upgrade.
   final String code;
+
   /// Reason for this status.
   final String reason;
+
   /// Last timestamp the status was updated.
   final String updateTime;
 
@@ -28,7 +29,9 @@ class ClusterUpgradeUpgradeStatusResponse {
     };
   }
 
-  factory ClusterUpgradeUpgradeStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory ClusterUpgradeUpgradeStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterUpgradeUpgradeStatusResponse(
       code: map['code'] as String,
       reason: map['reason'] as String,
@@ -36,4 +39,3 @@ class ClusterUpgradeUpgradeStatusResponse {
     );
   }
 }
-

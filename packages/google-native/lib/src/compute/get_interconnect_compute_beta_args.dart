@@ -16,15 +16,11 @@ class GetInterconnectComputeBetaArgs {
   GetInterconnectComputeBetaArgs({
     required String interconnect,
     String? project,
-  }) :
-      interconnect = pulumi.Input.asInput<String>(interconnect),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : interconnect = pulumi.Input.asInput<String>(interconnect),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'interconnect': interconnect,
-      'project': ?project,
-    };
+    return <String, dynamic>{'interconnect': interconnect, 'project': ?project};
   }
 
   factory GetInterconnectComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +30,3 @@ class GetInterconnectComputeBetaArgs {
     );
   }
 }
-

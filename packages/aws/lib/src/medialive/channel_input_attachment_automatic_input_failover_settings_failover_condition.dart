@@ -4,7 +4,8 @@ import 'channel_input_attachment_automatic_input_failover_settings_failover_cond
 
 class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition {
   /// Failover condition type-specific settings. See Failover Condition Settings for more details.
-  final ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings? failoverConditionSettings;
+  final ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings?
+  failoverConditionSettings;
 
   /// Creates a new [ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition].
   /// [failoverConditionSettings] Failover condition type-specific settings. See Failover Condition Settings for more details.
@@ -14,14 +15,21 @@ class ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'failoverConditionSettings': ?failoverConditionSettings == null ? null : failoverConditionSettings!.toMap(),
+      'failoverConditionSettings': ?failoverConditionSettings == null
+          ? null
+          : failoverConditionSettings!.toMap(),
     };
   }
 
-  factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition(
-      failoverConditionSettings: map['failoverConditionSettings'] == null ? null : ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings.fromMap((map['failoverConditionSettings'] as Map).cast<String, dynamic>()),
+      failoverConditionSettings: map['failoverConditionSettings'] == null
+          ? null
+          : ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverConditionFailoverConditionSettings.fromMap(
+              (map['failoverConditionSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

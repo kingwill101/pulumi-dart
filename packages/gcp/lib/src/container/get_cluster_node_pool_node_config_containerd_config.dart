@@ -7,11 +7,18 @@ import 'get_cluster_node_pool_node_config_containerd_config_writable_cgroup.dart
 
 class GetClusterNodePoolNodeConfigContainerdConfig {
   /// Parameters for private container registries configuration.
-  final List<GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig> privateRegistryAccessConfigs;
+  final List<
+    GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig
+  >
+  privateRegistryAccessConfigs;
+
   /// Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
-  final List<GetClusterNodePoolNodeConfigContainerdConfigRegistryHost> registryHosts;
+  final List<GetClusterNodePoolNodeConfigContainerdConfigRegistryHost>
+  registryHosts;
+
   /// Parameters for writable cgroups configuration.
-  final List<GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup> writableCgroups;
+  final List<GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup>
+  writableCgroups;
 
   /// Creates a new [GetClusterNodePoolNodeConfigContainerdConfig].
   /// [privateRegistryAccessConfigs] Parameters for private container registries configuration.
@@ -25,18 +32,58 @@ class GetClusterNodePoolNodeConfigContainerdConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'privateRegistryAccessConfigs': pulumi.Input.encodeList<GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig, Map<String, dynamic>>(privateRegistryAccessConfigs, (value) => value.toMap()),
-      'registryHosts': pulumi.Input.encodeList<GetClusterNodePoolNodeConfigContainerdConfigRegistryHost, Map<String, dynamic>>(registryHosts, (value) => value.toMap()),
-      'writableCgroups': pulumi.Input.encodeList<GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup, Map<String, dynamic>>(writableCgroups, (value) => value.toMap()),
+      'privateRegistryAccessConfigs':
+          pulumi.Input.encodeList<
+            GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig,
+            Map<String, dynamic>
+          >(privateRegistryAccessConfigs, (value) => value.toMap()),
+      'registryHosts':
+          pulumi.Input.encodeList<
+            GetClusterNodePoolNodeConfigContainerdConfigRegistryHost,
+            Map<String, dynamic>
+          >(registryHosts, (value) => value.toMap()),
+      'writableCgroups':
+          pulumi.Input.encodeList<
+            GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup,
+            Map<String, dynamic>
+          >(writableCgroups, (value) => value.toMap()),
     };
   }
 
-  factory GetClusterNodePoolNodeConfigContainerdConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodePoolNodeConfigContainerdConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodePoolNodeConfigContainerdConfig(
-      privateRegistryAccessConfigs: pulumi.Input.decodeList<GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig>(map['privateRegistryAccessConfigs'], (value) => GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig.fromMap((value as Map).cast<String, dynamic>())),
-      registryHosts: pulumi.Input.decodeList<GetClusterNodePoolNodeConfigContainerdConfigRegistryHost>(map['registryHosts'], (value) => GetClusterNodePoolNodeConfigContainerdConfigRegistryHost.fromMap((value as Map).cast<String, dynamic>())),
-      writableCgroups: pulumi.Input.decodeList<GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup>(map['writableCgroups'], (value) => GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup.fromMap((value as Map).cast<String, dynamic>())),
+      privateRegistryAccessConfigs:
+          pulumi.Input.decodeList<
+            GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig
+          >(
+            map['privateRegistryAccessConfigs'],
+            (value) =>
+                GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      registryHosts:
+          pulumi.Input.decodeList<
+            GetClusterNodePoolNodeConfigContainerdConfigRegistryHost
+          >(
+            map['registryHosts'],
+            (value) =>
+                GetClusterNodePoolNodeConfigContainerdConfigRegistryHost.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      writableCgroups:
+          pulumi.Input.decodeList<
+            GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup
+          >(
+            map['writableCgroups'],
+            (value) =>
+                GetClusterNodePoolNodeConfigContainerdConfigWritableCgroup.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

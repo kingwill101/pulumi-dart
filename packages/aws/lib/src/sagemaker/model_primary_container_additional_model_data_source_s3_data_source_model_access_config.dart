@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig {
   /// Specifies agreement to the model end-user license agreement (EULA). The value must be set to `true` in order to accept the EULA that this model requires. You are responsible for reviewing and complying with any applicable license terms and making sure they are acceptable for your use case before downloading or using a model.
   final bool acceptEula;
@@ -12,15 +11,14 @@ class ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfi
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'acceptEula': acceptEula,
-    };
+    return <String, dynamic>{'acceptEula': acceptEula};
   }
 
-  factory ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig.fromMap(Map<String, dynamic> map) {
+  factory ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ModelPrimaryContainerAdditionalModelDataSourceS3DataSourceModelAccessConfig(
       acceptEula: map['acceptEula'] as bool,
     );
   }
 }
-

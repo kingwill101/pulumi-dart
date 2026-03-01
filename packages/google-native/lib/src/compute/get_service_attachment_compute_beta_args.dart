@@ -19,10 +19,9 @@ class GetServiceAttachmentComputeBetaArgs {
     String? project,
     required String region,
     required String serviceAttachment,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      serviceAttachment = pulumi.Input.asInput<String>(serviceAttachment);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       serviceAttachment = pulumi.Input.asInput<String>(serviceAttachment);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetServiceAttachmentComputeBetaArgs {
     };
   }
 
-  factory GetServiceAttachmentComputeBetaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetServiceAttachmentComputeBetaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceAttachmentComputeBetaArgs(
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] as String,
@@ -40,4 +41,3 @@ class GetServiceAttachmentComputeBetaArgs {
     );
   }
 }
-

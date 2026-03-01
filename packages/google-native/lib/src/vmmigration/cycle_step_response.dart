@@ -6,12 +6,16 @@ import 'replicating_step_response.dart';
 class CycleStepResponse {
   /// The time the cycle step has ended.
   final String endTime;
+
   /// Initializing replication step.
   final Map<String, dynamic> initializingReplication;
+
   /// Post processing step.
   final Map<String, dynamic> postProcessing;
+
   /// Replicating step.
   final ReplicatingStepResponse replicating;
+
   /// The time the cycle step has started.
   final String startTime;
 
@@ -42,11 +46,13 @@ class CycleStepResponse {
   factory CycleStepResponse.fromMap(Map<String, dynamic> map) {
     return CycleStepResponse(
       endTime: map['endTime'] as String,
-      initializingReplication: (map['initializingReplication'] as Map).cast<String, dynamic>(),
+      initializingReplication: (map['initializingReplication'] as Map)
+          .cast<String, dynamic>(),
       postProcessing: (map['postProcessing'] as Map).cast<String, dynamic>(),
-      replicating: ReplicatingStepResponse.fromMap((map['replicating'] as Map).cast<String, dynamic>()),
+      replicating: ReplicatingStepResponse.fromMap(
+        (map['replicating'] as Map).cast<String, dynamic>(),
+      ),
       startTime: map['startTime'] as String,
     );
   }
 }
-

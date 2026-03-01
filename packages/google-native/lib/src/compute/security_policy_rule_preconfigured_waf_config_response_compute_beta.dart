@@ -5,7 +5,10 @@ import 'security_policy_rule_preconfigured_waf_config_exclusion_response_compute
 
 class SecurityPolicyRulePreconfiguredWafConfigResponseComputeBeta {
   /// A list of exclusions to apply during preconfigured WAF evaluation.
-  final List<SecurityPolicyRulePreconfiguredWafConfigExclusionResponseComputeBeta> exclusions;
+  final List<
+    SecurityPolicyRulePreconfiguredWafConfigExclusionResponseComputeBeta
+  >
+  exclusions;
 
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigResponseComputeBeta].
   /// [exclusions] A list of exclusions to apply during preconfigured WAF evaluation.
@@ -15,14 +18,28 @@ class SecurityPolicyRulePreconfiguredWafConfigResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'exclusions': pulumi.Input.encodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionResponseComputeBeta, Map<String, dynamic>>(exclusions, (value) => value.toMap()),
+      'exclusions':
+          pulumi.Input.encodeList<
+            SecurityPolicyRulePreconfiguredWafConfigExclusionResponseComputeBeta,
+            Map<String, dynamic>
+          >(exclusions, (value) => value.toMap()),
     };
   }
 
-  factory SecurityPolicyRulePreconfiguredWafConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRulePreconfiguredWafConfigResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRulePreconfiguredWafConfigResponseComputeBeta(
-      exclusions: pulumi.Input.decodeList<SecurityPolicyRulePreconfiguredWafConfigExclusionResponseComputeBeta>(map['exclusions'], (value) => SecurityPolicyRulePreconfiguredWafConfigExclusionResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
+      exclusions:
+          pulumi.Input.decodeList<
+            SecurityPolicyRulePreconfiguredWafConfigExclusionResponseComputeBeta
+          >(
+            map['exclusions'],
+            (value) =>
+                SecurityPolicyRulePreconfiguredWafConfigExclusionResponseComputeBeta.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

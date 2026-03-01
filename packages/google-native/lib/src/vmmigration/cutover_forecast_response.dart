@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
 class CutoverForecastResponse {
   /// Estimation of the CutoverJob duration.
@@ -8,9 +7,7 @@ class CutoverForecastResponse {
 
   /// Creates a new [CutoverForecastResponse].
   /// [estimatedCutoverJobDuration] Estimation of the CutoverJob duration.
-  CutoverForecastResponse({
-    required this.estimatedCutoverJobDuration,
-  });
+  CutoverForecastResponse({required this.estimatedCutoverJobDuration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,4 +21,3 @@ class CutoverForecastResponse {
     );
   }
 }
-

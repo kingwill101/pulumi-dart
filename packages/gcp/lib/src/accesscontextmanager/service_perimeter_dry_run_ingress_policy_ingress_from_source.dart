@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServicePerimeterDryRunIngressPolicyIngressFromSource {
   /// An `AccessLevel` resource name that allow resources within the
   /// `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
@@ -11,6 +10,7 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSource {
   /// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
   /// If * is specified, then all IngressSources will be allowed.
   final String? accessLevel;
+
   /// A Google Cloud resource that is allowed to ingress the perimeter.
   /// Requests from these resources will be allowed to access perimeter data.
   /// Currently only projects are allowed. Format `projects/{project_number}`
@@ -34,11 +34,14 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSource {
     };
   }
 
-  factory ServicePerimeterDryRunIngressPolicyIngressFromSource.fromMap(Map<String, dynamic> map) {
+  factory ServicePerimeterDryRunIngressPolicyIngressFromSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePerimeterDryRunIngressPolicyIngressFromSource(
-      accessLevel: map['accessLevel'] == null ? null : map['accessLevel'] as String,
+      accessLevel: map['accessLevel'] == null
+          ? null
+          : map['accessLevel'] as String,
       resource: map['resource'] == null ? null : map['resource'] as String,
     );
   }
 }
-

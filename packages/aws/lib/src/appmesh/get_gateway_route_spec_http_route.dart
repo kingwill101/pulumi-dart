@@ -11,23 +11,37 @@ class GetGatewayRouteSpecHttpRoute {
   /// Creates a new [GetGatewayRouteSpecHttpRoute].
   /// [actions] Required.
   /// [matches] Required.
-  GetGatewayRouteSpecHttpRoute({
-    required this.actions,
-    required this.matches,
-  });
+  GetGatewayRouteSpecHttpRoute({required this.actions, required this.matches});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<GetGatewayRouteSpecHttpRouteAction, Map<String, dynamic>>(actions, (value) => value.toMap()),
-      'matches': pulumi.Input.encodeList<GetGatewayRouteSpecHttpRouteMatch, Map<String, dynamic>>(matches, (value) => value.toMap()),
+      'actions':
+          pulumi.Input.encodeList<
+            GetGatewayRouteSpecHttpRouteAction,
+            Map<String, dynamic>
+          >(actions, (value) => value.toMap()),
+      'matches':
+          pulumi.Input.encodeList<
+            GetGatewayRouteSpecHttpRouteMatch,
+            Map<String, dynamic>
+          >(matches, (value) => value.toMap()),
     };
   }
 
   factory GetGatewayRouteSpecHttpRoute.fromMap(Map<String, dynamic> map) {
     return GetGatewayRouteSpecHttpRoute(
-      actions: pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteAction>(map['actions'], (value) => GetGatewayRouteSpecHttpRouteAction.fromMap((value as Map).cast<String, dynamic>())),
-      matches: pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteMatch>(map['matches'], (value) => GetGatewayRouteSpecHttpRouteMatch.fromMap((value as Map).cast<String, dynamic>())),
+      actions: pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteAction>(
+        map['actions'],
+        (value) => GetGatewayRouteSpecHttpRouteAction.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      matches: pulumi.Input.decodeList<GetGatewayRouteSpecHttpRouteMatch>(
+        map['matches'],
+        (value) => GetGatewayRouteSpecHttpRouteMatch.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

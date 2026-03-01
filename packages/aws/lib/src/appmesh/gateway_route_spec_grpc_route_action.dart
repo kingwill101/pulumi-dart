@@ -8,20 +8,17 @@ class GatewayRouteSpecGrpcRouteAction {
 
   /// Creates a new [GatewayRouteSpecGrpcRouteAction].
   /// [target] Target that traffic is routed to when a request matches the gateway route.
-  GatewayRouteSpecGrpcRouteAction({
-    required this.target,
-  });
+  GatewayRouteSpecGrpcRouteAction({required this.target});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'target': target.toMap(),
-    };
+    return <String, dynamic>{'target': target.toMap()};
   }
 
   factory GatewayRouteSpecGrpcRouteAction.fromMap(Map<String, dynamic> map) {
     return GatewayRouteSpecGrpcRouteAction(
-      target: GatewayRouteSpecGrpcRouteActionTarget.fromMap((map['target'] as Map).cast<String, dynamic>()),
+      target: GatewayRouteSpecGrpcRouteActionTarget.fromMap(
+        (map['target'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

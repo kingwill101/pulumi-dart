@@ -8,10 +8,13 @@ import 'vmware_disk_details_response.dart';
 class VmwareSourceVmDetailsResponse {
   /// The total size of the disks being migrated in bytes.
   final String committedStorageBytes;
+
   /// The disks attached to the source VM.
   final List<VmwareDiskDetailsResponse> disks;
+
   /// The firmware type of the source VM.
   final String firmware;
+
   /// Information about VM capabilities needed for some Compute Engine features.
   final VmCapabilitiesResponse vmCapabilitiesInfo;
 
@@ -30,7 +33,11 @@ class VmwareSourceVmDetailsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'committedStorageBytes': committedStorageBytes,
-      'disks': pulumi.Input.encodeList<VmwareDiskDetailsResponse, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'disks':
+          pulumi.Input.encodeList<
+            VmwareDiskDetailsResponse,
+            Map<String, dynamic>
+          >(disks, (value) => value.toMap()),
       'firmware': firmware,
       'vmCapabilitiesInfo': vmCapabilitiesInfo.toMap(),
     };
@@ -39,10 +46,16 @@ class VmwareSourceVmDetailsResponse {
   factory VmwareSourceVmDetailsResponse.fromMap(Map<String, dynamic> map) {
     return VmwareSourceVmDetailsResponse(
       committedStorageBytes: map['committedStorageBytes'] as String,
-      disks: pulumi.Input.decodeList<VmwareDiskDetailsResponse>(map['disks'], (value) => VmwareDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      disks: pulumi.Input.decodeList<VmwareDiskDetailsResponse>(
+        map['disks'],
+        (value) => VmwareDiskDetailsResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       firmware: map['firmware'] as String,
-      vmCapabilitiesInfo: VmCapabilitiesResponse.fromMap((map['vmCapabilitiesInfo'] as Map).cast<String, dynamic>()),
+      vmCapabilitiesInfo: VmCapabilitiesResponse.fromMap(
+        (map['vmCapabilitiesInfo'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

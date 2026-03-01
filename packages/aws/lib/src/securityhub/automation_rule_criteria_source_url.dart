@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AutomationRuleCriteriaSourceUrl {
   final String comparison;
   final String value;
@@ -14,10 +13,7 @@ class AutomationRuleCriteriaSourceUrl {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
   factory AutomationRuleCriteriaSourceUrl.fromMap(Map<String, dynamic> map) {
@@ -27,4 +23,3 @@ class AutomationRuleCriteriaSourceUrl {
     );
   }
 }
-

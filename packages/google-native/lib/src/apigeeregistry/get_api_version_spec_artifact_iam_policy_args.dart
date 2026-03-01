@@ -31,14 +31,15 @@ class GetApiVersionSpecArtifactIamPolicyArgs {
     String? project,
     required String specId,
     required String versionId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      artifactId = pulumi.Input.asInput<String>(artifactId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      specId = pulumi.Input.asInput<String>(specId),
-      versionId = pulumi.Input.asInput<String>(versionId);
+  }) : apiId = pulumi.Input.asInput<String>(apiId),
+       artifactId = pulumi.Input.asInput<String>(artifactId),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       specId = pulumi.Input.asInput<String>(specId),
+       versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,16 +53,20 @@ class GetApiVersionSpecArtifactIamPolicyArgs {
     };
   }
 
-  factory GetApiVersionSpecArtifactIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetApiVersionSpecArtifactIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetApiVersionSpecArtifactIamPolicyArgs(
       apiId: map['apiId'] as String,
       artifactId: map['artifactId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       specId: map['specId'] as String,
       versionId: map['versionId'] as String,
     );
   }
 }
-

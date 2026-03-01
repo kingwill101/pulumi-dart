@@ -25,12 +25,13 @@ class GetTemplatesVersionArgs {
     required String productId,
     String? project,
     required String versionId,
-  }) :
-      integrationtemplateId = pulumi.Input.asInput<String>(integrationtemplateId),
-      location = pulumi.Input.asInput<String>(location),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      versionId = pulumi.Input.asInput<String>(versionId);
+  }) : integrationtemplateId = pulumi.Input.asInput<String>(
+         integrationtemplateId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       productId = pulumi.Input.asInput<String>(productId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +53,3 @@ class GetTemplatesVersionArgs {
     );
   }
 }
-

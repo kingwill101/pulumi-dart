@@ -6,21 +6,29 @@ import 'scaling_plan_scaling_instruction_target_tracking_configuration_predefine
 class ScalingPlanScalingInstructionTargetTrackingConfiguration {
   /// Customized metric. You can specify either `customized_scaling_metric_specification` or `predefined_scaling_metric_specification`.
   /// More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_CustomizedScalingMetricSpecification.html).
-  final ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification? customizedScalingMetricSpecification;
+  final ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification?
+  customizedScalingMetricSpecification;
+
   /// Boolean indicating whether scale in by the target tracking scaling policy is disabled. Defaults to `false`.
   final bool? disableScaleIn;
+
   /// Estimated time, in seconds, until a newly launched instance can contribute to the CloudWatch metrics.
   /// This value is used only if the resource is an Auto Scaling group.
   final int? estimatedInstanceWarmup;
+
   /// Predefined metric. You can specify either `predefined_scaling_metric_specification` or `customized_scaling_metric_specification`.
   /// More details can be found in the [AWS Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_PredefinedScalingMetricSpecification.html).
-  final ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification? predefinedScalingMetricSpecification;
+  final ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification?
+  predefinedScalingMetricSpecification;
+
   /// Amount of time, in seconds, after a scale in activity completes before another scale in activity can start.
   /// This value is not used if the scalable resource is an Auto Scaling group.
   final int? scaleInCooldown;
+
   /// Amount of time, in seconds, after a scale-out activity completes before another scale-out activity can start.
   /// This value is not used if the scalable resource is an Auto Scaling group.
   final int? scaleOutCooldown;
+
   /// Target value for the metric.
   final double targetValue;
 
@@ -44,26 +52,53 @@ class ScalingPlanScalingInstructionTargetTrackingConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customizedScalingMetricSpecification': ?customizedScalingMetricSpecification == null ? null : customizedScalingMetricSpecification!.toMap(),
+      'customizedScalingMetricSpecification':
+          ?customizedScalingMetricSpecification == null
+          ? null
+          : customizedScalingMetricSpecification!.toMap(),
       'disableScaleIn': ?disableScaleIn,
       'estimatedInstanceWarmup': ?estimatedInstanceWarmup,
-      'predefinedScalingMetricSpecification': ?predefinedScalingMetricSpecification == null ? null : predefinedScalingMetricSpecification!.toMap(),
+      'predefinedScalingMetricSpecification':
+          ?predefinedScalingMetricSpecification == null
+          ? null
+          : predefinedScalingMetricSpecification!.toMap(),
       'scaleInCooldown': ?scaleInCooldown,
       'scaleOutCooldown': ?scaleOutCooldown,
       'targetValue': targetValue,
     };
   }
 
-  factory ScalingPlanScalingInstructionTargetTrackingConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ScalingPlanScalingInstructionTargetTrackingConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScalingPlanScalingInstructionTargetTrackingConfiguration(
-      customizedScalingMetricSpecification: map['customizedScalingMetricSpecification'] == null ? null : ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification.fromMap((map['customizedScalingMetricSpecification'] as Map).cast<String, dynamic>()),
-      disableScaleIn: map['disableScaleIn'] == null ? null : map['disableScaleIn'] as bool,
-      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null ? null : map['estimatedInstanceWarmup'] as int,
-      predefinedScalingMetricSpecification: map['predefinedScalingMetricSpecification'] == null ? null : ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification.fromMap((map['predefinedScalingMetricSpecification'] as Map).cast<String, dynamic>()),
-      scaleInCooldown: map['scaleInCooldown'] == null ? null : map['scaleInCooldown'] as int,
-      scaleOutCooldown: map['scaleOutCooldown'] == null ? null : map['scaleOutCooldown'] as int,
+      customizedScalingMetricSpecification:
+          map['customizedScalingMetricSpecification'] == null
+          ? null
+          : ScalingPlanScalingInstructionTargetTrackingConfigurationCustomizedScalingMetricSpecification.fromMap(
+              (map['customizedScalingMetricSpecification'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      disableScaleIn: map['disableScaleIn'] == null
+          ? null
+          : map['disableScaleIn'] as bool,
+      estimatedInstanceWarmup: map['estimatedInstanceWarmup'] == null
+          ? null
+          : map['estimatedInstanceWarmup'] as int,
+      predefinedScalingMetricSpecification:
+          map['predefinedScalingMetricSpecification'] == null
+          ? null
+          : ScalingPlanScalingInstructionTargetTrackingConfigurationPredefinedScalingMetricSpecification.fromMap(
+              (map['predefinedScalingMetricSpecification'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      scaleInCooldown: map['scaleInCooldown'] == null
+          ? null
+          : map['scaleInCooldown'] as int,
+      scaleOutCooldown: map['scaleOutCooldown'] == null
+          ? null
+          : map['scaleOutCooldown'] as int,
       targetValue: map['targetValue'] as double,
     );
   }
 }
-

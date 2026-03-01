@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain.
 class PingConfig {
   /// Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
@@ -8,14 +7,10 @@ class PingConfig {
 
   /// Creates a new [PingConfig].
   /// [pingsCount] Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
-  PingConfig({
-    this.pingsCount,
-  });
+  PingConfig({this.pingsCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pingsCount': ?pingsCount,
-    };
+    return <String, dynamic>{'pingsCount': ?pingsCount};
   }
 
   factory PingConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class PingConfig {
     );
   }
 }
-

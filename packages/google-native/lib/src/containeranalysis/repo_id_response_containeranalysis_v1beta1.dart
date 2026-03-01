@@ -6,6 +6,7 @@ import 'project_repo_id_response_containeranalysis_v1beta1.dart';
 class RepoIdResponseContaineranalysisV1beta1 {
   /// A combination of a project ID and a repo name.
   final ProjectRepoIdResponseContaineranalysisV1beta1 projectRepoId;
+
   /// A server-assigned, globally unique identifier.
   final String uid;
 
@@ -24,11 +25,14 @@ class RepoIdResponseContaineranalysisV1beta1 {
     };
   }
 
-  factory RepoIdResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory RepoIdResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RepoIdResponseContaineranalysisV1beta1(
-      projectRepoId: ProjectRepoIdResponseContaineranalysisV1beta1.fromMap((map['projectRepoId'] as Map).cast<String, dynamic>()),
+      projectRepoId: ProjectRepoIdResponseContaineranalysisV1beta1.fromMap(
+        (map['projectRepoId'] as Map).cast<String, dynamic>(),
+      ),
       uid: map['uid'] as String,
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetTensorboardArgs {
     required String location,
     String? project,
     required String tensorboardId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTensorboardArgs {
     );
   }
 }
-

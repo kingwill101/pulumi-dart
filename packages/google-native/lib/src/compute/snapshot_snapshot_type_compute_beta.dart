@@ -12,7 +12,8 @@ enum SnapshotSnapshotTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown SnapshotSnapshotTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SnapshotSnapshotTypeComputeBeta value: $value',
+    );
   }
 }
-

@@ -18,7 +18,8 @@ enum MaintenanceWindowDayOfWeekMetastoreV1beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown MaintenanceWindowDayOfWeekMetastoreV1beta value: $value');
+    throw ArgumentError(
+      'Unknown MaintenanceWindowDayOfWeekMetastoreV1beta value: $value',
+    );
   }
 }
-

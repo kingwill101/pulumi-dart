@@ -7,29 +7,38 @@ import 'kerberos_config.dart';
 class SecurityConfig {
   /// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
   final IdentityConfig? identityConfig;
+
   /// Optional. Kerberos related configuration.
   final KerberosConfig? kerberosConfig;
 
   /// Creates a new [SecurityConfig].
   /// [identityConfig] Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
   /// [kerberosConfig] Optional. Kerberos related configuration.
-  SecurityConfig({
-    this.identityConfig,
-    this.kerberosConfig,
-  });
+  SecurityConfig({this.identityConfig, this.kerberosConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'identityConfig': ?identityConfig == null ? null : identityConfig!.toMap(),
-      'kerberosConfig': ?kerberosConfig == null ? null : kerberosConfig!.toMap(),
+      'identityConfig': ?identityConfig == null
+          ? null
+          : identityConfig!.toMap(),
+      'kerberosConfig': ?kerberosConfig == null
+          ? null
+          : kerberosConfig!.toMap(),
     };
   }
 
   factory SecurityConfig.fromMap(Map<String, dynamic> map) {
     return SecurityConfig(
-      identityConfig: map['identityConfig'] == null ? null : IdentityConfig.fromMap((map['identityConfig'] as Map).cast<String, dynamic>()),
-      kerberosConfig: map['kerberosConfig'] == null ? null : KerberosConfig.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>()),
+      identityConfig: map['identityConfig'] == null
+          ? null
+          : IdentityConfig.fromMap(
+              (map['identityConfig'] as Map).cast<String, dynamic>(),
+            ),
+      kerberosConfig: map['kerberosConfig'] == null
+          ? null
+          : KerberosConfig.fromMap(
+              (map['kerberosConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

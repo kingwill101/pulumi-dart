@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool.
 class EcKeyTypeResponse {
   /// Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
@@ -8,14 +7,10 @@ class EcKeyTypeResponse {
 
   /// Creates a new [EcKeyTypeResponse].
   /// [signatureAlgorithm] Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-  EcKeyTypeResponse({
-    required this.signatureAlgorithm,
-  });
+  EcKeyTypeResponse({required this.signatureAlgorithm});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'signatureAlgorithm': signatureAlgorithm,
-    };
+    return <String, dynamic>{'signatureAlgorithm': signatureAlgorithm};
   }
 
   factory EcKeyTypeResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class EcKeyTypeResponse {
     );
   }
 }
-

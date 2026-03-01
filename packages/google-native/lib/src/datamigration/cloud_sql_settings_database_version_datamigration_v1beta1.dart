@@ -8,13 +8,17 @@ enum CloudSqlSettingsDatabaseVersionDatamigrationV1beta1 {
   const CloudSqlSettingsDatabaseVersionDatamigrationV1beta1(this.value);
   final String value;
 
-  static CloudSqlSettingsDatabaseVersionDatamigrationV1beta1 fromValue(String value) {
-    for (final item in CloudSqlSettingsDatabaseVersionDatamigrationV1beta1.values) {
+  static CloudSqlSettingsDatabaseVersionDatamigrationV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in CloudSqlSettingsDatabaseVersionDatamigrationV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown CloudSqlSettingsDatabaseVersionDatamigrationV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown CloudSqlSettingsDatabaseVersionDatamigrationV1beta1 value: $value',
+    );
   }
 }
-

@@ -6,8 +6,10 @@ import 'get_attachments_filter.dart';
 /// Result data returned by getAttachments.
 class GetAttachmentsResult {
   final List<GetAttachmentsFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the [aws.ec2transitgateway.getAttachment][2] data source, searching by identifier.
   final List<String> ids;
   final String region;
@@ -29,7 +31,12 @@ class GetAttachmentsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetAttachmentsFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?filters == null
+          ? null
+          : pulumi.Input.encodeList<GetAttachmentsFilter, Map<String, dynamic>>(
+              filters!,
+              (value) => value.toMap(),
+            ),
       'id': id,
       'ids': ids,
       'region': region,
@@ -39,7 +46,14 @@ class GetAttachmentsResult {
 
   factory GetAttachmentsResult.fromMap(Map<String, dynamic> map) {
     return GetAttachmentsResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAttachmentsFilter>(map['filters'], (value) => GetAttachmentsFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<GetAttachmentsFilter>(
+              map['filters'],
+              (value) => GetAttachmentsFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
       region: map['region'] as String,
@@ -47,4 +61,3 @@ class GetAttachmentsResult {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterNodePoolManagement {
   /// Whether the nodes will be automatically repaired. Enabled by default.
   final bool autoRepair;
+
   /// Whether the nodes will be automatically upgraded. Enabled by default.
   final bool autoUpgrade;
 
@@ -29,4 +29,3 @@ class GetClusterNodePoolManagement {
     );
   }
 }
-

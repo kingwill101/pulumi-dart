@@ -13,25 +13,35 @@ import 'trust_provider_sse_specification.dart';
 class TrustProviderArgs {
   /// A description for the AWS Verified Access trust provider.
   final pulumi.Input<String>? description;
+
   /// A block of options for device identity based trust providers.
   final pulumi.Input<TrustProviderDeviceOptions>? deviceOptions;
+
   /// The type of device-based trust provider.
   final pulumi.Input<String>? deviceTrustProviderType;
+
   /// The OpenID Connect details for an Native Application OIDC, user-identity based trust provider.
-  final pulumi.Input<TrustProviderNativeApplicationOidcOptions>? nativeApplicationOidcOptions;
+  final pulumi.Input<TrustProviderNativeApplicationOidcOptions>?
+  nativeApplicationOidcOptions;
+
   /// The OpenID Connect details for an oidc-type, user-identity based trust provider.
   final pulumi.Input<TrustProviderOidcOptions>? oidcOptions;
+
   /// The identifier to be used when working with policy rules.
   final pulumi.Input<String> policyReferenceName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<TrustProviderSseSpecification>? sseSpecification;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// The type of trust provider can be either user or device-based.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> trustProviderType;
+
   /// The type of user-based trust provider.
   final pulumi.Input<String>? userTrustProviderType;
 
@@ -59,29 +69,58 @@ class TrustProviderArgs {
     Map<String, String>? tags,
     required String trustProviderType,
     String? userTrustProviderType,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      deviceOptions = pulumi.Input.asOptionalInput<TrustProviderDeviceOptions>(deviceOptions),
-      deviceTrustProviderType = pulumi.Input.asOptionalInput<String>(deviceTrustProviderType),
-      nativeApplicationOidcOptions = pulumi.Input.asOptionalInput<TrustProviderNativeApplicationOidcOptions>(nativeApplicationOidcOptions),
-      oidcOptions = pulumi.Input.asOptionalInput<TrustProviderOidcOptions>(oidcOptions),
-      policyReferenceName = pulumi.Input.asInput<String>(policyReferenceName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sseSpecification = pulumi.Input.asOptionalInput<TrustProviderSseSpecification>(sseSpecification),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      trustProviderType = pulumi.Input.asInput<String>(trustProviderType),
-      userTrustProviderType = pulumi.Input.asOptionalInput<String>(userTrustProviderType);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       deviceOptions = pulumi.Input.asOptionalInput<TrustProviderDeviceOptions>(
+         deviceOptions,
+       ),
+       deviceTrustProviderType = pulumi.Input.asOptionalInput<String>(
+         deviceTrustProviderType,
+       ),
+       nativeApplicationOidcOptions =
+           pulumi.Input.asOptionalInput<
+             TrustProviderNativeApplicationOidcOptions
+           >(nativeApplicationOidcOptions),
+       oidcOptions = pulumi.Input.asOptionalInput<TrustProviderOidcOptions>(
+         oidcOptions,
+       ),
+       policyReferenceName = pulumi.Input.asInput<String>(policyReferenceName),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       sseSpecification =
+           pulumi.Input.asOptionalInput<TrustProviderSseSpecification>(
+             sseSpecification,
+           ),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       trustProviderType = pulumi.Input.asInput<String>(trustProviderType),
+       userTrustProviderType = pulumi.Input.asOptionalInput<String>(
+         userTrustProviderType,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'deviceOptions': ?pulumi.Input.mapOptionalInputValue<TrustProviderDeviceOptions, Map<String, dynamic>>(deviceOptions, (value) => value.toMap()),
+      'deviceOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            TrustProviderDeviceOptions,
+            Map<String, dynamic>
+          >(deviceOptions, (value) => value.toMap()),
       'deviceTrustProviderType': ?deviceTrustProviderType,
-      'nativeApplicationOidcOptions': ?pulumi.Input.mapOptionalInputValue<TrustProviderNativeApplicationOidcOptions, Map<String, dynamic>>(nativeApplicationOidcOptions, (value) => value.toMap()),
-      'oidcOptions': ?pulumi.Input.mapOptionalInputValue<TrustProviderOidcOptions, Map<String, dynamic>>(oidcOptions, (value) => value.toMap()),
+      'nativeApplicationOidcOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            TrustProviderNativeApplicationOidcOptions,
+            Map<String, dynamic>
+          >(nativeApplicationOidcOptions, (value) => value.toMap()),
+      'oidcOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            TrustProviderOidcOptions,
+            Map<String, dynamic>
+          >(oidcOptions, (value) => value.toMap()),
       'policyReferenceName': policyReferenceName,
       'region': ?region,
-      'sseSpecification': ?pulumi.Input.mapOptionalInputValue<TrustProviderSseSpecification, Map<String, dynamic>>(sseSpecification, (value) => value.toMap()),
+      'sseSpecification':
+          ?pulumi.Input.mapOptionalInputValue<
+            TrustProviderSseSpecification,
+            Map<String, dynamic>
+          >(sseSpecification, (value) => value.toMap()),
       'tags': ?tags,
       'trustProviderType': trustProviderType,
       'userTrustProviderType': ?userTrustProviderType,
@@ -90,18 +129,42 @@ class TrustProviderArgs {
 
   factory TrustProviderArgs.fromMap(Map<String, dynamic> map) {
     return TrustProviderArgs(
-      description: map['description'] == null ? null : map['description'] as String,
-      deviceOptions: map['deviceOptions'] == null ? null : TrustProviderDeviceOptions.fromMap((map['deviceOptions'] as Map).cast<String, dynamic>()),
-      deviceTrustProviderType: map['deviceTrustProviderType'] == null ? null : map['deviceTrustProviderType'] as String,
-      nativeApplicationOidcOptions: map['nativeApplicationOidcOptions'] == null ? null : TrustProviderNativeApplicationOidcOptions.fromMap((map['nativeApplicationOidcOptions'] as Map).cast<String, dynamic>()),
-      oidcOptions: map['oidcOptions'] == null ? null : TrustProviderOidcOptions.fromMap((map['oidcOptions'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      deviceOptions: map['deviceOptions'] == null
+          ? null
+          : TrustProviderDeviceOptions.fromMap(
+              (map['deviceOptions'] as Map).cast<String, dynamic>(),
+            ),
+      deviceTrustProviderType: map['deviceTrustProviderType'] == null
+          ? null
+          : map['deviceTrustProviderType'] as String,
+      nativeApplicationOidcOptions: map['nativeApplicationOidcOptions'] == null
+          ? null
+          : TrustProviderNativeApplicationOidcOptions.fromMap(
+              (map['nativeApplicationOidcOptions'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      oidcOptions: map['oidcOptions'] == null
+          ? null
+          : TrustProviderOidcOptions.fromMap(
+              (map['oidcOptions'] as Map).cast<String, dynamic>(),
+            ),
       policyReferenceName: map['policyReferenceName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      sseSpecification: map['sseSpecification'] == null ? null : TrustProviderSseSpecification.fromMap((map['sseSpecification'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      sseSpecification: map['sseSpecification'] == null
+          ? null
+          : TrustProviderSseSpecification.fromMap(
+              (map['sseSpecification'] as Map).cast<String, dynamic>(),
+            ),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
       trustProviderType: map['trustProviderType'] as String,
-      userTrustProviderType: map['userTrustProviderType'] == null ? null : map['userTrustProviderType'] as String,
+      userTrustProviderType: map['userTrustProviderType'] == null
+          ? null
+          : map['userTrustProviderType'] as String,
     );
   }
 }
-

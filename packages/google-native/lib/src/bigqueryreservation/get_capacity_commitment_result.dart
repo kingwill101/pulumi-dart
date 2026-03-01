@@ -6,24 +6,34 @@ import 'status_response.dart';
 class GetCapacityCommitmentResult {
   /// The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
   final String commitmentEndTime;
+
   /// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
   final String commitmentStartTime;
+
   /// Edition of the capacity commitment.
   final String edition;
+
   /// For FAILED commitment plan, provides the reason of failure.
   final StatusResponse failureStatus;
+
   /// If true, the commitment is a flat-rate commitment, otherwise, it's an edition commitment.
   final bool isFlatRate;
+
   /// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
   final bool multiRegionAuxiliary;
+
   /// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
   final String name;
+
   /// Capacity commitment commitment plan.
   final String plan;
+
   /// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
   final String renewalPlan;
+
   /// Number of slots in this commitment.
   final String slotCount;
+
   /// State of the commitment.
   final String state;
 
@@ -74,7 +84,9 @@ class GetCapacityCommitmentResult {
       commitmentEndTime: map['commitmentEndTime'] as String,
       commitmentStartTime: map['commitmentStartTime'] as String,
       edition: map['edition'] as String,
-      failureStatus: StatusResponse.fromMap((map['failureStatus'] as Map).cast<String, dynamic>()),
+      failureStatus: StatusResponse.fromMap(
+        (map['failureStatus'] as Map).cast<String, dynamic>(),
+      ),
       isFlatRate: map['isFlatRate'] as bool,
       multiRegionAuxiliary: map['multiRegionAuxiliary'] as bool,
       name: map['name'] as String,
@@ -85,4 +97,3 @@ class GetCapacityCommitmentResult {
     );
   }
 }
-

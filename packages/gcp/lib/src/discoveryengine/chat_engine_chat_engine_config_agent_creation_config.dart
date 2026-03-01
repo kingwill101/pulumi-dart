@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChatEngineChatEngineConfigAgentCreationConfig {
   /// Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
   final String? business;
+
   /// The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
   final String defaultLanguageCode;
+
   /// Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
   final String? location;
+
   /// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
   final String timeZone;
 
@@ -32,7 +34,9 @@ class ChatEngineChatEngineConfigAgentCreationConfig {
     };
   }
 
-  factory ChatEngineChatEngineConfigAgentCreationConfig.fromMap(Map<String, dynamic> map) {
+  factory ChatEngineChatEngineConfigAgentCreationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChatEngineChatEngineConfigAgentCreationConfig(
       business: map['business'] == null ? null : map['business'] as String,
       defaultLanguageCode: map['defaultLanguageCode'] as String,
@@ -41,4 +45,3 @@ class ChatEngineChatEngineConfigAgentCreationConfig {
     );
   }
 }
-

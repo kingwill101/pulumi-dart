@@ -6,10 +6,13 @@ import 'encryption_info_response_alloydb_v1alpha.dart';
 class ContinuousBackupInfoResponseAlloydbV1alpha {
   /// The earliest restorable time that can be restored to. Output only field.
   final String earliestRestorableTime;
+
   /// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
   final String enabledTime;
+
   /// The encryption information for the WALs and backups required for ContinuousBackup.
   final EncryptionInfoResponseAlloydbV1alpha encryptionInfo;
+
   /// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
   final List<String> schedule;
 
@@ -34,13 +37,16 @@ class ContinuousBackupInfoResponseAlloydbV1alpha {
     };
   }
 
-  factory ContinuousBackupInfoResponseAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ContinuousBackupInfoResponseAlloydbV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContinuousBackupInfoResponseAlloydbV1alpha(
       earliestRestorableTime: map['earliestRestorableTime'] as String,
       enabledTime: map['enabledTime'] as String,
-      encryptionInfo: EncryptionInfoResponseAlloydbV1alpha.fromMap((map['encryptionInfo'] as Map).cast<String, dynamic>()),
+      encryptionInfo: EncryptionInfoResponseAlloydbV1alpha.fromMap(
+        (map['encryptionInfo'] as Map).cast<String, dynamic>(),
+      ),
       schedule: (map['schedule'] as List).cast<String>(),
     );
   }
 }
-

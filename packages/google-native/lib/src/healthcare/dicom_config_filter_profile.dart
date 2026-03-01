@@ -2,7 +2,9 @@
 enum DicomConfigFilterProfile {
   tagFilterProfileUnspecified("TAG_FILTER_PROFILE_UNSPECIFIED"),
   minimalKeepListProfile("MINIMAL_KEEP_LIST_PROFILE"),
-  attributeConfidentialityBasicProfile("ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE"),
+  attributeConfidentialityBasicProfile(
+    "ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE",
+  ),
   keepAllProfile("KEEP_ALL_PROFILE"),
   deidentifyTagContents("DEIDENTIFY_TAG_CONTENTS");
 
@@ -18,4 +20,3 @@ enum DicomConfigFilterProfile {
     throw ArgumentError('Unknown DicomConfigFilterProfile value: $value');
   }
 }
-

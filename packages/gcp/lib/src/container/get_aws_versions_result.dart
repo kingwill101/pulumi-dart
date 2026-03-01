@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAwsVersions.
 class GetAwsVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? location;
   final String? project;
+
   /// A list of AWS regions that are available for use with this project and GCP location.
   final List<String> supportedRegions;
+
   /// A list of versions available for use with this project and location.
   final List<String> validVersions;
 
@@ -46,4 +47,3 @@ class GetAwsVersionsResult {
     );
   }
 }
-

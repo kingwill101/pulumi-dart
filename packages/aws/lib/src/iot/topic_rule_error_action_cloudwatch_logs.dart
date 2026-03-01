@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TopicRuleErrorActionCloudwatchLogs {
   /// The payload that contains a JSON array of records will be sent to CloudWatch via a batch call.
   final bool? batchMode;
+
   /// The CloudWatch log group name.
   final String logGroupName;
+
   /// The IAM role ARN that allows access to the CloudWatch alarm.
   final String roleArn;
 
@@ -35,4 +36,3 @@ class TopicRuleErrorActionCloudwatchLogs {
     );
   }
 }
-

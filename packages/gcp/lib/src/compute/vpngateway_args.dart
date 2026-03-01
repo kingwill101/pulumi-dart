@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VPNGatewayArgs {
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -17,11 +18,14 @@ class VPNGatewayArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   final pulumi.Input<String>? name;
+
   /// The network this VPN gateway is accepting traffic for.
   final pulumi.Input<String> network;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region this gateway should sit in.
   final pulumi.Input<String>? region;
 
@@ -37,12 +41,11 @@ class VPNGatewayArgs {
     required String network,
     String? project,
     String? region,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       network = pulumi.Input.asInput<String>(network),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,7 +59,9 @@ class VPNGatewayArgs {
 
   factory VPNGatewayArgs.fromMap(Map<String, dynamic> map) {
     return VPNGatewayArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       network: map['network'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -64,4 +69,3 @@ class VPNGatewayArgs {
     );
   }
 }
-

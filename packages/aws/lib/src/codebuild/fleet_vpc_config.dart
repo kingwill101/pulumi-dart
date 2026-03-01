@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FleetVpcConfig {
   /// A list of one or more security groups IDs in your Amazon VPC.
   final List<String> securityGroupIds;
+
   /// A list of one or more subnet IDs in your Amazon VPC.
   final List<String> subnets;
+
   /// The ID of the Amazon VPC.
   final String vpcId;
 
@@ -35,4 +36,3 @@ class FleetVpcConfig {
     );
   }
 }
-

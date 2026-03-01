@@ -14,15 +14,16 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'jobConfig': jobConfig.toMap(),
-    };
+    return <String, dynamic>{'jobConfig': jobConfig.toMap()};
   }
 
-  factory GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse(
-      jobConfig: GooglePrivacyDlpV2RiskAnalysisJobConfigResponse.fromMap((map['jobConfig'] as Map).cast<String, dynamic>()),
+      jobConfig: GooglePrivacyDlpV2RiskAnalysisJobConfigResponse.fromMap(
+        (map['jobConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

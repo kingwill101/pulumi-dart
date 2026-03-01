@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ViewDataFilterExpressionTimeRange {
   /// Inclusive end date of the time range.
   final String beginDateInclusive;
@@ -28,4 +27,3 @@ class ViewDataFilterExpressionTimeRange {
     );
   }
 }
-

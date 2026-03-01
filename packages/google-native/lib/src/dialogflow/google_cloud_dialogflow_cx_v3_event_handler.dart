@@ -6,10 +6,13 @@ import 'google_cloud_dialogflow_cx_v3_fulfillment.dart';
 class GoogleCloudDialogflowCxV3EventHandler {
   /// The name of the event to handle.
   final String event;
+
   /// The target flow to transition to. Format: `projects//locations//agents//flows/`.
   final String? targetFlow;
+
   /// The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
   final String? targetPage;
+
   /// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
   final GoogleCloudDialogflowCxV3Fulfillment? triggerFulfillment;
 
@@ -30,17 +33,28 @@ class GoogleCloudDialogflowCxV3EventHandler {
       'event': event,
       'targetFlow': ?targetFlow,
       'targetPage': ?targetPage,
-      'triggerFulfillment': ?triggerFulfillment == null ? null : triggerFulfillment!.toMap(),
+      'triggerFulfillment': ?triggerFulfillment == null
+          ? null
+          : triggerFulfillment!.toMap(),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3EventHandler.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3EventHandler.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3EventHandler(
       event: map['event'] as String,
-      targetFlow: map['targetFlow'] == null ? null : map['targetFlow'] as String,
-      targetPage: map['targetPage'] == null ? null : map['targetPage'] as String,
-      triggerFulfillment: map['triggerFulfillment'] == null ? null : GoogleCloudDialogflowCxV3Fulfillment.fromMap((map['triggerFulfillment'] as Map).cast<String, dynamic>()),
+      targetFlow: map['targetFlow'] == null
+          ? null
+          : map['targetFlow'] as String,
+      targetPage: map['targetPage'] == null
+          ? null
+          : map['targetPage'] as String,
+      triggerFulfillment: map['triggerFulfillment'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3Fulfillment.fromMap(
+              (map['triggerFulfillment'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

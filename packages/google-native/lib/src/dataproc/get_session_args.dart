@@ -19,10 +19,9 @@ class GetSessionArgs {
     required String location,
     String? project,
     required String sessionId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionId = pulumi.Input.asInput<String>(sessionId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sessionId = pulumi.Input.asInput<String>(sessionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetSessionArgs {
     );
   }
 }
-

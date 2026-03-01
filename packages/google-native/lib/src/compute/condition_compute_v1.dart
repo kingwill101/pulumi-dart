@@ -8,12 +8,16 @@ import 'condition_sys_compute_v1.dart';
 class ConditionComputeV1 {
   /// This is deprecated and has no effect. Do not use.
   final ConditionIamComputeV1? iam;
+
   /// This is deprecated and has no effect. Do not use.
   final ConditionOpComputeV1? op;
+
   /// This is deprecated and has no effect. Do not use.
   final String? svc;
+
   /// This is deprecated and has no effect. Do not use.
   final ConditionSysComputeV1? sys;
+
   /// This is deprecated and has no effect. Do not use.
   final List<String>? values;
 
@@ -23,13 +27,7 @@ class ConditionComputeV1 {
   /// [svc] This is deprecated and has no effect. Do not use.
   /// [sys] This is deprecated and has no effect. Do not use.
   /// [values] This is deprecated and has no effect. Do not use.
-  ConditionComputeV1({
-    this.iam,
-    this.op,
-    this.svc,
-    this.sys,
-    this.values,
-  });
+  ConditionComputeV1({this.iam, this.op, this.svc, this.sys, this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,12 +41,19 @@ class ConditionComputeV1 {
 
   factory ConditionComputeV1.fromMap(Map<String, dynamic> map) {
     return ConditionComputeV1(
-      iam: map['iam'] == null ? null : ConditionIamComputeV1.fromValue(map['iam'] as String),
-      op: map['op'] == null ? null : ConditionOpComputeV1.fromValue(map['op'] as String),
+      iam: map['iam'] == null
+          ? null
+          : ConditionIamComputeV1.fromValue(map['iam'] as String),
+      op: map['op'] == null
+          ? null
+          : ConditionOpComputeV1.fromValue(map['op'] as String),
       svc: map['svc'] == null ? null : map['svc'] as String,
-      sys: map['sys'] == null ? null : ConditionSysComputeV1.fromValue(map['sys'] as String),
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      sys: map['sys'] == null
+          ? null
+          : ConditionSysComputeV1.fromValue(map['sys'] as String),
+      values: map['values'] == null
+          ? null
+          : (map['values'] as List).cast<String>(),
     );
   }
 }
-

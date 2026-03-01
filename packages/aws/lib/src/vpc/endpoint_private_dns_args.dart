@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointPrivateDnsArgs {
   /// Indicates whether a private hosted zone is associated with the VPC. Only applicable for `Interface` endpoints.
   final pulumi.Input<bool> privateDnsEnabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// VPC endpoint identifier.
   final pulumi.Input<String> vpcEndpointId;
 
@@ -22,10 +24,9 @@ class EndpointPrivateDnsArgs {
     required bool privateDnsEnabled,
     String? region,
     required String vpcEndpointId,
-  }) :
-      privateDnsEnabled = pulumi.Input.asInput<bool>(privateDnsEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId);
+  }) : privateDnsEnabled = pulumi.Input.asInput<bool>(privateDnsEnabled),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       vpcEndpointId = pulumi.Input.asInput<String>(vpcEndpointId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class EndpointPrivateDnsArgs {
     );
   }
 }
-

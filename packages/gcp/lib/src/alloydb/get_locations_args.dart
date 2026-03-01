@@ -12,15 +12,11 @@ class GetLocationsArgs {
 
   /// Creates a new [GetLocationsArgs].
   /// [project] The ID of the project.
-  GetLocationsArgs({
-    String? project,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project);
+  GetLocationsArgs({String? project})
+    : project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-    };
+    return <String, dynamic>{'project': ?project};
   }
 
   factory GetLocationsArgs.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class GetLocationsArgs {
     );
   }
 }
-

@@ -11,10 +11,10 @@ class GetInboundSamlSsoProfileArgs {
 
   /// Creates a new [GetInboundSamlSsoProfileArgs].
   /// [inboundSamlSsoProfileId] Required.
-  GetInboundSamlSsoProfileArgs({
-    required String inboundSamlSsoProfileId,
-  }) :
-      inboundSamlSsoProfileId = pulumi.Input.asInput<String>(inboundSamlSsoProfileId);
+  GetInboundSamlSsoProfileArgs({required String inboundSamlSsoProfileId})
+    : inboundSamlSsoProfileId = pulumi.Input.asInput<String>(
+        inboundSamlSsoProfileId,
+      );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,4 +28,3 @@ class GetInboundSamlSsoProfileArgs {
     );
   }
 }
-

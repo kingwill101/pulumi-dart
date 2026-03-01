@@ -13,11 +13,8 @@ class GetRolloutArgs {
   /// Creates a new [GetRolloutArgs].
   /// [rolloutId] Required.
   /// [serviceName] Required.
-  GetRolloutArgs({
-    required String rolloutId,
-    required String serviceName,
-  }) :
-      rolloutId = pulumi.Input.asInput<String>(rolloutId),
+  GetRolloutArgs({required String rolloutId, required String serviceName})
+    : rolloutId = pulumi.Input.asInput<String>(rolloutId),
       serviceName = pulumi.Input.asInput<String>(serviceName);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetRolloutArgs {
     );
   }
 }
-

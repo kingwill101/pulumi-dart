@@ -6,14 +6,19 @@ import 'oracle_rdbms_response.dart';
 class OracleSourceConfigResponse {
   /// Drop large object values.
   final Map<String, dynamic> dropLargeObjects;
+
   /// Oracle objects to exclude from the stream.
   final OracleRdbmsResponse excludeObjects;
+
   /// Oracle objects to include in the stream.
   final OracleRdbmsResponse includeObjects;
+
   /// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
   final int maxConcurrentBackfillTasks;
+
   /// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
   final int maxConcurrentCdcTasks;
+
   /// Stream large object values. NOTE: This feature is currently experimental.
   final Map<String, dynamic> streamLargeObjects;
 
@@ -46,13 +51,18 @@ class OracleSourceConfigResponse {
 
   factory OracleSourceConfigResponse.fromMap(Map<String, dynamic> map) {
     return OracleSourceConfigResponse(
-      dropLargeObjects: (map['dropLargeObjects'] as Map).cast<String, dynamic>(),
-      excludeObjects: OracleRdbmsResponse.fromMap((map['excludeObjects'] as Map).cast<String, dynamic>()),
-      includeObjects: OracleRdbmsResponse.fromMap((map['includeObjects'] as Map).cast<String, dynamic>()),
+      dropLargeObjects: (map['dropLargeObjects'] as Map)
+          .cast<String, dynamic>(),
+      excludeObjects: OracleRdbmsResponse.fromMap(
+        (map['excludeObjects'] as Map).cast<String, dynamic>(),
+      ),
+      includeObjects: OracleRdbmsResponse.fromMap(
+        (map['includeObjects'] as Map).cast<String, dynamic>(),
+      ),
       maxConcurrentBackfillTasks: map['maxConcurrentBackfillTasks'] as int,
       maxConcurrentCdcTasks: map['maxConcurrentCdcTasks'] as int,
-      streamLargeObjects: (map['streamLargeObjects'] as Map).cast<String, dynamic>(),
+      streamLargeObjects: (map['streamLargeObjects'] as Map)
+          .cast<String, dynamic>(),
     );
   }
 }
-

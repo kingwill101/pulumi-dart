@@ -22,11 +22,12 @@ class GetInstanceIamPolicyArgs {
     String? project,
     required String resource,
     required String zone,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resource = pulumi.Input.asInput<String>(resource),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       resource = pulumi.Input.asInput<String>(resource),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,11 +40,13 @@ class GetInstanceIamPolicyArgs {
 
   factory GetInstanceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceIamPolicyArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       resource: map['resource'] as String,
       zone: map['zone'] as String,
     );
   }
 }
-

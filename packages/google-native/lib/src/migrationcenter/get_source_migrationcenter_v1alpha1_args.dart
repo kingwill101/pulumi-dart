@@ -19,10 +19,9 @@ class GetSourceMigrationcenterV1alpha1Args {
     required String location,
     String? project,
     required String sourceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceId = pulumi.Input.asInput<String>(sourceId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetSourceMigrationcenterV1alpha1Args {
     };
   }
 
-  factory GetSourceMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetSourceMigrationcenterV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSourceMigrationcenterV1alpha1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +41,3 @@ class GetSourceMigrationcenterV1alpha1Args {
     );
   }
 }
-

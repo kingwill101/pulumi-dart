@@ -10,20 +10,32 @@ class BareMetalClusterSecurityConfigAuthorization {
 
   /// Creates a new [BareMetalClusterSecurityConfigAuthorization].
   /// [adminUsers] Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
-  BareMetalClusterSecurityConfigAuthorization({
-    required this.adminUsers,
-  });
+  BareMetalClusterSecurityConfigAuthorization({required this.adminUsers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminUsers': pulumi.Input.encodeList<BareMetalClusterSecurityConfigAuthorizationAdminUser, Map<String, dynamic>>(adminUsers, (value) => value.toMap()),
+      'adminUsers':
+          pulumi.Input.encodeList<
+            BareMetalClusterSecurityConfigAuthorizationAdminUser,
+            Map<String, dynamic>
+          >(adminUsers, (value) => value.toMap()),
     };
   }
 
-  factory BareMetalClusterSecurityConfigAuthorization.fromMap(Map<String, dynamic> map) {
+  factory BareMetalClusterSecurityConfigAuthorization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalClusterSecurityConfigAuthorization(
-      adminUsers: pulumi.Input.decodeList<BareMetalClusterSecurityConfigAuthorizationAdminUser>(map['adminUsers'], (value) => BareMetalClusterSecurityConfigAuthorizationAdminUser.fromMap((value as Map).cast<String, dynamic>())),
+      adminUsers:
+          pulumi.Input.decodeList<
+            BareMetalClusterSecurityConfigAuthorizationAdminUser
+          >(
+            map['adminUsers'],
+            (value) =>
+                BareMetalClusterSecurityConfigAuthorizationAdminUser.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

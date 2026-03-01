@@ -13,18 +13,12 @@ class GetTopicPubsubV1beta2Args {
   /// Creates a new [GetTopicPubsubV1beta2Args].
   /// [project] Optional.
   /// [topicId] Required.
-  GetTopicPubsubV1beta2Args({
-    String? project,
-    required String topicId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetTopicPubsubV1beta2Args({String? project, required String topicId})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       topicId = pulumi.Input.asInput<String>(topicId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'topicId': topicId,
-    };
+    return <String, dynamic>{'project': ?project, 'topicId': topicId};
   }
 
   factory GetTopicPubsubV1beta2Args.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetTopicPubsubV1beta2Args {
     );
   }
 }
-

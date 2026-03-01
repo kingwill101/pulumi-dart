@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// An item of the class.
 class ClassItem {
   /// The class item's value.
@@ -8,14 +7,10 @@ class ClassItem {
 
   /// Creates a new [ClassItem].
   /// [value] The class item's value.
-  ClassItem({
-    this.value,
-  });
+  ClassItem({this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': ?value,
-    };
+    return <String, dynamic>{'value': ?value};
   }
 
   factory ClassItem.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ClassItem {
     );
   }
 }
-

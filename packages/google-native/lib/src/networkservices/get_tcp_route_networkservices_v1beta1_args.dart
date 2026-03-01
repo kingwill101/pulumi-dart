@@ -19,10 +19,9 @@ class GetTcpRouteNetworkservicesV1beta1Args {
     required String location,
     String? project,
     required String tcpRouteId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tcpRouteId = pulumi.Input.asInput<String>(tcpRouteId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tcpRouteId = pulumi.Input.asInput<String>(tcpRouteId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetTcpRouteNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetTcpRouteNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetTcpRouteNetworkservicesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTcpRouteNetworkservicesV1beta1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +41,3 @@ class GetTcpRouteNetworkservicesV1beta1Args {
     );
   }
 }
-

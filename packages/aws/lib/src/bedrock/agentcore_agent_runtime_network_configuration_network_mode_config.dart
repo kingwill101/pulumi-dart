@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig {
   /// Security groups associated with the VPC configuration.
   final List<String> securityGroups;
+
   /// Subnets associated with the VPC configuration.
   final List<String> subnets;
 
@@ -22,11 +22,12 @@ class AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig {
     };
   }
 
-  factory AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig(
       securityGroups: (map['securityGroups'] as List).cast<String>(),
       subnets: (map['subnets'] as List).cast<String>(),
     );
   }
 }
-

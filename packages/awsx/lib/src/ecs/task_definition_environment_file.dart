@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TaskDefinitionEnvironmentFile {
   final String? type;
   final String? value;
@@ -8,16 +7,10 @@ class TaskDefinitionEnvironmentFile {
   /// Creates a new [TaskDefinitionEnvironmentFile].
   /// [type] Optional.
   /// [value] Optional.
-  TaskDefinitionEnvironmentFile({
-    this.type,
-    this.value,
-  });
+  TaskDefinitionEnvironmentFile({this.type, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-      'value': ?value,
-    };
+    return <String, dynamic>{'type': ?type, 'value': ?value};
   }
 
   factory TaskDefinitionEnvironmentFile.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class TaskDefinitionEnvironmentFile {
     );
   }
 }
-

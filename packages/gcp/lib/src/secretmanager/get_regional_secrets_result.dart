@@ -6,12 +6,16 @@ import 'get_regional_secrets_secret.dart';
 /// Result data returned by getRegionalSecrets.
 class GetRegionalSecretsResult {
   final String? filter;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The location in which the resource belongs.
   final String location;
+
   /// The ID of the project in which the resource belongs.
   final String project;
+
   /// A list of regional secrets present in the specified location and matching the filter. Structure is defined below.
   final List<GetRegionalSecretsSecret> secrets;
 
@@ -35,7 +39,11 @@ class GetRegionalSecretsResult {
       'id': id,
       'location': location,
       'project': project,
-      'secrets': pulumi.Input.encodeList<GetRegionalSecretsSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'secrets':
+          pulumi.Input.encodeList<
+            GetRegionalSecretsSecret,
+            Map<String, dynamic>
+          >(secrets, (value) => value.toMap()),
     };
   }
 
@@ -45,8 +53,12 @@ class GetRegionalSecretsResult {
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] as String,
-      secrets: pulumi.Input.decodeList<GetRegionalSecretsSecret>(map['secrets'], (value) => GetRegionalSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
+      secrets: pulumi.Input.decodeList<GetRegionalSecretsSecret>(
+        map['secrets'],
+        (value) => GetRegionalSecretsSecret.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

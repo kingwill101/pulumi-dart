@@ -22,11 +22,10 @@ class GetWorkspaceArgs {
     String? project,
     required String repositoryId,
     required String workspaceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       repositoryId = pulumi.Input.asInput<String>(repositoryId),
+       workspaceId = pulumi.Input.asInput<String>(workspaceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetWorkspaceArgs {
     );
   }
 }
-

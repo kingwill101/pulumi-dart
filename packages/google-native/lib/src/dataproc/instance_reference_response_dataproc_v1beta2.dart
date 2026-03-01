@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A reference to a Compute Engine instance.
 class InstanceReferenceResponseDataprocV1beta2 {
   /// The unique identifier of the Compute Engine instance.
   final String instanceId;
+
   /// The user-friendly name of the Compute Engine instance.
   final String instanceName;
+
   /// The public key used for sharing data with this instance.
   final String publicKey;
 
@@ -28,7 +29,9 @@ class InstanceReferenceResponseDataprocV1beta2 {
     };
   }
 
-  factory InstanceReferenceResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
+  factory InstanceReferenceResponseDataprocV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceReferenceResponseDataprocV1beta2(
       instanceId: map['instanceId'] as String,
       instanceName: map['instanceName'] as String,
@@ -36,4 +39,3 @@ class InstanceReferenceResponseDataprocV1beta2 {
     );
   }
 }
-

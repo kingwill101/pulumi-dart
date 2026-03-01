@@ -7,6 +7,7 @@ import 'get_networks_odb_network.dart';
 class GetNetworksResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// List of odb networks returns basic information about odb networks.
   final List<GetNetworksOdbNetwork> odbNetworks;
   final String region;
@@ -24,7 +25,11 @@ class GetNetworksResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'odbNetworks': pulumi.Input.encodeList<GetNetworksOdbNetwork, Map<String, dynamic>>(odbNetworks, (value) => value.toMap()),
+      'odbNetworks':
+          pulumi.Input.encodeList<GetNetworksOdbNetwork, Map<String, dynamic>>(
+            odbNetworks,
+            (value) => value.toMap(),
+          ),
       'region': region,
     };
   }
@@ -32,9 +37,13 @@ class GetNetworksResult {
   factory GetNetworksResult.fromMap(Map<String, dynamic> map) {
     return GetNetworksResult(
       id: map['id'] as String,
-      odbNetworks: pulumi.Input.decodeList<GetNetworksOdbNetwork>(map['odbNetworks'], (value) => GetNetworksOdbNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      odbNetworks: pulumi.Input.decodeList<GetNetworksOdbNetwork>(
+        map['odbNetworks'],
+        (value) => GetNetworksOdbNetwork.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       region: map['region'] as String,
     );
   }
 }
-

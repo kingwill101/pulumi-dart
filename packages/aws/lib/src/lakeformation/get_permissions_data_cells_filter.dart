@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetPermissionsDataCellsFilter {
   /// The name of the database.
   final String databaseName;
+
   /// The name of the data cells filter.
   final String name;
+
   /// The ID of the Data Catalog.
   final String tableCatalogId;
+
   /// The name of the table.
   final String tableName;
 
@@ -41,4 +43,3 @@ class GetPermissionsDataCellsFilter {
     );
   }
 }
-

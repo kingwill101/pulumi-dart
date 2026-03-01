@@ -19,10 +19,9 @@ class GetExecutionArgs {
     required String executionId,
     required String historyId,
     String? project,
-  }) :
-      executionId = pulumi.Input.asInput<String>(executionId),
-      historyId = pulumi.Input.asInput<String>(historyId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : executionId = pulumi.Input.asInput<String>(executionId),
+       historyId = pulumi.Input.asInput<String>(historyId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetExecutionArgs {
     );
   }
 }
-

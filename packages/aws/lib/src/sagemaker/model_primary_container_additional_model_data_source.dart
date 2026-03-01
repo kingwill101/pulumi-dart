@@ -6,8 +6,10 @@ import 'model_primary_container_additional_model_data_source_s3_data_source.dart
 class ModelPrimaryContainerAdditionalModelDataSource {
   /// Custom name for the additional model data source object. It will be stored in `/opt/ml/additional-model-data-sources/<channel_name>/`.
   final String channelName;
+
   /// S3 location of model data to deploy. See S3 Data Source.
-  final List<ModelPrimaryContainerAdditionalModelDataSourceS3DataSource> s3DataSources;
+  final List<ModelPrimaryContainerAdditionalModelDataSourceS3DataSource>
+  s3DataSources;
 
   /// Creates a new [ModelPrimaryContainerAdditionalModelDataSource].
   /// [channelName] Custom name for the additional model data source object. It will be stored in `/opt/ml/additional-model-data-sources/<channel_name>/`.
@@ -20,15 +22,29 @@ class ModelPrimaryContainerAdditionalModelDataSource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'channelName': channelName,
-      's3DataSources': pulumi.Input.encodeList<ModelPrimaryContainerAdditionalModelDataSourceS3DataSource, Map<String, dynamic>>(s3DataSources, (value) => value.toMap()),
+      's3DataSources':
+          pulumi.Input.encodeList<
+            ModelPrimaryContainerAdditionalModelDataSourceS3DataSource,
+            Map<String, dynamic>
+          >(s3DataSources, (value) => value.toMap()),
     };
   }
 
-  factory ModelPrimaryContainerAdditionalModelDataSource.fromMap(Map<String, dynamic> map) {
+  factory ModelPrimaryContainerAdditionalModelDataSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ModelPrimaryContainerAdditionalModelDataSource(
       channelName: map['channelName'] as String,
-      s3DataSources: pulumi.Input.decodeList<ModelPrimaryContainerAdditionalModelDataSourceS3DataSource>(map['s3DataSources'], (value) => ModelPrimaryContainerAdditionalModelDataSourceS3DataSource.fromMap((value as Map).cast<String, dynamic>())),
+      s3DataSources:
+          pulumi.Input.decodeList<
+            ModelPrimaryContainerAdditionalModelDataSourceS3DataSource
+          >(
+            map['s3DataSources'],
+            (value) =>
+                ModelPrimaryContainerAdditionalModelDataSourceS3DataSource.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

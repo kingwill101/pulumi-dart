@@ -7,13 +7,17 @@ enum OSPolicyResourceRepositoryResourceAptRepositoryArchiveType {
   const OSPolicyResourceRepositoryResourceAptRepositoryArchiveType(this.value);
   final String value;
 
-  static OSPolicyResourceRepositoryResourceAptRepositoryArchiveType fromValue(String value) {
-    for (final item in OSPolicyResourceRepositoryResourceAptRepositoryArchiveType.values) {
+  static OSPolicyResourceRepositoryResourceAptRepositoryArchiveType fromValue(
+    String value,
+  ) {
+    for (final item
+        in OSPolicyResourceRepositoryResourceAptRepositoryArchiveType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OSPolicyResourceRepositoryResourceAptRepositoryArchiveType value: $value');
+    throw ArgumentError(
+      'Unknown OSPolicyResourceRepositoryResourceAptRepositoryArchiveType value: $value',
+    );
   }
 }
-

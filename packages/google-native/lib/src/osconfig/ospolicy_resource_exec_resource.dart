@@ -6,16 +6,14 @@ import 'ospolicy_resource_exec_resource_exec.dart';
 class OSPolicyResourceExecResource {
   /// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
   final OSPolicyResourceExecResourceExec? enforce;
+
   /// What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
   final OSPolicyResourceExecResourceExec validate;
 
   /// Creates a new [OSPolicyResourceExecResource].
   /// [enforce] What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
   /// [validate] What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
-  OSPolicyResourceExecResource({
-    this.enforce,
-    required this.validate,
-  });
+  OSPolicyResourceExecResource({this.enforce, required this.validate});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class OSPolicyResourceExecResource {
 
   factory OSPolicyResourceExecResource.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceExecResource(
-      enforce: map['enforce'] == null ? null : OSPolicyResourceExecResourceExec.fromMap((map['enforce'] as Map).cast<String, dynamic>()),
-      validate: OSPolicyResourceExecResourceExec.fromMap((map['validate'] as Map).cast<String, dynamic>()),
+      enforce: map['enforce'] == null
+          ? null
+          : OSPolicyResourceExecResourceExec.fromMap(
+              (map['enforce'] as Map).cast<String, dynamic>(),
+            ),
+      validate: OSPolicyResourceExecResourceExec.fromMap(
+        (map['validate'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

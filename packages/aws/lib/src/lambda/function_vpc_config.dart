@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FunctionVpcConfig {
   /// Whether to allow outbound IPv6 traffic on VPC functions connected to dual-stack subnets. Default: `false`.
   final bool? ipv6AllowedForDualStack;
+
   /// List of security group IDs associated with the Lambda function.
   final List<String> securityGroupIds;
+
   /// List of subnet IDs associated with the Lambda function.
   final List<String> subnetIds;
+
   /// ID of the VPC.
   final String? vpcId;
 
@@ -34,11 +36,12 @@ class FunctionVpcConfig {
 
   factory FunctionVpcConfig.fromMap(Map<String, dynamic> map) {
     return FunctionVpcConfig(
-      ipv6AllowedForDualStack: map['ipv6AllowedForDualStack'] == null ? null : map['ipv6AllowedForDualStack'] as bool,
+      ipv6AllowedForDualStack: map['ipv6AllowedForDualStack'] == null
+          ? null
+          : map['ipv6AllowedForDualStack'] as bool,
       securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
       subnetIds: (map['subnetIds'] as List).cast<String>(),
       vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
     );
   }
 }
-

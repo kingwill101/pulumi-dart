@@ -5,9 +5,12 @@ import 'centralization_rule_for_organization_rule_destination_destination_logs_c
 
 class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration {
   /// Configuration block for backup settings. See `backup_configuration` below.
-  final CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration? backupConfiguration;
+  final CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration?
+  backupConfiguration;
+
   /// Configuration block for logs encryption settings. See `logs_encryption_configuration` below.
-  final CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration? logsEncryptionConfiguration;
+  final CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration?
+  logsEncryptionConfiguration;
 
   /// Creates a new [CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration].
   /// [backupConfiguration] Configuration block for backup settings. See `backup_configuration` below.
@@ -19,16 +22,30 @@ class CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurati
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupConfiguration': ?backupConfiguration == null ? null : backupConfiguration!.toMap(),
-      'logsEncryptionConfiguration': ?logsEncryptionConfiguration == null ? null : logsEncryptionConfiguration!.toMap(),
+      'backupConfiguration': ?backupConfiguration == null
+          ? null
+          : backupConfiguration!.toMap(),
+      'logsEncryptionConfiguration': ?logsEncryptionConfiguration == null
+          ? null
+          : logsEncryptionConfiguration!.toMap(),
     };
   }
 
-  factory CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfiguration(
-      backupConfiguration: map['backupConfiguration'] == null ? null : CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration.fromMap((map['backupConfiguration'] as Map).cast<String, dynamic>()),
-      logsEncryptionConfiguration: map['logsEncryptionConfiguration'] == null ? null : CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration.fromMap((map['logsEncryptionConfiguration'] as Map).cast<String, dynamic>()),
+      backupConfiguration: map['backupConfiguration'] == null
+          ? null
+          : CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationBackupConfiguration.fromMap(
+              (map['backupConfiguration'] as Map).cast<String, dynamic>(),
+            ),
+      logsEncryptionConfiguration: map['logsEncryptionConfiguration'] == null
+          ? null
+          : CentralizationRuleForOrganizationRuleDestinationDestinationLogsConfigurationLogsEncryptionConfiguration.fromMap(
+              (map['logsEncryptionConfiguration'] as Map)
+                  .cast<String, dynamic>(),
+            ),
     );
   }
 }
-

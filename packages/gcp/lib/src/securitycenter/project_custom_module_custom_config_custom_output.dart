@@ -10,20 +10,34 @@ class ProjectCustomModuleCustomConfigCustomOutput {
 
   /// Creates a new [ProjectCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
-  ProjectCustomModuleCustomConfigCustomOutput({
-    this.properties,
-  });
+  ProjectCustomModuleCustomConfigCustomOutput({this.properties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?properties == null ? null : pulumi.Input.encodeList<ProjectCustomModuleCustomConfigCustomOutputProperty, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+      'properties': ?properties == null
+          ? null
+          : pulumi.Input.encodeList<
+              ProjectCustomModuleCustomConfigCustomOutputProperty,
+              Map<String, dynamic>
+            >(properties!, (value) => value.toMap()),
     };
   }
 
-  factory ProjectCustomModuleCustomConfigCustomOutput.fromMap(Map<String, dynamic> map) {
+  factory ProjectCustomModuleCustomConfigCustomOutput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProjectCustomModuleCustomConfigCustomOutput(
-      properties: map['properties'] == null ? null : pulumi.Input.decodeList<ProjectCustomModuleCustomConfigCustomOutputProperty>(map['properties'], (value) => ProjectCustomModuleCustomConfigCustomOutputProperty.fromMap((value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              ProjectCustomModuleCustomConfigCustomOutputProperty
+            >(
+              map['properties'],
+              (value) =>
+                  ProjectCustomModuleCustomConfigCustomOutputProperty.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

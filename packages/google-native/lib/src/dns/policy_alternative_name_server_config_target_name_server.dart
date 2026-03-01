@@ -4,9 +4,12 @@ import 'policy_alternative_name_server_config_target_name_server_forwarding_path
 
 class PolicyAlternativeNameServerConfigTargetNameServer {
   /// Forwarding path for this TargetNameServer. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
-  final PolicyAlternativeNameServerConfigTargetNameServerForwardingPath? forwardingPath;
+  final PolicyAlternativeNameServerConfigTargetNameServerForwardingPath?
+  forwardingPath;
+
   /// IPv4 address to forward queries to.
   final String? ipv4Address;
+
   /// IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022.
   final String? ipv6Address;
   final String? kind;
@@ -32,13 +35,22 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
     };
   }
 
-  factory PolicyAlternativeNameServerConfigTargetNameServer.fromMap(Map<String, dynamic> map) {
+  factory PolicyAlternativeNameServerConfigTargetNameServer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyAlternativeNameServerConfigTargetNameServer(
-      forwardingPath: map['forwardingPath'] == null ? null : PolicyAlternativeNameServerConfigTargetNameServerForwardingPath.fromValue(map['forwardingPath'] as String),
-      ipv4Address: map['ipv4Address'] == null ? null : map['ipv4Address'] as String,
-      ipv6Address: map['ipv6Address'] == null ? null : map['ipv6Address'] as String,
+      forwardingPath: map['forwardingPath'] == null
+          ? null
+          : PolicyAlternativeNameServerConfigTargetNameServerForwardingPath.fromValue(
+              map['forwardingPath'] as String,
+            ),
+      ipv4Address: map['ipv4Address'] == null
+          ? null
+          : map['ipv4Address'] as String,
+      ipv6Address: map['ipv6Address'] == null
+          ? null
+          : map['ipv6Address'] as String,
       kind: map['kind'] == null ? null : map['kind'] as String,
     );
   }
 }
-

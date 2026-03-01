@@ -12,7 +12,8 @@ enum NetworkAttachmentConnectionPreference {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkAttachmentConnectionPreference value: $value');
+    throw ArgumentError(
+      'Unknown NetworkAttachmentConnectionPreference value: $value',
+    );
   }
 }
-

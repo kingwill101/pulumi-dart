@@ -26,4 +26,3 @@ enum JobCurrentState {
     throw ArgumentError('Unknown JobCurrentState value: $value');
   }
 }
-

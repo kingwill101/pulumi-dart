@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
 class BqmlTrainingRunTrainingOptionsResponse {
   final bool earlyStop;
@@ -49,7 +48,9 @@ class BqmlTrainingRunTrainingOptionsResponse {
     };
   }
 
-  factory BqmlTrainingRunTrainingOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory BqmlTrainingRunTrainingOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BqmlTrainingRunTrainingOptionsResponse(
       earlyStop: map['earlyStop'] as bool,
       l1Reg: map['l1Reg'] as double,
@@ -63,4 +64,3 @@ class BqmlTrainingRunTrainingOptionsResponse {
     );
   }
 }
-

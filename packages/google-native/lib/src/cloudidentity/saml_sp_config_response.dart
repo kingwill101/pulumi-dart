@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// SAML SP (service provider) configuration.
 class SamlSpConfigResponse {
   /// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
   final String assertionConsumerServiceUri;
+
   /// The SAML **Entity ID** for this service provider.
   final String entityId;
 
@@ -30,4 +30,3 @@ class SamlSpConfigResponse {
     );
   }
 }
-

@@ -5,9 +5,12 @@ import 'get_worker_pool_template_container_startup_probe_http_get_http_header.da
 
 class GetWorkerPoolTemplateContainerStartupProbeHttpGet {
   /// Optional. Custom headers to set in the request. HTTP allows repeated headers.
-  final List<GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader> httpHeaders;
+  final List<GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader>
+  httpHeaders;
+
   /// Optional. Path to access on the HTTP server. Defaults to '/'.
   final String path;
+
   /// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
   final int port;
 
@@ -23,18 +26,32 @@ class GetWorkerPoolTemplateContainerStartupProbeHttpGet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpHeaders': pulumi.Input.encodeList<GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader, Map<String, dynamic>>(httpHeaders, (value) => value.toMap()),
+      'httpHeaders':
+          pulumi.Input.encodeList<
+            GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader,
+            Map<String, dynamic>
+          >(httpHeaders, (value) => value.toMap()),
       'path': path,
       'port': port,
     };
   }
 
-  factory GetWorkerPoolTemplateContainerStartupProbeHttpGet.fromMap(Map<String, dynamic> map) {
+  factory GetWorkerPoolTemplateContainerStartupProbeHttpGet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkerPoolTemplateContainerStartupProbeHttpGet(
-      httpHeaders: pulumi.Input.decodeList<GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader>(map['httpHeaders'], (value) => GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>())),
+      httpHeaders:
+          pulumi.Input.decodeList<
+            GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader
+          >(
+            map['httpHeaders'],
+            (value) =>
+                GetWorkerPoolTemplateContainerStartupProbeHttpGetHttpHeader.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       path: map['path'] as String,
       port: map['port'] as int,
     );
   }
 }
-

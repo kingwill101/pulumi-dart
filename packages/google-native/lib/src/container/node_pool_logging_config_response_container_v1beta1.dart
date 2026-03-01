@@ -9,20 +9,19 @@ class NodePoolLoggingConfigResponseContainerV1beta1 {
 
   /// Creates a new [NodePoolLoggingConfigResponseContainerV1beta1].
   /// [variantConfig] Logging variant configuration.
-  NodePoolLoggingConfigResponseContainerV1beta1({
-    required this.variantConfig,
-  });
+  NodePoolLoggingConfigResponseContainerV1beta1({required this.variantConfig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'variantConfig': variantConfig.toMap(),
-    };
+    return <String, dynamic>{'variantConfig': variantConfig.toMap()};
   }
 
-  factory NodePoolLoggingConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory NodePoolLoggingConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodePoolLoggingConfigResponseContainerV1beta1(
-      variantConfig: LoggingVariantConfigResponseContainerV1beta1.fromMap((map['variantConfig'] as Map).cast<String, dynamic>()),
+      variantConfig: LoggingVariantConfigResponseContainerV1beta1.fromMap(
+        (map['variantConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

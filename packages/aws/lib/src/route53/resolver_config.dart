@@ -149,10 +149,13 @@ import 'resolver_config_args.dart';
 class ResolverConfig extends pulumi.CustomResource {
   /// Indicates whether or not the Resolver will create autodefined rules for reverse DNS lookups. Valid values: `ENABLE`, `DISABLE`.
   late final pulumi.Output<String> autodefinedReverseFlag;
+
   /// The AWS account ID of the owner of the VPC that this resolver configuration applies to.
   late final pulumi.Output<String> ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of the VPC that the configuration is for.
   late final pulumi.Output<String> resourceId;
 
@@ -165,12 +168,14 @@ class ResolverConfig extends pulumi.CustomResource {
     ResolverConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/resolverConfig:ResolverConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.autodefinedReverseFlag = registerOutput<String>('autodefinedReverseFlag');
+         'aws:route53/resolverConfig:ResolverConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.autodefinedReverseFlag = registerOutput<String>(
+      'autodefinedReverseFlag',
+    );
     this.ownerId = registerOutput<String>('ownerId');
     this.region = registerOutput<String>('region');
     this.resourceId = registerOutput<String>('resourceId');

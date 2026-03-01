@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration options for a custom domain.
 class DomainConfig {
   /// Immutable. Domain used by Workstations for HTTP ingress.
@@ -8,14 +7,10 @@ class DomainConfig {
 
   /// Creates a new [DomainConfig].
   /// [domain] Immutable. Domain used by Workstations for HTTP ingress.
-  DomainConfig({
-    this.domain,
-  });
+  DomainConfig({this.domain});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': ?domain,
-    };
+    return <String, dynamic>{'domain': ?domain};
   }
 
   factory DomainConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class DomainConfig {
     );
   }
 }
-

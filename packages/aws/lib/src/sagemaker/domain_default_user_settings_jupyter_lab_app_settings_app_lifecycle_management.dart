@@ -4,7 +4,8 @@ import 'domain_default_user_settings_jupyter_lab_app_settings_app_lifecycle_mana
 
 class DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement {
   /// Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
-  final DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings? idleSettings;
+  final DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings?
+  idleSettings;
 
   /// Creates a new [DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
@@ -18,10 +19,15 @@ class DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement {
     };
   }
 
-  factory DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap(Map<String, dynamic> map) {
+  factory DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagement(
-      idleSettings: map['idleSettings'] == null ? null : DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap((map['idleSettings'] as Map).cast<String, dynamic>()),
+      idleSettings: map['idleSettings'] == null
+          ? null
+          : DomainDefaultUserSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings.fromMap(
+              (map['idleSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -25,12 +25,11 @@ class GetFeedbackMessageArgs {
     required String feedbackMessageId,
     required String feedbackThreadId,
     String? project,
-  }) :
-      annotatedDatasetId = pulumi.Input.asInput<String>(annotatedDatasetId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      feedbackMessageId = pulumi.Input.asInput<String>(feedbackMessageId),
-      feedbackThreadId = pulumi.Input.asInput<String>(feedbackThreadId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : annotatedDatasetId = pulumi.Input.asInput<String>(annotatedDatasetId),
+       datasetId = pulumi.Input.asInput<String>(datasetId),
+       feedbackMessageId = pulumi.Input.asInput<String>(feedbackMessageId),
+       feedbackThreadId = pulumi.Input.asInput<String>(feedbackThreadId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetFeedbackMessageArgs {
     );
   }
 }
-

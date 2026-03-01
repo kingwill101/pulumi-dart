@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb {
   /// Maximum. May be a decimal number, e.g. `0.5`.
   final double? max;
+
   /// Minimum. May be a decimal number, e.g. `0.5`.
   final double? min;
 
@@ -16,17 +16,15 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsTotalLocal
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': ?max,
-      'min': ?min,
-    };
+    return <String, dynamic>{'max': ?max, 'min': ?min};
   }
 
-  factory SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb.fromMap(Map<String, dynamic> map) {
+  factory SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsTotalLocalStorageGb(
       max: map['max'] == null ? null : map['max'] as double,
       min: map['min'] == null ? null : map['min'] as double,
     );
   }
 }
-

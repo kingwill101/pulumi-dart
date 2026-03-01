@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Metadata associated with a Compute Engine network.
 class NetworkInfoResponse {
   /// Name of a Compute Engine network.
   final String displayName;
+
   /// The IP range that matches the test.
   final String matchedIpRange;
+
   /// URI of a Compute Engine network.
   final String uri;
 
@@ -36,4 +37,3 @@ class NetworkInfoResponse {
     );
   }
 }
-

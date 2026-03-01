@@ -11,15 +11,20 @@ class DataPolicyArgs {
   /// The data masking policy that specifies the data masking rule to use.
   /// Structure is documented below.
   final pulumi.Input<DataPolicyDataMaskingPolicy>? dataMaskingPolicy;
+
   /// User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
   final pulumi.Input<String> dataPolicyId;
+
   /// The enrollment level of the service.
   /// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
   final pulumi.Input<String> dataPolicyType;
+
   /// The name of the location of the data policy.
   final pulumi.Input<String> location;
+
   /// Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
   final pulumi.Input<String> policyTag;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -38,17 +43,23 @@ class DataPolicyArgs {
     required String location,
     required String policyTag,
     String? project,
-  }) :
-      dataMaskingPolicy = pulumi.Input.asOptionalInput<DataPolicyDataMaskingPolicy>(dataMaskingPolicy),
-      dataPolicyId = pulumi.Input.asInput<String>(dataPolicyId),
-      dataPolicyType = pulumi.Input.asInput<String>(dataPolicyType),
-      location = pulumi.Input.asInput<String>(location),
-      policyTag = pulumi.Input.asInput<String>(policyTag),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : dataMaskingPolicy =
+           pulumi.Input.asOptionalInput<DataPolicyDataMaskingPolicy>(
+             dataMaskingPolicy,
+           ),
+       dataPolicyId = pulumi.Input.asInput<String>(dataPolicyId),
+       dataPolicyType = pulumi.Input.asInput<String>(dataPolicyType),
+       location = pulumi.Input.asInput<String>(location),
+       policyTag = pulumi.Input.asInput<String>(policyTag),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataMaskingPolicy': ?pulumi.Input.mapOptionalInputValue<DataPolicyDataMaskingPolicy, Map<String, dynamic>>(dataMaskingPolicy, (value) => value.toMap()),
+      'dataMaskingPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            DataPolicyDataMaskingPolicy,
+            Map<String, dynamic>
+          >(dataMaskingPolicy, (value) => value.toMap()),
       'dataPolicyId': dataPolicyId,
       'dataPolicyType': dataPolicyType,
       'location': location,
@@ -59,7 +70,11 @@ class DataPolicyArgs {
 
   factory DataPolicyArgs.fromMap(Map<String, dynamic> map) {
     return DataPolicyArgs(
-      dataMaskingPolicy: map['dataMaskingPolicy'] == null ? null : DataPolicyDataMaskingPolicy.fromMap((map['dataMaskingPolicy'] as Map).cast<String, dynamic>()),
+      dataMaskingPolicy: map['dataMaskingPolicy'] == null
+          ? null
+          : DataPolicyDataMaskingPolicy.fromMap(
+              (map['dataMaskingPolicy'] as Map).cast<String, dynamic>(),
+            ),
       dataPolicyId: map['dataPolicyId'] as String,
       dataPolicyType: map['dataPolicyType'] as String,
       location: map['location'] as String,
@@ -68,4 +83,3 @@ class DataPolicyArgs {
     );
   }
 }
-

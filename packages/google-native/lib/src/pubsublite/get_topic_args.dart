@@ -19,10 +19,9 @@ class GetTopicArgs {
     required String location,
     String? project,
     required String topicId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      topicId = pulumi.Input.asInput<String>(topicId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       topicId = pulumi.Input.asInput<String>(topicId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTopicArgs {
     );
   }
 }
-

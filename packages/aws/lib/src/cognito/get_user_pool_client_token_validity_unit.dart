@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetUserPoolClientTokenValidityUnit {
   /// (Optional) Time unit in for the value in `access_token_validity`, defaults to `hours`.
   final String accessToken;
+
   /// (Optional) Time unit in for the value in `id_token_validity`, defaults to `hours`.
   final String idToken;
+
   /// (Optional) Time unit in for the value in `refresh_token_validity`, defaults to `days`.
   final String refreshToken;
 
@@ -35,4 +36,3 @@ class GetUserPoolClientTokenValidityUnit {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum MembershipInfrastructureType {
     throw ArgumentError('Unknown MembershipInfrastructureType value: $value');
   }
 }
-

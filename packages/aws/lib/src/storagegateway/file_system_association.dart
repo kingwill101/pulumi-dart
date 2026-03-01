@@ -522,22 +522,32 @@ import 'file_system_association_cache_attributes.dart';
 class FileSystemAssociation extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the newly created file system association.
   late final pulumi.Output<String> arn;
+
   /// The Amazon Resource Name (ARN) of the storage used for the audit logs.
   late final pulumi.Output<String?> auditDestinationArn;
+
   /// Refresh cache information. see Cache Attributes for more details.
-  late final pulumi.Output<FileSystemAssociationCacheAttributes?> cacheAttributes;
+  late final pulumi.Output<FileSystemAssociationCacheAttributes?>
+  cacheAttributes;
+
   /// The Amazon Resource Name (ARN) of the gateway.
   late final pulumi.Output<String> gatewayArn;
+
   /// The Amazon Resource Name (ARN) of the Amazon FSx file system to associate with the FSx File Gateway.
   late final pulumi.Output<String> locationArn;
+
   /// The password of the user credential.
   late final pulumi.Output<String> password;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The user name of the user credential that has permission to access the root share of the Amazon FSx file system. The user account must belong to the Amazon FSx delegated admin user group.
   late final pulumi.Output<String> username;
 
@@ -550,14 +560,17 @@ class FileSystemAssociation extends pulumi.CustomResource {
     FileSystemAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:storagegateway/fileSystemAssociation:FileSystemAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:storagegateway/fileSystemAssociation:FileSystemAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.auditDestinationArn = registerOutput<String?>('auditDestinationArn');
-    this.cacheAttributes = registerOutput<FileSystemAssociationCacheAttributes?>('cacheAttributes');
+    this.cacheAttributes =
+        registerOutput<FileSystemAssociationCacheAttributes?>(
+          'cacheAttributes',
+        );
     this.gatewayArn = registerOutput<String>('gatewayArn');
     this.locationArn = registerOutput<String>('locationArn');
     this.password = registerOutput<String>('password');

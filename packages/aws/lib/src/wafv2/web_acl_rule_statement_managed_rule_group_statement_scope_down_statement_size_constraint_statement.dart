@@ -7,12 +7,19 @@ import 'web_acl_rule_statement_managed_rule_group_statement_scope_down_statement
 class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement {
   /// Operator to use to compare the request part to the size setting. Valid values include: `EQ`, `NE`, `LE`, `LT`, `GE`, or `GT`.
   final String comparisonOperator;
+
   /// Part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
-  final WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatch? fieldToMatch;
+  final WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatch?
+  fieldToMatch;
+
   /// Size, in bytes, to compare to the request part, after any transformations. Valid values are integers between 0 and 21474836480, inclusive.
   final int size;
+
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
-  final List<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation> textTransformations;
+  final List<
+    WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation
+  >
+  textTransformations;
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement].
   /// [comparisonOperator] Operator to use to compare the request part to the size setting. Valid values include: `EQ`, `NE`, `LE`, `LT`, `GE`, or `GT`.
@@ -31,17 +38,35 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstrai
       'comparisonOperator': comparisonOperator,
       'fieldToMatch': ?fieldToMatch == null ? null : fieldToMatch!.toMap(),
       'size': size,
-      'textTransformations': pulumi.Input.encodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation, Map<String, dynamic>>(textTransformations, (value) => value.toMap()),
+      'textTransformations':
+          pulumi.Input.encodeList<
+            WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation,
+            Map<String, dynamic>
+          >(textTransformations, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatement(
       comparisonOperator: map['comparisonOperator'] as String,
-      fieldToMatch: map['fieldToMatch'] == null ? null : WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatch.fromMap((map['fieldToMatch'] as Map).cast<String, dynamic>()),
+      fieldToMatch: map['fieldToMatch'] == null
+          ? null
+          : WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatch.fromMap(
+              (map['fieldToMatch'] as Map).cast<String, dynamic>(),
+            ),
       size: map['size'] as int,
-      textTransformations: pulumi.Input.decodeList<WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation>(map['textTransformations'], (value) => WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation.fromMap((value as Map).cast<String, dynamic>())),
+      textTransformations:
+          pulumi.Input.decodeList<
+            WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation
+          >(
+            map['textTransformations'],
+            (value) =>
+                WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementTextTransformation.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

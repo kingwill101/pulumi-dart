@@ -9,20 +9,21 @@ class GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec {
 
   /// Creates a new [GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec].
   /// [mode] Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
-  GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec({
-    this.mode,
-  });
+  GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec({this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': ?mode == null ? null : mode!.value,
-    };
+    return <String, dynamic>{'mode': ?mode == null ? null : mode!.value};
   }
 
-  factory GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpec(
-      mode: map['mode'] == null ? null : GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode.fromValue(map['mode'] as String),
+      mode: map['mode'] == null
+          ? null
+          : GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode.fromValue(
+              map['mode'] as String,
+            ),
     );
   }
 }
-

@@ -22,11 +22,10 @@ class GetRoutineArgs {
     String? project,
     String? readMask,
     required String routineId,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      readMask = pulumi.Input.asOptionalInput<String>(readMask),
-      routineId = pulumi.Input.asInput<String>(routineId);
+  }) : datasetId = pulumi.Input.asInput<String>(datasetId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       readMask = pulumi.Input.asOptionalInput<String>(readMask),
+       routineId = pulumi.Input.asInput<String>(routineId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetRoutineArgs {
     );
   }
 }
-

@@ -8,12 +8,16 @@ import 'standard_sql_data_type.dart';
 class Argument {
   /// Optional. Defaults to FIXED_TYPE.
   final ArgumentArgumentKind? argumentKind;
+
   /// Required unless argument_kind = ANY_TYPE.
   final StandardSqlDataType? dataType;
+
   /// Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
   final bool? isAggregate;
+
   /// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
   final ArgumentMode? mode;
+
   /// Optional. The name of this argument. Can be absent for function return argument.
   final String? name;
 
@@ -43,12 +47,21 @@ class Argument {
 
   factory Argument.fromMap(Map<String, dynamic> map) {
     return Argument(
-      argumentKind: map['argumentKind'] == null ? null : ArgumentArgumentKind.fromValue(map['argumentKind'] as String),
-      dataType: map['dataType'] == null ? null : StandardSqlDataType.fromMap((map['dataType'] as Map).cast<String, dynamic>()),
-      isAggregate: map['isAggregate'] == null ? null : map['isAggregate'] as bool,
-      mode: map['mode'] == null ? null : ArgumentMode.fromValue(map['mode'] as String),
+      argumentKind: map['argumentKind'] == null
+          ? null
+          : ArgumentArgumentKind.fromValue(map['argumentKind'] as String),
+      dataType: map['dataType'] == null
+          ? null
+          : StandardSqlDataType.fromMap(
+              (map['dataType'] as Map).cast<String, dynamic>(),
+            ),
+      isAggregate: map['isAggregate'] == null
+          ? null
+          : map['isAggregate'] as bool,
+      mode: map['mode'] == null
+          ? null
+          : ArgumentMode.fromValue(map['mode'] as String),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
-

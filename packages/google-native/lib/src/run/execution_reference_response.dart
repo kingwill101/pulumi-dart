@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
 class ExecutionReferenceResponse {
   /// Optional. Completion timestamp of the execution.
   final String completionTimestamp;
+
   /// Optional. Creation timestamp of the execution.
   final String creationTimestamp;
+
   /// Optional. Name of the execution.
   final String name;
 
@@ -36,4 +37,3 @@ class ExecutionReferenceResponse {
     );
   }
 }
-

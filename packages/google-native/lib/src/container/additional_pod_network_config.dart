@@ -6,8 +6,10 @@ import 'max_pods_constraint.dart';
 class AdditionalPodNetworkConfig {
   /// The maximum number of pods per node which use this pod network
   final MaxPodsConstraint? maxPodsPerNode;
+
   /// The name of the secondary range on the subnet which provides IP address for this pod range
   final String? secondaryPodRange;
+
   /// Name of the subnetwork where the additional pod network belongs
   final String? subnetwork;
 
@@ -23,7 +25,9 @@ class AdditionalPodNetworkConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxPodsPerNode': ?maxPodsPerNode == null ? null : maxPodsPerNode!.toMap(),
+      'maxPodsPerNode': ?maxPodsPerNode == null
+          ? null
+          : maxPodsPerNode!.toMap(),
       'secondaryPodRange': ?secondaryPodRange,
       'subnetwork': ?subnetwork,
     };
@@ -31,10 +35,17 @@ class AdditionalPodNetworkConfig {
 
   factory AdditionalPodNetworkConfig.fromMap(Map<String, dynamic> map) {
     return AdditionalPodNetworkConfig(
-      maxPodsPerNode: map['maxPodsPerNode'] == null ? null : MaxPodsConstraint.fromMap((map['maxPodsPerNode'] as Map).cast<String, dynamic>()),
-      secondaryPodRange: map['secondaryPodRange'] == null ? null : map['secondaryPodRange'] as String,
-      subnetwork: map['subnetwork'] == null ? null : map['subnetwork'] as String,
+      maxPodsPerNode: map['maxPodsPerNode'] == null
+          ? null
+          : MaxPodsConstraint.fromMap(
+              (map['maxPodsPerNode'] as Map).cast<String, dynamic>(),
+            ),
+      secondaryPodRange: map['secondaryPodRange'] == null
+          ? null
+          : map['secondaryPodRange'] as String,
+      subnetwork: map['subnetwork'] == null
+          ? null
+          : map['subnetwork'] as String,
     );
   }
 }
-

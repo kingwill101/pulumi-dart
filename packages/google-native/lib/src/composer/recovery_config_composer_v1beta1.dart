@@ -9,20 +9,23 @@ class RecoveryConfigComposerV1beta1 {
 
   /// Creates a new [RecoveryConfigComposerV1beta1].
   /// [scheduledSnapshotsConfig] Optional. The configuration for scheduled snapshot creation mechanism.
-  RecoveryConfigComposerV1beta1({
-    this.scheduledSnapshotsConfig,
-  });
+  RecoveryConfigComposerV1beta1({this.scheduledSnapshotsConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'scheduledSnapshotsConfig': ?scheduledSnapshotsConfig == null ? null : scheduledSnapshotsConfig!.toMap(),
+      'scheduledSnapshotsConfig': ?scheduledSnapshotsConfig == null
+          ? null
+          : scheduledSnapshotsConfig!.toMap(),
     };
   }
 
   factory RecoveryConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return RecoveryConfigComposerV1beta1(
-      scheduledSnapshotsConfig: map['scheduledSnapshotsConfig'] == null ? null : ScheduledSnapshotsConfigComposerV1beta1.fromMap((map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>()),
+      scheduledSnapshotsConfig: map['scheduledSnapshotsConfig'] == null
+          ? null
+          : ScheduledSnapshotsConfigComposerV1beta1.fromMap(
+              (map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

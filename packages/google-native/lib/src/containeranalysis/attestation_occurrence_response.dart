@@ -8,8 +8,10 @@ import 'signature_response.dart';
 class AttestationOccurrenceResponse {
   /// One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to Grafeas.
   final List<JwtResponse> jwts;
+
   /// The serialized payload that is verified by one or more `signatures`.
   final String serializedPayload;
+
   /// One or more signatures over `serialized_payload`. Verifier implementations should consider this attestation message verified if at least one `signature` verifies `serialized_payload`. See `Signature` in common.proto for more details on signature structure and verification.
   final List<SignatureResponse> signatures;
 
@@ -25,18 +27,31 @@ class AttestationOccurrenceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jwts': pulumi.Input.encodeList<JwtResponse, Map<String, dynamic>>(jwts, (value) => value.toMap()),
+      'jwts': pulumi.Input.encodeList<JwtResponse, Map<String, dynamic>>(
+        jwts,
+        (value) => value.toMap(),
+      ),
       'serializedPayload': serializedPayload,
-      'signatures': pulumi.Input.encodeList<SignatureResponse, Map<String, dynamic>>(signatures, (value) => value.toMap()),
+      'signatures':
+          pulumi.Input.encodeList<SignatureResponse, Map<String, dynamic>>(
+            signatures,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory AttestationOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return AttestationOccurrenceResponse(
-      jwts: pulumi.Input.decodeList<JwtResponse>(map['jwts'], (value) => JwtResponse.fromMap((value as Map).cast<String, dynamic>())),
+      jwts: pulumi.Input.decodeList<JwtResponse>(
+        map['jwts'],
+        (value) => JwtResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       serializedPayload: map['serializedPayload'] as String,
-      signatures: pulumi.Input.decodeList<SignatureResponse>(map['signatures'], (value) => SignatureResponse.fromMap((value as Map).cast<String, dynamic>())),
+      signatures: pulumi.Input.decodeList<SignatureResponse>(
+        map['signatures'],
+        (value) =>
+            SignatureResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

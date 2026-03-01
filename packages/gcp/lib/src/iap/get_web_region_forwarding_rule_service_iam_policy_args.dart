@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetWebRegionForwardingRuleServiceIamPolicyArgs {
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> forwardingRuleRegionServiceName;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
@@ -25,10 +27,11 @@ class GetWebRegionForwardingRuleServiceIamPolicyArgs {
     required String forwardingRuleRegionServiceName,
     String? project,
     String? region,
-  }) :
-      forwardingRuleRegionServiceName = pulumi.Input.asInput<String>(forwardingRuleRegionServiceName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : forwardingRuleRegionServiceName = pulumi.Input.asInput<String>(
+         forwardingRuleRegionServiceName,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,12 +41,14 @@ class GetWebRegionForwardingRuleServiceIamPolicyArgs {
     };
   }
 
-  factory GetWebRegionForwardingRuleServiceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetWebRegionForwardingRuleServiceIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWebRegionForwardingRuleServiceIamPolicyArgs(
-      forwardingRuleRegionServiceName: map['forwardingRuleRegionServiceName'] as String,
+      forwardingRuleRegionServiceName:
+          map['forwardingRuleRegionServiceName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

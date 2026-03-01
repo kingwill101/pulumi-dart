@@ -19,10 +19,9 @@ class GetServiceBindingArgs {
     required String location,
     String? project,
     required String serviceBindingId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceBindingId = pulumi.Input.asInput<String>(serviceBindingId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serviceBindingId = pulumi.Input.asInput<String>(serviceBindingId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetServiceBindingArgs {
     );
   }
 }
-

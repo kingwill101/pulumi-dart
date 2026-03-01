@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The text response message.
 class GoogleCloudDialogflowV2beta1IntentMessageTextResponse {
   /// Optional. The collection of the agent's responses.
@@ -8,20 +7,17 @@ class GoogleCloudDialogflowV2beta1IntentMessageTextResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageTextResponse].
   /// [text] Optional. The collection of the agent's responses.
-  GoogleCloudDialogflowV2beta1IntentMessageTextResponse({
-    required this.text,
-  });
+  GoogleCloudDialogflowV2beta1IntentMessageTextResponse({required this.text});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'text': text,
-    };
+    return <String, dynamic>{'text': text};
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageTextResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageTextResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageTextResponse(
       text: (map['text'] as List).cast<String>(),
     );
   }
 }
-

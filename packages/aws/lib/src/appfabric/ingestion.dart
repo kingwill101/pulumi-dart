@@ -140,18 +140,25 @@ class Ingestion extends pulumi.CustomResource {
   /// Name of the application.
   /// Refer to the AWS Documentation for the [list of valid values](https://docs.aws.amazon.com/appfabric/latest/api/API_CreateIngestion.html#appfabric-CreateIngestion-request-app)
   late final pulumi.Output<String> app;
+
   /// Amazon Resource Name (ARN) of the app bundle to use for the request.
   late final pulumi.Output<String> appBundleArn;
+
   /// ARN of the Ingestion.
   late final pulumi.Output<String> arn;
+
   /// Ingestion type. Valid values are `auditLog`.
   late final pulumi.Output<String> ingestionType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// ID of the application tenant.
   late final pulumi.Output<String> tenantId;
 
@@ -164,11 +171,11 @@ class Ingestion extends pulumi.CustomResource {
     IngestionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:appfabric/ingestion:Ingestion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:appfabric/ingestion:Ingestion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.app = registerOutput<String>('app');
     this.appBundleArn = registerOutput<String>('appBundleArn');
     this.arn = registerOutput<String>('arn');

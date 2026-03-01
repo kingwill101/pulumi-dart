@@ -16,4 +16,3 @@ enum BackendPreference {
     throw ArgumentError('Unknown BackendPreference value: $value');
   }
 }
-

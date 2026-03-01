@@ -5,9 +5,11 @@ import 'uptime_check_config_content_matcher_json_path_matcher.dart';
 class UptimeCheckConfigContentMatcher {
   /// String or regex content to match (max 1024 bytes)
   final String content;
+
   /// Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
   /// Structure is documented below.
   final UptimeCheckConfigContentMatcherJsonPathMatcher? jsonPathMatcher;
+
   /// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
   /// Default value is `CONTAINS_STRING`.
   /// Possible values are: `CONTAINS_STRING`, `NOT_CONTAINS_STRING`, `MATCHES_REGEX`, `NOT_MATCHES_REGEX`, `MATCHES_JSON_PATH`, `NOT_MATCHES_JSON_PATH`.
@@ -26,7 +28,9 @@ class UptimeCheckConfigContentMatcher {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'content': content,
-      'jsonPathMatcher': ?jsonPathMatcher == null ? null : jsonPathMatcher!.toMap(),
+      'jsonPathMatcher': ?jsonPathMatcher == null
+          ? null
+          : jsonPathMatcher!.toMap(),
       'matcher': ?matcher,
     };
   }
@@ -34,9 +38,12 @@ class UptimeCheckConfigContentMatcher {
   factory UptimeCheckConfigContentMatcher.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigContentMatcher(
       content: map['content'] as String,
-      jsonPathMatcher: map['jsonPathMatcher'] == null ? null : UptimeCheckConfigContentMatcherJsonPathMatcher.fromMap((map['jsonPathMatcher'] as Map).cast<String, dynamic>()),
+      jsonPathMatcher: map['jsonPathMatcher'] == null
+          ? null
+          : UptimeCheckConfigContentMatcherJsonPathMatcher.fromMap(
+              (map['jsonPathMatcher'] as Map).cast<String, dynamic>(),
+            ),
       matcher: map['matcher'] == null ? null : map['matcher'] as String,
     );
   }
 }
-

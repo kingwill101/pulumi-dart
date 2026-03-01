@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig {
   /// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
   final String? baselineModelVersion;
+
   /// Conversation model resource name. Format: projects/<Project ID>/conversationModels/<Model ID>.
   final String? model;
 
@@ -22,11 +22,14 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
     };
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig(
-      baselineModelVersion: map['baselineModelVersion'] == null ? null : map['baselineModelVersion'] as String,
+      baselineModelVersion: map['baselineModelVersion'] == null
+          ? null
+          : map['baselineModelVersion'] as String,
       model: map['model'] == null ? null : map['model'] as String,
     );
   }
 }
-

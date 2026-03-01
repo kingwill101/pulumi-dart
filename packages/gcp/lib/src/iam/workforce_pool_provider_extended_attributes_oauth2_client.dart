@@ -14,14 +14,20 @@ class WorkforcePoolProviderExtendedAttributesOauth2Client {
   /// OIDC providers and 'assertion.attributes.groups' for SAML providers for
   /// attribute mapping. Possible values: ["AZURE_AD_GROUPS_ID"]
   final String attributesType;
+
   /// The OAuth 2.0 client ID for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
   final String clientId;
+
   /// The OAuth 2.0 client secret for retrieving extended attributes from the identity provider. Required to get the Access Token using client credentials grant flow.
-  final WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecret clientSecret;
+  final WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecret
+  clientSecret;
+
   /// The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
   final String issuerUri;
+
   /// Represents the parameters to control which claims are fetched from an IdP.
-  final WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParameters? queryParameters;
+  final WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParameters?
+  queryParameters;
 
   /// Creates a new [WorkforcePoolProviderExtendedAttributesOauth2Client].
   /// [attributesType] Represents the IdP and type of claims that should be fetched.
@@ -43,18 +49,28 @@ class WorkforcePoolProviderExtendedAttributesOauth2Client {
       'clientId': clientId,
       'clientSecret': clientSecret.toMap(),
       'issuerUri': issuerUri,
-      'queryParameters': ?queryParameters == null ? null : queryParameters!.toMap(),
+      'queryParameters': ?queryParameters == null
+          ? null
+          : queryParameters!.toMap(),
     };
   }
 
-  factory WorkforcePoolProviderExtendedAttributesOauth2Client.fromMap(Map<String, dynamic> map) {
+  factory WorkforcePoolProviderExtendedAttributesOauth2Client.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkforcePoolProviderExtendedAttributesOauth2Client(
       attributesType: map['attributesType'] as String,
       clientId: map['clientId'] as String,
-      clientSecret: WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
+      clientSecret:
+          WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecret.fromMap(
+            (map['clientSecret'] as Map).cast<String, dynamic>(),
+          ),
       issuerUri: map['issuerUri'] as String,
-      queryParameters: map['queryParameters'] == null ? null : WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParameters.fromMap((map['queryParameters'] as Map).cast<String, dynamic>()),
+      queryParameters: map['queryParameters'] == null
+          ? null
+          : WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParameters.fromMap(
+              (map['queryParameters'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

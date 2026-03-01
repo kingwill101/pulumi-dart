@@ -22,11 +22,10 @@ class GetEntryArgs {
     required String entryId,
     required String keyvaluemapId,
     required String organizationId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      entryId = pulumi.Input.asInput<String>(entryId),
-      keyvaluemapId = pulumi.Input.asInput<String>(keyvaluemapId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : apiId = pulumi.Input.asInput<String>(apiId),
+       entryId = pulumi.Input.asInput<String>(entryId),
+       keyvaluemapId = pulumi.Input.asInput<String>(keyvaluemapId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetEntryArgs {
     );
   }
 }
-

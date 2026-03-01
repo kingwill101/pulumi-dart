@@ -10,20 +10,34 @@ class ConfigManagementPolicyControllerMonitoring {
 
   /// Creates a new [ConfigManagementPolicyControllerMonitoring].
   /// [backends] Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  ConfigManagementPolicyControllerMonitoring({
-    this.backends,
-  });
+  ConfigManagementPolicyControllerMonitoring({this.backends});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backends': ?backends == null ? null : pulumi.Input.encodeList<ConfigManagementPolicyControllerMonitoringBackendsItem, String>(backends!, (value) => value.value),
+      'backends': ?backends == null
+          ? null
+          : pulumi.Input.encodeList<
+              ConfigManagementPolicyControllerMonitoringBackendsItem,
+              String
+            >(backends!, (value) => value.value),
     };
   }
 
-  factory ConfigManagementPolicyControllerMonitoring.fromMap(Map<String, dynamic> map) {
+  factory ConfigManagementPolicyControllerMonitoring.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigManagementPolicyControllerMonitoring(
-      backends: map['backends'] == null ? null : pulumi.Input.decodeList<ConfigManagementPolicyControllerMonitoringBackendsItem>(map['backends'], (value) => ConfigManagementPolicyControllerMonitoringBackendsItem.fromValue(value as String)),
+      backends: map['backends'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              ConfigManagementPolicyControllerMonitoringBackendsItem
+            >(
+              map['backends'],
+              (value) =>
+                  ConfigManagementPolicyControllerMonitoringBackendsItem.fromValue(
+                    value as String,
+                  ),
+            ),
     );
   }
 }
-

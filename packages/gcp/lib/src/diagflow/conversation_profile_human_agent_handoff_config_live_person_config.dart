@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConversationProfileHumanAgentHandoffConfigLivePersonConfig {
   /// Account number of the LivePerson account to connect.
   final String accountNumber;
@@ -12,15 +11,14 @@ class ConversationProfileHumanAgentHandoffConfigLivePersonConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountNumber': accountNumber,
-    };
+    return <String, dynamic>{'accountNumber': accountNumber};
   }
 
-  factory ConversationProfileHumanAgentHandoffConfigLivePersonConfig.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentHandoffConfigLivePersonConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentHandoffConfigLivePersonConfig(
       accountNumber: map['accountNumber'] as String,
     );
   }
 }
-

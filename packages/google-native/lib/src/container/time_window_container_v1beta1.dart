@@ -6,8 +6,11 @@ import 'maintenance_exclusion_options_container_v1beta1.dart';
 class TimeWindowContainerV1beta1 {
   /// The time that the window ends. The end time should take place after the start time.
   final String? endTime;
+
   /// MaintenanceExclusionOptions provides maintenance exclusion related options.
-  final MaintenanceExclusionOptionsContainerV1beta1? maintenanceExclusionOptions;
+  final MaintenanceExclusionOptionsContainerV1beta1?
+  maintenanceExclusionOptions;
+
   /// The time that the window first starts.
   final String? startTime;
 
@@ -24,7 +27,9 @@ class TimeWindowContainerV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'endTime': ?endTime,
-      'maintenanceExclusionOptions': ?maintenanceExclusionOptions == null ? null : maintenanceExclusionOptions!.toMap(),
+      'maintenanceExclusionOptions': ?maintenanceExclusionOptions == null
+          ? null
+          : maintenanceExclusionOptions!.toMap(),
       'startTime': ?startTime,
     };
   }
@@ -32,9 +37,13 @@ class TimeWindowContainerV1beta1 {
   factory TimeWindowContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return TimeWindowContainerV1beta1(
       endTime: map['endTime'] == null ? null : map['endTime'] as String,
-      maintenanceExclusionOptions: map['maintenanceExclusionOptions'] == null ? null : MaintenanceExclusionOptionsContainerV1beta1.fromMap((map['maintenanceExclusionOptions'] as Map).cast<String, dynamic>()),
+      maintenanceExclusionOptions: map['maintenanceExclusionOptions'] == null
+          ? null
+          : MaintenanceExclusionOptionsContainerV1beta1.fromMap(
+              (map['maintenanceExclusionOptions'] as Map)
+                  .cast<String, dynamic>(),
+            ),
       startTime: map['startTime'] == null ? null : map['startTime'] as String,
     );
   }
 }
-

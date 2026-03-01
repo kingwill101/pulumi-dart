@@ -5,7 +5,8 @@ import 'rule_group_rule_group_reference_sets_ip_set_reference_ip_set_reference.d
 
 class RuleGroupRuleGroupReferenceSetsIpSetReference {
   /// Set of configuration blocks that define the IP Reference information. See IP Set Reference below for details.
-  final List<RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference> ipSetReferences;
+  final List<RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference>
+  ipSetReferences;
   final String key;
 
   /// Creates a new [RuleGroupRuleGroupReferenceSetsIpSetReference].
@@ -18,16 +19,30 @@ class RuleGroupRuleGroupReferenceSetsIpSetReference {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipSetReferences': pulumi.Input.encodeList<RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference, Map<String, dynamic>>(ipSetReferences, (value) => value.toMap()),
+      'ipSetReferences':
+          pulumi.Input.encodeList<
+            RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference,
+            Map<String, dynamic>
+          >(ipSetReferences, (value) => value.toMap()),
       'key': key,
     };
   }
 
-  factory RuleGroupRuleGroupReferenceSetsIpSetReference.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleGroupReferenceSetsIpSetReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleGroupReferenceSetsIpSetReference(
-      ipSetReferences: pulumi.Input.decodeList<RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference>(map['ipSetReferences'], (value) => RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference.fromMap((value as Map).cast<String, dynamic>())),
+      ipSetReferences:
+          pulumi.Input.decodeList<
+            RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference
+          >(
+            map['ipSetReferences'],
+            (value) =>
+                RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       key: map['key'] as String,
     );
   }
 }
-

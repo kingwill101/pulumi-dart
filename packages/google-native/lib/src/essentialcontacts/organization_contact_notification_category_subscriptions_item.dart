@@ -12,13 +12,17 @@ enum OrganizationContactNotificationCategorySubscriptionsItem {
   const OrganizationContactNotificationCategorySubscriptionsItem(this.value);
   final String value;
 
-  static OrganizationContactNotificationCategorySubscriptionsItem fromValue(String value) {
-    for (final item in OrganizationContactNotificationCategorySubscriptionsItem.values) {
+  static OrganizationContactNotificationCategorySubscriptionsItem fromValue(
+    String value,
+  ) {
+    for (final item
+        in OrganizationContactNotificationCategorySubscriptionsItem.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OrganizationContactNotificationCategorySubscriptionsItem value: $value');
+    throw ArgumentError(
+      'Unknown OrganizationContactNotificationCategorySubscriptionsItem value: $value',
+    );
   }
 }
-

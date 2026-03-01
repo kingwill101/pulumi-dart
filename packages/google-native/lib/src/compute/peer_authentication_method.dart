@@ -9,20 +9,17 @@ class PeerAuthenticationMethod {
 
   /// Creates a new [PeerAuthenticationMethod].
   /// [mtls] Set if mTLS is used for peer authentication.
-  PeerAuthenticationMethod({
-    this.mtls,
-  });
+  PeerAuthenticationMethod({this.mtls});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mtls': ?mtls == null ? null : mtls!.toMap(),
-    };
+    return <String, dynamic>{'mtls': ?mtls == null ? null : mtls!.toMap()};
   }
 
   factory PeerAuthenticationMethod.fromMap(Map<String, dynamic> map) {
     return PeerAuthenticationMethod(
-      mtls: map['mtls'] == null ? null : MutualTls.fromMap((map['mtls'] as Map).cast<String, dynamic>()),
+      mtls: map['mtls'] == null
+          ? null
+          : MutualTls.fromMap((map['mtls'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

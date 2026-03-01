@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetAmiProductCode {
   final String productCodeId;
   final String productCodeType;
@@ -27,4 +26,3 @@ class GetAmiProductCode {
     );
   }
 }
-

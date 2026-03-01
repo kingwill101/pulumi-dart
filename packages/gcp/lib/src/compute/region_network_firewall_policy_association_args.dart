@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionNetworkFirewallPolicyAssociationArgs {
   /// The target that the firewall policy is attached to.
   final pulumi.Input<String> attachmentTarget;
+
   /// The firewall policy of the resource.
   final pulumi.Input<String> firewallPolicy;
+
   /// The name for an association.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The location of this resource.
   final pulumi.Input<String>? region;
 
@@ -31,12 +35,11 @@ class RegionNetworkFirewallPolicyAssociationArgs {
     String? name,
     String? project,
     String? region,
-  }) :
-      attachmentTarget = pulumi.Input.asInput<String>(attachmentTarget),
-      firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : attachmentTarget = pulumi.Input.asInput<String>(attachmentTarget),
+       firewallPolicy = pulumi.Input.asInput<String>(firewallPolicy),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,7 +51,9 @@ class RegionNetworkFirewallPolicyAssociationArgs {
     };
   }
 
-  factory RegionNetworkFirewallPolicyAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory RegionNetworkFirewallPolicyAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionNetworkFirewallPolicyAssociationArgs(
       attachmentTarget: map['attachmentTarget'] as String,
       firewallPolicy: map['firewallPolicy'] as String,
@@ -58,4 +63,3 @@ class RegionNetworkFirewallPolicyAssociationArgs {
     );
   }
 }
-

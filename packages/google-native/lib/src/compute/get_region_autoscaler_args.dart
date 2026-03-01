@@ -19,10 +19,9 @@ class GetRegionAutoscalerArgs {
     required String autoscaler,
     String? project,
     required String region,
-  }) :
-      autoscaler = pulumi.Input.asInput<String>(autoscaler),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : autoscaler = pulumi.Input.asInput<String>(autoscaler),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionAutoscalerArgs {
     );
   }
 }
-

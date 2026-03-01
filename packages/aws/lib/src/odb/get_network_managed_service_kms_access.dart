@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetNetworkManagedServiceKmsAccess {
   final String domainName;
   final List<String> ipv4Addresses;
   final String kmsPolicyDocument;
+
   /// The status of the network resource.
   final String status;
 
@@ -38,4 +38,3 @@ class GetNetworkManagedServiceKmsAccess {
     );
   }
 }
-

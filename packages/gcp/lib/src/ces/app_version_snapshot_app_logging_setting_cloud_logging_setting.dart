@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AppVersionSnapshotAppLoggingSettingCloudLoggingSetting {
   /// (Output)
   /// Whether to enable Cloud Logging for the sessions.
@@ -13,15 +12,16 @@ class AppVersionSnapshotAppLoggingSettingCloudLoggingSetting {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableCloudLogging': ?enableCloudLogging,
-    };
+    return <String, dynamic>{'enableCloudLogging': ?enableCloudLogging};
   }
 
-  factory AppVersionSnapshotAppLoggingSettingCloudLoggingSetting.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppLoggingSettingCloudLoggingSetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotAppLoggingSettingCloudLoggingSetting(
-      enableCloudLogging: map['enableCloudLogging'] == null ? null : map['enableCloudLogging'] as bool,
+      enableCloudLogging: map['enableCloudLogging'] == null
+          ? null
+          : map['enableCloudLogging'] as bool,
     );
   }
 }
-

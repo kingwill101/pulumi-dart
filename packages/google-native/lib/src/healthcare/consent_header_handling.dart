@@ -9,9 +9,7 @@ class ConsentHeaderHandling {
 
   /// Creates a new [ConsentHeaderHandling].
   /// [profile] Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
-  ConsentHeaderHandling({
-    this.profile,
-  });
+  ConsentHeaderHandling({this.profile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class ConsentHeaderHandling {
 
   factory ConsentHeaderHandling.fromMap(Map<String, dynamic> map) {
     return ConsentHeaderHandling(
-      profile: map['profile'] == null ? null : ConsentHeaderHandlingProfile.fromValue(map['profile'] as String),
+      profile: map['profile'] == null
+          ? null
+          : ConsentHeaderHandlingProfile.fromValue(map['profile'] as String),
     );
   }
 }
-

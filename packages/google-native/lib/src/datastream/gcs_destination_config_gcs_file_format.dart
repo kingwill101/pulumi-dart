@@ -12,7 +12,8 @@ enum GcsDestinationConfigGcsFileFormat {
         return item;
       }
     }
-    throw ArgumentError('Unknown GcsDestinationConfigGcsFileFormat value: $value');
+    throw ArgumentError(
+      'Unknown GcsDestinationConfigGcsFileFormat value: $value',
+    );
   }
 }
-

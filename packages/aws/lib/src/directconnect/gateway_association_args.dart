@@ -13,17 +13,22 @@ class GatewayAssociationArgs {
   ///
   /// > **NOTE:** If the `associated_gateway_id` is in another region, an alias in a new provider block for that region should be specified.
   final pulumi.Input<List<String>>? allowedPrefixes;
+
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
   /// Used for single account Direct Connect gateway associations.
   final pulumi.Input<String>? associatedGatewayId;
+
   /// The ID of the AWS account that owns the VGW or transit gateway with which to associate the Direct Connect gateway.
   /// Used for cross-account Direct Connect gateway associations.
   final pulumi.Input<String>? associatedGatewayOwnerAccountId;
+
   /// The ID of the Direct Connect gateway.
   final pulumi.Input<String> dxGatewayId;
+
   /// The ID of the Direct Connect gateway association proposal.
   /// Used for cross-account Direct Connect gateway associations.
   final pulumi.Input<String>? proposalId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -41,13 +46,18 @@ class GatewayAssociationArgs {
     required String dxGatewayId,
     String? proposalId,
     String? region,
-  }) :
-      allowedPrefixes = pulumi.Input.asOptionalInput<List<String>>(allowedPrefixes),
-      associatedGatewayId = pulumi.Input.asOptionalInput<String>(associatedGatewayId),
-      associatedGatewayOwnerAccountId = pulumi.Input.asOptionalInput<String>(associatedGatewayOwnerAccountId),
-      dxGatewayId = pulumi.Input.asInput<String>(dxGatewayId),
-      proposalId = pulumi.Input.asOptionalInput<String>(proposalId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : allowedPrefixes = pulumi.Input.asOptionalInput<List<String>>(
+         allowedPrefixes,
+       ),
+       associatedGatewayId = pulumi.Input.asOptionalInput<String>(
+         associatedGatewayId,
+       ),
+       associatedGatewayOwnerAccountId = pulumi.Input.asOptionalInput<String>(
+         associatedGatewayOwnerAccountId,
+       ),
+       dxGatewayId = pulumi.Input.asInput<String>(dxGatewayId),
+       proposalId = pulumi.Input.asOptionalInput<String>(proposalId),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,13 +72,21 @@ class GatewayAssociationArgs {
 
   factory GatewayAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAssociationArgs(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : (map['allowedPrefixes'] as List).cast<String>(),
-      associatedGatewayId: map['associatedGatewayId'] == null ? null : map['associatedGatewayId'] as String,
-      associatedGatewayOwnerAccountId: map['associatedGatewayOwnerAccountId'] == null ? null : map['associatedGatewayOwnerAccountId'] as String,
+      allowedPrefixes: map['allowedPrefixes'] == null
+          ? null
+          : (map['allowedPrefixes'] as List).cast<String>(),
+      associatedGatewayId: map['associatedGatewayId'] == null
+          ? null
+          : map['associatedGatewayId'] as String,
+      associatedGatewayOwnerAccountId:
+          map['associatedGatewayOwnerAccountId'] == null
+          ? null
+          : map['associatedGatewayOwnerAccountId'] as String,
       dxGatewayId: map['dxGatewayId'] as String,
-      proposalId: map['proposalId'] == null ? null : map['proposalId'] as String,
+      proposalId: map['proposalId'] == null
+          ? null
+          : map['proposalId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

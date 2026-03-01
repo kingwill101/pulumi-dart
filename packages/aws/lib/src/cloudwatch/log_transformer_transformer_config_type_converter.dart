@@ -9,20 +9,32 @@ class LogTransformerTransformerConfigTypeConverter {
 
   /// Creates a new [LogTransformerTransformerConfigTypeConverter].
   /// [entries] Objects containing the information about the fields to change the type of. You must include at least one entry, and five at most. See `type_converter` `entry` below for details.
-  LogTransformerTransformerConfigTypeConverter({
-    required this.entries,
-  });
+  LogTransformerTransformerConfigTypeConverter({required this.entries});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries': pulumi.Input.encodeList<LogTransformerTransformerConfigTypeConverterEntry, Map<String, dynamic>>(entries, (value) => value.toMap()),
+      'entries':
+          pulumi.Input.encodeList<
+            LogTransformerTransformerConfigTypeConverterEntry,
+            Map<String, dynamic>
+          >(entries, (value) => value.toMap()),
     };
   }
 
-  factory LogTransformerTransformerConfigTypeConverter.fromMap(Map<String, dynamic> map) {
+  factory LogTransformerTransformerConfigTypeConverter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LogTransformerTransformerConfigTypeConverter(
-      entries: pulumi.Input.decodeList<LogTransformerTransformerConfigTypeConverterEntry>(map['entries'], (value) => LogTransformerTransformerConfigTypeConverterEntry.fromMap((value as Map).cast<String, dynamic>())),
+      entries:
+          pulumi.Input.decodeList<
+            LogTransformerTransformerConfigTypeConverterEntry
+          >(
+            map['entries'],
+            (value) =>
+                LogTransformerTransformerConfigTypeConverterEntry.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

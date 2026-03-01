@@ -19,10 +19,11 @@ class GetAuthorizationPolicyNetworksecurityV1beta1Args {
     required String authorizationPolicyId,
     required String location,
     String? project,
-  }) :
-      authorizationPolicyId = pulumi.Input.asInput<String>(authorizationPolicyId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : authorizationPolicyId = pulumi.Input.asInput<String>(
+         authorizationPolicyId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +33,9 @@ class GetAuthorizationPolicyNetworksecurityV1beta1Args {
     };
   }
 
-  factory GetAuthorizationPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorizationPolicyNetworksecurityV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorizationPolicyNetworksecurityV1beta1Args(
       authorizationPolicyId: map['authorizationPolicyId'] as String,
       location: map['location'] as String,
@@ -40,4 +43,3 @@ class GetAuthorizationPolicyNetworksecurityV1beta1Args {
     );
   }
 }
-

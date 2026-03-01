@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLaunchTemplateInstanceRequirementVcpuCount {
   final int max;
   final int min;
@@ -14,17 +13,15 @@ class GetLaunchTemplateInstanceRequirementVcpuCount {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': max,
-      'min': min,
-    };
+    return <String, dynamic>{'max': max, 'min': min};
   }
 
-  factory GetLaunchTemplateInstanceRequirementVcpuCount.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplateInstanceRequirementVcpuCount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplateInstanceRequirementVcpuCount(
       max: map['max'] as int,
       min: map['min'] as int,
     );
   }
 }
-

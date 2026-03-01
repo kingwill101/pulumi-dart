@@ -6,10 +6,13 @@ import 'secret_response.dart';
 class SshPublicKeyResponse {
   /// Format of SSH Client cert.
   final String certType;
+
   /// SSH Client Cert. It should contain both public and private key.
   final SecretResponse sshClientCert;
+
   /// Password (passphrase) for ssh client certificate if it has one.
   final SecretResponse sshClientCertPass;
+
   /// The user account used to authenticate.
   final String username;
 
@@ -37,10 +40,13 @@ class SshPublicKeyResponse {
   factory SshPublicKeyResponse.fromMap(Map<String, dynamic> map) {
     return SshPublicKeyResponse(
       certType: map['certType'] as String,
-      sshClientCert: SecretResponse.fromMap((map['sshClientCert'] as Map).cast<String, dynamic>()),
-      sshClientCertPass: SecretResponse.fromMap((map['sshClientCertPass'] as Map).cast<String, dynamic>()),
+      sshClientCert: SecretResponse.fromMap(
+        (map['sshClientCert'] as Map).cast<String, dynamic>(),
+      ),
+      sshClientCertPass: SecretResponse.fromMap(
+        (map['sshClientCertPass'] as Map).cast<String, dynamic>(),
+      ),
       username: map['username'] as String,
     );
   }
 }
-

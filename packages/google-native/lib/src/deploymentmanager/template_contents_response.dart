@@ -7,12 +7,16 @@ import 'import_file_response.dart';
 class TemplateContentsResponse {
   /// Import files referenced by the main template.
   final List<ImportFileResponse> imports;
+
   /// Which interpreter (python or jinja) should be used during expansion.
   final String interpreter;
+
   /// The filename of the mainTemplate
   final String mainTemplate;
+
   /// The contents of the template schema.
   final String schema;
+
   /// The contents of the main template file.
   final String template;
 
@@ -32,7 +36,11 @@ class TemplateContentsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imports': pulumi.Input.encodeList<ImportFileResponse, Map<String, dynamic>>(imports, (value) => value.toMap()),
+      'imports':
+          pulumi.Input.encodeList<ImportFileResponse, Map<String, dynamic>>(
+            imports,
+            (value) => value.toMap(),
+          ),
       'interpreter': interpreter,
       'mainTemplate': mainTemplate,
       'schema': schema,
@@ -42,7 +50,11 @@ class TemplateContentsResponse {
 
   factory TemplateContentsResponse.fromMap(Map<String, dynamic> map) {
     return TemplateContentsResponse(
-      imports: pulumi.Input.decodeList<ImportFileResponse>(map['imports'], (value) => ImportFileResponse.fromMap((value as Map).cast<String, dynamic>())),
+      imports: pulumi.Input.decodeList<ImportFileResponse>(
+        map['imports'],
+        (value) =>
+            ImportFileResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       interpreter: map['interpreter'] as String,
       mainTemplate: map['mainTemplate'] as String,
       schema: map['schema'] as String,
@@ -50,4 +62,3 @@ class TemplateContentsResponse {
     );
   }
 }
-

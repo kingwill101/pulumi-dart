@@ -14,7 +14,8 @@ enum RouterNatAutoNetworkTierComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterNatAutoNetworkTierComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RouterNatAutoNetworkTierComputeV1 value: $value',
+    );
   }
 }
-

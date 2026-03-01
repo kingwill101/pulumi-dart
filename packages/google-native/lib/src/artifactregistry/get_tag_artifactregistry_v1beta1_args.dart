@@ -25,12 +25,11 @@ class GetTagArtifactregistryV1beta1Args {
     String? project,
     required String repositoryId,
     required String tagId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      packageId = pulumi.Input.asInput<String>(packageId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      tagId = pulumi.Input.asInput<String>(tagId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       packageId = pulumi.Input.asInput<String>(packageId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       repositoryId = pulumi.Input.asInput<String>(repositoryId),
+       tagId = pulumi.Input.asInput<String>(tagId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetTagArtifactregistryV1beta1Args {
     );
   }
 }
-

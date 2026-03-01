@@ -1337,16 +1337,20 @@ import 'service_perimeter_status.dart';
 class ServicePerimeter extends pulumi.CustomResource {
   /// Time the AccessPolicy was created in UTC.
   late final pulumi.Output<String> createTime;
+
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
   late final pulumi.Output<String?> description;
+
   /// Resource name for the ServicePerimeter. The short_name component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
   late final pulumi.Output<String> name;
+
   /// The AccessPolicy this ServicePerimeter lives in.
   /// Format: accessPolicies/{policy_id}
   late final pulumi.Output<String> parent;
+
   /// Specifies the type of the Perimeter. There are two types: regular and
   /// bridge. Regular Service Perimeter contains resources, access levels,
   /// and restricted services. Every resource can be in at most
@@ -1364,21 +1368,26 @@ class ServicePerimeter extends pulumi.CustomResource {
   /// Default value is `PERIMETER_TYPE_REGULAR`.
   /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
   late final pulumi.Output<String?> perimeterType;
+
   /// Proposed (or dry run) ServicePerimeter configuration.
   /// This configuration allows to specify and test ServicePerimeter configuration
   /// without enforcing actual access restrictions. Only allowed to be set when
   /// the `useExplicitDryRunSpec` flag is set.
   /// Structure is documented below.
   late final pulumi.Output<ServicePerimeterSpec?> spec;
+
   /// ServicePerimeter configuration. Specifies sets of resources,
   /// restricted services and access levels that determine
   /// perimeter content and boundaries.
   /// Structure is documented below.
   late final pulumi.Output<ServicePerimeterStatus?> status;
+
   /// Human readable title. Must be unique within the Policy.
   late final pulumi.Output<String> title;
+
   /// Time the AccessPolicy was updated in UTC.
   late final pulumi.Output<String> updateTime;
+
   /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
   /// for all Service Perimeters, and that spec is identical to the status for those
   /// Service Perimeters. When this flag is set, it inhibits the generation of the
@@ -1399,11 +1408,11 @@ class ServicePerimeter extends pulumi.CustomResource {
     ServicePerimeterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:accesscontextmanager/servicePerimeter:ServicePerimeter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:accesscontextmanager/servicePerimeter:ServicePerimeter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

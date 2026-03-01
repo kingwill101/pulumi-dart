@@ -19,10 +19,9 @@ class GetSubscriptionArgs {
     required String developerId,
     required String organizationId,
     required String subscriptionId,
-  }) :
-      developerId = pulumi.Input.asInput<String>(developerId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
+  }) : developerId = pulumi.Input.asInput<String>(developerId),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetSubscriptionArgs {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Wrapper for Cloud Function attributes.
 class CloudFunctionEndpointResponse {
   /// A [Cloud Function](https://cloud.google.com/functions) name.
@@ -8,20 +7,13 @@ class CloudFunctionEndpointResponse {
 
   /// Creates a new [CloudFunctionEndpointResponse].
   /// [uri] A [Cloud Function](https://cloud.google.com/functions) name.
-  CloudFunctionEndpointResponse({
-    required this.uri,
-  });
+  CloudFunctionEndpointResponse({required this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
   factory CloudFunctionEndpointResponse.fromMap(Map<String, dynamic> map) {
-    return CloudFunctionEndpointResponse(
-      uri: map['uri'] as String,
-    );
+    return CloudFunctionEndpointResponse(uri: map['uri'] as String);
   }
 }
-

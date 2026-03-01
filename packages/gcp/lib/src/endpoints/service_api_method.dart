@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServiceApiMethod {
   /// The simple name of the endpoint as described in the config.
   final String? name;
+
   /// The type URL for the request to this API.
   final String? requestType;
+
   /// The type URL for the response from this API.
   final String? responseType;
+
   /// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
   final String? syntax;
 
@@ -35,10 +37,13 @@ class ServiceApiMethod {
   factory ServiceApiMethod.fromMap(Map<String, dynamic> map) {
     return ServiceApiMethod(
       name: map['name'] == null ? null : map['name'] as String,
-      requestType: map['requestType'] == null ? null : map['requestType'] as String,
-      responseType: map['responseType'] == null ? null : map['responseType'] as String,
+      requestType: map['requestType'] == null
+          ? null
+          : map['requestType'] as String,
+      responseType: map['responseType'] == null
+          ? null
+          : map['responseType'] as String,
       syntax: map['syntax'] == null ? null : map['syntax'] as String,
     );
   }
 }
-

@@ -16,9 +16,8 @@ class GetPatchDeploymentOsconfigV1betaArgs {
   GetPatchDeploymentOsconfigV1betaArgs({
     required String patchDeploymentId,
     String? project,
-  }) :
-      patchDeploymentId = pulumi.Input.asInput<String>(patchDeploymentId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : patchDeploymentId = pulumi.Input.asInput<String>(patchDeploymentId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,11 +26,12 @@ class GetPatchDeploymentOsconfigV1betaArgs {
     };
   }
 
-  factory GetPatchDeploymentOsconfigV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetPatchDeploymentOsconfigV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPatchDeploymentOsconfigV1betaArgs(
       patchDeploymentId: map['patchDeploymentId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

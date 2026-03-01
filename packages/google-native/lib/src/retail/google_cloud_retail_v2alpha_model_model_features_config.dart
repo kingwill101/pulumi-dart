@@ -5,7 +5,8 @@ import 'google_cloud_retail_v2alpha_model_frequently_bought_together_features_co
 /// Additional model features config.
 class GoogleCloudRetailV2alphaModelModelFeaturesConfig {
   /// Additional configs for frequently-bought-together models.
-  final GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig? frequentlyBoughtTogetherConfig;
+  final GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig?
+  frequentlyBoughtTogetherConfig;
 
   /// Creates a new [GoogleCloudRetailV2alphaModelModelFeaturesConfig].
   /// [frequentlyBoughtTogetherConfig] Additional configs for frequently-bought-together models.
@@ -15,14 +16,23 @@ class GoogleCloudRetailV2alphaModelModelFeaturesConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'frequentlyBoughtTogetherConfig': ?frequentlyBoughtTogetherConfig == null ? null : frequentlyBoughtTogetherConfig!.toMap(),
+      'frequentlyBoughtTogetherConfig': ?frequentlyBoughtTogetherConfig == null
+          ? null
+          : frequentlyBoughtTogetherConfig!.toMap(),
     };
   }
 
-  factory GoogleCloudRetailV2alphaModelModelFeaturesConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2alphaModelModelFeaturesConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2alphaModelModelFeaturesConfig(
-      frequentlyBoughtTogetherConfig: map['frequentlyBoughtTogetherConfig'] == null ? null : GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig.fromMap((map['frequentlyBoughtTogetherConfig'] as Map).cast<String, dynamic>()),
+      frequentlyBoughtTogetherConfig:
+          map['frequentlyBoughtTogetherConfig'] == null
+          ? null
+          : GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig.fromMap(
+              (map['frequentlyBoughtTogetherConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
     );
   }
 }
-

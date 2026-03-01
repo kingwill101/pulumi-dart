@@ -19,10 +19,11 @@ class GetInterconnectAttachmentArgs {
     required String interconnectAttachment,
     String? project,
     required String region,
-  }) :
-      interconnectAttachment = pulumi.Input.asInput<String>(interconnectAttachment),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : interconnectAttachment = pulumi.Input.asInput<String>(
+         interconnectAttachment,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetInterconnectAttachmentArgs {
     );
   }
 }
-

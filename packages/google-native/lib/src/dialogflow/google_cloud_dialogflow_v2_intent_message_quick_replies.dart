@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The quick replies response message.
 class GoogleCloudDialogflowV2IntentMessageQuickReplies {
   /// Optional. The collection of quick replies.
   final List<String>? quickReplies;
+
   /// Optional. The title of the collection of quick replies.
   final String? title;
 
@@ -17,17 +17,17 @@ class GoogleCloudDialogflowV2IntentMessageQuickReplies {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'quickReplies': ?quickReplies,
-      'title': ?title,
-    };
+    return <String, dynamic>{'quickReplies': ?quickReplies, 'title': ?title};
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageQuickReplies.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageQuickReplies.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageQuickReplies(
-      quickReplies: map['quickReplies'] == null ? null : (map['quickReplies'] as List).cast<String>(),
+      quickReplies: map['quickReplies'] == null
+          ? null
+          : (map['quickReplies'] as List).cast<String>(),
       title: map['title'] == null ? null : map['title'] as String,
     );
   }
 }
-

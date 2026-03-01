@@ -8,21 +8,30 @@ import 'google_cloud_integrations_v1alpha_string_parameter_array_response.dart';
 /// The type of the parameter.
 class GoogleCloudIntegrationsV1alphaValueTypeResponse {
   /// Boolean Array.
-  final GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse booleanArray;
+  final GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse
+  booleanArray;
+
   /// Boolean.
   final bool booleanValue;
+
   /// Double Number Array.
   final GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse doubleArray;
+
   /// Double Number.
   final double doubleValue;
+
   /// Integer Array.
   final GoogleCloudIntegrationsV1alphaIntParameterArrayResponse intArray;
+
   /// Integer.
   final String intValue;
+
   /// Json.
   final String jsonValue;
+
   /// String Array.
   final GoogleCloudIntegrationsV1alphaStringParameterArrayResponse stringArray;
+
   /// String.
   final String stringValue;
 
@@ -62,18 +71,30 @@ class GoogleCloudIntegrationsV1alphaValueTypeResponse {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaValueTypeResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaValueTypeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaValueTypeResponse(
-      booleanArray: GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse.fromMap((map['booleanArray'] as Map).cast<String, dynamic>()),
+      booleanArray:
+          GoogleCloudIntegrationsV1alphaBooleanParameterArrayResponse.fromMap(
+            (map['booleanArray'] as Map).cast<String, dynamic>(),
+          ),
       booleanValue: map['booleanValue'] as bool,
-      doubleArray: GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse.fromMap((map['doubleArray'] as Map).cast<String, dynamic>()),
+      doubleArray:
+          GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse.fromMap(
+            (map['doubleArray'] as Map).cast<String, dynamic>(),
+          ),
       doubleValue: map['doubleValue'] as double,
-      intArray: GoogleCloudIntegrationsV1alphaIntParameterArrayResponse.fromMap((map['intArray'] as Map).cast<String, dynamic>()),
+      intArray: GoogleCloudIntegrationsV1alphaIntParameterArrayResponse.fromMap(
+        (map['intArray'] as Map).cast<String, dynamic>(),
+      ),
       intValue: map['intValue'] as String,
       jsonValue: map['jsonValue'] as String,
-      stringArray: GoogleCloudIntegrationsV1alphaStringParameterArrayResponse.fromMap((map['stringArray'] as Map).cast<String, dynamic>()),
+      stringArray:
+          GoogleCloudIntegrationsV1alphaStringParameterArrayResponse.fromMap(
+            (map['stringArray'] as Map).cast<String, dynamic>(),
+          ),
       stringValue: map['stringValue'] as String,
     );
   }
 }
-

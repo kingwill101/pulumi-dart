@@ -7,6 +7,7 @@ import 'resource_manager_tags_response.dart';
 class NodePoolAutoConfigResponse {
   /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
   final NetworkTagsResponse networkTags;
+
   /// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies.
   final ResourceManagerTagsResponse resourceManagerTags;
 
@@ -27,9 +28,12 @@ class NodePoolAutoConfigResponse {
 
   factory NodePoolAutoConfigResponse.fromMap(Map<String, dynamic> map) {
     return NodePoolAutoConfigResponse(
-      networkTags: NetworkTagsResponse.fromMap((map['networkTags'] as Map).cast<String, dynamic>()),
-      resourceManagerTags: ResourceManagerTagsResponse.fromMap((map['resourceManagerTags'] as Map).cast<String, dynamic>()),
+      networkTags: NetworkTagsResponse.fromMap(
+        (map['networkTags'] as Map).cast<String, dynamic>(),
+      ),
+      resourceManagerTags: ResourceManagerTagsResponse.fromMap(
+        (map['resourceManagerTags'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

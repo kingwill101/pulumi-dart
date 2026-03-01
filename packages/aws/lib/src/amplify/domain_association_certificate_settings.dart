@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DomainAssociationCertificateSettings {
   /// DNS records for certificate verification in a space-delimited format (`<record> CNAME <target>`).
   final String? certificateVerificationDnsRecord;
+
   /// The Amazon resource name (ARN) for the custom certificate.
   /// Required when `type` is `CUSTOM`.
   final String? customCertificateArn;
+
   /// The certificate type.
   /// Valid values are `AMPLIFY_MANAGED` and `CUSTOM`.
   final String type;
@@ -29,12 +30,18 @@ class DomainAssociationCertificateSettings {
     };
   }
 
-  factory DomainAssociationCertificateSettings.fromMap(Map<String, dynamic> map) {
+  factory DomainAssociationCertificateSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainAssociationCertificateSettings(
-      certificateVerificationDnsRecord: map['certificateVerificationDnsRecord'] == null ? null : map['certificateVerificationDnsRecord'] as String,
-      customCertificateArn: map['customCertificateArn'] == null ? null : map['customCertificateArn'] as String,
+      certificateVerificationDnsRecord:
+          map['certificateVerificationDnsRecord'] == null
+          ? null
+          : map['certificateVerificationDnsRecord'] as String,
+      customCertificateArn: map['customCertificateArn'] == null
+          ? null
+          : map['customCertificateArn'] as String,
       type: map['type'] as String,
     );
   }
 }
-

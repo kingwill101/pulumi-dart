@@ -8,12 +8,16 @@ import 'condition_sys_compute_beta.dart';
 class ConditionComputeBeta {
   /// This is deprecated and has no effect. Do not use.
   final ConditionIamComputeBeta? iam;
+
   /// This is deprecated and has no effect. Do not use.
   final ConditionOpComputeBeta? op;
+
   /// This is deprecated and has no effect. Do not use.
   final String? svc;
+
   /// This is deprecated and has no effect. Do not use.
   final ConditionSysComputeBeta? sys;
+
   /// This is deprecated and has no effect. Do not use.
   final List<String>? values;
 
@@ -23,13 +27,7 @@ class ConditionComputeBeta {
   /// [svc] This is deprecated and has no effect. Do not use.
   /// [sys] This is deprecated and has no effect. Do not use.
   /// [values] This is deprecated and has no effect. Do not use.
-  ConditionComputeBeta({
-    this.iam,
-    this.op,
-    this.svc,
-    this.sys,
-    this.values,
-  });
+  ConditionComputeBeta({this.iam, this.op, this.svc, this.sys, this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,12 +41,19 @@ class ConditionComputeBeta {
 
   factory ConditionComputeBeta.fromMap(Map<String, dynamic> map) {
     return ConditionComputeBeta(
-      iam: map['iam'] == null ? null : ConditionIamComputeBeta.fromValue(map['iam'] as String),
-      op: map['op'] == null ? null : ConditionOpComputeBeta.fromValue(map['op'] as String),
+      iam: map['iam'] == null
+          ? null
+          : ConditionIamComputeBeta.fromValue(map['iam'] as String),
+      op: map['op'] == null
+          ? null
+          : ConditionOpComputeBeta.fromValue(map['op'] as String),
       svc: map['svc'] == null ? null : map['svc'] as String,
-      sys: map['sys'] == null ? null : ConditionSysComputeBeta.fromValue(map['sys'] as String),
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      sys: map['sys'] == null
+          ? null
+          : ConditionSysComputeBeta.fromValue(map['sys'] as String),
+      values: map['values'] == null
+          ? null
+          : (map['values'] as List).cast<String>(),
     );
   }
 }
-

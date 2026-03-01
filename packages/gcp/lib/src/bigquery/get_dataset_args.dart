@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatasetArgs {
   /// The dataset ID.
   final pulumi.Input<String> datasetId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -16,18 +17,12 @@ class GetDatasetArgs {
   /// Creates a new [GetDatasetArgs].
   /// [datasetId] The dataset ID.
   /// [project] The ID of the project in which the resource belongs.
-  GetDatasetArgs({
-    required String datasetId,
-    String? project,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
+  GetDatasetArgs({required String datasetId, String? project})
+    : datasetId = pulumi.Input.asInput<String>(datasetId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetId': datasetId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'datasetId': datasetId, 'project': ?project};
   }
 
   factory GetDatasetArgs.fromMap(Map<String, dynamic> map) {
@@ -37,4 +32,3 @@ class GetDatasetArgs {
     );
   }
 }
-

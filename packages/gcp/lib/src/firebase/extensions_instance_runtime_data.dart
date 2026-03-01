@@ -7,9 +7,11 @@ class ExtensionsInstanceRuntimeData {
   /// The fatal error state for the extension instance
   /// Structure is documented below.
   final ExtensionsInstanceRuntimeDataFatalError? fatalError;
+
   /// The processing state for the extension instance
   /// Structure is documented below.
   final ExtensionsInstanceRuntimeDataProcessingState? processingState;
+
   /// The time of the last state update.
   final String? stateUpdateTime;
 
@@ -26,17 +28,28 @@ class ExtensionsInstanceRuntimeData {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'fatalError': ?fatalError == null ? null : fatalError!.toMap(),
-      'processingState': ?processingState == null ? null : processingState!.toMap(),
+      'processingState': ?processingState == null
+          ? null
+          : processingState!.toMap(),
       'stateUpdateTime': ?stateUpdateTime,
     };
   }
 
   factory ExtensionsInstanceRuntimeData.fromMap(Map<String, dynamic> map) {
     return ExtensionsInstanceRuntimeData(
-      fatalError: map['fatalError'] == null ? null : ExtensionsInstanceRuntimeDataFatalError.fromMap((map['fatalError'] as Map).cast<String, dynamic>()),
-      processingState: map['processingState'] == null ? null : ExtensionsInstanceRuntimeDataProcessingState.fromMap((map['processingState'] as Map).cast<String, dynamic>()),
-      stateUpdateTime: map['stateUpdateTime'] == null ? null : map['stateUpdateTime'] as String,
+      fatalError: map['fatalError'] == null
+          ? null
+          : ExtensionsInstanceRuntimeDataFatalError.fromMap(
+              (map['fatalError'] as Map).cast<String, dynamic>(),
+            ),
+      processingState: map['processingState'] == null
+          ? null
+          : ExtensionsInstanceRuntimeDataProcessingState.fromMap(
+              (map['processingState'] as Map).cast<String, dynamic>(),
+            ),
+      stateUpdateTime: map['stateUpdateTime'] == null
+          ? null
+          : map['stateUpdateTime'] as String,
     );
   }
 }
-

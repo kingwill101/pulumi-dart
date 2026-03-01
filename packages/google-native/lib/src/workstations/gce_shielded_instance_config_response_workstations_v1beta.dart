@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A set of Compute Engine Shielded instance options.
 class GceShieldedInstanceConfigResponseWorkstationsV1beta {
   /// Optional. Whether the instance has integrity monitoring enabled.
   final bool enableIntegrityMonitoring;
+
   /// Optional. Whether the instance has Secure Boot enabled.
   final bool enableSecureBoot;
+
   /// Optional. Whether the instance has the vTPM enabled.
   final bool enableVtpm;
 
@@ -28,7 +29,9 @@ class GceShieldedInstanceConfigResponseWorkstationsV1beta {
     };
   }
 
-  factory GceShieldedInstanceConfigResponseWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
+  factory GceShieldedInstanceConfigResponseWorkstationsV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GceShieldedInstanceConfigResponseWorkstationsV1beta(
       enableIntegrityMonitoring: map['enableIntegrityMonitoring'] as bool,
       enableSecureBoot: map['enableSecureBoot'] as bool,
@@ -36,4 +39,3 @@ class GceShieldedInstanceConfigResponseWorkstationsV1beta {
     );
   }
 }
-

@@ -8,20 +8,17 @@ class FsxOpenZfsFileSystemProtocolNfs {
 
   /// Creates a new [FsxOpenZfsFileSystemProtocolNfs].
   /// [mountOptions] Represents the mount options that are available for DataSync to access an NFS location. See below.
-  FsxOpenZfsFileSystemProtocolNfs({
-    required this.mountOptions,
-  });
+  FsxOpenZfsFileSystemProtocolNfs({required this.mountOptions});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mountOptions': mountOptions.toMap(),
-    };
+    return <String, dynamic>{'mountOptions': mountOptions.toMap()};
   }
 
   factory FsxOpenZfsFileSystemProtocolNfs.fromMap(Map<String, dynamic> map) {
     return FsxOpenZfsFileSystemProtocolNfs(
-      mountOptions: FsxOpenZfsFileSystemProtocolNfsMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>()),
+      mountOptions: FsxOpenZfsFileSystemProtocolNfsMountOptions.fromMap(
+        (map['mountOptions'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

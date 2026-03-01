@@ -9,20 +9,17 @@ class SourceHierarchyDatasetsResponse {
 
   /// Creates a new [SourceHierarchyDatasetsResponse].
   /// [datasetTemplate] The dataset template to use for dynamic dataset creation.
-  SourceHierarchyDatasetsResponse({
-    required this.datasetTemplate,
-  });
+  SourceHierarchyDatasetsResponse({required this.datasetTemplate});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetTemplate': datasetTemplate.toMap(),
-    };
+    return <String, dynamic>{'datasetTemplate': datasetTemplate.toMap()};
   }
 
   factory SourceHierarchyDatasetsResponse.fromMap(Map<String, dynamic> map) {
     return SourceHierarchyDatasetsResponse(
-      datasetTemplate: DatasetTemplateResponse.fromMap((map['datasetTemplate'] as Map).cast<String, dynamic>()),
+      datasetTemplate: DatasetTemplateResponse.fromMap(
+        (map['datasetTemplate'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

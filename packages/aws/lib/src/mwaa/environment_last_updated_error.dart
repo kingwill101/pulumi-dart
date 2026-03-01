@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EnvironmentLastUpdatedError {
   final String? errorCode;
   final String? errorMessage;
@@ -8,10 +7,7 @@ class EnvironmentLastUpdatedError {
   /// Creates a new [EnvironmentLastUpdatedError].
   /// [errorCode] Optional.
   /// [errorMessage] Optional.
-  EnvironmentLastUpdatedError({
-    this.errorCode,
-    this.errorMessage,
-  });
+  EnvironmentLastUpdatedError({this.errorCode, this.errorMessage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,8 +19,9 @@ class EnvironmentLastUpdatedError {
   factory EnvironmentLastUpdatedError.fromMap(Map<String, dynamic> map) {
     return EnvironmentLastUpdatedError(
       errorCode: map['errorCode'] == null ? null : map['errorCode'] as String,
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
+      errorMessage: map['errorMessage'] == null
+          ? null
+          : map['errorMessage'] as String,
     );
   }
 }
-

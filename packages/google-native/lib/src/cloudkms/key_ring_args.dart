@@ -16,12 +16,8 @@ class KeyRingArgs {
   /// [keyRingId] Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
   /// [location] Optional.
   /// [project] Optional.
-  KeyRingArgs({
-    String? keyRingId,
-    String? location,
-    String? project,
-  }) :
-      keyRingId = pulumi.Input.asOptionalInput<String>(keyRingId),
+  KeyRingArgs({String? keyRingId, String? location, String? project})
+    : keyRingId = pulumi.Input.asOptionalInput<String>(keyRingId),
       location = pulumi.Input.asOptionalInput<String>(location),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -41,4 +37,3 @@ class KeyRingArgs {
     );
   }
 }
-

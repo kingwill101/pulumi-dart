@@ -632,16 +632,23 @@ import 'bucket_logging_target_object_key_format.dart';
 class BucketLoggingS3 extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Name of the bucket where you want Amazon S3 to store server access logs.
   late final pulumi.Output<String> targetBucket;
+
   /// Set of configuration blocks with information for granting permissions. See below.
   late final pulumi.Output<List<BucketLoggingTargetGrant>?> targetGrants;
+
   /// Amazon S3 key format for log objects. See below.
-  late final pulumi.Output<BucketLoggingTargetObjectKeyFormat?> targetObjectKeyFormat;
+  late final pulumi.Output<BucketLoggingTargetObjectKeyFormat?>
+  targetObjectKeyFormat;
+
   /// Prefix for all log object keys.
   late final pulumi.Output<String> targetPrefix;
 
@@ -654,17 +661,22 @@ class BucketLoggingS3 extends pulumi.CustomResource {
     BucketLoggingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketLogging:BucketLogging',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:s3/bucketLogging:BucketLogging',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucket = registerOutput<String>('bucket');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     this.region = registerOutput<String>('region');
     this.targetBucket = registerOutput<String>('targetBucket');
-    this.targetGrants = registerOutput<List<BucketLoggingTargetGrant>?>('targetGrants');
-    this.targetObjectKeyFormat = registerOutput<BucketLoggingTargetObjectKeyFormat?>('targetObjectKeyFormat');
+    this.targetGrants = registerOutput<List<BucketLoggingTargetGrant>?>(
+      'targetGrants',
+    );
+    this.targetObjectKeyFormat =
+        registerOutput<BucketLoggingTargetObjectKeyFormat?>(
+          'targetObjectKeyFormat',
+        );
     this.targetPrefix = registerOutput<String>('targetPrefix');
   }
 }

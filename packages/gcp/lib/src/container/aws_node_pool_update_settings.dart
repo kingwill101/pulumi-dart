@@ -8,9 +8,7 @@ class AwsNodePoolUpdateSettings {
 
   /// Creates a new [AwsNodePoolUpdateSettings].
   /// [surgeSettings] Optional. Settings for surge update.
-  AwsNodePoolUpdateSettings({
-    this.surgeSettings,
-  });
+  AwsNodePoolUpdateSettings({this.surgeSettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,11 @@ class AwsNodePoolUpdateSettings {
 
   factory AwsNodePoolUpdateSettings.fromMap(Map<String, dynamic> map) {
     return AwsNodePoolUpdateSettings(
-      surgeSettings: map['surgeSettings'] == null ? null : AwsNodePoolUpdateSettingsSurgeSettings.fromMap((map['surgeSettings'] as Map).cast<String, dynamic>()),
+      surgeSettings: map['surgeSettings'] == null
+          ? null
+          : AwsNodePoolUpdateSettingsSurgeSettings.fromMap(
+              (map['surgeSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

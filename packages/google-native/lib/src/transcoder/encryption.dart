@@ -8,14 +8,19 @@ import 'secret_manager_source.dart';
 class Encryption {
   /// Configuration for AES-128 encryption.
   final Map<String, dynamic>? aes128;
+
   /// DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
   final DrmSystems drmSystems;
+
   /// Identifier for this set of encryption options.
   final String id;
+
   /// Configuration for MPEG Common Encryption (MPEG-CENC).
   final MpegCommonEncryption? mpegCenc;
+
   /// Configuration for SAMPLE-AES encryption.
   final Map<String, dynamic>? sampleAes;
+
   /// Keys are stored in Google Secret Manager.
   final SecretManagerSource? secretManagerKeySource;
 
@@ -42,19 +47,34 @@ class Encryption {
       'id': id,
       'mpegCenc': ?mpegCenc == null ? null : mpegCenc!.toMap(),
       'sampleAes': ?sampleAes,
-      'secretManagerKeySource': ?secretManagerKeySource == null ? null : secretManagerKeySource!.toMap(),
+      'secretManagerKeySource': ?secretManagerKeySource == null
+          ? null
+          : secretManagerKeySource!.toMap(),
     };
   }
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      aes128: map['aes128'] == null ? null : (map['aes128'] as Map).cast<String, dynamic>(),
-      drmSystems: DrmSystems.fromMap((map['drmSystems'] as Map).cast<String, dynamic>()),
+      aes128: map['aes128'] == null
+          ? null
+          : (map['aes128'] as Map).cast<String, dynamic>(),
+      drmSystems: DrmSystems.fromMap(
+        (map['drmSystems'] as Map).cast<String, dynamic>(),
+      ),
       id: map['id'] as String,
-      mpegCenc: map['mpegCenc'] == null ? null : MpegCommonEncryption.fromMap((map['mpegCenc'] as Map).cast<String, dynamic>()),
-      sampleAes: map['sampleAes'] == null ? null : (map['sampleAes'] as Map).cast<String, dynamic>(),
-      secretManagerKeySource: map['secretManagerKeySource'] == null ? null : SecretManagerSource.fromMap((map['secretManagerKeySource'] as Map).cast<String, dynamic>()),
+      mpegCenc: map['mpegCenc'] == null
+          ? null
+          : MpegCommonEncryption.fromMap(
+              (map['mpegCenc'] as Map).cast<String, dynamic>(),
+            ),
+      sampleAes: map['sampleAes'] == null
+          ? null
+          : (map['sampleAes'] as Map).cast<String, dynamic>(),
+      secretManagerKeySource: map['secretManagerKeySource'] == null
+          ? null
+          : SecretManagerSource.fromMap(
+              (map['secretManagerKeySource'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

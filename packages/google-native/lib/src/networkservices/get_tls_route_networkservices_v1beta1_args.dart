@@ -19,10 +19,9 @@ class GetTlsRouteNetworkservicesV1beta1Args {
     required String location,
     String? project,
     required String tlsRouteId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tlsRouteId = pulumi.Input.asInput<String>(tlsRouteId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tlsRouteId = pulumi.Input.asInput<String>(tlsRouteId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetTlsRouteNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetTlsRouteNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetTlsRouteNetworkservicesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTlsRouteNetworkservicesV1beta1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +41,3 @@ class GetTlsRouteNetworkservicesV1beta1Args {
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'dashboard_source_entity_source_template_data_set_reference.dart';
 class DashboardSourceEntitySourceTemplate {
   /// The Amazon Resource Name (ARN) of the resource.
   final String arn;
+
   /// List of dataset references. See data_set_references.
-  final List<DashboardSourceEntitySourceTemplateDataSetReference> dataSetReferences;
+  final List<DashboardSourceEntitySourceTemplateDataSetReference>
+  dataSetReferences;
 
   /// Creates a new [DashboardSourceEntitySourceTemplate].
   /// [arn] The Amazon Resource Name (ARN) of the resource.
@@ -20,15 +22,29 @@ class DashboardSourceEntitySourceTemplate {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'dataSetReferences': pulumi.Input.encodeList<DashboardSourceEntitySourceTemplateDataSetReference, Map<String, dynamic>>(dataSetReferences, (value) => value.toMap()),
+      'dataSetReferences':
+          pulumi.Input.encodeList<
+            DashboardSourceEntitySourceTemplateDataSetReference,
+            Map<String, dynamic>
+          >(dataSetReferences, (value) => value.toMap()),
     };
   }
 
-  factory DashboardSourceEntitySourceTemplate.fromMap(Map<String, dynamic> map) {
+  factory DashboardSourceEntitySourceTemplate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DashboardSourceEntitySourceTemplate(
       arn: map['arn'] as String,
-      dataSetReferences: pulumi.Input.decodeList<DashboardSourceEntitySourceTemplateDataSetReference>(map['dataSetReferences'], (value) => DashboardSourceEntitySourceTemplateDataSetReference.fromMap((value as Map).cast<String, dynamic>())),
+      dataSetReferences:
+          pulumi.Input.decodeList<
+            DashboardSourceEntitySourceTemplateDataSetReference
+          >(
+            map['dataSetReferences'],
+            (value) =>
+                DashboardSourceEntitySourceTemplateDataSetReference.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A specification of the location of and metadata about a database dump from a relational database management system.
 class DatabaseDumpResponseMetastoreV1beta {
   /// The type of the database.
   final String databaseType;
+
   /// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
   final String gcsUri;
+
   /// The name of the source database.
   final String sourceDatabase;
+
   /// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
   final String type;
 
@@ -33,7 +35,9 @@ class DatabaseDumpResponseMetastoreV1beta {
     };
   }
 
-  factory DatabaseDumpResponseMetastoreV1beta.fromMap(Map<String, dynamic> map) {
+  factory DatabaseDumpResponseMetastoreV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseDumpResponseMetastoreV1beta(
       databaseType: map['databaseType'] as String,
       gcsUri: map['gcsUri'] as String,
@@ -42,4 +46,3 @@ class DatabaseDumpResponseMetastoreV1beta {
     );
   }
 }
-

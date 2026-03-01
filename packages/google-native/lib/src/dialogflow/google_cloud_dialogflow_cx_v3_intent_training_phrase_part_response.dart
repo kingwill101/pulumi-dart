@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a part of a training phrase.
 class GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse {
   /// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
   final String parameterId;
+
   /// The text for this part.
   final String text;
 
@@ -17,17 +17,15 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parameterId': parameterId,
-      'text': text,
-    };
+    return <String, dynamic>{'parameterId': parameterId, 'text': text};
   }
 
-  factory GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3IntentTrainingPhrasePartResponse(
       parameterId: map['parameterId'] as String,
       text: map['text'] as String,
     );
   }
 }
-

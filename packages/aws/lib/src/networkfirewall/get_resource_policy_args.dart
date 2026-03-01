@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResourcePolicyArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Amazon Resource Name (ARN) that identifies the resource policy.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [GetResourcePolicyArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The Amazon Resource Name (ARN) that identifies the resource policy.
-  GetResourcePolicyArgs({
-    String? region,
-    required String resourceArn,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
+  GetResourcePolicyArgs({String? region, required String resourceArn})
+    : region = pulumi.Input.asOptionalInput<String>(region),
       resourceArn = pulumi.Input.asInput<String>(resourceArn);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'resourceArn': resourceArn,
-    };
+    return <String, dynamic>{'region': ?region, 'resourceArn': resourceArn};
   }
 
   factory GetResourcePolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetResourcePolicyArgs {
     );
   }
 }
-

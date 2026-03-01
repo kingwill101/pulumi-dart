@@ -14,30 +14,43 @@ import 'transfer_options_response.dart';
 class TransferSpecResponse {
   /// An AWS S3 compatible data source.
   final AwsS3CompatibleDataResponse awsS3CompatibleDataSource;
+
   /// An AWS S3 data source.
   final AwsS3DataResponse awsS3DataSource;
+
   /// An Azure Blob Storage data source.
   final AzureBlobStorageDataResponse azureBlobStorageDataSource;
+
   /// A Cloud Storage data sink.
   final GcsDataResponse gcsDataSink;
+
   /// A Cloud Storage data source.
   final GcsDataResponse gcsDataSource;
+
   /// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
   final GcsDataResponse gcsIntermediateDataLocation;
+
   /// An HTTP URL data source.
   final HttpDataResponse httpDataSource;
+
   /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
   final ObjectConditionsResponse objectConditions;
+
   /// A POSIX Filesystem data sink.
   final PosixFilesystemResponse posixDataSink;
+
   /// A POSIX Filesystem data source.
   final PosixFilesystemResponse posixDataSource;
+
   /// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
   final String sinkAgentPoolName;
+
   /// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
   final String sourceAgentPoolName;
+
   /// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
   final TransferManifestResponse transferManifest;
+
   /// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
   final TransferOptionsResponse transferOptions;
 
@@ -94,21 +107,44 @@ class TransferSpecResponse {
 
   factory TransferSpecResponse.fromMap(Map<String, dynamic> map) {
     return TransferSpecResponse(
-      awsS3CompatibleDataSource: AwsS3CompatibleDataResponse.fromMap((map['awsS3CompatibleDataSource'] as Map).cast<String, dynamic>()),
-      awsS3DataSource: AwsS3DataResponse.fromMap((map['awsS3DataSource'] as Map).cast<String, dynamic>()),
-      azureBlobStorageDataSource: AzureBlobStorageDataResponse.fromMap((map['azureBlobStorageDataSource'] as Map).cast<String, dynamic>()),
-      gcsDataSink: GcsDataResponse.fromMap((map['gcsDataSink'] as Map).cast<String, dynamic>()),
-      gcsDataSource: GcsDataResponse.fromMap((map['gcsDataSource'] as Map).cast<String, dynamic>()),
-      gcsIntermediateDataLocation: GcsDataResponse.fromMap((map['gcsIntermediateDataLocation'] as Map).cast<String, dynamic>()),
-      httpDataSource: HttpDataResponse.fromMap((map['httpDataSource'] as Map).cast<String, dynamic>()),
-      objectConditions: ObjectConditionsResponse.fromMap((map['objectConditions'] as Map).cast<String, dynamic>()),
-      posixDataSink: PosixFilesystemResponse.fromMap((map['posixDataSink'] as Map).cast<String, dynamic>()),
-      posixDataSource: PosixFilesystemResponse.fromMap((map['posixDataSource'] as Map).cast<String, dynamic>()),
+      awsS3CompatibleDataSource: AwsS3CompatibleDataResponse.fromMap(
+        (map['awsS3CompatibleDataSource'] as Map).cast<String, dynamic>(),
+      ),
+      awsS3DataSource: AwsS3DataResponse.fromMap(
+        (map['awsS3DataSource'] as Map).cast<String, dynamic>(),
+      ),
+      azureBlobStorageDataSource: AzureBlobStorageDataResponse.fromMap(
+        (map['azureBlobStorageDataSource'] as Map).cast<String, dynamic>(),
+      ),
+      gcsDataSink: GcsDataResponse.fromMap(
+        (map['gcsDataSink'] as Map).cast<String, dynamic>(),
+      ),
+      gcsDataSource: GcsDataResponse.fromMap(
+        (map['gcsDataSource'] as Map).cast<String, dynamic>(),
+      ),
+      gcsIntermediateDataLocation: GcsDataResponse.fromMap(
+        (map['gcsIntermediateDataLocation'] as Map).cast<String, dynamic>(),
+      ),
+      httpDataSource: HttpDataResponse.fromMap(
+        (map['httpDataSource'] as Map).cast<String, dynamic>(),
+      ),
+      objectConditions: ObjectConditionsResponse.fromMap(
+        (map['objectConditions'] as Map).cast<String, dynamic>(),
+      ),
+      posixDataSink: PosixFilesystemResponse.fromMap(
+        (map['posixDataSink'] as Map).cast<String, dynamic>(),
+      ),
+      posixDataSource: PosixFilesystemResponse.fromMap(
+        (map['posixDataSource'] as Map).cast<String, dynamic>(),
+      ),
       sinkAgentPoolName: map['sinkAgentPoolName'] as String,
       sourceAgentPoolName: map['sourceAgentPoolName'] as String,
-      transferManifest: TransferManifestResponse.fromMap((map['transferManifest'] as Map).cast<String, dynamic>()),
-      transferOptions: TransferOptionsResponse.fromMap((map['transferOptions'] as Map).cast<String, dynamic>()),
+      transferManifest: TransferManifestResponse.fromMap(
+        (map['transferManifest'] as Map).cast<String, dynamic>(),
+      ),
+      transferOptions: TransferOptionsResponse.fromMap(
+        (map['transferOptions'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

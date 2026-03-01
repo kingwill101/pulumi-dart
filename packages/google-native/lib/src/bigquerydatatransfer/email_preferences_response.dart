@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents preferences for sending email notifications for transfer run events.
 class EmailPreferencesResponse {
   /// If true, email notifications will be sent on transfer run failures.
@@ -8,14 +7,10 @@ class EmailPreferencesResponse {
 
   /// Creates a new [EmailPreferencesResponse].
   /// [enableFailureEmail] If true, email notifications will be sent on transfer run failures.
-  EmailPreferencesResponse({
-    required this.enableFailureEmail,
-  });
+  EmailPreferencesResponse({required this.enableFailureEmail});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableFailureEmail': enableFailureEmail,
-    };
+    return <String, dynamic>{'enableFailureEmail': enableFailureEmail};
   }
 
   factory EmailPreferencesResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class EmailPreferencesResponse {
     );
   }
 }
-

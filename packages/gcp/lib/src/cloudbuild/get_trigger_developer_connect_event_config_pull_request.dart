@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTriggerDeveloperConnectEventConfigPullRequest {
   /// Regex of branches to match.
   final String branch;
+
   /// Configure builds to run whether a repository owner or collaborator need to comment '/gcbrun'. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
   final String commentControl;
+
   /// If true, branches that do NOT match the git_ref will trigger a build.
   final bool invertRegex;
 
@@ -27,7 +28,9 @@ class GetTriggerDeveloperConnectEventConfigPullRequest {
     };
   }
 
-  factory GetTriggerDeveloperConnectEventConfigPullRequest.fromMap(Map<String, dynamic> map) {
+  factory GetTriggerDeveloperConnectEventConfigPullRequest.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTriggerDeveloperConnectEventConfigPullRequest(
       branch: map['branch'] as String,
       commentControl: map['commentControl'] as String,
@@ -35,4 +38,3 @@ class GetTriggerDeveloperConnectEventConfigPullRequest {
     );
   }
 }
-

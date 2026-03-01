@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GroupAdditionalGroupKey {
   /// (Output)
   /// The ID of the entity.
@@ -10,6 +9,7 @@ class GroupAdditionalGroupKey {
   /// to the Identity Source's requirements.
   /// Must be unique within a namespace.
   final String? id;
+
   /// (Output)
   /// The namespace in which the entity exists.
   /// If not specified, the EntityKey represents a Google-managed entity
@@ -22,16 +22,10 @@ class GroupAdditionalGroupKey {
   /// Creates a new [GroupAdditionalGroupKey].
   /// [id] (Output)
   /// [namespace] (Output)
-  GroupAdditionalGroupKey({
-    this.id,
-    this.namespace,
-  });
+  GroupAdditionalGroupKey({this.id, this.namespace});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'namespace': ?namespace,
-    };
+    return <String, dynamic>{'id': ?id, 'namespace': ?namespace};
   }
 
   factory GroupAdditionalGroupKey.fromMap(Map<String, dynamic> map) {
@@ -41,4 +35,3 @@ class GroupAdditionalGroupKey {
     );
   }
 }
-

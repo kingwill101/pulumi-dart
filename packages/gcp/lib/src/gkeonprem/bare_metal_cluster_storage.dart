@@ -9,6 +9,7 @@ class BareMetalClusterStorage {
   /// user, which can be done before or after cluster creation.
   /// Structure is documented below.
   final BareMetalClusterStorageLvpNodeMountsConfig lvpNodeMountsConfig;
+
   /// Specifies the config for local PersistentVolumes backed by
   /// subdirectories in a shared filesystem. These subdirectores are
   /// automatically created during cluster creation.
@@ -32,9 +33,12 @@ class BareMetalClusterStorage {
 
   factory BareMetalClusterStorage.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterStorage(
-      lvpNodeMountsConfig: BareMetalClusterStorageLvpNodeMountsConfig.fromMap((map['lvpNodeMountsConfig'] as Map).cast<String, dynamic>()),
-      lvpShareConfig: BareMetalClusterStorageLvpShareConfig.fromMap((map['lvpShareConfig'] as Map).cast<String, dynamic>()),
+      lvpNodeMountsConfig: BareMetalClusterStorageLvpNodeMountsConfig.fromMap(
+        (map['lvpNodeMountsConfig'] as Map).cast<String, dynamic>(),
+      ),
+      lvpShareConfig: BareMetalClusterStorageLvpShareConfig.fromMap(
+        (map['lvpShareConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

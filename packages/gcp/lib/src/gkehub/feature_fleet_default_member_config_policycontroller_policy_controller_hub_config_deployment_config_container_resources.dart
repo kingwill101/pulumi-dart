@@ -6,10 +6,13 @@ import 'feature_fleet_default_member_config_policycontroller_policy_controller_h
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources {
   /// Limits describes the maximum amount of compute resources allowed for use by the running container.
   /// Structure is documented below.
-  final FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits? limits;
+  final FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits?
+  limits;
+
   /// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
   /// Structure is documented below.
-  final FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests? requests;
+  final FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests?
+  requests;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources].
   /// [limits] Limits describes the maximum amount of compute resources allowed for use by the running container.
@@ -26,11 +29,20 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
     };
   }
 
-  factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap(Map<String, dynamic> map) {
+  factory FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources(
-      limits: map['limits'] == null ? null : FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits.fromMap((map['limits'] as Map).cast<String, dynamic>()),
-      requests: map['requests'] == null ? null : FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests.fromMap((map['requests'] as Map).cast<String, dynamic>()),
+      limits: map['limits'] == null
+          ? null
+          : FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits.fromMap(
+              (map['limits'] as Map).cast<String, dynamic>(),
+            ),
+      requests: map['requests'] == null
+          ? null
+          : FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests.fromMap(
+              (map['requests'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

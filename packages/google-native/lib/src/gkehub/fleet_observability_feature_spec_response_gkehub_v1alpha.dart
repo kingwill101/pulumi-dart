@@ -14,15 +14,17 @@ class FleetObservabilityFeatureSpecResponseGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'loggingConfig': loggingConfig.toMap(),
-    };
+    return <String, dynamic>{'loggingConfig': loggingConfig.toMap()};
   }
 
-  factory FleetObservabilityFeatureSpecResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFeatureSpecResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFeatureSpecResponseGkehubV1alpha(
-      loggingConfig: FleetObservabilityLoggingConfigResponseGkehubV1alpha.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig:
+          FleetObservabilityLoggingConfigResponseGkehubV1alpha.fromMap(
+            (map['loggingConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

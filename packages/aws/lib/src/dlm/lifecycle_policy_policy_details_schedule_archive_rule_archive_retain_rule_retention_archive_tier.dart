@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier {
   final int? count;
   final int? interval;
@@ -24,12 +23,15 @@ class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionA
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier.fromMap(Map<String, dynamic> map) {
+  factory LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier(
       count: map['count'] == null ? null : map['count'] as int,
       interval: map['interval'] == null ? null : map['interval'] as int,
-      intervalUnit: map['intervalUnit'] == null ? null : map['intervalUnit'] as String,
+      intervalUnit: map['intervalUnit'] == null
+          ? null
+          : map['intervalUnit'] as String,
     );
   }
 }
-

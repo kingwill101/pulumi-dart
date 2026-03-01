@@ -7,10 +7,13 @@ import 'push_filter.dart';
 class GitLabEventsConfig {
   /// The GitLab config resource that this trigger config maps to.
   final String? gitlabConfigResource;
+
   /// Namespace of the GitLab project.
   final String? projectNamespace;
+
   /// Filter to match changes in pull requests.
   final PullRequestFilter? pullRequest;
+
   /// Filter to match changes in refs like branches, tags.
   final PushFilter? push;
 
@@ -37,11 +40,20 @@ class GitLabEventsConfig {
 
   factory GitLabEventsConfig.fromMap(Map<String, dynamic> map) {
     return GitLabEventsConfig(
-      gitlabConfigResource: map['gitlabConfigResource'] == null ? null : map['gitlabConfigResource'] as String,
-      projectNamespace: map['projectNamespace'] == null ? null : map['projectNamespace'] as String,
-      pullRequest: map['pullRequest'] == null ? null : PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: map['push'] == null ? null : PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>()),
+      gitlabConfigResource: map['gitlabConfigResource'] == null
+          ? null
+          : map['gitlabConfigResource'] as String,
+      projectNamespace: map['projectNamespace'] == null
+          ? null
+          : map['projectNamespace'] as String,
+      pullRequest: map['pullRequest'] == null
+          ? null
+          : PullRequestFilter.fromMap(
+              (map['pullRequest'] as Map).cast<String, dynamic>(),
+            ),
+      push: map['push'] == null
+          ? null
+          : PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

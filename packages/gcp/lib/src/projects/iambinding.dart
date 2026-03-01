@@ -2005,8 +2005,10 @@ class IAMBinding extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<IAMBindingCondition?> condition;
+
   /// (Computed) The etag of the project's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
   /// Each entry can have one of the following values:
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
@@ -2014,9 +2016,11 @@ class IAMBinding extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<List<String>> members;
+
   /// The project id of the target project. This is not
   /// inferred from the provider.
   late final pulumi.Output<String> project;
+
   /// The role that should be applied. Only one
   /// `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -2031,11 +2035,11 @@ class IAMBinding extends pulumi.CustomResource {
     IAMBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/iAMBinding:IAMBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:projects/iAMBinding:IAMBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.condition = registerOutput<IAMBindingCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.members = registerOutput<List<String>>('members');

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDomainLogPublishingOption {
   /// CloudWatch Log Group where the logs are published.
   final String cloudwatchLogGroupArn;
+
   /// Enabled disabled toggle for off-peak update window
   final bool enabled;
+
   /// Type of OpenSearch log being published.
   final String logType;
 
@@ -35,4 +36,3 @@ class GetDomainLogPublishingOption {
     );
   }
 }
-

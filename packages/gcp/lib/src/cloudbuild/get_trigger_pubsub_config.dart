@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTriggerPubsubConfig {
   /// Service account that will make the push request.
   final String serviceAccountEmail;
+
   /// Potential issues with the underlying Pub/Sub subscription configuration.
   /// Only populated on get requests.
   final String state;
+
   /// Output only. Name of the subscription.
   final String subscription;
+
   /// The name of the topic from which this subscription is receiving messages.
   final String topic;
 
@@ -42,4 +44,3 @@ class GetTriggerPubsubConfig {
     );
   }
 }
-

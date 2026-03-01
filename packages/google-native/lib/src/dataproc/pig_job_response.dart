@@ -7,16 +7,22 @@ import 'query_list_response.dart';
 class PigJobResponse {
   /// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
   final bool continueOnFailure;
+
   /// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
   final List<String> jarFileUris;
+
   /// Optional. The runtime log config for job execution.
   final LoggingConfigResponse loggingConfig;
+
   /// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
   final Map<String, String> properties;
+
   /// The HCFS URI of the script that contains the Pig queries.
   final String queryFileUri;
+
   /// A list of queries.
   final QueryListResponse queryList;
+
   /// Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
   final Map<String, String> scriptVariables;
 
@@ -54,12 +60,15 @@ class PigJobResponse {
     return PigJobResponse(
       continueOnFailure: map['continueOnFailure'] as bool,
       jarFileUris: (map['jarFileUris'] as List).cast<String>(),
-      loggingConfig: LoggingConfigResponse.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: LoggingConfigResponse.fromMap(
+        (map['loggingConfig'] as Map).cast<String, dynamic>(),
+      ),
       properties: (map['properties'] as Map).cast<String, String>(),
       queryFileUri: map['queryFileUri'] as String,
-      queryList: QueryListResponse.fromMap((map['queryList'] as Map).cast<String, dynamic>()),
+      queryList: QueryListResponse.fromMap(
+        (map['queryList'] as Map).cast<String, dynamic>(),
+      ),
       scriptVariables: (map['scriptVariables'] as Map).cast<String, String>(),
     );
   }
 }
-

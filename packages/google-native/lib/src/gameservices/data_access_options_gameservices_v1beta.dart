@@ -8,9 +8,7 @@ class DataAccessOptionsGameservicesV1beta {
 
   /// Creates a new [DataAccessOptionsGameservicesV1beta].
   /// [logMode] Optional.
-  DataAccessOptionsGameservicesV1beta({
-    this.logMode,
-  });
+  DataAccessOptionsGameservicesV1beta({this.logMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,10 +16,15 @@ class DataAccessOptionsGameservicesV1beta {
     };
   }
 
-  factory DataAccessOptionsGameservicesV1beta.fromMap(Map<String, dynamic> map) {
+  factory DataAccessOptionsGameservicesV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataAccessOptionsGameservicesV1beta(
-      logMode: map['logMode'] == null ? null : DataAccessOptionsLogModeGameservicesV1beta.fromValue(map['logMode'] as String),
+      logMode: map['logMode'] == null
+          ? null
+          : DataAccessOptionsLogModeGameservicesV1beta.fromValue(
+              map['logMode'] as String,
+            ),
     );
   }
 }
-

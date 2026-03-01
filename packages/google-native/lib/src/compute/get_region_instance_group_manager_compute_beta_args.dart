@@ -19,10 +19,11 @@ class GetRegionInstanceGroupManagerComputeBetaArgs {
     required String instanceGroupManager,
     String? project,
     required String region,
-  }) :
-      instanceGroupManager = pulumi.Input.asInput<String>(instanceGroupManager),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : instanceGroupManager = pulumi.Input.asInput<String>(
+         instanceGroupManager,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +33,9 @@ class GetRegionInstanceGroupManagerComputeBetaArgs {
     };
   }
 
-  factory GetRegionInstanceGroupManagerComputeBetaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetRegionInstanceGroupManagerComputeBetaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionInstanceGroupManagerComputeBetaArgs(
       instanceGroupManager: map['instanceGroupManager'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +43,3 @@ class GetRegionInstanceGroupManagerComputeBetaArgs {
     );
   }
 }
-

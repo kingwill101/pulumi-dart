@@ -16,14 +16,27 @@ class GooglePrivacyDlpV2InfoTypeTransformationsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'transformations': pulumi.Input.encodeList<GooglePrivacyDlpV2InfoTypeTransformationResponse, Map<String, dynamic>>(transformations, (value) => value.toMap()),
+      'transformations':
+          pulumi.Input.encodeList<
+            GooglePrivacyDlpV2InfoTypeTransformationResponse,
+            Map<String, dynamic>
+          >(transformations, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2InfoTypeTransformationsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InfoTypeTransformationsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2InfoTypeTransformationsResponse(
-      transformations: pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeTransformationResponse>(map['transformations'], (value) => GooglePrivacyDlpV2InfoTypeTransformationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      transformations:
+          pulumi.Input.decodeList<
+            GooglePrivacyDlpV2InfoTypeTransformationResponse
+          >(
+            map['transformations'],
+            (value) => GooglePrivacyDlpV2InfoTypeTransformationResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

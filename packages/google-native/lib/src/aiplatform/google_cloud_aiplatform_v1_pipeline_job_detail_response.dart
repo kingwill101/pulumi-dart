@@ -8,8 +8,10 @@ import 'google_cloud_aiplatform_v1_pipeline_task_detail_response.dart';
 class GoogleCloudAiplatformV1PipelineJobDetailResponse {
   /// The context of the pipeline.
   final GoogleCloudAiplatformV1ContextResponse pipelineContext;
+
   /// The context of the current pipeline run.
   final GoogleCloudAiplatformV1ContextResponse pipelineRunContext;
+
   /// The runtime details of the tasks under the pipeline.
   final List<GoogleCloudAiplatformV1PipelineTaskDetailResponse> taskDetails;
 
@@ -27,16 +29,34 @@ class GoogleCloudAiplatformV1PipelineJobDetailResponse {
     return <String, dynamic>{
       'pipelineContext': pipelineContext.toMap(),
       'pipelineRunContext': pipelineRunContext.toMap(),
-      'taskDetails': pulumi.Input.encodeList<GoogleCloudAiplatformV1PipelineTaskDetailResponse, Map<String, dynamic>>(taskDetails, (value) => value.toMap()),
+      'taskDetails':
+          pulumi.Input.encodeList<
+            GoogleCloudAiplatformV1PipelineTaskDetailResponse,
+            Map<String, dynamic>
+          >(taskDetails, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudAiplatformV1PipelineJobDetailResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1PipelineJobDetailResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1PipelineJobDetailResponse(
-      pipelineContext: GoogleCloudAiplatformV1ContextResponse.fromMap((map['pipelineContext'] as Map).cast<String, dynamic>()),
-      pipelineRunContext: GoogleCloudAiplatformV1ContextResponse.fromMap((map['pipelineRunContext'] as Map).cast<String, dynamic>()),
-      taskDetails: pulumi.Input.decodeList<GoogleCloudAiplatformV1PipelineTaskDetailResponse>(map['taskDetails'], (value) => GoogleCloudAiplatformV1PipelineTaskDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
+      pipelineContext: GoogleCloudAiplatformV1ContextResponse.fromMap(
+        (map['pipelineContext'] as Map).cast<String, dynamic>(),
+      ),
+      pipelineRunContext: GoogleCloudAiplatformV1ContextResponse.fromMap(
+        (map['pipelineRunContext'] as Map).cast<String, dynamic>(),
+      ),
+      taskDetails:
+          pulumi.Input.decodeList<
+            GoogleCloudAiplatformV1PipelineTaskDetailResponse
+          >(
+            map['taskDetails'],
+            (value) =>
+                GoogleCloudAiplatformV1PipelineTaskDetailResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

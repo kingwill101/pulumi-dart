@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketAccelerateConfigurationV2Args {
   /// Name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Transfer acceleration state of the bucket. Valid values: `Enabled`, `Suspended`.
   final pulumi.Input<String> status;
 
@@ -26,11 +29,12 @@ class BucketAccelerateConfigurationV2Args {
     String? expectedBucketOwner,
     String? region,
     required String status,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      status = pulumi.Input.asInput<String>(status);
+  }) : bucket = pulumi.Input.asInput<String>(bucket),
+       expectedBucketOwner = pulumi.Input.asOptionalInput<String>(
+         expectedBucketOwner,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       status = pulumi.Input.asInput<String>(status);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,13 +45,16 @@ class BucketAccelerateConfigurationV2Args {
     };
   }
 
-  factory BucketAccelerateConfigurationV2Args.fromMap(Map<String, dynamic> map) {
+  factory BucketAccelerateConfigurationV2Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketAccelerateConfigurationV2Args(
       bucket: map['bucket'] as String,
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : map['expectedBucketOwner'] as String,
+      expectedBucketOwner: map['expectedBucketOwner'] == null
+          ? null
+          : map['expectedBucketOwner'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       status: map['status'] as String,
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'time_span_response.dart';
 class UploadedNpmPackageResponse {
   /// Hash types and values of the npm package.
   final FileHashesResponse fileHashes;
+
   /// Stores timing information for pushing the specified artifact.
   final TimeSpanResponse pushTiming;
+
   /// URI of the uploaded npm package.
   final String uri;
 
@@ -32,10 +34,13 @@ class UploadedNpmPackageResponse {
 
   factory UploadedNpmPackageResponse.fromMap(Map<String, dynamic> map) {
     return UploadedNpmPackageResponse(
-      fileHashes: FileHashesResponse.fromMap((map['fileHashes'] as Map).cast<String, dynamic>()),
-      pushTiming: TimeSpanResponse.fromMap((map['pushTiming'] as Map).cast<String, dynamic>()),
+      fileHashes: FileHashesResponse.fromMap(
+        (map['fileHashes'] as Map).cast<String, dynamic>(),
+      ),
+      pushTiming: TimeSpanResponse.fromMap(
+        (map['pushTiming'] as Map).cast<String, dynamic>(),
+      ),
       uri: map['uri'] as String,
     );
   }
 }
-

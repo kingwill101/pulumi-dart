@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError {
   /// (Output)
   /// The status code, which should be an enum value of google.rpc.Code.
   final int? code;
+
   /// (Output)
   /// A list of messages that carry the error details.
   final String? details;
+
   /// (Output)
   /// A developer-facing error message, which should be in English. Any
   /// user-facing error message should be localized and sent in the
@@ -32,7 +33,9 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError {
     };
   }
 
-  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError.fromMap(Map<String, dynamic> map) {
+  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError(
       code: map['code'] == null ? null : map['code'] as int,
       details: map['details'] == null ? null : map['details'] as String,
@@ -40,4 +43,3 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError {
     );
   }
 }
-

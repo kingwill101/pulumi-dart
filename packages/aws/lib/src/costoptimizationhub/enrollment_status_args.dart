@@ -12,21 +12,20 @@ class EnrollmentStatusArgs {
 
   /// Creates a new [EnrollmentStatusArgs].
   /// [includeMemberAccounts] Flag to enroll member accounts of the organization if the account is the management account. No drift detection is currently supported for this argument. Default value is `false`.
-  EnrollmentStatusArgs({
-    bool? includeMemberAccounts,
-  }) :
-      includeMemberAccounts = pulumi.Input.asOptionalInput<bool>(includeMemberAccounts);
+  EnrollmentStatusArgs({bool? includeMemberAccounts})
+    : includeMemberAccounts = pulumi.Input.asOptionalInput<bool>(
+        includeMemberAccounts,
+      );
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'includeMemberAccounts': ?includeMemberAccounts,
-    };
+    return <String, dynamic>{'includeMemberAccounts': ?includeMemberAccounts};
   }
 
   factory EnrollmentStatusArgs.fromMap(Map<String, dynamic> map) {
     return EnrollmentStatusArgs(
-      includeMemberAccounts: map['includeMemberAccounts'] == null ? null : map['includeMemberAccounts'] as bool,
+      includeMemberAccounts: map['includeMemberAccounts'] == null
+          ? null
+          : map['includeMemberAccounts'] as bool,
     );
   }
 }
-

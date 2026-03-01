@@ -9,9 +9,7 @@ class QueryContentResponse {
 
   /// Creates a new [QueryContentResponse].
   /// [iamPolicyAnalysisQuery] An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.
-  QueryContentResponse({
-    required this.iamPolicyAnalysisQuery,
-  });
+  QueryContentResponse({required this.iamPolicyAnalysisQuery});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class QueryContentResponse {
 
   factory QueryContentResponse.fromMap(Map<String, dynamic> map) {
     return QueryContentResponse(
-      iamPolicyAnalysisQuery: IamPolicyAnalysisQueryResponse.fromMap((map['iamPolicyAnalysisQuery'] as Map).cast<String, dynamic>()),
+      iamPolicyAnalysisQuery: IamPolicyAnalysisQueryResponse.fromMap(
+        (map['iamPolicyAnalysisQuery'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

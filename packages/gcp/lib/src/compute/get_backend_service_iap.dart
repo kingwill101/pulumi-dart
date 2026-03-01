@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetBackendServiceIap {
   /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
   final bool enabled;
+
   /// OAuth2 Client ID for IAP
   final String oauth2ClientId;
+
   /// OAuth2 Client Secret for IAP
   final String oauth2ClientSecret;
+
   /// OAuth2 Client Secret SHA-256 for IAP
   final String oauth2ClientSecretSha256;
 
@@ -41,4 +43,3 @@ class GetBackendServiceIap {
     );
   }
 }
-

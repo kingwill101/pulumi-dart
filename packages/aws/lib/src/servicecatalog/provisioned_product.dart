@@ -174,58 +174,86 @@ import 'provisioned_product_stack_set_provisioning_preferences.dart';
 class ProvisionedProduct extends pulumi.CustomResource {
   /// Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   late final pulumi.Output<String?> acceptLanguage;
+
   /// ARN of the provisioned product.
   late final pulumi.Output<String> arn;
+
   /// Set of CloudWatch dashboards that were created when provisioning the product.
   late final pulumi.Output<List<String>> cloudwatchDashboardNames;
+
   /// Time when the provisioned product was created.
   late final pulumi.Output<String> createdTime;
+
   /// _Only applies to deleting._ If set to `true`, AWS Service Catalog stops managing the specified provisioned product even if it cannot delete the underlying resources. The default value is `false`.
   late final pulumi.Output<bool?> ignoreErrors;
+
   /// Record identifier of the last request performed on this provisioned product of the following types: `ProvisionedProduct`, `UpdateProvisionedProduct`, `ExecuteProvisionedProductPlan`, `TerminateProvisionedProduct`.
   late final pulumi.Output<String> lastProvisioningRecordId;
+
   /// Record identifier of the last request performed on this provisioned product.
   late final pulumi.Output<String> lastRecordId;
+
   /// Record identifier of the last successful request performed on this provisioned product of the following types: `ProvisionedProduct`, `UpdateProvisionedProduct`, `ExecuteProvisionedProductPlan`, `TerminateProvisionedProduct`.
   late final pulumi.Output<String> lastSuccessfulProvisioningRecordId;
+
   /// ARN of the launch role associated with the provisioned product.
   late final pulumi.Output<String> launchRoleArn;
+
   /// User-friendly name of the provisioned product.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.
   late final pulumi.Output<List<String>?> notificationArns;
+
   /// The set of outputs for the product created.
   late final pulumi.Output<List<ProvisionedProductOutput>> outputs;
+
   /// Path identifier of the product. This value is optional if the product has a default path, and required if the product has more than one path. To list the paths for a product, use `aws.servicecatalog.getLaunchPaths`. When required, you must provide `path_id` or `path_name`, but not both.
   late final pulumi.Output<String> pathId;
+
   /// Name of the path. You must provide `path_id` or `path_name`, but not both.
   late final pulumi.Output<String?> pathName;
+
   /// Product identifier. For example, `prod-abcdzk7xy33qa`. You must provide `product_id` or `product_name`, but not both.
   late final pulumi.Output<String> productId;
+
   /// Name of the product. You must provide `product_id` or `product_name`, but not both.
   late final pulumi.Output<String?> productName;
+
   /// Identifier of the provisioning artifact. For example, `pa-4abcdjnxjj6ne`. You must provide the `provisioning_artifact_id` or `provisioning_artifact_name`, but not both.
   late final pulumi.Output<String> provisioningArtifactId;
+
   /// Name of the provisioning artifact. You must provide the `provisioning_artifact_id` or `provisioning_artifact_name`, but not both.
   late final pulumi.Output<String?> provisioningArtifactName;
+
   /// Configuration block with parameters specified by the administrator that are required for provisioning the product. See `provisioning_parameters` Block for details.
-  late final pulumi.Output<List<ProvisionedProductProvisioningParameter>?> provisioningParameters;
+  late final pulumi.Output<List<ProvisionedProductProvisioningParameter>?>
+  provisioningParameters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// _Only applies to deleting._ Whether to delete the Service Catalog provisioned product but leave the CloudFormation stack, stack set, or the underlying resources of the deleted provisioned product. The default value is `false`.
   late final pulumi.Output<bool?> retainPhysicalResources;
+
   /// Configuration block with information about the provisioning preferences for a stack set. See `stack_set_provisioning_preferences` Block for details.
-  late final pulumi.Output<ProvisionedProductStackSetProvisioningPreferences?> stackSetProvisioningPreferences;
+  late final pulumi.Output<ProvisionedProductStackSetProvisioningPreferences?>
+  stackSetProvisioningPreferences;
+
   /// Current status of the provisioned product. See meanings below.
   late final pulumi.Output<String> status;
+
   /// Current status message of the provisioned product.
   late final pulumi.Output<String> statusMessage;
+
   /// Tags to apply to the provisioned product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Type of provisioned product. Valid values are `CFN_STACK` and `CFN_STACKSET`.
   late final pulumi.Output<String> type;
 
@@ -238,19 +266,25 @@ class ProvisionedProduct extends pulumi.CustomResource {
     ProvisionedProductArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:servicecatalog/provisionedProduct:ProvisionedProduct',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:servicecatalog/provisionedProduct:ProvisionedProduct',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.acceptLanguage = registerOutput<String?>('acceptLanguage');
     this.arn = registerOutput<String>('arn');
-    this.cloudwatchDashboardNames = registerOutput<List<String>>('cloudwatchDashboardNames');
+    this.cloudwatchDashboardNames = registerOutput<List<String>>(
+      'cloudwatchDashboardNames',
+    );
     this.createdTime = registerOutput<String>('createdTime');
     this.ignoreErrors = registerOutput<bool?>('ignoreErrors');
-    this.lastProvisioningRecordId = registerOutput<String>('lastProvisioningRecordId');
+    this.lastProvisioningRecordId = registerOutput<String>(
+      'lastProvisioningRecordId',
+    );
     this.lastRecordId = registerOutput<String>('lastRecordId');
-    this.lastSuccessfulProvisioningRecordId = registerOutput<String>('lastSuccessfulProvisioningRecordId');
+    this.lastSuccessfulProvisioningRecordId = registerOutput<String>(
+      'lastSuccessfulProvisioningRecordId',
+    );
     this.launchRoleArn = registerOutput<String>('launchRoleArn');
     this.name = registerOutput<String>('name');
     this.notificationArns = registerOutput<List<String>?>('notificationArns');
@@ -259,12 +293,24 @@ class ProvisionedProduct extends pulumi.CustomResource {
     this.pathName = registerOutput<String?>('pathName');
     this.productId = registerOutput<String>('productId');
     this.productName = registerOutput<String?>('productName');
-    this.provisioningArtifactId = registerOutput<String>('provisioningArtifactId');
-    this.provisioningArtifactName = registerOutput<String?>('provisioningArtifactName');
-    this.provisioningParameters = registerOutput<List<ProvisionedProductProvisioningParameter>?>('provisioningParameters');
+    this.provisioningArtifactId = registerOutput<String>(
+      'provisioningArtifactId',
+    );
+    this.provisioningArtifactName = registerOutput<String?>(
+      'provisioningArtifactName',
+    );
+    this.provisioningParameters =
+        registerOutput<List<ProvisionedProductProvisioningParameter>?>(
+          'provisioningParameters',
+        );
     this.region = registerOutput<String>('region');
-    this.retainPhysicalResources = registerOutput<bool?>('retainPhysicalResources');
-    this.stackSetProvisioningPreferences = registerOutput<ProvisionedProductStackSetProvisioningPreferences?>('stackSetProvisioningPreferences');
+    this.retainPhysicalResources = registerOutput<bool?>(
+      'retainPhysicalResources',
+    );
+    this.stackSetProvisioningPreferences =
+        registerOutput<ProvisionedProductStackSetProvisioningPreferences?>(
+          'stackSetProvisioningPreferences',
+        );
     this.status = registerOutput<String>('status');
     this.statusMessage = registerOutput<String>('statusMessage');
     this.tags = registerOutput<Map<String, String>?>('tags');

@@ -6,16 +6,14 @@ import 'contacts_rotation_recurrence_shift_coverage_coverage_time_start.dart';
 class ContactsRotationRecurrenceShiftCoverageCoverageTime {
   /// (Required) The end time of the on-call shift. See Hand Off Time for more details.
   final ContactsRotationRecurrenceShiftCoverageCoverageTimeEnd? end;
+
   /// (Required) The start time of the on-call shift. See Hand Off Time for more details.
   final ContactsRotationRecurrenceShiftCoverageCoverageTimeStart? start;
 
   /// Creates a new [ContactsRotationRecurrenceShiftCoverageCoverageTime].
   /// [end] (Required) The end time of the on-call shift. See Hand Off Time for more details.
   /// [start] (Required) The start time of the on-call shift. See Hand Off Time for more details.
-  ContactsRotationRecurrenceShiftCoverageCoverageTime({
-    this.end,
-    this.start,
-  });
+  ContactsRotationRecurrenceShiftCoverageCoverageTime({this.end, this.start});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class ContactsRotationRecurrenceShiftCoverageCoverageTime {
     };
   }
 
-  factory ContactsRotationRecurrenceShiftCoverageCoverageTime.fromMap(Map<String, dynamic> map) {
+  factory ContactsRotationRecurrenceShiftCoverageCoverageTime.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContactsRotationRecurrenceShiftCoverageCoverageTime(
-      end: map['end'] == null ? null : ContactsRotationRecurrenceShiftCoverageCoverageTimeEnd.fromMap((map['end'] as Map).cast<String, dynamic>()),
-      start: map['start'] == null ? null : ContactsRotationRecurrenceShiftCoverageCoverageTimeStart.fromMap((map['start'] as Map).cast<String, dynamic>()),
+      end: map['end'] == null
+          ? null
+          : ContactsRotationRecurrenceShiftCoverageCoverageTimeEnd.fromMap(
+              (map['end'] as Map).cast<String, dynamic>(),
+            ),
+      start: map['start'] == null
+          ? null
+          : ContactsRotationRecurrenceShiftCoverageCoverageTimeStart.fromMap(
+              (map['start'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

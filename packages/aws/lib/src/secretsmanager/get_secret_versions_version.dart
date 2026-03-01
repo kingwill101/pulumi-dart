@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetSecretVersionsVersion {
   /// Date and time this version of the secret was created.
   final String createdTime;
+
   /// Date that this version of the secret was last accessed.
   final String lastAccessedDate;
+
   /// Unique version identifier of this version of the secret.
   final String versionId;
+
   /// List of staging labels attached to the version.
   final List<String> versionStages;
 
@@ -41,4 +43,3 @@ class GetSecretVersionsVersion {
     );
   }
 }
-

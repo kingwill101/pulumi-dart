@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetVirtualNodeSpecServiceDiscoveryDn {
   final String hostname;
   final String ipPreference;
@@ -24,7 +23,9 @@ class GetVirtualNodeSpecServiceDiscoveryDn {
     };
   }
 
-  factory GetVirtualNodeSpecServiceDiscoveryDn.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecServiceDiscoveryDn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecServiceDiscoveryDn(
       hostname: map['hostname'] as String,
       ipPreference: map['ipPreference'] as String,
@@ -32,4 +33,3 @@ class GetVirtualNodeSpecServiceDiscoveryDn {
     );
   }
 }
-

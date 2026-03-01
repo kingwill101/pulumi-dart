@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class JobQueryDestinationTable {
   /// The ID of the dataset containing this table.
   final String? datasetId;
+
   /// The ID of the project containing this table.
   final String? projectId;
+
   /// The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` if not.
   final String tableId;
@@ -36,4 +37,3 @@ class JobQueryDestinationTable {
     );
   }
 }
-

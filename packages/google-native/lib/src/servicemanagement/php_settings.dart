@@ -9,9 +9,7 @@ class PhpSettings {
 
   /// Creates a new [PhpSettings].
   /// [common] Some settings.
-  PhpSettings({
-    this.common,
-  });
+  PhpSettings({this.common});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class PhpSettings {
 
   factory PhpSettings.fromMap(Map<String, dynamic> map) {
     return PhpSettings(
-      common: map['common'] == null ? null : CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: map['common'] == null
+          ? null
+          : CommonLanguageSettings.fromMap(
+              (map['common'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

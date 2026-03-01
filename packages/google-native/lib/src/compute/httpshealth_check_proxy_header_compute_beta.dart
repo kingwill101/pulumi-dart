@@ -12,7 +12,8 @@ enum HTTPSHealthCheckProxyHeaderComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown HTTPSHealthCheckProxyHeaderComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown HTTPSHealthCheckProxyHeaderComputeBeta value: $value',
+    );
   }
 }
-

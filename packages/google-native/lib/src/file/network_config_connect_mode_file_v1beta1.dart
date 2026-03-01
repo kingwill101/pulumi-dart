@@ -13,7 +13,8 @@ enum NetworkConfigConnectModeFileV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkConfigConnectModeFileV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown NetworkConfigConnectModeFileV1beta1 value: $value',
+    );
   }
 }
-

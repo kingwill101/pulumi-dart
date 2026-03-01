@@ -22,11 +22,10 @@ class GetImportDataFileArgs {
     required String importJobId,
     required String location,
     String? project,
-  }) :
-      importDataFileId = pulumi.Input.asInput<String>(importDataFileId),
-      importJobId = pulumi.Input.asInput<String>(importJobId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : importDataFileId = pulumi.Input.asInput<String>(importDataFileId),
+       importJobId = pulumi.Input.asInput<String>(importJobId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetImportDataFileArgs {
     );
   }
 }
-

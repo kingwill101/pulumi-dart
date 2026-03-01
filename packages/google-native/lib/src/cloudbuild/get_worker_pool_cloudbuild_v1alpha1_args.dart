@@ -16,22 +16,19 @@ class GetWorkerPoolCloudbuildV1alpha1Args {
   GetWorkerPoolCloudbuildV1alpha1Args({
     String? project,
     required String workerPoolId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workerPoolId = pulumi.Input.asInput<String>(workerPoolId);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       workerPoolId = pulumi.Input.asInput<String>(workerPoolId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'workerPoolId': workerPoolId,
-    };
+    return <String, dynamic>{'project': ?project, 'workerPoolId': workerPoolId};
   }
 
-  factory GetWorkerPoolCloudbuildV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetWorkerPoolCloudbuildV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkerPoolCloudbuildV1alpha1Args(
       project: map['project'] == null ? null : map['project'] as String,
       workerPoolId: map['workerPoolId'] as String,
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetIndexIndexStatisticTextDocumentStatistic {
   /// Total size, in bytes, of the indexed documents.
   final int indexedTextBytes;
+
   /// The number of text documents indexed.
   final int indexedTextDocumentsCount;
 
@@ -22,11 +22,12 @@ class GetIndexIndexStatisticTextDocumentStatistic {
     };
   }
 
-  factory GetIndexIndexStatisticTextDocumentStatistic.fromMap(Map<String, dynamic> map) {
+  factory GetIndexIndexStatisticTextDocumentStatistic.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIndexIndexStatisticTextDocumentStatistic(
       indexedTextBytes: map['indexedTextBytes'] as int,
       indexedTextDocumentsCount: map['indexedTextDocumentsCount'] as int,
     );
   }
 }
-

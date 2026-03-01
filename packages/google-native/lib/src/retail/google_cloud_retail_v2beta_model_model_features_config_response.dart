@@ -5,7 +5,8 @@ import 'google_cloud_retail_v2beta_model_frequently_bought_together_features_con
 /// Additional model features config.
 class GoogleCloudRetailV2betaModelModelFeaturesConfigResponse {
   /// Additional configs for frequently-bought-together models.
-  final GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse frequentlyBoughtTogetherConfig;
+  final GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse
+  frequentlyBoughtTogetherConfig;
 
   /// Creates a new [GoogleCloudRetailV2betaModelModelFeaturesConfigResponse].
   /// [frequentlyBoughtTogetherConfig] Additional configs for frequently-bought-together models.
@@ -19,10 +20,15 @@ class GoogleCloudRetailV2betaModelModelFeaturesConfigResponse {
     };
   }
 
-  factory GoogleCloudRetailV2betaModelModelFeaturesConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2betaModelModelFeaturesConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2betaModelModelFeaturesConfigResponse(
-      frequentlyBoughtTogetherConfig: GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse.fromMap((map['frequentlyBoughtTogetherConfig'] as Map).cast<String, dynamic>()),
+      frequentlyBoughtTogetherConfig:
+          GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfigResponse.fromMap(
+            (map['frequentlyBoughtTogetherConfig'] as Map)
+                .cast<String, dynamic>(),
+          ),
     );
   }
 }
-

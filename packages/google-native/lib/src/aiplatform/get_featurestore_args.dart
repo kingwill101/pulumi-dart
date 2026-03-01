@@ -19,10 +19,9 @@ class GetFeaturestoreArgs {
     required String featurestoreId,
     required String location,
     String? project,
-  }) :
-      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetFeaturestoreArgs {
     );
   }
 }
-

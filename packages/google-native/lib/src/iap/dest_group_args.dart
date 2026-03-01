@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DestGroupArgs {
   /// Unordered list. List of CIDRs that this group applies to.
   final pulumi.Input<List<String>>? cidrs;
+
   /// Unordered list. List of FQDNs that this group applies to.
   final pulumi.Input<List<String>>? fqdns;
   final pulumi.Input<String>? location;
+
   /// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
   final pulumi.Input<String> tunnelDestGroupId;
 
@@ -32,13 +35,12 @@ class DestGroupArgs {
     String? name,
     String? project,
     required String tunnelDestGroupId,
-  }) :
-      cidrs = pulumi.Input.asOptionalInput<List<String>>(cidrs),
-      fqdns = pulumi.Input.asOptionalInput<List<String>>(fqdns),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tunnelDestGroupId = pulumi.Input.asInput<String>(tunnelDestGroupId);
+  }) : cidrs = pulumi.Input.asOptionalInput<List<String>>(cidrs),
+       fqdns = pulumi.Input.asOptionalInput<List<String>>(fqdns),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tunnelDestGroupId = pulumi.Input.asInput<String>(tunnelDestGroupId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,8 +55,12 @@ class DestGroupArgs {
 
   factory DestGroupArgs.fromMap(Map<String, dynamic> map) {
     return DestGroupArgs(
-      cidrs: map['cidrs'] == null ? null : (map['cidrs'] as List).cast<String>(),
-      fqdns: map['fqdns'] == null ? null : (map['fqdns'] as List).cast<String>(),
+      cidrs: map['cidrs'] == null
+          ? null
+          : (map['cidrs'] as List).cast<String>(),
+      fqdns: map['fqdns'] == null
+          ? null
+          : (map['fqdns'] as List).cast<String>(),
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -62,4 +68,3 @@ class DestGroupArgs {
     );
   }
 }
-

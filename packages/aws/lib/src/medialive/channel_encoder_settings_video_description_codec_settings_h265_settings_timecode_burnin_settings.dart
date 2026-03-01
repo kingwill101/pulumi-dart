@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings {
   /// Set a prefix on the burned in timecode.
   final String? prefix;
+
   /// Sets the size of the burned in timecode.
   final String? timecodeBurninFontSize;
+
   /// Sets the position of the burned in timecode.
   final String? timecodeBurninPosition;
 
@@ -27,12 +28,17 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBur
     };
   }
 
-  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings(
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      timecodeBurninFontSize: map['timecodeBurninFontSize'] == null ? null : map['timecodeBurninFontSize'] as String,
-      timecodeBurninPosition: map['timecodeBurninPosition'] == null ? null : map['timecodeBurninPosition'] as String,
+      timecodeBurninFontSize: map['timecodeBurninFontSize'] == null
+          ? null
+          : map['timecodeBurninFontSize'] as String,
+      timecodeBurninPosition: map['timecodeBurninPosition'] == null
+          ? null
+          : map['timecodeBurninPosition'] as String,
     );
   }
 }
-

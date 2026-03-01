@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentcoreMemoryStrategyConfigurationExtraction {
   /// Additional text to append to the model prompt for extraction processing.
   final String appendToPrompt;
+
   /// ID of the foundation model to use for extraction processing.
   final String modelId;
 
@@ -22,11 +22,12 @@ class AgentcoreMemoryStrategyConfigurationExtraction {
     };
   }
 
-  factory AgentcoreMemoryStrategyConfigurationExtraction.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreMemoryStrategyConfigurationExtraction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreMemoryStrategyConfigurationExtraction(
       appendToPrompt: map['appendToPrompt'] as String,
       modelId: map['modelId'] as String,
     );
   }
 }
-

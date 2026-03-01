@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UserProfileUserSettingsCustomPosixUserConfig {
   /// The POSIX group ID.
   final int gid;
+
   /// The POSIX user ID.
   final int uid;
 
@@ -16,17 +16,15 @@ class UserProfileUserSettingsCustomPosixUserConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gid': gid,
-      'uid': uid,
-    };
+    return <String, dynamic>{'gid': gid, 'uid': uid};
   }
 
-  factory UserProfileUserSettingsCustomPosixUserConfig.fromMap(Map<String, dynamic> map) {
+  factory UserProfileUserSettingsCustomPosixUserConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UserProfileUserSettingsCustomPosixUserConfig(
       gid: map['gid'] as int,
       uid: map['uid'] as int,
     );
   }
 }
-

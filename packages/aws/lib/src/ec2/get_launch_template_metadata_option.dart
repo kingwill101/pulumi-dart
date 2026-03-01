@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLaunchTemplateMetadataOption {
   final String httpEndpoint;
   final String httpProtocolIpv6;
@@ -42,4 +41,3 @@ class GetLaunchTemplateMetadataOption {
     );
   }
 }
-

@@ -75,7 +75,8 @@ Future<GetReplayResult> getReplay(
 /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
 /// [args] Arguments passed to this invoke. {@macro pulumi_policysimulator_v1alpha_get_folder_replay_policysimulator_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFolderReplayPolicysimulatorV1alphaResult> getFolderReplayPolicysimulatorV1alpha(
+Future<GetFolderReplayPolicysimulatorV1alphaResult>
+getFolderReplayPolicysimulatorV1alpha(
   GetFolderReplayPolicysimulatorV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -91,7 +92,8 @@ Future<GetFolderReplayPolicysimulatorV1alphaResult> getFolderReplayPolicysimulat
 /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
 /// [args] Arguments passed to this invoke. {@macro pulumi_policysimulator_v1alpha_get_organization_replay_policysimulator_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationReplayPolicysimulatorV1alphaResult> getOrganizationReplayPolicysimulatorV1alpha(
+Future<GetOrganizationReplayPolicysimulatorV1alphaResult>
+getOrganizationReplayPolicysimulatorV1alpha(
   GetOrganizationReplayPolicysimulatorV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -123,7 +125,8 @@ Future<GetReplayPolicysimulatorV1alphaResult> getReplayPolicysimulatorV1alpha(
 /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
 /// [args] Arguments passed to this invoke. {@macro pulumi_policysimulator_v1beta1_get_folder_replay_policysimulator_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFolderReplayPolicysimulatorV1beta1Result> getFolderReplayPolicysimulatorV1beta1(
+Future<GetFolderReplayPolicysimulatorV1beta1Result>
+getFolderReplayPolicysimulatorV1beta1(
   GetFolderReplayPolicysimulatorV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -139,7 +142,8 @@ Future<GetFolderReplayPolicysimulatorV1beta1Result> getFolderReplayPolicysimulat
 /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
 /// [args] Arguments passed to this invoke. {@macro pulumi_policysimulator_v1beta1_get_organization_replay_policysimulator_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationReplayPolicysimulatorV1beta1Result> getOrganizationReplayPolicysimulatorV1beta1(
+Future<GetOrganizationReplayPolicysimulatorV1beta1Result>
+getOrganizationReplayPolicysimulatorV1beta1(
   GetOrganizationReplayPolicysimulatorV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -171,7 +175,8 @@ Future<GetReplayPolicysimulatorV1beta1Result> getReplayPolicysimulatorV1beta1(
 /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
 /// [args] Arguments passed to this invoke. {@macro pulumi_policysimulator_v1beta_get_folder_replay_policysimulator_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetFolderReplayPolicysimulatorV1betaResult> getFolderReplayPolicysimulatorV1beta(
+Future<GetFolderReplayPolicysimulatorV1betaResult>
+getFolderReplayPolicysimulatorV1beta(
   GetFolderReplayPolicysimulatorV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -187,7 +192,8 @@ Future<GetFolderReplayPolicysimulatorV1betaResult> getFolderReplayPolicysimulato
 /// Gets the specified Replay. Each `Replay` is available for at least 7 days.
 /// [args] Arguments passed to this invoke. {@macro pulumi_policysimulator_v1beta_get_organization_replay_policysimulator_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationReplayPolicysimulatorV1betaResult> getOrganizationReplayPolicysimulatorV1beta(
+Future<GetOrganizationReplayPolicysimulatorV1betaResult>
+getOrganizationReplayPolicysimulatorV1beta(
   GetOrganizationReplayPolicysimulatorV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

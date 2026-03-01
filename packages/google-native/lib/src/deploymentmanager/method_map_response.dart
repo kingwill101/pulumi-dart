@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Deployment Manager will call these methods during the events of creation/deletion/update/get/setIamPolicy
 class MethodMapResponse {
   /// The action identifier for the create method to be used for this collection
   final String create;
+
   /// The action identifier for the delete method to be used for this collection
   final String delete;
+
   /// The action identifier for the get method to be used for this collection
   final String get;
+
   /// The action identifier for the setIamPolicy method to be used for this collection
   final String setIamPolicy;
+
   /// The action identifier for the update method to be used for this collection
   final String update;
 
@@ -48,4 +51,3 @@ class MethodMapResponse {
     );
   }
 }
-

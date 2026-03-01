@@ -195,11 +195,14 @@ class Service extends pulumi.CustomResource {
   /// up to 2000 characters, spread across all key-value pairs.
   /// Metadata that goes beyond any these limits will be rejected.
   late final pulumi.Output<Map<String, String>?> metadata;
+
   /// The resource name for the service in the
   /// format `projects/*/locations/*/namespaces/*/services/*`.
   late final pulumi.Output<String> name;
+
   /// The resource name of the namespace this service will belong to.
   late final pulumi.Output<String> namespace;
+
   /// The Resource ID must be 1-63 characters long, including digits,
   /// lowercase letters or the hyphen character.
   late final pulumi.Output<String> serviceId;
@@ -213,11 +216,11 @@ class Service extends pulumi.CustomResource {
     ServiceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:servicedirectory/service:Service',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:servicedirectory/service:Service',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.metadata = registerOutput<Map<String, String>?>('metadata');
     this.name = registerOutput<String>('name');
     this.namespace = registerOutput<String>('namespace');

@@ -10,20 +10,32 @@ class OperationErrorResponseDeploymentmanagerV2beta {
 
   /// Creates a new [OperationErrorResponseDeploymentmanagerV2beta].
   /// [errors] The array of errors encountered while processing this operation.
-  OperationErrorResponseDeploymentmanagerV2beta({
-    required this.errors,
-  });
+  OperationErrorResponseDeploymentmanagerV2beta({required this.errors});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': pulumi.Input.encodeList<OperationErrorErrorsItemResponseDeploymentmanagerV2beta, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors':
+          pulumi.Input.encodeList<
+            OperationErrorErrorsItemResponseDeploymentmanagerV2beta,
+            Map<String, dynamic>
+          >(errors, (value) => value.toMap()),
     };
   }
 
-  factory OperationErrorResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
+  factory OperationErrorResponseDeploymentmanagerV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OperationErrorResponseDeploymentmanagerV2beta(
-      errors: pulumi.Input.decodeList<OperationErrorErrorsItemResponseDeploymentmanagerV2beta>(map['errors'], (value) => OperationErrorErrorsItemResponseDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>())),
+      errors:
+          pulumi.Input.decodeList<
+            OperationErrorErrorsItemResponseDeploymentmanagerV2beta
+          >(
+            map['errors'],
+            (value) =>
+                OperationErrorErrorsItemResponseDeploymentmanagerV2beta.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

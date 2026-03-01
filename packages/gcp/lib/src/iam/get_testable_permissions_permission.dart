@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTestablePermissionsPermission {
   /// Whether the corresponding API has been enabled for the resource.
   final bool apiDisabled;
+
   /// The level of support for custom roles. Can be one of `"NOT_SUPPORTED"`, `"SUPPORTED"`, `"TESTING"`. Default is `"SUPPORTED"`
   final String customSupportLevel;
+
   /// Name of the permission.
   final String name;
+
   /// Release stage of the permission.
   final String stage;
+
   /// Human readable title of the permission.
   final String title;
 
@@ -47,4 +50,3 @@ class GetTestablePermissionsPermission {
     );
   }
 }
-

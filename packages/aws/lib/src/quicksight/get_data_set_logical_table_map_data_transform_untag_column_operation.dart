@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDataSetLogicalTableMapDataTransformUntagColumnOperation {
   final String columnName;
   final List<String> tagNames;
@@ -14,17 +13,15 @@ class GetDataSetLogicalTableMapDataTransformUntagColumnOperation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'columnName': columnName,
-      'tagNames': tagNames,
-    };
+    return <String, dynamic>{'columnName': columnName, 'tagNames': tagNames};
   }
 
-  factory GetDataSetLogicalTableMapDataTransformUntagColumnOperation.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetLogicalTableMapDataTransformUntagColumnOperation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetLogicalTableMapDataTransformUntagColumnOperation(
       columnName: map['columnName'] as String,
       tagNames: (map['tagNames'] as List).cast<String>(),
     );
   }
 }
-

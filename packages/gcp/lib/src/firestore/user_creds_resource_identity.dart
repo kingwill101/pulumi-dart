@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UserCredsResourceIdentity {
   /// (Output)
   /// The principal identifier string.
@@ -9,14 +8,10 @@ class UserCredsResourceIdentity {
 
   /// Creates a new [UserCredsResourceIdentity].
   /// [principal] (Output)
-  UserCredsResourceIdentity({
-    this.principal,
-  });
+  UserCredsResourceIdentity({this.principal});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'principal': ?principal,
-    };
+    return <String, dynamic>{'principal': ?principal};
   }
 
   factory UserCredsResourceIdentity.fromMap(Map<String, dynamic> map) {
@@ -25,4 +20,3 @@ class UserCredsResourceIdentity {
     );
   }
 }
-

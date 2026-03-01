@@ -7,7 +7,9 @@ import 'google_cloud_documentai_v1_document_page_layout_response.dart';
 /// A detected symbol.
 class GoogleCloudDocumentaiV1DocumentPageSymbolResponse {
   /// A list of detected languages together with confidence.
-  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse> detectedLanguages;
+  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>
+  detectedLanguages;
+
   /// Layout for Symbol.
   final GoogleCloudDocumentaiV1DocumentPageLayoutResponse layout;
 
@@ -21,16 +23,32 @@ class GoogleCloudDocumentaiV1DocumentPageSymbolResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'detectedLanguages': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse, Map<String, dynamic>>(detectedLanguages, (value) => value.toMap()),
+      'detectedLanguages':
+          pulumi.Input.encodeList<
+            GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
+            Map<String, dynamic>
+          >(detectedLanguages, (value) => value.toMap()),
       'layout': layout.toMap(),
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageSymbolResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageSymbolResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageSymbolResponse(
-      detectedLanguages: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['layout'] as Map).cast<String, dynamic>()),
+      detectedLanguages:
+          pulumi.Input.decodeList<
+            GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse
+          >(
+            map['detectedLanguages'],
+            (value) =>
+                GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
+        (map['layout'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getVersion.
 class GetVersionDialogflowV2beta1Result {
   /// The creation time of this version. This field is read-only, i.e., it cannot be set by create and update methods.
   final String createTime;
+
   /// Optional. The developer-provided description of this version.
   final String description;
+
   /// The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
   final String name;
+
   /// The status of this version. This field is read-only and cannot be set by create and update methods.
   final String status;
+
   /// The sequential number of this version. This field is read-only which means it cannot be set by create and update methods.
   final int versionNumber;
 
@@ -48,4 +51,3 @@ class GetVersionDialogflowV2beta1Result {
     );
   }
 }
-

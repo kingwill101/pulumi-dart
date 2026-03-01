@@ -22,11 +22,12 @@ class GetMembershipIamPolicyGkehubV1beta1Args {
     required String membershipId,
     int? optionsRequestedPolicyVersion,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       membershipId = pulumi.Input.asInput<String>(membershipId),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,13 +38,17 @@ class GetMembershipIamPolicyGkehubV1beta1Args {
     };
   }
 
-  factory GetMembershipIamPolicyGkehubV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetMembershipIamPolicyGkehubV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMembershipIamPolicyGkehubV1beta1Args(
       location: map['location'] as String,
       membershipId: map['membershipId'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetReservationSubBlockPhysicalTopology {
   /// The hash of the capacity block within the cluster.
   final String block;
+
   /// The cluster name of the reservation sub-block.
   final String cluster;
+
   /// The hash of the capacity sub-block within the capacity block.
   final String subBlock;
 
@@ -27,7 +28,9 @@ class GetReservationSubBlockPhysicalTopology {
     };
   }
 
-  factory GetReservationSubBlockPhysicalTopology.fromMap(Map<String, dynamic> map) {
+  factory GetReservationSubBlockPhysicalTopology.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReservationSubBlockPhysicalTopology(
       block: map['block'] as String,
       cluster: map['cluster'] as String,
@@ -35,4 +38,3 @@ class GetReservationSubBlockPhysicalTopology {
     );
   }
 }
-

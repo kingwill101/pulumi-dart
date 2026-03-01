@@ -5,7 +5,8 @@ import 'table_bucket_maintenance_configuration_iceberg_unreferenced_file_removal
 class TableBucketMaintenanceConfiguration {
   /// A single Iceberg unreferenced file removal settings object.
   /// See `iceberg_unreferenced_file_removal` below.
-  final TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval icebergUnreferencedFileRemoval;
+  final TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval
+  icebergUnreferencedFileRemoval;
 
   /// Creates a new [TableBucketMaintenanceConfiguration].
   /// [icebergUnreferencedFileRemoval] A single Iceberg unreferenced file removal settings object.
@@ -19,10 +20,15 @@ class TableBucketMaintenanceConfiguration {
     };
   }
 
-  factory TableBucketMaintenanceConfiguration.fromMap(Map<String, dynamic> map) {
+  factory TableBucketMaintenanceConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableBucketMaintenanceConfiguration(
-      icebergUnreferencedFileRemoval: TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval.fromMap((map['icebergUnreferencedFileRemoval'] as Map).cast<String, dynamic>()),
+      icebergUnreferencedFileRemoval:
+          TableBucketMaintenanceConfigurationIcebergUnreferencedFileRemoval.fromMap(
+            (map['icebergUnreferencedFileRemoval'] as Map)
+                .cast<String, dynamic>(),
+          ),
     );
   }
 }
-

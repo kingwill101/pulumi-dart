@@ -7,12 +7,16 @@ import 'lifecycle_policy_tag_status.dart';
 class LifecyclePolicySelection {
   /// The count number to use with the count type.
   final int countNumber;
+
   /// The type of count to perform. Either 'imageCountMoreThan' or 'sinceImagePushed'.
   final LifecyclePolicyCountType countType;
+
   /// The unit of time for sinceImagePushed. Either 'days'.
   final String? countUnit;
+
   /// A list of image tag prefixes on which to take action.
   final List<String>? tagPrefixList;
+
   /// The tag status of the image. Either 'tagged', 'untagged', or 'any'.
   final LifecyclePolicyTagStatus tagStatus;
 
@@ -45,9 +49,10 @@ class LifecyclePolicySelection {
       countNumber: map['countNumber'] as int,
       countType: LifecyclePolicyCountType.fromValue(map['countType'] as String),
       countUnit: map['countUnit'] == null ? null : map['countUnit'] as String,
-      tagPrefixList: map['tagPrefixList'] == null ? null : (map['tagPrefixList'] as List).cast<String>(),
+      tagPrefixList: map['tagPrefixList'] == null
+          ? null
+          : (map['tagPrefixList'] as List).cast<String>(),
       tagStatus: LifecyclePolicyTagStatus.fromValue(map['tagStatus'] as String),
     );
   }
 }
-

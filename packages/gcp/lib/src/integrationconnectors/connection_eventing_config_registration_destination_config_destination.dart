@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectionEventingConfigRegistrationDestinationConfigDestination {
   /// Host
   final String? host;
+
   /// port number
   final int? port;
+
   /// Service Attachment
   final String? serviceAttachment;
 
@@ -27,12 +28,15 @@ class ConnectionEventingConfigRegistrationDestinationConfigDestination {
     };
   }
 
-  factory ConnectionEventingConfigRegistrationDestinationConfigDestination.fromMap(Map<String, dynamic> map) {
+  factory ConnectionEventingConfigRegistrationDestinationConfigDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionEventingConfigRegistrationDestinationConfigDestination(
       host: map['host'] == null ? null : map['host'] as String,
       port: map['port'] == null ? null : map['port'] as int,
-      serviceAttachment: map['serviceAttachment'] == null ? null : map['serviceAttachment'] as String,
+      serviceAttachment: map['serviceAttachment'] == null
+          ? null
+          : map['serviceAttachment'] as String,
     );
   }
 }
-

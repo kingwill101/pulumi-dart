@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Summary statistics of a custom dictionary.
 class GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
   /// Approximate number of distinct phrases in the dictionary.
@@ -13,15 +12,14 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'approxNumPhrases': approxNumPhrases,
-    };
+    return <String, dynamic>{'approxNumPhrases': approxNumPhrases};
   }
 
-  factory GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse(
       approxNumPhrases: map['approxNumPhrases'] as String,
     );
   }
 }
-

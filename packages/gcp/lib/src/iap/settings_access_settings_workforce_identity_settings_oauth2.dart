@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
   /// The OAuth 2.0 client ID registered in the workforce identity
   /// federation OAuth 2.0 Server.
   final String? clientId;
+
   /// Input only. The OAuth 2.0 client secret created while registering
   /// the client ID.
   final String? clientSecret;
+
   /// Output only. SHA256 hash value for the client secret. This field
   /// is returned by IAP when the settings are retrieved.
   final String? clientSecretSha256;
@@ -30,12 +31,17 @@ class SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
     };
   }
 
-  factory SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap(Map<String, dynamic> map) {
+  factory SettingsAccessSettingsWorkforceIdentitySettingsOauth2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SettingsAccessSettingsWorkforceIdentitySettingsOauth2(
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      clientSecretSha256: map['clientSecretSha256'] == null ? null : map['clientSecretSha256'] as String,
+      clientSecret: map['clientSecret'] == null
+          ? null
+          : map['clientSecret'] as String,
+      clientSecretSha256: map['clientSecretSha256'] == null
+          ? null
+          : map['clientSecretSha256'] as String,
     );
   }
 }
-

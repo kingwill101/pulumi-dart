@@ -9,10 +9,13 @@ import 'ospolicy_resource_repository_resource_response.dart';
 class OSPolicyResourceResponse {
   /// Exec resource
   final OSPolicyResourceExecResourceResponse exec;
+
   /// File resource
   final OSPolicyResourceFileResourceResponse file;
+
   /// Package resource
   final OSPolicyResourcePackageResourceResponse pkg;
+
   /// Package repository resource
   final OSPolicyResourceRepositoryResourceResponse repository;
 
@@ -39,11 +42,18 @@ class OSPolicyResourceResponse {
 
   factory OSPolicyResourceResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceResponse(
-      exec: OSPolicyResourceExecResourceResponse.fromMap((map['exec'] as Map).cast<String, dynamic>()),
-      file: OSPolicyResourceFileResourceResponse.fromMap((map['file'] as Map).cast<String, dynamic>()),
-      pkg: OSPolicyResourcePackageResourceResponse.fromMap((map['pkg'] as Map).cast<String, dynamic>()),
-      repository: OSPolicyResourceRepositoryResourceResponse.fromMap((map['repository'] as Map).cast<String, dynamic>()),
+      exec: OSPolicyResourceExecResourceResponse.fromMap(
+        (map['exec'] as Map).cast<String, dynamic>(),
+      ),
+      file: OSPolicyResourceFileResourceResponse.fromMap(
+        (map['file'] as Map).cast<String, dynamic>(),
+      ),
+      pkg: OSPolicyResourcePackageResourceResponse.fromMap(
+        (map['pkg'] as Map).cast<String, dynamic>(),
+      ),
+      repository: OSPolicyResourceRepositoryResourceResponse.fromMap(
+        (map['repository'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetConnectionPhysicalConnectionRequirement {
   final String availabilityZone;
   final List<String> securityGroupIdLists;
@@ -24,12 +23,14 @@ class GetConnectionPhysicalConnectionRequirement {
     };
   }
 
-  factory GetConnectionPhysicalConnectionRequirement.fromMap(Map<String, dynamic> map) {
+  factory GetConnectionPhysicalConnectionRequirement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectionPhysicalConnectionRequirement(
       availabilityZone: map['availabilityZone'] as String,
-      securityGroupIdLists: (map['securityGroupIdLists'] as List).cast<String>(),
+      securityGroupIdLists: (map['securityGroupIdLists'] as List)
+          .cast<String>(),
       subnetId: map['subnetId'] as String,
     );
   }
 }
-

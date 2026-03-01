@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A confidence interval is a range of possible values for the experiment objective you are trying to measure.
 class GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse {
   /// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
   final double confidenceLevel;
+
   /// Lower bound of the interval.
   final double lowerBound;
+
   /// The percent change between an experiment metric's value and the value for its control.
   final double ratio;
+
   /// Upper bound of the interval.
   final double upperBound;
 
@@ -33,7 +35,9 @@ class GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse(
       confidenceLevel: map['confidenceLevel'] as double,
       lowerBound: map['lowerBound'] as double,
@@ -42,4 +46,3 @@ class GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse {
     );
   }
 }
-

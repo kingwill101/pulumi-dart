@@ -9,17 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EgressPolicyArgs {
   /// The name of the Service Perimeter to add this resource to.
   final pulumi.Input<String> egressPolicyName;
+
   /// A GCP resource that is inside of the service perimeter.
   final pulumi.Input<String> resource;
 
   /// Creates a new [EgressPolicyArgs].
   /// [egressPolicyName] The name of the Service Perimeter to add this resource to.
   /// [resource] A GCP resource that is inside of the service perimeter.
-  EgressPolicyArgs({
-    required String egressPolicyName,
-    required String resource,
-  }) :
-      egressPolicyName = pulumi.Input.asInput<String>(egressPolicyName),
+  EgressPolicyArgs({required String egressPolicyName, required String resource})
+    : egressPolicyName = pulumi.Input.asInput<String>(egressPolicyName),
       resource = pulumi.Input.asInput<String>(resource);
 
   Map<String, dynamic> toMap() {
@@ -36,4 +34,3 @@ class EgressPolicyArgs {
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'job_config_response.dart';
 class GetJobTemplateResult {
   /// The configuration for this template.
   final JobConfigResponse config;
+
   /// The labels associated with this job template. You can use these to organize and group your job templates.
   final Map<String, String> labels;
+
   /// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
   final String name;
 
@@ -31,10 +33,11 @@ class GetJobTemplateResult {
 
   factory GetJobTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateResult(
-      config: JobConfigResponse.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      config: JobConfigResponse.fromMap(
+        (map['config'] as Map).cast<String, dynamic>(),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
     );
   }
 }
-

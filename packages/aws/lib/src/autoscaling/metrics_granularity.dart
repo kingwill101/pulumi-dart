@@ -14,4 +14,3 @@ enum MetricsGranularity {
     throw ArgumentError('Unknown MetricsGranularity value: $value');
   }
 }
-

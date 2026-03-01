@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectionProfileMongodbProfileHostAddress {
   /// Hostname for the connection.
   final String hostname;
+
   /// Port for the connection.
   final int? port;
 
@@ -16,17 +16,15 @@ class ConnectionProfileMongodbProfileHostAddress {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hostname': hostname,
-      'port': ?port,
-    };
+    return <String, dynamic>{'hostname': hostname, 'port': ?port};
   }
 
-  factory ConnectionProfileMongodbProfileHostAddress.fromMap(Map<String, dynamic> map) {
+  factory ConnectionProfileMongodbProfileHostAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionProfileMongodbProfileHostAddress(
       hostname: map['hostname'] as String,
       port: map['port'] == null ? null : map['port'] as int,
     );
   }
 }
-

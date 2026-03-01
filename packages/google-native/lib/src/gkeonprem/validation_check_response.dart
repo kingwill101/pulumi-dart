@@ -6,8 +6,10 @@ import 'validation_check_status_response.dart';
 class ValidationCheckResponse {
   /// Options used for the validation check
   final String option;
+
   /// The scenario when the preflight checks were run.
   final String scenario;
+
   /// The detailed validation check status.
   final ValidationCheckStatusResponse status;
 
@@ -33,8 +35,9 @@ class ValidationCheckResponse {
     return ValidationCheckResponse(
       option: map['option'] as String,
       scenario: map['scenario'] as String,
-      status: ValidationCheckStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      status: ValidationCheckStatusResponse.fromMap(
+        (map['status'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

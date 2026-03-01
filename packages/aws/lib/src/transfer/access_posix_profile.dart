@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AccessPosixProfile {
   /// The POSIX group ID used for all EFS operations by this user.
   final int gid;
+
   /// The secondary POSIX group IDs used for all EFS operations by this user.
   final List<int>? secondaryGids;
+
   /// The POSIX user ID used for all EFS operations by this user.
   final int uid;
 
@@ -30,9 +31,10 @@ class AccessPosixProfile {
   factory AccessPosixProfile.fromMap(Map<String, dynamic> map) {
     return AccessPosixProfile(
       gid: map['gid'] as int,
-      secondaryGids: map['secondaryGids'] == null ? null : (map['secondaryGids'] as List).cast<int>(),
+      secondaryGids: map['secondaryGids'] == null
+          ? null
+          : (map['secondaryGids'] as List).cast<int>(),
       uid: map['uid'] as int,
     );
   }
 }
-

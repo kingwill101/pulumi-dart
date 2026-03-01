@@ -16,9 +16,8 @@ class GetFolderBigQueryExportArgs {
   GetFolderBigQueryExportArgs({
     required String bigQueryExportId,
     required String folderId,
-  }) :
-      bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
-      folderId = pulumi.Input.asInput<String>(folderId);
+  }) : bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
+       folderId = pulumi.Input.asInput<String>(folderId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetFolderBigQueryExportArgs {
     );
   }
 }
-

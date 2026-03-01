@@ -9,16 +9,19 @@ class ClusterControlPlaneEncryption {
   /// to use for protecting control plane disks. If not specified, a
   /// Google-managed key will be used instead.
   final String? kmsKey;
+
   /// (Output)
   /// The Cloud KMS CryptoKeyVersion currently in use for protecting control
   /// plane disks. Only applicable if kms_key is set.
   final String? kmsKeyActiveVersion;
+
   /// (Output)
   /// Availability of the Cloud KMS CryptoKey. If not `KEY_AVAILABLE`, then
   /// nodes may go offline as they cannot access their local data. This can be
   /// caused by a lack of permissions to use the key, or if the key is disabled
   /// or deleted.
   final String? kmsKeyState;
+
   /// (Output)
   /// Error status returned by Cloud KMS when using this key. This field may be
   /// populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
@@ -46,17 +49,32 @@ class ClusterControlPlaneEncryption {
       'kmsKey': ?kmsKey,
       'kmsKeyActiveVersion': ?kmsKeyActiveVersion,
       'kmsKeyState': ?kmsKeyState,
-      'kmsStatuses': ?kmsStatuses == null ? null : pulumi.Input.encodeList<ClusterControlPlaneEncryptionKmsStatus, Map<String, dynamic>>(kmsStatuses!, (value) => value.toMap()),
+      'kmsStatuses': ?kmsStatuses == null
+          ? null
+          : pulumi.Input.encodeList<
+              ClusterControlPlaneEncryptionKmsStatus,
+              Map<String, dynamic>
+            >(kmsStatuses!, (value) => value.toMap()),
     };
   }
 
   factory ClusterControlPlaneEncryption.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneEncryption(
       kmsKey: map['kmsKey'] == null ? null : map['kmsKey'] as String,
-      kmsKeyActiveVersion: map['kmsKeyActiveVersion'] == null ? null : map['kmsKeyActiveVersion'] as String,
-      kmsKeyState: map['kmsKeyState'] == null ? null : map['kmsKeyState'] as String,
-      kmsStatuses: map['kmsStatuses'] == null ? null : pulumi.Input.decodeList<ClusterControlPlaneEncryptionKmsStatus>(map['kmsStatuses'], (value) => ClusterControlPlaneEncryptionKmsStatus.fromMap((value as Map).cast<String, dynamic>())),
+      kmsKeyActiveVersion: map['kmsKeyActiveVersion'] == null
+          ? null
+          : map['kmsKeyActiveVersion'] as String,
+      kmsKeyState: map['kmsKeyState'] == null
+          ? null
+          : map['kmsKeyState'] as String,
+      kmsStatuses: map['kmsStatuses'] == null
+          ? null
+          : pulumi.Input.decodeList<ClusterControlPlaneEncryptionKmsStatus>(
+              map['kmsStatuses'],
+              (value) => ClusterControlPlaneEncryptionKmsStatus.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

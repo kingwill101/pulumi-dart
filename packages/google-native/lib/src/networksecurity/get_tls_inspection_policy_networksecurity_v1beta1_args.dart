@@ -19,10 +19,11 @@ class GetTlsInspectionPolicyNetworksecurityV1beta1Args {
     required String location,
     String? project,
     required String tlsInspectionPolicyId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tlsInspectionPolicyId = pulumi.Input.asInput<String>(tlsInspectionPolicyId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tlsInspectionPolicyId = pulumi.Input.asInput<String>(
+         tlsInspectionPolicyId,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +33,9 @@ class GetTlsInspectionPolicyNetworksecurityV1beta1Args {
     };
   }
 
-  factory GetTlsInspectionPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetTlsInspectionPolicyNetworksecurityV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTlsInspectionPolicyNetworksecurityV1beta1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +43,3 @@ class GetTlsInspectionPolicyNetworksecurityV1beta1Args {
     );
   }
 }
-

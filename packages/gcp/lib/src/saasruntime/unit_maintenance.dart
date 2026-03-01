@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UnitMaintenance {
   /// If present, it fixes the release on the unit until the given time; i.e.
   /// changes to the release field will be rejected. Rollouts should and will
@@ -9,20 +8,17 @@ class UnitMaintenance {
 
   /// Creates a new [UnitMaintenance].
   /// [pinnedUntilTime] If present, it fixes the release on the unit until the given time; i.e.
-  UnitMaintenance({
-    this.pinnedUntilTime,
-  });
+  UnitMaintenance({this.pinnedUntilTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pinnedUntilTime': ?pinnedUntilTime,
-    };
+    return <String, dynamic>{'pinnedUntilTime': ?pinnedUntilTime};
   }
 
   factory UnitMaintenance.fromMap(Map<String, dynamic> map) {
     return UnitMaintenance(
-      pinnedUntilTime: map['pinnedUntilTime'] == null ? null : map['pinnedUntilTime'] as String,
+      pinnedUntilTime: map['pinnedUntilTime'] == null
+          ? null
+          : map['pinnedUntilTime'] as String,
     );
   }
 }
-

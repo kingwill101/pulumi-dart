@@ -9,20 +9,23 @@ class SyntheticMonitorTarget {
 
   /// Creates a new [SyntheticMonitorTarget].
   /// [cloudFunctionV2] Target a Synthetic Monitor GCFv2 instance.
-  SyntheticMonitorTarget({
-    this.cloudFunctionV2,
-  });
+  SyntheticMonitorTarget({this.cloudFunctionV2});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudFunctionV2': ?cloudFunctionV2 == null ? null : cloudFunctionV2!.toMap(),
+      'cloudFunctionV2': ?cloudFunctionV2 == null
+          ? null
+          : cloudFunctionV2!.toMap(),
     };
   }
 
   factory SyntheticMonitorTarget.fromMap(Map<String, dynamic> map) {
     return SyntheticMonitorTarget(
-      cloudFunctionV2: map['cloudFunctionV2'] == null ? null : CloudFunctionV2Target.fromMap((map['cloudFunctionV2'] as Map).cast<String, dynamic>()),
+      cloudFunctionV2: map['cloudFunctionV2'] == null
+          ? null
+          : CloudFunctionV2Target.fromMap(
+              (map['cloudFunctionV2'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -7,13 +7,18 @@ import 'google_cloud_aiplatform_v1beta1_resource_pool_autoscaling_spec_response.
 /// Represents the spec of a group of resources of the same type, for example machine type, disk, and accelerators, in a PersistentResource.
 class GoogleCloudAiplatformV1beta1ResourcePoolResponse {
   /// Optional. Optional spec to configure GKE autoscaling
-  final GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse autoscalingSpec;
+  final GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse
+  autoscalingSpec;
+
   /// Optional. Disk spec for the machine in this node pool.
   final GoogleCloudAiplatformV1beta1DiskSpecResponse diskSpec;
+
   /// Immutable. The specification of a single machine.
   final GoogleCloudAiplatformV1beta1MachineSpecResponse machineSpec;
+
   /// Optional. The total number of machines to use for this resource pool.
   final String replicaCount;
+
   /// The number of machines currently in use by training jobs for this resource pool. Will replace idle_replica_count.
   final String usedReplicaCount;
 
@@ -41,14 +46,22 @@ class GoogleCloudAiplatformV1beta1ResourcePoolResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ResourcePoolResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ResourcePoolResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ResourcePoolResponse(
-      autoscalingSpec: GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse.fromMap((map['autoscalingSpec'] as Map).cast<String, dynamic>()),
-      diskSpec: GoogleCloudAiplatformV1beta1DiskSpecResponse.fromMap((map['diskSpec'] as Map).cast<String, dynamic>()),
-      machineSpec: GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap((map['machineSpec'] as Map).cast<String, dynamic>()),
+      autoscalingSpec:
+          GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpecResponse.fromMap(
+            (map['autoscalingSpec'] as Map).cast<String, dynamic>(),
+          ),
+      diskSpec: GoogleCloudAiplatformV1beta1DiskSpecResponse.fromMap(
+        (map['diskSpec'] as Map).cast<String, dynamic>(),
+      ),
+      machineSpec: GoogleCloudAiplatformV1beta1MachineSpecResponse.fromMap(
+        (map['machineSpec'] as Map).cast<String, dynamic>(),
+      ),
       replicaCount: map['replicaCount'] as String,
       usedReplicaCount: map['usedReplicaCount'] as String,
     );
   }
 }
-

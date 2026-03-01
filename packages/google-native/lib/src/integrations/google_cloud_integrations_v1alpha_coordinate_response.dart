@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration detail of coordinate, it used for UI
 class GoogleCloudIntegrationsV1alphaCoordinateResponse {
   /// X axis of the coordinate
   final int x;
+
   /// Y axis of the coordinate
   final int y;
 
@@ -17,17 +17,15 @@ class GoogleCloudIntegrationsV1alphaCoordinateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'x': x,
-      'y': y,
-    };
+    return <String, dynamic>{'x': x, 'y': y};
   }
 
-  factory GoogleCloudIntegrationsV1alphaCoordinateResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaCoordinateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaCoordinateResponse(
       x: map['x'] as int,
       y: map['y'] as int,
     );
   }
 }
-

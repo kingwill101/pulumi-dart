@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration {
   /// The number of pre-provisioned snapshots to keep on hand for a fast-launch enabled Windows AMI.
   final int? targetResourceCount;
@@ -12,15 +11,16 @@ class DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfig
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'targetResourceCount': ?targetResourceCount,
-    };
+    return <String, dynamic>{'targetResourceCount': ?targetResourceCount};
   }
 
-  factory DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration(
-      targetResourceCount: map['targetResourceCount'] == null ? null : map['targetResourceCount'] as int,
+      targetResourceCount: map['targetResourceCount'] == null
+          ? null
+          : map['targetResourceCount'] as int,
     );
   }
 }
-

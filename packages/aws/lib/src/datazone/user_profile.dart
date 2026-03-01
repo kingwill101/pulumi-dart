@@ -119,19 +119,25 @@ import 'user_profile_timeouts.dart';
 class UserProfile extends pulumi.CustomResource {
   /// Details about the user profile.
   late final pulumi.Output<List<UserProfileDetail>> details;
+
   /// The domain identifier.
   late final pulumi.Output<String> domainIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The user profile status.
   late final pulumi.Output<String> status;
   late final pulumi.Output<UserProfileTimeouts?> timeouts;
+
   /// The user profile type.
   late final pulumi.Output<String> type;
+
   /// The user identifier.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> userIdentifier;
+
   /// The user type.
   late final pulumi.Output<String> userType;
 
@@ -144,11 +150,11 @@ class UserProfile extends pulumi.CustomResource {
     UserProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:datazone/userProfile:UserProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:datazone/userProfile:UserProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.details = registerOutput<List<UserProfileDetail>>('details');
     this.domainIdentifier = registerOutput<String>('domainIdentifier');
     this.region = registerOutput<String>('region');

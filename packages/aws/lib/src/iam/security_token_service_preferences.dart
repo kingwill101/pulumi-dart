@@ -101,11 +101,13 @@ class SecurityTokenServicePreferences extends pulumi.CustomResource {
     SecurityTokenServicePreferencesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/securityTokenServicePreferences:SecurityTokenServicePreferences',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.globalEndpointTokenVersion = registerOutput<String>('globalEndpointTokenVersion');
+         'aws:iam/securityTokenServicePreferences:SecurityTokenServicePreferences',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.globalEndpointTokenVersion = registerOutput<String>(
+      'globalEndpointTokenVersion',
+    );
   }
 }

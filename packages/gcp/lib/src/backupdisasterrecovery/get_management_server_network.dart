@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetManagementServerNetwork {
   /// Network with format 'projects/{{project_id}}/global/networks/{{network_id}}'
   final String network;
+
   /// Type of Network peeringMode Default value: "PRIVATE_SERVICE_ACCESS" Possible values: ["PRIVATE_SERVICE_ACCESS"]
   final String peeringMode;
 
@@ -16,10 +16,7 @@ class GetManagementServerNetwork {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'network': network,
-      'peeringMode': peeringMode,
-    };
+    return <String, dynamic>{'network': network, 'peeringMode': peeringMode};
   }
 
   factory GetManagementServerNetwork.fromMap(Map<String, dynamic> map) {
@@ -29,4 +26,3 @@ class GetManagementServerNetwork {
     );
   }
 }
-

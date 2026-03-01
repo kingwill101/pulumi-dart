@@ -121,20 +121,28 @@ import 'user_args.dart';
 class User extends pulumi.CustomResource {
   /// ARN of the appstream user.
   late final pulumi.Output<String> arn;
+
   /// Authentication type for the user. You must specify USERPOOL. Valid values: `API`, `SAML`, `USERPOOL`
   late final pulumi.Output<String> authenticationType;
+
   /// Date and time, in UTC and extended RFC 3339 format, when the user was created.
   late final pulumi.Output<String> createdTime;
+
   /// Whether the user in the user pool is enabled.
   late final pulumi.Output<bool?> enabled;
+
   /// First name, or given name, of the user.
   late final pulumi.Output<String?> firstName;
+
   /// Last name, or surname, of the user.
   late final pulumi.Output<String?> lastName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Send an email notification.
   late final pulumi.Output<bool?> sendEmailNotification;
+
   /// Email address of the user.
   ///
   /// The following arguments are optional:
@@ -144,16 +152,13 @@ class User extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [User]. {@macro pulumi_appstream_user_user_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  User(
-    String name, {
-    UserArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:appstream/user:User',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  User(String name, {UserArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:appstream/user:User',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.arn = registerOutput<String>('arn');
     this.authenticationType = registerOutput<String>('authenticationType');
     this.createdTime = registerOutput<String>('createdTime');

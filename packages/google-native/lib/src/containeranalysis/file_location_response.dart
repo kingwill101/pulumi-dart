@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Indicates the location at which a package was found.
 class FileLocationResponse {
   /// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
@@ -8,20 +7,13 @@ class FileLocationResponse {
 
   /// Creates a new [FileLocationResponse].
   /// [filePath] For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
-  FileLocationResponse({
-    required this.filePath,
-  });
+  FileLocationResponse({required this.filePath});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filePath': filePath,
-    };
+    return <String, dynamic>{'filePath': filePath};
   }
 
   factory FileLocationResponse.fromMap(Map<String, dynamic> map) {
-    return FileLocationResponse(
-      filePath: map['filePath'] as String,
-    );
+    return FileLocationResponse(filePath: map['filePath'] as String);
   }
 }
-

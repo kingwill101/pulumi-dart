@@ -7,14 +7,19 @@ import 'vm_attachment_details_response.dart';
 class PersistentDiskDefaultsResponse {
   /// A map of labels to associate with the Persistent Disk.
   final Map<String, String> additionalLabels;
+
   /// Optional. The name of the Persistent Disk to create.
   final String diskName;
+
   /// The disk type to use.
   final String diskType;
+
   /// Optional. The encryption to apply to the disk.
   final EncryptionResponse encryption;
+
   /// The ordinal number of the source VM disk.
   final int sourceDiskNumber;
+
   /// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
   final VmAttachmentDetailsResponse vmAttachmentDetails;
 
@@ -50,10 +55,13 @@ class PersistentDiskDefaultsResponse {
       additionalLabels: (map['additionalLabels'] as Map).cast<String, String>(),
       diskName: map['diskName'] as String,
       diskType: map['diskType'] as String,
-      encryption: EncryptionResponse.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
+      encryption: EncryptionResponse.fromMap(
+        (map['encryption'] as Map).cast<String, dynamic>(),
+      ),
       sourceDiskNumber: map['sourceDiskNumber'] as int,
-      vmAttachmentDetails: VmAttachmentDetailsResponse.fromMap((map['vmAttachmentDetails'] as Map).cast<String, dynamic>()),
+      vmAttachmentDetails: VmAttachmentDetailsResponse.fromMap(
+        (map['vmAttachmentDetails'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

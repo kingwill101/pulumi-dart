@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message describing AWS Credentials using access key id and secret.
 class AccessKeyCredentialsResponse {
   /// AWS access key ID.
   final String accessKeyId;
+
   /// Input only. AWS secret access key.
   final String secretAccessKey;
+
   /// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
   final String sessionToken;
 
@@ -36,4 +37,3 @@ class AccessKeyCredentialsResponse {
     );
   }
 }
-

@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Any scheduled maintenance for this instance.
 class SqlScheduledMaintenanceResponse {
   final bool canDefer;
+
   /// If the scheduled maintenance can be rescheduled.
   final bool canReschedule;
+
   /// Maintenance cannot be rescheduled to start beyond this deadline.
   final String scheduleDeadlineTime;
+
   /// The start time of any upcoming scheduled maintenance for this instance.
   final String startTime;
 
@@ -41,4 +43,3 @@ class SqlScheduledMaintenanceResponse {
     );
   }
 }
-

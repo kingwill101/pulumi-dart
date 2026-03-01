@@ -9224,47 +9224,63 @@ class Stream extends pulumi.CustomResource {
   /// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
   /// Structure is documented below.
   late final pulumi.Output<StreamBackfillAll?> backfillAll;
+
   /// Backfill strategy to disable automatic backfill for the Stream's objects.
   late final pulumi.Output<Map<String, dynamic>?> backfillNone;
+
   /// Create the stream without validating it.
   late final pulumi.Output<bool?> createWithoutValidation;
+
   /// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
   /// will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
   late final pulumi.Output<String?> customerManagedEncryptionKey;
+
   /// Desired state of the Stream. Set this field to `RUNNING` to start the stream,
   /// `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
   /// the stream from a `RUNNING` state.
   /// Possible values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
   late final pulumi.Output<String?> desiredState;
+
   /// Destination connection profile configuration.
   /// Structure is documented below.
   late final pulumi.Output<StreamDestinationConfig> destinationConfig;
+
   /// Display name.
   late final pulumi.Output<String> displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The name of the location this stream is located in.
   late final pulumi.Output<String> location;
+
   /// The stream's name.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Rule sets to apply to the stream.
   /// Structure is documented below.
   late final pulumi.Output<List<StreamRuleSet>?> ruleSets;
+
   /// Source connection profile configuration.
   /// Structure is documented below.
   late final pulumi.Output<StreamSourceConfig> sourceConfig;
+
   /// The state of the stream.
   late final pulumi.Output<String> state;
+
   /// The stream identifier.
   late final pulumi.Output<String> streamId;
 
@@ -9272,24 +9288,29 @@ class Stream extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Stream]. {@macro pulumi_datastream_stream_stream_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Stream(
-    String name, {
-    StreamArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:datastream/stream:Stream',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Stream(String name, {StreamArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:datastream/stream:Stream',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.backfillAll = registerOutput<StreamBackfillAll?>('backfillAll');
     this.backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');
-    this.createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
-    this.customerManagedEncryptionKey = registerOutput<String?>('customerManagedEncryptionKey');
+    this.createWithoutValidation = registerOutput<bool?>(
+      'createWithoutValidation',
+    );
+    this.customerManagedEncryptionKey = registerOutput<String?>(
+      'customerManagedEncryptionKey',
+    );
     this.desiredState = registerOutput<String?>('desiredState');
-    this.destinationConfig = registerOutput<StreamDestinationConfig>('destinationConfig');
+    this.destinationConfig = registerOutput<StreamDestinationConfig>(
+      'destinationConfig',
+    );
     this.displayName = registerOutput<String>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

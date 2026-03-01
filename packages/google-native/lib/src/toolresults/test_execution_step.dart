@@ -10,10 +10,13 @@ import 'tool_execution.dart';
 class TestExecutionStep {
   /// Issues observed during the test execution. For example, if the mobile app under test crashed during the test, the error message and the stack trace content can be recorded here to assist debugging. - In response: present if set by create or update - In create/update request: optional
   final List<TestIssue>? testIssues;
+
   /// List of test suite overview contents. This could be parsed from xUnit XML log by server, or uploaded directly by user. This references should only be called when test suites are fully parsed or uploaded. The maximum allowed number of test suite overviews per step is 1000. - In response: always set - In create request: optional - In update request: never (use publishXunitXmlFiles custom method instead)
   final List<TestSuiteOverview>? testSuiteOverviews;
+
   /// The timing break down of the test execution. - In response: present if set by create or update - In create/update request: optional
   final TestTiming? testTiming;
+
   /// Represents the execution of the test runner. The exit code of this tool will be used to determine if the test passed. - In response: always set - In create/update request: optional
   final ToolExecution? toolExecution;
 
@@ -31,8 +34,18 @@ class TestExecutionStep {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'testIssues': ?testIssues == null ? null : pulumi.Input.encodeList<TestIssue, Map<String, dynamic>>(testIssues!, (value) => value.toMap()),
-      'testSuiteOverviews': ?testSuiteOverviews == null ? null : pulumi.Input.encodeList<TestSuiteOverview, Map<String, dynamic>>(testSuiteOverviews!, (value) => value.toMap()),
+      'testIssues': ?testIssues == null
+          ? null
+          : pulumi.Input.encodeList<TestIssue, Map<String, dynamic>>(
+              testIssues!,
+              (value) => value.toMap(),
+            ),
+      'testSuiteOverviews': ?testSuiteOverviews == null
+          ? null
+          : pulumi.Input.encodeList<TestSuiteOverview, Map<String, dynamic>>(
+              testSuiteOverviews!,
+              (value) => value.toMap(),
+            ),
       'testTiming': ?testTiming == null ? null : testTiming!.toMap(),
       'toolExecution': ?toolExecution == null ? null : toolExecution!.toMap(),
     };
@@ -40,11 +53,31 @@ class TestExecutionStep {
 
   factory TestExecutionStep.fromMap(Map<String, dynamic> map) {
     return TestExecutionStep(
-      testIssues: map['testIssues'] == null ? null : pulumi.Input.decodeList<TestIssue>(map['testIssues'], (value) => TestIssue.fromMap((value as Map).cast<String, dynamic>())),
-      testSuiteOverviews: map['testSuiteOverviews'] == null ? null : pulumi.Input.decodeList<TestSuiteOverview>(map['testSuiteOverviews'], (value) => TestSuiteOverview.fromMap((value as Map).cast<String, dynamic>())),
-      testTiming: map['testTiming'] == null ? null : TestTiming.fromMap((map['testTiming'] as Map).cast<String, dynamic>()),
-      toolExecution: map['toolExecution'] == null ? null : ToolExecution.fromMap((map['toolExecution'] as Map).cast<String, dynamic>()),
+      testIssues: map['testIssues'] == null
+          ? null
+          : pulumi.Input.decodeList<TestIssue>(
+              map['testIssues'],
+              (value) =>
+                  TestIssue.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      testSuiteOverviews: map['testSuiteOverviews'] == null
+          ? null
+          : pulumi.Input.decodeList<TestSuiteOverview>(
+              map['testSuiteOverviews'],
+              (value) => TestSuiteOverview.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      testTiming: map['testTiming'] == null
+          ? null
+          : TestTiming.fromMap(
+              (map['testTiming'] as Map).cast<String, dynamic>(),
+            ),
+      toolExecution: map['toolExecution'] == null
+          ? null
+          : ToolExecution.fromMap(
+              (map['toolExecution'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

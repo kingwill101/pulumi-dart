@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRouteSpecTcpRouteTimeoutIdle {
   final String unit;
   final int value;
@@ -8,16 +7,10 @@ class GetRouteSpecTcpRouteTimeoutIdle {
   /// Creates a new [GetRouteSpecTcpRouteTimeoutIdle].
   /// [unit] Required.
   /// [value] Required.
-  GetRouteSpecTcpRouteTimeoutIdle({
-    required this.unit,
-    required this.value,
-  });
+  GetRouteSpecTcpRouteTimeoutIdle({required this.unit, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'unit': unit,
-      'value': value,
-    };
+    return <String, dynamic>{'unit': unit, 'value': value};
   }
 
   factory GetRouteSpecTcpRouteTimeoutIdle.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class GetRouteSpecTcpRouteTimeoutIdle {
     );
   }
 }
-

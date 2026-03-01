@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message to capture settings for a BrowserDlpRule
 class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse {
   /// Immutable. The type of the Setting. .
   final String type;
+
   /// The value of the Setting.
   final Map<String, String> value;
 
@@ -17,17 +17,15 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-      'value': value,
-    };
+    return <String, dynamic>{'type': type, 'value': value};
   }
 
-  factory GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaRuleSettingResponse(
       type: map['type'] as String,
       value: (map['value'] as Map).cast<String, String>(),
     );
   }
 }
-

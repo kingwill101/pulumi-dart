@@ -10,20 +10,28 @@ class OracleRdbms {
 
   /// Creates a new [OracleRdbms].
   /// [oracleSchemas] Oracle schemas/databases in the database server.
-  OracleRdbms({
-    this.oracleSchemas,
-  });
+  OracleRdbms({this.oracleSchemas});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleSchemas': ?oracleSchemas == null ? null : pulumi.Input.encodeList<OracleSchema, Map<String, dynamic>>(oracleSchemas!, (value) => value.toMap()),
+      'oracleSchemas': ?oracleSchemas == null
+          ? null
+          : pulumi.Input.encodeList<OracleSchema, Map<String, dynamic>>(
+              oracleSchemas!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory OracleRdbms.fromMap(Map<String, dynamic> map) {
     return OracleRdbms(
-      oracleSchemas: map['oracleSchemas'] == null ? null : pulumi.Input.decodeList<OracleSchema>(map['oracleSchemas'], (value) => OracleSchema.fromMap((value as Map).cast<String, dynamic>())),
+      oracleSchemas: map['oracleSchemas'] == null
+          ? null
+          : pulumi.Input.decodeList<OracleSchema>(
+              map['oracleSchemas'],
+              (value) =>
+                  OracleSchema.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

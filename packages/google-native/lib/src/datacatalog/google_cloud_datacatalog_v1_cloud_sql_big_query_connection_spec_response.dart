@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specification for the BigQuery connection to a Cloud SQL instance.
 class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
   /// Database name.
   final String database;
+
   /// Cloud SQL instance ID in the format of `project:location:instance`.
   final String instanceId;
+
   /// Type of the Cloud SQL database.
   final String type;
 
@@ -28,7 +29,9 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse(
       database: map['database'] as String,
       instanceId: map['instanceId'] as String,
@@ -36,4 +39,3 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
     );
   }
 }
-

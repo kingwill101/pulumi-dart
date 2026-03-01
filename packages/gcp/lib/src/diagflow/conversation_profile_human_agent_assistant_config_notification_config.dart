@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConversationProfileHumanAgentAssistantConfigNotificationConfig {
   /// Format of the message
   /// Possible values are: `MESSAGE_FORMAT_UNSPECIFIED`, `PROTO`, `JSON`.
   final String? messageFormat;
+
   /// Name of the Pub/Sub topic to publish conversation events
   final String? topic;
 
@@ -17,17 +17,17 @@ class ConversationProfileHumanAgentAssistantConfigNotificationConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'messageFormat': ?messageFormat,
-      'topic': ?topic,
-    };
+    return <String, dynamic>{'messageFormat': ?messageFormat, 'topic': ?topic};
   }
 
-  factory ConversationProfileHumanAgentAssistantConfigNotificationConfig.fromMap(Map<String, dynamic> map) {
+  factory ConversationProfileHumanAgentAssistantConfigNotificationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConversationProfileHumanAgentAssistantConfigNotificationConfig(
-      messageFormat: map['messageFormat'] == null ? null : map['messageFormat'] as String,
+      messageFormat: map['messageFormat'] == null
+          ? null
+          : map['messageFormat'] as String,
       topic: map['topic'] == null ? null : map['topic'] as String,
     );
   }
 }
-

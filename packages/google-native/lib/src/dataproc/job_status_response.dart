@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Dataproc job status.
 class JobStatusResponse {
   /// Optional. Output only. Job state details, such as an error description if the state is ERROR.
   final String details;
+
   /// A state message specifying the overall job state.
   final String state;
+
   /// The time when this state was entered.
   final String stateStartTime;
+
   /// Additional state information, which includes status reported by the agent.
   final String substate;
 
@@ -42,4 +44,3 @@ class JobStatusResponse {
     );
   }
 }
-

@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -112,4 +113,28 @@ func TestDependencyPackageDirFromDartPackageName(t *testing.T) {
 	assert.Equal(t, "gcp-global-cloudrun", dependencyPackageDirFromDartPackageName("pulumi_gcp_global_cloudrun"))
 	assert.Equal(t, "", dependencyPackageDirFromDartPackageName("pulumi"))
 	assert.Equal(t, "", dependencyPackageDirFromDartPackageName("http"))
+}
+
+func TestInferLocalPulumiDependencyFromProjectReadsDependencyOverrides(t *testing.T) {
+	projectDir := t.TempDir()
+	pubspecPath := filepath.Join(projectDir, "pubspec.yaml")
+	pulumiPath := filepath.Join(projectDir, "vendor", "pulumi")
+	dependencyOverrides := filepath.Join("vendor", "pulumi")
+
+	pubspec := `name: dart_sdk_gen
+description: Pulumi Dart SDK generation workspace
+version: 0.0.1
+environment:
+  sdk: ^3.10.0
+dependencies:
+  pulumi: any
+dependency_overrides:
+  pulumi:
+    path: ` + dependencyOverrides + `
+`
+	err := os.WriteFile(pubspecPath, []byte(pubspec), 0o600)
+	require.NoError(t, err)
+
+	inferred := inferLocalPulumiDependencyFromProject(projectDir)
+	assert.Equal(t, filepath.Clean(pulumiPath), inferred)
 }

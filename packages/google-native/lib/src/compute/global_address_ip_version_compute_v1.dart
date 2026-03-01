@@ -13,7 +13,8 @@ enum GlobalAddressIpVersionComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalAddressIpVersionComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown GlobalAddressIpVersionComputeV1 value: $value',
+    );
   }
 }
-

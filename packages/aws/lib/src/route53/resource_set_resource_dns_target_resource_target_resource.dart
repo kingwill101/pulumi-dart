@@ -5,9 +5,12 @@ import 'resource_set_resource_dns_target_resource_target_resource_r53_resource.d
 
 class ResourceSetResourceDnsTargetResourceTargetResource {
   /// NLB resource a DNS Target Resource points to. Required if `r53_resource` is not set.
-  final ResourceSetResourceDnsTargetResourceTargetResourceNlbResource? nlbResource;
+  final ResourceSetResourceDnsTargetResourceTargetResourceNlbResource?
+  nlbResource;
+
   /// Route53 resource a DNS Target Resource record points to.
-  final ResourceSetResourceDnsTargetResourceTargetResourceR53Resource? r53Resource;
+  final ResourceSetResourceDnsTargetResourceTargetResourceR53Resource?
+  r53Resource;
 
   /// Creates a new [ResourceSetResourceDnsTargetResourceTargetResource].
   /// [nlbResource] NLB resource a DNS Target Resource points to. Required if `r53_resource` is not set.
@@ -24,11 +27,20 @@ class ResourceSetResourceDnsTargetResourceTargetResource {
     };
   }
 
-  factory ResourceSetResourceDnsTargetResourceTargetResource.fromMap(Map<String, dynamic> map) {
+  factory ResourceSetResourceDnsTargetResourceTargetResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceSetResourceDnsTargetResourceTargetResource(
-      nlbResource: map['nlbResource'] == null ? null : ResourceSetResourceDnsTargetResourceTargetResourceNlbResource.fromMap((map['nlbResource'] as Map).cast<String, dynamic>()),
-      r53Resource: map['r53Resource'] == null ? null : ResourceSetResourceDnsTargetResourceTargetResourceR53Resource.fromMap((map['r53Resource'] as Map).cast<String, dynamic>()),
+      nlbResource: map['nlbResource'] == null
+          ? null
+          : ResourceSetResourceDnsTargetResourceTargetResourceNlbResource.fromMap(
+              (map['nlbResource'] as Map).cast<String, dynamic>(),
+            ),
+      r53Resource: map['r53Resource'] == null
+          ? null
+          : ResourceSetResourceDnsTargetResourceTargetResourceR53Resource.fromMap(
+              (map['r53Resource'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

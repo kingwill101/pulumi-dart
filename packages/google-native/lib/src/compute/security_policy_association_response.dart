@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SecurityPolicyAssociationResponse {
   /// The resource that the security policy is attached to.
   final String attachmentId;
+
   /// The display name of the security policy of the association.
   final String displayName;
+
   /// The name for an association.
   final String name;
+
   /// The security policy ID of the association.
   final String securityPolicyId;
 
@@ -41,4 +43,3 @@ class SecurityPolicyAssociationResponse {
     );
   }
 }
-

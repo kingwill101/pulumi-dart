@@ -14,7 +14,8 @@ enum GooglePrivacyDlpV2SensitivityScoreScore {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2SensitivityScoreScore value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2SensitivityScoreScore value: $value',
+    );
   }
 }
-

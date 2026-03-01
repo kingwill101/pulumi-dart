@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup {
   /// The key of the application execution property key-value map.
   final String propertyGroupId;
+
   /// Application execution property key-value map.
   final Map<String, String> propertyMap;
 
@@ -22,11 +22,12 @@ class ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup {
     };
   }
 
-  factory ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationEnvironmentPropertiesPropertyGroup(
       propertyGroupId: map['propertyGroupId'] as String,
       propertyMap: (map['propertyMap'] as Map).cast<String, String>(),
     );
   }
 }
-

@@ -272,16 +272,22 @@ import 'contact_args.dart';
 class Contact extends pulumi.CustomResource {
   /// A unique and identifiable alias for the contact or escalation plan. Must be between 1 and 255 characters, and may contain alphanumerics, underscores (`_`), and hyphens (`-`).
   late final pulumi.Output<String> alias;
+
   /// The Amazon Resource Name (ARN) of the contact or escalation plan.
   late final pulumi.Output<String> arn;
+
   /// Full friendly name of the contact or escalation plan. If set, must be between 1 and 255 characters, and may contain alphanumerics, underscores (`_`), hyphens (`-`), periods (`.`), and spaces.
   late final pulumi.Output<String?> displayName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The type of contact engaged. A single contact is type PERSONAL and an escalation
   /// plan is type ESCALATION.
   ///
@@ -297,11 +303,11 @@ class Contact extends pulumi.CustomResource {
     ContactArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssmcontacts/contact:Contact',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ssmcontacts/contact:Contact',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.alias = registerOutput<String>('alias');
     this.arn = registerOutput<String>('arn');
     this.displayName = registerOutput<String?>('displayName');

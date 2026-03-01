@@ -19,10 +19,9 @@ class GetSpokeArgs {
     required String location,
     String? project,
     required String spokeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spokeId = pulumi.Input.asInput<String>(spokeId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       spokeId = pulumi.Input.asInput<String>(spokeId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetSpokeArgs {
     );
   }
 }
-

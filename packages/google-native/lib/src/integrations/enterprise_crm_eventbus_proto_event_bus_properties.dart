@@ -10,20 +10,31 @@ class EnterpriseCrmEventbusProtoEventBusProperties {
 
   /// Creates a new [EnterpriseCrmEventbusProtoEventBusProperties].
   /// [properties] An unordered list of property entries.
-  EnterpriseCrmEventbusProtoEventBusProperties({
-    this.properties,
-  });
+  EnterpriseCrmEventbusProtoEventBusProperties({this.properties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?properties == null ? null : pulumi.Input.encodeList<EnterpriseCrmEventbusProtoPropertyEntry, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+      'properties': ?properties == null
+          ? null
+          : pulumi.Input.encodeList<
+              EnterpriseCrmEventbusProtoPropertyEntry,
+              Map<String, dynamic>
+            >(properties!, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoEventBusProperties.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoEventBusProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoEventBusProperties(
-      properties: map['properties'] == null ? null : pulumi.Input.decodeList<EnterpriseCrmEventbusProtoPropertyEntry>(map['properties'], (value) => EnterpriseCrmEventbusProtoPropertyEntry.fromMap((value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null
+          ? null
+          : pulumi.Input.decodeList<EnterpriseCrmEventbusProtoPropertyEntry>(
+              map['properties'],
+              (value) => EnterpriseCrmEventbusProtoPropertyEntry.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

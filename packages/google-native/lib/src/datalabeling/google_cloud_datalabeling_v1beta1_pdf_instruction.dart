@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Instruction from a PDF file.
 class GoogleCloudDatalabelingV1beta1PdfInstruction {
   /// PDF file for the instruction. Only gcs path is allowed.
@@ -8,20 +7,19 @@ class GoogleCloudDatalabelingV1beta1PdfInstruction {
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1PdfInstruction].
   /// [gcsFileUri] PDF file for the instruction. Only gcs path is allowed.
-  GoogleCloudDatalabelingV1beta1PdfInstruction({
-    this.gcsFileUri,
-  });
+  GoogleCloudDatalabelingV1beta1PdfInstruction({this.gcsFileUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gcsFileUri': ?gcsFileUri,
-    };
+    return <String, dynamic>{'gcsFileUri': ?gcsFileUri};
   }
 
-  factory GoogleCloudDatalabelingV1beta1PdfInstruction.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1PdfInstruction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1PdfInstruction(
-      gcsFileUri: map['gcsFileUri'] == null ? null : map['gcsFileUri'] as String,
+      gcsFileUri: map['gcsFileUri'] == null
+          ? null
+          : map['gcsFileUri'] as String,
     );
   }
 }
-

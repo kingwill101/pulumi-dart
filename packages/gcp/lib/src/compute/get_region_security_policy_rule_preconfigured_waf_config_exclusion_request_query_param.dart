@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
   /// You can specify an exact match or a partial match by using a field operator and a field value.
   /// Available options:
@@ -10,6 +9,7 @@ class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryPara
   /// CONTAINS: The operator matches if the field value contains the specified value.
   /// EQUALS_ANY: The operator matches if the field value is any value. Possible values: ["CONTAINS", "ENDS_WITH", "EQUALS", "EQUALS_ANY", "STARTS_WITH"]
   final String operator;
+
   /// A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
   /// The field value must be given if the field operator is not EQUALS_ANY, and cannot be given if the field operator is EQUALS_ANY.
   final String value;
@@ -23,17 +23,15 @@ class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryPara
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'operator': operator,
-      'value': value,
-    };
+    return <String, dynamic>{'operator': operator, 'value': value};
   }
 
-  factory GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam.fromMap(Map<String, dynamic> map) {
+  factory GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam(
       operator: map['operator'] as String,
       value: map['value'] as String,
     );
   }
 }
-

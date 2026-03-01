@@ -7,6 +7,7 @@ import 'google_cloud_discoveryengine_v1beta_text_input.dart';
 class GoogleCloudDiscoveryengineV1betaConversationMessage {
   /// Search reply.
   final GoogleCloudDiscoveryengineV1betaReply? reply;
+
   /// User text input.
   final GoogleCloudDiscoveryengineV1betaTextInput? userInput;
 
@@ -25,11 +26,20 @@ class GoogleCloudDiscoveryengineV1betaConversationMessage {
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1betaConversationMessage.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1betaConversationMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1betaConversationMessage(
-      reply: map['reply'] == null ? null : GoogleCloudDiscoveryengineV1betaReply.fromMap((map['reply'] as Map).cast<String, dynamic>()),
-      userInput: map['userInput'] == null ? null : GoogleCloudDiscoveryengineV1betaTextInput.fromMap((map['userInput'] as Map).cast<String, dynamic>()),
+      reply: map['reply'] == null
+          ? null
+          : GoogleCloudDiscoveryengineV1betaReply.fromMap(
+              (map['reply'] as Map).cast<String, dynamic>(),
+            ),
+      userInput: map['userInput'] == null
+          ? null
+          : GoogleCloudDiscoveryengineV1betaTextInput.fromMap(
+              (map['userInput'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

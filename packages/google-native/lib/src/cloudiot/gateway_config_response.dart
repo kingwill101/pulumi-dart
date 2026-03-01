@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Gateway-related configuration and state.
 class GatewayConfigResponse {
   /// Indicates how to authorize and/or authenticate devices to access the gateway.
   final String gatewayAuthMethod;
+
   /// Indicates whether the device is a gateway.
   final String gatewayType;
+
   /// [Output only] The ID of the gateway the device accessed most recently.
   final String lastAccessedGatewayId;
+
   /// [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
   final String lastAccessedGatewayTime;
 
@@ -42,4 +44,3 @@ class GatewayConfigResponse {
     );
   }
 }
-

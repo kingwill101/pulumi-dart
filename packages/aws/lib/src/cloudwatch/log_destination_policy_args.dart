@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LogDestinationPolicyArgs {
   /// The policy document. This is a JSON formatted string.
   final pulumi.Input<String> accessPolicy;
+
   /// A name for the subscription filter
   final pulumi.Input<String> destinationName;
+
   /// Specify true if you are updating an existing destination policy to grant permission to an organization ID instead of granting permission to individual AWS accounts.
   final pulumi.Input<bool>? forceUpdate;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,11 +29,10 @@ class LogDestinationPolicyArgs {
     required String destinationName,
     bool? forceUpdate,
     String? region,
-  }) :
-      accessPolicy = pulumi.Input.asInput<String>(accessPolicy),
-      destinationName = pulumi.Input.asInput<String>(destinationName),
-      forceUpdate = pulumi.Input.asOptionalInput<bool>(forceUpdate),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : accessPolicy = pulumi.Input.asInput<String>(accessPolicy),
+       destinationName = pulumi.Input.asInput<String>(destinationName),
+       forceUpdate = pulumi.Input.asOptionalInput<bool>(forceUpdate),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,9 +47,10 @@ class LogDestinationPolicyArgs {
     return LogDestinationPolicyArgs(
       accessPolicy: map['accessPolicy'] as String,
       destinationName: map['destinationName'] as String,
-      forceUpdate: map['forceUpdate'] == null ? null : map['forceUpdate'] as bool,
+      forceUpdate: map['forceUpdate'] == null
+          ? null
+          : map['forceUpdate'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

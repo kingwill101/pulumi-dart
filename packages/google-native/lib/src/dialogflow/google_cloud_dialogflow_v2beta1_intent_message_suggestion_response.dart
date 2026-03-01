@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The suggestion chip message that the user can tap to quickly post a reply to the conversation.
 class GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse {
   /// The text shown the in the suggestion chip.
@@ -13,15 +12,14 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'title': title,
-    };
+    return <String, dynamic>{'title': title};
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse(
       title: map['title'] as String,
     );
   }
 }
-

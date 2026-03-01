@@ -838,8 +838,10 @@ import 'repository_iam_binding_condition.dart';
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class RepositoryIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<RepositoryIamBindingCondition?> condition;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -853,11 +855,14 @@ class RepositoryIamBinding extends pulumi.CustomResource {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   late final pulumi.Output<List<String>> members;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> repository;
+
   /// The role that should be applied. Only one
   /// `gcp.sourcerepo.RepositoryIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -872,12 +877,14 @@ class RepositoryIamBinding extends pulumi.CustomResource {
     RepositoryIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<RepositoryIamBindingCondition?>('condition');
+         'gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.condition = registerOutput<RepositoryIamBindingCondition?>(
+      'condition',
+    );
     this.etag = registerOutput<String>('etag');
     this.members = registerOutput<List<String>>('members');
     this.project = registerOutput<String>('project');

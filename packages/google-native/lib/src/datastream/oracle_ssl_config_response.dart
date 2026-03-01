@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Oracle SSL configuration information.
 class OracleSslConfigResponse {
   /// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
   final String caCertificate;
+
   /// Indicates whether the ca_certificate field has been set for this Connection-Profile.
   final bool caCertificateSet;
 
@@ -30,4 +30,3 @@ class OracleSslConfigResponse {
     );
   }
 }
-

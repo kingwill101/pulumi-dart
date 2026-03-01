@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetServiceTemplateSpecVolumeNf {
   /// Path exported by the NFS server
   final String path;
+
   /// If true, mount the NFS volume as read only in all mounts. Defaults to false.
   final bool readOnly;
+
   /// IP address or hostname of the NFS server
   final String server;
 
@@ -35,4 +36,3 @@ class GetServiceTemplateSpecVolumeNf {
     );
   }
 }
-

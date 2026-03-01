@@ -11,9 +11,11 @@ class OverrideArgs {
   /// ID of the API proxy that will have its trace configuration overridden.
   final pulumi.Input<String>? apiProxy;
   final pulumi.Input<String> environmentId;
+
   /// ID of the trace configuration override specified as a system-generated UUID.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
+
   /// Trace configuration to override.
   final pulumi.Input<GoogleCloudApigeeV1TraceSamplingConfig>? samplingConfig;
 
@@ -29,12 +31,14 @@ class OverrideArgs {
     String? name,
     required String organizationId,
     GoogleCloudApigeeV1TraceSamplingConfig? samplingConfig,
-  }) :
-      apiProxy = pulumi.Input.asOptionalInput<String>(apiProxy),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      samplingConfig = pulumi.Input.asOptionalInput<GoogleCloudApigeeV1TraceSamplingConfig>(samplingConfig);
+  }) : apiProxy = pulumi.Input.asOptionalInput<String>(apiProxy),
+       environmentId = pulumi.Input.asInput<String>(environmentId),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       samplingConfig =
+           pulumi.Input.asOptionalInput<GoogleCloudApigeeV1TraceSamplingConfig>(
+             samplingConfig,
+           );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +46,11 @@ class OverrideArgs {
       'environmentId': environmentId,
       'name': ?name,
       'organizationId': organizationId,
-      'samplingConfig': ?pulumi.Input.mapOptionalInputValue<GoogleCloudApigeeV1TraceSamplingConfig, Map<String, dynamic>>(samplingConfig, (value) => value.toMap()),
+      'samplingConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudApigeeV1TraceSamplingConfig,
+            Map<String, dynamic>
+          >(samplingConfig, (value) => value.toMap()),
     };
   }
 
@@ -52,8 +60,11 @@ class OverrideArgs {
       environmentId: map['environmentId'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       organizationId: map['organizationId'] as String,
-      samplingConfig: map['samplingConfig'] == null ? null : GoogleCloudApigeeV1TraceSamplingConfig.fromMap((map['samplingConfig'] as Map).cast<String, dynamic>()),
+      samplingConfig: map['samplingConfig'] == null
+          ? null
+          : GoogleCloudApigeeV1TraceSamplingConfig.fromMap(
+              (map['samplingConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

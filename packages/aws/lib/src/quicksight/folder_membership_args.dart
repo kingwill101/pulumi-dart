@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderMembershipArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
+
   /// Identifier for the folder.
   final pulumi.Input<String> folderId;
+
   /// ID of the asset (the dashboard, analysis, or dataset).
   final pulumi.Input<String> memberId;
+
   /// Type of the member. Valid values are `ANALYSIS`, `DASHBOARD`, and `DATASET`.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> memberType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -32,12 +36,11 @@ class FolderMembershipArgs {
     required String memberId,
     required String memberType,
     String? region,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      memberId = pulumi.Input.asInput<String>(memberId),
-      memberType = pulumi.Input.asInput<String>(memberType),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
+       folderId = pulumi.Input.asInput<String>(folderId),
+       memberId = pulumi.Input.asInput<String>(memberId),
+       memberType = pulumi.Input.asInput<String>(memberType),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,7 +54,9 @@ class FolderMembershipArgs {
 
   factory FolderMembershipArgs.fromMap(Map<String, dynamic> map) {
     return FolderMembershipArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
+      awsAccountId: map['awsAccountId'] == null
+          ? null
+          : map['awsAccountId'] as String,
       folderId: map['folderId'] as String,
       memberId: map['memberId'] as String,
       memberType: map['memberType'] as String,
@@ -59,4 +64,3 @@ class FolderMembershipArgs {
     );
   }
 }
-

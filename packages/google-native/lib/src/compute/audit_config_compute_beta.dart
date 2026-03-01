@@ -7,8 +7,10 @@ import 'audit_log_config_compute_beta.dart';
 class AuditConfigComputeBeta {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigComputeBeta>? auditLogConfigs;
+
   /// This is deprecated and has no effect. Do not use.
   final List<String>? exemptedMembers;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
@@ -24,7 +26,12 @@ class AuditConfigComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<AuditLogConfigComputeBeta, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'auditLogConfigs': ?auditLogConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              AuditLogConfigComputeBeta,
+              Map<String, dynamic>
+            >(auditLogConfigs!, (value) => value.toMap()),
       'exemptedMembers': ?exemptedMembers,
       'service': ?service,
     };
@@ -32,10 +39,18 @@ class AuditConfigComputeBeta {
 
   factory AuditConfigComputeBeta.fromMap(Map<String, dynamic> map) {
     return AuditConfigComputeBeta(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<AuditLogConfigComputeBeta>(map['auditLogConfigs'], (value) => AuditLogConfigComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
+      auditLogConfigs: map['auditLogConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<AuditLogConfigComputeBeta>(
+              map['auditLogConfigs'],
+              (value) => AuditLogConfigComputeBeta.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      exemptedMembers: map['exemptedMembers'] == null
+          ? null
+          : (map['exemptedMembers'] as List).cast<String>(),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
-

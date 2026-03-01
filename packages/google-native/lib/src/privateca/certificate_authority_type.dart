@@ -16,4 +16,3 @@ enum CertificateAuthorityType {
     throw ArgumentError('Unknown CertificateAuthorityType value: $value');
   }
 }
-

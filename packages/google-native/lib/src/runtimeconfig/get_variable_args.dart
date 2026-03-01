@@ -19,10 +19,9 @@ class GetVariableArgs {
     required String configId,
     String? project,
     required String variableId,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      variableId = pulumi.Input.asInput<String>(variableId);
+  }) : configId = pulumi.Input.asInput<String>(configId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       variableId = pulumi.Input.asInput<String>(variableId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetVariableArgs {
     );
   }
 }
-

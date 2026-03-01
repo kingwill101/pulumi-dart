@@ -1273,48 +1273,71 @@ import 'domain_vpc_options.dart';
 class Domain extends pulumi.CustomResource {
   /// IAM policy document specifying the access policies for the domain.
   late final pulumi.Output<String> accessPolicies;
+
   /// Key-value string pairs to specify advanced configuration options. Note that the values for these configuration options must be strings (wrapped in quotes) or they may be wrong and cause a perpetual diff, causing the provider to want to recreate your Elasticsearch domain on every apply.
   late final pulumi.Output<Map<String, String>> advancedOptions;
+
   /// Configuration block for [fine-grained access control](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/fgac.html). Detailed below.
-  late final pulumi.Output<DomainAdvancedSecurityOptions> advancedSecurityOptions;
+  late final pulumi.Output<DomainAdvancedSecurityOptions>
+  advancedSecurityOptions;
+
   /// ARN of the domain.
   late final pulumi.Output<String> arn;
+
   /// Configuration block for the Auto-Tune options of the domain. Detailed below.
   late final pulumi.Output<DomainAutoTuneOptions> autoTuneOptions;
+
   /// Configuration block for the cluster of the domain. Detailed below.
   late final pulumi.Output<DomainClusterConfig> clusterConfig;
+
   /// Configuration block for authenticating Kibana with Cognito. Detailed below.
   late final pulumi.Output<DomainCognitoOptions?> cognitoOptions;
+
   /// Configuration block for domain endpoint HTTP(S) related options. Detailed below.
   late final pulumi.Output<DomainDomainEndpointOptions> domainEndpointOptions;
+
   /// Unique identifier for the domain.
   late final pulumi.Output<String> domainId;
+
   /// Name of the domain.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> domainName;
+
   /// Configuration block for EBS related options, may be required based on chosen [instance size](https://aws.amazon.com/elasticsearch-service/pricing/). Detailed below.
   late final pulumi.Output<DomainEbsOptions> ebsOptions;
+
   /// Version of Elasticsearch to deploy. Defaults to `1.5`.
   late final pulumi.Output<String?> elasticsearchVersion;
+
   /// Configuration block for encrypt at rest options. Only available for [certain instance types](http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/aes-supported-instance-types.html). Detailed below.
   late final pulumi.Output<DomainEncryptAtRest> encryptAtRest;
+
   /// Domain-specific endpoint used to submit index, search, and data upload requests.
   late final pulumi.Output<String> endpoint;
+
   /// Domain-specific endpoint for kibana without https scheme.
   late final pulumi.Output<String> kibanaEndpoint;
+
   /// Configuration block for publishing slow and application logs to CloudWatch Logs. This block can be declared multiple times, for each log_type, within the same resource. Detailed below.
-  late final pulumi.Output<List<DomainLogPublishingOption>?> logPublishingOptions;
+  late final pulumi.Output<List<DomainLogPublishingOption>?>
+  logPublishingOptions;
+
   /// Configuration block for node-to-node encryption options. Detailed below.
   late final pulumi.Output<DomainNodeToNodeEncryption> nodeToNodeEncryption;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block for snapshot related options. Detailed below. DEPRECATED. For domains running Elasticsearch 5.3 and later, Amazon ES takes hourly automated snapshots, making this setting irrelevant. For domains running earlier versions of Elasticsearch, Amazon ES takes daily automated snapshots.
   late final pulumi.Output<DomainSnapshotOptions?> snapshotOptions;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Configuration block for VPC related options. Adding or removing this configuration forces a new resource ([documentation](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-vpc-limitations)). Detailed below.
   late final pulumi.Output<DomainVpcOptions?> vpcOptions;
 
@@ -1322,24 +1345,32 @@ class Domain extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Domain]. {@macro pulumi_elasticsearch_domain_domain_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Domain(
-    String name, {
-    DomainArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:elasticsearch/domain:Domain',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Domain(String name, {DomainArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:elasticsearch/domain:Domain',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.accessPolicies = registerOutput<String>('accessPolicies');
-    this.advancedOptions = registerOutput<Map<String, String>>('advancedOptions');
-    this.advancedSecurityOptions = registerOutput<DomainAdvancedSecurityOptions>('advancedSecurityOptions');
+    this.advancedOptions = registerOutput<Map<String, String>>(
+      'advancedOptions',
+    );
+    this.advancedSecurityOptions =
+        registerOutput<DomainAdvancedSecurityOptions>(
+          'advancedSecurityOptions',
+        );
     this.arn = registerOutput<String>('arn');
-    this.autoTuneOptions = registerOutput<DomainAutoTuneOptions>('autoTuneOptions');
+    this.autoTuneOptions = registerOutput<DomainAutoTuneOptions>(
+      'autoTuneOptions',
+    );
     this.clusterConfig = registerOutput<DomainClusterConfig>('clusterConfig');
-    this.cognitoOptions = registerOutput<DomainCognitoOptions?>('cognitoOptions');
-    this.domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>('domainEndpointOptions');
+    this.cognitoOptions = registerOutput<DomainCognitoOptions?>(
+      'cognitoOptions',
+    );
+    this.domainEndpointOptions = registerOutput<DomainDomainEndpointOptions>(
+      'domainEndpointOptions',
+    );
     this.domainId = registerOutput<String>('domainId');
     this.domainName = registerOutput<String>('domainName');
     this.ebsOptions = registerOutput<DomainEbsOptions>('ebsOptions');
@@ -1347,10 +1378,17 @@ class Domain extends pulumi.CustomResource {
     this.encryptAtRest = registerOutput<DomainEncryptAtRest>('encryptAtRest');
     this.endpoint = registerOutput<String>('endpoint');
     this.kibanaEndpoint = registerOutput<String>('kibanaEndpoint');
-    this.logPublishingOptions = registerOutput<List<DomainLogPublishingOption>?>('logPublishingOptions');
-    this.nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>('nodeToNodeEncryption');
+    this.logPublishingOptions =
+        registerOutput<List<DomainLogPublishingOption>?>(
+          'logPublishingOptions',
+        );
+    this.nodeToNodeEncryption = registerOutput<DomainNodeToNodeEncryption>(
+      'nodeToNodeEncryption',
+    );
     this.region = registerOutput<String>('region');
-    this.snapshotOptions = registerOutput<DomainSnapshotOptions?>('snapshotOptions');
+    this.snapshotOptions = registerOutput<DomainSnapshotOptions?>(
+      'snapshotOptions',
+    );
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
     this.vpcOptions = registerOutput<DomainVpcOptions?>('vpcOptions');

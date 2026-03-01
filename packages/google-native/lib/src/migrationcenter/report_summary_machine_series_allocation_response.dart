@@ -6,6 +6,7 @@ import 'machine_series_response.dart';
 class ReportSummaryMachineSeriesAllocationResponse {
   /// Count of assets allocated to this machine series.
   final String allocatedAssetCount;
+
   /// The Machine Series (e.g. "E2", "N2")
   final MachineSeriesResponse machineSeries;
 
@@ -24,11 +25,14 @@ class ReportSummaryMachineSeriesAllocationResponse {
     };
   }
 
-  factory ReportSummaryMachineSeriesAllocationResponse.fromMap(Map<String, dynamic> map) {
+  factory ReportSummaryMachineSeriesAllocationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReportSummaryMachineSeriesAllocationResponse(
       allocatedAssetCount: map['allocatedAssetCount'] as String,
-      machineSeries: MachineSeriesResponse.fromMap((map['machineSeries'] as Map).cast<String, dynamic>()),
+      machineSeries: MachineSeriesResponse.fromMap(
+        (map['machineSeries'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

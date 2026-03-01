@@ -22,11 +22,10 @@ class GetDicomStoreArgs {
     required String dicomStoreId,
     required String location,
     String? project,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      dicomStoreId = pulumi.Input.asInput<String>(dicomStoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : datasetId = pulumi.Input.asInput<String>(datasetId),
+       dicomStoreId = pulumi.Input.asInput<String>(dicomStoreId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetDicomStoreArgs {
     );
   }
 }
-

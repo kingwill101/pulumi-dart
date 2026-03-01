@@ -9,20 +9,17 @@ class ManagedZoneServiceDirectoryConfig {
 
   /// Creates a new [ManagedZoneServiceDirectoryConfig].
   /// [namespace] The namespace associated with the zone.
-  ManagedZoneServiceDirectoryConfig({
-    required this.namespace,
-  });
+  ManagedZoneServiceDirectoryConfig({required this.namespace});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespace': namespace.toMap(),
-    };
+    return <String, dynamic>{'namespace': namespace.toMap()};
   }
 
   factory ManagedZoneServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
     return ManagedZoneServiceDirectoryConfig(
-      namespace: ManagedZoneServiceDirectoryConfigNamespace.fromMap((map['namespace'] as Map).cast<String, dynamic>()),
+      namespace: ManagedZoneServiceDirectoryConfigNamespace.fromMap(
+        (map['namespace'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

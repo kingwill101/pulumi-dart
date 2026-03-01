@@ -227,8 +227,10 @@ class RowAccessPolicy extends pulumi.CustomResource {
   /// The time when this row access policy was created, in milliseconds since
   /// the epoch.
   late final pulumi.Output<String> creationTime;
+
   /// The ID of the dataset containing this row access policy.
   late final pulumi.Output<String> datasetId;
+
   /// A SQL boolean expression that represents the rows defined by this row
   /// access policy, similar to the boolean expression in a WHERE clause of a
   /// SELECT query on a table.
@@ -239,6 +241,7 @@ class RowAccessPolicy extends pulumi.CustomResource {
   /// nullable_field is not NULL
   /// numeric_field BETWEEN 1.0 AND 5.0
   late final pulumi.Output<String> filterPredicate;
+
   /// Input only. The optional list of iam_member users or groups that specifies the initial
   /// members that the row-level access policy should be created with.
   /// grantees types:
@@ -261,16 +264,20 @@ class RowAccessPolicy extends pulumi.CustomResource {
   /// BigQuery requires authentication before a user can access the service,
   /// allUsers includes only authenticated users.
   late final pulumi.Output<List<String>?> grantees;
+
   /// The time when this row access policy was last modified, in milliseconds
   /// since the epoch.
   late final pulumi.Output<String> lastModifiedTime;
+
   /// The ID of the row access policy. The ID must contain only
   /// letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
   /// length is 256 characters.
   late final pulumi.Output<String> policyId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The ID of the table containing this row access policy.
   late final pulumi.Output<String> tableId;
 
@@ -283,11 +290,11 @@ class RowAccessPolicy extends pulumi.CustomResource {
     RowAccessPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigquery/rowAccessPolicy:RowAccessPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:bigquery/rowAccessPolicy:RowAccessPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.creationTime = registerOutput<String>('creationTime');
     this.datasetId = registerOutput<String>('datasetId');
     this.filterPredicate = registerOutput<String>('filterPredicate');

@@ -9,20 +9,29 @@ class WebAclDataProtectionConfig {
 
   /// Creates a new [WebAclDataProtectionConfig].
   /// [dataProtections] A block for data protection configurations for specific web request field types. See `data_protection` block for details.
-  WebAclDataProtectionConfig({
-    this.dataProtections,
-  });
+  WebAclDataProtectionConfig({this.dataProtections});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataProtections': ?dataProtections == null ? null : pulumi.Input.encodeList<WebAclDataProtectionConfigDataProtection, Map<String, dynamic>>(dataProtections!, (value) => value.toMap()),
+      'dataProtections': ?dataProtections == null
+          ? null
+          : pulumi.Input.encodeList<
+              WebAclDataProtectionConfigDataProtection,
+              Map<String, dynamic>
+            >(dataProtections!, (value) => value.toMap()),
     };
   }
 
   factory WebAclDataProtectionConfig.fromMap(Map<String, dynamic> map) {
     return WebAclDataProtectionConfig(
-      dataProtections: map['dataProtections'] == null ? null : pulumi.Input.decodeList<WebAclDataProtectionConfigDataProtection>(map['dataProtections'], (value) => WebAclDataProtectionConfigDataProtection.fromMap((value as Map).cast<String, dynamic>())),
+      dataProtections: map['dataProtections'] == null
+          ? null
+          : pulumi.Input.decodeList<WebAclDataProtectionConfigDataProtection>(
+              map['dataProtections'],
+              (value) => WebAclDataProtectionConfigDataProtection.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

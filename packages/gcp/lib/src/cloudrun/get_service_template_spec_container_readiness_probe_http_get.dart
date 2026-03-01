@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetServiceTemplateSpecContainerReadinessProbeHttpGet {
   /// Path to access on the HTTP server. If set, it should not be empty string.
   final String path;
+
   /// Port number to access on the container. Number must be in the range 1 to 65535.
   /// If not specified, defaults to the same value as container.ports[0].containerPort.
   final int port;
@@ -17,17 +17,15 @@ class GetServiceTemplateSpecContainerReadinessProbeHttpGet {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-      'port': port,
-    };
+    return <String, dynamic>{'path': path, 'port': port};
   }
 
-  factory GetServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap(Map<String, dynamic> map) {
+  factory GetServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceTemplateSpecContainerReadinessProbeHttpGet(
       path: map['path'] as String,
       port: map['port'] as int,
     );
   }
 }
-

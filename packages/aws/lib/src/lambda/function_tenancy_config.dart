@@ -1,20 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FunctionTenancyConfig {
   /// Tenant Isolation Mode. Valid values: `PER_TENANT`.
   final String tenantIsolationMode;
 
   /// Creates a new [FunctionTenancyConfig].
   /// [tenantIsolationMode] Tenant Isolation Mode. Valid values: `PER_TENANT`.
-  FunctionTenancyConfig({
-    required this.tenantIsolationMode,
-  });
+  FunctionTenancyConfig({required this.tenantIsolationMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tenantIsolationMode': tenantIsolationMode,
-    };
+    return <String, dynamic>{'tenantIsolationMode': tenantIsolationMode};
   }
 
   factory FunctionTenancyConfig.fromMap(Map<String, dynamic> map) {
@@ -23,4 +18,3 @@ class FunctionTenancyConfig {
     );
   }
 }
-

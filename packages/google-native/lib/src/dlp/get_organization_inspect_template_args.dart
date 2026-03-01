@@ -19,10 +19,9 @@ class GetOrganizationInspectTemplateArgs {
     required String inspectTemplateId,
     required String location,
     required String organizationId,
-  }) :
-      inspectTemplateId = pulumi.Input.asInput<String>(inspectTemplateId),
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : inspectTemplateId = pulumi.Input.asInput<String>(inspectTemplateId),
+       location = pulumi.Input.asInput<String>(location),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetOrganizationInspectTemplateArgs {
     );
   }
 }
-

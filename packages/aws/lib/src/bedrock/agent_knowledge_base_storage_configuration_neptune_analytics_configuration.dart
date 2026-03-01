@@ -4,7 +4,9 @@ import 'agent_knowledge_base_storage_configuration_neptune_analytics_configurati
 
 class AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration {
   /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
-  final AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMapping fieldMapping;
+  final AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMapping
+  fieldMapping;
+
   /// ARN of the Neptune Analytics vector store.
   final String graphArn;
 
@@ -23,11 +25,15 @@ class AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration {
     };
   }
 
-  factory AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration(
-      fieldMapping: AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMapping.fromMap((map['fieldMapping'] as Map).cast<String, dynamic>()),
+      fieldMapping:
+          AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMapping.fromMap(
+            (map['fieldMapping'] as Map).cast<String, dynamic>(),
+          ),
       graphArn: map['graphArn'] as String,
     );
   }
 }
-

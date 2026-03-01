@@ -739,29 +739,38 @@ import 'backend_bucket_params.dart';
 class BackendBucket extends pulumi.CustomResource {
   /// Cloud Storage bucket name.
   late final pulumi.Output<String> bucketName;
+
   /// Cloud CDN configuration for this Backend Bucket.
   /// Structure is documented below.
   late final pulumi.Output<BackendBucketCdnPolicy> cdnPolicy;
+
   /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
   /// Possible values are: `AUTOMATIC`, `DISABLED`.
   late final pulumi.Output<String?> compressionMode;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// Headers that the HTTP/S load balancer should add to proxied responses.
   late final pulumi.Output<List<String>?> customResponseHeaders;
+
   /// An optional textual description of the resource; provided by the
   /// client when the resource is created.
   late final pulumi.Output<String?> description;
+
   /// The security policy associated with this backend bucket.
   late final pulumi.Output<String?> edgeSecurityPolicy;
+
   /// If true, enable Cloud CDN for this BackendBucket.
   /// Note: This cannot be set to true when loadBalancingScheme is set to INTERNAL_MANAGED.
   late final pulumi.Output<bool?> enableCdn;
+
   /// The value can only be INTERNAL_MANAGED for cross-region internal layer 7 load balancer.
   /// If loadBalancingScheme is not specified, the backend bucket can be used by classic global external load balancers, or global application external load balancers, or both.
   /// Important: CDN cannot be enabled (enableCdn cannot be set to true) when loadBalancingScheme is set to INTERNAL_MANAGED.
   /// Possible values are: `INTERNAL_MANAGED`.
   late final pulumi.Output<String?> loadBalancingScheme;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -770,12 +779,15 @@ class BackendBucket extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
   late final pulumi.Output<BackendBucketParams?> params;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -788,16 +800,18 @@ class BackendBucket extends pulumi.CustomResource {
     BackendBucketArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/backendBucket:BackendBucket',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/backendBucket:BackendBucket',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucketName = registerOutput<String>('bucketName');
     this.cdnPolicy = registerOutput<BackendBucketCdnPolicy>('cdnPolicy');
     this.compressionMode = registerOutput<String?>('compressionMode');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
-    this.customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders');
+    this.customResponseHeaders = registerOutput<List<String>?>(
+      'customResponseHeaders',
+    );
     this.description = registerOutput<String?>('description');
     this.edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
     this.enableCdn = registerOutput<bool?>('enableCdn');

@@ -1,25 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AttachedClusterOidcConfig {
   /// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
   final String issuerUrl;
+
   /// OIDC verification keys in JWKS format (RFC 7517).
   final String? jwks;
 
   /// Creates a new [AttachedClusterOidcConfig].
   /// [issuerUrl] A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
   /// [jwks] OIDC verification keys in JWKS format (RFC 7517).
-  AttachedClusterOidcConfig({
-    required this.issuerUrl,
-    this.jwks,
-  });
+  AttachedClusterOidcConfig({required this.issuerUrl, this.jwks});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'issuerUrl': issuerUrl,
-      'jwks': ?jwks,
-    };
+    return <String, dynamic>{'issuerUrl': issuerUrl, 'jwks': ?jwks};
   }
 
   factory AttachedClusterOidcConfig.fromMap(Map<String, dynamic> map) {
@@ -29,4 +23,3 @@ class AttachedClusterOidcConfig {
     );
   }
 }
-

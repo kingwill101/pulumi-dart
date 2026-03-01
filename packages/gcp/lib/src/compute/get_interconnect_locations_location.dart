@@ -1,32 +1,43 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInterconnectLocationsLocation {
   /// The postal address of the Point of Presence.
   final String address;
+
   /// The availability zone for this InterconnectLocation.
   final String availabilityZone;
+
   /// A list of features available at this InterconnectLocation.
   final List<String> availableFeatures;
+
   /// A list of link types available at this InterconnectLocation.
   final List<String> availableLinkTypes;
+
   /// The city for this location.
   final String city;
+
   /// The continent for this location.
   final String continent;
+
   /// A textual description of the resource.
   final String description;
+
   /// The name of the provider for this facility.
   final String facilityProvider;
+
   /// A provider-assigned Identifier for this facility.
   final String facilityProviderFacilityId;
   final String name;
+
   /// The PeeringDB facility ID for this facility.
   final String peeringdbFacilityId;
+
   /// The URI of the created resource.
   final String selfLink;
+
   /// The status of this InterconnectLocation.
   final String status;
+
   /// Reserved for future use.
   final bool supportsPzs;
 
@@ -100,4 +111,3 @@ class GetInterconnectLocationsLocation {
     );
   }
 }
-

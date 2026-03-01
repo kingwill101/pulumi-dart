@@ -25,12 +25,11 @@ class GetFlowDialogflowV3beta1Args {
     String? languageCode,
     required String location,
     String? project,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      flowId = pulumi.Input.asInput<String>(flowId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : agentId = pulumi.Input.asInput<String>(agentId),
+       flowId = pulumi.Input.asInput<String>(flowId),
+       languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +45,11 @@ class GetFlowDialogflowV3beta1Args {
     return GetFlowDialogflowV3beta1Args(
       agentId: map['agentId'] as String,
       flowId: map['flowId'] as String,
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
+      languageCode: map['languageCode'] == null
+          ? null
+          : map['languageCode'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

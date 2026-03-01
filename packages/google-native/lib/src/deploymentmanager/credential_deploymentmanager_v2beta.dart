@@ -7,8 +7,10 @@ import 'service_account_deploymentmanager_v2beta.dart';
 class CredentialDeploymentmanagerV2beta {
   /// Basic Auth Credential, only used by TypeProvider.
   final BasicAuthDeploymentmanagerV2beta? basicAuth;
+
   /// Service Account Credential, only used by Deployment.
   final ServiceAccountDeploymentmanagerV2beta? serviceAccount;
+
   /// Specify to use the project default credential, only supported by Deployment.
   final bool? useProjectDefault;
 
@@ -25,17 +27,28 @@ class CredentialDeploymentmanagerV2beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'basicAuth': ?basicAuth == null ? null : basicAuth!.toMap(),
-      'serviceAccount': ?serviceAccount == null ? null : serviceAccount!.toMap(),
+      'serviceAccount': ?serviceAccount == null
+          ? null
+          : serviceAccount!.toMap(),
       'useProjectDefault': ?useProjectDefault,
     };
   }
 
   factory CredentialDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
     return CredentialDeploymentmanagerV2beta(
-      basicAuth: map['basicAuth'] == null ? null : BasicAuthDeploymentmanagerV2beta.fromMap((map['basicAuth'] as Map).cast<String, dynamic>()),
-      serviceAccount: map['serviceAccount'] == null ? null : ServiceAccountDeploymentmanagerV2beta.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
-      useProjectDefault: map['useProjectDefault'] == null ? null : map['useProjectDefault'] as bool,
+      basicAuth: map['basicAuth'] == null
+          ? null
+          : BasicAuthDeploymentmanagerV2beta.fromMap(
+              (map['basicAuth'] as Map).cast<String, dynamic>(),
+            ),
+      serviceAccount: map['serviceAccount'] == null
+          ? null
+          : ServiceAccountDeploymentmanagerV2beta.fromMap(
+              (map['serviceAccount'] as Map).cast<String, dynamic>(),
+            ),
+      useProjectDefault: map['useProjectDefault'] == null
+          ? null
+          : map['useProjectDefault'] as bool,
     );
   }
 }
-

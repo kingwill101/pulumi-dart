@@ -6,8 +6,10 @@ import 'sole_tenant_node_type_response.dart';
 class ReportSummarySoleTenantNodeAllocationResponse {
   /// Count of assets allocated to these nodes
   final String allocatedAssetCount;
+
   /// Sole Tenant node type, e.g. "m3-node-128-3904"
   final SoleTenantNodeTypeResponse node;
+
   /// Count of this node type to be provisioned
   final String nodeCount;
 
@@ -29,12 +31,15 @@ class ReportSummarySoleTenantNodeAllocationResponse {
     };
   }
 
-  factory ReportSummarySoleTenantNodeAllocationResponse.fromMap(Map<String, dynamic> map) {
+  factory ReportSummarySoleTenantNodeAllocationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReportSummarySoleTenantNodeAllocationResponse(
       allocatedAssetCount: map['allocatedAssetCount'] as String,
-      node: SoleTenantNodeTypeResponse.fromMap((map['node'] as Map).cast<String, dynamic>()),
+      node: SoleTenantNodeTypeResponse.fromMap(
+        (map['node'] as Map).cast<String, dynamic>(),
+      ),
       nodeCount: map['nodeCount'] as String,
     );
   }
 }
-

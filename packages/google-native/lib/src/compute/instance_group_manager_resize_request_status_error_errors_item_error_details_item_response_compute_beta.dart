@@ -32,13 +32,22 @@ class InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResp
     };
   }
 
-  factory InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerResizeRequestStatusErrorErrorsItemErrorDetailsItemResponseComputeBeta(
-      errorInfo: ErrorInfoResponseComputeBeta.fromMap((map['errorInfo'] as Map).cast<String, dynamic>()),
-      help: HelpResponseComputeBeta.fromMap((map['help'] as Map).cast<String, dynamic>()),
-      localizedMessage: LocalizedMessageResponseComputeBeta.fromMap((map['localizedMessage'] as Map).cast<String, dynamic>()),
-      quotaInfo: QuotaExceededInfoResponseComputeBeta.fromMap((map['quotaInfo'] as Map).cast<String, dynamic>()),
+      errorInfo: ErrorInfoResponseComputeBeta.fromMap(
+        (map['errorInfo'] as Map).cast<String, dynamic>(),
+      ),
+      help: HelpResponseComputeBeta.fromMap(
+        (map['help'] as Map).cast<String, dynamic>(),
+      ),
+      localizedMessage: LocalizedMessageResponseComputeBeta.fromMap(
+        (map['localizedMessage'] as Map).cast<String, dynamic>(),
+      ),
+      quotaInfo: QuotaExceededInfoResponseComputeBeta.fromMap(
+        (map['quotaInfo'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

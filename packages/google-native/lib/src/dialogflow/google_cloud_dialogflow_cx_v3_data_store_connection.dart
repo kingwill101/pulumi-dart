@@ -6,8 +6,10 @@ import 'google_cloud_dialogflow_cx_v3_data_store_connection_data_store_type.dart
 class GoogleCloudDialogflowCxV3DataStoreConnection {
   /// The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`
   final String? dataStore;
+
   /// The type of the connected data store.
-  final GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType? dataStoreType;
+  final GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType?
+  dataStoreType;
 
   /// Creates a new [GoogleCloudDialogflowCxV3DataStoreConnection].
   /// [dataStore] The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`
@@ -24,11 +26,16 @@ class GoogleCloudDialogflowCxV3DataStoreConnection {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3DataStoreConnection.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3DataStoreConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3DataStoreConnection(
       dataStore: map['dataStore'] == null ? null : map['dataStore'] as String,
-      dataStoreType: map['dataStoreType'] == null ? null : GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType.fromValue(map['dataStoreType'] as String),
+      dataStoreType: map['dataStoreType'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType.fromValue(
+              map['dataStoreType'] as String,
+            ),
     );
   }
 }
-

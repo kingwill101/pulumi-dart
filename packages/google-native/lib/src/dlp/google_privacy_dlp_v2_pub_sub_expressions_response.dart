@@ -7,6 +7,7 @@ import 'google_privacy_dlp_v2_pub_sub_condition_response.dart';
 class GooglePrivacyDlpV2PubSubExpressionsResponse {
   /// Conditions to apply to the expression.
   final List<GooglePrivacyDlpV2PubSubConditionResponse> conditions;
+
   /// The operator to apply to the collection of conditions.
   final String logicalOperator;
 
@@ -20,16 +21,27 @@ class GooglePrivacyDlpV2PubSubExpressionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': pulumi.Input.encodeList<GooglePrivacyDlpV2PubSubConditionResponse, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions':
+          pulumi.Input.encodeList<
+            GooglePrivacyDlpV2PubSubConditionResponse,
+            Map<String, dynamic>
+          >(conditions, (value) => value.toMap()),
       'logicalOperator': logicalOperator,
     };
   }
 
-  factory GooglePrivacyDlpV2PubSubExpressionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2PubSubExpressionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2PubSubExpressionsResponse(
-      conditions: pulumi.Input.decodeList<GooglePrivacyDlpV2PubSubConditionResponse>(map['conditions'], (value) => GooglePrivacyDlpV2PubSubConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      conditions:
+          pulumi.Input.decodeList<GooglePrivacyDlpV2PubSubConditionResponse>(
+            map['conditions'],
+            (value) => GooglePrivacyDlpV2PubSubConditionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       logicalOperator: map['logicalOperator'] as String,
     );
   }
 }
-

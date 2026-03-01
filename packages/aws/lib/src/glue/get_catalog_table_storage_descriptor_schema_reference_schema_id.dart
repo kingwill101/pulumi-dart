@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetCatalogTableStorageDescriptorSchemaReferenceSchemaId {
   /// Name of the schema registry that contains the schema.
   final String registryName;
+
   /// ARN of the schema.
   final String schemaArn;
+
   /// Name of the schema.
   final String schemaName;
 
@@ -27,7 +28,9 @@ class GetCatalogTableStorageDescriptorSchemaReferenceSchemaId {
     };
   }
 
-  factory GetCatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap(Map<String, dynamic> map) {
+  factory GetCatalogTableStorageDescriptorSchemaReferenceSchemaId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCatalogTableStorageDescriptorSchemaReferenceSchemaId(
       registryName: map['registryName'] as String,
       schemaArn: map['schemaArn'] as String,
@@ -35,4 +38,3 @@ class GetCatalogTableStorageDescriptorSchemaReferenceSchemaId {
     );
   }
 }
-

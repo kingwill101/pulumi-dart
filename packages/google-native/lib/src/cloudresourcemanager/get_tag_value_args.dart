@@ -11,21 +11,14 @@ class GetTagValueArgs {
 
   /// Creates a new [GetTagValueArgs].
   /// [tagValueId] Required.
-  GetTagValueArgs({
-    required String tagValueId,
-  }) :
-      tagValueId = pulumi.Input.asInput<String>(tagValueId);
+  GetTagValueArgs({required String tagValueId})
+    : tagValueId = pulumi.Input.asInput<String>(tagValueId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tagValueId': tagValueId,
-    };
+    return <String, dynamic>{'tagValueId': tagValueId};
   }
 
   factory GetTagValueArgs.fromMap(Map<String, dynamic> map) {
-    return GetTagValueArgs(
-      tagValueId: map['tagValueId'] as String,
-    );
+    return GetTagValueArgs(tagValueId: map['tagValueId'] as String);
   }
 }
-

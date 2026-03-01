@@ -10,20 +10,27 @@ class SerialPipeline {
 
   /// Creates a new [SerialPipeline].
   /// [stages] Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
-  SerialPipeline({
-    this.stages,
-  });
+  SerialPipeline({this.stages});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'stages': ?stages == null ? null : pulumi.Input.encodeList<Stage, Map<String, dynamic>>(stages!, (value) => value.toMap()),
+      'stages': ?stages == null
+          ? null
+          : pulumi.Input.encodeList<Stage, Map<String, dynamic>>(
+              stages!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory SerialPipeline.fromMap(Map<String, dynamic> map) {
     return SerialPipeline(
-      stages: map['stages'] == null ? null : pulumi.Input.decodeList<Stage>(map['stages'], (value) => Stage.fromMap((value as Map).cast<String, dynamic>())),
+      stages: map['stages'] == null
+          ? null
+          : pulumi.Input.decodeList<Stage>(
+              map['stages'],
+              (value) => Stage.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

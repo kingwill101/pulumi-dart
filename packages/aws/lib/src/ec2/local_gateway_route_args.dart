@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LocalGatewayRouteArgs {
   /// IPv4 CIDR range used for destination matches. Routing decisions are based on the most specific match.
   final pulumi.Input<String> destinationCidrBlock;
+
   /// Identifier of EC2 Local Gateway Route Table.
   final pulumi.Input<String> localGatewayRouteTableId;
+
   /// Identifier of EC2 Local Gateway Virtual Interface Group.
   final pulumi.Input<String> localGatewayVirtualInterfaceGroupId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,17 +29,23 @@ class LocalGatewayRouteArgs {
     required String localGatewayRouteTableId,
     required String localGatewayVirtualInterfaceGroupId,
     String? region,
-  }) :
-      destinationCidrBlock = pulumi.Input.asInput<String>(destinationCidrBlock),
-      localGatewayRouteTableId = pulumi.Input.asInput<String>(localGatewayRouteTableId),
-      localGatewayVirtualInterfaceGroupId = pulumi.Input.asInput<String>(localGatewayVirtualInterfaceGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : destinationCidrBlock = pulumi.Input.asInput<String>(
+         destinationCidrBlock,
+       ),
+       localGatewayRouteTableId = pulumi.Input.asInput<String>(
+         localGatewayRouteTableId,
+       ),
+       localGatewayVirtualInterfaceGroupId = pulumi.Input.asInput<String>(
+         localGatewayVirtualInterfaceGroupId,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationCidrBlock': destinationCidrBlock,
       'localGatewayRouteTableId': localGatewayRouteTableId,
-      'localGatewayVirtualInterfaceGroupId': localGatewayVirtualInterfaceGroupId,
+      'localGatewayVirtualInterfaceGroupId':
+          localGatewayVirtualInterfaceGroupId,
       'region': ?region,
     };
   }
@@ -45,9 +54,9 @@ class LocalGatewayRouteArgs {
     return LocalGatewayRouteArgs(
       destinationCidrBlock: map['destinationCidrBlock'] as String,
       localGatewayRouteTableId: map['localGatewayRouteTableId'] as String,
-      localGatewayVirtualInterfaceGroupId: map['localGatewayVirtualInterfaceGroupId'] as String,
+      localGatewayVirtualInterfaceGroupId:
+          map['localGatewayVirtualInterfaceGroupId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

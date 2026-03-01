@@ -4,7 +4,8 @@ import 'agent_data_source_data_source_configuration_salesforce_configuration_cra
 
 class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration {
   /// The Salesforce standard object configuration. See `filter_configuration` block for details.
-  final AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration? filterConfiguration;
+  final AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration?
+  filterConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration].
   /// [filterConfiguration] The Salesforce standard object configuration. See `filter_configuration` block for details.
@@ -14,14 +15,21 @@ class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfig
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filterConfiguration': ?filterConfiguration == null ? null : filterConfiguration!.toMap(),
+      'filterConfiguration': ?filterConfiguration == null
+          ? null
+          : filterConfiguration!.toMap(),
     };
   }
 
-  factory AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration(
-      filterConfiguration: map['filterConfiguration'] == null ? null : AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration.fromMap((map['filterConfiguration'] as Map).cast<String, dynamic>()),
+      filterConfiguration: map['filterConfiguration'] == null
+          ? null
+          : AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfigurationFilterConfiguration.fromMap(
+              (map['filterConfiguration'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetResolverFirewallRulesArgs {
   /// The action that DNS Firewall should take on a DNS query when it matches one of the domains in the rule's domain list.
   final pulumi.Input<String>? action;
+
   /// The unique identifier of the firewall rule group that you want to retrieve the rules for.
   final pulumi.Input<String> firewallRuleGroupId;
+
   /// The setting that determines the processing order of the rules in a rule group.
   final pulumi.Input<int>? priority;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,11 +29,10 @@ class GetResolverFirewallRulesArgs {
     required String firewallRuleGroupId,
     int? priority,
     String? region,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      firewallRuleGroupId = pulumi.Input.asInput<String>(firewallRuleGroupId),
-      priority = pulumi.Input.asOptionalInput<int>(priority),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : action = pulumi.Input.asOptionalInput<String>(action),
+       firewallRuleGroupId = pulumi.Input.asInput<String>(firewallRuleGroupId),
+       priority = pulumi.Input.asOptionalInput<int>(priority),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,4 +52,3 @@ class GetResolverFirewallRulesArgs {
     );
   }
 }
-

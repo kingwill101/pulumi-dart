@@ -8,10 +8,13 @@ import 'vm_capabilities_response_vmmigration_v1alpha1.dart';
 class AzureSourceVmDetailsResponseVmmigrationV1alpha1 {
   /// The total size of the disks being migrated in bytes.
   final String committedStorageBytes;
+
   /// The disks attached to the source VM.
   final List<AzureDiskDetailsResponseVmmigrationV1alpha1> disks;
+
   /// The firmware type of the source VM.
   final String firmware;
+
   /// Information about VM capabilities needed for some Compute Engine features.
   final VmCapabilitiesResponseVmmigrationV1alpha1 vmCapabilitiesInfo;
 
@@ -30,19 +33,32 @@ class AzureSourceVmDetailsResponseVmmigrationV1alpha1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'committedStorageBytes': committedStorageBytes,
-      'disks': pulumi.Input.encodeList<AzureDiskDetailsResponseVmmigrationV1alpha1, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'disks':
+          pulumi.Input.encodeList<
+            AzureDiskDetailsResponseVmmigrationV1alpha1,
+            Map<String, dynamic>
+          >(disks, (value) => value.toMap()),
       'firmware': firmware,
       'vmCapabilitiesInfo': vmCapabilitiesInfo.toMap(),
     };
   }
 
-  factory AzureSourceVmDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory AzureSourceVmDetailsResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AzureSourceVmDetailsResponseVmmigrationV1alpha1(
       committedStorageBytes: map['committedStorageBytes'] as String,
-      disks: pulumi.Input.decodeList<AzureDiskDetailsResponseVmmigrationV1alpha1>(map['disks'], (value) => AzureDiskDetailsResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      disks:
+          pulumi.Input.decodeList<AzureDiskDetailsResponseVmmigrationV1alpha1>(
+            map['disks'],
+            (value) => AzureDiskDetailsResponseVmmigrationV1alpha1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       firmware: map['firmware'] as String,
-      vmCapabilitiesInfo: VmCapabilitiesResponseVmmigrationV1alpha1.fromMap((map['vmCapabilitiesInfo'] as Map).cast<String, dynamic>()),
+      vmCapabilitiesInfo: VmCapabilitiesResponseVmmigrationV1alpha1.fromMap(
+        (map['vmCapabilitiesInfo'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

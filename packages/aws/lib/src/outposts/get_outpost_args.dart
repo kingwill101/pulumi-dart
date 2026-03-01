@@ -9,14 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOutpostArgs {
   /// ARN.
   final pulumi.Input<String>? arn;
+
   /// Identifier of the Outpost.
   final pulumi.Input<String>? id;
+
   /// Name of the Outpost.
   final pulumi.Input<String>? name;
+
   /// AWS Account identifier of the Outpost owner.
   final pulumi.Input<String>? ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The Outpost tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -34,13 +39,12 @@ class GetOutpostArgs {
     String? ownerId,
     String? region,
     Map<String, String>? tags,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : arn = pulumi.Input.asOptionalInput<String>(arn),
+       id = pulumi.Input.asOptionalInput<String>(id),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       ownerId = pulumi.Input.asOptionalInput<String>(ownerId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,8 +64,9 @@ class GetOutpostArgs {
       name: map['name'] == null ? null : map['name'] as String,
       ownerId: map['ownerId'] == null ? null : map['ownerId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

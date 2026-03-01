@@ -13,7 +13,8 @@ enum AllocationAggregateReservationWorkloadType {
         return item;
       }
     }
-    throw ArgumentError('Unknown AllocationAggregateReservationWorkloadType value: $value');
+    throw ArgumentError(
+      'Unknown AllocationAggregateReservationWorkloadType value: $value',
+    );
   }
 }
-

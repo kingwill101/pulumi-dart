@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchBody {
   final String? oversizeHandling;
 
@@ -11,15 +10,16 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintSt
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'oversizeHandling': ?oversizeHandling,
-    };
+    return <String, dynamic>{'oversizeHandling': ?oversizeHandling};
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchBody.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : map['oversizeHandling'] as String,
+      oversizeHandling: map['oversizeHandling'] == null
+          ? null
+          : map['oversizeHandling'] as String,
     );
   }
 }
-

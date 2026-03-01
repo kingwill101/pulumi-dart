@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Fleet is the fleet configuration for the cluster.
 class FleetContainerV1beta1 {
   /// The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
@@ -8,14 +7,10 @@ class FleetContainerV1beta1 {
 
   /// Creates a new [FleetContainerV1beta1].
   /// [project] The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
-  FleetContainerV1beta1({
-    this.project,
-  });
+  FleetContainerV1beta1({this.project});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-    };
+    return <String, dynamic>{'project': ?project};
   }
 
   factory FleetContainerV1beta1.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class FleetContainerV1beta1 {
     );
   }
 }
-

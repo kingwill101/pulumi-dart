@@ -311,55 +311,73 @@ import 'mirroring_endpoint_group_association_locations_detail.dart';
 /// ```sh
 /// $ pulumi import gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation default {{location}}/{{mirroring_endpoint_group_association_id}}
 /// ```
-class MirroringEndpointGroupAssociationNetworksecurity extends pulumi.CustomResource {
+class MirroringEndpointGroupAssociationNetworksecurity
+    extends pulumi.CustomResource {
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> createTime;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The cloud location of the association, currently restricted to `global`.
   late final pulumi.Output<String> location;
+
   /// The list of locations where the association is configured. This information
   /// is retrieved from the linked endpoint group.
   /// Structure is documented below.
-  late final pulumi.Output<List<MirroringEndpointGroupAssociationLocation>> locations;
+  late final pulumi.Output<List<MirroringEndpointGroupAssociationLocation>>
+  locations;
+
   /// (Deprecated)
   /// The list of locations where the association is present. This information
   /// is retrieved from the linked endpoint group, and not configured as part
   /// of the association itself.
   /// Structure is documented below.
-  late final pulumi.Output<List<MirroringEndpointGroupAssociationLocationsDetail>> locationsDetails;
+  late final pulumi.Output<
+    List<MirroringEndpointGroupAssociationLocationsDetail>
+  >
+  locationsDetails;
+
   /// The endpoint group that this association is connected to, for example:
   /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
   late final pulumi.Output<String> mirroringEndpointGroup;
+
   /// The ID to use for the new association, which will become the final
   /// component of the endpoint group's resource name. If not provided, the
   /// server will generate a unique ID.
   late final pulumi.Output<String?> mirroringEndpointGroupAssociationId;
+
   /// The resource name of this endpoint group association, for example:
   /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`.
   /// See https://google.aip.dev/122 for more details.
   late final pulumi.Output<String> name;
+
   /// The VPC network that is associated. for example:
   /// `projects/123456789/global/networks/my-network`.
   /// See https://google.aip.dev/124.
   late final pulumi.Output<String> network;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The current state of the resource does not match the user's intended state,
   /// and the system is working to reconcile them. This part of the normal
   /// operation (e.g. adding a new location to the target deployment group).
   /// See https://google.aip.dev/128.
   late final pulumi.Output<bool> reconciling;
+
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
@@ -367,6 +385,7 @@ class MirroringEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
   /// ACTIVE
   /// OUT_OF_SYNC
   late final pulumi.Output<String> state;
+
   /// The timestamp when the resource was most recently updated.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> updateTime;
@@ -380,19 +399,31 @@ class MirroringEndpointGroupAssociationNetworksecurity extends pulumi.CustomReso
     MirroringEndpointGroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
-    this.locations = registerOutput<List<MirroringEndpointGroupAssociationLocation>>('locations');
-    this.locationsDetails = registerOutput<List<MirroringEndpointGroupAssociationLocationsDetail>>('locationsDetails');
-    this.mirroringEndpointGroup = registerOutput<String>('mirroringEndpointGroup');
-    this.mirroringEndpointGroupAssociationId = registerOutput<String?>('mirroringEndpointGroupAssociationId');
+    this.locations =
+        registerOutput<List<MirroringEndpointGroupAssociationLocation>>(
+          'locations',
+        );
+    this.locationsDetails =
+        registerOutput<List<MirroringEndpointGroupAssociationLocationsDetail>>(
+          'locationsDetails',
+        );
+    this.mirroringEndpointGroup = registerOutput<String>(
+      'mirroringEndpointGroup',
+    );
+    this.mirroringEndpointGroupAssociationId = registerOutput<String?>(
+      'mirroringEndpointGroupAssociationId',
+    );
     this.name = registerOutput<String>('name');
     this.network = registerOutput<String>('network');
     this.project = registerOutput<String>('project');

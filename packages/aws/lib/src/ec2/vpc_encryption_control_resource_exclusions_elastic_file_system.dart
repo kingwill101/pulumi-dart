@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class VpcEncryptionControlResourceExclusionsElasticFileSystem {
   /// The current state of the VPC Encryption Control.
   final String state;
+
   /// A message providing additional information about the state of the VPC Encryption Control.
   final String stateMessage;
 
@@ -16,17 +16,15 @@ class VpcEncryptionControlResourceExclusionsElasticFileSystem {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': state,
-      'stateMessage': stateMessage,
-    };
+    return <String, dynamic>{'state': state, 'stateMessage': stateMessage};
   }
 
-  factory VpcEncryptionControlResourceExclusionsElasticFileSystem.fromMap(Map<String, dynamic> map) {
+  factory VpcEncryptionControlResourceExclusionsElasticFileSystem.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcEncryptionControlResourceExclusionsElasticFileSystem(
       state: map['state'] as String,
       stateMessage: map['stateMessage'] as String,
     );
   }
 }
-

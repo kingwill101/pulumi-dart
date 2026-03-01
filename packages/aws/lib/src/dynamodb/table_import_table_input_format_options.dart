@@ -8,20 +8,19 @@ class TableImportTableInputFormatOptions {
 
   /// Creates a new [TableImportTableInputFormatOptions].
   /// [csv] This block contains the processing options for the CSV file being imported:
-  TableImportTableInputFormatOptions({
-    this.csv,
-  });
+  TableImportTableInputFormatOptions({this.csv});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'csv': ?csv == null ? null : csv!.toMap(),
-    };
+    return <String, dynamic>{'csv': ?csv == null ? null : csv!.toMap()};
   }
 
   factory TableImportTableInputFormatOptions.fromMap(Map<String, dynamic> map) {
     return TableImportTableInputFormatOptions(
-      csv: map['csv'] == null ? null : TableImportTableInputFormatOptionsCsv.fromMap((map['csv'] as Map).cast<String, dynamic>()),
+      csv: map['csv'] == null
+          ? null
+          : TableImportTableInputFormatOptionsCsv.fromMap(
+              (map['csv'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

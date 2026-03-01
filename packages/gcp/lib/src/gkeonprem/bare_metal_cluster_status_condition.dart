@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BareMetalClusterStatusCondition {
   /// (Output)
   /// Last time the condition transit from one status to another.
   final String? lastTransitionTime;
+
   /// Human-readable message indicating details about last transition.
   final String? message;
+
   /// (Output)
   /// A human-readable message of the check failure.
   final String? reason;
+
   /// (Output)
   /// The lifecycle state of the condition.
   final String? state;
+
   /// Type of the condition.
   /// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
   final String? type;
@@ -43,7 +46,9 @@ class BareMetalClusterStatusCondition {
 
   factory BareMetalClusterStatusCondition.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterStatusCondition(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
+      lastTransitionTime: map['lastTransitionTime'] == null
+          ? null
+          : map['lastTransitionTime'] as String,
       message: map['message'] == null ? null : map['message'] as String,
       reason: map['reason'] == null ? null : map['reason'] as String,
       state: map['state'] == null ? null : map['state'] as String,
@@ -51,4 +56,3 @@ class BareMetalClusterStatusCondition {
     );
   }
 }
-

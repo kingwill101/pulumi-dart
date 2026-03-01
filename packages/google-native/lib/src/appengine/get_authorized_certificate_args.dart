@@ -19,10 +19,11 @@ class GetAuthorizedCertificateArgs {
     required String appId,
     required String authorizedCertificateId,
     String? view,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      authorizedCertificateId = pulumi.Input.asInput<String>(authorizedCertificateId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : appId = pulumi.Input.asInput<String>(appId),
+       authorizedCertificateId = pulumi.Input.asInput<String>(
+         authorizedCertificateId,
+       ),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetAuthorizedCertificateArgs {
     );
   }
 }
-

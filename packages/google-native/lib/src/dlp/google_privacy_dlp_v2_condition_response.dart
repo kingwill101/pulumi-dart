@@ -7,8 +7,10 @@ import 'google_privacy_dlp_v2_value_response.dart';
 class GooglePrivacyDlpV2ConditionResponse {
   /// Field within the record this condition is evaluated against.
   final GooglePrivacyDlpV2FieldIdResponse field;
+
   /// Operator used to compare the field or infoType to the value.
   final String operator;
+
   /// Value to compare against. [Mandatory, except for `EXISTS` tests.]
   final GooglePrivacyDlpV2ValueResponse value;
 
@@ -30,12 +32,17 @@ class GooglePrivacyDlpV2ConditionResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2ConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2ConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2ConditionResponse(
-      field: GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field'] as Map).cast<String, dynamic>()),
+      field: GooglePrivacyDlpV2FieldIdResponse.fromMap(
+        (map['field'] as Map).cast<String, dynamic>(),
+      ),
       operator: map['operator'] as String,
-      value: GooglePrivacyDlpV2ValueResponse.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      value: GooglePrivacyDlpV2ValueResponse.fromMap(
+        (map['value'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

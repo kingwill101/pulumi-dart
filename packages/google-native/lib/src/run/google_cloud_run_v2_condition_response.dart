@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Defines a status condition for a resource.
 class GoogleCloudRunV2ConditionResponse {
   /// A reason for the execution condition.
   final String executionReason;
+
   /// Last time the condition transitioned from one status to another.
   final String lastTransitionTime;
+
   /// Human readable message indicating details about the current status.
   final String message;
+
   /// A common (service-level) reason for this condition.
   final String reason;
+
   /// A reason for the revision condition.
   final String revisionReason;
+
   /// How to interpret failures of this condition, one of Error, Warning, Info
   final String severity;
+
   /// State of the condition.
   final String state;
+
   /// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
   final String type;
 
@@ -66,4 +72,3 @@ class GoogleCloudRunV2ConditionResponse {
     );
   }
 }
-

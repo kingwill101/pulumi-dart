@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage {
   /// Required. The parts of an OID path. The most significant parts of the path come first.
   final List<int> objectIdPaths;
@@ -12,15 +11,14 @@ class CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectIdPaths': objectIdPaths,
-    };
+    return <String, dynamic>{'objectIdPaths': objectIdPaths};
   }
 
-  factory CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage.fromMap(Map<String, dynamic> map) {
+  factory CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage(
       objectIdPaths: (map['objectIdPaths'] as List).cast<int>(),
     );
   }
 }
-

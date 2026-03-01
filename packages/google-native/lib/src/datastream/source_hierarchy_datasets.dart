@@ -9,20 +9,23 @@ class SourceHierarchyDatasets {
 
   /// Creates a new [SourceHierarchyDatasets].
   /// [datasetTemplate] The dataset template to use for dynamic dataset creation.
-  SourceHierarchyDatasets({
-    this.datasetTemplate,
-  });
+  SourceHierarchyDatasets({this.datasetTemplate});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datasetTemplate': ?datasetTemplate == null ? null : datasetTemplate!.toMap(),
+      'datasetTemplate': ?datasetTemplate == null
+          ? null
+          : datasetTemplate!.toMap(),
     };
   }
 
   factory SourceHierarchyDatasets.fromMap(Map<String, dynamic> map) {
     return SourceHierarchyDatasets(
-      datasetTemplate: map['datasetTemplate'] == null ? null : DatasetTemplate.fromMap((map['datasetTemplate'] as Map).cast<String, dynamic>()),
+      datasetTemplate: map['datasetTemplate'] == null
+          ? null
+          : DatasetTemplate.fromMap(
+              (map['datasetTemplate'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

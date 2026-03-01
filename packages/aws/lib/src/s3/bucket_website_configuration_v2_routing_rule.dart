@@ -6,6 +6,7 @@ import 'bucket_website_configuration_v2_routing_rule_redirect.dart';
 class BucketWebsiteConfigurationV2RoutingRule {
   /// Configuration block for describing a condition that must be met for the specified redirect to apply. See below.
   final BucketWebsiteConfigurationV2RoutingRuleCondition? condition;
+
   /// Configuration block for redirect information. See below.
   final BucketWebsiteConfigurationV2RoutingRuleRedirect redirect;
 
@@ -24,11 +25,18 @@ class BucketWebsiteConfigurationV2RoutingRule {
     };
   }
 
-  factory BucketWebsiteConfigurationV2RoutingRule.fromMap(Map<String, dynamic> map) {
+  factory BucketWebsiteConfigurationV2RoutingRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketWebsiteConfigurationV2RoutingRule(
-      condition: map['condition'] == null ? null : BucketWebsiteConfigurationV2RoutingRuleCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      redirect: BucketWebsiteConfigurationV2RoutingRuleRedirect.fromMap((map['redirect'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null
+          ? null
+          : BucketWebsiteConfigurationV2RoutingRuleCondition.fromMap(
+              (map['condition'] as Map).cast<String, dynamic>(),
+            ),
+      redirect: BucketWebsiteConfigurationV2RoutingRuleRedirect.fromMap(
+        (map['redirect'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

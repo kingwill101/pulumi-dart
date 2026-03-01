@@ -16,9 +16,10 @@ class GetOrganizationNotificationConfigArgs {
   GetOrganizationNotificationConfigArgs({
     required String notificationConfigId,
     required String organizationId,
-  }) :
-      notificationConfigId = pulumi.Input.asInput<String>(notificationConfigId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : notificationConfigId = pulumi.Input.asInput<String>(
+         notificationConfigId,
+       ),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,11 +28,12 @@ class GetOrganizationNotificationConfigArgs {
     };
   }
 
-  factory GetOrganizationNotificationConfigArgs.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationNotificationConfigArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationNotificationConfigArgs(
       notificationConfigId: map['notificationConfigId'] as String,
       organizationId: map['organizationId'] as String,
     );
   }
 }
-

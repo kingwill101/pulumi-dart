@@ -5,10 +5,13 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice {
   /// Defines tools, at least one of which must be requested by the model. No text is generated but the results of tool use are sent back to the model to help generate a response. This object has no fields.
   final Map<String, dynamic>? any;
+
   /// Defines tools. The model automatically decides whether to call a tool or to generate text instead. This object has no fields.
   final Map<String, dynamic>? auto;
+
   /// Defines a specific tool that the model must request. No text is generated but the results of tool use are sent back to the model to help generate a response. See Named Tool for more information.
-  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool? tool;
+  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool?
+  tool;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice].
   /// [any] Defines tools, at least one of which must be requested by the model. No text is generated but the results of tool use are sent back to the model to help generate a response. This object has no fields.
@@ -28,12 +31,21 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
     };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoice(
-      any: map['any'] == null ? null : (map['any'] as Map).cast<String, dynamic>(),
-      auto: map['auto'] == null ? null : (map['auto'] as Map).cast<String, dynamic>(),
-      tool: map['tool'] == null ? null : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool.fromMap((map['tool'] as Map).cast<String, dynamic>()),
+      any: map['any'] == null
+          ? null
+          : (map['any'] as Map).cast<String, dynamic>(),
+      auto: map['auto'] == null
+          ? null
+          : (map['auto'] as Map).cast<String, dynamic>(),
+      tool: map['tool'] == null
+          ? null
+          : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfigurationToolChoiceTool.fromMap(
+              (map['tool'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

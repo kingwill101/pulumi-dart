@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
   /// The destination bucket that stores the generated inventory reports.
   final String bucket;
+
   /// The path within the destination bucket to store generated inventory reports.
   final String? destinationPath;
 
@@ -22,11 +22,14 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
     };
   }
 
-  factory InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions.fromMap(Map<String, dynamic> map) {
+  factory InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions(
       bucket: map['bucket'] as String,
-      destinationPath: map['destinationPath'] == null ? null : map['destinationPath'] as String,
+      destinationPath: map['destinationPath'] == null
+          ? null
+          : map['destinationPath'] as String,
     );
   }
 }
-

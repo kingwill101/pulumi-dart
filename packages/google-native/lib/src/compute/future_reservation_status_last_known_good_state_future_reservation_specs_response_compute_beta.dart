@@ -8,8 +8,11 @@ import 'share_settings_response_compute_beta.dart';
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta {
   /// The previous share settings of the Future Reservation.
   final ShareSettingsResponseComputeBeta shareSettings;
+
   /// The previous instance related properties of the Future Reservation.
-  final FutureReservationSpecificSKUPropertiesResponseComputeBeta specificSkuProperties;
+  final FutureReservationSpecificSKUPropertiesResponseComputeBeta
+  specificSkuProperties;
+
   /// The previous time window of the Future Reservation.
   final FutureReservationTimeWindowResponseComputeBeta timeWindow;
 
@@ -31,12 +34,20 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseCom
     };
   }
 
-  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta(
-      shareSettings: ShareSettingsResponseComputeBeta.fromMap((map['shareSettings'] as Map).cast<String, dynamic>()),
-      specificSkuProperties: FutureReservationSpecificSKUPropertiesResponseComputeBeta.fromMap((map['specificSkuProperties'] as Map).cast<String, dynamic>()),
-      timeWindow: FutureReservationTimeWindowResponseComputeBeta.fromMap((map['timeWindow'] as Map).cast<String, dynamic>()),
+      shareSettings: ShareSettingsResponseComputeBeta.fromMap(
+        (map['shareSettings'] as Map).cast<String, dynamic>(),
+      ),
+      specificSkuProperties:
+          FutureReservationSpecificSKUPropertiesResponseComputeBeta.fromMap(
+            (map['specificSkuProperties'] as Map).cast<String, dynamic>(),
+          ),
+      timeWindow: FutureReservationTimeWindowResponseComputeBeta.fromMap(
+        (map['timeWindow'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

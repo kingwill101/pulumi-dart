@@ -17,4 +17,3 @@ enum MaintenanceWindowUpdateTrack {
     throw ArgumentError('Unknown MaintenanceWindowUpdateTrack value: $value');
   }
 }
-

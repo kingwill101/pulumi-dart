@@ -145,8 +145,10 @@ import 'authentication_profile_args.dart';
 class AuthenticationProfile extends pulumi.CustomResource {
   /// The content of the authentication profile in JSON format. The maximum length of the JSON string is determined by a quota for your account.
   late final pulumi.Output<String> authenticationProfileContent;
+
   /// The name of the authentication profile.
   late final pulumi.Output<String> authenticationProfileName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -159,13 +161,17 @@ class AuthenticationProfile extends pulumi.CustomResource {
     AuthenticationProfileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:redshift/authenticationProfile:AuthenticationProfile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.authenticationProfileContent = registerOutput<String>('authenticationProfileContent');
-    this.authenticationProfileName = registerOutput<String>('authenticationProfileName');
+         'aws:redshift/authenticationProfile:AuthenticationProfile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.authenticationProfileContent = registerOutput<String>(
+      'authenticationProfileContent',
+    );
+    this.authenticationProfileName = registerOutput<String>(
+      'authenticationProfileName',
+    );
     this.region = registerOutput<String>('region');
   }
 }

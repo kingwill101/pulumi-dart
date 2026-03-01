@@ -9,20 +9,25 @@ class GooglePrivacyDlpV2BigQueryTableCollection {
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryTableCollection].
   /// [includeRegexes] A collection of regular expressions to match a BigQuery table against.
-  GooglePrivacyDlpV2BigQueryTableCollection({
-    this.includeRegexes,
-  });
+  GooglePrivacyDlpV2BigQueryTableCollection({this.includeRegexes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'includeRegexes': ?includeRegexes == null ? null : includeRegexes!.toMap(),
+      'includeRegexes': ?includeRegexes == null
+          ? null
+          : includeRegexes!.toMap(),
     };
   }
 
-  factory GooglePrivacyDlpV2BigQueryTableCollection.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryTableCollection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2BigQueryTableCollection(
-      includeRegexes: map['includeRegexes'] == null ? null : GooglePrivacyDlpV2BigQueryRegexes.fromMap((map['includeRegexes'] as Map).cast<String, dynamic>()),
+      includeRegexes: map['includeRegexes'] == null
+          ? null
+          : GooglePrivacyDlpV2BigQueryRegexes.fromMap(
+              (map['includeRegexes'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

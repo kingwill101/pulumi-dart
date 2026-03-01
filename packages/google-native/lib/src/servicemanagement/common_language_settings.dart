@@ -7,29 +7,40 @@ import 'common_language_settings_destinations_item.dart';
 class CommonLanguageSettings {
   /// The destination where API teams want this client library to be published.
   final List<CommonLanguageSettingsDestinationsItem>? destinations;
+
   /// Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
   final String? referenceDocsUri;
 
   /// Creates a new [CommonLanguageSettings].
   /// [destinations] The destination where API teams want this client library to be published.
   /// [referenceDocsUri] Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
-  CommonLanguageSettings({
-    this.destinations,
-    this.referenceDocsUri,
-  });
+  CommonLanguageSettings({this.destinations, this.referenceDocsUri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations': ?destinations == null ? null : pulumi.Input.encodeList<CommonLanguageSettingsDestinationsItem, String>(destinations!, (value) => value.value),
+      'destinations': ?destinations == null
+          ? null
+          : pulumi.Input.encodeList<
+              CommonLanguageSettingsDestinationsItem,
+              String
+            >(destinations!, (value) => value.value),
       'referenceDocsUri': ?referenceDocsUri,
     };
   }
 
   factory CommonLanguageSettings.fromMap(Map<String, dynamic> map) {
     return CommonLanguageSettings(
-      destinations: map['destinations'] == null ? null : pulumi.Input.decodeList<CommonLanguageSettingsDestinationsItem>(map['destinations'], (value) => CommonLanguageSettingsDestinationsItem.fromValue(value as String)),
-      referenceDocsUri: map['referenceDocsUri'] == null ? null : map['referenceDocsUri'] as String,
+      destinations: map['destinations'] == null
+          ? null
+          : pulumi.Input.decodeList<CommonLanguageSettingsDestinationsItem>(
+              map['destinations'],
+              (value) => CommonLanguageSettingsDestinationsItem.fromValue(
+                value as String,
+              ),
+            ),
+      referenceDocsUri: map['referenceDocsUri'] == null
+          ? null
+          : map['referenceDocsUri'] as String,
     );
   }
 }
-

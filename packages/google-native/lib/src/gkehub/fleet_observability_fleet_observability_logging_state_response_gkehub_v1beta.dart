@@ -5,9 +5,12 @@ import 'fleet_observability_fleet_observability_base_feature_state_response_gkeh
 /// Feature state for logging feature.
 class FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1beta {
   /// The base feature state of fleet default log.
-  final FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta defaultLog;
+  final FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta
+  defaultLog;
+
   /// The base feature state of fleet scope log.
-  final FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta scopeLog;
+  final FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta
+  scopeLog;
 
   /// Creates a new [FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1beta].
   /// [defaultLog] The base feature state of fleet default log.
@@ -24,11 +27,18 @@ class FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1beta {
     };
   }
 
-  factory FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFleetObservabilityLoggingStateResponseGkehubV1beta(
-      defaultLog: FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta.fromMap((map['defaultLog'] as Map).cast<String, dynamic>()),
-      scopeLog: FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta.fromMap((map['scopeLog'] as Map).cast<String, dynamic>()),
+      defaultLog:
+          FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta.fromMap(
+            (map['defaultLog'] as Map).cast<String, dynamic>(),
+          ),
+      scopeLog:
+          FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta.fromMap(
+            (map['scopeLog'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

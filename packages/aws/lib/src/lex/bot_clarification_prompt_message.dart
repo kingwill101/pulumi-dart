@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BotClarificationPromptMessage {
   /// The text of the message.
   final String content;
+
   /// The content type of the message string.
   final String contentType;
+
   /// Identifies the message group that the message belongs to. When a group
   /// is assigned to a message, Amazon Lex returns one message from each group in the response.
   final int? groupNumber;
@@ -32,8 +33,9 @@ class BotClarificationPromptMessage {
     return BotClarificationPromptMessage(
       content: map['content'] as String,
       contentType: map['contentType'] as String,
-      groupNumber: map['groupNumber'] == null ? null : map['groupNumber'] as int,
+      groupNumber: map['groupNumber'] == null
+          ? null
+          : map['groupNumber'] as int,
     );
   }
 }
-

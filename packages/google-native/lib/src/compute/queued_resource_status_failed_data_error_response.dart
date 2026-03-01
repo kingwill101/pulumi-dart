@@ -10,20 +10,32 @@ class QueuedResourceStatusFailedDataErrorResponse {
 
   /// Creates a new [QueuedResourceStatusFailedDataErrorResponse].
   /// [errors] The array of errors encountered while processing this operation.
-  QueuedResourceStatusFailedDataErrorResponse({
-    required this.errors,
-  });
+  QueuedResourceStatusFailedDataErrorResponse({required this.errors});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': pulumi.Input.encodeList<QueuedResourceStatusFailedDataErrorErrorsItemResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors':
+          pulumi.Input.encodeList<
+            QueuedResourceStatusFailedDataErrorErrorsItemResponse,
+            Map<String, dynamic>
+          >(errors, (value) => value.toMap()),
     };
   }
 
-  factory QueuedResourceStatusFailedDataErrorResponse.fromMap(Map<String, dynamic> map) {
+  factory QueuedResourceStatusFailedDataErrorResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return QueuedResourceStatusFailedDataErrorResponse(
-      errors: pulumi.Input.decodeList<QueuedResourceStatusFailedDataErrorErrorsItemResponse>(map['errors'], (value) => QueuedResourceStatusFailedDataErrorErrorsItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      errors:
+          pulumi.Input.decodeList<
+            QueuedResourceStatusFailedDataErrorErrorsItemResponse
+          >(
+            map['errors'],
+            (value) =>
+                QueuedResourceStatusFailedDataErrorErrorsItemResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

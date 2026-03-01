@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping {
   /// The inner appliance IP address.
   final String? innerApplianceIpAddress;
+
   /// List of inner VLAN tags.
   final List<String>? innerVlanTags;
 
@@ -22,11 +22,16 @@ class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapp
     };
   }
 
-  factory InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping.fromMap(Map<String, dynamic> map) {
+  factory InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping(
-      innerApplianceIpAddress: map['innerApplianceIpAddress'] == null ? null : map['innerApplianceIpAddress'] as String,
-      innerVlanTags: map['innerVlanTags'] == null ? null : (map['innerVlanTags'] as List).cast<String>(),
+      innerApplianceIpAddress: map['innerApplianceIpAddress'] == null
+          ? null
+          : map['innerApplianceIpAddress'] as String,
+      innerVlanTags: map['innerVlanTags'] == null
+          ? null
+          : (map['innerVlanTags'] as List).cast<String>(),
     );
   }
 }
-

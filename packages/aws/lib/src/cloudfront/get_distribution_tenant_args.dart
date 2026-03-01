@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDistributionTenantArgs {
   /// ARN (Amazon Resource Name) for the distribution tenant.
   final pulumi.Input<String>? arn;
+
   /// An associated domain of the distribution tenant. Exactly one of `id` or `domain` must be specified.
   final pulumi.Input<String>? domain;
+
   /// Identifier for the distribution tenant. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `domain` must be specified.
   final pulumi.Input<String>? id;
   final pulumi.Input<String>? name;
@@ -25,11 +27,10 @@ class GetDistributionTenantArgs {
     String? domain,
     String? id,
     String? name,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      name = pulumi.Input.asOptionalInput<String>(name);
+  }) : arn = pulumi.Input.asOptionalInput<String>(arn),
+       domain = pulumi.Input.asOptionalInput<String>(domain),
+       id = pulumi.Input.asOptionalInput<String>(id),
+       name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,4 +50,3 @@ class GetDistributionTenantArgs {
     );
   }
 }
-

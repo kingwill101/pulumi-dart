@@ -10,20 +10,28 @@ class GooglePrivacyDlpV2SelectedInfoTypes {
 
   /// Creates a new [GooglePrivacyDlpV2SelectedInfoTypes].
   /// [infoTypes] InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
-  GooglePrivacyDlpV2SelectedInfoTypes({
-    required this.infoTypes,
-  });
+  GooglePrivacyDlpV2SelectedInfoTypes({required this.infoTypes});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'infoTypes': pulumi.Input.encodeList<GooglePrivacyDlpV2InfoType, Map<String, dynamic>>(infoTypes, (value) => value.toMap()),
+      'infoTypes':
+          pulumi.Input.encodeList<
+            GooglePrivacyDlpV2InfoType,
+            Map<String, dynamic>
+          >(infoTypes, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2SelectedInfoTypes.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2SelectedInfoTypes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2SelectedInfoTypes(
-      infoTypes: pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes'], (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>())),
+      infoTypes: pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(
+        map['infoTypes'],
+        (value) => GooglePrivacyDlpV2InfoType.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

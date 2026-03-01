@@ -6,16 +6,14 @@ import 'project_repo_id_response.dart';
 class RepoIdResponse {
   /// A combination of a project ID and a repo name.
   final ProjectRepoIdResponse projectRepoId;
+
   /// A server-assigned, globally unique identifier.
   final String uid;
 
   /// Creates a new [RepoIdResponse].
   /// [projectRepoId] A combination of a project ID and a repo name.
   /// [uid] A server-assigned, globally unique identifier.
-  RepoIdResponse({
-    required this.projectRepoId,
-    required this.uid,
-  });
+  RepoIdResponse({required this.projectRepoId, required this.uid});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,10 @@ class RepoIdResponse {
 
   factory RepoIdResponse.fromMap(Map<String, dynamic> map) {
     return RepoIdResponse(
-      projectRepoId: ProjectRepoIdResponse.fromMap((map['projectRepoId'] as Map).cast<String, dynamic>()),
+      projectRepoId: ProjectRepoIdResponse.fromMap(
+        (map['projectRepoId'] as Map).cast<String, dynamic>(),
+      ),
       uid: map['uid'] as String,
     );
   }
 }
-

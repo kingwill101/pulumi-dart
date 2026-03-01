@@ -12,7 +12,8 @@ enum StatisticalTimeSeriesFilterRankingMethod {
         return item;
       }
     }
-    throw ArgumentError('Unknown StatisticalTimeSeriesFilterRankingMethod value: $value');
+    throw ArgumentError(
+      'Unknown StatisticalTimeSeriesFilterRankingMethod value: $value',
+    );
   }
 }
-

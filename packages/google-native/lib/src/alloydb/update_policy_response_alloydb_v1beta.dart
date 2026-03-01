@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Policy to be used while updating the instance.
 class UpdatePolicyResponseAlloydbV1beta {
   /// Mode for updating the instance.
@@ -8,20 +7,13 @@ class UpdatePolicyResponseAlloydbV1beta {
 
   /// Creates a new [UpdatePolicyResponseAlloydbV1beta].
   /// [mode] Mode for updating the instance.
-  UpdatePolicyResponseAlloydbV1beta({
-    required this.mode,
-  });
+  UpdatePolicyResponseAlloydbV1beta({required this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': mode,
-    };
+    return <String, dynamic>{'mode': mode};
   }
 
   factory UpdatePolicyResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
-    return UpdatePolicyResponseAlloydbV1beta(
-      mode: map['mode'] as String,
-    );
+    return UpdatePolicyResponseAlloydbV1beta(mode: map['mode'] as String);
   }
 }
-

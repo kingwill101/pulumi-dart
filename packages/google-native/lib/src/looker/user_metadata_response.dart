@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Metadata about users for a Looker instance.
 class UserMetadataResponse {
   /// Optional. The number of additional developer users the instance owner has purchased.
   final int additionalDeveloperUserCount;
+
   /// Optional. The number of additional standard users the instance owner has purchased.
   final int additionalStandardUserCount;
+
   /// Optional. The number of additional viewer users the instance owner has purchased.
   final int additionalViewerUserCount;
 
@@ -36,4 +37,3 @@ class UserMetadataResponse {
     );
   }
 }
-

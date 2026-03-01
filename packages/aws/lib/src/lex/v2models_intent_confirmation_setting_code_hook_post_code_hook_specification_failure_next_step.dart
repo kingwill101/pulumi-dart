@@ -5,9 +5,13 @@ import 'v2models_intent_confirmation_setting_code_hook_post_code_hook_specificat
 
 class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStep {
   /// Configuration block for action that the bot executes at runtime when the conversation reaches this step. See `dialog_action`.
-  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepDialogAction? dialogAction;
+  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepDialogAction?
+  dialogAction;
+
   /// Configuration block for override settings to configure the intent state. See `intent`.
-  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntent? intent;
+  final V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntent?
+  intent;
+
   /// Map of key/value pairs representing session-specific context information. It contains application information passed between Amazon Lex and a client application.
   final Map<String, String>? sessionAttributes;
 
@@ -29,12 +33,23 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureN
     };
   }
 
-  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStep.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStep.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStep(
-      dialogAction: map['dialogAction'] == null ? null : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepDialogAction.fromMap((map['dialogAction'] as Map).cast<String, dynamic>()),
-      intent: map['intent'] == null ? null : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntent.fromMap((map['intent'] as Map).cast<String, dynamic>()),
-      sessionAttributes: map['sessionAttributes'] == null ? null : (map['sessionAttributes'] as Map).cast<String, String>(),
+      dialogAction: map['dialogAction'] == null
+          ? null
+          : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepDialogAction.fromMap(
+              (map['dialogAction'] as Map).cast<String, dynamic>(),
+            ),
+      intent: map['intent'] == null
+          ? null
+          : V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationFailureNextStepIntent.fromMap(
+              (map['intent'] as Map).cast<String, dynamic>(),
+            ),
+      sessionAttributes: map['sessionAttributes'] == null
+          ? null
+          : (map['sessionAttributes'] as Map).cast<String, String>(),
     );
   }
 }
-

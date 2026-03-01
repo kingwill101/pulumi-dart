@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration options for Adaptive Protection auto-deploy feature.
 class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta {
   final double? confidenceThreshold;
@@ -29,13 +28,22 @@ class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta {
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigComputeBeta(
-      confidenceThreshold: map['confidenceThreshold'] == null ? null : map['confidenceThreshold'] as double,
-      expirationSec: map['expirationSec'] == null ? null : map['expirationSec'] as int,
-      impactedBaselineThreshold: map['impactedBaselineThreshold'] == null ? null : map['impactedBaselineThreshold'] as double,
-      loadThreshold: map['loadThreshold'] == null ? null : map['loadThreshold'] as double,
+      confidenceThreshold: map['confidenceThreshold'] == null
+          ? null
+          : map['confidenceThreshold'] as double,
+      expirationSec: map['expirationSec'] == null
+          ? null
+          : map['expirationSec'] as int,
+      impactedBaselineThreshold: map['impactedBaselineThreshold'] == null
+          ? null
+          : map['impactedBaselineThreshold'] as double,
+      loadThreshold: map['loadThreshold'] == null
+          ? null
+          : map['loadThreshold'] as double,
     );
   }
 }
-

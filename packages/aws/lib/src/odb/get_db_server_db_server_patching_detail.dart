@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDbServerDbServerPatchingDetail {
   final int estimatedPatchDuration;
   final String patchingStatus;
@@ -37,4 +36,3 @@ class GetDbServerDbServerPatchingDetail {
     );
   }
 }
-

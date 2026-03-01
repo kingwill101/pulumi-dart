@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The runtime logging config of the job.
 class LoggingConfigDataprocV1beta2 {
   /// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
@@ -8,20 +7,17 @@ class LoggingConfigDataprocV1beta2 {
 
   /// Creates a new [LoggingConfigDataprocV1beta2].
   /// [driverLogLevels] The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-  LoggingConfigDataprocV1beta2({
-    this.driverLogLevels,
-  });
+  LoggingConfigDataprocV1beta2({this.driverLogLevels});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'driverLogLevels': ?driverLogLevels,
-    };
+    return <String, dynamic>{'driverLogLevels': ?driverLogLevels};
   }
 
   factory LoggingConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return LoggingConfigDataprocV1beta2(
-      driverLogLevels: map['driverLogLevels'] == null ? null : (map['driverLogLevels'] as Map).cast<String, String>(),
+      driverLogLevels: map['driverLogLevels'] == null
+          ? null
+          : (map['driverLogLevels'] as Map).cast<String, String>(),
     );
   }
 }
-

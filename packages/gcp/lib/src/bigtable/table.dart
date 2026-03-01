@@ -409,19 +409,26 @@ class Table extends pulumi.CustomResource {
   ///
   /// -----
   late final pulumi.Output<TableAutomatedBackupPolicy> automatedBackupPolicy;
+
   /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
   late final pulumi.Output<String> changeStreamRetention;
+
   /// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
   late final pulumi.Output<List<TableColumnFamily>?> columnFamilies;
+
   /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
   late final pulumi.Output<String> deletionProtection;
+
   /// The name of the Bigtable instance.
   late final pulumi.Output<String> instanceName;
+
   /// The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
   /// Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
   /// To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\n
@@ -429,6 +436,7 @@ class Table extends pulumi.CustomResource {
   /// The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
   /// the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
   late final pulumi.Output<String?> rowKeySchema;
+
   /// A list of predefined keys to split the table on.
   /// !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
   /// to delete/recreate the entire `gcp.bigtable.Table` resource.
@@ -438,19 +446,22 @@ class Table extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Table]. {@macro pulumi_bigtable_table_table_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Table(
-    String name, {
-    TableArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:bigtable/table:Table',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automatedBackupPolicy = registerOutput<TableAutomatedBackupPolicy>('automatedBackupPolicy');
-    this.changeStreamRetention = registerOutput<String>('changeStreamRetention');
-    this.columnFamilies = registerOutput<List<TableColumnFamily>?>('columnFamilies');
+  Table(String name, {TableArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:bigtable/table:Table',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    this.automatedBackupPolicy = registerOutput<TableAutomatedBackupPolicy>(
+      'automatedBackupPolicy',
+    );
+    this.changeStreamRetention = registerOutput<String>(
+      'changeStreamRetention',
+    );
+    this.columnFamilies = registerOutput<List<TableColumnFamily>?>(
+      'columnFamilies',
+    );
     this.deletionProtection = registerOutput<String>('deletionProtection');
     this.instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');

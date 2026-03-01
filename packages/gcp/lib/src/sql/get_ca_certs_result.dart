@@ -7,8 +7,10 @@ import 'get_ca_certs_cert.dart';
 class GetCaCertsResult {
   /// SHA1 fingerprint of the currently active CA certificate.
   final String activeVersion;
+
   /// A list of server CA certificates for the instance. Each contains:
   final List<GetCaCertsCert> certs;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instance;
@@ -31,7 +33,10 @@ class GetCaCertsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'activeVersion': activeVersion,
-      'certs': pulumi.Input.encodeList<GetCaCertsCert, Map<String, dynamic>>(certs, (value) => value.toMap()),
+      'certs': pulumi.Input.encodeList<GetCaCertsCert, Map<String, dynamic>>(
+        certs,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'instance': instance,
       'project': project,
@@ -41,11 +46,14 @@ class GetCaCertsResult {
   factory GetCaCertsResult.fromMap(Map<String, dynamic> map) {
     return GetCaCertsResult(
       activeVersion: map['activeVersion'] as String,
-      certs: pulumi.Input.decodeList<GetCaCertsCert>(map['certs'], (value) => GetCaCertsCert.fromMap((value as Map).cast<String, dynamic>())),
+      certs: pulumi.Input.decodeList<GetCaCertsCert>(
+        map['certs'],
+        (value) =>
+            GetCaCertsCert.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       instance: map['instance'] as String,
       project: map['project'] as String,
     );
   }
 }
-

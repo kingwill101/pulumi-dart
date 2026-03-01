@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionalParameterVersionArgs {
   /// The location of regional parameter.
   final pulumi.Input<String>? location;
+
   /// The parameter for obtaining the Regional Parameter Version.
   /// This can be either the reference of the regional parameter as in `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}` or only the name of the regional parameter as in `{{parameter_id}}`.
   final pulumi.Input<String> parameter;
+
   /// The version of the regional parameter to get.
   final pulumi.Input<String> parameterVersionId;
+
   /// The project for retrieving the Regional Parameter Version. If it's not specified,
   /// the provider project will be used.
   final pulumi.Input<String>? project;
@@ -28,11 +31,10 @@ class GetRegionalParameterVersionArgs {
     required String parameter,
     required String parameterVersionId,
     String? project,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      parameter = pulumi.Input.asInput<String>(parameter),
-      parameterVersionId = pulumi.Input.asInput<String>(parameterVersionId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asOptionalInput<String>(location),
+       parameter = pulumi.Input.asInput<String>(parameter),
+       parameterVersionId = pulumi.Input.asInput<String>(parameterVersionId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +54,3 @@ class GetRegionalParameterVersionArgs {
     );
   }
 }
-

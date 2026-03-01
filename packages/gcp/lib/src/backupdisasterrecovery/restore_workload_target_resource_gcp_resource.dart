@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RestoreWorkloadTargetResourceGcpResource {
   /// Output only. Name of the Google Cloud resource.
   final String? gcpResourcename;
+
   /// Required. The location for the backup vault.
   final String? location;
+
   /// Output only. Type of the resource.
   final String? type;
 
@@ -27,12 +28,15 @@ class RestoreWorkloadTargetResourceGcpResource {
     };
   }
 
-  factory RestoreWorkloadTargetResourceGcpResource.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadTargetResourceGcpResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadTargetResourceGcpResource(
-      gcpResourcename: map['gcpResourcename'] == null ? null : map['gcpResourcename'] as String,
+      gcpResourcename: map['gcpResourcename'] == null
+          ? null
+          : map['gcpResourcename'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
-

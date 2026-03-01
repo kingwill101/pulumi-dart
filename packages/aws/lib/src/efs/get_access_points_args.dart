@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPointsArgs {
   /// EFS File System identifier.
   final pulumi.Input<String> fileSystemId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetAccessPointsArgs].
   /// [fileSystemId] EFS File System identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAccessPointsArgs({
-    required String fileSystemId,
-    String? region,
-  }) :
-      fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
+  GetAccessPointsArgs({required String fileSystemId, String? region})
+    : fileSystemId = pulumi.Input.asInput<String>(fileSystemId),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fileSystemId': fileSystemId,
-      'region': ?region,
-    };
+    return <String, dynamic>{'fileSystemId': fileSystemId, 'region': ?region};
   }
 
   factory GetAccessPointsArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetAccessPointsArgs {
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents an arg name->value pair. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
 class BareMetalApiServerArgumentResponse {
   /// The argument name as it appears on the API Server command line, make sure to remove the leading dashes.
   final String argument;
+
   /// The value of the arg as it will be passed to the API Server command line.
   final String value;
 
@@ -17,10 +17,7 @@ class BareMetalApiServerArgumentResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'argument': argument,
-      'value': value,
-    };
+    return <String, dynamic>{'argument': argument, 'value': value};
   }
 
   factory BareMetalApiServerArgumentResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class BareMetalApiServerArgumentResponse {
     );
   }
 }
-

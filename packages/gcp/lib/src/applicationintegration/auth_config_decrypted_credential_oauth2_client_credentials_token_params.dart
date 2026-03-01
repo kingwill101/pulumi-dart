@@ -6,7 +6,10 @@ import 'auth_config_decrypted_credential_oauth2_client_credentials_token_params_
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
   /// A list of parameter map entries.
   /// Structure is documented below.
-  final List<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry>? entries;
+  final List<
+    AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry
+  >?
+  entries;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams].
   /// [entries] A list of parameter map entries.
@@ -16,14 +19,30 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries': ?entries == null ? null : pulumi.Input.encodeList<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry, Map<String, dynamic>>(entries!, (value) => value.toMap()),
+      'entries': ?entries == null
+          ? null
+          : pulumi.Input.encodeList<
+              AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry,
+              Map<String, dynamic>
+            >(entries!, (value) => value.toMap()),
     };
   }
 
-  factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams.fromMap(Map<String, dynamic> map) {
+  factory AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams(
-      entries: map['entries'] == null ? null : pulumi.Input.decodeList<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry>(map['entries'], (value) => AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry.fromMap((value as Map).cast<String, dynamic>())),
+      entries: map['entries'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry
+            >(
+              map['entries'],
+              (value) =>
+                  AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntry.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

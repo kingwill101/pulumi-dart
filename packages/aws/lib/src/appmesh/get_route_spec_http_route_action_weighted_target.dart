@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRouteSpecHttpRouteActionWeightedTarget {
   final int port;
   final String virtualNode;
@@ -24,7 +23,9 @@ class GetRouteSpecHttpRouteActionWeightedTarget {
     };
   }
 
-  factory GetRouteSpecHttpRouteActionWeightedTarget.fromMap(Map<String, dynamic> map) {
+  factory GetRouteSpecHttpRouteActionWeightedTarget.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRouteSpecHttpRouteActionWeightedTarget(
       port: map['port'] as int,
       virtualNode: map['virtualNode'] as String,
@@ -32,4 +33,3 @@ class GetRouteSpecHttpRouteActionWeightedTarget {
     );
   }
 }
-

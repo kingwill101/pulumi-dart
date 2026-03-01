@@ -16,14 +16,28 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'items':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem,
+            Map<String, dynamic>
+          >(items, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect(
-      items: pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem>(map['items'], (value) => GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem.fromMap((value as Map).cast<String, dynamic>())),
+      items:
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem
+          >(
+            map['items'],
+            (value) =>
+                GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

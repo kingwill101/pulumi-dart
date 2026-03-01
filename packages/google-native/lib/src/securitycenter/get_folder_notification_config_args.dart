@@ -16,9 +16,10 @@ class GetFolderNotificationConfigArgs {
   GetFolderNotificationConfigArgs({
     required String folderId,
     required String notificationConfigId,
-  }) :
-      folderId = pulumi.Input.asInput<String>(folderId),
-      notificationConfigId = pulumi.Input.asInput<String>(notificationConfigId);
+  }) : folderId = pulumi.Input.asInput<String>(folderId),
+       notificationConfigId = pulumi.Input.asInput<String>(
+         notificationConfigId,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +35,3 @@ class GetFolderNotificationConfigArgs {
     );
   }
 }
-

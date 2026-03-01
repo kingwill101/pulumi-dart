@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RegionPerInstanceConfigPreservedStateDisk {
   /// A value that prescribes what should happen to the stateful disk when the VM instance is deleted.
   /// The available options are `NEVER` and `ON_PERMANENT_INSTANCE_DELETION`.
@@ -10,12 +9,15 @@ class RegionPerInstanceConfigPreservedStateDisk {
   /// Default value is `NEVER`.
   /// Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
   final String? deleteRule;
+
   /// A unique device name that is reflected into the /dev/ tree of a Linux operating system running within the instance.
   final String deviceName;
+
   /// The mode of the disk.
   /// Default value is `READ_WRITE`.
   /// Possible values are: `READ_ONLY`, `READ_WRITE`.
   final String? mode;
+
   /// The URI of an existing persistent disk to attach under the specified device-name in the format
   /// `projects/project-id/zones/zone/disks/disk-name`.
   final String source;
@@ -41,13 +43,16 @@ class RegionPerInstanceConfigPreservedStateDisk {
     };
   }
 
-  factory RegionPerInstanceConfigPreservedStateDisk.fromMap(Map<String, dynamic> map) {
+  factory RegionPerInstanceConfigPreservedStateDisk.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionPerInstanceConfigPreservedStateDisk(
-      deleteRule: map['deleteRule'] == null ? null : map['deleteRule'] as String,
+      deleteRule: map['deleteRule'] == null
+          ? null
+          : map['deleteRule'] as String,
       deviceName: map['deviceName'] as String,
       mode: map['mode'] == null ? null : map['mode'] as String,
       source: map['source'] as String,
     );
   }
 }
-

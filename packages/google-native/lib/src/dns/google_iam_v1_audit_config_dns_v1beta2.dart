@@ -7,29 +7,38 @@ import 'google_iam_v1_audit_log_config_dns_v1beta2.dart';
 class GoogleIamV1AuditConfigDnsV1beta2 {
   /// The configuration for logging of each type of permission.
   final List<GoogleIamV1AuditLogConfigDnsV1beta2>? auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
   /// Creates a new [GoogleIamV1AuditConfigDnsV1beta2].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  GoogleIamV1AuditConfigDnsV1beta2({
-    this.auditLogConfigs,
-    this.service,
-  });
+  GoogleIamV1AuditConfigDnsV1beta2({this.auditLogConfigs, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<GoogleIamV1AuditLogConfigDnsV1beta2, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'auditLogConfigs': ?auditLogConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleIamV1AuditLogConfigDnsV1beta2,
+              Map<String, dynamic>
+            >(auditLogConfigs!, (value) => value.toMap()),
       'service': ?service,
     };
   }
 
   factory GoogleIamV1AuditConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditConfigDnsV1beta2(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<GoogleIamV1AuditLogConfigDnsV1beta2>(map['auditLogConfigs'], (value) => GoogleIamV1AuditLogConfigDnsV1beta2.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigs: map['auditLogConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<GoogleIamV1AuditLogConfigDnsV1beta2>(
+              map['auditLogConfigs'],
+              (value) => GoogleIamV1AuditLogConfigDnsV1beta2.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
-

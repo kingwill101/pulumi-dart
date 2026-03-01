@@ -17,4 +17,3 @@ enum WorkerPoolDefaultPackageSet {
     throw ArgumentError('Unknown WorkerPoolDefaultPackageSet value: $value');
   }
 }
-

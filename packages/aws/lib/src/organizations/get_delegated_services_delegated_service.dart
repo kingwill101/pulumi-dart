@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDelegatedServicesDelegatedService {
   /// The date that the account became a delegated administrator for this service.
   final String delegationEnabledDate;
+
   /// The name of an AWS service that can request an operation for the specified service.
   final String servicePrincipal;
 
@@ -22,11 +22,12 @@ class GetDelegatedServicesDelegatedService {
     };
   }
 
-  factory GetDelegatedServicesDelegatedService.fromMap(Map<String, dynamic> map) {
+  factory GetDelegatedServicesDelegatedService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDelegatedServicesDelegatedService(
       delegationEnabledDate: map['delegationEnabledDate'] as String,
       servicePrincipal: map['servicePrincipal'] as String,
     );
   }
 }
-

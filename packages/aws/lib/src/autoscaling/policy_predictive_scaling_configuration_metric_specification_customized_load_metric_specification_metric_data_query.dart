@@ -5,12 +5,17 @@ import 'policy_predictive_scaling_configuration_metric_specification_customized_
 class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery {
   /// Math expression used on the returned metric. You must specify either `expression` or `metric_stat`, but not both.
   final String? expression;
+
   /// Short name for the metric used in predictive scaling policy.
   final String id;
+
   /// Human-readable label for this metric or expression.
   final String? label;
+
   /// Structure that defines CloudWatch metric to be used in predictive scaling policy. You must specify either `expression` or `metric_stat`, but not both.
-  final PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat? metricStat;
+  final PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat?
+  metricStat;
+
   /// Boolean that indicates whether to return the timestamps and raw data values of this metric, the default is true
   final bool? returnData;
 
@@ -38,14 +43,21 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetri
     };
   }
 
-  factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery.fromMap(Map<String, dynamic> map) {
+  factory PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQuery(
-      expression: map['expression'] == null ? null : map['expression'] as String,
+      expression: map['expression'] == null
+          ? null
+          : map['expression'] as String,
       id: map['id'] as String,
       label: map['label'] == null ? null : map['label'] as String,
-      metricStat: map['metricStat'] == null ? null : PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat.fromMap((map['metricStat'] as Map).cast<String, dynamic>()),
+      metricStat: map['metricStat'] == null
+          ? null
+          : PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedLoadMetricSpecificationMetricDataQueryMetricStat.fromMap(
+              (map['metricStat'] as Map).cast<String, dynamic>(),
+            ),
       returnData: map['returnData'] == null ? null : map['returnData'] as bool,
     );
   }
 }
-

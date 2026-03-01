@@ -4,24 +4,25 @@ import 'space_space_settings_space_storage_settings_ebs_storage_settings.dart';
 
 class SpaceSpaceSettingsSpaceStorageSettings {
   /// A collection of EBS storage settings for a space. See `ebs_storage_settings` Block below.
-  final SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings ebsStorageSettings;
+  final SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings
+  ebsStorageSettings;
 
   /// Creates a new [SpaceSpaceSettingsSpaceStorageSettings].
   /// [ebsStorageSettings] A collection of EBS storage settings for a space. See `ebs_storage_settings` Block below.
-  SpaceSpaceSettingsSpaceStorageSettings({
-    required this.ebsStorageSettings,
-  });
+  SpaceSpaceSettingsSpaceStorageSettings({required this.ebsStorageSettings});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ebsStorageSettings': ebsStorageSettings.toMap(),
-    };
+    return <String, dynamic>{'ebsStorageSettings': ebsStorageSettings.toMap()};
   }
 
-  factory SpaceSpaceSettingsSpaceStorageSettings.fromMap(Map<String, dynamic> map) {
+  factory SpaceSpaceSettingsSpaceStorageSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpaceSpaceSettingsSpaceStorageSettings(
-      ebsStorageSettings: SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings.fromMap((map['ebsStorageSettings'] as Map).cast<String, dynamic>()),
+      ebsStorageSettings:
+          SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings.fromMap(
+            (map['ebsStorageSettings'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

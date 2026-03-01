@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Points to a DeployedModel.
 class GoogleCloudAiplatformV1DeployedModelRefResponse {
   /// Immutable. An ID of a DeployedModel in the above Endpoint.
   final String deployedModelId;
+
   /// Immutable. A resource name of an Endpoint.
   final String endpoint;
 
@@ -23,11 +23,12 @@ class GoogleCloudAiplatformV1DeployedModelRefResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1DeployedModelRefResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1DeployedModelRefResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1DeployedModelRefResponse(
       deployedModelId: map['deployedModelId'] as String,
       endpoint: map['endpoint'] as String,
     );
   }
 }
-

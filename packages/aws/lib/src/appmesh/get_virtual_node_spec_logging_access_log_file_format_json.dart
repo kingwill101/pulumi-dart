@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetVirtualNodeSpecLoggingAccessLogFileFormatJson {
   final String key;
   final String value;
@@ -14,17 +13,15 @@ class GetVirtualNodeSpecLoggingAccessLogFileFormatJson {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory GetVirtualNodeSpecLoggingAccessLogFileFormatJson.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecLoggingAccessLogFileFormatJson.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecLoggingAccessLogFileFormatJson(
       key: map['key'] as String,
       value: map['value'] as String,
     );
   }
 }
-

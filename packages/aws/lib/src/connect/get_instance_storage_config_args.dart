@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceStorageConfigArgs {
   /// The existing association identifier that uniquely identifies the resource type and storage config for the given instance ID.
   final pulumi.Input<String> associationId;
+
   /// Reference to the hosting Amazon Connect Instance
   final pulumi.Input<String> instanceId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A valid resource type. Valid Values: `AGENT_EVENTS` | `ATTACHMENTS` | `CALL_RECORDINGS` | `CHAT_TRANSCRIPTS` | `CONTACT_EVALUATIONS` | `CONTACT_TRACE_RECORDS` | `MEDIA_STREAMS` | `REAL_TIME_CONTACT_ANALYSIS_SEGMENTS` | `SCHEDULED_REPORTS` |  `SCREEN_RECORDINGS`.
   final pulumi.Input<String> resourceType;
 
@@ -26,11 +29,10 @@ class GetInstanceStorageConfigArgs {
     required String instanceId,
     String? region,
     required String resourceType,
-  }) :
-      associationId = pulumi.Input.asInput<String>(associationId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+  }) : associationId = pulumi.Input.asInput<String>(associationId),
+       instanceId = pulumi.Input.asInput<String>(instanceId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       resourceType = pulumi.Input.asInput<String>(resourceType);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,4 +52,3 @@ class GetInstanceStorageConfigArgs {
     );
   }
 }
-

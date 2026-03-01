@@ -9,20 +9,23 @@ class AttachedClusterProxyConfig {
 
   /// Creates a new [AttachedClusterProxyConfig].
   /// [kubernetesSecret] The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
-  AttachedClusterProxyConfig({
-    this.kubernetesSecret,
-  });
+  AttachedClusterProxyConfig({this.kubernetesSecret});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kubernetesSecret': ?kubernetesSecret == null ? null : kubernetesSecret!.toMap(),
+      'kubernetesSecret': ?kubernetesSecret == null
+          ? null
+          : kubernetesSecret!.toMap(),
     };
   }
 
   factory AttachedClusterProxyConfig.fromMap(Map<String, dynamic> map) {
     return AttachedClusterProxyConfig(
-      kubernetesSecret: map['kubernetesSecret'] == null ? null : AttachedClusterProxyConfigKubernetesSecret.fromMap((map['kubernetesSecret'] as Map).cast<String, dynamic>()),
+      kubernetesSecret: map['kubernetesSecret'] == null
+          ? null
+          : AttachedClusterProxyConfigKubernetesSecret.fromMap(
+              (map['kubernetesSecret'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

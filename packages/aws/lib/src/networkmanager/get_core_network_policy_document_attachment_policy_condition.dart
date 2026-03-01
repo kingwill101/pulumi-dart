@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
   /// string value
   final String? key;
+
   /// Valid values include: `equals`, `not-equals`, `contains`, `begins-with`.
   final String? operator;
+
   /// Must be `routing-policy-label`.
   final String type;
+
   /// Routing policy label to match.
   final String? value;
 
@@ -32,7 +34,9 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
     };
   }
 
-  factory GetCoreNetworkPolicyDocumentAttachmentPolicyCondition.fromMap(Map<String, dynamic> map) {
+  factory GetCoreNetworkPolicyDocumentAttachmentPolicyCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCoreNetworkPolicyDocumentAttachmentPolicyCondition(
       key: map['key'] == null ? null : map['key'] as String,
       operator: map['operator'] == null ? null : map['operator'] as String,
@@ -41,4 +45,3 @@ class GetCoreNetworkPolicyDocumentAttachmentPolicyCondition {
     );
   }
 }
-

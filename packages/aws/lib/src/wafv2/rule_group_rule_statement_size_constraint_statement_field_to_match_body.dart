@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody {
   final String? oversizeHandling;
 
@@ -11,15 +10,16 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'oversizeHandling': ?oversizeHandling,
-    };
+    return <String, dynamic>{'oversizeHandling': ?oversizeHandling};
   }
 
-  factory RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody(
-      oversizeHandling: map['oversizeHandling'] == null ? null : map['oversizeHandling'] as String,
+      oversizeHandling: map['oversizeHandling'] == null
+          ? null
+          : map['oversizeHandling'] as String,
     );
   }
 }
-

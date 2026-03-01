@@ -6,14 +6,19 @@ import 'deployment_platform_containeranalysis_v1beta1.dart';
 class DeploymentContaineranalysisV1beta1 {
   /// Address of the runtime element hosting this deployment.
   final String? address;
+
   /// Configuration used to create this deployment.
   final String? config;
+
   /// Beginning of the lifetime of this deployment.
   final String deployTime;
+
   /// Platform hosting this deployment.
   final DeploymentPlatformContaineranalysisV1beta1? platform;
+
   /// End of the lifetime of this deployment.
   final String? undeployTime;
+
   /// Identity of the user that triggered this deployment.
   final String? userEmail;
 
@@ -49,10 +54,15 @@ class DeploymentContaineranalysisV1beta1 {
       address: map['address'] == null ? null : map['address'] as String,
       config: map['config'] == null ? null : map['config'] as String,
       deployTime: map['deployTime'] as String,
-      platform: map['platform'] == null ? null : DeploymentPlatformContaineranalysisV1beta1.fromValue(map['platform'] as String),
-      undeployTime: map['undeployTime'] == null ? null : map['undeployTime'] as String,
+      platform: map['platform'] == null
+          ? null
+          : DeploymentPlatformContaineranalysisV1beta1.fromValue(
+              map['platform'] as String,
+            ),
+      undeployTime: map['undeployTime'] == null
+          ? null
+          : map['undeployTime'] as String,
       userEmail: map['userEmail'] == null ? null : map['userEmail'] as String,
     );
   }
 }
-

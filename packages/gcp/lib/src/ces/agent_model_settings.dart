@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentModelSettings {
   /// The LLM model that the agent should use.
   /// If not set, the agent will inherit the model from its parent agent.
   final String? model;
+
   /// If set, this temperature will be used for the LLM model. Temperature
   /// controls the randomness of the model's responses. Lower temperatures
   /// produce responses that are more predictable. Higher temperatures produce
@@ -14,23 +14,18 @@ class AgentModelSettings {
   /// Creates a new [AgentModelSettings].
   /// [model] The LLM model that the agent should use.
   /// [temperature] If set, this temperature will be used for the LLM model. Temperature
-  AgentModelSettings({
-    this.model,
-    this.temperature,
-  });
+  AgentModelSettings({this.model, this.temperature});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'model': ?model,
-      'temperature': ?temperature,
-    };
+    return <String, dynamic>{'model': ?model, 'temperature': ?temperature};
   }
 
   factory AgentModelSettings.fromMap(Map<String, dynamic> map) {
     return AgentModelSettings(
       model: map['model'] == null ? null : map['model'] as String,
-      temperature: map['temperature'] == null ? null : map['temperature'] as double,
+      temperature: map['temperature'] == null
+          ? null
+          : map['temperature'] as double,
     );
   }
 }
-

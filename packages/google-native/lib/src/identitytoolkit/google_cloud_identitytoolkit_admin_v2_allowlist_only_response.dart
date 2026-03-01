@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Defines a policy of only allowing regions by explicitly adding them to an allowlist.
 class GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse {
   /// Two letter unicode region codes to allow as defined by https://cldr.unicode.org/ The full list of these region codes is here: https://github.com/unicode-cldr/cldr-localenames-full/blob/master/main/en/territories.json
@@ -13,15 +12,14 @@ class GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowedRegions': allowedRegions,
-    };
+    return <String, dynamic>{'allowedRegions': allowedRegions};
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse(
       allowedRegions: (map['allowedRegions'] as List).cast<String>(),
     );
   }
 }
-

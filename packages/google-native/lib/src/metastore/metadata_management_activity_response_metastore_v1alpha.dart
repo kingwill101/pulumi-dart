@@ -8,6 +8,7 @@ import 'restore_response_metastore_v1alpha.dart';
 class MetadataManagementActivityResponseMetastoreV1alpha {
   /// The latest metadata exports of the metastore service.
   final List<MetadataExportResponseMetastoreV1alpha> metadataExports;
+
   /// The latest restores of the metastore service.
   final List<RestoreResponseMetastoreV1alpha> restores;
 
@@ -21,16 +22,36 @@ class MetadataManagementActivityResponseMetastoreV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadataExports': pulumi.Input.encodeList<MetadataExportResponseMetastoreV1alpha, Map<String, dynamic>>(metadataExports, (value) => value.toMap()),
-      'restores': pulumi.Input.encodeList<RestoreResponseMetastoreV1alpha, Map<String, dynamic>>(restores, (value) => value.toMap()),
+      'metadataExports':
+          pulumi.Input.encodeList<
+            MetadataExportResponseMetastoreV1alpha,
+            Map<String, dynamic>
+          >(metadataExports, (value) => value.toMap()),
+      'restores':
+          pulumi.Input.encodeList<
+            RestoreResponseMetastoreV1alpha,
+            Map<String, dynamic>
+          >(restores, (value) => value.toMap()),
     };
   }
 
-  factory MetadataManagementActivityResponseMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
+  factory MetadataManagementActivityResponseMetastoreV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MetadataManagementActivityResponseMetastoreV1alpha(
-      metadataExports: pulumi.Input.decodeList<MetadataExportResponseMetastoreV1alpha>(map['metadataExports'], (value) => MetadataExportResponseMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>())),
-      restores: pulumi.Input.decodeList<RestoreResponseMetastoreV1alpha>(map['restores'], (value) => RestoreResponseMetastoreV1alpha.fromMap((value as Map).cast<String, dynamic>())),
+      metadataExports:
+          pulumi.Input.decodeList<MetadataExportResponseMetastoreV1alpha>(
+            map['metadataExports'],
+            (value) => MetadataExportResponseMetastoreV1alpha.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      restores: pulumi.Input.decodeList<RestoreResponseMetastoreV1alpha>(
+        map['restores'],
+        (value) => RestoreResponseMetastoreV1alpha.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

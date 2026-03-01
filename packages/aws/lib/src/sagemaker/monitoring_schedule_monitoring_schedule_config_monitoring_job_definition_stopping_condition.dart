@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition {
   /// Maximum runtime allowed in seconds.
   final int? maxRuntimeInSeconds;
@@ -12,15 +11,16 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingC
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxRuntimeInSeconds': ?maxRuntimeInSeconds,
-    };
+    return <String, dynamic>{'maxRuntimeInSeconds': ?maxRuntimeInSeconds};
   }
 
-  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition.fromMap(Map<String, dynamic> map) {
+  factory MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition(
-      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null ? null : map['maxRuntimeInSeconds'] as int,
+      maxRuntimeInSeconds: map['maxRuntimeInSeconds'] == null
+          ? null
+          : map['maxRuntimeInSeconds'] as int,
     );
   }
 }
-

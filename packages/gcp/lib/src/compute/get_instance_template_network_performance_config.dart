@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstanceTemplateNetworkPerformanceConfig {
   /// The egress bandwidth tier for the instance.
   final String totalEgressBandwidthTier;
@@ -17,10 +16,11 @@ class GetInstanceTemplateNetworkPerformanceConfig {
     };
   }
 
-  factory GetInstanceTemplateNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceTemplateNetworkPerformanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceTemplateNetworkPerformanceConfig(
       totalEgressBandwidthTier: map['totalEgressBandwidthTier'] as String,
     );
   }
 }
-

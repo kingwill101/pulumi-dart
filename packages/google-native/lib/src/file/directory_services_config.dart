@@ -9,20 +9,23 @@ class DirectoryServicesConfig {
 
   /// Creates a new [DirectoryServicesConfig].
   /// [managedActiveDirectory] Configuration for Managed Service for Microsoft Active Directory.
-  DirectoryServicesConfig({
-    this.managedActiveDirectory,
-  });
+  DirectoryServicesConfig({this.managedActiveDirectory});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedActiveDirectory': ?managedActiveDirectory == null ? null : managedActiveDirectory!.toMap(),
+      'managedActiveDirectory': ?managedActiveDirectory == null
+          ? null
+          : managedActiveDirectory!.toMap(),
     };
   }
 
   factory DirectoryServicesConfig.fromMap(Map<String, dynamic> map) {
     return DirectoryServicesConfig(
-      managedActiveDirectory: map['managedActiveDirectory'] == null ? null : ManagedActiveDirectoryConfig.fromMap((map['managedActiveDirectory'] as Map).cast<String, dynamic>()),
+      managedActiveDirectory: map['managedActiveDirectory'] == null
+          ? null
+          : ManagedActiveDirectoryConfig.fromMap(
+              (map['managedActiveDirectory'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

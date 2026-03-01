@@ -6,7 +6,9 @@ import 'google_cloud_aiplatform_v1beta1_gcs_source.dart';
 /// The Cloud Storage input instances.
 class GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource {
   /// The format in which instances are given, if not specified, assume it's JSONL format. Currently only JSONL format is supported.
-  final GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat? dataFormat;
+  final GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat?
+  dataFormat;
+
   /// The Cloud Storage location for the input instances.
   final GoogleCloudAiplatformV1beta1GcsSource? gcsSource;
 
@@ -25,11 +27,20 @@ class GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ExamplesExampleGcsSource(
-      dataFormat: map['dataFormat'] == null ? null : GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat.fromValue(map['dataFormat'] as String),
-      gcsSource: map['gcsSource'] == null ? null : GoogleCloudAiplatformV1beta1GcsSource.fromMap((map['gcsSource'] as Map).cast<String, dynamic>()),
+      dataFormat: map['dataFormat'] == null
+          ? null
+          : GoogleCloudAiplatformV1beta1ExamplesExampleGcsSourceDataFormat.fromValue(
+              map['dataFormat'] as String,
+            ),
+      gcsSource: map['gcsSource'] == null
+          ? null
+          : GoogleCloudAiplatformV1beta1GcsSource.fromMap(
+              (map['gcsSource'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

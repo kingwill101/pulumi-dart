@@ -19,10 +19,11 @@ class GetNotebookRuntimeTemplateArgs {
     required String location,
     required String notebookRuntimeTemplateId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      notebookRuntimeTemplateId = pulumi.Input.asInput<String>(notebookRuntimeTemplateId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       notebookRuntimeTemplateId = pulumi.Input.asInput<String>(
+         notebookRuntimeTemplateId,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetNotebookRuntimeTemplateArgs {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLifecyclePolicyDocumentRuleAction {
   /// The storage class you want the lifecycle policy to transition the image to. `archive` is the only supported value.
   final String? targetStorageClass;
+
   /// Specify an action type. The supported values are `expire` (to delete images) and `transition` (to move images to archive storage).
   final String type;
 
@@ -22,11 +22,14 @@ class GetLifecyclePolicyDocumentRuleAction {
     };
   }
 
-  factory GetLifecyclePolicyDocumentRuleAction.fromMap(Map<String, dynamic> map) {
+  factory GetLifecyclePolicyDocumentRuleAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLifecyclePolicyDocumentRuleAction(
-      targetStorageClass: map['targetStorageClass'] == null ? null : map['targetStorageClass'] as String,
+      targetStorageClass: map['targetStorageClass'] == null
+          ? null
+          : map['targetStorageClass'] as String,
       type: map['type'] as String,
     );
   }
 }
-

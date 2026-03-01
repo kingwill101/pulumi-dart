@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// CloneStep holds information about the clone step progress.
 class CloneStepResponse {
   /// Adapting OS step.
   final Map<String, dynamic> adaptingOs;
+
   /// The time the step has ended.
   final String endTime;
+
   /// Instantiating migrated VM step.
   final Map<String, dynamic> instantiatingMigratedVm;
+
   /// Preparing VM disks step.
   final Map<String, dynamic> preparingVmDisks;
+
   /// The time the step has started.
   final String startTime;
 
@@ -42,10 +45,11 @@ class CloneStepResponse {
     return CloneStepResponse(
       adaptingOs: (map['adaptingOs'] as Map).cast<String, dynamic>(),
       endTime: map['endTime'] as String,
-      instantiatingMigratedVm: (map['instantiatingMigratedVm'] as Map).cast<String, dynamic>(),
-      preparingVmDisks: (map['preparingVmDisks'] as Map).cast<String, dynamic>(),
+      instantiatingMigratedVm: (map['instantiatingMigratedVm'] as Map)
+          .cast<String, dynamic>(),
+      preparingVmDisks: (map['preparingVmDisks'] as Map)
+          .cast<String, dynamic>(),
       startTime: map['startTime'] as String,
     );
   }
 }
-

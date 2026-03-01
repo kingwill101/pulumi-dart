@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DestinationResponse {
   /// For publicly routable host.
   final String host;
+
   /// The port is the target port number that is accepted by the destination.
   final int port;
+
   /// PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
   final String serviceAttachment;
 
@@ -35,4 +36,3 @@ class DestinationResponse {
     );
   }
 }
-

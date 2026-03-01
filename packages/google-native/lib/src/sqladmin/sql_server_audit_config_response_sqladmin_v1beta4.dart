@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// SQL Server specific audit configuration.
 class SqlServerAuditConfigResponseSqladminV1beta4 {
   /// The name of the destination bucket (e.g., gs://mybucket).
   final String bucket;
+
   /// This is always sql#sqlServerAuditConfig
   final String kind;
+
   /// How long to keep generated audit files.
   final String retentionInterval;
+
   /// How often to upload generated audit files.
   final String uploadInterval;
 
@@ -33,7 +35,9 @@ class SqlServerAuditConfigResponseSqladminV1beta4 {
     };
   }
 
-  factory SqlServerAuditConfigResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory SqlServerAuditConfigResponseSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlServerAuditConfigResponseSqladminV1beta4(
       bucket: map['bucket'] as String,
       kind: map['kind'] as String,
@@ -42,4 +46,3 @@ class SqlServerAuditConfigResponseSqladminV1beta4 {
     );
   }
 }
-

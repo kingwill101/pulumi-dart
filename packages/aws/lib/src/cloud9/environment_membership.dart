@@ -173,12 +173,16 @@ import 'environment_membership_args.dart';
 class EnvironmentMembership extends pulumi.CustomResource {
   /// The ID of the environment that contains the environment member you want to add.
   late final pulumi.Output<String> environmentId;
+
   /// The type of environment member permissions you want to associate with this environment member. Allowed values are `read-only` and `read-write` .
   late final pulumi.Output<String> permissions;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Amazon Resource Name (ARN) of the environment member you want to add.
   late final pulumi.Output<String> userArn;
+
   /// The user ID in AWS Identity and Access Management (AWS IAM) of the environment member.
   late final pulumi.Output<String> userId;
 
@@ -191,11 +195,11 @@ class EnvironmentMembership extends pulumi.CustomResource {
     EnvironmentMembershipArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cloud9/environmentMembership:EnvironmentMembership',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:cloud9/environmentMembership:EnvironmentMembership',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.environmentId = registerOutput<String>('environmentId');
     this.permissions = registerOutput<String>('permissions');
     this.region = registerOutput<String>('region');

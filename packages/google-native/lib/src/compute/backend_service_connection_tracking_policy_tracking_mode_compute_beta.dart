@@ -4,16 +4,22 @@ enum BackendServiceConnectionTrackingPolicyTrackingModeComputeBeta {
   perConnection("PER_CONNECTION"),
   perSession("PER_SESSION");
 
-  const BackendServiceConnectionTrackingPolicyTrackingModeComputeBeta(this.value);
+  const BackendServiceConnectionTrackingPolicyTrackingModeComputeBeta(
+    this.value,
+  );
   final String value;
 
-  static BackendServiceConnectionTrackingPolicyTrackingModeComputeBeta fromValue(String value) {
-    for (final item in BackendServiceConnectionTrackingPolicyTrackingModeComputeBeta.values) {
+  static BackendServiceConnectionTrackingPolicyTrackingModeComputeBeta
+  fromValue(String value) {
+    for (final item
+        in BackendServiceConnectionTrackingPolicyTrackingModeComputeBeta
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendServiceConnectionTrackingPolicyTrackingModeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown BackendServiceConnectionTrackingPolicyTrackingModeComputeBeta value: $value',
+    );
   }
 }
-

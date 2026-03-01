@@ -22,11 +22,10 @@ class GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args {
     required String policyTagId,
     String? project,
     required String taxonomyId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      policyTagId = pulumi.Input.asInput<String>(policyTagId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      taxonomyId = pulumi.Input.asInput<String>(taxonomyId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       policyTagId = pulumi.Input.asInput<String>(policyTagId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       taxonomyId = pulumi.Input.asInput<String>(taxonomyId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,7 +36,9 @@ class GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args {
     };
   }
 
-  factory GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args(
       location: map['location'] as String,
       policyTagId: map['policyTagId'] as String,
@@ -46,4 +47,3 @@ class GetTaxonomyPolicyTagIamPolicyDatacatalogV1beta1Args {
     );
   }
 }
-

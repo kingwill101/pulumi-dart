@@ -5,16 +5,22 @@ enum GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRe
   ubuntu("UBUNTU"),
   debianSnapshot("DEBIAN_SNAPSHOT");
 
-  const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase(this.value);
+  const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase(
+    this.value,
+  );
   final String value;
 
-  static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase fromValue(String value) {
-    for (final item in GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase.values) {
+  static GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase
+  fromValue(String value) {
+    for (final item
+        in GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase value: $value');
+    throw ArgumentError(
+      'Unknown GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase value: $value',
+    );
   }
 }
-

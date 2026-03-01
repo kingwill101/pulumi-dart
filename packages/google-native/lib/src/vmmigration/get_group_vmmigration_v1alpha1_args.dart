@@ -19,10 +19,9 @@ class GetGroupVmmigrationV1alpha1Args {
     required String groupId,
     required String location,
     String? project,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : groupId = pulumi.Input.asInput<String>(groupId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetGroupVmmigrationV1alpha1Args {
     );
   }
 }
-

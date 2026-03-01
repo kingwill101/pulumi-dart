@@ -10,6 +10,7 @@ import 'cx_page_form_parameter_fill_behavior_reprompt_event_handler_trigger_fulf
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage {
   /// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
   final String? channel;
+
   /// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
   /// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
   /// You may set this, for example:
@@ -17,7 +18,9 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
   /// * In a webhook response when you determine that you handled the customer issue.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess? conversationSuccess;
+  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess?
+  conversationSuccess;
+
   /// Indicates that the conversation should be handed off to a live agent.
   /// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
   /// You may set this, for example:
@@ -25,26 +28,36 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
   /// * In a webhook response when you determine that the customer issue can only be handled by a human.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff? liveAgentHandoff;
+  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff?
+  liveAgentHandoff;
+
   /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText? outputAudioText;
+  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText?
+  outputAudioText;
+
   /// Returns a response containing a custom, platform-specific payload.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   final String? payload;
+
   /// Specifies an audio clip to be played by the client as part of the response.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio? playAudio;
+  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio?
+  playAudio;
+
   /// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall? telephonyTransferCall;
+  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall?
+  telephonyTransferCall;
+
   /// The text response message.
   /// This field is part of a union field `message`: Only one of `text`, `payload`, `conversationSuccess`, `outputAudioText`, `liveAgentHandoff`, `endInteraction`, `playAudio`, `mixedAudio`, `telephonyTransferCall`, or `knowledgeInfoCard` may be set.
   /// Structure is documented below.
-  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText? text;
+  final CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText?
+  text;
 
   /// Creates a new [CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage].
   /// [channel] The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
@@ -69,27 +82,60 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'channel': ?channel,
-      'conversationSuccess': ?conversationSuccess == null ? null : conversationSuccess!.toMap(),
-      'liveAgentHandoff': ?liveAgentHandoff == null ? null : liveAgentHandoff!.toMap(),
-      'outputAudioText': ?outputAudioText == null ? null : outputAudioText!.toMap(),
+      'conversationSuccess': ?conversationSuccess == null
+          ? null
+          : conversationSuccess!.toMap(),
+      'liveAgentHandoff': ?liveAgentHandoff == null
+          ? null
+          : liveAgentHandoff!.toMap(),
+      'outputAudioText': ?outputAudioText == null
+          ? null
+          : outputAudioText!.toMap(),
       'payload': ?payload,
       'playAudio': ?playAudio == null ? null : playAudio!.toMap(),
-      'telephonyTransferCall': ?telephonyTransferCall == null ? null : telephonyTransferCall!.toMap(),
+      'telephonyTransferCall': ?telephonyTransferCall == null
+          ? null
+          : telephonyTransferCall!.toMap(),
       'text': ?text == null ? null : text!.toMap(),
     };
   }
 
-  factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage.fromMap(Map<String, dynamic> map) {
+  factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage(
       channel: map['channel'] == null ? null : map['channel'] as String,
-      conversationSuccess: map['conversationSuccess'] == null ? null : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess.fromMap((map['conversationSuccess'] as Map).cast<String, dynamic>()),
-      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff'] as Map).cast<String, dynamic>()),
-      outputAudioText: map['outputAudioText'] == null ? null : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText.fromMap((map['outputAudioText'] as Map).cast<String, dynamic>()),
+      conversationSuccess: map['conversationSuccess'] == null
+          ? null
+          : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess.fromMap(
+              (map['conversationSuccess'] as Map).cast<String, dynamic>(),
+            ),
+      liveAgentHandoff: map['liveAgentHandoff'] == null
+          ? null
+          : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff.fromMap(
+              (map['liveAgentHandoff'] as Map).cast<String, dynamic>(),
+            ),
+      outputAudioText: map['outputAudioText'] == null
+          ? null
+          : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText.fromMap(
+              (map['outputAudioText'] as Map).cast<String, dynamic>(),
+            ),
       payload: map['payload'] == null ? null : map['payload'] as String,
-      playAudio: map['playAudio'] == null ? null : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio.fromMap((map['playAudio'] as Map).cast<String, dynamic>()),
-      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall'] as Map).cast<String, dynamic>()),
-      text: map['text'] == null ? null : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText.fromMap((map['text'] as Map).cast<String, dynamic>()),
+      playAudio: map['playAudio'] == null
+          ? null
+          : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio.fromMap(
+              (map['playAudio'] as Map).cast<String, dynamic>(),
+            ),
+      telephonyTransferCall: map['telephonyTransferCall'] == null
+          ? null
+          : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall.fromMap(
+              (map['telephonyTransferCall'] as Map).cast<String, dynamic>(),
+            ),
+      text: map['text'] == null
+          ? null
+          : CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText.fromMap(
+              (map['text'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

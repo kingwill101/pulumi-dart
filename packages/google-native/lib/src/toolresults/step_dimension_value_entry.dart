@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class StepDimensionValueEntry {
   final String? key;
   final String? value;
@@ -8,16 +7,10 @@ class StepDimensionValueEntry {
   /// Creates a new [StepDimensionValueEntry].
   /// [key] Optional.
   /// [value] Optional.
-  StepDimensionValueEntry({
-    this.key,
-    this.value,
-  });
+  StepDimensionValueEntry({this.key, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'value': ?value,
-    };
+    return <String, dynamic>{'key': ?key, 'value': ?value};
   }
 
   factory StepDimensionValueEntry.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class StepDimensionValueEntry {
     );
   }
 }
-

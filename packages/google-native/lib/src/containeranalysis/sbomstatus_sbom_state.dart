@@ -16,4 +16,3 @@ enum SBOMStatusSbomState {
     throw ArgumentError('Unknown SBOMStatusSbomState value: $value');
   }
 }
-

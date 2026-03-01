@@ -5,9 +5,13 @@ import 'continuous_deployment_policy_traffic_config_single_weight_config.dart';
 
 class ContinuousDeploymentPolicyTrafficConfig {
   /// Determines which HTTP requests are sent to the staging distribution. See `single_header_config`.
-  final ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig? singleHeaderConfig;
+  final ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig?
+  singleHeaderConfig;
+
   /// Contains the percentage of traffic to send to the staging distribution. See `single_weight_config`.
-  final ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig? singleWeightConfig;
+  final ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig?
+  singleWeightConfig;
+
   /// Type of traffic configuration. Valid values are `SingleWeight` and `SingleHeader`.
   final String type;
 
@@ -23,18 +27,31 @@ class ContinuousDeploymentPolicyTrafficConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'singleHeaderConfig': ?singleHeaderConfig == null ? null : singleHeaderConfig!.toMap(),
-      'singleWeightConfig': ?singleWeightConfig == null ? null : singleWeightConfig!.toMap(),
+      'singleHeaderConfig': ?singleHeaderConfig == null
+          ? null
+          : singleHeaderConfig!.toMap(),
+      'singleWeightConfig': ?singleWeightConfig == null
+          ? null
+          : singleWeightConfig!.toMap(),
       'type': type,
     };
   }
 
-  factory ContinuousDeploymentPolicyTrafficConfig.fromMap(Map<String, dynamic> map) {
+  factory ContinuousDeploymentPolicyTrafficConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContinuousDeploymentPolicyTrafficConfig(
-      singleHeaderConfig: map['singleHeaderConfig'] == null ? null : ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig.fromMap((map['singleHeaderConfig'] as Map).cast<String, dynamic>()),
-      singleWeightConfig: map['singleWeightConfig'] == null ? null : ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig.fromMap((map['singleWeightConfig'] as Map).cast<String, dynamic>()),
+      singleHeaderConfig: map['singleHeaderConfig'] == null
+          ? null
+          : ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig.fromMap(
+              (map['singleHeaderConfig'] as Map).cast<String, dynamic>(),
+            ),
+      singleWeightConfig: map['singleWeightConfig'] == null
+          ? null
+          : ContinuousDeploymentPolicyTrafficConfigSingleWeightConfig.fromMap(
+              (map['singleWeightConfig'] as Map).cast<String, dynamic>(),
+            ),
       type: map['type'] as String,
     );
   }
 }
-

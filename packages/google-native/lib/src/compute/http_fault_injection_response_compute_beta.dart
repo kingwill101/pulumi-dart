@@ -7,6 +7,7 @@ import 'http_fault_delay_response_compute_beta.dart';
 class HttpFaultInjectionResponseComputeBeta {
   /// The specification for how client requests are aborted as part of fault injection.
   final HttpFaultAbortResponseComputeBeta abort;
+
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
   final HttpFaultDelayResponseComputeBeta delay;
 
@@ -19,17 +20,19 @@ class HttpFaultInjectionResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'abort': abort.toMap(),
-      'delay': delay.toMap(),
-    };
+    return <String, dynamic>{'abort': abort.toMap(), 'delay': delay.toMap()};
   }
 
-  factory HttpFaultInjectionResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory HttpFaultInjectionResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HttpFaultInjectionResponseComputeBeta(
-      abort: HttpFaultAbortResponseComputeBeta.fromMap((map['abort'] as Map).cast<String, dynamic>()),
-      delay: HttpFaultDelayResponseComputeBeta.fromMap((map['delay'] as Map).cast<String, dynamic>()),
+      abort: HttpFaultAbortResponseComputeBeta.fromMap(
+        (map['abort'] as Map).cast<String, dynamic>(),
+      ),
+      delay: HttpFaultDelayResponseComputeBeta.fromMap(
+        (map['delay'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

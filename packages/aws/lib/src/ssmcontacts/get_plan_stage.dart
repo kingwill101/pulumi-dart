@@ -10,23 +10,27 @@ class GetPlanStage {
   /// Creates a new [GetPlanStage].
   /// [durationInMinutes] Required.
   /// [targets] Required.
-  GetPlanStage({
-    required this.durationInMinutes,
-    required this.targets,
-  });
+  GetPlanStage({required this.durationInMinutes, required this.targets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'durationInMinutes': durationInMinutes,
-      'targets': pulumi.Input.encodeList<GetPlanStageTarget, Map<String, dynamic>>(targets, (value) => value.toMap()),
+      'targets':
+          pulumi.Input.encodeList<GetPlanStageTarget, Map<String, dynamic>>(
+            targets,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GetPlanStage.fromMap(Map<String, dynamic> map) {
     return GetPlanStage(
       durationInMinutes: map['durationInMinutes'] as int,
-      targets: pulumi.Input.decodeList<GetPlanStageTarget>(map['targets'], (value) => GetPlanStageTarget.fromMap((value as Map).cast<String, dynamic>())),
+      targets: pulumi.Input.decodeList<GetPlanStageTarget>(
+        map['targets'],
+        (value) =>
+            GetPlanStageTarget.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

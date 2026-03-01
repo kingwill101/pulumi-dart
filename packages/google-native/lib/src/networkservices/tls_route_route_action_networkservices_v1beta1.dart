@@ -10,20 +10,30 @@ class TlsRouteRouteActionNetworkservicesV1beta1 {
 
   /// Creates a new [TlsRouteRouteActionNetworkservicesV1beta1].
   /// [destinations] The destination services to which traffic should be forwarded. At least one destination service is required.
-  TlsRouteRouteActionNetworkservicesV1beta1({
-    required this.destinations,
-  });
+  TlsRouteRouteActionNetworkservicesV1beta1({required this.destinations});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations': pulumi.Input.encodeList<TlsRouteRouteDestinationNetworkservicesV1beta1, Map<String, dynamic>>(destinations, (value) => value.toMap()),
+      'destinations':
+          pulumi.Input.encodeList<
+            TlsRouteRouteDestinationNetworkservicesV1beta1,
+            Map<String, dynamic>
+          >(destinations, (value) => value.toMap()),
     };
   }
 
-  factory TlsRouteRouteActionNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory TlsRouteRouteActionNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TlsRouteRouteActionNetworkservicesV1beta1(
-      destinations: pulumi.Input.decodeList<TlsRouteRouteDestinationNetworkservicesV1beta1>(map['destinations'], (value) => TlsRouteRouteDestinationNetworkservicesV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      destinations:
+          pulumi
+              .Input.decodeList<TlsRouteRouteDestinationNetworkservicesV1beta1>(
+            map['destinations'],
+            (value) => TlsRouteRouteDestinationNetworkservicesV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

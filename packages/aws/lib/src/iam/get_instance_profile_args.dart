@@ -12,21 +12,14 @@ class GetInstanceProfileArgs {
 
   /// Creates a new [GetInstanceProfileArgs].
   /// [name] Friendly IAM instance profile name to match.
-  GetInstanceProfileArgs({
-    required String name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+  GetInstanceProfileArgs({required String name})
+    : name = pulumi.Input.asInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory GetInstanceProfileArgs.fromMap(Map<String, dynamic> map) {
-    return GetInstanceProfileArgs(
-      name: map['name'] as String,
-    );
+    return GetInstanceProfileArgs(name: map['name'] as String);
   }
 }
-

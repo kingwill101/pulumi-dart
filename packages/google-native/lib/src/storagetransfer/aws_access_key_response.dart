@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 class AwsAccessKeyResponse {
   /// AWS access key ID.
   final String accessKeyId;
+
   /// AWS secret access key. This field is not returned in RPC responses.
   final String secretAccessKey;
 
@@ -30,4 +30,3 @@ class AwsAccessKeyResponse {
     );
   }
 }
-

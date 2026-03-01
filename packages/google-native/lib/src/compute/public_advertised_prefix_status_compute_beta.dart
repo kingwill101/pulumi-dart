@@ -19,7 +19,8 @@ enum PublicAdvertisedPrefixStatusComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown PublicAdvertisedPrefixStatusComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown PublicAdvertisedPrefixStatusComputeBeta value: $value',
+    );
   }
 }
-

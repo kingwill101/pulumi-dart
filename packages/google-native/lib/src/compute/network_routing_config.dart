@@ -8,10 +8,13 @@ import 'network_routing_config_routing_mode.dart';
 class NetworkRoutingConfig {
   /// Enable comparison of Multi-Exit Discriminators (MED) across routes with different neighbor ASNs when using the STANDARD BGP best path selection algorithm.
   final bool? bgpAlwaysCompareMed;
+
   /// The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
   final NetworkRoutingConfigBgpBestPathSelectionMode? bgpBestPathSelectionMode;
+
   /// Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
   final NetworkRoutingConfigBgpInterRegionCost? bgpInterRegionCost;
+
   /// The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
   final NetworkRoutingConfigRoutingMode? routingMode;
 
@@ -30,19 +33,36 @@ class NetworkRoutingConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bgpAlwaysCompareMed': ?bgpAlwaysCompareMed,
-      'bgpBestPathSelectionMode': ?bgpBestPathSelectionMode == null ? null : bgpBestPathSelectionMode!.value,
-      'bgpInterRegionCost': ?bgpInterRegionCost == null ? null : bgpInterRegionCost!.value,
+      'bgpBestPathSelectionMode': ?bgpBestPathSelectionMode == null
+          ? null
+          : bgpBestPathSelectionMode!.value,
+      'bgpInterRegionCost': ?bgpInterRegionCost == null
+          ? null
+          : bgpInterRegionCost!.value,
       'routingMode': ?routingMode == null ? null : routingMode!.value,
     };
   }
 
   factory NetworkRoutingConfig.fromMap(Map<String, dynamic> map) {
     return NetworkRoutingConfig(
-      bgpAlwaysCompareMed: map['bgpAlwaysCompareMed'] == null ? null : map['bgpAlwaysCompareMed'] as bool,
-      bgpBestPathSelectionMode: map['bgpBestPathSelectionMode'] == null ? null : NetworkRoutingConfigBgpBestPathSelectionMode.fromValue(map['bgpBestPathSelectionMode'] as String),
-      bgpInterRegionCost: map['bgpInterRegionCost'] == null ? null : NetworkRoutingConfigBgpInterRegionCost.fromValue(map['bgpInterRegionCost'] as String),
-      routingMode: map['routingMode'] == null ? null : NetworkRoutingConfigRoutingMode.fromValue(map['routingMode'] as String),
+      bgpAlwaysCompareMed: map['bgpAlwaysCompareMed'] == null
+          ? null
+          : map['bgpAlwaysCompareMed'] as bool,
+      bgpBestPathSelectionMode: map['bgpBestPathSelectionMode'] == null
+          ? null
+          : NetworkRoutingConfigBgpBestPathSelectionMode.fromValue(
+              map['bgpBestPathSelectionMode'] as String,
+            ),
+      bgpInterRegionCost: map['bgpInterRegionCost'] == null
+          ? null
+          : NetworkRoutingConfigBgpInterRegionCost.fromValue(
+              map['bgpInterRegionCost'] as String,
+            ),
+      routingMode: map['routingMode'] == null
+          ? null
+          : NetworkRoutingConfigRoutingMode.fromValue(
+              map['routingMode'] as String,
+            ),
     );
   }
 }
-

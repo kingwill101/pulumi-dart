@@ -9,20 +9,17 @@ class DetailsResponse {
 
   /// Creates a new [DetailsResponse].
   /// [attestation] Attestation for the resource.
-  DetailsResponse({
-    required this.attestation,
-  });
+  DetailsResponse({required this.attestation});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'attestation': attestation.toMap(),
-    };
+    return <String, dynamic>{'attestation': attestation.toMap()};
   }
 
   factory DetailsResponse.fromMap(Map<String, dynamic> map) {
     return DetailsResponse(
-      attestation: AttestationResponseContaineranalysisV1beta1.fromMap((map['attestation'] as Map).cast<String, dynamic>()),
+      attestation: AttestationResponseContaineranalysisV1beta1.fromMap(
+        (map['attestation'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

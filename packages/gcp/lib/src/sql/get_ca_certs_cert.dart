@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetCaCertsCert {
   /// The CA certificate used to connect to the SQL instance via SSL.
   final String cert;
+
   /// The CN valid for the CA cert.
   final String commonName;
+
   /// Creation time of the CA cert.
   final String createTime;
+
   /// Expiration time of the CA cert.
   final String expirationTime;
+
   /// SHA1 fingerprint of the CA cert.
   final String sha1Fingerprint;
 
@@ -47,4 +50,3 @@ class GetCaCertsCert {
     );
   }
 }
-

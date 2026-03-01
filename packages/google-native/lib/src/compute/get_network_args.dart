@@ -13,18 +13,12 @@ class GetNetworkArgs {
   /// Creates a new [GetNetworkArgs].
   /// [network] Required.
   /// [project] Optional.
-  GetNetworkArgs({
-    required String network,
-    String? project,
-  }) :
-      network = pulumi.Input.asInput<String>(network),
+  GetNetworkArgs({required String network, String? project})
+    : network = pulumi.Input.asInput<String>(network),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'network': network,
-      'project': ?project,
-    };
+    return <String, dynamic>{'network': network, 'project': ?project};
   }
 
   factory GetNetworkArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetNetworkArgs {
     );
   }
 }
-

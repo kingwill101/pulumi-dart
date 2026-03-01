@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata {
   /// OAuth2 authorization endpoint URL.
   final String authorizationEndpoint;
+
   /// OAuth2 authorization server issuer identifier.
   final String issuer;
+
   /// Set of OAuth2 response types supported by the authorization server.
   final List<String>? responseTypes;
+
   /// OAuth2 token endpoint URL.
   final String tokenEndpoint;
 
@@ -32,13 +34,16 @@ class AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderC
     };
   }
 
-  factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreOauth2CredentialProviderOauth2ProviderConfigCustomOauth2ProviderConfigOauthDiscoveryAuthorizationServerMetadata(
       authorizationEndpoint: map['authorizationEndpoint'] as String,
       issuer: map['issuer'] as String,
-      responseTypes: map['responseTypes'] == null ? null : (map['responseTypes'] as List).cast<String>(),
+      responseTypes: map['responseTypes'] == null
+          ? null
+          : (map['responseTypes'] as List).cast<String>(),
       tokenEndpoint: map['tokenEndpoint'] as String,
     );
   }
 }
-

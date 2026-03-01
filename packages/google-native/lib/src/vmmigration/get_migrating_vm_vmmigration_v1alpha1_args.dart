@@ -25,12 +25,11 @@ class GetMigratingVmVmmigrationV1alpha1Args {
     String? project,
     required String sourceId,
     String? view,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceId = pulumi.Input.asInput<String>(sourceId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : location = pulumi.Input.asInput<String>(location),
+       migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sourceId = pulumi.Input.asInput<String>(sourceId),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +41,9 @@ class GetMigratingVmVmmigrationV1alpha1Args {
     };
   }
 
-  factory GetMigratingVmVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetMigratingVmVmmigrationV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMigratingVmVmmigrationV1alpha1Args(
       location: map['location'] as String,
       migratingVmId: map['migratingVmId'] as String,
@@ -52,4 +53,3 @@ class GetMigratingVmVmmigrationV1alpha1Args {
     );
   }
 }
-

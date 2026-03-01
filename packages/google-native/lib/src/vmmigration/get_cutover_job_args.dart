@@ -25,12 +25,11 @@ class GetCutoverJobArgs {
     required String migratingVmId,
     String? project,
     required String sourceId,
-  }) :
-      cutoverJobId = pulumi.Input.asInput<String>(cutoverJobId),
-      location = pulumi.Input.asInput<String>(location),
-      migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceId = pulumi.Input.asInput<String>(sourceId);
+  }) : cutoverJobId = pulumi.Input.asInput<String>(cutoverJobId),
+       location = pulumi.Input.asInput<String>(location),
+       migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetCutoverJobArgs {
     );
   }
 }
-

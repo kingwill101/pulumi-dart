@@ -7,21 +7,28 @@ import 'upload_file_info_response.dart';
 class ImportDataFile extends pulumi.CustomResource {
   /// The timestamp when the file was created.
   late final pulumi.Output<String> createTime;
+
   /// User-friendly display name. Maximum length is 63 characters.
   late final pulumi.Output<String> displayName;
+
   /// The payload format.
   late final pulumi.Output<String> format;
+
   /// Required. The ID of the new data file.
   late final pulumi.Output<String> importDataFileId;
   late final pulumi.Output<String> importJobId;
   late final pulumi.Output<String> location;
+
   /// The name of the file.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
+
   /// The state of the import data file.
   late final pulumi.Output<String> state;
+
   /// Information about a file that is uploaded to a storage service.
   late final pulumi.Output<UploadFileInfoResponse> uploadFileInfo;
 
@@ -34,11 +41,11 @@ class ImportDataFile extends pulumi.CustomResource {
     ImportDataFileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:migrationcenter/v1:ImportDataFile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:migrationcenter/v1:ImportDataFile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String>('displayName');
     this.format = registerOutput<String>('format');
@@ -49,6 +56,8 @@ class ImportDataFile extends pulumi.CustomResource {
     this.project = registerOutput<String>('project');
     this.requestId = registerOutput<String?>('requestId');
     this.state = registerOutput<String>('state');
-    this.uploadFileInfo = registerOutput<UploadFileInfoResponse>('uploadFileInfo');
+    this.uploadFileInfo = registerOutput<UploadFileInfoResponse>(
+      'uploadFileInfo',
+    );
   }
 }

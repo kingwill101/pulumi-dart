@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketObjectArgs {
   /// The name of the containing bucket.
   final pulumi.Input<String>? bucket;
+
   /// The name of the object.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetBucketObjectArgs].
   /// [bucket] The name of the containing bucket.
   /// [name] The name of the object.
-  GetBucketObjectArgs({
-    String? bucket,
-    String? name,
-  }) :
-      bucket = pulumi.Input.asOptionalInput<String>(bucket),
+  GetBucketObjectArgs({String? bucket, String? name})
+    : bucket = pulumi.Input.asOptionalInput<String>(bucket),
       name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': ?bucket,
-      'name': ?name,
-    };
+    return <String, dynamic>{'bucket': ?bucket, 'name': ?name};
   }
 
   factory GetBucketObjectArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetBucketObjectArgs {
     );
   }
 }
-

@@ -4,9 +4,12 @@ import 'field_level_encryption_profile_encryption_entities_item_field_patterns.d
 
 class FieldLevelEncryptionProfileEncryptionEntitiesItem {
   /// Object that contains an attribute `items` that contains the list of field patterns in a field-level encryption content type profile specify the fields that you want to be encrypted.
-  final FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns fieldPatterns;
+  final FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns
+  fieldPatterns;
+
   /// The provider associated with the public key being used for encryption.
   final String providerId;
+
   /// The public key associated with a set of field-level encryption patterns, to be used when encrypting the fields that match the patterns.
   final String publicKeyId;
 
@@ -28,12 +31,16 @@ class FieldLevelEncryptionProfileEncryptionEntitiesItem {
     };
   }
 
-  factory FieldLevelEncryptionProfileEncryptionEntitiesItem.fromMap(Map<String, dynamic> map) {
+  factory FieldLevelEncryptionProfileEncryptionEntitiesItem.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FieldLevelEncryptionProfileEncryptionEntitiesItem(
-      fieldPatterns: FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns.fromMap((map['fieldPatterns'] as Map).cast<String, dynamic>()),
+      fieldPatterns:
+          FieldLevelEncryptionProfileEncryptionEntitiesItemFieldPatterns.fromMap(
+            (map['fieldPatterns'] as Map).cast<String, dynamic>(),
+          ),
       providerId: map['providerId'] as String,
       publicKeyId: map['publicKeyId'] as String,
     );
   }
 }
-

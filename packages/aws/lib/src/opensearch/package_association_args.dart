@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PackageAssociationArgs {
   /// Name of the domain to associate the package with.
   final pulumi.Input<String> domainName;
+
   /// Internal ID of the package to associate with a domain.
   final pulumi.Input<String> packageId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -22,10 +24,9 @@ class PackageAssociationArgs {
     required String domainName,
     required String packageId,
     String? region,
-  }) :
-      domainName = pulumi.Input.asInput<String>(domainName),
-      packageId = pulumi.Input.asInput<String>(packageId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : domainName = pulumi.Input.asInput<String>(domainName),
+       packageId = pulumi.Input.asInput<String>(packageId),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class PackageAssociationArgs {
     );
   }
 }
-

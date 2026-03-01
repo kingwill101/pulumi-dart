@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getResource.
 class GetResourceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String identifier;
+
   /// JSON string matching the CloudFormation resource type schema with current configuration.
   final String properties;
   final String region;
@@ -51,8 +51,9 @@ class GetResourceResult {
       region: map['region'] as String,
       roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
       typeName: map['typeName'] as String,
-      typeVersionId: map['typeVersionId'] == null ? null : map['typeVersionId'] as String,
+      typeVersionId: map['typeVersionId'] == null
+          ? null
+          : map['typeVersionId'] as String,
     );
   }
 }
-

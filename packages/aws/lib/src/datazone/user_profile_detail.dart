@@ -11,23 +11,37 @@ class UserProfileDetail {
   /// Creates a new [UserProfileDetail].
   /// [iams] Required.
   /// [ssos] Required.
-  UserProfileDetail({
-    required this.iams,
-    required this.ssos,
-  });
+  UserProfileDetail({required this.iams, required this.ssos});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iams': pulumi.Input.encodeList<UserProfileDetailIam, Map<String, dynamic>>(iams, (value) => value.toMap()),
-      'ssos': pulumi.Input.encodeList<UserProfileDetailSso, Map<String, dynamic>>(ssos, (value) => value.toMap()),
+      'iams':
+          pulumi.Input.encodeList<UserProfileDetailIam, Map<String, dynamic>>(
+            iams,
+            (value) => value.toMap(),
+          ),
+      'ssos':
+          pulumi.Input.encodeList<UserProfileDetailSso, Map<String, dynamic>>(
+            ssos,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory UserProfileDetail.fromMap(Map<String, dynamic> map) {
     return UserProfileDetail(
-      iams: pulumi.Input.decodeList<UserProfileDetailIam>(map['iams'], (value) => UserProfileDetailIam.fromMap((value as Map).cast<String, dynamic>())),
-      ssos: pulumi.Input.decodeList<UserProfileDetailSso>(map['ssos'], (value) => UserProfileDetailSso.fromMap((value as Map).cast<String, dynamic>())),
+      iams: pulumi.Input.decodeList<UserProfileDetailIam>(
+        map['iams'],
+        (value) => UserProfileDetailIam.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      ssos: pulumi.Input.decodeList<UserProfileDetailSso>(
+        map['ssos'],
+        (value) => UserProfileDetailSso.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

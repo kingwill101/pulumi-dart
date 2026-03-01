@@ -25,12 +25,11 @@ class GetConsentArgs {
     required String datasetId,
     required String location,
     String? project,
-  }) :
-      consentId = pulumi.Input.asInput<String>(consentId),
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : consentId = pulumi.Input.asInput<String>(consentId),
+       consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
+       datasetId = pulumi.Input.asInput<String>(datasetId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetConsentArgs {
     );
   }
 }
-

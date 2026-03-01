@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CustomTargetTypeIamMemberCondition {
   final String? description;
   final String expression;
@@ -26,10 +25,11 @@ class CustomTargetTypeIamMemberCondition {
 
   factory CustomTargetTypeIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return CustomTargetTypeIamMemberCondition(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
-

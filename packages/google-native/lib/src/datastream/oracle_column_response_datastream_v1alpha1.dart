@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Oracle Column.
 class OracleColumnResponseDatastreamV1alpha1 {
   /// Column name.
   final String columnName;
+
   /// The Oracle data type.
   final String dataType;
+
   /// Column encoding.
   final String encoding;
+
   /// Column length.
   final int length;
+
   /// Whether or not the column can accept a null value.
   final bool nullable;
+
   /// The ordinal position of the column in the table.
   final int ordinalPosition;
+
   /// Column precision.
   final int precision;
+
   /// Whether or not the column represents a primary key.
   final bool primaryKey;
+
   /// Column scale.
   final int scale;
 
@@ -58,7 +65,9 @@ class OracleColumnResponseDatastreamV1alpha1 {
     };
   }
 
-  factory OracleColumnResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory OracleColumnResponseDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OracleColumnResponseDatastreamV1alpha1(
       columnName: map['columnName'] as String,
       dataType: map['dataType'] as String,
@@ -72,4 +81,3 @@ class OracleColumnResponseDatastreamV1alpha1 {
     );
   }
 }
-

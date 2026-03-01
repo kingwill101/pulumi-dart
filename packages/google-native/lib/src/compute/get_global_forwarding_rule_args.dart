@@ -13,11 +13,8 @@ class GetGlobalForwardingRuleArgs {
   /// Creates a new [GetGlobalForwardingRuleArgs].
   /// [forwardingRule] Required.
   /// [project] Optional.
-  GetGlobalForwardingRuleArgs({
-    required String forwardingRule,
-    String? project,
-  }) :
-      forwardingRule = pulumi.Input.asInput<String>(forwardingRule),
+  GetGlobalForwardingRuleArgs({required String forwardingRule, String? project})
+    : forwardingRule = pulumi.Input.asInput<String>(forwardingRule),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetGlobalForwardingRuleArgs {
     );
   }
 }
-

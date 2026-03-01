@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CxFlowAdvancedSettingsSpeechSettings {
   /// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
   final int? endpointerSensitivity;
+
   /// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
   /// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
   final Map<String, String>? models;
+
   /// Timeout before detecting no speech.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.500s".
   final String? noSpeechTimeout;
+
   /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
   final bool? useTimeoutBasedEndpointing;
 
@@ -34,13 +36,22 @@ class CxFlowAdvancedSettingsSpeechSettings {
     };
   }
 
-  factory CxFlowAdvancedSettingsSpeechSettings.fromMap(Map<String, dynamic> map) {
+  factory CxFlowAdvancedSettingsSpeechSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxFlowAdvancedSettingsSpeechSettings(
-      endpointerSensitivity: map['endpointerSensitivity'] == null ? null : map['endpointerSensitivity'] as int,
-      models: map['models'] == null ? null : (map['models'] as Map).cast<String, String>(),
-      noSpeechTimeout: map['noSpeechTimeout'] == null ? null : map['noSpeechTimeout'] as String,
-      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null ? null : map['useTimeoutBasedEndpointing'] as bool,
+      endpointerSensitivity: map['endpointerSensitivity'] == null
+          ? null
+          : map['endpointerSensitivity'] as int,
+      models: map['models'] == null
+          ? null
+          : (map['models'] as Map).cast<String, String>(),
+      noSpeechTimeout: map['noSpeechTimeout'] == null
+          ? null
+          : map['noSpeechTimeout'] as String,
+      useTimeoutBasedEndpointing: map['useTimeoutBasedEndpointing'] == null
+          ? null
+          : map['useTimeoutBasedEndpointing'] as bool,
     );
   }
 }
-

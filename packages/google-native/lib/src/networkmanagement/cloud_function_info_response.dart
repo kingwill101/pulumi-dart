@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Metadata associated with a Cloud Function.
 class CloudFunctionInfoResponse {
   /// Name of a Cloud Function.
   final String displayName;
+
   /// Location in which the Cloud Function is deployed.
   final String location;
+
   /// URI of a Cloud Function.
   final String uri;
+
   /// Latest successfully deployed version id of the Cloud Function.
   final String versionId;
 
@@ -42,4 +44,3 @@ class CloudFunctionInfoResponse {
     );
   }
 }
-

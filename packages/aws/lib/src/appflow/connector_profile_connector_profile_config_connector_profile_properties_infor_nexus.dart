@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus {
   final String instanceUrl;
 
@@ -11,15 +10,14 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceUrl': instanceUrl,
-    };
+    return <String, dynamic>{'instanceUrl': instanceUrl};
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus(
       instanceUrl: map['instanceUrl'] as String,
     );
   }
 }
-

@@ -22,11 +22,10 @@ class GetMembershipRbacRoleBindingGkehubV1betaArgs {
     required String membershipId,
     String? project,
     required String rbacrolebindingId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rbacrolebindingId = pulumi.Input.asInput<String>(rbacrolebindingId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       membershipId = pulumi.Input.asInput<String>(membershipId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       rbacrolebindingId = pulumi.Input.asInput<String>(rbacrolebindingId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,7 +36,9 @@ class GetMembershipRbacRoleBindingGkehubV1betaArgs {
     };
   }
 
-  factory GetMembershipRbacRoleBindingGkehubV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetMembershipRbacRoleBindingGkehubV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMembershipRbacRoleBindingGkehubV1betaArgs(
       location: map['location'] as String,
       membershipId: map['membershipId'] as String,
@@ -46,4 +47,3 @@ class GetMembershipRbacRoleBindingGkehubV1betaArgs {
     );
   }
 }
-

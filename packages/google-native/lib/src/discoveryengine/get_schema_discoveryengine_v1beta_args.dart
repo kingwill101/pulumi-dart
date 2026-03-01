@@ -25,12 +25,11 @@ class GetSchemaDiscoveryengineV1betaArgs {
     required String location,
     String? project,
     required String schemaId,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      schemaId = pulumi.Input.asInput<String>(schemaId);
+  }) : collectionId = pulumi.Input.asInput<String>(collectionId),
+       dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       schemaId = pulumi.Input.asInput<String>(schemaId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetSchemaDiscoveryengineV1betaArgs {
     );
   }
 }
-

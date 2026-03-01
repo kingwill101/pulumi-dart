@@ -16,4 +16,3 @@ enum EnvironmentDeploymentType {
     throw ArgumentError('Unknown EnvironmentDeploymentType value: $value');
   }
 }
-

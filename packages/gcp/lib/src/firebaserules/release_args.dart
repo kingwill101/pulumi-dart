@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReleaseArgs {
   /// Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
   final pulumi.Input<String>? name;
+
   /// The project for the resource
   final pulumi.Input<String>? project;
+
   /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   ///
   ///
@@ -22,12 +24,8 @@ class ReleaseArgs {
   /// [name] Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
   /// [project] The project for the resource
   /// [rulesetName] Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-  ReleaseArgs({
-    String? name,
-    String? project,
-    required String rulesetName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
+  ReleaseArgs({String? name, String? project, required String rulesetName})
+    : name = pulumi.Input.asOptionalInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project),
       rulesetName = pulumi.Input.asInput<String>(rulesetName);
 
@@ -47,4 +45,3 @@ class ReleaseArgs {
     );
   }
 }
-

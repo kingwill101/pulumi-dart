@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// ScopeLifecycleState describes the state of a Scope resource.
 class ScopeLifecycleStateResponseGkehubV1alpha {
   /// The current state of the scope resource.
@@ -8,20 +7,17 @@ class ScopeLifecycleStateResponseGkehubV1alpha {
 
   /// Creates a new [ScopeLifecycleStateResponseGkehubV1alpha].
   /// [code] The current state of the scope resource.
-  ScopeLifecycleStateResponseGkehubV1alpha({
-    required this.code,
-  });
+  ScopeLifecycleStateResponseGkehubV1alpha({required this.code});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-    };
+    return <String, dynamic>{'code': code};
   }
 
-  factory ScopeLifecycleStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ScopeLifecycleStateResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScopeLifecycleStateResponseGkehubV1alpha(
       code: map['code'] as String,
     );
   }
 }
-

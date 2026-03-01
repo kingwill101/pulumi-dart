@@ -9,24 +9,36 @@ import 'node_pool_network_config_pod_cidr_overprovision_config.dart';
 class NodePoolNetworkConfig {
   /// Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
   final String? acceleratorNetworkProfile;
+
   /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
   /// Structure is documented below
-  final List<NodePoolNetworkConfigAdditionalNodeNetworkConfig>? additionalNodeNetworkConfigs;
+  final List<NodePoolNetworkConfigAdditionalNodeNetworkConfig>?
+  additionalNodeNetworkConfigs;
+
   /// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
   /// Structure is documented below
-  final List<NodePoolNetworkConfigAdditionalPodNetworkConfig>? additionalPodNetworkConfigs;
+  final List<NodePoolNetworkConfigAdditionalPodNetworkConfig>?
+  additionalPodNetworkConfigs;
+
   /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
   final bool? createPodRange;
+
   /// Whether nodes have internal IP addresses only.
   final bool? enablePrivateNodes;
+
   /// Network bandwidth tier configuration. Structure is documented below.
   final NodePoolNetworkConfigNetworkPerformanceConfig? networkPerformanceConfig;
+
   /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
-  final NodePoolNetworkConfigPodCidrOverprovisionConfig? podCidrOverprovisionConfig;
+  final NodePoolNetworkConfigPodCidrOverprovisionConfig?
+  podCidrOverprovisionConfig;
+
   /// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
   final String? podIpv4CidrBlock;
+
   /// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
   final String? podRange;
+
   /// The subnetwork path for the node pool. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`. If the cluster is associated with multiple subnetworks, the subnetwork for the node pool is picked based on the IP utilization during node pool creation and is immutable
   final String? subnetwork;
 
@@ -57,12 +69,26 @@ class NodePoolNetworkConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceleratorNetworkProfile': ?acceleratorNetworkProfile,
-      'additionalNodeNetworkConfigs': ?additionalNodeNetworkConfigs == null ? null : pulumi.Input.encodeList<NodePoolNetworkConfigAdditionalNodeNetworkConfig, Map<String, dynamic>>(additionalNodeNetworkConfigs!, (value) => value.toMap()),
-      'additionalPodNetworkConfigs': ?additionalPodNetworkConfigs == null ? null : pulumi.Input.encodeList<NodePoolNetworkConfigAdditionalPodNetworkConfig, Map<String, dynamic>>(additionalPodNetworkConfigs!, (value) => value.toMap()),
+      'additionalNodeNetworkConfigs': ?additionalNodeNetworkConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              NodePoolNetworkConfigAdditionalNodeNetworkConfig,
+              Map<String, dynamic>
+            >(additionalNodeNetworkConfigs!, (value) => value.toMap()),
+      'additionalPodNetworkConfigs': ?additionalPodNetworkConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              NodePoolNetworkConfigAdditionalPodNetworkConfig,
+              Map<String, dynamic>
+            >(additionalPodNetworkConfigs!, (value) => value.toMap()),
       'createPodRange': ?createPodRange,
       'enablePrivateNodes': ?enablePrivateNodes,
-      'networkPerformanceConfig': ?networkPerformanceConfig == null ? null : networkPerformanceConfig!.toMap(),
-      'podCidrOverprovisionConfig': ?podCidrOverprovisionConfig == null ? null : podCidrOverprovisionConfig!.toMap(),
+      'networkPerformanceConfig': ?networkPerformanceConfig == null
+          ? null
+          : networkPerformanceConfig!.toMap(),
+      'podCidrOverprovisionConfig': ?podCidrOverprovisionConfig == null
+          ? null
+          : podCidrOverprovisionConfig!.toMap(),
       'podIpv4CidrBlock': ?podIpv4CidrBlock,
       'podRange': ?podRange,
       'subnetwork': ?subnetwork,
@@ -71,17 +97,55 @@ class NodePoolNetworkConfig {
 
   factory NodePoolNetworkConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNetworkConfig(
-      acceleratorNetworkProfile: map['acceleratorNetworkProfile'] == null ? null : map['acceleratorNetworkProfile'] as String,
-      additionalNodeNetworkConfigs: map['additionalNodeNetworkConfigs'] == null ? null : pulumi.Input.decodeList<NodePoolNetworkConfigAdditionalNodeNetworkConfig>(map['additionalNodeNetworkConfigs'], (value) => NodePoolNetworkConfigAdditionalNodeNetworkConfig.fromMap((value as Map).cast<String, dynamic>())),
-      additionalPodNetworkConfigs: map['additionalPodNetworkConfigs'] == null ? null : pulumi.Input.decodeList<NodePoolNetworkConfigAdditionalPodNetworkConfig>(map['additionalPodNetworkConfigs'], (value) => NodePoolNetworkConfigAdditionalPodNetworkConfig.fromMap((value as Map).cast<String, dynamic>())),
-      createPodRange: map['createPodRange'] == null ? null : map['createPodRange'] as bool,
-      enablePrivateNodes: map['enablePrivateNodes'] == null ? null : map['enablePrivateNodes'] as bool,
-      networkPerformanceConfig: map['networkPerformanceConfig'] == null ? null : NodePoolNetworkConfigNetworkPerformanceConfig.fromMap((map['networkPerformanceConfig'] as Map).cast<String, dynamic>()),
-      podCidrOverprovisionConfig: map['podCidrOverprovisionConfig'] == null ? null : NodePoolNetworkConfigPodCidrOverprovisionConfig.fromMap((map['podCidrOverprovisionConfig'] as Map).cast<String, dynamic>()),
-      podIpv4CidrBlock: map['podIpv4CidrBlock'] == null ? null : map['podIpv4CidrBlock'] as String,
+      acceleratorNetworkProfile: map['acceleratorNetworkProfile'] == null
+          ? null
+          : map['acceleratorNetworkProfile'] as String,
+      additionalNodeNetworkConfigs: map['additionalNodeNetworkConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              NodePoolNetworkConfigAdditionalNodeNetworkConfig
+            >(
+              map['additionalNodeNetworkConfigs'],
+              (value) =>
+                  NodePoolNetworkConfigAdditionalNodeNetworkConfig.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      additionalPodNetworkConfigs: map['additionalPodNetworkConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              NodePoolNetworkConfigAdditionalPodNetworkConfig
+            >(
+              map['additionalPodNetworkConfigs'],
+              (value) =>
+                  NodePoolNetworkConfigAdditionalPodNetworkConfig.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      createPodRange: map['createPodRange'] == null
+          ? null
+          : map['createPodRange'] as bool,
+      enablePrivateNodes: map['enablePrivateNodes'] == null
+          ? null
+          : map['enablePrivateNodes'] as bool,
+      networkPerformanceConfig: map['networkPerformanceConfig'] == null
+          ? null
+          : NodePoolNetworkConfigNetworkPerformanceConfig.fromMap(
+              (map['networkPerformanceConfig'] as Map).cast<String, dynamic>(),
+            ),
+      podCidrOverprovisionConfig: map['podCidrOverprovisionConfig'] == null
+          ? null
+          : NodePoolNetworkConfigPodCidrOverprovisionConfig.fromMap(
+              (map['podCidrOverprovisionConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      podIpv4CidrBlock: map['podIpv4CidrBlock'] == null
+          ? null
+          : map['podIpv4CidrBlock'] as String,
       podRange: map['podRange'] == null ? null : map['podRange'] as String,
-      subnetwork: map['subnetwork'] == null ? null : map['subnetwork'] as String,
+      subnetwork: map['subnetwork'] == null
+          ? null
+          : map['subnetwork'] as String,
     );
   }
 }
-

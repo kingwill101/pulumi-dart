@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents period in days/months/years.
 class GoogleCloudChannelV1PeriodResponse {
   /// Total duration of Period Type defined.
   final int duration;
+
   /// Period Type.
   final String periodType;
 
@@ -17,10 +17,7 @@ class GoogleCloudChannelV1PeriodResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'duration': duration,
-      'periodType': periodType,
-    };
+    return <String, dynamic>{'duration': duration, 'periodType': periodType};
   }
 
   factory GoogleCloudChannelV1PeriodResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class GoogleCloudChannelV1PeriodResponse {
     );
   }
 }
-

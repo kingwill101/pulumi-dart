@@ -8,20 +8,23 @@ class WebAclRuleActionAllow {
 
   /// Creates a new [WebAclRuleActionAllow].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
-  WebAclRuleActionAllow({
-    this.customRequestHandling,
-  });
+  WebAclRuleActionAllow({this.customRequestHandling});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRequestHandling': ?customRequestHandling == null ? null : customRequestHandling!.toMap(),
+      'customRequestHandling': ?customRequestHandling == null
+          ? null
+          : customRequestHandling!.toMap(),
     };
   }
 
   factory WebAclRuleActionAllow.fromMap(Map<String, dynamic> map) {
     return WebAclRuleActionAllow(
-      customRequestHandling: map['customRequestHandling'] == null ? null : WebAclRuleActionAllowCustomRequestHandling.fromMap((map['customRequestHandling'] as Map).cast<String, dynamic>()),
+      customRequestHandling: map['customRequestHandling'] == null
+          ? null
+          : WebAclRuleActionAllowCustomRequestHandling.fromMap(
+              (map['customRequestHandling'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

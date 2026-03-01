@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading {
   /// Possible kernel module loading policies.
   /// Accepted values are:
@@ -16,15 +15,14 @@ class ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policy': ?policy,
-    };
+    return <String, dynamic>{'policy': ?policy};
   }
 
-  factory ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoading(
       policy: map['policy'] == null ? null : map['policy'] as String,
     );
   }
 }
-

@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetGroupMixedInstancesPolicyInstancesDistribution {
   /// Strategy used when launching on-demand instances.
   final String onDemandAllocationStrategy;
+
   /// Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances.
   final int onDemandBaseCapacity;
   final int onDemandPercentageAboveBaseCapacity;
+
   /// Strategy used when launching Spot instances.
   final String spotAllocationStrategy;
+
   /// Number of Spot pools per availability zone to allocate capacity.
   final int spotInstancePools;
+
   /// Maximum price per unit hour that the user is willing to pay for the Spot instances.
   final String spotMaxPrice;
 
@@ -34,22 +37,25 @@ class GetGroupMixedInstancesPolicyInstancesDistribution {
     return <String, dynamic>{
       'onDemandAllocationStrategy': onDemandAllocationStrategy,
       'onDemandBaseCapacity': onDemandBaseCapacity,
-      'onDemandPercentageAboveBaseCapacity': onDemandPercentageAboveBaseCapacity,
+      'onDemandPercentageAboveBaseCapacity':
+          onDemandPercentageAboveBaseCapacity,
       'spotAllocationStrategy': spotAllocationStrategy,
       'spotInstancePools': spotInstancePools,
       'spotMaxPrice': spotMaxPrice,
     };
   }
 
-  factory GetGroupMixedInstancesPolicyInstancesDistribution.fromMap(Map<String, dynamic> map) {
+  factory GetGroupMixedInstancesPolicyInstancesDistribution.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupMixedInstancesPolicyInstancesDistribution(
       onDemandAllocationStrategy: map['onDemandAllocationStrategy'] as String,
       onDemandBaseCapacity: map['onDemandBaseCapacity'] as int,
-      onDemandPercentageAboveBaseCapacity: map['onDemandPercentageAboveBaseCapacity'] as int,
+      onDemandPercentageAboveBaseCapacity:
+          map['onDemandPercentageAboveBaseCapacity'] as int,
       spotAllocationStrategy: map['spotAllocationStrategy'] as String,
       spotInstancePools: map['spotInstancePools'] as int,
       spotMaxPrice: map['spotMaxPrice'] as String,
     );
   }
 }
-

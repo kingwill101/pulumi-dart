@@ -5,9 +5,12 @@ import 'classification_job_s3_job_definition_scoping_includes_and_tag_scope_term
 
 class ClassificationJobS3JobDefinitionScopingIncludesAnd {
   /// A property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. (documented below)
-  final ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm? simpleScopeTerm;
+  final ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm?
+  simpleScopeTerm;
+
   /// A tag-based condition that defines the operator and tag keys or tag key and value pairs for including or excluding an object from the job. (documented below)
-  final ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm? tagScopeTerm;
+  final ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm?
+  tagScopeTerm;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingIncludesAnd].
   /// [simpleScopeTerm] A property-based condition that defines a property, operator, and one or more values for including or excluding an object from the job. (documented below)
@@ -19,16 +22,27 @@ class ClassificationJobS3JobDefinitionScopingIncludesAnd {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'simpleScopeTerm': ?simpleScopeTerm == null ? null : simpleScopeTerm!.toMap(),
+      'simpleScopeTerm': ?simpleScopeTerm == null
+          ? null
+          : simpleScopeTerm!.toMap(),
       'tagScopeTerm': ?tagScopeTerm == null ? null : tagScopeTerm!.toMap(),
     };
   }
 
-  factory ClassificationJobS3JobDefinitionScopingIncludesAnd.fromMap(Map<String, dynamic> map) {
+  factory ClassificationJobS3JobDefinitionScopingIncludesAnd.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClassificationJobS3JobDefinitionScopingIncludesAnd(
-      simpleScopeTerm: map['simpleScopeTerm'] == null ? null : ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm.fromMap((map['simpleScopeTerm'] as Map).cast<String, dynamic>()),
-      tagScopeTerm: map['tagScopeTerm'] == null ? null : ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm.fromMap((map['tagScopeTerm'] as Map).cast<String, dynamic>()),
+      simpleScopeTerm: map['simpleScopeTerm'] == null
+          ? null
+          : ClassificationJobS3JobDefinitionScopingIncludesAndSimpleScopeTerm.fromMap(
+              (map['simpleScopeTerm'] as Map).cast<String, dynamic>(),
+            ),
+      tagScopeTerm: map['tagScopeTerm'] == null
+          ? null
+          : ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm.fromMap(
+              (map['tagScopeTerm'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

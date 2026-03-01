@@ -10,18 +10,23 @@ import 'repository_group_repository.dart';
 class RepositoryGroupArgs {
   /// Required. Id of the Code Repository Index.
   final pulumi.Input<String> codeRepositoryIndex;
+
   /// Optional. Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location of the Code Repository Index, for example `us-central1`.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Required. List of repositories to group.
   /// Structure is documented below.
   final pulumi.Input<List<RepositoryGroupRepository>> repositories;
+
   /// Required. Id of the Repository Group.
   final pulumi.Input<String> repositoryGroupId;
 
@@ -39,13 +44,14 @@ class RepositoryGroupArgs {
     String? project,
     required List<RepositoryGroupRepository> repositories,
     required String repositoryGroupId,
-  }) :
-      codeRepositoryIndex = pulumi.Input.asInput<String>(codeRepositoryIndex),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositories = pulumi.Input.asInput<List<RepositoryGroupRepository>>(repositories),
-      repositoryGroupId = pulumi.Input.asInput<String>(repositoryGroupId);
+  }) : codeRepositoryIndex = pulumi.Input.asInput<String>(codeRepositoryIndex),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       repositories = pulumi.Input.asInput<List<RepositoryGroupRepository>>(
+         repositories,
+       ),
+       repositoryGroupId = pulumi.Input.asInput<String>(repositoryGroupId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,7 +59,18 @@ class RepositoryGroupArgs {
       'labels': ?labels,
       'location': location,
       'project': ?project,
-      'repositories': pulumi.Input.mapInputValue<List<RepositoryGroupRepository>, List<Map<String, dynamic>>>(repositories, (value) => pulumi.Input.encodeList<RepositoryGroupRepository, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'repositories':
+          pulumi.Input.mapInputValue<
+            List<RepositoryGroupRepository>,
+            List<Map<String, dynamic>>
+          >(
+            repositories,
+            (value) =>
+                pulumi.Input.encodeList<
+                  RepositoryGroupRepository,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'repositoryGroupId': repositoryGroupId,
     };
   }
@@ -61,12 +78,18 @@ class RepositoryGroupArgs {
   factory RepositoryGroupArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryGroupArgs(
       codeRepositoryIndex: map['codeRepositoryIndex'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      repositories: pulumi.Input.decodeList<RepositoryGroupRepository>(map['repositories'], (value) => RepositoryGroupRepository.fromMap((value as Map).cast<String, dynamic>())),
+      repositories: pulumi.Input.decodeList<RepositoryGroupRepository>(
+        map['repositories'],
+        (value) => RepositoryGroupRepository.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       repositoryGroupId: map['repositoryGroupId'] as String,
     );
   }
 }
-

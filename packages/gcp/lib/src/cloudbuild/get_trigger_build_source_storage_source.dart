@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTriggerBuildSourceStorageSource {
   /// Google Cloud Storage bucket containing the source.
   final String bucket;
+
   /// Google Cloud Storage generation for the object.
   /// If the generation is omitted, the latest generation will be used
   final String generation;
+
   /// Google Cloud Storage object containing the source.
   /// This object must be a gzipped archive file (.tar.gz) containing source to build.
   final String object;
@@ -37,4 +38,3 @@ class GetTriggerBuildSourceStorageSource {
     );
   }
 }
-

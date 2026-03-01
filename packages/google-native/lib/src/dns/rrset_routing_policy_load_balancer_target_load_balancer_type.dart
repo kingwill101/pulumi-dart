@@ -8,13 +8,17 @@ enum RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType {
   const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType(this.value);
   final String value;
 
-  static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType fromValue(String value) {
-    for (final item in RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType.values) {
+  static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType fromValue(
+    String value,
+  ) {
+    for (final item
+        in RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType value: $value');
+    throw ArgumentError(
+      'Unknown RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType value: $value',
+    );
   }
 }
-

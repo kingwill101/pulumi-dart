@@ -12,7 +12,8 @@ enum DatasetAccessEntryTargetTypesItem {
         return item;
       }
     }
-    throw ArgumentError('Unknown DatasetAccessEntryTargetTypesItem value: $value');
+    throw ArgumentError(
+      'Unknown DatasetAccessEntryTargetTypesItem value: $value',
+    );
   }
 }
-

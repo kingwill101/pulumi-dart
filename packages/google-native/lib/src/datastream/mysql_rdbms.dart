@@ -10,20 +10,28 @@ class MysqlRdbms {
 
   /// Creates a new [MysqlRdbms].
   /// [mysqlDatabases] Mysql databases on the server
-  MysqlRdbms({
-    this.mysqlDatabases,
-  });
+  MysqlRdbms({this.mysqlDatabases});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlDatabases': ?mysqlDatabases == null ? null : pulumi.Input.encodeList<MysqlDatabase, Map<String, dynamic>>(mysqlDatabases!, (value) => value.toMap()),
+      'mysqlDatabases': ?mysqlDatabases == null
+          ? null
+          : pulumi.Input.encodeList<MysqlDatabase, Map<String, dynamic>>(
+              mysqlDatabases!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory MysqlRdbms.fromMap(Map<String, dynamic> map) {
     return MysqlRdbms(
-      mysqlDatabases: map['mysqlDatabases'] == null ? null : pulumi.Input.decodeList<MysqlDatabase>(map['mysqlDatabases'], (value) => MysqlDatabase.fromMap((value as Map).cast<String, dynamic>())),
+      mysqlDatabases: map['mysqlDatabases'] == null
+          ? null
+          : pulumi.Input.decodeList<MysqlDatabase>(
+              map['mysqlDatabases'],
+              (value) =>
+                  MysqlDatabase.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

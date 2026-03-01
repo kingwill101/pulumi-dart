@@ -9,10 +9,13 @@ import 'worker_resource.dart';
 class WorkloadsConfig {
   /// Optional. Resources used by Airflow schedulers.
   final SchedulerResource? scheduler;
+
   /// Optional. Resources used by Airflow triggerers.
   final TriggererResource? triggerer;
+
   /// Optional. Resources used by Airflow web server.
   final WebServerResource? webServer;
+
   /// Optional. Resources used by Airflow workers.
   final WorkerResource? worker;
 
@@ -39,11 +42,26 @@ class WorkloadsConfig {
 
   factory WorkloadsConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadsConfig(
-      scheduler: map['scheduler'] == null ? null : SchedulerResource.fromMap((map['scheduler'] as Map).cast<String, dynamic>()),
-      triggerer: map['triggerer'] == null ? null : TriggererResource.fromMap((map['triggerer'] as Map).cast<String, dynamic>()),
-      webServer: map['webServer'] == null ? null : WebServerResource.fromMap((map['webServer'] as Map).cast<String, dynamic>()),
-      worker: map['worker'] == null ? null : WorkerResource.fromMap((map['worker'] as Map).cast<String, dynamic>()),
+      scheduler: map['scheduler'] == null
+          ? null
+          : SchedulerResource.fromMap(
+              (map['scheduler'] as Map).cast<String, dynamic>(),
+            ),
+      triggerer: map['triggerer'] == null
+          ? null
+          : TriggererResource.fromMap(
+              (map['triggerer'] as Map).cast<String, dynamic>(),
+            ),
+      webServer: map['webServer'] == null
+          ? null
+          : WebServerResource.fromMap(
+              (map['webServer'] as Map).cast<String, dynamic>(),
+            ),
+      worker: map['worker'] == null
+          ? null
+          : WorkerResource.fromMap(
+              (map['worker'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

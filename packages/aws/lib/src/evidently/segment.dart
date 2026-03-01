@@ -386,24 +386,34 @@ import 'segment_args.dart';
 class Segment extends pulumi.CustomResource {
   /// The ARN of the segment.
   late final pulumi.Output<String> arn;
+
   /// The date and time that the segment is created.
   late final pulumi.Output<String> createdTime;
+
   /// Specifies the description of the segment.
   late final pulumi.Output<String?> description;
+
   /// The number of experiments that this segment is used in. This count includes all current experiments, not just those that are currently running.
   late final pulumi.Output<int> experimentCount;
+
   /// The date and time that this segment was most recently updated.
   late final pulumi.Output<String> lastUpdatedTime;
+
   /// The number of launches that this segment is used in. This count includes all current launches, not just those that are currently running.
   late final pulumi.Output<int> launchCount;
+
   /// A name for the segment.
   late final pulumi.Output<String> name;
+
   /// The pattern to use for the segment. For more information about pattern syntax, see [Segment rule pattern syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html).
   late final pulumi.Output<String> pattern;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Tags to apply to the segment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -416,11 +426,11 @@ class Segment extends pulumi.CustomResource {
     SegmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:evidently/segment:Segment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:evidently/segment:Segment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.createdTime = registerOutput<String>('createdTime');
     this.description = registerOutput<String?>('description');

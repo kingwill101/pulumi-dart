@@ -19,10 +19,9 @@ class GetClientTlsPolicyNetworksecurityV1beta1Args {
     required String clientTlsPolicyId,
     required String location,
     String? project,
-  }) :
-      clientTlsPolicyId = pulumi.Input.asInput<String>(clientTlsPolicyId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : clientTlsPolicyId = pulumi.Input.asInput<String>(clientTlsPolicyId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetClientTlsPolicyNetworksecurityV1beta1Args {
     };
   }
 
-  factory GetClientTlsPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetClientTlsPolicyNetworksecurityV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClientTlsPolicyNetworksecurityV1beta1Args(
       clientTlsPolicyId: map['clientTlsPolicyId'] as String,
       location: map['location'] as String,
@@ -40,4 +41,3 @@ class GetClientTlsPolicyNetworksecurityV1beta1Args {
     );
   }
 }
-

@@ -10,20 +10,31 @@ class EnterpriseCrmEventbusProtoCombinedCondition {
 
   /// Creates a new [EnterpriseCrmEventbusProtoCombinedCondition].
   /// [conditions] A set of individual constituent conditions.
-  EnterpriseCrmEventbusProtoCombinedCondition({
-    this.conditions,
-  });
+  EnterpriseCrmEventbusProtoCombinedCondition({this.conditions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<EnterpriseCrmEventbusProtoCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?conditions == null
+          ? null
+          : pulumi.Input.encodeList<
+              EnterpriseCrmEventbusProtoCondition,
+              Map<String, dynamic>
+            >(conditions!, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoCombinedCondition.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoCombinedCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoCombinedCondition(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<EnterpriseCrmEventbusProtoCondition>(map['conditions'], (value) => EnterpriseCrmEventbusProtoCondition.fromMap((value as Map).cast<String, dynamic>())),
+      conditions: map['conditions'] == null
+          ? null
+          : pulumi.Input.decodeList<EnterpriseCrmEventbusProtoCondition>(
+              map['conditions'],
+              (value) => EnterpriseCrmEventbusProtoCondition.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

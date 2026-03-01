@@ -1118,18 +1118,25 @@ import 'scraper_timeouts.dart';
 class Scraper extends pulumi.CustomResource {
   /// a name to associate with the managed scraper. This is for your use, and does not need to be unique.
   late final pulumi.Output<String?> alias;
+
   /// The Amazon Resource Name (ARN) of the new scraper.
   late final pulumi.Output<String> arn;
+
   /// Configuration block for the managed scraper to send metrics to. See `destination`.
   late final pulumi.Output<ScraperDestination> destination;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Amazon Resource Name (ARN) of the IAM role that provides permissions for the scraper to discover, collect, and produce metrics
   late final pulumi.Output<String> roleArn;
+
   /// Configuration block to enable writing to an Amazon Managed Service for Prometheus workspace in a different account. See `role_configuration` below.
   late final pulumi.Output<ScraperRoleConfiguration?> roleConfiguration;
+
   /// The configuration file to use in the new scraper. For more information, see [Scraper configuration](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-collector-how-to.html#AMP-collector-configuration).
   late final pulumi.Output<String> scrapeConfiguration;
+
   /// Configuration block to specify where the managed scraper will collect metrics from. See `source`.
   ///
   /// The following arguments are optional:
@@ -1147,17 +1154,19 @@ class Scraper extends pulumi.CustomResource {
     ScraperArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:amp/scraper:Scraper',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:amp/scraper:Scraper',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.alias = registerOutput<String?>('alias');
     this.arn = registerOutput<String>('arn');
     this.destination = registerOutput<ScraperDestination>('destination');
     this.region = registerOutput<String>('region');
     this.roleArn = registerOutput<String>('roleArn');
-    this.roleConfiguration = registerOutput<ScraperRoleConfiguration?>('roleConfiguration');
+    this.roleConfiguration = registerOutput<ScraperRoleConfiguration?>(
+      'roleConfiguration',
+    );
     this.scrapeConfiguration = registerOutput<String>('scrapeConfiguration');
     this.source = registerOutput<ScraperSource?>('source');
     this.tags = registerOutput<Map<String, String>?>('tags');

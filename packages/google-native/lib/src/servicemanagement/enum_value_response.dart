@@ -7,8 +7,10 @@ import 'option_response.dart';
 class EnumValueResponse {
   /// Enum value name.
   final String name;
+
   /// Enum value number.
   final int number;
+
   /// Protocol buffer options.
   final List<OptionResponse> options;
 
@@ -26,7 +28,10 @@ class EnumValueResponse {
     return <String, dynamic>{
       'name': name,
       'number': number,
-      'options': pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'options': pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(
+        options,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -34,8 +39,11 @@ class EnumValueResponse {
     return EnumValueResponse(
       name: map['name'] as String,
       number: map['number'] as int,
-      options: pulumi.Input.decodeList<OptionResponse>(map['options'], (value) => OptionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      options: pulumi.Input.decodeList<OptionResponse>(
+        map['options'],
+        (value) =>
+            OptionResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

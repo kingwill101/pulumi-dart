@@ -7,9 +7,11 @@ class RolloutSequenceStage {
   /// If not specified, all clusters in the fleet projects are selected.
   /// Structure is documented below.
   final RolloutSequenceStageClusterSelector? clusterSelector;
+
   /// List of Fleet projects to select the clusters from.
   /// Expected format: projects/{project}
   final List<String> fleetProjects;
+
   /// Soak time after upgrading all the clusters in the stage, specified in seconds.
   final String? soakDuration;
 
@@ -25,7 +27,9 @@ class RolloutSequenceStage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterSelector': ?clusterSelector == null ? null : clusterSelector!.toMap(),
+      'clusterSelector': ?clusterSelector == null
+          ? null
+          : clusterSelector!.toMap(),
       'fleetProjects': fleetProjects,
       'soakDuration': ?soakDuration,
     };
@@ -33,10 +37,15 @@ class RolloutSequenceStage {
 
   factory RolloutSequenceStage.fromMap(Map<String, dynamic> map) {
     return RolloutSequenceStage(
-      clusterSelector: map['clusterSelector'] == null ? null : RolloutSequenceStageClusterSelector.fromMap((map['clusterSelector'] as Map).cast<String, dynamic>()),
+      clusterSelector: map['clusterSelector'] == null
+          ? null
+          : RolloutSequenceStageClusterSelector.fromMap(
+              (map['clusterSelector'] as Map).cast<String, dynamic>(),
+            ),
       fleetProjects: (map['fleetProjects'] as List).cast<String>(),
-      soakDuration: map['soakDuration'] == null ? null : map['soakDuration'] as String,
+      soakDuration: map['soakDuration'] == null
+          ? null
+          : map['soakDuration'] as String,
     );
   }
 }
-

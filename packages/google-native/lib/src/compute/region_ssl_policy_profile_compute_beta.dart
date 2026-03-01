@@ -14,7 +14,8 @@ enum RegionSslPolicyProfileComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionSslPolicyProfileComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionSslPolicyProfileComputeBeta value: $value',
+    );
   }
 }
-

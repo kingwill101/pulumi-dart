@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCustomKeyStoreArgs {
   /// The ID for the custom key store.
   final pulumi.Input<String>? customKeyStoreId;
+
   /// The user-specified friendly name for the custom key store.
   final pulumi.Input<String>? customKeyStoreName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -22,10 +24,13 @@ class GetCustomKeyStoreArgs {
     String? customKeyStoreId,
     String? customKeyStoreName,
     String? region,
-  }) :
-      customKeyStoreId = pulumi.Input.asOptionalInput<String>(customKeyStoreId),
-      customKeyStoreName = pulumi.Input.asOptionalInput<String>(customKeyStoreName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : customKeyStoreId = pulumi.Input.asOptionalInput<String>(
+         customKeyStoreId,
+       ),
+       customKeyStoreName = pulumi.Input.asOptionalInput<String>(
+         customKeyStoreName,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +42,13 @@ class GetCustomKeyStoreArgs {
 
   factory GetCustomKeyStoreArgs.fromMap(Map<String, dynamic> map) {
     return GetCustomKeyStoreArgs(
-      customKeyStoreId: map['customKeyStoreId'] == null ? null : map['customKeyStoreId'] as String,
-      customKeyStoreName: map['customKeyStoreName'] == null ? null : map['customKeyStoreName'] as String,
+      customKeyStoreId: map['customKeyStoreId'] == null
+          ? null
+          : map['customKeyStoreId'] as String,
+      customKeyStoreName: map['customKeyStoreName'] == null
+          ? null
+          : map['customKeyStoreName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetEndpointPolicyArgs {
     required String endpointPolicyId,
     required String location,
     String? project,
-  }) :
-      endpointPolicyId = pulumi.Input.asInput<String>(endpointPolicyId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : endpointPolicyId = pulumi.Input.asInput<String>(endpointPolicyId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetEndpointPolicyArgs {
     );
   }
 }
-

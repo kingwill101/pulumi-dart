@@ -13,18 +13,12 @@ class GetFolderSinkArgs {
   /// Creates a new [GetFolderSinkArgs].
   /// [folderId] Required.
   /// [sinkId] Required.
-  GetFolderSinkArgs({
-    required String folderId,
-    required String sinkId,
-  }) :
-      folderId = pulumi.Input.asInput<String>(folderId),
+  GetFolderSinkArgs({required String folderId, required String sinkId})
+    : folderId = pulumi.Input.asInput<String>(folderId),
       sinkId = pulumi.Input.asInput<String>(sinkId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'folderId': folderId,
-      'sinkId': sinkId,
-    };
+    return <String, dynamic>{'folderId': folderId, 'sinkId': sinkId};
   }
 
   factory GetFolderSinkArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetFolderSinkArgs {
     );
   }
 }
-

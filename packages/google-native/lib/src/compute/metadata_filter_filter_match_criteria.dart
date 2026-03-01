@@ -13,7 +13,8 @@ enum MetadataFilterFilterMatchCriteria {
         return item;
       }
     }
-    throw ArgumentError('Unknown MetadataFilterFilterMatchCriteria value: $value');
+    throw ArgumentError(
+      'Unknown MetadataFilterFilterMatchCriteria value: $value',
+    );
   }
 }
-

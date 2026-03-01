@@ -20,4 +20,3 @@ enum OsConstraintOsType {
     throw ArgumentError('Unknown OsConstraintOsType value: $value');
   }
 }
-

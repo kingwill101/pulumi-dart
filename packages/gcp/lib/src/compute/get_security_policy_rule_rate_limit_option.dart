@@ -9,22 +9,33 @@ import 'get_security_policy_rule_rate_limit_option_rate_limit_threshold.dart';
 class GetSecurityPolicyRuleRateLimitOption {
   /// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
   final int banDurationSec;
+
   /// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'banDurationSec' when the number of requests that exceed the 'rateLimitThreshold' also exceed this 'banThreshold'.
   final List<GetSecurityPolicyRuleRateLimitOptionBanThreshold> banThresholds;
+
   /// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
   final String conformAction;
+
   /// Determines the key to enforce the rateLimitThreshold on
   final String enforceOnKey;
+
   /// Enforce On Key Config of this security policy
-  final List<GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig> enforceOnKeyConfigs;
+  final List<GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig>
+  enforceOnKeyConfigs;
+
   /// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
   final String enforceOnKeyName;
+
   /// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
   final String exceedAction;
+
   /// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
-  final List<GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption> exceedRedirectOptions;
+  final List<GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption>
+  exceedRedirectOptions;
+
   /// Threshold at which to begin ratelimiting.
-  final List<GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold> rateLimitThresholds;
+  final List<GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold>
+  rateLimitThresholds;
 
   /// Creates a new [GetSecurityPolicyRuleRateLimitOption].
   /// [banDurationSec] Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
@@ -51,29 +62,81 @@ class GetSecurityPolicyRuleRateLimitOption {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'banDurationSec': banDurationSec,
-      'banThresholds': pulumi.Input.encodeList<GetSecurityPolicyRuleRateLimitOptionBanThreshold, Map<String, dynamic>>(banThresholds, (value) => value.toMap()),
+      'banThresholds':
+          pulumi.Input.encodeList<
+            GetSecurityPolicyRuleRateLimitOptionBanThreshold,
+            Map<String, dynamic>
+          >(banThresholds, (value) => value.toMap()),
       'conformAction': conformAction,
       'enforceOnKey': enforceOnKey,
-      'enforceOnKeyConfigs': pulumi.Input.encodeList<GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig, Map<String, dynamic>>(enforceOnKeyConfigs, (value) => value.toMap()),
+      'enforceOnKeyConfigs':
+          pulumi.Input.encodeList<
+            GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig,
+            Map<String, dynamic>
+          >(enforceOnKeyConfigs, (value) => value.toMap()),
       'enforceOnKeyName': enforceOnKeyName,
       'exceedAction': exceedAction,
-      'exceedRedirectOptions': pulumi.Input.encodeList<GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption, Map<String, dynamic>>(exceedRedirectOptions, (value) => value.toMap()),
-      'rateLimitThresholds': pulumi.Input.encodeList<GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold, Map<String, dynamic>>(rateLimitThresholds, (value) => value.toMap()),
+      'exceedRedirectOptions':
+          pulumi.Input.encodeList<
+            GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption,
+            Map<String, dynamic>
+          >(exceedRedirectOptions, (value) => value.toMap()),
+      'rateLimitThresholds':
+          pulumi.Input.encodeList<
+            GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold,
+            Map<String, dynamic>
+          >(rateLimitThresholds, (value) => value.toMap()),
     };
   }
 
-  factory GetSecurityPolicyRuleRateLimitOption.fromMap(Map<String, dynamic> map) {
+  factory GetSecurityPolicyRuleRateLimitOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSecurityPolicyRuleRateLimitOption(
       banDurationSec: map['banDurationSec'] as int,
-      banThresholds: pulumi.Input.decodeList<GetSecurityPolicyRuleRateLimitOptionBanThreshold>(map['banThresholds'], (value) => GetSecurityPolicyRuleRateLimitOptionBanThreshold.fromMap((value as Map).cast<String, dynamic>())),
+      banThresholds:
+          pulumi.Input.decodeList<
+            GetSecurityPolicyRuleRateLimitOptionBanThreshold
+          >(
+            map['banThresholds'],
+            (value) => GetSecurityPolicyRuleRateLimitOptionBanThreshold.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       conformAction: map['conformAction'] as String,
       enforceOnKey: map['enforceOnKey'] as String,
-      enforceOnKeyConfigs: pulumi.Input.decodeList<GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig>(map['enforceOnKeyConfigs'], (value) => GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig.fromMap((value as Map).cast<String, dynamic>())),
+      enforceOnKeyConfigs:
+          pulumi.Input.decodeList<
+            GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig
+          >(
+            map['enforceOnKeyConfigs'],
+            (value) =>
+                GetSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       enforceOnKeyName: map['enforceOnKeyName'] as String,
       exceedAction: map['exceedAction'] as String,
-      exceedRedirectOptions: pulumi.Input.decodeList<GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption>(map['exceedRedirectOptions'], (value) => GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption.fromMap((value as Map).cast<String, dynamic>())),
-      rateLimitThresholds: pulumi.Input.decodeList<GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold>(map['rateLimitThresholds'], (value) => GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold.fromMap((value as Map).cast<String, dynamic>())),
+      exceedRedirectOptions:
+          pulumi.Input.decodeList<
+            GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption
+          >(
+            map['exceedRedirectOptions'],
+            (value) =>
+                GetSecurityPolicyRuleRateLimitOptionExceedRedirectOption.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      rateLimitThresholds:
+          pulumi.Input.decodeList<
+            GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold
+          >(
+            map['rateLimitThresholds'],
+            (value) =>
+                GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

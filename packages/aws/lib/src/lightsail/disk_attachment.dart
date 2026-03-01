@@ -262,10 +262,13 @@ import 'disk_attachment_args.dart';
 class DiskAttachment extends pulumi.CustomResource {
   /// Name of the Lightsail disk.
   late final pulumi.Output<String> diskName;
+
   /// Disk path to expose to the instance.
   late final pulumi.Output<String> diskPath;
+
   /// Name of the Lightsail instance to attach to.
   late final pulumi.Output<String> instanceName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -278,11 +281,11 @@ class DiskAttachment extends pulumi.CustomResource {
     DiskAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lightsail/disk_attachment:Disk_attachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:lightsail/disk_attachment:Disk_attachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.diskName = registerOutput<String>('diskName');
     this.diskPath = registerOutput<String>('diskPath');
     this.instanceName = registerOutput<String>('instanceName');

@@ -13,18 +13,12 @@ class GetInstanceSqladminV1beta4Args {
   /// Creates a new [GetInstanceSqladminV1beta4Args].
   /// [instance] Required.
   /// [project] Optional.
-  GetInstanceSqladminV1beta4Args({
-    required String instance,
-    String? project,
-  }) :
-      instance = pulumi.Input.asInput<String>(instance),
+  GetInstanceSqladminV1beta4Args({required String instance, String? project})
+    : instance = pulumi.Input.asInput<String>(instance),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instance': instance,
-      'project': ?project,
-    };
+    return <String, dynamic>{'instance': instance, 'project': ?project};
   }
 
   factory GetInstanceSqladminV1beta4Args.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetInstanceSqladminV1beta4Args {
     );
   }
 }
-

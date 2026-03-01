@@ -1,19 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDataSourceDataSourceBackupApplianceApplication {
   /// Appliance Id of the Backup Appliance.
   final String applianceId;
+
   /// The appid field of the application within the Backup Appliance.
   final String applicationId;
+
   /// The name of the Application as known to the Backup Appliance.
   final String applicationName;
+
   /// Appliance name.
   final String backupAppliance;
+
   /// Hostid of the application host.
   final String hostId;
+
   /// Hostname of the host where the application is running.
   final String hostname;
+
   /// The type of the application. e.g. VMBackup
   final String type;
 
@@ -47,7 +52,9 @@ class GetDataSourceDataSourceBackupApplianceApplication {
     };
   }
 
-  factory GetDataSourceDataSourceBackupApplianceApplication.fromMap(Map<String, dynamic> map) {
+  factory GetDataSourceDataSourceBackupApplianceApplication.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSourceDataSourceBackupApplianceApplication(
       applianceId: map['applianceId'] as String,
       applicationId: map['applicationId'] as String,
@@ -59,4 +66,3 @@ class GetDataSourceDataSourceBackupApplianceApplication {
     );
   }
 }
-

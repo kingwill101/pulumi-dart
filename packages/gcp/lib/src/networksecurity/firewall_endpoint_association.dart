@@ -36,39 +36,53 @@ import 'firewall_endpoint_association_args.dart';
 class FirewallEndpointAssociation extends pulumi.CustomResource {
   /// Time the firewall endpoint was created in UTC.
   late final pulumi.Output<String> createTime;
+
   /// Whether the association is disabled. True indicates that traffic will not be intercepted.
   /// > **Note:** The API will reject the request if this value is set to true when creating the resource,
   /// otherwise on an update the association can be disabled.
   late final pulumi.Output<bool?> disabled;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// The URL of the firewall endpoint that is being associated.
   late final pulumi.Output<String> firewallEndpoint;
+
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The location (zone) of the firewall endpoint association.
   late final pulumi.Output<String> location;
+
   /// The name of the firewall endpoint association resource.
   late final pulumi.Output<String> name;
+
   /// The URL of the network that is being associated.
   late final pulumi.Output<String> network;
+
   /// The name of the parent this firewall endpoint association belongs to.
   /// Format: projects/{project_id}.
   late final pulumi.Output<String?> parent;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Whether reconciling is in progress, recommended per https://google.aip.dev/128.
   late final pulumi.Output<bool> reconciling;
+
   /// Server-defined URL of this resource.
   late final pulumi.Output<String> selfLink;
+
   /// The current state of the endpoint.
   late final pulumi.Output<String> state;
+
   /// The URL of the TlsInspectionPolicy that is being associated.
   late final pulumi.Output<String?> tlsInspectionPolicy;
+
   /// Time the firewall endpoint was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -81,14 +95,16 @@ class FirewallEndpointAssociation extends pulumi.CustomResource {
     FirewallEndpointAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.disabled = registerOutput<bool?>('disabled');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.firewallEndpoint = registerOutput<String>('firewallEndpoint');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');

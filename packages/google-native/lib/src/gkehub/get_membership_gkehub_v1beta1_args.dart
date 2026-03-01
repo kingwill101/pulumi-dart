@@ -19,10 +19,9 @@ class GetMembershipGkehubV1beta1Args {
     required String location,
     required String membershipId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       membershipId = pulumi.Input.asInput<String>(membershipId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetMembershipGkehubV1beta1Args {
     );
   }
 }
-

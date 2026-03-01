@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getInstances.
 class GetInstancesResult {
   /// Set of Amazon Resource Names (ARNs) of the SSO Instances.
   final List<String> arns;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Set of identifiers of the identity stores connected to the SSO Instances.
   final List<String> identityStoreIds;
   final String region;
@@ -41,4 +42,3 @@ class GetInstancesResult {
     );
   }
 }
-

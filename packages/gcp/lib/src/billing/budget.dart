@@ -1670,25 +1670,32 @@ class Budget extends pulumi.CustomResource {
   /// using threshold rules.
   /// Structure is documented below.
   late final pulumi.Output<BudgetAllUpdatesRule?> allUpdatesRule;
+
   /// The budgeted amount for each usage period.
   /// Structure is documented below.
   late final pulumi.Output<BudgetAmount> amount;
+
   /// ID of the billing account to set a budget on.
   late final pulumi.Output<String> billingAccount;
+
   /// Filters that define which resources are used to compute the actual
   /// spend against the budget.
   /// Structure is documented below.
   late final pulumi.Output<BudgetBudgetFilter> budgetFilter;
+
   /// User data for display name in UI. Must be <= 60 chars.
   late final pulumi.Output<String?> displayName;
+
   /// Resource name of the budget. The resource name
   /// implies the scope of a budget. Values are of the form
   /// billingAccounts/{billingAccountId}/budgets/{budgetId}.
   late final pulumi.Output<String> name;
+
   /// The ownership scope of the budget. The ownership scope and users'
   /// IAM permissions determine who has full access to the budget's data.
   /// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
   late final pulumi.Output<String?> ownershipScope;
+
   /// Rules that trigger alerts (notifications of thresholds being
   /// crossed) when spend exceeds the specified percentages of the
   /// budget.
@@ -1699,23 +1706,24 @@ class Budget extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Budget]. {@macro pulumi_billing_budget_budget_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Budget(
-    String name, {
-    BudgetArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:billing/budget:Budget',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allUpdatesRule = registerOutput<BudgetAllUpdatesRule?>('allUpdatesRule');
+  Budget(String name, {BudgetArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:billing/budget:Budget',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    this.allUpdatesRule = registerOutput<BudgetAllUpdatesRule?>(
+      'allUpdatesRule',
+    );
     this.amount = registerOutput<BudgetAmount>('amount');
     this.billingAccount = registerOutput<String>('billingAccount');
     this.budgetFilter = registerOutput<BudgetBudgetFilter>('budgetFilter');
     this.displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');
     this.ownershipScope = registerOutput<String?>('ownershipScope');
-    this.thresholdRules = registerOutput<List<BudgetThresholdRule>?>('thresholdRules');
+    this.thresholdRules = registerOutput<List<BudgetThresholdRule>?>(
+      'thresholdRules',
+    );
   }
 }

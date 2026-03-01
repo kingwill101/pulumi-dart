@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ReceiptRuleWorkmailAction {
   /// The ARN of the WorkMail organization
   final String organizationArn;
+
   /// The position of the action in the receipt rule
   final int position;
+
   /// The ARN of an SNS topic to notify
   final String? topicArn;
 
@@ -35,4 +36,3 @@ class ReceiptRuleWorkmailAction {
     );
   }
 }
-

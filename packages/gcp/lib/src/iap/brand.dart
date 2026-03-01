@@ -212,16 +212,20 @@ import 'brand_args.dart';
 class Brand extends pulumi.CustomResource {
   /// Application name displayed on OAuth consent screen.
   late final pulumi.Output<String> applicationTitle;
+
   /// Output only. Identifier of the brand, in the format `projects/{project_number}/brands/{brand_id}`
   /// NOTE: The name can also be expressed as `projects/{project_id}/brands/{brand_id}`, e.g. when importing.
   /// NOTE: The brand identification corresponds to the project number as only one
   /// brand can be created per project.
   late final pulumi.Output<String> name;
+
   /// Whether the brand is only intended for usage inside the GSuite organization only.
   late final pulumi.Output<bool> orgInternalOnly;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Support email displayed on the OAuth consent screen. Can be either a
   /// user or group email. When a user email is specified, the caller must
   /// be the user with the associated email address. When a group email is
@@ -233,16 +237,13 @@ class Brand extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Brand]. {@macro pulumi_iap_brand_brand_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Brand(
-    String name, {
-    BrandArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:iap/brand:Brand',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Brand(String name, {BrandArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:iap/brand:Brand',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.applicationTitle = registerOutput<String>('applicationTitle');
     this.name = registerOutput<String>('name');
     this.orgInternalOnly = registerOutput<bool>('orgInternalOnly');

@@ -6,9 +6,16 @@ import 'get_cluster_node_pool_node_config_containerd_config_registry_host_host_c
 
 class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient {
   /// Configures the client certificate.
-  final List<GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert> certs;
+  final List<
+    GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert
+  >
+  certs;
+
   /// Configures the client private key.
-  final List<GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey> keys;
+  final List<
+    GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey
+  >
+  keys;
 
   /// Creates a new [GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient].
   /// [certs] Configures the client certificate.
@@ -20,16 +27,43 @@ class GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certs': pulumi.Input.encodeList<GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert, Map<String, dynamic>>(certs, (value) => value.toMap()),
-      'keys': pulumi.Input.encodeList<GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey, Map<String, dynamic>>(keys, (value) => value.toMap()),
+      'certs':
+          pulumi.Input.encodeList<
+            GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert,
+            Map<String, dynamic>
+          >(certs, (value) => value.toMap()),
+      'keys':
+          pulumi.Input.encodeList<
+            GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey,
+            Map<String, dynamic>
+          >(keys, (value) => value.toMap()),
     };
   }
 
-  factory GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient(
-      certs: pulumi.Input.decodeList<GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert>(map['certs'], (value) => GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap((value as Map).cast<String, dynamic>())),
-      keys: pulumi.Input.decodeList<GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey>(map['keys'], (value) => GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap((value as Map).cast<String, dynamic>())),
+      certs:
+          pulumi.Input.decodeList<
+            GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert
+          >(
+            map['certs'],
+            (value) =>
+                GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientCert.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      keys:
+          pulumi.Input.decodeList<
+            GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey
+          >(
+            map['keys'],
+            (value) =>
+                GetClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKey.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

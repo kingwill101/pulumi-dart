@@ -18,4 +18,3 @@ enum EntryTypeDatacatalogV1beta1 {
     throw ArgumentError('Unknown EntryTypeDatacatalogV1beta1 value: $value');
   }
 }
-

@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PipelineStageBeforeEntryConditionRuleRuleTypeId {
   /// A category defines what kind of rule can be run in the stage, and constrains the provider type for the rule. The valid category is `Rule`.
   final String category;
+
   /// The creator of the rule being called. The valid value for the Owner field in the rule category is `AWS`.
   final String? owner;
+
   /// The rule provider, such as the DeploymentWindow rule. For a list of rule provider names, see the rules listed in the [AWS CodePipeline rule reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html).
   final String provider;
+
   /// A string that describes the rule version.
   final String? version;
 
@@ -32,7 +34,9 @@ class PipelineStageBeforeEntryConditionRuleRuleTypeId {
     };
   }
 
-  factory PipelineStageBeforeEntryConditionRuleRuleTypeId.fromMap(Map<String, dynamic> map) {
+  factory PipelineStageBeforeEntryConditionRuleRuleTypeId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipelineStageBeforeEntryConditionRuleRuleTypeId(
       category: map['category'] as String,
       owner: map['owner'] == null ? null : map['owner'] as String,
@@ -41,4 +45,3 @@ class PipelineStageBeforeEntryConditionRuleRuleTypeId {
     );
   }
 }
-

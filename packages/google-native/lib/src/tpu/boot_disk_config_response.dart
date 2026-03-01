@@ -6,6 +6,7 @@ import 'customer_encryption_key_response.dart';
 class BootDiskConfigResponse {
   /// Optional. Customer encryption key for boot disk.
   final CustomerEncryptionKeyResponse customerEncryptionKey;
+
   /// Optional. Whether the boot disk will be created with confidential compute mode.
   final bool enableConfidentialCompute;
 
@@ -26,9 +27,10 @@ class BootDiskConfigResponse {
 
   factory BootDiskConfigResponse.fromMap(Map<String, dynamic> map) {
     return BootDiskConfigResponse(
-      customerEncryptionKey: CustomerEncryptionKeyResponse.fromMap((map['customerEncryptionKey'] as Map).cast<String, dynamic>()),
+      customerEncryptionKey: CustomerEncryptionKeyResponse.fromMap(
+        (map['customerEncryptionKey'] as Map).cast<String, dynamic>(),
+      ),
       enableConfidentialCompute: map['enableConfidentialCompute'] as bool,
     );
   }
 }
-

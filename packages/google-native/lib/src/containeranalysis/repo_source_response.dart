@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// RepoSource describes the location of the source in a Google Cloud Source Repository.
 class RepoSourceResponse {
   /// Name of the branch to build.
   final String branchName;
+
   /// Explicit commit SHA to build.
   final String commitSha;
+
   /// ID of the project that owns the repo.
   final String project;
+
   /// Name of the repo.
   final String repoName;
+
   /// Name of the tag to build.
   final String tagName;
 
@@ -48,4 +51,3 @@ class RepoSourceResponse {
     );
   }
 }
-

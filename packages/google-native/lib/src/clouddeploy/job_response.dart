@@ -7,20 +7,28 @@ import 'predeploy_job_response.dart';
 class JobResponse {
   /// An advanceChildRollout Job.
   final Map<String, dynamic> advanceChildRolloutJob;
+
   /// A createChildRollout Job.
   final Map<String, dynamic> createChildRolloutJob;
+
   /// A deploy Job.
   final Map<String, dynamic> deployJob;
+
   /// The name of the `JobRun` responsible for the most recent invocation of this Job.
   final String jobRun;
+
   /// A postdeploy Job.
   final PostdeployJobResponse postdeployJob;
+
   /// A predeploy Job.
   final PredeployJobResponse predeployJob;
+
   /// Additional information on why the Job was skipped, if available.
   final String skipMessage;
+
   /// The current state of the Job.
   final String state;
+
   /// A verify Job.
   final Map<String, dynamic> verifyJob;
 
@@ -62,16 +70,21 @@ class JobResponse {
 
   factory JobResponse.fromMap(Map<String, dynamic> map) {
     return JobResponse(
-      advanceChildRolloutJob: (map['advanceChildRolloutJob'] as Map).cast<String, dynamic>(),
-      createChildRolloutJob: (map['createChildRolloutJob'] as Map).cast<String, dynamic>(),
+      advanceChildRolloutJob: (map['advanceChildRolloutJob'] as Map)
+          .cast<String, dynamic>(),
+      createChildRolloutJob: (map['createChildRolloutJob'] as Map)
+          .cast<String, dynamic>(),
       deployJob: (map['deployJob'] as Map).cast<String, dynamic>(),
       jobRun: map['jobRun'] as String,
-      postdeployJob: PostdeployJobResponse.fromMap((map['postdeployJob'] as Map).cast<String, dynamic>()),
-      predeployJob: PredeployJobResponse.fromMap((map['predeployJob'] as Map).cast<String, dynamic>()),
+      postdeployJob: PostdeployJobResponse.fromMap(
+        (map['postdeployJob'] as Map).cast<String, dynamic>(),
+      ),
+      predeployJob: PredeployJobResponse.fromMap(
+        (map['predeployJob'] as Map).cast<String, dynamic>(),
+      ),
       skipMessage: map['skipMessage'] as String,
       state: map['state'] as String,
       verifyJob: (map['verifyJob'] as Map).cast<String, dynamic>(),
     );
   }
 }
-

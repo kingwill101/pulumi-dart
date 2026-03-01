@@ -11,23 +11,29 @@ class SlsaProvenanceV1 {
   /// Creates a new [SlsaProvenanceV1].
   /// [buildDefinition] Optional.
   /// [runDetails] Optional.
-  SlsaProvenanceV1({
-    this.buildDefinition,
-    this.runDetails,
-  });
+  SlsaProvenanceV1({this.buildDefinition, this.runDetails});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildDefinition': ?buildDefinition == null ? null : buildDefinition!.toMap(),
+      'buildDefinition': ?buildDefinition == null
+          ? null
+          : buildDefinition!.toMap(),
       'runDetails': ?runDetails == null ? null : runDetails!.toMap(),
     };
   }
 
   factory SlsaProvenanceV1.fromMap(Map<String, dynamic> map) {
     return SlsaProvenanceV1(
-      buildDefinition: map['buildDefinition'] == null ? null : BuildDefinition.fromMap((map['buildDefinition'] as Map).cast<String, dynamic>()),
-      runDetails: map['runDetails'] == null ? null : RunDetails.fromMap((map['runDetails'] as Map).cast<String, dynamic>()),
+      buildDefinition: map['buildDefinition'] == null
+          ? null
+          : BuildDefinition.fromMap(
+              (map['buildDefinition'] as Map).cast<String, dynamic>(),
+            ),
+      runDetails: map['runDetails'] == null
+          ? null
+          : RunDetails.fromMap(
+              (map['runDetails'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

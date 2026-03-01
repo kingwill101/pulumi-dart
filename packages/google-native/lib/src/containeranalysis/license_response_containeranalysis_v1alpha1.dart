@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// License information.
 class LicenseResponseContaineranalysisV1alpha1 {
   /// Comments
   final String comments;
+
   /// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
   final String expression;
 
@@ -17,17 +17,15 @@ class LicenseResponseContaineranalysisV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comments': comments,
-      'expression': expression,
-    };
+    return <String, dynamic>{'comments': comments, 'expression': expression};
   }
 
-  factory LicenseResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory LicenseResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LicenseResponseContaineranalysisV1alpha1(
       comments: map['comments'] as String,
       expression: map['expression'] as String,
     );
   }
 }
-

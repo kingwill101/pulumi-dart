@@ -1999,26 +1999,34 @@ class AiReasoningEngine extends pulumi.CustomResource {
   /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+
   /// The description of the ReasoningEngine.
   late final pulumi.Output<String?> description;
+
   /// The display name of the ReasoningEngine.
   late final pulumi.Output<String> displayName;
+
   /// Optional. Customer-managed encryption key spec for a ReasoningEngine.
   /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
   /// will be secured by this key.
   /// Structure is documented below.
   late final pulumi.Output<AiReasoningEngineEncryptionSpec?> encryptionSpec;
+
   /// The generated name of the ReasoningEngine, in the format
   /// projects/{project}/locations/{location}/reasoningEngines/{reasoningEngine}
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the reasoning engine. eg us-central1
   late final pulumi.Output<String?> region;
+
   /// Optional. Configurations of the ReasoningEngine.
   /// Structure is documented below.
   late final pulumi.Output<AiReasoningEngineSpec?> spec;
+
   /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
   /// format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
@@ -2032,15 +2040,17 @@ class AiReasoningEngine extends pulumi.CustomResource {
     AiReasoningEngineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String>('displayName');
-    this.encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>('encryptionSpec');
+    this.encryptionSpec = registerOutput<AiReasoningEngineEncryptionSpec?>(
+      'encryptionSpec',
+    );
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String?>('region');

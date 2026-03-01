@@ -5,7 +5,10 @@ import 'scheduled_query_recently_failed_run_query_insights_response_query_spatia
 
 class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage {
   /// Insights into the most sub-optimal performing table on the temporal axis:
-  final List<ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis>? maxes;
+  final List<
+    ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis
+  >?
+  maxes;
 
   /// Creates a new [ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage].
   /// [maxes] Insights into the most sub-optimal performing table on the temporal axis:
@@ -15,14 +18,30 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxes': ?maxes == null ? null : pulumi.Input.encodeList<ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis, Map<String, dynamic>>(maxes!, (value) => value.toMap()),
+      'maxes': ?maxes == null
+          ? null
+          : pulumi.Input.encodeList<
+              ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis,
+              Map<String, dynamic>
+            >(maxes!, (value) => value.toMap()),
     };
   }
 
-  factory ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage.fromMap(Map<String, dynamic> map) {
+  factory ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage(
-      maxes: map['maxes'] == null ? null : pulumi.Input.decodeList<ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis>(map['maxes'], (value) => ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis.fromMap((value as Map).cast<String, dynamic>())),
+      maxes: map['maxes'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis
+            >(
+              map['maxes'],
+              (value) =>
+                  ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverageMaxis.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

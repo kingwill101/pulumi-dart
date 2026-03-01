@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class NodeTemplateNodeTypeFlexibilityResponseComputeBeta {
   final String cpus;
   final String localSsd;
@@ -24,7 +23,9 @@ class NodeTemplateNodeTypeFlexibilityResponseComputeBeta {
     };
   }
 
-  factory NodeTemplateNodeTypeFlexibilityResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory NodeTemplateNodeTypeFlexibilityResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodeTemplateNodeTypeFlexibilityResponseComputeBeta(
       cpus: map['cpus'] as String,
       localSsd: map['localSsd'] as String,
@@ -32,4 +33,3 @@ class NodeTemplateNodeTypeFlexibilityResponseComputeBeta {
     );
   }
 }
-

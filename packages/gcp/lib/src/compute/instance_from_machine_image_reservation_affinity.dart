@@ -4,7 +4,9 @@ import 'instance_from_machine_image_reservation_affinity_specific_reservation.da
 
 class InstanceFromMachineImageReservationAffinity {
   /// Specifies the label selector for the reservation to use.
-  final InstanceFromMachineImageReservationAffinitySpecificReservation? specificReservation;
+  final InstanceFromMachineImageReservationAffinitySpecificReservation?
+  specificReservation;
+
   /// The type of reservation from which this instance can consume resources.
   final String type;
 
@@ -18,16 +20,23 @@ class InstanceFromMachineImageReservationAffinity {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'specificReservation': ?specificReservation == null ? null : specificReservation!.toMap(),
+      'specificReservation': ?specificReservation == null
+          ? null
+          : specificReservation!.toMap(),
       'type': type,
     };
   }
 
-  factory InstanceFromMachineImageReservationAffinity.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromMachineImageReservationAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromMachineImageReservationAffinity(
-      specificReservation: map['specificReservation'] == null ? null : InstanceFromMachineImageReservationAffinitySpecificReservation.fromMap((map['specificReservation'] as Map).cast<String, dynamic>()),
+      specificReservation: map['specificReservation'] == null
+          ? null
+          : InstanceFromMachineImageReservationAffinitySpecificReservation.fromMap(
+              (map['specificReservation'] as Map).cast<String, dynamic>(),
+            ),
       type: map['type'] as String,
     );
   }
 }
-

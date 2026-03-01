@@ -24,9 +24,10 @@ class DatasetAccessEntryResponse {
 
   factory DatasetAccessEntryResponse.fromMap(Map<String, dynamic> map) {
     return DatasetAccessEntryResponse(
-      dataset: DatasetReferenceResponse.fromMap((map['dataset'] as Map).cast<String, dynamic>()),
+      dataset: DatasetReferenceResponse.fromMap(
+        (map['dataset'] as Map).cast<String, dynamic>(),
+      ),
       targetTypes: (map['targetTypes'] as List).cast<String>(),
     );
   }
 }
-

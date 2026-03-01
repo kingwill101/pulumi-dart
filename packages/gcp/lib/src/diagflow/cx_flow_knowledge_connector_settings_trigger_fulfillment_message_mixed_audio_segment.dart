@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment {
   /// (Output)
   /// Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
   final bool? allowPlaybackInterruption;
+
   /// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
   /// A base64-encoded string.
   /// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
   final String? audio;
+
   /// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
   /// This field is part of a union field `content`: Only one of `audio` or `uri` may be set.
   final String? uri;
@@ -31,12 +32,15 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment
     };
   }
 
-  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.fromMap(Map<String, dynamic> map) {
+  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment(
-      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null ? null : map['allowPlaybackInterruption'] as bool,
+      allowPlaybackInterruption: map['allowPlaybackInterruption'] == null
+          ? null
+          : map['allowPlaybackInterruption'] as bool,
       audio: map['audio'] == null ? null : map['audio'] as String,
       uri: map['uri'] == null ? null : map['uri'] as String,
     );
   }
 }
-

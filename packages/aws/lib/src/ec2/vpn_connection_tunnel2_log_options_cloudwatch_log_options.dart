@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class VpnConnectionTunnel2LogOptionsCloudwatchLogOptions {
   /// Enable or disable BGP logging feature. The default is `false`.
   final bool? bgpLogEnabled;
+
   /// The Amazon Resource Name (ARN) of the CloudWatch log group to send BGP logs to.
   final String? bgpLogGroupArn;
+
   /// Set BGP log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
   final String? bgpLogOutputFormat;
+
   /// Enable or disable VPN tunnel logging feature. The default is `false`.
   final bool? logEnabled;
+
   /// The Amazon Resource Name (ARN) of the CloudWatch log group to send logs to.
   final String? logGroupArn;
+
   /// Set log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
   final String? logOutputFormat;
 
@@ -42,15 +46,26 @@ class VpnConnectionTunnel2LogOptionsCloudwatchLogOptions {
     };
   }
 
-  factory VpnConnectionTunnel2LogOptionsCloudwatchLogOptions.fromMap(Map<String, dynamic> map) {
+  factory VpnConnectionTunnel2LogOptionsCloudwatchLogOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpnConnectionTunnel2LogOptionsCloudwatchLogOptions(
-      bgpLogEnabled: map['bgpLogEnabled'] == null ? null : map['bgpLogEnabled'] as bool,
-      bgpLogGroupArn: map['bgpLogGroupArn'] == null ? null : map['bgpLogGroupArn'] as String,
-      bgpLogOutputFormat: map['bgpLogOutputFormat'] == null ? null : map['bgpLogOutputFormat'] as String,
+      bgpLogEnabled: map['bgpLogEnabled'] == null
+          ? null
+          : map['bgpLogEnabled'] as bool,
+      bgpLogGroupArn: map['bgpLogGroupArn'] == null
+          ? null
+          : map['bgpLogGroupArn'] as String,
+      bgpLogOutputFormat: map['bgpLogOutputFormat'] == null
+          ? null
+          : map['bgpLogOutputFormat'] as String,
       logEnabled: map['logEnabled'] == null ? null : map['logEnabled'] as bool,
-      logGroupArn: map['logGroupArn'] == null ? null : map['logGroupArn'] as String,
-      logOutputFormat: map['logOutputFormat'] == null ? null : map['logOutputFormat'] as String,
+      logGroupArn: map['logGroupArn'] == null
+          ? null
+          : map['logGroupArn'] as String,
+      logOutputFormat: map['logOutputFormat'] == null
+          ? null
+          : map['logOutputFormat'] as String,
     );
   }
 }
-

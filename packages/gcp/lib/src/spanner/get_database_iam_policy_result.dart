@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDatabaseIamPolicy.
 class GetDatabaseIamPolicyResult {
   final String database;
+
   /// (Computed) The etag of the IAM policy.
   final String etag;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instance;
+
   /// (Computed) The policy data
   final String policyData;
   final String project;
@@ -51,4 +53,3 @@ class GetDatabaseIamPolicyResult {
     );
   }
 }
-

@@ -113,8 +113,10 @@ import 'dedicated_ip_assignment_args.dart';
 class DedicatedIpAssignment extends pulumi.CustomResource {
   /// Dedicated IP address.
   late final pulumi.Output<String> destinationPoolName;
+
   /// Dedicated IP address.
   late final pulumi.Output<String> ip;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -127,11 +129,11 @@ class DedicatedIpAssignment extends pulumi.CustomResource {
     DedicatedIpAssignmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sesv2/dedicatedIpAssignment:DedicatedIpAssignment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:sesv2/dedicatedIpAssignment:DedicatedIpAssignment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.destinationPoolName = registerOutput<String>('destinationPoolName');
     this.ip = registerOutput<String>('ip');
     this.region = registerOutput<String>('region');

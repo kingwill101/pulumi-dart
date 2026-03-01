@@ -8,8 +8,10 @@ import 'log_config_data_access_options.dart';
 class LogConfig {
   /// This is deprecated and has no effect. Do not use.
   final LogConfigCloudAuditOptions? cloudAudit;
+
   /// This is deprecated and has no effect. Do not use.
   final LogConfigCounterOptions? counter;
+
   /// This is deprecated and has no effect. Do not use.
   final LogConfigDataAccessOptions? dataAccess;
 
@@ -17,11 +19,7 @@ class LogConfig {
   /// [cloudAudit] This is deprecated and has no effect. Do not use.
   /// [counter] This is deprecated and has no effect. Do not use.
   /// [dataAccess] This is deprecated and has no effect. Do not use.
-  LogConfig({
-    this.cloudAudit,
-    this.counter,
-    this.dataAccess,
-  });
+  LogConfig({this.cloudAudit, this.counter, this.dataAccess});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,21 @@ class LogConfig {
 
   factory LogConfig.fromMap(Map<String, dynamic> map) {
     return LogConfig(
-      cloudAudit: map['cloudAudit'] == null ? null : LogConfigCloudAuditOptions.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>()),
-      counter: map['counter'] == null ? null : LogConfigCounterOptions.fromMap((map['counter'] as Map).cast<String, dynamic>()),
-      dataAccess: map['dataAccess'] == null ? null : LogConfigDataAccessOptions.fromMap((map['dataAccess'] as Map).cast<String, dynamic>()),
+      cloudAudit: map['cloudAudit'] == null
+          ? null
+          : LogConfigCloudAuditOptions.fromMap(
+              (map['cloudAudit'] as Map).cast<String, dynamic>(),
+            ),
+      counter: map['counter'] == null
+          ? null
+          : LogConfigCounterOptions.fromMap(
+              (map['counter'] as Map).cast<String, dynamic>(),
+            ),
+      dataAccess: map['dataAccess'] == null
+          ? null
+          : LogConfigDataAccessOptions.fromMap(
+              (map['dataAccess'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

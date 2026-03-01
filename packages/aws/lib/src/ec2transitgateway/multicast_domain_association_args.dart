@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MulticastDomainAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the subnet to associate with the transit gateway multicast domain.
   final pulumi.Input<String> subnetId;
+
   /// The ID of the transit gateway attachment.
   final pulumi.Input<String> transitGatewayAttachmentId;
+
   /// The ID of the transit gateway multicast domain.
   final pulumi.Input<String> transitGatewayMulticastDomainId;
 
@@ -26,11 +29,14 @@ class MulticastDomainAssociationArgs {
     required String subnetId,
     required String transitGatewayAttachmentId,
     required String transitGatewayMulticastDomainId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asInput<String>(subnetId),
-      transitGatewayAttachmentId = pulumi.Input.asInput<String>(transitGatewayAttachmentId),
-      transitGatewayMulticastDomainId = pulumi.Input.asInput<String>(transitGatewayMulticastDomainId);
+  }) : region = pulumi.Input.asOptionalInput<String>(region),
+       subnetId = pulumi.Input.asInput<String>(subnetId),
+       transitGatewayAttachmentId = pulumi.Input.asInput<String>(
+         transitGatewayAttachmentId,
+       ),
+       transitGatewayMulticastDomainId = pulumi.Input.asInput<String>(
+         transitGatewayMulticastDomainId,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,8 +52,8 @@ class MulticastDomainAssociationArgs {
       region: map['region'] == null ? null : map['region'] as String,
       subnetId: map['subnetId'] as String,
       transitGatewayAttachmentId: map['transitGatewayAttachmentId'] as String,
-      transitGatewayMulticastDomainId: map['transitGatewayMulticastDomainId'] as String,
+      transitGatewayMulticastDomainId:
+          map['transitGatewayMulticastDomainId'] as String,
     );
   }
 }
-

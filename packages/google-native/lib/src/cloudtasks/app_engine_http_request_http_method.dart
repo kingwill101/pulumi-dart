@@ -21,4 +21,3 @@ enum AppEngineHttpRequestHttpMethod {
     throw ArgumentError('Unknown AppEngineHttpRequestHttpMethod value: $value');
   }
 }
-

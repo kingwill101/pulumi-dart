@@ -13,7 +13,8 @@ enum LinuxNodeConfigCgroupModeContainerV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown LinuxNodeConfigCgroupModeContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown LinuxNodeConfigCgroupModeContainerV1beta1 value: $value',
+    );
   }
 }
-

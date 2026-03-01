@@ -19,10 +19,9 @@ class GetNodeTemplateComputeV1Args {
     required String nodeTemplate,
     String? project,
     required String region,
-  }) :
-      nodeTemplate = pulumi.Input.asInput<String>(nodeTemplate),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : nodeTemplate = pulumi.Input.asInput<String>(nodeTemplate),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetNodeTemplateComputeV1Args {
     );
   }
 }
-

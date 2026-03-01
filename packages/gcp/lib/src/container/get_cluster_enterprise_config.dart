@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterEnterpriseConfig {
   /// Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
   final String clusterTier;
+
   /// Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
   final String desiredTier;
 
@@ -29,4 +29,3 @@ class GetClusterEnterpriseConfig {
     );
   }
 }
-

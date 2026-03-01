@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetReportPlanReportSetting {
   /// (Optional) Specifies the list of accounts a report covers.
   final List<String> accounts;
+
   /// ARNs of the frameworks a report covers.
   final List<String> frameworkArns;
+
   /// Specifies the number of frameworks a report covers.
   final int numberOfFrameworks;
+
   /// (Optional) Specifies the list of Organizational Units a report covers.
   final List<String> organizationUnits;
+
   /// (Optional) Specifies the list of regions a report covers.
   final List<String> regions;
+
   /// Identifies the report template for the report. Reports are built using a report template.
   final String reportTemplate;
 
@@ -53,4 +57,3 @@ class GetReportPlanReportSetting {
     );
   }
 }
-

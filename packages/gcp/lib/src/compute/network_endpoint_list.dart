@@ -578,14 +578,18 @@ import 'network_endpoint_list_network_endpoint.dart';
 class NetworkEndpointList extends pulumi.CustomResource {
   /// The network endpoint group these endpoints are part of.
   late final pulumi.Output<String> networkEndpointGroup;
+
   /// The network endpoints to be added to the enclosing network endpoint group
   /// (NEG). Each endpoint specifies an IP address and port, along with
   /// additional information depending on the NEG type.
   /// Structure is documented below.
-  late final pulumi.Output<List<NetworkEndpointListNetworkEndpoint>?> networkEndpoints;
+  late final pulumi.Output<List<NetworkEndpointListNetworkEndpoint>?>
+  networkEndpoints;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Zone where the containing network endpoint group is located.
   late final pulumi.Output<String> zone;
 
@@ -598,13 +602,16 @@ class NetworkEndpointList extends pulumi.CustomResource {
     NetworkEndpointListArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/networkEndpointList:NetworkEndpointList',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/networkEndpointList:NetworkEndpointList',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.networkEndpointGroup = registerOutput<String>('networkEndpointGroup');
-    this.networkEndpoints = registerOutput<List<NetworkEndpointListNetworkEndpoint>?>('networkEndpoints');
+    this.networkEndpoints =
+        registerOutput<List<NetworkEndpointListNetworkEndpoint>?>(
+          'networkEndpoints',
+        );
     this.project = registerOutput<String>('project');
     this.zone = registerOutput<String>('zone');
   }

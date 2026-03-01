@@ -8,6 +8,7 @@ import 'google_privacy_dlp_v2_record_suppression.dart';
 class GooglePrivacyDlpV2RecordTransformations {
   /// Transform the record by applying various field transformations.
   final List<GooglePrivacyDlpV2FieldTransformation>? fieldTransformations;
+
   /// Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
   final List<GooglePrivacyDlpV2RecordSuppression>? recordSuppressions;
 
@@ -21,16 +22,41 @@ class GooglePrivacyDlpV2RecordTransformations {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fieldTransformations': ?fieldTransformations == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2FieldTransformation, Map<String, dynamic>>(fieldTransformations!, (value) => value.toMap()),
-      'recordSuppressions': ?recordSuppressions == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2RecordSuppression, Map<String, dynamic>>(recordSuppressions!, (value) => value.toMap()),
+      'fieldTransformations': ?fieldTransformations == null
+          ? null
+          : pulumi.Input.encodeList<
+              GooglePrivacyDlpV2FieldTransformation,
+              Map<String, dynamic>
+            >(fieldTransformations!, (value) => value.toMap()),
+      'recordSuppressions': ?recordSuppressions == null
+          ? null
+          : pulumi.Input.encodeList<
+              GooglePrivacyDlpV2RecordSuppression,
+              Map<String, dynamic>
+            >(recordSuppressions!, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2RecordTransformations.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2RecordTransformations.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2RecordTransformations(
-      fieldTransformations: map['fieldTransformations'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2FieldTransformation>(map['fieldTransformations'], (value) => GooglePrivacyDlpV2FieldTransformation.fromMap((value as Map).cast<String, dynamic>())),
-      recordSuppressions: map['recordSuppressions'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2RecordSuppression>(map['recordSuppressions'], (value) => GooglePrivacyDlpV2RecordSuppression.fromMap((value as Map).cast<String, dynamic>())),
+      fieldTransformations: map['fieldTransformations'] == null
+          ? null
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2FieldTransformation>(
+              map['fieldTransformations'],
+              (value) => GooglePrivacyDlpV2FieldTransformation.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      recordSuppressions: map['recordSuppressions'] == null
+          ? null
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2RecordSuppression>(
+              map['recordSuppressions'],
+              (value) => GooglePrivacyDlpV2RecordSuppression.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

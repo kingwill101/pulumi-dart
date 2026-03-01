@@ -54,4 +54,3 @@ enum Region {
     throw ArgumentError('Unknown Region value: $value');
   }
 }
-

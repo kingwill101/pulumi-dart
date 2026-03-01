@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AutomationRuleCriteriaRelatedFindingsProductArn {
   final String comparison;
   final String value;
@@ -14,17 +13,15 @@ class AutomationRuleCriteriaRelatedFindingsProductArn {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
-  factory AutomationRuleCriteriaRelatedFindingsProductArn.fromMap(Map<String, dynamic> map) {
+  factory AutomationRuleCriteriaRelatedFindingsProductArn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomationRuleCriteriaRelatedFindingsProductArn(
       comparison: map['comparison'] as String,
       value: map['value'] as String,
     );
   }
 }
-

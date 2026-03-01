@@ -20,12 +20,14 @@ class AiEndpointIamBinding extends pulumi.CustomResource {
     AiEndpointIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.condition = registerOutput<AiEndpointIamBindingCondition?>('condition');
+         'gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.condition = registerOutput<AiEndpointIamBindingCondition?>(
+      'condition',
+    );
     this.endpoint = registerOutput<String>('endpoint');
     this.etag = registerOutput<String>('etag');
     this.location = registerOutput<String>('location');

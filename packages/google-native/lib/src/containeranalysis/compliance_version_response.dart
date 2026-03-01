@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Describes the CIS benchmark version that is applicable to a given OS and os version.
 class ComplianceVersionResponse {
   /// The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
   final String benchmarkDocument;
+
   /// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
   final String cpeUri;
+
   /// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
   final String version;
 
@@ -36,4 +37,3 @@ class ComplianceVersionResponse {
     );
   }
 }
-

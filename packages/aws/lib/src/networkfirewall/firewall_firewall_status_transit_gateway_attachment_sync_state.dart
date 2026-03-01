@@ -1,26 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FirewallFirewallStatusTransitGatewayAttachmentSyncState {
   /// The unique identifier of the transit gateway attachment.
   final String? attachmentId;
 
   /// Creates a new [FirewallFirewallStatusTransitGatewayAttachmentSyncState].
   /// [attachmentId] The unique identifier of the transit gateway attachment.
-  FirewallFirewallStatusTransitGatewayAttachmentSyncState({
-    this.attachmentId,
-  });
+  FirewallFirewallStatusTransitGatewayAttachmentSyncState({this.attachmentId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'attachmentId': ?attachmentId,
-    };
+    return <String, dynamic>{'attachmentId': ?attachmentId};
   }
 
-  factory FirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap(Map<String, dynamic> map) {
+  factory FirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallFirewallStatusTransitGatewayAttachmentSyncState(
-      attachmentId: map['attachmentId'] == null ? null : map['attachmentId'] as String,
+      attachmentId: map['attachmentId'] == null
+          ? null
+          : map['attachmentId'] as String,
     );
   }
 }
-

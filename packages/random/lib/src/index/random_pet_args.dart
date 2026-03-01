@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RandomPetArgs {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   final pulumi.Input<Map<String, String>>? keepers;
+
   /// The length (in words) of the pet name. Defaults to 2
   final pulumi.Input<int>? length;
+
   /// A string to prefix the name with.
   final pulumi.Input<String>? prefix;
+
   /// The character to separate words in the pet name. Defaults to "-"
   final pulumi.Input<String>? separator;
 
@@ -26,11 +29,10 @@ class RandomPetArgs {
     int? length,
     String? prefix,
     String? separator,
-  }) :
-      keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
-      length = pulumi.Input.asOptionalInput<int>(length),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      separator = pulumi.Input.asOptionalInput<String>(separator);
+  }) : keepers = pulumi.Input.asOptionalInput<Map<String, String>>(keepers),
+       length = pulumi.Input.asOptionalInput<int>(length),
+       prefix = pulumi.Input.asOptionalInput<String>(prefix),
+       separator = pulumi.Input.asOptionalInput<String>(separator);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,11 +45,12 @@ class RandomPetArgs {
 
   factory RandomPetArgs.fromMap(Map<String, dynamic> map) {
     return RandomPetArgs(
-      keepers: map['keepers'] == null ? null : (map['keepers'] as Map).cast<String, String>(),
+      keepers: map['keepers'] == null
+          ? null
+          : (map['keepers'] as Map).cast<String, String>(),
       length: map['length'] == null ? null : map['length'] as int,
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
       separator: map['separator'] == null ? null : map['separator'] as String,
     );
   }
 }
-

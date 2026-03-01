@@ -1,26 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Defines a hash object for use in Materials and Products.
 class ArtifactHashesResponse {
   final String sha256;
 
   /// Creates a new [ArtifactHashesResponse].
   /// [sha256] Required.
-  ArtifactHashesResponse({
-    required this.sha256,
-  });
+  ArtifactHashesResponse({required this.sha256});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sha256': sha256,
-    };
+    return <String, dynamic>{'sha256': sha256};
   }
 
   factory ArtifactHashesResponse.fromMap(Map<String, dynamic> map) {
-    return ArtifactHashesResponse(
-      sha256: map['sha256'] as String,
-    );
+    return ArtifactHashesResponse(sha256: map['sha256'] as String);
   }
 }
-

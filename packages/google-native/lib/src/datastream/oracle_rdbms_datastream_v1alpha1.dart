@@ -10,20 +10,29 @@ class OracleRdbmsDatastreamV1alpha1 {
 
   /// Creates a new [OracleRdbmsDatastreamV1alpha1].
   /// [oracleSchemas] Oracle schemas/databases in the database server.
-  OracleRdbmsDatastreamV1alpha1({
-    this.oracleSchemas,
-  });
+  OracleRdbmsDatastreamV1alpha1({this.oracleSchemas});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleSchemas': ?oracleSchemas == null ? null : pulumi.Input.encodeList<OracleSchemaDatastreamV1alpha1, Map<String, dynamic>>(oracleSchemas!, (value) => value.toMap()),
+      'oracleSchemas': ?oracleSchemas == null
+          ? null
+          : pulumi.Input.encodeList<
+              OracleSchemaDatastreamV1alpha1,
+              Map<String, dynamic>
+            >(oracleSchemas!, (value) => value.toMap()),
     };
   }
 
   factory OracleRdbmsDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
     return OracleRdbmsDatastreamV1alpha1(
-      oracleSchemas: map['oracleSchemas'] == null ? null : pulumi.Input.decodeList<OracleSchemaDatastreamV1alpha1>(map['oracleSchemas'], (value) => OracleSchemaDatastreamV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      oracleSchemas: map['oracleSchemas'] == null
+          ? null
+          : pulumi.Input.decodeList<OracleSchemaDatastreamV1alpha1>(
+              map['oracleSchemas'],
+              (value) => OracleSchemaDatastreamV1alpha1.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

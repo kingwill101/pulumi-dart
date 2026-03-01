@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EndpointLoadBalancerOptionsPortRange {
   final int fromPort;
   final int toPort;
@@ -14,17 +13,15 @@ class EndpointLoadBalancerOptionsPortRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fromPort': fromPort,
-      'toPort': toPort,
-    };
+    return <String, dynamic>{'fromPort': fromPort, 'toPort': toPort};
   }
 
-  factory EndpointLoadBalancerOptionsPortRange.fromMap(Map<String, dynamic> map) {
+  factory EndpointLoadBalancerOptionsPortRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointLoadBalancerOptionsPortRange(
       fromPort: map['fromPort'] as int,
       toPort: map['toPort'] as int,
     );
   }
 }
-

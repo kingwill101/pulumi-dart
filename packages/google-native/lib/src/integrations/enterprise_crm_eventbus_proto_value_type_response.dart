@@ -48,17 +48,24 @@ class EnterpriseCrmEventbusProtoValueTypeResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoValueTypeResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoValueTypeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoValueTypeResponse(
       booleanValue: map['booleanValue'] as bool,
-      doubleArray: EnterpriseCrmEventbusProtoDoubleArrayResponse.fromMap((map['doubleArray'] as Map).cast<String, dynamic>()),
+      doubleArray: EnterpriseCrmEventbusProtoDoubleArrayResponse.fromMap(
+        (map['doubleArray'] as Map).cast<String, dynamic>(),
+      ),
       doubleValue: map['doubleValue'] as double,
-      intArray: EnterpriseCrmEventbusProtoIntArrayResponse.fromMap((map['intArray'] as Map).cast<String, dynamic>()),
+      intArray: EnterpriseCrmEventbusProtoIntArrayResponse.fromMap(
+        (map['intArray'] as Map).cast<String, dynamic>(),
+      ),
       intValue: map['intValue'] as String,
       protoValue: (map['protoValue'] as Map).cast<String, String>(),
-      stringArray: EnterpriseCrmEventbusProtoStringArrayResponse.fromMap((map['stringArray'] as Map).cast<String, dynamic>()),
+      stringArray: EnterpriseCrmEventbusProtoStringArrayResponse.fromMap(
+        (map['stringArray'] as Map).cast<String, dynamic>(),
+      ),
       stringValue: map['stringValue'] as String,
     );
   }
 }
-

@@ -5,7 +5,8 @@ import 'prevention_job_trigger_inspect_job_action_save_findings_output_config.da
 class PreventionJobTriggerInspectJobActionSaveFindings {
   /// Information on where to store output
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig outputConfig;
+  final PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig
+  outputConfig;
 
   /// Creates a new [PreventionJobTriggerInspectJobActionSaveFindings].
   /// [outputConfig] Information on where to store output
@@ -14,15 +15,17 @@ class PreventionJobTriggerInspectJobActionSaveFindings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputConfig': outputConfig.toMap(),
-    };
+    return <String, dynamic>{'outputConfig': outputConfig.toMap()};
   }
 
-  factory PreventionJobTriggerInspectJobActionSaveFindings.fromMap(Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobActionSaveFindings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionJobTriggerInspectJobActionSaveFindings(
-      outputConfig: PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>()),
+      outputConfig:
+          PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig.fromMap(
+            (map['outputConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

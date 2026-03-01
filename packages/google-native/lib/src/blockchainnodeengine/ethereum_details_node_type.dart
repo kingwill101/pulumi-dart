@@ -17,4 +17,3 @@ enum EthereumDetailsNodeType {
     throw ArgumentError('Unknown EthereumDetailsNodeType value: $value');
   }
 }
-

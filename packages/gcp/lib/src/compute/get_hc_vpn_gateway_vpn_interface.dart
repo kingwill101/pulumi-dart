@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetHcVpnGatewayVpnInterface {
   /// The numeric ID of this VPN gateway interface.
   final int id;
+
   /// URL of the interconnect attachment resource. When the value
   /// of this field is present, the VPN Gateway will be used for
   /// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
@@ -12,6 +12,7 @@ class GetHcVpnGatewayVpnInterface {
   ///
   /// Not currently available publicly.
   final String interconnectAttachment;
+
   /// The external IP address for this VPN gateway interface.
   final String ipAddress;
 
@@ -41,4 +42,3 @@ class GetHcVpnGatewayVpnInterface {
     );
   }
 }
-

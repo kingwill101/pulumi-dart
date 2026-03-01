@@ -1,26 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Custom domain information.
 class CustomDomainResponse {
   /// Domain name.
   final String domain;
+
   /// Domain state.
   final String state;
 
   /// Creates a new [CustomDomainResponse].
   /// [domain] Domain name.
   /// [state] Domain state.
-  CustomDomainResponse({
-    required this.domain,
-    required this.state,
-  });
+  CustomDomainResponse({required this.domain, required this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': domain,
-      'state': state,
-    };
+    return <String, dynamic>{'domain': domain, 'state': state};
   }
 
   factory CustomDomainResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +24,3 @@ class CustomDomainResponse {
     );
   }
 }
-

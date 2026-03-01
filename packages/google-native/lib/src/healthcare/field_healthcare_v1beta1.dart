@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A (sub) field of a type.
 class FieldHealthcareV1beta1 {
   /// The maximum number of times this field can be repeated. 0 or -1 means unbounded.
   final int? maxOccurs;
+
   /// The minimum number of times this field must be present/repeated.
   final int? minOccurs;
+
   /// The name of the field. For example, "PID-1" or just "1".
   final String? name;
+
   /// The HL7v2 table this field refers to. For example, PID-15 (Patient's Primary Language) usually refers to table "0296".
   final String? table;
+
   /// The type of this field. A Type with this name must be defined in an Hl7TypesConfig.
   final String? type;
 
@@ -48,4 +51,3 @@ class FieldHealthcareV1beta1 {
     );
   }
 }
-

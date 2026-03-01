@@ -9,10 +9,13 @@ import 'ospolicy_resource_repository_resource_response_osconfig_v1alpha.dart';
 class OSPolicyResourceResponseOsconfigV1alpha {
   /// Exec resource
   final OSPolicyResourceExecResourceResponseOsconfigV1alpha exec;
+
   /// File resource
   final OSPolicyResourceFileResourceResponseOsconfigV1alpha file;
+
   /// Package resource
   final OSPolicyResourcePackageResourceResponseOsconfigV1alpha pkg;
+
   /// Package repository resource
   final OSPolicyResourceRepositoryResourceResponseOsconfigV1alpha repository;
 
@@ -37,13 +40,23 @@ class OSPolicyResourceResponseOsconfigV1alpha {
     };
   }
 
-  factory OSPolicyResourceResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourceResponseOsconfigV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourceResponseOsconfigV1alpha(
-      exec: OSPolicyResourceExecResourceResponseOsconfigV1alpha.fromMap((map['exec'] as Map).cast<String, dynamic>()),
-      file: OSPolicyResourceFileResourceResponseOsconfigV1alpha.fromMap((map['file'] as Map).cast<String, dynamic>()),
-      pkg: OSPolicyResourcePackageResourceResponseOsconfigV1alpha.fromMap((map['pkg'] as Map).cast<String, dynamic>()),
-      repository: OSPolicyResourceRepositoryResourceResponseOsconfigV1alpha.fromMap((map['repository'] as Map).cast<String, dynamic>()),
+      exec: OSPolicyResourceExecResourceResponseOsconfigV1alpha.fromMap(
+        (map['exec'] as Map).cast<String, dynamic>(),
+      ),
+      file: OSPolicyResourceFileResourceResponseOsconfigV1alpha.fromMap(
+        (map['file'] as Map).cast<String, dynamic>(),
+      ),
+      pkg: OSPolicyResourcePackageResourceResponseOsconfigV1alpha.fromMap(
+        (map['pkg'] as Map).cast<String, dynamic>(),
+      ),
+      repository:
+          OSPolicyResourceRepositoryResourceResponseOsconfigV1alpha.fromMap(
+            (map['repository'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

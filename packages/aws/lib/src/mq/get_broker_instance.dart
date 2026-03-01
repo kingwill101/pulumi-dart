@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetBrokerInstance {
   /// URL of the ActiveMQ Web Console or the RabbitMQ Management UI depending on `engine_type`.
   final String consoleUrl;
+
   /// Broker's wire-level protocol endpoints.
   final List<String> endpoints;
+
   /// IP Address of the broker.
   final String ipAddress;
 
@@ -35,4 +36,3 @@ class GetBrokerInstance {
     );
   }
 }
-

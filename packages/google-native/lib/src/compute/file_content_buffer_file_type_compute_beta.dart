@@ -13,7 +13,8 @@ enum FileContentBufferFileTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown FileContentBufferFileTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown FileContentBufferFileTypeComputeBeta value: $value',
+    );
   }
 }
-

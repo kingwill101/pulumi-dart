@@ -19,10 +19,9 @@ class GetUrlListArgs {
     required String location,
     String? project,
     required String urlListId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      urlListId = pulumi.Input.asInput<String>(urlListId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       urlListId = pulumi.Input.asInput<String>(urlListId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetUrlListArgs {
     );
   }
 }
-

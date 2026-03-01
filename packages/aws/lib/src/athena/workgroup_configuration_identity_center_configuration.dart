@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WorkgroupConfigurationIdentityCenterConfiguration {
   /// Specifies whether the workgroup is IAM Identity Center supported.
   final bool? enableIdentityCenter;
+
   /// The IAM Identity Center instance ARN that the workgroup associates to.
   final String? identityCenterInstanceArn;
 
@@ -22,11 +22,16 @@ class WorkgroupConfigurationIdentityCenterConfiguration {
     };
   }
 
-  factory WorkgroupConfigurationIdentityCenterConfiguration.fromMap(Map<String, dynamic> map) {
+  factory WorkgroupConfigurationIdentityCenterConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkgroupConfigurationIdentityCenterConfiguration(
-      enableIdentityCenter: map['enableIdentityCenter'] == null ? null : map['enableIdentityCenter'] as bool,
-      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null ? null : map['identityCenterInstanceArn'] as String,
+      enableIdentityCenter: map['enableIdentityCenter'] == null
+          ? null
+          : map['enableIdentityCenter'] as bool,
+      identityCenterInstanceArn: map['identityCenterInstanceArn'] == null
+          ? null
+          : map['identityCenterInstanceArn'] as String,
     );
   }
 }
-

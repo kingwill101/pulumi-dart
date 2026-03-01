@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ProviderAssumeRoleWithWebIdentity {
   /// The duration, between 15 minutes and 12 hours, of the role session. Valid time units are ns, us (or µs), ms, s, h, or m.
   final String? duration;
+
   /// IAM Policy JSON describing further restricting permissions for the IAM Role being assumed.
   final String? policy;
+
   /// Amazon Resource Names (ARNs) of IAM Policies describing further restricting permissions for the IAM Role being assumed.
   final List<String>? policyArns;
+
   /// Amazon Resource Name (ARN) of an IAM Role to assume prior to making API calls.
   final String? roleArn;
+
   /// An identifier for the assumed role session.
   final String? sessionName;
   final String? webIdentityToken;
@@ -49,12 +52,19 @@ class ProviderAssumeRoleWithWebIdentity {
     return ProviderAssumeRoleWithWebIdentity(
       duration: map['duration'] == null ? null : map['duration'] as String,
       policy: map['policy'] == null ? null : map['policy'] as String,
-      policyArns: map['policyArns'] == null ? null : (map['policyArns'] as List).cast<String>(),
+      policyArns: map['policyArns'] == null
+          ? null
+          : (map['policyArns'] as List).cast<String>(),
       roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
-      sessionName: map['sessionName'] == null ? null : map['sessionName'] as String,
-      webIdentityToken: map['webIdentityToken'] == null ? null : map['webIdentityToken'] as String,
-      webIdentityTokenFile: map['webIdentityTokenFile'] == null ? null : map['webIdentityTokenFile'] as String,
+      sessionName: map['sessionName'] == null
+          ? null
+          : map['sessionName'] as String,
+      webIdentityToken: map['webIdentityToken'] == null
+          ? null
+          : map['webIdentityToken'] as String,
+      webIdentityTokenFile: map['webIdentityTokenFile'] == null
+          ? null
+          : map['webIdentityTokenFile'] as String,
     );
   }
 }
-

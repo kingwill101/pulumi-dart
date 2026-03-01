@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ScriptStackFrameResponse {
   /// One-based end column.
   final int endColumn;
+
   /// One-based end line.
   final int endLine;
+
   /// Name of the active procedure, empty if in a top-level script.
   final String procedureId;
+
   /// One-based start column.
   final int startColumn;
+
   /// One-based start line.
   final int startLine;
+
   /// Text of the current statement/expression.
   final String text;
 
@@ -53,4 +57,3 @@ class ScriptStackFrameResponse {
     );
   }
 }
-

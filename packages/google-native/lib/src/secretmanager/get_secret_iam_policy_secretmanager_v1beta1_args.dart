@@ -19,10 +19,11 @@ class GetSecretIamPolicySecretmanagerV1beta1Args {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String secretId,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secretId = pulumi.Input.asInput<String>(secretId);
+  }) : optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       secretId = pulumi.Input.asInput<String>(secretId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,12 +33,16 @@ class GetSecretIamPolicySecretmanagerV1beta1Args {
     };
   }
 
-  factory GetSecretIamPolicySecretmanagerV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetSecretIamPolicySecretmanagerV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSecretIamPolicySecretmanagerV1beta1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       secretId: map['secretId'] as String,
     );
   }
 }
-

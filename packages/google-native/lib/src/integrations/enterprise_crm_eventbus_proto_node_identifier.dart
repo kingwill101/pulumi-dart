@@ -6,6 +6,7 @@ import 'enterprise_crm_eventbus_proto_node_identifier_element_type.dart';
 class EnterpriseCrmEventbusProtoNodeIdentifier {
   /// Configuration of the edge.
   final String? elementIdentifier;
+
   /// Destination node where the edge ends. It can only be a task config.
   final EnterpriseCrmEventbusProtoNodeIdentifierElementType? elementType;
 
@@ -24,11 +25,18 @@ class EnterpriseCrmEventbusProtoNodeIdentifier {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoNodeIdentifier.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoNodeIdentifier.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoNodeIdentifier(
-      elementIdentifier: map['elementIdentifier'] == null ? null : map['elementIdentifier'] as String,
-      elementType: map['elementType'] == null ? null : EnterpriseCrmEventbusProtoNodeIdentifierElementType.fromValue(map['elementType'] as String),
+      elementIdentifier: map['elementIdentifier'] == null
+          ? null
+          : map['elementIdentifier'] as String,
+      elementType: map['elementType'] == null
+          ? null
+          : EnterpriseCrmEventbusProtoNodeIdentifierElementType.fromValue(
+              map['elementType'] as String,
+            ),
     );
   }
 }
-

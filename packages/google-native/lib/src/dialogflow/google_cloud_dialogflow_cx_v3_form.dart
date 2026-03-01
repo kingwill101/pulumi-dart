@@ -10,20 +10,29 @@ class GoogleCloudDialogflowCxV3Form {
 
   /// Creates a new [GoogleCloudDialogflowCxV3Form].
   /// [parameters] Parameters to collect from the user.
-  GoogleCloudDialogflowCxV3Form({
-    this.parameters,
-  });
+  GoogleCloudDialogflowCxV3Form({this.parameters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<GoogleCloudDialogflowCxV3FormParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?parameters == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudDialogflowCxV3FormParameter,
+              Map<String, dynamic>
+            >(parameters!, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDialogflowCxV3Form.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3Form(
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FormParameter>(map['parameters'], (value) => GoogleCloudDialogflowCxV3FormParameter.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: map['parameters'] == null
+          ? null
+          : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3FormParameter>(
+              map['parameters'],
+              (value) => GoogleCloudDialogflowCxV3FormParameter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

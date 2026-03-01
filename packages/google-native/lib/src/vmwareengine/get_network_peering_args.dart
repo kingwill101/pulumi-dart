@@ -13,11 +13,8 @@ class GetNetworkPeeringArgs {
   /// Creates a new [GetNetworkPeeringArgs].
   /// [networkPeeringId] Required.
   /// [project] Optional.
-  GetNetworkPeeringArgs({
-    required String networkPeeringId,
-    String? project,
-  }) :
-      networkPeeringId = pulumi.Input.asInput<String>(networkPeeringId),
+  GetNetworkPeeringArgs({required String networkPeeringId, String? project})
+    : networkPeeringId = pulumi.Input.asInput<String>(networkPeeringId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetNetworkPeeringArgs {
     );
   }
 }
-

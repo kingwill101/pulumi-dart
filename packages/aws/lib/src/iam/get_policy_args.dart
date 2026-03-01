@@ -10,13 +10,16 @@ class GetPolicyArgs {
   /// ARN of the IAM policy.
   /// Conflicts with `name` and `path_prefix`.
   final pulumi.Input<String>? arn;
+
   /// Name of the IAM policy.
   /// Conflicts with `arn`.
   final pulumi.Input<String>? name;
+
   /// Prefix of the path to the IAM policy.
   /// Defaults to a slash (`/`).
   /// Conflicts with `arn`.
   final pulumi.Input<String>? pathPrefix;
+
   /// Key-value mapping of tags for the IAM Policy.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -30,11 +33,10 @@ class GetPolicyArgs {
     String? name,
     String? pathPrefix,
     Map<String, String>? tags,
-  }) :
-      arn = pulumi.Input.asOptionalInput<String>(arn),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pathPrefix = pulumi.Input.asOptionalInput<String>(pathPrefix),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : arn = pulumi.Input.asOptionalInput<String>(arn),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       pathPrefix = pulumi.Input.asOptionalInput<String>(pathPrefix),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,9 +51,12 @@ class GetPolicyArgs {
     return GetPolicyArgs(
       arn: map['arn'] == null ? null : map['arn'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      pathPrefix: map['pathPrefix'] == null ? null : map['pathPrefix'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      pathPrefix: map['pathPrefix'] == null
+          ? null
+          : map['pathPrefix'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

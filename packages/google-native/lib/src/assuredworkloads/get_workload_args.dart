@@ -19,10 +19,9 @@ class GetWorkloadArgs {
     required String location,
     required String organizationId,
     required String workloadId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      workloadId = pulumi.Input.asInput<String>(workloadId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       workloadId = pulumi.Input.asInput<String>(workloadId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetWorkloadArgs {
     );
   }
 }
-

@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterOpenMonitoringPrometheusJmxExporter {
   /// Indicates whether you want to enable or disable the Node Exporter.
   final bool enabledInBroker;
 
   /// Creates a new [ClusterOpenMonitoringPrometheusJmxExporter].
   /// [enabledInBroker] Indicates whether you want to enable or disable the Node Exporter.
-  ClusterOpenMonitoringPrometheusJmxExporter({
-    required this.enabledInBroker,
-  });
+  ClusterOpenMonitoringPrometheusJmxExporter({required this.enabledInBroker});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabledInBroker': enabledInBroker,
-    };
+    return <String, dynamic>{'enabledInBroker': enabledInBroker};
   }
 
-  factory ClusterOpenMonitoringPrometheusJmxExporter.fromMap(Map<String, dynamic> map) {
+  factory ClusterOpenMonitoringPrometheusJmxExporter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterOpenMonitoringPrometheusJmxExporter(
       enabledInBroker: map['enabledInBroker'] as bool,
     );
   }
 }
-

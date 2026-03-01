@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// EventSubscription Status denotes the status of the EventSubscription resource.
 class EventSubscriptionStatusResponse {
   /// Description of the state.
   final String description;
+
   /// State of Event Subscription resource.
   final String state;
 
@@ -17,10 +17,7 @@ class EventSubscriptionStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': description,
-      'state': state,
-    };
+    return <String, dynamic>{'description': description, 'state': state};
   }
 
   factory EventSubscriptionStatusResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class EventSubscriptionStatusResponse {
     );
   }
 }
-

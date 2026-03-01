@@ -8,8 +8,10 @@ import 'windows_based_sli_response.dart';
 class ServiceLevelIndicatorResponse {
   /// Basic SLI on a well-known service type.
   final BasicSliResponse basicSli;
+
   /// Request-based SLIs
   final RequestBasedSliResponse requestBased;
+
   /// Windows-based SLIs
   final WindowsBasedSliResponse windowsBased;
 
@@ -33,10 +35,15 @@ class ServiceLevelIndicatorResponse {
 
   factory ServiceLevelIndicatorResponse.fromMap(Map<String, dynamic> map) {
     return ServiceLevelIndicatorResponse(
-      basicSli: BasicSliResponse.fromMap((map['basicSli'] as Map).cast<String, dynamic>()),
-      requestBased: RequestBasedSliResponse.fromMap((map['requestBased'] as Map).cast<String, dynamic>()),
-      windowsBased: WindowsBasedSliResponse.fromMap((map['windowsBased'] as Map).cast<String, dynamic>()),
+      basicSli: BasicSliResponse.fromMap(
+        (map['basicSli'] as Map).cast<String, dynamic>(),
+      ),
+      requestBased: RequestBasedSliResponse.fromMap(
+        (map['requestBased'] as Map).cast<String, dynamic>(),
+      ),
+      windowsBased: WindowsBasedSliResponse.fromMap(
+        (map['windowsBased'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'queuing_policy_response.dart';
 class InstanceGroupManagerResizeRequestStatusResponse {
   /// Errors encountered during the queueing or provisioning phases of the ResizeRequest.
   final InstanceGroupManagerResizeRequestStatusErrorResponse error;
+
   /// Constraints for the time when the instances start provisioning. Always exposed as absolute time.
   final QueuingPolicyResponse queuingPolicy;
 
@@ -24,11 +25,16 @@ class InstanceGroupManagerResizeRequestStatusResponse {
     };
   }
 
-  factory InstanceGroupManagerResizeRequestStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerResizeRequestStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerResizeRequestStatusResponse(
-      error: InstanceGroupManagerResizeRequestStatusErrorResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      queuingPolicy: QueuingPolicyResponse.fromMap((map['queuingPolicy'] as Map).cast<String, dynamic>()),
+      error: InstanceGroupManagerResizeRequestStatusErrorResponse.fromMap(
+        (map['error'] as Map).cast<String, dynamic>(),
+      ),
+      queuingPolicy: QueuingPolicyResponse.fromMap(
+        (map['queuingPolicy'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

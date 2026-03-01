@@ -19,10 +19,9 @@ class GetDeveloperArgs {
     String? action,
     required String developerId,
     required String organizationId,
-  }) :
-      action = pulumi.Input.asOptionalInput<String>(action),
-      developerId = pulumi.Input.asInput<String>(developerId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : action = pulumi.Input.asOptionalInput<String>(action),
+       developerId = pulumi.Input.asInput<String>(developerId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetDeveloperArgs {
     );
   }
 }
-

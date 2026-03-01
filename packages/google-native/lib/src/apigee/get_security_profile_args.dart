@@ -16,9 +16,8 @@ class GetSecurityProfileArgs {
   GetSecurityProfileArgs({
     required String organizationId,
     required String securityProfileId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      securityProfileId = pulumi.Input.asInput<String>(securityProfileId);
+  }) : organizationId = pulumi.Input.asInput<String>(organizationId),
+       securityProfileId = pulumi.Input.asInput<String>(securityProfileId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetSecurityProfileArgs {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance {
   /// The replacement strategy to use. Only available for spot fleets with `fleet_type` set to `maintain`. Valid values: `launch`.
   final String? replacementStrategy;
@@ -12,15 +11,16 @@ class SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'replacementStrategy': ?replacementStrategy,
-    };
+    return <String, dynamic>{'replacementStrategy': ?replacementStrategy};
   }
 
-  factory SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance.fromMap(Map<String, dynamic> map) {
+  factory SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpotFleetRequestSpotMaintenanceStrategiesCapacityRebalance(
-      replacementStrategy: map['replacementStrategy'] == null ? null : map['replacementStrategy'] as String,
+      replacementStrategy: map['replacementStrategy'] == null
+          ? null
+          : map['replacementStrategy'] as String,
     );
   }
 }
-

@@ -5,16 +5,22 @@ enum GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType {
   queryParameters("QUERY_PARAMETERS"),
   encodedHeader("ENCODED_HEADER");
 
-  const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType(this.value);
+  const GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType(
+    this.value,
+  );
   final String value;
 
-  static GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType fromValue(String value) {
-    for (final item in GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType.values) {
+  static GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType value: $value',
+    );
   }
 }
-

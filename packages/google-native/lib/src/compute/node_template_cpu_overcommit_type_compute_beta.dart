@@ -13,7 +13,8 @@ enum NodeTemplateCpuOvercommitTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown NodeTemplateCpuOvercommitTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown NodeTemplateCpuOvercommitTypeComputeBeta value: $value',
+    );
   }
 }
-

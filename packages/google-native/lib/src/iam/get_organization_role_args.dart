@@ -16,9 +16,8 @@ class GetOrganizationRoleArgs {
   GetOrganizationRoleArgs({
     required String organizationId,
     required String roleId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      roleId = pulumi.Input.asInput<String>(roleId);
+  }) : organizationId = pulumi.Input.asInput<String>(organizationId),
+       roleId = pulumi.Input.asInput<String>(roleId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetOrganizationRoleArgs {
     );
   }
 }
-

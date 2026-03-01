@@ -6,20 +6,28 @@ import 'get_distribution_configuration_distribution.dart';
 /// Result data returned by getDistributionConfiguration.
 class GetDistributionConfigurationResult {
   final String arn;
+
   /// Date the distribution configuration was created.
   final String dateCreated;
+
   /// Date the distribution configuration was updated.
   final String dateUpdated;
+
   /// Description of the container distribution configuration.
   final String description;
+
   /// Set of distributions.
   final List<GetDistributionConfigurationDistribution> distributions;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Name of the distribution configuration.
   final String name;
+
   /// AWS Region of distribution.
   final String region;
+
   /// Key-value map of resource tags for the distribution configuration.
   final Map<String, String> tags;
 
@@ -51,7 +59,11 @@ class GetDistributionConfigurationResult {
       'dateCreated': dateCreated,
       'dateUpdated': dateUpdated,
       'description': description,
-      'distributions': pulumi.Input.encodeList<GetDistributionConfigurationDistribution, Map<String, dynamic>>(distributions, (value) => value.toMap()),
+      'distributions':
+          pulumi.Input.encodeList<
+            GetDistributionConfigurationDistribution,
+            Map<String, dynamic>
+          >(distributions, (value) => value.toMap()),
       'id': id,
       'name': name,
       'region': region,
@@ -65,7 +77,13 @@ class GetDistributionConfigurationResult {
       dateCreated: map['dateCreated'] as String,
       dateUpdated: map['dateUpdated'] as String,
       description: map['description'] as String,
-      distributions: pulumi.Input.decodeList<GetDistributionConfigurationDistribution>(map['distributions'], (value) => GetDistributionConfigurationDistribution.fromMap((value as Map).cast<String, dynamic>())),
+      distributions:
+          pulumi.Input.decodeList<GetDistributionConfigurationDistribution>(
+            map['distributions'],
+            (value) => GetDistributionConfigurationDistribution.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       id: map['id'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
@@ -73,4 +91,3 @@ class GetDistributionConfigurationResult {
     );
   }
 }
-

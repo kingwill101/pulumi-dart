@@ -12,7 +12,8 @@ enum AttachedDiskSavedStateComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown AttachedDiskSavedStateComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown AttachedDiskSavedStateComputeBeta value: $value',
+    );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FeatureGroupOfflineStoreConfigDataCatalogConfig {
   /// The name of the Glue table catalog.
   final String? catalog;
+
   /// The name of the Glue table database.
   final String? database;
+
   /// The name of the Glue table.
   final String? tableName;
 
@@ -27,7 +28,9 @@ class FeatureGroupOfflineStoreConfigDataCatalogConfig {
     };
   }
 
-  factory FeatureGroupOfflineStoreConfigDataCatalogConfig.fromMap(Map<String, dynamic> map) {
+  factory FeatureGroupOfflineStoreConfigDataCatalogConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureGroupOfflineStoreConfigDataCatalogConfig(
       catalog: map['catalog'] == null ? null : map['catalog'] as String,
       database: map['database'] == null ? null : map['database'] as String,
@@ -35,4 +38,3 @@ class FeatureGroupOfflineStoreConfigDataCatalogConfig {
     );
   }
 }
-

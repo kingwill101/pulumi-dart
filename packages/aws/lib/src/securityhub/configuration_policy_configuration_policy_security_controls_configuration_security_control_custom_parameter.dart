@@ -5,7 +5,11 @@ import 'configuration_policy_configuration_policy_security_controls_configuratio
 
 class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter {
   /// An object that specifies parameter values for a control in a configuration policy. See below.
-  final List<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter> parameters;
+  final List<
+    ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter
+  >
+  parameters;
+
   /// The ID of the security control. For more information see the [Security Hub controls reference] documentation.
   final String securityControlId;
 
@@ -19,16 +23,30 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': pulumi.Input.encodeList<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.encodeList<
+            ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
       'securityControlId': securityControlId,
     };
   }
 
-  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameter(
-      parameters: pulumi.Input.decodeList<ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter>(map['parameters'], (value) => ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter.fromMap((value as Map).cast<String, dynamic>())),
+      parameters:
+          pulumi.Input.decodeList<
+            ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter
+          >(
+            map['parameters'],
+            (value) =>
+                ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       securityControlId: map['securityControlId'] as String,
     );
   }
 }
-

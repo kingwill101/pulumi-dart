@@ -25,12 +25,17 @@ class GetCertificateAuthorityCertificateRevocationListIamPolicyArgs {
     required String location,
     int? optionsRequestedPolicyVersion,
     String? project,
-  }) :
-      certificateAuthorityId = pulumi.Input.asInput<String>(certificateAuthorityId),
-      certificateRevocationListId = pulumi.Input.asInput<String>(certificateRevocationListId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : certificateAuthorityId = pulumi.Input.asInput<String>(
+         certificateAuthorityId,
+       ),
+       certificateRevocationListId = pulumi.Input.asInput<String>(
+         certificateRevocationListId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,14 +47,18 @@ class GetCertificateAuthorityCertificateRevocationListIamPolicyArgs {
     };
   }
 
-  factory GetCertificateAuthorityCertificateRevocationListIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetCertificateAuthorityCertificateRevocationListIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCertificateAuthorityCertificateRevocationListIamPolicyArgs(
       certificateAuthorityId: map['certificateAuthorityId'] as String,
       certificateRevocationListId: map['certificateRevocationListId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

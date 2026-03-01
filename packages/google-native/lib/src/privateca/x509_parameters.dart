@@ -11,14 +11,19 @@ import 'x509_extension.dart';
 class X509Parameters {
   /// Optional. Describes custom X.509 extensions.
   final List<X509Extension>? additionalExtensions;
+
   /// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
   final List<String>? aiaOcspServers;
+
   /// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
   final CaOptions? caOptions;
+
   /// Optional. Indicates the intended use for keys that correspond to a certificate.
   final KeyUsage? keyUsage;
+
   /// Optional. Describes the X.509 name constraints extension.
   final NameConstraints? nameConstraints;
+
   /// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
   final List<ObjectId>? policyIds;
 
@@ -40,24 +45,59 @@ class X509Parameters {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalExtensions': ?additionalExtensions == null ? null : pulumi.Input.encodeList<X509Extension, Map<String, dynamic>>(additionalExtensions!, (value) => value.toMap()),
+      'additionalExtensions': ?additionalExtensions == null
+          ? null
+          : pulumi.Input.encodeList<X509Extension, Map<String, dynamic>>(
+              additionalExtensions!,
+              (value) => value.toMap(),
+            ),
       'aiaOcspServers': ?aiaOcspServers,
       'caOptions': ?caOptions == null ? null : caOptions!.toMap(),
       'keyUsage': ?keyUsage == null ? null : keyUsage!.toMap(),
-      'nameConstraints': ?nameConstraints == null ? null : nameConstraints!.toMap(),
-      'policyIds': ?policyIds == null ? null : pulumi.Input.encodeList<ObjectId, Map<String, dynamic>>(policyIds!, (value) => value.toMap()),
+      'nameConstraints': ?nameConstraints == null
+          ? null
+          : nameConstraints!.toMap(),
+      'policyIds': ?policyIds == null
+          ? null
+          : pulumi.Input.encodeList<ObjectId, Map<String, dynamic>>(
+              policyIds!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory X509Parameters.fromMap(Map<String, dynamic> map) {
     return X509Parameters(
-      additionalExtensions: map['additionalExtensions'] == null ? null : pulumi.Input.decodeList<X509Extension>(map['additionalExtensions'], (value) => X509Extension.fromMap((value as Map).cast<String, dynamic>())),
-      aiaOcspServers: map['aiaOcspServers'] == null ? null : (map['aiaOcspServers'] as List).cast<String>(),
-      caOptions: map['caOptions'] == null ? null : CaOptions.fromMap((map['caOptions'] as Map).cast<String, dynamic>()),
-      keyUsage: map['keyUsage'] == null ? null : KeyUsage.fromMap((map['keyUsage'] as Map).cast<String, dynamic>()),
-      nameConstraints: map['nameConstraints'] == null ? null : NameConstraints.fromMap((map['nameConstraints'] as Map).cast<String, dynamic>()),
-      policyIds: map['policyIds'] == null ? null : pulumi.Input.decodeList<ObjectId>(map['policyIds'], (value) => ObjectId.fromMap((value as Map).cast<String, dynamic>())),
+      additionalExtensions: map['additionalExtensions'] == null
+          ? null
+          : pulumi.Input.decodeList<X509Extension>(
+              map['additionalExtensions'],
+              (value) =>
+                  X509Extension.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      aiaOcspServers: map['aiaOcspServers'] == null
+          ? null
+          : (map['aiaOcspServers'] as List).cast<String>(),
+      caOptions: map['caOptions'] == null
+          ? null
+          : CaOptions.fromMap(
+              (map['caOptions'] as Map).cast<String, dynamic>(),
+            ),
+      keyUsage: map['keyUsage'] == null
+          ? null
+          : KeyUsage.fromMap((map['keyUsage'] as Map).cast<String, dynamic>()),
+      nameConstraints: map['nameConstraints'] == null
+          ? null
+          : NameConstraints.fromMap(
+              (map['nameConstraints'] as Map).cast<String, dynamic>(),
+            ),
+      policyIds: map['policyIds'] == null
+          ? null
+          : pulumi.Input.decodeList<ObjectId>(
+              map['policyIds'],
+              (value) =>
+                  ObjectId.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

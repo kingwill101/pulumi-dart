@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MultitenantDistributionOriginOriginShield {
   /// Whether Origin Shield is enabled.
   final bool enabled;
+
   /// AWS Region for Origin Shield. Required when `enabled` is `true`.
   final String? originShieldRegion;
 
@@ -22,11 +22,14 @@ class MultitenantDistributionOriginOriginShield {
     };
   }
 
-  factory MultitenantDistributionOriginOriginShield.fromMap(Map<String, dynamic> map) {
+  factory MultitenantDistributionOriginOriginShield.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MultitenantDistributionOriginOriginShield(
       enabled: map['enabled'] as bool,
-      originShieldRegion: map['originShieldRegion'] == null ? null : map['originShieldRegion'] as String,
+      originShieldRegion: map['originShieldRegion'] == null
+          ? null
+          : map['originShieldRegion'] as String,
     );
   }
 }
-

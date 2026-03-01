@@ -9,20 +9,17 @@ class DiscoveryContaineranalysisV1beta1 {
 
   /// Creates a new [DiscoveryContaineranalysisV1beta1].
   /// [analysisKind] Immutable. The kind of analysis that is handled by this discovery.
-  DiscoveryContaineranalysisV1beta1({
-    required this.analysisKind,
-  });
+  DiscoveryContaineranalysisV1beta1({required this.analysisKind});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'analysisKind': analysisKind.value,
-    };
+    return <String, dynamic>{'analysisKind': analysisKind.value};
   }
 
   factory DiscoveryContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return DiscoveryContaineranalysisV1beta1(
-      analysisKind: DiscoveryAnalysisKindContaineranalysisV1beta1.fromValue(map['analysisKind'] as String),
+      analysisKind: DiscoveryAnalysisKindContaineranalysisV1beta1.fromValue(
+        map['analysisKind'] as String,
+      ),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'node_affinity_operator.dart';
 class NodeAffinity {
   /// Key for NodeAffinity.
   final String? key;
+
   /// Operator for NodeAffinity.
   final NodeAffinityOperator? operator;
+
   /// Values for NodeAffinity.
   final List<String>? values;
 
@@ -15,11 +17,7 @@ class NodeAffinity {
   /// [key] Key for NodeAffinity.
   /// [operator] Operator for NodeAffinity.
   /// [values] Values for NodeAffinity.
-  NodeAffinity({
-    this.key,
-    this.operator,
-    this.values,
-  });
+  NodeAffinity({this.key, this.operator, this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,9 +30,12 @@ class NodeAffinity {
   factory NodeAffinity.fromMap(Map<String, dynamic> map) {
     return NodeAffinity(
       key: map['key'] == null ? null : map['key'] as String,
-      operator: map['operator'] == null ? null : NodeAffinityOperator.fromValue(map['operator'] as String),
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      operator: map['operator'] == null
+          ? null
+          : NodeAffinityOperator.fromValue(map['operator'] as String),
+      values: map['values'] == null
+          ? null
+          : (map['values'] as List).cast<String>(),
     );
   }
 }
-

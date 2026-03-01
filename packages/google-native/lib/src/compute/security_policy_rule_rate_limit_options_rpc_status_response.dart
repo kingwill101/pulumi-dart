@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Simplified google.rpc.Status type (omitting details).
 class SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
   /// The status code, which should be an enum value of google.rpc.Code.
   final int code;
+
   /// A developer-facing error message, which should be in English.
   final String message;
 
@@ -17,17 +17,15 @@ class SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'message': message,
-    };
+    return <String, dynamic>{'code': code, 'message': message};
   }
 
-  factory SecurityPolicyRuleRateLimitOptionsRpcStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRuleRateLimitOptionsRpcStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRuleRateLimitOptionsRpcStatusResponse(
       code: map['code'] as int,
       message: map['message'] as String,
     );
   }
 }
-

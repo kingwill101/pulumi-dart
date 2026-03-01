@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getProject.
 class GetProjectResult {
   final bool autoCreateNetwork;
@@ -8,10 +7,12 @@ class GetProjectResult {
   final String deletionPolicy;
   final Map<String, String> effectiveLabels;
   final String folderId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
   final String name;
+
   /// The numeric identifier of the project.
   final String number;
   final String orgId;
@@ -85,4 +86,3 @@ class GetProjectResult {
     );
   }
 }
-

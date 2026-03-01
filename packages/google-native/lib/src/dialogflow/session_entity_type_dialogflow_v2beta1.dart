@@ -6,11 +6,16 @@ import 'session_entity_type_dialogflow_v2beta1_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class SessionEntityTypeDialogflowV2beta1 extends pulumi.CustomResource {
   /// The collection of entities associated with this session entity type.
-  late final pulumi.Output<List<GoogleCloudDialogflowV2beta1EntityTypeEntityResponse>> entities;
+  late final pulumi.Output<
+    List<GoogleCloudDialogflowV2beta1EntityTypeEntityResponse>
+  >
+  entities;
+
   /// Indicates whether the additional data should override or supplement the custom entity type definition.
   late final pulumi.Output<String> entityOverrideMode;
   late final pulumi.Output<String> environmentId;
   late final pulumi.Output<String> location;
+
   /// The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -26,12 +31,15 @@ class SessionEntityTypeDialogflowV2beta1 extends pulumi.CustomResource {
     SessionEntityTypeDialogflowV2beta1Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:dialogflow/v2beta1:SessionEntityType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.entities = registerOutput<List<GoogleCloudDialogflowV2beta1EntityTypeEntityResponse>>('entities');
+         'google-native:dialogflow/v2beta1:SessionEntityType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.entities =
+        registerOutput<
+          List<GoogleCloudDialogflowV2beta1EntityTypeEntityResponse>
+        >('entities');
     this.entityOverrideMode = registerOutput<String>('entityOverrideMode');
     this.environmentId = registerOutput<String>('environmentId');
     this.location = registerOutput<String>('location');

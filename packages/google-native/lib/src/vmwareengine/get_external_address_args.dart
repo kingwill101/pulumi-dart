@@ -22,11 +22,10 @@ class GetExternalAddressArgs {
     required String location,
     required String privateCloudId,
     String? project,
-  }) :
-      externalAddressId = pulumi.Input.asInput<String>(externalAddressId),
-      location = pulumi.Input.asInput<String>(location),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : externalAddressId = pulumi.Input.asInput<String>(externalAddressId),
+       location = pulumi.Input.asInput<String>(location),
+       privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetExternalAddressArgs {
     );
   }
 }
-

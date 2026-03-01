@@ -9,20 +9,29 @@ class PlanWorkflowStepParallelConfig {
 
   /// Creates a new [PlanWorkflowStepParallelConfig].
   /// [steps] List of steps to execute in parallel. Uses the same schema as Step but without `parallel_config` to prevent infinite nesting.
-  PlanWorkflowStepParallelConfig({
-    this.steps,
-  });
+  PlanWorkflowStepParallelConfig({this.steps});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'steps': ?steps == null ? null : pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStep, Map<String, dynamic>>(steps!, (value) => value.toMap()),
+      'steps': ?steps == null
+          ? null
+          : pulumi.Input.encodeList<
+              PlanWorkflowStepParallelConfigStep,
+              Map<String, dynamic>
+            >(steps!, (value) => value.toMap()),
     };
   }
 
   factory PlanWorkflowStepParallelConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepParallelConfig(
-      steps: map['steps'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStep>(map['steps'], (value) => PlanWorkflowStepParallelConfigStep.fromMap((value as Map).cast<String, dynamic>())),
+      steps: map['steps'] == null
+          ? null
+          : pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStep>(
+              map['steps'],
+              (value) => PlanWorkflowStepParallelConfigStep.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

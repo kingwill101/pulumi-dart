@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
   /// The Cloud Storage bucket name.
   final String bucket;
+
   /// The bigquery connection. Format: `{project}.{location}.{name}`
   final String connectionName;
+
   /// The file format.
   final String fileFormat;
+
   /// The root path inside the Cloud Storage bucket.
   final String? rootPath;
+
   /// The table format.
   final String tableFormat;
 
@@ -37,7 +40,9 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
     };
   }
 
-  factory StreamDestinationConfigBigqueryDestinationConfigBlmtConfig.fromMap(Map<String, dynamic> map) {
+  factory StreamDestinationConfigBigqueryDestinationConfigBlmtConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamDestinationConfigBigqueryDestinationConfigBlmtConfig(
       bucket: map['bucket'] as String,
       connectionName: map['connectionName'] as String,
@@ -47,4 +52,3 @@ class StreamDestinationConfigBigqueryDestinationConfigBlmtConfig {
     );
   }
 }
-

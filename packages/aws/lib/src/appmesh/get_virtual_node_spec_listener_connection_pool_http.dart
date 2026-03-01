@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetVirtualNodeSpecListenerConnectionPoolHttp {
   final int maxConnections;
   final int maxPendingRequests;
@@ -20,11 +19,12 @@ class GetVirtualNodeSpecListenerConnectionPoolHttp {
     };
   }
 
-  factory GetVirtualNodeSpecListenerConnectionPoolHttp.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerConnectionPoolHttp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecListenerConnectionPoolHttp(
       maxConnections: map['maxConnections'] as int,
       maxPendingRequests: map['maxPendingRequests'] as int,
     );
   }
 }
-

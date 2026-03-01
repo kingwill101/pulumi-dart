@@ -10,20 +10,29 @@ class Metadata {
 
   /// Creates a new [Metadata].
   /// [items] Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-  Metadata({
-    this.items,
-  });
+  Metadata({this.items});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': ?items == null ? null : pulumi.Input.encodeList<MetadataItemsItem, Map<String, dynamic>>(items!, (value) => value.toMap()),
+      'items': ?items == null
+          ? null
+          : pulumi.Input.encodeList<MetadataItemsItem, Map<String, dynamic>>(
+              items!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory Metadata.fromMap(Map<String, dynamic> map) {
     return Metadata(
-      items: map['items'] == null ? null : pulumi.Input.decodeList<MetadataItemsItem>(map['items'], (value) => MetadataItemsItem.fromMap((value as Map).cast<String, dynamic>())),
+      items: map['items'] == null
+          ? null
+          : pulumi.Input.decodeList<MetadataItemsItem>(
+              map['items'],
+              (value) => MetadataItemsItem.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

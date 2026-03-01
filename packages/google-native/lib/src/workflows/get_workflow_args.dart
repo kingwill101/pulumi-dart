@@ -22,11 +22,10 @@ class GetWorkflowArgs {
     String? project,
     String? revisionId,
     required String workflowId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      revisionId = pulumi.Input.asOptionalInput<String>(revisionId),
-      workflowId = pulumi.Input.asInput<String>(workflowId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       revisionId = pulumi.Input.asOptionalInput<String>(revisionId),
+       workflowId = pulumi.Input.asInput<String>(workflowId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +40,10 @@ class GetWorkflowArgs {
     return GetWorkflowArgs(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      revisionId: map['revisionId'] == null ? null : map['revisionId'] as String,
+      revisionId: map['revisionId'] == null
+          ? null
+          : map['revisionId'] as String,
       workflowId: map['workflowId'] as String,
     );
   }
 }
-

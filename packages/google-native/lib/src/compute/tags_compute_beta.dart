@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A set of instance tags.
 class TagsComputeBeta {
   /// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
@@ -8,20 +7,17 @@ class TagsComputeBeta {
 
   /// Creates a new [TagsComputeBeta].
   /// [items] An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
-  TagsComputeBeta({
-    this.items,
-  });
+  TagsComputeBeta({this.items});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'items': ?items,
-    };
+    return <String, dynamic>{'items': ?items};
   }
 
   factory TagsComputeBeta.fromMap(Map<String, dynamic> map) {
     return TagsComputeBeta(
-      items: map['items'] == null ? null : (map['items'] as List).cast<String>(),
+      items: map['items'] == null
+          ? null
+          : (map['items'] as List).cast<String>(),
     );
   }
 }
-

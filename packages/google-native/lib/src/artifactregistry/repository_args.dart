@@ -15,30 +15,42 @@ import 'virtual_repository_config.dart';
 class RepositoryArgs {
   /// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be under 128 characters in length.
   final pulumi.Input<Map<String, String>>? cleanupPolicies;
+
   /// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
   final pulumi.Input<bool>? cleanupPolicyDryRun;
+
   /// The user-provided description of the repository.
   final pulumi.Input<String>? description;
+
   /// Docker repository config contains repository level configuration for the repositories of docker type.
   final pulumi.Input<DockerRepositoryConfig>? dockerConfig;
+
   /// Optional. The format of packages that are stored in the repository.
   final pulumi.Input<RepositoryFormat>? format;
+
   /// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
   final pulumi.Input<String>? kmsKeyName;
+
   /// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Maven repository config contains repository level configuration for the repositories of maven type.
   final pulumi.Input<MavenRepositoryConfig>? mavenConfig;
+
   /// Optional. The mode of the repository.
   final pulumi.Input<RepositoryMode>? mode;
+
   /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Configuration specific for a Remote Repository.
   final pulumi.Input<RemoteRepositoryConfig>? remoteRepositoryConfig;
+
   /// Required. The repository id to use for this repository.
   final pulumi.Input<String> repositoryId;
+
   /// Configuration specific for a Virtual Repository.
   final pulumi.Input<VirtualRepositoryConfig>? virtualRepositoryConfig;
 
@@ -74,61 +86,125 @@ class RepositoryArgs {
     RemoteRepositoryConfig? remoteRepositoryConfig,
     required String repositoryId,
     VirtualRepositoryConfig? virtualRepositoryConfig,
-  }) :
-      cleanupPolicies = pulumi.Input.asOptionalInput<Map<String, String>>(cleanupPolicies),
-      cleanupPolicyDryRun = pulumi.Input.asOptionalInput<bool>(cleanupPolicyDryRun),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dockerConfig = pulumi.Input.asOptionalInput<DockerRepositoryConfig>(dockerConfig),
-      format = pulumi.Input.asOptionalInput<RepositoryFormat>(format),
-      kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      mavenConfig = pulumi.Input.asOptionalInput<MavenRepositoryConfig>(mavenConfig),
-      mode = pulumi.Input.asOptionalInput<RepositoryMode>(mode),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      remoteRepositoryConfig = pulumi.Input.asOptionalInput<RemoteRepositoryConfig>(remoteRepositoryConfig),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      virtualRepositoryConfig = pulumi.Input.asOptionalInput<VirtualRepositoryConfig>(virtualRepositoryConfig);
+  }) : cleanupPolicies = pulumi.Input.asOptionalInput<Map<String, String>>(
+         cleanupPolicies,
+       ),
+       cleanupPolicyDryRun = pulumi.Input.asOptionalInput<bool>(
+         cleanupPolicyDryRun,
+       ),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       dockerConfig = pulumi.Input.asOptionalInput<DockerRepositoryConfig>(
+         dockerConfig,
+       ),
+       format = pulumi.Input.asOptionalInput<RepositoryFormat>(format),
+       kmsKeyName = pulumi.Input.asOptionalInput<String>(kmsKeyName),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       mavenConfig = pulumi.Input.asOptionalInput<MavenRepositoryConfig>(
+         mavenConfig,
+       ),
+       mode = pulumi.Input.asOptionalInput<RepositoryMode>(mode),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       remoteRepositoryConfig =
+           pulumi.Input.asOptionalInput<RemoteRepositoryConfig>(
+             remoteRepositoryConfig,
+           ),
+       repositoryId = pulumi.Input.asInput<String>(repositoryId),
+       virtualRepositoryConfig =
+           pulumi.Input.asOptionalInput<VirtualRepositoryConfig>(
+             virtualRepositoryConfig,
+           );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cleanupPolicies': ?cleanupPolicies,
       'cleanupPolicyDryRun': ?cleanupPolicyDryRun,
       'description': ?description,
-      'dockerConfig': ?pulumi.Input.mapOptionalInputValue<DockerRepositoryConfig, Map<String, dynamic>>(dockerConfig, (value) => value.toMap()),
-      'format': ?pulumi.Input.mapOptionalInputValue<RepositoryFormat, String>(format, (value) => value.value),
+      'dockerConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DockerRepositoryConfig,
+            Map<String, dynamic>
+          >(dockerConfig, (value) => value.toMap()),
+      'format': ?pulumi.Input.mapOptionalInputValue<RepositoryFormat, String>(
+        format,
+        (value) => value.value,
+      ),
       'kmsKeyName': ?kmsKeyName,
       'labels': ?labels,
       'location': ?location,
-      'mavenConfig': ?pulumi.Input.mapOptionalInputValue<MavenRepositoryConfig, Map<String, dynamic>>(mavenConfig, (value) => value.toMap()),
-      'mode': ?pulumi.Input.mapOptionalInputValue<RepositoryMode, String>(mode, (value) => value.value),
+      'mavenConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            MavenRepositoryConfig,
+            Map<String, dynamic>
+          >(mavenConfig, (value) => value.toMap()),
+      'mode': ?pulumi.Input.mapOptionalInputValue<RepositoryMode, String>(
+        mode,
+        (value) => value.value,
+      ),
       'name': ?name,
       'project': ?project,
-      'remoteRepositoryConfig': ?pulumi.Input.mapOptionalInputValue<RemoteRepositoryConfig, Map<String, dynamic>>(remoteRepositoryConfig, (value) => value.toMap()),
+      'remoteRepositoryConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            RemoteRepositoryConfig,
+            Map<String, dynamic>
+          >(remoteRepositoryConfig, (value) => value.toMap()),
       'repositoryId': repositoryId,
-      'virtualRepositoryConfig': ?pulumi.Input.mapOptionalInputValue<VirtualRepositoryConfig, Map<String, dynamic>>(virtualRepositoryConfig, (value) => value.toMap()),
+      'virtualRepositoryConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            VirtualRepositoryConfig,
+            Map<String, dynamic>
+          >(virtualRepositoryConfig, (value) => value.toMap()),
     };
   }
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      cleanupPolicies: map['cleanupPolicies'] == null ? null : (map['cleanupPolicies'] as Map).cast<String, String>(),
-      cleanupPolicyDryRun: map['cleanupPolicyDryRun'] == null ? null : map['cleanupPolicyDryRun'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
-      dockerConfig: map['dockerConfig'] == null ? null : DockerRepositoryConfig.fromMap((map['dockerConfig'] as Map).cast<String, dynamic>()),
-      format: map['format'] == null ? null : RepositoryFormat.fromValue(map['format'] as String),
-      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      cleanupPolicies: map['cleanupPolicies'] == null
+          ? null
+          : (map['cleanupPolicies'] as Map).cast<String, String>(),
+      cleanupPolicyDryRun: map['cleanupPolicyDryRun'] == null
+          ? null
+          : map['cleanupPolicyDryRun'] as bool,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      dockerConfig: map['dockerConfig'] == null
+          ? null
+          : DockerRepositoryConfig.fromMap(
+              (map['dockerConfig'] as Map).cast<String, dynamic>(),
+            ),
+      format: map['format'] == null
+          ? null
+          : RepositoryFormat.fromValue(map['format'] as String),
+      kmsKeyName: map['kmsKeyName'] == null
+          ? null
+          : map['kmsKeyName'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
-      mavenConfig: map['mavenConfig'] == null ? null : MavenRepositoryConfig.fromMap((map['mavenConfig'] as Map).cast<String, dynamic>()),
-      mode: map['mode'] == null ? null : RepositoryMode.fromValue(map['mode'] as String),
+      mavenConfig: map['mavenConfig'] == null
+          ? null
+          : MavenRepositoryConfig.fromMap(
+              (map['mavenConfig'] as Map).cast<String, dynamic>(),
+            ),
+      mode: map['mode'] == null
+          ? null
+          : RepositoryMode.fromValue(map['mode'] as String),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      remoteRepositoryConfig: map['remoteRepositoryConfig'] == null ? null : RemoteRepositoryConfig.fromMap((map['remoteRepositoryConfig'] as Map).cast<String, dynamic>()),
+      remoteRepositoryConfig: map['remoteRepositoryConfig'] == null
+          ? null
+          : RemoteRepositoryConfig.fromMap(
+              (map['remoteRepositoryConfig'] as Map).cast<String, dynamic>(),
+            ),
       repositoryId: map['repositoryId'] as String,
-      virtualRepositoryConfig: map['virtualRepositoryConfig'] == null ? null : VirtualRepositoryConfig.fromMap((map['virtualRepositoryConfig'] as Map).cast<String, dynamic>()),
+      virtualRepositoryConfig: map['virtualRepositoryConfig'] == null
+          ? null
+          : VirtualRepositoryConfig.fromMap(
+              (map['virtualRepositoryConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

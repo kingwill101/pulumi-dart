@@ -6,8 +6,10 @@ import 'fleet_observability_routing_config_response_gkehub_v1alpha.dart';
 class FleetObservabilityLoggingConfigResponseGkehubV1alpha {
   /// Specified if applying the default routing config to logs not specified in other configs.
   final FleetObservabilityRoutingConfigResponseGkehubV1alpha defaultConfig;
+
   /// Specified if applying the routing config to all logs for all fleet scopes.
-  final FleetObservabilityRoutingConfigResponseGkehubV1alpha fleetScopeLogsConfig;
+  final FleetObservabilityRoutingConfigResponseGkehubV1alpha
+  fleetScopeLogsConfig;
 
   /// Creates a new [FleetObservabilityLoggingConfigResponseGkehubV1alpha].
   /// [defaultConfig] Specified if applying the default routing config to logs not specified in other configs.
@@ -24,11 +26,18 @@ class FleetObservabilityLoggingConfigResponseGkehubV1alpha {
     };
   }
 
-  factory FleetObservabilityLoggingConfigResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityLoggingConfigResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityLoggingConfigResponseGkehubV1alpha(
-      defaultConfig: FleetObservabilityRoutingConfigResponseGkehubV1alpha.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>()),
-      fleetScopeLogsConfig: FleetObservabilityRoutingConfigResponseGkehubV1alpha.fromMap((map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>()),
+      defaultConfig:
+          FleetObservabilityRoutingConfigResponseGkehubV1alpha.fromMap(
+            (map['defaultConfig'] as Map).cast<String, dynamic>(),
+          ),
+      fleetScopeLogsConfig:
+          FleetObservabilityRoutingConfigResponseGkehubV1alpha.fromMap(
+            (map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

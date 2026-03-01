@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for the Google Plugin Auth flow.
 class IdentityServiceGoogleConfigResponseGkehubV1beta {
   /// Disable automatic configuration of Google Plugin on supported platforms.
@@ -8,20 +7,17 @@ class IdentityServiceGoogleConfigResponseGkehubV1beta {
 
   /// Creates a new [IdentityServiceGoogleConfigResponseGkehubV1beta].
   /// [disable] Disable automatic configuration of Google Plugin on supported platforms.
-  IdentityServiceGoogleConfigResponseGkehubV1beta({
-    required this.disable,
-  });
+  IdentityServiceGoogleConfigResponseGkehubV1beta({required this.disable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disable': disable,
-    };
+    return <String, dynamic>{'disable': disable};
   }
 
-  factory IdentityServiceGoogleConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory IdentityServiceGoogleConfigResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityServiceGoogleConfigResponseGkehubV1beta(
       disable: map['disable'] as bool,
     );
   }
 }
-

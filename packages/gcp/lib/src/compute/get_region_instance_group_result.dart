@@ -7,13 +7,16 @@ import 'get_region_instance_group_instance.dart';
 class GetRegionInstanceGroupResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// List of instances in the group, as a list of resources, each containing:
   final List<GetRegionInstanceGroupInstance> instances;
+
   /// String port name
   final String name;
   final String project;
   final String region;
   final String selfLink;
+
   /// The number of instances in the group.
   final int size;
 
@@ -38,7 +41,11 @@ class GetRegionInstanceGroupResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'instances': pulumi.Input.encodeList<GetRegionInstanceGroupInstance, Map<String, dynamic>>(instances, (value) => value.toMap()),
+      'instances':
+          pulumi.Input.encodeList<
+            GetRegionInstanceGroupInstance,
+            Map<String, dynamic>
+          >(instances, (value) => value.toMap()),
       'name': name,
       'project': project,
       'region': region,
@@ -50,7 +57,12 @@ class GetRegionInstanceGroupResult {
   factory GetRegionInstanceGroupResult.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupResult(
       id: map['id'] as String,
-      instances: pulumi.Input.decodeList<GetRegionInstanceGroupInstance>(map['instances'], (value) => GetRegionInstanceGroupInstance.fromMap((value as Map).cast<String, dynamic>())),
+      instances: pulumi.Input.decodeList<GetRegionInstanceGroupInstance>(
+        map['instances'],
+        (value) => GetRegionInstanceGroupInstance.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       name: map['name'] as String,
       project: map['project'] as String,
       region: map['region'] as String,
@@ -59,4 +71,3 @@ class GetRegionInstanceGroupResult {
     );
   }
 }
-

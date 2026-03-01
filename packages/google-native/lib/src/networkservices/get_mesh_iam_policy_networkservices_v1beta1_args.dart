@@ -22,11 +22,12 @@ class GetMeshIamPolicyNetworkservicesV1beta1Args {
     required String meshId,
     int? optionsRequestedPolicyVersion,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      meshId = pulumi.Input.asInput<String>(meshId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       meshId = pulumi.Input.asInput<String>(meshId),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,13 +38,17 @@ class GetMeshIamPolicyNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetMeshIamPolicyNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetMeshIamPolicyNetworkservicesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMeshIamPolicyNetworkservicesV1beta1Args(
       location: map['location'] as String,
       meshId: map['meshId'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

@@ -1,15 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TableReplicationRuleDestination {
   /// ARN of destination table bucket to replicate source tables to.
   final String destinationTableBucketArn;
 
   /// Creates a new [TableReplicationRuleDestination].
   /// [destinationTableBucketArn] ARN of destination table bucket to replicate source tables to.
-  TableReplicationRuleDestination({
-    required this.destinationTableBucketArn,
-  });
+  TableReplicationRuleDestination({required this.destinationTableBucketArn});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,4 +20,3 @@ class TableReplicationRuleDestination {
     );
   }
 }
-

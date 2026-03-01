@@ -102,14 +102,19 @@ import 'container_args.dart';
 class Container extends pulumi.CustomResource {
   /// The ARN of the container.
   late final pulumi.Output<String> arn;
+
   /// The DNS endpoint of the container.
   late final pulumi.Output<String> endpoint;
+
   /// The name of the container. Must contain alphanumeric characters or underscores.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -122,11 +127,11 @@ class Container extends pulumi.CustomResource {
     ContainerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:mediastore/container:Container',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:mediastore/container:Container',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.endpoint = registerOutput<String>('endpoint');
     this.name = registerOutput<String>('name');

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VirtualMfaDeviceArgs {
   /// Path for the virtual MFA device.
   final pulumi.Input<String>? path;
+
   /// Map of resource tags for the virtual mfa device. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.
   final pulumi.Input<String> virtualMfaDeviceName;
 
@@ -22,10 +24,11 @@ class VirtualMfaDeviceArgs {
     String? path,
     Map<String, String>? tags,
     required String virtualMfaDeviceName,
-  }) :
-      path = pulumi.Input.asOptionalInput<String>(path),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      virtualMfaDeviceName = pulumi.Input.asInput<String>(virtualMfaDeviceName);
+  }) : path = pulumi.Input.asOptionalInput<String>(path),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       virtualMfaDeviceName = pulumi.Input.asInput<String>(
+         virtualMfaDeviceName,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +41,10 @@ class VirtualMfaDeviceArgs {
   factory VirtualMfaDeviceArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMfaDeviceArgs(
       path: map['path'] == null ? null : map['path'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
       virtualMfaDeviceName: map['virtualMfaDeviceName'] as String,
     );
   }
 }
-

@@ -7,6 +7,7 @@ class MulticloudDataTransferConfigService {
   /// The name of the service, like "big-query" or "cloud-storage".
   /// This corresponds to the map key in the API.
   final String serviceName;
+
   /// (Output)
   /// The state and activation time details for the service.
   /// Structure is documented below.
@@ -18,23 +19,33 @@ class MulticloudDataTransferConfigService {
   /// Creates a new [MulticloudDataTransferConfigService].
   /// [serviceName] The name of the service, like "big-query" or "cloud-storage".
   /// [states] (Output)
-  MulticloudDataTransferConfigService({
-    required this.serviceName,
-    this.states,
-  });
+  MulticloudDataTransferConfigService({required this.serviceName, this.states});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'serviceName': serviceName,
-      'states': ?states == null ? null : pulumi.Input.encodeList<MulticloudDataTransferConfigServiceState, Map<String, dynamic>>(states!, (value) => value.toMap()),
+      'states': ?states == null
+          ? null
+          : pulumi.Input.encodeList<
+              MulticloudDataTransferConfigServiceState,
+              Map<String, dynamic>
+            >(states!, (value) => value.toMap()),
     };
   }
 
-  factory MulticloudDataTransferConfigService.fromMap(Map<String, dynamic> map) {
+  factory MulticloudDataTransferConfigService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MulticloudDataTransferConfigService(
       serviceName: map['serviceName'] as String,
-      states: map['states'] == null ? null : pulumi.Input.decodeList<MulticloudDataTransferConfigServiceState>(map['states'], (value) => MulticloudDataTransferConfigServiceState.fromMap((value as Map).cast<String, dynamic>())),
+      states: map['states'] == null
+          ? null
+          : pulumi.Input.decodeList<MulticloudDataTransferConfigServiceState>(
+              map['states'],
+              (value) => MulticloudDataTransferConfigServiceState.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

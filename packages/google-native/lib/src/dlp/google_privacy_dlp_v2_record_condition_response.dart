@@ -9,20 +9,19 @@ class GooglePrivacyDlpV2RecordConditionResponse {
 
   /// Creates a new [GooglePrivacyDlpV2RecordConditionResponse].
   /// [expressions] An expression.
-  GooglePrivacyDlpV2RecordConditionResponse({
-    required this.expressions,
-  });
+  GooglePrivacyDlpV2RecordConditionResponse({required this.expressions});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expressions': expressions.toMap(),
-    };
+    return <String, dynamic>{'expressions': expressions.toMap()};
   }
 
-  factory GooglePrivacyDlpV2RecordConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2RecordConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2RecordConditionResponse(
-      expressions: GooglePrivacyDlpV2ExpressionsResponse.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
+      expressions: GooglePrivacyDlpV2ExpressionsResponse.fromMap(
+        (map['expressions'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -9,9 +9,7 @@ class InstanceConfig {
 
   /// Creates a new [InstanceConfig].
   /// [instanceSize] The instance size of this the instance configuration.
-  InstanceConfig({
-    this.instanceSize,
-  });
+  InstanceConfig({this.instanceSize});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class InstanceConfig {
 
   factory InstanceConfig.fromMap(Map<String, dynamic> map) {
     return InstanceConfig(
-      instanceSize: map['instanceSize'] == null ? null : InstanceConfigInstanceSize.fromValue(map['instanceSize'] as String),
+      instanceSize: map['instanceSize'] == null
+          ? null
+          : InstanceConfigInstanceSize.fromValue(map['instanceSize'] as String),
     );
   }
 }
-

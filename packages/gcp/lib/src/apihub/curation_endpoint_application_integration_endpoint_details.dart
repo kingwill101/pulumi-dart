@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CurationEndpointApplicationIntegrationEndpointDetails {
   /// The API trigger ID of the Application Integration workflow.
   final String triggerId;
+
   /// The endpoint URI should be a valid REST URI for triggering an Application
   /// Integration.
   /// Format:
@@ -21,17 +21,15 @@ class CurationEndpointApplicationIntegrationEndpointDetails {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'triggerId': triggerId,
-      'uri': uri,
-    };
+    return <String, dynamic>{'triggerId': triggerId, 'uri': uri};
   }
 
-  factory CurationEndpointApplicationIntegrationEndpointDetails.fromMap(Map<String, dynamic> map) {
+  factory CurationEndpointApplicationIntegrationEndpointDetails.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CurationEndpointApplicationIntegrationEndpointDetails(
       triggerId: map['triggerId'] as String,
       uri: map['uri'] as String,
     );
   }
 }
-

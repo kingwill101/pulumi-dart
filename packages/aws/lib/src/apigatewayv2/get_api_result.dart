@@ -8,34 +8,46 @@ class GetApiResult {
   /// URI of the API, of the form `https://{api-id}.execute-api.{region}.amazonaws.com` for HTTP APIs and `wss://{api-id}.execute-api.{region}.amazonaws.com` for WebSocket APIs.
   final String apiEndpoint;
   final String apiId;
+
   /// An [API key selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions).
   /// Applicable for WebSocket APIs.
   final String apiKeySelectionExpression;
+
   /// ARN of the API.
   final String arn;
+
   /// Cross-origin resource sharing (CORS) [configuration](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-cors.html).
   /// Applicable for HTTP APIs.
   final List<GetApiCorsConfiguration> corsConfigurations;
+
   /// Description of the API.
   final String description;
+
   /// Whether clients can invoke the API by using the default `execute-api` endpoint.
   final bool disableExecuteApiEndpoint;
+
   /// ARN prefix to be used in an `aws.lambda.Permission`'s `source_arn` attribute
   /// or in an `aws.iam.Policy` to authorize access to the [`@connections` API](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-how-to-call-websocket-api-connections.html).
   /// See the [Amazon API Gateway Developer Guide](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-control-access-iam.html) for details.
   final String executionArn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ipAddressType;
+
   /// Name of the API.
   final String name;
+
   /// API protocol.
   final String protocolType;
   final String region;
+
   /// The [route selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-route-selection-expressions) for the API.
   final String routeSelectionExpression;
+
   /// Map of resource tags.
   final Map<String, String> tags;
+
   /// Version identifier for the API.
   final String version;
 
@@ -81,7 +93,11 @@ class GetApiResult {
       'apiId': apiId,
       'apiKeySelectionExpression': apiKeySelectionExpression,
       'arn': arn,
-      'corsConfigurations': pulumi.Input.encodeList<GetApiCorsConfiguration, Map<String, dynamic>>(corsConfigurations, (value) => value.toMap()),
+      'corsConfigurations':
+          pulumi.Input.encodeList<
+            GetApiCorsConfiguration,
+            Map<String, dynamic>
+          >(corsConfigurations, (value) => value.toMap()),
       'description': description,
       'disableExecuteApiEndpoint': disableExecuteApiEndpoint,
       'executionArn': executionArn,
@@ -102,7 +118,12 @@ class GetApiResult {
       apiId: map['apiId'] as String,
       apiKeySelectionExpression: map['apiKeySelectionExpression'] as String,
       arn: map['arn'] as String,
-      corsConfigurations: pulumi.Input.decodeList<GetApiCorsConfiguration>(map['corsConfigurations'], (value) => GetApiCorsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      corsConfigurations: pulumi.Input.decodeList<GetApiCorsConfiguration>(
+        map['corsConfigurations'],
+        (value) => GetApiCorsConfiguration.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       description: map['description'] as String,
       disableExecuteApiEndpoint: map['disableExecuteApiEndpoint'] as bool,
       executionArn: map['executionArn'] as String,
@@ -117,4 +138,3 @@ class GetApiResult {
     );
   }
 }
-

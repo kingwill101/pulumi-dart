@@ -6,8 +6,10 @@ import 'kmsenv_map_response.dart';
 class EnvironmentResponse {
   /// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
   final KMSEnvMapResponse encryptedVariables;
+
   /// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
   final Map<String, String> secretVariables;
+
   /// A map of environment variable names to values.
   final Map<String, String> variables;
 
@@ -31,10 +33,11 @@ class EnvironmentResponse {
 
   factory EnvironmentResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentResponse(
-      encryptedVariables: KMSEnvMapResponse.fromMap((map['encryptedVariables'] as Map).cast<String, dynamic>()),
+      encryptedVariables: KMSEnvMapResponse.fromMap(
+        (map['encryptedVariables'] as Map).cast<String, dynamic>(),
+      ),
       secretVariables: (map['secretVariables'] as Map).cast<String, String>(),
       variables: (map['variables'] as Map).cast<String, String>(),
     );
   }
 }
-

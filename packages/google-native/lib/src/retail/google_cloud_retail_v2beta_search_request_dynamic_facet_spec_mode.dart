@@ -7,13 +7,17 @@ enum GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode {
   const GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode(this.value);
   final String value;
 
-  static GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode fromValue(String value) {
-    for (final item in GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode.values) {
+  static GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode value: $value',
+    );
   }
 }
-

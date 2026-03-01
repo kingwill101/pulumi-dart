@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetViewsBillingView {
   /// ARN of the billing view.
   final String arn;
   final String billingViewType;
+
   /// Description of the billing view.
   final String description;
+
   /// Name of the billing view.
   final String name;
+
   /// Account ID of the billing view owner.
   final String ownerAccountId;
 
@@ -46,4 +48,3 @@ class GetViewsBillingView {
     );
   }
 }
-

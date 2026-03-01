@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// IntraNodeVisibilityConfig contains the desired config of the intra-node visibility on this cluster.
 class IntraNodeVisibilityConfig {
   /// Enables intra node visibility for this cluster.
@@ -8,14 +7,10 @@ class IntraNodeVisibilityConfig {
 
   /// Creates a new [IntraNodeVisibilityConfig].
   /// [enabled] Enables intra node visibility for this cluster.
-  IntraNodeVisibilityConfig({
-    this.enabled,
-  });
+  IntraNodeVisibilityConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory IntraNodeVisibilityConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class IntraNodeVisibilityConfig {
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The throughput capacity configuration for each partition.
 class CapacityResponse {
   /// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
   final int publishMibPerSec;
+
   /// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32.
   final int subscribeMibPerSec;
 
@@ -30,4 +30,3 @@ class CapacityResponse {
     );
   }
 }
-

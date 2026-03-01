@@ -9,20 +9,19 @@ class GooglePrivacyDlpV2SaveFindingsResponse {
 
   /// Creates a new [GooglePrivacyDlpV2SaveFindingsResponse].
   /// [outputConfig] Location to store findings outside of DLP.
-  GooglePrivacyDlpV2SaveFindingsResponse({
-    required this.outputConfig,
-  });
+  GooglePrivacyDlpV2SaveFindingsResponse({required this.outputConfig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'outputConfig': outputConfig.toMap(),
-    };
+    return <String, dynamic>{'outputConfig': outputConfig.toMap()};
   }
 
-  factory GooglePrivacyDlpV2SaveFindingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2SaveFindingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2SaveFindingsResponse(
-      outputConfig: GooglePrivacyDlpV2OutputStorageConfigResponse.fromMap((map['outputConfig'] as Map).cast<String, dynamic>()),
+      outputConfig: GooglePrivacyDlpV2OutputStorageConfigResponse.fromMap(
+        (map['outputConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

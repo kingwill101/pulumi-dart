@@ -6,8 +6,10 @@ import 'time_of_day_response.dart';
 class WeeklyMaintenanceWindowResponse {
   /// Allows to define schedule that runs specified day of the week.
   final String day;
+
   /// Duration of the time window.
   final String duration;
+
   /// Start time of the window in UTC.
   final TimeOfDayResponse startTime;
 
@@ -33,8 +35,9 @@ class WeeklyMaintenanceWindowResponse {
     return WeeklyMaintenanceWindowResponse(
       day: map['day'] as String,
       duration: map['duration'] as String,
-      startTime: TimeOfDayResponse.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      startTime: TimeOfDayResponse.fromMap(
+        (map['startTime'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

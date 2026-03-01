@@ -9,20 +9,23 @@ class RegistryCredential {
 
   /// Creates a new [RegistryCredential].
   /// [publicKeyCertificate] A public key certificate used to verify the device credentials.
-  RegistryCredential({
-    this.publicKeyCertificate,
-  });
+  RegistryCredential({this.publicKeyCertificate});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicKeyCertificate': ?publicKeyCertificate == null ? null : publicKeyCertificate!.toMap(),
+      'publicKeyCertificate': ?publicKeyCertificate == null
+          ? null
+          : publicKeyCertificate!.toMap(),
     };
   }
 
   factory RegistryCredential.fromMap(Map<String, dynamic> map) {
     return RegistryCredential(
-      publicKeyCertificate: map['publicKeyCertificate'] == null ? null : PublicKeyCertificate.fromMap((map['publicKeyCertificate'] as Map).cast<String, dynamic>()),
+      publicKeyCertificate: map['publicKeyCertificate'] == null
+          ? null
+          : PublicKeyCertificate.fromMap(
+              (map['publicKeyCertificate'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

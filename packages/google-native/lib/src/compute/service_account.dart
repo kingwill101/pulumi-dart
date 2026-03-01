@@ -1,33 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A service account.
 class ServiceAccount {
   /// Email address of the service account.
   final String? email;
+
   /// The list of scopes to be made available for this service account.
   final List<String>? scopes;
 
   /// Creates a new [ServiceAccount].
   /// [email] Email address of the service account.
   /// [scopes] The list of scopes to be made available for this service account.
-  ServiceAccount({
-    this.email,
-    this.scopes,
-  });
+  ServiceAccount({this.email, this.scopes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'email': ?email,
-      'scopes': ?scopes,
-    };
+    return <String, dynamic>{'email': ?email, 'scopes': ?scopes};
   }
 
   factory ServiceAccount.fromMap(Map<String, dynamic> map) {
     return ServiceAccount(
       email: map['email'] == null ? null : map['email'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      scopes: map['scopes'] == null
+          ? null
+          : (map['scopes'] as List).cast<String>(),
     );
   }
 }
-

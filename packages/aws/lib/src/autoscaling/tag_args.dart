@@ -10,8 +10,10 @@ import 'tag_tag.dart';
 class TagArgs {
   /// Name of the Autoscaling Group to apply the tag to.
   final pulumi.Input<String> autoscalingGroupName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Tag to create. The `tag` block is documented below.
   final pulumi.Input<TagTag> tag;
 
@@ -23,16 +25,20 @@ class TagArgs {
     required String autoscalingGroupName,
     String? region,
     required TagTag tag,
-  }) :
-      autoscalingGroupName = pulumi.Input.asInput<String>(autoscalingGroupName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tag = pulumi.Input.asInput<TagTag>(tag);
+  }) : autoscalingGroupName = pulumi.Input.asInput<String>(
+         autoscalingGroupName,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tag = pulumi.Input.asInput<TagTag>(tag);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoscalingGroupName': autoscalingGroupName,
       'region': ?region,
-      'tag': pulumi.Input.mapInputValue<TagTag, Map<String, dynamic>>(tag, (value) => value.toMap()),
+      'tag': pulumi.Input.mapInputValue<TagTag, Map<String, dynamic>>(
+        tag,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -44,4 +50,3 @@ class TagArgs {
     );
   }
 }
-

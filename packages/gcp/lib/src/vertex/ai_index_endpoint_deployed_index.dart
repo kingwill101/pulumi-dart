@@ -1220,44 +1220,62 @@ import 'ai_index_endpoint_deployed_index_private_endpoint.dart';
 class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
   /// A description of resources that the DeployedIndex uses, which to large degree are decided by Vertex AI, and optionally allows only a modest additional configuration.
   /// Structure is documented below.
-  late final pulumi.Output<AiIndexEndpointDeployedIndexAutomaticResources> automaticResources;
+  late final pulumi.Output<AiIndexEndpointDeployedIndexAutomaticResources>
+  automaticResources;
+
   /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+
   /// A description of resources that are dedicated to the DeployedIndex, and that need a higher degree of manual configuration. The field minReplicaCount must be set to a value strictly greater than 0, or else validation will fail. We don't provide SLA when minReplicaCount=1. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
   /// Available machine types for SMALL shard: e2-standard-2 and all machine types available for MEDIUM and LARGE shard.
   /// Available machine types for MEDIUM shard: e2-standard-16 and all machine types available for LARGE shard.
   /// Available machine types for LARGE shard: e2-highmem-16, n2d-standard-32.
   /// n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
   /// Structure is documented below.
-  late final pulumi.Output<AiIndexEndpointDeployedIndexDedicatedResources?> dedicatedResources;
+  late final pulumi.Output<AiIndexEndpointDeployedIndexDedicatedResources?>
+  dedicatedResources;
+
   /// If set, the authentication is enabled for the private endpoint.
   /// Structure is documented below.
-  late final pulumi.Output<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?> deployedIndexAuthConfig;
+  late final pulumi.Output<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?>
+  deployedIndexAuthConfig;
+
   /// The user specified ID of the DeployedIndex. The ID can be up to 128 characters long and must start with a letter and only contain letters, numbers, and underscores. The ID must be unique within the project it is created in.
   late final pulumi.Output<String> deployedIndexId;
+
   /// The deployment group can be no longer than 64 characters (eg: 'test', 'prod'). If not set, we will use the 'default' deployment group.
   /// Creating deployment_groups with reserved_ip_ranges is a recommended practice when the peered network has multiple peering ranges. This creates your deployments from predictable IP spaces for easier traffic administration. Also, one deployment_group (except 'default') can only be used with the same reserved_ip_ranges which means if the deployment_group has been used with reserved_ip_ranges: [a, b, c], using it with [a, b] or [d, e] is disallowed. [See the official documentation here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#DeployedIndex.FIELDS.deployment_group).
   /// Note: we only support up to 5 deployment groups (not including 'default').
   late final pulumi.Output<String?> deploymentGroup;
+
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   late final pulumi.Output<String?> displayName;
+
   /// If true, private endpoint's access logs are sent to Cloud Logging.
   late final pulumi.Output<bool?> enableAccessLogging;
+
   /// The name of the Index this is the deployment of.
   late final pulumi.Output<String> index;
+
   /// Identifies the index endpoint. Must be in the format
   /// 'projects/{{project}}/locations/{{region}}/indexEndpoints/{{indexEndpoint}}'
   late final pulumi.Output<String> indexEndpoint;
+
   /// The DeployedIndex may depend on various data on its original Index. Additionally when certain changes to the original Index are being done (e.g. when what the Index contains is being changed) the DeployedIndex may be asynchronously updated in the background to reflect these changes. If this timestamp's value is at least the [Index.update_time](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexes#Index.FIELDS.update_time) of the original Index, it means that this DeployedIndex and the original Index are in sync. If this timestamp is older, then to see which updates this DeployedIndex already contains (and which it does not), one must [list](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.operations/list#google.longrunning.Operations.ListOperations) the operations that are running on the original Index. Only the successfully completed Operations with updateTime equal or before this sync time are contained in this DeployedIndex.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   late final pulumi.Output<String> indexSyncTime;
+
   /// The name of the DeployedIndex resource.
   late final pulumi.Output<String> name;
+
   /// Provides paths for users to send requests directly to the deployed index services running on Cloud via private services access. This field is populated if [network](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.indexEndpoints#IndexEndpoint.FIELDS.network) is configured.
   /// Structure is documented below.
-  late final pulumi.Output<List<AiIndexEndpointDeployedIndexPrivateEndpoint>> privateEndpoints;
+  late final pulumi.Output<List<AiIndexEndpointDeployedIndexPrivateEndpoint>>
+  privateEndpoints;
+
   /// The region of the index endpoint deployment. eg us-central1
   late final pulumi.Output<String?> region;
+
   /// A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex.
   /// If set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any ip ranges under the provided VPC network.
   /// The value should be the name of the address (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range'].
@@ -1273,15 +1291,24 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     AiIndexEndpointDeployedIndexArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.automaticResources = registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>('automaticResources');
+         'gcp:vertex/aiIndexEndpointDeployedIndex:AiIndexEndpointDeployedIndex',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.automaticResources =
+        registerOutput<AiIndexEndpointDeployedIndexAutomaticResources>(
+          'automaticResources',
+        );
     this.createTime = registerOutput<String>('createTime');
-    this.dedicatedResources = registerOutput<AiIndexEndpointDeployedIndexDedicatedResources?>('dedicatedResources');
-    this.deployedIndexAuthConfig = registerOutput<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?>('deployedIndexAuthConfig');
+    this.dedicatedResources =
+        registerOutput<AiIndexEndpointDeployedIndexDedicatedResources?>(
+          'dedicatedResources',
+        );
+    this.deployedIndexAuthConfig =
+        registerOutput<AiIndexEndpointDeployedIndexDeployedIndexAuthConfig?>(
+          'deployedIndexAuthConfig',
+        );
     this.deployedIndexId = registerOutput<String>('deployedIndexId');
     this.deploymentGroup = registerOutput<String?>('deploymentGroup');
     this.displayName = registerOutput<String?>('displayName');
@@ -1290,7 +1317,10 @@ class AiIndexEndpointDeployedIndex extends pulumi.CustomResource {
     this.indexEndpoint = registerOutput<String>('indexEndpoint');
     this.indexSyncTime = registerOutput<String>('indexSyncTime');
     this.name = registerOutput<String>('name');
-    this.privateEndpoints = registerOutput<List<AiIndexEndpointDeployedIndexPrivateEndpoint>>('privateEndpoints');
+    this.privateEndpoints =
+        registerOutput<List<AiIndexEndpointDeployedIndexPrivateEndpoint>>(
+          'privateEndpoints',
+        );
     this.region = registerOutput<String?>('region');
     this.reservedIpRanges = registerOutput<List<String>?>('reservedIpRanges');
   }

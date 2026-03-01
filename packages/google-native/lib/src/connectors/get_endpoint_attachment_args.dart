@@ -19,10 +19,11 @@ class GetEndpointAttachmentArgs {
     required String endpointAttachmentId,
     required String location,
     String? project,
-  }) :
-      endpointAttachmentId = pulumi.Input.asInput<String>(endpointAttachmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : endpointAttachmentId = pulumi.Input.asInput<String>(
+         endpointAttachmentId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetEndpointAttachmentArgs {
     );
   }
 }
-

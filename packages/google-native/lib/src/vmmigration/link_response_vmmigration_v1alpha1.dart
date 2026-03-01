@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Describes a URL link.
 class LinkResponseVmmigrationV1alpha1 {
   /// Describes what the link offers.
   final String description;
+
   /// The URL of the link.
   final String url;
 
@@ -17,10 +17,7 @@ class LinkResponseVmmigrationV1alpha1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': description,
-      'url': url,
-    };
+    return <String, dynamic>{'description': description, 'url': url};
   }
 
   factory LinkResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class LinkResponseVmmigrationV1alpha1 {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetConnectionVgwTelemetry {
   final int acceptedRouteCount;
   final String lastStatusChange;
@@ -42,4 +41,3 @@ class GetConnectionVgwTelemetry {
     );
   }
 }
-

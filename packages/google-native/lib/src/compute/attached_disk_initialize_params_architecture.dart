@@ -13,7 +13,8 @@ enum AttachedDiskInitializeParamsArchitecture {
         return item;
       }
     }
-    throw ArgumentError('Unknown AttachedDiskInitializeParamsArchitecture value: $value');
+    throw ArgumentError(
+      'Unknown AttachedDiskInitializeParamsArchitecture value: $value',
+    );
   }
 }
-

@@ -15,36 +15,54 @@ import 'directory_workspace_creation_properties.dart';
 class DirectoryArgs {
   /// Configuration for Active Directory integration when `workspace_type` is set to `POOLS`. Defined below.
   final pulumi.Input<DirectoryActiveDirectoryConfig>? activeDirectoryConfig;
+
   /// Configuration of certificate-based authentication (CBA) integration. Requires SAML authentication to be enabled. Defined below.
-  final pulumi.Input<DirectoryCertificateBasedAuthProperties>? certificateBasedAuthProperties;
+  final pulumi.Input<DirectoryCertificateBasedAuthProperties>?
+  certificateBasedAuthProperties;
+
   /// The directory identifier for registration in WorkSpaces service.
   final pulumi.Input<String>? directoryId;
+
   /// The identifiers of the IP access control groups associated with the directory.
   final pulumi.Input<List<String>>? ipGroupIds;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configuration of SAML authentication integration. Defined below.
   final pulumi.Input<DirectorySamlProperties>? samlProperties;
+
   /// Permissions to enable or disable self-service capabilities when `workspace_type` is set to `PERSONAL`.. Defined below.
   final pulumi.Input<DirectorySelfServicePermissions>? selfServicePermissions;
+
   /// The identifiers of the subnets where the directory resides.
   final pulumi.Input<List<String>>? subnetIds;
+
   /// A map of tags assigned to the WorkSpaces directory. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Tenancy of the WorkSpaces directory. Valid values are `DEDICATED` or `SHARED`.
   final pulumi.Input<String>? tenancy;
+
   /// Specifies the user identity type for the WorkSpaces directory. Valid values are `CUSTOMER_MANAGED`, `AWS_DIRECTORY_SERVICE`, `AWS_IAM_IDENTITY_CENTER`.
   ///
   /// > **Note:** When `workspace_type` is set to `POOLS`, the `directory_id` is automatically generated and cannot be manually set.
   final pulumi.Input<String>? userIdentityType;
+
   /// Specifies which devices and operating systems users can use to access their WorkSpaces. Defined below.
-  final pulumi.Input<DirectoryWorkspaceAccessProperties>? workspaceAccessProperties;
+  final pulumi.Input<DirectoryWorkspaceAccessProperties>?
+  workspaceAccessProperties;
+
   /// Default properties that are used for creating WorkSpaces. Defined below.
-  final pulumi.Input<DirectoryWorkspaceCreationProperties>? workspaceCreationProperties;
+  final pulumi.Input<DirectoryWorkspaceCreationProperties>?
+  workspaceCreationProperties;
+
   /// The description of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
   final pulumi.Input<String>? workspaceDirectoryDescription;
+
   /// The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
   final pulumi.Input<String>? workspaceDirectoryName;
+
   /// Specifies the type of WorkSpaces directory. Valid values are `PERSONAL` and `POOLS`. Default is `PERSONAL`.
   final pulumi.Input<String>? workspaceType;
 
@@ -82,39 +100,85 @@ class DirectoryArgs {
     String? workspaceDirectoryDescription,
     String? workspaceDirectoryName,
     String? workspaceType,
-  }) :
-      activeDirectoryConfig = pulumi.Input.asOptionalInput<DirectoryActiveDirectoryConfig>(activeDirectoryConfig),
-      certificateBasedAuthProperties = pulumi.Input.asOptionalInput<DirectoryCertificateBasedAuthProperties>(certificateBasedAuthProperties),
-      directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
-      ipGroupIds = pulumi.Input.asOptionalInput<List<String>>(ipGroupIds),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      samlProperties = pulumi.Input.asOptionalInput<DirectorySamlProperties>(samlProperties),
-      selfServicePermissions = pulumi.Input.asOptionalInput<DirectorySelfServicePermissions>(selfServicePermissions),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      tenancy = pulumi.Input.asOptionalInput<String>(tenancy),
-      userIdentityType = pulumi.Input.asOptionalInput<String>(userIdentityType),
-      workspaceAccessProperties = pulumi.Input.asOptionalInput<DirectoryWorkspaceAccessProperties>(workspaceAccessProperties),
-      workspaceCreationProperties = pulumi.Input.asOptionalInput<DirectoryWorkspaceCreationProperties>(workspaceCreationProperties),
-      workspaceDirectoryDescription = pulumi.Input.asOptionalInput<String>(workspaceDirectoryDescription),
-      workspaceDirectoryName = pulumi.Input.asOptionalInput<String>(workspaceDirectoryName),
-      workspaceType = pulumi.Input.asOptionalInput<String>(workspaceType);
+  }) : activeDirectoryConfig =
+           pulumi.Input.asOptionalInput<DirectoryActiveDirectoryConfig>(
+             activeDirectoryConfig,
+           ),
+       certificateBasedAuthProperties =
+           pulumi.Input.asOptionalInput<
+             DirectoryCertificateBasedAuthProperties
+           >(certificateBasedAuthProperties),
+       directoryId = pulumi.Input.asOptionalInput<String>(directoryId),
+       ipGroupIds = pulumi.Input.asOptionalInput<List<String>>(ipGroupIds),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       samlProperties = pulumi.Input.asOptionalInput<DirectorySamlProperties>(
+         samlProperties,
+       ),
+       selfServicePermissions =
+           pulumi.Input.asOptionalInput<DirectorySelfServicePermissions>(
+             selfServicePermissions,
+           ),
+       subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       tenancy = pulumi.Input.asOptionalInput<String>(tenancy),
+       userIdentityType = pulumi.Input.asOptionalInput<String>(
+         userIdentityType,
+       ),
+       workspaceAccessProperties =
+           pulumi.Input.asOptionalInput<DirectoryWorkspaceAccessProperties>(
+             workspaceAccessProperties,
+           ),
+       workspaceCreationProperties =
+           pulumi.Input.asOptionalInput<DirectoryWorkspaceCreationProperties>(
+             workspaceCreationProperties,
+           ),
+       workspaceDirectoryDescription = pulumi.Input.asOptionalInput<String>(
+         workspaceDirectoryDescription,
+       ),
+       workspaceDirectoryName = pulumi.Input.asOptionalInput<String>(
+         workspaceDirectoryName,
+       ),
+       workspaceType = pulumi.Input.asOptionalInput<String>(workspaceType);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activeDirectoryConfig': ?pulumi.Input.mapOptionalInputValue<DirectoryActiveDirectoryConfig, Map<String, dynamic>>(activeDirectoryConfig, (value) => value.toMap()),
-      'certificateBasedAuthProperties': ?pulumi.Input.mapOptionalInputValue<DirectoryCertificateBasedAuthProperties, Map<String, dynamic>>(certificateBasedAuthProperties, (value) => value.toMap()),
+      'activeDirectoryConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            DirectoryActiveDirectoryConfig,
+            Map<String, dynamic>
+          >(activeDirectoryConfig, (value) => value.toMap()),
+      'certificateBasedAuthProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DirectoryCertificateBasedAuthProperties,
+            Map<String, dynamic>
+          >(certificateBasedAuthProperties, (value) => value.toMap()),
       'directoryId': ?directoryId,
       'ipGroupIds': ?ipGroupIds,
       'region': ?region,
-      'samlProperties': ?pulumi.Input.mapOptionalInputValue<DirectorySamlProperties, Map<String, dynamic>>(samlProperties, (value) => value.toMap()),
-      'selfServicePermissions': ?pulumi.Input.mapOptionalInputValue<DirectorySelfServicePermissions, Map<String, dynamic>>(selfServicePermissions, (value) => value.toMap()),
+      'samlProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DirectorySamlProperties,
+            Map<String, dynamic>
+          >(samlProperties, (value) => value.toMap()),
+      'selfServicePermissions':
+          ?pulumi.Input.mapOptionalInputValue<
+            DirectorySelfServicePermissions,
+            Map<String, dynamic>
+          >(selfServicePermissions, (value) => value.toMap()),
       'subnetIds': ?subnetIds,
       'tags': ?tags,
       'tenancy': ?tenancy,
       'userIdentityType': ?userIdentityType,
-      'workspaceAccessProperties': ?pulumi.Input.mapOptionalInputValue<DirectoryWorkspaceAccessProperties, Map<String, dynamic>>(workspaceAccessProperties, (value) => value.toMap()),
-      'workspaceCreationProperties': ?pulumi.Input.mapOptionalInputValue<DirectoryWorkspaceCreationProperties, Map<String, dynamic>>(workspaceCreationProperties, (value) => value.toMap()),
+      'workspaceAccessProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DirectoryWorkspaceAccessProperties,
+            Map<String, dynamic>
+          >(workspaceAccessProperties, (value) => value.toMap()),
+      'workspaceCreationProperties':
+          ?pulumi.Input.mapOptionalInputValue<
+            DirectoryWorkspaceCreationProperties,
+            Map<String, dynamic>
+          >(workspaceCreationProperties, (value) => value.toMap()),
       'workspaceDirectoryDescription': ?workspaceDirectoryDescription,
       'workspaceDirectoryName': ?workspaceDirectoryName,
       'workspaceType': ?workspaceType,
@@ -123,23 +187,66 @@ class DirectoryArgs {
 
   factory DirectoryArgs.fromMap(Map<String, dynamic> map) {
     return DirectoryArgs(
-      activeDirectoryConfig: map['activeDirectoryConfig'] == null ? null : DirectoryActiveDirectoryConfig.fromMap((map['activeDirectoryConfig'] as Map).cast<String, dynamic>()),
-      certificateBasedAuthProperties: map['certificateBasedAuthProperties'] == null ? null : DirectoryCertificateBasedAuthProperties.fromMap((map['certificateBasedAuthProperties'] as Map).cast<String, dynamic>()),
-      directoryId: map['directoryId'] == null ? null : map['directoryId'] as String,
-      ipGroupIds: map['ipGroupIds'] == null ? null : (map['ipGroupIds'] as List).cast<String>(),
+      activeDirectoryConfig: map['activeDirectoryConfig'] == null
+          ? null
+          : DirectoryActiveDirectoryConfig.fromMap(
+              (map['activeDirectoryConfig'] as Map).cast<String, dynamic>(),
+            ),
+      certificateBasedAuthProperties:
+          map['certificateBasedAuthProperties'] == null
+          ? null
+          : DirectoryCertificateBasedAuthProperties.fromMap(
+              (map['certificateBasedAuthProperties'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      directoryId: map['directoryId'] == null
+          ? null
+          : map['directoryId'] as String,
+      ipGroupIds: map['ipGroupIds'] == null
+          ? null
+          : (map['ipGroupIds'] as List).cast<String>(),
       region: map['region'] == null ? null : map['region'] as String,
-      samlProperties: map['samlProperties'] == null ? null : DirectorySamlProperties.fromMap((map['samlProperties'] as Map).cast<String, dynamic>()),
-      selfServicePermissions: map['selfServicePermissions'] == null ? null : DirectorySelfServicePermissions.fromMap((map['selfServicePermissions'] as Map).cast<String, dynamic>()),
-      subnetIds: map['subnetIds'] == null ? null : (map['subnetIds'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      samlProperties: map['samlProperties'] == null
+          ? null
+          : DirectorySamlProperties.fromMap(
+              (map['samlProperties'] as Map).cast<String, dynamic>(),
+            ),
+      selfServicePermissions: map['selfServicePermissions'] == null
+          ? null
+          : DirectorySelfServicePermissions.fromMap(
+              (map['selfServicePermissions'] as Map).cast<String, dynamic>(),
+            ),
+      subnetIds: map['subnetIds'] == null
+          ? null
+          : (map['subnetIds'] as List).cast<String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
       tenancy: map['tenancy'] == null ? null : map['tenancy'] as String,
-      userIdentityType: map['userIdentityType'] == null ? null : map['userIdentityType'] as String,
-      workspaceAccessProperties: map['workspaceAccessProperties'] == null ? null : DirectoryWorkspaceAccessProperties.fromMap((map['workspaceAccessProperties'] as Map).cast<String, dynamic>()),
-      workspaceCreationProperties: map['workspaceCreationProperties'] == null ? null : DirectoryWorkspaceCreationProperties.fromMap((map['workspaceCreationProperties'] as Map).cast<String, dynamic>()),
-      workspaceDirectoryDescription: map['workspaceDirectoryDescription'] == null ? null : map['workspaceDirectoryDescription'] as String,
-      workspaceDirectoryName: map['workspaceDirectoryName'] == null ? null : map['workspaceDirectoryName'] as String,
-      workspaceType: map['workspaceType'] == null ? null : map['workspaceType'] as String,
+      userIdentityType: map['userIdentityType'] == null
+          ? null
+          : map['userIdentityType'] as String,
+      workspaceAccessProperties: map['workspaceAccessProperties'] == null
+          ? null
+          : DirectoryWorkspaceAccessProperties.fromMap(
+              (map['workspaceAccessProperties'] as Map).cast<String, dynamic>(),
+            ),
+      workspaceCreationProperties: map['workspaceCreationProperties'] == null
+          ? null
+          : DirectoryWorkspaceCreationProperties.fromMap(
+              (map['workspaceCreationProperties'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      workspaceDirectoryDescription:
+          map['workspaceDirectoryDescription'] == null
+          ? null
+          : map['workspaceDirectoryDescription'] as String,
+      workspaceDirectoryName: map['workspaceDirectoryName'] == null
+          ? null
+          : map['workspaceDirectoryName'] as String,
+      workspaceType: map['workspaceType'] == null
+          ? null
+          : map['workspaceType'] as String,
     );
   }
 }
-

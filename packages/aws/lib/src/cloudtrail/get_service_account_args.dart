@@ -12,15 +12,11 @@ class GetServiceAccountArgs {
 
   /// Creates a new [GetServiceAccountArgs].
   /// [region] Name of the Region whose AWS CloudTrail account ID is desired. Defaults to the Region set in the provider configuration.
-  GetServiceAccountArgs({
-    String? region,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region);
+  GetServiceAccountArgs({String? region})
+    : region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-    };
+    return <String, dynamic>{'region': ?region};
   }
 
   factory GetServiceAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class GetServiceAccountArgs {
     );
   }
 }
-

@@ -14,7 +14,8 @@ enum SecurityPolicyUserDefinedFieldBase {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPolicyUserDefinedFieldBase value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPolicyUserDefinedFieldBase value: $value',
+    );
   }
 }
-

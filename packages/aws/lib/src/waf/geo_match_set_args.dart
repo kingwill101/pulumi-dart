@@ -10,6 +10,7 @@ import 'geo_match_set_geo_match_constraint.dart';
 class GeoMatchSetArgs {
   /// The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
   final pulumi.Input<List<GeoMatchSetGeoMatchConstraint>>? geoMatchConstraints;
+
   /// The name or description of the GeoMatchSet.
   final pulumi.Input<String>? name;
 
@@ -19,22 +20,41 @@ class GeoMatchSetArgs {
   GeoMatchSetArgs({
     List<GeoMatchSetGeoMatchConstraint>? geoMatchConstraints,
     String? name,
-  }) :
-      geoMatchConstraints = pulumi.Input.asOptionalInput<List<GeoMatchSetGeoMatchConstraint>>(geoMatchConstraints),
-      name = pulumi.Input.asOptionalInput<String>(name);
+  }) : geoMatchConstraints =
+           pulumi.Input.asOptionalInput<List<GeoMatchSetGeoMatchConstraint>>(
+             geoMatchConstraints,
+           ),
+       name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geoMatchConstraints': ?pulumi.Input.mapOptionalInputValue<List<GeoMatchSetGeoMatchConstraint>, List<Map<String, dynamic>>>(geoMatchConstraints, (value) => pulumi.Input.encodeList<GeoMatchSetGeoMatchConstraint, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'geoMatchConstraints':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GeoMatchSetGeoMatchConstraint>,
+            List<Map<String, dynamic>>
+          >(
+            geoMatchConstraints,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GeoMatchSetGeoMatchConstraint,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
     };
   }
 
   factory GeoMatchSetArgs.fromMap(Map<String, dynamic> map) {
     return GeoMatchSetArgs(
-      geoMatchConstraints: map['geoMatchConstraints'] == null ? null : pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(map['geoMatchConstraints'], (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>())),
+      geoMatchConstraints: map['geoMatchConstraints'] == null
+          ? null
+          : pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(
+              map['geoMatchConstraints'],
+              (value) => GeoMatchSetGeoMatchConstraint.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
-

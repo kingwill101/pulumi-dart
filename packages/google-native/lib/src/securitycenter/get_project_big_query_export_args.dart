@@ -16,9 +16,8 @@ class GetProjectBigQueryExportArgs {
   GetProjectBigQueryExportArgs({
     required String bigQueryExportId,
     String? project,
-  }) :
-      bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetProjectBigQueryExportArgs {
     );
   }
 }
-

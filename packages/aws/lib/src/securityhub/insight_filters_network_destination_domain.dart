@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InsightFiltersNetworkDestinationDomain {
   final String comparison;
   final String value;
@@ -14,17 +13,15 @@ class InsightFiltersNetworkDestinationDomain {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
-  factory InsightFiltersNetworkDestinationDomain.fromMap(Map<String, dynamic> map) {
+  factory InsightFiltersNetworkDestinationDomain.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightFiltersNetworkDestinationDomain(
       comparison: map['comparison'] as String,
       value: map['value'] as String,
     );
   }
 }
-

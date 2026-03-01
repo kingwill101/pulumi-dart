@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// MySQL Column.
 class MysqlColumnResponse {
   /// Column collation.
   final String collation;
+
   /// Column name.
   final String column;
+
   /// The MySQL data type. Full data types list can be found here: https://dev.mysql.com/doc/refman/8.0/en/data-types.html
   final String dataType;
+
   /// Column length.
   final int length;
+
   /// Whether or not the column can accept a null value.
   final bool nullable;
+
   /// The ordinal position of the column in the table.
   final int ordinalPosition;
+
   /// Column precision.
   final int precision;
+
   /// Whether or not the column represents a primary key.
   final bool primaryKey;
+
   /// Column scale.
   final int scale;
 
@@ -72,4 +79,3 @@ class MysqlColumnResponse {
     );
   }
 }
-

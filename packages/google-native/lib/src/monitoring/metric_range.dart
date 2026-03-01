@@ -6,16 +6,14 @@ import 'google_monitoring_v3_range.dart';
 class MetricRange {
   /// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
   final GoogleMonitoringV3Range? range;
+
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
   final String? timeSeries;
 
   /// Creates a new [MetricRange].
   /// [range] Range of values considered "good." For a one-sided range, set one bound to an infinite value.
   /// [timeSeries] A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
-  MetricRange({
-    this.range,
-    this.timeSeries,
-  });
+  MetricRange({this.range, this.timeSeries});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class MetricRange {
 
   factory MetricRange.fromMap(Map<String, dynamic> map) {
     return MetricRange(
-      range: map['range'] == null ? null : GoogleMonitoringV3Range.fromMap((map['range'] as Map).cast<String, dynamic>()),
-      timeSeries: map['timeSeries'] == null ? null : map['timeSeries'] as String,
+      range: map['range'] == null
+          ? null
+          : GoogleMonitoringV3Range.fromMap(
+              (map['range'] as Map).cast<String, dynamic>(),
+            ),
+      timeSeries: map['timeSeries'] == null
+          ? null
+          : map['timeSeries'] as String,
     );
   }
 }
-

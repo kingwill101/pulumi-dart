@@ -1,19 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetReservationBlockReservationMaintenance {
   /// Number of instances that have ongoing maintenance.
   final int instanceMaintenanceOngoingCount;
+
   /// Number of instances that have pending maintenance.
   final int instanceMaintenancePendingCount;
+
   /// Number of hosts in the block that have ongoing maintenance.
   final int maintenanceOngoingCount;
+
   /// Number of hosts in the block that have pending maintenance.
   final int maintenancePendingCount;
+
   /// The type of maintenance for the reservation.
   final String schedulingType;
+
   /// Number of sub-block infrastructure that has ongoing maintenance.
   final int subblockInfraMaintenanceOngoingCount;
+
   /// Number of sub-block infrastructure that has pending maintenance.
   final int subblockInfraMaintenancePendingCount;
 
@@ -42,21 +47,28 @@ class GetReservationBlockReservationMaintenance {
       'maintenanceOngoingCount': maintenanceOngoingCount,
       'maintenancePendingCount': maintenancePendingCount,
       'schedulingType': schedulingType,
-      'subblockInfraMaintenanceOngoingCount': subblockInfraMaintenanceOngoingCount,
-      'subblockInfraMaintenancePendingCount': subblockInfraMaintenancePendingCount,
+      'subblockInfraMaintenanceOngoingCount':
+          subblockInfraMaintenanceOngoingCount,
+      'subblockInfraMaintenancePendingCount':
+          subblockInfraMaintenancePendingCount,
     };
   }
 
-  factory GetReservationBlockReservationMaintenance.fromMap(Map<String, dynamic> map) {
+  factory GetReservationBlockReservationMaintenance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReservationBlockReservationMaintenance(
-      instanceMaintenanceOngoingCount: map['instanceMaintenanceOngoingCount'] as int,
-      instanceMaintenancePendingCount: map['instanceMaintenancePendingCount'] as int,
+      instanceMaintenanceOngoingCount:
+          map['instanceMaintenanceOngoingCount'] as int,
+      instanceMaintenancePendingCount:
+          map['instanceMaintenancePendingCount'] as int,
       maintenanceOngoingCount: map['maintenanceOngoingCount'] as int,
       maintenancePendingCount: map['maintenancePendingCount'] as int,
       schedulingType: map['schedulingType'] as String,
-      subblockInfraMaintenanceOngoingCount: map['subblockInfraMaintenanceOngoingCount'] as int,
-      subblockInfraMaintenancePendingCount: map['subblockInfraMaintenancePendingCount'] as int,
+      subblockInfraMaintenanceOngoingCount:
+          map['subblockInfraMaintenanceOngoingCount'] as int,
+      subblockInfraMaintenancePendingCount:
+          map['subblockInfraMaintenancePendingCount'] as int,
     );
   }
 }
-

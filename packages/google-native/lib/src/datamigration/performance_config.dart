@@ -9,20 +9,23 @@ class PerformanceConfig {
 
   /// Creates a new [PerformanceConfig].
   /// [dumpParallelLevel] Initial dump parallelism level.
-  PerformanceConfig({
-    this.dumpParallelLevel,
-  });
+  PerformanceConfig({this.dumpParallelLevel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dumpParallelLevel': ?dumpParallelLevel == null ? null : dumpParallelLevel!.value,
+      'dumpParallelLevel': ?dumpParallelLevel == null
+          ? null
+          : dumpParallelLevel!.value,
     };
   }
 
   factory PerformanceConfig.fromMap(Map<String, dynamic> map) {
     return PerformanceConfig(
-      dumpParallelLevel: map['dumpParallelLevel'] == null ? null : PerformanceConfigDumpParallelLevel.fromValue(map['dumpParallelLevel'] as String),
+      dumpParallelLevel: map['dumpParallelLevel'] == null
+          ? null
+          : PerformanceConfigDumpParallelLevel.fromValue(
+              map['dumpParallelLevel'] as String,
+            ),
     );
   }
 }
-

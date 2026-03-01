@@ -4,7 +4,9 @@ import 'prevention_discovery_config_target_other_cloud_target_filter_single_reso
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket {
   /// The AWS account.
-  final PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount? awsAccount;
+  final PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount?
+  awsAccount;
+
   /// The bucket name.
   final String? bucketName;
 
@@ -23,11 +25,18 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS
     };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket(
-      awsAccount: map['awsAccount'] == null ? null : PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount.fromMap((map['awsAccount'] as Map).cast<String, dynamic>()),
-      bucketName: map['bucketName'] == null ? null : map['bucketName'] as String,
+      awsAccount: map['awsAccount'] == null
+          ? null
+          : PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount.fromMap(
+              (map['awsAccount'] as Map).cast<String, dynamic>(),
+            ),
+      bucketName: map['bucketName'] == null
+          ? null
+          : map['bucketName'] as String,
     );
   }
 }
-

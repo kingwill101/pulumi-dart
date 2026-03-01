@@ -16,4 +16,3 @@ enum TelemetryConfigLogFormat {
     throw ArgumentError('Unknown TelemetryConfigLogFormat value: $value');
   }
 }
-

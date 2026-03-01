@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Metadata associated with a VPC connector.
 class VpcConnectorInfoResponse {
   /// Name of a VPC connector.
   final String displayName;
+
   /// Location in which the VPC connector is deployed.
   final String location;
+
   /// URI of a VPC connector.
   final String uri;
 
@@ -36,4 +37,3 @@ class VpcConnectorInfoResponse {
     );
   }
 }
-

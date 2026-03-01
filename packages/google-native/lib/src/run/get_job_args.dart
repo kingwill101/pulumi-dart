@@ -13,18 +13,12 @@ class GetJobArgs {
   /// Creates a new [GetJobArgs].
   /// [jobId] Required.
   /// [namespaceId] Required.
-  GetJobArgs({
-    required String jobId,
-    required String namespaceId,
-  }) :
-      jobId = pulumi.Input.asInput<String>(jobId),
+  GetJobArgs({required String jobId, required String namespaceId})
+    : jobId = pulumi.Input.asInput<String>(jobId),
       namespaceId = pulumi.Input.asInput<String>(namespaceId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'jobId': jobId,
-      'namespaceId': namespaceId,
-    };
+    return <String, dynamic>{'jobId': jobId, 'namespaceId': namespaceId};
   }
 
   factory GetJobArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetJobArgs {
     );
   }
 }
-

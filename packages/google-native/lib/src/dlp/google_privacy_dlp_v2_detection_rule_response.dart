@@ -9,20 +9,19 @@ class GooglePrivacyDlpV2DetectionRuleResponse {
 
   /// Creates a new [GooglePrivacyDlpV2DetectionRuleResponse].
   /// [hotwordRule] Hotword-based detection rule.
-  GooglePrivacyDlpV2DetectionRuleResponse({
-    required this.hotwordRule,
-  });
+  GooglePrivacyDlpV2DetectionRuleResponse({required this.hotwordRule});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hotwordRule': hotwordRule.toMap(),
-    };
+    return <String, dynamic>{'hotwordRule': hotwordRule.toMap()};
   }
 
-  factory GooglePrivacyDlpV2DetectionRuleResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DetectionRuleResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DetectionRuleResponse(
-      hotwordRule: GooglePrivacyDlpV2HotwordRuleResponse.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>()),
+      hotwordRule: GooglePrivacyDlpV2HotwordRuleResponse.fromMap(
+        (map['hotwordRule'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

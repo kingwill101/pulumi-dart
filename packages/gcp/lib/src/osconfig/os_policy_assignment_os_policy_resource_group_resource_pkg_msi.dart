@@ -7,6 +7,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
   /// This should be in the format of Property=Setting. Appended to the defaults
   /// of `ACTION=INSTALL REBOOT=ReallySuppress`.
   final List<String>? properties;
+
   /// The MSI package. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source;
@@ -26,11 +27,17 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi.fromMap(Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi(
-      properties: map['properties'] == null ? null : (map['properties'] as List).cast<String>(),
-      source: OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      properties: map['properties'] == null
+          ? null
+          : (map['properties'] as List).cast<String>(),
+      source:
+          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource.fromMap(
+            (map['source'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -560,9 +560,11 @@ class Settings extends pulumi.CustomResource {
   /// Top level wrapper for all access related setting in IAP.
   /// Structure is documented below.
   late final pulumi.Output<SettingsAccessSettings?> accessSettings;
+
   /// Top level wrapper for all application related settings in IAP.
   /// Structure is documented below.
   late final pulumi.Output<SettingsApplicationSettings?> applicationSettings;
+
   /// The resource name of the IAP protected resource. Name can have below resources:
   /// * organizations/{organization_id}
   /// * folders/{folder_id}
@@ -586,13 +588,17 @@ class Settings extends pulumi.CustomResource {
     SettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:iap/settings:Settings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.accessSettings = registerOutput<SettingsAccessSettings?>('accessSettings');
-    this.applicationSettings = registerOutput<SettingsApplicationSettings?>('applicationSettings');
+         'gcp:iap/settings:Settings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.accessSettings = registerOutput<SettingsAccessSettings?>(
+      'accessSettings',
+    );
+    this.applicationSettings = registerOutput<SettingsApplicationSettings?>(
+      'applicationSettings',
+    );
     this.name = registerOutput<String>('name');
   }
 }

@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// User level password validation policy.
 class UserPasswordValidationPolicy {
   /// Number of failed login attempts allowed before user get locked.
   final int? allowedFailedAttempts;
+
   /// If true, failed login attempts check will be enabled.
   final bool? enableFailedAttemptsCheck;
+
   /// If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
   final bool? enablePasswordVerification;
+
   /// Expiration duration after password is updated.
   final String? passwordExpirationDuration;
 
@@ -35,11 +37,18 @@ class UserPasswordValidationPolicy {
 
   factory UserPasswordValidationPolicy.fromMap(Map<String, dynamic> map) {
     return UserPasswordValidationPolicy(
-      allowedFailedAttempts: map['allowedFailedAttempts'] == null ? null : map['allowedFailedAttempts'] as int,
-      enableFailedAttemptsCheck: map['enableFailedAttemptsCheck'] == null ? null : map['enableFailedAttemptsCheck'] as bool,
-      enablePasswordVerification: map['enablePasswordVerification'] == null ? null : map['enablePasswordVerification'] as bool,
-      passwordExpirationDuration: map['passwordExpirationDuration'] == null ? null : map['passwordExpirationDuration'] as String,
+      allowedFailedAttempts: map['allowedFailedAttempts'] == null
+          ? null
+          : map['allowedFailedAttempts'] as int,
+      enableFailedAttemptsCheck: map['enableFailedAttemptsCheck'] == null
+          ? null
+          : map['enableFailedAttemptsCheck'] as bool,
+      enablePasswordVerification: map['enablePasswordVerification'] == null
+          ? null
+          : map['enablePasswordVerification'] as bool,
+      passwordExpirationDuration: map['passwordExpirationDuration'] == null
+          ? null
+          : map['passwordExpirationDuration'] as String,
     );
   }
 }
-

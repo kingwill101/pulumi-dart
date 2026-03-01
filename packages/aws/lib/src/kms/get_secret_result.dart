@@ -24,7 +24,10 @@ class GetSecretResult {
     return <String, dynamic>{
       'id': id,
       'region': region,
-      'secrets': pulumi.Input.encodeList<GetSecretSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'secrets': pulumi.Input.encodeList<GetSecretSecret, Map<String, dynamic>>(
+        secrets,
+        (value) => value.toMap(),
+      ),
     };
   }
 
@@ -32,8 +35,11 @@ class GetSecretResult {
     return GetSecretResult(
       id: map['id'] as String,
       region: map['region'] as String,
-      secrets: pulumi.Input.decodeList<GetSecretSecret>(map['secrets'], (value) => GetSecretSecret.fromMap((value as Map).cast<String, dynamic>())),
+      secrets: pulumi.Input.decodeList<GetSecretSecret>(
+        map['secrets'],
+        (value) =>
+            GetSecretSecret.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

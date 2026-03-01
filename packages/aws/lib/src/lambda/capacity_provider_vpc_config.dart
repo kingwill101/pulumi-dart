@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CapacityProviderVpcConfig {
   /// List of security group IDs for the VPC.
   final List<String> securityGroupIds;
+
   /// List of subnet IDs for the VPC.
   final List<String> subnetIds;
 
@@ -29,4 +29,3 @@ class CapacityProviderVpcConfig {
     );
   }
 }
-

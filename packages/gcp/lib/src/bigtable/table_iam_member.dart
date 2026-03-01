@@ -813,10 +813,13 @@ import 'table_iam_member_condition.dart';
 /// ```
 class TableIamMember extends pulumi.CustomResource {
   late final pulumi.Output<TableIamMemberCondition?> condition;
+
   /// (Computed) The etag of the tables's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The name or relative resource id of the instance that owns the table.
   late final pulumi.Output<String> instanceName;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -826,15 +829,18 @@ class TableIamMember extends pulumi.CustomResource {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   late final pulumi.Output<String> member;
+
   /// The project in which the table belongs. If it
   /// is not provided, this provider will use the provider default.
   late final pulumi.Output<String> project;
+
   /// The role that should be applied. Only one
   /// `gcp.bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
   ///
   /// `gcp.bigtable.TableIamPolicy` only:
   late final pulumi.Output<String> role;
+
   /// The name or relative resource id of the table to manage IAM policies for.
   ///
   /// For `gcp.bigtable.TableIamMember` or `gcp.bigtable.TableIamBinding`:
@@ -849,11 +855,11 @@ class TableIamMember extends pulumi.CustomResource {
     TableIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigtable/tableIamMember:TableIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:bigtable/tableIamMember:TableIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.condition = registerOutput<TableIamMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.instanceName = registerOutput<String>('instanceName');

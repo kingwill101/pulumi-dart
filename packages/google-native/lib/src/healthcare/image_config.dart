@@ -9,20 +9,23 @@ class ImageConfig {
 
   /// Creates a new [ImageConfig].
   /// [textRedactionMode] Determines how to redact text from image.
-  ImageConfig({
-    this.textRedactionMode,
-  });
+  ImageConfig({this.textRedactionMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'textRedactionMode': ?textRedactionMode == null ? null : textRedactionMode!.value,
+      'textRedactionMode': ?textRedactionMode == null
+          ? null
+          : textRedactionMode!.value,
     };
   }
 
   factory ImageConfig.fromMap(Map<String, dynamic> map) {
     return ImageConfig(
-      textRedactionMode: map['textRedactionMode'] == null ? null : ImageConfigTextRedactionMode.fromValue(map['textRedactionMode'] as String),
+      textRedactionMode: map['textRedactionMode'] == null
+          ? null
+          : ImageConfigTextRedactionMode.fromValue(
+              map['textRedactionMode'] as String,
+            ),
     );
   }
 }
-

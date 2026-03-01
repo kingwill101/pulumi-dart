@@ -7,8 +7,10 @@ import 'push_filter.dart';
 class RepositoryEventConfig {
   /// Filter to match changes in pull requests.
   final PullRequestFilter? pullRequest;
+
   /// Filter to match changes in refs like branches, tags.
   final PushFilter? push;
+
   /// The resource name of the Repo API resource.
   final String? repository;
 
@@ -16,11 +18,7 @@ class RepositoryEventConfig {
   /// [pullRequest] Filter to match changes in pull requests.
   /// [push] Filter to match changes in refs like branches, tags.
   /// [repository] The resource name of the Repo API resource.
-  RepositoryEventConfig({
-    this.pullRequest,
-    this.push,
-    this.repository,
-  });
+  RepositoryEventConfig({this.pullRequest, this.push, this.repository});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,17 @@ class RepositoryEventConfig {
 
   factory RepositoryEventConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryEventConfig(
-      pullRequest: map['pullRequest'] == null ? null : PullRequestFilter.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: map['push'] == null ? null : PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>()),
-      repository: map['repository'] == null ? null : map['repository'] as String,
+      pullRequest: map['pullRequest'] == null
+          ? null
+          : PullRequestFilter.fromMap(
+              (map['pullRequest'] as Map).cast<String, dynamic>(),
+            ),
+      push: map['push'] == null
+          ? null
+          : PushFilter.fromMap((map['push'] as Map).cast<String, dynamic>()),
+      repository: map['repository'] == null
+          ? null
+          : map['repository'] as String,
     );
   }
 }
-

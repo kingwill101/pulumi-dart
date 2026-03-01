@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A compliance check that is a CIS benchmark.
 class CisBenchmarkResponseContaineranalysisV1alpha1 {
   /// The profile level of this CIS benchmark check.
   final int profileLevel;
+
   /// The severity level of this CIS benchmark check.
   final String severity;
 
@@ -23,11 +23,12 @@ class CisBenchmarkResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory CisBenchmarkResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory CisBenchmarkResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CisBenchmarkResponseContaineranalysisV1alpha1(
       profileLevel: map['profileLevel'] as int,
       severity: map['severity'] as String,
     );
   }
 }
-

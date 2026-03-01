@@ -1,20 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstanceManagedServerCaCaCert {
   /// The certificates that form the CA chain, from leaf to root order
   final List<String> certificates;
 
   /// Creates a new [GetInstanceManagedServerCaCaCert].
   /// [certificates] The certificates that form the CA chain, from leaf to root order
-  GetInstanceManagedServerCaCaCert({
-    required this.certificates,
-  });
+  GetInstanceManagedServerCaCaCert({required this.certificates});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certificates': certificates,
-    };
+    return <String, dynamic>{'certificates': certificates};
   }
 
   factory GetInstanceManagedServerCaCaCert.fromMap(Map<String, dynamic> map) {
@@ -23,4 +18,3 @@ class GetInstanceManagedServerCaCaCert {
     );
   }
 }
-

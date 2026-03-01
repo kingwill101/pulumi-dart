@@ -6,8 +6,12 @@ import 'rule_group_rule_statement_rate_based_statement_custom_key_query_argument
 class RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument {
   /// A friendly name of the rule group.
   final String name;
+
   /// Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. They are used in rate-based rule statements, to transform request components before using them as custom aggregation keys. Atleast one transformation is required. See Text Transformation above for details.
-  final List<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation> textTransformations;
+  final List<
+    RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation
+  >
+  textTransformations;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument].
   /// [name] A friendly name of the rule group.
@@ -20,15 +24,29 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'textTransformations': pulumi.Input.encodeList<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation, Map<String, dynamic>>(textTransformations, (value) => value.toMap()),
+      'textTransformations':
+          pulumi.Input.encodeList<
+            RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation,
+            Map<String, dynamic>
+          >(textTransformations, (value) => value.toMap()),
     };
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument(
       name: map['name'] as String,
-      textTransformations: pulumi.Input.decodeList<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation>(map['textTransformations'], (value) => RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation.fromMap((value as Map).cast<String, dynamic>())),
+      textTransformations:
+          pulumi.Input.decodeList<
+            RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation
+          >(
+            map['textTransformations'],
+            (value) =>
+                RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgumentTextTransformation.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig {
   /// Invocation type for a Lambda data source. Valid values: `REQUEST_RESPONSE`, `EVENT`.
   final String? invokeType;
@@ -12,15 +11,16 @@ class ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'invokeType': ?invokeType,
-    };
+    return <String, dynamic>{'invokeType': ?invokeType};
   }
 
-  factory ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig.fromMap(Map<String, dynamic> map) {
+  factory ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelNamespaceHandlerConfigsOnSubscribeIntegrationLambdaConfig(
-      invokeType: map['invokeType'] == null ? null : map['invokeType'] as String,
+      invokeType: map['invokeType'] == null
+          ? null
+          : map['invokeType'] as String,
     );
   }
 }
-

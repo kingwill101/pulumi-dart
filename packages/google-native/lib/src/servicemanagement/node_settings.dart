@@ -9,9 +9,7 @@ class NodeSettings {
 
   /// Creates a new [NodeSettings].
   /// [common] Some settings.
-  NodeSettings({
-    this.common,
-  });
+  NodeSettings({this.common});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class NodeSettings {
 
   factory NodeSettings.fromMap(Map<String, dynamic> map) {
     return NodeSettings(
-      common: map['common'] == null ? null : CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: map['common'] == null
+          ? null
+          : CommonLanguageSettings.fromMap(
+              (map['common'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

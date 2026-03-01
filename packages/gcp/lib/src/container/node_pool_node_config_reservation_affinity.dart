@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class NodePoolNodeConfigReservationAffinity {
   /// The type of reservation consumption
   /// Accepted values are:
@@ -10,8 +9,10 @@ class NodePoolNodeConfigReservationAffinity {
   /// * `"ANY_RESERVATION"`: Consume any reservation available.
   /// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
   final String consumeReservationType;
+
   /// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
   final String? key;
+
   /// The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
   final List<String>? values;
 
@@ -33,12 +34,15 @@ class NodePoolNodeConfigReservationAffinity {
     };
   }
 
-  factory NodePoolNodeConfigReservationAffinity.fromMap(Map<String, dynamic> map) {
+  factory NodePoolNodeConfigReservationAffinity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodePoolNodeConfigReservationAffinity(
       consumeReservationType: map['consumeReservationType'] as String,
       key: map['key'] == null ? null : map['key'] as String,
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      values: map['values'] == null
+          ? null
+          : (map['values'] as List).cast<String>(),
     );
   }
 }
-

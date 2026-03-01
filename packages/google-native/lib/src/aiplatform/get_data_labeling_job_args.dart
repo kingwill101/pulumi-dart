@@ -19,10 +19,9 @@ class GetDataLabelingJobArgs {
     required String dataLabelingJobId,
     required String location,
     String? project,
-  }) :
-      dataLabelingJobId = pulumi.Input.asInput<String>(dataLabelingJobId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : dataLabelingJobId = pulumi.Input.asInput<String>(dataLabelingJobId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetDataLabelingJobArgs {
     );
   }
 }
-

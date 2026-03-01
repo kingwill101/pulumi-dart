@@ -9,20 +9,23 @@ class SourceScoringConfig {
 
   /// Creates a new [SourceScoringConfig].
   /// [sourceImportance] Importance of the source.
-  SourceScoringConfig({
-    this.sourceImportance,
-  });
+  SourceScoringConfig({this.sourceImportance});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'sourceImportance': ?sourceImportance == null ? null : sourceImportance!.value,
+      'sourceImportance': ?sourceImportance == null
+          ? null
+          : sourceImportance!.value,
     };
   }
 
   factory SourceScoringConfig.fromMap(Map<String, dynamic> map) {
     return SourceScoringConfig(
-      sourceImportance: map['sourceImportance'] == null ? null : SourceScoringConfigSourceImportance.fromValue(map['sourceImportance'] as String),
+      sourceImportance: map['sourceImportance'] == null
+          ? null
+          : SourceScoringConfigSourceImportance.fromValue(
+              map['sourceImportance'] as String,
+            ),
     );
   }
 }
-

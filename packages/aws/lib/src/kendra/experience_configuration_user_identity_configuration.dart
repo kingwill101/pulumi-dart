@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ExperienceConfigurationUserIdentityConfiguration {
   /// The AWS SSO field name that contains the identifiers of your users, such as their emails.
   final String identityAttributeName;
@@ -12,15 +11,14 @@ class ExperienceConfigurationUserIdentityConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'identityAttributeName': identityAttributeName,
-    };
+    return <String, dynamic>{'identityAttributeName': identityAttributeName};
   }
 
-  factory ExperienceConfigurationUserIdentityConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ExperienceConfigurationUserIdentityConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExperienceConfigurationUserIdentityConfiguration(
       identityAttributeName: map['identityAttributeName'] as String,
     );
   }
 }
-

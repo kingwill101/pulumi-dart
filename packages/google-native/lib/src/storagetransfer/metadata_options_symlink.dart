@@ -16,4 +16,3 @@ enum MetadataOptionsSymlink {
     throw ArgumentError('Unknown MetadataOptionsSymlink value: $value');
   }
 }
-

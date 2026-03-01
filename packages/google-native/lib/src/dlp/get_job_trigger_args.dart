@@ -19,10 +19,9 @@ class GetJobTriggerArgs {
     required String jobTriggerId,
     required String location,
     String? project,
-  }) :
-      jobTriggerId = pulumi.Input.asInput<String>(jobTriggerId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : jobTriggerId = pulumi.Input.asInput<String>(jobTriggerId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetJobTriggerArgs {
     );
   }
 }
-

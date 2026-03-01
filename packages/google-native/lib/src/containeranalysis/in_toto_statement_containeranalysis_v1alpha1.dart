@@ -10,14 +10,19 @@ import 'subject_containeranalysis_v1alpha1.dart';
 class InTotoStatementContaineranalysisV1alpha1 {
   /// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
   final String? predicateType;
+
   /// Generic Grafeas provenance.
   final InTotoProvenanceContaineranalysisV1alpha1? provenance;
+
   /// SLSA 0.1 provenance.
   final SlsaProvenanceContaineranalysisV1alpha1? slsaProvenance;
+
   /// SLSA 0.2 provenance.
   final SlsaProvenanceZeroTwoContaineranalysisV1alpha1? slsaProvenanceZeroTwo;
+
   /// subject is the subjects of the intoto statement
   final List<SubjectContaineranalysisV1alpha1>? subject;
+
   /// Always "https://in-toto.io/Statement/v0.1".
   final String? type;
 
@@ -41,22 +46,53 @@ class InTotoStatementContaineranalysisV1alpha1 {
     return <String, dynamic>{
       'predicateType': ?predicateType,
       'provenance': ?provenance == null ? null : provenance!.toMap(),
-      'slsaProvenance': ?slsaProvenance == null ? null : slsaProvenance!.toMap(),
-      'slsaProvenanceZeroTwo': ?slsaProvenanceZeroTwo == null ? null : slsaProvenanceZeroTwo!.toMap(),
-      'subject': ?subject == null ? null : pulumi.Input.encodeList<SubjectContaineranalysisV1alpha1, Map<String, dynamic>>(subject!, (value) => value.toMap()),
+      'slsaProvenance': ?slsaProvenance == null
+          ? null
+          : slsaProvenance!.toMap(),
+      'slsaProvenanceZeroTwo': ?slsaProvenanceZeroTwo == null
+          ? null
+          : slsaProvenanceZeroTwo!.toMap(),
+      'subject': ?subject == null
+          ? null
+          : pulumi.Input.encodeList<
+              SubjectContaineranalysisV1alpha1,
+              Map<String, dynamic>
+            >(subject!, (value) => value.toMap()),
       'type': ?type,
     };
   }
 
-  factory InTotoStatementContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory InTotoStatementContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InTotoStatementContaineranalysisV1alpha1(
-      predicateType: map['predicateType'] == null ? null : map['predicateType'] as String,
-      provenance: map['provenance'] == null ? null : InTotoProvenanceContaineranalysisV1alpha1.fromMap((map['provenance'] as Map).cast<String, dynamic>()),
-      slsaProvenance: map['slsaProvenance'] == null ? null : SlsaProvenanceContaineranalysisV1alpha1.fromMap((map['slsaProvenance'] as Map).cast<String, dynamic>()),
-      slsaProvenanceZeroTwo: map['slsaProvenanceZeroTwo'] == null ? null : SlsaProvenanceZeroTwoContaineranalysisV1alpha1.fromMap((map['slsaProvenanceZeroTwo'] as Map).cast<String, dynamic>()),
-      subject: map['subject'] == null ? null : pulumi.Input.decodeList<SubjectContaineranalysisV1alpha1>(map['subject'], (value) => SubjectContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      predicateType: map['predicateType'] == null
+          ? null
+          : map['predicateType'] as String,
+      provenance: map['provenance'] == null
+          ? null
+          : InTotoProvenanceContaineranalysisV1alpha1.fromMap(
+              (map['provenance'] as Map).cast<String, dynamic>(),
+            ),
+      slsaProvenance: map['slsaProvenance'] == null
+          ? null
+          : SlsaProvenanceContaineranalysisV1alpha1.fromMap(
+              (map['slsaProvenance'] as Map).cast<String, dynamic>(),
+            ),
+      slsaProvenanceZeroTwo: map['slsaProvenanceZeroTwo'] == null
+          ? null
+          : SlsaProvenanceZeroTwoContaineranalysisV1alpha1.fromMap(
+              (map['slsaProvenanceZeroTwo'] as Map).cast<String, dynamic>(),
+            ),
+      subject: map['subject'] == null
+          ? null
+          : pulumi.Input.decodeList<SubjectContaineranalysisV1alpha1>(
+              map['subject'],
+              (value) => SubjectContaineranalysisV1alpha1.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
-

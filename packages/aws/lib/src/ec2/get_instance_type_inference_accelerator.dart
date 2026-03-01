@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstanceTypeInferenceAccelerator {
   final int count;
   final String manufacturer;
+
   /// Size of the instance memory, in MiB.
   final int memorySize;
   final String name;
@@ -29,7 +29,9 @@ class GetInstanceTypeInferenceAccelerator {
     };
   }
 
-  factory GetInstanceTypeInferenceAccelerator.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceTypeInferenceAccelerator.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceTypeInferenceAccelerator(
       count: map['count'] as int,
       manufacturer: map['manufacturer'] as String,
@@ -38,4 +40,3 @@ class GetInstanceTypeInferenceAccelerator {
     );
   }
 }
-

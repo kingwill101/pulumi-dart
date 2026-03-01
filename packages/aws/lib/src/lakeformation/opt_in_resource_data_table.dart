@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class OptInResourceDataTable {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final String? catalogId;
+
   /// The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
   final String databaseName;
+
   /// Name of the table.
   final String? name;
+
   /// Boolean value that indicates whether to use a wildcard representing every table under the specified database. When set to true, this represents all tables within the specified database. At least one of TableResource$Name or TableResource$Wildcard is required.
   final bool? wildcard;
 
@@ -41,4 +43,3 @@ class OptInResourceDataTable {
     );
   }
 }
-

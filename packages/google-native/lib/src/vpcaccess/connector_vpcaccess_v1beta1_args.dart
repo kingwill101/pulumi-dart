@@ -10,24 +10,33 @@ import 'subnet_vpcaccess_v1beta1.dart';
 class ConnectorVpcaccessV1beta1Args {
   /// Required. The ID to use for this connector.
   final pulumi.Input<String> connectorId;
+
   /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
   final pulumi.Input<String>? ipCidrRange;
   final pulumi.Input<String>? location;
+
   /// Machine type of VM Instance underlying connector. Default is e2-micro
   final pulumi.Input<String>? machineType;
+
   /// Maximum value of instances in autoscaling group underlying the connector.
   final pulumi.Input<int>? maxInstances;
+
   /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput.
   final pulumi.Input<int>? maxThroughput;
+
   /// Minimum value of instances in autoscaling group underlying the connector.
   final pulumi.Input<int>? minInstances;
+
   /// Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput.
   final pulumi.Input<int>? minThroughput;
+
   /// The resource name in the format `projects/*/locations/*/connectors/*`.
   final pulumi.Input<String>? name;
+
   /// Name of a VPC network.
   final pulumi.Input<String>? network;
   final pulumi.Input<String>? project;
+
   /// The subnet in which to house the VPC Access Connector.
   final pulumi.Input<SubnetVpcaccessV1beta1>? subnet;
 
@@ -57,19 +66,18 @@ class ConnectorVpcaccessV1beta1Args {
     String? network,
     String? project,
     SubnetVpcaccessV1beta1? subnet,
-  }) :
-      connectorId = pulumi.Input.asInput<String>(connectorId),
-      ipCidrRange = pulumi.Input.asOptionalInput<String>(ipCidrRange),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      machineType = pulumi.Input.asOptionalInput<String>(machineType),
-      maxInstances = pulumi.Input.asOptionalInput<int>(maxInstances),
-      maxThroughput = pulumi.Input.asOptionalInput<int>(maxThroughput),
-      minInstances = pulumi.Input.asOptionalInput<int>(minInstances),
-      minThroughput = pulumi.Input.asOptionalInput<int>(minThroughput),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      network = pulumi.Input.asOptionalInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      subnet = pulumi.Input.asOptionalInput<SubnetVpcaccessV1beta1>(subnet);
+  }) : connectorId = pulumi.Input.asInput<String>(connectorId),
+       ipCidrRange = pulumi.Input.asOptionalInput<String>(ipCidrRange),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       machineType = pulumi.Input.asOptionalInput<String>(machineType),
+       maxInstances = pulumi.Input.asOptionalInput<int>(maxInstances),
+       maxThroughput = pulumi.Input.asOptionalInput<int>(maxThroughput),
+       minInstances = pulumi.Input.asOptionalInput<int>(minInstances),
+       minThroughput = pulumi.Input.asOptionalInput<int>(minThroughput),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       network = pulumi.Input.asOptionalInput<String>(network),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       subnet = pulumi.Input.asOptionalInput<SubnetVpcaccessV1beta1>(subnet);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -84,25 +92,44 @@ class ConnectorVpcaccessV1beta1Args {
       'name': ?name,
       'network': ?network,
       'project': ?project,
-      'subnet': ?pulumi.Input.mapOptionalInputValue<SubnetVpcaccessV1beta1, Map<String, dynamic>>(subnet, (value) => value.toMap()),
+      'subnet':
+          ?pulumi.Input.mapOptionalInputValue<
+            SubnetVpcaccessV1beta1,
+            Map<String, dynamic>
+          >(subnet, (value) => value.toMap()),
     };
   }
 
   factory ConnectorVpcaccessV1beta1Args.fromMap(Map<String, dynamic> map) {
     return ConnectorVpcaccessV1beta1Args(
       connectorId: map['connectorId'] as String,
-      ipCidrRange: map['ipCidrRange'] == null ? null : map['ipCidrRange'] as String,
+      ipCidrRange: map['ipCidrRange'] == null
+          ? null
+          : map['ipCidrRange'] as String,
       location: map['location'] == null ? null : map['location'] as String,
-      machineType: map['machineType'] == null ? null : map['machineType'] as String,
-      maxInstances: map['maxInstances'] == null ? null : map['maxInstances'] as int,
-      maxThroughput: map['maxThroughput'] == null ? null : map['maxThroughput'] as int,
-      minInstances: map['minInstances'] == null ? null : map['minInstances'] as int,
-      minThroughput: map['minThroughput'] == null ? null : map['minThroughput'] as int,
+      machineType: map['machineType'] == null
+          ? null
+          : map['machineType'] as String,
+      maxInstances: map['maxInstances'] == null
+          ? null
+          : map['maxInstances'] as int,
+      maxThroughput: map['maxThroughput'] == null
+          ? null
+          : map['maxThroughput'] as int,
+      minInstances: map['minInstances'] == null
+          ? null
+          : map['minInstances'] as int,
+      minThroughput: map['minThroughput'] == null
+          ? null
+          : map['minThroughput'] as int,
       name: map['name'] == null ? null : map['name'] as String,
       network: map['network'] == null ? null : map['network'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      subnet: map['subnet'] == null ? null : SubnetVpcaccessV1beta1.fromMap((map['subnet'] as Map).cast<String, dynamic>()),
+      subnet: map['subnet'] == null
+          ? null
+          : SubnetVpcaccessV1beta1.fromMap(
+              (map['subnet'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

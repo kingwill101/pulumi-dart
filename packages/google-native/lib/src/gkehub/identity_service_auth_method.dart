@@ -8,12 +8,16 @@ import 'identity_service_oidc_config.dart';
 class IdentityServiceAuthMethod {
   /// AzureAD specific Configuration.
   final IdentityServiceAzureADConfig? azureadConfig;
+
   /// GoogleConfig specific configuration.
   final IdentityServiceGoogleConfig? googleConfig;
+
   /// Identifier for auth config.
   final String? name;
+
   /// OIDC specific configuration.
   final IdentityServiceOidcConfig? oidcConfig;
+
   /// Proxy server address to use for auth method.
   final String? proxy;
 
@@ -43,12 +47,23 @@ class IdentityServiceAuthMethod {
 
   factory IdentityServiceAuthMethod.fromMap(Map<String, dynamic> map) {
     return IdentityServiceAuthMethod(
-      azureadConfig: map['azureadConfig'] == null ? null : IdentityServiceAzureADConfig.fromMap((map['azureadConfig'] as Map).cast<String, dynamic>()),
-      googleConfig: map['googleConfig'] == null ? null : IdentityServiceGoogleConfig.fromMap((map['googleConfig'] as Map).cast<String, dynamic>()),
+      azureadConfig: map['azureadConfig'] == null
+          ? null
+          : IdentityServiceAzureADConfig.fromMap(
+              (map['azureadConfig'] as Map).cast<String, dynamic>(),
+            ),
+      googleConfig: map['googleConfig'] == null
+          ? null
+          : IdentityServiceGoogleConfig.fromMap(
+              (map['googleConfig'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
-      oidcConfig: map['oidcConfig'] == null ? null : IdentityServiceOidcConfig.fromMap((map['oidcConfig'] as Map).cast<String, dynamic>()),
+      oidcConfig: map['oidcConfig'] == null
+          ? null
+          : IdentityServiceOidcConfig.fromMap(
+              (map['oidcConfig'] as Map).cast<String, dynamic>(),
+            ),
       proxy: map['proxy'] == null ? null : map['proxy'] as String,
     );
   }
 }
-

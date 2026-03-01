@@ -25,12 +25,11 @@ class GetDebugSessionArgs {
     required String environmentId,
     required String organizationId,
     required String revisionId,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      debugsessionId = pulumi.Input.asInput<String>(debugsessionId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      revisionId = pulumi.Input.asInput<String>(revisionId);
+  }) : apiId = pulumi.Input.asInput<String>(apiId),
+       debugsessionId = pulumi.Input.asInput<String>(debugsessionId),
+       environmentId = pulumi.Input.asInput<String>(environmentId),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       revisionId = pulumi.Input.asInput<String>(revisionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetDebugSessionArgs {
     );
   }
 }
-

@@ -12,16 +12,22 @@ import 'software_recipe_step_run_script_response.dart';
 class SoftwareRecipeStepResponse {
   /// Extracts an archive into the specified directory.
   final SoftwareRecipeStepExtractArchiveResponse archiveExtraction;
+
   /// Installs a deb file via dpkg.
   final SoftwareRecipeStepInstallDpkgResponse dpkgInstallation;
+
   /// Copies a file onto the instance.
   final SoftwareRecipeStepCopyFileResponse fileCopy;
+
   /// Executes an artifact or local file.
   final SoftwareRecipeStepExecFileResponse fileExec;
+
   /// Installs an MSI file.
   final SoftwareRecipeStepInstallMsiResponse msiInstallation;
+
   /// Installs an rpm file via the rpm utility.
   final SoftwareRecipeStepInstallRpmResponse rpmInstallation;
+
   /// Runs commands in a shell.
   final SoftwareRecipeStepRunScriptResponse scriptRun;
 
@@ -57,14 +63,27 @@ class SoftwareRecipeStepResponse {
 
   factory SoftwareRecipeStepResponse.fromMap(Map<String, dynamic> map) {
     return SoftwareRecipeStepResponse(
-      archiveExtraction: SoftwareRecipeStepExtractArchiveResponse.fromMap((map['archiveExtraction'] as Map).cast<String, dynamic>()),
-      dpkgInstallation: SoftwareRecipeStepInstallDpkgResponse.fromMap((map['dpkgInstallation'] as Map).cast<String, dynamic>()),
-      fileCopy: SoftwareRecipeStepCopyFileResponse.fromMap((map['fileCopy'] as Map).cast<String, dynamic>()),
-      fileExec: SoftwareRecipeStepExecFileResponse.fromMap((map['fileExec'] as Map).cast<String, dynamic>()),
-      msiInstallation: SoftwareRecipeStepInstallMsiResponse.fromMap((map['msiInstallation'] as Map).cast<String, dynamic>()),
-      rpmInstallation: SoftwareRecipeStepInstallRpmResponse.fromMap((map['rpmInstallation'] as Map).cast<String, dynamic>()),
-      scriptRun: SoftwareRecipeStepRunScriptResponse.fromMap((map['scriptRun'] as Map).cast<String, dynamic>()),
+      archiveExtraction: SoftwareRecipeStepExtractArchiveResponse.fromMap(
+        (map['archiveExtraction'] as Map).cast<String, dynamic>(),
+      ),
+      dpkgInstallation: SoftwareRecipeStepInstallDpkgResponse.fromMap(
+        (map['dpkgInstallation'] as Map).cast<String, dynamic>(),
+      ),
+      fileCopy: SoftwareRecipeStepCopyFileResponse.fromMap(
+        (map['fileCopy'] as Map).cast<String, dynamic>(),
+      ),
+      fileExec: SoftwareRecipeStepExecFileResponse.fromMap(
+        (map['fileExec'] as Map).cast<String, dynamic>(),
+      ),
+      msiInstallation: SoftwareRecipeStepInstallMsiResponse.fromMap(
+        (map['msiInstallation'] as Map).cast<String, dynamic>(),
+      ),
+      rpmInstallation: SoftwareRecipeStepInstallRpmResponse.fromMap(
+        (map['rpmInstallation'] as Map).cast<String, dynamic>(),
+      ),
+      scriptRun: SoftwareRecipeStepRunScriptResponse.fromMap(
+        (map['scriptRun'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

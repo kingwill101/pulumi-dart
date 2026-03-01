@@ -8,6 +8,7 @@ class StreamRuleSet {
   /// List of customization rules to apply.
   /// Structure is documented below.
   final List<StreamRuleSetCustomizationRule> customizationRules;
+
   /// Object filter to apply the customization rules to.
   /// Structure is documented below.
   final StreamRuleSetObjectFilter objectFilter;
@@ -15,23 +16,31 @@ class StreamRuleSet {
   /// Creates a new [StreamRuleSet].
   /// [customizationRules] List of customization rules to apply.
   /// [objectFilter] Object filter to apply the customization rules to.
-  StreamRuleSet({
-    required this.customizationRules,
-    required this.objectFilter,
-  });
+  StreamRuleSet({required this.customizationRules, required this.objectFilter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customizationRules': pulumi.Input.encodeList<StreamRuleSetCustomizationRule, Map<String, dynamic>>(customizationRules, (value) => value.toMap()),
+      'customizationRules':
+          pulumi.Input.encodeList<
+            StreamRuleSetCustomizationRule,
+            Map<String, dynamic>
+          >(customizationRules, (value) => value.toMap()),
       'objectFilter': objectFilter.toMap(),
     };
   }
 
   factory StreamRuleSet.fromMap(Map<String, dynamic> map) {
     return StreamRuleSet(
-      customizationRules: pulumi.Input.decodeList<StreamRuleSetCustomizationRule>(map['customizationRules'], (value) => StreamRuleSetCustomizationRule.fromMap((value as Map).cast<String, dynamic>())),
-      objectFilter: StreamRuleSetObjectFilter.fromMap((map['objectFilter'] as Map).cast<String, dynamic>()),
+      customizationRules:
+          pulumi.Input.decodeList<StreamRuleSetCustomizationRule>(
+            map['customizationRules'],
+            (value) => StreamRuleSetCustomizationRule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      objectFilter: StreamRuleSetObjectFilter.fromMap(
+        (map['objectFilter'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

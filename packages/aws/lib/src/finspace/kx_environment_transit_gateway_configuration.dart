@@ -5,9 +5,14 @@ import 'kx_environment_transit_gateway_configuration_attachment_network_acl_conf
 
 class KxEnvironmentTransitGatewayConfiguration {
   /// Rules that define how you manage outbound traffic from kdb network to your internal network. Defined below.
-  final List<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration>? attachmentNetworkAclConfigurations;
+  final List<
+    KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration
+  >?
+  attachmentNetworkAclConfigurations;
+
   /// Routing CIDR on behalf of KX environment. It could be any “/26 range in the 100.64.0.0 CIDR space. After providing, it will be added to the customer’s transit gateway routing table so that the traffics could be routed to KX network.
   final String routableCidrSpace;
+
   /// Identifier of the transit gateway created by the customer to connect outbound traffics from KX network to your internal network.
   final String transitGatewayId;
 
@@ -23,18 +28,36 @@ class KxEnvironmentTransitGatewayConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachmentNetworkAclConfigurations': ?attachmentNetworkAclConfigurations == null ? null : pulumi.Input.encodeList<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration, Map<String, dynamic>>(attachmentNetworkAclConfigurations!, (value) => value.toMap()),
+      'attachmentNetworkAclConfigurations':
+          ?attachmentNetworkAclConfigurations == null
+          ? null
+          : pulumi.Input.encodeList<
+              KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration,
+              Map<String, dynamic>
+            >(attachmentNetworkAclConfigurations!, (value) => value.toMap()),
       'routableCidrSpace': routableCidrSpace,
       'transitGatewayId': transitGatewayId,
     };
   }
 
-  factory KxEnvironmentTransitGatewayConfiguration.fromMap(Map<String, dynamic> map) {
+  factory KxEnvironmentTransitGatewayConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return KxEnvironmentTransitGatewayConfiguration(
-      attachmentNetworkAclConfigurations: map['attachmentNetworkAclConfigurations'] == null ? null : pulumi.Input.decodeList<KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration>(map['attachmentNetworkAclConfigurations'], (value) => KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      attachmentNetworkAclConfigurations:
+          map['attachmentNetworkAclConfigurations'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration
+            >(
+              map['attachmentNetworkAclConfigurations'],
+              (value) =>
+                  KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       routableCidrSpace: map['routableCidrSpace'] as String,
       transitGatewayId: map['transitGatewayId'] as String,
     );
   }
 }
-

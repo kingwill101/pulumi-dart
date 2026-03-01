@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BaiduChannelArgs {
   /// Platform credential API key from Baidu.
   final pulumi.Input<String> apiKey;
+
   /// The application ID.
   final pulumi.Input<String> applicationId;
+
   /// Specifies whether to enable the channel. Defaults to `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Platform credential Secret key from Baidu.
   final pulumi.Input<String> secretKey;
 
@@ -30,12 +34,11 @@ class BaiduChannelArgs {
     bool? enabled,
     String? region,
     required String secretKey,
-  }) :
-      apiKey = pulumi.Input.asInput<String>(apiKey),
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      secretKey = pulumi.Input.asInput<String>(secretKey);
+  }) : apiKey = pulumi.Input.asInput<String>(apiKey),
+       applicationId = pulumi.Input.asInput<String>(applicationId),
+       enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       secretKey = pulumi.Input.asInput<String>(secretKey);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,4 +60,3 @@ class BaiduChannelArgs {
     );
   }
 }
-

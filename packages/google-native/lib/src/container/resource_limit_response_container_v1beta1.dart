@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Contains information about amount of some resource in the cluster. For memory, value should be in GB.
 class ResourceLimitResponseContainerV1beta1 {
   /// Maximum amount of the resource in the cluster.
   final String maximum;
+
   /// Minimum amount of the resource in the cluster.
   final String minimum;
+
   /// Resource name "cpu", "memory" or gpu-specific string.
   final String resourceType;
 
@@ -28,7 +29,9 @@ class ResourceLimitResponseContainerV1beta1 {
     };
   }
 
-  factory ResourceLimitResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ResourceLimitResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceLimitResponseContainerV1beta1(
       maximum: map['maximum'] as String,
       minimum: map['minimum'] as String,
@@ -36,4 +39,3 @@ class ResourceLimitResponseContainerV1beta1 {
     );
   }
 }
-

@@ -9,13 +9,17 @@ enum HttpRedirectActionRedirectResponseCodeComputeBeta {
   const HttpRedirectActionRedirectResponseCodeComputeBeta(this.value);
   final String value;
 
-  static HttpRedirectActionRedirectResponseCodeComputeBeta fromValue(String value) {
-    for (final item in HttpRedirectActionRedirectResponseCodeComputeBeta.values) {
+  static HttpRedirectActionRedirectResponseCodeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in HttpRedirectActionRedirectResponseCodeComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HttpRedirectActionRedirectResponseCodeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown HttpRedirectActionRedirectResponseCodeComputeBeta value: $value',
+    );
   }
 }
-

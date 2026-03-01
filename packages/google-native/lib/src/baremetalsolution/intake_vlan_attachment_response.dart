@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A GCP vlan attachment.
 class IntakeVlanAttachmentResponse {
   /// Attachment pairing key.
@@ -8,14 +7,10 @@ class IntakeVlanAttachmentResponse {
 
   /// Creates a new [IntakeVlanAttachmentResponse].
   /// [pairingKey] Attachment pairing key.
-  IntakeVlanAttachmentResponse({
-    required this.pairingKey,
-  });
+  IntakeVlanAttachmentResponse({required this.pairingKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pairingKey': pairingKey,
-    };
+    return <String, dynamic>{'pairingKey': pairingKey};
   }
 
   factory IntakeVlanAttachmentResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class IntakeVlanAttachmentResponse {
     );
   }
 }
-

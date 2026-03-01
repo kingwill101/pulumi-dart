@@ -16,4 +16,3 @@ enum JsonPathMatcherJsonMatcher {
     throw ArgumentError('Unknown JsonPathMatcherJsonMatcher value: $value');
   }
 }
-

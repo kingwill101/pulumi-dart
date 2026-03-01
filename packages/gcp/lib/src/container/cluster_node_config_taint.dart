@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterNodeConfigTaint {
   /// Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
   final String effect;
+
   /// Key for taint.
   final String key;
+
   /// Value for taint.
   final String value;
 
@@ -20,11 +21,7 @@ class ClusterNodeConfigTaint {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'effect': effect,
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'effect': effect, 'key': key, 'value': value};
   }
 
   factory ClusterNodeConfigTaint.fromMap(Map<String, dynamic> map) {
@@ -35,4 +32,3 @@ class ClusterNodeConfigTaint {
     );
   }
 }
-

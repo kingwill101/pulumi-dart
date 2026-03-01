@@ -7,10 +7,13 @@ import 'google_cloud_aiplatform_v1beta1_env_var_response.dart';
 class GoogleCloudAiplatformV1beta1ContainerSpecResponse {
   /// The arguments to be passed when starting the container.
   final List<String> args;
+
   /// The command to be invoked when the container is started. It overrides the entrypoint instruction in Dockerfile when provided.
   final List<String> command;
+
   /// Environment variables to be passed to the container. Maximum limit is 100.
   final List<GoogleCloudAiplatformV1beta1EnvVarResponse> env;
+
   /// The URI of a container image in the Container Registry that is to be run on each worker replica.
   final String imageUri;
 
@@ -30,18 +33,28 @@ class GoogleCloudAiplatformV1beta1ContainerSpecResponse {
     return <String, dynamic>{
       'args': args,
       'command': command,
-      'env': pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1EnvVarResponse, Map<String, dynamic>>(env, (value) => value.toMap()),
+      'env':
+          pulumi.Input.encodeList<
+            GoogleCloudAiplatformV1beta1EnvVarResponse,
+            Map<String, dynamic>
+          >(env, (value) => value.toMap()),
       'imageUri': imageUri,
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ContainerSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ContainerSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ContainerSpecResponse(
       args: (map['args'] as List).cast<String>(),
       command: (map['command'] as List).cast<String>(),
-      env: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1EnvVarResponse>(map['env'], (value) => GoogleCloudAiplatformV1beta1EnvVarResponse.fromMap((value as Map).cast<String, dynamic>())),
+      env: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1EnvVarResponse>(
+        map['env'],
+        (value) => GoogleCloudAiplatformV1beta1EnvVarResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       imageUri: map['imageUri'] as String,
     );
   }
 }
-

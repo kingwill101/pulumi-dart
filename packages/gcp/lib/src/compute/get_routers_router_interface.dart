@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRoutersRouterInterface {
   final String ipRange;
   final String linkedInterconnectAttachment;
@@ -43,7 +42,8 @@ class GetRoutersRouterInterface {
   factory GetRoutersRouterInterface.fromMap(Map<String, dynamic> map) {
     return GetRoutersRouterInterface(
       ipRange: map['ipRange'] as String,
-      linkedInterconnectAttachment: map['linkedInterconnectAttachment'] as String,
+      linkedInterconnectAttachment:
+          map['linkedInterconnectAttachment'] as String,
       linkedVpnTunnel: map['linkedVpnTunnel'] as String,
       name: map['name'] as String,
       privateIpAddress: map['privateIpAddress'] as String,
@@ -52,4 +52,3 @@ class GetRoutersRouterInterface {
     );
   }
 }
-

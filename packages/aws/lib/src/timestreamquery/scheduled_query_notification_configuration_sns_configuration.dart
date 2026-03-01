@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ScheduledQueryNotificationConfigurationSnsConfiguration {
   /// SNS topic ARN that the scheduled query status notifications will be sent to.
   final String topicArn;
@@ -12,15 +11,14 @@ class ScheduledQueryNotificationConfigurationSnsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'topicArn': topicArn,
-    };
+    return <String, dynamic>{'topicArn': topicArn};
   }
 
-  factory ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ScheduledQueryNotificationConfigurationSnsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledQueryNotificationConfigurationSnsConfiguration(
       topicArn: map['topicArn'] as String,
     );
   }
 }
-

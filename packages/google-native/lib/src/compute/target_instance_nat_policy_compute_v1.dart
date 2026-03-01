@@ -11,7 +11,8 @@ enum TargetInstanceNatPolicyComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetInstanceNatPolicyComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown TargetInstanceNatPolicyComputeV1 value: $value',
+    );
   }
 }
-

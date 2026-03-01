@@ -5,7 +5,8 @@ import 'allocation_resource_status_specific_skuallocation_response_compute_v1.da
 /// [Output Only] Contains output only fields.
 class AllocationResourceStatusResponseComputeV1 {
   /// Allocation Properties of this reservation.
-  final AllocationResourceStatusSpecificSKUAllocationResponseComputeV1 specificSkuAllocation;
+  final AllocationResourceStatusSpecificSKUAllocationResponseComputeV1
+  specificSkuAllocation;
 
   /// Creates a new [AllocationResourceStatusResponseComputeV1].
   /// [specificSkuAllocation] Allocation Properties of this reservation.
@@ -19,10 +20,14 @@ class AllocationResourceStatusResponseComputeV1 {
     };
   }
 
-  factory AllocationResourceStatusResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory AllocationResourceStatusResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllocationResourceStatusResponseComputeV1(
-      specificSkuAllocation: AllocationResourceStatusSpecificSKUAllocationResponseComputeV1.fromMap((map['specificSkuAllocation'] as Map).cast<String, dynamic>()),
+      specificSkuAllocation:
+          AllocationResourceStatusSpecificSKUAllocationResponseComputeV1.fromMap(
+            (map['specificSkuAllocation'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -12,15 +12,20 @@ class BackupPlanAssociationArgs {
   /// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
   /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
   final pulumi.Input<String> backupPlan;
+
   /// The id of backupplan association
   final pulumi.Input<String> backupPlanAssociationId;
+
   /// The location for the backupplan association
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The resource for which BPA needs to be created
   final pulumi.Input<String> resource;
+
   /// The resource type of workload on which backupplan is applied.
   /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", and "compute.googleapis.com/RegionDisk"
   final pulumi.Input<String> resourceType;
@@ -39,13 +44,14 @@ class BackupPlanAssociationArgs {
     String? project,
     required String resource,
     required String resourceType,
-  }) :
-      backupPlan = pulumi.Input.asInput<String>(backupPlan),
-      backupPlanAssociationId = pulumi.Input.asInput<String>(backupPlanAssociationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resource = pulumi.Input.asInput<String>(resource),
-      resourceType = pulumi.Input.asInput<String>(resourceType);
+  }) : backupPlan = pulumi.Input.asInput<String>(backupPlan),
+       backupPlanAssociationId = pulumi.Input.asInput<String>(
+         backupPlanAssociationId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       resource = pulumi.Input.asInput<String>(resource),
+       resourceType = pulumi.Input.asInput<String>(resourceType);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,4 +75,3 @@ class BackupPlanAssociationArgs {
     );
   }
 }
-

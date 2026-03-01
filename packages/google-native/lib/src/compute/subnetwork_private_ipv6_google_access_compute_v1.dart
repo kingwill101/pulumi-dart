@@ -13,7 +13,8 @@ enum SubnetworkPrivateIpv6GoogleAccessComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubnetworkPrivateIpv6GoogleAccessComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown SubnetworkPrivateIpv6GoogleAccessComputeV1 value: $value',
+    );
   }
 }
-

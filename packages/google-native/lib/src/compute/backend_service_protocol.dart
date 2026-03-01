@@ -22,4 +22,3 @@ enum BackendServiceProtocol {
     throw ArgumentError('Unknown BackendServiceProtocol value: $value');
   }
 }
-

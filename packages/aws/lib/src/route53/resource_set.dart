@@ -135,16 +135,21 @@ class ResourceSet extends pulumi.CustomResource {
   /// ARN of the resource set
   /// * `resources.#.component_id` - Unique identified for DNS Target Resources, use for readiness checks.
   late final pulumi.Output<String> arn;
+
   /// Unique name describing the resource set.
   late final pulumi.Output<String> resourceSetName;
+
   /// Type of the resources in the resource set.
   late final pulumi.Output<String> resourceSetType;
+
   /// List of resources to add to this resource set. See below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<ResourceSetResource>> resources;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -157,11 +162,11 @@ class ResourceSet extends pulumi.CustomResource {
     ResourceSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53recoveryreadiness/resourceSet:ResourceSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:route53recoveryreadiness/resourceSet:ResourceSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.resourceSetName = registerOutput<String>('resourceSetName');
     this.resourceSetType = registerOutput<String>('resourceSetType');

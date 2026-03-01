@@ -11,10 +11,7 @@ class FilterResponse {
   /// Creates a new [FilterResponse].
   /// [compositeFilter] Required.
   /// [valueFilter] Required.
-  FilterResponse({
-    required this.compositeFilter,
-    required this.valueFilter,
-  });
+  FilterResponse({required this.compositeFilter, required this.valueFilter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +22,12 @@ class FilterResponse {
 
   factory FilterResponse.fromMap(Map<String, dynamic> map) {
     return FilterResponse(
-      compositeFilter: CompositeFilterResponse.fromMap((map['compositeFilter'] as Map).cast<String, dynamic>()),
-      valueFilter: ValueFilterResponse.fromMap((map['valueFilter'] as Map).cast<String, dynamic>()),
+      compositeFilter: CompositeFilterResponse.fromMap(
+        (map['compositeFilter'] as Map).cast<String, dynamic>(),
+      ),
+      valueFilter: ValueFilterResponse.fromMap(
+        (map['valueFilter'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -11,8 +11,10 @@ class SubAccountArgs {
   /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
   /// Default is "".
   final pulumi.Input<String>? deletionPolicy;
+
   /// The display name of the billing account.
   final pulumi.Input<String> displayName;
+
   /// The name of the master billing account that the subaccount
   /// will be created under in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
   final pulumi.Input<String> masterBillingAccount;
@@ -25,10 +27,11 @@ class SubAccountArgs {
     String? deletionPolicy,
     required String displayName,
     required String masterBillingAccount,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      masterBillingAccount = pulumi.Input.asInput<String>(masterBillingAccount);
+  }) : deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
+       displayName = pulumi.Input.asInput<String>(displayName),
+       masterBillingAccount = pulumi.Input.asInput<String>(
+         masterBillingAccount,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +43,11 @@ class SubAccountArgs {
 
   factory SubAccountArgs.fromMap(Map<String, dynamic> map) {
     return SubAccountArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : map['deletionPolicy'] as String,
+      deletionPolicy: map['deletionPolicy'] == null
+          ? null
+          : map['deletionPolicy'] as String,
       displayName: map['displayName'] as String,
       masterBillingAccount: map['masterBillingAccount'] as String,
     );
   }
 }
-

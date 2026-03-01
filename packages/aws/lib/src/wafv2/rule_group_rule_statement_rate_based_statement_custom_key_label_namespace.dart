@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace {
   /// The namespace to use for aggregation
   final String namespace;
@@ -12,15 +11,14 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespace': namespace,
-    };
+    return <String, dynamic>{'namespace': namespace};
   }
 
-  factory RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace(
       namespace: map['namespace'] as String,
     );
   }
 }
-

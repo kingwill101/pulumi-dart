@@ -1,25 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstanceEbsBlockDevice {
   /// If the root block device will be deleted on termination.
   final bool deleteOnTermination;
+
   /// Physical name of the device.
   final String deviceName;
+
   /// If the EBS volume is encrypted.
   final bool encrypted;
+
   /// `0` If the volume is not a provisioned IOPS image, otherwise the supported IOPS count.
   final int iops;
   final String kmsKeyId;
+
   /// ID of the snapshot.
   final String snapshotId;
+
   /// Map of tags assigned to the Instance.
   final Map<String, String> tags;
+
   /// Throughput of the volume, in MiB/s.
   final int throughput;
   final String volumeId;
+
   /// Size of the volume, in GiB.
   final int volumeSize;
+
   /// Type of the volume.
   final String volumeType;
 
@@ -81,4 +88,3 @@ class GetInstanceEbsBlockDevice {
     );
   }
 }
-

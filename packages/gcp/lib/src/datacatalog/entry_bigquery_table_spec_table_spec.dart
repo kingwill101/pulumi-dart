@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EntryBigqueryTableSpecTableSpec {
   /// (Output)
   /// If the table is a dated shard, i.e., with name pattern [prefix]YYYYMMDD, groupedEntry is the
@@ -11,20 +10,17 @@ class EntryBigqueryTableSpecTableSpec {
 
   /// Creates a new [EntryBigqueryTableSpecTableSpec].
   /// [groupedEntry] (Output)
-  EntryBigqueryTableSpecTableSpec({
-    this.groupedEntry,
-  });
+  EntryBigqueryTableSpecTableSpec({this.groupedEntry});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupedEntry': ?groupedEntry,
-    };
+    return <String, dynamic>{'groupedEntry': ?groupedEntry};
   }
 
   factory EntryBigqueryTableSpecTableSpec.fromMap(Map<String, dynamic> map) {
     return EntryBigqueryTableSpecTableSpec(
-      groupedEntry: map['groupedEntry'] == null ? null : map['groupedEntry'] as String,
+      groupedEntry: map['groupedEntry'] == null
+          ? null
+          : map['groupedEntry'] as String,
     );
   }
 }
-

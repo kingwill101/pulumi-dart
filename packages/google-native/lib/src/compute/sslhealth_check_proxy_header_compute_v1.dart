@@ -12,7 +12,8 @@ enum SSLHealthCheckProxyHeaderComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown SSLHealthCheckProxyHeaderComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown SSLHealthCheckProxyHeaderComputeV1 value: $value',
+    );
   }
 }
-

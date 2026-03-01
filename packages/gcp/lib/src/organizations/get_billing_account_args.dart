@@ -9,13 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBillingAccountArgs {
   /// The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
   final pulumi.Input<String>? billingAccount;
+
   /// The display name of the billing account.
   final pulumi.Input<String>? displayName;
+
   /// `true` if projects associated with the billing account should be read, `false` if this step
   /// should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
   ///
   /// > **NOTE:** One of `billing_account` or `display_name` must be specified.
   final pulumi.Input<bool>? lookupProjects;
+
   /// `true` if the billing account is open, `false` if the billing account is closed.
   final pulumi.Input<bool>? open;
 
@@ -29,11 +32,10 @@ class GetBillingAccountArgs {
     String? displayName,
     bool? lookupProjects,
     bool? open,
-  }) :
-      billingAccount = pulumi.Input.asOptionalInput<String>(billingAccount),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      lookupProjects = pulumi.Input.asOptionalInput<bool>(lookupProjects),
-      open = pulumi.Input.asOptionalInput<bool>(open);
+  }) : billingAccount = pulumi.Input.asOptionalInput<String>(billingAccount),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       lookupProjects = pulumi.Input.asOptionalInput<bool>(lookupProjects),
+       open = pulumi.Input.asOptionalInput<bool>(open);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +48,16 @@ class GetBillingAccountArgs {
 
   factory GetBillingAccountArgs.fromMap(Map<String, dynamic> map) {
     return GetBillingAccountArgs(
-      billingAccount: map['billingAccount'] == null ? null : map['billingAccount'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      lookupProjects: map['lookupProjects'] == null ? null : map['lookupProjects'] as bool,
+      billingAccount: map['billingAccount'] == null
+          ? null
+          : map['billingAccount'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      lookupProjects: map['lookupProjects'] == null
+          ? null
+          : map['lookupProjects'] as bool,
       open: map['open'] == null ? null : map['open'] as bool,
     );
   }
 }
-

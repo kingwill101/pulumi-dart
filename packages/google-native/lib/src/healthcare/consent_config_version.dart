@@ -1,6 +1,8 @@
 /// Required. Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
 enum ConsentConfigVersion {
-  consentEnforcementVersionUnspecified("CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED"),
+  consentEnforcementVersionUnspecified(
+    "CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED",
+  ),
   v1("V1");
 
   const ConsentConfigVersion(this.value);
@@ -15,4 +17,3 @@ enum ConsentConfigVersion {
     throw ArgumentError('Unknown ConsentConfigVersion value: $value');
   }
 }
-

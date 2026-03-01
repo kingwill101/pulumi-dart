@@ -6,7 +6,9 @@ import 'google_cloud_networksecurity_v1beta1_grpc_endpoint.dart';
 /// Specification of ValidationCA. Defines the mechanism to obtain the Certificate Authority certificate to validate the peer certificate.
 class ValidationCANetworksecurityV1beta1 {
   /// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
-  final CertificateProviderInstanceNetworksecurityV1beta1? certificateProviderInstance;
+  final CertificateProviderInstanceNetworksecurityV1beta1?
+  certificateProviderInstance;
+
   /// gRPC specific configuration to access the gRPC server to obtain the CA certificate.
   final GoogleCloudNetworksecurityV1beta1GrpcEndpoint? grpcEndpoint;
 
@@ -20,16 +22,26 @@ class ValidationCANetworksecurityV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateProviderInstance': ?certificateProviderInstance == null ? null : certificateProviderInstance!.toMap(),
+      'certificateProviderInstance': ?certificateProviderInstance == null
+          ? null
+          : certificateProviderInstance!.toMap(),
       'grpcEndpoint': ?grpcEndpoint == null ? null : grpcEndpoint!.toMap(),
     };
   }
 
   factory ValidationCANetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
     return ValidationCANetworksecurityV1beta1(
-      certificateProviderInstance: map['certificateProviderInstance'] == null ? null : CertificateProviderInstanceNetworksecurityV1beta1.fromMap((map['certificateProviderInstance'] as Map).cast<String, dynamic>()),
-      grpcEndpoint: map['grpcEndpoint'] == null ? null : GoogleCloudNetworksecurityV1beta1GrpcEndpoint.fromMap((map['grpcEndpoint'] as Map).cast<String, dynamic>()),
+      certificateProviderInstance: map['certificateProviderInstance'] == null
+          ? null
+          : CertificateProviderInstanceNetworksecurityV1beta1.fromMap(
+              (map['certificateProviderInstance'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      grpcEndpoint: map['grpcEndpoint'] == null
+          ? null
+          : GoogleCloudNetworksecurityV1beta1GrpcEndpoint.fromMap(
+              (map['grpcEndpoint'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

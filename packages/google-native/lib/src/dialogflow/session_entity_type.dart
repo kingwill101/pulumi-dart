@@ -6,11 +6,16 @@ import 'session_entity_type_args.dart';
 /// Auto-naming is currently not supported for this resource.
 class SessionEntityType extends pulumi.CustomResource {
   /// The collection of entities associated with this session entity type.
-  late final pulumi.Output<List<GoogleCloudDialogflowV2EntityTypeEntityResponse>> entities;
+  late final pulumi.Output<
+    List<GoogleCloudDialogflowV2EntityTypeEntityResponse>
+  >
+  entities;
+
   /// Indicates whether the additional data should override or supplement the custom entity type definition.
   late final pulumi.Output<String> entityOverrideMode;
   late final pulumi.Output<String> environmentId;
   late final pulumi.Output<String> location;
+
   /// The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
@@ -26,12 +31,15 @@ class SessionEntityType extends pulumi.CustomResource {
     SessionEntityTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:dialogflow/v2:SessionEntityType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.entities = registerOutput<List<GoogleCloudDialogflowV2EntityTypeEntityResponse>>('entities');
+         'google-native:dialogflow/v2:SessionEntityType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.entities =
+        registerOutput<List<GoogleCloudDialogflowV2EntityTypeEntityResponse>>(
+          'entities',
+        );
     this.entityOverrideMode = registerOutput<String>('entityOverrideMode');
     this.environmentId = registerOutput<String>('environmentId');
     this.location = registerOutput<String>('location');

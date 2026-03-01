@@ -5,6 +5,7 @@ import 'duration_compute_beta.dart';
 class FutureReservationTimeWindowComputeBeta {
   final DurationComputeBeta? duration;
   final String? endTime;
+
   /// Start time of the Future Reservation. The start_time is an RFC3339 string.
   final String? startTime;
 
@@ -26,12 +27,17 @@ class FutureReservationTimeWindowComputeBeta {
     };
   }
 
-  factory FutureReservationTimeWindowComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationTimeWindowComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationTimeWindowComputeBeta(
-      duration: map['duration'] == null ? null : DurationComputeBeta.fromMap((map['duration'] as Map).cast<String, dynamic>()),
+      duration: map['duration'] == null
+          ? null
+          : DurationComputeBeta.fromMap(
+              (map['duration'] as Map).cast<String, dynamic>(),
+            ),
       endTime: map['endTime'] == null ? null : map['endTime'] as String,
       startTime: map['startTime'] == null ? null : map['startTime'] as String,
     );
   }
 }
-

@@ -8,20 +8,23 @@ class AzureClusterLoggingConfig {
 
   /// Creates a new [AzureClusterLoggingConfig].
   /// [componentConfig] Configuration of the logging components.
-  AzureClusterLoggingConfig({
-    this.componentConfig,
-  });
+  AzureClusterLoggingConfig({this.componentConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentConfig': ?componentConfig == null ? null : componentConfig!.toMap(),
+      'componentConfig': ?componentConfig == null
+          ? null
+          : componentConfig!.toMap(),
     };
   }
 
   factory AzureClusterLoggingConfig.fromMap(Map<String, dynamic> map) {
     return AzureClusterLoggingConfig(
-      componentConfig: map['componentConfig'] == null ? null : AzureClusterLoggingConfigComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: map['componentConfig'] == null
+          ? null
+          : AzureClusterLoggingConfigComponentConfig.fromMap(
+              (map['componentConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

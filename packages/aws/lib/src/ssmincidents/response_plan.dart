@@ -625,24 +625,34 @@ import 'response_plan_integration.dart';
 class ResponsePlan extends pulumi.CustomResource {
   /// The actions that the response plan starts at the beginning of an incident.
   late final pulumi.Output<ResponsePlanAction?> action;
+
   /// The ARN of the response plan.
   late final pulumi.Output<String> arn;
+
   /// The Chatbot chat channel used for collaboration during an incident.
   late final pulumi.Output<List<String>?> chatChannels;
+
   /// The long format of the response plan name. This field can contain spaces.
   late final pulumi.Output<String?> displayName;
+
   /// The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
   late final pulumi.Output<List<String>?> engagements;
+
   /// The `incident_template` configuration block is required and supports the following arguments:
   late final pulumi.Output<ResponsePlanIncidentTemplate> incidentTemplate;
+
   /// Information about third-party services integrated into the response plan. The following values are supported:
   late final pulumi.Output<ResponsePlanIntegration?> integration;
+
   /// The name of the response plan.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The tags applied to the response plan.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -655,17 +665,19 @@ class ResponsePlan extends pulumi.CustomResource {
     ResponsePlanArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ssmincidents/responsePlan:ResponsePlan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ssmincidents/responsePlan:ResponsePlan',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.action = registerOutput<ResponsePlanAction?>('action');
     this.arn = registerOutput<String>('arn');
     this.chatChannels = registerOutput<List<String>?>('chatChannels');
     this.displayName = registerOutput<String?>('displayName');
     this.engagements = registerOutput<List<String>?>('engagements');
-    this.incidentTemplate = registerOutput<ResponsePlanIncidentTemplate>('incidentTemplate');
+    this.incidentTemplate = registerOutput<ResponsePlanIncidentTemplate>(
+      'incidentTemplate',
+    );
     this.integration = registerOutput<ResponsePlanIntegration?>('integration');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');

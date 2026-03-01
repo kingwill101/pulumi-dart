@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Description of a transform executed as part of an execution stage.
 class ComponentTransformResponse {
   /// Dataflow service generated name for this source.
   final String name;
+
   /// User name for the original user transform with which this transform is most closely associated.
   final String originalTransform;
+
   /// Human-readable name for this transform; may be user or system generated.
   final String userName;
 
@@ -36,4 +37,3 @@ class ComponentTransformResponse {
     );
   }
 }
-

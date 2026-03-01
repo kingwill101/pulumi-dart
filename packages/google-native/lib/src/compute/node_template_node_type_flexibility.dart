@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class NodeTemplateNodeTypeFlexibility {
   final String? cpus;
   final String? localSsd;
@@ -10,11 +9,7 @@ class NodeTemplateNodeTypeFlexibility {
   /// [cpus] Optional.
   /// [localSsd] Optional.
   /// [memory] Optional.
-  NodeTemplateNodeTypeFlexibility({
-    this.cpus,
-    this.localSsd,
-    this.memory,
-  });
+  NodeTemplateNodeTypeFlexibility({this.cpus, this.localSsd, this.memory});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,4 +27,3 @@ class NodeTemplateNodeTypeFlexibility {
     );
   }
 }
-

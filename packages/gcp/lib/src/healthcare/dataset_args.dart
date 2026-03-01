@@ -11,13 +11,17 @@ class DatasetArgs {
   /// A nested object resource.
   /// Structure is documented below.
   final pulumi.Input<DatasetEncryptionSpec>? encryptionSpec;
+
   /// The location for the Dataset.
   final pulumi.Input<String> location;
+
   /// The resource name for the Dataset.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
   /// "America/New_York" or empty, which defaults to UTC. This is used for parsing times in resources
   /// (e.g., HL7 messages) where no explicit timezone is specified.
@@ -35,16 +39,21 @@ class DatasetArgs {
     String? name,
     String? project,
     String? timeZone,
-  }) :
-      encryptionSpec = pulumi.Input.asOptionalInput<DatasetEncryptionSpec>(encryptionSpec),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
+  }) : encryptionSpec = pulumi.Input.asOptionalInput<DatasetEncryptionSpec>(
+         encryptionSpec,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       timeZone = pulumi.Input.asOptionalInput<String>(timeZone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<DatasetEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            DatasetEncryptionSpec,
+            Map<String, dynamic>
+          >(encryptionSpec, (value) => value.toMap()),
       'location': location,
       'name': ?name,
       'project': ?project,
@@ -54,7 +63,11 @@ class DatasetArgs {
 
   factory DatasetArgs.fromMap(Map<String, dynamic> map) {
     return DatasetArgs(
-      encryptionSpec: map['encryptionSpec'] == null ? null : DatasetEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>()),
+      encryptionSpec: map['encryptionSpec'] == null
+          ? null
+          : DatasetEncryptionSpec.fromMap(
+              (map['encryptionSpec'] as Map).cast<String, dynamic>(),
+            ),
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -62,4 +75,3 @@ class DatasetArgs {
     );
   }
 }
-

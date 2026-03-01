@@ -6,16 +6,14 @@ import 'data_sampling_config.dart';
 class DebugOptions {
   /// Configuration options for sampling elements from a running pipeline.
   final DataSamplingConfig? dataSampling;
+
   /// When true, enables the logging of the literal hot key to the user's Cloud Logging.
   final bool? enableHotKeyLogging;
 
   /// Creates a new [DebugOptions].
   /// [dataSampling] Configuration options for sampling elements from a running pipeline.
   /// [enableHotKeyLogging] When true, enables the logging of the literal hot key to the user's Cloud Logging.
-  DebugOptions({
-    this.dataSampling,
-    this.enableHotKeyLogging,
-  });
+  DebugOptions({this.dataSampling, this.enableHotKeyLogging});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class DebugOptions {
 
   factory DebugOptions.fromMap(Map<String, dynamic> map) {
     return DebugOptions(
-      dataSampling: map['dataSampling'] == null ? null : DataSamplingConfig.fromMap((map['dataSampling'] as Map).cast<String, dynamic>()),
-      enableHotKeyLogging: map['enableHotKeyLogging'] == null ? null : map['enableHotKeyLogging'] as bool,
+      dataSampling: map['dataSampling'] == null
+          ? null
+          : DataSamplingConfig.fromMap(
+              (map['dataSampling'] as Map).cast<String, dynamic>(),
+            ),
+      enableHotKeyLogging: map['enableHotKeyLogging'] == null
+          ? null
+          : map['enableHotKeyLogging'] as bool,
     );
   }
 }
-

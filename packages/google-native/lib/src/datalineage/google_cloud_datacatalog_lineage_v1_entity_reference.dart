@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The soft reference to everything you can attach a lineage event to.
 class GoogleCloudDatacatalogLineageV1EntityReference {
   /// [Fully Qualified Name (FQN)](https://cloud.google.com/data-catalog/docs/fully-qualified-names) of the entity.
@@ -13,15 +12,14 @@ class GoogleCloudDatacatalogLineageV1EntityReference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fullyQualifiedName': fullyQualifiedName,
-    };
+    return <String, dynamic>{'fullyQualifiedName': fullyQualifiedName};
   }
 
-  factory GoogleCloudDatacatalogLineageV1EntityReference.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogLineageV1EntityReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogLineageV1EntityReference(
       fullyQualifiedName: map['fullyQualifiedName'] as String,
     );
   }
 }
-

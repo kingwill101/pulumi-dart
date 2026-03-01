@@ -10,9 +10,11 @@ class LbEdgeExtensionExtensionChain {
   /// LbTrafficExtension resource. LbRouteExtension chains are limited to 1 extension per extension chain.
   /// Structure is documented below.
   final List<LbEdgeExtensionExtensionChainExtension> extensions;
+
   /// Conditions under which this chain is invoked for a request.
   /// Structure is documented below.
   final LbEdgeExtensionExtensionChainMatchCondition matchCondition;
+
   /// The name for this extension chain. The name is logged as part of the HTTP request logs.
   /// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
   /// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -31,7 +33,11 @@ class LbEdgeExtensionExtensionChain {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'extensions': pulumi.Input.encodeList<LbEdgeExtensionExtensionChainExtension, Map<String, dynamic>>(extensions, (value) => value.toMap()),
+      'extensions':
+          pulumi.Input.encodeList<
+            LbEdgeExtensionExtensionChainExtension,
+            Map<String, dynamic>
+          >(extensions, (value) => value.toMap()),
       'matchCondition': matchCondition.toMap(),
       'name': name,
     };
@@ -39,10 +45,17 @@ class LbEdgeExtensionExtensionChain {
 
   factory LbEdgeExtensionExtensionChain.fromMap(Map<String, dynamic> map) {
     return LbEdgeExtensionExtensionChain(
-      extensions: pulumi.Input.decodeList<LbEdgeExtensionExtensionChainExtension>(map['extensions'], (value) => LbEdgeExtensionExtensionChainExtension.fromMap((value as Map).cast<String, dynamic>())),
-      matchCondition: LbEdgeExtensionExtensionChainMatchCondition.fromMap((map['matchCondition'] as Map).cast<String, dynamic>()),
+      extensions:
+          pulumi.Input.decodeList<LbEdgeExtensionExtensionChainExtension>(
+            map['extensions'],
+            (value) => LbEdgeExtensionExtensionChainExtension.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      matchCondition: LbEdgeExtensionExtensionChainMatchCondition.fromMap(
+        (map['matchCondition'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
     );
   }
 }
-

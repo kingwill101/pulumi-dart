@@ -14,22 +14,29 @@ class AppHostingBuildArgs {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// The ID of the Backend that this Build applies to
   final pulumi.Input<String> backend;
+
   /// The user-specified ID of the build being created.
   final pulumi.Input<String> buildId;
+
   /// Human-readable name. 63 character limit.
   final pulumi.Input<String>? displayName;
+
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The location of the Backend that this Build applies to
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The source for the build.
   /// Structure is documented below.
   final pulumi.Input<AppHostingBuildSource> source;
@@ -52,15 +59,16 @@ class AppHostingBuildArgs {
     required String location,
     String? project,
     required AppHostingBuildSource source,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      backend = pulumi.Input.asInput<String>(backend),
-      buildId = pulumi.Input.asInput<String>(buildId),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      source = pulumi.Input.asInput<AppHostingBuildSource>(source);
+  }) : annotations = pulumi.Input.asOptionalInput<Map<String, String>>(
+         annotations,
+       ),
+       backend = pulumi.Input.asInput<String>(backend),
+       buildId = pulumi.Input.asInput<String>(buildId),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       source = pulumi.Input.asInput<AppHostingBuildSource>(source);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,21 +79,32 @@ class AppHostingBuildArgs {
       'labels': ?labels,
       'location': location,
       'project': ?project,
-      'source': pulumi.Input.mapInputValue<AppHostingBuildSource, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source':
+          pulumi.Input.mapInputValue<
+            AppHostingBuildSource,
+            Map<String, dynamic>
+          >(source, (value) => value.toMap()),
     };
   }
 
   factory AppHostingBuildArgs.fromMap(Map<String, dynamic> map) {
     return AppHostingBuildArgs(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
+      annotations: map['annotations'] == null
+          ? null
+          : (map['annotations'] as Map).cast<String, String>(),
       backend: map['backend'] as String,
       buildId: map['buildId'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      source: AppHostingBuildSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      source: AppHostingBuildSource.fromMap(
+        (map['source'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

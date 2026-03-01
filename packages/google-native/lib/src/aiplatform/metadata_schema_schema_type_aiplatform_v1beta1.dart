@@ -14,7 +14,8 @@ enum MetadataSchemaSchemaTypeAiplatformV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown MetadataSchemaSchemaTypeAiplatformV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown MetadataSchemaSchemaTypeAiplatformV1beta1 value: $value',
+    );
   }
 }
-

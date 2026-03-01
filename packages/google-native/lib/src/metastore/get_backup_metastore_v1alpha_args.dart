@@ -22,11 +22,10 @@ class GetBackupMetastoreV1alphaArgs {
     required String location,
     String? project,
     required String serviceId,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) : backupId = pulumi.Input.asInput<String>(backupId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetBackupMetastoreV1alphaArgs {
     );
   }
 }
-

@@ -19,10 +19,11 @@ class GetDefaultSupportedIdpConfigArgs {
     required String defaultSupportedIdpConfigId,
     String? project,
     required String tenantId,
-  }) :
-      defaultSupportedIdpConfigId = pulumi.Input.asInput<String>(defaultSupportedIdpConfigId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+  }) : defaultSupportedIdpConfigId = pulumi.Input.asInput<String>(
+         defaultSupportedIdpConfigId,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tenantId = pulumi.Input.asInput<String>(tenantId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetDefaultSupportedIdpConfigArgs {
     );
   }
 }
-

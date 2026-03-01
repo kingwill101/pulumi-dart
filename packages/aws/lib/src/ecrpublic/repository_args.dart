@@ -11,10 +11,13 @@ class RepositoryArgs {
   /// Catalog data configuration for the repository. See below for schema.
   final pulumi.Input<RepositoryCatalogData>? catalogData;
   final pulumi.Input<bool>? forceDestroy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Name of the repository.
   final pulumi.Input<String> repositoryName;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -30,16 +33,21 @@ class RepositoryArgs {
     String? region,
     required String repositoryName,
     Map<String, String>? tags,
-  }) :
-      catalogData = pulumi.Input.asOptionalInput<RepositoryCatalogData>(catalogData),
-      forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      repositoryName = pulumi.Input.asInput<String>(repositoryName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : catalogData = pulumi.Input.asOptionalInput<RepositoryCatalogData>(
+         catalogData,
+       ),
+       forceDestroy = pulumi.Input.asOptionalInput<bool>(forceDestroy),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       repositoryName = pulumi.Input.asInput<String>(repositoryName),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'catalogData': ?pulumi.Input.mapOptionalInputValue<RepositoryCatalogData, Map<String, dynamic>>(catalogData, (value) => value.toMap()),
+      'catalogData':
+          ?pulumi.Input.mapOptionalInputValue<
+            RepositoryCatalogData,
+            Map<String, dynamic>
+          >(catalogData, (value) => value.toMap()),
       'forceDestroy': ?forceDestroy,
       'region': ?region,
       'repositoryName': repositoryName,
@@ -49,12 +57,19 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      catalogData: map['catalogData'] == null ? null : RepositoryCatalogData.fromMap((map['catalogData'] as Map).cast<String, dynamic>()),
-      forceDestroy: map['forceDestroy'] == null ? null : map['forceDestroy'] as bool,
+      catalogData: map['catalogData'] == null
+          ? null
+          : RepositoryCatalogData.fromMap(
+              (map['catalogData'] as Map).cast<String, dynamic>(),
+            ),
+      forceDestroy: map['forceDestroy'] == null
+          ? null
+          : map['forceDestroy'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
       repositoryName: map['repositoryName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedScalingMetricSpecification {
   /// Metric type.
   final String predefinedMetricType;
+
   /// Label that uniquely identifies a specific target group from which to determine the average request count.
   final String? resourceLabel;
 
@@ -22,11 +22,14 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedSca
     };
   }
 
-  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedScalingMetricSpecification.fromMap(Map<String, dynamic> map) {
+  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedScalingMetricSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedScalingMetricSpecification(
       predefinedMetricType: map['predefinedMetricType'] as String,
-      resourceLabel: map['resourceLabel'] == null ? null : map['resourceLabel'] as String,
+      resourceLabel: map['resourceLabel'] == null
+          ? null
+          : map['resourceLabel'] as String,
     );
   }
 }
-

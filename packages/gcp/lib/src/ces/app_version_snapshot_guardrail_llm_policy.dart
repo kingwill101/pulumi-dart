@@ -8,15 +8,18 @@ class AppVersionSnapshotGuardrailLlmPolicy {
   /// If an error occurs during the policy check, fail open and do not trigger
   /// the guardrail.
   final bool? failOpen;
+
   /// (Output)
   /// When checking this policy, consider the last 'n' messages in the
   /// conversation.
   /// When not set a default value of 10 will be used.
   final int? maxConversationMessages;
+
   /// (Output)
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
   final List<AppVersionSnapshotGuardrailLlmPolicyModelSetting>? modelSettings;
+
   /// (Output)
   /// Defines when to apply the policy check during the conversation. If set to
   /// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
@@ -27,6 +30,7 @@ class AppVersionSnapshotGuardrailLlmPolicy {
   /// AGENT_RESPONSE
   /// USER_QUERY_AND_AGENT_RESPONSE
   final String? policyScope;
+
   /// (Output)
   /// The prompt definition. If not set, default prompt will be used.
   final String? prompt;
@@ -49,20 +53,40 @@ class AppVersionSnapshotGuardrailLlmPolicy {
     return <String, dynamic>{
       'failOpen': ?failOpen,
       'maxConversationMessages': ?maxConversationMessages,
-      'modelSettings': ?modelSettings == null ? null : pulumi.Input.encodeList<AppVersionSnapshotGuardrailLlmPolicyModelSetting, Map<String, dynamic>>(modelSettings!, (value) => value.toMap()),
+      'modelSettings': ?modelSettings == null
+          ? null
+          : pulumi.Input.encodeList<
+              AppVersionSnapshotGuardrailLlmPolicyModelSetting,
+              Map<String, dynamic>
+            >(modelSettings!, (value) => value.toMap()),
       'policyScope': ?policyScope,
       'prompt': ?prompt,
     };
   }
 
-  factory AppVersionSnapshotGuardrailLlmPolicy.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotGuardrailLlmPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotGuardrailLlmPolicy(
       failOpen: map['failOpen'] == null ? null : map['failOpen'] as bool,
-      maxConversationMessages: map['maxConversationMessages'] == null ? null : map['maxConversationMessages'] as int,
-      modelSettings: map['modelSettings'] == null ? null : pulumi.Input.decodeList<AppVersionSnapshotGuardrailLlmPolicyModelSetting>(map['modelSettings'], (value) => AppVersionSnapshotGuardrailLlmPolicyModelSetting.fromMap((value as Map).cast<String, dynamic>())),
-      policyScope: map['policyScope'] == null ? null : map['policyScope'] as String,
+      maxConversationMessages: map['maxConversationMessages'] == null
+          ? null
+          : map['maxConversationMessages'] as int,
+      modelSettings: map['modelSettings'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              AppVersionSnapshotGuardrailLlmPolicyModelSetting
+            >(
+              map['modelSettings'],
+              (value) =>
+                  AppVersionSnapshotGuardrailLlmPolicyModelSetting.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      policyScope: map['policyScope'] == null
+          ? null
+          : map['policyScope'] as String,
       prompt: map['prompt'] == null ? null : map['prompt'] as String,
     );
   }
 }
-

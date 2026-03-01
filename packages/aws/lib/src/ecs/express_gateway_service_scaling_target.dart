@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ExpressGatewayServiceScalingTarget {
   /// Metric to use for auto-scaling. Valid values are `CPU` and `MEMORY`.
   final String autoScalingMetric;
+
   /// Target value for the auto-scaling metric (as a percentage). Defaults to `60`.
   final int autoScalingTargetValue;
+
   /// Maximum number of tasks to run.
   final int maxTaskCount;
+
   /// Minimum number of tasks to run.
   final int minTaskCount;
 
@@ -41,4 +43,3 @@ class ExpressGatewayServiceScalingTarget {
     );
   }
 }
-

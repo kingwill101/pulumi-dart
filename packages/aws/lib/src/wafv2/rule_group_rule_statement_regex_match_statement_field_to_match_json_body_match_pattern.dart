@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RuleGroupRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern {
   /// An empty configuration block that is used for inspecting all headers.
   final Map<String, dynamic>? all;
@@ -15,17 +14,19 @@ class RuleGroupRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'all': ?all,
-      'includedPaths': ?includedPaths,
-    };
+    return <String, dynamic>{'all': ?all, 'includedPaths': ?includedPaths};
   }
 
-  factory RuleGroupRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRegexMatchStatementFieldToMatchJsonBodyMatchPattern(
-      all: map['all'] == null ? null : (map['all'] as Map).cast<String, dynamic>(),
-      includedPaths: map['includedPaths'] == null ? null : (map['includedPaths'] as List).cast<String>(),
+      all: map['all'] == null
+          ? null
+          : (map['all'] as Map).cast<String, dynamic>(),
+      includedPaths: map['includedPaths'] == null
+          ? null
+          : (map['includedPaths'] as List).cast<String>(),
     );
   }
 }
-

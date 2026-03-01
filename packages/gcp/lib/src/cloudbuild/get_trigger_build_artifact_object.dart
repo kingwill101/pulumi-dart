@@ -8,8 +8,10 @@ class GetTriggerBuildArtifactObject {
   ///
   /// - - -
   final String location;
+
   /// Path globs used to match files in the build's workspace.
   final List<String> paths;
+
   /// Output only. Stores timing information for pushing all artifact objects.
   final List<GetTriggerBuildArtifactObjectTiming> timings;
 
@@ -27,7 +29,11 @@ class GetTriggerBuildArtifactObject {
     return <String, dynamic>{
       'location': location,
       'paths': paths,
-      'timings': pulumi.Input.encodeList<GetTriggerBuildArtifactObjectTiming, Map<String, dynamic>>(timings, (value) => value.toMap()),
+      'timings':
+          pulumi.Input.encodeList<
+            GetTriggerBuildArtifactObjectTiming,
+            Map<String, dynamic>
+          >(timings, (value) => value.toMap()),
     };
   }
 
@@ -35,8 +41,12 @@ class GetTriggerBuildArtifactObject {
     return GetTriggerBuildArtifactObject(
       location: map['location'] as String,
       paths: (map['paths'] as List).cast<String>(),
-      timings: pulumi.Input.decodeList<GetTriggerBuildArtifactObjectTiming>(map['timings'], (value) => GetTriggerBuildArtifactObjectTiming.fromMap((value as Map).cast<String, dynamic>())),
+      timings: pulumi.Input.decodeList<GetTriggerBuildArtifactObjectTiming>(
+        map['timings'],
+        (value) => GetTriggerBuildArtifactObjectTiming.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

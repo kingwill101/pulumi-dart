@@ -13,7 +13,8 @@ enum DevicePolicyAllowedEncryptionStatusesItem {
         return item;
       }
     }
-    throw ArgumentError('Unknown DevicePolicyAllowedEncryptionStatusesItem value: $value');
+    throw ArgumentError(
+      'Unknown DevicePolicyAllowedEncryptionStatusesItem value: $value',
+    );
   }
 }
-

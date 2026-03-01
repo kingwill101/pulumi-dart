@@ -28,13 +28,12 @@ class GetMessageHealthcareV1beta1Args {
     required String messageId,
     String? project,
     String? view,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      hl7V2StoreId = pulumi.Input.asInput<String>(hl7V2StoreId),
-      location = pulumi.Input.asInput<String>(location),
-      messageId = pulumi.Input.asInput<String>(messageId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : datasetId = pulumi.Input.asInput<String>(datasetId),
+       hl7V2StoreId = pulumi.Input.asInput<String>(hl7V2StoreId),
+       location = pulumi.Input.asInput<String>(location),
+       messageId = pulumi.Input.asInput<String>(messageId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,4 +57,3 @@ class GetMessageHealthcareV1beta1Args {
     );
   }
 }
-

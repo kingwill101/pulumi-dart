@@ -10,20 +10,29 @@ class FilterContainerV1beta1 {
 
   /// Creates a new [FilterContainerV1beta1].
   /// [eventType] Event types to allowlist.
-  FilterContainerV1beta1({
-    this.eventType,
-  });
+  FilterContainerV1beta1({this.eventType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventType': ?eventType == null ? null : pulumi.Input.encodeList<FilterEventTypeItemContainerV1beta1, String>(eventType!, (value) => value.value),
+      'eventType': ?eventType == null
+          ? null
+          : pulumi.Input.encodeList<
+              FilterEventTypeItemContainerV1beta1,
+              String
+            >(eventType!, (value) => value.value),
     };
   }
 
   factory FilterContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return FilterContainerV1beta1(
-      eventType: map['eventType'] == null ? null : pulumi.Input.decodeList<FilterEventTypeItemContainerV1beta1>(map['eventType'], (value) => FilterEventTypeItemContainerV1beta1.fromValue(value as String)),
+      eventType: map['eventType'] == null
+          ? null
+          : pulumi.Input.decodeList<FilterEventTypeItemContainerV1beta1>(
+              map['eventType'],
+              (value) => FilterEventTypeItemContainerV1beta1.fromValue(
+                value as String,
+              ),
+            ),
     );
   }
 }
-

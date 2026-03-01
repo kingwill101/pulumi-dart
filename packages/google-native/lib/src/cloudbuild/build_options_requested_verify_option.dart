@@ -12,7 +12,8 @@ enum BuildOptionsRequestedVerifyOption {
         return item;
       }
     }
-    throw ArgumentError('Unknown BuildOptionsRequestedVerifyOption value: $value');
+    throw ArgumentError(
+      'Unknown BuildOptionsRequestedVerifyOption value: $value',
+    );
   }
 }
-

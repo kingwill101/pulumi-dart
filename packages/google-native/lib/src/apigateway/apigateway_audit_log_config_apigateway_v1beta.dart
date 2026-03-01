@@ -6,6 +6,7 @@ import 'apigateway_audit_log_config_log_type_apigateway_v1beta.dart';
 class ApigatewayAuditLogConfigApigatewayV1beta {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final List<String>? exemptedMembers;
+
   /// The log type that this config enables.
   final ApigatewayAuditLogConfigLogTypeApigatewayV1beta? logType;
 
@@ -24,11 +25,18 @@ class ApigatewayAuditLogConfigApigatewayV1beta {
     };
   }
 
-  factory ApigatewayAuditLogConfigApigatewayV1beta.fromMap(Map<String, dynamic> map) {
+  factory ApigatewayAuditLogConfigApigatewayV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApigatewayAuditLogConfigApigatewayV1beta(
-      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
-      logType: map['logType'] == null ? null : ApigatewayAuditLogConfigLogTypeApigatewayV1beta.fromValue(map['logType'] as String),
+      exemptedMembers: map['exemptedMembers'] == null
+          ? null
+          : (map['exemptedMembers'] as List).cast<String>(),
+      logType: map['logType'] == null
+          ? null
+          : ApigatewayAuditLogConfigLogTypeApigatewayV1beta.fromValue(
+              map['logType'] as String,
+            ),
     );
   }
 }
-

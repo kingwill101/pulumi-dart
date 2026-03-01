@@ -170,10 +170,13 @@ import 'random_pet_args.dart';
 class RandomPet extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   late final pulumi.Output<Map<String, String>?> keepers;
+
   /// The length (in words) of the pet name. Defaults to 2
   late final pulumi.Output<int> length;
+
   /// A string to prefix the name with.
   late final pulumi.Output<String?> prefix;
+
   /// The character to separate words in the pet name. Defaults to "-"
   late final pulumi.Output<String> separator;
 
@@ -186,11 +189,11 @@ class RandomPet extends pulumi.CustomResource {
     RandomPetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'random:index/randomPet:RandomPet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'random:index/randomPet:RandomPet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.keepers = registerOutput<Map<String, String>?>('keepers');
     this.length = registerOutput<int>('length');
     this.prefix = registerOutput<String?>('prefix');

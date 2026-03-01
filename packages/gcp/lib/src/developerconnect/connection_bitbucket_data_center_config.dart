@@ -8,23 +8,32 @@ class ConnectionBitbucketDataCenterConfig {
   /// Represents a personal access token that authorized the Connection,
   /// and associated metadata.
   /// Structure is documented below.
-  final ConnectionBitbucketDataCenterConfigAuthorizerCredential authorizerCredential;
+  final ConnectionBitbucketDataCenterConfigAuthorizerCredential
+  authorizerCredential;
+
   /// Required. The URI of the Bitbucket Data Center host this connection is for.
   final String hostUri;
+
   /// Represents a personal access token that authorized the Connection,
   /// and associated metadata.
   /// Structure is documented below.
-  final ConnectionBitbucketDataCenterConfigReadAuthorizerCredential readAuthorizerCredential;
+  final ConnectionBitbucketDataCenterConfigReadAuthorizerCredential
+  readAuthorizerCredential;
+
   /// (Output)
   /// Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
   final String? serverVersion;
+
   /// ServiceDirectoryConfig represents Service Directory configuration for a
   /// connection.
   /// Structure is documented below.
-  final ConnectionBitbucketDataCenterConfigServiceDirectoryConfig? serviceDirectoryConfig;
+  final ConnectionBitbucketDataCenterConfigServiceDirectoryConfig?
+  serviceDirectoryConfig;
+
   /// Optional. SSL certificate authority to trust when making requests to Bitbucket Data
   /// Center.
   final String? sslCaCertificate;
+
   /// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook
   /// events, formatted as `projects/*/secrets/*/versions/*`. This is used to
   /// validate webhooks.
@@ -54,22 +63,39 @@ class ConnectionBitbucketDataCenterConfig {
       'hostUri': hostUri,
       'readAuthorizerCredential': readAuthorizerCredential.toMap(),
       'serverVersion': ?serverVersion,
-      'serviceDirectoryConfig': ?serviceDirectoryConfig == null ? null : serviceDirectoryConfig!.toMap(),
+      'serviceDirectoryConfig': ?serviceDirectoryConfig == null
+          ? null
+          : serviceDirectoryConfig!.toMap(),
       'sslCaCertificate': ?sslCaCertificate,
       'webhookSecretSecretVersion': webhookSecretSecretVersion,
     };
   }
 
-  factory ConnectionBitbucketDataCenterConfig.fromMap(Map<String, dynamic> map) {
+  factory ConnectionBitbucketDataCenterConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionBitbucketDataCenterConfig(
-      authorizerCredential: ConnectionBitbucketDataCenterConfigAuthorizerCredential.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>()),
+      authorizerCredential:
+          ConnectionBitbucketDataCenterConfigAuthorizerCredential.fromMap(
+            (map['authorizerCredential'] as Map).cast<String, dynamic>(),
+          ),
       hostUri: map['hostUri'] as String,
-      readAuthorizerCredential: ConnectionBitbucketDataCenterConfigReadAuthorizerCredential.fromMap((map['readAuthorizerCredential'] as Map).cast<String, dynamic>()),
-      serverVersion: map['serverVersion'] == null ? null : map['serverVersion'] as String,
-      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null ? null : ConnectionBitbucketDataCenterConfigServiceDirectoryConfig.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>()),
-      sslCaCertificate: map['sslCaCertificate'] == null ? null : map['sslCaCertificate'] as String,
+      readAuthorizerCredential:
+          ConnectionBitbucketDataCenterConfigReadAuthorizerCredential.fromMap(
+            (map['readAuthorizerCredential'] as Map).cast<String, dynamic>(),
+          ),
+      serverVersion: map['serverVersion'] == null
+          ? null
+          : map['serverVersion'] as String,
+      serviceDirectoryConfig: map['serviceDirectoryConfig'] == null
+          ? null
+          : ConnectionBitbucketDataCenterConfigServiceDirectoryConfig.fromMap(
+              (map['serviceDirectoryConfig'] as Map).cast<String, dynamic>(),
+            ),
+      sslCaCertificate: map['sslCaCertificate'] == null
+          ? null
+          : map['sslCaCertificate'] as String,
       webhookSecretSecretVersion: map['webhookSecretSecretVersion'] as String,
     );
   }
 }
-

@@ -6,7 +6,8 @@ import 'get_cluster_automated_backup_config_fixed_frequency_schedule_start_time.
 class GetClusterAutomatedBackupConfigFixedFrequencySchedule {
   /// The start time of every automated backup in UTC.
   /// It must be set to the start of an hour. This field is required.
-  final List<GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime> startTimes;
+  final List<GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime>
+  startTimes;
 
   /// Creates a new [GetClusterAutomatedBackupConfigFixedFrequencySchedule].
   /// [startTimes] The start time of every automated backup in UTC.
@@ -16,14 +17,28 @@ class GetClusterAutomatedBackupConfigFixedFrequencySchedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'startTimes': pulumi.Input.encodeList<GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime, Map<String, dynamic>>(startTimes, (value) => value.toMap()),
+      'startTimes':
+          pulumi.Input.encodeList<
+            GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime,
+            Map<String, dynamic>
+          >(startTimes, (value) => value.toMap()),
     };
   }
 
-  factory GetClusterAutomatedBackupConfigFixedFrequencySchedule.fromMap(Map<String, dynamic> map) {
+  factory GetClusterAutomatedBackupConfigFixedFrequencySchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterAutomatedBackupConfigFixedFrequencySchedule(
-      startTimes: pulumi.Input.decodeList<GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime>(map['startTimes'], (value) => GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap((value as Map).cast<String, dynamic>())),
+      startTimes:
+          pulumi.Input.decodeList<
+            GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime
+          >(
+            map['startTimes'],
+            (value) =>
+                GetClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

@@ -9,20 +9,24 @@ class UpstreamCredentials {
 
   /// Creates a new [UpstreamCredentials].
   /// [usernamePasswordCredentials] Use username and password to access the remote repository.
-  UpstreamCredentials({
-    this.usernamePasswordCredentials,
-  });
+  UpstreamCredentials({this.usernamePasswordCredentials});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'usernamePasswordCredentials': ?usernamePasswordCredentials == null ? null : usernamePasswordCredentials!.toMap(),
+      'usernamePasswordCredentials': ?usernamePasswordCredentials == null
+          ? null
+          : usernamePasswordCredentials!.toMap(),
     };
   }
 
   factory UpstreamCredentials.fromMap(Map<String, dynamic> map) {
     return UpstreamCredentials(
-      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null ? null : UsernamePasswordCredentials.fromMap((map['usernamePasswordCredentials'] as Map).cast<String, dynamic>()),
+      usernamePasswordCredentials: map['usernamePasswordCredentials'] == null
+          ? null
+          : UsernamePasswordCredentials.fromMap(
+              (map['usernamePasswordCredentials'] as Map)
+                  .cast<String, dynamic>(),
+            ),
     );
   }
 }
-

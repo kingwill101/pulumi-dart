@@ -13,18 +13,12 @@ class GetIosAppArgs {
   /// Creates a new [GetIosAppArgs].
   /// [iosAppId] Required.
   /// [project] Optional.
-  GetIosAppArgs({
-    required String iosAppId,
-    String? project,
-  }) :
-      iosAppId = pulumi.Input.asInput<String>(iosAppId),
+  GetIosAppArgs({required String iosAppId, String? project})
+    : iosAppId = pulumi.Input.asInput<String>(iosAppId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'iosAppId': iosAppId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'iosAppId': iosAppId, 'project': ?project};
   }
 
   factory GetIosAppArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetIosAppArgs {
     );
   }
 }
-

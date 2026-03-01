@@ -13,14 +13,22 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered {
   /// You can find out more about this error model and how to work with it in the
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
-  final List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError>? checkErrors;
+  final List<
+    AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError
+  >?
+  checkErrors;
+
   /// (Output)
   /// The domain the record pertains to, e.g. `foo.bar.com.`.
   final String? domainName;
+
   /// (Output)
   /// Records on the domain.
   /// Structure is documented below.
-  final List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>? records;
+  final List<
+    AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord
+  >?
+  records;
 
   /// Creates a new [AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered].
   /// [checkErrors] (Output)
@@ -34,18 +42,51 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'checkErrors': ?checkErrors == null ? null : pulumi.Input.encodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError, Map<String, dynamic>>(checkErrors!, (value) => value.toMap()),
+      'checkErrors': ?checkErrors == null
+          ? null
+          : pulumi.Input.encodeList<
+              AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError,
+              Map<String, dynamic>
+            >(checkErrors!, (value) => value.toMap()),
       'domainName': ?domainName,
-      'records': ?records == null ? null : pulumi.Input.encodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord, Map<String, dynamic>>(records!, (value) => value.toMap()),
+      'records': ?records == null
+          ? null
+          : pulumi.Input.encodeList<
+              AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord,
+              Map<String, dynamic>
+            >(records!, (value) => value.toMap()),
     };
   }
 
-  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered.fromMap(Map<String, dynamic> map) {
+  factory AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered(
-      checkErrors: map['checkErrors'] == null ? null : pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError>(map['checkErrors'], (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError.fromMap((value as Map).cast<String, dynamic>())),
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      records: map['records'] == null ? null : pulumi.Input.decodeList<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord>(map['records'], (value) => AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord.fromMap((value as Map).cast<String, dynamic>())),
+      checkErrors: map['checkErrors'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError
+            >(
+              map['checkErrors'],
+              (value) =>
+                  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckError.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      domainName: map['domainName'] == null
+          ? null
+          : map['domainName'] as String,
+      records: map['records'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord
+            >(
+              map['records'],
+              (value) =>
+                  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

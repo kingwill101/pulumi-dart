@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PlanWorkflowStepCustomActionLambdaConfigLambda {
   /// ARN of the Lambda function.
   final String arn;
+
   /// ARN of the cross-account role to assume.
   final String? crossAccountRole;
+
   /// External ID for cross-account role assumption.
   final String? externalId;
 
@@ -27,12 +28,17 @@ class PlanWorkflowStepCustomActionLambdaConfigLambda {
     };
   }
 
-  factory PlanWorkflowStepCustomActionLambdaConfigLambda.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepCustomActionLambdaConfigLambda.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepCustomActionLambdaConfigLambda(
       arn: map['arn'] as String,
-      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
+      crossAccountRole: map['crossAccountRole'] == null
+          ? null
+          : map['crossAccountRole'] as String,
+      externalId: map['externalId'] == null
+          ? null
+          : map['externalId'] as String,
     );
   }
 }
-

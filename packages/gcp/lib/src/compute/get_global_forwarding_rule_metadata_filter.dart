@@ -9,6 +9,7 @@ class GetGlobalForwardingRuleMetadataFilter {
   ///
   /// This list must not be empty and can have at the most 64 entries.
   final List<GetGlobalForwardingRuleMetadataFilterFilterLabel> filterLabels;
+
   /// Specifies how individual filterLabel matches within the list of
   /// filterLabels contribute towards the overall metadataFilter match.
   ///
@@ -28,16 +29,29 @@ class GetGlobalForwardingRuleMetadataFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filterLabels': pulumi.Input.encodeList<GetGlobalForwardingRuleMetadataFilterFilterLabel, Map<String, dynamic>>(filterLabels, (value) => value.toMap()),
+      'filterLabels':
+          pulumi.Input.encodeList<
+            GetGlobalForwardingRuleMetadataFilterFilterLabel,
+            Map<String, dynamic>
+          >(filterLabels, (value) => value.toMap()),
       'filterMatchCriteria': filterMatchCriteria,
     };
   }
 
-  factory GetGlobalForwardingRuleMetadataFilter.fromMap(Map<String, dynamic> map) {
+  factory GetGlobalForwardingRuleMetadataFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGlobalForwardingRuleMetadataFilter(
-      filterLabels: pulumi.Input.decodeList<GetGlobalForwardingRuleMetadataFilterFilterLabel>(map['filterLabels'], (value) => GetGlobalForwardingRuleMetadataFilterFilterLabel.fromMap((value as Map).cast<String, dynamic>())),
+      filterLabels:
+          pulumi.Input.decodeList<
+            GetGlobalForwardingRuleMetadataFilterFilterLabel
+          >(
+            map['filterLabels'],
+            (value) => GetGlobalForwardingRuleMetadataFilterFilterLabel.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       filterMatchCriteria: map['filterMatchCriteria'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MulticastConsumerAssociationState {
   /// (Output)
   /// The state of the multicast resource.
@@ -16,14 +15,10 @@ class MulticastConsumerAssociationState {
 
   /// Creates a new [MulticastConsumerAssociationState].
   /// [state] (Output)
-  MulticastConsumerAssociationState({
-    this.state,
-  });
+  MulticastConsumerAssociationState({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory MulticastConsumerAssociationState.fromMap(Map<String, dynamic> map) {
@@ -32,4 +27,3 @@ class MulticastConsumerAssociationState {
     );
   }
 }
-

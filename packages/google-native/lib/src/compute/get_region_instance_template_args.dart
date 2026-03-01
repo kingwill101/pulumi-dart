@@ -22,11 +22,10 @@ class GetRegionInstanceTemplateArgs {
     String? project,
     required String region,
     String? view,
-  }) :
-      instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetRegionInstanceTemplateArgs {
     );
   }
 }
-

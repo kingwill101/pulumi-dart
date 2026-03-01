@@ -13,16 +13,21 @@ import 'resource_lf_tags_table_with_columns.dart';
 class ResourceLfTagsArgs {
   /// Identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
   final pulumi.Input<String>? catalogId;
+
   /// Configuration block for a database resource. See below.
   final pulumi.Input<ResourceLfTagsDatabase>? database;
+
   /// Set of LF-tags to attach to the resource. See below.
   ///
   /// Exactly one of the following is required:
   final pulumi.Input<List<ResourceLfTagsLfTag>> lfTags;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configuration block for a table resource. See below.
   final pulumi.Input<ResourceLfTagsTable>? table;
+
   /// Configuration block for a table with columns resource. See below.
   ///
   /// The following arguments are optional:
@@ -42,34 +47,76 @@ class ResourceLfTagsArgs {
     String? region,
     ResourceLfTagsTable? table,
     ResourceLfTagsTableWithColumns? tableWithColumns,
-  }) :
-      catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
-      database = pulumi.Input.asOptionalInput<ResourceLfTagsDatabase>(database),
-      lfTags = pulumi.Input.asInput<List<ResourceLfTagsLfTag>>(lfTags),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      table = pulumi.Input.asOptionalInput<ResourceLfTagsTable>(table),
-      tableWithColumns = pulumi.Input.asOptionalInput<ResourceLfTagsTableWithColumns>(tableWithColumns);
+  }) : catalogId = pulumi.Input.asOptionalInput<String>(catalogId),
+       database = pulumi.Input.asOptionalInput<ResourceLfTagsDatabase>(
+         database,
+       ),
+       lfTags = pulumi.Input.asInput<List<ResourceLfTagsLfTag>>(lfTags),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       table = pulumi.Input.asOptionalInput<ResourceLfTagsTable>(table),
+       tableWithColumns =
+           pulumi.Input.asOptionalInput<ResourceLfTagsTableWithColumns>(
+             tableWithColumns,
+           );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'catalogId': ?catalogId,
-      'database': ?pulumi.Input.mapOptionalInputValue<ResourceLfTagsDatabase, Map<String, dynamic>>(database, (value) => value.toMap()),
-      'lfTags': pulumi.Input.mapInputValue<List<ResourceLfTagsLfTag>, List<Map<String, dynamic>>>(lfTags, (value) => pulumi.Input.encodeList<ResourceLfTagsLfTag, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'database':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceLfTagsDatabase,
+            Map<String, dynamic>
+          >(database, (value) => value.toMap()),
+      'lfTags':
+          pulumi.Input.mapInputValue<
+            List<ResourceLfTagsLfTag>,
+            List<Map<String, dynamic>>
+          >(
+            lfTags,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ResourceLfTagsLfTag,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
-      'table': ?pulumi.Input.mapOptionalInputValue<ResourceLfTagsTable, Map<String, dynamic>>(table, (value) => value.toMap()),
-      'tableWithColumns': ?pulumi.Input.mapOptionalInputValue<ResourceLfTagsTableWithColumns, Map<String, dynamic>>(tableWithColumns, (value) => value.toMap()),
+      'table':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceLfTagsTable,
+            Map<String, dynamic>
+          >(table, (value) => value.toMap()),
+      'tableWithColumns':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResourceLfTagsTableWithColumns,
+            Map<String, dynamic>
+          >(tableWithColumns, (value) => value.toMap()),
     };
   }
 
   factory ResourceLfTagsArgs.fromMap(Map<String, dynamic> map) {
     return ResourceLfTagsArgs(
       catalogId: map['catalogId'] == null ? null : map['catalogId'] as String,
-      database: map['database'] == null ? null : ResourceLfTagsDatabase.fromMap((map['database'] as Map).cast<String, dynamic>()),
-      lfTags: pulumi.Input.decodeList<ResourceLfTagsLfTag>(map['lfTags'], (value) => ResourceLfTagsLfTag.fromMap((value as Map).cast<String, dynamic>())),
+      database: map['database'] == null
+          ? null
+          : ResourceLfTagsDatabase.fromMap(
+              (map['database'] as Map).cast<String, dynamic>(),
+            ),
+      lfTags: pulumi.Input.decodeList<ResourceLfTagsLfTag>(
+        map['lfTags'],
+        (value) =>
+            ResourceLfTagsLfTag.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       region: map['region'] == null ? null : map['region'] as String,
-      table: map['table'] == null ? null : ResourceLfTagsTable.fromMap((map['table'] as Map).cast<String, dynamic>()),
-      tableWithColumns: map['tableWithColumns'] == null ? null : ResourceLfTagsTableWithColumns.fromMap((map['tableWithColumns'] as Map).cast<String, dynamic>()),
+      table: map['table'] == null
+          ? null
+          : ResourceLfTagsTable.fromMap(
+              (map['table'] as Map).cast<String, dynamic>(),
+            ),
+      tableWithColumns: map['tableWithColumns'] == null
+          ? null
+          : ResourceLfTagsTableWithColumns.fromMap(
+              (map['tableWithColumns'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

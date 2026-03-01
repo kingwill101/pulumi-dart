@@ -8,8 +8,10 @@ import 'node_pool_logging_config_response_container_v1beta1.dart';
 class NodeConfigDefaultsResponseContainerV1beta1 {
   /// GCFS (Google Container File System, also known as Riptide) options.
   final GcfsConfigResponseContainerV1beta1 gcfsConfig;
+
   /// HostMaintenancePolicy contains the desired maintenance policy for the Google Compute Engine hosts.
   final HostMaintenancePolicyResponse hostMaintenancePolicy;
+
   /// Logging configuration for node pools.
   final NodePoolLoggingConfigResponseContainerV1beta1 loggingConfig;
 
@@ -31,12 +33,19 @@ class NodeConfigDefaultsResponseContainerV1beta1 {
     };
   }
 
-  factory NodeConfigDefaultsResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory NodeConfigDefaultsResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodeConfigDefaultsResponseContainerV1beta1(
-      gcfsConfig: GcfsConfigResponseContainerV1beta1.fromMap((map['gcfsConfig'] as Map).cast<String, dynamic>()),
-      hostMaintenancePolicy: HostMaintenancePolicyResponse.fromMap((map['hostMaintenancePolicy'] as Map).cast<String, dynamic>()),
-      loggingConfig: NodePoolLoggingConfigResponseContainerV1beta1.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
+      gcfsConfig: GcfsConfigResponseContainerV1beta1.fromMap(
+        (map['gcfsConfig'] as Map).cast<String, dynamic>(),
+      ),
+      hostMaintenancePolicy: HostMaintenancePolicyResponse.fromMap(
+        (map['hostMaintenancePolicy'] as Map).cast<String, dynamic>(),
+      ),
+      loggingConfig: NodePoolLoggingConfigResponseContainerV1beta1.fromMap(
+        (map['loggingConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

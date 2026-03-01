@@ -9,20 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkstationWorkstationsV1betaArgs {
   /// Optional. Client-specified annotations.
   final pulumi.Input<Map<String, String>>? annotations;
+
   /// Optional. Human-readable name for this workstation.
   final pulumi.Input<String>? displayName;
+
   /// Optional. Environment variables passed to the workstation container's entrypoint.
   final pulumi.Input<Map<String, String>>? env;
+
   /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
+
   /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the workstation and that are also propagated to the underlying Compute Engine resources.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Identifier. Full name of this workstation.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> workstationClusterId;
   final pulumi.Input<String> workstationConfigId;
+
   /// Required. ID to use for the workstation.
   final pulumi.Input<String> workstationId;
 
@@ -50,18 +56,21 @@ class WorkstationWorkstationsV1betaArgs {
     required String workstationClusterId,
     required String workstationConfigId,
     required String workstationId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      env = pulumi.Input.asOptionalInput<Map<String, String>>(env),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workstationClusterId = pulumi.Input.asInput<String>(workstationClusterId),
-      workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
-      workstationId = pulumi.Input.asInput<String>(workstationId);
+  }) : annotations = pulumi.Input.asOptionalInput<Map<String, String>>(
+         annotations,
+       ),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       env = pulumi.Input.asOptionalInput<Map<String, String>>(env),
+       etag = pulumi.Input.asOptionalInput<String>(etag),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       workstationClusterId = pulumi.Input.asInput<String>(
+         workstationClusterId,
+       ),
+       workstationConfigId = pulumi.Input.asInput<String>(workstationConfigId),
+       workstationId = pulumi.Input.asInput<String>(workstationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -81,11 +90,19 @@ class WorkstationWorkstationsV1betaArgs {
 
   factory WorkstationWorkstationsV1betaArgs.fromMap(Map<String, dynamic> map) {
     return WorkstationWorkstationsV1betaArgs(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      env: map['env'] == null ? null : (map['env'] as Map).cast<String, String>(),
+      annotations: map['annotations'] == null
+          ? null
+          : (map['annotations'] as Map).cast<String, String>(),
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      env: map['env'] == null
+          ? null
+          : (map['env'] as Map).cast<String, String>(),
       etag: map['etag'] == null ? null : map['etag'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -95,4 +112,3 @@ class WorkstationWorkstationsV1betaArgs {
     );
   }
 }
-

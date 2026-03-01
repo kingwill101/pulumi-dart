@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentEC2Args {
   /// The number of minutes until the running instance is shut down after the environment has last been used.
   final pulumi.Input<int>? automaticStopTimeMinutes;
+
   /// The connection type used for connecting to an Amazon EC2 environment. Valid values are `CONNECT_SSH` and `CONNECT_SSM`. For more information please refer [AWS documentation for Cloud9](https://docs.aws.amazon.com/cloud9/latest/user-guide/ec2-ssm.html).
   final pulumi.Input<String>? connectionType;
+
   /// The description of the environment.
   final pulumi.Input<String>? description;
+
   /// The identifier for the Amazon Machine Image (AMI) that's used to create the EC2 instance. Valid values are
   /// * `amazonlinux-2-x86_64`
   /// * `amazonlinux-2023-x86_64`
@@ -23,16 +26,22 @@ class EnvironmentEC2Args {
   /// * `resolve:ssm:/aws/service/cloud9/amis/ubuntu-18.04-x86_64`
   /// * `resolve:ssm:/aws/service/cloud9/amis/ubuntu-22.04-x86_64`
   final pulumi.Input<String> imageId;
+
   /// The type of instance to connect to the environment, e.g., `t2.micro`.
   final pulumi.Input<String> instanceType;
+
   /// The name of the environment.
   final pulumi.Input<String>? name;
+
   /// The ARN of the environment owner. This can be ARN of any AWS IAM principal. Defaults to the environment's creator.
   final pulumi.Input<String>? ownerArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the subnet in Amazon VPC that AWS Cloud9 will use to communicate with the Amazon EC2 instance.
   final pulumi.Input<String>? subnetId;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -58,17 +67,18 @@ class EnvironmentEC2Args {
     String? region,
     String? subnetId,
     Map<String, String>? tags,
-  }) :
-      automaticStopTimeMinutes = pulumi.Input.asOptionalInput<int>(automaticStopTimeMinutes),
-      connectionType = pulumi.Input.asOptionalInput<String>(connectionType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      imageId = pulumi.Input.asInput<String>(imageId),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerArn = pulumi.Input.asOptionalInput<String>(ownerArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : automaticStopTimeMinutes = pulumi.Input.asOptionalInput<int>(
+         automaticStopTimeMinutes,
+       ),
+       connectionType = pulumi.Input.asOptionalInput<String>(connectionType),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       imageId = pulumi.Input.asInput<String>(imageId),
+       instanceType = pulumi.Input.asInput<String>(instanceType),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       ownerArn = pulumi.Input.asOptionalInput<String>(ownerArn),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -87,17 +97,24 @@ class EnvironmentEC2Args {
 
   factory EnvironmentEC2Args.fromMap(Map<String, dynamic> map) {
     return EnvironmentEC2Args(
-      automaticStopTimeMinutes: map['automaticStopTimeMinutes'] == null ? null : map['automaticStopTimeMinutes'] as int,
-      connectionType: map['connectionType'] == null ? null : map['connectionType'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      automaticStopTimeMinutes: map['automaticStopTimeMinutes'] == null
+          ? null
+          : map['automaticStopTimeMinutes'] as int,
+      connectionType: map['connectionType'] == null
+          ? null
+          : map['connectionType'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       imageId: map['imageId'] as String,
       instanceType: map['instanceType'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       ownerArn: map['ownerArn'] == null ? null : map['ownerArn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

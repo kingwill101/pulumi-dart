@@ -6,6 +6,7 @@ import 'disk_response.dart';
 class AttachedDiskResponse {
   /// Device name that the guest operating system will see. It is used by Runnable.volumes field to mount disks. So please specify the device_name if you want Batch to help mount the disk, and it should match the device_name field in volumes.
   final String deviceName;
+
   /// Name of an existing PD.
   final String existingDisk;
   final DiskResponse newDisk;
@@ -32,8 +33,9 @@ class AttachedDiskResponse {
     return AttachedDiskResponse(
       deviceName: map['deviceName'] as String,
       existingDisk: map['existingDisk'] as String,
-      newDisk: DiskResponse.fromMap((map['newDisk'] as Map).cast<String, dynamic>()),
+      newDisk: DiskResponse.fromMap(
+        (map['newDisk'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

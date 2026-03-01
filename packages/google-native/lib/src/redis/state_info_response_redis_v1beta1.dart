@@ -9,20 +9,17 @@ class StateInfoResponseRedisV1beta1 {
 
   /// Creates a new [StateInfoResponseRedisV1beta1].
   /// [updateInfo] Describes ongoing update on the cluster when cluster state is UPDATING.
-  StateInfoResponseRedisV1beta1({
-    required this.updateInfo,
-  });
+  StateInfoResponseRedisV1beta1({required this.updateInfo});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'updateInfo': updateInfo.toMap(),
-    };
+    return <String, dynamic>{'updateInfo': updateInfo.toMap()};
   }
 
   factory StateInfoResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
     return StateInfoResponseRedisV1beta1(
-      updateInfo: UpdateInfoResponseRedisV1beta1.fromMap((map['updateInfo'] as Map).cast<String, dynamic>()),
+      updateInfo: UpdateInfoResponseRedisV1beta1.fromMap(
+        (map['updateInfo'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

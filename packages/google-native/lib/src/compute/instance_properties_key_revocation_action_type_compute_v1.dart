@@ -7,13 +7,17 @@ enum InstancePropertiesKeyRevocationActionTypeComputeV1 {
   const InstancePropertiesKeyRevocationActionTypeComputeV1(this.value);
   final String value;
 
-  static InstancePropertiesKeyRevocationActionTypeComputeV1 fromValue(String value) {
-    for (final item in InstancePropertiesKeyRevocationActionTypeComputeV1.values) {
+  static InstancePropertiesKeyRevocationActionTypeComputeV1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in InstancePropertiesKeyRevocationActionTypeComputeV1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstancePropertiesKeyRevocationActionTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown InstancePropertiesKeyRevocationActionTypeComputeV1 value: $value',
+    );
   }
 }
-

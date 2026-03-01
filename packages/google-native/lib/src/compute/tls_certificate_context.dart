@@ -8,8 +8,10 @@ import 'tls_certificate_paths.dart';
 class TlsCertificateContext {
   /// Specifies the certificate and private key paths. This field is applicable only if tlsCertificateSource is set to USE_PATH.
   final TlsCertificatePaths? certificatePaths;
+
   /// Defines how TLS certificates are obtained.
   final TlsCertificateContextCertificateSource? certificateSource;
+
   /// Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.
   final SdsConfig? sdsConfig;
 
@@ -25,18 +27,33 @@ class TlsCertificateContext {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificatePaths': ?certificatePaths == null ? null : certificatePaths!.toMap(),
-      'certificateSource': ?certificateSource == null ? null : certificateSource!.value,
+      'certificatePaths': ?certificatePaths == null
+          ? null
+          : certificatePaths!.toMap(),
+      'certificateSource': ?certificateSource == null
+          ? null
+          : certificateSource!.value,
       'sdsConfig': ?sdsConfig == null ? null : sdsConfig!.toMap(),
     };
   }
 
   factory TlsCertificateContext.fromMap(Map<String, dynamic> map) {
     return TlsCertificateContext(
-      certificatePaths: map['certificatePaths'] == null ? null : TlsCertificatePaths.fromMap((map['certificatePaths'] as Map).cast<String, dynamic>()),
-      certificateSource: map['certificateSource'] == null ? null : TlsCertificateContextCertificateSource.fromValue(map['certificateSource'] as String),
-      sdsConfig: map['sdsConfig'] == null ? null : SdsConfig.fromMap((map['sdsConfig'] as Map).cast<String, dynamic>()),
+      certificatePaths: map['certificatePaths'] == null
+          ? null
+          : TlsCertificatePaths.fromMap(
+              (map['certificatePaths'] as Map).cast<String, dynamic>(),
+            ),
+      certificateSource: map['certificateSource'] == null
+          ? null
+          : TlsCertificateContextCertificateSource.fromValue(
+              map['certificateSource'] as String,
+            ),
+      sdsConfig: map['sdsConfig'] == null
+          ? null
+          : SdsConfig.fromMap(
+              (map['sdsConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

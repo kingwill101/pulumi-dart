@@ -7,10 +7,13 @@ import 'ospolicy_resource_file_remote_response.dart';
 class OSPolicyResourceFileResponse {
   /// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
   final bool allowInsecure;
+
   /// A Cloud Storage object.
   final OSPolicyResourceFileGcsResponse gcs;
+
   /// A local path within the VM to use.
   final String localPath;
+
   /// A generic remote file.
   final OSPolicyResourceFileRemoteResponse remote;
 
@@ -38,10 +41,13 @@ class OSPolicyResourceFileResponse {
   factory OSPolicyResourceFileResponse.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceFileResponse(
       allowInsecure: map['allowInsecure'] as bool,
-      gcs: OSPolicyResourceFileGcsResponse.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
+      gcs: OSPolicyResourceFileGcsResponse.fromMap(
+        (map['gcs'] as Map).cast<String, dynamic>(),
+      ),
       localPath: map['localPath'] as String,
-      remote: OSPolicyResourceFileRemoteResponse.fromMap((map['remote'] as Map).cast<String, dynamic>()),
+      remote: OSPolicyResourceFileRemoteResponse.fromMap(
+        (map['remote'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

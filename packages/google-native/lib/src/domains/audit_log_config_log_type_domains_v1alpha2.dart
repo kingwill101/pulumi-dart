@@ -14,7 +14,8 @@ enum AuditLogConfigLogTypeDomainsV1alpha2 {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuditLogConfigLogTypeDomainsV1alpha2 value: $value');
+    throw ArgumentError(
+      'Unknown AuditLogConfigLogTypeDomainsV1alpha2 value: $value',
+    );
   }
 }
-

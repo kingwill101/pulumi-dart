@@ -17,4 +17,3 @@ enum PersistentDiskDefaultsDiskType {
     throw ArgumentError('Unknown PersistentDiskDefaultsDiskType value: $value');
   }
 }
-

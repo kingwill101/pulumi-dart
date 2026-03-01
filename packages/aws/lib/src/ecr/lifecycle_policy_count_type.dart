@@ -15,4 +15,3 @@ enum LifecyclePolicyCountType {
     throw ArgumentError('Unknown LifecyclePolicyCountType value: $value');
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LaunchConfigurationRootBlockDevice {
   final bool? deleteOnTermination;
   final bool? encrypted;
@@ -38,13 +37,16 @@ class LaunchConfigurationRootBlockDevice {
 
   factory LaunchConfigurationRootBlockDevice.fromMap(Map<String, dynamic> map) {
     return LaunchConfigurationRootBlockDevice(
-      deleteOnTermination: map['deleteOnTermination'] == null ? null : map['deleteOnTermination'] as bool,
+      deleteOnTermination: map['deleteOnTermination'] == null
+          ? null
+          : map['deleteOnTermination'] as bool,
       encrypted: map['encrypted'] == null ? null : map['encrypted'] as bool,
       iops: map['iops'] == null ? null : map['iops'] as int,
       throughput: map['throughput'] == null ? null : map['throughput'] as int,
       volumeSize: map['volumeSize'] == null ? null : map['volumeSize'] as int,
-      volumeType: map['volumeType'] == null ? null : map['volumeType'] as String,
+      volumeType: map['volumeType'] == null
+          ? null
+          : map['volumeType'] as String,
     );
   }
 }
-

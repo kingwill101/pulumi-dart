@@ -5,10 +5,7 @@ import 'package:pulumi_aws/s3.dart' as s3;
 
 class ExampleStack extends Stack {
   ExampleStack() {
-    s3.BucketV2(
-      "mybucket",
-      args: s3.BucketV2Args(bucket: "myBucket"),
-    );
+    s3.BucketV2("mybucket", args: s3.BucketV2Args(bucket: "myBucket"));
   }
 }
 

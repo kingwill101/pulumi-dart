@@ -1,7 +1,9 @@
 /// Specifies the termination action for the instance.
 enum SchedulingInstanceTerminationAction {
   delete("DELETE"),
-  instanceTerminationActionUnspecified("INSTANCE_TERMINATION_ACTION_UNSPECIFIED"),
+  instanceTerminationActionUnspecified(
+    "INSTANCE_TERMINATION_ACTION_UNSPECIFIED",
+  ),
   stop("STOP");
 
   const SchedulingInstanceTerminationAction(this.value);
@@ -13,7 +15,8 @@ enum SchedulingInstanceTerminationAction {
         return item;
       }
     }
-    throw ArgumentError('Unknown SchedulingInstanceTerminationAction value: $value');
+    throw ArgumentError(
+      'Unknown SchedulingInstanceTerminationAction value: $value',
+    );
   }
 }
-

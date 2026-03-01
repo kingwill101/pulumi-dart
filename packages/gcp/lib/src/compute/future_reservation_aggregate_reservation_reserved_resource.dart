@@ -5,13 +5,12 @@ import 'future_reservation_aggregate_reservation_reserved_resource_accelerator.d
 class FutureReservationAggregateReservationReservedResource {
   /// Properties of accelerator resources in this reservation.
   /// Structure is documented below.
-  final FutureReservationAggregateReservationReservedResourceAccelerator? accelerator;
+  final FutureReservationAggregateReservationReservedResourceAccelerator?
+  accelerator;
 
   /// Creates a new [FutureReservationAggregateReservationReservedResource].
   /// [accelerator] Properties of accelerator resources in this reservation.
-  FutureReservationAggregateReservationReservedResource({
-    this.accelerator,
-  });
+  FutureReservationAggregateReservationReservedResource({this.accelerator});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +18,15 @@ class FutureReservationAggregateReservationReservedResource {
     };
   }
 
-  factory FutureReservationAggregateReservationReservedResource.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationAggregateReservationReservedResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationAggregateReservationReservedResource(
-      accelerator: map['accelerator'] == null ? null : FutureReservationAggregateReservationReservedResourceAccelerator.fromMap((map['accelerator'] as Map).cast<String, dynamic>()),
+      accelerator: map['accelerator'] == null
+          ? null
+          : FutureReservationAggregateReservationReservedResourceAccelerator.fromMap(
+              (map['accelerator'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

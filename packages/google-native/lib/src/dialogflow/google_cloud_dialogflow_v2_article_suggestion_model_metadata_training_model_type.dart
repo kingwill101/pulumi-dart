@@ -4,16 +4,22 @@ enum GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType {
   smartReplyDualEncoderModel("SMART_REPLY_DUAL_ENCODER_MODEL"),
   smartReplyBertModel("SMART_REPLY_BERT_MODEL");
 
-  const GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType(this.value);
+  const GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType(
+    this.value,
+  );
   final String value;
 
-  static GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType fromValue(String value) {
-    for (final item in GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType.values) {
+  static GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType value: $value',
+    );
   }
 }
-

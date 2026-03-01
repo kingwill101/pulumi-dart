@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
   /// Name describing the field.
   final String name;
@@ -12,15 +11,14 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField.fromMap(Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField(
       name: map['name'] as String,
     );
   }
 }
-

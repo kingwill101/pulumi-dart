@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDistributionTenantManagedCertificateRequest {
   final String certificateTransparencyLoggingPreference;
   final String primaryDomainName;
@@ -18,18 +17,21 @@ class GetDistributionTenantManagedCertificateRequest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateTransparencyLoggingPreference': certificateTransparencyLoggingPreference,
+      'certificateTransparencyLoggingPreference':
+          certificateTransparencyLoggingPreference,
       'primaryDomainName': primaryDomainName,
       'validationTokenHost': validationTokenHost,
     };
   }
 
-  factory GetDistributionTenantManagedCertificateRequest.fromMap(Map<String, dynamic> map) {
+  factory GetDistributionTenantManagedCertificateRequest.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDistributionTenantManagedCertificateRequest(
-      certificateTransparencyLoggingPreference: map['certificateTransparencyLoggingPreference'] as String,
+      certificateTransparencyLoggingPreference:
+          map['certificateTransparencyLoggingPreference'] as String,
       primaryDomainName: map['primaryDomainName'] as String,
       validationTokenHost: map['validationTokenHost'] as String,
     );
   }
 }
-

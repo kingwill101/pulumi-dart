@@ -6,11 +6,16 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_runtime_config.d
 
 class DeliveryPipelineSerialPipelineStageStrategyCanary {
   /// Configures the progressive based deployment for a Target.
-  final DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment? canaryDeployment;
+  final DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment?
+  canaryDeployment;
+
   /// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
-  final DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment? customCanaryDeployment;
+  final DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment?
+  customCanaryDeployment;
+
   /// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
-  final DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig? runtimeConfig;
+  final DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig?
+  runtimeConfig;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanary].
   /// [canaryDeployment] Configures the progressive based deployment for a Target.
@@ -24,18 +29,35 @@ class DeliveryPipelineSerialPipelineStageStrategyCanary {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'canaryDeployment': ?canaryDeployment == null ? null : canaryDeployment!.toMap(),
-      'customCanaryDeployment': ?customCanaryDeployment == null ? null : customCanaryDeployment!.toMap(),
+      'canaryDeployment': ?canaryDeployment == null
+          ? null
+          : canaryDeployment!.toMap(),
+      'customCanaryDeployment': ?customCanaryDeployment == null
+          ? null
+          : customCanaryDeployment!.toMap(),
       'runtimeConfig': ?runtimeConfig == null ? null : runtimeConfig!.toMap(),
     };
   }
 
-  factory DeliveryPipelineSerialPipelineStageStrategyCanary.fromMap(Map<String, dynamic> map) {
+  factory DeliveryPipelineSerialPipelineStageStrategyCanary.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryPipelineSerialPipelineStageStrategyCanary(
-      canaryDeployment: map['canaryDeployment'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment.fromMap((map['canaryDeployment'] as Map).cast<String, dynamic>()),
-      customCanaryDeployment: map['customCanaryDeployment'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment.fromMap((map['customCanaryDeployment'] as Map).cast<String, dynamic>()),
-      runtimeConfig: map['runtimeConfig'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>()),
+      canaryDeployment: map['canaryDeployment'] == null
+          ? null
+          : DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment.fromMap(
+              (map['canaryDeployment'] as Map).cast<String, dynamic>(),
+            ),
+      customCanaryDeployment: map['customCanaryDeployment'] == null
+          ? null
+          : DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment.fromMap(
+              (map['customCanaryDeployment'] as Map).cast<String, dynamic>(),
+            ),
+      runtimeConfig: map['runtimeConfig'] == null
+          ? null
+          : DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig.fromMap(
+              (map['runtimeConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

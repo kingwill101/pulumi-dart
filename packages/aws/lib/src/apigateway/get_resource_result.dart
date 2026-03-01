@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getResource.
 class GetResourceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Set to the ID of the parent Resource.
   final String parentId;
   final String path;
+
   /// Set to the path relative to the parent Resource.
   final String pathPart;
   final String region;
@@ -51,4 +52,3 @@ class GetResourceResult {
     );
   }
 }
-

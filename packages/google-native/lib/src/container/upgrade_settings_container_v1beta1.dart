@@ -7,10 +7,13 @@ import 'upgrade_settings_strategy_container_v1beta1.dart';
 class UpgradeSettingsContainerV1beta1 {
   /// Settings for blue-green upgrade strategy.
   final BlueGreenSettingsContainerV1beta1? blueGreenSettings;
+
   /// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
   final int? maxSurge;
+
   /// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
   final int? maxUnavailable;
+
   /// Update strategy of the node pool.
   final UpgradeSettingsStrategyContainerV1beta1? strategy;
 
@@ -28,7 +31,9 @@ class UpgradeSettingsContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blueGreenSettings': ?blueGreenSettings == null ? null : blueGreenSettings!.toMap(),
+      'blueGreenSettings': ?blueGreenSettings == null
+          ? null
+          : blueGreenSettings!.toMap(),
       'maxSurge': ?maxSurge,
       'maxUnavailable': ?maxUnavailable,
       'strategy': ?strategy == null ? null : strategy!.value,
@@ -37,11 +42,20 @@ class UpgradeSettingsContainerV1beta1 {
 
   factory UpgradeSettingsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return UpgradeSettingsContainerV1beta1(
-      blueGreenSettings: map['blueGreenSettings'] == null ? null : BlueGreenSettingsContainerV1beta1.fromMap((map['blueGreenSettings'] as Map).cast<String, dynamic>()),
+      blueGreenSettings: map['blueGreenSettings'] == null
+          ? null
+          : BlueGreenSettingsContainerV1beta1.fromMap(
+              (map['blueGreenSettings'] as Map).cast<String, dynamic>(),
+            ),
       maxSurge: map['maxSurge'] == null ? null : map['maxSurge'] as int,
-      maxUnavailable: map['maxUnavailable'] == null ? null : map['maxUnavailable'] as int,
-      strategy: map['strategy'] == null ? null : UpgradeSettingsStrategyContainerV1beta1.fromValue(map['strategy'] as String),
+      maxUnavailable: map['maxUnavailable'] == null
+          ? null
+          : map['maxUnavailable'] as int,
+      strategy: map['strategy'] == null
+          ? null
+          : UpgradeSettingsStrategyContainerV1beta1.fromValue(
+              map['strategy'] as String,
+            ),
     );
   }
 }
-

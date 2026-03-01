@@ -142,26 +142,34 @@ class RouterInterface extends pulumi.CustomResource {
   /// VLAN interconnect for this interface. Changing this forces a new interface to
   /// be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
   late final pulumi.Output<String?> interconnectAttachment;
+
   /// IP address and range of the interface. The IP range must be
   /// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
   late final pulumi.Output<String> ipRange;
+
   /// IP version of this interface. Can be either IPV4 or IPV6.
   late final pulumi.Output<String> ipVersion;
+
   /// A unique name for the interface, required by GCE. Changing
   /// this forces a new interface to be created.
   late final pulumi.Output<String> name;
+
   /// The regional private internal IP address that is used
   /// to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
   late final pulumi.Output<String?> privateIpAddress;
+
   /// The ID of the project in which this interface's routerbelongs.
   /// If it is not provided, the provider project is used. Changing this forces a new interface to be created.
   late final pulumi.Output<String> project;
+
   /// The name of the interface that is redundant to
   /// this interface. Changing this forces a new interface to be created.
   late final pulumi.Output<String> redundantInterface;
+
   /// The region this interface's router sits in.
   /// If not specified, the project region will be used. Changing this forces a new interface to be created.
   late final pulumi.Output<String> region;
+
   /// The name of the router this interface will be attached to.
   /// Changing this forces a new interface to be created.
   ///
@@ -169,9 +177,11 @@ class RouterInterface extends pulumi.CustomResource {
   ///
   /// - - -
   late final pulumi.Output<String> router;
+
   /// The URI of the subnetwork resource that this interface
   /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
   late final pulumi.Output<String?> subnetwork;
+
   /// The name or resource link to the VPN tunnel this
   /// interface will be linked to. Changing this forces a new interface to be created. Only
   /// one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
@@ -186,12 +196,14 @@ class RouterInterface extends pulumi.CustomResource {
     RouterInterfaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/routerInterface:RouterInterface',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.interconnectAttachment = registerOutput<String?>('interconnectAttachment');
+         'gcp:compute/routerInterface:RouterInterface',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.interconnectAttachment = registerOutput<String?>(
+      'interconnectAttachment',
+    );
     this.ipRange = registerOutput<String>('ipRange');
     this.ipVersion = registerOutput<String>('ipVersion');
     this.name = registerOutput<String>('name');

@@ -14,7 +14,8 @@ enum DeprecationStatusStateComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown DeprecationStatusStateComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown DeprecationStatusStateComputeBeta value: $value',
+    );
   }
 }
-

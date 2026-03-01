@@ -1,27 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The IP addresses of callers that are allowed to use the key.
-class V2ServerKeyRestrictionsResponse {
+class ServerKeyRestrictionsResponse {
   /// A list of the caller IP addresses that are allowed to make API calls with this key.
   final List<String> allowedIps;
 
-  /// Creates a new [V2ServerKeyRestrictionsResponse].
+  /// Creates a new [ServerKeyRestrictionsResponse].
   /// [allowedIps] A list of the caller IP addresses that are allowed to make API calls with this key.
-  V2ServerKeyRestrictionsResponse({
-    required this.allowedIps,
-  });
+  ServerKeyRestrictionsResponse({required this.allowedIps});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allowedIps': allowedIps,
-    };
+    return <String, dynamic>{'allowedIps': allowedIps};
   }
 
-  factory V2ServerKeyRestrictionsResponse.fromMap(Map<String, dynamic> map) {
-    return V2ServerKeyRestrictionsResponse(
+  factory ServerKeyRestrictionsResponse.fromMap(Map<String, dynamic> map) {
+    return ServerKeyRestrictionsResponse(
       allowedIps: (map['allowedIps'] as List).cast<String>(),
     );
   }
 }
-

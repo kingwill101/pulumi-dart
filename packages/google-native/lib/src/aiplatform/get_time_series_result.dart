@@ -6,22 +6,31 @@ import 'google_cloud_aiplatform_v1_tensorboard_time_series_metadata_response.dar
 class GetTimeSeriesResult {
   /// Timestamp when this TensorboardTimeSeries was created.
   final String createTime;
+
   /// Description of this TensorboardTimeSeries.
   final String description;
+
   /// User provided name of this TensorboardTimeSeries. This value should be unique among all TensorboardTimeSeries resources belonging to the same TensorboardRun resource (parent resource).
   final String displayName;
+
   /// Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final String etag;
+
   /// Scalar, Tensor, or Blob metadata for this TensorboardTimeSeries.
   final GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse metadata;
+
   /// Name of the TensorboardTimeSeries.
   final String name;
+
   /// Data of the current plugin, with the size limited to 65KB.
   final String pluginData;
+
   /// Immutable. Name of the plugin this time series pertain to. Such as Scalar, Tensor, Blob
   final String pluginName;
+
   /// Timestamp when this TensorboardTimeSeries was last updated.
   final String updateTime;
+
   /// Immutable. Type of TensorboardTimeSeries value.
   final String valueType;
 
@@ -70,7 +79,10 @@ class GetTimeSeriesResult {
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       etag: map['etag'] as String,
-      metadata: GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      metadata:
+          GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse.fromMap(
+            (map['metadata'] as Map).cast<String, dynamic>(),
+          ),
       name: map['name'] as String,
       pluginData: map['pluginData'] as String,
       pluginName: map['pluginName'] as String,
@@ -79,4 +91,3 @@ class GetTimeSeriesResult {
     );
   }
 }
-

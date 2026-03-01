@@ -12,7 +12,8 @@ enum SchedulingOnHostMaintenanceComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown SchedulingOnHostMaintenanceComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown SchedulingOnHostMaintenanceComputeV1 value: $value',
+    );
   }
 }
-

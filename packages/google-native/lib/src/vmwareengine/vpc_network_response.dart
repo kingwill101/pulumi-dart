@@ -1,26 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a VMware Engine VPC network that is managed by a VMware Engine network resource.
 class VpcNetworkResponse {
   /// The relative resource name of the service VPC network this VMware Engine network is attached to. For example: `projects/123123/global/networks/my-network`
   final String network;
+
   /// Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
   final String type;
 
   /// Creates a new [VpcNetworkResponse].
   /// [network] The relative resource name of the service VPC network this VMware Engine network is attached to. For example: `projects/123123/global/networks/my-network`
   /// [type] Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
-  VpcNetworkResponse({
-    required this.network,
-    required this.type,
-  });
+  VpcNetworkResponse({required this.network, required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'network': network,
-      'type': type,
-    };
+    return <String, dynamic>{'network': network, 'type': type};
   }
 
   factory VpcNetworkResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +24,3 @@ class VpcNetworkResponse {
     );
   }
 }
-

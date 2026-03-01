@@ -13,11 +13,8 @@ class GetSourceArgs {
   /// Creates a new [GetSourceArgs].
   /// [organizationId] Required.
   /// [sourceId] Required.
-  GetSourceArgs({
-    required String organizationId,
-    required String sourceId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId),
+  GetSourceArgs({required String organizationId, required String sourceId})
+    : organizationId = pulumi.Input.asInput<String>(organizationId),
       sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetSourceArgs {
     );
   }
 }
-

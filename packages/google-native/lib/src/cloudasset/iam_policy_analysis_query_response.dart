@@ -10,14 +10,19 @@ import 'resource_selector_response.dart';
 class IamPolicyAnalysisQueryResponse {
   /// Optional. Specifies roles or permissions for analysis. This is optional.
   final AccessSelectorResponse accessSelector;
+
   /// Optional. The hypothetical context for IAM conditions evaluation.
   final ConditionContextResponse conditionContext;
+
   /// Optional. Specifies an identity for analysis.
   final IdentitySelectorResponse identitySelector;
+
   /// Optional. The query options.
   final OptionsResponse options;
+
   /// Optional. Specifies a resource for analysis.
   final ResourceSelectorResponse resourceSelector;
+
   /// The relative name of the root asset. Only resources and IAM policies within the scope will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get organization id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
   final String scope;
 
@@ -50,13 +55,22 @@ class IamPolicyAnalysisQueryResponse {
 
   factory IamPolicyAnalysisQueryResponse.fromMap(Map<String, dynamic> map) {
     return IamPolicyAnalysisQueryResponse(
-      accessSelector: AccessSelectorResponse.fromMap((map['accessSelector'] as Map).cast<String, dynamic>()),
-      conditionContext: ConditionContextResponse.fromMap((map['conditionContext'] as Map).cast<String, dynamic>()),
-      identitySelector: IdentitySelectorResponse.fromMap((map['identitySelector'] as Map).cast<String, dynamic>()),
-      options: OptionsResponse.fromMap((map['options'] as Map).cast<String, dynamic>()),
-      resourceSelector: ResourceSelectorResponse.fromMap((map['resourceSelector'] as Map).cast<String, dynamic>()),
+      accessSelector: AccessSelectorResponse.fromMap(
+        (map['accessSelector'] as Map).cast<String, dynamic>(),
+      ),
+      conditionContext: ConditionContextResponse.fromMap(
+        (map['conditionContext'] as Map).cast<String, dynamic>(),
+      ),
+      identitySelector: IdentitySelectorResponse.fromMap(
+        (map['identitySelector'] as Map).cast<String, dynamic>(),
+      ),
+      options: OptionsResponse.fromMap(
+        (map['options'] as Map).cast<String, dynamic>(),
+      ),
+      resourceSelector: ResourceSelectorResponse.fromMap(
+        (map['resourceSelector'] as Map).cast<String, dynamic>(),
+      ),
       scope: map['scope'] as String,
     );
   }
 }
-

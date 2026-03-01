@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MetastoreTableIamMemberCondition {
   final String? description;
   final String expression;
@@ -26,10 +25,11 @@ class MetastoreTableIamMemberCondition {
 
   factory MetastoreTableIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return MetastoreTableIamMemberCondition(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
-

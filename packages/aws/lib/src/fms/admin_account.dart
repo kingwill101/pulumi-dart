@@ -100,11 +100,11 @@ class AdminAccount extends pulumi.CustomResource {
     AdminAccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:fms/adminAccount:AdminAccount',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:fms/adminAccount:AdminAccount',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.accountId = registerOutput<String>('accountId');
   }
 }

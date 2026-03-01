@@ -30,22 +30,68 @@ class GetVirtualNodeSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backendDefaults': pulumi.Input.encodeList<GetVirtualNodeSpecBackendDefault, Map<String, dynamic>>(backendDefaults, (value) => value.toMap()),
-      'backends': pulumi.Input.encodeList<GetVirtualNodeSpecBackend, Map<String, dynamic>>(backends, (value) => value.toMap()),
-      'listeners': pulumi.Input.encodeList<GetVirtualNodeSpecListener, Map<String, dynamic>>(listeners, (value) => value.toMap()),
-      'loggings': pulumi.Input.encodeList<GetVirtualNodeSpecLogging, Map<String, dynamic>>(loggings, (value) => value.toMap()),
-      'serviceDiscoveries': pulumi.Input.encodeList<GetVirtualNodeSpecServiceDiscovery, Map<String, dynamic>>(serviceDiscoveries, (value) => value.toMap()),
+      'backendDefaults':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecBackendDefault,
+            Map<String, dynamic>
+          >(backendDefaults, (value) => value.toMap()),
+      'backends':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecBackend,
+            Map<String, dynamic>
+          >(backends, (value) => value.toMap()),
+      'listeners':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecListener,
+            Map<String, dynamic>
+          >(listeners, (value) => value.toMap()),
+      'loggings':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecLogging,
+            Map<String, dynamic>
+          >(loggings, (value) => value.toMap()),
+      'serviceDiscoveries':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecServiceDiscovery,
+            Map<String, dynamic>
+          >(serviceDiscoveries, (value) => value.toMap()),
     };
   }
 
   factory GetVirtualNodeSpec.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpec(
-      backendDefaults: pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefault>(map['backendDefaults'], (value) => GetVirtualNodeSpecBackendDefault.fromMap((value as Map).cast<String, dynamic>())),
-      backends: pulumi.Input.decodeList<GetVirtualNodeSpecBackend>(map['backends'], (value) => GetVirtualNodeSpecBackend.fromMap((value as Map).cast<String, dynamic>())),
-      listeners: pulumi.Input.decodeList<GetVirtualNodeSpecListener>(map['listeners'], (value) => GetVirtualNodeSpecListener.fromMap((value as Map).cast<String, dynamic>())),
-      loggings: pulumi.Input.decodeList<GetVirtualNodeSpecLogging>(map['loggings'], (value) => GetVirtualNodeSpecLogging.fromMap((value as Map).cast<String, dynamic>())),
-      serviceDiscoveries: pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscovery>(map['serviceDiscoveries'], (value) => GetVirtualNodeSpecServiceDiscovery.fromMap((value as Map).cast<String, dynamic>())),
+      backendDefaults:
+          pulumi.Input.decodeList<GetVirtualNodeSpecBackendDefault>(
+            map['backendDefaults'],
+            (value) => GetVirtualNodeSpecBackendDefault.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      backends: pulumi.Input.decodeList<GetVirtualNodeSpecBackend>(
+        map['backends'],
+        (value) => GetVirtualNodeSpecBackend.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      listeners: pulumi.Input.decodeList<GetVirtualNodeSpecListener>(
+        map['listeners'],
+        (value) => GetVirtualNodeSpecListener.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      loggings: pulumi.Input.decodeList<GetVirtualNodeSpecLogging>(
+        map['loggings'],
+        (value) => GetVirtualNodeSpecLogging.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      serviceDiscoveries:
+          pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscovery>(
+            map['serviceDiscoveries'],
+            (value) => GetVirtualNodeSpecServiceDiscovery.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionNetworkEndpointGroupArgs {
   /// The Network Endpoint Group name. Provide either this or a `self_link`.
   final pulumi.Input<String>? name;
+
   /// The ID of the project to list versions in. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
   final pulumi.Input<String>? region;
+
   /// The Network Endpoint Group self_link.
   final pulumi.Input<String>? selfLink;
 
@@ -26,11 +29,10 @@ class GetRegionNetworkEndpointGroupArgs {
     String? project,
     String? region,
     String? selfLink,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
+  }) : name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       selfLink = pulumi.Input.asOptionalInput<String>(selfLink);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,4 +52,3 @@ class GetRegionNetworkEndpointGroupArgs {
     );
   }
 }
-

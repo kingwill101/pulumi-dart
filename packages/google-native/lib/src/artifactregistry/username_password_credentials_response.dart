@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Username and password credentials.
 class UsernamePasswordCredentialsResponse {
   /// The Secret Manager key version that holds the password to access the remote repository. Must be in the format of `projects/{project}/secrets/{secret}/versions/{version}`.
   final String passwordSecretVersion;
+
   /// The username to access the remote repository.
   final String username;
 
@@ -23,11 +23,12 @@ class UsernamePasswordCredentialsResponse {
     };
   }
 
-  factory UsernamePasswordCredentialsResponse.fromMap(Map<String, dynamic> map) {
+  factory UsernamePasswordCredentialsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UsernamePasswordCredentialsResponse(
       passwordSecretVersion: map['passwordSecretVersion'] as String,
       username: map['username'] as String,
     );
   }
 }
-

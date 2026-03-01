@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
 class ForwardingRuleServiceDirectoryRegistration {
   /// Service Directory namespace to register the forwarding rule under.
   final String? namespace;
+
   /// Service Directory service to register the forwarding rule under.
   final String? service;
+
   /// [Optional] Service Directory region to register this global forwarding rule under. Default to "us-central1". Only used for PSC for Google APIs. All PSC for Google APIs Forwarding Rules on the same network should use the same Service Directory region.
   final String? serviceDirectoryRegion;
 
@@ -28,12 +29,15 @@ class ForwardingRuleServiceDirectoryRegistration {
     };
   }
 
-  factory ForwardingRuleServiceDirectoryRegistration.fromMap(Map<String, dynamic> map) {
+  factory ForwardingRuleServiceDirectoryRegistration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ForwardingRuleServiceDirectoryRegistration(
       namespace: map['namespace'] == null ? null : map['namespace'] as String,
       service: map['service'] == null ? null : map['service'] as String,
-      serviceDirectoryRegion: map['serviceDirectoryRegion'] == null ? null : map['serviceDirectoryRegion'] as String,
+      serviceDirectoryRegion: map['serviceDirectoryRegion'] == null
+          ? null
+          : map['serviceDirectoryRegion'] as String,
     );
   }
 }
-

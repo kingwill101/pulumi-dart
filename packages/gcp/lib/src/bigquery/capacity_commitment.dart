@@ -158,28 +158,39 @@ class CapacityCommitment extends pulumi.CustomResource {
   /// cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
   /// or merged.
   late final pulumi.Output<String?> capacityCommitmentId;
+
   /// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
   late final pulumi.Output<String> commitmentEndTime;
+
   /// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
   late final pulumi.Output<String> commitmentStartTime;
+
   /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
   late final pulumi.Output<String?> edition;
+
   /// If true, fail the request if another project in the organization has a capacity commitment.
   late final pulumi.Output<String?> enforceSingleAdminProjectPerOrg;
+
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
   late final pulumi.Output<String?> location;
+
   /// The resource name of the capacity commitment, e.g., projects/myproject/locations/US/capacityCommitments/123
   late final pulumi.Output<String> name;
+
   /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
   late final pulumi.Output<String> plan;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
   late final pulumi.Output<String?> renewalPlan;
+
   /// Number of slots in this commitment.
   late final pulumi.Output<int> slotCount;
+
   /// State of the commitment
   late final pulumi.Output<String> state;
 
@@ -192,16 +203,18 @@ class CapacityCommitment extends pulumi.CustomResource {
     CapacityCommitmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigquery/capacityCommitment:CapacityCommitment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:bigquery/capacityCommitment:CapacityCommitment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
     this.commitmentEndTime = registerOutput<String>('commitmentEndTime');
     this.commitmentStartTime = registerOutput<String>('commitmentStartTime');
     this.edition = registerOutput<String?>('edition');
-    this.enforceSingleAdminProjectPerOrg = registerOutput<String?>('enforceSingleAdminProjectPerOrg');
+    this.enforceSingleAdminProjectPerOrg = registerOutput<String?>(
+      'enforceSingleAdminProjectPerOrg',
+    );
     this.location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     this.plan = registerOutput<String>('plan');

@@ -148,21 +148,28 @@ import 'ai_metadata_store_state.dart';
 class AiMetadataStore extends pulumi.CustomResource {
   /// The timestamp of when the MetadataStore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> createTime;
+
   /// Description of the MetadataStore.
   late final pulumi.Output<String?> description;
+
   /// Customer-managed encryption key spec for a MetadataStore. If set, this MetadataStore and all sub-resources of this MetadataStore will be secured by this key.
   /// Structure is documented below.
   late final pulumi.Output<AiMetadataStoreEncryptionSpec?> encryptionSpec;
+
   /// The name of the MetadataStore. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the Metadata Store. eg us-central1
   late final pulumi.Output<String> region;
+
   /// State information of the MetadataStore.
   /// Structure is documented below.
   late final pulumi.Output<List<AiMetadataStoreState>> states;
+
   /// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
 
@@ -175,14 +182,16 @@ class AiMetadataStore extends pulumi.CustomResource {
     AiMetadataStoreArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiMetadataStore:AiMetadataStore',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:vertex/aiMetadataStore:AiMetadataStore',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
-    this.encryptionSpec = registerOutput<AiMetadataStoreEncryptionSpec?>('encryptionSpec');
+    this.encryptionSpec = registerOutput<AiMetadataStoreEncryptionSpec?>(
+      'encryptionSpec',
+    );
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String>('region');

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class KeyRingImportJobPublicKey {
   /// (Output)
   /// The public key, encoded in PEM format. For more information, see the RFC 7468 sections
@@ -9,14 +8,10 @@ class KeyRingImportJobPublicKey {
 
   /// Creates a new [KeyRingImportJobPublicKey].
   /// [pem] (Output)
-  KeyRingImportJobPublicKey({
-    this.pem,
-  });
+  KeyRingImportJobPublicKey({this.pem});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pem': ?pem,
-    };
+    return <String, dynamic>{'pem': ?pem};
   }
 
   factory KeyRingImportJobPublicKey.fromMap(Map<String, dynamic> map) {
@@ -25,4 +20,3 @@ class KeyRingImportJobPublicKey {
     );
   }
 }
-

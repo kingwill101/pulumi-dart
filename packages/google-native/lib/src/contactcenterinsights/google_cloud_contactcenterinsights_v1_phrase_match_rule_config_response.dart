@@ -5,7 +5,8 @@ import 'google_cloud_contactcenterinsights_v1_exact_match_config_response.dart';
 /// Configuration information of a phrase match rule.
 class GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse {
   /// The configuration for the exact match rule.
-  final GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse exactMatchConfig;
+  final GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse
+  exactMatchConfig;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse].
   /// [exactMatchConfig] The configuration for the exact match rule.
@@ -14,15 +15,17 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'exactMatchConfig': exactMatchConfig.toMap(),
-    };
+    return <String, dynamic>{'exactMatchConfig': exactMatchConfig.toMap()};
   }
 
-  factory GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigResponse(
-      exactMatchConfig: GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse.fromMap((map['exactMatchConfig'] as Map).cast<String, dynamic>()),
+      exactMatchConfig:
+          GoogleCloudContactcenterinsightsV1ExactMatchConfigResponse.fromMap(
+            (map['exactMatchConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

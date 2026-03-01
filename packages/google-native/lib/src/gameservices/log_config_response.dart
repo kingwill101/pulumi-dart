@@ -8,8 +8,10 @@ import 'data_access_options_response.dart';
 class LogConfigResponse {
   /// Cloud audit options.
   final CloudAuditOptionsResponse cloudAudit;
+
   /// Counter options.
   final CounterOptionsResponse counter;
+
   /// Data access options.
   final DataAccessOptionsResponse dataAccess;
 
@@ -33,10 +35,15 @@ class LogConfigResponse {
 
   factory LogConfigResponse.fromMap(Map<String, dynamic> map) {
     return LogConfigResponse(
-      cloudAudit: CloudAuditOptionsResponse.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>()),
-      counter: CounterOptionsResponse.fromMap((map['counter'] as Map).cast<String, dynamic>()),
-      dataAccess: DataAccessOptionsResponse.fromMap((map['dataAccess'] as Map).cast<String, dynamic>()),
+      cloudAudit: CloudAuditOptionsResponse.fromMap(
+        (map['cloudAudit'] as Map).cast<String, dynamic>(),
+      ),
+      counter: CounterOptionsResponse.fromMap(
+        (map['counter'] as Map).cast<String, dynamic>(),
+      ),
+      dataAccess: DataAccessOptionsResponse.fromMap(
+        (map['dataAccess'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

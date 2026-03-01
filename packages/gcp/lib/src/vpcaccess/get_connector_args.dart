@@ -11,9 +11,11 @@ class GetConnectorArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region in which the resource belongs. If it
   /// is not provided, the provider region is used.
   final pulumi.Input<String>? region;
@@ -22,12 +24,8 @@ class GetConnectorArgs {
   /// [name] Name of the resource.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [region] The region in which the resource belongs. If it
-  GetConnectorArgs({
-    required String name,
-    String? project,
-    String? region,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
+  GetConnectorArgs({required String name, String? project, String? region})
+    : name = pulumi.Input.asInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
@@ -47,4 +45,3 @@ class GetConnectorArgs {
     );
   }
 }
-

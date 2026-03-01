@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetServiceNetworkConfiguration {
   /// Whether tasks receive public IP addresses
   final bool assignPublicIp;
+
   /// Security groups associated with tasks
   final List<String> securityGroups;
+
   /// Subnets associated with tasks
   final List<String> subnets;
 
@@ -35,4 +36,3 @@ class GetServiceNetworkConfiguration {
     );
   }
 }
-

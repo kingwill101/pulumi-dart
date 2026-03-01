@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AllowedImagesSettingsImageCriterionCreationDateCondition {
   /// Maximum number of days since the AMI was created.
   final int? maximumDaysSinceCreated;
@@ -17,10 +16,13 @@ class AllowedImagesSettingsImageCriterionCreationDateCondition {
     };
   }
 
-  factory AllowedImagesSettingsImageCriterionCreationDateCondition.fromMap(Map<String, dynamic> map) {
+  factory AllowedImagesSettingsImageCriterionCreationDateCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllowedImagesSettingsImageCriterionCreationDateCondition(
-      maximumDaysSinceCreated: map['maximumDaysSinceCreated'] == null ? null : map['maximumDaysSinceCreated'] as int,
+      maximumDaysSinceCreated: map['maximumDaysSinceCreated'] == null
+          ? null
+          : map['maximumDaysSinceCreated'] as int,
     );
   }
 }
-

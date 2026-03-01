@@ -19,10 +19,9 @@ class GetWorkloadAssuredworkloadsV1beta1Args {
     required String location,
     required String organizationId,
     required String workloadId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      workloadId = pulumi.Input.asInput<String>(workloadId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       workloadId = pulumi.Input.asInput<String>(workloadId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetWorkloadAssuredworkloadsV1beta1Args {
     };
   }
 
-  factory GetWorkloadAssuredworkloadsV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetWorkloadAssuredworkloadsV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkloadAssuredworkloadsV1beta1Args(
       location: map['location'] as String,
       organizationId: map['organizationId'] as String,
@@ -40,4 +41,3 @@ class GetWorkloadAssuredworkloadsV1beta1Args {
     );
   }
 }
-

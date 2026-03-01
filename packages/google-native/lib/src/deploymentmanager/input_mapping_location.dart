@@ -18,4 +18,3 @@ enum InputMappingLocation {
     throw ArgumentError('Unknown InputMappingLocation value: $value');
   }
 }
-

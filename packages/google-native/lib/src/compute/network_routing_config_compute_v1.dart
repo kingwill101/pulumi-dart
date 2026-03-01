@@ -9,9 +9,7 @@ class NetworkRoutingConfigComputeV1 {
 
   /// Creates a new [NetworkRoutingConfigComputeV1].
   /// [routingMode] The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
-  NetworkRoutingConfigComputeV1({
-    this.routingMode,
-  });
+  NetworkRoutingConfigComputeV1({this.routingMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class NetworkRoutingConfigComputeV1 {
 
   factory NetworkRoutingConfigComputeV1.fromMap(Map<String, dynamic> map) {
     return NetworkRoutingConfigComputeV1(
-      routingMode: map['routingMode'] == null ? null : NetworkRoutingConfigRoutingModeComputeV1.fromValue(map['routingMode'] as String),
+      routingMode: map['routingMode'] == null
+          ? null
+          : NetworkRoutingConfigRoutingModeComputeV1.fromValue(
+              map['routingMode'] as String,
+            ),
     );
   }
 }
-

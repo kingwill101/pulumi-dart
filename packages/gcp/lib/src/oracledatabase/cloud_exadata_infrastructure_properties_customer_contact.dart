@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CloudExadataInfrastructurePropertiesCustomerContact {
   /// The email address used by Oracle to send notifications regarding databases
   /// and infrastructure.
@@ -8,20 +7,17 @@ class CloudExadataInfrastructurePropertiesCustomerContact {
 
   /// Creates a new [CloudExadataInfrastructurePropertiesCustomerContact].
   /// [email] The email address used by Oracle to send notifications regarding databases
-  CloudExadataInfrastructurePropertiesCustomerContact({
-    required this.email,
-  });
+  CloudExadataInfrastructurePropertiesCustomerContact({required this.email});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'email': email,
-    };
+    return <String, dynamic>{'email': email};
   }
 
-  factory CloudExadataInfrastructurePropertiesCustomerContact.fromMap(Map<String, dynamic> map) {
+  factory CloudExadataInfrastructurePropertiesCustomerContact.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudExadataInfrastructurePropertiesCustomerContact(
       email: map['email'] as String,
     );
   }
 }
-

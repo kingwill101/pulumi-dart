@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FilterFilterCriteriaResourceTag {
   /// (Required) The comparison operator. Valid values: `EQUALS`.
   final String comparison;
+
   /// (Required) The key to filter on.
   final String key;
+
   /// (Required) The value to filter on.
   final String value;
 
@@ -35,4 +36,3 @@ class FilterFilterCriteriaResourceTag {
     );
   }
 }
-

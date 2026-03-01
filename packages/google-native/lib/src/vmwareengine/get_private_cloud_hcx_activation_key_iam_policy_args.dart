@@ -25,12 +25,13 @@ class GetPrivateCloudHcxActivationKeyIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     required String privateCloudId,
     String? project,
-  }) :
-      hcxActivationKeyId = pulumi.Input.asInput<String>(hcxActivationKeyId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : hcxActivationKeyId = pulumi.Input.asInput<String>(hcxActivationKeyId),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,14 +43,18 @@ class GetPrivateCloudHcxActivationKeyIamPolicyArgs {
     };
   }
 
-  factory GetPrivateCloudHcxActivationKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetPrivateCloudHcxActivationKeyIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPrivateCloudHcxActivationKeyIamPolicyArgs(
       hcxActivationKeyId: map['hcxActivationKeyId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       privateCloudId: map['privateCloudId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

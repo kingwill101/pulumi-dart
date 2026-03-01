@@ -1,21 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig {
   /// (Optional)
   final String? externalIp;
+
   /// (Optional)
   final String? externalIpv6;
+
   /// (Optional)
   final int? externalIpv6PrefixLength;
+
   /// Optional. The name of this access configuration.
   final String? name;
+
   /// Possible values are: `NETWORK_TIER_UNSPECIFIED`, `PREMIUM`, `STANDARD`.
   final String? networkTier;
+
   /// (Optional)
   final String? publicPtrDomainName;
+
   /// (Optional)
   final bool? setPublicPtr;
+
   /// Optional. The type of configuration.
   /// Possible values are: `ACCESS_TYPE_UNSPECIFIED`, `ONE_TO_ONE_NAT`, `DIRECT_IPV6`.
   final String? type;
@@ -53,17 +59,30 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfi
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig(
-      externalIp: map['externalIp'] == null ? null : map['externalIp'] as String,
-      externalIpv6: map['externalIpv6'] == null ? null : map['externalIpv6'] as String,
-      externalIpv6PrefixLength: map['externalIpv6PrefixLength'] == null ? null : map['externalIpv6PrefixLength'] as int,
+      externalIp: map['externalIp'] == null
+          ? null
+          : map['externalIp'] as String,
+      externalIpv6: map['externalIpv6'] == null
+          ? null
+          : map['externalIpv6'] as String,
+      externalIpv6PrefixLength: map['externalIpv6PrefixLength'] == null
+          ? null
+          : map['externalIpv6PrefixLength'] as int,
       name: map['name'] == null ? null : map['name'] as String,
-      networkTier: map['networkTier'] == null ? null : map['networkTier'] as String,
-      publicPtrDomainName: map['publicPtrDomainName'] == null ? null : map['publicPtrDomainName'] as String,
-      setPublicPtr: map['setPublicPtr'] == null ? null : map['setPublicPtr'] as bool,
+      networkTier: map['networkTier'] == null
+          ? null
+          : map['networkTier'] as String,
+      publicPtrDomainName: map['publicPtrDomainName'] == null
+          ? null
+          : map['publicPtrDomainName'] as String,
+      setPublicPtr: map['setPublicPtr'] == null
+          ? null
+          : map['setPublicPtr'] as bool,
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
-

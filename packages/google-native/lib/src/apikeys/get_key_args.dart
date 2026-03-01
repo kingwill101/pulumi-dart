@@ -15,12 +15,8 @@ class GetKeyArgs {
   /// [keyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetKeyArgs({
-    required String keyId,
-    required String location,
-    String? project,
-  }) :
-      keyId = pulumi.Input.asInput<String>(keyId),
+  GetKeyArgs({required String keyId, required String location, String? project})
+    : keyId = pulumi.Input.asInput<String>(keyId),
       location = pulumi.Input.asInput<String>(location),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -40,4 +36,3 @@ class GetKeyArgs {
     );
   }
 }
-

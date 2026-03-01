@@ -1,26 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetBundleUserStorage {
   /// Size of the user storage.
   final String capacity;
 
   /// Creates a new [GetBundleUserStorage].
   /// [capacity] Size of the user storage.
-  GetBundleUserStorage({
-    required this.capacity,
-  });
+  GetBundleUserStorage({required this.capacity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'capacity': capacity,
-    };
+    return <String, dynamic>{'capacity': capacity};
   }
 
   factory GetBundleUserStorage.fromMap(Map<String, dynamic> map) {
-    return GetBundleUserStorage(
-      capacity: map['capacity'] as String,
-    );
+    return GetBundleUserStorage(capacity: map['capacity'] as String);
   }
 }
-

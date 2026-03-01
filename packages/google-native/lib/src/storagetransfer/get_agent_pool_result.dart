@@ -6,10 +6,13 @@ import 'bandwidth_limit_response.dart';
 class GetAgentPoolResult {
   /// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
   final BandwidthLimitResponse bandwidthLimit;
+
   /// Specifies the client-specified AgentPool description.
   final String displayName;
+
   /// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
   final String name;
+
   /// Specifies the state of the AgentPool.
   final String state;
 
@@ -36,11 +39,12 @@ class GetAgentPoolResult {
 
   factory GetAgentPoolResult.fromMap(Map<String, dynamic> map) {
     return GetAgentPoolResult(
-      bandwidthLimit: BandwidthLimitResponse.fromMap((map['bandwidthLimit'] as Map).cast<String, dynamic>()),
+      bandwidthLimit: BandwidthLimitResponse.fromMap(
+        (map['bandwidthLimit'] as Map).cast<String, dynamic>(),
+      ),
       displayName: map['displayName'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
     );
   }
 }
-

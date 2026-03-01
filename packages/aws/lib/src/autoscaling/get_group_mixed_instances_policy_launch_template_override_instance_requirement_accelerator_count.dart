@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount {
   /// Maximum.
   final int max;
+
   /// Minimum.
   final int min;
 
@@ -16,17 +16,15 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAccel
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': max,
-      'min': min,
-    };
+    return <String, dynamic>{'max': max, 'min': min};
   }
 
-  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount.fromMap(Map<String, dynamic> map) {
+  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount(
       max: map['max'] as int,
       min: map['min'] as int,
     );
   }
 }
-

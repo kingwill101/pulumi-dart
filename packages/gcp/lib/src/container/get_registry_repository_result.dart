@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRegistryRepository.
 class GetRegistryRepositoryResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String project;
   final String? region;
+
   /// The URL at which the repository can be accessed.
   final String repositoryUrl;
 
@@ -40,4 +40,3 @@ class GetRegistryRepositoryResult {
     );
   }
 }
-

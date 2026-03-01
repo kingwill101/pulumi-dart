@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDelegationSet.
 class GetDelegationSetResult {
   /// ARN of the Delegation Set.
   final String arn;
+
   /// Caller Reference of the delegation set.
   final String callerReference;
   final String id;
+
   /// List of DNS name servers for the delegation set.
   final List<String> nameServers;
 
@@ -41,4 +42,3 @@ class GetDelegationSetResult {
     );
   }
 }
-

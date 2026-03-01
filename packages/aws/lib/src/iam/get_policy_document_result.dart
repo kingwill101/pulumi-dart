@@ -7,8 +7,10 @@ import 'get_policy_document_statement.dart';
 class GetPolicyDocumentResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Standard JSON policy document rendered based on the arguments above.
   final String json;
+
   /// Minified JSON policy document rendered based on the arguments above.
   final String minifiedJson;
   final String? overrideJson;
@@ -53,7 +55,12 @@ class GetPolicyDocumentResult {
       'policyId': ?policyId,
       'sourceJson': ?sourceJson,
       'sourcePolicyDocuments': ?sourcePolicyDocuments,
-      'statements': ?statements == null ? null : pulumi.Input.encodeList<GetPolicyDocumentStatement, Map<String, dynamic>>(statements!, (value) => value.toMap()),
+      'statements': ?statements == null
+          ? null
+          : pulumi.Input.encodeList<
+              GetPolicyDocumentStatement,
+              Map<String, dynamic>
+            >(statements!, (value) => value.toMap()),
       'version': ?version,
     };
   }
@@ -63,14 +70,28 @@ class GetPolicyDocumentResult {
       id: map['id'] as String,
       json: map['json'] as String,
       minifiedJson: map['minifiedJson'] as String,
-      overrideJson: map['overrideJson'] == null ? null : map['overrideJson'] as String,
-      overridePolicyDocuments: map['overridePolicyDocuments'] == null ? null : (map['overridePolicyDocuments'] as List).cast<String>(),
+      overrideJson: map['overrideJson'] == null
+          ? null
+          : map['overrideJson'] as String,
+      overridePolicyDocuments: map['overridePolicyDocuments'] == null
+          ? null
+          : (map['overridePolicyDocuments'] as List).cast<String>(),
       policyId: map['policyId'] == null ? null : map['policyId'] as String,
-      sourceJson: map['sourceJson'] == null ? null : map['sourceJson'] as String,
-      sourcePolicyDocuments: map['sourcePolicyDocuments'] == null ? null : (map['sourcePolicyDocuments'] as List).cast<String>(),
-      statements: map['statements'] == null ? null : pulumi.Input.decodeList<GetPolicyDocumentStatement>(map['statements'], (value) => GetPolicyDocumentStatement.fromMap((value as Map).cast<String, dynamic>())),
+      sourceJson: map['sourceJson'] == null
+          ? null
+          : map['sourceJson'] as String,
+      sourcePolicyDocuments: map['sourcePolicyDocuments'] == null
+          ? null
+          : (map['sourcePolicyDocuments'] as List).cast<String>(),
+      statements: map['statements'] == null
+          ? null
+          : pulumi.Input.decodeList<GetPolicyDocumentStatement>(
+              map['statements'],
+              (value) => GetPolicyDocumentStatement.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
-

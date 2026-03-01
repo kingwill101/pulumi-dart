@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption {
   /// Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
   final String? jobBookmarksEncryptionMode;
+
   /// Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
   final String? kmsKeyArn;
 
@@ -22,11 +22,14 @@ class SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption {
     };
   }
 
-  factory SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption.fromMap(Map<String, dynamic> map) {
+  factory SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption(
-      jobBookmarksEncryptionMode: map['jobBookmarksEncryptionMode'] == null ? null : map['jobBookmarksEncryptionMode'] as String,
+      jobBookmarksEncryptionMode: map['jobBookmarksEncryptionMode'] == null
+          ? null
+          : map['jobBookmarksEncryptionMode'] as String,
       kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
     );
   }
 }
-

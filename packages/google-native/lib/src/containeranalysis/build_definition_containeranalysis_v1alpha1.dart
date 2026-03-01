@@ -26,17 +26,35 @@ class BuildDefinitionContaineranalysisV1alpha1 {
       'buildType': ?buildType,
       'externalParameters': ?externalParameters,
       'internalParameters': ?internalParameters,
-      'resolvedDependencies': ?resolvedDependencies == null ? null : pulumi.Input.encodeList<ResourceDescriptorContaineranalysisV1alpha1, Map<String, dynamic>>(resolvedDependencies!, (value) => value.toMap()),
+      'resolvedDependencies': ?resolvedDependencies == null
+          ? null
+          : pulumi.Input.encodeList<
+              ResourceDescriptorContaineranalysisV1alpha1,
+              Map<String, dynamic>
+            >(resolvedDependencies!, (value) => value.toMap()),
     };
   }
 
-  factory BuildDefinitionContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory BuildDefinitionContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BuildDefinitionContaineranalysisV1alpha1(
       buildType: map['buildType'] == null ? null : map['buildType'] as String,
-      externalParameters: map['externalParameters'] == null ? null : (map['externalParameters'] as Map).cast<String, String>(),
-      internalParameters: map['internalParameters'] == null ? null : (map['internalParameters'] as Map).cast<String, String>(),
-      resolvedDependencies: map['resolvedDependencies'] == null ? null : pulumi.Input.decodeList<ResourceDescriptorContaineranalysisV1alpha1>(map['resolvedDependencies'], (value) => ResourceDescriptorContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      externalParameters: map['externalParameters'] == null
+          ? null
+          : (map['externalParameters'] as Map).cast<String, String>(),
+      internalParameters: map['internalParameters'] == null
+          ? null
+          : (map['internalParameters'] as Map).cast<String, String>(),
+      resolvedDependencies: map['resolvedDependencies'] == null
+          ? null
+          : pulumi
+                .Input.decodeList<ResourceDescriptorContaineranalysisV1alpha1>(
+              map['resolvedDependencies'],
+              (value) => ResourceDescriptorContaineranalysisV1alpha1.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

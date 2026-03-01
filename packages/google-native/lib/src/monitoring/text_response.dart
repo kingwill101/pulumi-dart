@@ -6,8 +6,10 @@ import 'text_style_response.dart';
 class TextResponse {
   /// The text content to be displayed.
   final String content;
+
   /// How the text content is formatted.
   final String format;
+
   /// How the text is styled
   final TextStyleResponse style;
 
@@ -33,8 +35,9 @@ class TextResponse {
     return TextResponse(
       content: map['content'] as String,
       format: map['format'] as String,
-      style: TextStyleResponse.fromMap((map['style'] as Map).cast<String, dynamic>()),
+      style: TextStyleResponse.fromMap(
+        (map['style'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

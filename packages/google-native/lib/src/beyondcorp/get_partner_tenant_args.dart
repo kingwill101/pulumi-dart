@@ -16,9 +16,8 @@ class GetPartnerTenantArgs {
   GetPartnerTenantArgs({
     required String organizationId,
     required String partnerTenantId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId);
+  }) : organizationId = pulumi.Input.asInput<String>(organizationId),
+       partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetPartnerTenantArgs {
     );
   }
 }
-

@@ -8,6 +8,7 @@ class GetMembershipBindingResult {
   final String createTime;
   final String deleteTime;
   final Map<String, String> effectiveLabels;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -70,7 +71,11 @@ class GetMembershipBindingResult {
       'project': ?project,
       'pulumiLabels': pulumiLabels,
       'scope': scope,
-      'states': pulumi.Input.encodeList<GetMembershipBindingState, Map<String, dynamic>>(states, (value) => value.toMap()),
+      'states':
+          pulumi.Input.encodeList<
+            GetMembershipBindingState,
+            Map<String, dynamic>
+          >(states, (value) => value.toMap()),
       'uid': uid,
       'updateTime': updateTime,
     };
@@ -90,10 +95,14 @@ class GetMembershipBindingResult {
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       scope: map['scope'] as String,
-      states: pulumi.Input.decodeList<GetMembershipBindingState>(map['states'], (value) => GetMembershipBindingState.fromMap((value as Map).cast<String, dynamic>())),
+      states: pulumi.Input.decodeList<GetMembershipBindingState>(
+        map['states'],
+        (value) => GetMembershipBindingState.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

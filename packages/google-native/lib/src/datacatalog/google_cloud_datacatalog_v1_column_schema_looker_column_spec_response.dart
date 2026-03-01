@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Column info specific to Looker System.
 class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse {
   /// Looker specific column type of this column.
@@ -13,15 +12,14 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse(
       type: map['type'] as String,
     );
   }
 }
-

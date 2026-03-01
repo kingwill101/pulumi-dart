@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfigResponse {
   /// Defines the type of technology used by the confidential instance.
   final String confidentialInstanceType;
+
   /// Defines whether the instance should have confidential compute enabled.
   final bool enableConfidentialCompute;
 
@@ -30,4 +30,3 @@ class ConfidentialInstanceConfigResponse {
     );
   }
 }
-

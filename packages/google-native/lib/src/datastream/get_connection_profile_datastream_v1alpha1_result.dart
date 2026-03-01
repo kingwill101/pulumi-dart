@@ -10,26 +10,38 @@ import 'private_connectivity_response_datastream_v1alpha1.dart';
 class GetConnectionProfileDatastreamV1alpha1Result {
   /// The create time of the resource.
   final String createTime;
+
   /// Display name.
   final String displayName;
+
   /// Forward SSH tunnel connectivity.
-  final ForwardSshTunnelConnectivityResponseDatastreamV1alpha1 forwardSshConnectivity;
+  final ForwardSshTunnelConnectivityResponseDatastreamV1alpha1
+  forwardSshConnectivity;
+
   /// Cloud Storage ConnectionProfile configuration.
   final GcsProfileResponseDatastreamV1alpha1 gcsProfile;
+
   /// Labels.
   final Map<String, String> labels;
+
   /// MySQL ConnectionProfile configuration.
   final MysqlProfileResponseDatastreamV1alpha1 mysqlProfile;
+
   /// The resource's name.
   final String name;
+
   /// No connectivity option chosen.
   final Map<String, dynamic> noConnectivity;
+
   /// Oracle ConnectionProfile configuration.
   final OracleProfileResponseDatastreamV1alpha1 oracleProfile;
+
   /// Private connectivity.
   final PrivateConnectivityResponseDatastreamV1alpha1 privateConnectivity;
+
   /// Static Service IP connectivity.
   final Map<String, dynamic> staticServiceIpConnectivity;
+
   /// The update time of the resource.
   final String updateTime;
 
@@ -78,21 +90,35 @@ class GetConnectionProfileDatastreamV1alpha1Result {
     };
   }
 
-  factory GetConnectionProfileDatastreamV1alpha1Result.fromMap(Map<String, dynamic> map) {
+  factory GetConnectionProfileDatastreamV1alpha1Result.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectionProfileDatastreamV1alpha1Result(
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
-      forwardSshConnectivity: ForwardSshTunnelConnectivityResponseDatastreamV1alpha1.fromMap((map['forwardSshConnectivity'] as Map).cast<String, dynamic>()),
-      gcsProfile: GcsProfileResponseDatastreamV1alpha1.fromMap((map['gcsProfile'] as Map).cast<String, dynamic>()),
+      forwardSshConnectivity:
+          ForwardSshTunnelConnectivityResponseDatastreamV1alpha1.fromMap(
+            (map['forwardSshConnectivity'] as Map).cast<String, dynamic>(),
+          ),
+      gcsProfile: GcsProfileResponseDatastreamV1alpha1.fromMap(
+        (map['gcsProfile'] as Map).cast<String, dynamic>(),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
-      mysqlProfile: MysqlProfileResponseDatastreamV1alpha1.fromMap((map['mysqlProfile'] as Map).cast<String, dynamic>()),
+      mysqlProfile: MysqlProfileResponseDatastreamV1alpha1.fromMap(
+        (map['mysqlProfile'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       noConnectivity: (map['noConnectivity'] as Map).cast<String, dynamic>(),
-      oracleProfile: OracleProfileResponseDatastreamV1alpha1.fromMap((map['oracleProfile'] as Map).cast<String, dynamic>()),
-      privateConnectivity: PrivateConnectivityResponseDatastreamV1alpha1.fromMap((map['privateConnectivity'] as Map).cast<String, dynamic>()),
-      staticServiceIpConnectivity: (map['staticServiceIpConnectivity'] as Map).cast<String, dynamic>(),
+      oracleProfile: OracleProfileResponseDatastreamV1alpha1.fromMap(
+        (map['oracleProfile'] as Map).cast<String, dynamic>(),
+      ),
+      privateConnectivity:
+          PrivateConnectivityResponseDatastreamV1alpha1.fromMap(
+            (map['privateConnectivity'] as Map).cast<String, dynamic>(),
+          ),
+      staticServiceIpConnectivity: (map['staticServiceIpConnectivity'] as Map)
+          .cast<String, dynamic>(),
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

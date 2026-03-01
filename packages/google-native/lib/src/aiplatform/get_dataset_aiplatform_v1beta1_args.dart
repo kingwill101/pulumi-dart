@@ -22,11 +22,10 @@ class GetDatasetAiplatformV1beta1Args {
     required String location,
     String? project,
     String? readMask,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      readMask = pulumi.Input.asOptionalInput<String>(readMask);
+  }) : datasetId = pulumi.Input.asInput<String>(datasetId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       readMask = pulumi.Input.asOptionalInput<String>(readMask);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetDatasetAiplatformV1beta1Args {
     );
   }
 }
-

@@ -22,11 +22,10 @@ class GetCatalogItemArgs {
     required String catalogItemId,
     required String location,
     String? project,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      catalogItemId = pulumi.Input.asInput<String>(catalogItemId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : catalogId = pulumi.Input.asInput<String>(catalogId),
+       catalogItemId = pulumi.Input.asInput<String>(catalogItemId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetCatalogItemArgs {
     );
   }
 }
-

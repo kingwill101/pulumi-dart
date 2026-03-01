@@ -16,7 +16,8 @@ enum SubnetworkLogConfigAggregationInterval {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubnetworkLogConfigAggregationInterval value: $value');
+    throw ArgumentError(
+      'Unknown SubnetworkLogConfigAggregationInterval value: $value',
+    );
   }
 }
-

@@ -13,18 +13,12 @@ class GetWebAppArgs {
   /// Creates a new [GetWebAppArgs].
   /// [project] Optional.
   /// [webAppId] Required.
-  GetWebAppArgs({
-    String? project,
-    required String webAppId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetWebAppArgs({String? project, required String webAppId})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       webAppId = pulumi.Input.asInput<String>(webAppId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'webAppId': webAppId,
-    };
+    return <String, dynamic>{'project': ?project, 'webAppId': webAppId};
   }
 
   factory GetWebAppArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetWebAppArgs {
     );
   }
 }
-

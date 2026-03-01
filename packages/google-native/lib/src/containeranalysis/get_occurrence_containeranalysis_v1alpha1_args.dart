@@ -16,22 +16,19 @@ class GetOccurrenceContaineranalysisV1alpha1Args {
   GetOccurrenceContaineranalysisV1alpha1Args({
     required String occurrenceId,
     String? project,
-  }) :
-      occurrenceId = pulumi.Input.asInput<String>(occurrenceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : occurrenceId = pulumi.Input.asInput<String>(occurrenceId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'occurrenceId': occurrenceId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'occurrenceId': occurrenceId, 'project': ?project};
   }
 
-  factory GetOccurrenceContaineranalysisV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetOccurrenceContaineranalysisV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOccurrenceContaineranalysisV1alpha1Args(
       occurrenceId: map['occurrenceId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

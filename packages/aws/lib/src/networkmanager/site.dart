@@ -115,16 +115,21 @@ import 'site_location.dart';
 class Site extends pulumi.CustomResource {
   /// Site ARN.
   late final pulumi.Output<String> arn;
+
   /// Description of the Site.
   late final pulumi.Output<String?> description;
+
   /// ID of the Global Network to create the site in.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> globalNetworkId;
+
   /// Site location. See below.
   late final pulumi.Output<SiteLocation?> location;
+
   /// Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -132,16 +137,13 @@ class Site extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Site]. {@macro pulumi_networkmanager_site_site_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Site(
-    String name, {
-    SiteArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:networkmanager/site:Site',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Site(String name, {SiteArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:networkmanager/site:Site',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');
     this.globalNetworkId = registerOutput<String>('globalNetworkId');

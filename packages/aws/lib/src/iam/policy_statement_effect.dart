@@ -15,4 +15,3 @@ enum PolicyStatementEffect {
     throw ArgumentError('Unknown PolicyStatementEffect value: $value');
   }
 }
-

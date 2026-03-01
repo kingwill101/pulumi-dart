@@ -1,19 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterVpcConfig {
   /// The cluster security group that was created by Amazon EKS for the cluster.
   final String clusterSecurityGroupId;
+
   /// Indicates whether or not the Amazon EKS private API server endpoint is enabled.
   final bool endpointPrivateAccess;
+
   /// Indicates whether or not the Amazon EKS public API server endpoint is enabled.
   final bool endpointPublicAccess;
+
   /// List of CIDR blocks. Indicates which CIDR blocks can access the Amazon EKS public API server endpoint.
   final List<String> publicAccessCidrs;
+
   /// List of security group IDs
   final List<String> securityGroupIds;
+
   /// List of subnet IDs
   final List<String> subnetIds;
+
   /// The VPC associated with your cluster.
   final String vpcId;
 
@@ -59,4 +64,3 @@ class GetClusterVpcConfig {
     );
   }
 }
-

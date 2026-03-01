@@ -9,20 +9,23 @@ class CxAgentGitIntegrationSettings {
 
   /// Creates a new [CxAgentGitIntegrationSettings].
   /// [githubSettings] Settings of integration with GitHub.
-  CxAgentGitIntegrationSettings({
-    this.githubSettings,
-  });
+  CxAgentGitIntegrationSettings({this.githubSettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'githubSettings': ?githubSettings == null ? null : githubSettings!.toMap(),
+      'githubSettings': ?githubSettings == null
+          ? null
+          : githubSettings!.toMap(),
     };
   }
 
   factory CxAgentGitIntegrationSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentGitIntegrationSettings(
-      githubSettings: map['githubSettings'] == null ? null : CxAgentGitIntegrationSettingsGithubSettings.fromMap((map['githubSettings'] as Map).cast<String, dynamic>()),
+      githubSettings: map['githubSettings'] == null
+          ? null
+          : CxAgentGitIntegrationSettingsGithubSettings.fromMap(
+              (map['githubSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

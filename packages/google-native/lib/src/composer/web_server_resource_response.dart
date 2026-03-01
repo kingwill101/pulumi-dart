@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for resources used by Airflow web server.
 class WebServerResourceResponse {
   /// Optional. CPU request and limit for Airflow web server.
   final double cpu;
+
   /// Optional. Memory (GB) request and limit for Airflow web server.
   final double memoryGb;
+
   /// Optional. Storage (GB) request and limit for Airflow web server.
   final double storageGb;
 
@@ -36,4 +37,3 @@ class WebServerResourceResponse {
     );
   }
 }
-

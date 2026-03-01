@@ -7,8 +7,10 @@ class ServiceTemplateSpecContainerEnvFrom {
   /// The ConfigMap to select from.
   /// Structure is documented below.
   final ServiceTemplateSpecContainerEnvFromConfigMapRef? configMapRef;
+
   /// An optional identifier to prepend to each key in the ConfigMap.
   final String? prefix;
+
   /// The Secret to select from.
   /// Structure is documented below.
   final ServiceTemplateSpecContainerEnvFromSecretRef? secretRef;
@@ -31,12 +33,21 @@ class ServiceTemplateSpecContainerEnvFrom {
     };
   }
 
-  factory ServiceTemplateSpecContainerEnvFrom.fromMap(Map<String, dynamic> map) {
+  factory ServiceTemplateSpecContainerEnvFrom.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceTemplateSpecContainerEnvFrom(
-      configMapRef: map['configMapRef'] == null ? null : ServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap((map['configMapRef'] as Map).cast<String, dynamic>()),
+      configMapRef: map['configMapRef'] == null
+          ? null
+          : ServiceTemplateSpecContainerEnvFromConfigMapRef.fromMap(
+              (map['configMapRef'] as Map).cast<String, dynamic>(),
+            ),
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      secretRef: map['secretRef'] == null ? null : ServiceTemplateSpecContainerEnvFromSecretRef.fromMap((map['secretRef'] as Map).cast<String, dynamic>()),
+      secretRef: map['secretRef'] == null
+          ? null
+          : ServiceTemplateSpecContainerEnvFromSecretRef.fromMap(
+              (map['secretRef'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

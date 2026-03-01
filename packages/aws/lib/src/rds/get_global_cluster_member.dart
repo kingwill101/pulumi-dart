@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetGlobalClusterMember {
   /// Amazon Resource Name (ARN) of member DB Cluster
   final String dbClusterArn;
+
   /// Whether the member is the primary DB Cluster
   final bool isWriter;
 
   /// Creates a new [GetGlobalClusterMember].
   /// [dbClusterArn] Amazon Resource Name (ARN) of member DB Cluster
   /// [isWriter] Whether the member is the primary DB Cluster
-  GetGlobalClusterMember({
-    required this.dbClusterArn,
-    required this.isWriter,
-  });
+  GetGlobalClusterMember({required this.dbClusterArn, required this.isWriter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,4 +26,3 @@ class GetGlobalClusterMember {
     );
   }
 }
-

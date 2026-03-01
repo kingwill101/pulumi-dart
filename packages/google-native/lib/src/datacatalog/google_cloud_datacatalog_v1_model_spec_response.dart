@@ -9,20 +9,19 @@ class GoogleCloudDatacatalogV1ModelSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1ModelSpecResponse].
   /// [vertexModelSpec] Specification for vertex model resources.
-  GoogleCloudDatacatalogV1ModelSpecResponse({
-    required this.vertexModelSpec,
-  });
+  GoogleCloudDatacatalogV1ModelSpecResponse({required this.vertexModelSpec});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vertexModelSpec': vertexModelSpec.toMap(),
-    };
+    return <String, dynamic>{'vertexModelSpec': vertexModelSpec.toMap()};
   }
 
-  factory GoogleCloudDatacatalogV1ModelSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1ModelSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1ModelSpecResponse(
-      vertexModelSpec: GoogleCloudDatacatalogV1VertexModelSpecResponse.fromMap((map['vertexModelSpec'] as Map).cast<String, dynamic>()),
+      vertexModelSpec: GoogleCloudDatacatalogV1VertexModelSpecResponse.fromMap(
+        (map['vertexModelSpec'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

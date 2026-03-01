@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Metadata from Dialogflow relating to the current transcript segment.
 class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse {
   /// Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.
@@ -18,10 +17,11 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentD
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse(
       smartReplyAllowlistCovered: map['smartReplyAllowlistCovered'] as bool,
     );
   }
 }
-

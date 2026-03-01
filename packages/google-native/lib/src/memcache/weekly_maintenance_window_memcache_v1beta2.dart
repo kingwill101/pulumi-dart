@@ -7,8 +7,10 @@ import 'weekly_maintenance_window_day_memcache_v1beta2.dart';
 class WeeklyMaintenanceWindowMemcacheV1beta2 {
   /// Allows to define schedule that runs specified day of the week.
   final WeeklyMaintenanceWindowDayMemcacheV1beta2 day;
+
   /// Duration of the time window.
   final String duration;
+
   /// Start time of the window in UTC.
   final TimeOfDayMemcacheV1beta2 startTime;
 
@@ -30,12 +32,17 @@ class WeeklyMaintenanceWindowMemcacheV1beta2 {
     };
   }
 
-  factory WeeklyMaintenanceWindowMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
+  factory WeeklyMaintenanceWindowMemcacheV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WeeklyMaintenanceWindowMemcacheV1beta2(
-      day: WeeklyMaintenanceWindowDayMemcacheV1beta2.fromValue(map['day'] as String),
+      day: WeeklyMaintenanceWindowDayMemcacheV1beta2.fromValue(
+        map['day'] as String,
+      ),
       duration: map['duration'] as String,
-      startTime: TimeOfDayMemcacheV1beta2.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      startTime: TimeOfDayMemcacheV1beta2.fromMap(
+        (map['startTime'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

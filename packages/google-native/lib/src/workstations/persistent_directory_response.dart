@@ -6,29 +6,25 @@ import 'gce_regional_persistent_disk_response.dart';
 class PersistentDirectoryResponse {
   /// A PersistentDirectory backed by a Compute Engine persistent disk.
   final GceRegionalPersistentDiskResponse gcePd;
+
   /// Optional. Location of this directory in the running workstation.
   final String mountPath;
 
   /// Creates a new [PersistentDirectoryResponse].
   /// [gcePd] A PersistentDirectory backed by a Compute Engine persistent disk.
   /// [mountPath] Optional. Location of this directory in the running workstation.
-  PersistentDirectoryResponse({
-    required this.gcePd,
-    required this.mountPath,
-  });
+  PersistentDirectoryResponse({required this.gcePd, required this.mountPath});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gcePd': gcePd.toMap(),
-      'mountPath': mountPath,
-    };
+    return <String, dynamic>{'gcePd': gcePd.toMap(), 'mountPath': mountPath};
   }
 
   factory PersistentDirectoryResponse.fromMap(Map<String, dynamic> map) {
     return PersistentDirectoryResponse(
-      gcePd: GceRegionalPersistentDiskResponse.fromMap((map['gcePd'] as Map).cast<String, dynamic>()),
+      gcePd: GceRegionalPersistentDiskResponse.fromMap(
+        (map['gcePd'] as Map).cast<String, dynamic>(),
+      ),
       mountPath: map['mountPath'] as String,
     );
   }
 }
-

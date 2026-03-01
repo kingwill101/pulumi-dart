@@ -8,8 +8,10 @@ import 'vp9_codec_settings_response.dart';
 class VideoStreamResponse {
   /// H264 codec settings.
   final H264CodecSettingsResponse h264;
+
   /// H265 codec settings.
   final H265CodecSettingsResponse h265;
+
   /// VP9 codec settings.
   final Vp9CodecSettingsResponse vp9;
 
@@ -33,10 +35,15 @@ class VideoStreamResponse {
 
   factory VideoStreamResponse.fromMap(Map<String, dynamic> map) {
     return VideoStreamResponse(
-      h264: H264CodecSettingsResponse.fromMap((map['h264'] as Map).cast<String, dynamic>()),
-      h265: H265CodecSettingsResponse.fromMap((map['h265'] as Map).cast<String, dynamic>()),
-      vp9: Vp9CodecSettingsResponse.fromMap((map['vp9'] as Map).cast<String, dynamic>()),
+      h264: H264CodecSettingsResponse.fromMap(
+        (map['h264'] as Map).cast<String, dynamic>(),
+      ),
+      h265: H265CodecSettingsResponse.fromMap(
+        (map['h265'] as Map).cast<String, dynamic>(),
+      ),
+      vp9: Vp9CodecSettingsResponse.fromMap(
+        (map['vp9'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

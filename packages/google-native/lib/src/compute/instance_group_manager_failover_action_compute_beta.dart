@@ -12,7 +12,8 @@ enum InstanceGroupManagerFailoverActionComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerFailoverActionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerFailoverActionComputeBeta value: $value',
+    );
   }
 }
-

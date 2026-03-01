@@ -7,6 +7,7 @@ import 'oracle_rdbms_datastream_v1alpha1.dart';
 class BackfillAllStrategyDatastreamV1alpha1 {
   /// MySQL data source objects to avoid backfilling.
   final MysqlRdbmsDatastreamV1alpha1? mysqlExcludedObjects;
+
   /// Oracle data source objects to avoid backfilling.
   final OracleRdbmsDatastreamV1alpha1? oracleExcludedObjects;
 
@@ -20,16 +21,29 @@ class BackfillAllStrategyDatastreamV1alpha1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlExcludedObjects': ?mysqlExcludedObjects == null ? null : mysqlExcludedObjects!.toMap(),
-      'oracleExcludedObjects': ?oracleExcludedObjects == null ? null : oracleExcludedObjects!.toMap(),
+      'mysqlExcludedObjects': ?mysqlExcludedObjects == null
+          ? null
+          : mysqlExcludedObjects!.toMap(),
+      'oracleExcludedObjects': ?oracleExcludedObjects == null
+          ? null
+          : oracleExcludedObjects!.toMap(),
     };
   }
 
-  factory BackfillAllStrategyDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory BackfillAllStrategyDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackfillAllStrategyDatastreamV1alpha1(
-      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null ? null : MysqlRdbmsDatastreamV1alpha1.fromMap((map['mysqlExcludedObjects'] as Map).cast<String, dynamic>()),
-      oracleExcludedObjects: map['oracleExcludedObjects'] == null ? null : OracleRdbmsDatastreamV1alpha1.fromMap((map['oracleExcludedObjects'] as Map).cast<String, dynamic>()),
+      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null
+          ? null
+          : MysqlRdbmsDatastreamV1alpha1.fromMap(
+              (map['mysqlExcludedObjects'] as Map).cast<String, dynamic>(),
+            ),
+      oracleExcludedObjects: map['oracleExcludedObjects'] == null
+          ? null
+          : OracleRdbmsDatastreamV1alpha1.fromMap(
+              (map['oracleExcludedObjects'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

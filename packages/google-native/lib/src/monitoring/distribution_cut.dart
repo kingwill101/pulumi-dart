@@ -6,16 +6,14 @@ import 'google_monitoring_v3_range.dart';
 class DistributionCut {
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
   final String? distributionFilter;
+
   /// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
   final GoogleMonitoringV3Range? range;
 
   /// Creates a new [DistributionCut].
   /// [distributionFilter] A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE.
   /// [range] Range of values considered "good." For a one-sided range, set one bound to an infinite value.
-  DistributionCut({
-    this.distributionFilter,
-    this.range,
-  });
+  DistributionCut({this.distributionFilter, this.range});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class DistributionCut {
 
   factory DistributionCut.fromMap(Map<String, dynamic> map) {
     return DistributionCut(
-      distributionFilter: map['distributionFilter'] == null ? null : map['distributionFilter'] as String,
-      range: map['range'] == null ? null : GoogleMonitoringV3Range.fromMap((map['range'] as Map).cast<String, dynamic>()),
+      distributionFilter: map['distributionFilter'] == null
+          ? null
+          : map['distributionFilter'] as String,
+      range: map['range'] == null
+          ? null
+          : GoogleMonitoringV3Range.fromMap(
+              (map['range'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

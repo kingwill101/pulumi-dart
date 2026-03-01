@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Command describes a step performed as part of the build pipeline.
 class CommandContaineranalysisV1alpha1 {
   /// Command-line arguments used when executing this Command.
   final List<String>? args;
+
   /// Working directory (relative to project source root) used when running this Command.
   final String? dir;
+
   /// Environment variables set before running this Command.
   final List<String>? env;
+
   /// Optional unique identifier for this Command, used in wait_for to reference this Command as a dependency.
   final String? id;
+
   /// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
   final String? name;
+
   /// The ID(s) of the Command(s) that this Command depends on.
   final List<String>? waitFor;
 
@@ -50,8 +54,9 @@ class CommandContaineranalysisV1alpha1 {
       env: map['env'] == null ? null : (map['env'] as List).cast<String>(),
       id: map['id'] == null ? null : map['id'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      waitFor: map['waitFor'] == null ? null : (map['waitFor'] as List).cast<String>(),
+      waitFor: map['waitFor'] == null
+          ? null
+          : (map['waitFor'] as List).cast<String>(),
     );
   }
 }
-

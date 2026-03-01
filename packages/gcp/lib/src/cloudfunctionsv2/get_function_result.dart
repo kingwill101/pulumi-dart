@@ -12,6 +12,7 @@ class GetFunctionResult {
   final Map<String, String> effectiveLabels;
   final String environment;
   final List<GetFunctionEventTrigger> eventTriggers;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String kmsKeyName;
@@ -63,11 +64,19 @@ class GetFunctionResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buildConfigs': pulumi.Input.encodeList<GetFunctionBuildConfig, Map<String, dynamic>>(buildConfigs, (value) => value.toMap()),
+      'buildConfigs':
+          pulumi.Input.encodeList<GetFunctionBuildConfig, Map<String, dynamic>>(
+            buildConfigs,
+            (value) => value.toMap(),
+          ),
       'description': description,
       'effectiveLabels': effectiveLabels,
       'environment': environment,
-      'eventTriggers': pulumi.Input.encodeList<GetFunctionEventTrigger, Map<String, dynamic>>(eventTriggers, (value) => value.toMap()),
+      'eventTriggers':
+          pulumi.Input.encodeList<
+            GetFunctionEventTrigger,
+            Map<String, dynamic>
+          >(eventTriggers, (value) => value.toMap()),
       'id': id,
       'kmsKeyName': kmsKeyName,
       'labels': labels,
@@ -75,7 +84,11 @@ class GetFunctionResult {
       'name': name,
       'project': ?project,
       'pulumiLabels': pulumiLabels,
-      'serviceConfigs': pulumi.Input.encodeList<GetFunctionServiceConfig, Map<String, dynamic>>(serviceConfigs, (value) => value.toMap()),
+      'serviceConfigs':
+          pulumi.Input.encodeList<
+            GetFunctionServiceConfig,
+            Map<String, dynamic>
+          >(serviceConfigs, (value) => value.toMap()),
       'state': state,
       'updateTime': updateTime,
       'url': url,
@@ -84,11 +97,21 @@ class GetFunctionResult {
 
   factory GetFunctionResult.fromMap(Map<String, dynamic> map) {
     return GetFunctionResult(
-      buildConfigs: pulumi.Input.decodeList<GetFunctionBuildConfig>(map['buildConfigs'], (value) => GetFunctionBuildConfig.fromMap((value as Map).cast<String, dynamic>())),
+      buildConfigs: pulumi.Input.decodeList<GetFunctionBuildConfig>(
+        map['buildConfigs'],
+        (value) => GetFunctionBuildConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       description: map['description'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       environment: map['environment'] as String,
-      eventTriggers: pulumi.Input.decodeList<GetFunctionEventTrigger>(map['eventTriggers'], (value) => GetFunctionEventTrigger.fromMap((value as Map).cast<String, dynamic>())),
+      eventTriggers: pulumi.Input.decodeList<GetFunctionEventTrigger>(
+        map['eventTriggers'],
+        (value) => GetFunctionEventTrigger.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       kmsKeyName: map['kmsKeyName'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
@@ -96,11 +119,15 @@ class GetFunctionResult {
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      serviceConfigs: pulumi.Input.decodeList<GetFunctionServiceConfig>(map['serviceConfigs'], (value) => GetFunctionServiceConfig.fromMap((value as Map).cast<String, dynamic>())),
+      serviceConfigs: pulumi.Input.decodeList<GetFunctionServiceConfig>(
+        map['serviceConfigs'],
+        (value) => GetFunctionServiceConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,
       url: map['url'] as String,
     );
   }
 }
-

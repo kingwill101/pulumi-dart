@@ -10,8 +10,10 @@ import 'iam_audit_config_audit_log_config.dart';
 class IamAuditConfigArgs {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
   final pulumi.Input<List<IamAuditConfigAuditLogConfig>> auditLogConfigs;
+
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   final pulumi.Input<String> folder;
+
   /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.folder.IamAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
   final pulumi.Input<String> service;
 
@@ -23,14 +25,25 @@ class IamAuditConfigArgs {
     required List<IamAuditConfigAuditLogConfig> auditLogConfigs,
     required String folder,
     required String service,
-  }) :
-      auditLogConfigs = pulumi.Input.asInput<List<IamAuditConfigAuditLogConfig>>(auditLogConfigs),
-      folder = pulumi.Input.asInput<String>(folder),
-      service = pulumi.Input.asInput<String>(service);
+  }) : auditLogConfigs = pulumi
+           .Input.asInput<List<IamAuditConfigAuditLogConfig>>(auditLogConfigs),
+       folder = pulumi.Input.asInput<String>(folder),
+       service = pulumi.Input.asInput<String>(service);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': pulumi.Input.mapInputValue<List<IamAuditConfigAuditLogConfig>, List<Map<String, dynamic>>>(auditLogConfigs, (value) => pulumi.Input.encodeList<IamAuditConfigAuditLogConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'auditLogConfigs':
+          pulumi.Input.mapInputValue<
+            List<IamAuditConfigAuditLogConfig>,
+            List<Map<String, dynamic>>
+          >(
+            auditLogConfigs,
+            (value) =>
+                pulumi.Input.encodeList<
+                  IamAuditConfigAuditLogConfig,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'folder': folder,
       'service': service,
     };
@@ -38,10 +51,14 @@ class IamAuditConfigArgs {
 
   factory IamAuditConfigArgs.fromMap(Map<String, dynamic> map) {
     return IamAuditConfigArgs(
-      auditLogConfigs: pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => IamAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigs: pulumi.Input.decodeList<IamAuditConfigAuditLogConfig>(
+        map['auditLogConfigs'],
+        (value) => IamAuditConfigAuditLogConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       folder: map['folder'] as String,
       service: map['service'] as String,
     );
   }
 }
-

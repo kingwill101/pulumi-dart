@@ -8,10 +8,12 @@ class ServicePerimeterSpecIngressPolicy {
   /// to apply.
   /// Structure is documented below.
   final ServicePerimeterSpecIngressPolicyIngressFrom? ingressFrom;
+
   /// Defines the conditions on the `ApiOperation` and request destination that cause
   /// this `IngressPolicy` to apply.
   /// Structure is documented below.
   final ServicePerimeterSpecIngressPolicyIngressTo? ingressTo;
+
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
   final String? title;
 
@@ -35,10 +37,17 @@ class ServicePerimeterSpecIngressPolicy {
 
   factory ServicePerimeterSpecIngressPolicy.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterSpecIngressPolicy(
-      ingressFrom: map['ingressFrom'] == null ? null : ServicePerimeterSpecIngressPolicyIngressFrom.fromMap((map['ingressFrom'] as Map).cast<String, dynamic>()),
-      ingressTo: map['ingressTo'] == null ? null : ServicePerimeterSpecIngressPolicyIngressTo.fromMap((map['ingressTo'] as Map).cast<String, dynamic>()),
+      ingressFrom: map['ingressFrom'] == null
+          ? null
+          : ServicePerimeterSpecIngressPolicyIngressFrom.fromMap(
+              (map['ingressFrom'] as Map).cast<String, dynamic>(),
+            ),
+      ingressTo: map['ingressTo'] == null
+          ? null
+          : ServicePerimeterSpecIngressPolicyIngressTo.fromMap(
+              (map['ingressTo'] as Map).cast<String, dynamic>(),
+            ),
       title: map['title'] == null ? null : map['title'] as String,
     );
   }
 }
-

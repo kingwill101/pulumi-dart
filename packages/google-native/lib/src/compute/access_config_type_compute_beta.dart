@@ -15,4 +15,3 @@ enum AccessConfigTypeComputeBeta {
     throw ArgumentError('Unknown AccessConfigTypeComputeBeta value: $value');
   }
 }
-

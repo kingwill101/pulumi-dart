@@ -39,12 +39,16 @@ import 'ai_rag_engine_config_rag_managed_db_config.dart';
 class AiRagEngineConfig extends pulumi.CustomResource {
   /// The resource name of the Dataset. This value is set by Google.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Required. The config of the RagManagedDb used by RagEngine.
   /// Structure is documented below.
-  late final pulumi.Output<AiRagEngineConfigRagManagedDbConfig> ragManagedDbConfig;
+  late final pulumi.Output<AiRagEngineConfigRagManagedDbConfig>
+  ragManagedDbConfig;
+
   /// The region of the RagEngineConfig. eg us-central1
   late final pulumi.Output<String> region;
 
@@ -57,14 +61,17 @@ class AiRagEngineConfig extends pulumi.CustomResource {
     AiRagEngineConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:vertex/aiRagEngineConfig:AiRagEngineConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:vertex/aiRagEngineConfig:AiRagEngineConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.ragManagedDbConfig = registerOutput<AiRagEngineConfigRagManagedDbConfig>('ragManagedDbConfig');
+    this.ragManagedDbConfig =
+        registerOutput<AiRagEngineConfigRagManagedDbConfig>(
+          'ragManagedDbConfig',
+        );
     this.region = registerOutput<String>('region');
   }
 }

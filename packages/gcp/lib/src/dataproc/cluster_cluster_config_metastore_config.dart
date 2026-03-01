@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterClusterConfigMetastoreConfig {
   /// Resource name of an existing Dataproc Metastore service.
   ///
@@ -11,9 +10,7 @@ class ClusterClusterConfigMetastoreConfig {
 
   /// Creates a new [ClusterClusterConfigMetastoreConfig].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.
-  ClusterClusterConfigMetastoreConfig({
-    required this.dataprocMetastoreService,
-  });
+  ClusterClusterConfigMetastoreConfig({required this.dataprocMetastoreService});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,10 +18,11 @@ class ClusterClusterConfigMetastoreConfig {
     };
   }
 
-  factory ClusterClusterConfigMetastoreConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterClusterConfigMetastoreConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterClusterConfigMetastoreConfig(
       dataprocMetastoreService: map['dataprocMetastoreService'] as String,
     );
   }
 }
-

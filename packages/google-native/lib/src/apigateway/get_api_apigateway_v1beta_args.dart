@@ -19,10 +19,9 @@ class GetApiApigatewayV1betaArgs {
     required String apiId,
     required String location,
     String? project,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : apiId = pulumi.Input.asInput<String>(apiId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetApiApigatewayV1betaArgs {
     );
   }
 }
-

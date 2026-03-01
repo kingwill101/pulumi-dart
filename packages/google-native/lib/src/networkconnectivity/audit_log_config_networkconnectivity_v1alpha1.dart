@@ -6,6 +6,7 @@ import 'audit_log_config_log_type_networkconnectivity_v1alpha1.dart';
 class AuditLogConfigNetworkconnectivityV1alpha1 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final List<String>? exemptedMembers;
+
   /// The log type that this config enables.
   final AuditLogConfigLogTypeNetworkconnectivityV1alpha1? logType;
 
@@ -24,11 +25,18 @@ class AuditLogConfigNetworkconnectivityV1alpha1 {
     };
   }
 
-  factory AuditLogConfigNetworkconnectivityV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory AuditLogConfigNetworkconnectivityV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuditLogConfigNetworkconnectivityV1alpha1(
-      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
-      logType: map['logType'] == null ? null : AuditLogConfigLogTypeNetworkconnectivityV1alpha1.fromValue(map['logType'] as String),
+      exemptedMembers: map['exemptedMembers'] == null
+          ? null
+          : (map['exemptedMembers'] as List).cast<String>(),
+      logType: map['logType'] == null
+          ? null
+          : AuditLogConfigLogTypeNetworkconnectivityV1alpha1.fromValue(
+              map['logType'] as String,
+            ),
     );
   }
 }
-

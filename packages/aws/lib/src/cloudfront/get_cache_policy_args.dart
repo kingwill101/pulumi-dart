@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCachePolicyArgs {
   /// Identifier for the cache policy.
   final pulumi.Input<String>? id;
+
   /// Unique name to identify the cache policy.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetCachePolicyArgs].
   /// [id] Identifier for the cache policy.
   /// [name] Unique name to identify the cache policy.
-  GetCachePolicyArgs({
-    String? id,
-    String? name,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
+  GetCachePolicyArgs({String? id, String? name})
+    : id = pulumi.Input.asOptionalInput<String>(id),
       name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': ?name,
-    };
+    return <String, dynamic>{'id': ?id, 'name': ?name};
   }
 
   factory GetCachePolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetCachePolicyArgs {
     );
   }
 }
-

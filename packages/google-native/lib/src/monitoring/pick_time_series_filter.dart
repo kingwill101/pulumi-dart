@@ -7,8 +7,10 @@ import 'pick_time_series_filter_ranking_method.dart';
 class PickTimeSeriesFilter {
   /// How to use the ranking to select time series that pass through the filter.
   final PickTimeSeriesFilterDirection? direction;
+
   /// How many time series to allow to pass through the filter.
   final int? numTimeSeries;
+
   /// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
   final PickTimeSeriesFilterRankingMethod? rankingMethod;
 
@@ -32,10 +34,17 @@ class PickTimeSeriesFilter {
 
   factory PickTimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return PickTimeSeriesFilter(
-      direction: map['direction'] == null ? null : PickTimeSeriesFilterDirection.fromValue(map['direction'] as String),
-      numTimeSeries: map['numTimeSeries'] == null ? null : map['numTimeSeries'] as int,
-      rankingMethod: map['rankingMethod'] == null ? null : PickTimeSeriesFilterRankingMethod.fromValue(map['rankingMethod'] as String),
+      direction: map['direction'] == null
+          ? null
+          : PickTimeSeriesFilterDirection.fromValue(map['direction'] as String),
+      numTimeSeries: map['numTimeSeries'] == null
+          ? null
+          : map['numTimeSeries'] as int,
+      rankingMethod: map['rankingMethod'] == null
+          ? null
+          : PickTimeSeriesFilterRankingMethod.fromValue(
+              map['rankingMethod'] as String,
+            ),
     );
   }
 }
-

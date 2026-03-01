@@ -6,13 +6,17 @@ enum RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta {
   const RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta(this.value);
   final String value;
 
-  static RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta fromValue(String value) {
-    for (final item in RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta.values) {
+  static RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RouterNatSubnetworkToNatSourceIpRangesToNatItemComputeBeta value: $value',
+    );
   }
 }
-

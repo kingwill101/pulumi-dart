@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The details of an Azure VM disk.
 class AzureDiskDetailsResponse {
   /// Azure disk ID.
   final String diskId;
+
   /// The ordinal number of the disk.
   final int diskNumber;
+
   /// Size in GB.
   final String sizeGb;
 
@@ -36,4 +37,3 @@ class AzureDiskDetailsResponse {
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetFunctionCloudfunctionsV2alphaArgs {
     required String functionId,
     required String location,
     String? project,
-  }) :
-      functionId = pulumi.Input.asInput<String>(functionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : functionId = pulumi.Input.asInput<String>(functionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetFunctionCloudfunctionsV2alphaArgs {
     };
   }
 
-  factory GetFunctionCloudfunctionsV2alphaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetFunctionCloudfunctionsV2alphaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFunctionCloudfunctionsV2alphaArgs(
       functionId: map['functionId'] as String,
       location: map['location'] as String,
@@ -40,4 +41,3 @@ class GetFunctionCloudfunctionsV2alphaArgs {
     );
   }
 }
-

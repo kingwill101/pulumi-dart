@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetBrokerUser {
   /// Whether to enable access to the ActiveMQ Web Console for the user.
   final bool consoleAccess;
+
   /// List of groups to which the ActiveMQ user belongs.
   final List<String> groups;
+
   /// Whether to set replication user.
   final bool replicationUser;
+
   /// Username of the user.
   final String username;
 
@@ -41,4 +43,3 @@ class GetBrokerUser {
     );
   }
 }
-

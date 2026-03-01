@@ -15,7 +15,8 @@ enum ServiceLbPolicyLoadBalancingAlgorithm {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceLbPolicyLoadBalancingAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown ServiceLbPolicyLoadBalancingAlgorithm value: $value',
+    );
   }
 }
-

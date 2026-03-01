@@ -6,16 +6,22 @@ import 'database_dump_response.dart';
 class GetMetadataImportResult {
   /// The time when the metadata import was started.
   final String createTime;
+
   /// Immutable. A database dump from a pre-existing metastore's database.
   final DatabaseDumpResponse databaseDump;
+
   /// The description of the metadata import.
   final String description;
+
   /// The time when the metadata import finished.
   final String endTime;
+
   /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
   final String name;
+
   /// The current state of the metadata import.
   final String state;
+
   /// The time when the metadata import was last updated.
   final String updateTime;
 
@@ -52,7 +58,9 @@ class GetMetadataImportResult {
   factory GetMetadataImportResult.fromMap(Map<String, dynamic> map) {
     return GetMetadataImportResult(
       createTime: map['createTime'] as String,
-      databaseDump: DatabaseDumpResponse.fromMap((map['databaseDump'] as Map).cast<String, dynamic>()),
+      databaseDump: DatabaseDumpResponse.fromMap(
+        (map['databaseDump'] as Map).cast<String, dynamic>(),
+      ),
       description: map['description'] as String,
       endTime: map['endTime'] as String,
       name: map['name'] as String,
@@ -61,4 +69,3 @@ class GetMetadataImportResult {
     );
   }
 }
-

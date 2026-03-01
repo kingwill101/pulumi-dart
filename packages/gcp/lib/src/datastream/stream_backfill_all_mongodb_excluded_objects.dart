@@ -10,20 +10,31 @@ class StreamBackfillAllMongodbExcludedObjects {
 
   /// Creates a new [StreamBackfillAllMongodbExcludedObjects].
   /// [databases] MongoDB databases in the cluster.
-  StreamBackfillAllMongodbExcludedObjects({
-    required this.databases,
-  });
+  StreamBackfillAllMongodbExcludedObjects({required this.databases});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databases': pulumi.Input.encodeList<StreamBackfillAllMongodbExcludedObjectsDatabase, Map<String, dynamic>>(databases, (value) => value.toMap()),
+      'databases':
+          pulumi.Input.encodeList<
+            StreamBackfillAllMongodbExcludedObjectsDatabase,
+            Map<String, dynamic>
+          >(databases, (value) => value.toMap()),
     };
   }
 
-  factory StreamBackfillAllMongodbExcludedObjects.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllMongodbExcludedObjects.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllMongodbExcludedObjects(
-      databases: pulumi.Input.decodeList<StreamBackfillAllMongodbExcludedObjectsDatabase>(map['databases'], (value) => StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap((value as Map).cast<String, dynamic>())),
+      databases:
+          pulumi.Input.decodeList<
+            StreamBackfillAllMongodbExcludedObjectsDatabase
+          >(
+            map['databases'],
+            (value) => StreamBackfillAllMongodbExcludedObjectsDatabase.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

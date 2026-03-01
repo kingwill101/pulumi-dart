@@ -12,25 +12,33 @@ class AppConnectionArgs {
   /// Address of the remote application endpoint for the BeyondCorp AppConnection.
   /// Structure is documented below.
   final pulumi.Input<AppConnectionApplicationEndpoint> applicationEndpoint;
+
   /// List of AppConnectors that are authorised to be associated with this AppConnection
   final pulumi.Input<List<String>>? connectors;
+
   /// An arbitrary user-provided name for the AppConnection.
   final pulumi.Input<String>? displayName;
+
   /// Gateway used by the AppConnection.
   /// Structure is documented below.
   final pulumi.Input<AppConnectionGateway>? gateway;
+
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// ID of the AppConnection.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region of the AppConnection.
   final pulumi.Input<String>? region;
+
   /// The type of network connectivity used by the AppConnection. Refer
   /// to https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
   /// for a list of possible values.
@@ -56,23 +64,33 @@ class AppConnectionArgs {
     String? project,
     String? region,
     String? type,
-  }) :
-      applicationEndpoint = pulumi.Input.asInput<AppConnectionApplicationEndpoint>(applicationEndpoint),
-      connectors = pulumi.Input.asOptionalInput<List<String>>(connectors),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      gateway = pulumi.Input.asOptionalInput<AppConnectionGateway>(gateway),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asOptionalInput<String>(type);
+  }) : applicationEndpoint =
+           pulumi.Input.asInput<AppConnectionApplicationEndpoint>(
+             applicationEndpoint,
+           ),
+       connectors = pulumi.Input.asOptionalInput<List<String>>(connectors),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       gateway = pulumi.Input.asOptionalInput<AppConnectionGateway>(gateway),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       type = pulumi.Input.asOptionalInput<String>(type);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationEndpoint': pulumi.Input.mapInputValue<AppConnectionApplicationEndpoint, Map<String, dynamic>>(applicationEndpoint, (value) => value.toMap()),
+      'applicationEndpoint':
+          pulumi.Input.mapInputValue<
+            AppConnectionApplicationEndpoint,
+            Map<String, dynamic>
+          >(applicationEndpoint, (value) => value.toMap()),
       'connectors': ?connectors,
       'displayName': ?displayName,
-      'gateway': ?pulumi.Input.mapOptionalInputValue<AppConnectionGateway, Map<String, dynamic>>(gateway, (value) => value.toMap()),
+      'gateway':
+          ?pulumi.Input.mapOptionalInputValue<
+            AppConnectionGateway,
+            Map<String, dynamic>
+          >(gateway, (value) => value.toMap()),
       'labels': ?labels,
       'name': ?name,
       'project': ?project,
@@ -83,11 +101,23 @@ class AppConnectionArgs {
 
   factory AppConnectionArgs.fromMap(Map<String, dynamic> map) {
     return AppConnectionArgs(
-      applicationEndpoint: AppConnectionApplicationEndpoint.fromMap((map['applicationEndpoint'] as Map).cast<String, dynamic>()),
-      connectors: map['connectors'] == null ? null : (map['connectors'] as List).cast<String>(),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      gateway: map['gateway'] == null ? null : AppConnectionGateway.fromMap((map['gateway'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      applicationEndpoint: AppConnectionApplicationEndpoint.fromMap(
+        (map['applicationEndpoint'] as Map).cast<String, dynamic>(),
+      ),
+      connectors: map['connectors'] == null
+          ? null
+          : (map['connectors'] as List).cast<String>(),
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      gateway: map['gateway'] == null
+          ? null
+          : AppConnectionGateway.fromMap(
+              (map['gateway'] as Map).cast<String, dynamic>(),
+            ),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
@@ -95,4 +125,3 @@ class AppConnectionArgs {
     );
   }
 }
-

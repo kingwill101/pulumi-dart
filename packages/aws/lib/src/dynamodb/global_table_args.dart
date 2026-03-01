@@ -10,8 +10,10 @@ import 'global_table_replica.dart';
 class GlobalTableArgs {
   /// The name of the global table. Must match underlying DynamoDB Table names in all regions.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Underlying DynamoDB Table. At least 1 replica must be defined. See below.
   final pulumi.Input<List<GlobalTableReplica>> replicas;
 
@@ -23,16 +25,26 @@ class GlobalTableArgs {
     String? name,
     String? region,
     required List<GlobalTableReplica> replicas,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicas = pulumi.Input.asInput<List<GlobalTableReplica>>(replicas);
+  }) : name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       replicas = pulumi.Input.asInput<List<GlobalTableReplica>>(replicas);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
       'region': ?region,
-      'replicas': pulumi.Input.mapInputValue<List<GlobalTableReplica>, List<Map<String, dynamic>>>(replicas, (value) => pulumi.Input.encodeList<GlobalTableReplica, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'replicas':
+          pulumi.Input.mapInputValue<
+            List<GlobalTableReplica>,
+            List<Map<String, dynamic>>
+          >(
+            replicas,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GlobalTableReplica,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
@@ -40,8 +52,11 @@ class GlobalTableArgs {
     return GlobalTableArgs(
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      replicas: pulumi.Input.decodeList<GlobalTableReplica>(map['replicas'], (value) => GlobalTableReplica.fromMap((value as Map).cast<String, dynamic>())),
+      replicas: pulumi.Input.decodeList<GlobalTableReplica>(
+        map['replicas'],
+        (value) =>
+            GlobalTableReplica.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

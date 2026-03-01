@@ -12,7 +12,8 @@ enum AddressIpv6EndpointTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown AddressIpv6EndpointTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown AddressIpv6EndpointTypeComputeBeta value: $value',
+    );
   }
 }
-

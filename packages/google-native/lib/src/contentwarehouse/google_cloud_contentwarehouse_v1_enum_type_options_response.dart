@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configurations for an enum/categorical property.
 class GoogleCloudContentwarehouseV1EnumTypeOptionsResponse {
   /// List of possible enum values.
   final List<String> possibleValues;
+
   /// Make sure the Enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
   final bool validationCheckDisabled;
 
@@ -23,11 +23,12 @@ class GoogleCloudContentwarehouseV1EnumTypeOptionsResponse {
     };
   }
 
-  factory GoogleCloudContentwarehouseV1EnumTypeOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1EnumTypeOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1EnumTypeOptionsResponse(
       possibleValues: (map['possibleValues'] as List).cast<String>(),
       validationCheckDisabled: map['validationCheckDisabled'] as bool,
     );
   }
 }
-

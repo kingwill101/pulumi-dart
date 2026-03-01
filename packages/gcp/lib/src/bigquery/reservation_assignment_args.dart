@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservationAssignmentArgs {
   /// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
   final pulumi.Input<String> assignee;
+
   /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
   final pulumi.Input<String> jobType;
+
   /// The location for the resource
   final pulumi.Input<String>? location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The reservation for the resource
   final pulumi.Input<String> reservation;
 
@@ -31,12 +35,11 @@ class ReservationAssignmentArgs {
     String? location,
     String? project,
     required String reservation,
-  }) :
-      assignee = pulumi.Input.asInput<String>(assignee),
-      jobType = pulumi.Input.asInput<String>(jobType),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservation = pulumi.Input.asInput<String>(reservation);
+  }) : assignee = pulumi.Input.asInput<String>(assignee),
+       jobType = pulumi.Input.asInput<String>(jobType),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       reservation = pulumi.Input.asInput<String>(reservation);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,4 +61,3 @@ class ReservationAssignmentArgs {
     );
   }
 }
-

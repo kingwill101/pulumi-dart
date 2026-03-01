@@ -6,12 +6,15 @@ import 'connection_auth_config_ssh_public_key_ssh_client_cert_pass.dart';
 class ConnectionAuthConfigSshPublicKey {
   /// Format of SSH Client cert.
   final String? certType;
+
   /// SSH Client Cert. It should contain both public and private key.
   /// Structure is documented below.
   final ConnectionAuthConfigSshPublicKeySshClientCert? sshClientCert;
+
   /// Password (passphrase) for ssh client certificate if it has one.
   /// Structure is documented below.
   final ConnectionAuthConfigSshPublicKeySshClientCertPass? sshClientCertPass;
+
   /// The user account used to authenticate.
   final String username;
 
@@ -31,7 +34,9 @@ class ConnectionAuthConfigSshPublicKey {
     return <String, dynamic>{
       'certType': ?certType,
       'sshClientCert': ?sshClientCert == null ? null : sshClientCert!.toMap(),
-      'sshClientCertPass': ?sshClientCertPass == null ? null : sshClientCertPass!.toMap(),
+      'sshClientCertPass': ?sshClientCertPass == null
+          ? null
+          : sshClientCertPass!.toMap(),
       'username': username,
     };
   }
@@ -39,10 +44,17 @@ class ConnectionAuthConfigSshPublicKey {
   factory ConnectionAuthConfigSshPublicKey.fromMap(Map<String, dynamic> map) {
     return ConnectionAuthConfigSshPublicKey(
       certType: map['certType'] == null ? null : map['certType'] as String,
-      sshClientCert: map['sshClientCert'] == null ? null : ConnectionAuthConfigSshPublicKeySshClientCert.fromMap((map['sshClientCert'] as Map).cast<String, dynamic>()),
-      sshClientCertPass: map['sshClientCertPass'] == null ? null : ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap((map['sshClientCertPass'] as Map).cast<String, dynamic>()),
+      sshClientCert: map['sshClientCert'] == null
+          ? null
+          : ConnectionAuthConfigSshPublicKeySshClientCert.fromMap(
+              (map['sshClientCert'] as Map).cast<String, dynamic>(),
+            ),
+      sshClientCertPass: map['sshClientCertPass'] == null
+          ? null
+          : ConnectionAuthConfigSshPublicKeySshClientCertPass.fromMap(
+              (map['sshClientCertPass'] as Map).cast<String, dynamic>(),
+            ),
       username: map['username'] as String,
     );
   }
 }
-

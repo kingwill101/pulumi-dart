@@ -8,20 +8,20 @@ class BucketObjectLockConfigurationV2Rule {
 
   /// Creates a new [BucketObjectLockConfigurationV2Rule].
   /// [defaultRetention] Configuration block for specifying the default Object Lock retention settings for new objects placed in the specified bucket. See below.
-  BucketObjectLockConfigurationV2Rule({
-    required this.defaultRetention,
-  });
+  BucketObjectLockConfigurationV2Rule({required this.defaultRetention});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'defaultRetention': defaultRetention.toMap(),
-    };
+    return <String, dynamic>{'defaultRetention': defaultRetention.toMap()};
   }
 
-  factory BucketObjectLockConfigurationV2Rule.fromMap(Map<String, dynamic> map) {
+  factory BucketObjectLockConfigurationV2Rule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketObjectLockConfigurationV2Rule(
-      defaultRetention: BucketObjectLockConfigurationV2RuleDefaultRetention.fromMap((map['defaultRetention'] as Map).cast<String, dynamic>()),
+      defaultRetention:
+          BucketObjectLockConfigurationV2RuleDefaultRetention.fromMap(
+            (map['defaultRetention'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

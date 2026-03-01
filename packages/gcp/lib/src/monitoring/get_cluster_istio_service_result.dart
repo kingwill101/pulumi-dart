@@ -6,11 +6,14 @@ import 'get_cluster_istio_service_telemetry.dart';
 /// Result data returned by getClusterIstioService.
 class GetClusterIstioServiceResult {
   final String clusterName;
+
   /// Name used for UI elements listing this (Monitoring) Service.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
+
   /// The full REST resource name for this channel. The syntax is:
   /// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
   final String name;
@@ -18,6 +21,7 @@ class GetClusterIstioServiceResult {
   final String serviceId;
   final String serviceName;
   final String serviceNamespace;
+
   /// Configuration for how to query telemetry on the Service. Structure is documented below.
   final List<GetClusterIstioServiceTelemetry> telemetries;
   final Map<String, String> userLabels;
@@ -59,7 +63,11 @@ class GetClusterIstioServiceResult {
       'serviceId': serviceId,
       'serviceName': serviceName,
       'serviceNamespace': serviceNamespace,
-      'telemetries': pulumi.Input.encodeList<GetClusterIstioServiceTelemetry, Map<String, dynamic>>(telemetries, (value) => value.toMap()),
+      'telemetries':
+          pulumi.Input.encodeList<
+            GetClusterIstioServiceTelemetry,
+            Map<String, dynamic>
+          >(telemetries, (value) => value.toMap()),
       'userLabels': userLabels,
     };
   }
@@ -75,9 +83,13 @@ class GetClusterIstioServiceResult {
       serviceId: map['serviceId'] as String,
       serviceName: map['serviceName'] as String,
       serviceNamespace: map['serviceNamespace'] as String,
-      telemetries: pulumi.Input.decodeList<GetClusterIstioServiceTelemetry>(map['telemetries'], (value) => GetClusterIstioServiceTelemetry.fromMap((value as Map).cast<String, dynamic>())),
+      telemetries: pulumi.Input.decodeList<GetClusterIstioServiceTelemetry>(
+        map['telemetries'],
+        (value) => GetClusterIstioServiceTelemetry.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       userLabels: (map['userLabels'] as Map).cast<String, String>(),
     );
   }
 }
-

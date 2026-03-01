@@ -9,20 +9,20 @@ class GoogleCloudDatacatalogV1FilesetSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1FilesetSpecResponse].
   /// [dataplexFileset] Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
-  GoogleCloudDatacatalogV1FilesetSpecResponse({
-    required this.dataplexFileset,
-  });
+  GoogleCloudDatacatalogV1FilesetSpecResponse({required this.dataplexFileset});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataplexFileset': dataplexFileset.toMap(),
-    };
+    return <String, dynamic>{'dataplexFileset': dataplexFileset.toMap()};
   }
 
-  factory GoogleCloudDatacatalogV1FilesetSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1FilesetSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1FilesetSpecResponse(
-      dataplexFileset: GoogleCloudDatacatalogV1DataplexFilesetSpecResponse.fromMap((map['dataplexFileset'] as Map).cast<String, dynamic>()),
+      dataplexFileset:
+          GoogleCloudDatacatalogV1DataplexFilesetSpecResponse.fromMap(
+            (map['dataplexFileset'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

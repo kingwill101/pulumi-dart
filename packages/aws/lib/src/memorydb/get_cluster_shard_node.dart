@@ -6,9 +6,11 @@ import 'get_cluster_shard_node_endpoint.dart';
 class GetClusterShardNode {
   /// The Availability Zone in which the node resides.
   final String availabilityZone;
+
   /// The date and time when the node was created. Example: `2022-01-01T21:00:00Z`.
   final String createTime;
   final List<GetClusterShardNodeEndpoint> endpoints;
+
   /// Name of the cluster.
   final String name;
 
@@ -28,7 +30,11 @@ class GetClusterShardNode {
     return <String, dynamic>{
       'availabilityZone': availabilityZone,
       'createTime': createTime,
-      'endpoints': pulumi.Input.encodeList<GetClusterShardNodeEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
+      'endpoints':
+          pulumi.Input.encodeList<
+            GetClusterShardNodeEndpoint,
+            Map<String, dynamic>
+          >(endpoints, (value) => value.toMap()),
       'name': name,
     };
   }
@@ -37,9 +43,13 @@ class GetClusterShardNode {
     return GetClusterShardNode(
       availabilityZone: map['availabilityZone'] as String,
       createTime: map['createTime'] as String,
-      endpoints: pulumi.Input.decodeList<GetClusterShardNodeEndpoint>(map['endpoints'], (value) => GetClusterShardNodeEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      endpoints: pulumi.Input.decodeList<GetClusterShardNodeEndpoint>(
+        map['endpoints'],
+        (value) => GetClusterShardNodeEndpoint.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       name: map['name'] as String,
     );
   }
 }
-

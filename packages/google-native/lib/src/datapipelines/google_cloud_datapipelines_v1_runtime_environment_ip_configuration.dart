@@ -7,13 +7,17 @@ enum GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration {
   const GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration(this.value);
   final String value;
 
-  static GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration fromValue(String value) {
-    for (final item in GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration.values) {
+  static GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfiguration value: $value',
+    );
   }
 }
-

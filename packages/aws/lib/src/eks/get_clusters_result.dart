@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getClusters.
 class GetClustersResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Set of EKS clusters names
   final List<String> names;
   final String region;
@@ -20,11 +20,7 @@ class GetClustersResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'names': names,
-      'region': region,
-    };
+    return <String, dynamic>{'id': id, 'names': names, 'region': region};
   }
 
   factory GetClustersResult.fromMap(Map<String, dynamic> map) {
@@ -35,4 +31,3 @@ class GetClustersResult {
     );
   }
 }
-

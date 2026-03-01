@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
   /// A list of custom Content-Type header values to apply the JSON parsing. The
   /// format of the Content-Type header values is defined in
@@ -15,15 +14,14 @@ class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'contentTypes': contentTypes,
-    };
+    return <String, dynamic>{'contentTypes': contentTypes};
   }
 
-  factory SecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdvancedOptionsConfigJsonCustomConfig(
       contentTypes: (map['contentTypes'] as List).cast<String>(),
     );
   }
 }
-

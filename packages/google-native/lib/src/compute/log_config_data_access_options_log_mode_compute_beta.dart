@@ -12,7 +12,8 @@ enum LogConfigDataAccessOptionsLogModeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown LogConfigDataAccessOptionsLogModeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown LogConfigDataAccessOptionsLogModeComputeBeta value: $value',
+    );
   }
 }
-

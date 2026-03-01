@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDatabaseInstanceDnsName {
   final String connectionType;
   final String dnsScope;
+
   /// The name of the instance.
   final String name;
 
@@ -33,4 +33,3 @@ class GetDatabaseInstanceDnsName {
     );
   }
 }
-

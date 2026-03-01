@@ -19,10 +19,9 @@ class GetRegionTargetHttpsProxyComputeBetaArgs {
     String? project,
     required String region,
     required String targetHttpsProxy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      targetHttpsProxy = pulumi.Input.asInput<String>(targetHttpsProxy);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       targetHttpsProxy = pulumi.Input.asInput<String>(targetHttpsProxy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetRegionTargetHttpsProxyComputeBetaArgs {
     };
   }
 
-  factory GetRegionTargetHttpsProxyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetRegionTargetHttpsProxyComputeBetaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionTargetHttpsProxyComputeBetaArgs(
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] as String,
@@ -40,4 +41,3 @@ class GetRegionTargetHttpsProxyComputeBetaArgs {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDomainAdvancedSecurityOption {
   /// Whether node to node encryption is enabled.
   final bool enabled;
+
   /// Whether the internal user database is enabled.
   final bool internalUserDatabaseEnabled;
 
@@ -29,4 +29,3 @@ class GetDomainAdvancedSecurityOption {
     );
   }
 }
-

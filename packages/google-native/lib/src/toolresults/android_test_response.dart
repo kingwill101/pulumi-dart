@@ -9,12 +9,16 @@ import 'duration_response.dart';
 class AndroidTestResponse {
   /// Information about the application under test.
   final AndroidAppInfoResponse androidAppInfo;
+
   /// An Android instrumentation test.
   final AndroidInstrumentationTestResponse androidInstrumentationTest;
+
   /// An Android robo test.
   final AndroidRoboTestResponse androidRoboTest;
+
   /// An Android test loop.
   final Map<String, dynamic> androidTestLoop;
+
   /// Max time a test is allowed to run before it is automatically cancelled.
   final DurationResponse testTimeout;
 
@@ -44,12 +48,19 @@ class AndroidTestResponse {
 
   factory AndroidTestResponse.fromMap(Map<String, dynamic> map) {
     return AndroidTestResponse(
-      androidAppInfo: AndroidAppInfoResponse.fromMap((map['androidAppInfo'] as Map).cast<String, dynamic>()),
-      androidInstrumentationTest: AndroidInstrumentationTestResponse.fromMap((map['androidInstrumentationTest'] as Map).cast<String, dynamic>()),
-      androidRoboTest: AndroidRoboTestResponse.fromMap((map['androidRoboTest'] as Map).cast<String, dynamic>()),
+      androidAppInfo: AndroidAppInfoResponse.fromMap(
+        (map['androidAppInfo'] as Map).cast<String, dynamic>(),
+      ),
+      androidInstrumentationTest: AndroidInstrumentationTestResponse.fromMap(
+        (map['androidInstrumentationTest'] as Map).cast<String, dynamic>(),
+      ),
+      androidRoboTest: AndroidRoboTestResponse.fromMap(
+        (map['androidRoboTest'] as Map).cast<String, dynamic>(),
+      ),
       androidTestLoop: (map['androidTestLoop'] as Map).cast<String, dynamic>(),
-      testTimeout: DurationResponse.fromMap((map['testTimeout'] as Map).cast<String, dynamic>()),
+      testTimeout: DurationResponse.fromMap(
+        (map['testTimeout'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

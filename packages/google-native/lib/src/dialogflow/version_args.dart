@@ -16,12 +16,8 @@ class VersionArgs {
   /// [description] Optional. The developer-provided description of this version.
   /// [location] Optional.
   /// [project] Optional.
-  VersionArgs({
-    String? description,
-    String? location,
-    String? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
+  VersionArgs({String? description, String? location, String? project})
+    : description = pulumi.Input.asOptionalInput<String>(description),
       location = pulumi.Input.asOptionalInput<String>(location),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -35,10 +31,11 @@ class VersionArgs {
 
   factory VersionArgs.fromMap(Map<String, dynamic> map) {
     return VersionArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

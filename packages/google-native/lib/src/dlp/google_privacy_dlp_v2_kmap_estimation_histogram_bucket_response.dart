@@ -7,12 +7,17 @@ import 'google_privacy_dlp_v2_kmap_estimation_quasi_id_values_response.dart';
 class GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse {
   /// Number of records within these anonymity bounds.
   final String bucketSize;
+
   /// Total number of distinct quasi-identifier tuple values in this bucket.
   final String bucketValueCount;
+
   /// Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per bucket is capped at 20.
-  final List<GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse> bucketValues;
+  final List<GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse>
+  bucketValues;
+
   /// Always greater than or equal to min_anonymity.
   final String maxAnonymity;
+
   /// Always positive.
   final String minAnonymity;
 
@@ -34,20 +39,34 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse {
     return <String, dynamic>{
       'bucketSize': bucketSize,
       'bucketValueCount': bucketValueCount,
-      'bucketValues': pulumi.Input.encodeList<GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse, Map<String, dynamic>>(bucketValues, (value) => value.toMap()),
+      'bucketValues':
+          pulumi.Input.encodeList<
+            GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse,
+            Map<String, dynamic>
+          >(bucketValues, (value) => value.toMap()),
       'maxAnonymity': maxAnonymity,
       'minAnonymity': minAnonymity,
     };
   }
 
-  factory GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse(
       bucketSize: map['bucketSize'] as String,
       bucketValueCount: map['bucketValueCount'] as String,
-      bucketValues: pulumi.Input.decodeList<GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse>(map['bucketValues'], (value) => GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      bucketValues:
+          pulumi.Input.decodeList<
+            GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse
+          >(
+            map['bucketValues'],
+            (value) =>
+                GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       maxAnonymity: map['maxAnonymity'] as String,
       minAnonymity: map['minAnonymity'] as String,
     );
   }
 }
-

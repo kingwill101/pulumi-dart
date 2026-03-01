@@ -9,9 +9,7 @@ class CloudSqlConnectionProfile {
 
   /// Creates a new [CloudSqlConnectionProfile].
   /// [settings] Immutable. Metadata used to create the destination Cloud SQL database.
-  CloudSqlConnectionProfile({
-    this.settings,
-  });
+  CloudSqlConnectionProfile({this.settings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class CloudSqlConnectionProfile {
 
   factory CloudSqlConnectionProfile.fromMap(Map<String, dynamic> map) {
     return CloudSqlConnectionProfile(
-      settings: map['settings'] == null ? null : CloudSqlSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      settings: map['settings'] == null
+          ? null
+          : CloudSqlSettings.fromMap(
+              (map['settings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class GooglePrivacyDlpV2EntityIdResponse {
 
   /// Creates a new [GooglePrivacyDlpV2EntityIdResponse].
   /// [field] Composite key indicating which field contains the entity identifier.
-  GooglePrivacyDlpV2EntityIdResponse({
-    required this.field,
-  });
+  GooglePrivacyDlpV2EntityIdResponse({required this.field});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'field': field.toMap(),
-    };
+    return <String, dynamic>{'field': field.toMap()};
   }
 
   factory GooglePrivacyDlpV2EntityIdResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2EntityIdResponse(
-      field: GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field'] as Map).cast<String, dynamic>()),
+      field: GooglePrivacyDlpV2FieldIdResponse.fromMap(
+        (map['field'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

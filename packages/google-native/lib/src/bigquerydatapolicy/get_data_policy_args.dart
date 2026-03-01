@@ -19,10 +19,9 @@ class GetDataPolicyArgs {
     required String dataPolicyId,
     required String location,
     String? project,
-  }) :
-      dataPolicyId = pulumi.Input.asInput<String>(dataPolicyId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : dataPolicyId = pulumi.Input.asInput<String>(dataPolicyId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetDataPolicyArgs {
     );
   }
 }
-

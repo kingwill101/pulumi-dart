@@ -22,11 +22,10 @@ class GetMetadataImportMetastoreV1betaArgs {
     required String metadataImportId,
     String? project,
     required String serviceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      metadataImportId = pulumi.Input.asInput<String>(metadataImportId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       metadataImportId = pulumi.Input.asInput<String>(metadataImportId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,7 +36,9 @@ class GetMetadataImportMetastoreV1betaArgs {
     };
   }
 
-  factory GetMetadataImportMetastoreV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetMetadataImportMetastoreV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMetadataImportMetastoreV1betaArgs(
       location: map['location'] as String,
       metadataImportId: map['metadataImportId'] as String,
@@ -46,4 +47,3 @@ class GetMetadataImportMetastoreV1betaArgs {
     );
   }
 }
-

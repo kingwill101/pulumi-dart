@@ -1,12 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAttachedVersions.
 class GetAttachedVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String project;
+
   /// A list of versions available for use with this project and location.
   final List<String> validVersions;
 
@@ -40,4 +40,3 @@ class GetAttachedVersionsResult {
     );
   }
 }
-

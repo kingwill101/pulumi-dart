@@ -7,6 +7,7 @@ import 'google_privacy_dlp_v2_inspect_template_response.dart';
 class GooglePrivacyDlpV2RequestedOptionsResponse {
   /// Inspect config.
   final GooglePrivacyDlpV2InspectJobConfigResponse jobConfig;
+
   /// If run with an InspectTemplate, a snapshot of its state at the time of this run.
   final GooglePrivacyDlpV2InspectTemplateResponse snapshotInspectTemplate;
 
@@ -25,11 +26,17 @@ class GooglePrivacyDlpV2RequestedOptionsResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2RequestedOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2RequestedOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2RequestedOptionsResponse(
-      jobConfig: GooglePrivacyDlpV2InspectJobConfigResponse.fromMap((map['jobConfig'] as Map).cast<String, dynamic>()),
-      snapshotInspectTemplate: GooglePrivacyDlpV2InspectTemplateResponse.fromMap((map['snapshotInspectTemplate'] as Map).cast<String, dynamic>()),
+      jobConfig: GooglePrivacyDlpV2InspectJobConfigResponse.fromMap(
+        (map['jobConfig'] as Map).cast<String, dynamic>(),
+      ),
+      snapshotInspectTemplate:
+          GooglePrivacyDlpV2InspectTemplateResponse.fromMap(
+            (map['snapshotInspectTemplate'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

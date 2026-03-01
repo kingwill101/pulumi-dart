@@ -9,9 +9,7 @@ class HttpRouteRequestMirrorPolicy {
 
   /// Creates a new [HttpRouteRequestMirrorPolicy].
   /// [destination] The destination the requests will be mirrored to. The weight of the destination will be ignored.
-  HttpRouteRequestMirrorPolicy({
-    this.destination,
-  });
+  HttpRouteRequestMirrorPolicy({this.destination});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class HttpRouteRequestMirrorPolicy {
 
   factory HttpRouteRequestMirrorPolicy.fromMap(Map<String, dynamic> map) {
     return HttpRouteRequestMirrorPolicy(
-      destination: map['destination'] == null ? null : HttpRouteDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      destination: map['destination'] == null
+          ? null
+          : HttpRouteDestination.fromMap(
+              (map['destination'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

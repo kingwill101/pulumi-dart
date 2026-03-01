@@ -8,6 +8,7 @@ class GetDatastoreResult {
   final List<String> clusters;
   final String createTime;
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
@@ -52,7 +53,11 @@ class GetDatastoreResult {
       'id': id,
       'location': location,
       'name': name,
-      'nfsDatastores': pulumi.Input.encodeList<GetDatastoreNfsDatastore, Map<String, dynamic>>(nfsDatastores, (value) => value.toMap()),
+      'nfsDatastores':
+          pulumi.Input.encodeList<
+            GetDatastoreNfsDatastore,
+            Map<String, dynamic>
+          >(nfsDatastores, (value) => value.toMap()),
       'project': ?project,
       'state': state,
       'uid': uid,
@@ -68,7 +73,12 @@ class GetDatastoreResult {
       id: map['id'] as String,
       location: map['location'] as String,
       name: map['name'] as String,
-      nfsDatastores: pulumi.Input.decodeList<GetDatastoreNfsDatastore>(map['nfsDatastores'], (value) => GetDatastoreNfsDatastore.fromMap((value as Map).cast<String, dynamic>())),
+      nfsDatastores: pulumi.Input.decodeList<GetDatastoreNfsDatastore>(
+        map['nfsDatastores'],
+        (value) => GetDatastoreNfsDatastore.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       project: map['project'] == null ? null : map['project'] as String,
       state: map['state'] as String,
       uid: map['uid'] as String,
@@ -76,4 +86,3 @@ class GetDatastoreResult {
     );
   }
 }
-

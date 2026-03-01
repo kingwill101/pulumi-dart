@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config {
   /// S3 bucket name.
   final String bucketName;
+
   /// S3 prefix.
   final String? keyPrefix;
 
@@ -16,17 +16,15 @@ class InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDelive
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucketName': bucketName,
-      'keyPrefix': ?keyPrefix,
-    };
+    return <String, dynamic>{'bucketName': bucketName, 'keyPrefix': ?keyPrefix};
   }
 
-  factory InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config.fromMap(Map<String, dynamic> map) {
+  factory InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InvocationLoggingConfigurationLoggingConfigCloudwatchConfigLargeDataDeliveryS3Config(
       bucketName: map['bucketName'] as String,
       keyPrefix: map['keyPrefix'] == null ? null : map['keyPrefix'] as String,
     );
   }
 }
-

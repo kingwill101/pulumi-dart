@@ -13,7 +13,8 @@ enum ExternalVpnGatewayRedundancyTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExternalVpnGatewayRedundancyTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ExternalVpnGatewayRedundancyTypeComputeBeta value: $value',
+    );
   }
 }
-

@@ -14,15 +14,16 @@ class ApigatewayApiConfigOpenApiDocumentResponseApigatewayV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'document': document.toMap(),
-    };
+    return <String, dynamic>{'document': document.toMap()};
   }
 
-  factory ApigatewayApiConfigOpenApiDocumentResponseApigatewayV1beta.fromMap(Map<String, dynamic> map) {
+  factory ApigatewayApiConfigOpenApiDocumentResponseApigatewayV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApigatewayApiConfigOpenApiDocumentResponseApigatewayV1beta(
-      document: ApigatewayApiConfigFileResponseApigatewayV1beta.fromMap((map['document'] as Map).cast<String, dynamic>()),
+      document: ApigatewayApiConfigFileResponseApigatewayV1beta.fromMap(
+        (map['document'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

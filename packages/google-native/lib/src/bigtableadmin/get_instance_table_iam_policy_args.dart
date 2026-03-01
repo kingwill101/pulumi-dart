@@ -19,10 +19,9 @@ class GetInstanceTableIamPolicyArgs {
     required String instanceId,
     String? project,
     required String tableId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tableId = pulumi.Input.asInput<String>(tableId);
+  }) : instanceId = pulumi.Input.asInput<String>(instanceId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tableId = pulumi.Input.asInput<String>(tableId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetInstanceTableIamPolicyArgs {
     );
   }
 }
-

@@ -25,12 +25,13 @@ class GetLakeTaskIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String taskId,
-  }) :
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      taskId = pulumi.Input.asInput<String>(taskId);
+  }) : lakeId = pulumi.Input.asInput<String>(lakeId),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       taskId = pulumi.Input.asInput<String>(taskId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +47,12 @@ class GetLakeTaskIamPolicyArgs {
     return GetLakeTaskIamPolicyArgs(
       lakeId: map['lakeId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       taskId: map['taskId'] as String,
     );
   }
 }
-

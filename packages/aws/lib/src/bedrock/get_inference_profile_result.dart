@@ -7,22 +7,30 @@ import 'get_inference_profile_model.dart';
 class GetInferenceProfileResult {
   /// The time at which the inference profile was created.
   final String createdAt;
+
   /// The description of the inference profile.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Amazon Resource Name (ARN) of the inference profile.
   final String inferenceProfileArn;
   final String inferenceProfileId;
+
   /// The unique identifier of the inference profile.
   final String inferenceProfileName;
+
   /// A list of information about each model in the inference profile. See `models`.
   final List<GetInferenceProfileModel> models;
   final String region;
+
   /// The status of the inference profile. `ACTIVE` means that the inference profile is available to use.
   final String status;
+
   /// The type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means that the inference profile is defined by the user.
   final String type;
+
   /// The time at which the inference profile was last updated.
   final String updatedAt;
 
@@ -60,7 +68,11 @@ class GetInferenceProfileResult {
       'inferenceProfileArn': inferenceProfileArn,
       'inferenceProfileId': inferenceProfileId,
       'inferenceProfileName': inferenceProfileName,
-      'models': pulumi.Input.encodeList<GetInferenceProfileModel, Map<String, dynamic>>(models, (value) => value.toMap()),
+      'models':
+          pulumi.Input.encodeList<
+            GetInferenceProfileModel,
+            Map<String, dynamic>
+          >(models, (value) => value.toMap()),
       'region': region,
       'status': status,
       'type': type,
@@ -76,7 +88,12 @@ class GetInferenceProfileResult {
       inferenceProfileArn: map['inferenceProfileArn'] as String,
       inferenceProfileId: map['inferenceProfileId'] as String,
       inferenceProfileName: map['inferenceProfileName'] as String,
-      models: pulumi.Input.decodeList<GetInferenceProfileModel>(map['models'], (value) => GetInferenceProfileModel.fromMap((value as Map).cast<String, dynamic>())),
+      models: pulumi.Input.decodeList<GetInferenceProfileModel>(
+        map['models'],
+        (value) => GetInferenceProfileModel.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       region: map['region'] as String,
       status: map['status'] as String,
       type: map['type'] as String,
@@ -84,4 +101,3 @@ class GetInferenceProfileResult {
     );
   }
 }
-

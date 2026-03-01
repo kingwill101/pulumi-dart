@@ -18,15 +18,29 @@ class GetDataSetLogicalTableMapDataTransformTagColumnOperation {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'columnName': columnName,
-      'tags': pulumi.Input.encodeList<GetDataSetLogicalTableMapDataTransformTagColumnOperationTag, Map<String, dynamic>>(tags, (value) => value.toMap()),
+      'tags':
+          pulumi.Input.encodeList<
+            GetDataSetLogicalTableMapDataTransformTagColumnOperationTag,
+            Map<String, dynamic>
+          >(tags, (value) => value.toMap()),
     };
   }
 
-  factory GetDataSetLogicalTableMapDataTransformTagColumnOperation.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetLogicalTableMapDataTransformTagColumnOperation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetLogicalTableMapDataTransformTagColumnOperation(
       columnName: map['columnName'] as String,
-      tags: pulumi.Input.decodeList<GetDataSetLogicalTableMapDataTransformTagColumnOperationTag>(map['tags'], (value) => GetDataSetLogicalTableMapDataTransformTagColumnOperationTag.fromMap((value as Map).cast<String, dynamic>())),
+      tags:
+          pulumi.Input.decodeList<
+            GetDataSetLogicalTableMapDataTransformTagColumnOperationTag
+          >(
+            map['tags'],
+            (value) =>
+                GetDataSetLogicalTableMapDataTransformTagColumnOperationTag.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

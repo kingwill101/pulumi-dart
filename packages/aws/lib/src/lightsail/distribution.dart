@@ -968,47 +968,69 @@ import 'distribution_origin.dart';
 class Distribution extends pulumi.CustomResource {
   /// Alternate domain names of the distribution.
   late final pulumi.Output<List<String>> alternativeDomainNames;
+
   /// ARN of the distribution.
   late final pulumi.Output<String> arn;
+
   /// Bundle ID to use for the distribution.
   late final pulumi.Output<String> bundleId;
+
   /// Cache behavior settings of the distribution. See below.
-  late final pulumi.Output<DistributionCacheBehaviorSettings?> cacheBehaviorSettings;
+  late final pulumi.Output<DistributionCacheBehaviorSettings?>
+  cacheBehaviorSettings;
+
   /// Per-path cache behavior of the distribution. See below.
   late final pulumi.Output<List<DistributionCacheBehavior>?> cacheBehaviors;
+
   /// Name of the SSL/TLS certificate attached to the distribution.
   late final pulumi.Output<String?> certificateName;
+
   /// Timestamp when the distribution was created.
   late final pulumi.Output<String> createdAt;
+
   /// Default cache behavior of the distribution. See below.
-  late final pulumi.Output<DistributionDefaultCacheBehavior> defaultCacheBehavior;
+  late final pulumi.Output<DistributionDefaultCacheBehavior>
+  defaultCacheBehavior;
+
   /// Domain name of the distribution.
   late final pulumi.Output<String> domainName;
+
   /// IP address type of the distribution. Valid values: `dualstack`, `ipv4`. Default: `dualstack`.
   late final pulumi.Output<String?> ipAddressType;
+
   /// Whether the distribution is enabled. Default: `true`.
   late final pulumi.Output<bool?> isEnabled;
+
   /// Location of the distribution, such as the AWS Region and Availability Zone. See below.
   late final pulumi.Output<List<DistributionLocation>> locations;
+
   /// Name of the distribution.
   late final pulumi.Output<String> name;
+
   /// Origin resource of the distribution, such as a Lightsail instance, bucket, or load balancer. See below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<DistributionOrigin> origin;
+
   /// Public DNS of the origin.
   /// * `origin[0].resource_type` - Resource type of the origin resource (e.g., Instance).
   late final pulumi.Output<String> originPublicDns;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Lightsail resource type (e.g., Distribution).
   late final pulumi.Output<String> resourceType;
+
   /// Status of the distribution.
   late final pulumi.Output<String> status;
+
   /// Support code. Include this code in your email to support when you have questions about your Lightsail distribution. This code enables our support team to look up your Lightsail information more easily.
   late final pulumi.Output<String> supportCode;
+
   /// Map of tags for the Lightsail Distribution. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -1021,19 +1043,29 @@ class Distribution extends pulumi.CustomResource {
     DistributionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lightsail/distribution:Distribution',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alternativeDomainNames = registerOutput<List<String>>('alternativeDomainNames');
+         'aws:lightsail/distribution:Distribution',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.alternativeDomainNames = registerOutput<List<String>>(
+      'alternativeDomainNames',
+    );
     this.arn = registerOutput<String>('arn');
     this.bundleId = registerOutput<String>('bundleId');
-    this.cacheBehaviorSettings = registerOutput<DistributionCacheBehaviorSettings?>('cacheBehaviorSettings');
-    this.cacheBehaviors = registerOutput<List<DistributionCacheBehavior>?>('cacheBehaviors');
+    this.cacheBehaviorSettings =
+        registerOutput<DistributionCacheBehaviorSettings?>(
+          'cacheBehaviorSettings',
+        );
+    this.cacheBehaviors = registerOutput<List<DistributionCacheBehavior>?>(
+      'cacheBehaviors',
+    );
     this.certificateName = registerOutput<String?>('certificateName');
     this.createdAt = registerOutput<String>('createdAt');
-    this.defaultCacheBehavior = registerOutput<DistributionDefaultCacheBehavior>('defaultCacheBehavior');
+    this.defaultCacheBehavior =
+        registerOutput<DistributionDefaultCacheBehavior>(
+          'defaultCacheBehavior',
+        );
     this.domainName = registerOutput<String>('domainName');
     this.ipAddressType = registerOutput<String?>('ipAddressType');
     this.isEnabled = registerOutput<bool?>('isEnabled');

@@ -9,9 +9,7 @@ class Host {
 
   /// Creates a new [Host].
   /// [gceInstance] Specifies a Compute Engine instance as the host.
-  Host({
-    this.gceInstance,
-  });
+  Host({this.gceInstance});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class Host {
 
   factory Host.fromMap(Map<String, dynamic> map) {
     return Host(
-      gceInstance: map['gceInstance'] == null ? null : GceInstance.fromMap((map['gceInstance'] as Map).cast<String, dynamic>()),
+      gceInstance: map['gceInstance'] == null
+          ? null
+          : GceInstance.fromMap(
+              (map['gceInstance'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

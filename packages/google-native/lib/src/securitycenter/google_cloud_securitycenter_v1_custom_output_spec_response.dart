@@ -16,14 +16,25 @@ class GoogleCloudSecuritycenterV1CustomOutputSpecResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': pulumi.Input.encodeList<GoogleCloudSecuritycenterV1PropertyResponse, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.encodeList<
+            GoogleCloudSecuritycenterV1PropertyResponse,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudSecuritycenterV1CustomOutputSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudSecuritycenterV1CustomOutputSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudSecuritycenterV1CustomOutputSpecResponse(
-      properties: pulumi.Input.decodeList<GoogleCloudSecuritycenterV1PropertyResponse>(map['properties'], (value) => GoogleCloudSecuritycenterV1PropertyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      properties:
+          pulumi.Input.decodeList<GoogleCloudSecuritycenterV1PropertyResponse>(
+            map['properties'],
+            (value) => GoogleCloudSecuritycenterV1PropertyResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

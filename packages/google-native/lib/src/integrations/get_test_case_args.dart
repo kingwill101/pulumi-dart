@@ -25,12 +25,11 @@ class GetTestCaseArgs {
     String? project,
     required String testCaseId,
     required String versionId,
-  }) :
-      integrationId = pulumi.Input.asInput<String>(integrationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      testCaseId = pulumi.Input.asInput<String>(testCaseId),
-      versionId = pulumi.Input.asInput<String>(versionId);
+  }) : integrationId = pulumi.Input.asInput<String>(integrationId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       testCaseId = pulumi.Input.asInput<String>(testCaseId),
+       versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetTestCaseArgs {
     );
   }
 }
-

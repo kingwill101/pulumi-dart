@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExportArgs {
   /// API identifier.
   final pulumi.Input<String> apiId;
+
   /// Version of the API Gateway export algorithm. API Gateway uses the latest version by default. Currently, the only supported version is `1.0`.
   final pulumi.Input<String>? exportVersion;
+
   /// Whether to include API Gateway extensions in the exported API definition. API Gateway extensions are included by default.
   final pulumi.Input<bool>? includeExtensions;
+
   /// Output type of the exported definition file. Valid values are `JSON` and `YAML`.
   final pulumi.Input<String> outputType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Version of the API specification to use. `OAS30`, for OpenAPI 3.0, is the only supported value.
   final pulumi.Input<String> specification;
+
   /// Name of the API stage to export. If you don't specify this property, a representation of the latest API configuration is exported.
   final pulumi.Input<String>? stageName;
 
@@ -38,14 +44,15 @@ class GetExportArgs {
     String? region,
     required String specification,
     String? stageName,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      exportVersion = pulumi.Input.asOptionalInput<String>(exportVersion),
-      includeExtensions = pulumi.Input.asOptionalInput<bool>(includeExtensions),
-      outputType = pulumi.Input.asInput<String>(outputType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      specification = pulumi.Input.asInput<String>(specification),
-      stageName = pulumi.Input.asOptionalInput<String>(stageName);
+  }) : apiId = pulumi.Input.asInput<String>(apiId),
+       exportVersion = pulumi.Input.asOptionalInput<String>(exportVersion),
+       includeExtensions = pulumi.Input.asOptionalInput<bool>(
+         includeExtensions,
+       ),
+       outputType = pulumi.Input.asInput<String>(outputType),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       specification = pulumi.Input.asInput<String>(specification),
+       stageName = pulumi.Input.asOptionalInput<String>(stageName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -62,8 +69,12 @@ class GetExportArgs {
   factory GetExportArgs.fromMap(Map<String, dynamic> map) {
     return GetExportArgs(
       apiId: map['apiId'] as String,
-      exportVersion: map['exportVersion'] == null ? null : map['exportVersion'] as String,
-      includeExtensions: map['includeExtensions'] == null ? null : map['includeExtensions'] as bool,
+      exportVersion: map['exportVersion'] == null
+          ? null
+          : map['exportVersion'] as String,
+      includeExtensions: map['includeExtensions'] == null
+          ? null
+          : map['includeExtensions'] as bool,
       outputType: map['outputType'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       specification: map['specification'] as String,
@@ -71,4 +82,3 @@ class GetExportArgs {
     );
   }
 }
-

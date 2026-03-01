@@ -7,6 +7,7 @@ import 'google_privacy_dlp_v2_partition_id_response.dart';
 class GooglePrivacyDlpV2DatastoreOptionsResponse {
   /// The kind to process.
   final GooglePrivacyDlpV2KindExpressionResponse kind;
+
   /// A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty.
   final GooglePrivacyDlpV2PartitionIdResponse partitionId;
 
@@ -25,11 +26,16 @@ class GooglePrivacyDlpV2DatastoreOptionsResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2DatastoreOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DatastoreOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DatastoreOptionsResponse(
-      kind: GooglePrivacyDlpV2KindExpressionResponse.fromMap((map['kind'] as Map).cast<String, dynamic>()),
-      partitionId: GooglePrivacyDlpV2PartitionIdResponse.fromMap((map['partitionId'] as Map).cast<String, dynamic>()),
+      kind: GooglePrivacyDlpV2KindExpressionResponse.fromMap(
+        (map['kind'] as Map).cast<String, dynamic>(),
+      ),
+      partitionId: GooglePrivacyDlpV2PartitionIdResponse.fromMap(
+        (map['partitionId'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

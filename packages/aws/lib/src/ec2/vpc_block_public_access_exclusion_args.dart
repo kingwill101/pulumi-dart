@@ -12,13 +12,17 @@ class VpcBlockPublicAccessExclusionArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> internetGatewayExclusionMode;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Id of the subnet to which this exclusion applies. Either this or the vpc_id needs to be provided.
   final pulumi.Input<String>? subnetId;
+
   /// A map of tags to assign to the exclusion. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<VpcBlockPublicAccessExclusionTimeouts>? timeouts;
+
   /// Id of the VPC to which this exclusion applies. Either this or the subnet_id needs to be provided.
   final pulumi.Input<String>? vpcId;
 
@@ -36,13 +40,17 @@ class VpcBlockPublicAccessExclusionArgs {
     Map<String, String>? tags,
     VpcBlockPublicAccessExclusionTimeouts? timeouts,
     String? vpcId,
-  }) :
-      internetGatewayExclusionMode = pulumi.Input.asInput<String>(internetGatewayExclusionMode),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<VpcBlockPublicAccessExclusionTimeouts>(timeouts),
-      vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
+  }) : internetGatewayExclusionMode = pulumi.Input.asInput<String>(
+         internetGatewayExclusionMode,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       subnetId = pulumi.Input.asOptionalInput<String>(subnetId),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       timeouts =
+           pulumi.Input.asOptionalInput<VpcBlockPublicAccessExclusionTimeouts>(
+             timeouts,
+           ),
+       vpcId = pulumi.Input.asOptionalInput<String>(vpcId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,20 +58,30 @@ class VpcBlockPublicAccessExclusionArgs {
       'region': ?region,
       'subnetId': ?subnetId,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<VpcBlockPublicAccessExclusionTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            VpcBlockPublicAccessExclusionTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'vpcId': ?vpcId,
     };
   }
 
   factory VpcBlockPublicAccessExclusionArgs.fromMap(Map<String, dynamic> map) {
     return VpcBlockPublicAccessExclusionArgs(
-      internetGatewayExclusionMode: map['internetGatewayExclusionMode'] as String,
+      internetGatewayExclusionMode:
+          map['internetGatewayExclusionMode'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       subnetId: map['subnetId'] == null ? null : map['subnetId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      timeouts: map['timeouts'] == null ? null : VpcBlockPublicAccessExclusionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+      timeouts: map['timeouts'] == null
+          ? null
+          : VpcBlockPublicAccessExclusionTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
       vpcId: map['vpcId'] == null ? null : map['vpcId'] as String,
     );
   }
 }
-

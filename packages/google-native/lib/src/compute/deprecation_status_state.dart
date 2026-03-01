@@ -17,4 +17,3 @@ enum DeprecationStatusState {
     throw ArgumentError('Unknown DeprecationStatusState value: $value');
   }
 }
-

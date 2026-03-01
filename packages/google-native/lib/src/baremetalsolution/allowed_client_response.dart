@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents an 'access point' for the share.
 class AllowedClientResponse {
   /// Allow dev flag. Which controls whether to allow creation of devices.
   final bool allowDev;
+
   /// Allow the setuid flag.
   final bool allowSuid;
+
   /// The subnet of IP addresses permitted to access the share.
   final String allowedClientsCidr;
+
   /// Mount permissions.
   final String mountPermissions;
+
   /// The network the access point sits on.
   final String network;
+
   /// The path to access NFS, in format shareIP:/InstanceID InstanceID is the generated ID instead of customer provided name. example like "10.0.0.0:/g123456789-nfs001"
   final String nfsPath;
+
   /// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
   final bool noRootSquash;
+
   /// The IP address of the share on this network. Assigned automatically during provisioning based on the network's services_cidr.
   final String shareIp;
 
@@ -66,4 +72,3 @@ class AllowedClientResponse {
     );
   }
 }
-

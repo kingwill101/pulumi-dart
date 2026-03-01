@@ -12,16 +12,22 @@ import 'pad_response.dart';
 class PreprocessingConfigResponse {
   /// Audio preprocessing configuration.
   final AudioResponse audio;
+
   /// Color preprocessing configuration.
   final ColorResponse color;
+
   /// Specify the video cropping configuration.
   final CropResponse crop;
+
   /// Deblock preprocessing configuration.
   final DeblockResponse deblock;
+
   /// Specify the video deinterlace configuration.
   final DeinterlaceResponse deinterlace;
+
   /// Denoise preprocessing configuration.
   final DenoiseResponse denoise;
+
   /// Specify the video pad filter configuration.
   final PadResponse pad;
 
@@ -57,14 +63,23 @@ class PreprocessingConfigResponse {
 
   factory PreprocessingConfigResponse.fromMap(Map<String, dynamic> map) {
     return PreprocessingConfigResponse(
-      audio: AudioResponse.fromMap((map['audio'] as Map).cast<String, dynamic>()),
-      color: ColorResponse.fromMap((map['color'] as Map).cast<String, dynamic>()),
+      audio: AudioResponse.fromMap(
+        (map['audio'] as Map).cast<String, dynamic>(),
+      ),
+      color: ColorResponse.fromMap(
+        (map['color'] as Map).cast<String, dynamic>(),
+      ),
       crop: CropResponse.fromMap((map['crop'] as Map).cast<String, dynamic>()),
-      deblock: DeblockResponse.fromMap((map['deblock'] as Map).cast<String, dynamic>()),
-      deinterlace: DeinterlaceResponse.fromMap((map['deinterlace'] as Map).cast<String, dynamic>()),
-      denoise: DenoiseResponse.fromMap((map['denoise'] as Map).cast<String, dynamic>()),
+      deblock: DeblockResponse.fromMap(
+        (map['deblock'] as Map).cast<String, dynamic>(),
+      ),
+      deinterlace: DeinterlaceResponse.fromMap(
+        (map['deinterlace'] as Map).cast<String, dynamic>(),
+      ),
+      denoise: DenoiseResponse.fromMap(
+        (map['denoise'] as Map).cast<String, dynamic>(),
+      ),
       pad: PadResponse.fromMap((map['pad'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

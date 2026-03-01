@@ -14,7 +14,8 @@ enum CVSSAuthenticationContaineranalysisV1alpha1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown CVSSAuthenticationContaineranalysisV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown CVSSAuthenticationContaineranalysisV1alpha1 value: $value',
+    );
   }
 }
-

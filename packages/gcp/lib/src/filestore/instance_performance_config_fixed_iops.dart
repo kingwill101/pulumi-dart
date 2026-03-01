@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstancePerformanceConfigFixedIops {
   /// The number of IOPS to provision for the instance.
   /// max_iops must be in multiple of 1000.
@@ -8,14 +7,10 @@ class InstancePerformanceConfigFixedIops {
 
   /// Creates a new [InstancePerformanceConfigFixedIops].
   /// [maxIops] The number of IOPS to provision for the instance.
-  InstancePerformanceConfigFixedIops({
-    this.maxIops,
-  });
+  InstancePerformanceConfigFixedIops({this.maxIops});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxIops': ?maxIops,
-    };
+    return <String, dynamic>{'maxIops': ?maxIops};
   }
 
   factory InstancePerformanceConfigFixedIops.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class InstancePerformanceConfigFixedIops {
     );
   }
 }
-

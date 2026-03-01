@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration of Shielded Nodes feature.
 class ShieldedNodes {
   /// Whether Shielded Nodes features are enabled on all nodes in this cluster.
@@ -8,14 +7,10 @@ class ShieldedNodes {
 
   /// Creates a new [ShieldedNodes].
   /// [enabled] Whether Shielded Nodes features are enabled on all nodes in this cluster.
-  ShieldedNodes({
-    this.enabled,
-  });
+  ShieldedNodes({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ShieldedNodes.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ShieldedNodes {
     );
   }
 }
-

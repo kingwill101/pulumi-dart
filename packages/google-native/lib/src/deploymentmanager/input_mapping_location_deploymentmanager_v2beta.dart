@@ -15,7 +15,8 @@ enum InputMappingLocationDeploymentmanagerV2beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown InputMappingLocationDeploymentmanagerV2beta value: $value');
+    throw ArgumentError(
+      'Unknown InputMappingLocationDeploymentmanagerV2beta value: $value',
+    );
   }
 }
-

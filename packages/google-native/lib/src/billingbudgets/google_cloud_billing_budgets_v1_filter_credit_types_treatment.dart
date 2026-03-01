@@ -8,13 +8,17 @@ enum GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment {
   const GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment(this.value);
   final String value;
 
-  static GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment fromValue(String value) {
-    for (final item in GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment.values) {
+  static GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudBillingBudgetsV1FilterCreditTypesTreatment value: $value',
+    );
   }
 }
-

@@ -9,9 +9,7 @@ class CompanyDerivedInfoResponseJobsV4 {
 
   /// Creates a new [CompanyDerivedInfoResponseJobsV4].
   /// [headquartersLocation] A structured headquarters location of the company, resolved from Company.headquarters_address if provided.
-  CompanyDerivedInfoResponseJobsV4({
-    required this.headquartersLocation,
-  });
+  CompanyDerivedInfoResponseJobsV4({required this.headquartersLocation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class CompanyDerivedInfoResponseJobsV4 {
 
   factory CompanyDerivedInfoResponseJobsV4.fromMap(Map<String, dynamic> map) {
     return CompanyDerivedInfoResponseJobsV4(
-      headquartersLocation: LocationResponseJobsV4.fromMap((map['headquartersLocation'] as Map).cast<String, dynamic>()),
+      headquartersLocation: LocationResponseJobsV4.fromMap(
+        (map['headquartersLocation'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

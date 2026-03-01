@@ -10,20 +10,29 @@ class BucketLifecycle {
 
   /// Creates a new [BucketLifecycle].
   /// [rule] A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
-  BucketLifecycle({
-    this.rule,
-  });
+  BucketLifecycle({this.rule});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rule': ?rule == null ? null : pulumi.Input.encodeList<BucketLifecycleRuleItem, Map<String, dynamic>>(rule!, (value) => value.toMap()),
+      'rule': ?rule == null
+          ? null
+          : pulumi.Input.encodeList<
+              BucketLifecycleRuleItem,
+              Map<String, dynamic>
+            >(rule!, (value) => value.toMap()),
     };
   }
 
   factory BucketLifecycle.fromMap(Map<String, dynamic> map) {
     return BucketLifecycle(
-      rule: map['rule'] == null ? null : pulumi.Input.decodeList<BucketLifecycleRuleItem>(map['rule'], (value) => BucketLifecycleRuleItem.fromMap((value as Map).cast<String, dynamic>())),
+      rule: map['rule'] == null
+          ? null
+          : pulumi.Input.decodeList<BucketLifecycleRuleItem>(
+              map['rule'],
+              (value) => BucketLifecycleRuleItem.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

@@ -5,7 +5,8 @@ import 'google_cloud_healthcare_v1_dicom_big_query_destination_response.dart';
 /// StreamConfig specifies configuration for a streaming DICOM export.
 class GoogleCloudHealthcareV1DicomStreamConfigResponse {
   /// Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-  final GoogleCloudHealthcareV1DicomBigQueryDestinationResponse bigqueryDestination;
+  final GoogleCloudHealthcareV1DicomBigQueryDestinationResponse
+  bigqueryDestination;
 
   /// Creates a new [GoogleCloudHealthcareV1DicomStreamConfigResponse].
   /// [bigqueryDestination] Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
@@ -19,10 +20,14 @@ class GoogleCloudHealthcareV1DicomStreamConfigResponse {
     };
   }
 
-  factory GoogleCloudHealthcareV1DicomStreamConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudHealthcareV1DicomStreamConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudHealthcareV1DicomStreamConfigResponse(
-      bigqueryDestination: GoogleCloudHealthcareV1DicomBigQueryDestinationResponse.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>()),
+      bigqueryDestination:
+          GoogleCloudHealthcareV1DicomBigQueryDestinationResponse.fromMap(
+            (map['bigqueryDestination'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -1,38 +1,52 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Utilization metrics values for a single VM.
 class VmUtilizationMetricsVmmigrationV1alpha1 {
   /// Average CPU usage, percent.
   final int? cpuAverage;
+
   /// Average CPU usage, percent.
   final int? cpuAveragePercent;
+
   /// Max CPU usage, percent.
   final int? cpuMax;
+
   /// Max CPU usage, percent.
   final int? cpuMaxPercent;
+
   /// Average disk IO rate, in kilobytes per second.
   final String? diskIoRateAverage;
+
   /// Average disk IO rate, in kilobytes per second.
   final String? diskIoRateAverageKbps;
+
   /// Max disk IO rate, in kilobytes per second.
   final String? diskIoRateMax;
+
   /// Max disk IO rate, in kilobytes per second.
   final String? diskIoRateMaxKbps;
+
   /// Average memory usage, percent.
   final int? memoryAverage;
+
   /// Average memory usage, percent.
   final int? memoryAveragePercent;
+
   /// Max memory usage, percent.
   final int? memoryMax;
+
   /// Max memory usage, percent.
   final int? memoryMaxPercent;
+
   /// Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
   final String? networkThroughputAverage;
+
   /// Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
   final String? networkThroughputAverageKbps;
+
   /// Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
   final String? networkThroughputMax;
+
   /// Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
   final String? networkThroughputMaxKbps;
 
@@ -93,25 +107,52 @@ class VmUtilizationMetricsVmmigrationV1alpha1 {
     };
   }
 
-  factory VmUtilizationMetricsVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory VmUtilizationMetricsVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmUtilizationMetricsVmmigrationV1alpha1(
       cpuAverage: map['cpuAverage'] == null ? null : map['cpuAverage'] as int,
-      cpuAveragePercent: map['cpuAveragePercent'] == null ? null : map['cpuAveragePercent'] as int,
+      cpuAveragePercent: map['cpuAveragePercent'] == null
+          ? null
+          : map['cpuAveragePercent'] as int,
       cpuMax: map['cpuMax'] == null ? null : map['cpuMax'] as int,
-      cpuMaxPercent: map['cpuMaxPercent'] == null ? null : map['cpuMaxPercent'] as int,
-      diskIoRateAverage: map['diskIoRateAverage'] == null ? null : map['diskIoRateAverage'] as String,
-      diskIoRateAverageKbps: map['diskIoRateAverageKbps'] == null ? null : map['diskIoRateAverageKbps'] as String,
-      diskIoRateMax: map['diskIoRateMax'] == null ? null : map['diskIoRateMax'] as String,
-      diskIoRateMaxKbps: map['diskIoRateMaxKbps'] == null ? null : map['diskIoRateMaxKbps'] as String,
-      memoryAverage: map['memoryAverage'] == null ? null : map['memoryAverage'] as int,
-      memoryAveragePercent: map['memoryAveragePercent'] == null ? null : map['memoryAveragePercent'] as int,
+      cpuMaxPercent: map['cpuMaxPercent'] == null
+          ? null
+          : map['cpuMaxPercent'] as int,
+      diskIoRateAverage: map['diskIoRateAverage'] == null
+          ? null
+          : map['diskIoRateAverage'] as String,
+      diskIoRateAverageKbps: map['diskIoRateAverageKbps'] == null
+          ? null
+          : map['diskIoRateAverageKbps'] as String,
+      diskIoRateMax: map['diskIoRateMax'] == null
+          ? null
+          : map['diskIoRateMax'] as String,
+      diskIoRateMaxKbps: map['diskIoRateMaxKbps'] == null
+          ? null
+          : map['diskIoRateMaxKbps'] as String,
+      memoryAverage: map['memoryAverage'] == null
+          ? null
+          : map['memoryAverage'] as int,
+      memoryAveragePercent: map['memoryAveragePercent'] == null
+          ? null
+          : map['memoryAveragePercent'] as int,
       memoryMax: map['memoryMax'] == null ? null : map['memoryMax'] as int,
-      memoryMaxPercent: map['memoryMaxPercent'] == null ? null : map['memoryMaxPercent'] as int,
-      networkThroughputAverage: map['networkThroughputAverage'] == null ? null : map['networkThroughputAverage'] as String,
-      networkThroughputAverageKbps: map['networkThroughputAverageKbps'] == null ? null : map['networkThroughputAverageKbps'] as String,
-      networkThroughputMax: map['networkThroughputMax'] == null ? null : map['networkThroughputMax'] as String,
-      networkThroughputMaxKbps: map['networkThroughputMaxKbps'] == null ? null : map['networkThroughputMaxKbps'] as String,
+      memoryMaxPercent: map['memoryMaxPercent'] == null
+          ? null
+          : map['memoryMaxPercent'] as int,
+      networkThroughputAverage: map['networkThroughputAverage'] == null
+          ? null
+          : map['networkThroughputAverage'] as String,
+      networkThroughputAverageKbps: map['networkThroughputAverageKbps'] == null
+          ? null
+          : map['networkThroughputAverageKbps'] as String,
+      networkThroughputMax: map['networkThroughputMax'] == null
+          ? null
+          : map['networkThroughputMax'] as String,
+      networkThroughputMaxKbps: map['networkThroughputMaxKbps'] == null
+          ? null
+          : map['networkThroughputMaxKbps'] as String,
     );
   }
 }
-

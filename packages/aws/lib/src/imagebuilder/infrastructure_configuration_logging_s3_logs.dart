@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InfrastructureConfigurationLoggingS3Logs {
   /// Name of the S3 Bucket.
   ///
   /// The following arguments are optional:
   final String s3BucketName;
+
   /// Prefix to use for S3 logs. Defaults to `/`.
   final String? s3KeyPrefix;
 
@@ -24,11 +24,14 @@ class InfrastructureConfigurationLoggingS3Logs {
     };
   }
 
-  factory InfrastructureConfigurationLoggingS3Logs.fromMap(Map<String, dynamic> map) {
+  factory InfrastructureConfigurationLoggingS3Logs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InfrastructureConfigurationLoggingS3Logs(
       s3BucketName: map['s3BucketName'] as String,
-      s3KeyPrefix: map['s3KeyPrefix'] == null ? null : map['s3KeyPrefix'] as String,
+      s3KeyPrefix: map['s3KeyPrefix'] == null
+          ? null
+          : map['s3KeyPrefix'] as String,
     );
   }
 }
-

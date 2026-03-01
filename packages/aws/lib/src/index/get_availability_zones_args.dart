@@ -10,14 +10,19 @@ import 'get_availability_zones_filter.dart';
 class GetAvailabilityZonesArgs {
   /// Set to `true` to include all Availability Zones and Local Zones regardless of your opt in status.
   final pulumi.Input<bool>? allAvailabilityZones;
+
   /// List of Availability Zone names to exclude.
   final pulumi.Input<List<String>>? excludeNames;
+
   /// List of Availability Zone IDs to exclude.
   final pulumi.Input<List<String>>? excludeZoneIds;
+
   /// Configuration block(s) for filtering. Detailed below.
   final pulumi.Input<List<GetAvailabilityZonesFilter>>? filters;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Allows to filter list of Availability Zones based on their
   /// current state. Can be either `"available"`, `"information"`, `"impaired"` or
   /// `"unavailable"`. By default the list includes a complete set of Availability Zones
@@ -38,20 +43,36 @@ class GetAvailabilityZonesArgs {
     List<GetAvailabilityZonesFilter>? filters,
     String? region,
     String? state,
-  }) :
-      allAvailabilityZones = pulumi.Input.asOptionalInput<bool>(allAvailabilityZones),
-      excludeNames = pulumi.Input.asOptionalInput<List<String>>(excludeNames),
-      excludeZoneIds = pulumi.Input.asOptionalInput<List<String>>(excludeZoneIds),
-      filters = pulumi.Input.asOptionalInput<List<GetAvailabilityZonesFilter>>(filters),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      state = pulumi.Input.asOptionalInput<String>(state);
+  }) : allAvailabilityZones = pulumi.Input.asOptionalInput<bool>(
+         allAvailabilityZones,
+       ),
+       excludeNames = pulumi.Input.asOptionalInput<List<String>>(excludeNames),
+       excludeZoneIds = pulumi.Input.asOptionalInput<List<String>>(
+         excludeZoneIds,
+       ),
+       filters = pulumi.Input.asOptionalInput<List<GetAvailabilityZonesFilter>>(
+         filters,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       state = pulumi.Input.asOptionalInput<String>(state);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allAvailabilityZones': ?allAvailabilityZones,
       'excludeNames': ?excludeNames,
       'excludeZoneIds': ?excludeZoneIds,
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetAvailabilityZonesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetAvailabilityZonesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetAvailabilityZonesFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetAvailabilityZonesFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'region': ?region,
       'state': ?state,
     };
@@ -59,13 +80,25 @@ class GetAvailabilityZonesArgs {
 
   factory GetAvailabilityZonesArgs.fromMap(Map<String, dynamic> map) {
     return GetAvailabilityZonesArgs(
-      allAvailabilityZones: map['allAvailabilityZones'] == null ? null : map['allAvailabilityZones'] as bool,
-      excludeNames: map['excludeNames'] == null ? null : (map['excludeNames'] as List).cast<String>(),
-      excludeZoneIds: map['excludeZoneIds'] == null ? null : (map['excludeZoneIds'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetAvailabilityZonesFilter>(map['filters'], (value) => GetAvailabilityZonesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      allAvailabilityZones: map['allAvailabilityZones'] == null
+          ? null
+          : map['allAvailabilityZones'] as bool,
+      excludeNames: map['excludeNames'] == null
+          ? null
+          : (map['excludeNames'] as List).cast<String>(),
+      excludeZoneIds: map['excludeZoneIds'] == null
+          ? null
+          : (map['excludeZoneIds'] as List).cast<String>(),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<GetAvailabilityZonesFilter>(
+              map['filters'],
+              (value) => GetAvailabilityZonesFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       region: map['region'] == null ? null : map['region'] as String,
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
-

@@ -3,7 +3,9 @@ enum NetworkConfigPrivateIpv6GoogleAccess {
   privateIpv6GoogleAccessUnspecified("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"),
   privateIpv6GoogleAccessDisabled("PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED"),
   privateIpv6GoogleAccessToGoogle("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE"),
-  privateIpv6GoogleAccessBidirectional("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL");
+  privateIpv6GoogleAccessBidirectional(
+    "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL",
+  );
 
   const NetworkConfigPrivateIpv6GoogleAccess(this.value);
   final String value;
@@ -14,7 +16,8 @@ enum NetworkConfigPrivateIpv6GoogleAccess {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkConfigPrivateIpv6GoogleAccess value: $value');
+    throw ArgumentError(
+      'Unknown NetworkConfigPrivateIpv6GoogleAccess value: $value',
+    );
   }
 }
-

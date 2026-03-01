@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterMasterUserSecret {
   /// The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
   final String? kmsKeyId;
@@ -11,11 +10,7 @@ class ClusterMasterUserSecret {
   /// [kmsKeyId] The ARN for the KMS encryption key. When specifying `kms_key_id`, `storage_encrypted` needs to be set to true.
   /// [secretArn] Optional.
   /// [secretStatus] Optional.
-  ClusterMasterUserSecret({
-    this.kmsKeyId,
-    this.secretArn,
-    this.secretStatus,
-  });
+  ClusterMasterUserSecret({this.kmsKeyId, this.secretArn, this.secretStatus});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,8 +24,9 @@ class ClusterMasterUserSecret {
     return ClusterMasterUserSecret(
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
       secretArn: map['secretArn'] == null ? null : map['secretArn'] as String,
-      secretStatus: map['secretStatus'] == null ? null : map['secretStatus'] as String,
+      secretStatus: map['secretStatus'] == null
+          ? null
+          : map['secretStatus'] as String,
     );
   }
 }
-

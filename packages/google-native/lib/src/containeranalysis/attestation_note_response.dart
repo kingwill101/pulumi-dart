@@ -9,14 +9,10 @@ class AttestationNoteResponse {
 
   /// Creates a new [AttestationNoteResponse].
   /// [hint] Hint hints at the purpose of the attestation authority.
-  AttestationNoteResponse({
-    required this.hint,
-  });
+  AttestationNoteResponse({required this.hint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hint': hint.toMap(),
-    };
+    return <String, dynamic>{'hint': hint.toMap()};
   }
 
   factory AttestationNoteResponse.fromMap(Map<String, dynamic> map) {
@@ -25,4 +21,3 @@ class AttestationNoteResponse {
     );
   }
 }
-

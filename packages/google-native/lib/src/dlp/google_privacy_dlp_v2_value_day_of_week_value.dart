@@ -18,7 +18,8 @@ enum GooglePrivacyDlpV2ValueDayOfWeekValue {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2ValueDayOfWeekValue value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2ValueDayOfWeekValue value: $value',
+    );
   }
 }
-

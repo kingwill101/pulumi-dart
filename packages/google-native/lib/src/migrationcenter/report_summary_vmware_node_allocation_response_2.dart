@@ -6,8 +6,10 @@ import 'report_summary_vmware_node_response_2.dart';
 class ReportSummaryVmwareNodeAllocationResponse {
   /// Count of assets allocated to these nodes
   final String allocatedAssetCount;
+
   /// Count of this node type to be provisioned
   final String nodeCount;
+
   /// VMWare node type, e.g. "ve1-standard-72"
   final ReportSummaryVmwareNodeResponse vmwareNode;
 
@@ -29,12 +31,15 @@ class ReportSummaryVmwareNodeAllocationResponse {
     };
   }
 
-  factory ReportSummaryVmwareNodeAllocationResponse.fromMap(Map<String, dynamic> map) {
+  factory ReportSummaryVmwareNodeAllocationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReportSummaryVmwareNodeAllocationResponse(
       allocatedAssetCount: map['allocatedAssetCount'] as String,
       nodeCount: map['nodeCount'] as String,
-      vmwareNode: ReportSummaryVmwareNodeResponse.fromMap((map['vmwareNode'] as Map).cast<String, dynamic>()),
+      vmwareNode: ReportSummaryVmwareNodeResponse.fromMap(
+        (map['vmwareNode'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

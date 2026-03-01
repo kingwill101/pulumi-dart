@@ -6,6 +6,7 @@ import 'fleet_observability_routing_config_response.dart';
 class FleetObservabilityLoggingConfigResponse {
   /// Specified if applying the default routing config to logs not specified in other configs.
   final FleetObservabilityRoutingConfigResponse defaultConfig;
+
   /// Specified if applying the routing config to all logs for all fleet scopes.
   final FleetObservabilityRoutingConfigResponse fleetScopeLogsConfig;
 
@@ -24,11 +25,16 @@ class FleetObservabilityLoggingConfigResponse {
     };
   }
 
-  factory FleetObservabilityLoggingConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityLoggingConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityLoggingConfigResponse(
-      defaultConfig: FleetObservabilityRoutingConfigResponse.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>()),
-      fleetScopeLogsConfig: FleetObservabilityRoutingConfigResponse.fromMap((map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>()),
+      defaultConfig: FleetObservabilityRoutingConfigResponse.fromMap(
+        (map['defaultConfig'] as Map).cast<String, dynamic>(),
+      ),
+      fleetScopeLogsConfig: FleetObservabilityRoutingConfigResponse.fromMap(
+        (map['fleetScopeLogsConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

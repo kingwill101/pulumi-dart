@@ -5,9 +5,12 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_runtime_config_k
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
   /// Kubernetes Gateway API service mesh configuration.
-  final DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh? gatewayServiceMesh;
+  final DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh?
+  gatewayServiceMesh;
+
   /// Kubernetes Service networking configuration.
-  final DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking? serviceNetworking;
+  final DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking?
+  serviceNetworking;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes].
   /// [gatewayServiceMesh] Kubernetes Gateway API service mesh configuration.
@@ -19,16 +22,29 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gatewayServiceMesh': ?gatewayServiceMesh == null ? null : gatewayServiceMesh!.toMap(),
-      'serviceNetworking': ?serviceNetworking == null ? null : serviceNetworking!.toMap(),
+      'gatewayServiceMesh': ?gatewayServiceMesh == null
+          ? null
+          : gatewayServiceMesh!.toMap(),
+      'serviceNetworking': ?serviceNetworking == null
+          ? null
+          : serviceNetworking!.toMap(),
     };
   }
 
-  factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.fromMap(Map<String, dynamic> map) {
+  factory DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes(
-      gatewayServiceMesh: map['gatewayServiceMesh'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh.fromMap((map['gatewayServiceMesh'] as Map).cast<String, dynamic>()),
-      serviceNetworking: map['serviceNetworking'] == null ? null : DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking.fromMap((map['serviceNetworking'] as Map).cast<String, dynamic>()),
+      gatewayServiceMesh: map['gatewayServiceMesh'] == null
+          ? null
+          : DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh.fromMap(
+              (map['gatewayServiceMesh'] as Map).cast<String, dynamic>(),
+            ),
+      serviceNetworking: map['serviceNetworking'] == null
+          ? null
+          : DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking.fromMap(
+              (map['serviceNetworking'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

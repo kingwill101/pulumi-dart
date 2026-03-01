@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ReplicationConfigurationTemplatePitPolicy {
   /// Whether this rule is enabled or not.
   final bool? enabled;
+
   /// How often, in the chosen units, a snapshot should be taken.
   final int interval;
+
   /// Duration to retain a snapshot for, in the chosen `units`.
   final int retentionDuration;
+
   /// ID of the rule. Valid values are integers.
   final int? ruleId;
+
   /// Units used to measure the `interval` and `retention_duration`. Valid values are `MINUTE`, `HOUR`, and `DAY`.
   final String units;
 
@@ -37,7 +40,9 @@ class ReplicationConfigurationTemplatePitPolicy {
     };
   }
 
-  factory ReplicationConfigurationTemplatePitPolicy.fromMap(Map<String, dynamic> map) {
+  factory ReplicationConfigurationTemplatePitPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicationConfigurationTemplatePitPolicy(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       interval: map['interval'] as int,
@@ -47,4 +52,3 @@ class ReplicationConfigurationTemplatePitPolicy {
     );
   }
 }
-

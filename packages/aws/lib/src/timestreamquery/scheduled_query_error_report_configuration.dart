@@ -8,20 +8,20 @@ class ScheduledQueryErrorReportConfiguration {
 
   /// Creates a new [ScheduledQueryErrorReportConfiguration].
   /// [s3Configuration] Configuration block for the S3 configuration for the error reports. See below.
-  ScheduledQueryErrorReportConfiguration({
-    required this.s3Configuration,
-  });
+  ScheduledQueryErrorReportConfiguration({required this.s3Configuration});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      's3Configuration': s3Configuration.toMap(),
-    };
+    return <String, dynamic>{'s3Configuration': s3Configuration.toMap()};
   }
 
-  factory ScheduledQueryErrorReportConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ScheduledQueryErrorReportConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledQueryErrorReportConfiguration(
-      s3Configuration: ScheduledQueryErrorReportConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>()),
+      s3Configuration:
+          ScheduledQueryErrorReportConfigurationS3Configuration.fromMap(
+            (map['s3Configuration'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

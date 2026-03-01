@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for how to query telemetry on a Service.
 class Telemetry {
   /// The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
@@ -8,20 +7,17 @@ class Telemetry {
 
   /// Creates a new [Telemetry].
   /// [resourceName] The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
-  Telemetry({
-    this.resourceName,
-  });
+  Telemetry({this.resourceName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceName': ?resourceName,
-    };
+    return <String, dynamic>{'resourceName': ?resourceName};
   }
 
   factory Telemetry.fromMap(Map<String, dynamic> map) {
     return Telemetry(
-      resourceName: map['resourceName'] == null ? null : map['resourceName'] as String,
+      resourceName: map['resourceName'] == null
+          ? null
+          : map['resourceName'] as String,
     );
   }
 }
-

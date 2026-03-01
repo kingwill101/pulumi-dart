@@ -3,13 +3,12 @@
 import 'security_policy_ddos_protection_config_ddos_protection_compute_v1.dart';
 
 class SecurityPolicyDdosProtectionConfigComputeV1 {
-  final SecurityPolicyDdosProtectionConfigDdosProtectionComputeV1? ddosProtection;
+  final SecurityPolicyDdosProtectionConfigDdosProtectionComputeV1?
+  ddosProtection;
 
   /// Creates a new [SecurityPolicyDdosProtectionConfigComputeV1].
   /// [ddosProtection] Optional.
-  SecurityPolicyDdosProtectionConfigComputeV1({
-    this.ddosProtection,
-  });
+  SecurityPolicyDdosProtectionConfigComputeV1({this.ddosProtection});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -17,10 +16,15 @@ class SecurityPolicyDdosProtectionConfigComputeV1 {
     };
   }
 
-  factory SecurityPolicyDdosProtectionConfigComputeV1.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyDdosProtectionConfigComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyDdosProtectionConfigComputeV1(
-      ddosProtection: map['ddosProtection'] == null ? null : SecurityPolicyDdosProtectionConfigDdosProtectionComputeV1.fromValue(map['ddosProtection'] as String),
+      ddosProtection: map['ddosProtection'] == null
+          ? null
+          : SecurityPolicyDdosProtectionConfigDdosProtectionComputeV1.fromValue(
+              map['ddosProtection'] as String,
+            ),
     );
   }
 }
-

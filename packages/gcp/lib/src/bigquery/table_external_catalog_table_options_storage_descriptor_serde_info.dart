@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
   /// Name of the SerDe. The maximum length is 256 characters.
   final String? name;
+
   /// Key-value pairs that define the initialization
   /// parameters for the serialization library. Maximum size 10 Kib.
   final Map<String, String>? parameters;
+
   /// Specifies a fully-qualified class name of
   /// the serialization library that is responsible for the translation of data
   /// between table representation and the underlying low-level input and output
@@ -31,12 +32,15 @@ class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
     };
   }
 
-  factory TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo.fromMap(Map<String, dynamic> map) {
+  factory TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo(
       name: map['name'] == null ? null : map['name'] as String,
-      parameters: map['parameters'] == null ? null : (map['parameters'] as Map).cast<String, String>(),
+      parameters: map['parameters'] == null
+          ? null
+          : (map['parameters'] as Map).cast<String, String>(),
       serializationLibrary: map['serializationLibrary'] as String,
     );
   }
 }
-

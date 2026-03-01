@@ -13,11 +13,8 @@ class GetAlertPolicyArgs {
   /// Creates a new [GetAlertPolicyArgs].
   /// [alertPolicyId] Required.
   /// [project] Optional.
-  GetAlertPolicyArgs({
-    required String alertPolicyId,
-    String? project,
-  }) :
-      alertPolicyId = pulumi.Input.asInput<String>(alertPolicyId),
+  GetAlertPolicyArgs({required String alertPolicyId, String? project})
+    : alertPolicyId = pulumi.Input.asInput<String>(alertPolicyId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetAlertPolicyArgs {
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'google_cloud_datacatalog_v1_vertex_model_source_info.dart';
 class GoogleCloudDatacatalogV1VertexModelSpec {
   /// URI of the Docker image to be used as the custom container for serving predictions.
   final String? containerImageUri;
+
   /// User provided version aliases so that a model version can be referenced via alias
   final List<String>? versionAliases;
+
   /// The description of this version.
   final String? versionDescription;
+
   /// The version ID of the model.
   final String? versionId;
+
   /// Source of a Vertex model.
   final GoogleCloudDatacatalogV1VertexModelSourceInfo? vertexModelSourceInfo;
 
@@ -35,18 +39,31 @@ class GoogleCloudDatacatalogV1VertexModelSpec {
       'versionAliases': ?versionAliases,
       'versionDescription': ?versionDescription,
       'versionId': ?versionId,
-      'vertexModelSourceInfo': ?vertexModelSourceInfo == null ? null : vertexModelSourceInfo!.toMap(),
+      'vertexModelSourceInfo': ?vertexModelSourceInfo == null
+          ? null
+          : vertexModelSourceInfo!.toMap(),
     };
   }
 
-  factory GoogleCloudDatacatalogV1VertexModelSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1VertexModelSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1VertexModelSpec(
-      containerImageUri: map['containerImageUri'] == null ? null : map['containerImageUri'] as String,
-      versionAliases: map['versionAliases'] == null ? null : (map['versionAliases'] as List).cast<String>(),
-      versionDescription: map['versionDescription'] == null ? null : map['versionDescription'] as String,
+      containerImageUri: map['containerImageUri'] == null
+          ? null
+          : map['containerImageUri'] as String,
+      versionAliases: map['versionAliases'] == null
+          ? null
+          : (map['versionAliases'] as List).cast<String>(),
+      versionDescription: map['versionDescription'] == null
+          ? null
+          : map['versionDescription'] as String,
       versionId: map['versionId'] == null ? null : map['versionId'] as String,
-      vertexModelSourceInfo: map['vertexModelSourceInfo'] == null ? null : GoogleCloudDatacatalogV1VertexModelSourceInfo.fromMap((map['vertexModelSourceInfo'] as Map).cast<String, dynamic>()),
+      vertexModelSourceInfo: map['vertexModelSourceInfo'] == null
+          ? null
+          : GoogleCloudDatacatalogV1VertexModelSourceInfo.fromMap(
+              (map['vertexModelSourceInfo'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

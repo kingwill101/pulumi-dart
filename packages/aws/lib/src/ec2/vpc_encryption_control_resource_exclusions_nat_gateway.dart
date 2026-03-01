@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class VpcEncryptionControlResourceExclusionsNatGateway {
   /// The current state of the VPC Encryption Control.
   final String state;
+
   /// A message providing additional information about the state of the VPC Encryption Control.
   final String stateMessage;
 
@@ -16,17 +16,15 @@ class VpcEncryptionControlResourceExclusionsNatGateway {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': state,
-      'stateMessage': stateMessage,
-    };
+    return <String, dynamic>{'state': state, 'stateMessage': stateMessage};
   }
 
-  factory VpcEncryptionControlResourceExclusionsNatGateway.fromMap(Map<String, dynamic> map) {
+  factory VpcEncryptionControlResourceExclusionsNatGateway.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcEncryptionControlResourceExclusionsNatGateway(
       state: map['state'] as String,
       stateMessage: map['stateMessage'] as String,
     );
   }
 }
-

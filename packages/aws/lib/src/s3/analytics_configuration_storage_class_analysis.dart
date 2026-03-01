@@ -8,20 +8,19 @@ class AnalyticsConfigurationStorageClassAnalysis {
 
   /// Creates a new [AnalyticsConfigurationStorageClassAnalysis].
   /// [dataExport] Data export configuration (documented below).
-  AnalyticsConfigurationStorageClassAnalysis({
-    required this.dataExport,
-  });
+  AnalyticsConfigurationStorageClassAnalysis({required this.dataExport});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataExport': dataExport.toMap(),
-    };
+    return <String, dynamic>{'dataExport': dataExport.toMap()};
   }
 
-  factory AnalyticsConfigurationStorageClassAnalysis.fromMap(Map<String, dynamic> map) {
+  factory AnalyticsConfigurationStorageClassAnalysis.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalyticsConfigurationStorageClassAnalysis(
-      dataExport: AnalyticsConfigurationStorageClassAnalysisDataExport.fromMap((map['dataExport'] as Map).cast<String, dynamic>()),
+      dataExport: AnalyticsConfigurationStorageClassAnalysisDataExport.fromMap(
+        (map['dataExport'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

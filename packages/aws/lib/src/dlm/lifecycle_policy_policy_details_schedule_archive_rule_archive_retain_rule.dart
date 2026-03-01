@@ -4,7 +4,8 @@ import 'lifecycle_policy_policy_details_schedule_archive_rule_archive_retain_rul
 
 class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule {
   /// Information about retention period in the Amazon EBS Snapshots Archive. See the `retention_archive_tier` block.
-  final LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier retentionArchiveTier;
+  final LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier
+  retentionArchiveTier;
 
   /// Creates a new [LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule].
   /// [retentionArchiveTier] Information about retention period in the Amazon EBS Snapshots Archive. See the `retention_archive_tier` block.
@@ -18,10 +19,14 @@ class LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule {
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule.fromMap(Map<String, dynamic> map) {
+  factory LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRule(
-      retentionArchiveTier: LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier.fromMap((map['retentionArchiveTier'] as Map).cast<String, dynamic>()),
+      retentionArchiveTier:
+          LifecyclePolicyPolicyDetailsScheduleArchiveRuleArchiveRetainRuleRetentionArchiveTier.fromMap(
+            (map['retentionArchiveTier'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -12,11 +12,14 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   /// Setting to 0.0 means no boost applied. The boosting condition is
   /// ignored.
   final double? boost;
+
   /// Specification for custom ranking based on customer specified attribute
   /// value. It provides more controls for customized ranking than the simple
   /// (condition, boost) combination above.
   /// Structure is documented below.
-  final ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec? boostControlSpec;
+  final ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec?
+  boostControlSpec;
+
   /// An expression which specifies a boost condition. The syntax is the same
   /// as filter expression syntax. Currently, the only supported condition is
   /// a list of BCP-47 lang codes.
@@ -37,17 +40,24 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'boost': ?boost,
-      'boostControlSpec': ?boostControlSpec == null ? null : boostControlSpec!.toMap(),
+      'boostControlSpec': ?boostControlSpec == null
+          ? null
+          : boostControlSpec!.toMap(),
       'condition': condition,
     };
   }
 
-  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(Map<String, dynamic> map) {
+  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolDataStoreToolBoostSpecSpecConditionBoostSpec(
       boost: map['boost'] == null ? null : map['boost'] as double,
-      boostControlSpec: map['boostControlSpec'] == null ? null : ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap((map['boostControlSpec'] as Map).cast<String, dynamic>()),
+      boostControlSpec: map['boostControlSpec'] == null
+          ? null
+          : ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap(
+              (map['boostControlSpec'] as Map).cast<String, dynamic>(),
+            ),
       condition: map['condition'] as String,
     );
   }
 }
-

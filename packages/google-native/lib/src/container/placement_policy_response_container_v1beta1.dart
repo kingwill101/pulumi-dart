@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// PlacementPolicy defines the placement policy used by the node pool.
 class PlacementPolicyResponseContainerV1beta1 {
   /// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
   final String policyName;
+
   /// TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
   final String tpuTopology;
+
   /// The type of placement.
   final String type;
 
@@ -28,7 +29,9 @@ class PlacementPolicyResponseContainerV1beta1 {
     };
   }
 
-  factory PlacementPolicyResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory PlacementPolicyResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlacementPolicyResponseContainerV1beta1(
       policyName: map['policyName'] as String,
       tpuTopology: map['tpuTopology'] as String,
@@ -36,4 +39,3 @@ class PlacementPolicyResponseContainerV1beta1 {
     );
   }
 }
-

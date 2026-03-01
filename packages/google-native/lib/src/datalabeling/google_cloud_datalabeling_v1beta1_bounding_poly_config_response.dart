@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Config for image bounding poly (and bounding box) human labeling task.
 class GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
   /// Annotation spec set resource name.
   final String annotationSpecSet;
+
   /// Optional. Instruction message showed on contributors UI.
   final String instructionMessage;
 
@@ -23,11 +23,12 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse {
     };
   }
 
-  factory GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse(
       annotationSpecSet: map['annotationSpecSet'] as String,
       instructionMessage: map['instructionMessage'] as String,
     );
   }
 }
-

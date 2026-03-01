@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2 {
   /// The client operation id.
   final String clientOperationId;
+
   /// Status information per location (location name is key). Example key: zones/us-central1-a
   final Map<String, String> perLocationOperations;
 
@@ -22,11 +22,13 @@ class SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2 {
     };
   }
 
-  factory SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2.fromMap(Map<String, dynamic> map) {
+  factory SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SetCommonInstanceMetadataOperationMetadataResponseDeploymentmanagerV2(
       clientOperationId: map['clientOperationId'] as String,
-      perLocationOperations: (map['perLocationOperations'] as Map).cast<String, String>(),
+      perLocationOperations: (map['perLocationOperations'] as Map)
+          .cast<String, String>(),
     );
   }
 }
-

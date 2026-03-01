@@ -7,11 +7,16 @@ import 'deployment_group_load_balancer_info_target_group_pair_info_test_traffic_
 
 class DeploymentGroupLoadBalancerInfoTargetGroupPairInfo {
   /// Configuration block for the production traffic route (documented below).
-  final DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute prodTrafficRoute;
+  final DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute
+  prodTrafficRoute;
+
   /// Configuration blocks for a target group within a target group pair (documented below).
-  final List<DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup> targetGroups;
+  final List<DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup>
+  targetGroups;
+
   /// Configuration block for the test traffic route (documented below).
-  final DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute? testTrafficRoute;
+  final DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute?
+  testTrafficRoute;
 
   /// Creates a new [DeploymentGroupLoadBalancerInfoTargetGroupPairInfo].
   /// [prodTrafficRoute] Configuration block for the production traffic route (documented below).
@@ -26,17 +31,40 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfo {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'prodTrafficRoute': prodTrafficRoute.toMap(),
-      'targetGroups': pulumi.Input.encodeList<DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup, Map<String, dynamic>>(targetGroups, (value) => value.toMap()),
-      'testTrafficRoute': ?testTrafficRoute == null ? null : testTrafficRoute!.toMap(),
+      'targetGroups':
+          pulumi.Input.encodeList<
+            DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup,
+            Map<String, dynamic>
+          >(targetGroups, (value) => value.toMap()),
+      'testTrafficRoute': ?testTrafficRoute == null
+          ? null
+          : testTrafficRoute!.toMap(),
     };
   }
 
-  factory DeploymentGroupLoadBalancerInfoTargetGroupPairInfo.fromMap(Map<String, dynamic> map) {
+  factory DeploymentGroupLoadBalancerInfoTargetGroupPairInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentGroupLoadBalancerInfoTargetGroupPairInfo(
-      prodTrafficRoute: DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute.fromMap((map['prodTrafficRoute'] as Map).cast<String, dynamic>()),
-      targetGroups: pulumi.Input.decodeList<DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup>(map['targetGroups'], (value) => DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup.fromMap((value as Map).cast<String, dynamic>())),
-      testTrafficRoute: map['testTrafficRoute'] == null ? null : DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute.fromMap((map['testTrafficRoute'] as Map).cast<String, dynamic>()),
+      prodTrafficRoute:
+          DeploymentGroupLoadBalancerInfoTargetGroupPairInfoProdTrafficRoute.fromMap(
+            (map['prodTrafficRoute'] as Map).cast<String, dynamic>(),
+          ),
+      targetGroups:
+          pulumi.Input.decodeList<
+            DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup
+          >(
+            map['targetGroups'],
+            (value) =>
+                DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      testTrafficRoute: map['testTrafficRoute'] == null
+          ? null
+          : DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTestTrafficRoute.fromMap(
+              (map['testTrafficRoute'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

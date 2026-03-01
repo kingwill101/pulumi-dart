@@ -18,7 +18,8 @@ enum VersionInboundServicesItemAppengineV1beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown VersionInboundServicesItemAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown VersionInboundServicesItemAppengineV1beta value: $value',
+    );
   }
 }
-

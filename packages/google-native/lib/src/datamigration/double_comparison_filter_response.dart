@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
 class DoubleComparisonFilterResponse {
   /// Double compare value to be used
   final double value;
+
   /// Relation between source value and compare value
   final String valueComparison;
 
@@ -30,4 +30,3 @@ class DoubleComparisonFilterResponse {
     );
   }
 }
-

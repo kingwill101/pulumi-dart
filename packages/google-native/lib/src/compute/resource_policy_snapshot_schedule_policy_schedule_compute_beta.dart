@@ -23,17 +23,34 @@ class ResourcePolicySnapshotSchedulePolicyScheduleComputeBeta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dailySchedule': ?dailySchedule == null ? null : dailySchedule!.toMap(),
-      'hourlySchedule': ?hourlySchedule == null ? null : hourlySchedule!.toMap(),
-      'weeklySchedule': ?weeklySchedule == null ? null : weeklySchedule!.toMap(),
+      'hourlySchedule': ?hourlySchedule == null
+          ? null
+          : hourlySchedule!.toMap(),
+      'weeklySchedule': ?weeklySchedule == null
+          ? null
+          : weeklySchedule!.toMap(),
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicyScheduleComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicyScheduleComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicySnapshotSchedulePolicyScheduleComputeBeta(
-      dailySchedule: map['dailySchedule'] == null ? null : ResourcePolicyDailyCycleComputeBeta.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>()),
-      hourlySchedule: map['hourlySchedule'] == null ? null : ResourcePolicyHourlyCycleComputeBeta.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>()),
-      weeklySchedule: map['weeklySchedule'] == null ? null : ResourcePolicyWeeklyCycleComputeBeta.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
+      dailySchedule: map['dailySchedule'] == null
+          ? null
+          : ResourcePolicyDailyCycleComputeBeta.fromMap(
+              (map['dailySchedule'] as Map).cast<String, dynamic>(),
+            ),
+      hourlySchedule: map['hourlySchedule'] == null
+          ? null
+          : ResourcePolicyHourlyCycleComputeBeta.fromMap(
+              (map['hourlySchedule'] as Map).cast<String, dynamic>(),
+            ),
+      weeklySchedule: map['weeklySchedule'] == null
+          ? null
+          : ResourcePolicyWeeklyCycleComputeBeta.fromMap(
+              (map['weeklySchedule'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

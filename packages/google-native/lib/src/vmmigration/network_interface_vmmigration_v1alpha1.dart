@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// NetworkInterface represents a NIC of a VM.
 class NetworkInterfaceVmmigrationV1alpha1 {
   /// The external IP to define in the NIC.
   final String? externalIp;
+
   /// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
   final String? internalIp;
+
   /// The network to connect the NIC to.
   final String? network;
+
   /// The subnetwork to connect the NIC to.
   final String? subnetwork;
 
@@ -33,13 +35,20 @@ class NetworkInterfaceVmmigrationV1alpha1 {
     };
   }
 
-  factory NetworkInterfaceVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory NetworkInterfaceVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInterfaceVmmigrationV1alpha1(
-      externalIp: map['externalIp'] == null ? null : map['externalIp'] as String,
-      internalIp: map['internalIp'] == null ? null : map['internalIp'] as String,
+      externalIp: map['externalIp'] == null
+          ? null
+          : map['externalIp'] as String,
+      internalIp: map['internalIp'] == null
+          ? null
+          : map['internalIp'] as String,
       network: map['network'] == null ? null : map['network'] as String,
-      subnetwork: map['subnetwork'] == null ? null : map['subnetwork'] as String,
+      subnetwork: map['subnetwork'] == null
+          ? null
+          : map['subnetwork'] as String,
     );
   }
 }
-

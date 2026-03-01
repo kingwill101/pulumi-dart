@@ -1,20 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Defines an object to declare an in-toto artifact rule
 class ArtifactRuleResponse {
   final List<String> artifactRule;
 
   /// Creates a new [ArtifactRuleResponse].
   /// [artifactRule] Required.
-  ArtifactRuleResponse({
-    required this.artifactRule,
-  });
+  ArtifactRuleResponse({required this.artifactRule});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'artifactRule': artifactRule,
-    };
+    return <String, dynamic>{'artifactRule': artifactRule};
   }
 
   factory ArtifactRuleResponse.fromMap(Map<String, dynamic> map) {
@@ -23,4 +18,3 @@ class ArtifactRuleResponse {
     );
   }
 }
-

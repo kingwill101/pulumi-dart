@@ -19,10 +19,9 @@ class GetFolderReplayArgs {
     required String folderId,
     required String location,
     required String replayId,
-  }) :
-      folderId = pulumi.Input.asInput<String>(folderId),
-      location = pulumi.Input.asInput<String>(location),
-      replayId = pulumi.Input.asInput<String>(replayId);
+  }) : folderId = pulumi.Input.asInput<String>(folderId),
+       location = pulumi.Input.asInput<String>(location),
+       replayId = pulumi.Input.asInput<String>(replayId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetFolderReplayArgs {
     );
   }
 }
-

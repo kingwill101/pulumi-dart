@@ -7,10 +7,13 @@ import 'contact_settings_privacy.dart';
 class ContactSettings {
   /// The administrative contact for the `Registration`.
   final Contact adminContact;
+
   /// Privacy setting for the contacts associated with the `Registration`.
   final ContactSettingsPrivacy privacy;
+
   /// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
   final Contact registrantContact;
+
   /// The technical contact for the `Registration`.
   final Contact technicalContact;
 
@@ -37,11 +40,16 @@ class ContactSettings {
 
   factory ContactSettings.fromMap(Map<String, dynamic> map) {
     return ContactSettings(
-      adminContact: Contact.fromMap((map['adminContact'] as Map).cast<String, dynamic>()),
+      adminContact: Contact.fromMap(
+        (map['adminContact'] as Map).cast<String, dynamic>(),
+      ),
       privacy: ContactSettingsPrivacy.fromValue(map['privacy'] as String),
-      registrantContact: Contact.fromMap((map['registrantContact'] as Map).cast<String, dynamic>()),
-      technicalContact: Contact.fromMap((map['technicalContact'] as Map).cast<String, dynamic>()),
+      registrantContact: Contact.fromMap(
+        (map['registrantContact'] as Map).cast<String, dynamic>(),
+      ),
+      technicalContact: Contact.fromMap(
+        (map['technicalContact'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetTargetPoolComputeBetaArgs {
     String? project,
     required String region,
     required String targetPool,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      targetPool = pulumi.Input.asInput<String>(targetPool);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       targetPool = pulumi.Input.asInput<String>(targetPool);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTargetPoolComputeBetaArgs {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetJobDefinitionEksPropertyPodPropertyInitContainerResource {
   /// The type and quantity of the resources to reserve for the container.
   final Map<String, String> limits;
+
   /// The type and quantity of the resources to request for the container.
   final Map<String, String> requests;
 
@@ -16,17 +16,15 @@ class GetJobDefinitionEksPropertyPodPropertyInitContainerResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'limits': limits,
-      'requests': requests,
-    };
+    return <String, dynamic>{'limits': limits, 'requests': requests};
   }
 
-  factory GetJobDefinitionEksPropertyPodPropertyInitContainerResource.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionEksPropertyPodPropertyInitContainerResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionEksPropertyPodPropertyInitContainerResource(
       limits: (map['limits'] as Map).cast<String, String>(),
       requests: (map['requests'] as Map).cast<String, String>(),
     );
   }
 }
-

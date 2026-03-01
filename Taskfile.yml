@@ -250,6 +250,7 @@ tasks:
         esac
         export PULUMI_DART_SDK_GIT_URL="${PACKAGE_GIT_REPO_URL}"
         export PULUMI_DART_SDK_GIT_REF="${PULUMI_DART_SDK_GIT_REF:-main}"
+        export PULUMI_DART_PULUMI_DEPENDENCY_PATH="{{.PULUMI_DART_PATH}}"
         export PULUMI_DART_DEPENDENCY_REGISTRY="{{.PACKAGES_DIR}}/sdk_dependency_registry.yaml"
         export PULUMI_DART_UPDATE_EXISTING_PUBSPEC="true"
         export PATH="{{.LANGUAGE_HOST_DIR}}:${PATH}"

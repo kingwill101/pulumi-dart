@@ -9,9 +9,7 @@ class ApigatewayApiConfigOpenApiDocument {
 
   /// Creates a new [ApigatewayApiConfigOpenApiDocument].
   /// [document] The OpenAPI Specification document file.
-  ApigatewayApiConfigOpenApiDocument({
-    this.document,
-  });
+  ApigatewayApiConfigOpenApiDocument({this.document});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class ApigatewayApiConfigOpenApiDocument {
 
   factory ApigatewayApiConfigOpenApiDocument.fromMap(Map<String, dynamic> map) {
     return ApigatewayApiConfigOpenApiDocument(
-      document: map['document'] == null ? null : ApigatewayApiConfigFile.fromMap((map['document'] as Map).cast<String, dynamic>()),
+      document: map['document'] == null
+          ? null
+          : ApigatewayApiConfigFile.fromMap(
+              (map['document'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

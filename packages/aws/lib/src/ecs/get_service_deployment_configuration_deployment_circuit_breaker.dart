@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetServiceDeploymentConfigurationDeploymentCircuitBreaker {
   /// Whether circuit breaker is enabled
   final bool enable;
+
   /// Whether to rollback on failure
   final bool rollback;
 
@@ -16,17 +16,15 @@ class GetServiceDeploymentConfigurationDeploymentCircuitBreaker {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': enable,
-      'rollback': rollback,
-    };
+    return <String, dynamic>{'enable': enable, 'rollback': rollback};
   }
 
-  factory GetServiceDeploymentConfigurationDeploymentCircuitBreaker.fromMap(Map<String, dynamic> map) {
+  factory GetServiceDeploymentConfigurationDeploymentCircuitBreaker.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceDeploymentConfigurationDeploymentCircuitBreaker(
       enable: map['enable'] as bool,
       rollback: map['rollback'] as bool,
     );
   }
 }
-

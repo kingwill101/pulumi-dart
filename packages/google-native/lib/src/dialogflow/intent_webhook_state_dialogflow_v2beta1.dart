@@ -13,7 +13,8 @@ enum IntentWebhookStateDialogflowV2beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown IntentWebhookStateDialogflowV2beta1 value: $value');
+    throw ArgumentError(
+      'Unknown IntentWebhookStateDialogflowV2beta1 value: $value',
+    );
   }
 }
-

@@ -9,20 +9,17 @@ class AttestationNote {
 
   /// Creates a new [AttestationNote].
   /// [hint] Hint hints at the purpose of the attestation authority.
-  AttestationNote({
-    this.hint,
-  });
+  AttestationNote({this.hint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hint': ?hint == null ? null : hint!.toMap(),
-    };
+    return <String, dynamic>{'hint': ?hint == null ? null : hint!.toMap()};
   }
 
   factory AttestationNote.fromMap(Map<String, dynamic> map) {
     return AttestationNote(
-      hint: map['hint'] == null ? null : Hint.fromMap((map['hint'] as Map).cast<String, dynamic>()),
+      hint: map['hint'] == null
+          ? null
+          : Hint.fromMap((map['hint'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

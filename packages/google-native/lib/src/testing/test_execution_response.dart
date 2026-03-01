@@ -10,20 +10,28 @@ import 'tool_results_step_response.dart';
 class TestExecutionResponse {
   /// How the host machine(s) are configured.
   final EnvironmentResponse environment;
+
   /// Id of the containing TestMatrix.
   final String matrixId;
+
   /// The cloud project that owns the test execution.
   final String project;
+
   /// Details about the shard.
   final ShardResponse shard;
+
   /// Indicates the current progress of the test execution (e.g., FINISHED).
   final String state;
+
   /// Additional details about the running test.
   final TestDetailsResponse testDetails;
+
   /// How to run the test.
   final TestSpecificationResponse testSpecification;
+
   /// The time this test execution was initially created.
   final String timestamp;
+
   /// Where the results for this execution are written.
   final ToolResultsStepResponse toolResultsStep;
 
@@ -65,16 +73,25 @@ class TestExecutionResponse {
 
   factory TestExecutionResponse.fromMap(Map<String, dynamic> map) {
     return TestExecutionResponse(
-      environment: EnvironmentResponse.fromMap((map['environment'] as Map).cast<String, dynamic>()),
+      environment: EnvironmentResponse.fromMap(
+        (map['environment'] as Map).cast<String, dynamic>(),
+      ),
       matrixId: map['matrixId'] as String,
       project: map['project'] as String,
-      shard: ShardResponse.fromMap((map['shard'] as Map).cast<String, dynamic>()),
+      shard: ShardResponse.fromMap(
+        (map['shard'] as Map).cast<String, dynamic>(),
+      ),
       state: map['state'] as String,
-      testDetails: TestDetailsResponse.fromMap((map['testDetails'] as Map).cast<String, dynamic>()),
-      testSpecification: TestSpecificationResponse.fromMap((map['testSpecification'] as Map).cast<String, dynamic>()),
+      testDetails: TestDetailsResponse.fromMap(
+        (map['testDetails'] as Map).cast<String, dynamic>(),
+      ),
+      testSpecification: TestSpecificationResponse.fromMap(
+        (map['testSpecification'] as Map).cast<String, dynamic>(),
+      ),
       timestamp: map['timestamp'] as String,
-      toolResultsStep: ToolResultsStepResponse.fromMap((map['toolResultsStep'] as Map).cast<String, dynamic>()),
+      toolResultsStep: ToolResultsStepResponse.fromMap(
+        (map['toolResultsStep'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

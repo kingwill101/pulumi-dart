@@ -9,27 +9,40 @@ import 'enterprise_crm_frontends_eventbus_proto_parameter_value_type_response.da
 class EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse {
   /// The FQCN of the Java object this represents. A string, for example, would be "java.lang.String". If this is "java.lang.Object", the parameter can be of any type.
   final String className;
+
   /// If it is a collection of objects, this would be the FCQN of every individual element in the collection. If this is "java.lang.Object", the parameter is a collection of any type.
   final String collectionElementClassName;
+
   /// Optional fields, such as help text and other useful info.
   final EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse config;
+
   /// The data type of the parameter.
   final String dataType;
+
   /// Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
-  final EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse defaultValue;
+  final EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse
+  defaultValue;
+
   /// If set, this entry is deprecated, so further use of this parameter should be prohibited.
   final bool isDeprecated;
   final bool isOutput;
+
   /// If the data_type is JSON_VALUE, then this will define its schema.
   final String jsonSchema;
+
   /// Key is used to retrieve the corresponding parameter value. This should be unique for a given task. These parameters must be predefined in the workflow definition.
   final String key;
+
   /// Populated if this represents a proto or proto array.
-  final EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse protoDef;
+  final EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse
+  protoDef;
+
   /// If set, the user must provide an input value for this parameter.
   final bool required;
+
   /// Rule used to validate inputs (individual values and collection elements) for this parameter.
-  final EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponse validationRule;
+  final EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponse
+  validationRule;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse].
   /// [className] The FQCN of the Java object this represents. A string, for example, would be "java.lang.String". If this is "java.lang.Object", the parameter can be of any type.
@@ -76,21 +89,33 @@ class EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse {
     };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmFrontendsEventbusProtoParamSpecEntryResponse(
       className: map['className'] as String,
       collectionElementClassName: map['collectionElementClassName'] as String,
-      config: EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      config: EnterpriseCrmEventbusProtoParamSpecEntryConfigResponse.fromMap(
+        (map['config'] as Map).cast<String, dynamic>(),
+      ),
       dataType: map['dataType'] as String,
-      defaultValue: EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse.fromMap((map['defaultValue'] as Map).cast<String, dynamic>()),
+      defaultValue:
+          EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse.fromMap(
+            (map['defaultValue'] as Map).cast<String, dynamic>(),
+          ),
       isDeprecated: map['isDeprecated'] as bool,
       isOutput: map['isOutput'] as bool,
       jsonSchema: map['jsonSchema'] as String,
       key: map['key'] as String,
-      protoDef: EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse.fromMap((map['protoDef'] as Map).cast<String, dynamic>()),
+      protoDef:
+          EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse.fromMap(
+            (map['protoDef'] as Map).cast<String, dynamic>(),
+          ),
       required: map['required'] as bool,
-      validationRule: EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponse.fromMap((map['validationRule'] as Map).cast<String, dynamic>()),
+      validationRule:
+          EnterpriseCrmEventbusProtoParamSpecEntryValidationRuleResponse.fromMap(
+            (map['validationRule'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

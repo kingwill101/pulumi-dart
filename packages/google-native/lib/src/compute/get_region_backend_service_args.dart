@@ -19,10 +19,9 @@ class GetRegionBackendServiceArgs {
     required String backendService,
     String? project,
     required String region,
-  }) :
-      backendService = pulumi.Input.asInput<String>(backendService),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : backendService = pulumi.Input.asInput<String>(backendService),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionBackendServiceArgs {
     );
   }
 }
-

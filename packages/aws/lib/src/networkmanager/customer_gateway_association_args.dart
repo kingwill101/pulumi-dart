@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CustomerGatewayAssociationArgs {
   /// ARN of the customer gateway.
   final pulumi.Input<String> customerGatewayArn;
+
   /// ID of the device.
   final pulumi.Input<String> deviceId;
+
   /// ID of the global network.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> globalNetworkId;
+
   /// ID of the link.
   final pulumi.Input<String>? linkId;
 
@@ -28,11 +31,10 @@ class CustomerGatewayAssociationArgs {
     required String deviceId,
     required String globalNetworkId,
     String? linkId,
-  }) :
-      customerGatewayArn = pulumi.Input.asInput<String>(customerGatewayArn),
-      deviceId = pulumi.Input.asInput<String>(deviceId),
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      linkId = pulumi.Input.asOptionalInput<String>(linkId);
+  }) : customerGatewayArn = pulumi.Input.asInput<String>(customerGatewayArn),
+       deviceId = pulumi.Input.asInput<String>(deviceId),
+       globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
+       linkId = pulumi.Input.asOptionalInput<String>(linkId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +54,3 @@ class CustomerGatewayAssociationArgs {
     );
   }
 }
-

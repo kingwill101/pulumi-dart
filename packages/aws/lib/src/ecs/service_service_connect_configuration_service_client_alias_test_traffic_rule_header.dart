@@ -5,8 +5,10 @@ import 'service_service_connect_configuration_service_client_alias_test_traffic_
 class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader {
   /// Name of the HTTP header to match.
   final String name;
+
   /// Configuration block for header value matching criteria. See below.
-  final ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue value;
+  final ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue
+  value;
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader].
   /// [name] Name of the HTTP header to match.
@@ -17,17 +19,18 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value.toMap(),
-    };
+    return <String, dynamic>{'name': name, 'value': value.toMap()};
   }
 
-  factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader.fromMap(Map<String, dynamic> map) {
+  factory ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader(
       name: map['name'] as String,
-      value: ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      value:
+          ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeaderValue.fromMap(
+            (map['value'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

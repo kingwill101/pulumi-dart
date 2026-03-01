@@ -5,80 +5,118 @@ import 'channel_encoder_settings_video_description_codec_settings_h264_settings_
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings {
   /// Enables or disables adaptive quantization.
   final String? adaptiveQuantization;
+
   /// Indicates that AFD values will be written into the output stream.
   final String? afdSignaling;
+
   /// Average bitrate in bits/second.
   final int? bitrate;
   final int? bufFillPct;
+
   /// Size of buffer in bits.
   final int? bufSize;
+
   /// Includes color space metadata in the output.
   final String? colorMetadata;
+
   /// Entropy encoding mode.
   final String? entropyEncoding;
+
   /// Filters to apply to an encode. See H264 Filter Settings for more details.
-  final ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings? filterSettings;
+  final ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings?
+  filterSettings;
+
   /// Four bit AFD value to write on all frames of video in the output stream.
   final String? fixedAfd;
   final String? flickerAq;
+
   /// Controls whether coding is performed on a field basis or on a frame basis.
   final String? forceFieldPictures;
+
   /// Indicates how the output video frame rate is specified.
   final String? framerateControl;
+
   /// Framerate denominator.
   final int? framerateDenominator;
+
   /// Framerate numerator.
   final int? framerateNumerator;
+
   /// GOP-B reference.
   final String? gopBReference;
+
   /// Frequency of closed GOPs.
   final int? gopClosedCadence;
+
   /// Number of B-frames between reference frames.
   final int? gopNumBFrames;
+
   /// GOP size in units of either frames of seconds per `gop_size_units`.
   final double? gopSize;
+
   /// Indicates if the `gop_size` is specified in frames or seconds.
   final String? gopSizeUnits;
+
   /// H264 level.
   final String? level;
+
   /// Amount of lookahead.
   final String? lookAheadRateControl;
+
   /// Set the maximum bitrate in order to accommodate expected spikes in the complexity of the video.
   final int? maxBitrate;
+
   /// Min interval.
   final int? minIInterval;
+
   /// Number of reference frames to use.
   final int? numRefFrames;
+
   /// Indicates how the output pixel aspect ratio is specified.
   final String? parControl;
+
   /// Pixel Aspect Ratio denominator.
   final int? parDenominator;
+
   /// Pixel Aspect Ratio numerator.
   final int? parNumerator;
+
   /// H264 profile.
   final String? profile;
+
   /// Quality level.
   final String? qualityLevel;
+
   /// Controls the target quality for the video encode.
   final int? qvbrQualityLevel;
+
   /// Rate control mode.
   final String? rateControlMode;
+
   /// Sets the scan type of the output.
   final String? scanType;
+
   /// Scene change detection.
   final String? sceneChangeDetect;
+
   /// Number of slices per picture.
   final int? slices;
+
   /// Softness.
   final int? softness;
+
   /// Makes adjustments within each frame based on spatial variation of content complexity.
   final String? spatialAq;
+
   /// Subgop length.
   final String? subgopLength;
+
   /// Produces a bitstream compliant with SMPTE RP-2027.
   final String? syntax;
+
   /// Makes adjustments within each frame based on temporal variation of content complexity.
   final String? temporalAq;
+
   /// Determines how timecodes should be inserted into the video elementary stream.
   final String? timecodeInsertion;
 
@@ -175,7 +213,9 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings {
       'bufSize': ?bufSize,
       'colorMetadata': ?colorMetadata,
       'entropyEncoding': ?entropyEncoding,
-      'filterSettings': ?filterSettings == null ? null : filterSettings!.toMap(),
+      'filterSettings': ?filterSettings == null
+          ? null
+          : filterSettings!.toMap(),
       'fixedAfd': ?fixedAfd,
       'flickerAq': ?flickerAq,
       'forceFieldPictures': ?forceFieldPictures,
@@ -211,49 +251,104 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings {
     };
   }
 
-  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings(
-      adaptiveQuantization: map['adaptiveQuantization'] == null ? null : map['adaptiveQuantization'] as String,
-      afdSignaling: map['afdSignaling'] == null ? null : map['afdSignaling'] as String,
+      adaptiveQuantization: map['adaptiveQuantization'] == null
+          ? null
+          : map['adaptiveQuantization'] as String,
+      afdSignaling: map['afdSignaling'] == null
+          ? null
+          : map['afdSignaling'] as String,
       bitrate: map['bitrate'] == null ? null : map['bitrate'] as int,
       bufFillPct: map['bufFillPct'] == null ? null : map['bufFillPct'] as int,
       bufSize: map['bufSize'] == null ? null : map['bufSize'] as int,
-      colorMetadata: map['colorMetadata'] == null ? null : map['colorMetadata'] as String,
-      entropyEncoding: map['entropyEncoding'] == null ? null : map['entropyEncoding'] as String,
-      filterSettings: map['filterSettings'] == null ? null : ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings.fromMap((map['filterSettings'] as Map).cast<String, dynamic>()),
+      colorMetadata: map['colorMetadata'] == null
+          ? null
+          : map['colorMetadata'] as String,
+      entropyEncoding: map['entropyEncoding'] == null
+          ? null
+          : map['entropyEncoding'] as String,
+      filterSettings: map['filterSettings'] == null
+          ? null
+          : ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings.fromMap(
+              (map['filterSettings'] as Map).cast<String, dynamic>(),
+            ),
       fixedAfd: map['fixedAfd'] == null ? null : map['fixedAfd'] as String,
       flickerAq: map['flickerAq'] == null ? null : map['flickerAq'] as String,
-      forceFieldPictures: map['forceFieldPictures'] == null ? null : map['forceFieldPictures'] as String,
-      framerateControl: map['framerateControl'] == null ? null : map['framerateControl'] as String,
-      framerateDenominator: map['framerateDenominator'] == null ? null : map['framerateDenominator'] as int,
-      framerateNumerator: map['framerateNumerator'] == null ? null : map['framerateNumerator'] as int,
-      gopBReference: map['gopBReference'] == null ? null : map['gopBReference'] as String,
-      gopClosedCadence: map['gopClosedCadence'] == null ? null : map['gopClosedCadence'] as int,
-      gopNumBFrames: map['gopNumBFrames'] == null ? null : map['gopNumBFrames'] as int,
+      forceFieldPictures: map['forceFieldPictures'] == null
+          ? null
+          : map['forceFieldPictures'] as String,
+      framerateControl: map['framerateControl'] == null
+          ? null
+          : map['framerateControl'] as String,
+      framerateDenominator: map['framerateDenominator'] == null
+          ? null
+          : map['framerateDenominator'] as int,
+      framerateNumerator: map['framerateNumerator'] == null
+          ? null
+          : map['framerateNumerator'] as int,
+      gopBReference: map['gopBReference'] == null
+          ? null
+          : map['gopBReference'] as String,
+      gopClosedCadence: map['gopClosedCadence'] == null
+          ? null
+          : map['gopClosedCadence'] as int,
+      gopNumBFrames: map['gopNumBFrames'] == null
+          ? null
+          : map['gopNumBFrames'] as int,
       gopSize: map['gopSize'] == null ? null : map['gopSize'] as double,
-      gopSizeUnits: map['gopSizeUnits'] == null ? null : map['gopSizeUnits'] as String,
+      gopSizeUnits: map['gopSizeUnits'] == null
+          ? null
+          : map['gopSizeUnits'] as String,
       level: map['level'] == null ? null : map['level'] as String,
-      lookAheadRateControl: map['lookAheadRateControl'] == null ? null : map['lookAheadRateControl'] as String,
+      lookAheadRateControl: map['lookAheadRateControl'] == null
+          ? null
+          : map['lookAheadRateControl'] as String,
       maxBitrate: map['maxBitrate'] == null ? null : map['maxBitrate'] as int,
-      minIInterval: map['minIInterval'] == null ? null : map['minIInterval'] as int,
-      numRefFrames: map['numRefFrames'] == null ? null : map['numRefFrames'] as int,
-      parControl: map['parControl'] == null ? null : map['parControl'] as String,
-      parDenominator: map['parDenominator'] == null ? null : map['parDenominator'] as int,
-      parNumerator: map['parNumerator'] == null ? null : map['parNumerator'] as int,
+      minIInterval: map['minIInterval'] == null
+          ? null
+          : map['minIInterval'] as int,
+      numRefFrames: map['numRefFrames'] == null
+          ? null
+          : map['numRefFrames'] as int,
+      parControl: map['parControl'] == null
+          ? null
+          : map['parControl'] as String,
+      parDenominator: map['parDenominator'] == null
+          ? null
+          : map['parDenominator'] as int,
+      parNumerator: map['parNumerator'] == null
+          ? null
+          : map['parNumerator'] as int,
       profile: map['profile'] == null ? null : map['profile'] as String,
-      qualityLevel: map['qualityLevel'] == null ? null : map['qualityLevel'] as String,
-      qvbrQualityLevel: map['qvbrQualityLevel'] == null ? null : map['qvbrQualityLevel'] as int,
-      rateControlMode: map['rateControlMode'] == null ? null : map['rateControlMode'] as String,
+      qualityLevel: map['qualityLevel'] == null
+          ? null
+          : map['qualityLevel'] as String,
+      qvbrQualityLevel: map['qvbrQualityLevel'] == null
+          ? null
+          : map['qvbrQualityLevel'] as int,
+      rateControlMode: map['rateControlMode'] == null
+          ? null
+          : map['rateControlMode'] as String,
       scanType: map['scanType'] == null ? null : map['scanType'] as String,
-      sceneChangeDetect: map['sceneChangeDetect'] == null ? null : map['sceneChangeDetect'] as String,
+      sceneChangeDetect: map['sceneChangeDetect'] == null
+          ? null
+          : map['sceneChangeDetect'] as String,
       slices: map['slices'] == null ? null : map['slices'] as int,
       softness: map['softness'] == null ? null : map['softness'] as int,
       spatialAq: map['spatialAq'] == null ? null : map['spatialAq'] as String,
-      subgopLength: map['subgopLength'] == null ? null : map['subgopLength'] as String,
+      subgopLength: map['subgopLength'] == null
+          ? null
+          : map['subgopLength'] as String,
       syntax: map['syntax'] == null ? null : map['syntax'] as String,
-      temporalAq: map['temporalAq'] == null ? null : map['temporalAq'] as String,
-      timecodeInsertion: map['timecodeInsertion'] == null ? null : map['timecodeInsertion'] as String,
+      temporalAq: map['temporalAq'] == null
+          ? null
+          : map['temporalAq'] as String,
+      timecodeInsertion: map['timecodeInsertion'] == null
+          ? null
+          : map['timecodeInsertion'] as String,
     );
   }
 }
-

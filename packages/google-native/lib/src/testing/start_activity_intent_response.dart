@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A starting intent specified by an action, uri, and categories.
 class StartActivityIntentResponse {
   /// Action name. Required for START_ACTIVITY.
   final String action;
+
   /// Intent categories to set on the intent.
   final List<String> categories;
+
   /// URI for the action.
   final String uri;
 
@@ -36,4 +37,3 @@ class StartActivityIntentResponse {
     );
   }
 }
-

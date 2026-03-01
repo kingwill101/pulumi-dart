@@ -13,18 +13,12 @@ class GetLicenseComputeV1Args {
   /// Creates a new [GetLicenseComputeV1Args].
   /// [license] Required.
   /// [project] Optional.
-  GetLicenseComputeV1Args({
-    required String license,
-    String? project,
-  }) :
-      license = pulumi.Input.asInput<String>(license),
+  GetLicenseComputeV1Args({required String license, String? project})
+    : license = pulumi.Input.asInput<String>(license),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'license': license,
-      'project': ?project,
-    };
+    return <String, dynamic>{'license': license, 'project': ?project};
   }
 
   factory GetLicenseComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetLicenseComputeV1Args {
     );
   }
 }
-

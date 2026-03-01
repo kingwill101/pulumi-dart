@@ -25,12 +25,11 @@ class GetRunArgs {
     String? project,
     required String runId,
     required String tensorboardId,
-  }) :
-      experimentId = pulumi.Input.asInput<String>(experimentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runId = pulumi.Input.asInput<String>(runId),
-      tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
+  }) : experimentId = pulumi.Input.asInput<String>(experimentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       runId = pulumi.Input.asInput<String>(runId),
+       tensorboardId = pulumi.Input.asInput<String>(tensorboardId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetRunArgs {
     );
   }
 }
-

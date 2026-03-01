@@ -1195,28 +1195,37 @@ class AppHostingBuild extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
+
   /// The ID of the Backend that this Build applies to
   late final pulumi.Output<String> backend;
+
   /// The user-specified ID of the build being created.
   late final pulumi.Output<String> buildId;
+
   /// The location of the [Cloud Build
   /// logs](https://cloud.google.com/build/docs/view-build-results) for the build
   /// process.
   late final pulumi.Output<String> buildLogsUri;
+
   /// Time at which the build was created.
   late final pulumi.Output<String> createTime;
+
   /// Human-readable name. 63 character limit.
   late final pulumi.Output<String?> displayName;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// The environment name of the backend when this build was created.
   late final pulumi.Output<String> environment;
+
   /// The source of the error for the build, if in a `FAILED` state.
   /// Possible values:
   /// CLOUD_BUILD
   /// CLOUD_RUN
   late final pulumi.Output<String> errorSource;
+
   /// The `Status` type defines a logical error model that is suitable for
   /// different programming environments, including REST APIs and RPC APIs. It is
   /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -1225,9 +1234,11 @@ class AppHostingBuild extends pulumi.CustomResource {
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
   late final pulumi.Output<List<AppHostingBuildError>> errors;
+
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
   late final pulumi.Output<String> etag;
+
   /// The Artifact Registry
   /// [container
   /// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
@@ -1235,26 +1246,33 @@ class AppHostingBuild extends pulumi.CustomResource {
   /// [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
   /// for this build.
   late final pulumi.Output<String> image;
+
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The location of the Backend that this Build applies to
   late final pulumi.Output<String> location;
+
   /// Identifier. The resource name of the build.
   /// Format:
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The source for the build.
   /// Structure is documented below.
   late final pulumi.Output<AppHostingBuildSource> source;
+
   /// The state of the build.
   /// Possible values:
   /// BUILDING
@@ -1263,8 +1281,10 @@ class AppHostingBuild extends pulumi.CustomResource {
   /// READY
   /// FAILED
   late final pulumi.Output<String> state;
+
   /// System-assigned, unique identifier.
   late final pulumi.Output<String> uid;
+
   /// Time at which the build was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -1277,19 +1297,23 @@ class AppHostingBuild extends pulumi.CustomResource {
     AppHostingBuildArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/appHostingBuild:AppHostingBuild',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:firebase/appHostingBuild:AppHostingBuild',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
     this.backend = registerOutput<String>('backend');
     this.buildId = registerOutput<String>('buildId');
     this.buildLogsUri = registerOutput<String>('buildLogsUri');
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String?>('displayName');
-    this.effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveAnnotations = registerOutput<Map<String, String>>(
+      'effectiveAnnotations',
+    );
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.environment = registerOutput<String>('environment');
     this.errorSource = registerOutput<String>('errorSource');
     this.errors = registerOutput<List<AppHostingBuildError>>('errors');

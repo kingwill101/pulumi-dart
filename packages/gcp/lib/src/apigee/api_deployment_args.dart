@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiDeploymentArgs {
   /// The Apigee Environment associated with the Apigee API deployment.
   final pulumi.Input<String> environment;
+
   /// The Apigee Organization associated with the Apigee API deployment.
   final pulumi.Input<String> orgId;
+
   /// The Apigee API associated with the Apigee API deployment.
   final pulumi.Input<String> proxyId;
+
   /// The revision of the API proxy to be deployed.
   final pulumi.Input<String> revision;
 
@@ -26,11 +29,10 @@ class ApiDeploymentArgs {
     required String orgId,
     required String proxyId,
     required String revision,
-  }) :
-      environment = pulumi.Input.asInput<String>(environment),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      proxyId = pulumi.Input.asInput<String>(proxyId),
-      revision = pulumi.Input.asInput<String>(revision);
+  }) : environment = pulumi.Input.asInput<String>(environment),
+       orgId = pulumi.Input.asInput<String>(orgId),
+       proxyId = pulumi.Input.asInput<String>(proxyId),
+       revision = pulumi.Input.asInput<String>(revision);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,4 +52,3 @@ class ApiDeploymentArgs {
     );
   }
 }
-

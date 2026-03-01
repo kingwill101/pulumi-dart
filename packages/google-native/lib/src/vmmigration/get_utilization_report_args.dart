@@ -25,12 +25,11 @@ class GetUtilizationReportArgs {
     required String sourceId,
     required String utilizationReportId,
     String? view,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceId = pulumi.Input.asInput<String>(sourceId),
-      utilizationReportId = pulumi.Input.asInput<String>(utilizationReportId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sourceId = pulumi.Input.asInput<String>(sourceId),
+       utilizationReportId = pulumi.Input.asInput<String>(utilizationReportId),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetUtilizationReportArgs {
     );
   }
 }
-

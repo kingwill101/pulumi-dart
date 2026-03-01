@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetForwardingRulesRuleServiceDirectoryRegistration {
   /// Service Directory namespace to register the forwarding rule under.
   final String namespace;
+
   /// Service Directory service to register the forwarding rule under.
   final String service;
 
@@ -16,17 +16,15 @@ class GetForwardingRulesRuleServiceDirectoryRegistration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespace': namespace,
-      'service': service,
-    };
+    return <String, dynamic>{'namespace': namespace, 'service': service};
   }
 
-  factory GetForwardingRulesRuleServiceDirectoryRegistration.fromMap(Map<String, dynamic> map) {
+  factory GetForwardingRulesRuleServiceDirectoryRegistration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetForwardingRulesRuleServiceDirectoryRegistration(
       namespace: map['namespace'] as String,
       service: map['service'] as String,
     );
   }
 }
-

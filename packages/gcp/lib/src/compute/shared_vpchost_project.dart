@@ -200,11 +200,11 @@ class SharedVPCHostProject extends pulumi.CustomResource {
     SharedVPCHostProjectArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/sharedVPCHostProject:SharedVPCHostProject',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/sharedVPCHostProject:SharedVPCHostProject',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.project = registerOutput<String>('project');
   }
 }

@@ -6,16 +6,14 @@ import 'google_devtools_containeranalysis_v1alpha1_alias_context_kind.dart';
 class GoogleDevtoolsContaineranalysisV1alpha1AliasContext {
   /// The alias kind.
   final GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind? kind;
+
   /// The alias name.
   final String? name;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1AliasContext].
   /// [kind] The alias kind.
   /// [name] The alias name.
-  GoogleDevtoolsContaineranalysisV1alpha1AliasContext({
-    this.kind,
-    this.name,
-  });
+  GoogleDevtoolsContaineranalysisV1alpha1AliasContext({this.kind, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,16 @@ class GoogleDevtoolsContaineranalysisV1alpha1AliasContext {
     };
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsContaineranalysisV1alpha1AliasContext(
-      kind: map['kind'] == null ? null : GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind.fromValue(map['kind'] as String),
+      kind: map['kind'] == null
+          ? null
+          : GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind.fromValue(
+              map['kind'] as String,
+            ),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
-

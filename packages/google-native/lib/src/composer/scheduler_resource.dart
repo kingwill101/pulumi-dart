@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for resources used by Airflow schedulers.
 class SchedulerResource {
   /// Optional. The number of schedulers.
   final int? count;
+
   /// Optional. CPU request and limit for a single Airflow scheduler replica.
   final double? cpu;
+
   /// Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
   final double? memoryGb;
+
   /// Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
   final double? storageGb;
 
@@ -17,12 +19,7 @@ class SchedulerResource {
   /// [cpu] Optional. CPU request and limit for a single Airflow scheduler replica.
   /// [memoryGb] Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
   /// [storageGb] Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
-  SchedulerResource({
-    this.count,
-    this.cpu,
-    this.memoryGb,
-    this.storageGb,
-  });
+  SchedulerResource({this.count, this.cpu, this.memoryGb, this.storageGb});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,4 +39,3 @@ class SchedulerResource {
     );
   }
 }
-

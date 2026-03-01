@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message describing resource status
 class ResourceStatusResponse {
   /// Historical: Used before 2023-05-22 the new version of rule id if exists
   final List<String> rulesNewerVersions;
+
   /// State of the resource
   final String state;
 
@@ -30,4 +30,3 @@ class ResourceStatusResponse {
     );
   }
 }
-

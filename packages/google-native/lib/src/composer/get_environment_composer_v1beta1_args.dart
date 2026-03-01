@@ -19,10 +19,9 @@ class GetEnvironmentComposerV1beta1Args {
     required String environmentId,
     required String location,
     String? project,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : environmentId = pulumi.Input.asInput<String>(environmentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetEnvironmentComposerV1beta1Args {
     );
   }
 }
-

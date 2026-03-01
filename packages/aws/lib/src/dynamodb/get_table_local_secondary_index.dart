@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTableLocalSecondaryIndex {
   /// Name of the DynamoDB table.
   final String name;
@@ -38,4 +37,3 @@ class GetTableLocalSecondaryIndex {
     );
   }
 }
-

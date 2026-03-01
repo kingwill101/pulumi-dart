@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InsightFiltersResourceContainerImageId {
   final String comparison;
   final String value;
@@ -14,17 +13,15 @@ class InsightFiltersResourceContainerImageId {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
-  factory InsightFiltersResourceContainerImageId.fromMap(Map<String, dynamic> map) {
+  factory InsightFiltersResourceContainerImageId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightFiltersResourceContainerImageId(
       comparison: map['comparison'] as String,
       value: map['value'] as String,
     );
   }
 }
-

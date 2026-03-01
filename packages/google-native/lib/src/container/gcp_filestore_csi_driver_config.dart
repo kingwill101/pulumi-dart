@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for the GCP Filestore CSI driver.
 class GcpFilestoreCsiDriverConfig {
   /// Whether the GCP Filestore CSI driver is enabled for this cluster.
@@ -8,14 +7,10 @@ class GcpFilestoreCsiDriverConfig {
 
   /// Creates a new [GcpFilestoreCsiDriverConfig].
   /// [enabled] Whether the GCP Filestore CSI driver is enabled for this cluster.
-  GcpFilestoreCsiDriverConfig({
-    this.enabled,
-  });
+  GcpFilestoreCsiDriverConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory GcpFilestoreCsiDriverConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class GcpFilestoreCsiDriverConfig {
     );
   }
 }
-

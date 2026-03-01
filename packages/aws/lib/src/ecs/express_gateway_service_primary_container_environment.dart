@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ExpressGatewayServicePrimaryContainerEnvironment {
   /// Name of the environment variable.
   final String name;
+
   /// Value of the environment variable.
   final String value;
 
@@ -16,17 +16,15 @@ class ExpressGatewayServicePrimaryContainerEnvironment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory ExpressGatewayServicePrimaryContainerEnvironment.fromMap(Map<String, dynamic> map) {
+  factory ExpressGatewayServicePrimaryContainerEnvironment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExpressGatewayServicePrimaryContainerEnvironment(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

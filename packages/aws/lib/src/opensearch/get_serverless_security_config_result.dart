@@ -7,16 +7,21 @@ import 'get_serverless_security_config_saml_option.dart';
 class GetServerlessSecurityConfigResult {
   /// The version of the security configuration.
   final String configVersion;
+
   /// The date the configuration was created.
   final String createdDate;
+
   /// The description of the security configuration.
   final String description;
   final String id;
+
   /// The date the configuration was last modified.
   final String lastModifiedDate;
   final String region;
+
   /// SAML options for the security configuration.
   final List<GetServerlessSecurityConfigSamlOption>? samlOptions;
+
   /// The type of security configuration.
   final String type;
 
@@ -48,7 +53,12 @@ class GetServerlessSecurityConfigResult {
       'id': id,
       'lastModifiedDate': lastModifiedDate,
       'region': region,
-      'samlOptions': ?samlOptions == null ? null : pulumi.Input.encodeList<GetServerlessSecurityConfigSamlOption, Map<String, dynamic>>(samlOptions!, (value) => value.toMap()),
+      'samlOptions': ?samlOptions == null
+          ? null
+          : pulumi.Input.encodeList<
+              GetServerlessSecurityConfigSamlOption,
+              Map<String, dynamic>
+            >(samlOptions!, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -61,9 +71,15 @@ class GetServerlessSecurityConfigResult {
       id: map['id'] as String,
       lastModifiedDate: map['lastModifiedDate'] as String,
       region: map['region'] as String,
-      samlOptions: map['samlOptions'] == null ? null : pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(map['samlOptions'], (value) => GetServerlessSecurityConfigSamlOption.fromMap((value as Map).cast<String, dynamic>())),
+      samlOptions: map['samlOptions'] == null
+          ? null
+          : pulumi.Input.decodeList<GetServerlessSecurityConfigSamlOption>(
+              map['samlOptions'],
+              (value) => GetServerlessSecurityConfigSamlOption.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       type: map['type'] as String,
     );
   }
 }
-

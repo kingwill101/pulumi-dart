@@ -19,15 +19,24 @@ class GetDomainOffPeakWindowOptions {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': enabled,
-      'offPeakWindows': pulumi.Input.encodeList<GetDomainOffPeakWindowOptionsOffPeakWindow, Map<String, dynamic>>(offPeakWindows, (value) => value.toMap()),
+      'offPeakWindows':
+          pulumi.Input.encodeList<
+            GetDomainOffPeakWindowOptionsOffPeakWindow,
+            Map<String, dynamic>
+          >(offPeakWindows, (value) => value.toMap()),
     };
   }
 
   factory GetDomainOffPeakWindowOptions.fromMap(Map<String, dynamic> map) {
     return GetDomainOffPeakWindowOptions(
       enabled: map['enabled'] as bool,
-      offPeakWindows: pulumi.Input.decodeList<GetDomainOffPeakWindowOptionsOffPeakWindow>(map['offPeakWindows'], (value) => GetDomainOffPeakWindowOptionsOffPeakWindow.fromMap((value as Map).cast<String, dynamic>())),
+      offPeakWindows:
+          pulumi.Input.decodeList<GetDomainOffPeakWindowOptionsOffPeakWindow>(
+            map['offPeakWindows'],
+            (value) => GetDomainOffPeakWindowOptionsOffPeakWindow.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'nfs_export_options_response.dart';
 class FileShareConfigResponse {
   /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
   final String capacityGb;
+
   /// The name of the file share (must be 16 characters or less).
   final String name;
+
   /// Nfs Export Options. There is a limit of 10 export options per file share.
   final List<NfsExportOptionsResponse> nfsExportOptions;
+
   /// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
   final String sourceBackup;
 
@@ -30,7 +33,11 @@ class FileShareConfigResponse {
     return <String, dynamic>{
       'capacityGb': capacityGb,
       'name': name,
-      'nfsExportOptions': pulumi.Input.encodeList<NfsExportOptionsResponse, Map<String, dynamic>>(nfsExportOptions, (value) => value.toMap()),
+      'nfsExportOptions':
+          pulumi.Input.encodeList<
+            NfsExportOptionsResponse,
+            Map<String, dynamic>
+          >(nfsExportOptions, (value) => value.toMap()),
       'sourceBackup': sourceBackup,
     };
   }
@@ -39,9 +46,13 @@ class FileShareConfigResponse {
     return FileShareConfigResponse(
       capacityGb: map['capacityGb'] as String,
       name: map['name'] as String,
-      nfsExportOptions: pulumi.Input.decodeList<NfsExportOptionsResponse>(map['nfsExportOptions'], (value) => NfsExportOptionsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nfsExportOptions: pulumi.Input.decodeList<NfsExportOptionsResponse>(
+        map['nfsExportOptions'],
+        (value) => NfsExportOptionsResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       sourceBackup: map['sourceBackup'] as String,
     );
   }
 }
-

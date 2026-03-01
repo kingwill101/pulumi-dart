@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetGroupLaunchTemplate {
   /// ID of the launch template.
   final String id;
+
   /// Specify the exact name of the desired autoscaling group.
   final String name;
+
   /// Template version.
   final String version;
 
@@ -20,11 +21,7 @@ class GetGroupLaunchTemplate {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'version': version,
-    };
+    return <String, dynamic>{'id': id, 'name': name, 'version': version};
   }
 
   factory GetGroupLaunchTemplate.fromMap(Map<String, dynamic> map) {
@@ -35,4 +32,3 @@ class GetGroupLaunchTemplate {
     );
   }
 }
-

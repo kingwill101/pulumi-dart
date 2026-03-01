@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a step of the workflow this execution is running.
 class StepResponseWorkflowexecutionsV1beta {
   /// Name of a routine within the workflow.
   final String routine;
+
   /// Name of a step within the routine.
   final String step;
 
@@ -17,17 +17,15 @@ class StepResponseWorkflowexecutionsV1beta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'routine': routine,
-      'step': step,
-    };
+    return <String, dynamic>{'routine': routine, 'step': step};
   }
 
-  factory StepResponseWorkflowexecutionsV1beta.fromMap(Map<String, dynamic> map) {
+  factory StepResponseWorkflowexecutionsV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StepResponseWorkflowexecutionsV1beta(
       routine: map['routine'] as String,
       step: map['step'] as String,
     );
   }
 }
-

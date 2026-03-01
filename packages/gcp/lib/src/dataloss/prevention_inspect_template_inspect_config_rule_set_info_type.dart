@@ -6,9 +6,12 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType {
   /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
   /// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
   final String name;
+
   /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// Structure is documented below.
-  final PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore? sensitivityScore;
+  final PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore?
+  sensitivityScore;
+
   /// Version name for this InfoType.
   final String? version;
 
@@ -25,17 +28,24 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoType {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'sensitivityScore': ?sensitivityScore == null ? null : sensitivityScore!.toMap(),
+      'sensitivityScore': ?sensitivityScore == null
+          ? null
+          : sensitivityScore!.toMap(),
       'version': ?version,
     };
   }
 
-  factory PreventionInspectTemplateInspectConfigRuleSetInfoType.fromMap(Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigRuleSetInfoType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionInspectTemplateInspectConfigRuleSetInfoType(
       name: map['name'] as String,
-      sensitivityScore: map['sensitivityScore'] == null ? null : PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore.fromMap((map['sensitivityScore'] as Map).cast<String, dynamic>()),
+      sensitivityScore: map['sensitivityScore'] == null
+          ? null
+          : PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScore.fromMap(
+              (map['sensitivityScore'] as Map).cast<String, dynamic>(),
+            ),
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
-

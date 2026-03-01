@@ -9,9 +9,7 @@ class AppEngineHttpTargetResponse {
 
   /// Creates a new [AppEngineHttpTargetResponse].
   /// [appEngineRoutingOverride] Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
-  AppEngineHttpTargetResponse({
-    required this.appEngineRoutingOverride,
-  });
+  AppEngineHttpTargetResponse({required this.appEngineRoutingOverride});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,10 @@ class AppEngineHttpTargetResponse {
 
   factory AppEngineHttpTargetResponse.fromMap(Map<String, dynamic> map) {
     return AppEngineHttpTargetResponse(
-      appEngineRoutingOverride: AppEngineRoutingResponseCloudtasksV2beta2.fromMap((map['appEngineRoutingOverride'] as Map).cast<String, dynamic>()),
+      appEngineRoutingOverride:
+          AppEngineRoutingResponseCloudtasksV2beta2.fromMap(
+            (map['appEngineRoutingOverride'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies control plane node config.
 class VmwareControlPlaneVsphereConfigResponse {
   /// The Vsphere datastore used by the control plane Node.
   final String datastore;
+
   /// The Vsphere storage policy used by the control plane Node.
   final String storagePolicyName;
 
@@ -23,11 +23,12 @@ class VmwareControlPlaneVsphereConfigResponse {
     };
   }
 
-  factory VmwareControlPlaneVsphereConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory VmwareControlPlaneVsphereConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareControlPlaneVsphereConfigResponse(
       datastore: map['datastore'] as String,
       storagePolicyName: map['storagePolicyName'] as String,
     );
   }
 }
-

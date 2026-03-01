@@ -19,10 +19,11 @@ class GetCustomerArgs {
     required String accountId,
     required String channelPartnerLinkId,
     required String customerId,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      channelPartnerLinkId = pulumi.Input.asInput<String>(channelPartnerLinkId),
-      customerId = pulumi.Input.asInput<String>(customerId);
+  }) : accountId = pulumi.Input.asInput<String>(accountId),
+       channelPartnerLinkId = pulumi.Input.asInput<String>(
+         channelPartnerLinkId,
+       ),
+       customerId = pulumi.Input.asInput<String>(customerId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetCustomerArgs {
     );
   }
 }
-

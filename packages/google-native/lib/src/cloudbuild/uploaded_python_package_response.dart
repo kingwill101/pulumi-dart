@@ -7,8 +7,10 @@ import 'time_span_response.dart';
 class UploadedPythonPackageResponse {
   /// Hash types and values of the Python Artifact.
   final FileHashesResponse fileHashes;
+
   /// Stores timing information for pushing the specified artifact.
   final TimeSpanResponse pushTiming;
+
   /// URI of the uploaded artifact.
   final String uri;
 
@@ -32,10 +34,13 @@ class UploadedPythonPackageResponse {
 
   factory UploadedPythonPackageResponse.fromMap(Map<String, dynamic> map) {
     return UploadedPythonPackageResponse(
-      fileHashes: FileHashesResponse.fromMap((map['fileHashes'] as Map).cast<String, dynamic>()),
-      pushTiming: TimeSpanResponse.fromMap((map['pushTiming'] as Map).cast<String, dynamic>()),
+      fileHashes: FileHashesResponse.fromMap(
+        (map['fileHashes'] as Map).cast<String, dynamic>(),
+      ),
+      pushTiming: TimeSpanResponse.fromMap(
+        (map['pushTiming'] as Map).cast<String, dynamic>(),
+      ),
       uri: map['uri'] as String,
     );
   }
 }
-

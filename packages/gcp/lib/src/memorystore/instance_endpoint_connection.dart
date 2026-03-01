@@ -9,20 +9,23 @@ class InstanceEndpointConnection {
 
   /// Creates a new [InstanceEndpointConnection].
   /// [pscAutoConnection] Detailed information of a PSC connection that is created through service connectivity automation.
-  InstanceEndpointConnection({
-    this.pscAutoConnection,
-  });
+  InstanceEndpointConnection({this.pscAutoConnection});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pscAutoConnection': ?pscAutoConnection == null ? null : pscAutoConnection!.toMap(),
+      'pscAutoConnection': ?pscAutoConnection == null
+          ? null
+          : pscAutoConnection!.toMap(),
     };
   }
 
   factory InstanceEndpointConnection.fromMap(Map<String, dynamic> map) {
     return InstanceEndpointConnection(
-      pscAutoConnection: map['pscAutoConnection'] == null ? null : InstanceEndpointConnectionPscAutoConnection.fromMap((map['pscAutoConnection'] as Map).cast<String, dynamic>()),
+      pscAutoConnection: map['pscAutoConnection'] == null
+          ? null
+          : InstanceEndpointConnectionPscAutoConnection.fromMap(
+              (map['pscAutoConnection'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

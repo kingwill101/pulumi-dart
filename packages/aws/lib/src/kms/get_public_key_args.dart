@@ -9,12 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPublicKeyArgs {
   /// List of grant tokens
   final pulumi.Input<List<String>>? grantTokens;
+
   /// Key identifier which can be one of the following format:
   /// * Key ID. E.g - `1234abcd-12ab-34cd-56ef-1234567890ab`
   /// * Key ARN. E.g. - `arn:aws:kms:us-east-1:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
   /// * Alias name. E.g. - `alias/my-key`
   /// * Alias ARN - E.g. - `arn:aws:kms:us-east-1:111122223333:alias/my-key`
   final pulumi.Input<String> keyId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,10 +28,9 @@ class GetPublicKeyArgs {
     List<String>? grantTokens,
     required String keyId,
     String? region,
-  }) :
-      grantTokens = pulumi.Input.asOptionalInput<List<String>>(grantTokens),
-      keyId = pulumi.Input.asInput<String>(keyId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : grantTokens = pulumi.Input.asOptionalInput<List<String>>(grantTokens),
+       keyId = pulumi.Input.asInput<String>(keyId),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,10 +42,11 @@ class GetPublicKeyArgs {
 
   factory GetPublicKeyArgs.fromMap(Map<String, dynamic> map) {
     return GetPublicKeyArgs(
-      grantTokens: map['grantTokens'] == null ? null : (map['grantTokens'] as List).cast<String>(),
+      grantTokens: map['grantTokens'] == null
+          ? null
+          : (map['grantTokens'] as List).cast<String>(),
       keyId: map['keyId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

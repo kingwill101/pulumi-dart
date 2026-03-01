@@ -7,6 +7,7 @@ class SecurityScanConfigAuthentication {
   /// Describes authentication configuration that uses a custom account.
   /// Structure is documented below.
   final SecurityScanConfigAuthenticationCustomAccount? customAccount;
+
   /// Describes authentication configuration that uses a Google account.
   /// Structure is documented below.
   final SecurityScanConfigAuthenticationGoogleAccount? googleAccount;
@@ -14,10 +15,7 @@ class SecurityScanConfigAuthentication {
   /// Creates a new [SecurityScanConfigAuthentication].
   /// [customAccount] Describes authentication configuration that uses a custom account.
   /// [googleAccount] Describes authentication configuration that uses a Google account.
-  SecurityScanConfigAuthentication({
-    this.customAccount,
-    this.googleAccount,
-  });
+  SecurityScanConfigAuthentication({this.customAccount, this.googleAccount});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,9 +26,16 @@ class SecurityScanConfigAuthentication {
 
   factory SecurityScanConfigAuthentication.fromMap(Map<String, dynamic> map) {
     return SecurityScanConfigAuthentication(
-      customAccount: map['customAccount'] == null ? null : SecurityScanConfigAuthenticationCustomAccount.fromMap((map['customAccount'] as Map).cast<String, dynamic>()),
-      googleAccount: map['googleAccount'] == null ? null : SecurityScanConfigAuthenticationGoogleAccount.fromMap((map['googleAccount'] as Map).cast<String, dynamic>()),
+      customAccount: map['customAccount'] == null
+          ? null
+          : SecurityScanConfigAuthenticationCustomAccount.fromMap(
+              (map['customAccount'] as Map).cast<String, dynamic>(),
+            ),
+      googleAccount: map['googleAccount'] == null
+          ? null
+          : SecurityScanConfigAuthenticationGoogleAccount.fromMap(
+              (map['googleAccount'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

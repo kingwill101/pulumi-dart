@@ -1,25 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GatewayRouteSpecGrpcRouteMatch {
   /// The port number to match from the request.
   final int? port;
+
   /// Fully qualified domain name for the service to match from the request.
   final String serviceName;
 
   /// Creates a new [GatewayRouteSpecGrpcRouteMatch].
   /// [port] The port number to match from the request.
   /// [serviceName] Fully qualified domain name for the service to match from the request.
-  GatewayRouteSpecGrpcRouteMatch({
-    this.port,
-    required this.serviceName,
-  });
+  GatewayRouteSpecGrpcRouteMatch({this.port, required this.serviceName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'port': ?port,
-      'serviceName': serviceName,
-    };
+    return <String, dynamic>{'port': ?port, 'serviceName': serviceName};
   }
 
   factory GatewayRouteSpecGrpcRouteMatch.fromMap(Map<String, dynamic> map) {
@@ -29,4 +23,3 @@ class GatewayRouteSpecGrpcRouteMatch {
     );
   }
 }
-

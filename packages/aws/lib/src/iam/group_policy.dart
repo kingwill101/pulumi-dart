@@ -216,12 +216,15 @@ import 'group_policy_args.dart';
 class GroupPolicy extends pulumi.CustomResource {
   /// The IAM group to attach to the policy.
   late final pulumi.Output<String> group;
+
   /// The name of the policy. If omitted, the provider will
   /// assign a random, unique name.
   late final pulumi.Output<String> name;
+
   /// Creates a unique name beginning with the specified
   /// prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
+
   /// The policy document. This is a JSON formatted string.
   late final pulumi.Output<String> policy;
 
@@ -234,11 +237,11 @@ class GroupPolicy extends pulumi.CustomResource {
     GroupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/groupPolicy:GroupPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:iam/groupPolicy:GroupPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.group = registerOutput<String>('group');
     this.name = registerOutput<String>('name');
     this.namePrefix = registerOutput<String>('namePrefix');

@@ -8,9 +8,7 @@ class AttestationResponse {
 
   /// Creates a new [AttestationResponse].
   /// [pgpSignedAttestation] Required.
-  AttestationResponse({
-    required this.pgpSignedAttestation,
-  });
+  AttestationResponse({required this.pgpSignedAttestation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,9 @@ class AttestationResponse {
 
   factory AttestationResponse.fromMap(Map<String, dynamic> map) {
     return AttestationResponse(
-      pgpSignedAttestation: PgpSignedAttestationResponse.fromMap((map['pgpSignedAttestation'] as Map).cast<String, dynamic>()),
+      pgpSignedAttestation: PgpSignedAttestationResponse.fromMap(
+        (map['pgpSignedAttestation'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

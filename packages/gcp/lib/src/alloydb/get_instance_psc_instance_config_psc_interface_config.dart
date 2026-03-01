@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstancePscInstanceConfigPscInterfaceConfig {
   /// The network attachment resource created in the consumer project to which the PSC interface will be linked.
   /// This is of the format: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
@@ -19,10 +18,11 @@ class GetInstancePscInstanceConfigPscInterfaceConfig {
     };
   }
 
-  factory GetInstancePscInstanceConfigPscInterfaceConfig.fromMap(Map<String, dynamic> map) {
+  factory GetInstancePscInstanceConfigPscInterfaceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstancePscInstanceConfigPscInterfaceConfig(
       networkAttachmentResource: map['networkAttachmentResource'] as String,
     );
   }
 }
-

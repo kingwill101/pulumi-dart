@@ -9,9 +9,7 @@ class Discovery {
 
   /// Creates a new [Discovery].
   /// [analysisKind] The kind of analysis that is handled by this discovery.
-  Discovery({
-    this.analysisKind,
-  });
+  Discovery({this.analysisKind});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class Discovery {
 
   factory Discovery.fromMap(Map<String, dynamic> map) {
     return Discovery(
-      analysisKind: map['analysisKind'] == null ? null : DiscoveryAnalysisKind.fromValue(map['analysisKind'] as String),
+      analysisKind: map['analysisKind'] == null
+          ? null
+          : DiscoveryAnalysisKind.fromValue(map['analysisKind'] as String),
     );
   }
 }
-

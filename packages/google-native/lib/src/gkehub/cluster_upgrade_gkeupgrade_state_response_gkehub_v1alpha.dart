@@ -7,8 +7,10 @@ import 'cluster_upgrade_upgrade_status_response_gkehub_v1alpha.dart';
 class ClusterUpgradeGKEUpgradeStateResponseGkehubV1alpha {
   /// Number of GKE clusters in each status code.
   final Map<String, String> stats;
+
   /// Status of the upgrade.
   final ClusterUpgradeUpgradeStatusResponseGkehubV1alpha status;
+
   /// Which upgrade to track the state.
   final ClusterUpgradeGKEUpgradeResponseGkehubV1alpha upgrade;
 
@@ -30,12 +32,17 @@ class ClusterUpgradeGKEUpgradeStateResponseGkehubV1alpha {
     };
   }
 
-  factory ClusterUpgradeGKEUpgradeStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ClusterUpgradeGKEUpgradeStateResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterUpgradeGKEUpgradeStateResponseGkehubV1alpha(
       stats: (map['stats'] as Map).cast<String, String>(),
-      status: ClusterUpgradeUpgradeStatusResponseGkehubV1alpha.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      upgrade: ClusterUpgradeGKEUpgradeResponseGkehubV1alpha.fromMap((map['upgrade'] as Map).cast<String, dynamic>()),
+      status: ClusterUpgradeUpgradeStatusResponseGkehubV1alpha.fromMap(
+        (map['status'] as Map).cast<String, dynamic>(),
+      ),
+      upgrade: ClusterUpgradeGKEUpgradeResponseGkehubV1alpha.fromMap(
+        (map['upgrade'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

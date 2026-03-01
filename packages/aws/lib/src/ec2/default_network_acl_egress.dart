@@ -1,25 +1,32 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DefaultNetworkAclEgress {
   /// The action to take.
   final String action;
+
   /// The CIDR block to match. This must be a valid network mask.
   final String? cidrBlock;
+
   /// The from port to match.
   final int fromPort;
+
   /// The ICMP type code to be used. Default 0.
   final int? icmpCode;
+
   /// The ICMP type to be used. Default 0.
   final int? icmpType;
+
   /// The IPv6 CIDR block.
   ///
   /// > For more information on ICMP types and codes, see [Internet Control Message Protocol (ICMP) Parameters](https://www.iana.org/assignments/icmp-parameters/icmp-parameters.xhtml).
   final String? ipv6CidrBlock;
+
   /// The protocol to match. If using the -1 'all' protocol, you must specify a from and to port of 0.
   final String protocol;
+
   /// The rule number. Used for ordering.
   final int ruleNo;
+
   /// The to port to match.
   ///
   /// The following arguments are optional:
@@ -68,11 +75,12 @@ class DefaultNetworkAclEgress {
       fromPort: map['fromPort'] as int,
       icmpCode: map['icmpCode'] == null ? null : map['icmpCode'] as int,
       icmpType: map['icmpType'] == null ? null : map['icmpType'] as int,
-      ipv6CidrBlock: map['ipv6CidrBlock'] == null ? null : map['ipv6CidrBlock'] as String,
+      ipv6CidrBlock: map['ipv6CidrBlock'] == null
+          ? null
+          : map['ipv6CidrBlock'] as String,
       protocol: map['protocol'] as String,
       ruleNo: map['ruleNo'] as int,
       toPort: map['toPort'] as int,
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Publicly available Apt repositories constructed from a common repository base and a custom repository path.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse {
   /// A common public repository base for Apt.
   final String repositoryBase;
+
   /// A custom field to define a path to a specific repository from the base.
   final String repositoryPath;
 
@@ -23,11 +23,12 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicR
     };
   }
 
-  factory GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryResponse(
       repositoryBase: map['repositoryBase'] as String,
       repositoryPath: map['repositoryPath'] as String,
     );
   }
 }
-

@@ -16,9 +16,8 @@ class GetHttpsHealthCheckComputeV1Args {
   GetHttpsHealthCheckComputeV1Args({
     required String httpsHealthCheck,
     String? project,
-  }) :
-      httpsHealthCheck = pulumi.Input.asInput<String>(httpsHealthCheck),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : httpsHealthCheck = pulumi.Input.asInput<String>(httpsHealthCheck),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetHttpsHealthCheckComputeV1Args {
     );
   }
 }
-

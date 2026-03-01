@@ -6,12 +6,15 @@ class ConnectionProfileCloudsql {
   /// (Output)
   /// Output only. The Cloud SQL instance ID that this connection profile is associated with.
   final String? cloudSqlId;
+
   /// (Output)
   /// Output only. The Cloud SQL database instance's private IP.
   final String? privateIp;
+
   /// (Output)
   /// Output only. The Cloud SQL database instance's public IP.
   final String? publicIp;
+
   /// Immutable. Metadata used to create the destination Cloud SQL database.
   /// Structure is documented below.
   final ConnectionProfileCloudsqlSettings? settings;
@@ -39,11 +42,16 @@ class ConnectionProfileCloudsql {
 
   factory ConnectionProfileCloudsql.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileCloudsql(
-      cloudSqlId: map['cloudSqlId'] == null ? null : map['cloudSqlId'] as String,
+      cloudSqlId: map['cloudSqlId'] == null
+          ? null
+          : map['cloudSqlId'] as String,
       privateIp: map['privateIp'] == null ? null : map['privateIp'] as String,
       publicIp: map['publicIp'] == null ? null : map['publicIp'] as String,
-      settings: map['settings'] == null ? null : ConnectionProfileCloudsqlSettings.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      settings: map['settings'] == null
+          ? null
+          : ConnectionProfileCloudsqlSettings.fromMap(
+              (map['settings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The config for email alert.
 class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig {
   /// The email addresses to send the alert.
@@ -13,15 +12,16 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'userEmails': ?userEmails,
-    };
+    return <String, dynamic>{'userEmails': ?userEmails};
   }
 
-  factory GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig(
-      userEmails: map['userEmails'] == null ? null : (map['userEmails'] as List).cast<String>(),
+      userEmails: map['userEmails'] == null
+          ? null
+          : (map['userEmails'] as List).cast<String>(),
     );
   }
 }
-

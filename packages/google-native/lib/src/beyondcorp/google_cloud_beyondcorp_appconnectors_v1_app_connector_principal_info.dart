@@ -5,7 +5,8 @@ import 'google_cloud_beyondcorp_appconnectors_v1_app_connector_principal_info_se
 /// PrincipalInfo represents an Identity oneof.
 class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
   /// A GCP service account.
-  final GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount? serviceAccount;
+  final GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount?
+  serviceAccount;
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo].
   /// [serviceAccount] A GCP service account.
@@ -15,14 +16,21 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceAccount': ?serviceAccount == null ? null : serviceAccount!.toMap(),
+      'serviceAccount': ?serviceAccount == null
+          ? null
+          : serviceAccount!.toMap(),
     };
   }
 
-  factory GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo(
-      serviceAccount: map['serviceAccount'] == null ? null : GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
+      serviceAccount: map['serviceAccount'] == null
+          ? null
+          : GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromMap(
+              (map['serviceAccount'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

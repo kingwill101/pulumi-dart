@@ -9,20 +9,26 @@ class CertificateAuthorityConfig {
 
   /// Creates a new [CertificateAuthorityConfig].
   /// [certificateAuthorityServiceConfig] Defines a CertificateAuthorityServiceConfig.
-  CertificateAuthorityConfig({
-    this.certificateAuthorityServiceConfig,
-  });
+  CertificateAuthorityConfig({this.certificateAuthorityServiceConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateAuthorityServiceConfig': ?certificateAuthorityServiceConfig == null ? null : certificateAuthorityServiceConfig!.toMap(),
+      'certificateAuthorityServiceConfig':
+          ?certificateAuthorityServiceConfig == null
+          ? null
+          : certificateAuthorityServiceConfig!.toMap(),
     };
   }
 
   factory CertificateAuthorityConfig.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityConfig(
-      certificateAuthorityServiceConfig: map['certificateAuthorityServiceConfig'] == null ? null : CertificateAuthorityServiceConfig.fromMap((map['certificateAuthorityServiceConfig'] as Map).cast<String, dynamic>()),
+      certificateAuthorityServiceConfig:
+          map['certificateAuthorityServiceConfig'] == null
+          ? null
+          : CertificateAuthorityServiceConfig.fromMap(
+              (map['certificateAuthorityServiceConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
     );
   }
 }
-

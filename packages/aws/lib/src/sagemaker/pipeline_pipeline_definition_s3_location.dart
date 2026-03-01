@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PipelinePipelineDefinitionS3Location {
   /// Name of the S3 bucket.
   final String bucket;
+
   /// The object key (or key name) uniquely identifies the object in an S3 bucket.
   final String objectKey;
+
   /// Version Id of the pipeline definition file. If not specified, Amazon SageMaker AI will retrieve the latest version.
   final String? versionId;
 
@@ -27,7 +28,9 @@ class PipelinePipelineDefinitionS3Location {
     };
   }
 
-  factory PipelinePipelineDefinitionS3Location.fromMap(Map<String, dynamic> map) {
+  factory PipelinePipelineDefinitionS3Location.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipelinePipelineDefinitionS3Location(
       bucket: map['bucket'] as String,
       objectKey: map['objectKey'] as String,
@@ -35,4 +38,3 @@ class PipelinePipelineDefinitionS3Location {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum HistoryTestPlatform {
     throw ArgumentError('Unknown HistoryTestPlatform value: $value');
   }
 }
-

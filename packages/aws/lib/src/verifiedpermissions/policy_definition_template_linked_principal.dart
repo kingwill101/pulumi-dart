@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PolicyDefinitionTemplateLinkedPrincipal {
   /// The entity ID of the principal.
   final String entityId;
+
   /// The entity type of the principal.
   final String entityType;
 
@@ -16,17 +16,15 @@ class PolicyDefinitionTemplateLinkedPrincipal {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'entityId': entityId,
-      'entityType': entityType,
-    };
+    return <String, dynamic>{'entityId': entityId, 'entityType': entityType};
   }
 
-  factory PolicyDefinitionTemplateLinkedPrincipal.fromMap(Map<String, dynamic> map) {
+  factory PolicyDefinitionTemplateLinkedPrincipal.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyDefinitionTemplateLinkedPrincipal(
       entityId: map['entityId'] as String,
       entityType: map['entityType'] as String,
     );
   }
 }
-

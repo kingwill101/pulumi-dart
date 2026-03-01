@@ -7,8 +7,10 @@ import 'envelope_signature_response_containeranalysis_v1alpha1.dart';
 class EnvelopeResponseContaineranalysisV1alpha1 {
   /// The bytes being signed
   final String payload;
+
   /// The type of payload being signed
   final String payloadType;
+
   /// The signatures over the payload
   final List<EnvelopeSignatureResponseContaineranalysisV1alpha1> signatures;
 
@@ -26,16 +28,30 @@ class EnvelopeResponseContaineranalysisV1alpha1 {
     return <String, dynamic>{
       'payload': payload,
       'payloadType': payloadType,
-      'signatures': pulumi.Input.encodeList<EnvelopeSignatureResponseContaineranalysisV1alpha1, Map<String, dynamic>>(signatures, (value) => value.toMap()),
+      'signatures':
+          pulumi.Input.encodeList<
+            EnvelopeSignatureResponseContaineranalysisV1alpha1,
+            Map<String, dynamic>
+          >(signatures, (value) => value.toMap()),
     };
   }
 
-  factory EnvelopeResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory EnvelopeResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvelopeResponseContaineranalysisV1alpha1(
       payload: map['payload'] as String,
       payloadType: map['payloadType'] as String,
-      signatures: pulumi.Input.decodeList<EnvelopeSignatureResponseContaineranalysisV1alpha1>(map['signatures'], (value) => EnvelopeSignatureResponseContaineranalysisV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      signatures:
+          pulumi.Input.decodeList<
+            EnvelopeSignatureResponseContaineranalysisV1alpha1
+          >(
+            map['signatures'],
+            (value) =>
+                EnvelopeSignatureResponseContaineranalysisV1alpha1.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

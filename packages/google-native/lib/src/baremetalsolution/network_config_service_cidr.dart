@@ -18,4 +18,3 @@ enum NetworkConfigServiceCidr {
     throw ArgumentError('Unknown NetworkConfigServiceCidr value: $value');
   }
 }
-

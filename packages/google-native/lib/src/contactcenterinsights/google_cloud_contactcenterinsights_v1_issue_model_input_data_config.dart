@@ -6,8 +6,10 @@ import 'google_cloud_contactcenterinsights_v1_issue_model_input_data_config_medi
 class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   /// A filter to reduce the conversations used for training the model to a specific subset.
   final String? filter;
+
   /// Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`.
-  final GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium? medium;
+  final GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium?
+  medium;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig].
   /// [filter] A filter to reduce the conversations used for training the model to a specific subset.
@@ -24,11 +26,16 @@ class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig(
       filter: map['filter'] == null ? null : map['filter'] as String,
-      medium: map['medium'] == null ? null : GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium.fromValue(map['medium'] as String),
+      medium: map['medium'] == null
+          ? null
+          : GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMedium.fromValue(
+              map['medium'] as String,
+            ),
     );
   }
 }
-

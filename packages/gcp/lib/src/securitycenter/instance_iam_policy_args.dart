@@ -10,9 +10,11 @@ class InstanceIamPolicyArgs {
   /// The ID of the instance or a fully qualified identifier for the instance.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> policyData;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region of the Data Fusion instance.
   final pulumi.Input<String>? region;
 
@@ -26,11 +28,10 @@ class InstanceIamPolicyArgs {
     required String policyData,
     String? project,
     String? region,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      policyData = pulumi.Input.asInput<String>(policyData),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : name = pulumi.Input.asOptionalInput<String>(name),
+       policyData = pulumi.Input.asInput<String>(policyData),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,4 +51,3 @@ class InstanceIamPolicyArgs {
     );
   }
 }
-

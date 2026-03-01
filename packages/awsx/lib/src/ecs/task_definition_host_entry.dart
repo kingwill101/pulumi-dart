@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TaskDefinitionHostEntry {
   final String? hostname;
   final String? ipAddress;
@@ -8,16 +7,10 @@ class TaskDefinitionHostEntry {
   /// Creates a new [TaskDefinitionHostEntry].
   /// [hostname] Optional.
   /// [ipAddress] Optional.
-  TaskDefinitionHostEntry({
-    this.hostname,
-    this.ipAddress,
-  });
+  TaskDefinitionHostEntry({this.hostname, this.ipAddress});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hostname': ?hostname,
-      'ipAddress': ?ipAddress,
-    };
+    return <String, dynamic>{'hostname': ?hostname, 'ipAddress': ?ipAddress};
   }
 
   factory TaskDefinitionHostEntry.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class TaskDefinitionHostEntry {
     );
   }
 }
-

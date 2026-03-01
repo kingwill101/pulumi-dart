@@ -8,10 +8,13 @@ import 'trace_response_networkmanagement_v1beta1.dart';
 class ReachabilityDetailsResponseNetworkmanagementV1beta1 {
   /// The details of a failure or a cancellation of reachability analysis.
   final StatusResponseNetworkmanagementV1beta1 error;
+
   /// The overall result of the test's configuration analysis.
   final String result;
+
   /// Result may contain a list of traces if a test has multiple possible paths in the network, such as when destination endpoint is a load balancer with multiple backends.
   final List<TraceResponseNetworkmanagementV1beta1> traces;
+
   /// The time of the configuration analysis.
   final String verifyTime;
 
@@ -31,18 +34,30 @@ class ReachabilityDetailsResponseNetworkmanagementV1beta1 {
     return <String, dynamic>{
       'error': error.toMap(),
       'result': result,
-      'traces': pulumi.Input.encodeList<TraceResponseNetworkmanagementV1beta1, Map<String, dynamic>>(traces, (value) => value.toMap()),
+      'traces':
+          pulumi.Input.encodeList<
+            TraceResponseNetworkmanagementV1beta1,
+            Map<String, dynamic>
+          >(traces, (value) => value.toMap()),
       'verifyTime': verifyTime,
     };
   }
 
-  factory ReachabilityDetailsResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ReachabilityDetailsResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReachabilityDetailsResponseNetworkmanagementV1beta1(
-      error: StatusResponseNetworkmanagementV1beta1.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error: StatusResponseNetworkmanagementV1beta1.fromMap(
+        (map['error'] as Map).cast<String, dynamic>(),
+      ),
       result: map['result'] as String,
-      traces: pulumi.Input.decodeList<TraceResponseNetworkmanagementV1beta1>(map['traces'], (value) => TraceResponseNetworkmanagementV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      traces: pulumi.Input.decodeList<TraceResponseNetworkmanagementV1beta1>(
+        map['traces'],
+        (value) => TraceResponseNetworkmanagementV1beta1.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       verifyTime: map['verifyTime'] as String,
     );
   }
 }
-

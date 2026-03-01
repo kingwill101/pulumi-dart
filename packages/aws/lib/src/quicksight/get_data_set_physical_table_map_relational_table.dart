@@ -28,20 +28,34 @@ class GetDataSetPhysicalTableMapRelationalTable {
     return <String, dynamic>{
       'catalog': catalog,
       'dataSourceArn': dataSourceArn,
-      'inputColumns': pulumi.Input.encodeList<GetDataSetPhysicalTableMapRelationalTableInputColumn, Map<String, dynamic>>(inputColumns, (value) => value.toMap()),
+      'inputColumns':
+          pulumi.Input.encodeList<
+            GetDataSetPhysicalTableMapRelationalTableInputColumn,
+            Map<String, dynamic>
+          >(inputColumns, (value) => value.toMap()),
       'name': name,
       'schema': schema,
     };
   }
 
-  factory GetDataSetPhysicalTableMapRelationalTable.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetPhysicalTableMapRelationalTable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetPhysicalTableMapRelationalTable(
       catalog: map['catalog'] as String,
       dataSourceArn: map['dataSourceArn'] as String,
-      inputColumns: pulumi.Input.decodeList<GetDataSetPhysicalTableMapRelationalTableInputColumn>(map['inputColumns'], (value) => GetDataSetPhysicalTableMapRelationalTableInputColumn.fromMap((value as Map).cast<String, dynamic>())),
+      inputColumns:
+          pulumi.Input.decodeList<
+            GetDataSetPhysicalTableMapRelationalTableInputColumn
+          >(
+            map['inputColumns'],
+            (value) =>
+                GetDataSetPhysicalTableMapRelationalTableInputColumn.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       name: map['name'] as String,
       schema: map['schema'] as String,
     );
   }
 }
-

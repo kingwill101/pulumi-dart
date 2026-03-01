@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetEnvironmentConfigDatabaseConfig {
   /// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
   final String machineType;
+
   /// Optional. Cloud SQL database preferred zone.
   final String zone;
 
@@ -16,10 +16,7 @@ class GetEnvironmentConfigDatabaseConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'machineType': machineType,
-      'zone': zone,
-    };
+    return <String, dynamic>{'machineType': machineType, 'zone': zone};
   }
 
   factory GetEnvironmentConfigDatabaseConfig.fromMap(Map<String, dynamic> map) {
@@ -29,4 +26,3 @@ class GetEnvironmentConfigDatabaseConfig {
     );
   }
 }
-

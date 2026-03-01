@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResourceDescriptorResponse {
   final Map<String, String> annotations;
   final String content;
@@ -52,4 +51,3 @@ class ResourceDescriptorResponse {
     );
   }
 }
-

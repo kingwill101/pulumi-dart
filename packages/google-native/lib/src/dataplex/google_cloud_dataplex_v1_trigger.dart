@@ -6,16 +6,14 @@ import 'google_cloud_dataplex_v1_trigger_schedule.dart';
 class GoogleCloudDataplexV1Trigger {
   /// The scan runs once via RunDataScan API.
   final Map<String, dynamic>? onDemand;
+
   /// The scan is scheduled to run periodically.
   final GoogleCloudDataplexV1TriggerSchedule? schedule;
 
   /// Creates a new [GoogleCloudDataplexV1Trigger].
   /// [onDemand] The scan runs once via RunDataScan API.
   /// [schedule] The scan is scheduled to run periodically.
-  GoogleCloudDataplexV1Trigger({
-    this.onDemand,
-    this.schedule,
-  });
+  GoogleCloudDataplexV1Trigger({this.onDemand, this.schedule});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class GoogleCloudDataplexV1Trigger {
 
   factory GoogleCloudDataplexV1Trigger.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1Trigger(
-      onDemand: map['onDemand'] == null ? null : (map['onDemand'] as Map).cast<String, dynamic>(),
-      schedule: map['schedule'] == null ? null : GoogleCloudDataplexV1TriggerSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
+      onDemand: map['onDemand'] == null
+          ? null
+          : (map['onDemand'] as Map).cast<String, dynamic>(),
+      schedule: map['schedule'] == null
+          ? null
+          : GoogleCloudDataplexV1TriggerSchedule.fromMap(
+              (map['schedule'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -22,11 +22,12 @@ class GetFeatureViewArgs {
     required String featureViewId,
     required String location,
     String? project,
-  }) :
-      featureOnlineStoreId = pulumi.Input.asInput<String>(featureOnlineStoreId),
-      featureViewId = pulumi.Input.asInput<String>(featureViewId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : featureOnlineStoreId = pulumi.Input.asInput<String>(
+         featureOnlineStoreId,
+       ),
+       featureViewId = pulumi.Input.asInput<String>(featureViewId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +47,3 @@ class GetFeatureViewArgs {
     );
   }
 }
-

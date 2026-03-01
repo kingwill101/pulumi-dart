@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EntityArgs {
   final pulumi.Input<String> connectionId;
   final pulumi.Input<String> entityTypeId;
+
   /// Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field.
   final pulumi.Input<Map<String, String>>? fields;
   final pulumi.Input<String>? location;
@@ -26,12 +27,11 @@ class EntityArgs {
     Map<String, String>? fields,
     String? location,
     String? project,
-  }) :
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      fields = pulumi.Input.asOptionalInput<Map<String, String>>(fields),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : connectionId = pulumi.Input.asInput<String>(connectionId),
+       entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+       fields = pulumi.Input.asOptionalInput<Map<String, String>>(fields),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +47,11 @@ class EntityArgs {
     return EntityArgs(
       connectionId: map['connectionId'] as String,
       entityTypeId: map['entityTypeId'] as String,
-      fields: map['fields'] == null ? null : (map['fields'] as Map).cast<String, String>(),
+      fields: map['fields'] == null
+          ? null
+          : (map['fields'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetGitLabConfigArgs {
     required String gitLabConfigId,
     required String location,
     String? project,
-  }) :
-      gitLabConfigId = pulumi.Input.asInput<String>(gitLabConfigId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : gitLabConfigId = pulumi.Input.asInput<String>(gitLabConfigId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetGitLabConfigArgs {
     );
   }
 }
-

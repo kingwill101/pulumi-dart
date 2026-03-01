@@ -10,20 +10,28 @@ class NodeTaints {
 
   /// Creates a new [NodeTaints].
   /// [taints] List of node taints.
-  NodeTaints({
-    this.taints,
-  });
+  NodeTaints({this.taints});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'taints': ?taints == null ? null : pulumi.Input.encodeList<NodeTaint, Map<String, dynamic>>(taints!, (value) => value.toMap()),
+      'taints': ?taints == null
+          ? null
+          : pulumi.Input.encodeList<NodeTaint, Map<String, dynamic>>(
+              taints!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory NodeTaints.fromMap(Map<String, dynamic> map) {
     return NodeTaints(
-      taints: map['taints'] == null ? null : pulumi.Input.decodeList<NodeTaint>(map['taints'], (value) => NodeTaint.fromMap((value as Map).cast<String, dynamic>())),
+      taints: map['taints'] == null
+          ? null
+          : pulumi.Input.decodeList<NodeTaint>(
+              map['taints'],
+              (value) =>
+                  NodeTaint.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

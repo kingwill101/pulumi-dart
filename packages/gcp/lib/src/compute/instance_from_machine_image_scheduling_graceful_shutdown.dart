@@ -5,10 +5,12 @@ import 'instance_from_machine_image_scheduling_graceful_shutdown_max_duration.da
 class InstanceFromMachineImageSchedulingGracefulShutdown {
   /// Opts-in for graceful shutdown.
   final bool enabled;
+
   /// The time allotted for the instance to gracefully shut down.
   /// If the graceful shutdown isn't complete after this time, then the instance
   /// transitions to the STOPPING state.
-  final InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration? maxDuration;
+  final InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration?
+  maxDuration;
 
   /// Creates a new [InstanceFromMachineImageSchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.
@@ -25,11 +27,16 @@ class InstanceFromMachineImageSchedulingGracefulShutdown {
     };
   }
 
-  factory InstanceFromMachineImageSchedulingGracefulShutdown.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromMachineImageSchedulingGracefulShutdown.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromMachineImageSchedulingGracefulShutdown(
       enabled: map['enabled'] as bool,
-      maxDuration: map['maxDuration'] == null ? null : InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration.fromMap((map['maxDuration'] as Map).cast<String, dynamic>()),
+      maxDuration: map['maxDuration'] == null
+          ? null
+          : InstanceFromMachineImageSchedulingGracefulShutdownMaxDuration.fromMap(
+              (map['maxDuration'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

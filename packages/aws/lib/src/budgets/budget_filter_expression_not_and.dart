@@ -7,8 +7,10 @@ import 'budget_filter_expression_not_and_tags.dart';
 class BudgetFilterExpressionNotAnd {
   /// (Optional) A Cost Category Filter block.
   final BudgetFilterExpressionNotAndCostCategories? costCategories;
+
   /// (Optional) A Dimension Filter block.
   final BudgetFilterExpressionNotAndDimensions? dimensions;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final BudgetFilterExpressionNotAndTags? tags;
 
@@ -24,7 +26,9 @@ class BudgetFilterExpressionNotAnd {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'costCategories': ?costCategories == null ? null : costCategories!.toMap(),
+      'costCategories': ?costCategories == null
+          ? null
+          : costCategories!.toMap(),
       'dimensions': ?dimensions == null ? null : dimensions!.toMap(),
       'tags': ?tags == null ? null : tags!.toMap(),
     };
@@ -32,10 +36,21 @@ class BudgetFilterExpressionNotAnd {
 
   factory BudgetFilterExpressionNotAnd.fromMap(Map<String, dynamic> map) {
     return BudgetFilterExpressionNotAnd(
-      costCategories: map['costCategories'] == null ? null : BudgetFilterExpressionNotAndCostCategories.fromMap((map['costCategories'] as Map).cast<String, dynamic>()),
-      dimensions: map['dimensions'] == null ? null : BudgetFilterExpressionNotAndDimensions.fromMap((map['dimensions'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : BudgetFilterExpressionNotAndTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      costCategories: map['costCategories'] == null
+          ? null
+          : BudgetFilterExpressionNotAndCostCategories.fromMap(
+              (map['costCategories'] as Map).cast<String, dynamic>(),
+            ),
+      dimensions: map['dimensions'] == null
+          ? null
+          : BudgetFilterExpressionNotAndDimensions.fromMap(
+              (map['dimensions'] as Map).cast<String, dynamic>(),
+            ),
+      tags: map['tags'] == null
+          ? null
+          : BudgetFilterExpressionNotAndTags.fromMap(
+              (map['tags'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccountAccessTokenArgs {
   /// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
   final pulumi.Input<List<String>>? delegates;
+
   /// Lifetime of the impersonated token (defaults to its max: `3600s`).
   final pulumi.Input<String>? lifetime;
+
   /// The scopes the new credential should have (e.g. `["cloud-platform"]`)
   final pulumi.Input<List<String>> scopes;
+
   /// The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
   final pulumi.Input<String> targetServiceAccount;
 
@@ -26,11 +29,12 @@ class GetAccountAccessTokenArgs {
     String? lifetime,
     required List<String> scopes,
     required String targetServiceAccount,
-  }) :
-      delegates = pulumi.Input.asOptionalInput<List<String>>(delegates),
-      lifetime = pulumi.Input.asOptionalInput<String>(lifetime),
-      scopes = pulumi.Input.asInput<List<String>>(scopes),
-      targetServiceAccount = pulumi.Input.asInput<String>(targetServiceAccount);
+  }) : delegates = pulumi.Input.asOptionalInput<List<String>>(delegates),
+       lifetime = pulumi.Input.asOptionalInput<String>(lifetime),
+       scopes = pulumi.Input.asInput<List<String>>(scopes),
+       targetServiceAccount = pulumi.Input.asInput<String>(
+         targetServiceAccount,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,11 +47,12 @@ class GetAccountAccessTokenArgs {
 
   factory GetAccountAccessTokenArgs.fromMap(Map<String, dynamic> map) {
     return GetAccountAccessTokenArgs(
-      delegates: map['delegates'] == null ? null : (map['delegates'] as List).cast<String>(),
+      delegates: map['delegates'] == null
+          ? null
+          : (map['delegates'] as List).cast<String>(),
       lifetime: map['lifetime'] == null ? null : map['lifetime'] as String,
       scopes: (map['scopes'] as List).cast<String>(),
       targetServiceAccount: map['targetServiceAccount'] as String,
     );
   }
 }
-

@@ -9,20 +9,19 @@ class BareMetalClusterUpgradePolicy {
 
   /// Creates a new [BareMetalClusterUpgradePolicy].
   /// [policy] Specifies which upgrade policy to use.
-  BareMetalClusterUpgradePolicy({
-    this.policy,
-  });
+  BareMetalClusterUpgradePolicy({this.policy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policy': ?policy == null ? null : policy!.value,
-    };
+    return <String, dynamic>{'policy': ?policy == null ? null : policy!.value};
   }
 
   factory BareMetalClusterUpgradePolicy.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterUpgradePolicy(
-      policy: map['policy'] == null ? null : BareMetalClusterUpgradePolicyPolicy.fromValue(map['policy'] as String),
+      policy: map['policy'] == null
+          ? null
+          : BareMetalClusterUpgradePolicyPolicy.fromValue(
+              map['policy'] as String,
+            ),
     );
   }
 }
-

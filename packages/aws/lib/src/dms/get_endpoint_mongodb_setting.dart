@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetEndpointMongodbSetting {
   final String authMechanism;
   final String authSource;
@@ -47,4 +46,3 @@ class GetEndpointMongodbSetting {
     );
   }
 }
-

@@ -8,10 +8,13 @@ import 'git_source_context.dart';
 class SourceContext {
   /// A SourceContext referring to a revision in a Google Cloud Source Repo.
   final CloudRepoSourceContext? cloudRepo;
+
   /// A SourceContext referring to a Gerrit project.
   final GerritSourceContext? gerrit;
+
   /// A SourceContext referring to any third party Git repo (e.g., GitHub).
   final GitSourceContext? git;
+
   /// Labels with user defined metadata.
   final Map<String, String>? labels;
 
@@ -20,12 +23,7 @@ class SourceContext {
   /// [gerrit] A SourceContext referring to a Gerrit project.
   /// [git] A SourceContext referring to any third party Git repo (e.g., GitHub).
   /// [labels] Labels with user defined metadata.
-  SourceContext({
-    this.cloudRepo,
-    this.gerrit,
-    this.git,
-    this.labels,
-  });
+  SourceContext({this.cloudRepo, this.gerrit, this.git, this.labels});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,11 +36,24 @@ class SourceContext {
 
   factory SourceContext.fromMap(Map<String, dynamic> map) {
     return SourceContext(
-      cloudRepo: map['cloudRepo'] == null ? null : CloudRepoSourceContext.fromMap((map['cloudRepo'] as Map).cast<String, dynamic>()),
-      gerrit: map['gerrit'] == null ? null : GerritSourceContext.fromMap((map['gerrit'] as Map).cast<String, dynamic>()),
-      git: map['git'] == null ? null : GitSourceContext.fromMap((map['git'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      cloudRepo: map['cloudRepo'] == null
+          ? null
+          : CloudRepoSourceContext.fromMap(
+              (map['cloudRepo'] as Map).cast<String, dynamic>(),
+            ),
+      gerrit: map['gerrit'] == null
+          ? null
+          : GerritSourceContext.fromMap(
+              (map['gerrit'] as Map).cast<String, dynamic>(),
+            ),
+      git: map['git'] == null
+          ? null
+          : GitSourceContext.fromMap(
+              (map['git'] as Map).cast<String, dynamic>(),
+            ),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
     );
   }
 }
-

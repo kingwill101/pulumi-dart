@@ -16,4 +16,3 @@ enum InstanceReadReplicasMode {
     throw ArgumentError('Unknown InstanceReadReplicasMode value: $value');
   }
 }
-

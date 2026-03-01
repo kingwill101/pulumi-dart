@@ -13,7 +13,8 @@ enum InterconnectAttachmentEdgeAvailabilityDomain {
         return item;
       }
     }
-    throw ArgumentError('Unknown InterconnectAttachmentEdgeAvailabilityDomain value: $value');
+    throw ArgumentError(
+      'Unknown InterconnectAttachmentEdgeAvailabilityDomain value: $value',
+    );
   }
 }
-

@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration {
   /// Whether to return exact responses from Kendra. Defaults to `false`.
   final bool? exactResponse;
+
   /// ARN of the Kendra index.
   final String kendraIndex;
+
   /// Query filter string for Kendra.
   final String? queryFilterString;
+
   /// Whether the query filter string is enabled.
   final bool? queryFilterStringEnabled;
 
@@ -32,13 +34,20 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfigura
     };
   }
 
-  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentQnaIntentConfigurationDataSourceConfigurationKendraConfiguration(
-      exactResponse: map['exactResponse'] == null ? null : map['exactResponse'] as bool,
+      exactResponse: map['exactResponse'] == null
+          ? null
+          : map['exactResponse'] as bool,
       kendraIndex: map['kendraIndex'] as String,
-      queryFilterString: map['queryFilterString'] == null ? null : map['queryFilterString'] as String,
-      queryFilterStringEnabled: map['queryFilterStringEnabled'] == null ? null : map['queryFilterStringEnabled'] as bool,
+      queryFilterString: map['queryFilterString'] == null
+          ? null
+          : map['queryFilterString'] as String,
+      queryFilterStringEnabled: map['queryFilterStringEnabled'] == null
+          ? null
+          : map['queryFilterStringEnabled'] as bool,
     );
   }
 }
-

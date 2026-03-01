@@ -12,7 +12,8 @@ enum SecurityPolicyRuleMatcherVersionedExpr {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPolicyRuleMatcherVersionedExpr value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPolicyRuleMatcherVersionedExpr value: $value',
+    );
   }
 }
-

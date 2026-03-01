@@ -127,14 +127,17 @@ import 'default_subnet_args.dart';
 class DefaultSubnet extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   late final pulumi.Output<bool?> assignIpv6AddressOnCreation;
+
   /// is required
   /// * The `availability_zone_id`, `cidr_block` and `vpc_id` arguments become computed attributes
   /// * The default value for `map_public_ip_on_launch` is `true`
   ///
   /// This resource supports the following additional arguments:
   late final pulumi.Output<String> availabilityZone;
+
   /// The AZ ID of the subnet
   late final pulumi.Output<String> availabilityZoneId;
+
   /// The IPv4 CIDR block assigned to the subnet
   late final pulumi.Output<String> cidrBlock;
   late final pulumi.Output<String?> customerOwnedIpv4Pool;
@@ -143,6 +146,7 @@ class DefaultSubnet extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableResourceNameDnsARecordOnLaunch;
   late final pulumi.Output<bool?> enableResourceNameDnsAaaaRecordOnLaunch;
   late final pulumi.Output<bool> existingDefaultSubnet;
+
   /// Whether destroying the resource deletes the default subnet. Default: `false`
   late final pulumi.Output<bool?> forceDestroy;
   late final pulumi.Output<String> ipv6CidrBlock;
@@ -153,10 +157,12 @@ class DefaultSubnet extends pulumi.CustomResource {
   late final pulumi.Output<String> outpostArn;
   late final pulumi.Output<String> ownerId;
   late final pulumi.Output<String> privateDnsHostnameTypeOnLaunch;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
   late final pulumi.Output<String> region;
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The ID of the VPC the subnet is in
   late final pulumi.Output<String> vpcId;
 
@@ -169,31 +175,45 @@ class DefaultSubnet extends pulumi.CustomResource {
     DefaultSubnetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/defaultSubnet:DefaultSubnet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ec2/defaultSubnet:DefaultSubnet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
-    this.assignIpv6AddressOnCreation = registerOutput<bool?>('assignIpv6AddressOnCreation');
+    this.assignIpv6AddressOnCreation = registerOutput<bool?>(
+      'assignIpv6AddressOnCreation',
+    );
     this.availabilityZone = registerOutput<String>('availabilityZone');
     this.availabilityZoneId = registerOutput<String>('availabilityZoneId');
     this.cidrBlock = registerOutput<String>('cidrBlock');
-    this.customerOwnedIpv4Pool = registerOutput<String?>('customerOwnedIpv4Pool');
+    this.customerOwnedIpv4Pool = registerOutput<String?>(
+      'customerOwnedIpv4Pool',
+    );
     this.enableDns64 = registerOutput<bool?>('enableDns64');
     this.enableLniAtDeviceIndex = registerOutput<int>('enableLniAtDeviceIndex');
-    this.enableResourceNameDnsARecordOnLaunch = registerOutput<bool?>('enableResourceNameDnsARecordOnLaunch');
-    this.enableResourceNameDnsAaaaRecordOnLaunch = registerOutput<bool?>('enableResourceNameDnsAaaaRecordOnLaunch');
+    this.enableResourceNameDnsARecordOnLaunch = registerOutput<bool?>(
+      'enableResourceNameDnsARecordOnLaunch',
+    );
+    this.enableResourceNameDnsAaaaRecordOnLaunch = registerOutput<bool?>(
+      'enableResourceNameDnsAaaaRecordOnLaunch',
+    );
     this.existingDefaultSubnet = registerOutput<bool>('existingDefaultSubnet');
     this.forceDestroy = registerOutput<bool?>('forceDestroy');
     this.ipv6CidrBlock = registerOutput<String>('ipv6CidrBlock');
-    this.ipv6CidrBlockAssociationId = registerOutput<String>('ipv6CidrBlockAssociationId');
+    this.ipv6CidrBlockAssociationId = registerOutput<String>(
+      'ipv6CidrBlockAssociationId',
+    );
     this.ipv6Native = registerOutput<bool?>('ipv6Native');
-    this.mapCustomerOwnedIpOnLaunch = registerOutput<bool?>('mapCustomerOwnedIpOnLaunch');
+    this.mapCustomerOwnedIpOnLaunch = registerOutput<bool?>(
+      'mapCustomerOwnedIpOnLaunch',
+    );
     this.mapPublicIpOnLaunch = registerOutput<bool?>('mapPublicIpOnLaunch');
     this.outpostArn = registerOutput<String>('outpostArn');
     this.ownerId = registerOutput<String>('ownerId');
-    this.privateDnsHostnameTypeOnLaunch = registerOutput<String>('privateDnsHostnameTypeOnLaunch');
+    this.privateDnsHostnameTypeOnLaunch = registerOutput<String>(
+      'privateDnsHostnameTypeOnLaunch',
+    );
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');

@@ -8,16 +8,22 @@ import 'identity.dart';
 class WindowsUpdate {
   /// The list of categories to which the update belongs.
   final List<Category>? categories;
+
   /// The localized description of the update.
   final String? description;
+
   /// Required - The unique identifier for the update.
   final Identity? identity;
+
   /// The Microsoft Knowledge Base article IDs that are associated with the update.
   final List<String>? kbArticleIds;
+
   /// The last published timestamp of the update.
   final String? lastPublishedTimestamp;
+
   /// The hyperlink to the support information for the update.
   final String? supportUrl;
+
   /// The localized title of the update.
   final String? title;
 
@@ -41,7 +47,12 @@ class WindowsUpdate {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'categories': ?categories == null ? null : pulumi.Input.encodeList<Category, Map<String, dynamic>>(categories!, (value) => value.toMap()),
+      'categories': ?categories == null
+          ? null
+          : pulumi.Input.encodeList<Category, Map<String, dynamic>>(
+              categories!,
+              (value) => value.toMap(),
+            ),
       'description': ?description,
       'identity': ?identity == null ? null : identity!.toMap(),
       'kbArticleIds': ?kbArticleIds,
@@ -53,14 +64,29 @@ class WindowsUpdate {
 
   factory WindowsUpdate.fromMap(Map<String, dynamic> map) {
     return WindowsUpdate(
-      categories: map['categories'] == null ? null : pulumi.Input.decodeList<Category>(map['categories'], (value) => Category.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      identity: map['identity'] == null ? null : Identity.fromMap((map['identity'] as Map).cast<String, dynamic>()),
-      kbArticleIds: map['kbArticleIds'] == null ? null : (map['kbArticleIds'] as List).cast<String>(),
-      lastPublishedTimestamp: map['lastPublishedTimestamp'] == null ? null : map['lastPublishedTimestamp'] as String,
-      supportUrl: map['supportUrl'] == null ? null : map['supportUrl'] as String,
+      categories: map['categories'] == null
+          ? null
+          : pulumi.Input.decodeList<Category>(
+              map['categories'],
+              (value) =>
+                  Category.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      identity: map['identity'] == null
+          ? null
+          : Identity.fromMap((map['identity'] as Map).cast<String, dynamic>()),
+      kbArticleIds: map['kbArticleIds'] == null
+          ? null
+          : (map['kbArticleIds'] as List).cast<String>(),
+      lastPublishedTimestamp: map['lastPublishedTimestamp'] == null
+          ? null
+          : map['lastPublishedTimestamp'] as String,
+      supportUrl: map['supportUrl'] == null
+          ? null
+          : map['supportUrl'] as String,
       title: map['title'] == null ? null : map['title'] as String,
     );
   }
 }
-

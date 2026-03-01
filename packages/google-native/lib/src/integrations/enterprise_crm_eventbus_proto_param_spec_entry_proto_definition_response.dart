@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse {
   /// The fully-qualified proto name. This message, for example, would be "enterprise.crm.eventbus.proto.ParamSpecEntry.ProtoDefinition".
   final String fullName;
+
   /// Path to the proto file that contains the message type's definition.
   final String path;
 
@@ -16,17 +16,15 @@ class EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fullName': fullName,
-      'path': path,
-    };
+    return <String, dynamic>{'fullName': fullName, 'path': path};
   }
 
-  factory EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoParamSpecEntryProtoDefinitionResponse(
       fullName: map['fullName'] as String,
       path: map['path'] as String,
     );
   }
 }
-

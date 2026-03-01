@@ -20,10 +20,9 @@ class VersionDialogflowV2beta1Args {
     String? description,
     String? location,
     String? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,10 +34,11 @@ class VersionDialogflowV2beta1Args {
 
   factory VersionDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return VersionDialogflowV2beta1Args(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control {
   /// Number of days after which Amazon S3 aborts an incomplete multipart upload.
   final int daysAfterInitiation;
@@ -12,15 +11,14 @@ class BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'daysAfterInitiation': daysAfterInitiation,
-    };
+    return <String, dynamic>{'daysAfterInitiation': daysAfterInitiation};
   }
 
-  factory BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control.fromMap(Map<String, dynamic> map) {
+  factory BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control(
       daysAfterInitiation: map['daysAfterInitiation'] as int,
     );
   }
 }
-

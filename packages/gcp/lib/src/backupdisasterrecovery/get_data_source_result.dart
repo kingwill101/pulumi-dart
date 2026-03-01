@@ -12,10 +12,12 @@ class GetDataSourceResult {
   final String backupVaultId;
   final String configState;
   final String createTime;
-  final List<GetDataSourceDataSourceBackupApplianceApplication> dataSourceBackupApplianceApplications;
+  final List<GetDataSourceDataSourceBackupApplianceApplication>
+  dataSourceBackupApplianceApplications;
   final List<GetDataSourceDataSourceGcpResource> dataSourceGcpResources;
   final String dataSourceId;
   final String etag;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -66,13 +68,25 @@ class GetDataSourceResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupConfigInfos': pulumi.Input.encodeList<GetDataSourceBackupConfigInfo, Map<String, dynamic>>(backupConfigInfos, (value) => value.toMap()),
+      'backupConfigInfos':
+          pulumi.Input.encodeList<
+            GetDataSourceBackupConfigInfo,
+            Map<String, dynamic>
+          >(backupConfigInfos, (value) => value.toMap()),
       'backupCount': backupCount,
       'backupVaultId': backupVaultId,
       'configState': configState,
       'createTime': createTime,
-      'dataSourceBackupApplianceApplications': pulumi.Input.encodeList<GetDataSourceDataSourceBackupApplianceApplication, Map<String, dynamic>>(dataSourceBackupApplianceApplications, (value) => value.toMap()),
-      'dataSourceGcpResources': pulumi.Input.encodeList<GetDataSourceDataSourceGcpResource, Map<String, dynamic>>(dataSourceGcpResources, (value) => value.toMap()),
+      'dataSourceBackupApplianceApplications':
+          pulumi.Input.encodeList<
+            GetDataSourceDataSourceBackupApplianceApplication,
+            Map<String, dynamic>
+          >(dataSourceBackupApplianceApplications, (value) => value.toMap()),
+      'dataSourceGcpResources':
+          pulumi.Input.encodeList<
+            GetDataSourceDataSourceGcpResource,
+            Map<String, dynamic>
+          >(dataSourceGcpResources, (value) => value.toMap()),
       'dataSourceId': dataSourceId,
       'etag': etag,
       'id': id,
@@ -88,13 +102,33 @@ class GetDataSourceResult {
 
   factory GetDataSourceResult.fromMap(Map<String, dynamic> map) {
     return GetDataSourceResult(
-      backupConfigInfos: pulumi.Input.decodeList<GetDataSourceBackupConfigInfo>(map['backupConfigInfos'], (value) => GetDataSourceBackupConfigInfo.fromMap((value as Map).cast<String, dynamic>())),
+      backupConfigInfos: pulumi.Input.decodeList<GetDataSourceBackupConfigInfo>(
+        map['backupConfigInfos'],
+        (value) => GetDataSourceBackupConfigInfo.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       backupCount: map['backupCount'] as String,
       backupVaultId: map['backupVaultId'] as String,
       configState: map['configState'] as String,
       createTime: map['createTime'] as String,
-      dataSourceBackupApplianceApplications: pulumi.Input.decodeList<GetDataSourceDataSourceBackupApplianceApplication>(map['dataSourceBackupApplianceApplications'], (value) => GetDataSourceDataSourceBackupApplianceApplication.fromMap((value as Map).cast<String, dynamic>())),
-      dataSourceGcpResources: pulumi.Input.decodeList<GetDataSourceDataSourceGcpResource>(map['dataSourceGcpResources'], (value) => GetDataSourceDataSourceGcpResource.fromMap((value as Map).cast<String, dynamic>())),
+      dataSourceBackupApplianceApplications:
+          pulumi.Input.decodeList<
+            GetDataSourceDataSourceBackupApplianceApplication
+          >(
+            map['dataSourceBackupApplianceApplications'],
+            (value) =>
+                GetDataSourceDataSourceBackupApplianceApplication.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      dataSourceGcpResources:
+          pulumi.Input.decodeList<GetDataSourceDataSourceGcpResource>(
+            map['dataSourceGcpResources'],
+            (value) => GetDataSourceDataSourceGcpResource.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       dataSourceId: map['dataSourceId'] as String,
       etag: map['etag'] as String,
       id: map['id'] as String,
@@ -108,4 +142,3 @@ class GetDataSourceResult {
     );
   }
 }
-

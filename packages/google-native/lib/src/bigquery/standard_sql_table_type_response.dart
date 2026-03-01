@@ -10,20 +10,26 @@ class StandardSqlTableTypeResponse {
 
   /// Creates a new [StandardSqlTableTypeResponse].
   /// [columns] The columns in this table type
-  StandardSqlTableTypeResponse({
-    required this.columns,
-  });
+  StandardSqlTableTypeResponse({required this.columns});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': pulumi.Input.encodeList<StandardSqlFieldResponse, Map<String, dynamic>>(columns, (value) => value.toMap()),
+      'columns':
+          pulumi.Input.encodeList<
+            StandardSqlFieldResponse,
+            Map<String, dynamic>
+          >(columns, (value) => value.toMap()),
     };
   }
 
   factory StandardSqlTableTypeResponse.fromMap(Map<String, dynamic> map) {
     return StandardSqlTableTypeResponse(
-      columns: pulumi.Input.decodeList<StandardSqlFieldResponse>(map['columns'], (value) => StandardSqlFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
+      columns: pulumi.Input.decodeList<StandardSqlFieldResponse>(
+        map['columns'],
+        (value) => StandardSqlFieldResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetEkmConnectionArgs {
     required String ekmConnectionId,
     required String location,
     String? project,
-  }) :
-      ekmConnectionId = pulumi.Input.asInput<String>(ekmConnectionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : ekmConnectionId = pulumi.Input.asInput<String>(ekmConnectionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetEkmConnectionArgs {
     );
   }
 }
-

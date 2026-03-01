@@ -6,13 +6,17 @@ enum GoogleFirestoreAdminV1beta2IndexFieldArrayConfig {
   const GoogleFirestoreAdminV1beta2IndexFieldArrayConfig(this.value);
   final String value;
 
-  static GoogleFirestoreAdminV1beta2IndexFieldArrayConfig fromValue(String value) {
-    for (final item in GoogleFirestoreAdminV1beta2IndexFieldArrayConfig.values) {
+  static GoogleFirestoreAdminV1beta2IndexFieldArrayConfig fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleFirestoreAdminV1beta2IndexFieldArrayConfig.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleFirestoreAdminV1beta2IndexFieldArrayConfig value: $value');
+    throw ArgumentError(
+      'Unknown GoogleFirestoreAdminV1beta2IndexFieldArrayConfig value: $value',
+    );
   }
 }
-

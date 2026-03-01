@@ -10,13 +10,17 @@ enum GooglePrivacyDlpV2OutputStorageConfigOutputSchema {
   const GooglePrivacyDlpV2OutputStorageConfigOutputSchema(this.value);
   final String value;
 
-  static GooglePrivacyDlpV2OutputStorageConfigOutputSchema fromValue(String value) {
-    for (final item in GooglePrivacyDlpV2OutputStorageConfigOutputSchema.values) {
+  static GooglePrivacyDlpV2OutputStorageConfigOutputSchema fromValue(
+    String value,
+  ) {
+    for (final item
+        in GooglePrivacyDlpV2OutputStorageConfigOutputSchema.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2OutputStorageConfigOutputSchema value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2OutputStorageConfigOutputSchema value: $value',
+    );
   }
 }
-

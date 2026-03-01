@@ -159,22 +159,30 @@ import 'filter_filter_criteria.dart';
 class Filter extends pulumi.CustomResource {
   /// Action to be applied to the findings that maatch the filter. Possible values are `NONE` and `SUPPRESS`
   late final pulumi.Output<String> action;
+
   /// ARN of the Filter.
   late final pulumi.Output<String> arn;
+
   /// Description
   late final pulumi.Output<String?> description;
+
   /// Details on the filter criteria. Documented below.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<List<FilterFilterCriteria>> filterCriterias;
+
   /// Name of the filter.
   late final pulumi.Output<String> name;
+
   /// Reason for creating the filter
   late final pulumi.Output<String?> reason;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -182,20 +190,19 @@ class Filter extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Filter]. {@macro pulumi_inspector2_filter_filter_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Filter(
-    String name, {
-    FilterArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:inspector2/filter:Filter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Filter(String name, {FilterArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:inspector2/filter:Filter',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.action = registerOutput<String>('action');
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');
-    this.filterCriterias = registerOutput<List<FilterFilterCriteria>>('filterCriterias');
+    this.filterCriterias = registerOutput<List<FilterFilterCriteria>>(
+      'filterCriterias',
+    );
     this.name = registerOutput<String>('name');
     this.reason = registerOutput<String?>('reason');
     this.region = registerOutput<String>('region');

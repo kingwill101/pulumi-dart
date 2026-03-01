@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTaskExecutionCapacityProviderStrategy {
   /// The number of tasks, at a minimum, to run on the specified capacity provider. Only one capacity provider in a capacity provider strategy can have a base defined. Defaults to `0`.
   final int? base;
+
   /// Name of the capacity provider.
   final String capacityProvider;
+
   /// The relative percentage of the total number of launched tasks that should use the specified capacity provider. The `weight` value is taken into consideration after the `base` count of tasks has been satisfied. Defaults to `0`.
   final int? weight;
 
@@ -27,7 +28,9 @@ class GetTaskExecutionCapacityProviderStrategy {
     };
   }
 
-  factory GetTaskExecutionCapacityProviderStrategy.fromMap(Map<String, dynamic> map) {
+  factory GetTaskExecutionCapacityProviderStrategy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTaskExecutionCapacityProviderStrategy(
       base: map['base'] == null ? null : map['base'] as int,
       capacityProvider: map['capacityProvider'] as String,
@@ -35,4 +38,3 @@ class GetTaskExecutionCapacityProviderStrategy {
     );
   }
 }
-

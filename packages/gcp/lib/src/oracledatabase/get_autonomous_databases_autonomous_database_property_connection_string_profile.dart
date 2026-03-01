@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile {
   /// The current consumer group being used by the connection.
   /// Possible values:
@@ -11,29 +10,35 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile {
   /// TP
   /// TPURGENT
   final String consumerGroup;
+
   /// The display name for the database connection.
   final String displayName;
+
   /// The host name format being currently used in connection string.
   /// Possible values:
   /// HOST_FORMAT_UNSPECIFIED
   /// FQDN
   /// IP
   final String hostFormat;
+
   /// This field indicates if the connection string is regional and is only
   /// applicable for cross-region Data Guard.
   final bool isRegional;
+
   /// The protocol being used by the connection.
   /// Possible values:
   /// PROTOCOL_UNSPECIFIED
   /// TCP
   /// TCPS
   final String protocol;
+
   /// The current session mode of the connection.
   /// Possible values:
   /// SESSION_MODE_UNSPECIFIED
   /// DIRECT
   /// INDIRECT
   final String sessionMode;
+
   /// The syntax of the connection string.
   /// Possible values:
   /// SYNTAX_FORMAT_UNSPECIFIED
@@ -41,12 +46,14 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile {
   /// EZCONNECT
   /// EZCONNECTPLUS
   final String syntaxFormat;
+
   /// This field indicates the TLS authentication type of the connection.
   /// Possible values:
   /// TLS_AUTHENTICATION_UNSPECIFIED
   /// SERVER
   /// MUTUAL
   final String tlsAuthentication;
+
   /// The value of the connection string.
   final String value;
 
@@ -86,7 +93,9 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile {
     };
   }
 
-  factory GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile.fromMap(Map<String, dynamic> map) {
+  factory GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile(
       consumerGroup: map['consumerGroup'] as String,
       displayName: map['displayName'] as String,
@@ -100,4 +109,3 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfile {
     );
   }
 }
-

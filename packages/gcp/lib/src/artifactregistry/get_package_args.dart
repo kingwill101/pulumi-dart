@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPackageArgs {
   /// The location of the artifact registry.
   final pulumi.Input<String> location;
+
   /// The name of the package.
   final pulumi.Input<String> name;
+
   /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The last part of the repository name to fetch from.
   final pulumi.Input<String> repositoryId;
 
@@ -26,11 +29,10 @@ class GetPackageArgs {
     required String name,
     String? project,
     required String repositoryId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       name = pulumi.Input.asInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       repositoryId = pulumi.Input.asInput<String>(repositoryId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,4 +52,3 @@ class GetPackageArgs {
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetNetworkAttachmentArgs {
     required String networkAttachment,
     String? project,
     required String region,
-  }) :
-      networkAttachment = pulumi.Input.asInput<String>(networkAttachment),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : networkAttachment = pulumi.Input.asInput<String>(networkAttachment),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetNetworkAttachmentArgs {
     );
   }
 }
-

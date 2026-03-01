@@ -29,17 +29,22 @@ class InstanceIamBindingArgs {
     String? name,
     String? project,
     required String role,
-  }) :
-      condition = pulumi.Input.asOptionalInput<InstanceIamBindingCondition>(condition),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      members = pulumi.Input.asInput<List<String>>(members),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      role = pulumi.Input.asInput<String>(role);
+  }) : condition = pulumi.Input.asOptionalInput<InstanceIamBindingCondition>(
+         condition,
+       ),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       members = pulumi.Input.asInput<List<String>>(members),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       role = pulumi.Input.asInput<String>(role);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<InstanceIamBindingCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceIamBindingCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'location': ?location,
       'members': members,
       'name': ?name,
@@ -50,7 +55,11 @@ class InstanceIamBindingArgs {
 
   factory InstanceIamBindingArgs.fromMap(Map<String, dynamic> map) {
     return InstanceIamBindingArgs(
-      condition: map['condition'] == null ? null : InstanceIamBindingCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null
+          ? null
+          : InstanceIamBindingCondition.fromMap(
+              (map['condition'] as Map).cast<String, dynamic>(),
+            ),
       location: map['location'] == null ? null : map['location'] as String,
       members: (map['members'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
@@ -59,4 +68,3 @@ class InstanceIamBindingArgs {
     );
   }
 }
-

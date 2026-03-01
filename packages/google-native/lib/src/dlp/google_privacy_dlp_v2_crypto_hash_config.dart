@@ -9,9 +9,7 @@ class GooglePrivacyDlpV2CryptoHashConfig {
 
   /// Creates a new [GooglePrivacyDlpV2CryptoHashConfig].
   /// [cryptoKey] The key used by the hash function.
-  GooglePrivacyDlpV2CryptoHashConfig({
-    this.cryptoKey,
-  });
+  GooglePrivacyDlpV2CryptoHashConfig({this.cryptoKey});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class GooglePrivacyDlpV2CryptoHashConfig {
 
   factory GooglePrivacyDlpV2CryptoHashConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CryptoHashConfig(
-      cryptoKey: map['cryptoKey'] == null ? null : GooglePrivacyDlpV2CryptoKey.fromMap((map['cryptoKey'] as Map).cast<String, dynamic>()),
+      cryptoKey: map['cryptoKey'] == null
+          ? null
+          : GooglePrivacyDlpV2CryptoKey.fromMap(
+              (map['cryptoKey'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

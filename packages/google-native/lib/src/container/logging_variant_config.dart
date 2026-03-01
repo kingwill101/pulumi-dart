@@ -9,9 +9,7 @@ class LoggingVariantConfig {
 
   /// Creates a new [LoggingVariantConfig].
   /// [variant] Logging variant deployed on nodes.
-  LoggingVariantConfig({
-    this.variant,
-  });
+  LoggingVariantConfig({this.variant});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class LoggingVariantConfig {
 
   factory LoggingVariantConfig.fromMap(Map<String, dynamic> map) {
     return LoggingVariantConfig(
-      variant: map['variant'] == null ? null : LoggingVariantConfigVariant.fromValue(map['variant'] as String),
+      variant: map['variant'] == null
+          ? null
+          : LoggingVariantConfigVariant.fromValue(map['variant'] as String),
     );
   }
 }
-

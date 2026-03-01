@@ -7,20 +7,17 @@ class ServerBinding {
 
   /// Creates a new [ServerBinding].
   /// [type] Optional.
-  ServerBinding({
-    this.type,
-  });
+  ServerBinding({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type == null ? null : type!.value,
-    };
+    return <String, dynamic>{'type': ?type == null ? null : type!.value};
   }
 
   factory ServerBinding.fromMap(Map<String, dynamic> map) {
     return ServerBinding(
-      type: map['type'] == null ? null : ServerBindingType.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : ServerBindingType.fromValue(map['type'] as String),
     );
   }
 }
-

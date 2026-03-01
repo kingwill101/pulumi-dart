@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkPeeringArgs {
   /// Name of the peering.
   final pulumi.Input<String> name;
+
   /// The primary network of the peering.
   final pulumi.Input<String> network;
 
   /// Creates a new [GetNetworkPeeringArgs].
   /// [name] Name of the peering.
   /// [network] The primary network of the peering.
-  GetNetworkPeeringArgs({
-    required String name,
-    required String network,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
+  GetNetworkPeeringArgs({required String name, required String network})
+    : name = pulumi.Input.asInput<String>(name),
       network = pulumi.Input.asInput<String>(network);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'network': network,
-    };
+    return <String, dynamic>{'name': name, 'network': network};
   }
 
   factory GetNetworkPeeringArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetNetworkPeeringArgs {
     );
   }
 }
-

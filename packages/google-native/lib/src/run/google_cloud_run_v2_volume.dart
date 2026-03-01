@@ -8,10 +8,13 @@ import 'google_cloud_run_v2_secret_volume_source.dart';
 class GoogleCloudRunV2Volume {
   /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
   final GoogleCloudRunV2CloudSqlInstance? cloudSqlInstance;
+
   /// Ephemeral storage used as a shared volume.
   final GoogleCloudRunV2EmptyDirVolumeSource? emptyDir;
+
   /// Volume's name.
   final String name;
+
   /// Secret represents a secret that should populate this volume.
   final GoogleCloudRunV2SecretVolumeSource? secret;
 
@@ -29,7 +32,9 @@ class GoogleCloudRunV2Volume {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudSqlInstance': ?cloudSqlInstance == null ? null : cloudSqlInstance!.toMap(),
+      'cloudSqlInstance': ?cloudSqlInstance == null
+          ? null
+          : cloudSqlInstance!.toMap(),
       'emptyDir': ?emptyDir == null ? null : emptyDir!.toMap(),
       'name': name,
       'secret': ?secret == null ? null : secret!.toMap(),
@@ -38,11 +43,22 @@ class GoogleCloudRunV2Volume {
 
   factory GoogleCloudRunV2Volume.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2Volume(
-      cloudSqlInstance: map['cloudSqlInstance'] == null ? null : GoogleCloudRunV2CloudSqlInstance.fromMap((map['cloudSqlInstance'] as Map).cast<String, dynamic>()),
-      emptyDir: map['emptyDir'] == null ? null : GoogleCloudRunV2EmptyDirVolumeSource.fromMap((map['emptyDir'] as Map).cast<String, dynamic>()),
+      cloudSqlInstance: map['cloudSqlInstance'] == null
+          ? null
+          : GoogleCloudRunV2CloudSqlInstance.fromMap(
+              (map['cloudSqlInstance'] as Map).cast<String, dynamic>(),
+            ),
+      emptyDir: map['emptyDir'] == null
+          ? null
+          : GoogleCloudRunV2EmptyDirVolumeSource.fromMap(
+              (map['emptyDir'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] as String,
-      secret: map['secret'] == null ? null : GoogleCloudRunV2SecretVolumeSource.fromMap((map['secret'] as Map).cast<String, dynamic>()),
+      secret: map['secret'] == null
+          ? null
+          : GoogleCloudRunV2SecretVolumeSource.fromMap(
+              (map['secret'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

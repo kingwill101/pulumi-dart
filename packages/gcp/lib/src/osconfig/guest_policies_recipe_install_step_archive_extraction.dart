@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GuestPoliciesRecipeInstallStepArchiveExtraction {
   /// The id of the relevant artifact in the recipe.
   final String artifactId;
+
   /// Directory to extract archive to. Defaults to / on Linux or C:\ on Windows.
   final String? destination;
+
   /// The type of the archive to extract.
   /// Possible values are: `TAR`, `TAR_GZIP`, `TAR_BZIP`, `TAR_LZMA`, `TAR_XZ`, `ZIP`.
   final String type;
@@ -28,12 +29,15 @@ class GuestPoliciesRecipeInstallStepArchiveExtraction {
     };
   }
 
-  factory GuestPoliciesRecipeInstallStepArchiveExtraction.fromMap(Map<String, dynamic> map) {
+  factory GuestPoliciesRecipeInstallStepArchiveExtraction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GuestPoliciesRecipeInstallStepArchiveExtraction(
       artifactId: map['artifactId'] as String,
-      destination: map['destination'] == null ? null : map['destination'] as String,
+      destination: map['destination'] == null
+          ? null
+          : map['destination'] as String,
       type: map['type'] as String,
     );
   }
 }
-

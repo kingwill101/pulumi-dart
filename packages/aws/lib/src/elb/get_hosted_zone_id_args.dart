@@ -12,15 +12,11 @@ class GetHostedZoneIdArgs {
 
   /// Creates a new [GetHostedZoneIdArgs].
   /// [region] Name of the Region whose AWS ELB HostedZoneId is desired. Defaults to the Region set in the provider configuration.
-  GetHostedZoneIdArgs({
-    String? region,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region);
+  GetHostedZoneIdArgs({String? region})
+    : region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-    };
+    return <String, dynamic>{'region': ?region};
   }
 
   factory GetHostedZoneIdArgs.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class GetHostedZoneIdArgs {
     );
   }
 }
-

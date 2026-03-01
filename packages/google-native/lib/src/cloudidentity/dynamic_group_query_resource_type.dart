@@ -15,4 +15,3 @@ enum DynamicGroupQueryResourceType {
     throw ArgumentError('Unknown DynamicGroupQueryResourceType value: $value');
   }
 }
-

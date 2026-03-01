@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType {
   /// Type of worker to deliver logs to CloudWatch (for example, `SPARK_DRIVER` and `SPARK_EXECUTOR`).
   final String key;
+
   /// List of log types to be delivered to CloudWatch (for example, `STDOUT` and `STDERR`).
   final List<String> values;
 
@@ -16,17 +16,15 @@ class WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguratio
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'values': values,
-    };
+    return <String, dynamic>{'key': key, 'values': values};
   }
 
-  factory WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType.fromMap(Map<String, dynamic> map) {
+  factory WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType(
       key: map['key'] as String,
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
-

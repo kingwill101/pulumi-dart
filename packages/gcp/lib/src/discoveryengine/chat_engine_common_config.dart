@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChatEngineCommonConfig {
   /// The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
   final String? companyName;
 
   /// Creates a new [ChatEngineCommonConfig].
   /// [companyName] The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
-  ChatEngineCommonConfig({
-    this.companyName,
-  });
+  ChatEngineCommonConfig({this.companyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'companyName': ?companyName,
-    };
+    return <String, dynamic>{'companyName': ?companyName};
   }
 
   factory ChatEngineCommonConfig.fromMap(Map<String, dynamic> map) {
     return ChatEngineCommonConfig(
-      companyName: map['companyName'] == null ? null : map['companyName'] as String,
+      companyName: map['companyName'] == null
+          ? null
+          : map['companyName'] as String,
     );
   }
 }
-

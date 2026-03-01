@@ -16,4 +16,3 @@ enum ContactValidationState {
     throw ArgumentError('Unknown ContactValidationState value: $value');
   }
 }
-

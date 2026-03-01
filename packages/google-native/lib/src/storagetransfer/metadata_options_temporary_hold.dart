@@ -16,4 +16,3 @@ enum MetadataOptionsTemporaryHold {
     throw ArgumentError('Unknown MetadataOptionsTemporaryHold value: $value');
   }
 }
-

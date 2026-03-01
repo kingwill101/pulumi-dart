@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BucketGrant {
   /// Canonical user id to grant for. Used only when `type` is `CanonicalUser`.
   final String? id;
+
   /// List of permissions to apply for grantee. Valid values are `READ`, `WRITE`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
   final List<String> permissions;
+
   /// Type of grantee to apply for. Valid values are `CanonicalUser` and `Group`. `AmazonCustomerByEmail` is not supported.
   final String type;
+
   /// Uri address to grant for. Used only when `type` is `Group`.
   final String? uri;
 
@@ -41,4 +43,3 @@ class BucketGrant {
     );
   }
 }
-

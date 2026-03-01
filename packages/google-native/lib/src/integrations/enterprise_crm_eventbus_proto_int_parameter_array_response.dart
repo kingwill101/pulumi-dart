@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EnterpriseCrmEventbusProtoIntParameterArrayResponse {
   final List<String> intValues;
 
@@ -11,15 +10,14 @@ class EnterpriseCrmEventbusProtoIntParameterArrayResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'intValues': intValues,
-    };
+    return <String, dynamic>{'intValues': intValues};
   }
 
-  factory EnterpriseCrmEventbusProtoIntParameterArrayResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoIntParameterArrayResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoIntParameterArrayResponse(
       intValues: (map['intValues'] as List).cast<String>(),
     );
   }
 }
-

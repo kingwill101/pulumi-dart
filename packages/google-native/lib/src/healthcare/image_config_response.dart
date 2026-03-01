@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies how to handle de-identification of image pixels.
 class ImageConfigResponse {
   /// Determines how to redact text from image.
@@ -8,14 +7,10 @@ class ImageConfigResponse {
 
   /// Creates a new [ImageConfigResponse].
   /// [textRedactionMode] Determines how to redact text from image.
-  ImageConfigResponse({
-    required this.textRedactionMode,
-  });
+  ImageConfigResponse({required this.textRedactionMode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'textRedactionMode': textRedactionMode,
-    };
+    return <String, dynamic>{'textRedactionMode': textRedactionMode};
   }
 
   factory ImageConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ImageConfigResponse {
     );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class KxClusterCode {
   /// Unique name for the S3 bucket.
   final String s3Bucket;
+
   /// Full S3 path (excluding bucket) to the .zip file that contains the code to be loaded onto the cluster when it’s started.
   final String s3Key;
+
   /// Version of an S3 Object.
   final String? s3ObjectVersion;
 
@@ -31,8 +32,9 @@ class KxClusterCode {
     return KxClusterCode(
       s3Bucket: map['s3Bucket'] as String,
       s3Key: map['s3Key'] as String,
-      s3ObjectVersion: map['s3ObjectVersion'] == null ? null : map['s3ObjectVersion'] as String,
+      s3ObjectVersion: map['s3ObjectVersion'] == null
+          ? null
+          : map['s3ObjectVersion'] as String,
     );
   }
 }
-

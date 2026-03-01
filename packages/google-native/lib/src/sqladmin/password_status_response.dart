@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Read-only password status.
 class PasswordStatusResponse {
   /// If true, user does not have login privileges.
   final bool locked;
+
   /// The expiration time of the current password.
   final String passwordExpirationTime;
 
@@ -30,4 +30,3 @@ class PasswordStatusResponse {
     );
   }
 }
-

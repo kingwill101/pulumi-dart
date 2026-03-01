@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
 class GPUSharingConfigResponse {
   /// The type of GPU sharing strategy to enable on the GPU node.
   final String gpuSharingStrategy;
+
   /// The max number of containers that can share a physical GPU.
   final String maxSharedClientsPerGpu;
 
@@ -30,4 +30,3 @@ class GPUSharingConfigResponse {
     );
   }
 }
-

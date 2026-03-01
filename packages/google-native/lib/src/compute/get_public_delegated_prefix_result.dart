@@ -7,34 +7,50 @@ import 'public_delegated_prefix_public_delegated_sub_prefix_response.dart';
 class GetPublicDelegatedPrefixResult {
   /// The allocatable prefix length supported by this public delegated prefix. This field is optional and cannot be set for prefixes in DELEGATION mode. It cannot be set for IPv4 prefixes either, and it always defaults to 32.
   final int allocatablePrefixLength;
+
   /// The version of BYOIP API.
   final String byoipApiVersion;
+
   /// Creation timestamp in RFC3339 text format.
   final String creationTimestamp;
+
   /// An optional description of this resource. Provide this property when you create the resource.
   final String description;
+
   /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicDelegatedPrefix. An up-to-date fingerprint must be provided in order to update the PublicDelegatedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicDelegatedPrefix.
   final String fingerprint;
+
   /// The IP address range, in CIDR format, represented by this public delegated prefix.
   final String ipCidrRange;
+
   /// If true, the prefix will be live migrated.
   final bool isLiveMigration;
+
   /// Type of the resource. Always compute#publicDelegatedPrefix for public delegated prefixes.
   final String kind;
+
   /// The public delegated prefix mode for IPv6 only.
   final String mode;
+
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final String name;
+
   /// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
   final String parentPrefix;
+
   /// The list of sub public delegated prefixes that exist for this public delegated prefix.
-  final List<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse> publicDelegatedSubPrefixs;
+  final List<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse>
+  publicDelegatedSubPrefixs;
+
   /// URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   final String region;
+
   /// Server-defined URL for the resource.
   final String selfLink;
+
   /// Server-defined URL with id for the resource.
   final String selfLinkWithId;
+
   /// The status of the public delegated prefix, which can be one of following values: - `INITIALIZING` The public delegated prefix is being initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The public delegated prefix is a live migration prefix and is active. - `ANNOUNCED` The public delegated prefix is active. - `DELETING` The public delegated prefix is being deprovsioned.
   final String status;
 
@@ -87,7 +103,11 @@ class GetPublicDelegatedPrefixResult {
       'mode': mode,
       'name': name,
       'parentPrefix': parentPrefix,
-      'publicDelegatedSubPrefixs': pulumi.Input.encodeList<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse, Map<String, dynamic>>(publicDelegatedSubPrefixs, (value) => value.toMap()),
+      'publicDelegatedSubPrefixs':
+          pulumi.Input.encodeList<
+            PublicDelegatedPrefixPublicDelegatedSubPrefixResponse,
+            Map<String, dynamic>
+          >(publicDelegatedSubPrefixs, (value) => value.toMap()),
       'region': region,
       'selfLink': selfLink,
       'selfLinkWithId': selfLinkWithId,
@@ -108,7 +128,16 @@ class GetPublicDelegatedPrefixResult {
       mode: map['mode'] as String,
       name: map['name'] as String,
       parentPrefix: map['parentPrefix'] as String,
-      publicDelegatedSubPrefixs: pulumi.Input.decodeList<PublicDelegatedPrefixPublicDelegatedSubPrefixResponse>(map['publicDelegatedSubPrefixs'], (value) => PublicDelegatedPrefixPublicDelegatedSubPrefixResponse.fromMap((value as Map).cast<String, dynamic>())),
+      publicDelegatedSubPrefixs:
+          pulumi.Input.decodeList<
+            PublicDelegatedPrefixPublicDelegatedSubPrefixResponse
+          >(
+            map['publicDelegatedSubPrefixs'],
+            (value) =>
+                PublicDelegatedPrefixPublicDelegatedSubPrefixResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       region: map['region'] as String,
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
@@ -116,4 +145,3 @@ class GetPublicDelegatedPrefixResult {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RestoreWorkloadComputeInstanceTargetEnvironment {
   /// Required. Target project for the Compute Engine instance.
   final String project;
+
   /// Required. The zone of the Compute Engine instance.
   final String zone;
 
@@ -16,17 +16,15 @@ class RestoreWorkloadComputeInstanceTargetEnvironment {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': project,
-      'zone': zone,
-    };
+    return <String, dynamic>{'project': project, 'zone': zone};
   }
 
-  factory RestoreWorkloadComputeInstanceTargetEnvironment.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceTargetEnvironment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceTargetEnvironment(
       project: map['project'] as String,
       zone: map['zone'] as String,
     );
   }
 }
-

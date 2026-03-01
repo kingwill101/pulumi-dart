@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`.
 class GoogleCloudDatalabelingV1beta1AnnotationSpec {
   /// Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
   final String? description;
+
   /// The display name of the AnnotationSpec. Maximum of 64 characters.
   final String displayName;
 
@@ -23,11 +23,14 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpec {
     };
   }
 
-  factory GoogleCloudDatalabelingV1beta1AnnotationSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1AnnotationSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1AnnotationSpec(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       displayName: map['displayName'] as String,
     );
   }
 }
-

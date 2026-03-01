@@ -10,20 +10,29 @@ class NetworkPolicy {
 
   /// Creates a new [NetworkPolicy].
   /// [networkInterfaces] Network configurations.
-  NetworkPolicy({
-    this.networkInterfaces,
-  });
+  NetworkPolicy({this.networkInterfaces});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'networkInterfaces': ?networkInterfaces == null ? null : pulumi.Input.encodeList<NetworkInterface, Map<String, dynamic>>(networkInterfaces!, (value) => value.toMap()),
+      'networkInterfaces': ?networkInterfaces == null
+          ? null
+          : pulumi.Input.encodeList<NetworkInterface, Map<String, dynamic>>(
+              networkInterfaces!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory NetworkPolicy.fromMap(Map<String, dynamic> map) {
     return NetworkPolicy(
-      networkInterfaces: map['networkInterfaces'] == null ? null : pulumi.Input.decodeList<NetworkInterface>(map['networkInterfaces'], (value) => NetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces: map['networkInterfaces'] == null
+          ? null
+          : pulumi.Input.decodeList<NetworkInterface>(
+              map['networkInterfaces'],
+              (value) => NetworkInterface.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

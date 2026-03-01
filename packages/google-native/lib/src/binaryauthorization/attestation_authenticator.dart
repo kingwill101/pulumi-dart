@@ -6,29 +6,34 @@ import 'pkix_public_key_set.dart';
 class AttestationAuthenticator {
   /// Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
   final String? displayName;
+
   /// Optional. A set of raw PKIX SubjectPublicKeyInfo format public keys. If any public key in the set validates the attestation signature, then the signature is considered authenticated (i.e. any one key is sufficient to authenticate).
   final PkixPublicKeySet? pkixPublicKeySet;
 
   /// Creates a new [AttestationAuthenticator].
   /// [displayName] Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
   /// [pkixPublicKeySet] Optional. A set of raw PKIX SubjectPublicKeyInfo format public keys. If any public key in the set validates the attestation signature, then the signature is considered authenticated (i.e. any one key is sufficient to authenticate).
-  AttestationAuthenticator({
-    this.displayName,
-    this.pkixPublicKeySet,
-  });
+  AttestationAuthenticator({this.displayName, this.pkixPublicKeySet});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': ?displayName,
-      'pkixPublicKeySet': ?pkixPublicKeySet == null ? null : pkixPublicKeySet!.toMap(),
+      'pkixPublicKeySet': ?pkixPublicKeySet == null
+          ? null
+          : pkixPublicKeySet!.toMap(),
     };
   }
 
   factory AttestationAuthenticator.fromMap(Map<String, dynamic> map) {
     return AttestationAuthenticator(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      pkixPublicKeySet: map['pkixPublicKeySet'] == null ? null : PkixPublicKeySet.fromMap((map['pkixPublicKeySet'] as Map).cast<String, dynamic>()),
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      pkixPublicKeySet: map['pkixPublicKeySet'] == null
+          ? null
+          : PkixPublicKeySet.fromMap(
+              (map['pkixPublicKeySet'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -16,7 +16,8 @@ enum VmwareEnginePreferencesCommitmentPlan {
         return item;
       }
     }
-    throw ArgumentError('Unknown VmwareEnginePreferencesCommitmentPlan value: $value');
+    throw ArgumentError(
+      'Unknown VmwareEnginePreferencesCommitmentPlan value: $value',
+    );
   }
 }
-

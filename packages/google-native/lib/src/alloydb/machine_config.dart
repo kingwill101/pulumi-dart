@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// MachineConfig describes the configuration of a machine.
 class MachineConfig {
   /// The number of CPU's in the VM instance.
@@ -8,14 +7,10 @@ class MachineConfig {
 
   /// Creates a new [MachineConfig].
   /// [cpuCount] The number of CPU's in the VM instance.
-  MachineConfig({
-    this.cpuCount,
-  });
+  MachineConfig({this.cpuCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cpuCount': ?cpuCount,
-    };
+    return <String, dynamic>{'cpuCount': ?cpuCount};
   }
 
   factory MachineConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class MachineConfig {
     );
   }
 }
-

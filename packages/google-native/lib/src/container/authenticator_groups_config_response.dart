@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for returning group information from authenticators.
 class AuthenticatorGroupsConfigResponse {
   /// Whether this cluster should return group membership lookups during authentication using a group of security groups.
   final bool enabled;
+
   /// The name of the security group-of-groups to be used. Only relevant if enabled = true.
   final String securityGroup;
 
@@ -30,4 +30,3 @@ class AuthenticatorGroupsConfigResponse {
     );
   }
 }
-

@@ -12,13 +12,18 @@ import 's3_access_point_attachment_timeouts.dart';
 class S3AccessPointAttachmentArgs {
   /// Name of the S3 access point.
   final pulumi.Input<String>? name;
+
   /// Configuration to use when creating and attaching an S3 access point to an FSx for OpenZFS volume. See `openzfs_configuration` Block for details.
-  final pulumi.Input<S3AccessPointAttachmentOpenzfsConfiguration> openzfsConfiguration;
+  final pulumi.Input<S3AccessPointAttachmentOpenzfsConfiguration>
+  openzfsConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// S3 access point configuration. See `s3_access_point` Block for details.
   final pulumi.Input<S3AccessPointAttachmentS3AccessPoint>? s3AccessPoint;
   final pulumi.Input<S3AccessPointAttachmentTimeouts>? timeouts;
+
   /// Type of S3 access point. Valid values: `OpenZFS`.
   ///
   /// The following arguments are optional:
@@ -38,21 +43,40 @@ class S3AccessPointAttachmentArgs {
     S3AccessPointAttachmentS3AccessPoint? s3AccessPoint,
     S3AccessPointAttachmentTimeouts? timeouts,
     required String type,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      openzfsConfiguration = pulumi.Input.asInput<S3AccessPointAttachmentOpenzfsConfiguration>(openzfsConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      s3AccessPoint = pulumi.Input.asOptionalInput<S3AccessPointAttachmentS3AccessPoint>(s3AccessPoint),
-      timeouts = pulumi.Input.asOptionalInput<S3AccessPointAttachmentTimeouts>(timeouts),
-      type = pulumi.Input.asInput<String>(type);
+  }) : name = pulumi.Input.asOptionalInput<String>(name),
+       openzfsConfiguration =
+           pulumi.Input.asInput<S3AccessPointAttachmentOpenzfsConfiguration>(
+             openzfsConfiguration,
+           ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       s3AccessPoint =
+           pulumi.Input.asOptionalInput<S3AccessPointAttachmentS3AccessPoint>(
+             s3AccessPoint,
+           ),
+       timeouts = pulumi.Input.asOptionalInput<S3AccessPointAttachmentTimeouts>(
+         timeouts,
+       ),
+       type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'openzfsConfiguration': pulumi.Input.mapInputValue<S3AccessPointAttachmentOpenzfsConfiguration, Map<String, dynamic>>(openzfsConfiguration, (value) => value.toMap()),
+      'openzfsConfiguration':
+          pulumi.Input.mapInputValue<
+            S3AccessPointAttachmentOpenzfsConfiguration,
+            Map<String, dynamic>
+          >(openzfsConfiguration, (value) => value.toMap()),
       'region': ?region,
-      's3AccessPoint': ?pulumi.Input.mapOptionalInputValue<S3AccessPointAttachmentS3AccessPoint, Map<String, dynamic>>(s3AccessPoint, (value) => value.toMap()),
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<S3AccessPointAttachmentTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      's3AccessPoint':
+          ?pulumi.Input.mapOptionalInputValue<
+            S3AccessPointAttachmentS3AccessPoint,
+            Map<String, dynamic>
+          >(s3AccessPoint, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            S3AccessPointAttachmentTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'type': type,
     };
   }
@@ -60,12 +84,21 @@ class S3AccessPointAttachmentArgs {
   factory S3AccessPointAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return S3AccessPointAttachmentArgs(
       name: map['name'] == null ? null : map['name'] as String,
-      openzfsConfiguration: S3AccessPointAttachmentOpenzfsConfiguration.fromMap((map['openzfsConfiguration'] as Map).cast<String, dynamic>()),
+      openzfsConfiguration: S3AccessPointAttachmentOpenzfsConfiguration.fromMap(
+        (map['openzfsConfiguration'] as Map).cast<String, dynamic>(),
+      ),
       region: map['region'] == null ? null : map['region'] as String,
-      s3AccessPoint: map['s3AccessPoint'] == null ? null : S3AccessPointAttachmentS3AccessPoint.fromMap((map['s3AccessPoint'] as Map).cast<String, dynamic>()),
-      timeouts: map['timeouts'] == null ? null : S3AccessPointAttachmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      s3AccessPoint: map['s3AccessPoint'] == null
+          ? null
+          : S3AccessPointAttachmentS3AccessPoint.fromMap(
+              (map['s3AccessPoint'] as Map).cast<String, dynamic>(),
+            ),
+      timeouts: map['timeouts'] == null
+          ? null
+          : S3AccessPointAttachmentTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
       type: map['type'] as String,
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// JSON file format configuration.
 class JsonFileFormatResponse {
   /// Compression of the loaded JSON file.
   final String compression;
+
   /// The schema file format along JSON data files.
   final String schemaFileFormat;
 
@@ -30,4 +30,3 @@ class JsonFileFormatResponse {
     );
   }
 }
-

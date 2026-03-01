@@ -11,20 +11,32 @@ class BareMetalClusterValidationCheckStatus {
 
   /// Creates a new [BareMetalClusterValidationCheckStatus].
   /// [results] (Output)
-  BareMetalClusterValidationCheckStatus({
-    this.results,
-  });
+  BareMetalClusterValidationCheckStatus({this.results});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'results': ?results == null ? null : pulumi.Input.encodeList<BareMetalClusterValidationCheckStatusResult, Map<String, dynamic>>(results!, (value) => value.toMap()),
+      'results': ?results == null
+          ? null
+          : pulumi.Input.encodeList<
+              BareMetalClusterValidationCheckStatusResult,
+              Map<String, dynamic>
+            >(results!, (value) => value.toMap()),
     };
   }
 
-  factory BareMetalClusterValidationCheckStatus.fromMap(Map<String, dynamic> map) {
+  factory BareMetalClusterValidationCheckStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalClusterValidationCheckStatus(
-      results: map['results'] == null ? null : pulumi.Input.decodeList<BareMetalClusterValidationCheckStatusResult>(map['results'], (value) => BareMetalClusterValidationCheckStatusResult.fromMap((value as Map).cast<String, dynamic>())),
+      results: map['results'] == null
+          ? null
+          : pulumi
+                .Input.decodeList<BareMetalClusterValidationCheckStatusResult>(
+              map['results'],
+              (value) => BareMetalClusterValidationCheckStatusResult.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

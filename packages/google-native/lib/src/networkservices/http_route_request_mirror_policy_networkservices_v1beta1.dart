@@ -9,9 +9,7 @@ class HttpRouteRequestMirrorPolicyNetworkservicesV1beta1 {
 
   /// Creates a new [HttpRouteRequestMirrorPolicyNetworkservicesV1beta1].
   /// [destination] The destination the requests will be mirrored to. The weight of the destination will be ignored.
-  HttpRouteRequestMirrorPolicyNetworkservicesV1beta1({
-    this.destination,
-  });
+  HttpRouteRequestMirrorPolicyNetworkservicesV1beta1({this.destination});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class HttpRouteRequestMirrorPolicyNetworkservicesV1beta1 {
     };
   }
 
-  factory HttpRouteRequestMirrorPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory HttpRouteRequestMirrorPolicyNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HttpRouteRequestMirrorPolicyNetworkservicesV1beta1(
-      destination: map['destination'] == null ? null : HttpRouteDestinationNetworkservicesV1beta1.fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      destination: map['destination'] == null
+          ? null
+          : HttpRouteDestinationNetworkservicesV1beta1.fromMap(
+              (map['destination'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

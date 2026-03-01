@@ -1,25 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstanceGroupNamedPort {
   /// The name which the port will be mapped to.
   final String name;
+
   /// The port number to map the name to.
   final int port;
 
   /// Creates a new [InstanceGroupNamedPort].
   /// [name] The name which the port will be mapped to.
   /// [port] The port number to map the name to.
-  InstanceGroupNamedPort({
-    required this.name,
-    required this.port,
-  });
+  InstanceGroupNamedPort({required this.name, required this.port});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'port': port,
-    };
+    return <String, dynamic>{'name': name, 'port': port};
   }
 
   factory InstanceGroupNamedPort.fromMap(Map<String, dynamic> map) {
@@ -29,4 +23,3 @@ class InstanceGroupNamedPort {
     );
   }
 }
-

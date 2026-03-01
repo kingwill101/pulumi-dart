@@ -8,20 +8,27 @@ class GetRouteSpecHttpRouteAction {
 
   /// Creates a new [GetRouteSpecHttpRouteAction].
   /// [weightedTargets] Required.
-  GetRouteSpecHttpRouteAction({
-    required this.weightedTargets,
-  });
+  GetRouteSpecHttpRouteAction({required this.weightedTargets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'weightedTargets': pulumi.Input.encodeList<GetRouteSpecHttpRouteActionWeightedTarget, Map<String, dynamic>>(weightedTargets, (value) => value.toMap()),
+      'weightedTargets':
+          pulumi.Input.encodeList<
+            GetRouteSpecHttpRouteActionWeightedTarget,
+            Map<String, dynamic>
+          >(weightedTargets, (value) => value.toMap()),
     };
   }
 
   factory GetRouteSpecHttpRouteAction.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecHttpRouteAction(
-      weightedTargets: pulumi.Input.decodeList<GetRouteSpecHttpRouteActionWeightedTarget>(map['weightedTargets'], (value) => GetRouteSpecHttpRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>())),
+      weightedTargets:
+          pulumi.Input.decodeList<GetRouteSpecHttpRouteActionWeightedTarget>(
+            map['weightedTargets'],
+            (value) => GetRouteSpecHttpRouteActionWeightedTarget.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

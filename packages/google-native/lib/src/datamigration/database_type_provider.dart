@@ -18,4 +18,3 @@ enum DatabaseTypeProvider {
     throw ArgumentError('Unknown DatabaseTypeProvider value: $value');
   }
 }
-

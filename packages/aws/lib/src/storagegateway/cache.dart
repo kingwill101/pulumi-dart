@@ -111,8 +111,10 @@ import 'cache_args.dart';
 class Cache extends pulumi.CustomResource {
   /// Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   late final pulumi.Output<String> diskId;
+
   /// The Amazon Resource Name (ARN) of the gateway.
   late final pulumi.Output<String> gatewayArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -120,16 +122,13 @@ class Cache extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Cache]. {@macro pulumi_storagegateway_cache_cache_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Cache(
-    String name, {
-    CacheArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:storagegateway/cache:Cache',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Cache(String name, {CacheArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:storagegateway/cache:Cache',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.diskId = registerOutput<String>('diskId');
     this.gatewayArn = registerOutput<String>('gatewayArn');
     this.region = registerOutput<String>('region');

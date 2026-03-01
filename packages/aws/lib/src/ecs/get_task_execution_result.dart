@@ -9,13 +9,15 @@ import 'get_task_execution_placement_strategy.dart';
 
 /// Result data returned by getTaskExecution.
 class GetTaskExecutionResult {
-  final List<GetTaskExecutionCapacityProviderStrategy>? capacityProviderStrategies;
+  final List<GetTaskExecutionCapacityProviderStrategy>?
+  capacityProviderStrategies;
   final String? clientToken;
   final String cluster;
   final int? desiredCount;
   final bool? enableEcsManagedTags;
   final bool? enableExecuteCommand;
   final String? group;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? launchType;
@@ -29,6 +31,7 @@ class GetTaskExecutionResult {
   final String region;
   final String? startedBy;
   final Map<String, String>? tags;
+
   /// A list of the provisioned task ARNs.
   final List<String> taskArns;
   final String taskDefinition;
@@ -81,7 +84,12 @@ class GetTaskExecutionResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacityProviderStrategies': ?capacityProviderStrategies == null ? null : pulumi.Input.encodeList<GetTaskExecutionCapacityProviderStrategy, Map<String, dynamic>>(capacityProviderStrategies!, (value) => value.toMap()),
+      'capacityProviderStrategies': ?capacityProviderStrategies == null
+          ? null
+          : pulumi.Input.encodeList<
+              GetTaskExecutionCapacityProviderStrategy,
+              Map<String, dynamic>
+            >(capacityProviderStrategies!, (value) => value.toMap()),
       'clientToken': ?clientToken,
       'cluster': cluster,
       'desiredCount': ?desiredCount,
@@ -90,10 +98,22 @@ class GetTaskExecutionResult {
       'group': ?group,
       'id': id,
       'launchType': ?launchType,
-      'networkConfiguration': ?networkConfiguration == null ? null : networkConfiguration!.toMap(),
+      'networkConfiguration': ?networkConfiguration == null
+          ? null
+          : networkConfiguration!.toMap(),
       'overrides': ?overrides == null ? null : overrides!.toMap(),
-      'placementConstraints': ?placementConstraints == null ? null : pulumi.Input.encodeList<GetTaskExecutionPlacementConstraint, Map<String, dynamic>>(placementConstraints!, (value) => value.toMap()),
-      'placementStrategies': ?placementStrategies == null ? null : pulumi.Input.encodeList<GetTaskExecutionPlacementStrategy, Map<String, dynamic>>(placementStrategies!, (value) => value.toMap()),
+      'placementConstraints': ?placementConstraints == null
+          ? null
+          : pulumi.Input.encodeList<
+              GetTaskExecutionPlacementConstraint,
+              Map<String, dynamic>
+            >(placementConstraints!, (value) => value.toMap()),
+      'placementStrategies': ?placementStrategies == null
+          ? null
+          : pulumi.Input.encodeList<
+              GetTaskExecutionPlacementStrategy,
+              Map<String, dynamic>
+            >(placementStrategies!, (value) => value.toMap()),
       'platformVersion': ?platformVersion,
       'propagateTags': ?propagateTags,
       'referenceId': ?referenceId,
@@ -107,28 +127,74 @@ class GetTaskExecutionResult {
 
   factory GetTaskExecutionResult.fromMap(Map<String, dynamic> map) {
     return GetTaskExecutionResult(
-      capacityProviderStrategies: map['capacityProviderStrategies'] == null ? null : pulumi.Input.decodeList<GetTaskExecutionCapacityProviderStrategy>(map['capacityProviderStrategies'], (value) => GetTaskExecutionCapacityProviderStrategy.fromMap((value as Map).cast<String, dynamic>())),
-      clientToken: map['clientToken'] == null ? null : map['clientToken'] as String,
+      capacityProviderStrategies: map['capacityProviderStrategies'] == null
+          ? null
+          : pulumi.Input.decodeList<GetTaskExecutionCapacityProviderStrategy>(
+              map['capacityProviderStrategies'],
+              (value) => GetTaskExecutionCapacityProviderStrategy.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      clientToken: map['clientToken'] == null
+          ? null
+          : map['clientToken'] as String,
       cluster: map['cluster'] as String,
-      desiredCount: map['desiredCount'] == null ? null : map['desiredCount'] as int,
-      enableEcsManagedTags: map['enableEcsManagedTags'] == null ? null : map['enableEcsManagedTags'] as bool,
-      enableExecuteCommand: map['enableExecuteCommand'] == null ? null : map['enableExecuteCommand'] as bool,
+      desiredCount: map['desiredCount'] == null
+          ? null
+          : map['desiredCount'] as int,
+      enableEcsManagedTags: map['enableEcsManagedTags'] == null
+          ? null
+          : map['enableEcsManagedTags'] as bool,
+      enableExecuteCommand: map['enableExecuteCommand'] == null
+          ? null
+          : map['enableExecuteCommand'] as bool,
       group: map['group'] == null ? null : map['group'] as String,
       id: map['id'] as String,
-      launchType: map['launchType'] == null ? null : map['launchType'] as String,
-      networkConfiguration: map['networkConfiguration'] == null ? null : GetTaskExecutionNetworkConfiguration.fromMap((map['networkConfiguration'] as Map).cast<String, dynamic>()),
-      overrides: map['overrides'] == null ? null : GetTaskExecutionOverrides.fromMap((map['overrides'] as Map).cast<String, dynamic>()),
-      placementConstraints: map['placementConstraints'] == null ? null : pulumi.Input.decodeList<GetTaskExecutionPlacementConstraint>(map['placementConstraints'], (value) => GetTaskExecutionPlacementConstraint.fromMap((value as Map).cast<String, dynamic>())),
-      placementStrategies: map['placementStrategies'] == null ? null : pulumi.Input.decodeList<GetTaskExecutionPlacementStrategy>(map['placementStrategies'], (value) => GetTaskExecutionPlacementStrategy.fromMap((value as Map).cast<String, dynamic>())),
-      platformVersion: map['platformVersion'] == null ? null : map['platformVersion'] as String,
-      propagateTags: map['propagateTags'] == null ? null : map['propagateTags'] as String,
-      referenceId: map['referenceId'] == null ? null : map['referenceId'] as String,
+      launchType: map['launchType'] == null
+          ? null
+          : map['launchType'] as String,
+      networkConfiguration: map['networkConfiguration'] == null
+          ? null
+          : GetTaskExecutionNetworkConfiguration.fromMap(
+              (map['networkConfiguration'] as Map).cast<String, dynamic>(),
+            ),
+      overrides: map['overrides'] == null
+          ? null
+          : GetTaskExecutionOverrides.fromMap(
+              (map['overrides'] as Map).cast<String, dynamic>(),
+            ),
+      placementConstraints: map['placementConstraints'] == null
+          ? null
+          : pulumi.Input.decodeList<GetTaskExecutionPlacementConstraint>(
+              map['placementConstraints'],
+              (value) => GetTaskExecutionPlacementConstraint.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      placementStrategies: map['placementStrategies'] == null
+          ? null
+          : pulumi.Input.decodeList<GetTaskExecutionPlacementStrategy>(
+              map['placementStrategies'],
+              (value) => GetTaskExecutionPlacementStrategy.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      platformVersion: map['platformVersion'] == null
+          ? null
+          : map['platformVersion'] as String,
+      propagateTags: map['propagateTags'] == null
+          ? null
+          : map['propagateTags'] as String,
+      referenceId: map['referenceId'] == null
+          ? null
+          : map['referenceId'] as String,
       region: map['region'] as String,
       startedBy: map['startedBy'] == null ? null : map['startedBy'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
       taskArns: (map['taskArns'] as List).cast<String>(),
       taskDefinition: map['taskDefinition'] as String,
     );
   }
 }
-

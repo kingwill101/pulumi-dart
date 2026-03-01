@@ -12,22 +12,35 @@ import 'google_cloud_dialogflow_cx_v3_response_message_text.dart';
 class GoogleCloudDialogflowCxV3ResponseMessage {
   /// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
   final String? channel;
+
   /// Indicates that the conversation succeeded.
-  final GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess? conversationSuccess;
+  final GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess?
+  conversationSuccess;
+
   /// Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
   final Map<String, dynamic>? knowledgeInfoCard;
+
   /// Hands off conversation to a human agent.
-  final GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff? liveAgentHandoff;
+  final GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff?
+  liveAgentHandoff;
+
   /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
-  final GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText? outputAudioText;
+  final GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText?
+  outputAudioText;
+
   /// Returns a response containing a custom, platform-specific payload.
   final Map<String, String>? payload;
+
   /// Signal that the client should play an audio clip hosted at a client-specific URI. Dialogflow uses this to construct mixed_audio. However, Dialogflow itself does not try to read or process the URI in any way.
   final GoogleCloudDialogflowCxV3ResponseMessagePlayAudio? playAudio;
+
   /// Response type.
   final GoogleCloudDialogflowCxV3ResponseMessageResponseType? responseType;
+
   /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
-  final GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall? telephonyTransferCall;
+  final GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall?
+  telephonyTransferCall;
+
   /// Returns a text response.
   final GoogleCloudDialogflowCxV3ResponseMessageText? text;
 
@@ -58,31 +71,72 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'channel': ?channel,
-      'conversationSuccess': ?conversationSuccess == null ? null : conversationSuccess!.toMap(),
+      'conversationSuccess': ?conversationSuccess == null
+          ? null
+          : conversationSuccess!.toMap(),
       'knowledgeInfoCard': ?knowledgeInfoCard,
-      'liveAgentHandoff': ?liveAgentHandoff == null ? null : liveAgentHandoff!.toMap(),
-      'outputAudioText': ?outputAudioText == null ? null : outputAudioText!.toMap(),
+      'liveAgentHandoff': ?liveAgentHandoff == null
+          ? null
+          : liveAgentHandoff!.toMap(),
+      'outputAudioText': ?outputAudioText == null
+          ? null
+          : outputAudioText!.toMap(),
       'payload': ?payload,
       'playAudio': ?playAudio == null ? null : playAudio!.toMap(),
       'responseType': ?responseType == null ? null : responseType!.value,
-      'telephonyTransferCall': ?telephonyTransferCall == null ? null : telephonyTransferCall!.toMap(),
+      'telephonyTransferCall': ?telephonyTransferCall == null
+          ? null
+          : telephonyTransferCall!.toMap(),
       'text': ?text == null ? null : text!.toMap(),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3ResponseMessage.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ResponseMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3ResponseMessage(
       channel: map['channel'] == null ? null : map['channel'] as String,
-      conversationSuccess: map['conversationSuccess'] == null ? null : GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess.fromMap((map['conversationSuccess'] as Map).cast<String, dynamic>()),
-      knowledgeInfoCard: map['knowledgeInfoCard'] == null ? null : (map['knowledgeInfoCard'] as Map).cast<String, dynamic>(),
-      liveAgentHandoff: map['liveAgentHandoff'] == null ? null : GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff.fromMap((map['liveAgentHandoff'] as Map).cast<String, dynamic>()),
-      outputAudioText: map['outputAudioText'] == null ? null : GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText.fromMap((map['outputAudioText'] as Map).cast<String, dynamic>()),
-      payload: map['payload'] == null ? null : (map['payload'] as Map).cast<String, String>(),
-      playAudio: map['playAudio'] == null ? null : GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromMap((map['playAudio'] as Map).cast<String, dynamic>()),
-      responseType: map['responseType'] == null ? null : GoogleCloudDialogflowCxV3ResponseMessageResponseType.fromValue(map['responseType'] as String),
-      telephonyTransferCall: map['telephonyTransferCall'] == null ? null : GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall.fromMap((map['telephonyTransferCall'] as Map).cast<String, dynamic>()),
-      text: map['text'] == null ? null : GoogleCloudDialogflowCxV3ResponseMessageText.fromMap((map['text'] as Map).cast<String, dynamic>()),
+      conversationSuccess: map['conversationSuccess'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess.fromMap(
+              (map['conversationSuccess'] as Map).cast<String, dynamic>(),
+            ),
+      knowledgeInfoCard: map['knowledgeInfoCard'] == null
+          ? null
+          : (map['knowledgeInfoCard'] as Map).cast<String, dynamic>(),
+      liveAgentHandoff: map['liveAgentHandoff'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff.fromMap(
+              (map['liveAgentHandoff'] as Map).cast<String, dynamic>(),
+            ),
+      outputAudioText: map['outputAudioText'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText.fromMap(
+              (map['outputAudioText'] as Map).cast<String, dynamic>(),
+            ),
+      payload: map['payload'] == null
+          ? null
+          : (map['payload'] as Map).cast<String, String>(),
+      playAudio: map['playAudio'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromMap(
+              (map['playAudio'] as Map).cast<String, dynamic>(),
+            ),
+      responseType: map['responseType'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3ResponseMessageResponseType.fromValue(
+              map['responseType'] as String,
+            ),
+      telephonyTransferCall: map['telephonyTransferCall'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall.fromMap(
+              (map['telephonyTransferCall'] as Map).cast<String, dynamic>(),
+            ),
+      text: map['text'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3ResponseMessageText.fromMap(
+              (map['text'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

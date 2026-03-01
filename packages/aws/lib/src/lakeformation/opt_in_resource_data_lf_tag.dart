@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class OptInResourceDataLfTag {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final String? catalogId;
@@ -33,4 +32,3 @@ class OptInResourceDataLfTag {
     );
   }
 }
-

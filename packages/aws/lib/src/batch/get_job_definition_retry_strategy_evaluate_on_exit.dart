@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetJobDefinitionRetryStrategyEvaluateOnExit {
   /// Specifies the action to take if all of the specified conditions (onStatusReason, onReason, and onExitCode) are met. The values aren't case sensitive.
   final String action;
+
   /// Contains a glob pattern to match against the decimal representation of the ExitCode returned for a job.
   final String onExitCode;
+
   /// Contains a glob pattern to match against the Reason returned for a job.
   final String onReason;
+
   /// Contains a glob pattern to match against the StatusReason returned for a job.
   final String onStatusReason;
 
@@ -32,7 +34,9 @@ class GetJobDefinitionRetryStrategyEvaluateOnExit {
     };
   }
 
-  factory GetJobDefinitionRetryStrategyEvaluateOnExit.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionRetryStrategyEvaluateOnExit.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionRetryStrategyEvaluateOnExit(
       action: map['action'] as String,
       onExitCode: map['onExitCode'] as String,
@@ -41,4 +45,3 @@ class GetJobDefinitionRetryStrategyEvaluateOnExit {
     );
   }
 }
-

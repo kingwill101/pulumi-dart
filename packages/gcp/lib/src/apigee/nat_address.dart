@@ -1073,13 +1073,17 @@ import 'nat_address_args.dart';
 class NatAddress extends pulumi.CustomResource {
   /// Flag that specifies whether the reserved NAT address should be activate.
   late final pulumi.Output<bool?> activate;
+
   /// The Apigee instance associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
   late final pulumi.Output<String> instanceId;
+
   /// The allocated NAT IP address.
   late final pulumi.Output<String> ipAddress;
+
   /// Resource ID of the NAT address.
   late final pulumi.Output<String> name;
+
   /// State of the NAT IP address.
   late final pulumi.Output<String> state;
 
@@ -1092,11 +1096,11 @@ class NatAddress extends pulumi.CustomResource {
     NatAddressArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/natAddress:NatAddress',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:apigee/natAddress:NatAddress',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.activate = registerOutput<bool?>('activate');
     this.instanceId = registerOutput<String>('instanceId');
     this.ipAddress = registerOutput<String>('ipAddress');

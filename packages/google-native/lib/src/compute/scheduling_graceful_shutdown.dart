@@ -6,16 +6,14 @@ import 'duration.dart';
 class SchedulingGracefulShutdown {
   /// Opts-in for graceful shutdown.
   final bool? enabled;
+
   /// Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
   final Duration? maxDuration;
 
   /// Creates a new [SchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.
   /// [maxDuration] Specifies time needed to gracefully shut down the instance. After that time, the instance goes to STOPPING even if graceful shutdown is not completed.
-  SchedulingGracefulShutdown({
-    this.enabled,
-    this.maxDuration,
-  });
+  SchedulingGracefulShutdown({this.enabled, this.maxDuration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,8 +25,11 @@ class SchedulingGracefulShutdown {
   factory SchedulingGracefulShutdown.fromMap(Map<String, dynamic> map) {
     return SchedulingGracefulShutdown(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      maxDuration: map['maxDuration'] == null ? null : Duration.fromMap((map['maxDuration'] as Map).cast<String, dynamic>()),
+      maxDuration: map['maxDuration'] == null
+          ? null
+          : Duration.fromMap(
+              (map['maxDuration'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

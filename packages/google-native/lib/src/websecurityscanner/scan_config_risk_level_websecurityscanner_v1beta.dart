@@ -13,7 +13,8 @@ enum ScanConfigRiskLevelWebsecurityscannerV1beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScanConfigRiskLevelWebsecurityscannerV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ScanConfigRiskLevelWebsecurityscannerV1beta value: $value',
+    );
   }
 }
-

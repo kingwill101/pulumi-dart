@@ -8,10 +8,14 @@ import 'google_cloud_identitytoolkit_admin_v2_password_policy_version.dart';
 class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
   /// Users must have a password compliant with the password policy to sign-in.
   final bool? forceUpgradeOnSignin;
+
   /// Which enforcement mode to use for the password policy.
-  final GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState? passwordPolicyEnforcementState;
+  final GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState?
+  passwordPolicyEnforcementState;
+
   /// Must be of length 1. Contains the strength attributes for the password policy.
-  final List<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>? passwordPolicyVersions;
+  final List<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>?
+  passwordPolicyVersions;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig].
   /// [forceUpgradeOnSignin] Users must have a password compliant with the password policy to sign-in.
@@ -26,17 +30,42 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'forceUpgradeOnSignin': ?forceUpgradeOnSignin,
-      'passwordPolicyEnforcementState': ?passwordPolicyEnforcementState == null ? null : passwordPolicyEnforcementState!.value,
-      'passwordPolicyVersions': ?passwordPolicyVersions == null ? null : pulumi.Input.encodeList<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion, Map<String, dynamic>>(passwordPolicyVersions!, (value) => value.toMap()),
+      'passwordPolicyEnforcementState': ?passwordPolicyEnforcementState == null
+          ? null
+          : passwordPolicyEnforcementState!.value,
+      'passwordPolicyVersions': ?passwordPolicyVersions == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion,
+              Map<String, dynamic>
+            >(passwordPolicyVersions!, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig(
-      forceUpgradeOnSignin: map['forceUpgradeOnSignin'] == null ? null : map['forceUpgradeOnSignin'] as bool,
-      passwordPolicyEnforcementState: map['passwordPolicyEnforcementState'] == null ? null : GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState.fromValue(map['passwordPolicyEnforcementState'] as String),
-      passwordPolicyVersions: map['passwordPolicyVersions'] == null ? null : pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion>(map['passwordPolicyVersions'], (value) => GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion.fromMap((value as Map).cast<String, dynamic>())),
+      forceUpgradeOnSignin: map['forceUpgradeOnSignin'] == null
+          ? null
+          : map['forceUpgradeOnSignin'] as bool,
+      passwordPolicyEnforcementState:
+          map['passwordPolicyEnforcementState'] == null
+          ? null
+          : GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigPasswordPolicyEnforcementState.fromValue(
+              map['passwordPolicyEnforcementState'] as String,
+            ),
+      passwordPolicyVersions: map['passwordPolicyVersions'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion
+            >(
+              map['passwordPolicyVersions'],
+              (value) =>
+                  GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

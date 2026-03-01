@@ -7,26 +7,38 @@ import 'get_core_network_policy_document_segment_action_when_sent_to.dart';
 class GetCoreNetworkPolicyDocumentSegmentAction {
   /// Action to take for the chosen segment. Valid values: `create-route`, `share`, `send-via`, `send-to`, and `associate-routing-policy` (available in policy version `2025.11` and later).
   final String action;
+
   /// A user-defined string describing the segment action.
   final String? description;
+
   /// List of strings containing CIDRs. You can define the IPv4 and IPv6 CIDR notation for each AWS Region. For example, `10.1.0.0/16` or `2001:db8::/56`. This is an array of CIDR notation strings.
   final List<String>? destinationCidrBlocks;
+
   /// A list of strings. Valid values include `["blackhole"]` or a list of attachment ids.
   final List<String>? destinations;
+
   /// Associates routing policies with specific edge location pairs. Available in policy version `2025.11` and later. Detailed below.
-  final GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation? edgeLocationAssociation;
+  final GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation?
+  edgeLocationAssociation;
+
   /// String. When `action` is `share`, a `mode` value of `attachment-route` places the attachment and return routes in each of the `share_with` segments. When `action` is `send-via`, indicates the mode used for packets. Valid values: `attachment-route`, `single-hop`, `dual-hop`.
   final String? mode;
+
   /// A list of routing policy names to apply to segment sharing. The routing policies control how routes are propagated between the shared segments. Only applicable when `action` is `share`. Available in policy version `2025.11` and later.
   final List<String>? routingPolicyNames;
+
   /// Name of the segment.
   final String segment;
+
   /// A set subtraction of segments to not share with.
   final List<String>? shareWithExcepts;
+
   /// A list of strings to share with. Must be a substring is all segments. Valid values include: `["*"]` or `["<segment-names>"]`.
   final List<String>? shareWiths;
+
   /// The network function groups and any edge overrides associated with the action.
   final GetCoreNetworkPolicyDocumentSegmentActionVia? via;
+
   /// The destination segments for the `send-via` or `send-to` `action`.
   final GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo? whenSentTo;
 
@@ -64,7 +76,9 @@ class GetCoreNetworkPolicyDocumentSegmentAction {
       'description': ?description,
       'destinationCidrBlocks': ?destinationCidrBlocks,
       'destinations': ?destinations,
-      'edgeLocationAssociation': ?edgeLocationAssociation == null ? null : edgeLocationAssociation!.toMap(),
+      'edgeLocationAssociation': ?edgeLocationAssociation == null
+          ? null
+          : edgeLocationAssociation!.toMap(),
       'mode': ?mode,
       'routingPolicyNames': ?routingPolicyNames,
       'segment': segment,
@@ -75,21 +89,46 @@ class GetCoreNetworkPolicyDocumentSegmentAction {
     };
   }
 
-  factory GetCoreNetworkPolicyDocumentSegmentAction.fromMap(Map<String, dynamic> map) {
+  factory GetCoreNetworkPolicyDocumentSegmentAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCoreNetworkPolicyDocumentSegmentAction(
       action: map['action'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      destinationCidrBlocks: map['destinationCidrBlocks'] == null ? null : (map['destinationCidrBlocks'] as List).cast<String>(),
-      destinations: map['destinations'] == null ? null : (map['destinations'] as List).cast<String>(),
-      edgeLocationAssociation: map['edgeLocationAssociation'] == null ? null : GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation.fromMap((map['edgeLocationAssociation'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      destinationCidrBlocks: map['destinationCidrBlocks'] == null
+          ? null
+          : (map['destinationCidrBlocks'] as List).cast<String>(),
+      destinations: map['destinations'] == null
+          ? null
+          : (map['destinations'] as List).cast<String>(),
+      edgeLocationAssociation: map['edgeLocationAssociation'] == null
+          ? null
+          : GetCoreNetworkPolicyDocumentSegmentActionEdgeLocationAssociation.fromMap(
+              (map['edgeLocationAssociation'] as Map).cast<String, dynamic>(),
+            ),
       mode: map['mode'] == null ? null : map['mode'] as String,
-      routingPolicyNames: map['routingPolicyNames'] == null ? null : (map['routingPolicyNames'] as List).cast<String>(),
+      routingPolicyNames: map['routingPolicyNames'] == null
+          ? null
+          : (map['routingPolicyNames'] as List).cast<String>(),
       segment: map['segment'] as String,
-      shareWithExcepts: map['shareWithExcepts'] == null ? null : (map['shareWithExcepts'] as List).cast<String>(),
-      shareWiths: map['shareWiths'] == null ? null : (map['shareWiths'] as List).cast<String>(),
-      via: map['via'] == null ? null : GetCoreNetworkPolicyDocumentSegmentActionVia.fromMap((map['via'] as Map).cast<String, dynamic>()),
-      whenSentTo: map['whenSentTo'] == null ? null : GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo.fromMap((map['whenSentTo'] as Map).cast<String, dynamic>()),
+      shareWithExcepts: map['shareWithExcepts'] == null
+          ? null
+          : (map['shareWithExcepts'] as List).cast<String>(),
+      shareWiths: map['shareWiths'] == null
+          ? null
+          : (map['shareWiths'] as List).cast<String>(),
+      via: map['via'] == null
+          ? null
+          : GetCoreNetworkPolicyDocumentSegmentActionVia.fromMap(
+              (map['via'] as Map).cast<String, dynamic>(),
+            ),
+      whenSentTo: map['whenSentTo'] == null
+          ? null
+          : GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo.fromMap(
+              (map['whenSentTo'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

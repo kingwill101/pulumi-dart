@@ -6,16 +6,21 @@ import 'get_connect_filter.dart';
 /// Result data returned by getConnect.
 class GetConnectResult {
   final List<GetConnectFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Tunnel protocol
   final String protocol;
   final String region;
+
   /// Key-value tags for the EC2 Transit Gateway Connect
   final Map<String, String> tags;
   final String transitGatewayConnectId;
+
   /// EC2 Transit Gateway identifier
   final String transitGatewayId;
+
   /// The underlaying VPC attachment
   final String transportAttachmentId;
 
@@ -41,7 +46,12 @@ class GetConnectResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetConnectFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?filters == null
+          ? null
+          : pulumi.Input.encodeList<GetConnectFilter, Map<String, dynamic>>(
+              filters!,
+              (value) => value.toMap(),
+            ),
       'id': id,
       'protocol': protocol,
       'region': region,
@@ -54,7 +64,14 @@ class GetConnectResult {
 
   factory GetConnectResult.fromMap(Map<String, dynamic> map) {
     return GetConnectResult(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetConnectFilter>(map['filters'], (value) => GetConnectFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<GetConnectFilter>(
+              map['filters'],
+              (value) => GetConnectFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       id: map['id'] as String,
       protocol: map['protocol'] as String,
       region: map['region'] as String,
@@ -65,4 +82,3 @@ class GetConnectResult {
     );
   }
 }
-

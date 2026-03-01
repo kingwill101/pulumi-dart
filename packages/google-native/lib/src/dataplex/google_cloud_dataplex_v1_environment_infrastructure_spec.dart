@@ -6,9 +6,12 @@ import 'google_cloud_dataplex_v1_environment_infrastructure_spec_os_image_runtim
 /// Configuration for the underlying infrastructure used to run workloads.
 class GoogleCloudDataplexV1EnvironmentInfrastructureSpec {
   /// Optional. Compute resources needed for analyze interactive workloads.
-  final GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources? compute;
+  final GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources?
+  compute;
+
   /// Software Runtime Configuration for analyze interactive workloads.
-  final GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime osImage;
+  final GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime
+  osImage;
 
   /// Creates a new [GoogleCloudDataplexV1EnvironmentInfrastructureSpec].
   /// [compute] Optional. Compute resources needed for analyze interactive workloads.
@@ -25,11 +28,19 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpec {
     };
   }
 
-  factory GoogleCloudDataplexV1EnvironmentInfrastructureSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1EnvironmentInfrastructureSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1EnvironmentInfrastructureSpec(
-      compute: map['compute'] == null ? null : GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources.fromMap((map['compute'] as Map).cast<String, dynamic>()),
-      osImage: GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime.fromMap((map['osImage'] as Map).cast<String, dynamic>()),
+      compute: map['compute'] == null
+          ? null
+          : GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources.fromMap(
+              (map['compute'] as Map).cast<String, dynamic>(),
+            ),
+      osImage:
+          GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime.fromMap(
+            (map['osImage'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

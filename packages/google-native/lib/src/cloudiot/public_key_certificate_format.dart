@@ -1,6 +1,8 @@
 /// The certificate format.
 enum PublicKeyCertificateFormat {
-  unspecifiedPublicKeyCertificateFormat("UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT"),
+  unspecifiedPublicKeyCertificateFormat(
+    "UNSPECIFIED_PUBLIC_KEY_CERTIFICATE_FORMAT",
+  ),
   x509CertificatePem("X509_CERTIFICATE_PEM");
 
   const PublicKeyCertificateFormat(this.value);
@@ -15,4 +17,3 @@ enum PublicKeyCertificateFormat {
     throw ArgumentError('Unknown PublicKeyCertificateFormat value: $value');
   }
 }
-

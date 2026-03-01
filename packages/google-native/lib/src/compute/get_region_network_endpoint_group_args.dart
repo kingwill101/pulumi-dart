@@ -19,10 +19,11 @@ class GetRegionNetworkEndpointGroupArgs {
     required String networkEndpointGroup,
     String? project,
     required String region,
-  }) :
-      networkEndpointGroup = pulumi.Input.asInput<String>(networkEndpointGroup),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : networkEndpointGroup = pulumi.Input.asInput<String>(
+         networkEndpointGroup,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetRegionNetworkEndpointGroupArgs {
     );
   }
 }
-

@@ -19,4 +19,3 @@ enum DataCollectorType {
     throw ArgumentError('Unknown DataCollectorType value: $value');
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request`, `origin-request`, `viewer-response`, `origin-response`.
   final String eventType;
+
   /// When set to true, the request body is exposed to the Lambda function. Default: `false`.
   final bool? includeBody;
+
   /// ARN of the Lambda function.
   final String lambdaFunctionArn;
 
@@ -27,12 +28,15 @@ class MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation {
     };
   }
 
-  factory MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation.fromMap(Map<String, dynamic> map) {
+  factory MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MultitenantDistributionDefaultCacheBehaviorLambdaFunctionAssociation(
       eventType: map['eventType'] as String,
-      includeBody: map['includeBody'] == null ? null : map['includeBody'] as bool,
+      includeBody: map['includeBody'] == null
+          ? null
+          : map['includeBody'] as bool,
       lambdaFunctionArn: map['lambdaFunctionArn'] as String,
     );
   }
 }
-

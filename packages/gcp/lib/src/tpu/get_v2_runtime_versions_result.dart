@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getV2RuntimeVersions.
 class GetV2RuntimeVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String project;
+
   /// The list of runtime versions available for the given project and zone.
   final List<String> versions;
   final String zone;
@@ -40,4 +40,3 @@ class GetV2RuntimeVersionsResult {
     );
   }
 }
-

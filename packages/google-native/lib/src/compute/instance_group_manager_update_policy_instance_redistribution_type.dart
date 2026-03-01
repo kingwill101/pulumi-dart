@@ -6,13 +6,17 @@ enum InstanceGroupManagerUpdatePolicyInstanceRedistributionType {
   const InstanceGroupManagerUpdatePolicyInstanceRedistributionType(this.value);
   final String value;
 
-  static InstanceGroupManagerUpdatePolicyInstanceRedistributionType fromValue(String value) {
-    for (final item in InstanceGroupManagerUpdatePolicyInstanceRedistributionType.values) {
+  static InstanceGroupManagerUpdatePolicyInstanceRedistributionType fromValue(
+    String value,
+  ) {
+    for (final item
+        in InstanceGroupManagerUpdatePolicyInstanceRedistributionType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyInstanceRedistributionType value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerUpdatePolicyInstanceRedistributionType value: $value',
+    );
   }
 }
-

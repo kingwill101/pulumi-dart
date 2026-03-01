@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta {
   /// The name of the header to set.
   final String headerName;
+
   /// The value to set the named header to.
   final String headerValue;
 
@@ -22,11 +22,12 @@ class SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta {
     };
   }
 
-  factory SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponseComputeBeta(
       headerName: map['headerName'] as String,
       headerValue: map['headerValue'] as String,
     );
   }
 }
-

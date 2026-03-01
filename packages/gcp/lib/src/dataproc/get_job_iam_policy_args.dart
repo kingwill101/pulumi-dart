@@ -16,12 +16,8 @@ class GetJobIamPolicyArgs {
   /// [jobId] The name or relative resource id of the job to manage IAM policies for.
   /// [project] Optional.
   /// [region] Optional.
-  GetJobIamPolicyArgs({
-    required String jobId,
-    String? project,
-    String? region,
-  }) :
-      jobId = pulumi.Input.asInput<String>(jobId),
+  GetJobIamPolicyArgs({required String jobId, String? project, String? region})
+    : jobId = pulumi.Input.asInput<String>(jobId),
       project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
@@ -41,4 +37,3 @@ class GetJobIamPolicyArgs {
     );
   }
 }
-

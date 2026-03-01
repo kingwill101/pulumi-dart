@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetProtectionArgs {
   /// Unique identifier for the protection.
   final pulumi.Input<String>? protectionId;
+
   /// ARN (Amazon Resource Name) of the resource being protected.
   ///
   /// > Exactly one of `protection_id` or `resource_arn` is required.
@@ -17,11 +18,8 @@ class GetProtectionArgs {
   /// Creates a new [GetProtectionArgs].
   /// [protectionId] Unique identifier for the protection.
   /// [resourceArn] ARN (Amazon Resource Name) of the resource being protected.
-  GetProtectionArgs({
-    String? protectionId,
-    String? resourceArn,
-  }) :
-      protectionId = pulumi.Input.asOptionalInput<String>(protectionId),
+  GetProtectionArgs({String? protectionId, String? resourceArn})
+    : protectionId = pulumi.Input.asOptionalInput<String>(protectionId),
       resourceArn = pulumi.Input.asOptionalInput<String>(resourceArn);
 
   Map<String, dynamic> toMap() {
@@ -33,9 +31,12 @@ class GetProtectionArgs {
 
   factory GetProtectionArgs.fromMap(Map<String, dynamic> map) {
     return GetProtectionArgs(
-      protectionId: map['protectionId'] == null ? null : map['protectionId'] as String,
-      resourceArn: map['resourceArn'] == null ? null : map['resourceArn'] as String,
+      protectionId: map['protectionId'] == null
+          ? null
+          : map['protectionId'] as String,
+      resourceArn: map['resourceArn'] == null
+          ? null
+          : map['resourceArn'] as String,
     );
   }
 }
-

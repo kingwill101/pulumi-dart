@@ -18,6 +18,7 @@ class V2PolicyOrchestratorOrchestratedResource {
   ///
   /// <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
   final String? id;
+
   /// OS policy assignment is an API resource that is used to
   /// apply a set of OS policies to a dynamically targeted group of Compute Engine
   /// VM instances.
@@ -30,7 +31,8 @@ class V2PolicyOrchestratorOrchestratedResource {
   /// [OS policy and OS policy
   /// assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
   /// Structure is documented below.
-  final V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload? osPolicyAssignmentV1Payload;
+  final V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload?
+  osPolicyAssignmentV1Payload;
 
   /// Creates a new [V2PolicyOrchestratorOrchestratedResource].
   /// [id] Optional. ID of the resource to be used while generating set of affected resources.
@@ -43,15 +45,23 @@ class V2PolicyOrchestratorOrchestratedResource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'osPolicyAssignmentV1Payload': ?osPolicyAssignmentV1Payload == null ? null : osPolicyAssignmentV1Payload!.toMap(),
+      'osPolicyAssignmentV1Payload': ?osPolicyAssignmentV1Payload == null
+          ? null
+          : osPolicyAssignmentV1Payload!.toMap(),
     };
   }
 
-  factory V2PolicyOrchestratorOrchestratedResource.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorOrchestratedResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorOrchestratedResource(
       id: map['id'] == null ? null : map['id'] as String,
-      osPolicyAssignmentV1Payload: map['osPolicyAssignmentV1Payload'] == null ? null : V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap((map['osPolicyAssignmentV1Payload'] as Map).cast<String, dynamic>()),
+      osPolicyAssignmentV1Payload: map['osPolicyAssignmentV1Payload'] == null
+          ? null
+          : V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap(
+              (map['osPolicyAssignmentV1Payload'] as Map)
+                  .cast<String, dynamic>(),
+            ),
     );
   }
 }
-

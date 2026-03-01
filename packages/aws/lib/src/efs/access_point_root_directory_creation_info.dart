@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AccessPointRootDirectoryCreationInfo {
   /// POSIX group ID to apply to the `root_directory`.
   final int ownerGid;
+
   /// POSIX user ID to apply to the `root_directory`.
   final int ownerUid;
+
   /// POSIX permissions to apply to the RootDirectory, in the format of an octal number representing the file's mode bits.
   final String permissions;
 
@@ -27,7 +28,9 @@ class AccessPointRootDirectoryCreationInfo {
     };
   }
 
-  factory AccessPointRootDirectoryCreationInfo.fromMap(Map<String, dynamic> map) {
+  factory AccessPointRootDirectoryCreationInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessPointRootDirectoryCreationInfo(
       ownerGid: map['ownerGid'] as int,
       ownerUid: map['ownerUid'] as int,
@@ -35,4 +38,3 @@ class AccessPointRootDirectoryCreationInfo {
     );
   }
 }
-

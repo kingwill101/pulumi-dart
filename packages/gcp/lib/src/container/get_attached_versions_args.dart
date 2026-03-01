@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAttachedVersionsArgs {
   /// The location to list versions for.
   final pulumi.Input<String> location;
+
   /// ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
   /// Defaults to the project that the provider is authenticated with.
   final pulumi.Input<String> project;
@@ -16,18 +17,12 @@ class GetAttachedVersionsArgs {
   /// Creates a new [GetAttachedVersionsArgs].
   /// [location] The location to list versions for.
   /// [project] ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
-  GetAttachedVersionsArgs({
-    required String location,
-    required String project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
+  GetAttachedVersionsArgs({required String location, required String project})
+    : location = pulumi.Input.asInput<String>(location),
       project = pulumi.Input.asInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-      'project': project,
-    };
+    return <String, dynamic>{'location': location, 'project': project};
   }
 
   factory GetAttachedVersionsArgs.fromMap(Map<String, dynamic> map) {
@@ -37,4 +32,3 @@ class GetAttachedVersionsArgs {
     );
   }
 }
-

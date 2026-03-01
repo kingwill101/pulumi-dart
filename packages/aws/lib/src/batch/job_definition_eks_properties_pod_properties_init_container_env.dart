@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class JobDefinitionEksPropertiesPodPropertiesInitContainerEnv {
   /// Name of the job definition.
   final String name;
+
   /// Value of the environment variable.
   final String value;
 
@@ -16,17 +16,15 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainerEnv {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory JobDefinitionEksPropertiesPodPropertiesInitContainerEnv.fromMap(Map<String, dynamic> map) {
+  factory JobDefinitionEksPropertiesPodPropertiesInitContainerEnv.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobDefinitionEksPropertiesPodPropertiesInitContainerEnv(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

@@ -9,9 +9,7 @@ class HttpsTrigger {
 
   /// Creates a new [HttpsTrigger].
   /// [securityLevel] The security level for the function.
-  HttpsTrigger({
-    this.securityLevel,
-  });
+  HttpsTrigger({this.securityLevel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class HttpsTrigger {
 
   factory HttpsTrigger.fromMap(Map<String, dynamic> map) {
     return HttpsTrigger(
-      securityLevel: map['securityLevel'] == null ? null : HttpsTriggerSecurityLevel.fromValue(map['securityLevel'] as String),
+      securityLevel: map['securityLevel'] == null
+          ? null
+          : HttpsTriggerSecurityLevel.fromValue(map['securityLevel'] as String),
     );
   }
 }
-

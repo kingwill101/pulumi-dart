@@ -19,10 +19,9 @@ class GetChannelArgs {
     required String channelId,
     String? project,
     required String siteId,
-  }) :
-      channelId = pulumi.Input.asInput<String>(channelId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteId = pulumi.Input.asInput<String>(siteId);
+  }) : channelId = pulumi.Input.asInput<String>(channelId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       siteId = pulumi.Input.asInput<String>(siteId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetChannelArgs {
     );
   }
 }
-

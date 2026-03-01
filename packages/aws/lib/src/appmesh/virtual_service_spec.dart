@@ -8,9 +8,7 @@ class VirtualServiceSpec {
 
   /// Creates a new [VirtualServiceSpec].
   /// [provider] App Mesh object that is acting as the provider for a virtual service. You can specify a single virtual node or virtual router.
-  VirtualServiceSpec({
-    this.provider,
-  });
+  VirtualServiceSpec({this.provider});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,11 @@ class VirtualServiceSpec {
 
   factory VirtualServiceSpec.fromMap(Map<String, dynamic> map) {
     return VirtualServiceSpec(
-      provider: map['provider'] == null ? null : VirtualServiceSpecProvider.fromMap((map['provider'] as Map).cast<String, dynamic>()),
+      provider: map['provider'] == null
+          ? null
+          : VirtualServiceSpecProvider.fromMap(
+              (map['provider'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

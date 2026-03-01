@@ -16,9 +16,8 @@ class GetAnnotationSpecSetArgs {
   GetAnnotationSpecSetArgs({
     required String annotationSpecSetId,
     String? project,
-  }) :
-      annotationSpecSetId = pulumi.Input.asInput<String>(annotationSpecSetId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : annotationSpecSetId = pulumi.Input.asInput<String>(annotationSpecSetId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetAnnotationSpecSetArgs {
     );
   }
 }
-

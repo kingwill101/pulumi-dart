@@ -9,9 +9,7 @@ class RepositoryConfigResponse {
 
   /// Creates a new [RepositoryConfigResponse].
   /// [pypiRepositoryConfig] Optional. Configuration for PyPi repository.
-  RepositoryConfigResponse({
-    required this.pypiRepositoryConfig,
-  });
+  RepositoryConfigResponse({required this.pypiRepositoryConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class RepositoryConfigResponse {
 
   factory RepositoryConfigResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryConfigResponse(
-      pypiRepositoryConfig: PyPiRepositoryConfigResponse.fromMap((map['pypiRepositoryConfig'] as Map).cast<String, dynamic>()),
+      pypiRepositoryConfig: PyPiRepositoryConfigResponse.fromMap(
+        (map['pypiRepositoryConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

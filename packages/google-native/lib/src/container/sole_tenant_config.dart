@@ -10,20 +10,28 @@ class SoleTenantConfig {
 
   /// Creates a new [SoleTenantConfig].
   /// [nodeAffinities] NodeAffinities used to match to a shared sole tenant node group.
-  SoleTenantConfig({
-    this.nodeAffinities,
-  });
+  SoleTenantConfig({this.nodeAffinities});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeAffinities': ?nodeAffinities == null ? null : pulumi.Input.encodeList<NodeAffinity, Map<String, dynamic>>(nodeAffinities!, (value) => value.toMap()),
+      'nodeAffinities': ?nodeAffinities == null
+          ? null
+          : pulumi.Input.encodeList<NodeAffinity, Map<String, dynamic>>(
+              nodeAffinities!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory SoleTenantConfig.fromMap(Map<String, dynamic> map) {
     return SoleTenantConfig(
-      nodeAffinities: map['nodeAffinities'] == null ? null : pulumi.Input.decodeList<NodeAffinity>(map['nodeAffinities'], (value) => NodeAffinity.fromMap((value as Map).cast<String, dynamic>())),
+      nodeAffinities: map['nodeAffinities'] == null
+          ? null
+          : pulumi.Input.decodeList<NodeAffinity>(
+              map['nodeAffinities'],
+              (value) =>
+                  NodeAffinity.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum CustomConnectorVersionType {
     throw ArgumentError('Unknown CustomConnectorVersionType value: $value');
   }
 }
-

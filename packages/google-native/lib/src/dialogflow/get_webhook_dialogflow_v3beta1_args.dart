@@ -22,11 +22,10 @@ class GetWebhookDialogflowV3beta1Args {
     required String location,
     String? project,
     required String webhookId,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      webhookId = pulumi.Input.asInput<String>(webhookId);
+  }) : agentId = pulumi.Input.asInput<String>(agentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       webhookId = pulumi.Input.asInput<String>(webhookId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetWebhookDialogflowV3beta1Args {
     );
   }
 }
-

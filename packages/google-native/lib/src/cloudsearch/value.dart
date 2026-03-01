@@ -40,13 +40,24 @@ class Value {
 
   factory Value.fromMap(Map<String, dynamic> map) {
     return Value(
-      booleanValue: map['booleanValue'] == null ? null : map['booleanValue'] as bool,
-      dateValue: map['dateValue'] == null ? null : Date.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
-      doubleValue: map['doubleValue'] == null ? null : map['doubleValue'] as double,
-      integerValue: map['integerValue'] == null ? null : map['integerValue'] as String,
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
-      timestampValue: map['timestampValue'] == null ? null : map['timestampValue'] as String,
+      booleanValue: map['booleanValue'] == null
+          ? null
+          : map['booleanValue'] as bool,
+      dateValue: map['dateValue'] == null
+          ? null
+          : Date.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
+      doubleValue: map['doubleValue'] == null
+          ? null
+          : map['doubleValue'] as double,
+      integerValue: map['integerValue'] == null
+          ? null
+          : map['integerValue'] as String,
+      stringValue: map['stringValue'] == null
+          ? null
+          : map['stringValue'] as String,
+      timestampValue: map['timestampValue'] == null
+          ? null
+          : map['timestampValue'] as String,
     );
   }
 }
-

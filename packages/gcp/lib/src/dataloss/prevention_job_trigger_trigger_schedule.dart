@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PreventionJobTriggerTriggerSchedule {
   /// With this option a job is started a regular periodic basis. For example: every day (86400 seconds).
   /// A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
@@ -10,9 +9,7 @@ class PreventionJobTriggerTriggerSchedule {
 
   /// Creates a new [PreventionJobTriggerTriggerSchedule].
   /// [recurrencePeriodDuration] With this option a job is started a regular periodic basis. For example: every day (86400 seconds).
-  PreventionJobTriggerTriggerSchedule({
-    this.recurrencePeriodDuration,
-  });
+  PreventionJobTriggerTriggerSchedule({this.recurrencePeriodDuration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,10 +17,13 @@ class PreventionJobTriggerTriggerSchedule {
     };
   }
 
-  factory PreventionJobTriggerTriggerSchedule.fromMap(Map<String, dynamic> map) {
+  factory PreventionJobTriggerTriggerSchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionJobTriggerTriggerSchedule(
-      recurrencePeriodDuration: map['recurrencePeriodDuration'] == null ? null : map['recurrencePeriodDuration'] as String,
+      recurrencePeriodDuration: map['recurrencePeriodDuration'] == null
+          ? null
+          : map['recurrencePeriodDuration'] as String,
     );
   }
 }
-

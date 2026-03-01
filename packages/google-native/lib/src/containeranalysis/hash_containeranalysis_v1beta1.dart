@@ -6,22 +6,17 @@ import 'hash_type_containeranalysis_v1beta1.dart';
 class HashContaineranalysisV1beta1 {
   /// The type of hash that was performed.
   final HashTypeContaineranalysisV1beta1 type;
+
   /// The hash value.
   final String value;
 
   /// Creates a new [HashContaineranalysisV1beta1].
   /// [type] The type of hash that was performed.
   /// [value] The hash value.
-  HashContaineranalysisV1beta1({
-    required this.type,
-    required this.value,
-  });
+  HashContaineranalysisV1beta1({required this.type, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type.value,
-      'value': value,
-    };
+    return <String, dynamic>{'type': type.value, 'value': value};
   }
 
   factory HashContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
@@ -31,4 +26,3 @@ class HashContaineranalysisV1beta1 {
     );
   }
 }
-

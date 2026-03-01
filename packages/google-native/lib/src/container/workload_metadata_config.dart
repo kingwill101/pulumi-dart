@@ -9,20 +9,17 @@ class WorkloadMetadataConfig {
 
   /// Creates a new [WorkloadMetadataConfig].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node pool.
-  WorkloadMetadataConfig({
-    this.mode,
-  });
+  WorkloadMetadataConfig({this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': ?mode == null ? null : mode!.value,
-    };
+    return <String, dynamic>{'mode': ?mode == null ? null : mode!.value};
   }
 
   factory WorkloadMetadataConfig.fromMap(Map<String, dynamic> map) {
     return WorkloadMetadataConfig(
-      mode: map['mode'] == null ? null : WorkloadMetadataConfigMode.fromValue(map['mode'] as String),
+      mode: map['mode'] == null
+          ? null
+          : WorkloadMetadataConfigMode.fromValue(map['mode'] as String),
     );
   }
 }
-

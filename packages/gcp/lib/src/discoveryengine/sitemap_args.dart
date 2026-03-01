@@ -9,12 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SitemapArgs {
   /// The unique id of the data store.
   final pulumi.Input<String> dataStoreId;
+
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Public URI for the sitemap, e.g. "www.example.com/sitemap.xml".
   final pulumi.Input<String>? uri;
 
@@ -28,11 +31,10 @@ class SitemapArgs {
     required String location,
     String? project,
     String? uri,
-  }) :
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      uri = pulumi.Input.asOptionalInput<String>(uri);
+  }) : dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       uri = pulumi.Input.asOptionalInput<String>(uri);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +54,3 @@ class SitemapArgs {
     );
   }
 }
-

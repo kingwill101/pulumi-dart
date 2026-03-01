@@ -9,20 +9,19 @@ class BareMetalLoadBalancerNodePoolConfigResponse {
 
   /// Creates a new [BareMetalLoadBalancerNodePoolConfigResponse].
   /// [nodePoolConfig] The generic configuration for a node pool running a load balancer.
-  BareMetalLoadBalancerNodePoolConfigResponse({
-    required this.nodePoolConfig,
-  });
+  BareMetalLoadBalancerNodePoolConfigResponse({required this.nodePoolConfig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nodePoolConfig': nodePoolConfig.toMap(),
-    };
+    return <String, dynamic>{'nodePoolConfig': nodePoolConfig.toMap()};
   }
 
-  factory BareMetalLoadBalancerNodePoolConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory BareMetalLoadBalancerNodePoolConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalLoadBalancerNodePoolConfigResponse(
-      nodePoolConfig: BareMetalNodePoolConfigResponse.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
+      nodePoolConfig: BareMetalNodePoolConfigResponse.fromMap(
+        (map['nodePoolConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

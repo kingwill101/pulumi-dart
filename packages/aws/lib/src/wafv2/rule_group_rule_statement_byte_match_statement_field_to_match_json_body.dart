@@ -5,10 +5,14 @@ import 'rule_group_rule_statement_byte_match_statement_field_to_match_json_body_
 class RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBody {
   /// What to do when JSON parsing fails. Defaults to evaluating up to the first parsing failure. Valid values are `EVALUATE_AS_STRING`, `MATCH` and `NO_MATCH`.
   final String? invalidFallbackBehavior;
+
   /// The patterns to look for in the JSON body. You must specify exactly one setting: either `all` or `included_paths`. See [JsonMatchPattern](https://docs.aws.amazon.com/waf/latest/APIReference/API_JsonMatchPattern.html) for details.
-  final RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern matchPattern;
+  final RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern
+  matchPattern;
+
   /// The parts of the JSON to match against using the `match_pattern`. Valid values are `ALL`, `KEY` and `VALUE`.
   final String matchScope;
+
   /// What to do if the body is larger than can be inspected. Valid values are `CONTINUE` (default), `MATCH` and `NO_MATCH`.
   final String? oversizeHandling;
 
@@ -33,13 +37,21 @@ class RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBody {
     };
   }
 
-  factory RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBody.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBody.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBody(
-      invalidFallbackBehavior: map['invalidFallbackBehavior'] == null ? null : map['invalidFallbackBehavior'] as String,
-      matchPattern: RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap((map['matchPattern'] as Map).cast<String, dynamic>()),
+      invalidFallbackBehavior: map['invalidFallbackBehavior'] == null
+          ? null
+          : map['invalidFallbackBehavior'] as String,
+      matchPattern:
+          RuleGroupRuleStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern.fromMap(
+            (map['matchPattern'] as Map).cast<String, dynamic>(),
+          ),
       matchScope: map['matchScope'] as String,
-      oversizeHandling: map['oversizeHandling'] == null ? null : map['oversizeHandling'] as String,
+      oversizeHandling: map['oversizeHandling'] == null
+          ? null
+          : map['oversizeHandling'] as String,
     );
   }
 }
-

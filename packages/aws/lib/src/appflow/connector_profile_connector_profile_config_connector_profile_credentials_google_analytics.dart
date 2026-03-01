@@ -6,7 +6,8 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAna
   final String? accessToken;
   final String clientId;
   final String clientSecret;
-  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest? oauthRequest;
+  final ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest?
+  oauthRequest;
   final String? refreshToken;
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics].
@@ -33,14 +34,23 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAna
     };
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics(
-      accessToken: map['accessToken'] == null ? null : map['accessToken'] as String,
+      accessToken: map['accessToken'] == null
+          ? null
+          : map['accessToken'] as String,
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
-      oauthRequest: map['oauthRequest'] == null ? null : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest.fromMap((map['oauthRequest'] as Map).cast<String, dynamic>()),
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as String,
+      oauthRequest: map['oauthRequest'] == null
+          ? null
+          : ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalyticsOauthRequest.fromMap(
+              (map['oauthRequest'] as Map).cast<String, dynamic>(),
+            ),
+      refreshToken: map['refreshToken'] == null
+          ? null
+          : map['refreshToken'] as String,
     );
   }
 }
-

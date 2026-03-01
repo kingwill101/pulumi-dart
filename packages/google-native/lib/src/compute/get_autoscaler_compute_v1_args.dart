@@ -19,10 +19,9 @@ class GetAutoscalerComputeV1Args {
     required String autoscaler,
     String? project,
     required String zone,
-  }) :
-      autoscaler = pulumi.Input.asInput<String>(autoscaler),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : autoscaler = pulumi.Input.asInput<String>(autoscaler),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetAutoscalerComputeV1Args {
     );
   }
 }
-

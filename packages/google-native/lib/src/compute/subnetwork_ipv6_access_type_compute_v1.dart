@@ -12,7 +12,8 @@ enum SubnetworkIpv6AccessTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubnetworkIpv6AccessTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown SubnetworkIpv6AccessTypeComputeV1 value: $value',
+    );
   }
 }
-

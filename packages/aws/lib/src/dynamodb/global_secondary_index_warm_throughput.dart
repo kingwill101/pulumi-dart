@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GlobalSecondaryIndexWarmThroughput {
   /// Number of read operations this index can instantaneously support.
   final int readUnitsPerSecond;
+
   /// Number of write operations this index can instantaneously support.
   final int writeUnitsPerSecond;
 
@@ -29,4 +29,3 @@ class GlobalSecondaryIndexWarmThroughput {
     );
   }
 }
-

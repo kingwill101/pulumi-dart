@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Driver scheduling configuration.
 class DriverSchedulingConfigResponse {
   /// The amount of memory in MB the driver is requesting.
   final int memoryMb;
+
   /// The number of vCPUs the driver is requesting.
   final int vcores;
 
@@ -17,10 +17,7 @@ class DriverSchedulingConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'memoryMb': memoryMb,
-      'vcores': vcores,
-    };
+    return <String, dynamic>{'memoryMb': memoryMb, 'vcores': vcores};
   }
 
   factory DriverSchedulingConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class DriverSchedulingConfigResponse {
     );
   }
 }
-

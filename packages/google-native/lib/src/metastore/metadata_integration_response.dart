@@ -9,20 +9,17 @@ class MetadataIntegrationResponse {
 
   /// Creates a new [MetadataIntegrationResponse].
   /// [dataCatalogConfig] Optional. The integration config for the Data Catalog service.
-  MetadataIntegrationResponse({
-    required this.dataCatalogConfig,
-  });
+  MetadataIntegrationResponse({required this.dataCatalogConfig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dataCatalogConfig': dataCatalogConfig.toMap(),
-    };
+    return <String, dynamic>{'dataCatalogConfig': dataCatalogConfig.toMap()};
   }
 
   factory MetadataIntegrationResponse.fromMap(Map<String, dynamic> map) {
     return MetadataIntegrationResponse(
-      dataCatalogConfig: DataCatalogConfigResponse.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
+      dataCatalogConfig: DataCatalogConfigResponse.fromMap(
+        (map['dataCatalogConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

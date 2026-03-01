@@ -7,14 +7,19 @@ import 'google_cloud_dialogflow_v2_smart_reply_metrics_response.dart';
 class GetEvaluationResult {
   /// Creation time of this model.
   final String createTime;
+
   /// Optional. The display name of the model evaluation. At most 64 bytes long.
   final String displayName;
+
   /// Optional. The configuration of the evaluation task.
   final GoogleCloudDialogflowV2EvaluationConfigResponse evaluationConfig;
+
   /// The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
   final String name;
+
   /// Human eval template in csv format. It tooks real-world conversations provided through input dataset, generates example suggestions for customer to verify quality of the model. For Smart Reply, the generated csv file contains columns of Context, (Suggestions,Q1,Q2)*3, Actual reply. Context contains at most 10 latest messages in the conversation prior to the current suggestion. Q1: "Would you send it as the next message of agent?" Evaluated based on whether the suggest is appropriate to be sent by agent in current context. Q2: "Does the suggestion move the conversation closer to resolution?" Evaluated based on whether the suggestion provide solutions, or answers customer's question or collect information from customer to resolve the customer's issue. Actual reply column contains the actual agent reply sent in the context.
   final String rawHumanEvalTemplateCsv;
+
   /// Only available when model is for smart reply.
   final GoogleCloudDialogflowV2SmartReplyMetricsResponse smartReplyMetrics;
 
@@ -49,11 +54,15 @@ class GetEvaluationResult {
     return GetEvaluationResult(
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
-      evaluationConfig: GoogleCloudDialogflowV2EvaluationConfigResponse.fromMap((map['evaluationConfig'] as Map).cast<String, dynamic>()),
+      evaluationConfig: GoogleCloudDialogflowV2EvaluationConfigResponse.fromMap(
+        (map['evaluationConfig'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       rawHumanEvalTemplateCsv: map['rawHumanEvalTemplateCsv'] as String,
-      smartReplyMetrics: GoogleCloudDialogflowV2SmartReplyMetricsResponse.fromMap((map['smartReplyMetrics'] as Map).cast<String, dynamic>()),
+      smartReplyMetrics:
+          GoogleCloudDialogflowV2SmartReplyMetricsResponse.fromMap(
+            (map['smartReplyMetrics'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

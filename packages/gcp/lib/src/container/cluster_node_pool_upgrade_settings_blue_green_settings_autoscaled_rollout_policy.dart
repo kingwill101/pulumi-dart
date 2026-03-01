@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
   /// Time in seconds to wait after cordoning the blue pool before draining the nodes.
   final String? waitForDrainDuration;
@@ -12,15 +11,16 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'waitForDrainDuration': ?waitForDrainDuration,
-    };
+    return <String, dynamic>{'waitForDrainDuration': ?waitForDrainDuration};
   }
 
-  factory ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy(
-      waitForDrainDuration: map['waitForDrainDuration'] == null ? null : map['waitForDrainDuration'] as String,
+      waitForDrainDuration: map['waitForDrainDuration'] == null
+          ? null
+          : map['waitForDrainDuration'] as String,
     );
   }
 }
-

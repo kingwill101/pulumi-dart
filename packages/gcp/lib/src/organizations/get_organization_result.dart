@@ -1,19 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getOrganization.
 class GetOrganizationResult {
   /// Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   final String createTime;
+
   /// The Google for Work customer ID of the Organization.
   final String directoryCustomerId;
   final String domain;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The Organization's current lifecycle state.
   final String lifecycleState;
+
   /// The resource name of the Organization in the form `organizations/{organization_id}`.
   final String name;
+
   /// The Organization ID.
   final String orgId;
   final String? organization;
@@ -60,8 +64,9 @@ class GetOrganizationResult {
       lifecycleState: map['lifecycleState'] as String,
       name: map['name'] as String,
       orgId: map['orgId'] as String,
-      organization: map['organization'] == null ? null : map['organization'] as String,
+      organization: map['organization'] == null
+          ? null
+          : map['organization'] as String,
     );
   }
 }
-

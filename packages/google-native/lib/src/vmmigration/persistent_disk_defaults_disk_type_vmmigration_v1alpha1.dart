@@ -8,13 +8,17 @@ enum PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1 {
   const PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1(this.value);
   final String value;
 
-  static PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1 fromValue(String value) {
-    for (final item in PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1.values) {
+  static PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown PersistentDiskDefaultsDiskTypeVmmigrationV1alpha1 value: $value',
+    );
   }
 }
-

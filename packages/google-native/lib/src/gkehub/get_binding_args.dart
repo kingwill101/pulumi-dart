@@ -22,11 +22,10 @@ class GetBindingArgs {
     required String location,
     required String membershipId,
     String? project,
-  }) :
-      bindingId = pulumi.Input.asInput<String>(bindingId),
-      location = pulumi.Input.asInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : bindingId = pulumi.Input.asInput<String>(bindingId),
+       location = pulumi.Input.asInput<String>(location),
+       membershipId = pulumi.Input.asInput<String>(membershipId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetBindingArgs {
     );
   }
 }
-

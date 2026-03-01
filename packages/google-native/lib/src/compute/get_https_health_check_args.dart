@@ -13,11 +13,8 @@ class GetHttpsHealthCheckArgs {
   /// Creates a new [GetHttpsHealthCheckArgs].
   /// [httpsHealthCheck] Required.
   /// [project] Optional.
-  GetHttpsHealthCheckArgs({
-    required String httpsHealthCheck,
-    String? project,
-  }) :
-      httpsHealthCheck = pulumi.Input.asInput<String>(httpsHealthCheck),
+  GetHttpsHealthCheckArgs({required String httpsHealthCheck, String? project})
+    : httpsHealthCheck = pulumi.Input.asInput<String>(httpsHealthCheck),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetHttpsHealthCheckArgs {
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'database_dump_type.dart';
 class DatabaseDump {
   /// The type of the database.
   final DatabaseDumpDatabaseType? databaseType;
+
   /// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
   final String? gcsUri;
+
   /// The name of the source database.
   final String? sourceDatabase;
+
   /// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
   final DatabaseDumpType? type;
 
@@ -37,11 +40,16 @@ class DatabaseDump {
 
   factory DatabaseDump.fromMap(Map<String, dynamic> map) {
     return DatabaseDump(
-      databaseType: map['databaseType'] == null ? null : DatabaseDumpDatabaseType.fromValue(map['databaseType'] as String),
+      databaseType: map['databaseType'] == null
+          ? null
+          : DatabaseDumpDatabaseType.fromValue(map['databaseType'] as String),
       gcsUri: map['gcsUri'] == null ? null : map['gcsUri'] as String,
-      sourceDatabase: map['sourceDatabase'] == null ? null : map['sourceDatabase'] as String,
-      type: map['type'] == null ? null : DatabaseDumpType.fromValue(map['type'] as String),
+      sourceDatabase: map['sourceDatabase'] == null
+          ? null
+          : map['sourceDatabase'] as String,
+      type: map['type'] == null
+          ? null
+          : DatabaseDumpType.fromValue(map['type'] as String),
     );
   }
 }
-

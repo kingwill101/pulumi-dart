@@ -22,11 +22,10 @@ class GetEntityTypeDialogflowV2beta1Args {
     String? languageCode,
     required String location,
     String? project,
-  }) :
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+       languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +39,11 @@ class GetEntityTypeDialogflowV2beta1Args {
   factory GetEntityTypeDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
     return GetEntityTypeDialogflowV2beta1Args(
       entityTypeId: map['entityTypeId'] as String,
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
+      languageCode: map['languageCode'] == null
+          ? null
+          : map['languageCode'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

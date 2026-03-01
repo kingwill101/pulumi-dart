@@ -9,16 +9,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ChannelArgs {
   /// Required. Immutable. A unique ID within the site that identifies the channel.
   final pulumi.Input<String> channelId;
+
   /// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
   final pulumi.Input<String>? expireTime;
+
   /// Text labels used for extra metadata and/or filtering.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
   final pulumi.Input<int>? retainedReleaseCount;
   final pulumi.Input<String> siteId;
+
   /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
   final pulumi.Input<String>? ttl;
 
@@ -40,15 +45,16 @@ class ChannelArgs {
     int? retainedReleaseCount,
     required String siteId,
     String? ttl,
-  }) :
-      channelId = pulumi.Input.asInput<String>(channelId),
-      expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      retainedReleaseCount = pulumi.Input.asOptionalInput<int>(retainedReleaseCount),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      ttl = pulumi.Input.asOptionalInput<String>(ttl);
+  }) : channelId = pulumi.Input.asInput<String>(channelId),
+       expireTime = pulumi.Input.asOptionalInput<String>(expireTime),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       retainedReleaseCount = pulumi.Input.asOptionalInput<int>(
+         retainedReleaseCount,
+       ),
+       siteId = pulumi.Input.asInput<String>(siteId),
+       ttl = pulumi.Input.asOptionalInput<String>(ttl);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,14 +72,19 @@ class ChannelArgs {
   factory ChannelArgs.fromMap(Map<String, dynamic> map) {
     return ChannelArgs(
       channelId: map['channelId'] as String,
-      expireTime: map['expireTime'] == null ? null : map['expireTime'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      expireTime: map['expireTime'] == null
+          ? null
+          : map['expireTime'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      retainedReleaseCount: map['retainedReleaseCount'] == null ? null : map['retainedReleaseCount'] as int,
+      retainedReleaseCount: map['retainedReleaseCount'] == null
+          ? null
+          : map['retainedReleaseCount'] as int,
       siteId: map['siteId'] as String,
       ttl: map['ttl'] == null ? null : map['ttl'] as String,
     );
   }
 }
-

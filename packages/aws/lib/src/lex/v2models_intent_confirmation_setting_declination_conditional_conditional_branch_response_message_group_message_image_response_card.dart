@@ -5,11 +5,17 @@ import 'v2models_intent_confirmation_setting_declination_conditional_conditional
 
 class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCard {
   /// Configuration blocks for buttons that should be displayed on the response card. The arrangement of the buttons is determined by the platform that displays the button. See `button`.
-  final List<V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCardButton>? buttons;
+  final List<
+    V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCardButton
+  >?
+  buttons;
+
   /// URL of an image to display on the response card. The image URL must be publicly available so that the platform displaying the response card has access to the image.
   final String? imageUrl;
+
   /// Subtitle to display on the response card. The format of the subtitle is determined by the platform displaying the response card.
   final String? subtitle;
+
   /// Title to display on the response card. The format of the title is determined by the platform displaying the response card.
   final String title;
 
@@ -27,20 +33,36 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchRe
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buttons': ?buttons == null ? null : pulumi.Input.encodeList<V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCardButton, Map<String, dynamic>>(buttons!, (value) => value.toMap()),
+      'buttons': ?buttons == null
+          ? null
+          : pulumi.Input.encodeList<
+              V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCardButton,
+              Map<String, dynamic>
+            >(buttons!, (value) => value.toMap()),
       'imageUrl': ?imageUrl,
       'subtitle': ?subtitle,
       'title': title,
     };
   }
 
-  factory V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCard.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCard.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCard(
-      buttons: map['buttons'] == null ? null : pulumi.Input.decodeList<V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCardButton>(map['buttons'], (value) => V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCardButton.fromMap((value as Map).cast<String, dynamic>())),
+      buttons: map['buttons'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCardButton
+            >(
+              map['buttons'],
+              (value) =>
+                  V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageImageResponseCardButton.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       imageUrl: map['imageUrl'] == null ? null : map['imageUrl'] as String,
       subtitle: map['subtitle'] == null ? null : map['subtitle'] as String,
       title: map['title'] as String,
     );
   }
 }
-

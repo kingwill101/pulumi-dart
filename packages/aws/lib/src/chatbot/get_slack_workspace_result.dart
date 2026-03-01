@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSlackWorkspace.
 class GetSlackWorkspaceResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// ID of the Slack Workspace assigned by AWS Chatbot.
   final String slackTeamId;
   final String slackTeamName;
@@ -40,4 +40,3 @@ class GetSlackWorkspaceResult {
     );
   }
 }
-

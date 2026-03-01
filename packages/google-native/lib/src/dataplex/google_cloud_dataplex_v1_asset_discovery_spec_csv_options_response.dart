@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Describe CSV and similar semi-structured data formats.
 class GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse {
   /// Optional. The delimiter being used to separate values. This defaults to ','.
   final String delimiter;
+
   /// Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
   final bool disableTypeInference;
+
   /// Optional. The character encoding of the data. The default is UTF-8.
   final String encoding;
+
   /// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
   final int headerRows;
 
@@ -33,7 +35,9 @@ class GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse(
       delimiter: map['delimiter'] as String,
       disableTypeInference: map['disableTypeInference'] as bool,
@@ -42,4 +46,3 @@ class GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse {
     );
   }
 }
-

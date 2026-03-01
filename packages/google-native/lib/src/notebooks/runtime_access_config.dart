@@ -6,16 +6,14 @@ import 'runtime_access_config_access_type.dart';
 class RuntimeAccessConfig {
   /// The type of access mode this instance.
   final RuntimeAccessConfigAccessType? accessType;
+
   /// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
   final String? runtimeOwner;
 
   /// Creates a new [RuntimeAccessConfig].
   /// [accessType] The type of access mode this instance.
   /// [runtimeOwner] The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
-  RuntimeAccessConfig({
-    this.accessType,
-    this.runtimeOwner,
-  });
+  RuntimeAccessConfig({this.accessType, this.runtimeOwner});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class RuntimeAccessConfig {
 
   factory RuntimeAccessConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeAccessConfig(
-      accessType: map['accessType'] == null ? null : RuntimeAccessConfigAccessType.fromValue(map['accessType'] as String),
-      runtimeOwner: map['runtimeOwner'] == null ? null : map['runtimeOwner'] as String,
+      accessType: map['accessType'] == null
+          ? null
+          : RuntimeAccessConfigAccessType.fromValue(
+              map['accessType'] as String,
+            ),
+      runtimeOwner: map['runtimeOwner'] == null
+          ? null
+          : map['runtimeOwner'] as String,
     );
   }
 }
-

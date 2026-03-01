@@ -60,7 +60,11 @@ class GetNetworkAttachmentResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionEndpoints': pulumi.Input.encodeList<GetNetworkAttachmentConnectionEndpoint, Map<String, dynamic>>(connectionEndpoints, (value) => value.toMap()),
+      'connectionEndpoints':
+          pulumi.Input.encodeList<
+            GetNetworkAttachmentConnectionEndpoint,
+            Map<String, dynamic>
+          >(connectionEndpoints, (value) => value.toMap()),
       'connectionPreference': connectionPreference,
       'creationTimestamp': creationTimestamp,
       'description': description,
@@ -81,7 +85,13 @@ class GetNetworkAttachmentResult {
 
   factory GetNetworkAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkAttachmentResult(
-      connectionEndpoints: pulumi.Input.decodeList<GetNetworkAttachmentConnectionEndpoint>(map['connectionEndpoints'], (value) => GetNetworkAttachmentConnectionEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      connectionEndpoints:
+          pulumi.Input.decodeList<GetNetworkAttachmentConnectionEndpoint>(
+            map['connectionEndpoints'],
+            (value) => GetNetworkAttachmentConnectionEndpoint.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       connectionPreference: map['connectionPreference'] as String,
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
@@ -100,4 +110,3 @@ class GetNetworkAttachmentResult {
     );
   }
 }
-

@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterArgs {
   /// Name of the resource.
   final pulumi.Input<String> name;
+
   /// The resource name of the private cloud that this cluster belongs.
   final pulumi.Input<String> parent;
 
   /// Creates a new [GetClusterArgs].
   /// [name] Name of the resource.
   /// [parent] The resource name of the private cloud that this cluster belongs.
-  GetClusterArgs({
-    required String name,
-    required String parent,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
+  GetClusterArgs({required String name, required String parent})
+    : name = pulumi.Input.asInput<String>(name),
       parent = pulumi.Input.asInput<String>(parent);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'parent': parent,
-    };
+    return <String, dynamic>{'name': name, 'parent': parent};
   }
 
   factory GetClusterArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetClusterArgs {
     );
   }
 }
-

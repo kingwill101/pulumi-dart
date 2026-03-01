@@ -6,10 +6,13 @@ import 'tls_context_response.dart';
 class ClientTlsSettingsResponse {
   /// Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
   final TlsContextResponse clientTlsContext;
+
   /// Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
   final String mode;
+
   /// SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
   final String sni;
+
   /// A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
   final List<String> subjectAltNames;
 
@@ -36,11 +39,12 @@ class ClientTlsSettingsResponse {
 
   factory ClientTlsSettingsResponse.fromMap(Map<String, dynamic> map) {
     return ClientTlsSettingsResponse(
-      clientTlsContext: TlsContextResponse.fromMap((map['clientTlsContext'] as Map).cast<String, dynamic>()),
+      clientTlsContext: TlsContextResponse.fromMap(
+        (map['clientTlsContext'] as Map).cast<String, dynamic>(),
+      ),
       mode: map['mode'] as String,
       sni: map['sni'] as String,
       subjectAltNames: (map['subjectAltNames'] as List).cast<String>(),
     );
   }
 }
-

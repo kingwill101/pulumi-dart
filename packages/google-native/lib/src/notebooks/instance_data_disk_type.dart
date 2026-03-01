@@ -18,4 +18,3 @@ enum InstanceDataDiskType {
     throw ArgumentError('Unknown InstanceDataDiskType value: $value');
   }
 }
-

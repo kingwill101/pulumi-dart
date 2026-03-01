@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageSsmlMessage {
   /// SSML text that defines the prompt.
   final String value;
@@ -12,15 +11,14 @@ class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageSsml
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'value': value,
-    };
+    return <String, dynamic>{'value': value};
   }
 
-  factory V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageSsmlMessage.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageSsmlMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageSsmlMessage(
       value: map['value'] as String,
     );
   }
 }
-

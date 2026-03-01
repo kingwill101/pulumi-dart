@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstanceScratchDisk {
   /// Name with which the attached disk is accessible
   /// under `/dev/disk/by-id/`
   final String deviceName;
+
   /// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
   final String interface;
+
   /// The size of the image in gigabytes.
   final int size;
 
@@ -36,4 +37,3 @@ class GetInstanceScratchDisk {
     );
   }
 }
-

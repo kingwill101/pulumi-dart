@@ -8,10 +8,13 @@ import 'validation_report_response_migrationcenter_v1alpha1.dart';
 class ExecutionReportResponseMigrationcenterV1alpha1 {
   /// Validation errors encountered during the execution of the import job.
   final ValidationReportResponseMigrationcenterV1alpha1 executionErrors;
+
   /// Total number of asset frames reported for the import job.
   final int framesReported;
+
   /// List of job-level errors. Deprecated, use the job errors under execution_errors instead.
   final List<ImportErrorResponseMigrationcenterV1alpha1> jobErrors;
+
   /// Total number of rows in the import job.
   final int totalRowsCount;
 
@@ -31,18 +34,31 @@ class ExecutionReportResponseMigrationcenterV1alpha1 {
     return <String, dynamic>{
       'executionErrors': executionErrors.toMap(),
       'framesReported': framesReported,
-      'jobErrors': pulumi.Input.encodeList<ImportErrorResponseMigrationcenterV1alpha1, Map<String, dynamic>>(jobErrors, (value) => value.toMap()),
+      'jobErrors':
+          pulumi.Input.encodeList<
+            ImportErrorResponseMigrationcenterV1alpha1,
+            Map<String, dynamic>
+          >(jobErrors, (value) => value.toMap()),
       'totalRowsCount': totalRowsCount,
     };
   }
 
-  factory ExecutionReportResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ExecutionReportResponseMigrationcenterV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExecutionReportResponseMigrationcenterV1alpha1(
-      executionErrors: ValidationReportResponseMigrationcenterV1alpha1.fromMap((map['executionErrors'] as Map).cast<String, dynamic>()),
+      executionErrors: ValidationReportResponseMigrationcenterV1alpha1.fromMap(
+        (map['executionErrors'] as Map).cast<String, dynamic>(),
+      ),
       framesReported: map['framesReported'] as int,
-      jobErrors: pulumi.Input.decodeList<ImportErrorResponseMigrationcenterV1alpha1>(map['jobErrors'], (value) => ImportErrorResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      jobErrors:
+          pulumi.Input.decodeList<ImportErrorResponseMigrationcenterV1alpha1>(
+            map['jobErrors'],
+            (value) => ImportErrorResponseMigrationcenterV1alpha1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       totalRowsCount: map['totalRowsCount'] as int,
     );
   }
 }
-

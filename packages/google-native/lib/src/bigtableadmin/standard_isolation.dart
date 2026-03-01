@@ -9,9 +9,7 @@ class StandardIsolation {
 
   /// Creates a new [StandardIsolation].
   /// [priority] The priority of requests sent using this app profile.
-  StandardIsolation({
-    this.priority,
-  });
+  StandardIsolation({this.priority});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class StandardIsolation {
 
   factory StandardIsolation.fromMap(Map<String, dynamic> map) {
     return StandardIsolation(
-      priority: map['priority'] == null ? null : StandardIsolationPriority.fromValue(map['priority'] as String),
+      priority: map['priority'] == null
+          ? null
+          : StandardIsolationPriority.fromValue(map['priority'] as String),
     );
   }
 }
-

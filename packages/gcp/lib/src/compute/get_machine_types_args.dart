@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMachineTypesArgs {
   /// A filter expression that filters machine types listed in the response.
   final pulumi.Input<String>? filter;
+
   /// Project from which to list available zones. Defaults to project declared in the provider.
   final pulumi.Input<String>? project;
+
   /// Zone from which to list machine types.
   final pulumi.Input<String>? zone;
 
@@ -18,12 +20,8 @@ class GetMachineTypesArgs {
   /// [filter] A filter expression that filters machine types listed in the response.
   /// [project] Project from which to list available zones. Defaults to project declared in the provider.
   /// [zone] Zone from which to list machine types.
-  GetMachineTypesArgs({
-    String? filter,
-    String? project,
-    String? zone,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
+  GetMachineTypesArgs({String? filter, String? project, String? zone})
+    : filter = pulumi.Input.asOptionalInput<String>(filter),
       project = pulumi.Input.asOptionalInput<String>(project),
       zone = pulumi.Input.asOptionalInput<String>(zone);
 
@@ -43,4 +41,3 @@ class GetMachineTypesArgs {
     );
   }
 }
-

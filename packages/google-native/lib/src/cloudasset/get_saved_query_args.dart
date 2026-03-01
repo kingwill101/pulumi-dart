@@ -19,10 +19,9 @@ class GetSavedQueryArgs {
     required String savedQueryId,
     required String v1Id,
     required String v1Id1,
-  }) :
-      savedQueryId = pulumi.Input.asInput<String>(savedQueryId),
-      v1Id = pulumi.Input.asInput<String>(v1Id),
-      v1Id1 = pulumi.Input.asInput<String>(v1Id1);
+  }) : savedQueryId = pulumi.Input.asInput<String>(savedQueryId),
+       v1Id = pulumi.Input.asInput<String>(v1Id),
+       v1Id1 = pulumi.Input.asInput<String>(v1Id1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetSavedQueryArgs {
     );
   }
 }
-

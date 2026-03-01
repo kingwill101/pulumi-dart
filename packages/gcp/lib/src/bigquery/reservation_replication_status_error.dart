@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ReservationReplicationStatusError {
   /// (Output)
   /// The status code, which should be an enum value of [google.rpc.Code](https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.rpc#google.rpc.Code).
   final int? code;
+
   /// (Output)
   /// A developer-facing error message, which should be in English.
   final String? message;
@@ -12,16 +12,10 @@ class ReservationReplicationStatusError {
   /// Creates a new [ReservationReplicationStatusError].
   /// [code] (Output)
   /// [message] (Output)
-  ReservationReplicationStatusError({
-    this.code,
-    this.message,
-  });
+  ReservationReplicationStatusError({this.code, this.message});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code,
-      'message': ?message,
-    };
+    return <String, dynamic>{'code': ?code, 'message': ?message};
   }
 
   factory ReservationReplicationStatusError.fromMap(Map<String, dynamic> map) {
@@ -31,4 +25,3 @@ class ReservationReplicationStatusError {
     );
   }
 }
-

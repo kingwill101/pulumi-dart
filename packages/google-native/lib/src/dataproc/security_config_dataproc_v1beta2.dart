@@ -9,20 +9,23 @@ class SecurityConfigDataprocV1beta2 {
 
   /// Creates a new [SecurityConfigDataprocV1beta2].
   /// [kerberosConfig] Optional. Kerberos related configuration.
-  SecurityConfigDataprocV1beta2({
-    this.kerberosConfig,
-  });
+  SecurityConfigDataprocV1beta2({this.kerberosConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'kerberosConfig': ?kerberosConfig == null ? null : kerberosConfig!.toMap(),
+      'kerberosConfig': ?kerberosConfig == null
+          ? null
+          : kerberosConfig!.toMap(),
     };
   }
 
   factory SecurityConfigDataprocV1beta2.fromMap(Map<String, dynamic> map) {
     return SecurityConfigDataprocV1beta2(
-      kerberosConfig: map['kerberosConfig'] == null ? null : KerberosConfigDataprocV1beta2.fromMap((map['kerberosConfig'] as Map).cast<String, dynamic>()),
+      kerberosConfig: map['kerberosConfig'] == null
+          ? null
+          : KerberosConfigDataprocV1beta2.fromMap(
+              (map['kerberosConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

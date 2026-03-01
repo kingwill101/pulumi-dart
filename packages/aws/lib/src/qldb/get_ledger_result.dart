@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLedger.
 class GetLedgerResult {
   final String arn;
   final bool deletionProtection;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String kmsKey;
@@ -59,4 +59,3 @@ class GetLedgerResult {
     );
   }
 }
-

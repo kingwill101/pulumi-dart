@@ -6,8 +6,10 @@ import 'filter_response.dart';
 class PubSubResponse {
   /// Enable notifications for Pub/Sub.
   final bool enabled;
+
   /// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
   final FilterResponse filter;
+
   /// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
   final String topic;
 
@@ -32,9 +34,10 @@ class PubSubResponse {
   factory PubSubResponse.fromMap(Map<String, dynamic> map) {
     return PubSubResponse(
       enabled: map['enabled'] as bool,
-      filter: FilterResponse.fromMap((map['filter'] as Map).cast<String, dynamic>()),
+      filter: FilterResponse.fromMap(
+        (map['filter'] as Map).cast<String, dynamic>(),
+      ),
       topic: map['topic'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLaunchTemplateBlockDeviceMappingEb {
   final String deleteOnTermination;
   final String encrypted;
@@ -48,7 +47,9 @@ class GetLaunchTemplateBlockDeviceMappingEb {
     };
   }
 
-  factory GetLaunchTemplateBlockDeviceMappingEb.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplateBlockDeviceMappingEb.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplateBlockDeviceMappingEb(
       deleteOnTermination: map['deleteOnTermination'] as String,
       encrypted: map['encrypted'] as String,
@@ -62,4 +63,3 @@ class GetLaunchTemplateBlockDeviceMappingEb {
     );
   }
 }
-

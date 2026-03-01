@@ -19,10 +19,9 @@ class GetReportConfigMigrationcenterV1alpha1Args {
     required String location,
     String? project,
     required String reportConfigId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reportConfigId = pulumi.Input.asInput<String>(reportConfigId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       reportConfigId = pulumi.Input.asInput<String>(reportConfigId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetReportConfigMigrationcenterV1alpha1Args {
     };
   }
 
-  factory GetReportConfigMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetReportConfigMigrationcenterV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReportConfigMigrationcenterV1alpha1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +41,3 @@ class GetReportConfigMigrationcenterV1alpha1Args {
     );
   }
 }
-

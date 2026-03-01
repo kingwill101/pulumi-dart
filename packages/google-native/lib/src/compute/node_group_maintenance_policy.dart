@@ -17,4 +17,3 @@ enum NodeGroupMaintenancePolicy {
     throw ArgumentError('Unknown NodeGroupMaintenancePolicy value: $value');
   }
 }
-

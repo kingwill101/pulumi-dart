@@ -16,7 +16,8 @@ enum GoogleCloudMlV1PredictionInputDataFormat {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1PredictionInputDataFormat value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1PredictionInputDataFormat value: $value',
+    );
   }
 }
-

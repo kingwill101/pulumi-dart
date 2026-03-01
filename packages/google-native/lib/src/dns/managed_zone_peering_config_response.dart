@@ -4,6 +4,7 @@ import 'managed_zone_peering_config_target_network_response.dart';
 
 class ManagedZonePeeringConfigResponse {
   final String kind;
+
   /// The network with which to peer.
   final ManagedZonePeeringConfigTargetNetworkResponse targetNetwork;
 
@@ -25,8 +26,9 @@ class ManagedZonePeeringConfigResponse {
   factory ManagedZonePeeringConfigResponse.fromMap(Map<String, dynamic> map) {
     return ManagedZonePeeringConfigResponse(
       kind: map['kind'] as String,
-      targetNetwork: ManagedZonePeeringConfigTargetNetworkResponse.fromMap((map['targetNetwork'] as Map).cast<String, dynamic>()),
+      targetNetwork: ManagedZonePeeringConfigTargetNetworkResponse.fromMap(
+        (map['targetNetwork'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

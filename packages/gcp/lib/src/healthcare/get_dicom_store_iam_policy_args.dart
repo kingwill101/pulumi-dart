@@ -15,15 +15,11 @@ class GetDicomStoreIamPolicyArgs {
 
   /// Creates a new [GetDicomStoreIamPolicyArgs].
   /// [dicomStoreId] The DICOM store ID, in the form
-  GetDicomStoreIamPolicyArgs({
-    required String dicomStoreId,
-  }) :
-      dicomStoreId = pulumi.Input.asInput<String>(dicomStoreId);
+  GetDicomStoreIamPolicyArgs({required String dicomStoreId})
+    : dicomStoreId = pulumi.Input.asInput<String>(dicomStoreId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dicomStoreId': dicomStoreId,
-    };
+    return <String, dynamic>{'dicomStoreId': dicomStoreId};
   }
 
   factory GetDicomStoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -32,4 +28,3 @@ class GetDicomStoreIamPolicyArgs {
     );
   }
 }
-

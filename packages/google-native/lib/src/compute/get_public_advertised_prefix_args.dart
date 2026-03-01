@@ -16,9 +16,10 @@ class GetPublicAdvertisedPrefixArgs {
   GetPublicAdvertisedPrefixArgs({
     String? project,
     required String publicAdvertisedPrefix,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publicAdvertisedPrefix = pulumi.Input.asInput<String>(publicAdvertisedPrefix);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       publicAdvertisedPrefix = pulumi.Input.asInput<String>(
+         publicAdvertisedPrefix,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +35,3 @@ class GetPublicAdvertisedPrefixArgs {
     );
   }
 }
-

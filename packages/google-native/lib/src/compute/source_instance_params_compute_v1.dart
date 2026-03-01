@@ -10,20 +10,29 @@ class SourceInstanceParamsComputeV1 {
 
   /// Creates a new [SourceInstanceParamsComputeV1].
   /// [diskConfigs] Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
-  SourceInstanceParamsComputeV1({
-    this.diskConfigs,
-  });
+  SourceInstanceParamsComputeV1({this.diskConfigs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diskConfigs': ?diskConfigs == null ? null : pulumi.Input.encodeList<DiskInstantiationConfigComputeV1, Map<String, dynamic>>(diskConfigs!, (value) => value.toMap()),
+      'diskConfigs': ?diskConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              DiskInstantiationConfigComputeV1,
+              Map<String, dynamic>
+            >(diskConfigs!, (value) => value.toMap()),
     };
   }
 
   factory SourceInstanceParamsComputeV1.fromMap(Map<String, dynamic> map) {
     return SourceInstanceParamsComputeV1(
-      diskConfigs: map['diskConfigs'] == null ? null : pulumi.Input.decodeList<DiskInstantiationConfigComputeV1>(map['diskConfigs'], (value) => DiskInstantiationConfigComputeV1.fromMap((value as Map).cast<String, dynamic>())),
+      diskConfigs: map['diskConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<DiskInstantiationConfigComputeV1>(
+              map['diskConfigs'],
+              (value) => DiskInstantiationConfigComputeV1.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

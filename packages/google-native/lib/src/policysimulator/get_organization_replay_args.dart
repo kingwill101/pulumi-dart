@@ -19,10 +19,9 @@ class GetOrganizationReplayArgs {
     required String location,
     required String organizationId,
     required String replayId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      replayId = pulumi.Input.asInput<String>(replayId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       replayId = pulumi.Input.asInput<String>(replayId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetOrganizationReplayArgs {
     );
   }
 }
-

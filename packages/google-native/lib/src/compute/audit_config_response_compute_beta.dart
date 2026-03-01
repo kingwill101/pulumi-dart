@@ -7,8 +7,10 @@ import 'audit_log_config_response_compute_beta.dart';
 class AuditConfigResponseComputeBeta {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigResponseComputeBeta> auditLogConfigs;
+
   /// This is deprecated and has no effect. Do not use.
   final List<String> exemptedMembers;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String service;
 
@@ -24,7 +26,11 @@ class AuditConfigResponseComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': pulumi.Input.encodeList<AuditLogConfigResponseComputeBeta, Map<String, dynamic>>(auditLogConfigs, (value) => value.toMap()),
+      'auditLogConfigs':
+          pulumi.Input.encodeList<
+            AuditLogConfigResponseComputeBeta,
+            Map<String, dynamic>
+          >(auditLogConfigs, (value) => value.toMap()),
       'exemptedMembers': exemptedMembers,
       'service': service,
     };
@@ -32,10 +38,15 @@ class AuditConfigResponseComputeBeta {
 
   factory AuditConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return AuditConfigResponseComputeBeta(
-      auditLogConfigs: pulumi.Input.decodeList<AuditLogConfigResponseComputeBeta>(map['auditLogConfigs'], (value) => AuditLogConfigResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigs:
+          pulumi.Input.decodeList<AuditLogConfigResponseComputeBeta>(
+            map['auditLogConfigs'],
+            (value) => AuditLogConfigResponseComputeBeta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       exemptedMembers: (map['exemptedMembers'] as List).cast<String>(),
       service: map['service'] as String,
     );
   }
 }
-

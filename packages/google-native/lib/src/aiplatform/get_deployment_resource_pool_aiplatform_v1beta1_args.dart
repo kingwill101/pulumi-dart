@@ -19,10 +19,11 @@ class GetDeploymentResourcePoolAiplatformV1beta1Args {
     required String deploymentResourcePoolId,
     required String location,
     String? project,
-  }) :
-      deploymentResourcePoolId = pulumi.Input.asInput<String>(deploymentResourcePoolId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : deploymentResourcePoolId = pulumi.Input.asInput<String>(
+         deploymentResourcePoolId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +33,9 @@ class GetDeploymentResourcePoolAiplatformV1beta1Args {
     };
   }
 
-  factory GetDeploymentResourcePoolAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetDeploymentResourcePoolAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDeploymentResourcePoolAiplatformV1beta1Args(
       deploymentResourcePoolId: map['deploymentResourcePoolId'] as String,
       location: map['location'] as String,
@@ -40,4 +43,3 @@ class GetDeploymentResourcePoolAiplatformV1beta1Args {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// ServiceDirectoryConfig represents Service Directory configuration for a SCM host connection.
 class ServiceDirectoryConfig {
   /// The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
@@ -8,14 +7,10 @@ class ServiceDirectoryConfig {
 
   /// Creates a new [ServiceDirectoryConfig].
   /// [service] The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  ServiceDirectoryConfig({
-    this.service,
-  });
+  ServiceDirectoryConfig({this.service});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'service': ?service,
-    };
+    return <String, dynamic>{'service': ?service};
   }
 
   factory ServiceDirectoryConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ServiceDirectoryConfig {
     );
   }
 }
-

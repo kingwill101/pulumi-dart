@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetJobQueueComputeEnvironmentOrder {
   final String computeEnvironment;
   final int order;
@@ -27,4 +26,3 @@ class GetJobQueueComputeEnvironmentOrder {
     );
   }
 }
-

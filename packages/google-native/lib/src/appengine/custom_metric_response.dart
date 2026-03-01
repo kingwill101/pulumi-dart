@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Allows autoscaling based on Stackdriver metrics.
 class CustomMetricResponse {
   /// Allows filtering on the metric's fields.
   final String filter;
+
   /// The name of the metric.
   final String metricName;
+
   /// May be used instead of target_utilization when an instance can handle a specific amount of work/resources and the metric value is equal to the current amount of work remaining. The autoscaler will try to keep the number of instances equal to the metric value divided by single_instance_assignment.
   final double singleInstanceAssignment;
+
   /// The type of the metric. Must be a string representing a Stackdriver metric type e.g. GAGUE, DELTA_PER_SECOND, etc.
   final String targetType;
+
   /// The target value for the metric.
   final double targetUtilization;
 
@@ -48,4 +51,3 @@ class CustomMetricResponse {
     );
   }
 }
-

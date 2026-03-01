@@ -11,21 +11,14 @@ class GetTopicPubsubV1beta1aArgs {
 
   /// Creates a new [GetTopicPubsubV1beta1aArgs].
   /// [topicId] Required.
-  GetTopicPubsubV1beta1aArgs({
-    required String topicId,
-  }) :
-      topicId = pulumi.Input.asInput<String>(topicId);
+  GetTopicPubsubV1beta1aArgs({required String topicId})
+    : topicId = pulumi.Input.asInput<String>(topicId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'topicId': topicId,
-    };
+    return <String, dynamic>{'topicId': topicId};
   }
 
   factory GetTopicPubsubV1beta1aArgs.fromMap(Map<String, dynamic> map) {
-    return GetTopicPubsubV1beta1aArgs(
-      topicId: map['topicId'] as String,
-    );
+    return GetTopicPubsubV1beta1aArgs(topicId: map['topicId'] as String);
   }
 }
-

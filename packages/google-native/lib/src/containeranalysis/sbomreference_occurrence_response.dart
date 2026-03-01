@@ -8,8 +8,10 @@ import 'sbom_reference_intoto_payload_response.dart';
 class SBOMReferenceOccurrenceResponse {
   /// The actual payload that contains the SBOM reference data.
   final SbomReferenceIntotoPayloadResponse payload;
+
   /// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
   final String payloadType;
+
   /// The signatures over the payload.
   final List<EnvelopeSignatureResponse> signatures;
 
@@ -27,16 +29,26 @@ class SBOMReferenceOccurrenceResponse {
     return <String, dynamic>{
       'payload': payload.toMap(),
       'payloadType': payloadType,
-      'signatures': pulumi.Input.encodeList<EnvelopeSignatureResponse, Map<String, dynamic>>(signatures, (value) => value.toMap()),
+      'signatures':
+          pulumi.Input.encodeList<
+            EnvelopeSignatureResponse,
+            Map<String, dynamic>
+          >(signatures, (value) => value.toMap()),
     };
   }
 
   factory SBOMReferenceOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return SBOMReferenceOccurrenceResponse(
-      payload: SbomReferenceIntotoPayloadResponse.fromMap((map['payload'] as Map).cast<String, dynamic>()),
+      payload: SbomReferenceIntotoPayloadResponse.fromMap(
+        (map['payload'] as Map).cast<String, dynamic>(),
+      ),
       payloadType: map['payloadType'] as String,
-      signatures: pulumi.Input.decodeList<EnvelopeSignatureResponse>(map['signatures'], (value) => EnvelopeSignatureResponse.fromMap((value as Map).cast<String, dynamic>())),
+      signatures: pulumi.Input.decodeList<EnvelopeSignatureResponse>(
+        map['signatures'],
+        (value) => EnvelopeSignatureResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

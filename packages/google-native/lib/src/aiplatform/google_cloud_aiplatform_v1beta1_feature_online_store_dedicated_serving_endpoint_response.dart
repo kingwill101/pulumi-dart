@@ -5,9 +5,12 @@ import 'google_cloud_aiplatform_v1beta1_private_service_connect_config_response.
 /// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
 class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse {
   /// Optional. Private service connect config. If PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
-  final GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse privateServiceConnectConfig;
+  final GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse
+  privateServiceConnectConfig;
+
   /// This field will be populated with the domain name to use for this FeatureOnlineStore
   final String publicEndpointDomainName;
+
   /// The name of the service attachment resource. Populated if private service connect is enabled and after FeatureViewSync is created.
   final String serviceAttachment;
 
@@ -29,12 +32,16 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResp
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1FeatureOnlineStoreDedicatedServingEndpointResponse(
-      privateServiceConnectConfig: GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse.fromMap((map['privateServiceConnectConfig'] as Map).cast<String, dynamic>()),
+      privateServiceConnectConfig:
+          GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse.fromMap(
+            (map['privateServiceConnectConfig'] as Map).cast<String, dynamic>(),
+          ),
       publicEndpointDomainName: map['publicEndpointDomainName'] as String,
       serviceAttachment: map['serviceAttachment'] as String,
     );
   }
 }
-

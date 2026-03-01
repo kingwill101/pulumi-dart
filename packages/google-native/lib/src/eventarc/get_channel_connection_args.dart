@@ -19,10 +19,9 @@ class GetChannelConnectionArgs {
     required String channelConnectionId,
     required String location,
     String? project,
-  }) :
-      channelConnectionId = pulumi.Input.asInput<String>(channelConnectionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : channelConnectionId = pulumi.Input.asInput<String>(channelConnectionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetChannelConnectionArgs {
     );
   }
 }
-

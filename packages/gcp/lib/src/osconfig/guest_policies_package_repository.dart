@@ -9,12 +9,15 @@ class GuestPoliciesPackageRepository {
   /// An Apt Repository.
   /// Structure is documented below.
   final GuestPoliciesPackageRepositoryApt? apt;
+
   /// A Goo Repository.
   /// Structure is documented below.
   final GuestPoliciesPackageRepositoryGoo? goo;
+
   /// A Yum Repository.
   /// Structure is documented below.
   final GuestPoliciesPackageRepositoryYum? yum;
+
   /// A Zypper Repository.
   /// Structure is documented below.
   final GuestPoliciesPackageRepositoryZypper? zypper;
@@ -24,12 +27,7 @@ class GuestPoliciesPackageRepository {
   /// [goo] A Goo Repository.
   /// [yum] A Yum Repository.
   /// [zypper] A Zypper Repository.
-  GuestPoliciesPackageRepository({
-    this.apt,
-    this.goo,
-    this.yum,
-    this.zypper,
-  });
+  GuestPoliciesPackageRepository({this.apt, this.goo, this.yum, this.zypper});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,11 +40,26 @@ class GuestPoliciesPackageRepository {
 
   factory GuestPoliciesPackageRepository.fromMap(Map<String, dynamic> map) {
     return GuestPoliciesPackageRepository(
-      apt: map['apt'] == null ? null : GuestPoliciesPackageRepositoryApt.fromMap((map['apt'] as Map).cast<String, dynamic>()),
-      goo: map['goo'] == null ? null : GuestPoliciesPackageRepositoryGoo.fromMap((map['goo'] as Map).cast<String, dynamic>()),
-      yum: map['yum'] == null ? null : GuestPoliciesPackageRepositoryYum.fromMap((map['yum'] as Map).cast<String, dynamic>()),
-      zypper: map['zypper'] == null ? null : GuestPoliciesPackageRepositoryZypper.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
+      apt: map['apt'] == null
+          ? null
+          : GuestPoliciesPackageRepositoryApt.fromMap(
+              (map['apt'] as Map).cast<String, dynamic>(),
+            ),
+      goo: map['goo'] == null
+          ? null
+          : GuestPoliciesPackageRepositoryGoo.fromMap(
+              (map['goo'] as Map).cast<String, dynamic>(),
+            ),
+      yum: map['yum'] == null
+          ? null
+          : GuestPoliciesPackageRepositoryYum.fromMap(
+              (map['yum'] as Map).cast<String, dynamic>(),
+            ),
+      zypper: map['zypper'] == null
+          ? null
+          : GuestPoliciesPackageRepositoryZypper.fromMap(
+              (map['zypper'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

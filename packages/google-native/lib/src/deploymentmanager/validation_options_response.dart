@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Options for how to validate and process properties on a resource.
 class ValidationOptionsResponse {
   /// Customize how deployment manager will validate the resource against schema errors.
   final String schemaValidation;
+
   /// Specify what to do with extra properties when executing a request.
   final String undeclaredProperties;
 
@@ -30,4 +30,3 @@ class ValidationOptionsResponse {
     );
   }
 }
-

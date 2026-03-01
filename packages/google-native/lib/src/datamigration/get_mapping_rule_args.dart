@@ -22,11 +22,12 @@ class GetMappingRuleArgs {
     required String location,
     required String mappingRuleId,
     String? project,
-  }) :
-      conversionWorkspaceId = pulumi.Input.asInput<String>(conversionWorkspaceId),
-      location = pulumi.Input.asInput<String>(location),
-      mappingRuleId = pulumi.Input.asInput<String>(mappingRuleId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : conversionWorkspaceId = pulumi.Input.asInput<String>(
+         conversionWorkspaceId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       mappingRuleId = pulumi.Input.asInput<String>(mappingRuleId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +47,3 @@ class GetMappingRuleArgs {
     );
   }
 }
-

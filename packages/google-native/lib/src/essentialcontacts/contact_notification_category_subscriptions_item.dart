@@ -18,7 +18,8 @@ enum ContactNotificationCategorySubscriptionsItem {
         return item;
       }
     }
-    throw ArgumentError('Unknown ContactNotificationCategorySubscriptionsItem value: $value');
+    throw ArgumentError(
+      'Unknown ContactNotificationCategorySubscriptionsItem value: $value',
+    );
   }
 }
-

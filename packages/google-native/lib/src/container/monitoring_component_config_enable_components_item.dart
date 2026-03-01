@@ -20,7 +20,8 @@ enum MonitoringComponentConfigEnableComponentsItem {
         return item;
       }
     }
-    throw ArgumentError('Unknown MonitoringComponentConfigEnableComponentsItem value: $value');
+    throw ArgumentError(
+      'Unknown MonitoringComponentConfigEnableComponentsItem value: $value',
+    );
   }
 }
-

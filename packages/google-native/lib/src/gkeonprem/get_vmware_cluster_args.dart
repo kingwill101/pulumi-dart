@@ -22,11 +22,10 @@ class GetVmwareClusterArgs {
     String? project,
     String? view,
     required String vmwareClusterId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view),
-      vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view),
+       vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetVmwareClusterArgs {
     );
   }
 }
-

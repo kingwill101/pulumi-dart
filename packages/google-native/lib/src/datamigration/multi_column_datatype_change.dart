@@ -7,20 +7,28 @@ import 'source_text_filter.dart';
 class MultiColumnDatatypeChange {
   /// Optional. Custom engine specific features.
   final Map<String, String>? customFeatures;
+
   /// New data type.
   final String newDataType;
+
   /// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified and relevant uses the source column fractional seconds precision.
   final int? overrideFractionalSecondsPrecision;
+
   /// Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
   final String? overrideLength;
+
   /// Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
   final int? overridePrecision;
+
   /// Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
   final int? overrideScale;
+
   /// Filter on source data type.
   final String sourceDataTypeFilter;
+
   /// Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
   final SourceNumericFilter? sourceNumericFilter;
+
   /// Optional. Filter for text-based data types like varchar.
   final SourceTextFilter? sourceTextFilter;
 
@@ -55,23 +63,45 @@ class MultiColumnDatatypeChange {
       'overridePrecision': ?overridePrecision,
       'overrideScale': ?overrideScale,
       'sourceDataTypeFilter': sourceDataTypeFilter,
-      'sourceNumericFilter': ?sourceNumericFilter == null ? null : sourceNumericFilter!.toMap(),
-      'sourceTextFilter': ?sourceTextFilter == null ? null : sourceTextFilter!.toMap(),
+      'sourceNumericFilter': ?sourceNumericFilter == null
+          ? null
+          : sourceNumericFilter!.toMap(),
+      'sourceTextFilter': ?sourceTextFilter == null
+          ? null
+          : sourceTextFilter!.toMap(),
     };
   }
 
   factory MultiColumnDatatypeChange.fromMap(Map<String, dynamic> map) {
     return MultiColumnDatatypeChange(
-      customFeatures: map['customFeatures'] == null ? null : (map['customFeatures'] as Map).cast<String, String>(),
+      customFeatures: map['customFeatures'] == null
+          ? null
+          : (map['customFeatures'] as Map).cast<String, String>(),
       newDataType: map['newDataType'] as String,
-      overrideFractionalSecondsPrecision: map['overrideFractionalSecondsPrecision'] == null ? null : map['overrideFractionalSecondsPrecision'] as int,
-      overrideLength: map['overrideLength'] == null ? null : map['overrideLength'] as String,
-      overridePrecision: map['overridePrecision'] == null ? null : map['overridePrecision'] as int,
-      overrideScale: map['overrideScale'] == null ? null : map['overrideScale'] as int,
+      overrideFractionalSecondsPrecision:
+          map['overrideFractionalSecondsPrecision'] == null
+          ? null
+          : map['overrideFractionalSecondsPrecision'] as int,
+      overrideLength: map['overrideLength'] == null
+          ? null
+          : map['overrideLength'] as String,
+      overridePrecision: map['overridePrecision'] == null
+          ? null
+          : map['overridePrecision'] as int,
+      overrideScale: map['overrideScale'] == null
+          ? null
+          : map['overrideScale'] as int,
       sourceDataTypeFilter: map['sourceDataTypeFilter'] as String,
-      sourceNumericFilter: map['sourceNumericFilter'] == null ? null : SourceNumericFilter.fromMap((map['sourceNumericFilter'] as Map).cast<String, dynamic>()),
-      sourceTextFilter: map['sourceTextFilter'] == null ? null : SourceTextFilter.fromMap((map['sourceTextFilter'] as Map).cast<String, dynamic>()),
+      sourceNumericFilter: map['sourceNumericFilter'] == null
+          ? null
+          : SourceNumericFilter.fromMap(
+              (map['sourceNumericFilter'] as Map).cast<String, dynamic>(),
+            ),
+      sourceTextFilter: map['sourceTextFilter'] == null
+          ? null
+          : SourceTextFilter.fromMap(
+              (map['sourceTextFilter'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

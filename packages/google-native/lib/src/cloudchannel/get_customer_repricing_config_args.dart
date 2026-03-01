@@ -19,10 +19,11 @@ class GetCustomerRepricingConfigArgs {
     required String accountId,
     required String customerId,
     required String customerRepricingConfigId,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      customerId = pulumi.Input.asInput<String>(customerId),
-      customerRepricingConfigId = pulumi.Input.asInput<String>(customerRepricingConfigId);
+  }) : accountId = pulumi.Input.asInput<String>(accountId),
+       customerId = pulumi.Input.asInput<String>(customerId),
+       customerRepricingConfigId = pulumi.Input.asInput<String>(
+         customerRepricingConfigId,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetCustomerRepricingConfigArgs {
     );
   }
 }
-

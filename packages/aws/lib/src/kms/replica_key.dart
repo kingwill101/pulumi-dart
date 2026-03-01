@@ -301,34 +301,47 @@ import 'replica_key_args.dart';
 class ReplicaKey extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the replica key. The key ARNs of related multi-Region keys differ only in the Region value.
   late final pulumi.Output<String> arn;
+
   /// A flag to indicate whether to bypass the key policy lockout safety check.
   /// Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately.
   /// For more information, refer to the scenario in the [Default Key Policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam) section in the _AWS Key Management Service Developer Guide_.
   /// The default value is `false`.
   late final pulumi.Output<bool?> bypassPolicyLockoutSafetyCheck;
+
   /// The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the KMS key.
   /// If you specify a value, it must be between `7` and `30`, inclusive. If you do not specify a value, it defaults to `30`.
   late final pulumi.Output<int?> deletionWindowInDays;
+
   /// A description of the KMS key.
   late final pulumi.Output<String?> description;
+
   /// Specifies whether the replica key is enabled. Disabled KMS keys cannot be used in cryptographic operations. The default value is `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// The key ID of the replica key. Related multi-Region keys have the same key ID.
   late final pulumi.Output<String> keyId;
+
   /// A Boolean value that specifies whether key rotation is enabled. This is a shared property of multi-Region keys.
   late final pulumi.Output<bool> keyRotationEnabled;
+
   /// The type of key material in the KMS key. This is a shared property of multi-Region keys.
   late final pulumi.Output<String> keySpec;
+
   /// The [cryptographic operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations) for which you can use the KMS key. This is a shared property of multi-Region keys.
   late final pulumi.Output<String> keyUsage;
+
   /// The key policy to attach to the KMS key. If you do not specify a key policy, AWS KMS attaches the [default key policy](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default) to the KMS key.
   late final pulumi.Output<String> policy;
+
   /// The ARN of the multi-Region primary key to replicate. The primary key must be in a different AWS Region of the same AWS Partition. You can create only one replica of a given primary key in each AWS Region.
   late final pulumi.Output<String> primaryKeyArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the replica key. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -341,13 +354,15 @@ class ReplicaKey extends pulumi.CustomResource {
     ReplicaKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:kms/replicaKey:ReplicaKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:kms/replicaKey:ReplicaKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
-    this.bypassPolicyLockoutSafetyCheck = registerOutput<bool?>('bypassPolicyLockoutSafetyCheck');
+    this.bypassPolicyLockoutSafetyCheck = registerOutput<bool?>(
+      'bypassPolicyLockoutSafetyCheck',
+    );
     this.deletionWindowInDays = registerOutput<int?>('deletionWindowInDays');
     this.description = registerOutput<String?>('description');
     this.enabled = registerOutput<bool?>('enabled');

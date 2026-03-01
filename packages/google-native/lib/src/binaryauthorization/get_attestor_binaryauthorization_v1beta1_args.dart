@@ -16,22 +16,19 @@ class GetAttestorBinaryauthorizationV1beta1Args {
   GetAttestorBinaryauthorizationV1beta1Args({
     required String attestorId,
     String? project,
-  }) :
-      attestorId = pulumi.Input.asInput<String>(attestorId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : attestorId = pulumi.Input.asInput<String>(attestorId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'attestorId': attestorId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'attestorId': attestorId, 'project': ?project};
   }
 
-  factory GetAttestorBinaryauthorizationV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetAttestorBinaryauthorizationV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAttestorBinaryauthorizationV1beta1Args(
       attestorId: map['attestorId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

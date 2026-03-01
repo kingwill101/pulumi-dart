@@ -17,4 +17,3 @@ enum GatewayAPIConfigChannel {
     throw ArgumentError('Unknown GatewayAPIConfigChannel value: $value');
   }
 }
-

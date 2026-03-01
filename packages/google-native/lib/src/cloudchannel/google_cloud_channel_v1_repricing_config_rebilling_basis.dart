@@ -7,13 +7,17 @@ enum GoogleCloudChannelV1RepricingConfigRebillingBasis {
   const GoogleCloudChannelV1RepricingConfigRebillingBasis(this.value);
   final String value;
 
-  static GoogleCloudChannelV1RepricingConfigRebillingBasis fromValue(String value) {
-    for (final item in GoogleCloudChannelV1RepricingConfigRebillingBasis.values) {
+  static GoogleCloudChannelV1RepricingConfigRebillingBasis fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudChannelV1RepricingConfigRebillingBasis.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudChannelV1RepricingConfigRebillingBasis value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudChannelV1RepricingConfigRebillingBasis value: $value',
+    );
   }
 }
-

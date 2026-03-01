@@ -19,10 +19,9 @@ class GetForwardingRuleComputeBetaArgs {
     required String forwardingRule,
     String? project,
     required String region,
-  }) :
-      forwardingRule = pulumi.Input.asInput<String>(forwardingRule),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : forwardingRule = pulumi.Input.asInput<String>(forwardingRule),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetForwardingRuleComputeBetaArgs {
     );
   }
 }
-

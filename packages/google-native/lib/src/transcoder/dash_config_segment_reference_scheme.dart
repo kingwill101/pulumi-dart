@@ -13,7 +13,8 @@ enum DashConfigSegmentReferenceScheme {
         return item;
       }
     }
-    throw ArgumentError('Unknown DashConfigSegmentReferenceScheme value: $value');
+    throw ArgumentError(
+      'Unknown DashConfigSegmentReferenceScheme value: $value',
+    );
   }
 }
-

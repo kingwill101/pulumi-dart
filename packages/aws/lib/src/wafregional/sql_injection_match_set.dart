@@ -148,10 +148,13 @@ import 'sql_injection_match_set_sql_injection_match_tuple.dart';
 class SqlInjectionMatchSet extends pulumi.CustomResource {
   /// The name or description of the SizeConstraintSet.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The parts of web requests that you want AWS WAF to inspect for malicious SQL code and, if you want AWS WAF to inspect a header, the name of the header.
-  late final pulumi.Output<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?> sqlInjectionMatchTuples;
+  late final pulumi.Output<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>
+  sqlInjectionMatchTuples;
 
   /// Creates a new [SqlInjectionMatchSet].
   /// [name] The Pulumi resource name.
@@ -162,13 +165,16 @@ class SqlInjectionMatchSet extends pulumi.CustomResource {
     SqlInjectionMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/sqlInjectionMatchSet:SqlInjectionMatchSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:wafregional/sqlInjectionMatchSet:SqlInjectionMatchSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.sqlInjectionMatchTuples = registerOutput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>('sqlInjectionMatchTuples');
+    this.sqlInjectionMatchTuples =
+        registerOutput<List<SqlInjectionMatchSetSqlInjectionMatchTuple>?>(
+          'sqlInjectionMatchTuples',
+        );
   }
 }

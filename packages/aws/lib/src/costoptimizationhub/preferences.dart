@@ -188,6 +188,7 @@ import 'preferences_args.dart';
 class Preferences extends pulumi.CustomResource {
   /// Customize whether the member accounts can see the "After Discounts" savings estimates. Valid values are `All` and `None`. Default value is `All`.
   late final pulumi.Output<String> memberAccountDiscountVisibility;
+
   /// Customize how estimated monthly savings are calculated. Valid values are `BeforeDiscounts` and `AfterDiscounts`. Default value is `BeforeDiscounts`.
   late final pulumi.Output<String> savingsEstimationMode;
 
@@ -200,12 +201,16 @@ class Preferences extends pulumi.CustomResource {
     PreferencesArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:costoptimizationhub/preferences:Preferences',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.memberAccountDiscountVisibility = registerOutput<String>('memberAccountDiscountVisibility');
-    this.savingsEstimationMode = registerOutput<String>('savingsEstimationMode');
+         'aws:costoptimizationhub/preferences:Preferences',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.memberAccountDiscountVisibility = registerOutput<String>(
+      'memberAccountDiscountVisibility',
+    );
+    this.savingsEstimationMode = registerOutput<String>(
+      'savingsEstimationMode',
+    );
   }
 }

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
   /// Available taint effects.
   final String? effect;
+
   /// (Optional)
   final String? key;
+
   /// (Optional)
   final String? value;
 
@@ -20,14 +21,12 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'effect': ?effect,
-      'key': ?key,
-      'value': ?value,
-    };
+    return <String, dynamic>{'effect': ?effect, 'key': ?key, 'value': ?value};
   }
 
-  factory BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint(
       effect: map['effect'] == null ? null : map['effect'] as String,
       key: map['key'] == null ? null : map['key'] as String,
@@ -35,4 +34,3 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigT
     );
   }
 }
-

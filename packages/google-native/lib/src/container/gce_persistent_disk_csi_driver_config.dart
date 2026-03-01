@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for the Compute Engine PD CSI driver.
 class GcePersistentDiskCsiDriverConfig {
   /// Whether the Compute Engine PD CSI driver is enabled for this cluster.
@@ -8,14 +7,10 @@ class GcePersistentDiskCsiDriverConfig {
 
   /// Creates a new [GcePersistentDiskCsiDriverConfig].
   /// [enabled] Whether the Compute Engine PD CSI driver is enabled for this cluster.
-  GcePersistentDiskCsiDriverConfig({
-    this.enabled,
-  });
+  GcePersistentDiskCsiDriverConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory GcePersistentDiskCsiDriverConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class GcePersistentDiskCsiDriverConfig {
     );
   }
 }
-

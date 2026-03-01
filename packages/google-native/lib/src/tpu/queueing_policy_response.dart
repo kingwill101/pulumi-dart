@@ -6,12 +6,16 @@ import 'interval_response.dart';
 class QueueingPolicyResponse {
   /// A relative time after which resources may be created.
   final String validAfterDuration;
+
   /// An absolute time at which resources may be created.
   final String validAfterTime;
+
   /// An absolute time interval within which resources may be created.
   final IntervalResponse validInterval;
+
   /// A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
   final String validUntilDuration;
+
   /// An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
   final String validUntilTime;
 
@@ -43,10 +47,11 @@ class QueueingPolicyResponse {
     return QueueingPolicyResponse(
       validAfterDuration: map['validAfterDuration'] as String,
       validAfterTime: map['validAfterTime'] as String,
-      validInterval: IntervalResponse.fromMap((map['validInterval'] as Map).cast<String, dynamic>()),
+      validInterval: IntervalResponse.fromMap(
+        (map['validInterval'] as Map).cast<String, dynamic>(),
+      ),
       validUntilDuration: map['validUntilDuration'] as String,
       validUntilTime: map['validUntilTime'] as String,
     );
   }
 }
-

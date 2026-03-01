@@ -6,6 +6,7 @@ import 'policy_controller_template_library_config_response.dart';
 class PolicyControllerPolicyContentSpecResponse {
   /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
   final Map<String, String> bundles;
+
   /// Configures the installation of the Template Library.
   final PolicyControllerTemplateLibraryConfigResponse templateLibrary;
 
@@ -24,11 +25,14 @@ class PolicyControllerPolicyContentSpecResponse {
     };
   }
 
-  factory PolicyControllerPolicyContentSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory PolicyControllerPolicyContentSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyControllerPolicyContentSpecResponse(
       bundles: (map['bundles'] as Map).cast<String, String>(),
-      templateLibrary: PolicyControllerTemplateLibraryConfigResponse.fromMap((map['templateLibrary'] as Map).cast<String, dynamic>()),
+      templateLibrary: PolicyControllerTemplateLibraryConfigResponse.fromMap(
+        (map['templateLibrary'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

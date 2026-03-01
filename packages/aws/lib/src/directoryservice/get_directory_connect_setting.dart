@@ -1,16 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDirectoryConnectSetting {
   final List<String> availabilityZones;
+
   /// IP addresses of the AD Connector servers.
   final List<String> connectIps;
+
   /// DNS IP addresses of the domain to connect to.
   final List<String> customerDnsIps;
+
   /// Username corresponding to the password provided.
   final String customerUsername;
+
   /// Identifiers of the subnets for the connector servers (2 subnets in 2 different AZs).
   final List<String> subnetIds;
+
   /// ID of the VPC that the connector is in.
   final String vpcId;
 
@@ -52,4 +56,3 @@ class GetDirectoryConnectSetting {
     );
   }
 }
-

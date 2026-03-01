@@ -22,11 +22,10 @@ class GetRunArgs {
     required String processId,
     String? project,
     required String runId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      processId = pulumi.Input.asInput<String>(processId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runId = pulumi.Input.asInput<String>(runId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       processId = pulumi.Input.asInput<String>(processId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       runId = pulumi.Input.asInput<String>(runId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetRunArgs {
     );
   }
 }
-

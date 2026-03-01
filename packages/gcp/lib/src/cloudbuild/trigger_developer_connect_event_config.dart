@@ -6,12 +6,15 @@ import 'trigger_developer_connect_event_config_push.dart';
 class TriggerDeveloperConnectEventConfig {
   /// The Developer Connect Git repository link, formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
   final String gitRepositoryLink;
+
   /// (Output)
   /// The type of DeveloperConnect GitRepositoryLink.
   final String? gitRepositoryLinkType;
+
   /// Filter to match changes in pull requests.
   /// Structure is documented below.
   final TriggerDeveloperConnectEventConfigPullRequest? pullRequest;
+
   /// Filter to match changes in refs like branches and tags.
   /// Structure is documented below.
   final TriggerDeveloperConnectEventConfigPush? push;
@@ -40,10 +43,19 @@ class TriggerDeveloperConnectEventConfig {
   factory TriggerDeveloperConnectEventConfig.fromMap(Map<String, dynamic> map) {
     return TriggerDeveloperConnectEventConfig(
       gitRepositoryLink: map['gitRepositoryLink'] as String,
-      gitRepositoryLinkType: map['gitRepositoryLinkType'] == null ? null : map['gitRepositoryLinkType'] as String,
-      pullRequest: map['pullRequest'] == null ? null : TriggerDeveloperConnectEventConfigPullRequest.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: map['push'] == null ? null : TriggerDeveloperConnectEventConfigPush.fromMap((map['push'] as Map).cast<String, dynamic>()),
+      gitRepositoryLinkType: map['gitRepositoryLinkType'] == null
+          ? null
+          : map['gitRepositoryLinkType'] as String,
+      pullRequest: map['pullRequest'] == null
+          ? null
+          : TriggerDeveloperConnectEventConfigPullRequest.fromMap(
+              (map['pullRequest'] as Map).cast<String, dynamic>(),
+            ),
+      push: map['push'] == null
+          ? null
+          : TriggerDeveloperConnectEventConfigPush.fromMap(
+              (map['push'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

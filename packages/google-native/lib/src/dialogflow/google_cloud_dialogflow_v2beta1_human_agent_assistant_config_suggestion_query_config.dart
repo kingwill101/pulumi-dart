@@ -9,14 +9,23 @@ import 'google_cloud_dialogflow_v2beta1_human_agent_assistant_config_suggestion_
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig {
   /// Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it is default to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST, ENTITY_EXTRACTION.
   final double? confidenceThreshold;
+
   /// Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
-  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings? contextFilterSettings;
+  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings?
+  contextFilterSettings;
+
   /// Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST, ENTITY_EXTRACTION.
-  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource? dialogflowQuerySource;
+  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource?
+  dialogflowQuerySource;
+
   /// Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
-  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource? documentQuerySource;
+  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource?
+  documentQuerySource;
+
   /// Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
-  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource? knowledgeBaseQuerySource;
+  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource?
+  knowledgeBaseQuerySource;
+
   /// Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
   final int? maxResults;
 
@@ -39,23 +48,50 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'confidenceThreshold': ?confidenceThreshold,
-      'contextFilterSettings': ?contextFilterSettings == null ? null : contextFilterSettings!.toMap(),
-      'dialogflowQuerySource': ?dialogflowQuerySource == null ? null : dialogflowQuerySource!.toMap(),
-      'documentQuerySource': ?documentQuerySource == null ? null : documentQuerySource!.toMap(),
-      'knowledgeBaseQuerySource': ?knowledgeBaseQuerySource == null ? null : knowledgeBaseQuerySource!.toMap(),
+      'contextFilterSettings': ?contextFilterSettings == null
+          ? null
+          : contextFilterSettings!.toMap(),
+      'dialogflowQuerySource': ?dialogflowQuerySource == null
+          ? null
+          : dialogflowQuerySource!.toMap(),
+      'documentQuerySource': ?documentQuerySource == null
+          ? null
+          : documentQuerySource!.toMap(),
+      'knowledgeBaseQuerySource': ?knowledgeBaseQuerySource == null
+          ? null
+          : knowledgeBaseQuerySource!.toMap(),
       'maxResults': ?maxResults,
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig(
-      confidenceThreshold: map['confidenceThreshold'] == null ? null : map['confidenceThreshold'] as double,
-      contextFilterSettings: map['contextFilterSettings'] == null ? null : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromMap((map['contextFilterSettings'] as Map).cast<String, dynamic>()),
-      dialogflowQuerySource: map['dialogflowQuerySource'] == null ? null : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource.fromMap((map['dialogflowQuerySource'] as Map).cast<String, dynamic>()),
-      documentQuerySource: map['documentQuerySource'] == null ? null : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromMap((map['documentQuerySource'] as Map).cast<String, dynamic>()),
-      knowledgeBaseQuerySource: map['knowledgeBaseQuerySource'] == null ? null : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromMap((map['knowledgeBaseQuerySource'] as Map).cast<String, dynamic>()),
+      confidenceThreshold: map['confidenceThreshold'] == null
+          ? null
+          : map['confidenceThreshold'] as double,
+      contextFilterSettings: map['contextFilterSettings'] == null
+          ? null
+          : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings.fromMap(
+              (map['contextFilterSettings'] as Map).cast<String, dynamic>(),
+            ),
+      dialogflowQuerySource: map['dialogflowQuerySource'] == null
+          ? null
+          : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource.fromMap(
+              (map['dialogflowQuerySource'] as Map).cast<String, dynamic>(),
+            ),
+      documentQuerySource: map['documentQuerySource'] == null
+          ? null
+          : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource.fromMap(
+              (map['documentQuerySource'] as Map).cast<String, dynamic>(),
+            ),
+      knowledgeBaseQuerySource: map['knowledgeBaseQuerySource'] == null
+          ? null
+          : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource.fromMap(
+              (map['knowledgeBaseQuerySource'] as Map).cast<String, dynamic>(),
+            ),
       maxResults: map['maxResults'] == null ? null : map['maxResults'] as int,
     );
   }
 }
-

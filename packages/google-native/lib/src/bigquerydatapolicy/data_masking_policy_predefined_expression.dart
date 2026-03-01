@@ -18,7 +18,8 @@ enum DataMaskingPolicyPredefinedExpression {
         return item;
       }
     }
-    throw ArgumentError('Unknown DataMaskingPolicyPredefinedExpression value: $value');
+    throw ArgumentError(
+      'Unknown DataMaskingPolicyPredefinedExpression value: $value',
+    );
   }
 }
-

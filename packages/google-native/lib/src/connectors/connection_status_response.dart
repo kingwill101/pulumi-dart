@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// ConnectionStatus indicates the state of the connection.
 class ConnectionStatusResponse {
   /// Description.
   final String description;
+
   /// State.
   final String state;
+
   /// Status provides detailed information for the state.
   final String status;
 
@@ -36,4 +37,3 @@ class ConnectionStatusResponse {
     );
   }
 }
-

@@ -16,12 +16,8 @@ class SslCertArgs {
   /// [commonName] User supplied name. Must be a distinct name from the other certificates for this instance.
   /// [instance] Required.
   /// [project] Optional.
-  SslCertArgs({
-    String? commonName,
-    required String instance,
-    String? project,
-  }) :
-      commonName = pulumi.Input.asOptionalInput<String>(commonName),
+  SslCertArgs({String? commonName, required String instance, String? project})
+    : commonName = pulumi.Input.asOptionalInput<String>(commonName),
       instance = pulumi.Input.asInput<String>(instance),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -35,10 +31,11 @@ class SslCertArgs {
 
   factory SslCertArgs.fromMap(Map<String, dynamic> map) {
     return SslCertArgs(
-      commonName: map['commonName'] == null ? null : map['commonName'] as String,
+      commonName: map['commonName'] == null
+          ? null
+          : map['commonName'] as String,
       instance: map['instance'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

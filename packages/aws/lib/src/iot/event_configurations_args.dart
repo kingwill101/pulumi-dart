@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventConfigurationsArgs {
   /// Map. The new event configuration values. You can use only these strings as keys: `THING_GROUP_HIERARCHY`, `THING_GROUP_MEMBERSHIP`, `THING_TYPE`, `THING_TYPE_ASSOCIATION`, `THING_GROUP`, `THING`, `POLICY`, `CA_CERTIFICATE`, `JOB_EXECUTION`, `CERTIFICATE`, `JOB`. Use boolean for values of mapping.
   final pulumi.Input<Map<String, bool>> eventConfigurations;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -18,9 +19,10 @@ class EventConfigurationsArgs {
   EventConfigurationsArgs({
     required Map<String, bool> eventConfigurations,
     String? region,
-  }) :
-      eventConfigurations = pulumi.Input.asInput<Map<String, bool>>(eventConfigurations),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : eventConfigurations = pulumi.Input.asInput<Map<String, bool>>(
+         eventConfigurations,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,9 +33,9 @@ class EventConfigurationsArgs {
 
   factory EventConfigurationsArgs.fromMap(Map<String, dynamic> map) {
     return EventConfigurationsArgs(
-      eventConfigurations: (map['eventConfigurations'] as Map).cast<String, bool>(),
+      eventConfigurations: (map['eventConfigurations'] as Map)
+          .cast<String, bool>(),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

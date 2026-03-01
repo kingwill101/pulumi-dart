@@ -8,20 +8,23 @@ class DbClusterLogDeliveryConfiguration {
 
   /// Creates a new [DbClusterLogDeliveryConfiguration].
   /// [s3Configuration] Configuration for S3 bucket log delivery.
-  DbClusterLogDeliveryConfiguration({
-    this.s3Configuration,
-  });
+  DbClusterLogDeliveryConfiguration({this.s3Configuration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      's3Configuration': ?s3Configuration == null ? null : s3Configuration!.toMap(),
+      's3Configuration': ?s3Configuration == null
+          ? null
+          : s3Configuration!.toMap(),
     };
   }
 
   factory DbClusterLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
     return DbClusterLogDeliveryConfiguration(
-      s3Configuration: map['s3Configuration'] == null ? null : DbClusterLogDeliveryConfigurationS3Configuration.fromMap((map['s3Configuration'] as Map).cast<String, dynamic>()),
+      s3Configuration: map['s3Configuration'] == null
+          ? null
+          : DbClusterLogDeliveryConfigurationS3Configuration.fromMap(
+              (map['s3Configuration'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

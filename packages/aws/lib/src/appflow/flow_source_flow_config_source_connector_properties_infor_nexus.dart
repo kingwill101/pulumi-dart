@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FlowSourceFlowConfigSourceConnectorPropertiesInforNexus {
   final String object;
 
@@ -11,15 +10,14 @@ class FlowSourceFlowConfigSourceConnectorPropertiesInforNexus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'object': object,
-    };
+    return <String, dynamic>{'object': object};
   }
 
-  factory FlowSourceFlowConfigSourceConnectorPropertiesInforNexus.fromMap(Map<String, dynamic> map) {
+  factory FlowSourceFlowConfigSourceConnectorPropertiesInforNexus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowSourceFlowConfigSourceConnectorPropertiesInforNexus(
       object: map['object'] as String,
     );
   }
 }
-

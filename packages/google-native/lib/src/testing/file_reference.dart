@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A reference to a file, used for user inputs.
 class FileReference {
   /// A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
@@ -8,14 +7,10 @@ class FileReference {
 
   /// Creates a new [FileReference].
   /// [gcsPath] A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
-  FileReference({
-    this.gcsPath,
-  });
+  FileReference({this.gcsPath});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gcsPath': ?gcsPath,
-    };
+    return <String, dynamic>{'gcsPath': ?gcsPath};
   }
 
   factory FileReference.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class FileReference {
     );
   }
 }
-

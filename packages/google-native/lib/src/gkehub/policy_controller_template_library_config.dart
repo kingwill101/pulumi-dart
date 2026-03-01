@@ -9,9 +9,7 @@ class PolicyControllerTemplateLibraryConfig {
 
   /// Creates a new [PolicyControllerTemplateLibraryConfig].
   /// [installation] Configures the manner in which the template library is installed on the cluster.
-  PolicyControllerTemplateLibraryConfig({
-    this.installation,
-  });
+  PolicyControllerTemplateLibraryConfig({this.installation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class PolicyControllerTemplateLibraryConfig {
     };
   }
 
-  factory PolicyControllerTemplateLibraryConfig.fromMap(Map<String, dynamic> map) {
+  factory PolicyControllerTemplateLibraryConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyControllerTemplateLibraryConfig(
-      installation: map['installation'] == null ? null : PolicyControllerTemplateLibraryConfigInstallation.fromValue(map['installation'] as String),
+      installation: map['installation'] == null
+          ? null
+          : PolicyControllerTemplateLibraryConfigInstallation.fromValue(
+              map['installation'] as String,
+            ),
     );
   }
 }
-

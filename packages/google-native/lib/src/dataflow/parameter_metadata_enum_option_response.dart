@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// ParameterMetadataEnumOption specifies the option shown in the enum form.
 class ParameterMetadataEnumOptionResponse {
   /// Optional. The description to display for the enum option.
   final String description;
+
   /// Optional. The label to display for the enum option.
   final String label;
+
   /// The value of the enum option.
   final String value;
 
@@ -28,7 +29,9 @@ class ParameterMetadataEnumOptionResponse {
     };
   }
 
-  factory ParameterMetadataEnumOptionResponse.fromMap(Map<String, dynamic> map) {
+  factory ParameterMetadataEnumOptionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ParameterMetadataEnumOptionResponse(
       description: map['description'] as String,
       label: map['label'] as String,
@@ -36,4 +39,3 @@ class ParameterMetadataEnumOptionResponse {
     );
   }
 }
-

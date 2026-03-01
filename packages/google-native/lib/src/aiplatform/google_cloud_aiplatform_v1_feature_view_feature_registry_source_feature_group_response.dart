@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Features belonging to a single feature group that will be synced to Online Store.
 class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse {
   /// Identifier of the feature group.
   final String featureGroupId;
+
   /// Identifiers of features under the feature group.
   final List<String> featureIds;
 
@@ -23,11 +23,12 @@ class GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupRespons
     };
   }
 
-  factory GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroupResponse(
       featureGroupId: map['featureGroupId'] as String,
       featureIds: (map['featureIds'] as List).cast<String>(),
     );
   }
 }
-

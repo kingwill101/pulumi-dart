@@ -18,7 +18,8 @@ enum BackendServiceSessionAffinityComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendServiceSessionAffinityComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown BackendServiceSessionAffinityComputeBeta value: $value',
+    );
   }
 }
-

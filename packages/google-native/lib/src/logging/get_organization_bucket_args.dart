@@ -19,10 +19,9 @@ class GetOrganizationBucketArgs {
     required String bucketId,
     required String location,
     required String organizationId,
-  }) :
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : bucketId = pulumi.Input.asInput<String>(bucketId),
+       location = pulumi.Input.asInput<String>(location),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetOrganizationBucketArgs {
     );
   }
 }
-

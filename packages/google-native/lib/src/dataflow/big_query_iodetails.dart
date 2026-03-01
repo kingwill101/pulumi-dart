@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Metadata for a BigQuery connector used by the job.
 class BigQueryIODetails {
   /// Dataset accessed in the connection.
   final String? dataset;
+
   /// Project accessed in the connection.
   final String? project;
+
   /// Query used to access data in the connection.
   final String? query;
+
   /// Table accessed in the connection.
   final String? table;
 
@@ -17,12 +19,7 @@ class BigQueryIODetails {
   /// [project] Project accessed in the connection.
   /// [query] Query used to access data in the connection.
   /// [table] Table accessed in the connection.
-  BigQueryIODetails({
-    this.dataset,
-    this.project,
-    this.query,
-    this.table,
-  });
+  BigQueryIODetails({this.dataset, this.project, this.query, this.table});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,4 +39,3 @@ class BigQueryIODetails {
     );
   }
 }
-

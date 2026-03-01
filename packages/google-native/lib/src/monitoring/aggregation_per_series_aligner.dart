@@ -32,4 +32,3 @@ enum AggregationPerSeriesAligner {
     throw ArgumentError('Unknown AggregationPerSeriesAligner value: $value');
   }
 }
-

@@ -25,12 +25,11 @@ class GetVersionDialogflowV3beta1Args {
     required String location,
     String? project,
     required String versionId,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      flowId = pulumi.Input.asInput<String>(flowId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      versionId = pulumi.Input.asInput<String>(versionId);
+  }) : agentId = pulumi.Input.asInput<String>(agentId),
+       flowId = pulumi.Input.asInput<String>(flowId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetVersionDialogflowV3beta1Args {
     );
   }
 }
-

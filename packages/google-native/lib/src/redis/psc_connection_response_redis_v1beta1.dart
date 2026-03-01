@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Details of consumer resources in a PSC connection.
 class PscConnectionResponseRedisV1beta1 {
   /// The IP allocated on the consumer network for the PSC forwarding rule.
   final String address;
+
   /// The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
   final String forwardingRule;
+
   /// The consumer network where the IP address resides, in the form of projects/{project_id}/global/networks/{network_id}.
   final String network;
+
   /// The consumer project_id where the forwarding rule is created from.
   final String project;
+
   /// The PSC connection id of the forwarding rule connected to the service attachment.
   final String pscConnectionId;
 
@@ -48,4 +51,3 @@ class PscConnectionResponseRedisV1beta1 {
     );
   }
 }
-

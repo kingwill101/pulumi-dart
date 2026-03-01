@@ -10,20 +10,26 @@ class AutomationResourceSelectorResponse {
 
   /// Creates a new [AutomationResourceSelectorResponse].
   /// [targets] Contains attributes about a target.
-  AutomationResourceSelectorResponse({
-    required this.targets,
-  });
+  AutomationResourceSelectorResponse({required this.targets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targets': pulumi.Input.encodeList<TargetAttributeResponse, Map<String, dynamic>>(targets, (value) => value.toMap()),
+      'targets':
+          pulumi.Input.encodeList<
+            TargetAttributeResponse,
+            Map<String, dynamic>
+          >(targets, (value) => value.toMap()),
     };
   }
 
   factory AutomationResourceSelectorResponse.fromMap(Map<String, dynamic> map) {
     return AutomationResourceSelectorResponse(
-      targets: pulumi.Input.decodeList<TargetAttributeResponse>(map['targets'], (value) => TargetAttributeResponse.fromMap((value as Map).cast<String, dynamic>())),
+      targets: pulumi.Input.decodeList<TargetAttributeResponse>(
+        map['targets'],
+        (value) => TargetAttributeResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

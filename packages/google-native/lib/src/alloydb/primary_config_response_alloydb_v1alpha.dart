@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for the primary cluster. It has the list of clusters that are replicating from this cluster. This should be set if and only if the cluster is of type PRIMARY.
 class PrimaryConfigResponseAlloydbV1alpha {
   /// Names of the clusters that are replicating from this cluster.
@@ -8,20 +7,18 @@ class PrimaryConfigResponseAlloydbV1alpha {
 
   /// Creates a new [PrimaryConfigResponseAlloydbV1alpha].
   /// [secondaryClusterNames] Names of the clusters that are replicating from this cluster.
-  PrimaryConfigResponseAlloydbV1alpha({
-    required this.secondaryClusterNames,
-  });
+  PrimaryConfigResponseAlloydbV1alpha({required this.secondaryClusterNames});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secondaryClusterNames': secondaryClusterNames,
-    };
+    return <String, dynamic>{'secondaryClusterNames': secondaryClusterNames};
   }
 
-  factory PrimaryConfigResponseAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
+  factory PrimaryConfigResponseAlloydbV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrimaryConfigResponseAlloydbV1alpha(
-      secondaryClusterNames: (map['secondaryClusterNames'] as List).cast<String>(),
+      secondaryClusterNames: (map['secondaryClusterNames'] as List)
+          .cast<String>(),
     );
   }
 }
-

@@ -12,21 +12,18 @@ class GetControlOrganizationIntelligenceConfigArgs {
 
   /// Creates a new [GetControlOrganizationIntelligenceConfigArgs].
   /// [name] The id of GCP organization.
-  GetControlOrganizationIntelligenceConfigArgs({
-    required String name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+  GetControlOrganizationIntelligenceConfigArgs({required String name})
+    : name = pulumi.Input.asInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory GetControlOrganizationIntelligenceConfigArgs.fromMap(Map<String, dynamic> map) {
+  factory GetControlOrganizationIntelligenceConfigArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetControlOrganizationIntelligenceConfigArgs(
       name: map['name'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// List of tags to be filtered.
 class TagFilterListHealthcareV1beta1 {
   /// Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example, "PatientID", "00100010".
@@ -8,14 +7,10 @@ class TagFilterListHealthcareV1beta1 {
 
   /// Creates a new [TagFilterListHealthcareV1beta1].
   /// [tags] Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: http://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example, "PatientID", "00100010".
-  TagFilterListHealthcareV1beta1({
-    this.tags,
-  });
+  TagFilterListHealthcareV1beta1({this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'tags': ?tags};
   }
 
   factory TagFilterListHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class TagFilterListHealthcareV1beta1 {
     );
   }
 }
-

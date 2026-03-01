@@ -225,26 +225,36 @@ import 'network_peering_args.dart';
 class NetworkPeering extends pulumi.CustomResource {
   /// Whether to export the custom routes to the peer network. Defaults to `false`.
   late final pulumi.Output<bool?> exportCustomRoutes;
+
   /// Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
   late final pulumi.Output<bool?> exportSubnetRoutesWithPublicIp;
+
   /// Whether to import the custom routes from the peer network. Defaults to `false`.
   late final pulumi.Output<bool?> importCustomRoutes;
+
   /// Whether subnet routes with public IP range are imported. The default value is false. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always imported from peers and are not controlled by this field.
   late final pulumi.Output<bool?> importSubnetRoutesWithPublicIp;
+
   /// Name of the peering.
   late final pulumi.Output<String> name;
+
   /// The primary network of the peering.
   late final pulumi.Output<String> network;
+
   /// The peer network in the peering. The peer network
   /// may belong to a different project.
   late final pulumi.Output<String> peerNetwork;
+
   /// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
   late final pulumi.Output<String?> stackType;
+
   /// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
   /// `ACTIVE` when there's a matching configuration in the peer network.
   late final pulumi.Output<String> state;
+
   /// Details about the current state of the peering.
   late final pulumi.Output<String> stateDetails;
+
   /// The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
   late final pulumi.Output<String?> updateStrategy;
 
@@ -257,15 +267,19 @@ class NetworkPeering extends pulumi.CustomResource {
     NetworkPeeringArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/networkPeering:NetworkPeering',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/networkPeering:NetworkPeering',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
-    this.exportSubnetRoutesWithPublicIp = registerOutput<bool?>('exportSubnetRoutesWithPublicIp');
+    this.exportSubnetRoutesWithPublicIp = registerOutput<bool?>(
+      'exportSubnetRoutesWithPublicIp',
+    );
     this.importCustomRoutes = registerOutput<bool?>('importCustomRoutes');
-    this.importSubnetRoutesWithPublicIp = registerOutput<bool?>('importSubnetRoutesWithPublicIp');
+    this.importSubnetRoutesWithPublicIp = registerOutput<bool?>(
+      'importSubnetRoutesWithPublicIp',
+    );
     this.name = registerOutput<String>('name');
     this.network = registerOutput<String>('network');
     this.peerNetwork = registerOutput<String>('peerNetwork');

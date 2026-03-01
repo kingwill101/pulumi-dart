@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetSubnetDhcpAddressRange {
   /// The first IP address of the range.
   final String firstAddress;
+
   /// The last IP address of the range.
   final String lastAddress;
 
@@ -29,4 +29,3 @@ class GetSubnetDhcpAddressRange {
     );
   }
 }
-

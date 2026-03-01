@@ -8,9 +8,7 @@ class DataAccessOptions {
 
   /// Creates a new [DataAccessOptions].
   /// [logMode] Optional.
-  DataAccessOptions({
-    this.logMode,
-  });
+  DataAccessOptions({this.logMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,9 @@ class DataAccessOptions {
 
   factory DataAccessOptions.fromMap(Map<String, dynamic> map) {
     return DataAccessOptions(
-      logMode: map['logMode'] == null ? null : DataAccessOptionsLogMode.fromValue(map['logMode'] as String),
+      logMode: map['logMode'] == null
+          ? null
+          : DataAccessOptionsLogMode.fromValue(map['logMode'] as String),
     );
   }
 }
-

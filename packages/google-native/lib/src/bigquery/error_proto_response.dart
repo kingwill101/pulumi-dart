@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ErrorProtoResponse {
   /// Debugging information. This property is internal to Google and should not be used.
   final String debugInfo;
+
   /// Specifies where the error occurred, if present.
   final String location;
+
   /// A human-readable description of the error.
   final String message;
+
   /// A short error code that summarizes the error.
   final String reason;
 
@@ -41,4 +43,3 @@ class ErrorProtoResponse {
     );
   }
 }
-

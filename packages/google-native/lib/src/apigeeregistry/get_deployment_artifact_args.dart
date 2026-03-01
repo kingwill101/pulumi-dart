@@ -25,12 +25,11 @@ class GetDeploymentArtifactArgs {
     required String deploymentId,
     required String location,
     String? project,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      artifactId = pulumi.Input.asInput<String>(artifactId),
-      deploymentId = pulumi.Input.asInput<String>(deploymentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : apiId = pulumi.Input.asInput<String>(apiId),
+       artifactId = pulumi.Input.asInput<String>(artifactId),
+       deploymentId = pulumi.Input.asInput<String>(deploymentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetDeploymentArtifactArgs {
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'mysql_ssl_config_datastream_v1alpha1.dart';
 class MysqlProfileDatastreamV1alpha1 {
   /// Hostname for the MySQL connection.
   final String hostname;
+
   /// Input only. Password for the MySQL connection.
   final String password;
+
   /// Port for the MySQL connection, default value is 3306.
   final int? port;
+
   /// SSL configuration for the MySQL connection.
   final MysqlSslConfigDatastreamV1alpha1? sslConfig;
+
   /// Username for the MySQL connection.
   final String username;
 
@@ -44,9 +48,12 @@ class MysqlProfileDatastreamV1alpha1 {
       hostname: map['hostname'] as String,
       password: map['password'] as String,
       port: map['port'] == null ? null : map['port'] as int,
-      sslConfig: map['sslConfig'] == null ? null : MysqlSslConfigDatastreamV1alpha1.fromMap((map['sslConfig'] as Map).cast<String, dynamic>()),
+      sslConfig: map['sslConfig'] == null
+          ? null
+          : MysqlSslConfigDatastreamV1alpha1.fromMap(
+              (map['sslConfig'] as Map).cast<String, dynamic>(),
+            ),
       username: map['username'] as String,
     );
   }
 }
-

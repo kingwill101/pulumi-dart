@@ -11,12 +11,16 @@ class ProxyTargetArgs {
   ///
   /// **NOTE:** Either `db_instance_identifier` or `db_cluster_identifier` should be specified and both should not be specified together
   final pulumi.Input<String>? dbClusterIdentifier;
+
   /// DB instance identifier.
   final pulumi.Input<String>? dbInstanceIdentifier;
+
   /// The name of the DB proxy.
   final pulumi.Input<String> dbProxyName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the target group.
   final pulumi.Input<String> targetGroupName;
 
@@ -32,12 +36,15 @@ class ProxyTargetArgs {
     required String dbProxyName,
     String? region,
     required String targetGroupName,
-  }) :
-      dbClusterIdentifier = pulumi.Input.asOptionalInput<String>(dbClusterIdentifier),
-      dbInstanceIdentifier = pulumi.Input.asOptionalInput<String>(dbInstanceIdentifier),
-      dbProxyName = pulumi.Input.asInput<String>(dbProxyName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      targetGroupName = pulumi.Input.asInput<String>(targetGroupName);
+  }) : dbClusterIdentifier = pulumi.Input.asOptionalInput<String>(
+         dbClusterIdentifier,
+       ),
+       dbInstanceIdentifier = pulumi.Input.asOptionalInput<String>(
+         dbInstanceIdentifier,
+       ),
+       dbProxyName = pulumi.Input.asInput<String>(dbProxyName),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       targetGroupName = pulumi.Input.asInput<String>(targetGroupName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +58,15 @@ class ProxyTargetArgs {
 
   factory ProxyTargetArgs.fromMap(Map<String, dynamic> map) {
     return ProxyTargetArgs(
-      dbClusterIdentifier: map['dbClusterIdentifier'] == null ? null : map['dbClusterIdentifier'] as String,
-      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null ? null : map['dbInstanceIdentifier'] as String,
+      dbClusterIdentifier: map['dbClusterIdentifier'] == null
+          ? null
+          : map['dbClusterIdentifier'] as String,
+      dbInstanceIdentifier: map['dbInstanceIdentifier'] == null
+          ? null
+          : map['dbInstanceIdentifier'] as String,
       dbProxyName: map['dbProxyName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       targetGroupName: map['targetGroupName'] as String,
     );
   }
 }
-

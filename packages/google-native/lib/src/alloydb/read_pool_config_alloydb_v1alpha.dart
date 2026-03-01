@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for a read pool instance.
 class ReadPoolConfigAlloydbV1alpha {
   /// Read capacity, i.e. number of nodes in a read pool instance.
@@ -8,14 +7,10 @@ class ReadPoolConfigAlloydbV1alpha {
 
   /// Creates a new [ReadPoolConfigAlloydbV1alpha].
   /// [nodeCount] Read capacity, i.e. number of nodes in a read pool instance.
-  ReadPoolConfigAlloydbV1alpha({
-    this.nodeCount,
-  });
+  ReadPoolConfigAlloydbV1alpha({this.nodeCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nodeCount': ?nodeCount,
-    };
+    return <String, dynamic>{'nodeCount': ?nodeCount};
   }
 
   factory ReadPoolConfigAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ReadPoolConfigAlloydbV1alpha {
     );
   }
 }
-

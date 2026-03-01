@@ -10,24 +10,19 @@ class GetSubscriptionIamPolicyArgs {
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The subscription name or id to bind to attach IAM policy to.
   final pulumi.Input<String> subscription;
 
   /// Creates a new [GetSubscriptionIamPolicyArgs].
   /// [project] The project in which the resource belongs. If it
   /// [subscription] The subscription name or id to bind to attach IAM policy to.
-  GetSubscriptionIamPolicyArgs({
-    String? project,
-    required String subscription,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetSubscriptionIamPolicyArgs({String? project, required String subscription})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       subscription = pulumi.Input.asInput<String>(subscription);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'subscription': subscription,
-    };
+    return <String, dynamic>{'project': ?project, 'subscription': subscription};
   }
 
   factory GetSubscriptionIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -37,4 +32,3 @@ class GetSubscriptionIamPolicyArgs {
     );
   }
 }
-

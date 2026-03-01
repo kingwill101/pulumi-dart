@@ -8,9 +8,7 @@ class AgentcoreGatewayInterceptorConfigurationInterceptor {
 
   /// Creates a new [AgentcoreGatewayInterceptorConfigurationInterceptor].
   /// [lambda] Lambda function configuration for the interceptor. See `lambda` below.
-  AgentcoreGatewayInterceptorConfigurationInterceptor({
-    this.lambda,
-  });
+  AgentcoreGatewayInterceptorConfigurationInterceptor({this.lambda});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,10 +16,15 @@ class AgentcoreGatewayInterceptorConfigurationInterceptor {
     };
   }
 
-  factory AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayInterceptorConfigurationInterceptor.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayInterceptorConfigurationInterceptor(
-      lambda: map['lambda'] == null ? null : AgentcoreGatewayInterceptorConfigurationInterceptorLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>()),
+      lambda: map['lambda'] == null
+          ? null
+          : AgentcoreGatewayInterceptorConfigurationInterceptorLambda.fromMap(
+              (map['lambda'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

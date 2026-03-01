@@ -13,18 +13,12 @@ class GetOccurrenceIamPolicyArgs {
   /// Creates a new [GetOccurrenceIamPolicyArgs].
   /// [occurrenceId] Required.
   /// [project] Optional.
-  GetOccurrenceIamPolicyArgs({
-    required String occurrenceId,
-    String? project,
-  }) :
-      occurrenceId = pulumi.Input.asInput<String>(occurrenceId),
+  GetOccurrenceIamPolicyArgs({required String occurrenceId, String? project})
+    : occurrenceId = pulumi.Input.asInput<String>(occurrenceId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'occurrenceId': occurrenceId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'occurrenceId': occurrenceId, 'project': ?project};
   }
 
   factory GetOccurrenceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetOccurrenceIamPolicyArgs {
     );
   }
 }
-

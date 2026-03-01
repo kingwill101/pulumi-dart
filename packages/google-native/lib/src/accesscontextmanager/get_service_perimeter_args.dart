@@ -16,9 +16,8 @@ class GetServicePerimeterArgs {
   GetServicePerimeterArgs({
     required String accessPolicyId,
     required String servicePerimeterId,
-  }) :
-      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
-      servicePerimeterId = pulumi.Input.asInput<String>(servicePerimeterId);
+  }) : accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
+       servicePerimeterId = pulumi.Input.asInput<String>(servicePerimeterId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetServicePerimeterArgs {
     );
   }
 }
-

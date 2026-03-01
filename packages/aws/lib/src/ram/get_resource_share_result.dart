@@ -8,18 +8,23 @@ class GetResourceShareResult {
   /// ARN of the resource share.
   final String arn;
   final List<GetResourceShareFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
+
   /// ID of the AWS account that owns the resource share.
   final String owningAccountId;
   final String region;
+
   /// A list of resource ARNs associated with the resource share.
   final List<String> resourceArns;
   final String resourceOwner;
   final String? resourceShareStatus;
+
   /// Status of the resource share.
   final String status;
+
   /// Tags attached to the resource share.
   final Map<String, String> tags;
 
@@ -52,7 +57,12 @@ class GetResourceShareResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetResourceShareFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?filters == null
+          ? null
+          : pulumi.Input.encodeList<
+              GetResourceShareFilter,
+              Map<String, dynamic>
+            >(filters!, (value) => value.toMap()),
       'id': id,
       'name': name,
       'owningAccountId': owningAccountId,
@@ -68,17 +78,25 @@ class GetResourceShareResult {
   factory GetResourceShareResult.fromMap(Map<String, dynamic> map) {
     return GetResourceShareResult(
       arn: map['arn'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetResourceShareFilter>(map['filters'], (value) => GetResourceShareFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<GetResourceShareFilter>(
+              map['filters'],
+              (value) => GetResourceShareFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       id: map['id'] as String,
       name: map['name'] as String,
       owningAccountId: map['owningAccountId'] as String,
       region: map['region'] as String,
       resourceArns: (map['resourceArns'] as List).cast<String>(),
       resourceOwner: map['resourceOwner'] as String,
-      resourceShareStatus: map['resourceShareStatus'] == null ? null : map['resourceShareStatus'] as String,
+      resourceShareStatus: map['resourceShareStatus'] == null
+          ? null
+          : map['resourceShareStatus'] as String,
       status: map['status'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

@@ -9,16 +9,22 @@ import 'git_lab_secrets_response.dart';
 class GitLabConfigResponse {
   /// Connected GitLab.com or GitLabEnterprise repositories for this config.
   final List<GitLabRepositoryIdResponse> connectedRepositories;
+
   /// Time when the config was created.
   final String createTime;
+
   /// Optional. GitLabEnterprise config.
   final GitLabEnterpriseConfigResponse enterpriseConfig;
+
   /// The resource name for the config.
   final String name;
+
   /// Secret Manager secrets needed by the config.
   final GitLabSecretsResponse secrets;
+
   /// Username of the GitLab.com or GitLab Enterprise account Cloud Build will use.
   final String username;
+
   /// UUID included in webhook requests. The UUID is used to look up the corresponding config.
   final String webhookKey;
 
@@ -42,7 +48,11 @@ class GitLabConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectedRepositories': pulumi.Input.encodeList<GitLabRepositoryIdResponse, Map<String, dynamic>>(connectedRepositories, (value) => value.toMap()),
+      'connectedRepositories':
+          pulumi.Input.encodeList<
+            GitLabRepositoryIdResponse,
+            Map<String, dynamic>
+          >(connectedRepositories, (value) => value.toMap()),
       'createTime': createTime,
       'enterpriseConfig': enterpriseConfig.toMap(),
       'name': name,
@@ -54,14 +64,23 @@ class GitLabConfigResponse {
 
   factory GitLabConfigResponse.fromMap(Map<String, dynamic> map) {
     return GitLabConfigResponse(
-      connectedRepositories: pulumi.Input.decodeList<GitLabRepositoryIdResponse>(map['connectedRepositories'], (value) => GitLabRepositoryIdResponse.fromMap((value as Map).cast<String, dynamic>())),
+      connectedRepositories:
+          pulumi.Input.decodeList<GitLabRepositoryIdResponse>(
+            map['connectedRepositories'],
+            (value) => GitLabRepositoryIdResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       createTime: map['createTime'] as String,
-      enterpriseConfig: GitLabEnterpriseConfigResponse.fromMap((map['enterpriseConfig'] as Map).cast<String, dynamic>()),
+      enterpriseConfig: GitLabEnterpriseConfigResponse.fromMap(
+        (map['enterpriseConfig'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
-      secrets: GitLabSecretsResponse.fromMap((map['secrets'] as Map).cast<String, dynamic>()),
+      secrets: GitLabSecretsResponse.fromMap(
+        (map['secrets'] as Map).cast<String, dynamic>(),
+      ),
       username: map['username'] as String,
       webhookKey: map['webhookKey'] as String,
     );
   }
 }
-

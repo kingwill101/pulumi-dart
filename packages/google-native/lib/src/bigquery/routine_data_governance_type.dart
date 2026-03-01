@@ -15,4 +15,3 @@ enum RoutineDataGovernanceType {
     throw ArgumentError('Unknown RoutineDataGovernanceType value: $value');
   }
 }
-

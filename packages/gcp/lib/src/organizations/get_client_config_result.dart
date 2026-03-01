@@ -1,17 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getClientConfig.
 class GetClientConfigResult {
   /// The OAuth2 access token used by the client to authenticate against the Google Cloud API.
   final String accessToken;
+
   /// The default labels configured on the provider.
   final Map<String, String> defaultLabels;
   final String id;
+
   /// The ID of the project to apply any resources to.
   final String project;
+
   /// The region to operate under.
   final String region;
+
   /// The zone to operate under.
   final String zone;
 
@@ -53,4 +56,3 @@ class GetClientConfigResult {
     );
   }
 }
-

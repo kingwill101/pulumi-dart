@@ -5,9 +5,12 @@ import 'security_policy_adaptive_protection_config_layer7_ddos_defense_config_re
 
 /// Configuration options for Cloud Armor Adaptive Protection (CAAP).
 class SecurityPolicyAdaptiveProtectionConfigResponse {
-  final SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse autoDeployConfig;
+  final SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse
+  autoDeployConfig;
+
   /// If set to true, enables Cloud Armor Machine Learning.
-  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse layer7DdosDefenseConfig;
+  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse
+  layer7DdosDefenseConfig;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigResponse].
   /// [autoDeployConfig] Required.
@@ -24,11 +27,18 @@ class SecurityPolicyAdaptiveProtectionConfigResponse {
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdaptiveProtectionConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdaptiveProtectionConfigResponse(
-      autoDeployConfig: SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse.fromMap((map['autoDeployConfig'] as Map).cast<String, dynamic>()),
-      layer7DdosDefenseConfig: SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse.fromMap((map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>()),
+      autoDeployConfig:
+          SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse.fromMap(
+            (map['autoDeployConfig'] as Map).cast<String, dynamic>(),
+          ),
+      layer7DdosDefenseConfig:
+          SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse.fromMap(
+            (map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

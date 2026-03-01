@@ -10,15 +10,20 @@ class AddonsConfigAddonsConfig {
   /// Configuration for the Advanced API Ops add-on.
   /// Structure is documented below.
   final AddonsConfigAddonsConfigAdvancedApiOpsConfig? advancedApiOpsConfig;
+
   /// Configuration for the API Security add-on.
   /// Structure is documented below.
   final AddonsConfigAddonsConfigApiSecurityConfig? apiSecurityConfig;
+
   /// Configuration for the Monetization add-on.
   /// Structure is documented below.
-  final AddonsConfigAddonsConfigConnectorsPlatformConfig? connectorsPlatformConfig;
+  final AddonsConfigAddonsConfigConnectorsPlatformConfig?
+  connectorsPlatformConfig;
+
   /// Configuration for the Integration add-on.
   /// Structure is documented below.
   final AddonsConfigAddonsConfigIntegrationConfig? integrationConfig;
+
   /// Configuration for the Monetization add-on.
   /// Structure is documented below.
   final AddonsConfigAddonsConfigMonetizationConfig? monetizationConfig;
@@ -39,22 +44,51 @@ class AddonsConfigAddonsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedApiOpsConfig': ?advancedApiOpsConfig == null ? null : advancedApiOpsConfig!.toMap(),
-      'apiSecurityConfig': ?apiSecurityConfig == null ? null : apiSecurityConfig!.toMap(),
-      'connectorsPlatformConfig': ?connectorsPlatformConfig == null ? null : connectorsPlatformConfig!.toMap(),
-      'integrationConfig': ?integrationConfig == null ? null : integrationConfig!.toMap(),
-      'monetizationConfig': ?monetizationConfig == null ? null : monetizationConfig!.toMap(),
+      'advancedApiOpsConfig': ?advancedApiOpsConfig == null
+          ? null
+          : advancedApiOpsConfig!.toMap(),
+      'apiSecurityConfig': ?apiSecurityConfig == null
+          ? null
+          : apiSecurityConfig!.toMap(),
+      'connectorsPlatformConfig': ?connectorsPlatformConfig == null
+          ? null
+          : connectorsPlatformConfig!.toMap(),
+      'integrationConfig': ?integrationConfig == null
+          ? null
+          : integrationConfig!.toMap(),
+      'monetizationConfig': ?monetizationConfig == null
+          ? null
+          : monetizationConfig!.toMap(),
     };
   }
 
   factory AddonsConfigAddonsConfig.fromMap(Map<String, dynamic> map) {
     return AddonsConfigAddonsConfig(
-      advancedApiOpsConfig: map['advancedApiOpsConfig'] == null ? null : AddonsConfigAddonsConfigAdvancedApiOpsConfig.fromMap((map['advancedApiOpsConfig'] as Map).cast<String, dynamic>()),
-      apiSecurityConfig: map['apiSecurityConfig'] == null ? null : AddonsConfigAddonsConfigApiSecurityConfig.fromMap((map['apiSecurityConfig'] as Map).cast<String, dynamic>()),
-      connectorsPlatformConfig: map['connectorsPlatformConfig'] == null ? null : AddonsConfigAddonsConfigConnectorsPlatformConfig.fromMap((map['connectorsPlatformConfig'] as Map).cast<String, dynamic>()),
-      integrationConfig: map['integrationConfig'] == null ? null : AddonsConfigAddonsConfigIntegrationConfig.fromMap((map['integrationConfig'] as Map).cast<String, dynamic>()),
-      monetizationConfig: map['monetizationConfig'] == null ? null : AddonsConfigAddonsConfigMonetizationConfig.fromMap((map['monetizationConfig'] as Map).cast<String, dynamic>()),
+      advancedApiOpsConfig: map['advancedApiOpsConfig'] == null
+          ? null
+          : AddonsConfigAddonsConfigAdvancedApiOpsConfig.fromMap(
+              (map['advancedApiOpsConfig'] as Map).cast<String, dynamic>(),
+            ),
+      apiSecurityConfig: map['apiSecurityConfig'] == null
+          ? null
+          : AddonsConfigAddonsConfigApiSecurityConfig.fromMap(
+              (map['apiSecurityConfig'] as Map).cast<String, dynamic>(),
+            ),
+      connectorsPlatformConfig: map['connectorsPlatformConfig'] == null
+          ? null
+          : AddonsConfigAddonsConfigConnectorsPlatformConfig.fromMap(
+              (map['connectorsPlatformConfig'] as Map).cast<String, dynamic>(),
+            ),
+      integrationConfig: map['integrationConfig'] == null
+          ? null
+          : AddonsConfigAddonsConfigIntegrationConfig.fromMap(
+              (map['integrationConfig'] as Map).cast<String, dynamic>(),
+            ),
+      monetizationConfig: map['monetizationConfig'] == null
+          ? null
+          : AddonsConfigAddonsConfigMonetizationConfig.fromMap(
+              (map['monetizationConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

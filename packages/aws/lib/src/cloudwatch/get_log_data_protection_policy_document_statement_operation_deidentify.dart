@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLogDataProtectionPolicyDocumentStatementOperationDeidentify {
   /// An empty object that configures masking.
   final Map<String, dynamic> maskConfig;
@@ -12,15 +11,14 @@ class GetLogDataProtectionPolicyDocumentStatementOperationDeidentify {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maskConfig': maskConfig,
-    };
+    return <String, dynamic>{'maskConfig': maskConfig};
   }
 
-  factory GetLogDataProtectionPolicyDocumentStatementOperationDeidentify.fromMap(Map<String, dynamic> map) {
+  factory GetLogDataProtectionPolicyDocumentStatementOperationDeidentify.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLogDataProtectionPolicyDocumentStatementOperationDeidentify(
       maskConfig: (map['maskConfig'] as Map).cast<String, dynamic>(),
     );
   }
 }
-

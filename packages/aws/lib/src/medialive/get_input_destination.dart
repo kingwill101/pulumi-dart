@@ -26,7 +26,11 @@ class GetInputDestination {
       'ip': ip,
       'port': port,
       'url': url,
-      'vpcs': pulumi.Input.encodeList<GetInputDestinationVpc, Map<String, dynamic>>(vpcs, (value) => value.toMap()),
+      'vpcs':
+          pulumi.Input.encodeList<GetInputDestinationVpc, Map<String, dynamic>>(
+            vpcs,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -35,8 +39,12 @@ class GetInputDestination {
       ip: map['ip'] as String,
       port: map['port'] as String,
       url: map['url'] as String,
-      vpcs: pulumi.Input.decodeList<GetInputDestinationVpc>(map['vpcs'], (value) => GetInputDestinationVpc.fromMap((value as Map).cast<String, dynamic>())),
+      vpcs: pulumi.Input.decodeList<GetInputDestinationVpc>(
+        map['vpcs'],
+        (value) => GetInputDestinationVpc.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

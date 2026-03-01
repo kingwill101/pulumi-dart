@@ -5,24 +5,37 @@ import 'get_service_template_container_env_value_source_secret_key_ref.dart';
 
 class GetServiceTemplateContainerEnvValueSource {
   /// Selects a secret and a specific version from Cloud Secret Manager.
-  final List<GetServiceTemplateContainerEnvValueSourceSecretKeyRef> secretKeyReves;
+  final List<GetServiceTemplateContainerEnvValueSourceSecretKeyRef>
+  secretKeyReves;
 
   /// Creates a new [GetServiceTemplateContainerEnvValueSource].
   /// [secretKeyReves] Selects a secret and a specific version from Cloud Secret Manager.
-  GetServiceTemplateContainerEnvValueSource({
-    required this.secretKeyReves,
-  });
+  GetServiceTemplateContainerEnvValueSource({required this.secretKeyReves});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'secretKeyReves': pulumi.Input.encodeList<GetServiceTemplateContainerEnvValueSourceSecretKeyRef, Map<String, dynamic>>(secretKeyReves, (value) => value.toMap()),
+      'secretKeyReves':
+          pulumi.Input.encodeList<
+            GetServiceTemplateContainerEnvValueSourceSecretKeyRef,
+            Map<String, dynamic>
+          >(secretKeyReves, (value) => value.toMap()),
     };
   }
 
-  factory GetServiceTemplateContainerEnvValueSource.fromMap(Map<String, dynamic> map) {
+  factory GetServiceTemplateContainerEnvValueSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceTemplateContainerEnvValueSource(
-      secretKeyReves: pulumi.Input.decodeList<GetServiceTemplateContainerEnvValueSourceSecretKeyRef>(map['secretKeyReves'], (value) => GetServiceTemplateContainerEnvValueSourceSecretKeyRef.fromMap((value as Map).cast<String, dynamic>())),
+      secretKeyReves:
+          pulumi.Input.decodeList<
+            GetServiceTemplateContainerEnvValueSourceSecretKeyRef
+          >(
+            map['secretKeyReves'],
+            (value) =>
+                GetServiceTemplateContainerEnvValueSourceSecretKeyRef.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

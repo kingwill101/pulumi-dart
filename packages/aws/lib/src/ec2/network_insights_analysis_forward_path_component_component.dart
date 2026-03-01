@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class NetworkInsightsAnalysisForwardPathComponentComponent {
   /// ARN of the Network Insights Analysis.
   final String? arn;
+
   /// ID of the Network Insights Analysis.
   final String? id;
   final String? name;
@@ -19,14 +19,12 @@ class NetworkInsightsAnalysisForwardPathComponentComponent {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'arn': ?arn,
-      'id': ?id,
-      'name': ?name,
-    };
+    return <String, dynamic>{'arn': ?arn, 'id': ?id, 'name': ?name};
   }
 
-  factory NetworkInsightsAnalysisForwardPathComponentComponent.fromMap(Map<String, dynamic> map) {
+  factory NetworkInsightsAnalysisForwardPathComponentComponent.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInsightsAnalysisForwardPathComponentComponent(
       arn: map['arn'] == null ? null : map['arn'] as String,
       id: map['id'] == null ? null : map['id'] as String,
@@ -34,4 +32,3 @@ class NetworkInsightsAnalysisForwardPathComponentComponent {
     );
   }
 }
-

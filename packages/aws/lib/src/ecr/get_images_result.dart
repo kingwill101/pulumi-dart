@@ -7,6 +7,7 @@ import 'get_images_image_id.dart';
 class GetImagesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// List of image objects containing image digest and tags. Each object has the following attributes:
   final List<GetImagesImageId> imageIds;
   final String region;
@@ -30,7 +31,11 @@ class GetImagesResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'imageIds': pulumi.Input.encodeList<GetImagesImageId, Map<String, dynamic>>(imageIds, (value) => value.toMap()),
+      'imageIds':
+          pulumi.Input.encodeList<GetImagesImageId, Map<String, dynamic>>(
+            imageIds,
+            (value) => value.toMap(),
+          ),
       'region': region,
       'registryId': ?registryId,
       'repositoryName': repositoryName,
@@ -40,11 +45,16 @@ class GetImagesResult {
   factory GetImagesResult.fromMap(Map<String, dynamic> map) {
     return GetImagesResult(
       id: map['id'] as String,
-      imageIds: pulumi.Input.decodeList<GetImagesImageId>(map['imageIds'], (value) => GetImagesImageId.fromMap((value as Map).cast<String, dynamic>())),
+      imageIds: pulumi.Input.decodeList<GetImagesImageId>(
+        map['imageIds'],
+        (value) =>
+            GetImagesImageId.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       region: map['region'] as String,
-      registryId: map['registryId'] == null ? null : map['registryId'] as String,
+      registryId: map['registryId'] == null
+          ? null
+          : map['registryId'] as String,
       repositoryName: map['repositoryName'] as String,
     );
   }
 }
-

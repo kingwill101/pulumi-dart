@@ -19,10 +19,9 @@ class GetFunctionCloudfunctionsV2Args {
     required String functionId,
     required String location,
     String? project,
-  }) :
-      functionId = pulumi.Input.asInput<String>(functionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : functionId = pulumi.Input.asInput<String>(functionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetFunctionCloudfunctionsV2Args {
     );
   }
 }
-

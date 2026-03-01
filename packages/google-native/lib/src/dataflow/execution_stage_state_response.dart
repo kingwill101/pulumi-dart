@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A message describing the state of a particular execution stage.
 class ExecutionStageStateResponse {
   /// The time at which the stage transitioned to this state.
   final String currentStateTime;
+
   /// The name of the execution stage.
   final String executionStageName;
+
   /// Executions stage states allow the same set of values as JobState.
   final String executionStageState;
 
@@ -36,4 +37,3 @@ class ExecutionStageStateResponse {
     );
   }
 }
-

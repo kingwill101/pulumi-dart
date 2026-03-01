@@ -7,10 +7,15 @@ import 'posture_policy_set_policy_constraint_org_policy_constraint_custom_policy
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom {
   /// Organization policy custom constraint definition.
   /// Structure is documented below.
-  final PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint? customConstraint;
+  final PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint?
+  customConstraint;
+
   /// Definition of policy rules
   /// Structure is documented below.
-  final List<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule> policyRules;
+  final List<
+    PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule
+  >
+  policyRules;
 
   /// Creates a new [PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom].
   /// [customConstraint] Organization policy custom constraint definition.
@@ -22,16 +27,36 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customConstraint': ?customConstraint == null ? null : customConstraint!.toMap(),
-      'policyRules': pulumi.Input.encodeList<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule, Map<String, dynamic>>(policyRules, (value) => value.toMap()),
+      'customConstraint': ?customConstraint == null
+          ? null
+          : customConstraint!.toMap(),
+      'policyRules':
+          pulumi.Input.encodeList<
+            PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule,
+            Map<String, dynamic>
+          >(policyRules, (value) => value.toMap()),
     };
   }
 
-  factory PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom.fromMap(Map<String, dynamic> map) {
+  factory PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom(
-      customConstraint: map['customConstraint'] == null ? null : PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint.fromMap((map['customConstraint'] as Map).cast<String, dynamic>()),
-      policyRules: pulumi.Input.decodeList<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule>(map['policyRules'], (value) => PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
+      customConstraint: map['customConstraint'] == null
+          ? null
+          : PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint.fromMap(
+              (map['customConstraint'] as Map).cast<String, dynamic>(),
+            ),
+      policyRules:
+          pulumi.Input.decodeList<
+            PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule
+          >(
+            map['policyRules'],
+            (value) =>
+                PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

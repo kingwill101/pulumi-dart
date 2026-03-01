@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class VirtualNodeSpecLoggingAccessLogFileFormatJson {
   /// The specified key for the JSON. Must be between 1 and 100 characters in length.
   final String key;
+
   /// The specified value for the JSON. Must be between 1 and 100 characters in length.
   final String value;
 
@@ -16,17 +16,15 @@ class VirtualNodeSpecLoggingAccessLogFileFormatJson {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory VirtualNodeSpecLoggingAccessLogFileFormatJson.fromMap(Map<String, dynamic> map) {
+  factory VirtualNodeSpecLoggingAccessLogFileFormatJson.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualNodeSpecLoggingAccessLogFileFormatJson(
       key: map['key'] as String,
       value: map['value'] as String,
     );
   }
 }
-

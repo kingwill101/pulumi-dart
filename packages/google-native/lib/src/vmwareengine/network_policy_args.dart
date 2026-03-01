@@ -10,18 +10,24 @@ import 'network_service.dart';
 class NetworkPolicyArgs {
   /// Optional. User-provided description for this network policy.
   final pulumi.Input<String>? description;
+
   /// IP address range in CIDR notation used to create internet access and external IP access. An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
   final pulumi.Input<String> edgeServicesCidr;
+
   /// Network service that allows External IP addresses to be assigned to VMware workloads. This service can only be enabled when `internet_access` is also enabled.
   final pulumi.Input<NetworkService>? externalIp;
+
   /// Network service that allows VMware workloads to access the internet.
   final pulumi.Input<NetworkService>? internetAccess;
   final pulumi.Input<String>? location;
+
   /// Required. The user-provided identifier of the network policy to be created. This identifier must be unique within parent `projects/{my-project}/locations/{us-central1}/networkPolicies` and becomes the final token in the name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
   final pulumi.Input<String> networkPolicyId;
   final pulumi.Input<String>? project;
+
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
+
   /// Optional. The relative resource name of the VMware Engine network. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
   final pulumi.Input<String>? vmwareEngineNetwork;
 
@@ -45,23 +51,34 @@ class NetworkPolicyArgs {
     String? project,
     String? requestId,
     String? vmwareEngineNetwork,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      edgeServicesCidr = pulumi.Input.asInput<String>(edgeServicesCidr),
-      externalIp = pulumi.Input.asOptionalInput<NetworkService>(externalIp),
-      internetAccess = pulumi.Input.asOptionalInput<NetworkService>(internetAccess),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      networkPolicyId = pulumi.Input.asInput<String>(networkPolicyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      vmwareEngineNetwork = pulumi.Input.asOptionalInput<String>(vmwareEngineNetwork);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       edgeServicesCidr = pulumi.Input.asInput<String>(edgeServicesCidr),
+       externalIp = pulumi.Input.asOptionalInput<NetworkService>(externalIp),
+       internetAccess = pulumi.Input.asOptionalInput<NetworkService>(
+         internetAccess,
+       ),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       networkPolicyId = pulumi.Input.asInput<String>(networkPolicyId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       requestId = pulumi.Input.asOptionalInput<String>(requestId),
+       vmwareEngineNetwork = pulumi.Input.asOptionalInput<String>(
+         vmwareEngineNetwork,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
       'edgeServicesCidr': edgeServicesCidr,
-      'externalIp': ?pulumi.Input.mapOptionalInputValue<NetworkService, Map<String, dynamic>>(externalIp, (value) => value.toMap()),
-      'internetAccess': ?pulumi.Input.mapOptionalInputValue<NetworkService, Map<String, dynamic>>(internetAccess, (value) => value.toMap()),
+      'externalIp':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkService,
+            Map<String, dynamic>
+          >(externalIp, (value) => value.toMap()),
+      'internetAccess':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkService,
+            Map<String, dynamic>
+          >(internetAccess, (value) => value.toMap()),
       'location': ?location,
       'networkPolicyId': networkPolicyId,
       'project': ?project,
@@ -72,16 +89,27 @@ class NetworkPolicyArgs {
 
   factory NetworkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       edgeServicesCidr: map['edgeServicesCidr'] as String,
-      externalIp: map['externalIp'] == null ? null : NetworkService.fromMap((map['externalIp'] as Map).cast<String, dynamic>()),
-      internetAccess: map['internetAccess'] == null ? null : NetworkService.fromMap((map['internetAccess'] as Map).cast<String, dynamic>()),
+      externalIp: map['externalIp'] == null
+          ? null
+          : NetworkService.fromMap(
+              (map['externalIp'] as Map).cast<String, dynamic>(),
+            ),
+      internetAccess: map['internetAccess'] == null
+          ? null
+          : NetworkService.fromMap(
+              (map['internetAccess'] as Map).cast<String, dynamic>(),
+            ),
       location: map['location'] == null ? null : map['location'] as String,
       networkPolicyId: map['networkPolicyId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       requestId: map['requestId'] == null ? null : map['requestId'] as String,
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null ? null : map['vmwareEngineNetwork'] as String,
+      vmwareEngineNetwork: map['vmwareEngineNetwork'] == null
+          ? null
+          : map['vmwareEngineNetwork'] as String,
     );
   }
 }
-

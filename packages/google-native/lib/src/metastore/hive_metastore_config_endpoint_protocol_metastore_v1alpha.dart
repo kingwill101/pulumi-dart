@@ -7,13 +7,17 @@ enum HiveMetastoreConfigEndpointProtocolMetastoreV1alpha {
   const HiveMetastoreConfigEndpointProtocolMetastoreV1alpha(this.value);
   final String value;
 
-  static HiveMetastoreConfigEndpointProtocolMetastoreV1alpha fromValue(String value) {
-    for (final item in HiveMetastoreConfigEndpointProtocolMetastoreV1alpha.values) {
+  static HiveMetastoreConfigEndpointProtocolMetastoreV1alpha fromValue(
+    String value,
+  ) {
+    for (final item
+        in HiveMetastoreConfigEndpointProtocolMetastoreV1alpha.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown HiveMetastoreConfigEndpointProtocolMetastoreV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown HiveMetastoreConfigEndpointProtocolMetastoreV1alpha value: $value',
+    );
   }
 }
-

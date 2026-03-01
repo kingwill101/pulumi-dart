@@ -6,8 +6,10 @@ import 'google_privacy_dlp_v2_value.dart';
 class GooglePrivacyDlpV2Bucket {
   /// Upper bound of the range, exclusive; type must match min.
   final GooglePrivacyDlpV2Value? max;
+
   /// Lower bound of the range, inclusive. Type should be the same as max if used.
   final GooglePrivacyDlpV2Value? min;
+
   /// Replacement value for this bucket.
   final GooglePrivacyDlpV2Value replacementValue;
 
@@ -31,10 +33,19 @@ class GooglePrivacyDlpV2Bucket {
 
   factory GooglePrivacyDlpV2Bucket.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Bucket(
-      max: map['max'] == null ? null : GooglePrivacyDlpV2Value.fromMap((map['max'] as Map).cast<String, dynamic>()),
-      min: map['min'] == null ? null : GooglePrivacyDlpV2Value.fromMap((map['min'] as Map).cast<String, dynamic>()),
-      replacementValue: GooglePrivacyDlpV2Value.fromMap((map['replacementValue'] as Map).cast<String, dynamic>()),
+      max: map['max'] == null
+          ? null
+          : GooglePrivacyDlpV2Value.fromMap(
+              (map['max'] as Map).cast<String, dynamic>(),
+            ),
+      min: map['min'] == null
+          ? null
+          : GooglePrivacyDlpV2Value.fromMap(
+              (map['min'] as Map).cast<String, dynamic>(),
+            ),
+      replacementValue: GooglePrivacyDlpV2Value.fromMap(
+        (map['replacementValue'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

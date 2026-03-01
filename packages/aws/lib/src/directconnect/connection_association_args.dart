@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionAssociationArgs {
   /// The ID of the connection.
   final pulumi.Input<String> connectionId;
+
   /// The ID of the LAG with which to associate the connection.
   final pulumi.Input<String> lagId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -22,10 +24,9 @@ class ConnectionAssociationArgs {
     required String connectionId,
     required String lagId,
     String? region,
-  }) :
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      lagId = pulumi.Input.asInput<String>(lagId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : connectionId = pulumi.Input.asInput<String>(connectionId),
+       lagId = pulumi.Input.asInput<String>(lagId),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class ConnectionAssociationArgs {
     );
   }
 }
-

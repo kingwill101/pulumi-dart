@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
 class SparkSqlBatchResponse {
   /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
   final List<String> jarFileUris;
+
   /// The HCFS URI of the script that contains Spark SQL queries to execute.
   final String queryFileUri;
+
   /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
   final Map<String, String> queryVariables;
 
@@ -36,4 +37,3 @@ class SparkSqlBatchResponse {
     );
   }
 }
-

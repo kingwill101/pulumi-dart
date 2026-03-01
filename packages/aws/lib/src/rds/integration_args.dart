@@ -12,26 +12,33 @@ class IntegrationArgs {
   /// For more information, see the [User Guide](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context).
   /// You can only include this parameter if you specify the `kms_key_id` parameter.
   final pulumi.Input<Map<String, String>>? additionalEncryptionContext;
+
   /// Data filters for the integration.
   /// These filters determine which tables from the source database are sent to the target Amazon Redshift data warehouse.
   /// The value should match the syntax from the AWS CLI which includes an `include:` or `exclude:` prefix before a filter expression.
   /// Multiple expressions are separated by a comma.
   /// See the [Amazon RDS data filtering guide](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/zero-etl.filtering.html) for additional details.
   final pulumi.Input<String>? dataFilter;
+
   /// Name of the integration.
   final pulumi.Input<String> integrationName;
+
   /// KMS key identifier for the key to use to encrypt the integration.
   /// If you don't specify an encryption key, RDS uses a default AWS owned key.
   /// If you use the default AWS owned key, you should ignore `kms_key_id` parameter by using `lifecycle` parameter to avoid unintended change after the first creation.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of the database to use as the source for replication.
   final pulumi.Input<String> sourceArn;
+
   /// Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// For more detailed documentation about each argument, refer to the [AWS official documentation](https://docs.aws.amazon.com/cli/latest/reference/rds/create-integration.html).
   final pulumi.Input<Map<String, String>>? tags;
+
   /// ARN of the Redshift data warehouse to use as the target for replication.
   ///
   /// The following arguments are optional:
@@ -58,16 +65,18 @@ class IntegrationArgs {
     Map<String, String>? tags,
     required String targetArn,
     IntegrationTimeouts? timeouts,
-  }) :
-      additionalEncryptionContext = pulumi.Input.asOptionalInput<Map<String, String>>(additionalEncryptionContext),
-      dataFilter = pulumi.Input.asOptionalInput<String>(dataFilter),
-      integrationName = pulumi.Input.asInput<String>(integrationName),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sourceArn = pulumi.Input.asInput<String>(sourceArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      targetArn = pulumi.Input.asInput<String>(targetArn),
-      timeouts = pulumi.Input.asOptionalInput<IntegrationTimeouts>(timeouts);
+  }) : additionalEncryptionContext =
+           pulumi.Input.asOptionalInput<Map<String, String>>(
+             additionalEncryptionContext,
+           ),
+       dataFilter = pulumi.Input.asOptionalInput<String>(dataFilter),
+       integrationName = pulumi.Input.asInput<String>(integrationName),
+       kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       sourceArn = pulumi.Input.asInput<String>(sourceArn),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       targetArn = pulumi.Input.asInput<String>(targetArn),
+       timeouts = pulumi.Input.asOptionalInput<IntegrationTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,22 +88,35 @@ class IntegrationArgs {
       'sourceArn': sourceArn,
       'tags': ?tags,
       'targetArn': targetArn,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<IntegrationTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            IntegrationTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory IntegrationArgs.fromMap(Map<String, dynamic> map) {
     return IntegrationArgs(
-      additionalEncryptionContext: map['additionalEncryptionContext'] == null ? null : (map['additionalEncryptionContext'] as Map).cast<String, String>(),
-      dataFilter: map['dataFilter'] == null ? null : map['dataFilter'] as String,
+      additionalEncryptionContext: map['additionalEncryptionContext'] == null
+          ? null
+          : (map['additionalEncryptionContext'] as Map).cast<String, String>(),
+      dataFilter: map['dataFilter'] == null
+          ? null
+          : map['dataFilter'] as String,
       integrationName: map['integrationName'] as String,
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       sourceArn: map['sourceArn'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
       targetArn: map['targetArn'] as String,
-      timeouts: map['timeouts'] == null ? null : IntegrationTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null
+          ? null
+          : IntegrationTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

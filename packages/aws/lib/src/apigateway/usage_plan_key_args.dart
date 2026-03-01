@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UsagePlanKeyArgs {
   /// Identifier of the API key resource.
   final pulumi.Input<String> keyId;
+
   /// Type of the API key resource. Currently, the valid key type is API_KEY.
   final pulumi.Input<String> keyType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Id of the usage plan resource representing to associate the key to.
   final pulumi.Input<String> usagePlanId;
 
@@ -26,11 +29,10 @@ class UsagePlanKeyArgs {
     required String keyType,
     String? region,
     required String usagePlanId,
-  }) :
-      keyId = pulumi.Input.asInput<String>(keyId),
-      keyType = pulumi.Input.asInput<String>(keyType),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      usagePlanId = pulumi.Input.asInput<String>(usagePlanId);
+  }) : keyId = pulumi.Input.asInput<String>(keyId),
+       keyType = pulumi.Input.asInput<String>(keyType),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       usagePlanId = pulumi.Input.asInput<String>(usagePlanId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,4 +52,3 @@ class UsagePlanKeyArgs {
     );
   }
 }
-

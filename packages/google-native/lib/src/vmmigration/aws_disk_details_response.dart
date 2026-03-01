@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The details of an AWS instance disk.
 class AwsDiskDetailsResponse {
   /// The ordinal number of the disk.
   final int diskNumber;
+
   /// Size in GB.
   final String sizeGb;
+
   /// AWS volume ID.
   final String volumeId;
 
@@ -36,4 +37,3 @@ class AwsDiskDetailsResponse {
     );
   }
 }
-

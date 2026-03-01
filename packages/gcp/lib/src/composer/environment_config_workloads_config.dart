@@ -9,12 +9,16 @@ import 'environment_config_workloads_config_worker.dart';
 class EnvironmentConfigWorkloadsConfig {
   /// Configuration for resources used by DAG processor.
   final EnvironmentConfigWorkloadsConfigDagProcessor? dagProcessor;
+
   /// Configuration for resources used by Airflow schedulers.
   final EnvironmentConfigWorkloadsConfigScheduler? scheduler;
+
   /// Configuration for resources used by Airflow triggerers.
   final EnvironmentConfigWorkloadsConfigTriggerer? triggerer;
+
   /// Configuration for resources used by Airflow web server.
   final EnvironmentConfigWorkloadsConfigWebServer? webServer;
+
   /// Configuration for resources used by Airflow workers.
   final EnvironmentConfigWorkloadsConfigWorker? worker;
 
@@ -44,12 +48,31 @@ class EnvironmentConfigWorkloadsConfig {
 
   factory EnvironmentConfigWorkloadsConfig.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigWorkloadsConfig(
-      dagProcessor: map['dagProcessor'] == null ? null : EnvironmentConfigWorkloadsConfigDagProcessor.fromMap((map['dagProcessor'] as Map).cast<String, dynamic>()),
-      scheduler: map['scheduler'] == null ? null : EnvironmentConfigWorkloadsConfigScheduler.fromMap((map['scheduler'] as Map).cast<String, dynamic>()),
-      triggerer: map['triggerer'] == null ? null : EnvironmentConfigWorkloadsConfigTriggerer.fromMap((map['triggerer'] as Map).cast<String, dynamic>()),
-      webServer: map['webServer'] == null ? null : EnvironmentConfigWorkloadsConfigWebServer.fromMap((map['webServer'] as Map).cast<String, dynamic>()),
-      worker: map['worker'] == null ? null : EnvironmentConfigWorkloadsConfigWorker.fromMap((map['worker'] as Map).cast<String, dynamic>()),
+      dagProcessor: map['dagProcessor'] == null
+          ? null
+          : EnvironmentConfigWorkloadsConfigDagProcessor.fromMap(
+              (map['dagProcessor'] as Map).cast<String, dynamic>(),
+            ),
+      scheduler: map['scheduler'] == null
+          ? null
+          : EnvironmentConfigWorkloadsConfigScheduler.fromMap(
+              (map['scheduler'] as Map).cast<String, dynamic>(),
+            ),
+      triggerer: map['triggerer'] == null
+          ? null
+          : EnvironmentConfigWorkloadsConfigTriggerer.fromMap(
+              (map['triggerer'] as Map).cast<String, dynamic>(),
+            ),
+      webServer: map['webServer'] == null
+          ? null
+          : EnvironmentConfigWorkloadsConfigWebServer.fromMap(
+              (map['webServer'] as Map).cast<String, dynamic>(),
+            ),
+      worker: map['worker'] == null
+          ? null
+          : EnvironmentConfigWorkloadsConfigWorker.fromMap(
+              (map['worker'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

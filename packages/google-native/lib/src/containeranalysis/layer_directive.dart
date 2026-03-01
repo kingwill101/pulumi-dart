@@ -31,4 +31,3 @@ enum LayerDirective {
     throw ArgumentError('Unknown LayerDirective value: $value');
   }
 }
-

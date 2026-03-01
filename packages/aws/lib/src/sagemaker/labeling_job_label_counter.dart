@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LabelingJobLabelCounter {
   /// Total number of objects that could not be labeled due to an error.
   final int failedNonRetryableError;
+
   /// Total number of objects labeled by a human worker.
   final int humanLabeled;
+
   /// Total number of objects labeled by automated data labeling.
   final int machineLabeled;
+
   /// Total number of objects labeled.
   final int totalLabeled;
+
   /// Total number of objects not yet labeled.
   final int unlabeled;
 
@@ -47,4 +50,3 @@ class LabelingJobLabelCounter {
     );
   }
 }
-

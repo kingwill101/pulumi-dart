@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Describes metadata for a TensorboardTimeSeries.
 class GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse {
   /// The largest blob sequence length (number of blobs) of all data points in this time series, if its ValueType is BLOB_SEQUENCE.
   final String maxBlobSequenceLength;
+
   /// Max step index of all data points within a TensorboardTimeSeries.
   final String maxStep;
+
   /// Max wall clock timestamp of all data points within a TensorboardTimeSeries.
   final String maxWallTime;
 
@@ -28,7 +29,9 @@ class GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse(
       maxBlobSequenceLength: map['maxBlobSequenceLength'] as String,
       maxStep: map['maxStep'] as String,
@@ -36,4 +39,3 @@ class GoogleCloudAiplatformV1TensorboardTimeSeriesMetadataResponse {
     );
   }
 }
-

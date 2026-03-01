@@ -7,8 +7,10 @@ import 'custom_field_gameservices_v1beta.dart';
 class CounterOptionsGameservicesV1beta {
   /// Custom fields.
   final List<CustomFieldGameservicesV1beta>? customFields;
+
   /// The field value to attribute.
   final String? field;
+
   /// The metric to update.
   final String? metric;
 
@@ -24,7 +26,12 @@ class CounterOptionsGameservicesV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customFields': ?customFields == null ? null : pulumi.Input.encodeList<CustomFieldGameservicesV1beta, Map<String, dynamic>>(customFields!, (value) => value.toMap()),
+      'customFields': ?customFields == null
+          ? null
+          : pulumi.Input.encodeList<
+              CustomFieldGameservicesV1beta,
+              Map<String, dynamic>
+            >(customFields!, (value) => value.toMap()),
       'field': ?field,
       'metric': ?metric,
     };
@@ -32,10 +39,16 @@ class CounterOptionsGameservicesV1beta {
 
   factory CounterOptionsGameservicesV1beta.fromMap(Map<String, dynamic> map) {
     return CounterOptionsGameservicesV1beta(
-      customFields: map['customFields'] == null ? null : pulumi.Input.decodeList<CustomFieldGameservicesV1beta>(map['customFields'], (value) => CustomFieldGameservicesV1beta.fromMap((value as Map).cast<String, dynamic>())),
+      customFields: map['customFields'] == null
+          ? null
+          : pulumi.Input.decodeList<CustomFieldGameservicesV1beta>(
+              map['customFields'],
+              (value) => CustomFieldGameservicesV1beta.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       field: map['field'] == null ? null : map['field'] as String,
       metric: map['metric'] == null ? null : map['metric'] as String,
     );
   }
 }
-

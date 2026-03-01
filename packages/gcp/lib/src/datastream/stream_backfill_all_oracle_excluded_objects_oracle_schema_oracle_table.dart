@@ -6,7 +6,11 @@ import 'stream_backfill_all_oracle_excluded_objects_oracle_schema_oracle_table_o
 class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable {
   /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn>? oracleColumns;
+  final List<
+    StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn
+  >?
+  oracleColumns;
+
   /// Table name.
   final String table;
 
@@ -20,16 +24,32 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleColumns': ?oracleColumns == null ? null : pulumi.Input.encodeList<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn, Map<String, dynamic>>(oracleColumns!, (value) => value.toMap()),
+      'oracleColumns': ?oracleColumns == null
+          ? null
+          : pulumi.Input.encodeList<
+              StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn,
+              Map<String, dynamic>
+            >(oracleColumns!, (value) => value.toMap()),
       'table': table,
     };
   }
 
-  factory StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable(
-      oracleColumns: map['oracleColumns'] == null ? null : pulumi.Input.decodeList<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn>(map['oracleColumns'], (value) => StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn.fromMap((value as Map).cast<String, dynamic>())),
+      oracleColumns: map['oracleColumns'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn
+            >(
+              map['oracleColumns'],
+              (value) =>
+                  StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       table: map['table'] as String,
     );
   }
 }
-

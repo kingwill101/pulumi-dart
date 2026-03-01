@@ -1,19 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BackendServiceUsedByComputeBeta {
   final String? reference;
 
   /// Creates a new [BackendServiceUsedByComputeBeta].
   /// [reference] Optional.
-  BackendServiceUsedByComputeBeta({
-    this.reference,
-  });
+  BackendServiceUsedByComputeBeta({this.reference});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'reference': ?reference,
-    };
+    return <String, dynamic>{'reference': ?reference};
   }
 
   factory BackendServiceUsedByComputeBeta.fromMap(Map<String, dynamic> map) {
@@ -22,4 +17,3 @@ class BackendServiceUsedByComputeBeta {
     );
   }
 }
-

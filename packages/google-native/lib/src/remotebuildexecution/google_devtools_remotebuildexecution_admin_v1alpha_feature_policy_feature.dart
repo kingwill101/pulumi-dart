@@ -6,8 +6,10 @@ import 'google_devtools_remotebuildexecution_admin_v1alpha_feature_policy_featur
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
   /// A list of acceptable values. Only effective when the policy is `RESTRICTED`.
   final List<String>? allowedValues;
+
   /// The policy of the feature.
-  final GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy? policy;
+  final GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy?
+  policy;
 
   /// Creates a new [GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature].
   /// [allowedValues] A list of acceptable values. Only effective when the policy is `RESTRICTED`.
@@ -24,11 +26,18 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
     };
   }
 
-  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-      allowedValues: map['allowedValues'] == null ? null : (map['allowedValues'] as List).cast<String>(),
-      policy: map['policy'] == null ? null : GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy.fromValue(map['policy'] as String),
+      allowedValues: map['allowedValues'] == null
+          ? null
+          : (map['allowedValues'] as List).cast<String>(),
+      policy: map['policy'] == null
+          ? null
+          : GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy.fromValue(
+              map['policy'] as String,
+            ),
     );
   }
 }
-

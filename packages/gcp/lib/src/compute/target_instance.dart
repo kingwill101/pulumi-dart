@@ -1046,8 +1046,10 @@ import 'target_instance_args.dart';
 class TargetInstance extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// The Compute instance VM handling traffic for this target instance.
   /// Accepts the instance self-link, relative path
   /// (e.g. `projects/project/zones/zone/instances/instance`) or name. If
@@ -1055,6 +1057,7 @@ class TargetInstance extends pulumi.CustomResource {
   /// the provider-default zone and the project will default to the
   /// provider-level project.
   late final pulumi.Output<String> instance;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1063,20 +1066,26 @@ class TargetInstance extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// NAT option controlling how IPs are NAT'ed to the instance.
   /// Currently only NO_NAT (default value) is supported.
   /// Default value is `NO_NAT`.
   /// Possible values are: `NO_NAT`.
   late final pulumi.Output<String?> natPolicy;
+
   /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
   late final pulumi.Output<String?> network;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The resource URL for the security policy associated with this target instance.
   late final pulumi.Output<String?> securityPolicy;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// URL of the zone where the target instance resides.
   late final pulumi.Output<String> zone;
 
@@ -1089,11 +1098,11 @@ class TargetInstance extends pulumi.CustomResource {
     TargetInstanceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/targetInstance:TargetInstance',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/targetInstance:TargetInstance',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');
     this.instance = registerOutput<String>('instance');

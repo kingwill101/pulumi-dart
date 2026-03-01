@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ListenerRuleMatchHttpMatchPathMatchMatch {
   /// Specifies an exact type match.
   final String? exact;
+
   /// Specifies a prefix type match.
   /// Matches the value with the prefix.
   final String? prefix;
@@ -11,23 +11,18 @@ class ListenerRuleMatchHttpMatchPathMatchMatch {
   /// Creates a new [ListenerRuleMatchHttpMatchPathMatchMatch].
   /// [exact] Specifies an exact type match.
   /// [prefix] Specifies a prefix type match.
-  ListenerRuleMatchHttpMatchPathMatchMatch({
-    this.exact,
-    this.prefix,
-  });
+  ListenerRuleMatchHttpMatchPathMatchMatch({this.exact, this.prefix});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'exact': ?exact,
-      'prefix': ?prefix,
-    };
+    return <String, dynamic>{'exact': ?exact, 'prefix': ?prefix};
   }
 
-  factory ListenerRuleMatchHttpMatchPathMatchMatch.fromMap(Map<String, dynamic> map) {
+  factory ListenerRuleMatchHttpMatchPathMatchMatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListenerRuleMatchHttpMatchPathMatchMatch(
       exact: map['exact'] == null ? null : map['exact'] as String,
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
     );
   }
 }
-

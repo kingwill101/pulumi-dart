@@ -1846,19 +1846,25 @@ import 'prevention_inspect_template_inspect_config.dart';
 class PreventionInspectTemplate extends pulumi.CustomResource {
   /// A description of the inspect template.
   late final pulumi.Output<String?> description;
+
   /// User set display name of the inspect template.
   late final pulumi.Output<String?> displayName;
+
   /// The core content of the template.
   /// Structure is documented below.
-  late final pulumi.Output<PreventionInspectTemplateInspectConfig?> inspectConfig;
+  late final pulumi.Output<PreventionInspectTemplateInspectConfig?>
+  inspectConfig;
+
   /// The resource name of the inspect template. Set by the server.
   late final pulumi.Output<String> name;
+
   /// The parent of the inspect template in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
   late final pulumi.Output<String> parent;
+
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
   /// 100 characters. Can be empty to allow the system to generate one.
@@ -1873,14 +1879,17 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
     PreventionInspectTemplateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');
-    this.inspectConfig = registerOutput<PreventionInspectTemplateInspectConfig?>('inspectConfig');
+    this.inspectConfig =
+        registerOutput<PreventionInspectTemplateInspectConfig?>(
+          'inspectConfig',
+        );
     this.name = registerOutput<String>('name');
     this.parent = registerOutput<String>('parent');
     this.templateId = registerOutput<String>('templateId');

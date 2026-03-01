@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UnitOperationProvisionInputVariable {
   /// Name of a supported variable type. Supported types are string, int, bool.
   /// Possible values:
@@ -8,8 +7,10 @@ class UnitOperationProvisionInputVariable {
   /// INT
   /// BOOL
   final String? type;
+
   /// String encoded value for the variable.
   final String? value;
+
   /// Name of the variable from actuation configs.
   final String variable;
 
@@ -31,7 +32,9 @@ class UnitOperationProvisionInputVariable {
     };
   }
 
-  factory UnitOperationProvisionInputVariable.fromMap(Map<String, dynamic> map) {
+  factory UnitOperationProvisionInputVariable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UnitOperationProvisionInputVariable(
       type: map['type'] == null ? null : map['type'] as String,
       value: map['value'] == null ? null : map['value'] as String,
@@ -39,4 +42,3 @@ class UnitOperationProvisionInputVariable {
     );
   }
 }
-

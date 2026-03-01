@@ -16,4 +16,3 @@ enum DataStoreIndustryVertical {
     throw ArgumentError('Unknown DataStoreIndustryVertical value: $value');
   }
 }
-

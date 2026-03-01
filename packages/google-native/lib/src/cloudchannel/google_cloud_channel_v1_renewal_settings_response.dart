@@ -6,10 +6,13 @@ import 'google_cloud_channel_v1_period_response.dart';
 class GoogleCloudChannelV1RenewalSettingsResponse {
   /// If false, the plan will be completed at the end date.
   final bool enableRenewal;
+
   /// Describes how frequently the reseller will be billed, such as once per month.
   final GoogleCloudChannelV1PeriodResponse paymentCycle;
+
   /// Describes how a reseller will be billed.
   final String paymentPlan;
+
   /// If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
   final bool resizeUnitCount;
 
@@ -34,13 +37,16 @@ class GoogleCloudChannelV1RenewalSettingsResponse {
     };
   }
 
-  factory GoogleCloudChannelV1RenewalSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1RenewalSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1RenewalSettingsResponse(
       enableRenewal: map['enableRenewal'] as bool,
-      paymentCycle: GoogleCloudChannelV1PeriodResponse.fromMap((map['paymentCycle'] as Map).cast<String, dynamic>()),
+      paymentCycle: GoogleCloudChannelV1PeriodResponse.fromMap(
+        (map['paymentCycle'] as Map).cast<String, dynamic>(),
+      ),
       paymentPlan: map['paymentPlan'] as String,
       resizeUnitCount: map['resizeUnitCount'] as bool,
     );
   }
 }
-

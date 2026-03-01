@@ -7,8 +7,10 @@ import 'google_cloud_aiplatform_v1beta1_measurement_metric_response.dart';
 class GoogleCloudAiplatformV1beta1MeasurementResponse {
   /// Time that the Trial has been running at the point of this Measurement.
   final String elapsedDuration;
+
   /// A list of metrics got by evaluating the objective functions using suggested Parameter values.
   final List<GoogleCloudAiplatformV1beta1MeasurementMetricResponse> metrics;
+
   /// The number of steps the machine learning model has been trained for. Must be non-negative.
   final String stepCount;
 
@@ -25,17 +27,31 @@ class GoogleCloudAiplatformV1beta1MeasurementResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'elapsedDuration': elapsedDuration,
-      'metrics': pulumi.Input.encodeList<GoogleCloudAiplatformV1beta1MeasurementMetricResponse, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+      'metrics':
+          pulumi.Input.encodeList<
+            GoogleCloudAiplatformV1beta1MeasurementMetricResponse,
+            Map<String, dynamic>
+          >(metrics, (value) => value.toMap()),
       'stepCount': stepCount,
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1MeasurementResponse(
       elapsedDuration: map['elapsedDuration'] as String,
-      metrics: pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1MeasurementMetricResponse>(map['metrics'], (value) => GoogleCloudAiplatformV1beta1MeasurementMetricResponse.fromMap((value as Map).cast<String, dynamic>())),
+      metrics:
+          pulumi.Input.decodeList<
+            GoogleCloudAiplatformV1beta1MeasurementMetricResponse
+          >(
+            map['metrics'],
+            (value) =>
+                GoogleCloudAiplatformV1beta1MeasurementMetricResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       stepCount: map['stepCount'] as String,
     );
   }
 }
-

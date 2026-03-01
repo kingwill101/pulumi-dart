@@ -6,9 +6,11 @@ import 'record_set_routing_policy_geo_health_checked_targets_internal_load_balan
 class RecordSetRoutingPolicyGeoHealthCheckedTargets {
   /// The list of external endpoint addresses to health check.
   final List<String>? externalEndpoints;
+
   /// The list of internal load balancers to health check.
   /// Structure is documented below.
-  final List<RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer>? internalLoadBalancers;
+  final List<RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer>?
+  internalLoadBalancers;
 
   /// Creates a new [RecordSetRoutingPolicyGeoHealthCheckedTargets].
   /// [externalEndpoints] The list of external endpoint addresses to health check.
@@ -21,15 +23,33 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargets {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'externalEndpoints': ?externalEndpoints,
-      'internalLoadBalancers': ?internalLoadBalancers == null ? null : pulumi.Input.encodeList<RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer, Map<String, dynamic>>(internalLoadBalancers!, (value) => value.toMap()),
+      'internalLoadBalancers': ?internalLoadBalancers == null
+          ? null
+          : pulumi.Input.encodeList<
+              RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer,
+              Map<String, dynamic>
+            >(internalLoadBalancers!, (value) => value.toMap()),
     };
   }
 
-  factory RecordSetRoutingPolicyGeoHealthCheckedTargets.fromMap(Map<String, dynamic> map) {
+  factory RecordSetRoutingPolicyGeoHealthCheckedTargets.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RecordSetRoutingPolicyGeoHealthCheckedTargets(
-      externalEndpoints: map['externalEndpoints'] == null ? null : (map['externalEndpoints'] as List).cast<String>(),
-      internalLoadBalancers: map['internalLoadBalancers'] == null ? null : pulumi.Input.decodeList<RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer>(map['internalLoadBalancers'], (value) => RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer.fromMap((value as Map).cast<String, dynamic>())),
+      externalEndpoints: map['externalEndpoints'] == null
+          ? null
+          : (map['externalEndpoints'] as List).cast<String>(),
+      internalLoadBalancers: map['internalLoadBalancers'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer
+            >(
+              map['internalLoadBalancers'],
+              (value) =>
+                  RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

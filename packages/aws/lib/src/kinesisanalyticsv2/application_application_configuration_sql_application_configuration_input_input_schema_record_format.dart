@@ -4,7 +4,9 @@ import 'application_application_configuration_sql_application_configuration_inpu
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat {
   /// Provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.
-  final ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters mappingParameters;
+  final ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters
+  mappingParameters;
+
   /// The type of record format. Valid values: `CSV`, `JSON`.
   final String recordFormatType;
 
@@ -23,11 +25,15 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
     };
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormat(
-      mappingParameters: ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters.fromMap((map['mappingParameters'] as Map).cast<String, dynamic>()),
+      mappingParameters:
+          ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters.fromMap(
+            (map['mappingParameters'] as Map).cast<String, dynamic>(),
+          ),
       recordFormatType: map['recordFormatType'] as String,
     );
   }
 }
-

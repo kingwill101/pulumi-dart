@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// ValidationCheckResult defines the details about the validation check.
 class ValidationCheckResultResponse {
   /// The category of the validation.
   final String category;
+
   /// The description of the validation check.
   final String description;
+
   /// Detailed failure information, which might be unformatted.
   final String details;
+
   /// A human-readable message of the check failure.
   final String reason;
+
   /// The validation check state.
   final String state;
 
@@ -48,4 +51,3 @@ class ValidationCheckResultResponse {
     );
   }
 }
-

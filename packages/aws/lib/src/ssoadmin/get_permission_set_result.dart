@@ -1,21 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPermissionSet.
 class GetPermissionSetResult {
   final String arn;
   final String createdDate;
+
   /// Description of the Permission Set.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceArn;
   final String name;
   final String region;
+
   /// Relay state URL used to redirect users within the application during the federation authentication process.
   final String relayState;
+
   /// Length of time that the application user sessions are valid in the ISO-8601 standard.
   final String sessionDuration;
+
   /// Key-value map of resource tags.
   final Map<String, String> tags;
 
@@ -73,4 +77,3 @@ class GetPermissionSetResult {
     );
   }
 }
-

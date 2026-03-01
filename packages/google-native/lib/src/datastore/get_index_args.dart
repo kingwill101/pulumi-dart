@@ -13,18 +13,12 @@ class GetIndexArgs {
   /// Creates a new [GetIndexArgs].
   /// [indexId] Required.
   /// [project] Optional.
-  GetIndexArgs({
-    required String indexId,
-    String? project,
-  }) :
-      indexId = pulumi.Input.asInput<String>(indexId),
+  GetIndexArgs({required String indexId, String? project})
+    : indexId = pulumi.Input.asInput<String>(indexId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'indexId': indexId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'indexId': indexId, 'project': ?project};
   }
 
   factory GetIndexArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetIndexArgs {
     );
   }
 }
-

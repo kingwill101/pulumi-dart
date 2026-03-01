@@ -7,6 +7,7 @@ import 'security_posture_config_gkehub_v1alpha.dart';
 class DefaultClusterConfigGkehubV1alpha {
   /// Optional. Enable/Disable binary authorization features for the cluster.
   final BinaryAuthorizationConfigGkehubV1alpha? binaryAuthorizationConfig;
+
   /// Enable/Disable Security Posture features for the cluster.
   final SecurityPostureConfigGkehubV1alpha? securityPostureConfig;
 
@@ -20,16 +21,27 @@ class DefaultClusterConfigGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'binaryAuthorizationConfig': ?binaryAuthorizationConfig == null ? null : binaryAuthorizationConfig!.toMap(),
-      'securityPostureConfig': ?securityPostureConfig == null ? null : securityPostureConfig!.toMap(),
+      'binaryAuthorizationConfig': ?binaryAuthorizationConfig == null
+          ? null
+          : binaryAuthorizationConfig!.toMap(),
+      'securityPostureConfig': ?securityPostureConfig == null
+          ? null
+          : securityPostureConfig!.toMap(),
     };
   }
 
   factory DefaultClusterConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
     return DefaultClusterConfigGkehubV1alpha(
-      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : BinaryAuthorizationConfigGkehubV1alpha.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>()),
-      securityPostureConfig: map['securityPostureConfig'] == null ? null : SecurityPostureConfigGkehubV1alpha.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>()),
+      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null
+          ? null
+          : BinaryAuthorizationConfigGkehubV1alpha.fromMap(
+              (map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>(),
+            ),
+      securityPostureConfig: map['securityPostureConfig'] == null
+          ? null
+          : SecurityPostureConfigGkehubV1alpha.fromMap(
+              (map['securityPostureConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

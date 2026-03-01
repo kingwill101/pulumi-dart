@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Artifact describes a build product.
 class ArtifactContaineranalysisV1beta1 {
   /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
   final String? checksum;
+
   /// Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
   final String? id;
+
   /// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
   final List<String>? names;
 
@@ -14,26 +15,19 @@ class ArtifactContaineranalysisV1beta1 {
   /// [checksum] Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
   /// [id] Artifact ID, if any; for container images, this will be a URL by digest like `gcr.io/projectID/imagename@sha256:123456`.
   /// [names] Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
-  ArtifactContaineranalysisV1beta1({
-    this.checksum,
-    this.id,
-    this.names,
-  });
+  ArtifactContaineranalysisV1beta1({this.checksum, this.id, this.names});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'checksum': ?checksum,
-      'id': ?id,
-      'names': ?names,
-    };
+    return <String, dynamic>{'checksum': ?checksum, 'id': ?id, 'names': ?names};
   }
 
   factory ArtifactContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return ArtifactContaineranalysisV1beta1(
       checksum: map['checksum'] == null ? null : map['checksum'] as String,
       id: map['id'] == null ? null : map['id'] as String,
-      names: map['names'] == null ? null : (map['names'] as List).cast<String>(),
+      names: map['names'] == null
+          ? null
+          : (map['names'] as List).cast<String>(),
     );
   }
 }
-

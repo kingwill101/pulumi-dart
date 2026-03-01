@@ -19,10 +19,9 @@ class GetResourcePolicyArgs {
     String? project,
     required String region,
     required String resourcePolicy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       resourcePolicy = pulumi.Input.asInput<String>(resourcePolicy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetResourcePolicyArgs {
     );
   }
 }
-

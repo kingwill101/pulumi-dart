@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AiMetadataStoreState {
   /// (Output)
   /// The disk utilization of the MetadataStore in bytes.
@@ -8,20 +7,17 @@ class AiMetadataStoreState {
 
   /// Creates a new [AiMetadataStoreState].
   /// [diskUtilizationBytes] (Output)
-  AiMetadataStoreState({
-    this.diskUtilizationBytes,
-  });
+  AiMetadataStoreState({this.diskUtilizationBytes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'diskUtilizationBytes': ?diskUtilizationBytes,
-    };
+    return <String, dynamic>{'diskUtilizationBytes': ?diskUtilizationBytes};
   }
 
   factory AiMetadataStoreState.fromMap(Map<String, dynamic> map) {
     return AiMetadataStoreState(
-      diskUtilizationBytes: map['diskUtilizationBytes'] == null ? null : map['diskUtilizationBytes'] as String,
+      diskUtilizationBytes: map['diskUtilizationBytes'] == null
+          ? null
+          : map['diskUtilizationBytes'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPermissionSets.
 class GetPermissionSetsResult {
   /// Set of string contain the ARN of all Permission Sets.
@@ -39,4 +38,3 @@ class GetPermissionSetsResult {
     );
   }
 }
-

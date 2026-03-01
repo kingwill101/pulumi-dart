@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The bucket's billing configuration.
 class BucketBilling {
   /// When set to true, Requester Pays is enabled for this bucket.
@@ -8,20 +7,17 @@ class BucketBilling {
 
   /// Creates a new [BucketBilling].
   /// [requesterPays] When set to true, Requester Pays is enabled for this bucket.
-  BucketBilling({
-    this.requesterPays,
-  });
+  BucketBilling({this.requesterPays});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'requesterPays': ?requesterPays,
-    };
+    return <String, dynamic>{'requesterPays': ?requesterPays};
   }
 
   factory BucketBilling.fromMap(Map<String, dynamic> map) {
     return BucketBilling(
-      requesterPays: map['requesterPays'] == null ? null : map['requesterPays'] as bool,
+      requesterPays: map['requesterPays'] == null
+          ? null
+          : map['requesterPays'] as bool,
     );
   }
 }
-

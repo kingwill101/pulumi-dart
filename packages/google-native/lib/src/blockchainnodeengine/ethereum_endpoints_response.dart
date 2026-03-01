@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Contains endpoint information specific to Ethereum nodes.
 class EthereumEndpointsResponse {
   /// The assigned URL for the node's Beacon API endpoint.
   final String beaconApiEndpoint;
+
   /// The assigned URL for the node's Beacon Prometheus metrics endpoint. See [Prometheus Metrics](https://lighthouse-book.sigmaprime.io/advanced_metrics.html) for more details.
   final String beaconPrometheusMetricsApiEndpoint;
+
   /// The assigned URL for the node's execution client's Prometheus metrics endpoint.
   final String executionClientPrometheusMetricsApiEndpoint;
 
@@ -24,16 +25,18 @@ class EthereumEndpointsResponse {
     return <String, dynamic>{
       'beaconApiEndpoint': beaconApiEndpoint,
       'beaconPrometheusMetricsApiEndpoint': beaconPrometheusMetricsApiEndpoint,
-      'executionClientPrometheusMetricsApiEndpoint': executionClientPrometheusMetricsApiEndpoint,
+      'executionClientPrometheusMetricsApiEndpoint':
+          executionClientPrometheusMetricsApiEndpoint,
     };
   }
 
   factory EthereumEndpointsResponse.fromMap(Map<String, dynamic> map) {
     return EthereumEndpointsResponse(
       beaconApiEndpoint: map['beaconApiEndpoint'] as String,
-      beaconPrometheusMetricsApiEndpoint: map['beaconPrometheusMetricsApiEndpoint'] as String,
-      executionClientPrometheusMetricsApiEndpoint: map['executionClientPrometheusMetricsApiEndpoint'] as String,
+      beaconPrometheusMetricsApiEndpoint:
+          map['beaconPrometheusMetricsApiEndpoint'] as String,
+      executionClientPrometheusMetricsApiEndpoint:
+          map['executionClientPrometheusMetricsApiEndpoint'] as String,
     );
   }
 }
-

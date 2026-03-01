@@ -7,8 +7,10 @@ import 'logical_network_interface.dart';
 class GoogleCloudBaremetalsolutionV2LogicalInterface {
   /// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
   final int? interfaceIndex;
+
   /// List of logical network interfaces within a logical interface.
   final List<LogicalNetworkInterface>? logicalNetworkInterfaces;
+
   /// Interface name. This is of syntax or and forms part of the network template name.
   final String? name;
 
@@ -25,17 +27,32 @@ class GoogleCloudBaremetalsolutionV2LogicalInterface {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'interfaceIndex': ?interfaceIndex,
-      'logicalNetworkInterfaces': ?logicalNetworkInterfaces == null ? null : pulumi.Input.encodeList<LogicalNetworkInterface, Map<String, dynamic>>(logicalNetworkInterfaces!, (value) => value.toMap()),
+      'logicalNetworkInterfaces': ?logicalNetworkInterfaces == null
+          ? null
+          : pulumi.Input.encodeList<
+              LogicalNetworkInterface,
+              Map<String, dynamic>
+            >(logicalNetworkInterfaces!, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
-  factory GoogleCloudBaremetalsolutionV2LogicalInterface.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBaremetalsolutionV2LogicalInterface.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBaremetalsolutionV2LogicalInterface(
-      interfaceIndex: map['interfaceIndex'] == null ? null : map['interfaceIndex'] as int,
-      logicalNetworkInterfaces: map['logicalNetworkInterfaces'] == null ? null : pulumi.Input.decodeList<LogicalNetworkInterface>(map['logicalNetworkInterfaces'], (value) => LogicalNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
+      interfaceIndex: map['interfaceIndex'] == null
+          ? null
+          : map['interfaceIndex'] as int,
+      logicalNetworkInterfaces: map['logicalNetworkInterfaces'] == null
+          ? null
+          : pulumi.Input.decodeList<LogicalNetworkInterface>(
+              map['logicalNetworkInterfaces'],
+              (value) => LogicalNetworkInterface.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
-

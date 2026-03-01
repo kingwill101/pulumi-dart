@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PreventionDiscoveryConfigActionTagResourcesTagConditionTag {
   /// The namespaced name for the tag value to attach to resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod".
   final String? namespacedValue;
@@ -12,15 +11,16 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namespacedValue': ?namespacedValue,
-    };
+    return <String, dynamic>{'namespacedValue': ?namespacedValue};
   }
 
-  factory PreventionDiscoveryConfigActionTagResourcesTagConditionTag.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigActionTagResourcesTagConditionTag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigActionTagResourcesTagConditionTag(
-      namespacedValue: map['namespacedValue'] == null ? null : map['namespacedValue'] as String,
+      namespacedValue: map['namespacedValue'] == null
+          ? null
+          : map['namespacedValue'] as String,
     );
   }
 }
-

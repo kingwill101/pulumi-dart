@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings {
   /// Html Motion Graphics Settings.
   final Map<String, dynamic>? htmlMotionGraphicsSettings;
@@ -17,10 +16,13 @@ class ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings {
     };
   }
 
-  factory ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings(
-      htmlMotionGraphicsSettings: map['htmlMotionGraphicsSettings'] == null ? null : (map['htmlMotionGraphicsSettings'] as Map).cast<String, dynamic>(),
+      htmlMotionGraphicsSettings: map['htmlMotionGraphicsSettings'] == null
+          ? null
+          : (map['htmlMotionGraphicsSettings'] as Map).cast<String, dynamic>(),
     );
   }
 }
-

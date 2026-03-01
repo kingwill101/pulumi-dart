@@ -468,8 +468,10 @@ import 'scram_secret_association_args.dart';
 class ScramSecretAssociation extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the MSK cluster.
   late final pulumi.Output<String> clusterArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// List of AWS Secrets Manager secret ARNs.
   late final pulumi.Output<List<String>> secretArnLists;
 
@@ -482,11 +484,11 @@ class ScramSecretAssociation extends pulumi.CustomResource {
     ScramSecretAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:msk/scramSecretAssociation:ScramSecretAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:msk/scramSecretAssociation:ScramSecretAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.clusterArn = registerOutput<String>('clusterArn');
     this.region = registerOutput<String>('region');
     this.secretArnLists = registerOutput<List<String>>('secretArnLists');

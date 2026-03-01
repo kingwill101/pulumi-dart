@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Custom strength options to enforce on user passwords.
 class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse {
   /// The password must contain a lower case character.
   final bool containsLowercaseCharacter;
+
   /// The password must contain a non alpha numeric character.
   final bool containsNonAlphanumericCharacter;
+
   /// The password must contain a number.
   final bool containsNumericCharacter;
+
   /// The password must contain an upper case character.
   final bool containsUppercaseCharacter;
+
   /// Maximum password length. No default max length
   final int maxPasswordLength;
+
   /// Minimum password length. Range from 6 to 30
   final int minPasswordLength;
 
@@ -43,10 +47,13 @@ class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse(
       containsLowercaseCharacter: map['containsLowercaseCharacter'] as bool,
-      containsNonAlphanumericCharacter: map['containsNonAlphanumericCharacter'] as bool,
+      containsNonAlphanumericCharacter:
+          map['containsNonAlphanumericCharacter'] as bool,
       containsNumericCharacter: map['containsNumericCharacter'] as bool,
       containsUppercaseCharacter: map['containsUppercaseCharacter'] as bool,
       maxPasswordLength: map['maxPasswordLength'] as int,
@@ -54,4 +61,3 @@ class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse {
     );
   }
 }
-

@@ -19,10 +19,11 @@ class GetServiceConnectionMapArgs {
     required String location,
     String? project,
     required String serviceConnectionMapId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceConnectionMapId = pulumi.Input.asInput<String>(serviceConnectionMapId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serviceConnectionMapId = pulumi.Input.asInput<String>(
+         serviceConnectionMapId,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetServiceConnectionMapArgs {
     );
   }
 }
-

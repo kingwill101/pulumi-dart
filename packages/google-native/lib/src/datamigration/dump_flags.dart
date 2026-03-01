@@ -10,20 +10,28 @@ class DumpFlags {
 
   /// Creates a new [DumpFlags].
   /// [dumpFlags] The flags for the initial dump.
-  DumpFlags({
-    this.dumpFlags,
-  });
+  DumpFlags({this.dumpFlags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dumpFlags': ?dumpFlags == null ? null : pulumi.Input.encodeList<DumpFlag, Map<String, dynamic>>(dumpFlags!, (value) => value.toMap()),
+      'dumpFlags': ?dumpFlags == null
+          ? null
+          : pulumi.Input.encodeList<DumpFlag, Map<String, dynamic>>(
+              dumpFlags!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory DumpFlags.fromMap(Map<String, dynamic> map) {
     return DumpFlags(
-      dumpFlags: map['dumpFlags'] == null ? null : pulumi.Input.decodeList<DumpFlag>(map['dumpFlags'], (value) => DumpFlag.fromMap((value as Map).cast<String, dynamic>())),
+      dumpFlags: map['dumpFlags'] == null
+          ? null
+          : pulumi.Input.decodeList<DumpFlag>(
+              map['dumpFlags'],
+              (value) =>
+                  DumpFlag.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

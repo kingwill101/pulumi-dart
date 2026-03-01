@@ -447,14 +447,18 @@ class Rule extends pulumi.CustomResource {
   /// Output only. The run frequencies that are allowed for the rule.
   /// Populated in BASIC view and FULL view.
   late final pulumi.Output<List<String>> allowedRunFrequencies;
+
   /// Output only. The author of the rule. Extracted from the meta section of text.
   /// Populated in BASIC view and FULL view.
   late final pulumi.Output<String> author;
+
   /// Output only. A list of a rule's corresponding compilation diagnostic messages
   /// such as compilation errors and compilation warnings.
   /// Populated in FULL view.
   /// Structure is documented below.
-  late final pulumi.Output<List<RuleCompilationDiagnostic>> compilationDiagnostics;
+  late final pulumi.Output<List<RuleCompilationDiagnostic>>
+  compilationDiagnostics;
+
   /// Output only. The current compilation state of the rule.
   /// Populated in FULL view.
   /// Possible values:
@@ -462,11 +466,14 @@ class Rule extends pulumi.CustomResource {
   /// SUCCEEDED
   /// FAILED
   late final pulumi.Output<String> compilationState;
+
   /// Output only. The timestamp of when the rule was created.
   /// Populated in FULL view.
   late final pulumi.Output<String> createTime;
+
   /// Output only. Resource names of the data tables used in this rule.
   late final pulumi.Output<List<String>> dataTables;
+
   /// Policy to determine if the rule should be deleted forcefully.
   /// If deletion_policy = "FORCE", any retrohunts and any detections associated with the rule
   /// will also be deleted. If deletion_policy = "DEFAULT", the call will only succeed if the
@@ -475,46 +482,59 @@ class Rule extends pulumi.CustomResource {
   /// deployment associated with this rule will also be deleted.
   /// Possible values: DEFAULT, FORCE
   late final pulumi.Output<String?> deletionPolicy;
+
   /// The display name of the severity level. Extracted from the meta section of
   /// the rule text.
   late final pulumi.Output<String> displayName;
+
   /// The etag for this rule.
   /// If this is provided on update, the request will succeed if and only if it
   /// matches the server-computed value, and will fail with an ABORTED error
   /// otherwise.
   /// Populated in BASIC view and FULL view.
   late final pulumi.Output<String> etag;
+
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   late final pulumi.Output<String> instance;
+
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   late final pulumi.Output<String> location;
+
   /// Output only. Additional metadata specified in the meta section of text.
   /// Populated in FULL view.
   late final pulumi.Output<Map<String, String>> metadata;
+
   /// Full resource name for the rule. This unique identifier is generated using values provided for the URL parameters.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/rules/{rule}
   late final pulumi.Output<String> name;
+
   /// Output only. Indicate the rule can run in near real time live rule.
   /// If this is true, the rule uses the near real time live rule when the run
   /// frequency is set to LIVE.
   late final pulumi.Output<bool> nearRealTimeLiveRuleEligible;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Output only. Resource names of the reference lists used in this rule.
   /// Populated in FULL view.
   late final pulumi.Output<List<String>> referenceLists;
+
   /// Output only. The timestamp of when the rule revision was created.
   /// Populated in FULL, REVISION_METADATA_ONLY views.
   late final pulumi.Output<String> revisionCreateTime;
+
   /// Output only. The revision ID of the rule.
   /// A new revision is created whenever the rule text is changed in any way.
   /// Format: v_{10 digits}_{9 digits}
   /// Populated in REVISION_METADATA_ONLY view and FULL view.
   late final pulumi.Output<String> revisionId;
+
   /// Rule Id is the ID of the Rule.
   late final pulumi.Output<String> ruleId;
+
   /// Resource name of the DataAccessScope bound to this rule.
   /// Populated in BASIC view and FULL view.
   /// If reference lists are used in the rule, validations will be performed
@@ -523,6 +543,7 @@ class Rule extends pulumi.CustomResource {
   /// The scope should be in the format:
   /// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope}".
   late final pulumi.Output<String?> scope;
+
   /// (Output)
   /// Output only. The severity of a rule's compilation diagnostic.
   /// Possible values:
@@ -530,9 +551,11 @@ class Rule extends pulumi.CustomResource {
   /// WARNING
   /// ERROR
   late final pulumi.Output<List<RuleSeverity>> severities;
+
   /// The YARA-L content of the rule.
   /// Populated in FULL view.
   late final pulumi.Output<String?> text;
+
   /// Possible values:
   /// RULE_TYPE_UNSPECIFIED
   /// SINGLE_EVENT
@@ -543,19 +566,21 @@ class Rule extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Rule]. {@macro pulumi_chronicle_rule_rule_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Rule(
-    String name, {
-    RuleArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:chronicle/rule:Rule',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.allowedRunFrequencies = registerOutput<List<String>>('allowedRunFrequencies');
+  Rule(String name, {RuleArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:chronicle/rule:Rule',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    this.allowedRunFrequencies = registerOutput<List<String>>(
+      'allowedRunFrequencies',
+    );
     this.author = registerOutput<String>('author');
-    this.compilationDiagnostics = registerOutput<List<RuleCompilationDiagnostic>>('compilationDiagnostics');
+    this.compilationDiagnostics =
+        registerOutput<List<RuleCompilationDiagnostic>>(
+          'compilationDiagnostics',
+        );
     this.compilationState = registerOutput<String>('compilationState');
     this.createTime = registerOutput<String>('createTime');
     this.dataTables = registerOutput<List<String>>('dataTables');
@@ -566,7 +591,9 @@ class Rule extends pulumi.CustomResource {
     this.location = registerOutput<String>('location');
     this.metadata = registerOutput<Map<String, String>>('metadata');
     this.name = registerOutput<String>('name');
-    this.nearRealTimeLiveRuleEligible = registerOutput<bool>('nearRealTimeLiveRuleEligible');
+    this.nearRealTimeLiveRuleEligible = registerOutput<bool>(
+      'nearRealTimeLiveRuleEligible',
+    );
     this.project = registerOutput<String>('project');
     this.referenceLists = registerOutput<List<String>>('referenceLists');
     this.revisionCreateTime = registerOutput<String>('revisionCreateTime');

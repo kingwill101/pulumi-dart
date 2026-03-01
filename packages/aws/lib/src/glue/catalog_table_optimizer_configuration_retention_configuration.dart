@@ -4,7 +4,8 @@ import 'catalog_table_optimizer_configuration_retention_configuration_iceberg_co
 
 class CatalogTableOptimizerConfigurationRetentionConfiguration {
   /// The configuration for an Iceberg snapshot retention optimizer.
-  final CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration? icebergConfiguration;
+  final CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration?
+  icebergConfiguration;
 
   /// Creates a new [CatalogTableOptimizerConfigurationRetentionConfiguration].
   /// [icebergConfiguration] The configuration for an Iceberg snapshot retention optimizer.
@@ -14,14 +15,21 @@ class CatalogTableOptimizerConfigurationRetentionConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'icebergConfiguration': ?icebergConfiguration == null ? null : icebergConfiguration!.toMap(),
+      'icebergConfiguration': ?icebergConfiguration == null
+          ? null
+          : icebergConfiguration!.toMap(),
     };
   }
 
-  factory CatalogTableOptimizerConfigurationRetentionConfiguration.fromMap(Map<String, dynamic> map) {
+  factory CatalogTableOptimizerConfigurationRetentionConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CatalogTableOptimizerConfigurationRetentionConfiguration(
-      icebergConfiguration: map['icebergConfiguration'] == null ? null : CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration.fromMap((map['icebergConfiguration'] as Map).cast<String, dynamic>()),
+      icebergConfiguration: map['icebergConfiguration'] == null
+          ? null
+          : CatalogTableOptimizerConfigurationRetentionConfigurationIcebergConfiguration.fromMap(
+              (map['icebergConfiguration'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

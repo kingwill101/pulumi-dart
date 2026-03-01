@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLaunchTemplatePlacement {
   final String affinity;
   final String availabilityZone;
@@ -62,4 +61,3 @@ class GetLaunchTemplatePlacement {
     );
   }
 }
-

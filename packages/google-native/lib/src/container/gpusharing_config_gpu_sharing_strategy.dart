@@ -12,7 +12,8 @@ enum GPUSharingConfigGpuSharingStrategy {
         return item;
       }
     }
-    throw ArgumentError('Unknown GPUSharingConfigGpuSharingStrategy value: $value');
+    throw ArgumentError(
+      'Unknown GPUSharingConfigGpuSharingStrategy value: $value',
+    );
   }
 }
-

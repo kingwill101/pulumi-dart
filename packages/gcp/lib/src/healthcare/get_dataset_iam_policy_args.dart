@@ -15,21 +15,14 @@ class GetDatasetIamPolicyArgs {
 
   /// Creates a new [GetDatasetIamPolicyArgs].
   /// [datasetId] The dataset ID, in the form
-  GetDatasetIamPolicyArgs({
-    required String datasetId,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId);
+  GetDatasetIamPolicyArgs({required String datasetId})
+    : datasetId = pulumi.Input.asInput<String>(datasetId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetId': datasetId,
-    };
+    return <String, dynamic>{'datasetId': datasetId};
   }
 
   factory GetDatasetIamPolicyArgs.fromMap(Map<String, dynamic> map) {
-    return GetDatasetIamPolicyArgs(
-      datasetId: map['datasetId'] as String,
-    );
+    return GetDatasetIamPolicyArgs(datasetId: map['datasetId'] as String);
   }
 }
-

@@ -6,10 +6,13 @@ import 'google_devtools_containeranalysis_v1alpha1_alias_context.dart';
 class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext {
   /// An alias, which may be a branch or tag.
   final GoogleDevtoolsContaineranalysisV1alpha1AliasContext? aliasContext;
+
   /// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
   final String? gerritProject;
+
   /// The URI of a running Gerrit instance.
   final String? hostUri;
+
   /// A revision (commit) ID.
   final String? revisionId;
 
@@ -34,13 +37,22 @@ class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext {
     };
   }
 
-  factory GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContext(
-      aliasContext: map['aliasContext'] == null ? null : GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap((map['aliasContext'] as Map).cast<String, dynamic>()),
-      gerritProject: map['gerritProject'] == null ? null : map['gerritProject'] as String,
+      aliasContext: map['aliasContext'] == null
+          ? null
+          : GoogleDevtoolsContaineranalysisV1alpha1AliasContext.fromMap(
+              (map['aliasContext'] as Map).cast<String, dynamic>(),
+            ),
+      gerritProject: map['gerritProject'] == null
+          ? null
+          : map['gerritProject'] as String,
       hostUri: map['hostUri'] == null ? null : map['hostUri'] as String,
-      revisionId: map['revisionId'] == null ? null : map['revisionId'] as String,
+      revisionId: map['revisionId'] == null
+          ? null
+          : map['revisionId'] as String,
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
 class ShieldedInstanceConfigResponseDataprocV1beta2 {
   /// Optional. Defines whether instances have integrity monitoring enabled.
   final bool enableIntegrityMonitoring;
+
   /// Optional. Defines whether instances have Secure Boot enabled.
   final bool enableSecureBoot;
+
   /// Optional. Defines whether instances have the vTPM enabled.
   final bool enableVtpm;
 
@@ -28,7 +29,9 @@ class ShieldedInstanceConfigResponseDataprocV1beta2 {
     };
   }
 
-  factory ShieldedInstanceConfigResponseDataprocV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ShieldedInstanceConfigResponseDataprocV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ShieldedInstanceConfigResponseDataprocV1beta2(
       enableIntegrityMonitoring: map['enableIntegrityMonitoring'] as bool,
       enableSecureBoot: map['enableSecureBoot'] as bool,
@@ -36,4 +39,3 @@ class ShieldedInstanceConfigResponseDataprocV1beta2 {
     );
   }
 }
-

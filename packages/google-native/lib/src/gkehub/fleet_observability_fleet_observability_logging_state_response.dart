@@ -6,6 +6,7 @@ import 'fleet_observability_fleet_observability_base_feature_state_response.dart
 class FleetObservabilityFleetObservabilityLoggingStateResponse {
   /// The base feature state of fleet default log.
   final FleetObservabilityFleetObservabilityBaseFeatureStateResponse defaultLog;
+
   /// The base feature state of fleet scope log.
   final FleetObservabilityFleetObservabilityBaseFeatureStateResponse scopeLog;
 
@@ -24,11 +25,18 @@ class FleetObservabilityFleetObservabilityLoggingStateResponse {
     };
   }
 
-  factory FleetObservabilityFleetObservabilityLoggingStateResponse.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFleetObservabilityLoggingStateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFleetObservabilityLoggingStateResponse(
-      defaultLog: FleetObservabilityFleetObservabilityBaseFeatureStateResponse.fromMap((map['defaultLog'] as Map).cast<String, dynamic>()),
-      scopeLog: FleetObservabilityFleetObservabilityBaseFeatureStateResponse.fromMap((map['scopeLog'] as Map).cast<String, dynamic>()),
+      defaultLog:
+          FleetObservabilityFleetObservabilityBaseFeatureStateResponse.fromMap(
+            (map['defaultLog'] as Map).cast<String, dynamic>(),
+          ),
+      scopeLog:
+          FleetObservabilityFleetObservabilityBaseFeatureStateResponse.fromMap(
+            (map['scopeLog'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

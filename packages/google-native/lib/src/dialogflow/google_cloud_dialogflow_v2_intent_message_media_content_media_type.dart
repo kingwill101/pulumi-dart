@@ -6,13 +6,17 @@ enum GoogleCloudDialogflowV2IntentMessageMediaContentMediaType {
   const GoogleCloudDialogflowV2IntentMessageMediaContentMediaType(this.value);
   final String value;
 
-  static GoogleCloudDialogflowV2IntentMessageMediaContentMediaType fromValue(String value) {
-    for (final item in GoogleCloudDialogflowV2IntentMessageMediaContentMediaType.values) {
+  static GoogleCloudDialogflowV2IntentMessageMediaContentMediaType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowV2IntentMessageMediaContentMediaType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2IntentMessageMediaContentMediaType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2IntentMessageMediaContentMediaType value: $value',
+    );
   }
 }
-

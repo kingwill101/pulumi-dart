@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getUserWorkloadsSecret.
 class GetUserWorkloadsSecretResult {
   final Map<String, String> data;
   final String environment;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -49,4 +49,3 @@ class GetUserWorkloadsSecretResult {
     );
   }
 }
-

@@ -25,12 +25,13 @@ class GetAttributeDefinitionHealthcareV1beta1Args {
     required String datasetId,
     required String location,
     String? project,
-  }) :
-      attributeDefinitionId = pulumi.Input.asInput<String>(attributeDefinitionId),
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : attributeDefinitionId = pulumi.Input.asInput<String>(
+         attributeDefinitionId,
+       ),
+       consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
+       datasetId = pulumi.Input.asInput<String>(datasetId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +43,9 @@ class GetAttributeDefinitionHealthcareV1beta1Args {
     };
   }
 
-  factory GetAttributeDefinitionHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetAttributeDefinitionHealthcareV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAttributeDefinitionHealthcareV1beta1Args(
       attributeDefinitionId: map['attributeDefinitionId'] as String,
       consentStoreId: map['consentStoreId'] as String,
@@ -52,4 +55,3 @@ class GetAttributeDefinitionHealthcareV1beta1Args {
     );
   }
 }
-

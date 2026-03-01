@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetProxyAuth {
   final String authScheme;
   final String clientPasswordAuthType;
@@ -47,4 +46,3 @@ class GetProxyAuth {
     );
   }
 }
-

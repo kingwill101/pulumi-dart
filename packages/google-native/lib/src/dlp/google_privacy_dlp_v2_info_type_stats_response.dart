@@ -6,6 +6,7 @@ import 'google_privacy_dlp_v2_info_type_response.dart';
 class GooglePrivacyDlpV2InfoTypeStatsResponse {
   /// Number of findings for this infoType.
   final String count;
+
   /// The type of finding this stat is for.
   final GooglePrivacyDlpV2InfoTypeResponse infoType;
 
@@ -18,17 +19,17 @@ class GooglePrivacyDlpV2InfoTypeStatsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-      'infoType': infoType.toMap(),
-    };
+    return <String, dynamic>{'count': count, 'infoType': infoType.toMap()};
   }
 
-  factory GooglePrivacyDlpV2InfoTypeStatsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InfoTypeStatsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2InfoTypeStatsResponse(
       count: map['count'] as String,
-      infoType: GooglePrivacyDlpV2InfoTypeResponse.fromMap((map['infoType'] as Map).cast<String, dynamic>()),
+      infoType: GooglePrivacyDlpV2InfoTypeResponse.fromMap(
+        (map['infoType'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

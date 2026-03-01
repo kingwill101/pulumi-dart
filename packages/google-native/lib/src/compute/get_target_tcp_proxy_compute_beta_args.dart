@@ -16,9 +16,8 @@ class GetTargetTcpProxyComputeBetaArgs {
   GetTargetTcpProxyComputeBetaArgs({
     String? project,
     required String targetTcpProxy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      targetTcpProxy = pulumi.Input.asInput<String>(targetTcpProxy);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       targetTcpProxy = pulumi.Input.asInput<String>(targetTcpProxy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetTargetTcpProxyComputeBetaArgs {
     );
   }
 }
-

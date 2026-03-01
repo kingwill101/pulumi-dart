@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getExternalAddress.
 class GetExternalAddressResult {
   final String createTime;
   final String description;
   final String externalIp;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String internalIp;
@@ -69,4 +69,3 @@ class GetExternalAddressResult {
     );
   }
 }
-

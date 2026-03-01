@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Map property value. Represents a structured entries of key value pairs, consisting of field names which map to dynamically typed values.
 class GoogleCloudContentwarehouseV1MapProperty {
   /// Unordered map of dynamically typed values.
@@ -8,20 +7,19 @@ class GoogleCloudContentwarehouseV1MapProperty {
 
   /// Creates a new [GoogleCloudContentwarehouseV1MapProperty].
   /// [fields] Unordered map of dynamically typed values.
-  GoogleCloudContentwarehouseV1MapProperty({
-    this.fields,
-  });
+  GoogleCloudContentwarehouseV1MapProperty({this.fields});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fields': ?fields,
-    };
+    return <String, dynamic>{'fields': ?fields};
   }
 
-  factory GoogleCloudContentwarehouseV1MapProperty.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1MapProperty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1MapProperty(
-      fields: map['fields'] == null ? null : (map['fields'] as Map).cast<String, String>(),
+      fields: map['fields'] == null
+          ? null
+          : (map['fields'] as Map).cast<String, String>(),
     );
   }
 }
-

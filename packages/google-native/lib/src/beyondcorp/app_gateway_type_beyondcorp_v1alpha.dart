@@ -12,7 +12,8 @@ enum AppGatewayTypeBeyondcorpV1alpha {
         return item;
       }
     }
-    throw ArgumentError('Unknown AppGatewayTypeBeyondcorpV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown AppGatewayTypeBeyondcorpV1alpha value: $value',
+    );
   }
 }
-

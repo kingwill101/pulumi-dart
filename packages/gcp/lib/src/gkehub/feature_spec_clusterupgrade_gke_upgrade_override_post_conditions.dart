@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions {
   /// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
   final String soaking;
@@ -12,15 +11,14 @@ class FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'soaking': soaking,
-    };
+    return <String, dynamic>{'soaking': soaking};
   }
 
-  factory FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions.fromMap(Map<String, dynamic> map) {
+  factory FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions(
       soaking: map['soaking'] as String,
     );
   }
 }
-

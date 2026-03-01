@@ -8,24 +8,39 @@ class InterconnectAttachmentGroupConfigured {
   /// Which SLA this group is configured to support, and why this
   /// group does or does not meet that SLA's requirements.
   /// Structure is documented below.
-  final List<InterconnectAttachmentGroupConfiguredAvailabilitySla>? availabilitySlas;
+  final List<InterconnectAttachmentGroupConfiguredAvailabilitySla>?
+  availabilitySlas;
 
   /// Creates a new [InterconnectAttachmentGroupConfigured].
   /// [availabilitySlas] (Output)
-  InterconnectAttachmentGroupConfigured({
-    this.availabilitySlas,
-  });
+  InterconnectAttachmentGroupConfigured({this.availabilitySlas});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availabilitySlas': ?availabilitySlas == null ? null : pulumi.Input.encodeList<InterconnectAttachmentGroupConfiguredAvailabilitySla, Map<String, dynamic>>(availabilitySlas!, (value) => value.toMap()),
+      'availabilitySlas': ?availabilitySlas == null
+          ? null
+          : pulumi.Input.encodeList<
+              InterconnectAttachmentGroupConfiguredAvailabilitySla,
+              Map<String, dynamic>
+            >(availabilitySlas!, (value) => value.toMap()),
     };
   }
 
-  factory InterconnectAttachmentGroupConfigured.fromMap(Map<String, dynamic> map) {
+  factory InterconnectAttachmentGroupConfigured.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterconnectAttachmentGroupConfigured(
-      availabilitySlas: map['availabilitySlas'] == null ? null : pulumi.Input.decodeList<InterconnectAttachmentGroupConfiguredAvailabilitySla>(map['availabilitySlas'], (value) => InterconnectAttachmentGroupConfiguredAvailabilitySla.fromMap((value as Map).cast<String, dynamic>())),
+      availabilitySlas: map['availabilitySlas'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              InterconnectAttachmentGroupConfiguredAvailabilitySla
+            >(
+              map['availabilitySlas'],
+              (value) =>
+                  InterconnectAttachmentGroupConfiguredAvailabilitySla.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

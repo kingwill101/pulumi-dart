@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3 {
   /// Account ID of the S3 bucket owner.
   final String? bucketOwnerAccountId;
+
   /// S3 URI where the schema is stored.
   final String? uri;
 
@@ -22,11 +22,14 @@ class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3 {
     };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3(
-      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null ? null : map['bucketOwnerAccountId'] as String,
+      bucketOwnerAccountId: map['bucketOwnerAccountId'] == null
+          ? null
+          : map['bucketOwnerAccountId'] as String,
       uri: map['uri'] == null ? null : map['uri'] as String,
     );
   }
 }
-

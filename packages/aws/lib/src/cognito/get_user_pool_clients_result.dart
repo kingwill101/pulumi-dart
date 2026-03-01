@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getUserPoolClients.
 class GetUserPoolClientsResult {
   /// List of Cognito user pool client IDs.
   final List<String> clientIds;
+
   /// List of Cognito user pool client names.
   final List<String> clientNames;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -46,4 +47,3 @@ class GetUserPoolClientsResult {
     );
   }
 }
-

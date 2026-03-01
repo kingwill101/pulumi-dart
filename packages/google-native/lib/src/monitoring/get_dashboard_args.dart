@@ -13,18 +13,12 @@ class GetDashboardArgs {
   /// Creates a new [GetDashboardArgs].
   /// [dashboardId] Required.
   /// [project] Optional.
-  GetDashboardArgs({
-    required String dashboardId,
-    String? project,
-  }) :
-      dashboardId = pulumi.Input.asInput<String>(dashboardId),
+  GetDashboardArgs({required String dashboardId, String? project})
+    : dashboardId = pulumi.Input.asInput<String>(dashboardId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dashboardId': dashboardId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'dashboardId': dashboardId, 'project': ?project};
   }
 
   factory GetDashboardArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetDashboardArgs {
     );
   }
 }
-

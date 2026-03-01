@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClassifierGrokClassifier {
   /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
   final String classification;
+
   /// Custom grok patterns used by this classifier.
   final String? customPatterns;
+
   /// The grok pattern used by this classifier.
   final String grokPattern;
 
@@ -30,9 +31,10 @@ class ClassifierGrokClassifier {
   factory ClassifierGrokClassifier.fromMap(Map<String, dynamic> map) {
     return ClassifierGrokClassifier(
       classification: map['classification'] as String,
-      customPatterns: map['customPatterns'] == null ? null : map['customPatterns'] as String,
+      customPatterns: map['customPatterns'] == null
+          ? null
+          : map['customPatterns'] as String,
       grokPattern: map['grokPattern'] as String,
     );
   }
 }
-

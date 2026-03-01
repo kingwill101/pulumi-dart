@@ -32,6 +32,7 @@ class GetServiceResult {
   final String expireTime;
   final String generation;
   final bool iapEnabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String ingress;
@@ -151,11 +152,23 @@ class GetServiceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotations': annotations,
-      'binaryAuthorizations': pulumi.Input.encodeList<GetServiceBinaryAuthorization, Map<String, dynamic>>(binaryAuthorizations, (value) => value.toMap()),
-      'buildConfigs': pulumi.Input.encodeList<GetServiceBuildConfig, Map<String, dynamic>>(buildConfigs, (value) => value.toMap()),
+      'binaryAuthorizations':
+          pulumi.Input.encodeList<
+            GetServiceBinaryAuthorization,
+            Map<String, dynamic>
+          >(binaryAuthorizations, (value) => value.toMap()),
+      'buildConfigs':
+          pulumi.Input.encodeList<GetServiceBuildConfig, Map<String, dynamic>>(
+            buildConfigs,
+            (value) => value.toMap(),
+          ),
       'client': client,
       'clientVersion': clientVersion,
-      'conditions': pulumi.Input.encodeList<GetServiceCondition, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions':
+          pulumi.Input.encodeList<GetServiceCondition, Map<String, dynamic>>(
+            conditions,
+            (value) => value.toMap(),
+          ),
       'createTime': createTime,
       'creator': creator,
       'customAudiences': customAudiences,
@@ -178,17 +191,41 @@ class GetServiceResult {
       'latestReadyRevision': latestReadyRevision,
       'launchStage': launchStage,
       'location': ?location,
-      'multiRegionSettings': pulumi.Input.encodeList<GetServiceMultiRegionSetting, Map<String, dynamic>>(multiRegionSettings, (value) => value.toMap()),
+      'multiRegionSettings':
+          pulumi.Input.encodeList<
+            GetServiceMultiRegionSetting,
+            Map<String, dynamic>
+          >(multiRegionSettings, (value) => value.toMap()),
       'name': name,
       'observedGeneration': observedGeneration,
       'project': ?project,
       'pulumiLabels': pulumiLabels,
       'reconciling': reconciling,
-      'scalings': pulumi.Input.encodeList<GetServiceScaling, Map<String, dynamic>>(scalings, (value) => value.toMap()),
-      'templates': pulumi.Input.encodeList<GetServiceTemplate, Map<String, dynamic>>(templates, (value) => value.toMap()),
-      'terminalConditions': pulumi.Input.encodeList<GetServiceTerminalCondition, Map<String, dynamic>>(terminalConditions, (value) => value.toMap()),
-      'trafficStatuses': pulumi.Input.encodeList<GetServiceTrafficStatus, Map<String, dynamic>>(trafficStatuses, (value) => value.toMap()),
-      'traffics': pulumi.Input.encodeList<GetServiceTraffic, Map<String, dynamic>>(traffics, (value) => value.toMap()),
+      'scalings':
+          pulumi.Input.encodeList<GetServiceScaling, Map<String, dynamic>>(
+            scalings,
+            (value) => value.toMap(),
+          ),
+      'templates':
+          pulumi.Input.encodeList<GetServiceTemplate, Map<String, dynamic>>(
+            templates,
+            (value) => value.toMap(),
+          ),
+      'terminalConditions':
+          pulumi.Input.encodeList<
+            GetServiceTerminalCondition,
+            Map<String, dynamic>
+          >(terminalConditions, (value) => value.toMap()),
+      'trafficStatuses':
+          pulumi.Input.encodeList<
+            GetServiceTrafficStatus,
+            Map<String, dynamic>
+          >(trafficStatuses, (value) => value.toMap()),
+      'traffics':
+          pulumi.Input.encodeList<GetServiceTraffic, Map<String, dynamic>>(
+            traffics,
+            (value) => value.toMap(),
+          ),
       'uid': uid,
       'updateTime': updateTime,
       'uri': uri,
@@ -199,11 +236,26 @@ class GetServiceResult {
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
       annotations: (map['annotations'] as Map).cast<String, String>(),
-      binaryAuthorizations: pulumi.Input.decodeList<GetServiceBinaryAuthorization>(map['binaryAuthorizations'], (value) => GetServiceBinaryAuthorization.fromMap((value as Map).cast<String, dynamic>())),
-      buildConfigs: pulumi.Input.decodeList<GetServiceBuildConfig>(map['buildConfigs'], (value) => GetServiceBuildConfig.fromMap((value as Map).cast<String, dynamic>())),
+      binaryAuthorizations:
+          pulumi.Input.decodeList<GetServiceBinaryAuthorization>(
+            map['binaryAuthorizations'],
+            (value) => GetServiceBinaryAuthorization.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      buildConfigs: pulumi.Input.decodeList<GetServiceBuildConfig>(
+        map['buildConfigs'],
+        (value) => GetServiceBuildConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       client: map['client'] as String,
       clientVersion: map['clientVersion'] as String,
-      conditions: pulumi.Input.decodeList<GetServiceCondition>(map['conditions'], (value) => GetServiceCondition.fromMap((value as Map).cast<String, dynamic>())),
+      conditions: pulumi.Input.decodeList<GetServiceCondition>(
+        map['conditions'],
+        (value) =>
+            GetServiceCondition.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       createTime: map['createTime'] as String,
       creator: map['creator'] as String,
       customAudiences: (map['customAudiences'] as List).cast<String>(),
@@ -211,7 +263,8 @@ class GetServiceResult {
       deleteTime: map['deleteTime'] as String,
       deletionProtection: map['deletionProtection'] as bool,
       description: map['description'] as String,
-      effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
+      effectiveAnnotations: (map['effectiveAnnotations'] as Map)
+          .cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       etag: map['etag'] as String,
       expireTime: map['expireTime'] as String,
@@ -226,17 +279,45 @@ class GetServiceResult {
       latestReadyRevision: map['latestReadyRevision'] as String,
       launchStage: map['launchStage'] as String,
       location: map['location'] == null ? null : map['location'] as String,
-      multiRegionSettings: pulumi.Input.decodeList<GetServiceMultiRegionSetting>(map['multiRegionSettings'], (value) => GetServiceMultiRegionSetting.fromMap((value as Map).cast<String, dynamic>())),
+      multiRegionSettings:
+          pulumi.Input.decodeList<GetServiceMultiRegionSetting>(
+            map['multiRegionSettings'],
+            (value) => GetServiceMultiRegionSetting.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       name: map['name'] as String,
       observedGeneration: map['observedGeneration'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       reconciling: map['reconciling'] as bool,
-      scalings: pulumi.Input.decodeList<GetServiceScaling>(map['scalings'], (value) => GetServiceScaling.fromMap((value as Map).cast<String, dynamic>())),
-      templates: pulumi.Input.decodeList<GetServiceTemplate>(map['templates'], (value) => GetServiceTemplate.fromMap((value as Map).cast<String, dynamic>())),
-      terminalConditions: pulumi.Input.decodeList<GetServiceTerminalCondition>(map['terminalConditions'], (value) => GetServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>())),
-      trafficStatuses: pulumi.Input.decodeList<GetServiceTrafficStatus>(map['trafficStatuses'], (value) => GetServiceTrafficStatus.fromMap((value as Map).cast<String, dynamic>())),
-      traffics: pulumi.Input.decodeList<GetServiceTraffic>(map['traffics'], (value) => GetServiceTraffic.fromMap((value as Map).cast<String, dynamic>())),
+      scalings: pulumi.Input.decodeList<GetServiceScaling>(
+        map['scalings'],
+        (value) =>
+            GetServiceScaling.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      templates: pulumi.Input.decodeList<GetServiceTemplate>(
+        map['templates'],
+        (value) =>
+            GetServiceTemplate.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      terminalConditions: pulumi.Input.decodeList<GetServiceTerminalCondition>(
+        map['terminalConditions'],
+        (value) => GetServiceTerminalCondition.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      trafficStatuses: pulumi.Input.decodeList<GetServiceTrafficStatus>(
+        map['trafficStatuses'],
+        (value) => GetServiceTrafficStatus.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      traffics: pulumi.Input.decodeList<GetServiceTraffic>(
+        map['traffics'],
+        (value) =>
+            GetServiceTraffic.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
       uri: map['uri'] as String,
@@ -244,4 +325,3 @@ class GetServiceResult {
     );
   }
 }
-

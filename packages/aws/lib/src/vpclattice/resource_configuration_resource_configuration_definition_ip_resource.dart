@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResourceConfigurationResourceConfigurationDefinitionIpResource {
   /// The IP Address of the Resource for this configuration.
   final String ipAddress;
@@ -12,15 +11,14 @@ class ResourceConfigurationResourceConfigurationDefinitionIpResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ipAddress': ipAddress,
-    };
+    return <String, dynamic>{'ipAddress': ipAddress};
   }
 
-  factory ResourceConfigurationResourceConfigurationDefinitionIpResource.fromMap(Map<String, dynamic> map) {
+  factory ResourceConfigurationResourceConfigurationDefinitionIpResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceConfigurationResourceConfigurationDefinitionIpResource(
       ipAddress: map['ipAddress'] as String,
     );
   }
 }
-

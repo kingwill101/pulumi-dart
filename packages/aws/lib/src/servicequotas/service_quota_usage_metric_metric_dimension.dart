@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServiceQuotaUsageMetricMetricDimension {
   final String? class_;
   final String? resource;
@@ -28,7 +27,9 @@ class ServiceQuotaUsageMetricMetricDimension {
     };
   }
 
-  factory ServiceQuotaUsageMetricMetricDimension.fromMap(Map<String, dynamic> map) {
+  factory ServiceQuotaUsageMetricMetricDimension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceQuotaUsageMetricMetricDimension(
       class_: map['class'] == null ? null : map['class'] as String,
       resource: map['resource'] == null ? null : map['resource'] as String,
@@ -37,4 +38,3 @@ class ServiceQuotaUsageMetricMetricDimension {
     );
   }
 }
-

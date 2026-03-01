@@ -12,7 +12,8 @@ enum AuthorizedOrgsDescAuthorizationType {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuthorizedOrgsDescAuthorizationType value: $value');
+    throw ArgumentError(
+      'Unknown AuthorizedOrgsDescAuthorizationType value: $value',
+    );
   }
 }
-

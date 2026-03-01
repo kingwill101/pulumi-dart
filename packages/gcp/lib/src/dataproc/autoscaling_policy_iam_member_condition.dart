@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AutoscalingPolicyIamMemberCondition {
   final String? description;
   final String expression;
@@ -24,12 +23,15 @@ class AutoscalingPolicyIamMemberCondition {
     };
   }
 
-  factory AutoscalingPolicyIamMemberCondition.fromMap(Map<String, dynamic> map) {
+  factory AutoscalingPolicyIamMemberCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutoscalingPolicyIamMemberCondition(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
-

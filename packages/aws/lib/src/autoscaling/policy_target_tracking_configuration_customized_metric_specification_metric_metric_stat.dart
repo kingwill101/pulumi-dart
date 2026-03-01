@@ -4,11 +4,15 @@ import 'policy_target_tracking_configuration_customized_metric_specification_met
 
 class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat {
   /// Structure that defines the CloudWatch metric to return, including the metric name, namespace, and dimensions.
-  final PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric metric;
+  final PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric
+  metric;
+
   /// The period of the metric in seconds.
   final int? period;
+
   /// Statistic of the metrics to return.
   final String stat;
+
   /// Unit of the metrics to return.
   final String? unit;
 
@@ -33,13 +37,17 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetric
     };
   }
 
-  factory PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap(Map<String, dynamic> map) {
+  factory PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStat(
-      metric: PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap((map['metric'] as Map).cast<String, dynamic>()),
+      metric:
+          PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricMetricStatMetric.fromMap(
+            (map['metric'] as Map).cast<String, dynamic>(),
+          ),
       period: map['period'] == null ? null : map['period'] as int,
       stat: map['stat'] as String,
       unit: map['unit'] == null ? null : map['unit'] as String,
     );
   }
 }
-

@@ -10,7 +10,9 @@ class CxAgentAdvancedSettings {
   /// * Agent level
   /// * Flow level
   /// Structure is documented below.
-  final CxAgentAdvancedSettingsAudioExportGcsDestination? audioExportGcsDestination;
+  final CxAgentAdvancedSettingsAudioExportGcsDestination?
+  audioExportGcsDestination;
+
   /// Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
   /// * Agent level
   /// * Flow level
@@ -18,10 +20,12 @@ class CxAgentAdvancedSettings {
   /// * Parameter level
   /// Structure is documented below.
   final CxAgentAdvancedSettingsDtmfSettings? dtmfSettings;
+
   /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
   /// * Agent level
   /// Structure is documented below.
   final CxAgentAdvancedSettingsLoggingSettings? loggingSettings;
+
   /// Settings for speech to text detection. Exposed at the following levels:
   /// * Agent level
   /// * Flow level
@@ -44,20 +48,41 @@ class CxAgentAdvancedSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioExportGcsDestination': ?audioExportGcsDestination == null ? null : audioExportGcsDestination!.toMap(),
+      'audioExportGcsDestination': ?audioExportGcsDestination == null
+          ? null
+          : audioExportGcsDestination!.toMap(),
       'dtmfSettings': ?dtmfSettings == null ? null : dtmfSettings!.toMap(),
-      'loggingSettings': ?loggingSettings == null ? null : loggingSettings!.toMap(),
-      'speechSettings': ?speechSettings == null ? null : speechSettings!.toMap(),
+      'loggingSettings': ?loggingSettings == null
+          ? null
+          : loggingSettings!.toMap(),
+      'speechSettings': ?speechSettings == null
+          ? null
+          : speechSettings!.toMap(),
     };
   }
 
   factory CxAgentAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentAdvancedSettings(
-      audioExportGcsDestination: map['audioExportGcsDestination'] == null ? null : CxAgentAdvancedSettingsAudioExportGcsDestination.fromMap((map['audioExportGcsDestination'] as Map).cast<String, dynamic>()),
-      dtmfSettings: map['dtmfSettings'] == null ? null : CxAgentAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>()),
-      loggingSettings: map['loggingSettings'] == null ? null : CxAgentAdvancedSettingsLoggingSettings.fromMap((map['loggingSettings'] as Map).cast<String, dynamic>()),
-      speechSettings: map['speechSettings'] == null ? null : CxAgentAdvancedSettingsSpeechSettings.fromMap((map['speechSettings'] as Map).cast<String, dynamic>()),
+      audioExportGcsDestination: map['audioExportGcsDestination'] == null
+          ? null
+          : CxAgentAdvancedSettingsAudioExportGcsDestination.fromMap(
+              (map['audioExportGcsDestination'] as Map).cast<String, dynamic>(),
+            ),
+      dtmfSettings: map['dtmfSettings'] == null
+          ? null
+          : CxAgentAdvancedSettingsDtmfSettings.fromMap(
+              (map['dtmfSettings'] as Map).cast<String, dynamic>(),
+            ),
+      loggingSettings: map['loggingSettings'] == null
+          ? null
+          : CxAgentAdvancedSettingsLoggingSettings.fromMap(
+              (map['loggingSettings'] as Map).cast<String, dynamic>(),
+            ),
+      speechSettings: map['speechSettings'] == null
+          ? null
+          : CxAgentAdvancedSettingsSpeechSettings.fromMap(
+              (map['speechSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -5,16 +5,14 @@ import 'report_group_export_config_s3_destination.dart';
 class ReportGroupExportConfig {
   /// contains information about the S3 bucket where the run of a report is exported. see S3 Destination documented below.
   final ReportGroupExportConfigS3Destination? s3Destination;
+
   /// The export configuration type. Valid values are `S3` and `NO_EXPORT`.
   final String type;
 
   /// Creates a new [ReportGroupExportConfig].
   /// [s3Destination] contains information about the S3 bucket where the run of a report is exported. see S3 Destination documented below.
   /// [type] The export configuration type. Valid values are `S3` and `NO_EXPORT`.
-  ReportGroupExportConfig({
-    this.s3Destination,
-    required this.type,
-  });
+  ReportGroupExportConfig({this.s3Destination, required this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +23,12 @@ class ReportGroupExportConfig {
 
   factory ReportGroupExportConfig.fromMap(Map<String, dynamic> map) {
     return ReportGroupExportConfig(
-      s3Destination: map['s3Destination'] == null ? null : ReportGroupExportConfigS3Destination.fromMap((map['s3Destination'] as Map).cast<String, dynamic>()),
+      s3Destination: map['s3Destination'] == null
+          ? null
+          : ReportGroupExportConfigS3Destination.fromMap(
+              (map['s3Destination'] as Map).cast<String, dynamic>(),
+            ),
       type: map['type'] as String,
     );
   }
 }
-

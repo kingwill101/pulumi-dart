@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AppLoggingSettingsAudioRecordingConfig {
   /// The [Cloud Storage](https://cloud.google.com/storage) bucket to store the
   /// session audio recordings. The URI must start with "gs://".
@@ -8,6 +7,7 @@ class AppLoggingSettingsAudioRecordingConfig {
   /// you should grant `storage.objects.create` permission to the CES service
   /// agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
   final String? gcsBucket;
+
   /// The Cloud Storage path prefix for audio recordings.
   /// This prefix can include the following placeholders, which will be
   /// dynamically substituted at serving time:
@@ -23,10 +23,7 @@ class AppLoggingSettingsAudioRecordingConfig {
   /// Creates a new [AppLoggingSettingsAudioRecordingConfig].
   /// [gcsBucket] The [Cloud Storage](https://cloud.google.com/storage) bucket to store the
   /// [gcsPathPrefix] The Cloud Storage path prefix for audio recordings.
-  AppLoggingSettingsAudioRecordingConfig({
-    this.gcsBucket,
-    this.gcsPathPrefix,
-  });
+  AppLoggingSettingsAudioRecordingConfig({this.gcsBucket, this.gcsPathPrefix});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,11 +32,14 @@ class AppLoggingSettingsAudioRecordingConfig {
     };
   }
 
-  factory AppLoggingSettingsAudioRecordingConfig.fromMap(Map<String, dynamic> map) {
+  factory AppLoggingSettingsAudioRecordingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppLoggingSettingsAudioRecordingConfig(
       gcsBucket: map['gcsBucket'] == null ? null : map['gcsBucket'] as String,
-      gcsPathPrefix: map['gcsPathPrefix'] == null ? null : map['gcsPathPrefix'] as String,
+      gcsPathPrefix: map['gcsPathPrefix'] == null
+          ? null
+          : map['gcsPathPrefix'] as String,
     );
   }
 }
-

@@ -9,10 +9,14 @@ import 'google_cloud_dialogflow_v2_input_dataset.dart';
 class GoogleCloudDialogflowV2EvaluationConfig {
   /// Datasets used for evaluation.
   final List<GoogleCloudDialogflowV2InputDataset> datasets;
+
   /// Configuration for smart compose model evalution.
-  final GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig? smartComposeConfig;
+  final GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig?
+  smartComposeConfig;
+
   /// Configuration for smart reply model evalution.
-  final GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig? smartReplyConfig;
+  final GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig?
+  smartReplyConfig;
 
   /// Creates a new [GoogleCloudDialogflowV2EvaluationConfig].
   /// [datasets] Datasets used for evaluation.
@@ -26,18 +30,40 @@ class GoogleCloudDialogflowV2EvaluationConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'datasets': pulumi.Input.encodeList<GoogleCloudDialogflowV2InputDataset, Map<String, dynamic>>(datasets, (value) => value.toMap()),
-      'smartComposeConfig': ?smartComposeConfig == null ? null : smartComposeConfig!.toMap(),
-      'smartReplyConfig': ?smartReplyConfig == null ? null : smartReplyConfig!.toMap(),
+      'datasets':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowV2InputDataset,
+            Map<String, dynamic>
+          >(datasets, (value) => value.toMap()),
+      'smartComposeConfig': ?smartComposeConfig == null
+          ? null
+          : smartComposeConfig!.toMap(),
+      'smartReplyConfig': ?smartReplyConfig == null
+          ? null
+          : smartReplyConfig!.toMap(),
     };
   }
 
-  factory GoogleCloudDialogflowV2EvaluationConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2EvaluationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2EvaluationConfig(
-      datasets: pulumi.Input.decodeList<GoogleCloudDialogflowV2InputDataset>(map['datasets'], (value) => GoogleCloudDialogflowV2InputDataset.fromMap((value as Map).cast<String, dynamic>())),
-      smartComposeConfig: map['smartComposeConfig'] == null ? null : GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromMap((map['smartComposeConfig'] as Map).cast<String, dynamic>()),
-      smartReplyConfig: map['smartReplyConfig'] == null ? null : GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromMap((map['smartReplyConfig'] as Map).cast<String, dynamic>()),
+      datasets: pulumi.Input.decodeList<GoogleCloudDialogflowV2InputDataset>(
+        map['datasets'],
+        (value) => GoogleCloudDialogflowV2InputDataset.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      smartComposeConfig: map['smartComposeConfig'] == null
+          ? null
+          : GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromMap(
+              (map['smartComposeConfig'] as Map).cast<String, dynamic>(),
+            ),
+      smartReplyConfig: map['smartReplyConfig'] == null
+          ? null
+          : GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromMap(
+              (map['smartReplyConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'oracle_rdbms_response_datastream_v1alpha1.dart';
 class BackfillAllStrategyResponseDatastreamV1alpha1 {
   /// MySQL data source objects to avoid backfilling.
   final MysqlRdbmsResponseDatastreamV1alpha1 mysqlExcludedObjects;
+
   /// Oracle data source objects to avoid backfilling.
   final OracleRdbmsResponseDatastreamV1alpha1 oracleExcludedObjects;
 
@@ -25,11 +26,16 @@ class BackfillAllStrategyResponseDatastreamV1alpha1 {
     };
   }
 
-  factory BackfillAllStrategyResponseDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory BackfillAllStrategyResponseDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackfillAllStrategyResponseDatastreamV1alpha1(
-      mysqlExcludedObjects: MysqlRdbmsResponseDatastreamV1alpha1.fromMap((map['mysqlExcludedObjects'] as Map).cast<String, dynamic>()),
-      oracleExcludedObjects: OracleRdbmsResponseDatastreamV1alpha1.fromMap((map['oracleExcludedObjects'] as Map).cast<String, dynamic>()),
+      mysqlExcludedObjects: MysqlRdbmsResponseDatastreamV1alpha1.fromMap(
+        (map['mysqlExcludedObjects'] as Map).cast<String, dynamic>(),
+      ),
+      oracleExcludedObjects: OracleRdbmsResponseDatastreamV1alpha1.fromMap(
+        (map['oracleExcludedObjects'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

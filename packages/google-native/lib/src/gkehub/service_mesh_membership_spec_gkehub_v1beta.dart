@@ -7,16 +7,14 @@ import 'service_mesh_membership_spec_management_gkehub_v1beta.dart';
 class ServiceMeshMembershipSpecGkehubV1beta {
   /// Deprecated: use `management` instead Enables automatic control plane management.
   final ServiceMeshMembershipSpecControlPlaneGkehubV1beta? controlPlane;
+
   /// Enables automatic Service Mesh management.
   final ServiceMeshMembershipSpecManagementGkehubV1beta? management;
 
   /// Creates a new [ServiceMeshMembershipSpecGkehubV1beta].
   /// [controlPlane] Deprecated: use `management` instead Enables automatic control plane management.
   /// [management] Enables automatic Service Mesh management.
-  ServiceMeshMembershipSpecGkehubV1beta({
-    this.controlPlane,
-    this.management,
-  });
+  ServiceMeshMembershipSpecGkehubV1beta({this.controlPlane, this.management});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,11 +23,20 @@ class ServiceMeshMembershipSpecGkehubV1beta {
     };
   }
 
-  factory ServiceMeshMembershipSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory ServiceMeshMembershipSpecGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceMeshMembershipSpecGkehubV1beta(
-      controlPlane: map['controlPlane'] == null ? null : ServiceMeshMembershipSpecControlPlaneGkehubV1beta.fromValue(map['controlPlane'] as String),
-      management: map['management'] == null ? null : ServiceMeshMembershipSpecManagementGkehubV1beta.fromValue(map['management'] as String),
+      controlPlane: map['controlPlane'] == null
+          ? null
+          : ServiceMeshMembershipSpecControlPlaneGkehubV1beta.fromValue(
+              map['controlPlane'] as String,
+            ),
+      management: map['management'] == null
+          ? null
+          : ServiceMeshMembershipSpecManagementGkehubV1beta.fromValue(
+              map['management'] as String,
+            ),
     );
   }
 }
-

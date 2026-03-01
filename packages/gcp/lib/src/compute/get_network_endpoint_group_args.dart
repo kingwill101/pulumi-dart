@@ -10,11 +10,14 @@ class GetNetworkEndpointGroupArgs {
   /// The Network Endpoint Group name.
   /// Provide either this or a `self_link`.
   final pulumi.Input<String>? name;
+
   /// The ID of the project to list versions in.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The Network Endpoint Group self_link.
   final pulumi.Input<String>? selfLink;
+
   /// The Network Endpoint Group availability zone.
   final pulumi.Input<String>? zone;
 
@@ -28,11 +31,10 @@ class GetNetworkEndpointGroupArgs {
     String? project,
     String? selfLink,
     String? zone,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+  }) : name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
+       zone = pulumi.Input.asOptionalInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +54,3 @@ class GetNetworkEndpointGroupArgs {
     );
   }
 }
-

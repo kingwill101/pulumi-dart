@@ -13,11 +13,8 @@ class GetSecurityPolicyArgs {
   /// Creates a new [GetSecurityPolicyArgs].
   /// [project] Optional.
   /// [securityPolicy] Required.
-  GetSecurityPolicyArgs({
-    String? project,
-    required String securityPolicy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetSecurityPolicyArgs({String? project, required String securityPolicy})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetSecurityPolicyArgs {
     );
   }
 }
-

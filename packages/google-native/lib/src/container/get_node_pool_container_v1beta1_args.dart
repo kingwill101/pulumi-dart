@@ -28,13 +28,12 @@ class GetNodePoolContainerV1beta1Args {
     String? project,
     required String projectId,
     required String zone,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      location = pulumi.Input.asInput<String>(location),
-      nodePoolId = pulumi.Input.asInput<String>(nodePoolId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      projectId = pulumi.Input.asInput<String>(projectId),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : clusterId = pulumi.Input.asInput<String>(clusterId),
+       location = pulumi.Input.asInput<String>(location),
+       nodePoolId = pulumi.Input.asInput<String>(nodePoolId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       projectId = pulumi.Input.asInput<String>(projectId),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,4 +57,3 @@ class GetNodePoolContainerV1beta1Args {
     );
   }
 }
-

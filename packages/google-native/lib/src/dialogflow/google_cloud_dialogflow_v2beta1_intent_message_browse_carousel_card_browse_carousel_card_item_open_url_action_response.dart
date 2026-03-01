@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Actions on Google action to open a given url.
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse {
   /// URL
   final String url;
+
   /// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
   final String urlTypeHint;
 
@@ -17,17 +17,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'url': url,
-      'urlTypeHint': urlTypeHint,
-    };
+    return <String, dynamic>{'url': url, 'urlTypeHint': urlTypeHint};
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse(
       url: map['url'] as String,
       urlTypeHint: map['urlTypeHint'] as String,
     );
   }
 }
-

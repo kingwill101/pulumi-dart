@@ -6,10 +6,13 @@ import 'v2models_slot_sub_slot_setting_slot_specification_value_elicitation_sett
 
 class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification {
   final bool? allowInterrupt;
-  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes? allowedInputTypes;
-  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification? audioAndDtmfInputSpecification;
+  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes?
+  allowedInputTypes;
+  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification?
+  audioAndDtmfInputSpecification;
   final String mapBlockKey;
-  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification? textInputSpecification;
+  final V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification?
+  textInputSpecification;
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification].
   /// [allowInterrupt] Optional.
@@ -28,21 +31,44 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInterrupt': ?allowInterrupt,
-      'allowedInputTypes': ?allowedInputTypes == null ? null : allowedInputTypes!.toMap(),
-      'audioAndDtmfInputSpecification': ?audioAndDtmfInputSpecification == null ? null : audioAndDtmfInputSpecification!.toMap(),
+      'allowedInputTypes': ?allowedInputTypes == null
+          ? null
+          : allowedInputTypes!.toMap(),
+      'audioAndDtmfInputSpecification': ?audioAndDtmfInputSpecification == null
+          ? null
+          : audioAndDtmfInputSpecification!.toMap(),
       'mapBlockKey': mapBlockKey,
-      'textInputSpecification': ?textInputSpecification == null ? null : textInputSpecification!.toMap(),
+      'textInputSpecification': ?textInputSpecification == null
+          ? null
+          : textInputSpecification!.toMap(),
     };
   }
 
-  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification(
-      allowInterrupt: map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
-      allowedInputTypes: map['allowedInputTypes'] == null ? null : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap((map['allowedInputTypes'] as Map).cast<String, dynamic>()),
-      audioAndDtmfInputSpecification: map['audioAndDtmfInputSpecification'] == null ? null : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap((map['audioAndDtmfInputSpecification'] as Map).cast<String, dynamic>()),
+      allowInterrupt: map['allowInterrupt'] == null
+          ? null
+          : map['allowInterrupt'] as bool,
+      allowedInputTypes: map['allowedInputTypes'] == null
+          ? null
+          : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes.fromMap(
+              (map['allowedInputTypes'] as Map).cast<String, dynamic>(),
+            ),
+      audioAndDtmfInputSpecification:
+          map['audioAndDtmfInputSpecification'] == null
+          ? null
+          : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification.fromMap(
+              (map['audioAndDtmfInputSpecification'] as Map)
+                  .cast<String, dynamic>(),
+            ),
       mapBlockKey: map['mapBlockKey'] as String,
-      textInputSpecification: map['textInputSpecification'] == null ? null : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap((map['textInputSpecification'] as Map).cast<String, dynamic>()),
+      textInputSpecification: map['textInputSpecification'] == null
+          ? null
+          : V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(
+              (map['textInputSpecification'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

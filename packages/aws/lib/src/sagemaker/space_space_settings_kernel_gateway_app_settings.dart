@@ -6,9 +6,13 @@ import 'space_space_settings_kernel_gateway_app_settings_default_resource_spec.d
 
 class SpaceSpaceSettingsKernelGatewayAppSettings {
   /// A list of custom SageMaker AI images that are configured to run as a KernelGateway app. See `custom_image` Block below.
-  final List<SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage>? customImages;
+  final List<SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage>?
+  customImages;
+
   /// The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See `default_resource_spec` Block below.
-  final SpaceSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec defaultResourceSpec;
+  final SpaceSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec
+  defaultResourceSpec;
+
   /// The Amazon Resource Name (ARN) of the Lifecycle Configurations.
   final List<String>? lifecycleConfigArns;
 
@@ -24,18 +28,39 @@ class SpaceSpaceSettingsKernelGatewayAppSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customImages': ?customImages == null ? null : pulumi.Input.encodeList<SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage, Map<String, dynamic>>(customImages!, (value) => value.toMap()),
+      'customImages': ?customImages == null
+          ? null
+          : pulumi.Input.encodeList<
+              SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage,
+              Map<String, dynamic>
+            >(customImages!, (value) => value.toMap()),
       'defaultResourceSpec': defaultResourceSpec.toMap(),
       'lifecycleConfigArns': ?lifecycleConfigArns,
     };
   }
 
-  factory SpaceSpaceSettingsKernelGatewayAppSettings.fromMap(Map<String, dynamic> map) {
+  factory SpaceSpaceSettingsKernelGatewayAppSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpaceSpaceSettingsKernelGatewayAppSettings(
-      customImages: map['customImages'] == null ? null : pulumi.Input.decodeList<SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage>(map['customImages'], (value) => SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage.fromMap((value as Map).cast<String, dynamic>())),
-      defaultResourceSpec: SpaceSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec.fromMap((map['defaultResourceSpec'] as Map).cast<String, dynamic>()),
-      lifecycleConfigArns: map['lifecycleConfigArns'] == null ? null : (map['lifecycleConfigArns'] as List).cast<String>(),
+      customImages: map['customImages'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage
+            >(
+              map['customImages'],
+              (value) =>
+                  SpaceSpaceSettingsKernelGatewayAppSettingsCustomImage.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      defaultResourceSpec:
+          SpaceSpaceSettingsKernelGatewayAppSettingsDefaultResourceSpec.fromMap(
+            (map['defaultResourceSpec'] as Map).cast<String, dynamic>(),
+          ),
+      lifecycleConfigArns: map['lifecycleConfigArns'] == null
+          ? null
+          : (map['lifecycleConfigArns'] as List).cast<String>(),
     );
   }
 }
-

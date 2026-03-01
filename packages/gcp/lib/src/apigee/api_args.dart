@@ -12,8 +12,10 @@ class ApiArgs {
   /// - - -
   final pulumi.Input<String> configBundle;
   final pulumi.Input<String>? detectMd5hash;
+
   /// The ID of the API proxy.
   final pulumi.Input<String>? name;
+
   /// The Apigee Organization name associated with the Apigee instance.
   final pulumi.Input<String> orgId;
 
@@ -27,11 +29,10 @@ class ApiArgs {
     String? detectMd5hash,
     String? name,
     required String orgId,
-  }) :
-      configBundle = pulumi.Input.asInput<String>(configBundle),
-      detectMd5hash = pulumi.Input.asOptionalInput<String>(detectMd5hash),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      orgId = pulumi.Input.asInput<String>(orgId);
+  }) : configBundle = pulumi.Input.asInput<String>(configBundle),
+       detectMd5hash = pulumi.Input.asOptionalInput<String>(detectMd5hash),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       orgId = pulumi.Input.asInput<String>(orgId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,10 +46,11 @@ class ApiArgs {
   factory ApiArgs.fromMap(Map<String, dynamic> map) {
     return ApiArgs(
       configBundle: map['configBundle'] as String,
-      detectMd5hash: map['detectMd5hash'] == null ? null : map['detectMd5hash'] as String,
+      detectMd5hash: map['detectMd5hash'] == null
+          ? null
+          : map['detectMd5hash'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       orgId: map['orgId'] as String,
     );
   }
 }
-

@@ -10,20 +10,29 @@ class MigrationJobDumpFlags {
 
   /// Creates a new [MigrationJobDumpFlags].
   /// [dumpFlags] A list of dump flags
-  MigrationJobDumpFlags({
-    this.dumpFlags,
-  });
+  MigrationJobDumpFlags({this.dumpFlags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dumpFlags': ?dumpFlags == null ? null : pulumi.Input.encodeList<MigrationJobDumpFlagsDumpFlag, Map<String, dynamic>>(dumpFlags!, (value) => value.toMap()),
+      'dumpFlags': ?dumpFlags == null
+          ? null
+          : pulumi.Input.encodeList<
+              MigrationJobDumpFlagsDumpFlag,
+              Map<String, dynamic>
+            >(dumpFlags!, (value) => value.toMap()),
     };
   }
 
   factory MigrationJobDumpFlags.fromMap(Map<String, dynamic> map) {
     return MigrationJobDumpFlags(
-      dumpFlags: map['dumpFlags'] == null ? null : pulumi.Input.decodeList<MigrationJobDumpFlagsDumpFlag>(map['dumpFlags'], (value) => MigrationJobDumpFlagsDumpFlag.fromMap((value as Map).cast<String, dynamic>())),
+      dumpFlags: map['dumpFlags'] == null
+          ? null
+          : pulumi.Input.decodeList<MigrationJobDumpFlagsDumpFlag>(
+              map['dumpFlags'],
+              (value) => MigrationJobDumpFlagsDumpFlag.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

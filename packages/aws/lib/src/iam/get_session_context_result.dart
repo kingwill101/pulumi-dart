@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getSessionContext.
 class GetSessionContextResult {
   final String arn;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// IAM source role ARN if `arn` corresponds to an STS assumed role. Otherwise, `issuer_arn` is equal to `arn`.
   final String issuerArn;
+
   /// Unique identifier of the IAM role that issues the STS assumed role.
   final String issuerId;
+
   /// Name of the source role. Only available if `arn` corresponds to an STS assumed role.
   final String issuerName;
+
   /// Name of the STS session. Only available if `arn` corresponds to an STS assumed role.
   final String sessionName;
 
@@ -53,4 +57,3 @@ class GetSessionContextResult {
     );
   }
 }
-

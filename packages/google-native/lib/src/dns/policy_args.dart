@@ -10,18 +10,25 @@ import 'policy_network.dart';
 /// {@macro pulumi_dns_v1_policy_args_doc}
 class PolicyArgs {
   /// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
-  final pulumi.Input<PolicyAlternativeNameServerConfig>? alternativeNameServerConfig;
+  final pulumi.Input<PolicyAlternativeNameServerConfig>?
+  alternativeNameServerConfig;
+
   /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
   final pulumi.Input<String>? clientOperationId;
+
   /// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
   final pulumi.Input<String>? description;
+
   /// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
   final pulumi.Input<bool>? enableInboundForwarding;
+
   /// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
   final pulumi.Input<bool>? enableLogging;
   final pulumi.Input<String>? kind;
+
   /// User-assigned name for this policy.
   final pulumi.Input<String>? name;
+
   /// List of network names specifying networks to which this policy is applied.
   final pulumi.Input<List<PolicyNetwork>>? networks;
   final pulumi.Input<String>? project;
@@ -46,43 +53,82 @@ class PolicyArgs {
     String? name,
     List<PolicyNetwork>? networks,
     String? project,
-  }) :
-      alternativeNameServerConfig = pulumi.Input.asOptionalInput<PolicyAlternativeNameServerConfig>(alternativeNameServerConfig),
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      enableInboundForwarding = pulumi.Input.asOptionalInput<bool>(enableInboundForwarding),
-      enableLogging = pulumi.Input.asOptionalInput<bool>(enableLogging),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      networks = pulumi.Input.asOptionalInput<List<PolicyNetwork>>(networks),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : alternativeNameServerConfig =
+           pulumi.Input.asOptionalInput<PolicyAlternativeNameServerConfig>(
+             alternativeNameServerConfig,
+           ),
+       clientOperationId = pulumi.Input.asOptionalInput<String>(
+         clientOperationId,
+       ),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       enableInboundForwarding = pulumi.Input.asOptionalInput<bool>(
+         enableInboundForwarding,
+       ),
+       enableLogging = pulumi.Input.asOptionalInput<bool>(enableLogging),
+       kind = pulumi.Input.asOptionalInput<String>(kind),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       networks = pulumi.Input.asOptionalInput<List<PolicyNetwork>>(networks),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alternativeNameServerConfig': ?pulumi.Input.mapOptionalInputValue<PolicyAlternativeNameServerConfig, Map<String, dynamic>>(alternativeNameServerConfig, (value) => value.toMap()),
+      'alternativeNameServerConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PolicyAlternativeNameServerConfig,
+            Map<String, dynamic>
+          >(alternativeNameServerConfig, (value) => value.toMap()),
       'clientOperationId': ?clientOperationId,
       'description': ?description,
       'enableInboundForwarding': ?enableInboundForwarding,
       'enableLogging': ?enableLogging,
       'kind': ?kind,
       'name': ?name,
-      'networks': ?pulumi.Input.mapOptionalInputValue<List<PolicyNetwork>, List<Map<String, dynamic>>>(networks, (value) => pulumi.Input.encodeList<PolicyNetwork, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'networks':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<PolicyNetwork>,
+            List<Map<String, dynamic>>
+          >(
+            networks,
+            (value) =>
+                pulumi.Input.encodeList<PolicyNetwork, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'project': ?project,
     };
   }
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      alternativeNameServerConfig: map['alternativeNameServerConfig'] == null ? null : PolicyAlternativeNameServerConfig.fromMap((map['alternativeNameServerConfig'] as Map).cast<String, dynamic>()),
-      clientOperationId: map['clientOperationId'] == null ? null : map['clientOperationId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      enableInboundForwarding: map['enableInboundForwarding'] == null ? null : map['enableInboundForwarding'] as bool,
-      enableLogging: map['enableLogging'] == null ? null : map['enableLogging'] as bool,
+      alternativeNameServerConfig: map['alternativeNameServerConfig'] == null
+          ? null
+          : PolicyAlternativeNameServerConfig.fromMap(
+              (map['alternativeNameServerConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      clientOperationId: map['clientOperationId'] == null
+          ? null
+          : map['clientOperationId'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      enableInboundForwarding: map['enableInboundForwarding'] == null
+          ? null
+          : map['enableInboundForwarding'] as bool,
+      enableLogging: map['enableLogging'] == null
+          ? null
+          : map['enableLogging'] as bool,
       kind: map['kind'] == null ? null : map['kind'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      networks: map['networks'] == null ? null : pulumi.Input.decodeList<PolicyNetwork>(map['networks'], (value) => PolicyNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      networks: map['networks'] == null
+          ? null
+          : pulumi.Input.decodeList<PolicyNetwork>(
+              map['networks'],
+              (value) =>
+                  PolicyNetwork.fromMap((value as Map).cast<String, dynamic>()),
+            ),
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

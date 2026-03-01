@@ -11,20 +11,26 @@ class ToolsetOpenApiToolsetTlsConfig {
 
   /// Creates a new [ToolsetOpenApiToolsetTlsConfig].
   /// [caCerts] Specifies a list of allowed custom CA certificates for HTTPS
-  ToolsetOpenApiToolsetTlsConfig({
-    required this.caCerts,
-  });
+  ToolsetOpenApiToolsetTlsConfig({required this.caCerts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caCerts': pulumi.Input.encodeList<ToolsetOpenApiToolsetTlsConfigCaCert, Map<String, dynamic>>(caCerts, (value) => value.toMap()),
+      'caCerts':
+          pulumi.Input.encodeList<
+            ToolsetOpenApiToolsetTlsConfigCaCert,
+            Map<String, dynamic>
+          >(caCerts, (value) => value.toMap()),
     };
   }
 
   factory ToolsetOpenApiToolsetTlsConfig.fromMap(Map<String, dynamic> map) {
     return ToolsetOpenApiToolsetTlsConfig(
-      caCerts: pulumi.Input.decodeList<ToolsetOpenApiToolsetTlsConfigCaCert>(map['caCerts'], (value) => ToolsetOpenApiToolsetTlsConfigCaCert.fromMap((value as Map).cast<String, dynamic>())),
+      caCerts: pulumi.Input.decodeList<ToolsetOpenApiToolsetTlsConfigCaCert>(
+        map['caCerts'],
+        (value) => ToolsetOpenApiToolsetTlsConfigCaCert.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

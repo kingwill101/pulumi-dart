@@ -12,18 +12,25 @@ import 'user_password_response.dart';
 class AuthConfigResponse {
   /// List containing additional auth configs.
   final List<ConfigVariableResponse> additionalVariables;
+
   /// Identifier key for auth config
   final String authKey;
+
   /// The type of authentication configured.
   final String authType;
+
   /// Oauth2AuthCodeFlow.
   final Oauth2AuthCodeFlowResponse oauth2AuthCodeFlow;
+
   /// Oauth2ClientCredentials.
   final Oauth2ClientCredentialsResponse oauth2ClientCredentials;
+
   /// Oauth2JwtBearer.
   final Oauth2JwtBearerResponse oauth2JwtBearer;
+
   /// SSH Public Key.
   final SshPublicKeyResponse sshPublicKey;
+
   /// UserPassword.
   final UserPasswordResponse userPassword;
 
@@ -49,7 +56,11 @@ class AuthConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalVariables': pulumi.Input.encodeList<ConfigVariableResponse, Map<String, dynamic>>(additionalVariables, (value) => value.toMap()),
+      'additionalVariables':
+          pulumi.Input.encodeList<ConfigVariableResponse, Map<String, dynamic>>(
+            additionalVariables,
+            (value) => value.toMap(),
+          ),
       'authKey': authKey,
       'authType': authType,
       'oauth2AuthCodeFlow': oauth2AuthCodeFlow.toMap(),
@@ -62,15 +73,29 @@ class AuthConfigResponse {
 
   factory AuthConfigResponse.fromMap(Map<String, dynamic> map) {
     return AuthConfigResponse(
-      additionalVariables: pulumi.Input.decodeList<ConfigVariableResponse>(map['additionalVariables'], (value) => ConfigVariableResponse.fromMap((value as Map).cast<String, dynamic>())),
+      additionalVariables: pulumi.Input.decodeList<ConfigVariableResponse>(
+        map['additionalVariables'],
+        (value) => ConfigVariableResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       authKey: map['authKey'] as String,
       authType: map['authType'] as String,
-      oauth2AuthCodeFlow: Oauth2AuthCodeFlowResponse.fromMap((map['oauth2AuthCodeFlow'] as Map).cast<String, dynamic>()),
-      oauth2ClientCredentials: Oauth2ClientCredentialsResponse.fromMap((map['oauth2ClientCredentials'] as Map).cast<String, dynamic>()),
-      oauth2JwtBearer: Oauth2JwtBearerResponse.fromMap((map['oauth2JwtBearer'] as Map).cast<String, dynamic>()),
-      sshPublicKey: SshPublicKeyResponse.fromMap((map['sshPublicKey'] as Map).cast<String, dynamic>()),
-      userPassword: UserPasswordResponse.fromMap((map['userPassword'] as Map).cast<String, dynamic>()),
+      oauth2AuthCodeFlow: Oauth2AuthCodeFlowResponse.fromMap(
+        (map['oauth2AuthCodeFlow'] as Map).cast<String, dynamic>(),
+      ),
+      oauth2ClientCredentials: Oauth2ClientCredentialsResponse.fromMap(
+        (map['oauth2ClientCredentials'] as Map).cast<String, dynamic>(),
+      ),
+      oauth2JwtBearer: Oauth2JwtBearerResponse.fromMap(
+        (map['oauth2JwtBearer'] as Map).cast<String, dynamic>(),
+      ),
+      sshPublicKey: SshPublicKeyResponse.fromMap(
+        (map['sshPublicKey'] as Map).cast<String, dynamic>(),
+      ),
+      userPassword: UserPasswordResponse.fromMap(
+        (map['userPassword'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

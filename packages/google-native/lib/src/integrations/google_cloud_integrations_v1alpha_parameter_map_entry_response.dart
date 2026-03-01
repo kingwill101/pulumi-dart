@@ -6,6 +6,7 @@ import 'google_cloud_integrations_v1alpha_parameter_map_field_response.dart';
 class GoogleCloudIntegrationsV1alphaParameterMapEntryResponse {
   /// Key of the map entry.
   final GoogleCloudIntegrationsV1alphaParameterMapFieldResponse key;
+
   /// Value of the map entry.
   final GoogleCloudIntegrationsV1alphaParameterMapFieldResponse value;
 
@@ -18,17 +19,19 @@ class GoogleCloudIntegrationsV1alphaParameterMapEntryResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key.toMap(),
-      'value': value.toMap(),
-    };
+    return <String, dynamic>{'key': key.toMap(), 'value': value.toMap()};
   }
 
-  factory GoogleCloudIntegrationsV1alphaParameterMapEntryResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaParameterMapEntryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaParameterMapEntryResponse(
-      key: GoogleCloudIntegrationsV1alphaParameterMapFieldResponse.fromMap((map['key'] as Map).cast<String, dynamic>()),
-      value: GoogleCloudIntegrationsV1alphaParameterMapFieldResponse.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      key: GoogleCloudIntegrationsV1alphaParameterMapFieldResponse.fromMap(
+        (map['key'] as Map).cast<String, dynamic>(),
+      ),
+      value: GoogleCloudIntegrationsV1alphaParameterMapFieldResponse.fromMap(
+        (map['value'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

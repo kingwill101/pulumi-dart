@@ -9,14 +9,19 @@ import 'money.dart';
 class CompensationEntry {
   /// Optional. Compensation amount.
   final Money? amount;
+
   /// Optional. Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
   final String? description;
+
   /// Optional. Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
   final double? expectedUnitsPerYear;
+
   /// Optional. Compensation range.
   final CompensationRange? range;
+
   /// Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
   final CompensationEntryType? type;
+
   /// Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
   final CompensationEntryUnit? unit;
 
@@ -49,13 +54,26 @@ class CompensationEntry {
 
   factory CompensationEntry.fromMap(Map<String, dynamic> map) {
     return CompensationEntry(
-      amount: map['amount'] == null ? null : Money.fromMap((map['amount'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      expectedUnitsPerYear: map['expectedUnitsPerYear'] == null ? null : map['expectedUnitsPerYear'] as double,
-      range: map['range'] == null ? null : CompensationRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : CompensationEntryType.fromValue(map['type'] as String),
-      unit: map['unit'] == null ? null : CompensationEntryUnit.fromValue(map['unit'] as String),
+      amount: map['amount'] == null
+          ? null
+          : Money.fromMap((map['amount'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      expectedUnitsPerYear: map['expectedUnitsPerYear'] == null
+          ? null
+          : map['expectedUnitsPerYear'] as double,
+      range: map['range'] == null
+          ? null
+          : CompensationRange.fromMap(
+              (map['range'] as Map).cast<String, dynamic>(),
+            ),
+      type: map['type'] == null
+          ? null
+          : CompensationEntryType.fromValue(map['type'] as String),
+      unit: map['unit'] == null
+          ? null
+          : CompensationEntryUnit.fromValue(map['unit'] as String),
     );
   }
 }
-

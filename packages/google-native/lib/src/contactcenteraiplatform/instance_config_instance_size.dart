@@ -21,4 +21,3 @@ enum InstanceConfigInstanceSize {
     throw ArgumentError('Unknown InstanceConfigInstanceSize value: $value');
   }
 }
-

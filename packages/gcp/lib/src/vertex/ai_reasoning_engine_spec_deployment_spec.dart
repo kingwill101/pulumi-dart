@@ -9,21 +9,27 @@ class AiReasoningEngineSpecDeploymentSpec {
   /// Optional. Concurrency for each container and agent server.
   /// Recommended value: 2 * cpu + 1. Defaults to 9.
   final int? containerConcurrency;
+
   /// Optional. Environment variables to be set with the Reasoning
   /// Engine deployment.
   /// Structure is documented below.
   final List<AiReasoningEngineSpecDeploymentSpecEnv>? envs;
+
   /// Optional. The maximum number of application instances that can be
   /// launched to handle increased traffic. Defaults to 100.
   /// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
   /// range is [1, 100].
   final int? maxInstances;
+
   /// Optional. The minimum number of application instances that will be
   /// kept running at all times. Defaults to 1. Range: [0, 10].
   final int? minInstances;
+
   /// Optional. Configuration for PSC-Interface.
   /// Structure is documented below.
-  final AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig? pscInterfaceConfig;
+  final AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig?
+  pscInterfaceConfig;
+
   /// Optional. Resource limits for each container.
   /// Only 'cpu' and 'memory' keys are supported.
   /// Defaults to {"cpu": "4", "memory": "4Gi"}.
@@ -34,6 +40,7 @@ class AiReasoningEngineSpecDeploymentSpec {
   /// For more information, go to
   /// https://cloud.google.com/run/docs/configuring/memory-limits.
   final Map<String, String>? resourceLimits;
+
   /// Optional. Environment variables where the value is a secret in
   /// Cloud Secret Manager. To use this feature, add 'Secret Manager
   /// Secret Accessor' role (roles/secretmanager.secretAccessor) to AI
@@ -62,25 +69,65 @@ class AiReasoningEngineSpecDeploymentSpec {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'containerConcurrency': ?containerConcurrency,
-      'envs': ?envs == null ? null : pulumi.Input.encodeList<AiReasoningEngineSpecDeploymentSpecEnv, Map<String, dynamic>>(envs!, (value) => value.toMap()),
+      'envs': ?envs == null
+          ? null
+          : pulumi.Input.encodeList<
+              AiReasoningEngineSpecDeploymentSpecEnv,
+              Map<String, dynamic>
+            >(envs!, (value) => value.toMap()),
       'maxInstances': ?maxInstances,
       'minInstances': ?minInstances,
-      'pscInterfaceConfig': ?pscInterfaceConfig == null ? null : pscInterfaceConfig!.toMap(),
+      'pscInterfaceConfig': ?pscInterfaceConfig == null
+          ? null
+          : pscInterfaceConfig!.toMap(),
       'resourceLimits': ?resourceLimits,
-      'secretEnvs': ?secretEnvs == null ? null : pulumi.Input.encodeList<AiReasoningEngineSpecDeploymentSpecSecretEnv, Map<String, dynamic>>(secretEnvs!, (value) => value.toMap()),
+      'secretEnvs': ?secretEnvs == null
+          ? null
+          : pulumi.Input.encodeList<
+              AiReasoningEngineSpecDeploymentSpecSecretEnv,
+              Map<String, dynamic>
+            >(secretEnvs!, (value) => value.toMap()),
     };
   }
 
-  factory AiReasoningEngineSpecDeploymentSpec.fromMap(Map<String, dynamic> map) {
+  factory AiReasoningEngineSpecDeploymentSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiReasoningEngineSpecDeploymentSpec(
-      containerConcurrency: map['containerConcurrency'] == null ? null : map['containerConcurrency'] as int,
-      envs: map['envs'] == null ? null : pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecEnv>(map['envs'], (value) => AiReasoningEngineSpecDeploymentSpecEnv.fromMap((value as Map).cast<String, dynamic>())),
-      maxInstances: map['maxInstances'] == null ? null : map['maxInstances'] as int,
-      minInstances: map['minInstances'] == null ? null : map['minInstances'] as int,
-      pscInterfaceConfig: map['pscInterfaceConfig'] == null ? null : AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig.fromMap((map['pscInterfaceConfig'] as Map).cast<String, dynamic>()),
-      resourceLimits: map['resourceLimits'] == null ? null : (map['resourceLimits'] as Map).cast<String, String>(),
-      secretEnvs: map['secretEnvs'] == null ? null : pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecSecretEnv>(map['secretEnvs'], (value) => AiReasoningEngineSpecDeploymentSpecSecretEnv.fromMap((value as Map).cast<String, dynamic>())),
+      containerConcurrency: map['containerConcurrency'] == null
+          ? null
+          : map['containerConcurrency'] as int,
+      envs: map['envs'] == null
+          ? null
+          : pulumi.Input.decodeList<AiReasoningEngineSpecDeploymentSpecEnv>(
+              map['envs'],
+              (value) => AiReasoningEngineSpecDeploymentSpecEnv.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      maxInstances: map['maxInstances'] == null
+          ? null
+          : map['maxInstances'] as int,
+      minInstances: map['minInstances'] == null
+          ? null
+          : map['minInstances'] as int,
+      pscInterfaceConfig: map['pscInterfaceConfig'] == null
+          ? null
+          : AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig.fromMap(
+              (map['pscInterfaceConfig'] as Map).cast<String, dynamic>(),
+            ),
+      resourceLimits: map['resourceLimits'] == null
+          ? null
+          : (map['resourceLimits'] as Map).cast<String, String>(),
+      secretEnvs: map['secretEnvs'] == null
+          ? null
+          : pulumi
+                .Input.decodeList<AiReasoningEngineSpecDeploymentSpecSecretEnv>(
+              map['secretEnvs'],
+              (value) => AiReasoningEngineSpecDeploymentSpecSecretEnv.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

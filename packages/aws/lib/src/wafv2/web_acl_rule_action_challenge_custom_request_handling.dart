@@ -5,24 +5,37 @@ import 'web_acl_rule_action_challenge_custom_request_handling_insert_header.dart
 
 class WebAclRuleActionChallengeCustomRequestHandling {
   /// The `insert_header` blocks used to define HTTP headers added to the request. See `insert_header` below for details.
-  final List<WebAclRuleActionChallengeCustomRequestHandlingInsertHeader> insertHeaders;
+  final List<WebAclRuleActionChallengeCustomRequestHandlingInsertHeader>
+  insertHeaders;
 
   /// Creates a new [WebAclRuleActionChallengeCustomRequestHandling].
   /// [insertHeaders] The `insert_header` blocks used to define HTTP headers added to the request. See `insert_header` below for details.
-  WebAclRuleActionChallengeCustomRequestHandling({
-    required this.insertHeaders,
-  });
+  WebAclRuleActionChallengeCustomRequestHandling({required this.insertHeaders});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'insertHeaders': pulumi.Input.encodeList<WebAclRuleActionChallengeCustomRequestHandlingInsertHeader, Map<String, dynamic>>(insertHeaders, (value) => value.toMap()),
+      'insertHeaders':
+          pulumi.Input.encodeList<
+            WebAclRuleActionChallengeCustomRequestHandlingInsertHeader,
+            Map<String, dynamic>
+          >(insertHeaders, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleActionChallengeCustomRequestHandling.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleActionChallengeCustomRequestHandling.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleActionChallengeCustomRequestHandling(
-      insertHeaders: pulumi.Input.decodeList<WebAclRuleActionChallengeCustomRequestHandlingInsertHeader>(map['insertHeaders'], (value) => WebAclRuleActionChallengeCustomRequestHandlingInsertHeader.fromMap((value as Map).cast<String, dynamic>())),
+      insertHeaders:
+          pulumi.Input.decodeList<
+            WebAclRuleActionChallengeCustomRequestHandlingInsertHeader
+          >(
+            map['insertHeaders'],
+            (value) =>
+                WebAclRuleActionChallengeCustomRequestHandlingInsertHeader.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

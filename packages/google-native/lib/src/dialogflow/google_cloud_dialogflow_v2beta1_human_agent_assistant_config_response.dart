@@ -7,13 +7,20 @@ import 'google_cloud_dialogflow_v2beta1_notification_config_response.dart';
 /// Defines the Human Agent Assistant to connect to a conversation.
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse {
   /// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
-  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse endUserSuggestionConfig;
+  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse
+  endUserSuggestionConfig;
+
   /// Configuration for agent assistance of human agent participant.
-  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse humanAgentSuggestionConfig;
+  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse
+  humanAgentSuggestionConfig;
+
   /// Configuration for message analysis.
-  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigResponse messageAnalysisConfig;
+  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigResponse
+  messageAnalysisConfig;
+
   /// Pub/Sub topic on which to publish new agent assistant events.
-  final GoogleCloudDialogflowV2beta1NotificationConfigResponse notificationConfig;
+  final GoogleCloudDialogflowV2beta1NotificationConfigResponse
+  notificationConfig;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse].
   /// [endUserSuggestionConfig] Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
@@ -36,13 +43,26 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse(
-      endUserSuggestionConfig: GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse.fromMap((map['endUserSuggestionConfig'] as Map).cast<String, dynamic>()),
-      humanAgentSuggestionConfig: GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse.fromMap((map['humanAgentSuggestionConfig'] as Map).cast<String, dynamic>()),
-      messageAnalysisConfig: GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigResponse.fromMap((map['messageAnalysisConfig'] as Map).cast<String, dynamic>()),
-      notificationConfig: GoogleCloudDialogflowV2beta1NotificationConfigResponse.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>()),
+      endUserSuggestionConfig:
+          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse.fromMap(
+            (map['endUserSuggestionConfig'] as Map).cast<String, dynamic>(),
+          ),
+      humanAgentSuggestionConfig:
+          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse.fromMap(
+            (map['humanAgentSuggestionConfig'] as Map).cast<String, dynamic>(),
+          ),
+      messageAnalysisConfig:
+          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigResponse.fromMap(
+            (map['messageAnalysisConfig'] as Map).cast<String, dynamic>(),
+          ),
+      notificationConfig:
+          GoogleCloudDialogflowV2beta1NotificationConfigResponse.fromMap(
+            (map['notificationConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

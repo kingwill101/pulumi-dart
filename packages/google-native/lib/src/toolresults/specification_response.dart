@@ -7,16 +7,14 @@ import 'ios_test_response.dart';
 class SpecificationResponse {
   /// An Android mobile test execution specification.
   final AndroidTestResponse androidTest;
+
   /// An iOS mobile test execution specification.
   final IosTestResponse iosTest;
 
   /// Creates a new [SpecificationResponse].
   /// [androidTest] An Android mobile test execution specification.
   /// [iosTest] An iOS mobile test execution specification.
-  SpecificationResponse({
-    required this.androidTest,
-    required this.iosTest,
-  });
+  SpecificationResponse({required this.androidTest, required this.iosTest});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,12 @@ class SpecificationResponse {
 
   factory SpecificationResponse.fromMap(Map<String, dynamic> map) {
     return SpecificationResponse(
-      androidTest: AndroidTestResponse.fromMap((map['androidTest'] as Map).cast<String, dynamic>()),
-      iosTest: IosTestResponse.fromMap((map['iosTest'] as Map).cast<String, dynamic>()),
+      androidTest: AndroidTestResponse.fromMap(
+        (map['androidTest'] as Map).cast<String, dynamic>(),
+      ),
+      iosTest: IosTestResponse.fromMap(
+        (map['iosTest'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

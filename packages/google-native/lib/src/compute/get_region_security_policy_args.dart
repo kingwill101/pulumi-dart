@@ -19,10 +19,9 @@ class GetRegionSecurityPolicyArgs {
     String? project,
     required String region,
     required String securityPolicy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionSecurityPolicyArgs {
     );
   }
 }
-

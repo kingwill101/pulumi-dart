@@ -17,4 +17,3 @@ enum FunctionIngressSettings {
     throw ArgumentError('Unknown FunctionIngressSettings value: $value');
   }
 }
-

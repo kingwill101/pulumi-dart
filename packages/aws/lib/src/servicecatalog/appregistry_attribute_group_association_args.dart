@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppregistryAttributeGroupAssociationArgs {
   /// ID of the application.
   final pulumi.Input<String> applicationId;
+
   /// ID of the attribute group to associate with the application.
   final pulumi.Input<String> attributeGroupId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -22,10 +24,9 @@ class AppregistryAttributeGroupAssociationArgs {
     required String applicationId,
     required String attributeGroupId,
     String? region,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      attributeGroupId = pulumi.Input.asInput<String>(attributeGroupId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : applicationId = pulumi.Input.asInput<String>(applicationId),
+       attributeGroupId = pulumi.Input.asInput<String>(attributeGroupId),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,7 +36,9 @@ class AppregistryAttributeGroupAssociationArgs {
     };
   }
 
-  factory AppregistryAttributeGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory AppregistryAttributeGroupAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppregistryAttributeGroupAssociationArgs(
       applicationId: map['applicationId'] as String,
       attributeGroupId: map['attributeGroupId'] as String,
@@ -43,4 +46,3 @@ class AppregistryAttributeGroupAssociationArgs {
     );
   }
 }
-

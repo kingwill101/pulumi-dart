@@ -6,8 +6,10 @@ import 'web_acl_rule_group_association_rule_group_reference_rule_action_override
 class WebAclRuleGroupAssociationRuleGroupReference {
   /// ARN of the Rule Group to associate with the Web ACL.
   final String arn;
+
   /// Override actions for specific rules within the rule group. See below.
-  final List<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverride>? ruleActionOverrides;
+  final List<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverride>?
+  ruleActionOverrides;
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReference].
   /// [arn] ARN of the Rule Group to associate with the Web ACL.
@@ -20,15 +22,31 @@ class WebAclRuleGroupAssociationRuleGroupReference {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'ruleActionOverrides': ?ruleActionOverrides == null ? null : pulumi.Input.encodeList<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverride, Map<String, dynamic>>(ruleActionOverrides!, (value) => value.toMap()),
+      'ruleActionOverrides': ?ruleActionOverrides == null
+          ? null
+          : pulumi.Input.encodeList<
+              WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverride,
+              Map<String, dynamic>
+            >(ruleActionOverrides!, (value) => value.toMap()),
     };
   }
 
-  factory WebAclRuleGroupAssociationRuleGroupReference.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleGroupAssociationRuleGroupReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleGroupAssociationRuleGroupReference(
       arn: map['arn'] as String,
-      ruleActionOverrides: map['ruleActionOverrides'] == null ? null : pulumi.Input.decodeList<WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverride>(map['ruleActionOverrides'], (value) => WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverride.fromMap((value as Map).cast<String, dynamic>())),
+      ruleActionOverrides: map['ruleActionOverrides'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverride
+            >(
+              map['ruleActionOverrides'],
+              (value) =>
+                  WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverride.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

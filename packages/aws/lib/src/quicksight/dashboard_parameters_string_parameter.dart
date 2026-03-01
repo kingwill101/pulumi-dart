@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DashboardParametersStringParameter {
   /// Display name for the dashboard.
   final String name;
@@ -15,10 +14,7 @@ class DashboardParametersStringParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory DashboardParametersStringParameter.fromMap(Map<String, dynamic> map) {
@@ -28,4 +24,3 @@ class DashboardParametersStringParameter {
     );
   }
 }
-

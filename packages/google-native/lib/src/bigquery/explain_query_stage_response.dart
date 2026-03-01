@@ -6,60 +6,88 @@ import 'explain_query_step_response.dart';
 class ExplainQueryStageResponse {
   /// Number of parallel input segments completed.
   final String completedParallelInputs;
+
   /// Milliseconds the average shard spent on CPU-bound tasks.
   final String computeMsAvg;
+
   /// Milliseconds the slowest shard spent on CPU-bound tasks.
   final String computeMsMax;
+
   /// Relative amount of time the average shard spent on CPU-bound tasks.
   final double computeRatioAvg;
+
   /// Relative amount of time the slowest shard spent on CPU-bound tasks.
   final double computeRatioMax;
+
   /// Stage end time represented as milliseconds since epoch.
   final String endMs;
+
   /// IDs for stages that are inputs to this stage.
   final List<String> inputStages;
+
   /// Human-readable name for stage.
   final String name;
+
   /// Number of parallel input segments to be processed.
   final String parallelInputs;
+
   /// Milliseconds the average shard spent reading input.
   final String readMsAvg;
+
   /// Milliseconds the slowest shard spent reading input.
   final String readMsMax;
+
   /// Relative amount of time the average shard spent reading input.
   final double readRatioAvg;
+
   /// Relative amount of time the slowest shard spent reading input.
   final double readRatioMax;
+
   /// Number of records read into the stage.
   final String recordsRead;
+
   /// Number of records written by the stage.
   final String recordsWritten;
+
   /// Total number of bytes written to shuffle.
   final String shuffleOutputBytes;
+
   /// Total number of bytes written to shuffle and spilled to disk.
   final String shuffleOutputBytesSpilled;
+
   /// Slot-milliseconds used by the stage.
   final String slotMs;
+
   /// Stage start time represented as milliseconds since epoch.
   final String startMs;
+
   /// Current status for the stage.
   final String status;
+
   /// List of operations within the stage in dependency order (approximately chronological).
   final List<ExplainQueryStepResponse> steps;
+
   /// Milliseconds the average shard spent waiting to be scheduled.
   final String waitMsAvg;
+
   /// Milliseconds the slowest shard spent waiting to be scheduled.
   final String waitMsMax;
+
   /// Relative amount of time the average shard spent waiting to be scheduled.
   final double waitRatioAvg;
+
   /// Relative amount of time the slowest shard spent waiting to be scheduled.
   final double waitRatioMax;
+
   /// Milliseconds the average shard spent on writing output.
   final String writeMsAvg;
+
   /// Milliseconds the slowest shard spent on writing output.
   final String writeMsMax;
+
   /// Relative amount of time the average shard spent on writing output.
   final double writeRatioAvg;
+
   /// Relative amount of time the slowest shard spent on writing output.
   final double writeRatioMax;
 
@@ -147,7 +175,11 @@ class ExplainQueryStageResponse {
       'slotMs': slotMs,
       'startMs': startMs,
       'status': status,
-      'steps': pulumi.Input.encodeList<ExplainQueryStepResponse, Map<String, dynamic>>(steps, (value) => value.toMap()),
+      'steps':
+          pulumi.Input.encodeList<
+            ExplainQueryStepResponse,
+            Map<String, dynamic>
+          >(steps, (value) => value.toMap()),
       'waitMsAvg': waitMsAvg,
       'waitMsMax': waitMsMax,
       'waitRatioAvg': waitRatioAvg,
@@ -181,7 +213,12 @@ class ExplainQueryStageResponse {
       slotMs: map['slotMs'] as String,
       startMs: map['startMs'] as String,
       status: map['status'] as String,
-      steps: pulumi.Input.decodeList<ExplainQueryStepResponse>(map['steps'], (value) => ExplainQueryStepResponse.fromMap((value as Map).cast<String, dynamic>())),
+      steps: pulumi.Input.decodeList<ExplainQueryStepResponse>(
+        map['steps'],
+        (value) => ExplainQueryStepResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       waitMsAvg: map['waitMsAvg'] as String,
       waitMsMax: map['waitMsMax'] as String,
       waitRatioAvg: map['waitRatioAvg'] as double,
@@ -193,4 +230,3 @@ class ExplainQueryStageResponse {
     );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConfigBlockingFunctionsForwardInboundCredentials {
   /// Whether to pass the user's OAuth identity provider's access token.
   final bool? accessToken;
+
   /// Whether to pass the user's OIDC identity provider's ID token.
   final bool? idToken;
+
   /// Whether to pass the user's OAuth identity provider's refresh token.
   final bool? refreshToken;
 
@@ -27,12 +28,17 @@ class ConfigBlockingFunctionsForwardInboundCredentials {
     };
   }
 
-  factory ConfigBlockingFunctionsForwardInboundCredentials.fromMap(Map<String, dynamic> map) {
+  factory ConfigBlockingFunctionsForwardInboundCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigBlockingFunctionsForwardInboundCredentials(
-      accessToken: map['accessToken'] == null ? null : map['accessToken'] as bool,
+      accessToken: map['accessToken'] == null
+          ? null
+          : map['accessToken'] as bool,
       idToken: map['idToken'] == null ? null : map['idToken'] as bool,
-      refreshToken: map['refreshToken'] == null ? null : map['refreshToken'] as bool,
+      refreshToken: map['refreshToken'] == null
+          ? null
+          : map['refreshToken'] as bool,
     );
   }
 }
-

@@ -5,7 +5,8 @@ import 'backend_service_locality_load_balancing_policy_config_policy_compute_v1.
 
 /// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
 class BackendServiceLocalityLoadBalancingPolicyConfigComputeV1 {
-  final BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1? customPolicy;
+  final BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1?
+  customPolicy;
   final BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1? policy;
 
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfigComputeV1].
@@ -23,11 +24,20 @@ class BackendServiceLocalityLoadBalancingPolicyConfigComputeV1 {
     };
   }
 
-  factory BackendServiceLocalityLoadBalancingPolicyConfigComputeV1.fromMap(Map<String, dynamic> map) {
+  factory BackendServiceLocalityLoadBalancingPolicyConfigComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackendServiceLocalityLoadBalancingPolicyConfigComputeV1(
-      customPolicy: map['customPolicy'] == null ? null : BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1.fromMap((map['customPolicy'] as Map).cast<String, dynamic>()),
-      policy: map['policy'] == null ? null : BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1.fromMap((map['policy'] as Map).cast<String, dynamic>()),
+      customPolicy: map['customPolicy'] == null
+          ? null
+          : BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1.fromMap(
+              (map['customPolicy'] as Map).cast<String, dynamic>(),
+            ),
+      policy: map['policy'] == null
+          ? null
+          : BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1.fromMap(
+              (map['policy'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

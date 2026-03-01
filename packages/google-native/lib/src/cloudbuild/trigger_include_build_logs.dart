@@ -15,4 +15,3 @@ enum TriggerIncludeBuildLogs {
     throw ArgumentError('Unknown TriggerIncludeBuildLogs value: $value');
   }
 }
-

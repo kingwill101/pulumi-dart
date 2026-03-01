@@ -16,4 +16,3 @@ enum EncryptionKeyType {
     throw ArgumentError('Unknown EncryptionKeyType value: $value');
   }
 }
-

@@ -13,7 +13,8 @@ enum SchedulingMaintenanceIntervalComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown SchedulingMaintenanceIntervalComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SchedulingMaintenanceIntervalComputeBeta value: $value',
+    );
   }
 }
-

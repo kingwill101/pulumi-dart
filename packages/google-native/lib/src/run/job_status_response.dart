@@ -8,10 +8,13 @@ import 'google_cloud_run_v1_condition_response.dart';
 class JobStatusResponse {
   /// Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Job-specific conditions include: * `Ready`: `True` when the job is ready to be executed.
   final List<GoogleCloudRunV1ConditionResponse> conditions;
+
   /// Number of executions created for this job.
   final int executionCount;
+
   /// A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution.
   final ExecutionReferenceResponse latestCreatedExecution;
+
   /// The 'generation' of the job that was last processed by the controller.
   final int observedGeneration;
 
@@ -29,7 +32,11 @@ class JobStatusResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': pulumi.Input.encodeList<GoogleCloudRunV1ConditionResponse, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions':
+          pulumi.Input.encodeList<
+            GoogleCloudRunV1ConditionResponse,
+            Map<String, dynamic>
+          >(conditions, (value) => value.toMap()),
       'executionCount': executionCount,
       'latestCreatedExecution': latestCreatedExecution.toMap(),
       'observedGeneration': observedGeneration,
@@ -38,11 +45,17 @@ class JobStatusResponse {
 
   factory JobStatusResponse.fromMap(Map<String, dynamic> map) {
     return JobStatusResponse(
-      conditions: pulumi.Input.decodeList<GoogleCloudRunV1ConditionResponse>(map['conditions'], (value) => GoogleCloudRunV1ConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      conditions: pulumi.Input.decodeList<GoogleCloudRunV1ConditionResponse>(
+        map['conditions'],
+        (value) => GoogleCloudRunV1ConditionResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       executionCount: map['executionCount'] as int,
-      latestCreatedExecution: ExecutionReferenceResponse.fromMap((map['latestCreatedExecution'] as Map).cast<String, dynamic>()),
+      latestCreatedExecution: ExecutionReferenceResponse.fromMap(
+        (map['latestCreatedExecution'] as Map).cast<String, dynamic>(),
+      ),
       observedGeneration: map['observedGeneration'] as int,
     );
   }
 }
-

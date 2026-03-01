@@ -9,6 +9,7 @@ class GetEnvironmentResult {
   /// Configuration parameters for the environment.
   final List<GetEnvironmentConfig> configs;
   final Map<String, String> effectiveLabels;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -42,7 +43,11 @@ class GetEnvironmentResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configs': pulumi.Input.encodeList<GetEnvironmentConfig, Map<String, dynamic>>(configs, (value) => value.toMap()),
+      'configs':
+          pulumi.Input.encodeList<GetEnvironmentConfig, Map<String, dynamic>>(
+            configs,
+            (value) => value.toMap(),
+          ),
       'effectiveLabels': effectiveLabels,
       'id': id,
       'labels': labels,
@@ -50,13 +55,22 @@ class GetEnvironmentResult {
       'project': ?project,
       'pulumiLabels': pulumiLabels,
       'region': ?region,
-      'storageConfigs': pulumi.Input.encodeList<GetEnvironmentStorageConfig, Map<String, dynamic>>(storageConfigs, (value) => value.toMap()),
+      'storageConfigs':
+          pulumi.Input.encodeList<
+            GetEnvironmentStorageConfig,
+            Map<String, dynamic>
+          >(storageConfigs, (value) => value.toMap()),
     };
   }
 
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
-      configs: pulumi.Input.decodeList<GetEnvironmentConfig>(map['configs'], (value) => GetEnvironmentConfig.fromMap((value as Map).cast<String, dynamic>())),
+      configs: pulumi.Input.decodeList<GetEnvironmentConfig>(
+        map['configs'],
+        (value) => GetEnvironmentConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
@@ -64,8 +78,12 @@ class GetEnvironmentResult {
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       region: map['region'] == null ? null : map['region'] as String,
-      storageConfigs: pulumi.Input.decodeList<GetEnvironmentStorageConfig>(map['storageConfigs'], (value) => GetEnvironmentStorageConfig.fromMap((value as Map).cast<String, dynamic>())),
+      storageConfigs: pulumi.Input.decodeList<GetEnvironmentStorageConfig>(
+        map['storageConfigs'],
+        (value) => GetEnvironmentStorageConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

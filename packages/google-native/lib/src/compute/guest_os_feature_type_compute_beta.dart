@@ -24,4 +24,3 @@ enum GuestOsFeatureTypeComputeBeta {
     throw ArgumentError('Unknown GuestOsFeatureTypeComputeBeta value: $value');
   }
 }
-

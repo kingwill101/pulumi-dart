@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetServiceServiceRegistry {
   /// Name of the container to associate with the load balancer.
   final String containerName;
+
   /// Port on the container to associate with the load balancer.
   final int containerPort;
+
   /// Port value for service discovery
   final int port;
+
   /// ARN of the service registry
   final String registryArn;
 
@@ -41,4 +43,3 @@ class GetServiceServiceRegistry {
     );
   }
 }
-

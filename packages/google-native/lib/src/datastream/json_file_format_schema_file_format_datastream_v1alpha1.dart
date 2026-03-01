@@ -7,13 +7,17 @@ enum JsonFileFormatSchemaFileFormatDatastreamV1alpha1 {
   const JsonFileFormatSchemaFileFormatDatastreamV1alpha1(this.value);
   final String value;
 
-  static JsonFileFormatSchemaFileFormatDatastreamV1alpha1 fromValue(String value) {
-    for (final item in JsonFileFormatSchemaFileFormatDatastreamV1alpha1.values) {
+  static JsonFileFormatSchemaFileFormatDatastreamV1alpha1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in JsonFileFormatSchemaFileFormatDatastreamV1alpha1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown JsonFileFormatSchemaFileFormatDatastreamV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown JsonFileFormatSchemaFileFormatDatastreamV1alpha1 value: $value',
+    );
   }
 }
-

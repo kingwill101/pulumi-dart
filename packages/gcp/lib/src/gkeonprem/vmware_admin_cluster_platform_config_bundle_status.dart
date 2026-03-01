@@ -8,6 +8,7 @@ class VmwareAdminClusterPlatformConfigBundleStatus {
   /// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
   /// Structure is documented below.
   final List<VmwareAdminClusterPlatformConfigBundleStatusCondition>? conditions;
+
   /// (Output)
   /// Human-friendly representation of the error message from the admin cluster
   /// controller. The error message can be temporary as the admin cluster
@@ -26,16 +27,34 @@ class VmwareAdminClusterPlatformConfigBundleStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<VmwareAdminClusterPlatformConfigBundleStatusCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?conditions == null
+          ? null
+          : pulumi.Input.encodeList<
+              VmwareAdminClusterPlatformConfigBundleStatusCondition,
+              Map<String, dynamic>
+            >(conditions!, (value) => value.toMap()),
       'errorMessage': ?errorMessage,
     };
   }
 
-  factory VmwareAdminClusterPlatformConfigBundleStatus.fromMap(Map<String, dynamic> map) {
+  factory VmwareAdminClusterPlatformConfigBundleStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareAdminClusterPlatformConfigBundleStatus(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<VmwareAdminClusterPlatformConfigBundleStatusCondition>(map['conditions'], (value) => VmwareAdminClusterPlatformConfigBundleStatusCondition.fromMap((value as Map).cast<String, dynamic>())),
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
+      conditions: map['conditions'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              VmwareAdminClusterPlatformConfigBundleStatusCondition
+            >(
+              map['conditions'],
+              (value) =>
+                  VmwareAdminClusterPlatformConfigBundleStatusCondition.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      errorMessage: map['errorMessage'] == null
+          ? null
+          : map['errorMessage'] as String,
     );
   }
 }
-

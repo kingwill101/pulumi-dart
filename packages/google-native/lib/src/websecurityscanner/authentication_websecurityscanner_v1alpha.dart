@@ -7,6 +7,7 @@ import 'google_account_websecurityscanner_v1alpha.dart';
 class AuthenticationWebsecurityscannerV1alpha {
   /// Authentication using a custom account.
   final CustomAccountWebsecurityscannerV1alpha? customAccount;
+
   /// Authentication using a Google account.
   final GoogleAccountWebsecurityscannerV1alpha? googleAccount;
 
@@ -25,11 +26,20 @@ class AuthenticationWebsecurityscannerV1alpha {
     };
   }
 
-  factory AuthenticationWebsecurityscannerV1alpha.fromMap(Map<String, dynamic> map) {
+  factory AuthenticationWebsecurityscannerV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthenticationWebsecurityscannerV1alpha(
-      customAccount: map['customAccount'] == null ? null : CustomAccountWebsecurityscannerV1alpha.fromMap((map['customAccount'] as Map).cast<String, dynamic>()),
-      googleAccount: map['googleAccount'] == null ? null : GoogleAccountWebsecurityscannerV1alpha.fromMap((map['googleAccount'] as Map).cast<String, dynamic>()),
+      customAccount: map['customAccount'] == null
+          ? null
+          : CustomAccountWebsecurityscannerV1alpha.fromMap(
+              (map['customAccount'] as Map).cast<String, dynamic>(),
+            ),
+      googleAccount: map['googleAccount'] == null
+          ? null
+          : GoogleAccountWebsecurityscannerV1alpha.fromMap(
+              (map['googleAccount'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

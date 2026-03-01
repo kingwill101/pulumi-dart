@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader {
   /// Name of the query header to inspect. This setting must be provided as lower case characters.
   final String name;
@@ -12,15 +11,14 @@ class WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementXssMatchStatementFieldToMatchSingleHeader(
       name: map['name'] as String,
     );
   }
 }
-

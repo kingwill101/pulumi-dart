@@ -1,26 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InsightFiltersNetworkDestinationIpv6 {
   /// A finding's CIDR value.
   final String cidr;
 
   /// Creates a new [InsightFiltersNetworkDestinationIpv6].
   /// [cidr] A finding's CIDR value.
-  InsightFiltersNetworkDestinationIpv6({
-    required this.cidr,
-  });
+  InsightFiltersNetworkDestinationIpv6({required this.cidr});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cidr': cidr,
-    };
+    return <String, dynamic>{'cidr': cidr};
   }
 
-  factory InsightFiltersNetworkDestinationIpv6.fromMap(Map<String, dynamic> map) {
-    return InsightFiltersNetworkDestinationIpv6(
-      cidr: map['cidr'] as String,
-    );
+  factory InsightFiltersNetworkDestinationIpv6.fromMap(
+    Map<String, dynamic> map,
+  ) {
+    return InsightFiltersNetworkDestinationIpv6(cidr: map['cidr'] as String);
   }
 }
-

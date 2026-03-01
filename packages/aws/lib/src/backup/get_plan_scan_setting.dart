@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetPlanScanSetting {
   final String malwareScanner;
   final List<String> resourceTypes;
@@ -32,4 +31,3 @@ class GetPlanScanSetting {
     );
   }
 }
-

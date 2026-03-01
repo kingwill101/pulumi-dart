@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DatascanIamMemberCondition {
   final String? description;
   final String expression;
@@ -26,10 +25,11 @@ class DatascanIamMemberCondition {
 
   factory DatascanIamMemberCondition.fromMap(Map<String, dynamic> map) {
     return DatascanIamMemberCondition(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
-

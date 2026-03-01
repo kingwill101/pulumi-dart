@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class V2OrganizationSourceIamMemberCondition {
   final String? description;
   final String expression;
@@ -24,12 +23,15 @@ class V2OrganizationSourceIamMemberCondition {
     };
   }
 
-  factory V2OrganizationSourceIamMemberCondition.fromMap(Map<String, dynamic> map) {
+  factory V2OrganizationSourceIamMemberCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2OrganizationSourceIamMemberCondition(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
-

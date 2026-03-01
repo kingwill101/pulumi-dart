@@ -13,7 +13,8 @@ enum ProcessingOptionsHtmlSanitization {
         return item;
       }
     }
-    throw ArgumentError('Unknown ProcessingOptionsHtmlSanitization value: $value');
+    throw ArgumentError(
+      'Unknown ProcessingOptionsHtmlSanitization value: $value',
+    );
   }
 }
-

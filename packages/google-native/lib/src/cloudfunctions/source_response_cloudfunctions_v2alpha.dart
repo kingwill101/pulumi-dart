@@ -7,8 +7,10 @@ import 'storage_source_response_cloudfunctions_v2alpha.dart';
 class SourceResponseCloudfunctionsV2alpha {
   /// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
   final String gitUri;
+
   /// If provided, get the source from this location in a Cloud Source Repository.
   final RepoSourceResponseCloudfunctionsV2alpha repoSource;
+
   /// If provided, get the source from this location in Google Cloud Storage.
   final StorageSourceResponseCloudfunctionsV2alpha storageSource;
 
@@ -30,12 +32,17 @@ class SourceResponseCloudfunctionsV2alpha {
     };
   }
 
-  factory SourceResponseCloudfunctionsV2alpha.fromMap(Map<String, dynamic> map) {
+  factory SourceResponseCloudfunctionsV2alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SourceResponseCloudfunctionsV2alpha(
       gitUri: map['gitUri'] as String,
-      repoSource: RepoSourceResponseCloudfunctionsV2alpha.fromMap((map['repoSource'] as Map).cast<String, dynamic>()),
-      storageSource: StorageSourceResponseCloudfunctionsV2alpha.fromMap((map['storageSource'] as Map).cast<String, dynamic>()),
+      repoSource: RepoSourceResponseCloudfunctionsV2alpha.fromMap(
+        (map['repoSource'] as Map).cast<String, dynamic>(),
+      ),
+      storageSource: StorageSourceResponseCloudfunctionsV2alpha.fromMap(
+        (map['storageSource'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

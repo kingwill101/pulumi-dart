@@ -6,10 +6,13 @@ import 'machine_config_response.dart';
 class PrimaryInstanceSettingsResponse {
   /// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
   final Map<String, String> databaseFlags;
+
   /// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
   final Map<String, String> labels;
+
   /// Configuration for the machines that host the underlying database engine.
   final MachineConfigResponse machineConfig;
+
   /// The private IP address for the Instance. This is the connection endpoint for an end-user application.
   final String privateIp;
 
@@ -38,9 +41,10 @@ class PrimaryInstanceSettingsResponse {
     return PrimaryInstanceSettingsResponse(
       databaseFlags: (map['databaseFlags'] as Map).cast<String, String>(),
       labels: (map['labels'] as Map).cast<String, String>(),
-      machineConfig: MachineConfigResponse.fromMap((map['machineConfig'] as Map).cast<String, dynamic>()),
+      machineConfig: MachineConfigResponse.fromMap(
+        (map['machineConfig'] as Map).cast<String, dynamic>(),
+      ),
       privateIp: map['privateIp'] as String,
     );
   }
 }
-

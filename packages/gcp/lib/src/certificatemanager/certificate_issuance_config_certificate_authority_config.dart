@@ -5,7 +5,8 @@ import 'certificate_issuance_config_certificate_authority_config_certificate_aut
 class CertificateIssuanceConfigCertificateAuthorityConfig {
   /// Defines a CertificateAuthorityServiceConfig.
   /// Structure is documented below.
-  final CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig? certificateAuthorityServiceConfig;
+  final CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig?
+  certificateAuthorityServiceConfig;
 
   /// Creates a new [CertificateIssuanceConfigCertificateAuthorityConfig].
   /// [certificateAuthorityServiceConfig] Defines a CertificateAuthorityServiceConfig.
@@ -15,14 +16,24 @@ class CertificateIssuanceConfigCertificateAuthorityConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateAuthorityServiceConfig': ?certificateAuthorityServiceConfig == null ? null : certificateAuthorityServiceConfig!.toMap(),
+      'certificateAuthorityServiceConfig':
+          ?certificateAuthorityServiceConfig == null
+          ? null
+          : certificateAuthorityServiceConfig!.toMap(),
     };
   }
 
-  factory CertificateIssuanceConfigCertificateAuthorityConfig.fromMap(Map<String, dynamic> map) {
+  factory CertificateIssuanceConfigCertificateAuthorityConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateIssuanceConfigCertificateAuthorityConfig(
-      certificateAuthorityServiceConfig: map['certificateAuthorityServiceConfig'] == null ? null : CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig.fromMap((map['certificateAuthorityServiceConfig'] as Map).cast<String, dynamic>()),
+      certificateAuthorityServiceConfig:
+          map['certificateAuthorityServiceConfig'] == null
+          ? null
+          : CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig.fromMap(
+              (map['certificateAuthorityServiceConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
     );
   }
 }
-

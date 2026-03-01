@@ -6,10 +6,13 @@ import 'service_quota_usage_metric_metric_dimension.dart';
 class ServiceQuotaUsageMetric {
   /// The metric dimensions.
   final List<ServiceQuotaUsageMetricMetricDimension>? metricDimensions;
+
   /// The name of the metric.
   final String? metricName;
+
   /// The namespace of the metric.
   final String? metricNamespace;
+
   /// The metric statistic that AWS recommend you use when determining quota usage.
   final String? metricStatisticRecommendation;
 
@@ -27,7 +30,12 @@ class ServiceQuotaUsageMetric {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metricDimensions': ?metricDimensions == null ? null : pulumi.Input.encodeList<ServiceQuotaUsageMetricMetricDimension, Map<String, dynamic>>(metricDimensions!, (value) => value.toMap()),
+      'metricDimensions': ?metricDimensions == null
+          ? null
+          : pulumi.Input.encodeList<
+              ServiceQuotaUsageMetricMetricDimension,
+              Map<String, dynamic>
+            >(metricDimensions!, (value) => value.toMap()),
       'metricName': ?metricName,
       'metricNamespace': ?metricNamespace,
       'metricStatisticRecommendation': ?metricStatisticRecommendation,
@@ -36,11 +44,24 @@ class ServiceQuotaUsageMetric {
 
   factory ServiceQuotaUsageMetric.fromMap(Map<String, dynamic> map) {
     return ServiceQuotaUsageMetric(
-      metricDimensions: map['metricDimensions'] == null ? null : pulumi.Input.decodeList<ServiceQuotaUsageMetricMetricDimension>(map['metricDimensions'], (value) => ServiceQuotaUsageMetricMetricDimension.fromMap((value as Map).cast<String, dynamic>())),
-      metricName: map['metricName'] == null ? null : map['metricName'] as String,
-      metricNamespace: map['metricNamespace'] == null ? null : map['metricNamespace'] as String,
-      metricStatisticRecommendation: map['metricStatisticRecommendation'] == null ? null : map['metricStatisticRecommendation'] as String,
+      metricDimensions: map['metricDimensions'] == null
+          ? null
+          : pulumi.Input.decodeList<ServiceQuotaUsageMetricMetricDimension>(
+              map['metricDimensions'],
+              (value) => ServiceQuotaUsageMetricMetricDimension.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      metricName: map['metricName'] == null
+          ? null
+          : map['metricName'] as String,
+      metricNamespace: map['metricNamespace'] == null
+          ? null
+          : map['metricNamespace'] as String,
+      metricStatisticRecommendation:
+          map['metricStatisticRecommendation'] == null
+          ? null
+          : map['metricStatisticRecommendation'] as String,
     );
   }
 }
-

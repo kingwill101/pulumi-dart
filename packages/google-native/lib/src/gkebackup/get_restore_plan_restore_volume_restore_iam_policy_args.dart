@@ -28,13 +28,14 @@ class GetRestorePlanRestoreVolumeRestoreIamPolicyArgs {
     required String restoreId,
     required String restorePlanId,
     required String volumeRestoreId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      restoreId = pulumi.Input.asInput<String>(restoreId),
-      restorePlanId = pulumi.Input.asInput<String>(restorePlanId),
-      volumeRestoreId = pulumi.Input.asInput<String>(volumeRestoreId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       restoreId = pulumi.Input.asInput<String>(restoreId),
+       restorePlanId = pulumi.Input.asInput<String>(restorePlanId),
+       volumeRestoreId = pulumi.Input.asInput<String>(volumeRestoreId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,10 +48,15 @@ class GetRestorePlanRestoreVolumeRestoreIamPolicyArgs {
     };
   }
 
-  factory GetRestorePlanRestoreVolumeRestoreIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetRestorePlanRestoreVolumeRestoreIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRestorePlanRestoreVolumeRestoreIamPolicyArgs(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       restoreId: map['restoreId'] as String,
       restorePlanId: map['restorePlanId'] as String,
@@ -58,4 +64,3 @@ class GetRestorePlanRestoreVolumeRestoreIamPolicyArgs {
     );
   }
 }
-

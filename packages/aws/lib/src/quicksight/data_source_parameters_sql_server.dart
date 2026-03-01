@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DataSourceParametersSqlServer {
   /// The database to which to connect.
   final String database;
+
   /// The host to which to connect.
   final String host;
+
   /// The warehouse to which to connect.
   final int port;
 
@@ -20,11 +21,7 @@ class DataSourceParametersSqlServer {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'database': database,
-      'host': host,
-      'port': port,
-    };
+    return <String, dynamic>{'database': database, 'host': host, 'port': port};
   }
 
   factory DataSourceParametersSqlServer.fromMap(Map<String, dynamic> map) {
@@ -35,4 +32,3 @@ class DataSourceParametersSqlServer {
     );
   }
 }
-

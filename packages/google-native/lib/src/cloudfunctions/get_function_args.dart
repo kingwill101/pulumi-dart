@@ -22,11 +22,10 @@ class GetFunctionArgs {
     required String location,
     String? project,
     String? versionId,
-  }) :
-      functionId = pulumi.Input.asInput<String>(functionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      versionId = pulumi.Input.asOptionalInput<String>(versionId);
+  }) : functionId = pulumi.Input.asInput<String>(functionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       versionId = pulumi.Input.asOptionalInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetFunctionArgs {
     );
   }
 }
-

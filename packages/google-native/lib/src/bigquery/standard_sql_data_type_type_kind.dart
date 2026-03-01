@@ -31,4 +31,3 @@ enum StandardSqlDataTypeTypeKind {
     throw ArgumentError('Unknown StandardSqlDataTypeTypeKind value: $value');
   }
 }
-

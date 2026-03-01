@@ -118,12 +118,16 @@ import 'api_mapping_args.dart';
 class ApiMapping extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
+
   /// The API mapping key. Refer to [REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-mappings.html), [HTTP API](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-mappings.html) or [WebSocket API](https://docs.aws.amazon.com/apigateway/latest/developerguide/websocket-api-mappings.html).
   late final pulumi.Output<String?> apiMappingKey;
+
   /// Domain name. Use the `aws.apigatewayv2.DomainName` resource to configure a domain name.
   late final pulumi.Output<String> domainName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// API stage. Use the `aws.apigatewayv2.Stage` resource to configure an API stage.
   late final pulumi.Output<String> stage;
 
@@ -136,11 +140,11 @@ class ApiMapping extends pulumi.CustomResource {
     ApiMappingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigatewayv2/apiMapping:ApiMapping',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:apigatewayv2/apiMapping:ApiMapping',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.apiId = registerOutput<String>('apiId');
     this.apiMappingKey = registerOutput<String?>('apiMappingKey');
     this.domainName = registerOutput<String>('domainName');

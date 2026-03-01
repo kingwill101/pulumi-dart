@@ -8,9 +8,7 @@ class AnalyzerConfigurationInternalAccess {
 
   /// Creates a new [AnalyzerConfigurationInternalAccess].
   /// [analysisRule] Information about analysis rules for the internal access analyzer. These rules determine which resources and access patterns will be analyzed. See `analysis_rule` Block for Internal Access Analyzer for details.
-  AnalyzerConfigurationInternalAccess({
-    this.analysisRule,
-  });
+  AnalyzerConfigurationInternalAccess({this.analysisRule});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,10 +16,15 @@ class AnalyzerConfigurationInternalAccess {
     };
   }
 
-  factory AnalyzerConfigurationInternalAccess.fromMap(Map<String, dynamic> map) {
+  factory AnalyzerConfigurationInternalAccess.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalyzerConfigurationInternalAccess(
-      analysisRule: map['analysisRule'] == null ? null : AnalyzerConfigurationInternalAccessAnalysisRule.fromMap((map['analysisRule'] as Map).cast<String, dynamic>()),
+      analysisRule: map['analysisRule'] == null
+          ? null
+          : AnalyzerConfigurationInternalAccessAnalysisRule.fromMap(
+              (map['analysisRule'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

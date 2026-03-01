@@ -1,25 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CxGeneratorPlaceholder {
   /// Unique ID used to map custom placeholder to parameters in fulfillment.
   final String? id;
+
   /// Custom placeholder value in the prompt text.
   final String? name;
 
   /// Creates a new [CxGeneratorPlaceholder].
   /// [id] Unique ID used to map custom placeholder to parameters in fulfillment.
   /// [name] Custom placeholder value in the prompt text.
-  CxGeneratorPlaceholder({
-    this.id,
-    this.name,
-  });
+  CxGeneratorPlaceholder({this.id, this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': ?name,
-    };
+    return <String, dynamic>{'id': ?id, 'name': ?name};
   }
 
   factory CxGeneratorPlaceholder.fromMap(Map<String, dynamic> map) {
@@ -29,4 +23,3 @@ class CxGeneratorPlaceholder {
     );
   }
 }
-

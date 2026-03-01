@@ -8,20 +8,25 @@ class SecurityPolicyRuleMatcherExprOptions {
 
   /// Creates a new [SecurityPolicyRuleMatcherExprOptions].
   /// [recaptchaOptions] reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
-  SecurityPolicyRuleMatcherExprOptions({
-    this.recaptchaOptions,
-  });
+  SecurityPolicyRuleMatcherExprOptions({this.recaptchaOptions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'recaptchaOptions': ?recaptchaOptions == null ? null : recaptchaOptions!.toMap(),
+      'recaptchaOptions': ?recaptchaOptions == null
+          ? null
+          : recaptchaOptions!.toMap(),
     };
   }
 
-  factory SecurityPolicyRuleMatcherExprOptions.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRuleMatcherExprOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRuleMatcherExprOptions(
-      recaptchaOptions: map['recaptchaOptions'] == null ? null : SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions.fromMap((map['recaptchaOptions'] as Map).cast<String, dynamic>()),
+      recaptchaOptions: map['recaptchaOptions'] == null
+          ? null
+          : SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions.fromMap(
+              (map['recaptchaOptions'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

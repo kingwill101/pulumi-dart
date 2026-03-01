@@ -9,20 +9,17 @@ class ClusterTelemetry {
 
   /// Creates a new [ClusterTelemetry].
   /// [type] Type of the integration.
-  ClusterTelemetry({
-    this.type,
-  });
+  ClusterTelemetry({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type == null ? null : type!.value,
-    };
+    return <String, dynamic>{'type': ?type == null ? null : type!.value};
   }
 
   factory ClusterTelemetry.fromMap(Map<String, dynamic> map) {
     return ClusterTelemetry(
-      type: map['type'] == null ? null : ClusterTelemetryType.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : ClusterTelemetryType.fromValue(map['type'] as String),
     );
   }
 }
-

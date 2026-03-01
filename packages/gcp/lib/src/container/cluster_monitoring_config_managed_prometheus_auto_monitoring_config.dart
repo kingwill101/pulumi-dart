@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
   /// Whether or not to enable GKE Auto-Monitoring. Supported values include: `ALL`, `NONE`.
   final String scope;
@@ -12,15 +11,14 @@ class ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scope': scope,
-    };
+    return <String, dynamic>{'scope': scope};
   }
 
-  factory ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig(
       scope: map['scope'] as String,
     );
   }
 }
-

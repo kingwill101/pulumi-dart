@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AnalysisParametersIntegerParameter {
   /// Display name for the analysis.
   ///
@@ -17,10 +16,7 @@ class AnalysisParametersIntegerParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory AnalysisParametersIntegerParameter.fromMap(Map<String, dynamic> map) {
@@ -30,4 +26,3 @@ class AnalysisParametersIntegerParameter {
     );
   }
 }
-

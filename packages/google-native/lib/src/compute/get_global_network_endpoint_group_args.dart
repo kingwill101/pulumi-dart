@@ -16,9 +16,10 @@ class GetGlobalNetworkEndpointGroupArgs {
   GetGlobalNetworkEndpointGroupArgs({
     required String networkEndpointGroup,
     String? project,
-  }) :
-      networkEndpointGroup = pulumi.Input.asInput<String>(networkEndpointGroup),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : networkEndpointGroup = pulumi.Input.asInput<String>(
+         networkEndpointGroup,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +35,3 @@ class GetGlobalNetworkEndpointGroupArgs {
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDocumentArgs {
   /// The name of the collection of documents.
   final pulumi.Input<String> collection;
+
   /// The name of the Firestore database.
   final pulumi.Input<String> database;
+
   /// The id of the document to get.
   final pulumi.Input<String> documentId;
+
   /// The project in which the database resides.
   final pulumi.Input<String>? project;
 
@@ -26,11 +29,10 @@ class GetDocumentArgs {
     required String database,
     required String documentId,
     String? project,
-  }) :
-      collection = pulumi.Input.asInput<String>(collection),
-      database = pulumi.Input.asInput<String>(database),
-      documentId = pulumi.Input.asInput<String>(documentId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : collection = pulumi.Input.asInput<String>(collection),
+       database = pulumi.Input.asInput<String>(database),
+       documentId = pulumi.Input.asInput<String>(documentId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,4 +52,3 @@ class GetDocumentArgs {
     );
   }
 }
-

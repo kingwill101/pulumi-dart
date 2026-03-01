@@ -9,15 +9,19 @@ class GetPeeringAttachmentResult {
   final String arn;
   final List<GetPeeringAttachmentFilter>? filters;
   final String id;
+
   /// Identifier of the peer AWS account.
   final String peerAccountId;
+
   /// Identifier of the peer AWS region.
   final String peerRegion;
+
   /// Identifier of the peer EC2 Transit Gateway.
   final String peerTransitGatewayId;
   final String region;
   final String state;
   final Map<String, String> tags;
+
   /// Identifier of the local EC2 Transit Gateway.
   final String transitGatewayId;
 
@@ -48,7 +52,12 @@ class GetPeeringAttachmentResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetPeeringAttachmentFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?filters == null
+          ? null
+          : pulumi.Input.encodeList<
+              GetPeeringAttachmentFilter,
+              Map<String, dynamic>
+            >(filters!, (value) => value.toMap()),
       'id': id,
       'peerAccountId': peerAccountId,
       'peerRegion': peerRegion,
@@ -63,7 +72,14 @@ class GetPeeringAttachmentResult {
   factory GetPeeringAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetPeeringAttachmentResult(
       arn: map['arn'] as String,
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetPeeringAttachmentFilter>(map['filters'], (value) => GetPeeringAttachmentFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<GetPeeringAttachmentFilter>(
+              map['filters'],
+              (value) => GetPeeringAttachmentFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       id: map['id'] as String,
       peerAccountId: map['peerAccountId'] as String,
       peerRegion: map['peerRegion'] as String,
@@ -75,4 +91,3 @@ class GetPeeringAttachmentResult {
     );
   }
 }
-

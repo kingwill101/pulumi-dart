@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class Datapolicyv2DataPolicyDataMaskingPolicy {
   /// A predefined masking expression.
   /// Possible values:
@@ -13,6 +12,7 @@ class Datapolicyv2DataPolicyDataMaskingPolicy {
   /// DATE_YEAR_MASK
   /// RANDOM_HASH
   final String? predefinedExpression;
+
   /// The name of the BigQuery routine that contains the custom masking
   /// routine, in the format of
   /// `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
@@ -33,11 +33,14 @@ class Datapolicyv2DataPolicyDataMaskingPolicy {
     };
   }
 
-  factory Datapolicyv2DataPolicyDataMaskingPolicy.fromMap(Map<String, dynamic> map) {
+  factory Datapolicyv2DataPolicyDataMaskingPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return Datapolicyv2DataPolicyDataMaskingPolicy(
-      predefinedExpression: map['predefinedExpression'] == null ? null : map['predefinedExpression'] as String,
+      predefinedExpression: map['predefinedExpression'] == null
+          ? null
+          : map['predefinedExpression'] as String,
       routine: map['routine'] == null ? null : map['routine'] as String,
     );
   }
 }
-

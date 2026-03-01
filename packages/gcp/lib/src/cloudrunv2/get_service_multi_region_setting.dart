@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetServiceMultiRegionSetting {
   /// System-generated unique id for the multi-region Service.
   final String multiRegionId;
+
   /// The list of regions to deploy the multi-region Service.
   final List<String> regions;
 
@@ -29,4 +29,3 @@ class GetServiceMultiRegionSetting {
     );
   }
 }
-

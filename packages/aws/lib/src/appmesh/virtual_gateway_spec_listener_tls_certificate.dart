@@ -7,8 +7,10 @@ import 'virtual_gateway_spec_listener_tls_certificate_sds.dart';
 class VirtualGatewaySpecListenerTlsCertificate {
   /// An AWS Certificate Manager (ACM) certificate.
   final VirtualGatewaySpecListenerTlsCertificateAcm? acm;
+
   /// Local file certificate.
   final VirtualGatewaySpecListenerTlsCertificateFile? file;
+
   /// A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
   final VirtualGatewaySpecListenerTlsCertificateSds? sds;
 
@@ -16,11 +18,7 @@ class VirtualGatewaySpecListenerTlsCertificate {
   /// [acm] An AWS Certificate Manager (ACM) certificate.
   /// [file] Local file certificate.
   /// [sds] A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  VirtualGatewaySpecListenerTlsCertificate({
-    this.acm,
-    this.file,
-    this.sds,
-  });
+  VirtualGatewaySpecListenerTlsCertificate({this.acm, this.file, this.sds});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,12 +28,25 @@ class VirtualGatewaySpecListenerTlsCertificate {
     };
   }
 
-  factory VirtualGatewaySpecListenerTlsCertificate.fromMap(Map<String, dynamic> map) {
+  factory VirtualGatewaySpecListenerTlsCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VirtualGatewaySpecListenerTlsCertificate(
-      acm: map['acm'] == null ? null : VirtualGatewaySpecListenerTlsCertificateAcm.fromMap((map['acm'] as Map).cast<String, dynamic>()),
-      file: map['file'] == null ? null : VirtualGatewaySpecListenerTlsCertificateFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
-      sds: map['sds'] == null ? null : VirtualGatewaySpecListenerTlsCertificateSds.fromMap((map['sds'] as Map).cast<String, dynamic>()),
+      acm: map['acm'] == null
+          ? null
+          : VirtualGatewaySpecListenerTlsCertificateAcm.fromMap(
+              (map['acm'] as Map).cast<String, dynamic>(),
+            ),
+      file: map['file'] == null
+          ? null
+          : VirtualGatewaySpecListenerTlsCertificateFile.fromMap(
+              (map['file'] as Map).cast<String, dynamic>(),
+            ),
+      sds: map['sds'] == null
+          ? null
+          : VirtualGatewaySpecListenerTlsCertificateSds.fromMap(
+              (map['sds'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

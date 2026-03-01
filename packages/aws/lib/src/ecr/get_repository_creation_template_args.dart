@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoryCreationTemplateArgs {
   /// The repository name prefix that the template matches against.
   final pulumi.Input<String> prefix;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to any created repositories.
   final pulumi.Input<Map<String, String>>? resourceTags;
 
@@ -22,10 +24,11 @@ class GetRepositoryCreationTemplateArgs {
     required String prefix,
     String? region,
     Map<String, String>? resourceTags,
-  }) :
-      prefix = pulumi.Input.asInput<String>(prefix),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceTags = pulumi.Input.asOptionalInput<Map<String, String>>(resourceTags);
+  }) : prefix = pulumi.Input.asInput<String>(prefix),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       resourceTags = pulumi.Input.asOptionalInput<Map<String, String>>(
+         resourceTags,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,8 +42,9 @@ class GetRepositoryCreationTemplateArgs {
     return GetRepositoryCreationTemplateArgs(
       prefix: map['prefix'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      resourceTags: map['resourceTags'] == null ? null : (map['resourceTags'] as Map).cast<String, String>(),
+      resourceTags: map['resourceTags'] == null
+          ? null
+          : (map['resourceTags'] as Map).cast<String, String>(),
     );
   }
 }
-

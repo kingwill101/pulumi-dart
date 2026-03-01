@@ -7,10 +7,13 @@ import 'deployment_jobs_response.dart';
 class PhaseResponse {
   /// ChildRollout job composition.
   final ChildRolloutJobsResponse childRolloutJobs;
+
   /// Deployment job composition.
   final DeploymentJobsResponse deploymentJobs;
+
   /// Additional information on why the Phase was skipped, if available.
   final String skipMessage;
+
   /// Current state of the Phase.
   final String state;
 
@@ -37,11 +40,14 @@ class PhaseResponse {
 
   factory PhaseResponse.fromMap(Map<String, dynamic> map) {
     return PhaseResponse(
-      childRolloutJobs: ChildRolloutJobsResponse.fromMap((map['childRolloutJobs'] as Map).cast<String, dynamic>()),
-      deploymentJobs: DeploymentJobsResponse.fromMap((map['deploymentJobs'] as Map).cast<String, dynamic>()),
+      childRolloutJobs: ChildRolloutJobsResponse.fromMap(
+        (map['childRolloutJobs'] as Map).cast<String, dynamic>(),
+      ),
+      deploymentJobs: DeploymentJobsResponse.fromMap(
+        (map['deploymentJobs'] as Map).cast<String, dynamic>(),
+      ),
       skipMessage: map['skipMessage'] as String,
       state: map['state'] as String,
     );
   }
 }
-

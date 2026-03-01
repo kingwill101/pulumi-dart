@@ -9,9 +9,7 @@ class GoogleCloudIntegrationsV1alphaSuccessPolicy {
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaSuccessPolicy].
   /// [finalState] State to which the execution snapshot status will be set if the task succeeds.
-  GoogleCloudIntegrationsV1alphaSuccessPolicy({
-    this.finalState,
-  });
+  GoogleCloudIntegrationsV1alphaSuccessPolicy({this.finalState});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class GoogleCloudIntegrationsV1alphaSuccessPolicy {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaSuccessPolicy.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaSuccessPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaSuccessPolicy(
-      finalState: map['finalState'] == null ? null : GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState.fromValue(map['finalState'] as String),
+      finalState: map['finalState'] == null
+          ? null
+          : GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState.fromValue(
+              map['finalState'] as String,
+            ),
     );
   }
 }
-

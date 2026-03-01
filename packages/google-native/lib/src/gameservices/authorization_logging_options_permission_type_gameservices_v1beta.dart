@@ -9,13 +9,17 @@ enum AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta {
   const AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta(this.value);
   final String value;
 
-  static AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta fromValue(String value) {
-    for (final item in AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta.values) {
+  static AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta value: $value');
+    throw ArgumentError(
+      'Unknown AuthorizationLoggingOptionsPermissionTypeGameservicesV1beta value: $value',
+    );
   }
 }
-

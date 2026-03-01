@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a tool results execution resource. This has the results of a TestMatrix.
 class ToolResultsExecutionResponse {
   /// A tool results execution ID.
   final String executionId;
+
   /// A tool results history ID.
   final String historyId;
+
   /// The cloud project that owns the tool results execution.
   final String project;
 
@@ -36,4 +37,3 @@ class ToolResultsExecutionResponse {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
   /// Name of the referent.
   final String name;
@@ -12,15 +11,14 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference.fromMap(Map<String, dynamic> map) {
+  factory ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference(
       name: map['name'] as String,
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PublicAdvertisedPrefixArgs {
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+
   /// The IPv4 address to be used for reverse DNS verification.
   final pulumi.Input<String>? dnsVerificationIp;
+
   /// The address range, in CIDR format, represented by this public advertised prefix.
   final pulumi.Input<String> ipCidrRange;
+
   /// The internet access type for IPv6 Public Advertised Prefixes. It can be
   /// set to one of following:
   /// * EXTERNAL: Default access type. The prefix will be announced to the
@@ -22,6 +25,7 @@ class PublicAdvertisedPrefixArgs {
   /// access type as INTERNAL.
   /// Possible values are: `EXTERNAL`, `INTERNAL`.
   final pulumi.Input<String>? ipv6AccessType;
+
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?`
@@ -29,6 +33,7 @@ class PublicAdvertisedPrefixArgs {
   /// following characters must be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
   final pulumi.Input<String>? name;
+
   /// Specifies how child public delegated prefix will be scoped. pdpScope
   /// must be one of: GLOBAL, REGIONAL
   /// * REGIONAL: The public delegated prefix is regional only. The
@@ -37,6 +42,7 @@ class PublicAdvertisedPrefixArgs {
   /// will take ~4 weeks.
   /// Possible values are: `GLOBAL`, `REGIONAL`.
   final pulumi.Input<String>? pdpScope;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -57,14 +63,15 @@ class PublicAdvertisedPrefixArgs {
     String? name,
     String? pdpScope,
     String? project,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      dnsVerificationIp = pulumi.Input.asOptionalInput<String>(dnsVerificationIp),
-      ipCidrRange = pulumi.Input.asInput<String>(ipCidrRange),
-      ipv6AccessType = pulumi.Input.asOptionalInput<String>(ipv6AccessType),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      pdpScope = pulumi.Input.asOptionalInput<String>(pdpScope),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       dnsVerificationIp = pulumi.Input.asOptionalInput<String>(
+         dnsVerificationIp,
+       ),
+       ipCidrRange = pulumi.Input.asInput<String>(ipCidrRange),
+       ipv6AccessType = pulumi.Input.asOptionalInput<String>(ipv6AccessType),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       pdpScope = pulumi.Input.asOptionalInput<String>(pdpScope),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -80,14 +87,19 @@ class PublicAdvertisedPrefixArgs {
 
   factory PublicAdvertisedPrefixArgs.fromMap(Map<String, dynamic> map) {
     return PublicAdvertisedPrefixArgs(
-      description: map['description'] == null ? null : map['description'] as String,
-      dnsVerificationIp: map['dnsVerificationIp'] == null ? null : map['dnsVerificationIp'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      dnsVerificationIp: map['dnsVerificationIp'] == null
+          ? null
+          : map['dnsVerificationIp'] as String,
       ipCidrRange: map['ipCidrRange'] as String,
-      ipv6AccessType: map['ipv6AccessType'] == null ? null : map['ipv6AccessType'] as String,
+      ipv6AccessType: map['ipv6AccessType'] == null
+          ? null
+          : map['ipv6AccessType'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       pdpScope: map['pdpScope'] == null ? null : map['pdpScope'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

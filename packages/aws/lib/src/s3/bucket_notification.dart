@@ -2185,14 +2185,20 @@ class BucketNotification extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> bucket;
+
   /// Whether to enable Amazon EventBridge notifications. Defaults to `false`.
   late final pulumi.Output<bool?> eventbridge;
+
   /// Used to configure notifications to a Lambda Function. See below.
-  late final pulumi.Output<List<BucketNotificationLambdaFunction>?> lambdaFunctions;
+  late final pulumi.Output<List<BucketNotificationLambdaFunction>?>
+  lambdaFunctions;
+
   /// Notification configuration to SQS Queue. See below.
   late final pulumi.Output<List<BucketNotificationQueue>?> queues;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Notification configuration to SNS Topic. See below.
   late final pulumi.Output<List<BucketNotificationTopic>?> topics;
 
@@ -2205,14 +2211,17 @@ class BucketNotification extends pulumi.CustomResource {
     BucketNotificationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketNotification:BucketNotification',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:s3/bucketNotification:BucketNotification',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucket = registerOutput<String>('bucket');
     this.eventbridge = registerOutput<bool?>('eventbridge');
-    this.lambdaFunctions = registerOutput<List<BucketNotificationLambdaFunction>?>('lambdaFunctions');
+    this.lambdaFunctions =
+        registerOutput<List<BucketNotificationLambdaFunction>?>(
+          'lambdaFunctions',
+        );
     this.queues = registerOutput<List<BucketNotificationQueue>?>('queues');
     this.region = registerOutput<String>('region');
     this.topics = registerOutput<List<BucketNotificationTopic>?>('topics');

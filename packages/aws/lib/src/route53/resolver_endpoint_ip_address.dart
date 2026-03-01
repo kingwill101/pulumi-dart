@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResolverEndpointIpAddress {
   /// IPv4 address in the subnet that you want to use for DNS queries.
   final String? ip;
   final String? ipId;
+
   /// IPv6 address in the subnet that you want to use for DNS queries.
   final String? ipv6;
+
   /// ID of the subnet that contains the IP address.
   final String subnetId;
 
@@ -40,4 +41,3 @@ class ResolverEndpointIpAddress {
     );
   }
 }
-

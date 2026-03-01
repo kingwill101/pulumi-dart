@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
   /// Whether or not Cloud Data Lineage integration is enabled.
   final bool enabled;
@@ -12,15 +11,14 @@ class GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration.fromMap(Map<String, dynamic> map) {
+  factory GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration(
       enabled: map['enabled'] as bool,
     );
   }
 }
-

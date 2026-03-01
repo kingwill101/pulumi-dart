@@ -9,20 +9,19 @@ class NodePoolDefaultsResponseContainerV1beta1 {
 
   /// Creates a new [NodePoolDefaultsResponseContainerV1beta1].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
-  NodePoolDefaultsResponseContainerV1beta1({
-    required this.nodeConfigDefaults,
-  });
+  NodePoolDefaultsResponseContainerV1beta1({required this.nodeConfigDefaults});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nodeConfigDefaults': nodeConfigDefaults.toMap(),
-    };
+    return <String, dynamic>{'nodeConfigDefaults': nodeConfigDefaults.toMap()};
   }
 
-  factory NodePoolDefaultsResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory NodePoolDefaultsResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NodePoolDefaultsResponseContainerV1beta1(
-      nodeConfigDefaults: NodeConfigDefaultsResponseContainerV1beta1.fromMap((map['nodeConfigDefaults'] as Map).cast<String, dynamic>()),
+      nodeConfigDefaults: NodeConfigDefaultsResponseContainerV1beta1.fromMap(
+        (map['nodeConfigDefaults'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

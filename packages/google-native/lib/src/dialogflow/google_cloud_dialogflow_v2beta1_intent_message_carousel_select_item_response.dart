@@ -7,10 +7,13 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_select_item_info_response
 class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemResponse {
   /// Optional. The body text of the card.
   final String description;
+
   /// Optional. The image to display.
   final GoogleCloudDialogflowV2beta1IntentMessageImageResponse image;
+
   /// Additional info about the option item.
   final GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse info;
+
   /// Title of the carousel item.
   final String title;
 
@@ -35,13 +38,19 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemResponse(
       description: map['description'] as String,
-      image: GoogleCloudDialogflowV2beta1IntentMessageImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      info: GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse.fromMap((map['info'] as Map).cast<String, dynamic>()),
+      image: GoogleCloudDialogflowV2beta1IntentMessageImageResponse.fromMap(
+        (map['image'] as Map).cast<String, dynamic>(),
+      ),
+      info:
+          GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse.fromMap(
+            (map['info'] as Map).cast<String, dynamic>(),
+          ),
       title: map['title'] as String,
     );
   }
 }
-

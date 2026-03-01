@@ -12,7 +12,8 @@ enum CommonLanguageSettingsDestinationsItem {
         return item;
       }
     }
-    throw ArgumentError('Unknown CommonLanguageSettingsDestinationsItem value: $value');
+    throw ArgumentError(
+      'Unknown CommonLanguageSettingsDestinationsItem value: $value',
+    );
   }
 }
-

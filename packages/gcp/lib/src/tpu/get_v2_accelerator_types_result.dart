@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getV2AcceleratorTypes.
 class GetV2AcceleratorTypesResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String project;
+
   /// The list of accelerator types available for the given project and zone.
   final List<String> types;
   final String zone;
@@ -40,4 +40,3 @@ class GetV2AcceleratorTypesResult {
     );
   }
 }
-

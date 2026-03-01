@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RecordingConfigurationThumbnailConfiguration {
   /// Thumbnail recording mode. Valid values: `DISABLED`, `INTERVAL`.
   final String? recordingMode;
+
   /// The targeted thumbnail-generation interval in seconds.
   final int? targetIntervalSeconds;
 
@@ -22,11 +22,16 @@ class RecordingConfigurationThumbnailConfiguration {
     };
   }
 
-  factory RecordingConfigurationThumbnailConfiguration.fromMap(Map<String, dynamic> map) {
+  factory RecordingConfigurationThumbnailConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RecordingConfigurationThumbnailConfiguration(
-      recordingMode: map['recordingMode'] == null ? null : map['recordingMode'] as String,
-      targetIntervalSeconds: map['targetIntervalSeconds'] == null ? null : map['targetIntervalSeconds'] as int,
+      recordingMode: map['recordingMode'] == null
+          ? null
+          : map['recordingMode'] as String,
+      targetIntervalSeconds: map['targetIntervalSeconds'] == null
+          ? null
+          : map['targetIntervalSeconds'] as int,
     );
   }
 }
-

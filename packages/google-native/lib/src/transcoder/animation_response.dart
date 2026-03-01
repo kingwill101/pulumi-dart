@@ -8,8 +8,10 @@ import 'animation_static_response.dart';
 class AnimationResponse {
   /// End previous animation.
   final AnimationEndResponse animationEnd;
+
   /// Display overlay object with fade animation.
   final AnimationFadeResponse animationFade;
+
   /// Display static overlay object.
   final AnimationStaticResponse animationStatic;
 
@@ -33,10 +35,15 @@ class AnimationResponse {
 
   factory AnimationResponse.fromMap(Map<String, dynamic> map) {
     return AnimationResponse(
-      animationEnd: AnimationEndResponse.fromMap((map['animationEnd'] as Map).cast<String, dynamic>()),
-      animationFade: AnimationFadeResponse.fromMap((map['animationFade'] as Map).cast<String, dynamic>()),
-      animationStatic: AnimationStaticResponse.fromMap((map['animationStatic'] as Map).cast<String, dynamic>()),
+      animationEnd: AnimationEndResponse.fromMap(
+        (map['animationEnd'] as Map).cast<String, dynamic>(),
+      ),
+      animationFade: AnimationFadeResponse.fromMap(
+        (map['animationFade'] as Map).cast<String, dynamic>(),
+      ),
+      animationStatic: AnimationStaticResponse.fromMap(
+        (map['animationStatic'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

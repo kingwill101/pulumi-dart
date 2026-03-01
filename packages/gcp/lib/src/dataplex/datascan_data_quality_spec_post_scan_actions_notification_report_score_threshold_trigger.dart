@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger {
   /// The score range is in [0,100].
   final double? scoreThreshold;
@@ -12,15 +11,16 @@ class DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrig
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scoreThreshold': ?scoreThreshold,
-    };
+    return <String, dynamic>{'scoreThreshold': ?scoreThreshold};
   }
 
-  factory DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap(Map<String, dynamic> map) {
+  factory DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger(
-      scoreThreshold: map['scoreThreshold'] == null ? null : map['scoreThreshold'] as double,
+      scoreThreshold: map['scoreThreshold'] == null
+          ? null
+          : map['scoreThreshold'] as double,
     );
   }
 }
-

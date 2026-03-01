@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PlanWorkflowStepEksResourceScalingConfigUngraceful {
   /// Minimum success percentage required.
   final int minimumSuccessPercentage;
@@ -17,10 +16,11 @@ class PlanWorkflowStepEksResourceScalingConfigUngraceful {
     };
   }
 
-  factory PlanWorkflowStepEksResourceScalingConfigUngraceful.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepEksResourceScalingConfigUngraceful.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepEksResourceScalingConfigUngraceful(
       minimumSuccessPercentage: map['minimumSuccessPercentage'] as int,
     );
   }
 }
-

@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSupportedDatabaseFlagsArgs {
   /// The canonical id of the location. For example: `us-east1`.
   final pulumi.Input<String> location;
+
   /// The ID of the project.
   final pulumi.Input<String>? project;
 
   /// Creates a new [GetSupportedDatabaseFlagsArgs].
   /// [location] The canonical id of the location. For example: `us-east1`.
   /// [project] The ID of the project.
-  GetSupportedDatabaseFlagsArgs({
-    required String location,
-    String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
+  GetSupportedDatabaseFlagsArgs({required String location, String? project})
+    : location = pulumi.Input.asInput<String>(location),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'location': location,
-      'project': ?project,
-    };
+    return <String, dynamic>{'location': location, 'project': ?project};
   }
 
   factory GetSupportedDatabaseFlagsArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetSupportedDatabaseFlagsArgs {
     );
   }
 }
-

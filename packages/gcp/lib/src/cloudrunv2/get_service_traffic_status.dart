@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetServiceTrafficStatus {
   /// Specifies percent of the traffic to this Revision.
   final int percent;
+
   /// Revision to which this traffic is sent.
   final String revision;
+
   /// Indicates the string used in the URI to exclusively reference this target.
   final String tag;
+
   /// The allocation type for this traffic target.
   final String type;
+
   /// Displays the target URI.
   final String uri;
 
@@ -47,4 +50,3 @@ class GetServiceTrafficStatus {
     );
   }
 }
-

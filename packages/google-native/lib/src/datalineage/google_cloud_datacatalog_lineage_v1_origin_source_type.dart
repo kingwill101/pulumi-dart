@@ -11,13 +11,16 @@ enum GoogleCloudDatacatalogLineageV1OriginSourceType {
   const GoogleCloudDatacatalogLineageV1OriginSourceType(this.value);
   final String value;
 
-  static GoogleCloudDatacatalogLineageV1OriginSourceType fromValue(String value) {
+  static GoogleCloudDatacatalogLineageV1OriginSourceType fromValue(
+    String value,
+  ) {
     for (final item in GoogleCloudDatacatalogLineageV1OriginSourceType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatacatalogLineageV1OriginSourceType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatacatalogLineageV1OriginSourceType value: $value',
+    );
   }
 }
-

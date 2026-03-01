@@ -22,11 +22,12 @@ class GetManagedFolderIamPolicyArgs {
     required String managedFolder,
     int? optionsRequestedPolicyVersion,
     String? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      managedFolder = pulumi.Input.asInput<String>(managedFolder),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+  }) : bucket = pulumi.Input.asInput<String>(bucket),
+       managedFolder = pulumi.Input.asInput<String>(managedFolder),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       userProject = pulumi.Input.asOptionalInput<String>(userProject);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +42,13 @@ class GetManagedFolderIamPolicyArgs {
     return GetManagedFolderIamPolicyArgs(
       bucket: map['bucket'] as String,
       managedFolder: map['managedFolder'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
-      userProject: map['userProject'] == null ? null : map['userProject'] as String,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
+      userProject: map['userProject'] == null
+          ? null
+          : map['userProject'] as String,
     );
   }
 }
-

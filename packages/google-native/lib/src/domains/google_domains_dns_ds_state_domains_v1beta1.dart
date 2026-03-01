@@ -13,7 +13,8 @@ enum GoogleDomainsDnsDsStateDomainsV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleDomainsDnsDsStateDomainsV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown GoogleDomainsDnsDsStateDomainsV1beta1 value: $value',
+    );
   }
 }
-

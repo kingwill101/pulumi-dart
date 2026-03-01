@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specification that applies to entries that are part `LOOKER` system (user_specified_type)
 class GoogleCloudDatacatalogV1LookerSystemSpecResponse {
   /// Name of the parent Looker Instance. Empty if it does not exist.
   final String parentInstanceDisplayName;
+
   /// ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
   final String parentInstanceId;
+
   /// Name of the parent Model. Empty if it does not exist.
   final String parentModelDisplayName;
+
   /// ID of the parent Model. Empty if it does not exist.
   final String parentModelId;
+
   /// Name of the parent View. Empty if it does not exist.
   final String parentViewDisplayName;
+
   /// ID of the parent View. Empty if it does not exist.
   final String parentViewId;
 
@@ -43,7 +47,9 @@ class GoogleCloudDatacatalogV1LookerSystemSpecResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1LookerSystemSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1LookerSystemSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1LookerSystemSpecResponse(
       parentInstanceDisplayName: map['parentInstanceDisplayName'] as String,
       parentInstanceId: map['parentInstanceId'] as String,
@@ -54,4 +60,3 @@ class GoogleCloudDatacatalogV1LookerSystemSpecResponse {
     );
   }
 }
-

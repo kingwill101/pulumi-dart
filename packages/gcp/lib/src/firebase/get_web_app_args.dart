@@ -12,6 +12,7 @@ class GetWebAppArgs {
   ///
   /// - - -
   final pulumi.Input<String> appId;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -19,18 +20,12 @@ class GetWebAppArgs {
   /// Creates a new [GetWebAppArgs].
   /// [appId] The app_ip of name of the Firebase webApp.
   /// [project] The ID of the project in which the resource belongs.
-  GetWebAppArgs({
-    required String appId,
-    String? project,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
+  GetWebAppArgs({required String appId, String? project})
+    : appId = pulumi.Input.asInput<String>(appId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'appId': appId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'appId': appId, 'project': ?project};
   }
 
   factory GetWebAppArgs.fromMap(Map<String, dynamic> map) {
@@ -40,4 +35,3 @@ class GetWebAppArgs {
     );
   }
 }
-

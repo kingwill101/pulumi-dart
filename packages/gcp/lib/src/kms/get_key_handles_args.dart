@@ -10,9 +10,11 @@ class GetKeyHandlesArgs {
   /// The Google Cloud Platform location for the KeyHandle.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
   final pulumi.Input<String> location;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
   ///
   /// - - -
@@ -26,10 +28,11 @@ class GetKeyHandlesArgs {
     required String location,
     String? project,
     required String resourceTypeSelector,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceTypeSelector = pulumi.Input.asInput<String>(resourceTypeSelector);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       resourceTypeSelector = pulumi.Input.asInput<String>(
+         resourceTypeSelector,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,4 +50,3 @@ class GetKeyHandlesArgs {
     );
   }
 }
-

@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AppAuthorizationCredentialApiKeyCredential {
   /// Contains API key credential information.
   final String apiKey;
 
   /// Creates a new [AppAuthorizationCredentialApiKeyCredential].
   /// [apiKey] Contains API key credential information.
-  AppAuthorizationCredentialApiKeyCredential({
-    required this.apiKey,
-  });
+  AppAuthorizationCredentialApiKeyCredential({required this.apiKey});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiKey': apiKey,
-    };
+    return <String, dynamic>{'apiKey': apiKey};
   }
 
-  factory AppAuthorizationCredentialApiKeyCredential.fromMap(Map<String, dynamic> map) {
+  factory AppAuthorizationCredentialApiKeyCredential.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppAuthorizationCredentialApiKeyCredential(
       apiKey: map['apiKey'] as String,
     );
   }
 }
-

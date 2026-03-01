@@ -19,10 +19,9 @@ class GetScheduleArgs {
     required String location,
     String? project,
     required String scheduleId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scheduleId = pulumi.Input.asInput<String>(scheduleId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       scheduleId = pulumi.Input.asInput<String>(scheduleId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetScheduleArgs {
     );
   }
 }
-

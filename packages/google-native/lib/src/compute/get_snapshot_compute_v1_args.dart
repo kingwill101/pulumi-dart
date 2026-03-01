@@ -13,18 +13,12 @@ class GetSnapshotComputeV1Args {
   /// Creates a new [GetSnapshotComputeV1Args].
   /// [project] Optional.
   /// [snapshot] Required.
-  GetSnapshotComputeV1Args({
-    String? project,
-    required String snapshot,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetSnapshotComputeV1Args({String? project, required String snapshot})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       snapshot = pulumi.Input.asInput<String>(snapshot);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'snapshot': snapshot,
-    };
+    return <String, dynamic>{'project': ?project, 'snapshot': snapshot};
   }
 
   factory GetSnapshotComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetSnapshotComputeV1Args {
     );
   }
 }
-

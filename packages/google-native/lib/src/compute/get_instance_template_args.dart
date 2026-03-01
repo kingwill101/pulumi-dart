@@ -19,10 +19,9 @@ class GetInstanceTemplateArgs {
     required String instanceTemplate,
     String? project,
     String? view,
-  }) :
-      instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : instanceTemplate = pulumi.Input.asInput<String>(instanceTemplate),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetInstanceTemplateArgs {
     );
   }
 }
-

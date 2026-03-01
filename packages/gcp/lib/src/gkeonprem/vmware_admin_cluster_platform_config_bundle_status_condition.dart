@@ -1,19 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class VmwareAdminClusterPlatformConfigBundleStatusCondition {
   /// (Output)
   /// Last time the condition transit from one status to another.
   final String? lastTransitionTime;
+
   /// (Output)
   /// Human-readable message indicating details about last transition.
   final String? message;
+
   /// (Output)
   /// Machine-readable message indicating details about last transition.
   final String? reason;
+
   /// (Output)
   /// The lifecycle state of the condition.
   final String? state;
+
   /// (Output)
   /// Type of the condition.
   /// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
@@ -43,9 +46,13 @@ class VmwareAdminClusterPlatformConfigBundleStatusCondition {
     };
   }
 
-  factory VmwareAdminClusterPlatformConfigBundleStatusCondition.fromMap(Map<String, dynamic> map) {
+  factory VmwareAdminClusterPlatformConfigBundleStatusCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareAdminClusterPlatformConfigBundleStatusCondition(
-      lastTransitionTime: map['lastTransitionTime'] == null ? null : map['lastTransitionTime'] as String,
+      lastTransitionTime: map['lastTransitionTime'] == null
+          ? null
+          : map['lastTransitionTime'] as String,
       message: map['message'] == null ? null : map['message'] as String,
       reason: map['reason'] == null ? null : map['reason'] as String,
       state: map['state'] == null ? null : map['state'] as String,
@@ -53,4 +60,3 @@ class VmwareAdminClusterPlatformConfigBundleStatusCondition {
     );
   }
 }
-

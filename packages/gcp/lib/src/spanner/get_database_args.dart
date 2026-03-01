@@ -11,8 +11,10 @@ class GetDatabaseArgs {
   ///
   /// - - -
   final pulumi.Input<String> instance;
+
   /// The name of the spanner database.
   final pulumi.Input<String> name;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -25,10 +27,9 @@ class GetDatabaseArgs {
     required String instance,
     required String name,
     String? project,
-  }) :
-      instance = pulumi.Input.asInput<String>(instance),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : instance = pulumi.Input.asInput<String>(instance),
+       name = pulumi.Input.asInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +47,3 @@ class GetDatabaseArgs {
     );
   }
 }
-

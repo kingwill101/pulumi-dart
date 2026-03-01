@@ -6,13 +6,18 @@ import 'google_cloud_dialogflow_cx_v3_conversation_turn_response.dart';
 /// Represents a result from running a test case in an agent environment.
 class GoogleCloudDialogflowCxV3TestCaseResultResponse {
   /// The conversation turns uttered during the test case replay in chronological order.
-  final List<GoogleCloudDialogflowCxV3ConversationTurnResponse> conversationTurns;
+  final List<GoogleCloudDialogflowCxV3ConversationTurnResponse>
+  conversationTurns;
+
   /// Environment where the test was run. If not set, it indicates the draft environment.
   final String environment;
+
   /// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
   final String name;
+
   /// Whether the test case passed in the agent environment.
   final String testResult;
+
   /// The time that the test was run.
   final String testTime;
 
@@ -32,7 +37,11 @@ class GoogleCloudDialogflowCxV3TestCaseResultResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conversationTurns': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3ConversationTurnResponse, Map<String, dynamic>>(conversationTurns, (value) => value.toMap()),
+      'conversationTurns':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowCxV3ConversationTurnResponse,
+            Map<String, dynamic>
+          >(conversationTurns, (value) => value.toMap()),
       'environment': environment,
       'name': name,
       'testResult': testResult,
@@ -40,9 +49,20 @@ class GoogleCloudDialogflowCxV3TestCaseResultResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3TestCaseResultResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3TestCaseResultResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3TestCaseResultResponse(
-      conversationTurns: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ConversationTurnResponse>(map['conversationTurns'], (value) => GoogleCloudDialogflowCxV3ConversationTurnResponse.fromMap((value as Map).cast<String, dynamic>())),
+      conversationTurns:
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowCxV3ConversationTurnResponse
+          >(
+            map['conversationTurns'],
+            (value) =>
+                GoogleCloudDialogflowCxV3ConversationTurnResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       environment: map['environment'] as String,
       name: map['name'] as String,
       testResult: map['testResult'] as String,
@@ -50,4 +70,3 @@ class GoogleCloudDialogflowCxV3TestCaseResultResponse {
     );
   }
 }
-

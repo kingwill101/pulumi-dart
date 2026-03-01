@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BucketLifecycleConfigurationV2RuleFilterTag {
   /// Name of the object key.
   final String key;
+
   /// Value of the tag.
   final String value;
 
@@ -16,17 +16,15 @@ class BucketLifecycleConfigurationV2RuleFilterTag {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
-  factory BucketLifecycleConfigurationV2RuleFilterTag.fromMap(Map<String, dynamic> map) {
+  factory BucketLifecycleConfigurationV2RuleFilterTag.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketLifecycleConfigurationV2RuleFilterTag(
       key: map['key'] as String,
       value: map['value'] as String,
     );
   }
 }
-

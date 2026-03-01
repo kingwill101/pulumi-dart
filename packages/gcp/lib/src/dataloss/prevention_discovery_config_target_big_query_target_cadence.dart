@@ -7,13 +7,18 @@ import 'prevention_discovery_config_target_big_query_target_cadence_table_modifi
 class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
   /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence? inspectTemplateModifiedCadence;
+  final PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence?
+  inspectTemplateModifiedCadence;
+
   /// Governs when to update data profiles when a schema is modified
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence? schemaModifiedCadence;
+  final PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence?
+  schemaModifiedCadence;
+
   /// Governs when to update profile when a table is modified.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence? tableModifiedCadence;
+  final PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence?
+  tableModifiedCadence;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetCadence].
   /// [inspectTemplateModifiedCadence] Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
@@ -27,18 +32,39 @@ class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'inspectTemplateModifiedCadence': ?inspectTemplateModifiedCadence == null ? null : inspectTemplateModifiedCadence!.toMap(),
-      'schemaModifiedCadence': ?schemaModifiedCadence == null ? null : schemaModifiedCadence!.toMap(),
-      'tableModifiedCadence': ?tableModifiedCadence == null ? null : tableModifiedCadence!.toMap(),
+      'inspectTemplateModifiedCadence': ?inspectTemplateModifiedCadence == null
+          ? null
+          : inspectTemplateModifiedCadence!.toMap(),
+      'schemaModifiedCadence': ?schemaModifiedCadence == null
+          ? null
+          : schemaModifiedCadence!.toMap(),
+      'tableModifiedCadence': ?tableModifiedCadence == null
+          ? null
+          : tableModifiedCadence!.toMap(),
     };
   }
 
-  factory PreventionDiscoveryConfigTargetBigQueryTargetCadence.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetBigQueryTargetCadence.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetBigQueryTargetCadence(
-      inspectTemplateModifiedCadence: map['inspectTemplateModifiedCadence'] == null ? null : PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence.fromMap((map['inspectTemplateModifiedCadence'] as Map).cast<String, dynamic>()),
-      schemaModifiedCadence: map['schemaModifiedCadence'] == null ? null : PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence.fromMap((map['schemaModifiedCadence'] as Map).cast<String, dynamic>()),
-      tableModifiedCadence: map['tableModifiedCadence'] == null ? null : PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence.fromMap((map['tableModifiedCadence'] as Map).cast<String, dynamic>()),
+      inspectTemplateModifiedCadence:
+          map['inspectTemplateModifiedCadence'] == null
+          ? null
+          : PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence.fromMap(
+              (map['inspectTemplateModifiedCadence'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      schemaModifiedCadence: map['schemaModifiedCadence'] == null
+          ? null
+          : PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence.fromMap(
+              (map['schemaModifiedCadence'] as Map).cast<String, dynamic>(),
+            ),
+      tableModifiedCadence: map['tableModifiedCadence'] == null
+          ? null
+          : PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence.fromMap(
+              (map['tableModifiedCadence'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

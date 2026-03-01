@@ -13,7 +13,8 @@ enum MaintenanceExclusionOptionsScope {
         return item;
       }
     }
-    throw ArgumentError('Unknown MaintenanceExclusionOptionsScope value: $value');
+    throw ArgumentError(
+      'Unknown MaintenanceExclusionOptionsScope value: $value',
+    );
   }
 }
-

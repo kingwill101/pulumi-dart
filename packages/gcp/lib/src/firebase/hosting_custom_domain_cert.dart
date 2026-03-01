@@ -9,8 +9,10 @@ class HostingCustomDomainCert {
   /// before, that formerly-active cert provides SSL coverage for the domain name
   /// until the current cert propagates.
   final String? state;
+
   /// The record's type, which determines what data the record contains.
   final String? type;
+
   /// A set of ACME challenges you can add to your DNS records or existing,
   /// non-Hosting hosting provider to allow Hosting to create an SSL certificate
   /// for your domain name before you point traffic toward hosting. You can use
@@ -23,11 +25,7 @@ class HostingCustomDomainCert {
   /// [state] The state of the certificate. Only the `CERT_ACTIVE` and
   /// [type] The record's type, which determines what data the record contains.
   /// [verification] A set of ACME challenges you can add to your DNS records or existing,
-  HostingCustomDomainCert({
-    this.state,
-    this.type,
-    this.verification,
-  });
+  HostingCustomDomainCert({this.state, this.type, this.verification});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,8 +39,11 @@ class HostingCustomDomainCert {
     return HostingCustomDomainCert(
       state: map['state'] == null ? null : map['state'] as String,
       type: map['type'] == null ? null : map['type'] as String,
-      verification: map['verification'] == null ? null : HostingCustomDomainCertVerification.fromMap((map['verification'] as Map).cast<String, dynamic>()),
+      verification: map['verification'] == null
+          ? null
+          : HostingCustomDomainCertVerification.fromMap(
+              (map['verification'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

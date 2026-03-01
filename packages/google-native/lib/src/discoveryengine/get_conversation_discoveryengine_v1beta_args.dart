@@ -25,12 +25,11 @@ class GetConversationDiscoveryengineV1betaArgs {
     required String dataStoreId,
     required String location,
     String? project,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      conversationId = pulumi.Input.asInput<String>(conversationId),
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : collectionId = pulumi.Input.asInput<String>(collectionId),
+       conversationId = pulumi.Input.asInput<String>(conversationId),
+       dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +41,9 @@ class GetConversationDiscoveryengineV1betaArgs {
     };
   }
 
-  factory GetConversationDiscoveryengineV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetConversationDiscoveryengineV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConversationDiscoveryengineV1betaArgs(
       collectionId: map['collectionId'] as String,
       conversationId: map['conversationId'] as String,
@@ -52,4 +53,3 @@ class GetConversationDiscoveryengineV1betaArgs {
     );
   }
 }
-

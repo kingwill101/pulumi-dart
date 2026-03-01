@@ -2,9 +2,13 @@
 enum DoubleComparisonFilterValueComparison {
   valueComparisonUnspecified("VALUE_COMPARISON_UNSPECIFIED"),
   valueComparisonIfValueSmallerThan("VALUE_COMPARISON_IF_VALUE_SMALLER_THAN"),
-  valueComparisonIfValueSmallerEqualThan("VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN"),
+  valueComparisonIfValueSmallerEqualThan(
+    "VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN",
+  ),
   valueComparisonIfValueLargerThan("VALUE_COMPARISON_IF_VALUE_LARGER_THAN"),
-  valueComparisonIfValueLargerEqualThan("VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN");
+  valueComparisonIfValueLargerEqualThan(
+    "VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN",
+  );
 
   const DoubleComparisonFilterValueComparison(this.value);
   final String value;
@@ -15,7 +19,8 @@ enum DoubleComparisonFilterValueComparison {
         return item;
       }
     }
-    throw ArgumentError('Unknown DoubleComparisonFilterValueComparison value: $value');
+    throw ArgumentError(
+      'Unknown DoubleComparisonFilterValueComparison value: $value',
+    );
   }
 }
-

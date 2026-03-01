@@ -12,7 +12,8 @@ enum NetworkFirewallPolicyVpcNetworkScope {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkFirewallPolicyVpcNetworkScope value: $value');
+    throw ArgumentError(
+      'Unknown NetworkFirewallPolicyVpcNetworkScope value: $value',
+    );
   }
 }
-

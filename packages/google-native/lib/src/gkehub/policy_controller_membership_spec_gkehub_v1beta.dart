@@ -6,6 +6,7 @@ import 'policy_controller_hub_config_gkehub_v1beta.dart';
 class PolicyControllerMembershipSpecGkehubV1beta {
   /// Policy Controller configuration for the cluster.
   final PolicyControllerHubConfigGkehubV1beta? policyControllerHubConfig;
+
   /// Version of Policy Controller installed.
   final String? version;
 
@@ -19,16 +20,23 @@ class PolicyControllerMembershipSpecGkehubV1beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'policyControllerHubConfig': ?policyControllerHubConfig == null ? null : policyControllerHubConfig!.toMap(),
+      'policyControllerHubConfig': ?policyControllerHubConfig == null
+          ? null
+          : policyControllerHubConfig!.toMap(),
       'version': ?version,
     };
   }
 
-  factory PolicyControllerMembershipSpecGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory PolicyControllerMembershipSpecGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyControllerMembershipSpecGkehubV1beta(
-      policyControllerHubConfig: map['policyControllerHubConfig'] == null ? null : PolicyControllerHubConfigGkehubV1beta.fromMap((map['policyControllerHubConfig'] as Map).cast<String, dynamic>()),
+      policyControllerHubConfig: map['policyControllerHubConfig'] == null
+          ? null
+          : PolicyControllerHubConfigGkehubV1beta.fromMap(
+              (map['policyControllerHubConfig'] as Map).cast<String, dynamic>(),
+            ),
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
-

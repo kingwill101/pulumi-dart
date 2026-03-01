@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAccountAccessToken.
 class GetAccountAccessTokenResult {
   /// The `access_token` representing the new generated identity.
   final String accessToken;
   final List<String>? delegates;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? lifetime;
@@ -42,7 +42,9 @@ class GetAccountAccessTokenResult {
   factory GetAccountAccessTokenResult.fromMap(Map<String, dynamic> map) {
     return GetAccountAccessTokenResult(
       accessToken: map['accessToken'] as String,
-      delegates: map['delegates'] == null ? null : (map['delegates'] as List).cast<String>(),
+      delegates: map['delegates'] == null
+          ? null
+          : (map['delegates'] as List).cast<String>(),
       id: map['id'] as String,
       lifetime: map['lifetime'] == null ? null : map['lifetime'] as String,
       scopes: (map['scopes'] as List).cast<String>(),
@@ -50,4 +52,3 @@ class GetAccountAccessTokenResult {
     );
   }
 }
-

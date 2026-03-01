@@ -23,11 +23,15 @@ class GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2AppleSignInConfigResponse(
       bundleIds: (map['bundleIds'] as List).cast<String>(),
-      codeFlowConfig: GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse.fromMap((map['codeFlowConfig'] as Map).cast<String, dynamic>()),
+      codeFlowConfig:
+          GoogleCloudIdentitytoolkitAdminV2CodeFlowConfigResponse.fromMap(
+            (map['codeFlowConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -8,13 +8,17 @@ enum MonitoringQueryLanguageConditionEvaluationMissingData {
   const MonitoringQueryLanguageConditionEvaluationMissingData(this.value);
   final String value;
 
-  static MonitoringQueryLanguageConditionEvaluationMissingData fromValue(String value) {
-    for (final item in MonitoringQueryLanguageConditionEvaluationMissingData.values) {
+  static MonitoringQueryLanguageConditionEvaluationMissingData fromValue(
+    String value,
+  ) {
+    for (final item
+        in MonitoringQueryLanguageConditionEvaluationMissingData.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown MonitoringQueryLanguageConditionEvaluationMissingData value: $value');
+    throw ArgumentError(
+      'Unknown MonitoringQueryLanguageConditionEvaluationMissingData value: $value',
+    );
   }
 }
-

@@ -10,20 +10,29 @@ class VirtualRepositoryConfig {
 
   /// Creates a new [VirtualRepositoryConfig].
   /// [upstreamPolicies] Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
-  VirtualRepositoryConfig({
-    this.upstreamPolicies,
-  });
+  VirtualRepositoryConfig({this.upstreamPolicies});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'upstreamPolicies': ?upstreamPolicies == null ? null : pulumi.Input.encodeList<UpstreamPolicy, Map<String, dynamic>>(upstreamPolicies!, (value) => value.toMap()),
+      'upstreamPolicies': ?upstreamPolicies == null
+          ? null
+          : pulumi.Input.encodeList<UpstreamPolicy, Map<String, dynamic>>(
+              upstreamPolicies!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory VirtualRepositoryConfig.fromMap(Map<String, dynamic> map) {
     return VirtualRepositoryConfig(
-      upstreamPolicies: map['upstreamPolicies'] == null ? null : pulumi.Input.decodeList<UpstreamPolicy>(map['upstreamPolicies'], (value) => UpstreamPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      upstreamPolicies: map['upstreamPolicies'] == null
+          ? null
+          : pulumi.Input.decodeList<UpstreamPolicy>(
+              map['upstreamPolicies'],
+              (value) => UpstreamPolicy.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

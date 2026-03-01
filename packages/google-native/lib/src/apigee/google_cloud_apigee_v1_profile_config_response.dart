@@ -10,20 +10,31 @@ class GoogleCloudApigeeV1ProfileConfigResponse {
 
   /// Creates a new [GoogleCloudApigeeV1ProfileConfigResponse].
   /// [categories] List of categories of profile config.
-  GoogleCloudApigeeV1ProfileConfigResponse({
-    required this.categories,
-  });
+  GoogleCloudApigeeV1ProfileConfigResponse({required this.categories});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'categories': pulumi.Input.encodeList<GoogleCloudApigeeV1ProfileConfigCategoryResponse, Map<String, dynamic>>(categories, (value) => value.toMap()),
+      'categories':
+          pulumi.Input.encodeList<
+            GoogleCloudApigeeV1ProfileConfigCategoryResponse,
+            Map<String, dynamic>
+          >(categories, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudApigeeV1ProfileConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1ProfileConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1ProfileConfigResponse(
-      categories: pulumi.Input.decodeList<GoogleCloudApigeeV1ProfileConfigCategoryResponse>(map['categories'], (value) => GoogleCloudApigeeV1ProfileConfigCategoryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      categories:
+          pulumi.Input.decodeList<
+            GoogleCloudApigeeV1ProfileConfigCategoryResponse
+          >(
+            map['categories'],
+            (value) => GoogleCloudApigeeV1ProfileConfigCategoryResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

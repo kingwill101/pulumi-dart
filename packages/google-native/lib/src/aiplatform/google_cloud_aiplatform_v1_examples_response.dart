@@ -6,11 +6,15 @@ import 'google_cloud_aiplatform_v1_presets_response.dart';
 /// Example-based explainability that returns the nearest neighbors from the provided dataset.
 class GoogleCloudAiplatformV1ExamplesResponse {
   /// The Cloud Storage input instances.
-  final GoogleCloudAiplatformV1ExamplesExampleGcsSourceResponse exampleGcsSource;
+  final GoogleCloudAiplatformV1ExamplesExampleGcsSourceResponse
+  exampleGcsSource;
+
   /// The full configuration for the generated index, the semantics are the same as metadata and should match [NearestNeighborSearchConfig](https://cloud.google.com/vertex-ai/docs/explainable-ai/configuring-explanations-example-based#nearest-neighbor-search-config).
   final dynamic nearestNeighborSearchConfig;
+
   /// The number of neighbors to return when querying for examples.
   final int neighborCount;
+
   /// Simplified preset configuration, which automatically sets configuration values based on the desired query speed-precision trade-off and modality.
   final GoogleCloudAiplatformV1PresetsResponse presets;
 
@@ -35,13 +39,19 @@ class GoogleCloudAiplatformV1ExamplesResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1ExamplesResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ExamplesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1ExamplesResponse(
-      exampleGcsSource: GoogleCloudAiplatformV1ExamplesExampleGcsSourceResponse.fromMap((map['exampleGcsSource'] as Map).cast<String, dynamic>()),
+      exampleGcsSource:
+          GoogleCloudAiplatformV1ExamplesExampleGcsSourceResponse.fromMap(
+            (map['exampleGcsSource'] as Map).cast<String, dynamic>(),
+          ),
       nearestNeighborSearchConfig: map['nearestNeighborSearchConfig'],
       neighborCount: map['neighborCount'] as int,
-      presets: GoogleCloudAiplatformV1PresetsResponse.fromMap((map['presets'] as Map).cast<String, dynamic>()),
+      presets: GoogleCloudAiplatformV1PresetsResponse.fromMap(
+        (map['presets'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

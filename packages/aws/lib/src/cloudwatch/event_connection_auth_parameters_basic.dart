@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EventConnectionAuthParametersBasic {
   /// A password for the authorization. Created and stored in AWS Secrets Manager.
   final String password;
+
   /// A username for the authorization.
   final String username;
 
@@ -16,10 +16,7 @@ class EventConnectionAuthParametersBasic {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'username': username,
-    };
+    return <String, dynamic>{'password': password, 'username': username};
   }
 
   factory EventConnectionAuthParametersBasic.fromMap(Map<String, dynamic> map) {
@@ -29,4 +26,3 @@ class EventConnectionAuthParametersBasic {
     );
   }
 }
-

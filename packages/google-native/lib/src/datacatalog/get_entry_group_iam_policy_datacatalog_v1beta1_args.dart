@@ -19,10 +19,9 @@ class GetEntryGroupIamPolicyDatacatalogV1beta1Args {
     required String entryGroupId,
     required String location,
     String? project,
-  }) :
-      entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetEntryGroupIamPolicyDatacatalogV1beta1Args {
     };
   }
 
-  factory GetEntryGroupIamPolicyDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetEntryGroupIamPolicyDatacatalogV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEntryGroupIamPolicyDatacatalogV1beta1Args(
       entryGroupId: map['entryGroupId'] as String,
       location: map['location'] as String,
@@ -40,4 +41,3 @@ class GetEntryGroupIamPolicyDatacatalogV1beta1Args {
     );
   }
 }
-

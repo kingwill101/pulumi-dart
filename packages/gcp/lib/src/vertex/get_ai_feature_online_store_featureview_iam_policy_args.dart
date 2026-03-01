@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs {
   /// The name of the FeatureOnlineStore to use for the featureview. Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> featureOnlineStore;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> featureView;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region for the resource. It should be the same as the featureonlinestore region. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
@@ -29,11 +32,10 @@ class GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs {
     required String featureView,
     String? project,
     String? region,
-  }) :
-      featureOnlineStore = pulumi.Input.asInput<String>(featureOnlineStore),
-      featureView = pulumi.Input.asInput<String>(featureView),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : featureOnlineStore = pulumi.Input.asInput<String>(featureOnlineStore),
+       featureView = pulumi.Input.asInput<String>(featureView),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,7 +46,9 @@ class GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs {
     };
   }
 
-  factory GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs(
       featureOnlineStore: map['featureOnlineStore'] as String,
       featureView: map['featureView'] as String,
@@ -53,4 +57,3 @@ class GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs {
     );
   }
 }
-

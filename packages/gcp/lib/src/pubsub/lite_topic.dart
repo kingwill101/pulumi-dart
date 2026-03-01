@@ -286,20 +286,26 @@ import 'lite_topic_retention_config.dart';
 class LiteTopic extends pulumi.CustomResource {
   /// Name of the topic.
   late final pulumi.Output<String> name;
+
   /// The settings for this topic's partitions.
   /// Structure is documented below.
   late final pulumi.Output<LiteTopicPartitionConfig?> partitionConfig;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The region of the pubsub lite topic.
   late final pulumi.Output<String?> region;
+
   /// The settings for this topic's Reservation usage.
   /// Structure is documented below.
   late final pulumi.Output<LiteTopicReservationConfig?> reservationConfig;
+
   /// The settings for a topic's message retention.
   /// Structure is documented below.
   late final pulumi.Output<LiteTopicRetentionConfig?> retentionConfig;
+
   /// The zone of the pubsub lite topic.
   late final pulumi.Output<String?> zone;
 
@@ -312,17 +318,23 @@ class LiteTopic extends pulumi.CustomResource {
     LiteTopicArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:pubsub/liteTopic:LiteTopic',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:pubsub/liteTopic:LiteTopic',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.name = registerOutput<String>('name');
-    this.partitionConfig = registerOutput<LiteTopicPartitionConfig?>('partitionConfig');
+    this.partitionConfig = registerOutput<LiteTopicPartitionConfig?>(
+      'partitionConfig',
+    );
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String?>('region');
-    this.reservationConfig = registerOutput<LiteTopicReservationConfig?>('reservationConfig');
-    this.retentionConfig = registerOutput<LiteTopicRetentionConfig?>('retentionConfig');
+    this.reservationConfig = registerOutput<LiteTopicReservationConfig?>(
+      'reservationConfig',
+    );
+    this.retentionConfig = registerOutput<LiteTopicRetentionConfig?>(
+      'retentionConfig',
+    );
     this.zone = registerOutput<String?>('zone');
   }
 }

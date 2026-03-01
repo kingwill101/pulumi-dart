@@ -9,20 +9,17 @@ class FeedOutputConfigResponse {
 
   /// Creates a new [FeedOutputConfigResponse].
   /// [pubsubDestination] Destination on Pub/Sub.
-  FeedOutputConfigResponse({
-    required this.pubsubDestination,
-  });
+  FeedOutputConfigResponse({required this.pubsubDestination});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pubsubDestination': pubsubDestination.toMap(),
-    };
+    return <String, dynamic>{'pubsubDestination': pubsubDestination.toMap()};
   }
 
   factory FeedOutputConfigResponse.fromMap(Map<String, dynamic> map) {
     return FeedOutputConfigResponse(
-      pubsubDestination: PubsubDestinationResponse.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>()),
+      pubsubDestination: PubsubDestinationResponse.fromMap(
+        (map['pubsubDestination'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -9,14 +9,10 @@ class GoogleDomainsDns {
 
   /// Creates a new [GoogleDomainsDns].
   /// [dsState] The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-  GoogleDomainsDns({
-    required this.dsState,
-  });
+  GoogleDomainsDns({required this.dsState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dsState': dsState.value,
-    };
+    return <String, dynamic>{'dsState': dsState.value};
   }
 
   factory GoogleDomainsDns.fromMap(Map<String, dynamic> map) {
@@ -25,4 +21,3 @@ class GoogleDomainsDns {
     );
   }
 }
-

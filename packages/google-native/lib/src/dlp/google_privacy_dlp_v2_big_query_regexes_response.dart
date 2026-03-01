@@ -10,20 +10,29 @@ class GooglePrivacyDlpV2BigQueryRegexesResponse {
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryRegexesResponse].
   /// [patterns] A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables.
-  GooglePrivacyDlpV2BigQueryRegexesResponse({
-    required this.patterns,
-  });
+  GooglePrivacyDlpV2BigQueryRegexesResponse({required this.patterns});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'patterns': pulumi.Input.encodeList<GooglePrivacyDlpV2BigQueryRegexResponse, Map<String, dynamic>>(patterns, (value) => value.toMap()),
+      'patterns':
+          pulumi.Input.encodeList<
+            GooglePrivacyDlpV2BigQueryRegexResponse,
+            Map<String, dynamic>
+          >(patterns, (value) => value.toMap()),
     };
   }
 
-  factory GooglePrivacyDlpV2BigQueryRegexesResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryRegexesResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2BigQueryRegexesResponse(
-      patterns: pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegexResponse>(map['patterns'], (value) => GooglePrivacyDlpV2BigQueryRegexResponse.fromMap((value as Map).cast<String, dynamic>())),
+      patterns:
+          pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryRegexResponse>(
+            map['patterns'],
+            (value) => GooglePrivacyDlpV2BigQueryRegexResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

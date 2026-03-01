@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Options for how to validate and process properties on a resource.
 class ValidationOptionsResponseDeploymentmanagerV2beta {
   /// Customize how deployment manager will validate the resource against schema errors.
   final String schemaValidation;
+
   /// Specify what to do with extra properties when executing a request.
   final String undeclaredProperties;
 
@@ -23,11 +23,12 @@ class ValidationOptionsResponseDeploymentmanagerV2beta {
     };
   }
 
-  factory ValidationOptionsResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
+  factory ValidationOptionsResponseDeploymentmanagerV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ValidationOptionsResponseDeploymentmanagerV2beta(
       schemaValidation: map['schemaValidation'] as String,
       undeclaredProperties: map['undeclaredProperties'] as String,
     );
   }
 }
-

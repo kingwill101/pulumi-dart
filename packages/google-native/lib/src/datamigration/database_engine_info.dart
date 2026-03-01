@@ -6,22 +6,17 @@ import 'database_engine_info_engine.dart';
 class DatabaseEngineInfo {
   /// Engine type.
   final DatabaseEngineInfoEngine engine;
+
   /// Engine version, for example "12.c.1".
   final String version;
 
   /// Creates a new [DatabaseEngineInfo].
   /// [engine] Engine type.
   /// [version] Engine version, for example "12.c.1".
-  DatabaseEngineInfo({
-    required this.engine,
-    required this.version,
-  });
+  DatabaseEngineInfo({required this.engine, required this.version});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'engine': engine.value,
-      'version': version,
-    };
+    return <String, dynamic>{'engine': engine.value, 'version': version};
   }
 
   factory DatabaseEngineInfo.fromMap(Map<String, dynamic> map) {
@@ -31,4 +26,3 @@ class DatabaseEngineInfo {
     );
   }
 }
-

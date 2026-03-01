@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class HostingVersionConfigRedirect {
   /// The user-supplied glob to match against the request URL path.
   final String? glob;
+
   /// The value to put in the HTTP location header of the response.
   /// The location can contain capture group values from the pattern using a : prefix to identify
   /// the segment and an optional * to capture the rest of the URL. For example:
   final String location;
+
   /// The user-supplied RE2 regular expression to match against the request URL path.
   final String? regex;
+
   /// The status HTTP code to return in the response. It must be a valid 3xx status code.
   final int statusCode;
 
@@ -43,4 +45,3 @@ class HostingVersionConfigRedirect {
     );
   }
 }
-

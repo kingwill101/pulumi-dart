@@ -19,10 +19,9 @@ class GetRegionOperationIamPolicyArgs {
     required String operationId,
     String? project,
     required String regionId,
-  }) :
-      operationId = pulumi.Input.asInput<String>(operationId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regionId = pulumi.Input.asInput<String>(regionId);
+  }) : operationId = pulumi.Input.asInput<String>(operationId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       regionId = pulumi.Input.asInput<String>(regionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionOperationIamPolicyArgs {
     );
   }
 }
-

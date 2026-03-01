@@ -19,10 +19,9 @@ class GetGroupMigrationcenterV1alpha1Args {
     required String groupId,
     required String location,
     String? project,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : groupId = pulumi.Input.asInput<String>(groupId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetGroupMigrationcenterV1alpha1Args {
     };
   }
 
-  factory GetGroupMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetGroupMigrationcenterV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupMigrationcenterV1alpha1Args(
       groupId: map['groupId'] as String,
       location: map['location'] as String,
@@ -40,4 +41,3 @@ class GetGroupMigrationcenterV1alpha1Args {
     );
   }
 }
-

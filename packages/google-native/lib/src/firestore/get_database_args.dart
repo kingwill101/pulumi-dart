@@ -13,18 +13,12 @@ class GetDatabaseArgs {
   /// Creates a new [GetDatabaseArgs].
   /// [databaseId] Required.
   /// [project] Optional.
-  GetDatabaseArgs({
-    required String databaseId,
-    String? project,
-  }) :
-      databaseId = pulumi.Input.asInput<String>(databaseId),
+  GetDatabaseArgs({required String databaseId, String? project})
+    : databaseId = pulumi.Input.asInput<String>(databaseId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'databaseId': databaseId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'databaseId': databaseId, 'project': ?project};
   }
 
   factory GetDatabaseArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetDatabaseArgs {
     );
   }
 }
-

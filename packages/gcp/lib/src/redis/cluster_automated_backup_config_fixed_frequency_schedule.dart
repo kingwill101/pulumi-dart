@@ -10,20 +10,20 @@ class ClusterAutomatedBackupConfigFixedFrequencySchedule {
 
   /// Creates a new [ClusterAutomatedBackupConfigFixedFrequencySchedule].
   /// [startTime] The start time of every automated backup in UTC.
-  ClusterAutomatedBackupConfigFixedFrequencySchedule({
-    required this.startTime,
-  });
+  ClusterAutomatedBackupConfigFixedFrequencySchedule({required this.startTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startTime': startTime.toMap(),
-    };
+    return <String, dynamic>{'startTime': startTime.toMap()};
   }
 
-  factory ClusterAutomatedBackupConfigFixedFrequencySchedule.fromMap(Map<String, dynamic> map) {
+  factory ClusterAutomatedBackupConfigFixedFrequencySchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterAutomatedBackupConfigFixedFrequencySchedule(
-      startTime: ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      startTime:
+          ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(
+            (map['startTime'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

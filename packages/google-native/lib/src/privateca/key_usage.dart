@@ -9,8 +9,10 @@ import 'object_id.dart';
 class KeyUsage {
   /// Describes high-level ways in which a key may be used.
   final KeyUsageOptions? baseKeyUsage;
+
   /// Detailed scenarios in which a key may be used.
   final ExtendedKeyUsageOptions? extendedKeyUsage;
+
   /// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
   final List<ObjectId>? unknownExtendedKeyUsages;
 
@@ -27,17 +29,37 @@ class KeyUsage {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'baseKeyUsage': ?baseKeyUsage == null ? null : baseKeyUsage!.toMap(),
-      'extendedKeyUsage': ?extendedKeyUsage == null ? null : extendedKeyUsage!.toMap(),
-      'unknownExtendedKeyUsages': ?unknownExtendedKeyUsages == null ? null : pulumi.Input.encodeList<ObjectId, Map<String, dynamic>>(unknownExtendedKeyUsages!, (value) => value.toMap()),
+      'extendedKeyUsage': ?extendedKeyUsage == null
+          ? null
+          : extendedKeyUsage!.toMap(),
+      'unknownExtendedKeyUsages': ?unknownExtendedKeyUsages == null
+          ? null
+          : pulumi.Input.encodeList<ObjectId, Map<String, dynamic>>(
+              unknownExtendedKeyUsages!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory KeyUsage.fromMap(Map<String, dynamic> map) {
     return KeyUsage(
-      baseKeyUsage: map['baseKeyUsage'] == null ? null : KeyUsageOptions.fromMap((map['baseKeyUsage'] as Map).cast<String, dynamic>()),
-      extendedKeyUsage: map['extendedKeyUsage'] == null ? null : ExtendedKeyUsageOptions.fromMap((map['extendedKeyUsage'] as Map).cast<String, dynamic>()),
-      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null ? null : pulumi.Input.decodeList<ObjectId>(map['unknownExtendedKeyUsages'], (value) => ObjectId.fromMap((value as Map).cast<String, dynamic>())),
+      baseKeyUsage: map['baseKeyUsage'] == null
+          ? null
+          : KeyUsageOptions.fromMap(
+              (map['baseKeyUsage'] as Map).cast<String, dynamic>(),
+            ),
+      extendedKeyUsage: map['extendedKeyUsage'] == null
+          ? null
+          : ExtendedKeyUsageOptions.fromMap(
+              (map['extendedKeyUsage'] as Map).cast<String, dynamic>(),
+            ),
+      unknownExtendedKeyUsages: map['unknownExtendedKeyUsages'] == null
+          ? null
+          : pulumi.Input.decodeList<ObjectId>(
+              map['unknownExtendedKeyUsages'],
+              (value) =>
+                  ObjectId.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

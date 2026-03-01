@@ -21,12 +21,16 @@ import 'deployment_args.dart';
 class DeploymentType extends pulumi.CustomResource {
   /// API identifier.
   late final pulumi.Output<String> apiId;
+
   /// Whether the deployment was automatically released.
   late final pulumi.Output<bool> autoDeployed;
+
   /// Description for the deployment resource. Must be less than or equal to 1024 characters in length.
   late final pulumi.Output<String?> description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   late final pulumi.Output<Map<String, String>?> triggers;
 
@@ -39,11 +43,11 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigatewayv2/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:apigatewayv2/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.apiId = registerOutput<String>('apiId');
     this.autoDeployed = registerOutput<bool>('autoDeployed');
     this.description = registerOutput<String?>('description');

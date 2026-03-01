@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectionInstallationState {
   /// Output only. Link to follow for next action. Empty string if the installation is already
   /// complete.
   final String? actionUri;
+
   /// Output only. Message of what the user should do next to continue the installation.
   /// Empty string if the installation is already complete.
   final String? message;
+
   /// (Output)
   /// Output only. Current step of the installation process.
   /// Possible values:
@@ -22,11 +23,7 @@ class ConnectionInstallationState {
   /// [actionUri] Output only. Link to follow for next action. Empty string if the installation is already
   /// [message] Output only. Message of what the user should do next to continue the installation.
   /// [stage] (Output)
-  ConnectionInstallationState({
-    this.actionUri,
-    this.message,
-    this.stage,
-  });
+  ConnectionInstallationState({this.actionUri, this.message, this.stage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,4 +41,3 @@ class ConnectionInstallationState {
     );
   }
 }
-

@@ -7,10 +7,13 @@ import 'data_set_physical_table_map_s3_source.dart';
 class DataSetPhysicalTableMap {
   /// A physical table type built from the results of the custom SQL query. See custom_sql.
   final DataSetPhysicalTableMapCustomSql? customSql;
+
   /// Key of the physical table map.
   final String physicalTableMapId;
+
   /// A physical table type for relational data sources. See relational_table.
   final DataSetPhysicalTableMapRelationalTable? relationalTable;
+
   /// A physical table type for as S3 data source. See s3_source.
   final DataSetPhysicalTableMapS3Source? s3Source;
 
@@ -30,18 +33,31 @@ class DataSetPhysicalTableMap {
     return <String, dynamic>{
       'customSql': ?customSql == null ? null : customSql!.toMap(),
       'physicalTableMapId': physicalTableMapId,
-      'relationalTable': ?relationalTable == null ? null : relationalTable!.toMap(),
+      'relationalTable': ?relationalTable == null
+          ? null
+          : relationalTable!.toMap(),
       's3Source': ?s3Source == null ? null : s3Source!.toMap(),
     };
   }
 
   factory DataSetPhysicalTableMap.fromMap(Map<String, dynamic> map) {
     return DataSetPhysicalTableMap(
-      customSql: map['customSql'] == null ? null : DataSetPhysicalTableMapCustomSql.fromMap((map['customSql'] as Map).cast<String, dynamic>()),
+      customSql: map['customSql'] == null
+          ? null
+          : DataSetPhysicalTableMapCustomSql.fromMap(
+              (map['customSql'] as Map).cast<String, dynamic>(),
+            ),
       physicalTableMapId: map['physicalTableMapId'] as String,
-      relationalTable: map['relationalTable'] == null ? null : DataSetPhysicalTableMapRelationalTable.fromMap((map['relationalTable'] as Map).cast<String, dynamic>()),
-      s3Source: map['s3Source'] == null ? null : DataSetPhysicalTableMapS3Source.fromMap((map['s3Source'] as Map).cast<String, dynamic>()),
+      relationalTable: map['relationalTable'] == null
+          ? null
+          : DataSetPhysicalTableMapRelationalTable.fromMap(
+              (map['relationalTable'] as Map).cast<String, dynamic>(),
+            ),
+      s3Source: map['s3Source'] == null
+          ? null
+          : DataSetPhysicalTableMapS3Source.fromMap(
+              (map['s3Source'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -9,9 +9,7 @@ class JobSpec {
 
   /// Creates a new [JobSpec].
   /// [template] Optional. Describes the execution that will be created when running a job.
-  JobSpec({
-    this.template,
-  });
+  JobSpec({this.template});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class JobSpec {
 
   factory JobSpec.fromMap(Map<String, dynamic> map) {
     return JobSpec(
-      template: map['template'] == null ? null : ExecutionTemplateSpec.fromMap((map['template'] as Map).cast<String, dynamic>()),
+      template: map['template'] == null
+          ? null
+          : ExecutionTemplateSpec.fromMap(
+              (map['template'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

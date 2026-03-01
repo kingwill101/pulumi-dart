@@ -16,9 +16,8 @@ class GetDataCollectorArgs {
   GetDataCollectorArgs({
     required String datacollectorId,
     required String organizationId,
-  }) :
-      datacollectorId = pulumi.Input.asInput<String>(datacollectorId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : datacollectorId = pulumi.Input.asInput<String>(datacollectorId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetDataCollectorArgs {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InsightFiltersNetworkProtocol {
   final String comparison;
   final String value;
@@ -14,10 +13,7 @@ class InsightFiltersNetworkProtocol {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
   factory InsightFiltersNetworkProtocol.fromMap(Map<String, dynamic> map) {
@@ -27,4 +23,3 @@ class InsightFiltersNetworkProtocol {
     );
   }
 }
-

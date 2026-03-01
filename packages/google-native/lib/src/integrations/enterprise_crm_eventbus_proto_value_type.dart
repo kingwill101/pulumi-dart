@@ -48,17 +48,38 @@ class EnterpriseCrmEventbusProtoValueType {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoValueType.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoValueType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoValueType(
-      booleanValue: map['booleanValue'] == null ? null : map['booleanValue'] as bool,
-      doubleArray: map['doubleArray'] == null ? null : EnterpriseCrmEventbusProtoDoubleArray.fromMap((map['doubleArray'] as Map).cast<String, dynamic>()),
-      doubleValue: map['doubleValue'] == null ? null : map['doubleValue'] as double,
-      intArray: map['intArray'] == null ? null : EnterpriseCrmEventbusProtoIntArray.fromMap((map['intArray'] as Map).cast<String, dynamic>()),
+      booleanValue: map['booleanValue'] == null
+          ? null
+          : map['booleanValue'] as bool,
+      doubleArray: map['doubleArray'] == null
+          ? null
+          : EnterpriseCrmEventbusProtoDoubleArray.fromMap(
+              (map['doubleArray'] as Map).cast<String, dynamic>(),
+            ),
+      doubleValue: map['doubleValue'] == null
+          ? null
+          : map['doubleValue'] as double,
+      intArray: map['intArray'] == null
+          ? null
+          : EnterpriseCrmEventbusProtoIntArray.fromMap(
+              (map['intArray'] as Map).cast<String, dynamic>(),
+            ),
       intValue: map['intValue'] == null ? null : map['intValue'] as String,
-      protoValue: map['protoValue'] == null ? null : (map['protoValue'] as Map).cast<String, String>(),
-      stringArray: map['stringArray'] == null ? null : EnterpriseCrmEventbusProtoStringArray.fromMap((map['stringArray'] as Map).cast<String, dynamic>()),
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
+      protoValue: map['protoValue'] == null
+          ? null
+          : (map['protoValue'] as Map).cast<String, String>(),
+      stringArray: map['stringArray'] == null
+          ? null
+          : EnterpriseCrmEventbusProtoStringArray.fromMap(
+              (map['stringArray'] as Map).cast<String, dynamic>(),
+            ),
+      stringValue: map['stringValue'] == null
+          ? null
+          : map['stringValue'] as String,
     );
   }
 }
-

@@ -404,10 +404,14 @@ import 'organization_configuration_organization_configuration.dart';
 class OrganizationConfiguration extends pulumi.CustomResource {
   /// Whether to automatically enable Security Hub for new accounts in the organization.
   late final pulumi.Output<bool> autoEnable;
+
   /// Whether to automatically enable Security Hub default standards for new member accounts in the organization. By default, this parameter is equal to `DEFAULT`, and new member accounts are automatically enabled with default Security Hub standards. To opt out of enabling default standards for new member accounts, set this parameter equal to `NONE`.
   late final pulumi.Output<String> autoEnableStandards;
+
   /// Provides information about the way an organization is configured in Security Hub.
-  late final pulumi.Output<OrganizationConfigurationOrganizationConfiguration> organizationConfiguration;
+  late final pulumi.Output<OrganizationConfigurationOrganizationConfiguration>
+  organizationConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -420,14 +424,17 @@ class OrganizationConfiguration extends pulumi.CustomResource {
     OrganizationConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:securityhub/organizationConfiguration:OrganizationConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:securityhub/organizationConfiguration:OrganizationConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.autoEnable = registerOutput<bool>('autoEnable');
     this.autoEnableStandards = registerOutput<String>('autoEnableStandards');
-    this.organizationConfiguration = registerOutput<OrganizationConfigurationOrganizationConfiguration>('organizationConfiguration');
+    this.organizationConfiguration =
+        registerOutput<OrganizationConfigurationOrganizationConfiguration>(
+          'organizationConfiguration',
+        );
     this.region = registerOutput<String>('region');
   }
 }

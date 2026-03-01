@@ -8,8 +8,10 @@ import 'google_cloud_discoveryengine_v1beta_search_response_summary.dart';
 class GoogleCloudDiscoveryengineV1betaReply {
   /// References in the reply.
   final List<GoogleCloudDiscoveryengineV1betaReplyReference>? references;
+
   /// DEPRECATED: use `summary` instead. Text reply.
   final String? reply;
+
   /// Summary based on search results.
   final GoogleCloudDiscoveryengineV1betaSearchResponseSummary? summary;
 
@@ -25,18 +27,37 @@ class GoogleCloudDiscoveryengineV1betaReply {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'references': ?references == null ? null : pulumi.Input.encodeList<GoogleCloudDiscoveryengineV1betaReplyReference, Map<String, dynamic>>(references!, (value) => value.toMap()),
+      'references': ?references == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudDiscoveryengineV1betaReplyReference,
+              Map<String, dynamic>
+            >(references!, (value) => value.toMap()),
       'reply': ?reply,
       'summary': ?summary == null ? null : summary!.toMap(),
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1betaReply.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1betaReply.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1betaReply(
-      references: map['references'] == null ? null : pulumi.Input.decodeList<GoogleCloudDiscoveryengineV1betaReplyReference>(map['references'], (value) => GoogleCloudDiscoveryengineV1betaReplyReference.fromMap((value as Map).cast<String, dynamic>())),
+      references: map['references'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              GoogleCloudDiscoveryengineV1betaReplyReference
+            >(
+              map['references'],
+              (value) => GoogleCloudDiscoveryengineV1betaReplyReference.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       reply: map['reply'] == null ? null : map['reply'] as String,
-      summary: map['summary'] == null ? null : GoogleCloudDiscoveryengineV1betaSearchResponseSummary.fromMap((map['summary'] as Map).cast<String, dynamic>()),
+      summary: map['summary'] == null
+          ? null
+          : GoogleCloudDiscoveryengineV1betaSearchResponseSummary.fromMap(
+              (map['summary'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -7,9 +7,11 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfig {
   /// Mode of operation for binauthz policy evaluation.
   /// Possible values are: `DISABLED`, `POLICY_BINDINGS`.
   final String? evaluationMode;
+
   /// Binauthz policies that apply to this cluster.
   /// Structure is documented below.
-  final List<FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding>? policyBindings;
+  final List<FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding>?
+  policyBindings;
 
   /// Creates a new [FleetDefaultClusterConfigBinaryAuthorizationConfig].
   /// [evaluationMode] Mode of operation for binauthz policy evaluation.
@@ -22,15 +24,33 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'evaluationMode': ?evaluationMode,
-      'policyBindings': ?policyBindings == null ? null : pulumi.Input.encodeList<FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding, Map<String, dynamic>>(policyBindings!, (value) => value.toMap()),
+      'policyBindings': ?policyBindings == null
+          ? null
+          : pulumi.Input.encodeList<
+              FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding,
+              Map<String, dynamic>
+            >(policyBindings!, (value) => value.toMap()),
     };
   }
 
-  factory FleetDefaultClusterConfigBinaryAuthorizationConfig.fromMap(Map<String, dynamic> map) {
+  factory FleetDefaultClusterConfigBinaryAuthorizationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetDefaultClusterConfigBinaryAuthorizationConfig(
-      evaluationMode: map['evaluationMode'] == null ? null : map['evaluationMode'] as String,
-      policyBindings: map['policyBindings'] == null ? null : pulumi.Input.decodeList<FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding>(map['policyBindings'], (value) => FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.fromMap((value as Map).cast<String, dynamic>())),
+      evaluationMode: map['evaluationMode'] == null
+          ? null
+          : map['evaluationMode'] as String,
+      policyBindings: map['policyBindings'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding
+            >(
+              map['policyBindings'],
+              (value) =>
+                  FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

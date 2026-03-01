@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A POSIX filesystem resource.
 class PosixFilesystemResponse {
   /// Root directory path to the filesystem.
@@ -8,14 +7,10 @@ class PosixFilesystemResponse {
 
   /// Creates a new [PosixFilesystemResponse].
   /// [rootDirectory] Root directory path to the filesystem.
-  PosixFilesystemResponse({
-    required this.rootDirectory,
-  });
+  PosixFilesystemResponse({required this.rootDirectory});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'rootDirectory': rootDirectory,
-    };
+    return <String, dynamic>{'rootDirectory': rootDirectory};
   }
 
   factory PosixFilesystemResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class PosixFilesystemResponse {
     );
   }
 }
-

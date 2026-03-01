@@ -12,7 +12,8 @@ enum DockerRepositoryPublicRepository {
         return item;
       }
     }
-    throw ArgumentError('Unknown DockerRepositoryPublicRepository value: $value');
+    throw ArgumentError(
+      'Unknown DockerRepositoryPublicRepository value: $value',
+    );
   }
 }
-

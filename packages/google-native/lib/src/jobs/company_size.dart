@@ -21,4 +21,3 @@ enum CompanySize {
     throw ArgumentError('Unknown CompanySize value: $value');
   }
 }
-

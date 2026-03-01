@@ -6,8 +6,10 @@ import 'version_response.dart';
 class LocationResponse {
   /// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
   final String cpeUri;
+
   /// The path from which we gathered that this package/version is installed.
   final String path;
+
   /// Deprecated. The version installed at this location.
   final VersionResponse version;
 
@@ -33,8 +35,9 @@ class LocationResponse {
     return LocationResponse(
       cpeUri: map['cpeUri'] as String,
       path: map['path'] as String,
-      version: VersionResponse.fromMap((map['version'] as Map).cast<String, dynamic>()),
+      version: VersionResponse.fromMap(
+        (map['version'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

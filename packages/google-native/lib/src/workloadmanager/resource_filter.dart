@@ -6,10 +6,13 @@ import 'gce_instance_filter.dart';
 class ResourceFilter {
   /// Filter compute engine resource
   final GceInstanceFilter? gceInstanceFilter;
+
   /// The label used for filter resource
   final Map<String, String>? inclusionLabels;
+
   /// The id pattern for filter resource
   final List<String>? resourceIdPatterns;
+
   /// The scopes of evaluation resource
   final List<String>? scopes;
 
@@ -27,7 +30,9 @@ class ResourceFilter {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gceInstanceFilter': ?gceInstanceFilter == null ? null : gceInstanceFilter!.toMap(),
+      'gceInstanceFilter': ?gceInstanceFilter == null
+          ? null
+          : gceInstanceFilter!.toMap(),
       'inclusionLabels': ?inclusionLabels,
       'resourceIdPatterns': ?resourceIdPatterns,
       'scopes': ?scopes,
@@ -36,11 +41,20 @@ class ResourceFilter {
 
   factory ResourceFilter.fromMap(Map<String, dynamic> map) {
     return ResourceFilter(
-      gceInstanceFilter: map['gceInstanceFilter'] == null ? null : GceInstanceFilter.fromMap((map['gceInstanceFilter'] as Map).cast<String, dynamic>()),
-      inclusionLabels: map['inclusionLabels'] == null ? null : (map['inclusionLabels'] as Map).cast<String, String>(),
-      resourceIdPatterns: map['resourceIdPatterns'] == null ? null : (map['resourceIdPatterns'] as List).cast<String>(),
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      gceInstanceFilter: map['gceInstanceFilter'] == null
+          ? null
+          : GceInstanceFilter.fromMap(
+              (map['gceInstanceFilter'] as Map).cast<String, dynamic>(),
+            ),
+      inclusionLabels: map['inclusionLabels'] == null
+          ? null
+          : (map['inclusionLabels'] as Map).cast<String, String>(),
+      resourceIdPatterns: map['resourceIdPatterns'] == null
+          ? null
+          : (map['resourceIdPatterns'] as List).cast<String>(),
+      scopes: map['scopes'] == null
+          ? null
+          : (map['scopes'] as List).cast<String>(),
     );
   }
 }
-

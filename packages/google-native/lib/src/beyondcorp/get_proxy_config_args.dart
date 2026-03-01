@@ -19,10 +19,9 @@ class GetProxyConfigArgs {
     required String organizationId,
     required String partnerTenantId,
     required String proxyConfigId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId),
-      proxyConfigId = pulumi.Input.asInput<String>(proxyConfigId);
+  }) : organizationId = pulumi.Input.asInput<String>(organizationId),
+       partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId),
+       proxyConfigId = pulumi.Input.asInput<String>(proxyConfigId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetProxyConfigArgs {
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback {
   /// The description of the app version.
   final String? description;
+
   /// (Output)
   /// Whether summarization is disabled.
   final bool? disabled;
+
   /// (Output)
   /// The Python code to execute for the tool.
   final String? pythonCode;
@@ -29,12 +30,17 @@ class AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback {
     };
   }
 
-  factory AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotGuardrailCodeCallbackAfterModelCallback(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
-      pythonCode: map['pythonCode'] == null ? null : map['pythonCode'] as String,
+      pythonCode: map['pythonCode'] == null
+          ? null
+          : map['pythonCode'] as String,
     );
   }
 }
-

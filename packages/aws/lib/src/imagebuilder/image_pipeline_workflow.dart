@@ -6,10 +6,13 @@ import 'image_pipeline_workflow_parameter.dart';
 class ImagePipelineWorkflow {
   /// The action to take if the workflow fails. Must be one of `CONTINUE` or `ABORT`.
   final String? onFailure;
+
   /// The parallel group in which to run a test Workflow.
   final String? parallelGroup;
+
   /// Configuration block for the workflow parameters. Detailed below.
   final List<ImagePipelineWorkflowParameter>? parameters;
+
   /// Amazon Resource Name (ARN) of the Image Builder Workflow.
   ///
   /// The following arguments are optional:
@@ -31,7 +34,12 @@ class ImagePipelineWorkflow {
     return <String, dynamic>{
       'onFailure': ?onFailure,
       'parallelGroup': ?parallelGroup,
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<ImagePipelineWorkflowParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?parameters == null
+          ? null
+          : pulumi.Input.encodeList<
+              ImagePipelineWorkflowParameter,
+              Map<String, dynamic>
+            >(parameters!, (value) => value.toMap()),
       'workflowArn': workflowArn,
     };
   }
@@ -39,10 +47,18 @@ class ImagePipelineWorkflow {
   factory ImagePipelineWorkflow.fromMap(Map<String, dynamic> map) {
     return ImagePipelineWorkflow(
       onFailure: map['onFailure'] == null ? null : map['onFailure'] as String,
-      parallelGroup: map['parallelGroup'] == null ? null : map['parallelGroup'] as String,
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<ImagePipelineWorkflowParameter>(map['parameters'], (value) => ImagePipelineWorkflowParameter.fromMap((value as Map).cast<String, dynamic>())),
+      parallelGroup: map['parallelGroup'] == null
+          ? null
+          : map['parallelGroup'] as String,
+      parameters: map['parameters'] == null
+          ? null
+          : pulumi.Input.decodeList<ImagePipelineWorkflowParameter>(
+              map['parameters'],
+              (value) => ImagePipelineWorkflowParameter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       workflowArn: map['workflowArn'] as String,
     );
   }
 }
-

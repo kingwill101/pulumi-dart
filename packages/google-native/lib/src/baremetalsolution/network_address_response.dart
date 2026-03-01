@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A network.
 class NetworkAddressResponse {
   /// IPv4 address to be assigned to the server.
   final String address;
+
   /// Name of the existing network to use.
   final String existingNetworkId;
+
   /// Id of the network to use, within the same ProvisioningConfig request.
   final String networkId;
 
@@ -36,4 +37,3 @@ class NetworkAddressResponse {
     );
   }
 }
-

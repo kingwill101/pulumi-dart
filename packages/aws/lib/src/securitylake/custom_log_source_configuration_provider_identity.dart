@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CustomLogSourceConfigurationProviderIdentity {
   /// The external ID used to estalish trust relationship with the AWS identity.
   final String externalId;
+
   /// The AWS identity principal.
   final String principal;
 
@@ -16,17 +16,15 @@ class CustomLogSourceConfigurationProviderIdentity {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'externalId': externalId,
-      'principal': principal,
-    };
+    return <String, dynamic>{'externalId': externalId, 'principal': principal};
   }
 
-  factory CustomLogSourceConfigurationProviderIdentity.fromMap(Map<String, dynamic> map) {
+  factory CustomLogSourceConfigurationProviderIdentity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomLogSourceConfigurationProviderIdentity(
       externalId: map['externalId'] as String,
       principal: map['principal'] as String,
     );
   }
 }
-

@@ -10,20 +10,34 @@ class GoogleCloudDocumentaiV1DocumentPageAnchor {
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageAnchor].
   /// [pageRefs] One or more references to visual page elements
-  GoogleCloudDocumentaiV1DocumentPageAnchor({
-    this.pageRefs,
-  });
+  GoogleCloudDocumentaiV1DocumentPageAnchor({this.pageRefs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pageRefs': ?pageRefs == null ? null : pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef, Map<String, dynamic>>(pageRefs!, (value) => value.toMap()),
+      'pageRefs': ?pageRefs == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudDocumentaiV1DocumentPageAnchorPageRef,
+              Map<String, dynamic>
+            >(pageRefs!, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageAnchor.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageAnchor.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageAnchor(
-      pageRefs: map['pageRefs'] == null ? null : pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageAnchorPageRef>(map['pageRefs'], (value) => GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromMap((value as Map).cast<String, dynamic>())),
+      pageRefs: map['pageRefs'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              GoogleCloudDocumentaiV1DocumentPageAnchorPageRef
+            >(
+              map['pageRefs'],
+              (value) =>
+                  GoogleCloudDocumentaiV1DocumentPageAnchorPageRef.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

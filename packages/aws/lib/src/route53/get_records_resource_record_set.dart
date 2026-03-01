@@ -10,32 +10,46 @@ import 'get_records_resource_record_set_resource_record.dart';
 class GetRecordsResourceRecordSet {
   /// Information about the AWS resource traffic is routed to.
   final GetRecordsResourceRecordSetAliasTarget aliasTarget;
+
   /// Information about the CIDR location traffic is routed to.
   final GetRecordsResourceRecordSetCidrRoutingConfig cidrRoutingConfig;
+
   /// `PRIMARY` or `SECONDARY`.
   final String failover;
+
   /// Information about how Amazon Route 53 responds to DNS queries based on the geographic origin of the query.
   final GetRecordsResourceRecordSetGeolocation geolocation;
+
   /// Information about how Amazon Route 53 responds to DNS queries based on the geographic origin of the query.
   final GetRecordsResourceRecordSetGeoproximityLocation geoproximityLocation;
+
   /// ID of any applicable health check.
   final String healthCheckId;
+
   /// Traffic is routed approximately randomly to multiple resources.
   final bool multiValueAnswer;
+
   /// The name of the record.
   final String name;
+
   /// The Amazon EC2 Region of the resource that this resource record set refers to.
   final String region;
+
   /// The resource records.
   final List<GetRecordsResourceRecordSetResourceRecord> resourceRecords;
+
   /// An identifier that differentiates among multiple resource record sets that have the same combination of name and type.
   final String setIdentifier;
+
   /// The ID of any traffic policy instance that Route 53 created this resource record set for.
   final String trafficPolicyInstanceId;
+
   /// The resource record cache time to live (TTL), in seconds.
   final int ttl;
+
   /// The DNS record type.
   final String type;
+
   /// Among resource record sets that have the same combination of DNS name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the current resource record set.
   final int weight;
 
@@ -84,7 +98,11 @@ class GetRecordsResourceRecordSet {
       'multiValueAnswer': multiValueAnswer,
       'name': name,
       'region': region,
-      'resourceRecords': pulumi.Input.encodeList<GetRecordsResourceRecordSetResourceRecord, Map<String, dynamic>>(resourceRecords, (value) => value.toMap()),
+      'resourceRecords':
+          pulumi.Input.encodeList<
+            GetRecordsResourceRecordSetResourceRecord,
+            Map<String, dynamic>
+          >(resourceRecords, (value) => value.toMap()),
       'setIdentifier': setIdentifier,
       'trafficPolicyInstanceId': trafficPolicyInstanceId,
       'ttl': ttl,
@@ -95,16 +113,31 @@ class GetRecordsResourceRecordSet {
 
   factory GetRecordsResourceRecordSet.fromMap(Map<String, dynamic> map) {
     return GetRecordsResourceRecordSet(
-      aliasTarget: GetRecordsResourceRecordSetAliasTarget.fromMap((map['aliasTarget'] as Map).cast<String, dynamic>()),
-      cidrRoutingConfig: GetRecordsResourceRecordSetCidrRoutingConfig.fromMap((map['cidrRoutingConfig'] as Map).cast<String, dynamic>()),
+      aliasTarget: GetRecordsResourceRecordSetAliasTarget.fromMap(
+        (map['aliasTarget'] as Map).cast<String, dynamic>(),
+      ),
+      cidrRoutingConfig: GetRecordsResourceRecordSetCidrRoutingConfig.fromMap(
+        (map['cidrRoutingConfig'] as Map).cast<String, dynamic>(),
+      ),
       failover: map['failover'] as String,
-      geolocation: GetRecordsResourceRecordSetGeolocation.fromMap((map['geolocation'] as Map).cast<String, dynamic>()),
-      geoproximityLocation: GetRecordsResourceRecordSetGeoproximityLocation.fromMap((map['geoproximityLocation'] as Map).cast<String, dynamic>()),
+      geolocation: GetRecordsResourceRecordSetGeolocation.fromMap(
+        (map['geolocation'] as Map).cast<String, dynamic>(),
+      ),
+      geoproximityLocation:
+          GetRecordsResourceRecordSetGeoproximityLocation.fromMap(
+            (map['geoproximityLocation'] as Map).cast<String, dynamic>(),
+          ),
       healthCheckId: map['healthCheckId'] as String,
       multiValueAnswer: map['multiValueAnswer'] as bool,
       name: map['name'] as String,
       region: map['region'] as String,
-      resourceRecords: pulumi.Input.decodeList<GetRecordsResourceRecordSetResourceRecord>(map['resourceRecords'], (value) => GetRecordsResourceRecordSetResourceRecord.fromMap((value as Map).cast<String, dynamic>())),
+      resourceRecords:
+          pulumi.Input.decodeList<GetRecordsResourceRecordSetResourceRecord>(
+            map['resourceRecords'],
+            (value) => GetRecordsResourceRecordSetResourceRecord.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       setIdentifier: map['setIdentifier'] as String,
       trafficPolicyInstanceId: map['trafficPolicyInstanceId'] as String,
       ttl: map['ttl'] as int,
@@ -113,4 +146,3 @@ class GetRecordsResourceRecordSet {
     );
   }
 }
-

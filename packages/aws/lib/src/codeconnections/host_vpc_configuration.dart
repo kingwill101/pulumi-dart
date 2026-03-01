@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class HostVpcConfiguration {
   /// ID of the security group or security groups associated with the Amazon VPC connected to the infrastructure where your provider type is installed.
   final List<String> securityGroupIds;
+
   /// The ID of the subnet or subnets associated with the Amazon VPC connected to the infrastructure where your provider type is installed.
   final List<String> subnetIds;
+
   /// The value of the Transport Layer Security (TLS) certificate associated with the infrastructure where your provider type is installed.
   final String? tlsCertificate;
+
   /// The ID of the Amazon VPC connected to the infrastructure where your provider type is installed.
   final String vpcId;
 
@@ -36,9 +38,10 @@ class HostVpcConfiguration {
     return HostVpcConfiguration(
       securityGroupIds: (map['securityGroupIds'] as List).cast<String>(),
       subnetIds: (map['subnetIds'] as List).cast<String>(),
-      tlsCertificate: map['tlsCertificate'] == null ? null : map['tlsCertificate'] as String,
+      tlsCertificate: map['tlsCertificate'] == null
+          ? null
+          : map['tlsCertificate'] as String,
       vpcId: map['vpcId'] as String,
     );
   }
 }
-

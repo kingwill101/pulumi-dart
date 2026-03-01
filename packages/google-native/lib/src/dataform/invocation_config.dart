@@ -7,14 +7,19 @@ import 'target.dart';
 class InvocationConfig {
   /// Optional. When set to true, any incremental tables will be fully refreshed.
   final bool? fullyRefreshIncrementalTablesEnabled;
+
   /// Optional. The set of tags to include.
   final List<String>? includedTags;
+
   /// Optional. The set of action identifiers to include.
   final List<Target>? includedTargets;
+
   /// Optional. The service account to run workflow invocations under.
   final String? serviceAccount;
+
   /// Optional. When set to true, transitive dependencies of included actions will be executed.
   final bool? transitiveDependenciesIncluded;
+
   /// Optional. When set to true, transitive dependents of included actions will be executed.
   final bool? transitiveDependentsIncluded;
 
@@ -36,9 +41,15 @@ class InvocationConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fullyRefreshIncrementalTablesEnabled': ?fullyRefreshIncrementalTablesEnabled,
+      'fullyRefreshIncrementalTablesEnabled':
+          ?fullyRefreshIncrementalTablesEnabled,
       'includedTags': ?includedTags,
-      'includedTargets': ?includedTargets == null ? null : pulumi.Input.encodeList<Target, Map<String, dynamic>>(includedTargets!, (value) => value.toMap()),
+      'includedTargets': ?includedTargets == null
+          ? null
+          : pulumi.Input.encodeList<Target, Map<String, dynamic>>(
+              includedTargets!,
+              (value) => value.toMap(),
+            ),
       'serviceAccount': ?serviceAccount,
       'transitiveDependenciesIncluded': ?transitiveDependenciesIncluded,
       'transitiveDependentsIncluded': ?transitiveDependentsIncluded,
@@ -47,13 +58,29 @@ class InvocationConfig {
 
   factory InvocationConfig.fromMap(Map<String, dynamic> map) {
     return InvocationConfig(
-      fullyRefreshIncrementalTablesEnabled: map['fullyRefreshIncrementalTablesEnabled'] == null ? null : map['fullyRefreshIncrementalTablesEnabled'] as bool,
-      includedTags: map['includedTags'] == null ? null : (map['includedTags'] as List).cast<String>(),
-      includedTargets: map['includedTargets'] == null ? null : pulumi.Input.decodeList<Target>(map['includedTargets'], (value) => Target.fromMap((value as Map).cast<String, dynamic>())),
-      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
-      transitiveDependenciesIncluded: map['transitiveDependenciesIncluded'] == null ? null : map['transitiveDependenciesIncluded'] as bool,
-      transitiveDependentsIncluded: map['transitiveDependentsIncluded'] == null ? null : map['transitiveDependentsIncluded'] as bool,
+      fullyRefreshIncrementalTablesEnabled:
+          map['fullyRefreshIncrementalTablesEnabled'] == null
+          ? null
+          : map['fullyRefreshIncrementalTablesEnabled'] as bool,
+      includedTags: map['includedTags'] == null
+          ? null
+          : (map['includedTags'] as List).cast<String>(),
+      includedTargets: map['includedTargets'] == null
+          ? null
+          : pulumi.Input.decodeList<Target>(
+              map['includedTargets'],
+              (value) => Target.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      serviceAccount: map['serviceAccount'] == null
+          ? null
+          : map['serviceAccount'] as String,
+      transitiveDependenciesIncluded:
+          map['transitiveDependenciesIncluded'] == null
+          ? null
+          : map['transitiveDependenciesIncluded'] as bool,
+      transitiveDependentsIncluded: map['transitiveDependentsIncluded'] == null
+          ? null
+          : map['transitiveDependentsIncluded'] as bool,
     );
   }
 }
-

@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FleetEc2InboundPermission {
   /// Starting value for a range of allowed port numbers.
   final int fromPort;
+
   /// Range of allowed IP addresses expressed in CIDR notationE.g., `000.000.000.000/[subnet mask]` or `0.0.0.0/[subnet mask]`.
   final String ipRange;
+
   /// Network communication protocol used by the fleetE.g., `TCP` or `UDP`
   final String protocol;
+
   /// Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than `from_port`.
   final int toPort;
 
@@ -41,4 +43,3 @@ class FleetEc2InboundPermission {
     );
   }
 }
-

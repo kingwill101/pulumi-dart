@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Contains runtime daemon metrics, such as OS and kernels and sessions stats.
 class RuntimeMetricsResponse {
   /// The system metrics.
@@ -8,14 +7,10 @@ class RuntimeMetricsResponse {
 
   /// Creates a new [RuntimeMetricsResponse].
   /// [systemMetrics] The system metrics.
-  RuntimeMetricsResponse({
-    required this.systemMetrics,
-  });
+  RuntimeMetricsResponse({required this.systemMetrics});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'systemMetrics': systemMetrics,
-    };
+    return <String, dynamic>{'systemMetrics': systemMetrics};
   }
 
   factory RuntimeMetricsResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class RuntimeMetricsResponse {
     );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterParameterGroupParameter {
   /// Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
   final String? applyMethod;
+
   /// The name of the neptune parameter.
   final String name;
+
   /// The value of the neptune parameter.
   final String value;
 
@@ -29,10 +30,11 @@ class ClusterParameterGroupParameter {
 
   factory ClusterParameterGroupParameter.fromMap(Map<String, dynamic> map) {
     return ClusterParameterGroupParameter(
-      applyMethod: map['applyMethod'] == null ? null : map['applyMethod'] as String,
+      applyMethod: map['applyMethod'] == null
+          ? null
+          : map['applyMethod'] as String,
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

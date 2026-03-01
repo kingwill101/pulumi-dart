@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Retries the failed job.
 class RetryResponse {
   /// Total number of retries. Retry will skipped if set to 0; The minimum value is 1, and the maximum value is 10.
   final String attempts;
+
   /// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0.
   final String backoffMode;
+
   /// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
   final String wait;
 
@@ -36,4 +37,3 @@ class RetryResponse {
     );
   }
 }
-

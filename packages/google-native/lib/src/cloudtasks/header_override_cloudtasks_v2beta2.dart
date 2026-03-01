@@ -9,9 +9,7 @@ class HeaderOverrideCloudtasksV2beta2 {
 
   /// Creates a new [HeaderOverrideCloudtasksV2beta2].
   /// [header] header embodying a key and a value.
-  HeaderOverrideCloudtasksV2beta2({
-    this.header,
-  });
+  HeaderOverrideCloudtasksV2beta2({this.header});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class HeaderOverrideCloudtasksV2beta2 {
 
   factory HeaderOverrideCloudtasksV2beta2.fromMap(Map<String, dynamic> map) {
     return HeaderOverrideCloudtasksV2beta2(
-      header: map['header'] == null ? null : HeaderCloudtasksV2beta2.fromMap((map['header'] as Map).cast<String, dynamic>()),
+      header: map['header'] == null
+          ? null
+          : HeaderCloudtasksV2beta2.fromMap(
+              (map['header'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

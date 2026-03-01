@@ -6,12 +6,16 @@ import 'diagnostic_response.dart';
 class PollingOptionsResponse {
   /// An array of diagnostics to be collected by Deployment Manager, these diagnostics will be displayed to the user.
   final List<DiagnosticResponse> diagnostics;
+
   /// JsonPath expression that determines if the request failed.
   final String failCondition;
+
   /// JsonPath expression that determines if the request is completed.
   final String finishCondition;
+
   /// JsonPath expression that evaluates to string, it indicates where to poll.
   final String pollingLink;
+
   /// JsonPath expression, after polling is completed, indicates where to fetch the resource.
   final String targetLink;
 
@@ -31,7 +35,11 @@ class PollingOptionsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'diagnostics': pulumi.Input.encodeList<DiagnosticResponse, Map<String, dynamic>>(diagnostics, (value) => value.toMap()),
+      'diagnostics':
+          pulumi.Input.encodeList<DiagnosticResponse, Map<String, dynamic>>(
+            diagnostics,
+            (value) => value.toMap(),
+          ),
       'failCondition': failCondition,
       'finishCondition': finishCondition,
       'pollingLink': pollingLink,
@@ -41,7 +49,11 @@ class PollingOptionsResponse {
 
   factory PollingOptionsResponse.fromMap(Map<String, dynamic> map) {
     return PollingOptionsResponse(
-      diagnostics: pulumi.Input.decodeList<DiagnosticResponse>(map['diagnostics'], (value) => DiagnosticResponse.fromMap((value as Map).cast<String, dynamic>())),
+      diagnostics: pulumi.Input.decodeList<DiagnosticResponse>(
+        map['diagnostics'],
+        (value) =>
+            DiagnosticResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       failCondition: map['failCondition'] as String,
       finishCondition: map['finishCondition'] as String,
       pollingLink: map['pollingLink'] as String,
@@ -49,4 +61,3 @@ class PollingOptionsResponse {
     );
   }
 }
-

@@ -16,9 +16,10 @@ class GetAuthorizedOrgsDescArgs {
   GetAuthorizedOrgsDescArgs({
     required String accessPolicyId,
     required String authorizedOrgsDescId,
-  }) :
-      accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
-      authorizedOrgsDescId = pulumi.Input.asInput<String>(authorizedOrgsDescId);
+  }) : accessPolicyId = pulumi.Input.asInput<String>(accessPolicyId),
+       authorizedOrgsDescId = pulumi.Input.asInput<String>(
+         authorizedOrgsDescId,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +35,3 @@ class GetAuthorizedOrgsDescArgs {
     );
   }
 }
-

@@ -10,28 +10,40 @@ import 'source_config_response.dart';
 class GetStreamResult {
   /// Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
   final BackfillAllStrategyResponse backfillAll;
+
   /// Do not automatically backfill any objects.
   final Map<String, dynamic> backfillNone;
+
   /// The creation time of the stream.
   final String createTime;
+
   /// Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
   final String customerManagedEncryptionKey;
+
   /// Destination connection profile configuration.
   final DestinationConfigResponse destinationConfig;
+
   /// Display name.
   final String displayName;
+
   /// Errors on the Stream.
   final List<ErrorResponse> errors;
+
   /// Labels.
   final Map<String, String> labels;
+
   /// If the stream was recovered, the time of the last recovery. Note: This field is currently experimental.
   final String lastRecoveryTime;
+
   /// The stream's name.
   final String name;
+
   /// Source connection profile configuration.
   final SourceConfigResponse sourceConfig;
+
   /// The state of the stream.
   final String state;
+
   /// The last update time of the stream.
   final String updateTime;
 
@@ -73,7 +85,10 @@ class GetStreamResult {
       'customerManagedEncryptionKey': customerManagedEncryptionKey,
       'destinationConfig': destinationConfig.toMap(),
       'displayName': displayName,
-      'errors': pulumi.Input.encodeList<ErrorResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors': pulumi.Input.encodeList<ErrorResponse, Map<String, dynamic>>(
+        errors,
+        (value) => value.toMap(),
+      ),
       'labels': labels,
       'lastRecoveryTime': lastRecoveryTime,
       'name': name,
@@ -85,20 +100,30 @@ class GetStreamResult {
 
   factory GetStreamResult.fromMap(Map<String, dynamic> map) {
     return GetStreamResult(
-      backfillAll: BackfillAllStrategyResponse.fromMap((map['backfillAll'] as Map).cast<String, dynamic>()),
+      backfillAll: BackfillAllStrategyResponse.fromMap(
+        (map['backfillAll'] as Map).cast<String, dynamic>(),
+      ),
       backfillNone: (map['backfillNone'] as Map).cast<String, dynamic>(),
       createTime: map['createTime'] as String,
-      customerManagedEncryptionKey: map['customerManagedEncryptionKey'] as String,
-      destinationConfig: DestinationConfigResponse.fromMap((map['destinationConfig'] as Map).cast<String, dynamic>()),
+      customerManagedEncryptionKey:
+          map['customerManagedEncryptionKey'] as String,
+      destinationConfig: DestinationConfigResponse.fromMap(
+        (map['destinationConfig'] as Map).cast<String, dynamic>(),
+      ),
       displayName: map['displayName'] as String,
-      errors: pulumi.Input.decodeList<ErrorResponse>(map['errors'], (value) => ErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
+      errors: pulumi.Input.decodeList<ErrorResponse>(
+        map['errors'],
+        (value) =>
+            ErrorResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
       lastRecoveryTime: map['lastRecoveryTime'] as String,
       name: map['name'] as String,
-      sourceConfig: SourceConfigResponse.fromMap((map['sourceConfig'] as Map).cast<String, dynamic>()),
+      sourceConfig: SourceConfigResponse.fromMap(
+        (map['sourceConfig'] as Map).cast<String, dynamic>(),
+      ),
       state: map['state'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

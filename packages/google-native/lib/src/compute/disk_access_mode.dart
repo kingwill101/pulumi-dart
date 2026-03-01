@@ -16,4 +16,3 @@ enum DiskAccessMode {
     throw ArgumentError('Unknown DiskAccessMode value: $value');
   }
 }
-

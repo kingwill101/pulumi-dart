@@ -8,20 +8,31 @@ class GetResponseHeadersPolicyCustomHeadersConfig {
 
   /// Creates a new [GetResponseHeadersPolicyCustomHeadersConfig].
   /// [items] Required.
-  GetResponseHeadersPolicyCustomHeadersConfig({
-    required this.items,
-  });
+  GetResponseHeadersPolicyCustomHeadersConfig({required this.items});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': pulumi.Input.encodeList<GetResponseHeadersPolicyCustomHeadersConfigItem, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'items':
+          pulumi.Input.encodeList<
+            GetResponseHeadersPolicyCustomHeadersConfigItem,
+            Map<String, dynamic>
+          >(items, (value) => value.toMap()),
     };
   }
 
-  factory GetResponseHeadersPolicyCustomHeadersConfig.fromMap(Map<String, dynamic> map) {
+  factory GetResponseHeadersPolicyCustomHeadersConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResponseHeadersPolicyCustomHeadersConfig(
-      items: pulumi.Input.decodeList<GetResponseHeadersPolicyCustomHeadersConfigItem>(map['items'], (value) => GetResponseHeadersPolicyCustomHeadersConfigItem.fromMap((value as Map).cast<String, dynamic>())),
+      items:
+          pulumi.Input.decodeList<
+            GetResponseHeadersPolicyCustomHeadersConfigItem
+          >(
+            map['items'],
+            (value) => GetResponseHeadersPolicyCustomHeadersConfigItem.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

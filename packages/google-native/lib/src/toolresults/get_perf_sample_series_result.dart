@@ -6,14 +6,19 @@ import 'basic_perf_sample_series_response.dart';
 class GetPerfSampleSeriesResult {
   /// Basic series represented by a line chart
   final BasicPerfSampleSeriesResponse basicPerfSampleSeries;
+
   /// A tool results execution ID.
   final String executionId;
+
   /// A tool results history ID.
   final String historyId;
+
   /// The cloud project
   final String project;
+
   /// A sample series id
   final String sampleSeriesId;
+
   /// A tool results step ID.
   final String stepId;
 
@@ -46,7 +51,9 @@ class GetPerfSampleSeriesResult {
 
   factory GetPerfSampleSeriesResult.fromMap(Map<String, dynamic> map) {
     return GetPerfSampleSeriesResult(
-      basicPerfSampleSeries: BasicPerfSampleSeriesResponse.fromMap((map['basicPerfSampleSeries'] as Map).cast<String, dynamic>()),
+      basicPerfSampleSeries: BasicPerfSampleSeriesResponse.fromMap(
+        (map['basicPerfSampleSeries'] as Map).cast<String, dynamic>(),
+      ),
       executionId: map['executionId'] as String,
       historyId: map['historyId'] as String,
       project: map['project'] as String,
@@ -55,4 +62,3 @@ class GetPerfSampleSeriesResult {
     );
   }
 }
-

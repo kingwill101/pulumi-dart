@@ -16,9 +16,8 @@ class GetUptimeCheckConfigArgs {
   GetUptimeCheckConfigArgs({
     String? project,
     required String uptimeCheckConfigId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      uptimeCheckConfigId = pulumi.Input.asInput<String>(uptimeCheckConfigId);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       uptimeCheckConfigId = pulumi.Input.asInput<String>(uptimeCheckConfigId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetUptimeCheckConfigArgs {
     );
   }
 }
-

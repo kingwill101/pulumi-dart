@@ -11,6 +11,7 @@ class ProjectInfoArgs {
   /// any. Set to empty string to disable billing for the project.
   /// For example, `"012345-567890-ABCDEF"` or `""`.
   final pulumi.Input<String> billingAccount;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -18,11 +19,8 @@ class ProjectInfoArgs {
   /// Creates a new [ProjectInfoArgs].
   /// [billingAccount] The ID of the billing account associated with the project, if
   /// [project] The ID of the project in which the resource belongs.
-  ProjectInfoArgs({
-    required String billingAccount,
-    String? project,
-  }) :
-      billingAccount = pulumi.Input.asInput<String>(billingAccount),
+  ProjectInfoArgs({required String billingAccount, String? project})
+    : billingAccount = pulumi.Input.asInput<String>(billingAccount),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -39,4 +37,3 @@ class ProjectInfoArgs {
     );
   }
 }
-

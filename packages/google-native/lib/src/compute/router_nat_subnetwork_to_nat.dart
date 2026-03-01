@@ -7,10 +7,13 @@ import 'router_nat_subnetwork_to_nat_source_ip_ranges_to_nat_item.dart';
 class RouterNatSubnetworkToNat {
   /// URL for the subnetwork resource that will use NAT.
   final String? name;
+
   /// A list of the secondary ranges of the Subnetwork that are allowed to use NAT. This can be populated only if "LIST_OF_SECONDARY_IP_RANGES" is one of the values in source_ip_ranges_to_nat.
   final List<String>? secondaryIpRangeNames;
+
   /// Specify the options for NAT ranges in the Subnetwork. All options of a single value are valid except NAT_IP_RANGE_OPTION_UNSPECIFIED. The only valid option with multiple values is: ["PRIMARY_IP_RANGE", "LIST_OF_SECONDARY_IP_RANGES"] Default: [ALL_IP_RANGES]
-  final List<RouterNatSubnetworkToNatSourceIpRangesToNatItem>? sourceIpRangesToNat;
+  final List<RouterNatSubnetworkToNatSourceIpRangesToNatItem>?
+  sourceIpRangesToNat;
 
   /// Creates a new [RouterNatSubnetworkToNat].
   /// [name] URL for the subnetwork resource that will use NAT.
@@ -26,16 +29,32 @@ class RouterNatSubnetworkToNat {
     return <String, dynamic>{
       'name': ?name,
       'secondaryIpRangeNames': ?secondaryIpRangeNames,
-      'sourceIpRangesToNat': ?sourceIpRangesToNat == null ? null : pulumi.Input.encodeList<RouterNatSubnetworkToNatSourceIpRangesToNatItem, String>(sourceIpRangesToNat!, (value) => value.value),
+      'sourceIpRangesToNat': ?sourceIpRangesToNat == null
+          ? null
+          : pulumi.Input.encodeList<
+              RouterNatSubnetworkToNatSourceIpRangesToNatItem,
+              String
+            >(sourceIpRangesToNat!, (value) => value.value),
     };
   }
 
   factory RouterNatSubnetworkToNat.fromMap(Map<String, dynamic> map) {
     return RouterNatSubnetworkToNat(
       name: map['name'] == null ? null : map['name'] as String,
-      secondaryIpRangeNames: map['secondaryIpRangeNames'] == null ? null : (map['secondaryIpRangeNames'] as List).cast<String>(),
-      sourceIpRangesToNat: map['sourceIpRangesToNat'] == null ? null : pulumi.Input.decodeList<RouterNatSubnetworkToNatSourceIpRangesToNatItem>(map['sourceIpRangesToNat'], (value) => RouterNatSubnetworkToNatSourceIpRangesToNatItem.fromValue(value as String)),
+      secondaryIpRangeNames: map['secondaryIpRangeNames'] == null
+          ? null
+          : (map['secondaryIpRangeNames'] as List).cast<String>(),
+      sourceIpRangesToNat: map['sourceIpRangesToNat'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              RouterNatSubnetworkToNatSourceIpRangesToNatItem
+            >(
+              map['sourceIpRangesToNat'],
+              (value) =>
+                  RouterNatSubnetworkToNatSourceIpRangesToNatItem.fromValue(
+                    value as String,
+                  ),
+            ),
     );
   }
 }
-

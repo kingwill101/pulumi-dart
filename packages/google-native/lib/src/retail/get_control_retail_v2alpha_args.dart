@@ -22,11 +22,10 @@ class GetControlRetailV2alphaArgs {
     required String controlId,
     required String location,
     String? project,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      controlId = pulumi.Input.asInput<String>(controlId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : catalogId = pulumi.Input.asInput<String>(catalogId),
+       controlId = pulumi.Input.asInput<String>(controlId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetControlRetailV2alphaArgs {
     );
   }
 }
-

@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRepositoryCleanupPolicyCondition {
   /// Match versions newer than a duration.
   final String newerThan;
+
   /// Match versions older than a duration.
   final String olderThan;
+
   /// Match versions by package prefix. Applied on any prefix match.
   final List<String> packageNamePrefixes;
+
   /// Match versions by tag prefix. Applied on any prefix match.
   final List<String> tagPrefixes;
+
   /// Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
   final String tagState;
+
   /// Match versions by version name prefix. Applied on any prefix match.
   final List<String> versionNamePrefixes;
 
@@ -42,7 +46,9 @@ class GetRepositoryCleanupPolicyCondition {
     };
   }
 
-  factory GetRepositoryCleanupPolicyCondition.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryCleanupPolicyCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryCleanupPolicyCondition(
       newerThan: map['newerThan'] as String,
       olderThan: map['olderThan'] as String,
@@ -53,4 +59,3 @@ class GetRepositoryCleanupPolicyCondition {
     );
   }
 }
-

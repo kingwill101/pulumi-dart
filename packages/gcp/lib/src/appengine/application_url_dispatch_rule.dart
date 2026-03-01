@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ApplicationUrlDispatchRule {
   final String? domain;
   final String? path;
@@ -10,11 +9,7 @@ class ApplicationUrlDispatchRule {
   /// [domain] Optional.
   /// [path] Optional.
   /// [service] Optional.
-  ApplicationUrlDispatchRule({
-    this.domain,
-    this.path,
-    this.service,
-  });
+  ApplicationUrlDispatchRule({this.domain, this.path, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,4 +27,3 @@ class ApplicationUrlDispatchRule {
     );
   }
 }
-

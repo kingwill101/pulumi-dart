@@ -1,45 +1,52 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CertificateConfigX509ConfigNameConstraints {
   /// Indicates whether or not the name constraints are marked critical.
   final bool critical;
+
   /// Contains excluded DNS names. Any DNS name that can be
   /// constructed by simply adding zero or more labels to
   /// the left-hand side of the name satisfies the name constraint.
   /// For example, `example.com`, `www.example.com`, `www.sub.example.com`
   /// would satisfy `example.com` while `example1.com` does not.
   final List<String>? excludedDnsNames;
+
   /// Contains the excluded email addresses. The value can be a particular
   /// email address, a hostname to indicate all email addresses on that host or
   /// a domain with a leading period (e.g. `.example.com`) to indicate
   /// all email addresses in that domain.
   final List<String>? excludedEmailAddresses;
+
   /// Contains the excluded IP ranges. For IPv4 addresses, the ranges
   /// are expressed using CIDR notation as specified in RFC 4632.
   /// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
   /// addresses.
   final List<String>? excludedIpRanges;
+
   /// Contains the excluded URIs that apply to the host part of the name.
   /// The value can be a hostname or a domain with a
   /// leading period (like `.example.com`)
   final List<String>? excludedUris;
+
   /// Contains permitted DNS names. Any DNS name that can be
   /// constructed by simply adding zero or more labels to
   /// the left-hand side of the name satisfies the name constraint.
   /// For example, `example.com`, `www.example.com`, `www.sub.example.com`
   /// would satisfy `example.com` while `example1.com` does not.
   final List<String>? permittedDnsNames;
+
   /// Contains the permitted email addresses. The value can be a particular
   /// email address, a hostname to indicate all email addresses on that host or
   /// a domain with a leading period (e.g. `.example.com`) to indicate
   /// all email addresses in that domain.
   final List<String>? permittedEmailAddresses;
+
   /// Contains the permitted IP ranges. For IPv4 addresses, the ranges
   /// are expressed using CIDR notation as specified in RFC 4632.
   /// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
   /// addresses.
   final List<String>? permittedIpRanges;
+
   /// Contains the permitted URIs that apply to the host part of the name.
   /// The value can be a hostname or a domain with a
   /// leading period (like `.example.com`)
@@ -81,18 +88,35 @@ class CertificateConfigX509ConfigNameConstraints {
     };
   }
 
-  factory CertificateConfigX509ConfigNameConstraints.fromMap(Map<String, dynamic> map) {
+  factory CertificateConfigX509ConfigNameConstraints.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateConfigX509ConfigNameConstraints(
       critical: map['critical'] as bool,
-      excludedDnsNames: map['excludedDnsNames'] == null ? null : (map['excludedDnsNames'] as List).cast<String>(),
-      excludedEmailAddresses: map['excludedEmailAddresses'] == null ? null : (map['excludedEmailAddresses'] as List).cast<String>(),
-      excludedIpRanges: map['excludedIpRanges'] == null ? null : (map['excludedIpRanges'] as List).cast<String>(),
-      excludedUris: map['excludedUris'] == null ? null : (map['excludedUris'] as List).cast<String>(),
-      permittedDnsNames: map['permittedDnsNames'] == null ? null : (map['permittedDnsNames'] as List).cast<String>(),
-      permittedEmailAddresses: map['permittedEmailAddresses'] == null ? null : (map['permittedEmailAddresses'] as List).cast<String>(),
-      permittedIpRanges: map['permittedIpRanges'] == null ? null : (map['permittedIpRanges'] as List).cast<String>(),
-      permittedUris: map['permittedUris'] == null ? null : (map['permittedUris'] as List).cast<String>(),
+      excludedDnsNames: map['excludedDnsNames'] == null
+          ? null
+          : (map['excludedDnsNames'] as List).cast<String>(),
+      excludedEmailAddresses: map['excludedEmailAddresses'] == null
+          ? null
+          : (map['excludedEmailAddresses'] as List).cast<String>(),
+      excludedIpRanges: map['excludedIpRanges'] == null
+          ? null
+          : (map['excludedIpRanges'] as List).cast<String>(),
+      excludedUris: map['excludedUris'] == null
+          ? null
+          : (map['excludedUris'] as List).cast<String>(),
+      permittedDnsNames: map['permittedDnsNames'] == null
+          ? null
+          : (map['permittedDnsNames'] as List).cast<String>(),
+      permittedEmailAddresses: map['permittedEmailAddresses'] == null
+          ? null
+          : (map['permittedEmailAddresses'] as List).cast<String>(),
+      permittedIpRanges: map['permittedIpRanges'] == null
+          ? null
+          : (map['permittedIpRanges'] as List).cast<String>(),
+      permittedUris: map['permittedUris'] == null
+          ? null
+          : (map['permittedUris'] as List).cast<String>(),
     );
   }
 }
-

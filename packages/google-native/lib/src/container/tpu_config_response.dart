@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for Cloud TPU.
 class TpuConfigResponse {
   /// Whether Cloud TPU integration is enabled or not.
   final bool enabled;
+
   /// IPv4 CIDR block reserved for Cloud TPU in the VPC.
   final String ipv4CidrBlock;
+
   /// Whether to use service networking for Cloud TPU or not.
   final bool useServiceNetworking;
 
@@ -36,4 +37,3 @@ class TpuConfigResponse {
     );
   }
 }
-

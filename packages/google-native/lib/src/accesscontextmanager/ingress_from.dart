@@ -8,8 +8,10 @@ import 'ingress_source.dart';
 class IngressFrom {
   /// A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
   final List<String>? identities;
+
   /// Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
   final IngressFromIdentityType? identityType;
+
   /// Sources that this IngressPolicy authorizes access from.
   final List<IngressSource>? sources;
 
@@ -17,26 +19,36 @@ class IngressFrom {
   /// [identities] A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
   /// [identityType] Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
   /// [sources] Sources that this IngressPolicy authorizes access from.
-  IngressFrom({
-    this.identities,
-    this.identityType,
-    this.sources,
-  });
+  IngressFrom({this.identities, this.identityType, this.sources});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'identities': ?identities,
       'identityType': ?identityType == null ? null : identityType!.value,
-      'sources': ?sources == null ? null : pulumi.Input.encodeList<IngressSource, Map<String, dynamic>>(sources!, (value) => value.toMap()),
+      'sources': ?sources == null
+          ? null
+          : pulumi.Input.encodeList<IngressSource, Map<String, dynamic>>(
+              sources!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory IngressFrom.fromMap(Map<String, dynamic> map) {
     return IngressFrom(
-      identities: map['identities'] == null ? null : (map['identities'] as List).cast<String>(),
-      identityType: map['identityType'] == null ? null : IngressFromIdentityType.fromValue(map['identityType'] as String),
-      sources: map['sources'] == null ? null : pulumi.Input.decodeList<IngressSource>(map['sources'], (value) => IngressSource.fromMap((value as Map).cast<String, dynamic>())),
+      identities: map['identities'] == null
+          ? null
+          : (map['identities'] as List).cast<String>(),
+      identityType: map['identityType'] == null
+          ? null
+          : IngressFromIdentityType.fromValue(map['identityType'] as String),
+      sources: map['sources'] == null
+          ? null
+          : pulumi.Input.decodeList<IngressSource>(
+              map['sources'],
+              (value) =>
+                  IngressSource.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

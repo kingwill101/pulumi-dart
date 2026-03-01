@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterPscServiceAttachment {
   /// Type of a PSC connection targeting this service attachment.
   final String connectionType;
+
   /// Service attachment URI which your self-created PscConnection should use as
   final String serviceAttachment;
 
@@ -29,4 +29,3 @@ class GetClusterPscServiceAttachment {
     );
   }
 }
-

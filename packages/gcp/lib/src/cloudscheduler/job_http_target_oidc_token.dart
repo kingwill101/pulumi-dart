@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class JobHttpTargetOidcToken {
   /// Audience to be used when generating OIDC token. If not specified,
   /// the URI specified in target will be used.
   final String? audience;
+
   /// Service account email to be used for generating OAuth token.
   /// The service account must be within the same project as the job.
   final String serviceAccountEmail;
@@ -12,10 +12,7 @@ class JobHttpTargetOidcToken {
   /// Creates a new [JobHttpTargetOidcToken].
   /// [audience] Audience to be used when generating OIDC token. If not specified,
   /// [serviceAccountEmail] Service account email to be used for generating OAuth token.
-  JobHttpTargetOidcToken({
-    this.audience,
-    required this.serviceAccountEmail,
-  });
+  JobHttpTargetOidcToken({this.audience, required this.serviceAccountEmail});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,4 +28,3 @@ class JobHttpTargetOidcToken {
     );
   }
 }
-

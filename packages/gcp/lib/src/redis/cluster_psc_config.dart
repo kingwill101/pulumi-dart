@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterPscConfig {
   /// Required. The consumer network where the network address of
   /// the discovery endpoint will be reserved, in the form of
@@ -9,20 +8,13 @@ class ClusterPscConfig {
 
   /// Creates a new [ClusterPscConfig].
   /// [network] Required. The consumer network where the network address of
-  ClusterPscConfig({
-    required this.network,
-  });
+  ClusterPscConfig({required this.network});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'network': network,
-    };
+    return <String, dynamic>{'network': network};
   }
 
   factory ClusterPscConfig.fromMap(Map<String, dynamic> map) {
-    return ClusterPscConfig(
-      network: map['network'] as String,
-    );
+    return ClusterPscConfig(network: map['network'] as String);
   }
 }
-

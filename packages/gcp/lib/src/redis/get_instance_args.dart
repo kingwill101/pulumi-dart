@@ -11,9 +11,11 @@ class GetInstanceArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region in which the resource belongs. If it
   /// is not provided, the provider region is used.
   final pulumi.Input<String>? region;
@@ -22,12 +24,8 @@ class GetInstanceArgs {
   /// [name] The name of a Redis instance.
   /// [project] The project in which the resource belongs. If it
   /// [region] The region in which the resource belongs. If it
-  GetInstanceArgs({
-    required String name,
-    String? project,
-    String? region,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
+  GetInstanceArgs({required String name, String? project, String? region})
+    : name = pulumi.Input.asInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
@@ -47,4 +45,3 @@ class GetInstanceArgs {
     );
   }
 }
-

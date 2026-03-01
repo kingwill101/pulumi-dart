@@ -7,16 +7,23 @@ import 'user_credential_response.dart';
 class GoogleDevtoolsCloudbuildV2GitLabConfigResponse {
   /// A GitLab personal access token with the `api` scope access.
   final UserCredentialResponse authorizerCredential;
+
   /// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
   final String hostUri;
+
   /// A GitLab personal access token with the minimum `read_api` scope access.
   final UserCredentialResponse readAuthorizerCredential;
+
   /// Version of the GitLab Enterprise server running on the `host_uri`.
   final String serverVersion;
+
   /// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
-  final GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse serviceDirectoryConfig;
+  final GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse
+  serviceDirectoryConfig;
+
   /// SSL certificate to use for requests to GitLab Enterprise.
   final String sslCa;
+
   /// Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
   final String webhookSecretSecretVersion;
 
@@ -50,16 +57,24 @@ class GoogleDevtoolsCloudbuildV2GitLabConfigResponse {
     };
   }
 
-  factory GoogleDevtoolsCloudbuildV2GitLabConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleDevtoolsCloudbuildV2GitLabConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDevtoolsCloudbuildV2GitLabConfigResponse(
-      authorizerCredential: UserCredentialResponse.fromMap((map['authorizerCredential'] as Map).cast<String, dynamic>()),
+      authorizerCredential: UserCredentialResponse.fromMap(
+        (map['authorizerCredential'] as Map).cast<String, dynamic>(),
+      ),
       hostUri: map['hostUri'] as String,
-      readAuthorizerCredential: UserCredentialResponse.fromMap((map['readAuthorizerCredential'] as Map).cast<String, dynamic>()),
+      readAuthorizerCredential: UserCredentialResponse.fromMap(
+        (map['readAuthorizerCredential'] as Map).cast<String, dynamic>(),
+      ),
       serverVersion: map['serverVersion'] as String,
-      serviceDirectoryConfig: GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse.fromMap((map['serviceDirectoryConfig'] as Map).cast<String, dynamic>()),
+      serviceDirectoryConfig:
+          GoogleDevtoolsCloudbuildV2ServiceDirectoryConfigResponse.fromMap(
+            (map['serviceDirectoryConfig'] as Map).cast<String, dynamic>(),
+          ),
       sslCa: map['sslCa'] as String,
       webhookSecretSecretVersion: map['webhookSecretSecretVersion'] as String,
     );
   }
 }
-

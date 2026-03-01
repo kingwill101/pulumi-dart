@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
 class ManagedPrometheusConfig {
   /// Enable Managed Collection.
@@ -8,14 +7,10 @@ class ManagedPrometheusConfig {
 
   /// Creates a new [ManagedPrometheusConfig].
   /// [enabled] Enable Managed Collection.
-  ManagedPrometheusConfig({
-    this.enabled,
-  });
+  ManagedPrometheusConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ManagedPrometheusConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ManagedPrometheusConfig {
     );
   }
 }
-

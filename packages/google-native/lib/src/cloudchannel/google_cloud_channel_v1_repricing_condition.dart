@@ -9,20 +9,25 @@ class GoogleCloudChannelV1RepricingCondition {
 
   /// Creates a new [GoogleCloudChannelV1RepricingCondition].
   /// [skuGroupCondition] SKU Group condition for override.
-  GoogleCloudChannelV1RepricingCondition({
-    this.skuGroupCondition,
-  });
+  GoogleCloudChannelV1RepricingCondition({this.skuGroupCondition});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'skuGroupCondition': ?skuGroupCondition == null ? null : skuGroupCondition!.toMap(),
+      'skuGroupCondition': ?skuGroupCondition == null
+          ? null
+          : skuGroupCondition!.toMap(),
     };
   }
 
-  factory GoogleCloudChannelV1RepricingCondition.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1RepricingCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1RepricingCondition(
-      skuGroupCondition: map['skuGroupCondition'] == null ? null : GoogleCloudChannelV1SkuGroupCondition.fromMap((map['skuGroupCondition'] as Map).cast<String, dynamic>()),
+      skuGroupCondition: map['skuGroupCondition'] == null
+          ? null
+          : GoogleCloudChannelV1SkuGroupCondition.fromMap(
+              (map['skuGroupCondition'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

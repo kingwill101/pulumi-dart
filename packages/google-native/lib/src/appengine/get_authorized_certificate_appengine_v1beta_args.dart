@@ -19,10 +19,11 @@ class GetAuthorizedCertificateAppengineV1betaArgs {
     required String appId,
     required String authorizedCertificateId,
     String? view,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      authorizedCertificateId = pulumi.Input.asInput<String>(authorizedCertificateId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : appId = pulumi.Input.asInput<String>(appId),
+       authorizedCertificateId = pulumi.Input.asInput<String>(
+         authorizedCertificateId,
+       ),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +33,9 @@ class GetAuthorizedCertificateAppengineV1betaArgs {
     };
   }
 
-  factory GetAuthorizedCertificateAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorizedCertificateAppengineV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorizedCertificateAppengineV1betaArgs(
       appId: map['appId'] as String,
       authorizedCertificateId: map['authorizedCertificateId'] as String,
@@ -40,4 +43,3 @@ class GetAuthorizedCertificateAppengineV1betaArgs {
     );
   }
 }
-

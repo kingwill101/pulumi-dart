@@ -7,8 +7,10 @@ import 'get_tags_filter_and_tags.dart';
 class GetTagsFilterAnd {
   /// Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
   final GetTagsFilterAndCostCategory? costCategory;
+
   /// Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
   final GetTagsFilterAndDimension? dimension;
+
   /// Tags that match your request.
   final GetTagsFilterAndTags? tags;
 
@@ -16,11 +18,7 @@ class GetTagsFilterAnd {
   /// [costCategory] Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
   /// [dimension] Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
   /// [tags] Tags that match your request.
-  GetTagsFilterAnd({
-    this.costCategory,
-    this.dimension,
-    this.tags,
-  });
+  GetTagsFilterAnd({this.costCategory, this.dimension, this.tags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,21 @@ class GetTagsFilterAnd {
 
   factory GetTagsFilterAnd.fromMap(Map<String, dynamic> map) {
     return GetTagsFilterAnd(
-      costCategory: map['costCategory'] == null ? null : GetTagsFilterAndCostCategory.fromMap((map['costCategory'] as Map).cast<String, dynamic>()),
-      dimension: map['dimension'] == null ? null : GetTagsFilterAndDimension.fromMap((map['dimension'] as Map).cast<String, dynamic>()),
-      tags: map['tags'] == null ? null : GetTagsFilterAndTags.fromMap((map['tags'] as Map).cast<String, dynamic>()),
+      costCategory: map['costCategory'] == null
+          ? null
+          : GetTagsFilterAndCostCategory.fromMap(
+              (map['costCategory'] as Map).cast<String, dynamic>(),
+            ),
+      dimension: map['dimension'] == null
+          ? null
+          : GetTagsFilterAndDimension.fromMap(
+              (map['dimension'] as Map).cast<String, dynamic>(),
+            ),
+      tags: map['tags'] == null
+          ? null
+          : GetTagsFilterAndTags.fromMap(
+              (map['tags'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

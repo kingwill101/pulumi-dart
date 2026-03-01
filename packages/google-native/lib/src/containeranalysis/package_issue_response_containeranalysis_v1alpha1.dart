@@ -6,10 +6,13 @@ import 'vulnerability_location_response.dart';
 class PackageIssueResponseContaineranalysisV1alpha1 {
   /// The location of the vulnerability.
   final VulnerabilityLocationResponse affectedLocation;
+
   /// The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when distro or language system has not yet assigned a severity for this vulnerability.
   final String effectiveSeverity;
+
   /// The location of the available fix for vulnerability.
   final VulnerabilityLocationResponse fixedLocation;
+
   /// The type of package (e.g. OS, MAVEN, GO).
   final String packageType;
   final String severityName;
@@ -38,14 +41,19 @@ class PackageIssueResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory PackageIssueResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory PackageIssueResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PackageIssueResponseContaineranalysisV1alpha1(
-      affectedLocation: VulnerabilityLocationResponse.fromMap((map['affectedLocation'] as Map).cast<String, dynamic>()),
+      affectedLocation: VulnerabilityLocationResponse.fromMap(
+        (map['affectedLocation'] as Map).cast<String, dynamic>(),
+      ),
       effectiveSeverity: map['effectiveSeverity'] as String,
-      fixedLocation: VulnerabilityLocationResponse.fromMap((map['fixedLocation'] as Map).cast<String, dynamic>()),
+      fixedLocation: VulnerabilityLocationResponse.fromMap(
+        (map['fixedLocation'] as Map).cast<String, dynamic>(),
+      ),
       packageType: map['packageType'] as String,
       severityName: map['severityName'] as String,
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetDocumentSchemaArgs {
     required String documentSchemaId,
     required String location,
     String? project,
-  }) :
-      documentSchemaId = pulumi.Input.asInput<String>(documentSchemaId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : documentSchemaId = pulumi.Input.asInput<String>(documentSchemaId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetDocumentSchemaArgs {
     );
   }
 }
-

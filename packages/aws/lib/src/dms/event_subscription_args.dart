@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventSubscriptionArgs {
   /// Whether the event subscription should be enabled.
   final pulumi.Input<bool>? enabled;
+
   /// List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
   final pulumi.Input<List<String>> eventCategories;
+
   /// Name of event subscription.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// SNS topic arn to send events on.
   final pulumi.Input<String> snsTopicArn;
+
   /// Ids of sources to listen to. If you don't specify a value, notifications are provided for all sources.
   final pulumi.Input<List<String>>? sourceIds;
+
   /// Type of source for events. Valid values: `replication-instance` or `replication-task`
   final pulumi.Input<String> sourceType;
+
   /// Map of resource tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,15 +49,14 @@ class EventSubscriptionArgs {
     List<String>? sourceIds,
     required String sourceType,
     Map<String, String>? tags,
-  }) :
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      eventCategories = pulumi.Input.asInput<List<String>>(eventCategories),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snsTopicArn = pulumi.Input.asInput<String>(snsTopicArn),
-      sourceIds = pulumi.Input.asOptionalInput<List<String>>(sourceIds),
-      sourceType = pulumi.Input.asInput<String>(sourceType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+       eventCategories = pulumi.Input.asInput<List<String>>(eventCategories),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       snsTopicArn = pulumi.Input.asInput<String>(snsTopicArn),
+       sourceIds = pulumi.Input.asOptionalInput<List<String>>(sourceIds),
+       sourceType = pulumi.Input.asInput<String>(sourceType),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,10 +78,13 @@ class EventSubscriptionArgs {
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       snsTopicArn: map['snsTopicArn'] as String,
-      sourceIds: map['sourceIds'] == null ? null : (map['sourceIds'] as List).cast<String>(),
+      sourceIds: map['sourceIds'] == null
+          ? null
+          : (map['sourceIds'] as List).cast<String>(),
       sourceType: map['sourceType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

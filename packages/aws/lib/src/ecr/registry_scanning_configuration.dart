@@ -353,10 +353,13 @@ import 'registry_scanning_configuration_rule.dart';
 class RegistryScanningConfiguration extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The registry ID the scanning configuration applies to.
   late final pulumi.Output<String> registryId;
+
   /// One or multiple blocks specifying scanning rules to determine which repository filters are used and at what frequency scanning will occur. See below for schema.
   late final pulumi.Output<List<RegistryScanningConfigurationRule>?> rules;
+
   /// the scanning type to set for the registry. Can be either `ENHANCED` or `BASIC`.
   late final pulumi.Output<String> scanType;
 
@@ -369,14 +372,16 @@ class RegistryScanningConfiguration extends pulumi.CustomResource {
     RegistryScanningConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ecr/registryScanningConfiguration:RegistryScanningConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ecr/registryScanningConfiguration:RegistryScanningConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.region = registerOutput<String>('region');
     this.registryId = registerOutput<String>('registryId');
-    this.rules = registerOutput<List<RegistryScanningConfigurationRule>?>('rules');
+    this.rules = registerOutput<List<RegistryScanningConfigurationRule>?>(
+      'rules',
+    );
     this.scanType = registerOutput<String>('scanType');
   }
 }

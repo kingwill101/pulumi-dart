@@ -17,7 +17,8 @@ enum OsConstraintOsTypeAccesscontextmanagerV1beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown OsConstraintOsTypeAccesscontextmanagerV1beta value: $value');
+    throw ArgumentError(
+      'Unknown OsConstraintOsTypeAccesscontextmanagerV1beta value: $value',
+    );
   }
 }
-

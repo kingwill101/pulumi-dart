@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ReplicationGroupLogDeliveryConfiguration {
   /// Name of either the CloudWatch Logs LogGroup or Kinesis Data Firehose resource.
   final String destination;
+
   /// For CloudWatch Logs use `cloudwatch-logs` or for Kinesis Data Firehose use `kinesis-firehose`.
   final String destinationType;
+
   /// Valid values are `json` or `text`
   final String logFormat;
+
   /// Valid values are  `slow-log` or `engine-log`. Max 1 of each.
   final String logType;
 
@@ -32,7 +34,9 @@ class ReplicationGroupLogDeliveryConfiguration {
     };
   }
 
-  factory ReplicationGroupLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ReplicationGroupLogDeliveryConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicationGroupLogDeliveryConfiguration(
       destination: map['destination'] as String,
       destinationType: map['destinationType'] as String,
@@ -41,4 +45,3 @@ class ReplicationGroupLogDeliveryConfiguration {
     );
   }
 }
-

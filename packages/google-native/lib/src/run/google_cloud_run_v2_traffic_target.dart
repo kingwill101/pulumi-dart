@@ -6,10 +6,13 @@ import 'google_cloud_run_v2_traffic_target_type.dart';
 class GoogleCloudRunV2TrafficTarget {
   /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
   final int? percent;
+
   /// Revision to which to send this portion of traffic, if traffic allocation is by revision.
   final String? revision;
+
   /// Indicates a string to be part of the URI to exclusively reference this target.
   final String? tag;
+
   /// The allocation type for this traffic target.
   final GoogleCloudRunV2TrafficTargetType? type;
 
@@ -39,8 +42,9 @@ class GoogleCloudRunV2TrafficTarget {
       percent: map['percent'] == null ? null : map['percent'] as int,
       revision: map['revision'] == null ? null : map['revision'] as String,
       tag: map['tag'] == null ? null : map['tag'] as String,
-      type: map['type'] == null ? null : GoogleCloudRunV2TrafficTargetType.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : GoogleCloudRunV2TrafficTargetType.fromValue(map['type'] as String),
     );
   }
 }
-

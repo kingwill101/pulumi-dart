@@ -18,28 +18,42 @@ import 'network_policy_config_container_v1beta1.dart';
 class AddonsConfigContainerV1beta1 {
   /// Configuration for the Cloud Run addon. The `IstioConfig` addon must be enabled in order to enable Cloud Run addon. This option can only be enabled at cluster creation time.
   final CloudRunConfigContainerV1beta1? cloudRunConfig;
+
   /// Configuration for the ConfigConnector add-on, a Kubernetes extension to manage hosted GCP services through the Kubernetes API
   final ConfigConnectorConfigContainerV1beta1? configConnectorConfig;
+
   /// Configuration for NodeLocalDNS, a dns cache running on cluster nodes
   final DnsCacheConfigContainerV1beta1? dnsCacheConfig;
+
   /// Configuration for the Compute Engine Persistent Disk CSI driver.
-  final GcePersistentDiskCsiDriverConfigContainerV1beta1? gcePersistentDiskCsiDriverConfig;
+  final GcePersistentDiskCsiDriverConfigContainerV1beta1?
+  gcePersistentDiskCsiDriverConfig;
+
   /// Configuration for the GCP Filestore CSI driver.
-  final GcpFilestoreCsiDriverConfigContainerV1beta1? gcpFilestoreCsiDriverConfig;
+  final GcpFilestoreCsiDriverConfigContainerV1beta1?
+  gcpFilestoreCsiDriverConfig;
+
   /// Configuration for the Cloud Storage Fuse CSI driver.
   final GcsFuseCsiDriverConfigContainerV1beta1? gcsFuseCsiDriverConfig;
+
   /// Configuration for the Backup for GKE agent addon.
   final GkeBackupAgentConfigContainerV1beta1? gkeBackupAgentConfig;
+
   /// Configuration for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
   final HorizontalPodAutoscalingContainerV1beta1? horizontalPodAutoscaling;
+
   /// Configuration for the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster.
   final HttpLoadBalancingContainerV1beta1? httpLoadBalancing;
+
   /// Configuration for Istio, an open platform to connect, manage, and secure microservices.
   final IstioConfig? istioConfig;
+
   /// Configuration for the KALM addon, which manages the lifecycle of k8s applications.
   final KalmConfig? kalmConfig;
+
   /// Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards
   final KubernetesDashboardContainerV1beta1? kubernetesDashboard;
+
   /// Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
   final NetworkPolicyConfigContainerV1beta1? networkPolicyConfig;
 
@@ -75,38 +89,115 @@ class AddonsConfigContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudRunConfig': ?cloudRunConfig == null ? null : cloudRunConfig!.toMap(),
-      'configConnectorConfig': ?configConnectorConfig == null ? null : configConnectorConfig!.toMap(),
-      'dnsCacheConfig': ?dnsCacheConfig == null ? null : dnsCacheConfig!.toMap(),
-      'gcePersistentDiskCsiDriverConfig': ?gcePersistentDiskCsiDriverConfig == null ? null : gcePersistentDiskCsiDriverConfig!.toMap(),
-      'gcpFilestoreCsiDriverConfig': ?gcpFilestoreCsiDriverConfig == null ? null : gcpFilestoreCsiDriverConfig!.toMap(),
-      'gcsFuseCsiDriverConfig': ?gcsFuseCsiDriverConfig == null ? null : gcsFuseCsiDriverConfig!.toMap(),
-      'gkeBackupAgentConfig': ?gkeBackupAgentConfig == null ? null : gkeBackupAgentConfig!.toMap(),
-      'horizontalPodAutoscaling': ?horizontalPodAutoscaling == null ? null : horizontalPodAutoscaling!.toMap(),
-      'httpLoadBalancing': ?httpLoadBalancing == null ? null : httpLoadBalancing!.toMap(),
+      'cloudRunConfig': ?cloudRunConfig == null
+          ? null
+          : cloudRunConfig!.toMap(),
+      'configConnectorConfig': ?configConnectorConfig == null
+          ? null
+          : configConnectorConfig!.toMap(),
+      'dnsCacheConfig': ?dnsCacheConfig == null
+          ? null
+          : dnsCacheConfig!.toMap(),
+      'gcePersistentDiskCsiDriverConfig':
+          ?gcePersistentDiskCsiDriverConfig == null
+          ? null
+          : gcePersistentDiskCsiDriverConfig!.toMap(),
+      'gcpFilestoreCsiDriverConfig': ?gcpFilestoreCsiDriverConfig == null
+          ? null
+          : gcpFilestoreCsiDriverConfig!.toMap(),
+      'gcsFuseCsiDriverConfig': ?gcsFuseCsiDriverConfig == null
+          ? null
+          : gcsFuseCsiDriverConfig!.toMap(),
+      'gkeBackupAgentConfig': ?gkeBackupAgentConfig == null
+          ? null
+          : gkeBackupAgentConfig!.toMap(),
+      'horizontalPodAutoscaling': ?horizontalPodAutoscaling == null
+          ? null
+          : horizontalPodAutoscaling!.toMap(),
+      'httpLoadBalancing': ?httpLoadBalancing == null
+          ? null
+          : httpLoadBalancing!.toMap(),
       'istioConfig': ?istioConfig == null ? null : istioConfig!.toMap(),
       'kalmConfig': ?kalmConfig == null ? null : kalmConfig!.toMap(),
-      'kubernetesDashboard': ?kubernetesDashboard == null ? null : kubernetesDashboard!.toMap(),
-      'networkPolicyConfig': ?networkPolicyConfig == null ? null : networkPolicyConfig!.toMap(),
+      'kubernetesDashboard': ?kubernetesDashboard == null
+          ? null
+          : kubernetesDashboard!.toMap(),
+      'networkPolicyConfig': ?networkPolicyConfig == null
+          ? null
+          : networkPolicyConfig!.toMap(),
     };
   }
 
   factory AddonsConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return AddonsConfigContainerV1beta1(
-      cloudRunConfig: map['cloudRunConfig'] == null ? null : CloudRunConfigContainerV1beta1.fromMap((map['cloudRunConfig'] as Map).cast<String, dynamic>()),
-      configConnectorConfig: map['configConnectorConfig'] == null ? null : ConfigConnectorConfigContainerV1beta1.fromMap((map['configConnectorConfig'] as Map).cast<String, dynamic>()),
-      dnsCacheConfig: map['dnsCacheConfig'] == null ? null : DnsCacheConfigContainerV1beta1.fromMap((map['dnsCacheConfig'] as Map).cast<String, dynamic>()),
-      gcePersistentDiskCsiDriverConfig: map['gcePersistentDiskCsiDriverConfig'] == null ? null : GcePersistentDiskCsiDriverConfigContainerV1beta1.fromMap((map['gcePersistentDiskCsiDriverConfig'] as Map).cast<String, dynamic>()),
-      gcpFilestoreCsiDriverConfig: map['gcpFilestoreCsiDriverConfig'] == null ? null : GcpFilestoreCsiDriverConfigContainerV1beta1.fromMap((map['gcpFilestoreCsiDriverConfig'] as Map).cast<String, dynamic>()),
-      gcsFuseCsiDriverConfig: map['gcsFuseCsiDriverConfig'] == null ? null : GcsFuseCsiDriverConfigContainerV1beta1.fromMap((map['gcsFuseCsiDriverConfig'] as Map).cast<String, dynamic>()),
-      gkeBackupAgentConfig: map['gkeBackupAgentConfig'] == null ? null : GkeBackupAgentConfigContainerV1beta1.fromMap((map['gkeBackupAgentConfig'] as Map).cast<String, dynamic>()),
-      horizontalPodAutoscaling: map['horizontalPodAutoscaling'] == null ? null : HorizontalPodAutoscalingContainerV1beta1.fromMap((map['horizontalPodAutoscaling'] as Map).cast<String, dynamic>()),
-      httpLoadBalancing: map['httpLoadBalancing'] == null ? null : HttpLoadBalancingContainerV1beta1.fromMap((map['httpLoadBalancing'] as Map).cast<String, dynamic>()),
-      istioConfig: map['istioConfig'] == null ? null : IstioConfig.fromMap((map['istioConfig'] as Map).cast<String, dynamic>()),
-      kalmConfig: map['kalmConfig'] == null ? null : KalmConfig.fromMap((map['kalmConfig'] as Map).cast<String, dynamic>()),
-      kubernetesDashboard: map['kubernetesDashboard'] == null ? null : KubernetesDashboardContainerV1beta1.fromMap((map['kubernetesDashboard'] as Map).cast<String, dynamic>()),
-      networkPolicyConfig: map['networkPolicyConfig'] == null ? null : NetworkPolicyConfigContainerV1beta1.fromMap((map['networkPolicyConfig'] as Map).cast<String, dynamic>()),
+      cloudRunConfig: map['cloudRunConfig'] == null
+          ? null
+          : CloudRunConfigContainerV1beta1.fromMap(
+              (map['cloudRunConfig'] as Map).cast<String, dynamic>(),
+            ),
+      configConnectorConfig: map['configConnectorConfig'] == null
+          ? null
+          : ConfigConnectorConfigContainerV1beta1.fromMap(
+              (map['configConnectorConfig'] as Map).cast<String, dynamic>(),
+            ),
+      dnsCacheConfig: map['dnsCacheConfig'] == null
+          ? null
+          : DnsCacheConfigContainerV1beta1.fromMap(
+              (map['dnsCacheConfig'] as Map).cast<String, dynamic>(),
+            ),
+      gcePersistentDiskCsiDriverConfig:
+          map['gcePersistentDiskCsiDriverConfig'] == null
+          ? null
+          : GcePersistentDiskCsiDriverConfigContainerV1beta1.fromMap(
+              (map['gcePersistentDiskCsiDriverConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      gcpFilestoreCsiDriverConfig: map['gcpFilestoreCsiDriverConfig'] == null
+          ? null
+          : GcpFilestoreCsiDriverConfigContainerV1beta1.fromMap(
+              (map['gcpFilestoreCsiDriverConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      gcsFuseCsiDriverConfig: map['gcsFuseCsiDriverConfig'] == null
+          ? null
+          : GcsFuseCsiDriverConfigContainerV1beta1.fromMap(
+              (map['gcsFuseCsiDriverConfig'] as Map).cast<String, dynamic>(),
+            ),
+      gkeBackupAgentConfig: map['gkeBackupAgentConfig'] == null
+          ? null
+          : GkeBackupAgentConfigContainerV1beta1.fromMap(
+              (map['gkeBackupAgentConfig'] as Map).cast<String, dynamic>(),
+            ),
+      horizontalPodAutoscaling: map['horizontalPodAutoscaling'] == null
+          ? null
+          : HorizontalPodAutoscalingContainerV1beta1.fromMap(
+              (map['horizontalPodAutoscaling'] as Map).cast<String, dynamic>(),
+            ),
+      httpLoadBalancing: map['httpLoadBalancing'] == null
+          ? null
+          : HttpLoadBalancingContainerV1beta1.fromMap(
+              (map['httpLoadBalancing'] as Map).cast<String, dynamic>(),
+            ),
+      istioConfig: map['istioConfig'] == null
+          ? null
+          : IstioConfig.fromMap(
+              (map['istioConfig'] as Map).cast<String, dynamic>(),
+            ),
+      kalmConfig: map['kalmConfig'] == null
+          ? null
+          : KalmConfig.fromMap(
+              (map['kalmConfig'] as Map).cast<String, dynamic>(),
+            ),
+      kubernetesDashboard: map['kubernetesDashboard'] == null
+          ? null
+          : KubernetesDashboardContainerV1beta1.fromMap(
+              (map['kubernetesDashboard'] as Map).cast<String, dynamic>(),
+            ),
+      networkPolicyConfig: map['networkPolicyConfig'] == null
+          ? null
+          : NetworkPolicyConfigContainerV1beta1.fromMap(
+              (map['networkPolicyConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -20,4 +20,3 @@ enum ExecutionTemplateScaleTier {
     throw ArgumentError('Unknown ExecutionTemplateScaleTier value: $value');
   }
 }
-

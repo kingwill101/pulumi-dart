@@ -13,18 +13,12 @@ class GetHealthCheckComputeV1Args {
   /// Creates a new [GetHealthCheckComputeV1Args].
   /// [healthCheck] Required.
   /// [project] Optional.
-  GetHealthCheckComputeV1Args({
-    required String healthCheck,
-    String? project,
-  }) :
-      healthCheck = pulumi.Input.asInput<String>(healthCheck),
+  GetHealthCheckComputeV1Args({required String healthCheck, String? project})
+    : healthCheck = pulumi.Input.asInput<String>(healthCheck),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'healthCheck': healthCheck,
-      'project': ?project,
-    };
+    return <String, dynamic>{'healthCheck': healthCheck, 'project': ?project};
   }
 
   factory GetHealthCheckComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetHealthCheckComputeV1Args {
     );
   }
 }
-

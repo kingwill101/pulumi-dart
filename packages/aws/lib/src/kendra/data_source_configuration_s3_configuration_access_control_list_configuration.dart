@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DataSourceConfigurationS3ConfigurationAccessControlListConfiguration {
   /// Path to the AWS S3 bucket that contains the ACL files.
   final String? keyPath;
@@ -12,15 +11,14 @@ class DataSourceConfigurationS3ConfigurationAccessControlListConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyPath': ?keyPath,
-    };
+    return <String, dynamic>{'keyPath': ?keyPath};
   }
 
-  factory DataSourceConfigurationS3ConfigurationAccessControlListConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DataSourceConfigurationS3ConfigurationAccessControlListConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceConfigurationS3ConfigurationAccessControlListConfiguration(
       keyPath: map['keyPath'] == null ? null : map['keyPath'] as String,
     );
   }
 }
-

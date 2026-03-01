@@ -191,10 +191,13 @@ import 'service_identity_args.dart';
 class ServiceIdentity extends pulumi.CustomResource {
   /// The email address of the Google managed service account.
   late final pulumi.Output<String> email;
+
   /// The folder in which the resource belongs.
   late final pulumi.Output<String> folder;
+
   /// The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
   late final pulumi.Output<String> member;
+
   /// The service to generate identity for.
   ///
   /// - - -
@@ -209,11 +212,11 @@ class ServiceIdentity extends pulumi.CustomResource {
     ServiceIdentityArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:folder/serviceIdentity:ServiceIdentity',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:folder/serviceIdentity:ServiceIdentity',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.email = registerOutput<String>('email');
     this.folder = registerOutput<String>('folder');
     this.member = registerOutput<String>('member');

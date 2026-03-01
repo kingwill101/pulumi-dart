@@ -7,10 +7,13 @@ import 'contact_settings_privacy_domains_v1beta1.dart';
 class ContactSettingsDomainsV1beta1 {
   /// The administrative contact for the `Registration`.
   final ContactDomainsV1beta1 adminContact;
+
   /// Privacy setting for the contacts associated with the `Registration`.
   final ContactSettingsPrivacyDomainsV1beta1 privacy;
+
   /// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.*
   final ContactDomainsV1beta1 registrantContact;
+
   /// The technical contact for the `Registration`.
   final ContactDomainsV1beta1 technicalContact;
 
@@ -37,11 +40,18 @@ class ContactSettingsDomainsV1beta1 {
 
   factory ContactSettingsDomainsV1beta1.fromMap(Map<String, dynamic> map) {
     return ContactSettingsDomainsV1beta1(
-      adminContact: ContactDomainsV1beta1.fromMap((map['adminContact'] as Map).cast<String, dynamic>()),
-      privacy: ContactSettingsPrivacyDomainsV1beta1.fromValue(map['privacy'] as String),
-      registrantContact: ContactDomainsV1beta1.fromMap((map['registrantContact'] as Map).cast<String, dynamic>()),
-      technicalContact: ContactDomainsV1beta1.fromMap((map['technicalContact'] as Map).cast<String, dynamic>()),
+      adminContact: ContactDomainsV1beta1.fromMap(
+        (map['adminContact'] as Map).cast<String, dynamic>(),
+      ),
+      privacy: ContactSettingsPrivacyDomainsV1beta1.fromValue(
+        map['privacy'] as String,
+      ),
+      registrantContact: ContactDomainsV1beta1.fromMap(
+        (map['registrantContact'] as Map).cast<String, dynamic>(),
+      ),
+      technicalContact: ContactDomainsV1beta1.fromMap(
+        (map['technicalContact'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

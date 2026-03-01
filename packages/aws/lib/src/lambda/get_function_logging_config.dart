@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetFunctionLoggingConfig {
   /// Detail level of the logs your application sends to CloudWatch when using supported logging libraries.
   final String applicationLogLevel;
+
   /// Format for your function's logs. Valid values: `Text`, `JSON`.
   final String logFormat;
+
   /// CloudWatch log group your function sends logs to.
   final String logGroup;
+
   /// Detail level of the Lambda platform event logs sent to CloudWatch.
   final String systemLogLevel;
 
@@ -41,4 +43,3 @@ class GetFunctionLoggingConfig {
     );
   }
 }
-

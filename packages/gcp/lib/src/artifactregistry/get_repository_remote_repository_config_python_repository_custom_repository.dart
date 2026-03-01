@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
   /// Specific uri to the registry, e.g. '"https://pypi.io"'
   final String uri;
@@ -12,15 +11,14 @@ class GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
-  factory GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository(
       uri: map['uri'] as String,
     );
   }
 }
-

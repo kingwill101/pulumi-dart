@@ -19,10 +19,13 @@ class GetChannelPartnerRepricingConfigArgs {
     required String accountId,
     required String channelPartnerLinkId,
     required String channelPartnerRepricingConfigId,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      channelPartnerLinkId = pulumi.Input.asInput<String>(channelPartnerLinkId),
-      channelPartnerRepricingConfigId = pulumi.Input.asInput<String>(channelPartnerRepricingConfigId);
+  }) : accountId = pulumi.Input.asInput<String>(accountId),
+       channelPartnerLinkId = pulumi.Input.asInput<String>(
+         channelPartnerLinkId,
+       ),
+       channelPartnerRepricingConfigId = pulumi.Input.asInput<String>(
+         channelPartnerRepricingConfigId,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,12 +35,14 @@ class GetChannelPartnerRepricingConfigArgs {
     };
   }
 
-  factory GetChannelPartnerRepricingConfigArgs.fromMap(Map<String, dynamic> map) {
+  factory GetChannelPartnerRepricingConfigArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetChannelPartnerRepricingConfigArgs(
       accountId: map['accountId'] as String,
       channelPartnerLinkId: map['channelPartnerLinkId'] as String,
-      channelPartnerRepricingConfigId: map['channelPartnerRepricingConfigId'] as String,
+      channelPartnerRepricingConfigId:
+          map['channelPartnerRepricingConfigId'] as String,
     );
   }
 }
-

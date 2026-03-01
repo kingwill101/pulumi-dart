@@ -6,13 +6,16 @@ enum EnvironmentConfigResilienceModeComposerV1beta1 {
   const EnvironmentConfigResilienceModeComposerV1beta1(this.value);
   final String value;
 
-  static EnvironmentConfigResilienceModeComposerV1beta1 fromValue(String value) {
+  static EnvironmentConfigResilienceModeComposerV1beta1 fromValue(
+    String value,
+  ) {
     for (final item in EnvironmentConfigResilienceModeComposerV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnvironmentConfigResilienceModeComposerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown EnvironmentConfigResilienceModeComposerV1beta1 value: $value',
+    );
   }
 }
-

@@ -9,10 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LbHttpsRedirectionPolicyArgs {
   /// Whether to enable HTTP to HTTPS redirection. `true` to activate HTTP to HTTPS redirection or `false` to deactivate HTTP to HTTPS redirection.
   final pulumi.Input<bool> enabled;
+
   /// Name of the load balancer to which you want to enable HTTP to HTTPS redirection.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> lbName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,10 +26,9 @@ class LbHttpsRedirectionPolicyArgs {
     required bool enabled,
     required String lbName,
     String? region,
-  }) :
-      enabled = pulumi.Input.asInput<bool>(enabled),
-      lbName = pulumi.Input.asInput<String>(lbName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : enabled = pulumi.Input.asInput<bool>(enabled),
+       lbName = pulumi.Input.asInput<String>(lbName),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,4 +46,3 @@ class LbHttpsRedirectionPolicyArgs {
     );
   }
 }
-

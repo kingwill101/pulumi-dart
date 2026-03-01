@@ -1194,36 +1194,50 @@ import 'policy_target_tracking_configuration.dart';
 class Policy extends pulumi.CustomResource {
   /// Whether the adjustment is an absolute number or a percentage of the current capacity. Valid values are `ChangeInCapacity`, `ExactCapacity`, and `PercentChangeInCapacity`.
   late final pulumi.Output<String?> adjustmentType;
+
   /// ARN assigned by AWS to the scaling policy.
   late final pulumi.Output<String> arn;
+
   /// Name of the autoscaling group.
   late final pulumi.Output<String> autoscalingGroupName;
+
   /// Amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
   late final pulumi.Output<int?> cooldown;
+
   /// Whether the scaling policy is enabled or disabled. Default: `true`.
   ///
   /// The following argument is only available to "SimpleScaling" and "StepScaling" type policies:
   late final pulumi.Output<bool?> enabled;
+
   /// Estimated time, in seconds, until a newly launched instance will contribute CloudWatch metrics. Without a value, AWS will default to the group's specified cooldown period.
   late final pulumi.Output<int?> estimatedInstanceWarmup;
+
   /// Aggregation type for the policy's metrics. Valid values are "Minimum", "Maximum", and "Average". Without a value, AWS will treat the aggregation type as "Average".
   late final pulumi.Output<String> metricAggregationType;
+
   /// Minimum value to scale by when `adjustment_type` is set to `PercentChangeInCapacity`.
   ///
   /// The following arguments are only available to "SimpleScaling" type policies:
   late final pulumi.Output<int?> minAdjustmentMagnitude;
+
   /// Name of the policy.
   late final pulumi.Output<String> name;
+
   /// Policy type, either "SimpleScaling", "StepScaling", "TargetTrackingScaling", or "PredictiveScaling". If this value isn't provided, AWS will default to "SimpleScaling."
   late final pulumi.Output<String?> policyType;
+
   /// Predictive scaling policy configuration to use with Amazon EC2 Auto Scaling.
-  late final pulumi.Output<PolicyPredictiveScalingConfiguration?> predictiveScalingConfiguration;
+  late final pulumi.Output<PolicyPredictiveScalingConfiguration?>
+  predictiveScalingConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Number of members by which to
   /// scale, when the adjustment bounds are breached. A positive value scales
   /// up. A negative value scales down.
   late final pulumi.Output<int?> scalingAdjustment;
+
   /// Set of adjustments that manage
   /// group scaling. These have the following structure:
   ///
@@ -1378,6 +1392,7 @@ class Policy extends pulumi.CustomResource {
   ///
   /// The following fields are available in step adjustments:
   late final pulumi.Output<List<PolicyStepAdjustment>?> stepAdjustments;
+
   /// Target tracking policy. These have the following structure:
   ///
   ///
@@ -1498,36 +1513,48 @@ class Policy extends pulumi.CustomResource {
   ///
   ///
   /// The following fields are available in target tracking configuration:
-  late final pulumi.Output<PolicyTargetTrackingConfiguration?> targetTrackingConfiguration;
+  late final pulumi.Output<PolicyTargetTrackingConfiguration?>
+  targetTrackingConfiguration;
 
   /// Creates a new [Policy].
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_autoscaling_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:autoscaling/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:autoscaling/policy:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.adjustmentType = registerOutput<String?>('adjustmentType');
     this.arn = registerOutput<String>('arn');
     this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     this.cooldown = registerOutput<int?>('cooldown');
     this.enabled = registerOutput<bool?>('enabled');
-    this.estimatedInstanceWarmup = registerOutput<int?>('estimatedInstanceWarmup');
-    this.metricAggregationType = registerOutput<String>('metricAggregationType');
-    this.minAdjustmentMagnitude = registerOutput<int?>('minAdjustmentMagnitude');
+    this.estimatedInstanceWarmup = registerOutput<int?>(
+      'estimatedInstanceWarmup',
+    );
+    this.metricAggregationType = registerOutput<String>(
+      'metricAggregationType',
+    );
+    this.minAdjustmentMagnitude = registerOutput<int?>(
+      'minAdjustmentMagnitude',
+    );
     this.name = registerOutput<String>('name');
     this.policyType = registerOutput<String?>('policyType');
-    this.predictiveScalingConfiguration = registerOutput<PolicyPredictiveScalingConfiguration?>('predictiveScalingConfiguration');
+    this.predictiveScalingConfiguration =
+        registerOutput<PolicyPredictiveScalingConfiguration?>(
+          'predictiveScalingConfiguration',
+        );
     this.region = registerOutput<String>('region');
     this.scalingAdjustment = registerOutput<int?>('scalingAdjustment');
-    this.stepAdjustments = registerOutput<List<PolicyStepAdjustment>?>('stepAdjustments');
-    this.targetTrackingConfiguration = registerOutput<PolicyTargetTrackingConfiguration?>('targetTrackingConfiguration');
+    this.stepAdjustments = registerOutput<List<PolicyStepAdjustment>?>(
+      'stepAdjustments',
+    );
+    this.targetTrackingConfiguration =
+        registerOutput<PolicyTargetTrackingConfiguration?>(
+          'targetTrackingConfiguration',
+        );
   }
 }

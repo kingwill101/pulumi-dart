@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TopicRuleS3 {
   /// The Amazon S3 bucket name.
   final String bucketName;
+
   /// The Amazon S3 canned ACL that controls access to the object identified by the object key. [Valid values](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl).
   final String? cannedAcl;
+
   /// The object key.
   final String key;
+
   /// The ARN of the IAM role that grants access.
   final String roleArn;
 
@@ -41,4 +43,3 @@ class TopicRuleS3 {
     );
   }
 }
-

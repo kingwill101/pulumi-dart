@@ -19,10 +19,9 @@ class GetConnectorVpcaccessV1beta1Args {
     required String connectorId,
     required String location,
     String? project,
-  }) :
-      connectorId = pulumi.Input.asInput<String>(connectorId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : connectorId = pulumi.Input.asInput<String>(connectorId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetConnectorVpcaccessV1beta1Args {
     );
   }
 }
-

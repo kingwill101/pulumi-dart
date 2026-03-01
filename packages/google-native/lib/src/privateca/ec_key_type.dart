@@ -9,20 +9,23 @@ class EcKeyType {
 
   /// Creates a new [EcKeyType].
   /// [signatureAlgorithm] Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-  EcKeyType({
-    this.signatureAlgorithm,
-  });
+  EcKeyType({this.signatureAlgorithm});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'signatureAlgorithm': ?signatureAlgorithm == null ? null : signatureAlgorithm!.value,
+      'signatureAlgorithm': ?signatureAlgorithm == null
+          ? null
+          : signatureAlgorithm!.value,
     };
   }
 
   factory EcKeyType.fromMap(Map<String, dynamic> map) {
     return EcKeyType(
-      signatureAlgorithm: map['signatureAlgorithm'] == null ? null : EcKeyTypeSignatureAlgorithm.fromValue(map['signatureAlgorithm'] as String),
+      signatureAlgorithm: map['signatureAlgorithm'] == null
+          ? null
+          : EcKeyTypeSignatureAlgorithm.fromValue(
+              map['signatureAlgorithm'] as String,
+            ),
     );
   }
 }
-

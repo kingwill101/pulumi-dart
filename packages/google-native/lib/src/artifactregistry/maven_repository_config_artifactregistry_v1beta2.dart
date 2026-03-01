@@ -6,8 +6,10 @@ import 'maven_repository_config_version_policy_artifactregistry_v1beta2.dart';
 class MavenRepositoryConfigArtifactregistryV1beta2 {
   /// The repository with this flag will allow publishing the same snapshot versions.
   final bool? allowSnapshotOverwrites;
+
   /// Version policy defines the versions that the registry will accept.
-  final MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2? versionPolicy;
+  final MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2?
+  versionPolicy;
 
   /// Creates a new [MavenRepositoryConfigArtifactregistryV1beta2].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same snapshot versions.
@@ -24,11 +26,18 @@ class MavenRepositoryConfigArtifactregistryV1beta2 {
     };
   }
 
-  factory MavenRepositoryConfigArtifactregistryV1beta2.fromMap(Map<String, dynamic> map) {
+  factory MavenRepositoryConfigArtifactregistryV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MavenRepositoryConfigArtifactregistryV1beta2(
-      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] == null ? null : map['allowSnapshotOverwrites'] as bool,
-      versionPolicy: map['versionPolicy'] == null ? null : MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2.fromValue(map['versionPolicy'] as String),
+      allowSnapshotOverwrites: map['allowSnapshotOverwrites'] == null
+          ? null
+          : map['allowSnapshotOverwrites'] as bool,
+      versionPolicy: map['versionPolicy'] == null
+          ? null
+          : MavenRepositoryConfigVersionPolicyArtifactregistryV1beta2.fromValue(
+              map['versionPolicy'] as String,
+            ),
     );
   }
 }
-

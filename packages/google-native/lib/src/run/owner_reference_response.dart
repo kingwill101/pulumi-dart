@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// This is not supported or used by Cloud Run.
 class OwnerReferenceResponse {
   /// This is not supported or used by Cloud Run.
   final String apiVersion;
+
   /// This is not supported or used by Cloud Run.
   final bool blockOwnerDeletion;
+
   /// This is not supported or used by Cloud Run.
   final bool controller;
+
   /// This is not supported or used by Cloud Run.
   final String kind;
+
   /// This is not supported or used by Cloud Run.
   final String name;
+
   /// This is not supported or used by Cloud Run.
   final String uid;
 
@@ -54,4 +58,3 @@ class OwnerReferenceResponse {
     );
   }
 }
-

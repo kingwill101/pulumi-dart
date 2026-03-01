@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies the locations for fetching the provenance attestations.
 class AttestationSource {
   /// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
@@ -8,20 +7,22 @@ class AttestationSource {
 
   /// Creates a new [AttestationSource].
   /// [containerAnalysisAttestationProjects] The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
-  AttestationSource({
-    this.containerAnalysisAttestationProjects,
-  });
+  AttestationSource({this.containerAnalysisAttestationProjects});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'containerAnalysisAttestationProjects': ?containerAnalysisAttestationProjects,
+      'containerAnalysisAttestationProjects':
+          ?containerAnalysisAttestationProjects,
     };
   }
 
   factory AttestationSource.fromMap(Map<String, dynamic> map) {
     return AttestationSource(
-      containerAnalysisAttestationProjects: map['containerAnalysisAttestationProjects'] == null ? null : (map['containerAnalysisAttestationProjects'] as List).cast<String>(),
+      containerAnalysisAttestationProjects:
+          map['containerAnalysisAttestationProjects'] == null
+          ? null
+          : (map['containerAnalysisAttestationProjects'] as List)
+                .cast<String>(),
     );
   }
 }
-

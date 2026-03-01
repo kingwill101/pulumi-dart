@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getGlobalNetworks.
 class GetGlobalNetworksResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// IDs of the global networks.
   final List<String> ids;
   final Map<String, String>? tags;
@@ -13,26 +13,19 @@ class GetGlobalNetworksResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] IDs of the global networks.
   /// [tags] Optional.
-  GetGlobalNetworksResult({
-    required this.id,
-    required this.ids,
-    this.tags,
-  });
+  GetGlobalNetworksResult({required this.id, required this.ids, this.tags});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'ids': ids,
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'id': id, 'ids': ids, 'tags': ?tags};
   }
 
   factory GetGlobalNetworksResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworksResult(
       id: map['id'] as String,
       ids: (map['ids'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

@@ -5,8 +5,11 @@ import 'cluster_configuration_execute_command_configuration_log_configuration.da
 class ClusterConfigurationExecuteCommandConfiguration {
   /// AWS Key Management Service key ID to encrypt the data between the local client and the container.
   final String? kmsKeyId;
+
   /// Log configuration for the results of the execute command actions. Required when `logging` is `OVERRIDE`. See `log_configuration` Block for details.
-  final ClusterConfigurationExecuteCommandConfigurationLogConfiguration? logConfiguration;
+  final ClusterConfigurationExecuteCommandConfigurationLogConfiguration?
+  logConfiguration;
+
   /// Log setting to use for redirecting logs for your execute command results. Valid values: `NONE`, `DEFAULT`, `OVERRIDE`.
   final String? logging;
 
@@ -23,17 +26,24 @@ class ClusterConfigurationExecuteCommandConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'kmsKeyId': ?kmsKeyId,
-      'logConfiguration': ?logConfiguration == null ? null : logConfiguration!.toMap(),
+      'logConfiguration': ?logConfiguration == null
+          ? null
+          : logConfiguration!.toMap(),
       'logging': ?logging,
     };
   }
 
-  factory ClusterConfigurationExecuteCommandConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ClusterConfigurationExecuteCommandConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterConfigurationExecuteCommandConfiguration(
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
-      logConfiguration: map['logConfiguration'] == null ? null : ClusterConfigurationExecuteCommandConfigurationLogConfiguration.fromMap((map['logConfiguration'] as Map).cast<String, dynamic>()),
+      logConfiguration: map['logConfiguration'] == null
+          ? null
+          : ClusterConfigurationExecuteCommandConfigurationLogConfiguration.fromMap(
+              (map['logConfiguration'] as Map).cast<String, dynamic>(),
+            ),
       logging: map['logging'] == null ? null : map['logging'] as String,
     );
   }
 }
-

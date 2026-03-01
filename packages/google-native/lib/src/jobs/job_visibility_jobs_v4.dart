@@ -17,4 +17,3 @@ enum JobVisibilityJobsV4 {
     throw ArgumentError('Unknown JobVisibilityJobsV4 value: $value');
   }
 }
-

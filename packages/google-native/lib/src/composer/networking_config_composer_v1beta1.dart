@@ -9,9 +9,7 @@ class NetworkingConfigComposerV1beta1 {
 
   /// Creates a new [NetworkingConfigComposerV1beta1].
   /// [connectionType] Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
-  NetworkingConfigComposerV1beta1({
-    this.connectionType,
-  });
+  NetworkingConfigComposerV1beta1({this.connectionType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class NetworkingConfigComposerV1beta1 {
 
   factory NetworkingConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return NetworkingConfigComposerV1beta1(
-      connectionType: map['connectionType'] == null ? null : NetworkingConfigConnectionTypeComposerV1beta1.fromValue(map['connectionType'] as String),
+      connectionType: map['connectionType'] == null
+          ? null
+          : NetworkingConfigConnectionTypeComposerV1beta1.fromValue(
+              map['connectionType'] as String,
+            ),
     );
   }
 }
-

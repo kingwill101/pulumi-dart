@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TopicRuleSqs {
   /// The URL of the Amazon SQS queue.
   final String queueUrl;
+
   /// The ARN of the IAM role that grants access.
   final String roleArn;
+
   /// Specifies whether to use Base64 encoding.
   final bool useBase64;
 
@@ -35,4 +36,3 @@ class TopicRuleSqs {
     );
   }
 }
-

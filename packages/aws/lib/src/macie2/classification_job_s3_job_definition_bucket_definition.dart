@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClassificationJobS3JobDefinitionBucketDefinition {
   /// The unique identifier for the AWS account that owns the buckets.
   final String accountId;
+
   /// An array that lists the names of the buckets.
   final List<String> buckets;
 
@@ -16,17 +16,15 @@ class ClassificationJobS3JobDefinitionBucketDefinition {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountId': accountId,
-      'buckets': buckets,
-    };
+    return <String, dynamic>{'accountId': accountId, 'buckets': buckets};
   }
 
-  factory ClassificationJobS3JobDefinitionBucketDefinition.fromMap(Map<String, dynamic> map) {
+  factory ClassificationJobS3JobDefinitionBucketDefinition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClassificationJobS3JobDefinitionBucketDefinition(
       accountId: map['accountId'] as String,
       buckets: (map['buckets'] as List).cast<String>(),
     );
   }
 }
-

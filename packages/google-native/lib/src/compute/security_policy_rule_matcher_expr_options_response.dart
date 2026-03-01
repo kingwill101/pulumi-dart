@@ -4,7 +4,8 @@ import 'security_policy_rule_matcher_expr_options_recaptcha_options_response.dar
 
 class SecurityPolicyRuleMatcherExprOptionsResponse {
   /// reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
-  final SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse recaptchaOptions;
+  final SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse
+  recaptchaOptions;
 
   /// Creates a new [SecurityPolicyRuleMatcherExprOptionsResponse].
   /// [recaptchaOptions] reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
@@ -13,15 +14,17 @@ class SecurityPolicyRuleMatcherExprOptionsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'recaptchaOptions': recaptchaOptions.toMap(),
-    };
+    return <String, dynamic>{'recaptchaOptions': recaptchaOptions.toMap()};
   }
 
-  factory SecurityPolicyRuleMatcherExprOptionsResponse.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRuleMatcherExprOptionsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRuleMatcherExprOptionsResponse(
-      recaptchaOptions: SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse.fromMap((map['recaptchaOptions'] as Map).cast<String, dynamic>()),
+      recaptchaOptions:
+          SecurityPolicyRuleMatcherExprOptionsRecaptchaOptionsResponse.fromMap(
+            (map['recaptchaOptions'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

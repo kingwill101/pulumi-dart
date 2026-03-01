@@ -5,7 +5,11 @@ import 'get_repository_remote_repository_config_python_repository_custom_reposit
 
 class GetRepositoryRemoteRepositoryConfigPythonRepository {
   /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
-  final List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository> customRepositories;
+  final List<
+    GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository
+  >
+  customRepositories;
+
   /// Address of the remote repository. Possible values: ["PYPI"]
   final String publicRepository;
 
@@ -19,16 +23,30 @@ class GetRepositoryRemoteRepositoryConfigPythonRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customRepositories': pulumi.Input.encodeList<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository, Map<String, dynamic>>(customRepositories, (value) => value.toMap()),
+      'customRepositories':
+          pulumi.Input.encodeList<
+            GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository,
+            Map<String, dynamic>
+          >(customRepositories, (value) => value.toMap()),
       'publicRepository': publicRepository,
     };
   }
 
-  factory GetRepositoryRemoteRepositoryConfigPythonRepository.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryRemoteRepositoryConfigPythonRepository.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryRemoteRepositoryConfigPythonRepository(
-      customRepositories: pulumi.Input.decodeList<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository>(map['customRepositories'], (value) => GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap((value as Map).cast<String, dynamic>())),
+      customRepositories:
+          pulumi.Input.decodeList<
+            GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository
+          >(
+            map['customRepositories'],
+            (value) =>
+                GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       publicRepository: map['publicRepository'] as String,
     );
   }
 }
-

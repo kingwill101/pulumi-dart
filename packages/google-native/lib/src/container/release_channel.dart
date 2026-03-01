@@ -9,9 +9,7 @@ class ReleaseChannel {
 
   /// Creates a new [ReleaseChannel].
   /// [channel] channel specifies which release channel the cluster is subscribed to.
-  ReleaseChannel({
-    this.channel,
-  });
+  ReleaseChannel({this.channel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class ReleaseChannel {
 
   factory ReleaseChannel.fromMap(Map<String, dynamic> map) {
     return ReleaseChannel(
-      channel: map['channel'] == null ? null : ReleaseChannelChannel.fromValue(map['channel'] as String),
+      channel: map['channel'] == null
+          ? null
+          : ReleaseChannelChannel.fromValue(map['channel'] as String),
     );
   }
 }
-

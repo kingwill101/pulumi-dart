@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RuleGroupRuleGroupRulesSourceRulesSourceList {
   /// String value to specify whether domains in the target list are allowed or denied access. Valid values: `ALLOWLIST`, `DENYLIST`.
   final String generatedRulesType;
+
   /// Set of types of domain specifications that are provided in the `targets` argument. Valid values: `HTTP_HOST`, `TLS_SNI`.
   final List<String> targetTypes;
+
   /// Set of domains that you want to inspect for in your traffic flows.
   final List<String> targets;
 
@@ -27,7 +28,9 @@ class RuleGroupRuleGroupRulesSourceRulesSourceList {
     };
   }
 
-  factory RuleGroupRuleGroupRulesSourceRulesSourceList.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleGroupRulesSourceRulesSourceList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleGroupRulesSourceRulesSourceList(
       generatedRulesType: map['generatedRulesType'] as String,
       targetTypes: (map['targetTypes'] as List).cast<String>(),
@@ -35,4 +38,3 @@ class RuleGroupRuleGroupRulesSourceRulesSourceList {
     );
   }
 }
-

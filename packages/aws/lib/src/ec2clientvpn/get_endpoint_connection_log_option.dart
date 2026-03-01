@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetEndpointConnectionLogOption {
   final String cloudwatchLogGroup;
   final String cloudwatchLogStream;
@@ -32,4 +31,3 @@ class GetEndpointConnectionLogOption {
     );
   }
 }
-

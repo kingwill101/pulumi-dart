@@ -19,10 +19,9 @@ class GetLbRouteExtensionArgs {
     required String lbRouteExtensionId,
     required String location,
     String? project,
-  }) :
-      lbRouteExtensionId = pulumi.Input.asInput<String>(lbRouteExtensionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : lbRouteExtensionId = pulumi.Input.asInput<String>(lbRouteExtensionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetLbRouteExtensionArgs {
     );
   }
 }
-

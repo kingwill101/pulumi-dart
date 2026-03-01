@@ -7,9 +7,13 @@ import 'google_cloud_identitytoolkit_admin_v2_recaptcha_managed_rule.dart';
 /// The reCAPTCHA Enterprise integration config.
 class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   /// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
-  final GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState? emailPasswordEnforcementState;
+  final GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState?
+  emailPasswordEnforcementState;
+
   /// The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
-  final List<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>? managedRules;
+  final List<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>?
+  managedRules;
+
   /// Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
   final bool? useAccountDefender;
 
@@ -25,18 +29,43 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'emailPasswordEnforcementState': ?emailPasswordEnforcementState == null ? null : emailPasswordEnforcementState!.value,
-      'managedRules': ?managedRules == null ? null : pulumi.Input.encodeList<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule, Map<String, dynamic>>(managedRules!, (value) => value.toMap()),
+      'emailPasswordEnforcementState': ?emailPasswordEnforcementState == null
+          ? null
+          : emailPasswordEnforcementState!.value,
+      'managedRules': ?managedRules == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule,
+              Map<String, dynamic>
+            >(managedRules!, (value) => value.toMap()),
       'useAccountDefender': ?useAccountDefender,
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig(
-      emailPasswordEnforcementState: map['emailPasswordEnforcementState'] == null ? null : GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState.fromValue(map['emailPasswordEnforcementState'] as String),
-      managedRules: map['managedRules'] == null ? null : pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>(map['managedRules'], (value) => GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule.fromMap((value as Map).cast<String, dynamic>())),
-      useAccountDefender: map['useAccountDefender'] == null ? null : map['useAccountDefender'] as bool,
+      emailPasswordEnforcementState:
+          map['emailPasswordEnforcementState'] == null
+          ? null
+          : GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState.fromValue(
+              map['emailPasswordEnforcementState'] as String,
+            ),
+      managedRules: map['managedRules'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule
+            >(
+              map['managedRules'],
+              (value) =>
+                  GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      useAccountDefender: map['useAccountDefender'] == null
+          ? null
+          : map['useAccountDefender'] as bool,
     );
   }
 }
-

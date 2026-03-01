@@ -7,13 +7,17 @@ enum GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType {
   const GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType(this.value);
   final String value;
 
-  static GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType fromValue(String value) {
-    for (final item in GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType.values) {
+  static GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType value: $value',
+    );
   }
 }
-

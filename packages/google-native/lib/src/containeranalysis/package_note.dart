@@ -11,24 +11,34 @@ import 'version.dart';
 class PackageNote {
   /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
   final PackageNoteArchitecture? architecture;
+
   /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
   final String? cpeUri;
+
   /// The description of this package.
   final String? description;
+
   /// Hash value, typically a file digest, that allows unique identification a specific package.
   final List<Digest>? digest;
+
   /// Deprecated. The various channels by which a package is distributed.
   final List<Distribution>? distribution;
+
   /// Licenses that have been declared by the authors of the package.
   final License? license;
+
   /// A freeform text denoting the maintainer of this package.
   final String? maintainer;
+
   /// Immutable. The name of the package.
   final String name;
+
   /// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
   final String? packageType;
+
   /// The homepage for this package.
   final String? url;
+
   /// The version of the package.
   final Version? version;
 
@@ -63,8 +73,18 @@ class PackageNote {
       'architecture': ?architecture == null ? null : architecture!.value,
       'cpeUri': ?cpeUri,
       'description': ?description,
-      'digest': ?digest == null ? null : pulumi.Input.encodeList<Digest, Map<String, dynamic>>(digest!, (value) => value.toMap()),
-      'distribution': ?distribution == null ? null : pulumi.Input.encodeList<Distribution, Map<String, dynamic>>(distribution!, (value) => value.toMap()),
+      'digest': ?digest == null
+          ? null
+          : pulumi.Input.encodeList<Digest, Map<String, dynamic>>(
+              digest!,
+              (value) => value.toMap(),
+            ),
+      'distribution': ?distribution == null
+          ? null
+          : pulumi.Input.encodeList<Distribution, Map<String, dynamic>>(
+              distribution!,
+              (value) => value.toMap(),
+            ),
       'license': ?license == null ? null : license!.toMap(),
       'maintainer': ?maintainer,
       'name': name,
@@ -76,18 +96,40 @@ class PackageNote {
 
   factory PackageNote.fromMap(Map<String, dynamic> map) {
     return PackageNote(
-      architecture: map['architecture'] == null ? null : PackageNoteArchitecture.fromValue(map['architecture'] as String),
+      architecture: map['architecture'] == null
+          ? null
+          : PackageNoteArchitecture.fromValue(map['architecture'] as String),
       cpeUri: map['cpeUri'] == null ? null : map['cpeUri'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      digest: map['digest'] == null ? null : pulumi.Input.decodeList<Digest>(map['digest'], (value) => Digest.fromMap((value as Map).cast<String, dynamic>())),
-      distribution: map['distribution'] == null ? null : pulumi.Input.decodeList<Distribution>(map['distribution'], (value) => Distribution.fromMap((value as Map).cast<String, dynamic>())),
-      license: map['license'] == null ? null : License.fromMap((map['license'] as Map).cast<String, dynamic>()),
-      maintainer: map['maintainer'] == null ? null : map['maintainer'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      digest: map['digest'] == null
+          ? null
+          : pulumi.Input.decodeList<Digest>(
+              map['digest'],
+              (value) => Digest.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      distribution: map['distribution'] == null
+          ? null
+          : pulumi.Input.decodeList<Distribution>(
+              map['distribution'],
+              (value) =>
+                  Distribution.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      license: map['license'] == null
+          ? null
+          : License.fromMap((map['license'] as Map).cast<String, dynamic>()),
+      maintainer: map['maintainer'] == null
+          ? null
+          : map['maintainer'] as String,
       name: map['name'] as String,
-      packageType: map['packageType'] == null ? null : map['packageType'] as String,
+      packageType: map['packageType'] == null
+          ? null
+          : map['packageType'] as String,
       url: map['url'] == null ? null : map['url'] as String,
-      version: map['version'] == null ? null : Version.fromMap((map['version'] as Map).cast<String, dynamic>()),
+      version: map['version'] == null
+          ? null
+          : Version.fromMap((map['version'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

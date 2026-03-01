@@ -6,10 +6,13 @@ import 'get_launch_paths_summary_constraint_summary.dart';
 class GetLaunchPathsSummary {
   /// Block for constraints on the portfolio-product relationship. See details below.
   final List<GetLaunchPathsSummaryConstraintSummary> constraintSummaries;
+
   /// Name of the portfolio to which the path was assigned.
   final String name;
+
   /// Identifier of the product path.
   final String pathId;
+
   /// Tags associated with this product path.
   final Map<String, String> tags;
 
@@ -27,7 +30,11 @@ class GetLaunchPathsSummary {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'constraintSummaries': pulumi.Input.encodeList<GetLaunchPathsSummaryConstraintSummary, Map<String, dynamic>>(constraintSummaries, (value) => value.toMap()),
+      'constraintSummaries':
+          pulumi.Input.encodeList<
+            GetLaunchPathsSummaryConstraintSummary,
+            Map<String, dynamic>
+          >(constraintSummaries, (value) => value.toMap()),
       'name': name,
       'pathId': pathId,
       'tags': tags,
@@ -36,11 +43,16 @@ class GetLaunchPathsSummary {
 
   factory GetLaunchPathsSummary.fromMap(Map<String, dynamic> map) {
     return GetLaunchPathsSummary(
-      constraintSummaries: pulumi.Input.decodeList<GetLaunchPathsSummaryConstraintSummary>(map['constraintSummaries'], (value) => GetLaunchPathsSummaryConstraintSummary.fromMap((value as Map).cast<String, dynamic>())),
+      constraintSummaries:
+          pulumi.Input.decodeList<GetLaunchPathsSummaryConstraintSummary>(
+            map['constraintSummaries'],
+            (value) => GetLaunchPathsSummaryConstraintSummary.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       name: map['name'] as String,
       pathId: map['pathId'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

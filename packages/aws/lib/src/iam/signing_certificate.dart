@@ -250,10 +250,13 @@ import 'signing_certificate_args.dart';
 class SigningCertificate extends pulumi.CustomResource {
   /// The contents of the signing certificate in PEM-encoded format.
   late final pulumi.Output<String> certificateBody;
+
   /// The ID for the signing certificate.
   late final pulumi.Output<String> certificateId;
+
   /// The status you want to assign to the certificate. `Active` means that the certificate can be used for programmatic calls to Amazon Web Services `Inactive` means that the certificate cannot be used.
   late final pulumi.Output<String?> status;
+
   /// The name of the user the signing certificate is for.
   late final pulumi.Output<String> userName;
 
@@ -266,11 +269,11 @@ class SigningCertificate extends pulumi.CustomResource {
     SigningCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/signingCertificate:SigningCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:iam/signingCertificate:SigningCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.certificateBody = registerOutput<String>('certificateBody');
     this.certificateId = registerOutput<String>('certificateId');
     this.status = registerOutput<String?>('status');

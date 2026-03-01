@@ -22,11 +22,10 @@ class GetIndexFirestoreV1beta2Args {
     required String databaseId,
     required String indexId,
     String? project,
-  }) :
-      collectionGroupId = pulumi.Input.asInput<String>(collectionGroupId),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      indexId = pulumi.Input.asInput<String>(indexId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : collectionGroupId = pulumi.Input.asInput<String>(collectionGroupId),
+       databaseId = pulumi.Input.asInput<String>(databaseId),
+       indexId = pulumi.Input.asInput<String>(indexId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetIndexFirestoreV1beta2Args {
     );
   }
 }
-

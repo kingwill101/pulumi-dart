@@ -4,16 +4,22 @@ enum GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth {
   small("SMALL"),
   medium("MEDIUM");
 
-  const GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth(this.value);
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth(
+    this.value,
+  );
   final String value;
 
-  static GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth fromValue(String value) {
-    for (final item in GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth.values) {
+  static GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth value: $value',
+    );
   }
 }
-

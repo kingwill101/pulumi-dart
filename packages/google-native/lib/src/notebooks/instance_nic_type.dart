@@ -16,4 +16,3 @@ enum InstanceNicType {
     throw ArgumentError('Unknown InstanceNicType value: $value');
   }
 }
-

@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectionGitlabEnterpriseConfigAuthorizerCredential {
   /// Required. A SecretManager resource containing the user token that authorizes
   /// the Developer Connect connection. Format:
   /// `projects/*/secrets/*/versions/*`.
   final String userTokenSecretVersion;
+
   /// (Output)
   /// Output only. The username associated with this token.
   final String? username;
@@ -25,11 +25,12 @@ class ConnectionGitlabEnterpriseConfigAuthorizerCredential {
     };
   }
 
-  factory ConnectionGitlabEnterpriseConfigAuthorizerCredential.fromMap(Map<String, dynamic> map) {
+  factory ConnectionGitlabEnterpriseConfigAuthorizerCredential.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionGitlabEnterpriseConfigAuthorizerCredential(
       userTokenSecretVersion: map['userTokenSecretVersion'] as String,
       username: map['username'] == null ? null : map['username'] as String,
     );
   }
 }
-

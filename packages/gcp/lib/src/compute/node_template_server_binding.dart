@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class NodeTemplateServerBinding {
   /// Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
   /// nodes using this template will restart on any physical server
@@ -18,20 +17,13 @@ class NodeTemplateServerBinding {
 
   /// Creates a new [NodeTemplateServerBinding].
   /// [type] Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
-  NodeTemplateServerBinding({
-    required this.type,
-  });
+  NodeTemplateServerBinding({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
   factory NodeTemplateServerBinding.fromMap(Map<String, dynamic> map) {
-    return NodeTemplateServerBinding(
-      type: map['type'] as String,
-    );
+    return NodeTemplateServerBinding(type: map['type'] as String);
   }
 }
-

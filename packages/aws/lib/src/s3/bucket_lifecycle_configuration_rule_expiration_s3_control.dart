@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BucketLifecycleConfigurationRuleExpirationS3Control {
   /// Date the object is to be deleted. Should be in `YYYY-MM-DD` date format, e.g., `2020-09-30`.
   final String? date;
+
   /// Number of days before the object is to be deleted.
   final int? days;
+
   /// Enable to remove a delete marker with no noncurrent versions. Cannot be specified with `date` or `days`.
   final bool? expiredObjectDeleteMarker;
 
@@ -27,12 +28,15 @@ class BucketLifecycleConfigurationRuleExpirationS3Control {
     };
   }
 
-  factory BucketLifecycleConfigurationRuleExpirationS3Control.fromMap(Map<String, dynamic> map) {
+  factory BucketLifecycleConfigurationRuleExpirationS3Control.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketLifecycleConfigurationRuleExpirationS3Control(
       date: map['date'] == null ? null : map['date'] as String,
       days: map['days'] == null ? null : map['days'] as int,
-      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null ? null : map['expiredObjectDeleteMarker'] as bool,
+      expiredObjectDeleteMarker: map['expiredObjectDeleteMarker'] == null
+          ? null
+          : map['expiredObjectDeleteMarker'] as bool,
     );
   }
 }
-

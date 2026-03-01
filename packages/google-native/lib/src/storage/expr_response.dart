@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents an expression text. Example: title: "User account presence" description: "Determines whether the request has a user account" expression: "size(request.user) > 0"
 class ExprResponse {
   /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
   final String description;
+
   /// Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
   final String expression;
+
   /// An optional string indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
   final String location;
+
   /// An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
   final String title;
 
@@ -42,4 +44,3 @@ class ExprResponse {
     );
   }
 }
-

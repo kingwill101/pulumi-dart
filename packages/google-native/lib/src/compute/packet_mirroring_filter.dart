@@ -5,8 +5,10 @@ import 'packet_mirroring_filter_direction.dart';
 class PacketMirroringFilter {
   /// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
   final List<String>? cidrRanges;
+
   /// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
   final PacketMirroringFilterDirection? direction;
+
   /// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
   final List<String>? ipProtocols;
 
@@ -14,11 +16,7 @@ class PacketMirroringFilter {
   /// [cidrRanges] IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
   /// [direction] Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
   /// [ipProtocols] Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-  PacketMirroringFilter({
-    this.cidrRanges,
-    this.direction,
-    this.ipProtocols,
-  });
+  PacketMirroringFilter({this.cidrRanges, this.direction, this.ipProtocols});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,10 +28,17 @@ class PacketMirroringFilter {
 
   factory PacketMirroringFilter.fromMap(Map<String, dynamic> map) {
     return PacketMirroringFilter(
-      cidrRanges: map['cidrRanges'] == null ? null : (map['cidrRanges'] as List).cast<String>(),
-      direction: map['direction'] == null ? null : PacketMirroringFilterDirection.fromValue(map['direction'] as String),
-      ipProtocols: map['ipProtocols'] == null ? null : (map['ipProtocols'] as List).cast<String>(),
+      cidrRanges: map['cidrRanges'] == null
+          ? null
+          : (map['cidrRanges'] as List).cast<String>(),
+      direction: map['direction'] == null
+          ? null
+          : PacketMirroringFilterDirection.fromValue(
+              map['direction'] as String,
+            ),
+      ipProtocols: map['ipProtocols'] == null
+          ? null
+          : (map['ipProtocols'] as List).cast<String>(),
     );
   }
 }
-

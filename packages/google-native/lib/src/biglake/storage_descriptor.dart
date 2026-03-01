@@ -6,10 +6,13 @@ import 'ser_de_info.dart';
 class StorageDescriptor {
   /// The fully qualified Java class name of the input format.
   final String? inputFormat;
+
   /// Cloud Storage folder URI where the table data is stored, starting with "gs://".
   final String? locationUri;
+
   /// The fully qualified Java class name of the output format.
   final String? outputFormat;
+
   /// Serializer and deserializer information.
   final SerDeInfo? serdeInfo;
 
@@ -36,11 +39,20 @@ class StorageDescriptor {
 
   factory StorageDescriptor.fromMap(Map<String, dynamic> map) {
     return StorageDescriptor(
-      inputFormat: map['inputFormat'] == null ? null : map['inputFormat'] as String,
-      locationUri: map['locationUri'] == null ? null : map['locationUri'] as String,
-      outputFormat: map['outputFormat'] == null ? null : map['outputFormat'] as String,
-      serdeInfo: map['serdeInfo'] == null ? null : SerDeInfo.fromMap((map['serdeInfo'] as Map).cast<String, dynamic>()),
+      inputFormat: map['inputFormat'] == null
+          ? null
+          : map['inputFormat'] as String,
+      locationUri: map['locationUri'] == null
+          ? null
+          : map['locationUri'] as String,
+      outputFormat: map['outputFormat'] == null
+          ? null
+          : map['outputFormat'] as String,
+      serdeInfo: map['serdeInfo'] == null
+          ? null
+          : SerDeInfo.fromMap(
+              (map['serdeInfo'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

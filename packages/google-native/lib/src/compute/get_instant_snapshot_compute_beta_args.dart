@@ -19,10 +19,9 @@ class GetInstantSnapshotComputeBetaArgs {
     required String instantSnapshot,
     String? project,
     required String zone,
-  }) :
-      instantSnapshot = pulumi.Input.asInput<String>(instantSnapshot),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : instantSnapshot = pulumi.Input.asInput<String>(instantSnapshot),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetInstantSnapshotComputeBetaArgs {
     );
   }
 }
-

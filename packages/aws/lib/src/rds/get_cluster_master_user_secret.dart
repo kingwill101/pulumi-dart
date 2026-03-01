@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterMasterUserSecret {
   final String kmsKeyId;
   final String secretArn;
@@ -32,4 +31,3 @@ class GetClusterMasterUserSecret {
     );
   }
 }
-

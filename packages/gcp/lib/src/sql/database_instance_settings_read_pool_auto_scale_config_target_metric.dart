@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
   /// Metric name for Read Pool Auto Scale.
   final String? metric;
+
   /// Target value for Read Pool Auto Scale.
   final double? targetValue;
 
@@ -16,17 +16,17 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metric': ?metric,
-      'targetValue': ?targetValue,
-    };
+    return <String, dynamic>{'metric': ?metric, 'targetValue': ?targetValue};
   }
 
-  factory DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric.fromMap(Map<String, dynamic> map) {
+  factory DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric(
       metric: map['metric'] == null ? null : map['metric'] as String,
-      targetValue: map['targetValue'] == null ? null : map['targetValue'] as double,
+      targetValue: map['targetValue'] == null
+          ? null
+          : map['targetValue'] as double,
     );
   }
 }
-

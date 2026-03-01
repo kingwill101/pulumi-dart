@@ -1082,7 +1082,8 @@ Future<GetOrganizationalUnitResult> getOrganizationalUnit(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_organizations_get_organizational_unit_child_accounts_get_organizational_unit_child_accounts_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationalUnitChildAccountsResult> getOrganizationalUnitChildAccounts(
+Future<GetOrganizationalUnitChildAccountsResult>
+getOrganizationalUnitChildAccounts(
   GetOrganizationalUnitChildAccountsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1203,7 +1204,8 @@ Future<GetOrganizationalUnitChildAccountsResult> getOrganizationalUnitChildAccou
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_organizations_get_organizational_unit_descendant_accounts_get_organizational_unit_descendant_accounts_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationalUnitDescendantAccountsResult> getOrganizationalUnitDescendantAccounts(
+Future<GetOrganizationalUnitDescendantAccountsResult>
+getOrganizationalUnitDescendantAccounts(
   GetOrganizationalUnitDescendantAccountsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1324,7 +1326,8 @@ Future<GetOrganizationalUnitDescendantAccountsResult> getOrganizationalUnitDesce
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_organizations_get_organizational_unit_descendant_organizational_units_get_organizational_unit_descendant_organizational_units_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationalUnitDescendantOrganizationalUnitsResult> getOrganizationalUnitDescendantOrganizationalUnits(
+Future<GetOrganizationalUnitDescendantOrganizationalUnitsResult>
+getOrganizationalUnitDescendantOrganizationalUnits(
   GetOrganizationalUnitDescendantOrganizationalUnitsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1334,7 +1337,9 @@ Future<GetOrganizationalUnitDescendantOrganizationalUnitsResult> getOrganization
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetOrganizationalUnitDescendantOrganizationalUnitsResult.fromMap(result);
+  return GetOrganizationalUnitDescendantOrganizationalUnitsResult.fromMap(
+    result,
+  );
 }
 
 /// Get all direct child organizational units under a parent organizational unit. This only provides immediate children, not all children.

@@ -1,16 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DomainMappingStatusCondition {
   /// (Output)
   /// Human readable message indicating details about the current status.
   final String? message;
+
   /// (Output)
   /// One-word CamelCase reason for the condition's current status.
   final String? reason;
+
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
   final String? status;
+
   /// Resource record type. Example: `AAAA`.
   /// Possible values are: `A`, `AAAA`, `CNAME`.
   final String? type;
@@ -45,4 +47,3 @@ class DomainMappingStatusCondition {
     );
   }
 }
-

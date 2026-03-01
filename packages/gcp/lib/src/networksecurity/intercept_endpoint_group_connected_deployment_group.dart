@@ -8,6 +8,7 @@ class InterceptEndpointGroupConnectedDeploymentGroup {
   /// The list of locations where the deployment group is present.
   /// Structure is documented below.
   final List<InterceptEndpointGroupConnectedDeploymentGroupLocation>? locations;
+
   /// (Output)
   /// The connected deployment group's resource name, for example:
   /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
@@ -17,23 +18,36 @@ class InterceptEndpointGroupConnectedDeploymentGroup {
   /// Creates a new [InterceptEndpointGroupConnectedDeploymentGroup].
   /// [locations] (Output)
   /// [name] (Output)
-  InterceptEndpointGroupConnectedDeploymentGroup({
-    this.locations,
-    this.name,
-  });
+  InterceptEndpointGroupConnectedDeploymentGroup({this.locations, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'locations': ?locations == null ? null : pulumi.Input.encodeList<InterceptEndpointGroupConnectedDeploymentGroupLocation, Map<String, dynamic>>(locations!, (value) => value.toMap()),
+      'locations': ?locations == null
+          ? null
+          : pulumi.Input.encodeList<
+              InterceptEndpointGroupConnectedDeploymentGroupLocation,
+              Map<String, dynamic>
+            >(locations!, (value) => value.toMap()),
       'name': ?name,
     };
   }
 
-  factory InterceptEndpointGroupConnectedDeploymentGroup.fromMap(Map<String, dynamic> map) {
+  factory InterceptEndpointGroupConnectedDeploymentGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterceptEndpointGroupConnectedDeploymentGroup(
-      locations: map['locations'] == null ? null : pulumi.Input.decodeList<InterceptEndpointGroupConnectedDeploymentGroupLocation>(map['locations'], (value) => InterceptEndpointGroupConnectedDeploymentGroupLocation.fromMap((value as Map).cast<String, dynamic>())),
+      locations: map['locations'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              InterceptEndpointGroupConnectedDeploymentGroupLocation
+            >(
+              map['locations'],
+              (value) =>
+                  InterceptEndpointGroupConnectedDeploymentGroupLocation.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
-

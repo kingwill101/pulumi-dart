@@ -9,20 +9,17 @@ class ListenerRuleMatch {
 
   /// Creates a new [ListenerRuleMatch].
   /// [httpMatch] The HTTP criteria that a rule must match.
-  ListenerRuleMatch({
-    required this.httpMatch,
-  });
+  ListenerRuleMatch({required this.httpMatch});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'httpMatch': httpMatch.toMap(),
-    };
+    return <String, dynamic>{'httpMatch': httpMatch.toMap()};
   }
 
   factory ListenerRuleMatch.fromMap(Map<String, dynamic> map) {
     return ListenerRuleMatch(
-      httpMatch: ListenerRuleMatchHttpMatch.fromMap((map['httpMatch'] as Map).cast<String, dynamic>()),
+      httpMatch: ListenerRuleMatchHttpMatch.fromMap(
+        (map['httpMatch'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

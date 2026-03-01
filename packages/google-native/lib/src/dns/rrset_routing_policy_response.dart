@@ -34,11 +34,16 @@ class RRSetRoutingPolicyResponse {
 
   factory RRSetRoutingPolicyResponse.fromMap(Map<String, dynamic> map) {
     return RRSetRoutingPolicyResponse(
-      geo: RRSetRoutingPolicyGeoPolicyResponse.fromMap((map['geo'] as Map).cast<String, dynamic>()),
+      geo: RRSetRoutingPolicyGeoPolicyResponse.fromMap(
+        (map['geo'] as Map).cast<String, dynamic>(),
+      ),
       kind: map['kind'] as String,
-      primaryBackup: RRSetRoutingPolicyPrimaryBackupPolicyResponse.fromMap((map['primaryBackup'] as Map).cast<String, dynamic>()),
-      wrr: RRSetRoutingPolicyWrrPolicyResponse.fromMap((map['wrr'] as Map).cast<String, dynamic>()),
+      primaryBackup: RRSetRoutingPolicyPrimaryBackupPolicyResponse.fromMap(
+        (map['primaryBackup'] as Map).cast<String, dynamic>(),
+      ),
+      wrr: RRSetRoutingPolicyWrrPolicyResponse.fromMap(
+        (map['wrr'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

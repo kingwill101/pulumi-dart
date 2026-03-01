@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule {
   final int interval;
   final String intervalUnit;
@@ -20,11 +19,12 @@ class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule {
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap(Map<String, dynamic> map) {
+  factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule(
       interval: map['interval'] as int,
       intervalUnit: map['intervalUnit'] as String,
     );
   }
 }
-

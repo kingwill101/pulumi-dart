@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetFileSystemLifecyclePolicy {
   final String transitionToArchive;
   final String transitionToIa;
@@ -28,8 +27,8 @@ class GetFileSystemLifecyclePolicy {
     return GetFileSystemLifecyclePolicy(
       transitionToArchive: map['transitionToArchive'] as String,
       transitionToIa: map['transitionToIa'] as String,
-      transitionToPrimaryStorageClass: map['transitionToPrimaryStorageClass'] as String,
+      transitionToPrimaryStorageClass:
+          map['transitionToPrimaryStorageClass'] as String,
     );
   }
 }
-

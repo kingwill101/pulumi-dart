@@ -104,40 +104,58 @@ class _EcsModuleNamespace {
   final FargateService = _ecs.FargateService.new;
   final FargateServiceArgs = _ecs.FargateServiceArgs.new;
   final FargateServiceTaskDefinition = _ecs.FargateServiceTaskDefinition.new;
-  final FargateServiceTaskDefinitionArgs = _ecs.FargateServiceTaskDefinition.new;
+  final FargateServiceTaskDefinitionArgs =
+      _ecs.FargateServiceTaskDefinition.new;
   final FargateTaskDefinition = _ecs.FargateTaskDefinition.new;
   final FargateTaskDefinitionArgs = _ecs.FargateTaskDefinitionArgs.new;
-  final TaskDefinitionContainerDefinition = _ecs.TaskDefinitionContainerDefinition.new;
-  final TaskDefinitionContainerDefinitionArgs = _ecs.TaskDefinitionContainerDefinition.new;
-  final TaskDefinitionContainerDependency = _ecs.TaskDefinitionContainerDependency.new;
-  final TaskDefinitionContainerDependencyArgs = _ecs.TaskDefinitionContainerDependency.new;
+  final TaskDefinitionContainerDefinition =
+      _ecs.TaskDefinitionContainerDefinition.new;
+  final TaskDefinitionContainerDefinitionArgs =
+      _ecs.TaskDefinitionContainerDefinition.new;
+  final TaskDefinitionContainerDependency =
+      _ecs.TaskDefinitionContainerDependency.new;
+  final TaskDefinitionContainerDependencyArgs =
+      _ecs.TaskDefinitionContainerDependency.new;
   final TaskDefinitionDevice = _ecs.TaskDefinitionDevice.new;
   final TaskDefinitionDeviceArgs = _ecs.TaskDefinitionDevice.new;
   final TaskDefinitionEnvironmentFile = _ecs.TaskDefinitionEnvironmentFile.new;
-  final TaskDefinitionEnvironmentFileArgs = _ecs.TaskDefinitionEnvironmentFile.new;
-  final TaskDefinitionFirelensConfiguration = _ecs.TaskDefinitionFirelensConfiguration.new;
-  final TaskDefinitionFirelensConfigurationArgs = _ecs.TaskDefinitionFirelensConfiguration.new;
+  final TaskDefinitionEnvironmentFileArgs =
+      _ecs.TaskDefinitionEnvironmentFile.new;
+  final TaskDefinitionFirelensConfiguration =
+      _ecs.TaskDefinitionFirelensConfiguration.new;
+  final TaskDefinitionFirelensConfigurationArgs =
+      _ecs.TaskDefinitionFirelensConfiguration.new;
   final TaskDefinitionHealthCheck = _ecs.TaskDefinitionHealthCheck.new;
   final TaskDefinitionHealthCheckArgs = _ecs.TaskDefinitionHealthCheck.new;
   final TaskDefinitionHostEntry = _ecs.TaskDefinitionHostEntry.new;
   final TaskDefinitionHostEntryArgs = _ecs.TaskDefinitionHostEntry.new;
-  final TaskDefinitionKernelCapabilities = _ecs.TaskDefinitionKernelCapabilities.new;
-  final TaskDefinitionKernelCapabilitiesArgs = _ecs.TaskDefinitionKernelCapabilities.new;
+  final TaskDefinitionKernelCapabilities =
+      _ecs.TaskDefinitionKernelCapabilities.new;
+  final TaskDefinitionKernelCapabilitiesArgs =
+      _ecs.TaskDefinitionKernelCapabilities.new;
   final TaskDefinitionKeyValuePair = _ecs.TaskDefinitionKeyValuePair.new;
   final TaskDefinitionKeyValuePairArgs = _ecs.TaskDefinitionKeyValuePair.new;
   final TaskDefinitionLinuxParameters = _ecs.TaskDefinitionLinuxParameters.new;
-  final TaskDefinitionLinuxParametersArgs = _ecs.TaskDefinitionLinuxParameters.new;
-  final TaskDefinitionLogConfiguration = _ecs.TaskDefinitionLogConfiguration.new;
-  final TaskDefinitionLogConfigurationArgs = _ecs.TaskDefinitionLogConfiguration.new;
+  final TaskDefinitionLinuxParametersArgs =
+      _ecs.TaskDefinitionLinuxParameters.new;
+  final TaskDefinitionLogConfiguration =
+      _ecs.TaskDefinitionLogConfiguration.new;
+  final TaskDefinitionLogConfigurationArgs =
+      _ecs.TaskDefinitionLogConfiguration.new;
   final TaskDefinitionMountPoint = _ecs.TaskDefinitionMountPoint.new;
   final TaskDefinitionMountPointArgs = _ecs.TaskDefinitionMountPoint.new;
   final TaskDefinitionPortMapping = _ecs.TaskDefinitionPortMapping.new;
-  final TaskDefinitionPortMappingAppProtocol = _ecs.TaskDefinitionPortMappingAppProtocol.values;
+  final TaskDefinitionPortMappingAppProtocol =
+      _ecs.TaskDefinitionPortMappingAppProtocol.values;
   final TaskDefinitionPortMappingArgs = _ecs.TaskDefinitionPortMapping.new;
-  final TaskDefinitionRepositoryCredentials = _ecs.TaskDefinitionRepositoryCredentials.new;
-  final TaskDefinitionRepositoryCredentialsArgs = _ecs.TaskDefinitionRepositoryCredentials.new;
-  final TaskDefinitionResourceRequirement = _ecs.TaskDefinitionResourceRequirement.new;
-  final TaskDefinitionResourceRequirementArgs = _ecs.TaskDefinitionResourceRequirement.new;
+  final TaskDefinitionRepositoryCredentials =
+      _ecs.TaskDefinitionRepositoryCredentials.new;
+  final TaskDefinitionRepositoryCredentialsArgs =
+      _ecs.TaskDefinitionRepositoryCredentials.new;
+  final TaskDefinitionResourceRequirement =
+      _ecs.TaskDefinitionResourceRequirement.new;
+  final TaskDefinitionResourceRequirementArgs =
+      _ecs.TaskDefinitionResourceRequirement.new;
   final TaskDefinitionSecret = _ecs.TaskDefinitionSecret.new;
   final TaskDefinitionSecretArgs = _ecs.TaskDefinitionSecret.new;
   final TaskDefinitionSystemControl = _ecs.TaskDefinitionSystemControl.new;
@@ -163,4 +181,3 @@ class _LbModuleNamespace {
   final TargetGroupAttachment = _lb.TargetGroupAttachment.new;
   final TargetGroupAttachmentArgs = _lb.TargetGroupAttachmentArgs.new;
 }
-

@@ -8,13 +8,17 @@ enum OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha {
   const OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha(this.value);
   final String value;
 
-  static OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha fromValue(String value) {
-    for (final item in OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha.values) {
+  static OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha fromValue(
+    String value,
+  ) {
+    for (final item
+        in OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha value: $value',
+    );
   }
 }
-

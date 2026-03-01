@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Upcoming maintenance schedule.
 class MaintenanceScheduleResponseMemcacheV1beta2 {
   /// The end time of any upcoming scheduled maintenance for this instance.
   final String endTime;
+
   /// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
   final String scheduleDeadlineTime;
+
   /// The start time of any upcoming scheduled maintenance for this instance.
   final String startTime;
 
@@ -28,7 +29,9 @@ class MaintenanceScheduleResponseMemcacheV1beta2 {
     };
   }
 
-  factory MaintenanceScheduleResponseMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
+  factory MaintenanceScheduleResponseMemcacheV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaintenanceScheduleResponseMemcacheV1beta2(
       endTime: map['endTime'] as String,
       scheduleDeadlineTime: map['scheduleDeadlineTime'] as String,
@@ -36,4 +39,3 @@ class MaintenanceScheduleResponseMemcacheV1beta2 {
     );
   }
 }
-

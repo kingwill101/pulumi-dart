@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRateBasedMod.
 class GetRateBasedModResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -19,11 +18,7 @@ class GetRateBasedModResult {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'region': region,
-    };
+    return <String, dynamic>{'id': id, 'name': name, 'region': region};
   }
 
   factory GetRateBasedModResult.fromMap(Map<String, dynamic> map) {
@@ -34,4 +29,3 @@ class GetRateBasedModResult {
     );
   }
 }
-

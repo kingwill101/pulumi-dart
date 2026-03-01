@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DestinationEndpoint {
   /// The ASN of the remote IP prefix.
   final String asn;
+
   /// The CSP of the remote IP prefix.
   final String csp;
+
   /// (Output)
   /// The state of the DestinationEndpoint resource.
   final String? state;
+
   /// (Output)
   /// Time when the DestinationEndpoint resource was updated.
   final String? updateTime;
@@ -39,8 +41,9 @@ class DestinationEndpoint {
       asn: map['asn'] as String,
       csp: map['csp'] as String,
       state: map['state'] == null ? null : map['state'] as String,
-      updateTime: map['updateTime'] == null ? null : map['updateTime'] as String,
+      updateTime: map['updateTime'] == null
+          ? null
+          : map['updateTime'] as String,
     );
   }
 }
-

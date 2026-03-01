@@ -7,8 +7,10 @@ class PerInstanceConfigPreservedStateInternalIp {
   /// Default value is `NEVER`.
   /// Possible values are: `NEVER`, `ON_PERMANENT_INSTANCE_DELETION`.
   final String? autoDelete;
+
   /// The identifier for this object. Format specified above.
   final String interfaceName;
+
   /// Ip address representation
   /// Structure is documented below.
   final PerInstanceConfigPreservedStateInternalIpIpAddress? ipAddress;
@@ -31,12 +33,19 @@ class PerInstanceConfigPreservedStateInternalIp {
     };
   }
 
-  factory PerInstanceConfigPreservedStateInternalIp.fromMap(Map<String, dynamic> map) {
+  factory PerInstanceConfigPreservedStateInternalIp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PerInstanceConfigPreservedStateInternalIp(
-      autoDelete: map['autoDelete'] == null ? null : map['autoDelete'] as String,
+      autoDelete: map['autoDelete'] == null
+          ? null
+          : map['autoDelete'] as String,
       interfaceName: map['interfaceName'] as String,
-      ipAddress: map['ipAddress'] == null ? null : PerInstanceConfigPreservedStateInternalIpIpAddress.fromMap((map['ipAddress'] as Map).cast<String, dynamic>()),
+      ipAddress: map['ipAddress'] == null
+          ? null
+          : PerInstanceConfigPreservedStateInternalIpIpAddress.fromMap(
+              (map['ipAddress'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

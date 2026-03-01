@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Forward SSH Tunnel connectivity.
 class ForwardSshTunnelConnectivity {
   /// Hostname for the SSH tunnel.
   final String hostname;
+
   /// Input only. SSH password.
   final String? password;
+
   /// Port for the SSH tunnel, default value is 22.
   final int? port;
+
   /// Input only. SSH private key.
   final String? privateKey;
+
   /// Username for the SSH tunnel.
   final String username;
 
@@ -43,9 +46,10 @@ class ForwardSshTunnelConnectivity {
       hostname: map['hostname'] as String,
       password: map['password'] == null ? null : map['password'] as String,
       port: map['port'] == null ? null : map['port'] as int,
-      privateKey: map['privateKey'] == null ? null : map['privateKey'] as String,
+      privateKey: map['privateKey'] == null
+          ? null
+          : map['privateKey'] as String,
       username: map['username'] as String,
     );
   }
 }
-

@@ -16,15 +16,11 @@ class GetMachineImageComputeBetaArgs {
   GetMachineImageComputeBetaArgs({
     required String machineImage,
     String? project,
-  }) :
-      machineImage = pulumi.Input.asInput<String>(machineImage),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : machineImage = pulumi.Input.asInput<String>(machineImage),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'machineImage': machineImage,
-      'project': ?project,
-    };
+    return <String, dynamic>{'machineImage': machineImage, 'project': ?project};
   }
 
   factory GetMachineImageComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +30,3 @@ class GetMachineImageComputeBetaArgs {
     );
   }
 }
-

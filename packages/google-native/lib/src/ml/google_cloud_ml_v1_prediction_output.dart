@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents results of a prediction job.
 class GoogleCloudMlV1PredictionOutput {
   /// The number of data instances which resulted in errors.
   final String? errorCount;
+
   /// Node hours used by the batch prediction job.
   final double? nodeHours;
+
   /// The output Google Cloud Storage location provided at the job creation time.
   final String? outputPath;
+
   /// The number of generated predictions.
   final String? predictionCount;
 
@@ -35,11 +37,16 @@ class GoogleCloudMlV1PredictionOutput {
 
   factory GoogleCloudMlV1PredictionOutput.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1PredictionOutput(
-      errorCount: map['errorCount'] == null ? null : map['errorCount'] as String,
+      errorCount: map['errorCount'] == null
+          ? null
+          : map['errorCount'] as String,
       nodeHours: map['nodeHours'] == null ? null : map['nodeHours'] as double,
-      outputPath: map['outputPath'] == null ? null : map['outputPath'] as String,
-      predictionCount: map['predictionCount'] == null ? null : map['predictionCount'] as String,
+      outputPath: map['outputPath'] == null
+          ? null
+          : map['outputPath'] as String,
+      predictionCount: map['predictionCount'] == null
+          ? null
+          : map['predictionCount'] as String,
     );
   }
 }
-

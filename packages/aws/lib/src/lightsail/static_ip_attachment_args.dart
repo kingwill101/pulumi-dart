@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class StaticIpAttachmentArgs {
   /// Name of the Lightsail instance to attach the IP to.
   final pulumi.Input<String> instanceName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Name of the allocated static IP.
   ///
   /// The following arguments are optional:
@@ -24,10 +26,9 @@ class StaticIpAttachmentArgs {
     required String instanceName,
     String? region,
     required String staticIpName,
-  }) :
-      instanceName = pulumi.Input.asInput<String>(instanceName),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      staticIpName = pulumi.Input.asInput<String>(staticIpName);
+  }) : instanceName = pulumi.Input.asInput<String>(instanceName),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       staticIpName = pulumi.Input.asInput<String>(staticIpName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,4 +46,3 @@ class StaticIpAttachmentArgs {
     );
   }
 }
-

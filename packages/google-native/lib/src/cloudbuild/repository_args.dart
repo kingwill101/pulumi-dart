@@ -10,14 +10,18 @@ class RepositoryArgs {
   /// Allows clients to store small amounts of arbitrary data.
   final pulumi.Input<Map<String, String>>? annotations;
   final pulumi.Input<String> connectionId;
+
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final pulumi.Input<String>? etag;
   final pulumi.Input<String>? location;
+
   /// Immutable. Resource name of the repository, in the format `projects/*/locations/*/connections/*/repositories/*`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Git Clone HTTPS URI.
   final pulumi.Input<String> remoteUri;
+
   /// Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
   final pulumi.Input<String> repositoryId;
 
@@ -39,15 +43,16 @@ class RepositoryArgs {
     String? project,
     required String remoteUri,
     required String repositoryId,
-  }) :
-      annotations = pulumi.Input.asOptionalInput<Map<String, String>>(annotations),
-      connectionId = pulumi.Input.asInput<String>(connectionId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      remoteUri = pulumi.Input.asInput<String>(remoteUri),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+  }) : annotations = pulumi.Input.asOptionalInput<Map<String, String>>(
+         annotations,
+       ),
+       connectionId = pulumi.Input.asInput<String>(connectionId),
+       etag = pulumi.Input.asOptionalInput<String>(etag),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       remoteUri = pulumi.Input.asInput<String>(remoteUri),
+       repositoryId = pulumi.Input.asInput<String>(repositoryId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,7 +69,9 @@ class RepositoryArgs {
 
   factory RepositoryArgs.fromMap(Map<String, dynamic> map) {
     return RepositoryArgs(
-      annotations: map['annotations'] == null ? null : (map['annotations'] as Map).cast<String, String>(),
+      annotations: map['annotations'] == null
+          ? null
+          : (map['annotations'] as Map).cast<String, String>(),
       connectionId: map['connectionId'] as String,
       etag: map['etag'] == null ? null : map['etag'] as String,
       location: map['location'] == null ? null : map['location'] as String,
@@ -75,4 +82,3 @@ class RepositoryArgs {
     );
   }
 }
-

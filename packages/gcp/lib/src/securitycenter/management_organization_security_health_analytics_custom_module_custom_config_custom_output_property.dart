@@ -5,10 +5,12 @@ import 'management_organization_security_health_analytics_custom_module_custom_c
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty {
   /// Name of the property for the custom output.
   final String? name;
+
   /// The CEL expression for the custom output. A resource property can be specified
   /// to return the value of the property or a text string enclosed in quotation marks.
   /// Structure is documented below.
-  final ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression? valueExpression;
+  final ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression?
+  valueExpression;
 
   /// Creates a new [ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty].
   /// [name] Name of the property for the custom output.
@@ -21,15 +23,22 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCusto
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': ?name,
-      'valueExpression': ?valueExpression == null ? null : valueExpression!.toMap(),
+      'valueExpression': ?valueExpression == null
+          ? null
+          : valueExpression!.toMap(),
     };
   }
 
-  factory ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty.fromMap(Map<String, dynamic> map) {
+  factory ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty(
       name: map['name'] == null ? null : map['name'] as String,
-      valueExpression: map['valueExpression'] == null ? null : ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression.fromMap((map['valueExpression'] as Map).cast<String, dynamic>()),
+      valueExpression: map['valueExpression'] == null
+          ? null
+          : ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression.fromMap(
+              (map['valueExpression'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

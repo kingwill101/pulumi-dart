@@ -9,22 +9,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionNetworkEndpointArgs {
   /// Client destination port for the `GCE_VM_IP_PORTMAP` NEG.
   final pulumi.Input<int>? clientDestinationPort;
+
   /// Fully qualified domain name of network endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_FQDN_PORT.
   final pulumi.Input<String>? fqdn;
+
   /// The name for a specific VM instance that the IP address belongs to.
   /// This is required for network endpoints of type GCE_VM_IP_PORTMAP.
   final pulumi.Input<String>? instance;
+
   /// IPv4 address external endpoint.
   /// This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
   final pulumi.Input<String>? ipAddress;
+
   /// Port number of network endpoint.
   final pulumi.Input<int> port;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Region where the containing network endpoint group is located.
   final pulumi.Input<String>? region;
+
   /// The network endpoint group this endpoint is part of.
   final pulumi.Input<String> regionNetworkEndpointGroup;
 
@@ -46,15 +53,18 @@ class RegionNetworkEndpointArgs {
     String? project,
     String? region,
     required String regionNetworkEndpointGroup,
-  }) :
-      clientDestinationPort = pulumi.Input.asOptionalInput<int>(clientDestinationPort),
-      fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
-      instance = pulumi.Input.asOptionalInput<String>(instance),
-      ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
-      port = pulumi.Input.asInput<int>(port),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      regionNetworkEndpointGroup = pulumi.Input.asInput<String>(regionNetworkEndpointGroup);
+  }) : clientDestinationPort = pulumi.Input.asOptionalInput<int>(
+         clientDestinationPort,
+       ),
+       fqdn = pulumi.Input.asOptionalInput<String>(fqdn),
+       instance = pulumi.Input.asOptionalInput<String>(instance),
+       ipAddress = pulumi.Input.asOptionalInput<String>(ipAddress),
+       port = pulumi.Input.asInput<int>(port),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       regionNetworkEndpointGroup = pulumi.Input.asInput<String>(
+         regionNetworkEndpointGroup,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,7 +81,9 @@ class RegionNetworkEndpointArgs {
 
   factory RegionNetworkEndpointArgs.fromMap(Map<String, dynamic> map) {
     return RegionNetworkEndpointArgs(
-      clientDestinationPort: map['clientDestinationPort'] == null ? null : map['clientDestinationPort'] as int,
+      clientDestinationPort: map['clientDestinationPort'] == null
+          ? null
+          : map['clientDestinationPort'] as int,
       fqdn: map['fqdn'] == null ? null : map['fqdn'] as String,
       instance: map['instance'] == null ? null : map['instance'] as String,
       ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
@@ -82,4 +94,3 @@ class RegionNetworkEndpointArgs {
     );
   }
 }
-

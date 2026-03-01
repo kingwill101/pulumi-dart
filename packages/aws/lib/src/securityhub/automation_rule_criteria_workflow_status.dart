@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AutomationRuleCriteriaWorkflowStatus {
   final String comparison;
   final String value;
@@ -14,17 +13,15 @@ class AutomationRuleCriteriaWorkflowStatus {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comparison': comparison,
-      'value': value,
-    };
+    return <String, dynamic>{'comparison': comparison, 'value': value};
   }
 
-  factory AutomationRuleCriteriaWorkflowStatus.fromMap(Map<String, dynamic> map) {
+  factory AutomationRuleCriteriaWorkflowStatus.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AutomationRuleCriteriaWorkflowStatus(
       comparison: map['comparison'] as String,
       value: map['value'] as String,
     );
   }
 }
-

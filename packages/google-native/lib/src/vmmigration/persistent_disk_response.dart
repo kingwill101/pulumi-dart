@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Details of a created Persistent Disk.
 class PersistentDiskResponse {
   /// The URI of the Persistent Disk.
   final String diskUri;
+
   /// The ordinal number of the source VM disk.
   final int sourceDiskNumber;
 
@@ -30,4 +30,3 @@ class PersistentDiskResponse {
     );
   }
 }
-

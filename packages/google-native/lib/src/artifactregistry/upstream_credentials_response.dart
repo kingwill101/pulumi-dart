@@ -9,9 +9,7 @@ class UpstreamCredentialsResponse {
 
   /// Creates a new [UpstreamCredentialsResponse].
   /// [usernamePasswordCredentials] Use username and password to access the remote repository.
-  UpstreamCredentialsResponse({
-    required this.usernamePasswordCredentials,
-  });
+  UpstreamCredentialsResponse({required this.usernamePasswordCredentials});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class UpstreamCredentialsResponse {
 
   factory UpstreamCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return UpstreamCredentialsResponse(
-      usernamePasswordCredentials: UsernamePasswordCredentialsResponse.fromMap((map['usernamePasswordCredentials'] as Map).cast<String, dynamic>()),
+      usernamePasswordCredentials: UsernamePasswordCredentialsResponse.fromMap(
+        (map['usernamePasswordCredentials'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

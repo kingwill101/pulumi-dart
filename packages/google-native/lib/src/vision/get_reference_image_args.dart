@@ -22,11 +22,10 @@ class GetReferenceImageArgs {
     required String productId,
     String? project,
     required String referenceImageId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      referenceImageId = pulumi.Input.asInput<String>(referenceImageId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       productId = pulumi.Input.asInput<String>(productId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       referenceImageId = pulumi.Input.asInput<String>(referenceImageId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetReferenceImageArgs {
     );
   }
 }
-

@@ -314,44 +314,62 @@ import 'route_args.dart';
 class Route extends pulumi.CustomResource {
   /// Identifier of a carrier gateway. This attribute can only be used when the VPC contains a subnet which is associated with a Wavelength Zone.
   late final pulumi.Output<String?> carrierGatewayId;
+
   /// The Amazon Resource Name (ARN) of a core network.
   late final pulumi.Output<String?> coreNetworkArn;
+
   /// The destination CIDR block.
   late final pulumi.Output<String?> destinationCidrBlock;
+
   /// The destination IPv6 CIDR block.
   late final pulumi.Output<String?> destinationIpv6CidrBlock;
+
   /// The ID of a managed prefix list destination.
   ///
   /// One of the following target arguments must be supplied:
   late final pulumi.Output<String?> destinationPrefixListId;
+
   /// Identifier of a VPC Egress Only Internet Gateway.
   late final pulumi.Output<String?> egressOnlyGatewayId;
+
   /// Identifier of a VPC internet gateway or a virtual private gateway. Specify `local` when updating a previously imported local route.
   late final pulumi.Output<String?> gatewayId;
+
   /// Identifier of an EC2 instance.
   late final pulumi.Output<String> instanceId;
+
   /// The AWS account ID of the owner of the EC2 instance.
   late final pulumi.Output<String> instanceOwnerId;
+
   /// Identifier of a Outpost local gateway.
   late final pulumi.Output<String?> localGatewayId;
+
   /// Identifier of a VPC NAT gateway.
   late final pulumi.Output<String?> natGatewayId;
+
   /// Identifier of an EC2 network interface.
   late final pulumi.Output<String> networkInterfaceId;
+
   /// How the route was created - `CreateRouteTable`, `CreateRoute` or `EnableVgwRoutePropagation`.
   late final pulumi.Output<String> origin;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of the routing table.
   ///
   /// One of the following destination arguments must be supplied:
   late final pulumi.Output<String> routeTableId;
+
   /// The state of the route - `active` or `blackhole`.
   late final pulumi.Output<String> state;
+
   /// Identifier of an EC2 Transit Gateway.
   late final pulumi.Output<String?> transitGatewayId;
+
   /// Identifier of a VPC Endpoint.
   late final pulumi.Output<String?> vpcEndpointId;
+
   /// Identifier of a VPC peering connection.
   ///
   /// Note that the default route, mapping the VPC's CIDR block to "local", is created implicitly and cannot be specified.
@@ -361,21 +379,22 @@ class Route extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Route]. {@macro pulumi_ec2_route_route_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Route(
-    String name, {
-    RouteArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:ec2/route:Route',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Route(String name, {RouteArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:ec2/route:Route',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.carrierGatewayId = registerOutput<String?>('carrierGatewayId');
     this.coreNetworkArn = registerOutput<String?>('coreNetworkArn');
     this.destinationCidrBlock = registerOutput<String?>('destinationCidrBlock');
-    this.destinationIpv6CidrBlock = registerOutput<String?>('destinationIpv6CidrBlock');
-    this.destinationPrefixListId = registerOutput<String?>('destinationPrefixListId');
+    this.destinationIpv6CidrBlock = registerOutput<String?>(
+      'destinationIpv6CidrBlock',
+    );
+    this.destinationPrefixListId = registerOutput<String?>(
+      'destinationPrefixListId',
+    );
     this.egressOnlyGatewayId = registerOutput<String?>('egressOnlyGatewayId');
     this.gatewayId = registerOutput<String?>('gatewayId');
     this.instanceId = registerOutput<String>('instanceId');
@@ -389,6 +408,8 @@ class Route extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     this.transitGatewayId = registerOutput<String?>('transitGatewayId');
     this.vpcEndpointId = registerOutput<String?>('vpcEndpointId');
-    this.vpcPeeringConnectionId = registerOutput<String?>('vpcPeeringConnectionId');
+    this.vpcPeeringConnectionId = registerOutput<String?>(
+      'vpcPeeringConnectionId',
+    );
   }
 }

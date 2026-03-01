@@ -15,4 +15,3 @@ enum CVSSv3AttackComplexity {
     throw ArgumentError('Unknown CVSSv3AttackComplexity value: $value');
   }
 }
-

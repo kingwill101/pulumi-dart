@@ -20,4 +20,3 @@ enum ImportJobImportMethod {
     throw ArgumentError('Unknown ImportJobImportMethod value: $value');
   }
 }
-

@@ -16,4 +16,3 @@ enum NodeGroupStatus {
     throw ArgumentError('Unknown NodeGroupStatus value: $value');
   }
 }
-

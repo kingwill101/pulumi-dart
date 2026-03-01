@@ -16,9 +16,10 @@ class GetDataSourceArgs {
   GetDataSourceArgs({
     required String datasourceId,
     bool? debugOptionsEnableDebugging,
-  }) :
-      datasourceId = pulumi.Input.asInput<String>(datasourceId),
-      debugOptionsEnableDebugging = pulumi.Input.asOptionalInput<bool>(debugOptionsEnableDebugging);
+  }) : datasourceId = pulumi.Input.asInput<String>(datasourceId),
+       debugOptionsEnableDebugging = pulumi.Input.asOptionalInput<bool>(
+         debugOptionsEnableDebugging,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,8 +31,9 @@ class GetDataSourceArgs {
   factory GetDataSourceArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSourceArgs(
       datasourceId: map['datasourceId'] as String,
-      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null ? null : map['debugOptionsEnableDebugging'] as bool,
+      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null
+          ? null
+          : map['debugOptionsEnableDebugging'] as bool,
     );
   }
 }
-

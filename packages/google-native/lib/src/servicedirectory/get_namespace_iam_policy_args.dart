@@ -19,10 +19,9 @@ class GetNamespaceIamPolicyArgs {
     required String location,
     required String namespaceId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       namespaceId = pulumi.Input.asInput<String>(namespaceId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetNamespaceIamPolicyArgs {
     );
   }
 }
-

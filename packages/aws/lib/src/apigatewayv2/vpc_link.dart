@@ -140,16 +140,22 @@ import 'vpc_link_args.dart';
 class VpcLink extends pulumi.CustomResource {
   /// VPC Link ARN.
   late final pulumi.Output<String> arn;
+
   /// Name of the VPC Link. Must be between 1 and 128 characters in length.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Security group IDs for the VPC Link.
   late final pulumi.Output<List<String>> securityGroupIds;
+
   /// Subnet IDs for the VPC Link.
   late final pulumi.Output<List<String>> subnetIds;
+
   /// Map of tags to assign to the VPC Link. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -162,11 +168,11 @@ class VpcLink extends pulumi.CustomResource {
     VpcLinkArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:apigatewayv2/vpcLink:VpcLink',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:apigatewayv2/vpcLink:VpcLink',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');

@@ -13,11 +13,8 @@ class GetTransferJobArgs {
   /// Creates a new [GetTransferJobArgs].
   /// [projectId] Required.
   /// [transferJobId] Required.
-  GetTransferJobArgs({
-    required String projectId,
-    required String transferJobId,
-  }) :
-      projectId = pulumi.Input.asInput<String>(projectId),
+  GetTransferJobArgs({required String projectId, required String transferJobId})
+    : projectId = pulumi.Input.asInput<String>(projectId),
       transferJobId = pulumi.Input.asInput<String>(transferJobId);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetTransferJobArgs {
     );
   }
 }
-

@@ -5,9 +5,12 @@ import 'security_policy_adaptive_protection_config_layer7_ddos_defense_config_re
 
 /// Configuration options for Cloud Armor Adaptive Protection (CAAP).
 class SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta {
-  final SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta autoDeployConfig;
+  final SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta
+  autoDeployConfig;
+
   /// If set to true, enables Cloud Armor Machine Learning.
-  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseComputeBeta layer7DdosDefenseConfig;
+  final SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseComputeBeta
+  layer7DdosDefenseConfig;
 
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta].
   /// [autoDeployConfig] Required.
@@ -24,11 +27,18 @@ class SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta {
     };
   }
 
-  factory SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta(
-      autoDeployConfig: SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta.fromMap((map['autoDeployConfig'] as Map).cast<String, dynamic>()),
-      layer7DdosDefenseConfig: SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseComputeBeta.fromMap((map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>()),
+      autoDeployConfig:
+          SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponseComputeBeta.fromMap(
+            (map['autoDeployConfig'] as Map).cast<String, dynamic>(),
+          ),
+      layer7DdosDefenseConfig:
+          SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseComputeBeta.fromMap(
+            (map['layer7DdosDefenseConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

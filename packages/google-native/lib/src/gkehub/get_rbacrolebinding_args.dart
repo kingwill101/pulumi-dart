@@ -22,11 +22,10 @@ class GetRbacrolebindingArgs {
     String? project,
     required String rbacrolebindingId,
     required String scopeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rbacrolebindingId = pulumi.Input.asInput<String>(rbacrolebindingId),
-      scopeId = pulumi.Input.asInput<String>(scopeId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       rbacrolebindingId = pulumi.Input.asInput<String>(rbacrolebindingId),
+       scopeId = pulumi.Input.asInput<String>(scopeId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetRbacrolebindingArgs {
     );
   }
 }
-

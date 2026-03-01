@@ -13,11 +13,8 @@ class GetTargetGrpcProxyArgs {
   /// Creates a new [GetTargetGrpcProxyArgs].
   /// [project] Optional.
   /// [targetGrpcProxy] Required.
-  GetTargetGrpcProxyArgs({
-    String? project,
-    required String targetGrpcProxy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetTargetGrpcProxyArgs({String? project, required String targetGrpcProxy})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       targetGrpcProxy = pulumi.Input.asInput<String>(targetGrpcProxy);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetTargetGrpcProxyArgs {
     );
   }
 }
-

@@ -8,6 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_aiplatform_v1_dataset_version_args_doc}
 class DatasetVersionArgs {
   final pulumi.Input<String> datasetId;
+
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final pulumi.Input<String>? etag;
   final pulumi.Input<String>? location;
@@ -23,11 +24,10 @@ class DatasetVersionArgs {
     String? etag,
     String? location,
     String? project,
-  }) :
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : datasetId = pulumi.Input.asInput<String>(datasetId),
+       etag = pulumi.Input.asOptionalInput<String>(etag),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,4 +47,3 @@ class DatasetVersionArgs {
     );
   }
 }
-

@@ -58,6 +58,11 @@ against upstream Pulumi behavior, based on the repository's current state.
   - remaining provider packages started migration off `very_good_analysis`:
     `policy` now uses `package:lints/recommended.yaml` and `lints` dependency
     in `dev_dependencies`.
+  - workspace generation/publish workflow normalized for local and publishing flows:
+    - restored `packages/pubspec.yaml` workspace root to support local multi-package workflows.
+    - generator again infers workspace by directory layout and applies `resolution: workspace`.
+    - local-source `pulumi` dependency cases remain tagged with `publish_to: none`
+      to keep workspace-only paths from being accidentally published.
 - Language-host startup hardening improved:
   - added analyzer attach test coverage for unreachable policy ports
     (`TestRunPluginAnalyzerAttachFailsWhenPolicyPackPortIsUnreachable`).
@@ -167,8 +172,8 @@ Actual feature-gap focus should avoid counting these as missing SDK features.
    - completed this tranche (missing port / malformed / early exit / unreachable
      port); monitor upstream for newly observed startup race cases.
 4. Generator lint baseline hardening
-   - migrate remaining generated/provider-facing packages off `very_good_analysis`
-     (continue from `policy` to any other packages not yet switched).
+   - continue validating generated/provider-facing packages to ensure no remaining
+     `very_good_analysis` dependency remains for local-dev parity.
 5. Periodic parity reconciliation
    - keep this file aligned with real failing/pending upstream-dart-port tests.
 
@@ -180,6 +185,20 @@ Status: **Completed in this tranche**
 - Added/kept unit coverage in `package_codegen_naming_test.go` for nested modules such as
   `s3/accesspoint` and `cdn/cloudfront`.
 - Generator tests in `pulumi-language-dart` currently pass (`go test ./...`).
+
+### 8) Generator workspace and publish workflow
+
+Status: **Resolved in this tranche**
+
+- Confirmed generation/workflow alignment:
+  - `packages/pubspec.yaml` workspace root now exists and lists local package
+    members plus local `pulumi` override.
+  - generated package pubspecs include `resolution: workspace` within the workspace.
+  - local path `pulumi` dependency generation continues to enforce
+    `publish_to: none`.
+- Watchpoint:
+  - ensure release tooling continues to treat package artifacts as publish artifacts
+    even when workspace metadata is present for local development.
 
 
 ## Bottom line

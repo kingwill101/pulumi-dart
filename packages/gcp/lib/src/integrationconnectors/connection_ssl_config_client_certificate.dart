@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectionSslConfigClientCertificate {
   /// Secret version of Secret Value for Config variable.
   final String secretVersion;
 
   /// Creates a new [ConnectionSslConfigClientCertificate].
   /// [secretVersion] Secret version of Secret Value for Config variable.
-  ConnectionSslConfigClientCertificate({
-    required this.secretVersion,
-  });
+  ConnectionSslConfigClientCertificate({required this.secretVersion});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretVersion': secretVersion,
-    };
+    return <String, dynamic>{'secretVersion': secretVersion};
   }
 
-  factory ConnectionSslConfigClientCertificate.fromMap(Map<String, dynamic> map) {
+  factory ConnectionSslConfigClientCertificate.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionSslConfigClientCertificate(
       secretVersion: map['secretVersion'] as String,
     );
   }
 }
-

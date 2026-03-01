@@ -13,7 +13,8 @@ enum InterconnectInterconnectTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown InterconnectInterconnectTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown InterconnectInterconnectTypeComputeV1 value: $value',
+    );
   }
 }
-

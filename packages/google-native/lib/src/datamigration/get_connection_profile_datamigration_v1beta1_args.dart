@@ -19,10 +19,9 @@ class GetConnectionProfileDatamigrationV1beta1Args {
     required String connectionProfileId,
     required String location,
     String? project,
-  }) :
-      connectionProfileId = pulumi.Input.asInput<String>(connectionProfileId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : connectionProfileId = pulumi.Input.asInput<String>(connectionProfileId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetConnectionProfileDatamigrationV1beta1Args {
     };
   }
 
-  factory GetConnectionProfileDatamigrationV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetConnectionProfileDatamigrationV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectionProfileDatamigrationV1beta1Args(
       connectionProfileId: map['connectionProfileId'] as String,
       location: map['location'] as String,
@@ -40,4 +41,3 @@ class GetConnectionProfileDatamigrationV1beta1Args {
     );
   }
 }
-

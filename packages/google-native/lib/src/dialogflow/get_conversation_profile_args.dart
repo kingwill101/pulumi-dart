@@ -19,10 +19,11 @@ class GetConversationProfileArgs {
     required String conversationProfileId,
     required String location,
     String? project,
-  }) :
-      conversationProfileId = pulumi.Input.asInput<String>(conversationProfileId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : conversationProfileId = pulumi.Input.asInput<String>(
+         conversationProfileId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetConversationProfileArgs {
     );
   }
 }
-

@@ -22,11 +22,12 @@ class GetMigrationJobIamPolicyArgs {
     required String migrationJobId,
     int? optionsRequestedPolicyVersion,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      migrationJobId = pulumi.Input.asInput<String>(migrationJobId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       migrationJobId = pulumi.Input.asInput<String>(migrationJobId),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +42,11 @@ class GetMigrationJobIamPolicyArgs {
     return GetMigrationJobIamPolicyArgs(
       location: map['location'] as String,
       migrationJobId: map['migrationJobId'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

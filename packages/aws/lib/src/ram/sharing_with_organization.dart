@@ -98,9 +98,9 @@ class SharingWithOrganization extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ram/sharingWithOrganization:SharingWithOrganization',
-          name,
-          pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        );
+         'aws:ram/sharingWithOrganization:SharingWithOrganization',
+         name,
+         pulumi.Input.mapToInputs(args ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       );
 }

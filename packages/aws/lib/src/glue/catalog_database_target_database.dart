@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CatalogDatabaseTargetDatabase {
   /// ID of the Data Catalog in which the database resides.
   final String catalogId;
+
   /// Name of the catalog database.
   final String databaseName;
+
   /// Region of the target database.
   final String? region;
 
@@ -35,4 +36,3 @@ class CatalogDatabaseTargetDatabase {
     );
   }
 }
-

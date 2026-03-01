@@ -497,10 +497,13 @@ import 'identity_source_configuration.dart';
 class IdentitySource extends pulumi.CustomResource {
   /// Specifies the details required to communicate with the identity provider (IdP) associated with this identity source. See Configuration below.
   late final pulumi.Output<IdentitySourceConfiguration> configuration;
+
   /// Specifies the ID of the policy store in which you want to store this identity source.
   late final pulumi.Output<String> policyStoreId;
+
   /// Specifies the namespace and data type of the principals generated for identities authenticated by the new identity source.
   late final pulumi.Output<String> principalEntityType;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -513,12 +516,14 @@ class IdentitySource extends pulumi.CustomResource {
     IdentitySourceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:verifiedpermissions/identitySource:IdentitySource',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.configuration = registerOutput<IdentitySourceConfiguration>('configuration');
+         'aws:verifiedpermissions/identitySource:IdentitySource',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.configuration = registerOutput<IdentitySourceConfiguration>(
+      'configuration',
+    );
     this.policyStoreId = registerOutput<String>('policyStoreId');
     this.principalEntityType = registerOutput<String>('principalEntityType');
     this.region = registerOutput<String>('region');

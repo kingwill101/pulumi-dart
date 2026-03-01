@@ -7,8 +7,10 @@ import 'google_cloud_integrations_v1alpha_parameter_map_entry_response.dart';
 class GoogleCloudIntegrationsV1alphaParameterMapResponse {
   /// A list of parameter map entries.
   final List<GoogleCloudIntegrationsV1alphaParameterMapEntryResponse> entries;
+
   /// Option to specify key type for all entries of the map. If provided then field types for all entries must conform to this.
   final String keyType;
+
   /// Option to specify value type for all entries of the map. If provided then field types for all entries must conform to this.
   final String valueType;
 
@@ -24,18 +26,32 @@ class GoogleCloudIntegrationsV1alphaParameterMapResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'entries': pulumi.Input.encodeList<GoogleCloudIntegrationsV1alphaParameterMapEntryResponse, Map<String, dynamic>>(entries, (value) => value.toMap()),
+      'entries':
+          pulumi.Input.encodeList<
+            GoogleCloudIntegrationsV1alphaParameterMapEntryResponse,
+            Map<String, dynamic>
+          >(entries, (value) => value.toMap()),
       'keyType': keyType,
       'valueType': valueType,
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaParameterMapResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaParameterMapResponse(
-      entries: pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaParameterMapEntryResponse>(map['entries'], (value) => GoogleCloudIntegrationsV1alphaParameterMapEntryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      entries:
+          pulumi.Input.decodeList<
+            GoogleCloudIntegrationsV1alphaParameterMapEntryResponse
+          >(
+            map['entries'],
+            (value) =>
+                GoogleCloudIntegrationsV1alphaParameterMapEntryResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       keyType: map['keyType'] as String,
       valueType: map['valueType'] as String,
     );
   }
 }
-

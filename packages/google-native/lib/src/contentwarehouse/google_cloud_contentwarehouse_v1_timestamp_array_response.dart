@@ -10,20 +10,32 @@ class GoogleCloudContentwarehouseV1TimestampArrayResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1TimestampArrayResponse].
   /// [values] List of timestamp values.
-  GoogleCloudContentwarehouseV1TimestampArrayResponse({
-    required this.values,
-  });
+  GoogleCloudContentwarehouseV1TimestampArrayResponse({required this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'values': pulumi.Input.encodeList<GoogleCloudContentwarehouseV1TimestampValueResponse, Map<String, dynamic>>(values, (value) => value.toMap()),
+      'values':
+          pulumi.Input.encodeList<
+            GoogleCloudContentwarehouseV1TimestampValueResponse,
+            Map<String, dynamic>
+          >(values, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudContentwarehouseV1TimestampArrayResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1TimestampArrayResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1TimestampArrayResponse(
-      values: pulumi.Input.decodeList<GoogleCloudContentwarehouseV1TimestampValueResponse>(map['values'], (value) => GoogleCloudContentwarehouseV1TimestampValueResponse.fromMap((value as Map).cast<String, dynamic>())),
+      values:
+          pulumi.Input.decodeList<
+            GoogleCloudContentwarehouseV1TimestampValueResponse
+          >(
+            map['values'],
+            (value) =>
+                GoogleCloudContentwarehouseV1TimestampValueResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

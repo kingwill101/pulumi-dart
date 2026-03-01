@@ -7,13 +7,16 @@ enum ServiceConfigSecurityLevelCloudfunctionsV2alpha {
   const ServiceConfigSecurityLevelCloudfunctionsV2alpha(this.value);
   final String value;
 
-  static ServiceConfigSecurityLevelCloudfunctionsV2alpha fromValue(String value) {
+  static ServiceConfigSecurityLevelCloudfunctionsV2alpha fromValue(
+    String value,
+  ) {
     for (final item in ServiceConfigSecurityLevelCloudfunctionsV2alpha.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceConfigSecurityLevelCloudfunctionsV2alpha value: $value');
+    throw ArgumentError(
+      'Unknown ServiceConfigSecurityLevelCloudfunctionsV2alpha value: $value',
+    );
   }
 }
-

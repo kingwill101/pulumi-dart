@@ -15,4 +15,3 @@ enum RegionSnapshotSnapshotType {
     throw ArgumentError('Unknown RegionSnapshotSnapshotType value: $value');
   }
 }
-

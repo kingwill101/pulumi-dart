@@ -11,18 +11,24 @@ import 'application_scope.dart';
 class ApplicationArgs {
   /// Required. The Application identifier.
   final pulumi.Input<String> applicationId;
+
   /// Consumer provided attributes.
   /// Structure is documented below.
   final pulumi.Input<ApplicationAttributes>? attributes;
+
   /// Optional. User-defined description of an Application.
   final pulumi.Input<String>? description;
+
   /// Optional. User-defined name for the Application.
   final pulumi.Input<String>? displayName;
+
   /// Part of `parent`. See documentation of `projectsId`.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Scope of an application.
   /// Structure is documented below.
   final pulumi.Input<ApplicationScope> scope;
@@ -43,37 +49,55 @@ class ApplicationArgs {
     required String location,
     String? project,
     required ApplicationScope scope,
-  }) :
-      applicationId = pulumi.Input.asInput<String>(applicationId),
-      attributes = pulumi.Input.asOptionalInput<ApplicationAttributes>(attributes),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      scope = pulumi.Input.asInput<ApplicationScope>(scope);
+  }) : applicationId = pulumi.Input.asInput<String>(applicationId),
+       attributes = pulumi.Input.asOptionalInput<ApplicationAttributes>(
+         attributes,
+       ),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       scope = pulumi.Input.asInput<ApplicationScope>(scope);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationId': applicationId,
-      'attributes': ?pulumi.Input.mapOptionalInputValue<ApplicationAttributes, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'attributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            ApplicationAttributes,
+            Map<String, dynamic>
+          >(attributes, (value) => value.toMap()),
       'description': ?description,
       'displayName': ?displayName,
       'location': location,
       'project': ?project,
-      'scope': pulumi.Input.mapInputValue<ApplicationScope, Map<String, dynamic>>(scope, (value) => value.toMap()),
+      'scope':
+          pulumi.Input.mapInputValue<ApplicationScope, Map<String, dynamic>>(
+            scope,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory ApplicationArgs.fromMap(Map<String, dynamic> map) {
     return ApplicationArgs(
       applicationId: map['applicationId'] as String,
-      attributes: map['attributes'] == null ? null : ApplicationAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      attributes: map['attributes'] == null
+          ? null
+          : ApplicationAttributes.fromMap(
+              (map['attributes'] as Map).cast<String, dynamic>(),
+            ),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      scope: ApplicationScope.fromMap((map['scope'] as Map).cast<String, dynamic>()),
+      scope: ApplicationScope.fromMap(
+        (map['scope'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

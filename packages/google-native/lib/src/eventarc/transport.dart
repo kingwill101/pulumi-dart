@@ -9,9 +9,7 @@ class Transport {
 
   /// Creates a new [Transport].
   /// [pubsub] The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
-  Transport({
-    this.pubsub,
-  });
+  Transport({this.pubsub});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class Transport {
 
   factory Transport.fromMap(Map<String, dynamic> map) {
     return Transport(
-      pubsub: map['pubsub'] == null ? null : Pubsub.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
+      pubsub: map['pubsub'] == null
+          ? null
+          : Pubsub.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

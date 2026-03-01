@@ -7,29 +7,34 @@ import 'mysql_column_response.dart';
 class MysqlTableResponse {
   /// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
   final List<MysqlColumnResponse> mysqlColumns;
+
   /// Table name.
   final String table;
 
   /// Creates a new [MysqlTableResponse].
   /// [mysqlColumns] MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  MysqlTableResponse({
-    required this.mysqlColumns,
-    required this.table,
-  });
+  MysqlTableResponse({required this.mysqlColumns, required this.table});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlColumns': pulumi.Input.encodeList<MysqlColumnResponse, Map<String, dynamic>>(mysqlColumns, (value) => value.toMap()),
+      'mysqlColumns':
+          pulumi.Input.encodeList<MysqlColumnResponse, Map<String, dynamic>>(
+            mysqlColumns,
+            (value) => value.toMap(),
+          ),
       'table': table,
     };
   }
 
   factory MysqlTableResponse.fromMap(Map<String, dynamic> map) {
     return MysqlTableResponse(
-      mysqlColumns: pulumi.Input.decodeList<MysqlColumnResponse>(map['mysqlColumns'], (value) => MysqlColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
+      mysqlColumns: pulumi.Input.decodeList<MysqlColumnResponse>(
+        map['mysqlColumns'],
+        (value) =>
+            MysqlColumnResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       table: map['table'] as String,
     );
   }
 }
-

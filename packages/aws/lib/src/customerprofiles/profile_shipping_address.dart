@@ -1,25 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ProfileShippingAddress {
   /// The first line of a customer address.
   final String? address1;
+
   /// The second line of a customer address.
   final String? address2;
+
   /// The third line of a customer address.
   final String? address3;
+
   /// The fourth line of a customer address.
   final String? address4;
+
   /// The city in which a customer lives.
   final String? city;
+
   /// The country in which a customer lives.
   final String? country;
+
   /// The county in which a customer lives.
   final String? county;
+
   /// The postal code of a customer address.
   final String? postalCode;
+
   /// The province in which a customer lives.
   final String? province;
+
   /// The state in which a customer lives.
   final String? state;
 
@@ -71,10 +79,11 @@ class ProfileShippingAddress {
       city: map['city'] == null ? null : map['city'] as String,
       country: map['country'] == null ? null : map['country'] as String,
       county: map['county'] == null ? null : map['county'] as String,
-      postalCode: map['postalCode'] == null ? null : map['postalCode'] as String,
+      postalCode: map['postalCode'] == null
+          ? null
+          : map['postalCode'] as String,
       province: map['province'] == null ? null : map['province'] as String,
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
-

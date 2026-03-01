@@ -10,13 +10,17 @@ enum GlobalForwardingRuleLoadBalancingSchemeComputeBeta {
   const GlobalForwardingRuleLoadBalancingSchemeComputeBeta(this.value);
   final String value;
 
-  static GlobalForwardingRuleLoadBalancingSchemeComputeBeta fromValue(String value) {
-    for (final item in GlobalForwardingRuleLoadBalancingSchemeComputeBeta.values) {
+  static GlobalForwardingRuleLoadBalancingSchemeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in GlobalForwardingRuleLoadBalancingSchemeComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalForwardingRuleLoadBalancingSchemeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalForwardingRuleLoadBalancingSchemeComputeBeta value: $value',
+    );
   }
 }
-

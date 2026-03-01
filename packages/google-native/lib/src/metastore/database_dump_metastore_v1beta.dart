@@ -7,10 +7,13 @@ import 'database_dump_type_metastore_v1beta.dart';
 class DatabaseDumpMetastoreV1beta {
   /// The type of the database.
   final DatabaseDumpDatabaseTypeMetastoreV1beta? databaseType;
+
   /// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
   final String? gcsUri;
+
   /// The name of the source database.
   final String? sourceDatabase;
+
   /// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
   final DatabaseDumpTypeMetastoreV1beta? type;
 
@@ -37,11 +40,18 @@ class DatabaseDumpMetastoreV1beta {
 
   factory DatabaseDumpMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return DatabaseDumpMetastoreV1beta(
-      databaseType: map['databaseType'] == null ? null : DatabaseDumpDatabaseTypeMetastoreV1beta.fromValue(map['databaseType'] as String),
+      databaseType: map['databaseType'] == null
+          ? null
+          : DatabaseDumpDatabaseTypeMetastoreV1beta.fromValue(
+              map['databaseType'] as String,
+            ),
       gcsUri: map['gcsUri'] == null ? null : map['gcsUri'] as String,
-      sourceDatabase: map['sourceDatabase'] == null ? null : map['sourceDatabase'] as String,
-      type: map['type'] == null ? null : DatabaseDumpTypeMetastoreV1beta.fromValue(map['type'] as String),
+      sourceDatabase: map['sourceDatabase'] == null
+          ? null
+          : map['sourceDatabase'] as String,
+      type: map['type'] == null
+          ? null
+          : DatabaseDumpTypeMetastoreV1beta.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterSnapshotArgs {
   /// The DocumentDB Cluster Identifier from which to take the snapshot.
   final pulumi.Input<String> dbClusterIdentifier;
+
   /// The Identifier for the snapshot.
   final pulumi.Input<String> dbClusterSnapshotIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -22,10 +24,11 @@ class ClusterSnapshotArgs {
     required String dbClusterIdentifier,
     required String dbClusterSnapshotIdentifier,
     String? region,
-  }) :
-      dbClusterIdentifier = pulumi.Input.asInput<String>(dbClusterIdentifier),
-      dbClusterSnapshotIdentifier = pulumi.Input.asInput<String>(dbClusterSnapshotIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : dbClusterIdentifier = pulumi.Input.asInput<String>(dbClusterIdentifier),
+       dbClusterSnapshotIdentifier = pulumi.Input.asInput<String>(
+         dbClusterSnapshotIdentifier,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +46,3 @@ class ClusterSnapshotArgs {
     );
   }
 }
-

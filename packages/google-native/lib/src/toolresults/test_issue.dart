@@ -10,14 +10,19 @@ import 'test_issue_type.dart';
 class TestIssue {
   /// Category of issue. Required.
   final TestIssueCategory? category;
+
   /// A brief human-readable message describing the issue. Required.
   final String? errorMessage;
+
   /// Severity of issue. Required.
   final TestIssueSeverity? severity;
+
   /// Deprecated in favor of stack trace fields inside specific warnings.
   final StackTrace? stackTrace;
+
   /// Type of issue. Required.
   final TestIssueType? type;
+
   /// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
   final Any? warning;
 
@@ -50,13 +55,26 @@ class TestIssue {
 
   factory TestIssue.fromMap(Map<String, dynamic> map) {
     return TestIssue(
-      category: map['category'] == null ? null : TestIssueCategory.fromValue(map['category'] as String),
-      errorMessage: map['errorMessage'] == null ? null : map['errorMessage'] as String,
-      severity: map['severity'] == null ? null : TestIssueSeverity.fromValue(map['severity'] as String),
-      stackTrace: map['stackTrace'] == null ? null : StackTrace.fromMap((map['stackTrace'] as Map).cast<String, dynamic>()),
-      type: map['type'] == null ? null : TestIssueType.fromValue(map['type'] as String),
-      warning: map['warning'] == null ? null : Any.fromMap((map['warning'] as Map).cast<String, dynamic>()),
+      category: map['category'] == null
+          ? null
+          : TestIssueCategory.fromValue(map['category'] as String),
+      errorMessage: map['errorMessage'] == null
+          ? null
+          : map['errorMessage'] as String,
+      severity: map['severity'] == null
+          ? null
+          : TestIssueSeverity.fromValue(map['severity'] as String),
+      stackTrace: map['stackTrace'] == null
+          ? null
+          : StackTrace.fromMap(
+              (map['stackTrace'] as Map).cast<String, dynamic>(),
+            ),
+      type: map['type'] == null
+          ? null
+          : TestIssueType.fromValue(map['type'] as String),
+      warning: map['warning'] == null
+          ? null
+          : Any.fromMap((map['warning'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

@@ -6,10 +6,14 @@ import 'v2models_slot_value_elicitation_setting_prompt_specification_message_gro
 import 'v2models_slot_value_elicitation_setting_prompt_specification_message_group_message_ssml_message.dart';
 
 class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage {
-  final V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageCustomPayload? customPayload;
-  final V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageImageResponseCard? imageResponseCard;
-  final V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessage? plainTextMessage;
-  final V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage? ssmlMessage;
+  final V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageCustomPayload?
+  customPayload;
+  final V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageImageResponseCard?
+  imageResponseCard;
+  final V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessage?
+  plainTextMessage;
+  final V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage?
+  ssmlMessage;
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage].
   /// [customPayload] Optional.
@@ -26,19 +30,40 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customPayload': ?customPayload == null ? null : customPayload!.toMap(),
-      'imageResponseCard': ?imageResponseCard == null ? null : imageResponseCard!.toMap(),
-      'plainTextMessage': ?plainTextMessage == null ? null : plainTextMessage!.toMap(),
+      'imageResponseCard': ?imageResponseCard == null
+          ? null
+          : imageResponseCard!.toMap(),
+      'plainTextMessage': ?plainTextMessage == null
+          ? null
+          : plainTextMessage!.toMap(),
       'ssmlMessage': ?ssmlMessage == null ? null : ssmlMessage!.toMap(),
     };
   }
 
-  factory V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage(
-      customPayload: map['customPayload'] == null ? null : V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageCustomPayload.fromMap((map['customPayload'] as Map).cast<String, dynamic>()),
-      imageResponseCard: map['imageResponseCard'] == null ? null : V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageImageResponseCard.fromMap((map['imageResponseCard'] as Map).cast<String, dynamic>()),
-      plainTextMessage: map['plainTextMessage'] == null ? null : V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessage.fromMap((map['plainTextMessage'] as Map).cast<String, dynamic>()),
-      ssmlMessage: map['ssmlMessage'] == null ? null : V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage.fromMap((map['ssmlMessage'] as Map).cast<String, dynamic>()),
+      customPayload: map['customPayload'] == null
+          ? null
+          : V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageCustomPayload.fromMap(
+              (map['customPayload'] as Map).cast<String, dynamic>(),
+            ),
+      imageResponseCard: map['imageResponseCard'] == null
+          ? null
+          : V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageImageResponseCard.fromMap(
+              (map['imageResponseCard'] as Map).cast<String, dynamic>(),
+            ),
+      plainTextMessage: map['plainTextMessage'] == null
+          ? null
+          : V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessage.fromMap(
+              (map['plainTextMessage'] as Map).cast<String, dynamic>(),
+            ),
+      ssmlMessage: map['ssmlMessage'] == null
+          ? null
+          : V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageSsmlMessage.fromMap(
+              (map['ssmlMessage'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetBucketIpFilterVpcNetworkSource {
   /// The list of public or private IPv4 and IPv6 CIDR ranges that can access the bucket.
   final List<String> allowedIpCidrRanges;
+
   /// Name of the network. Format: projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}
   final String network;
 
@@ -29,4 +29,3 @@ class GetBucketIpFilterVpcNetworkSource {
     );
   }
 }
-

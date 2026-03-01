@@ -19,10 +19,11 @@ class GetOsPolicyAssignmentArgs {
     required String location,
     required String osPolicyAssignmentId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      osPolicyAssignmentId = pulumi.Input.asInput<String>(osPolicyAssignmentId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       osPolicyAssignmentId = pulumi.Input.asInput<String>(
+         osPolicyAssignmentId,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetOsPolicyAssignmentArgs {
     );
   }
 }
-

@@ -8,6 +8,7 @@ class GetHcVpnGatewayResult {
   final String description;
   final Map<String, String> effectiveLabels;
   final String gatewayIpVersion;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String labelFingerprint;
@@ -68,7 +69,11 @@ class GetHcVpnGatewayResult {
       'region': ?region,
       'selfLink': selfLink,
       'stackType': stackType,
-      'vpnInterfaces': pulumi.Input.encodeList<GetHcVpnGatewayVpnInterface, Map<String, dynamic>>(vpnInterfaces, (value) => value.toMap()),
+      'vpnInterfaces':
+          pulumi.Input.encodeList<
+            GetHcVpnGatewayVpnInterface,
+            Map<String, dynamic>
+          >(vpnInterfaces, (value) => value.toMap()),
     };
   }
 
@@ -87,8 +92,12 @@ class GetHcVpnGatewayResult {
       region: map['region'] == null ? null : map['region'] as String,
       selfLink: map['selfLink'] as String,
       stackType: map['stackType'] as String,
-      vpnInterfaces: pulumi.Input.decodeList<GetHcVpnGatewayVpnInterface>(map['vpnInterfaces'], (value) => GetHcVpnGatewayVpnInterface.fromMap((value as Map).cast<String, dynamic>())),
+      vpnInterfaces: pulumi.Input.decodeList<GetHcVpnGatewayVpnInterface>(
+        map['vpnInterfaces'],
+        (value) => GetHcVpnGatewayVpnInterface.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

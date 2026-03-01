@@ -5,6 +5,7 @@ import 'duration_response.dart';
 class FutureReservationTimeWindowResponse {
   final DurationResponse duration;
   final String endTime;
+
   /// Start time of the Future Reservation. The start_time is an RFC3339 string.
   final String startTime;
 
@@ -26,12 +27,15 @@ class FutureReservationTimeWindowResponse {
     };
   }
 
-  factory FutureReservationTimeWindowResponse.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationTimeWindowResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationTimeWindowResponse(
-      duration: DurationResponse.fromMap((map['duration'] as Map).cast<String, dynamic>()),
+      duration: DurationResponse.fromMap(
+        (map['duration'] as Map).cast<String, dynamic>(),
+      ),
       endTime: map['endTime'] as String,
       startTime: map['startTime'] as String,
     );
   }
 }
-

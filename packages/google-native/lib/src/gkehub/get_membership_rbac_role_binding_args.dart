@@ -22,11 +22,10 @@ class GetMembershipRbacRoleBindingArgs {
     required String membershipId,
     String? project,
     required String rbacrolebindingId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      membershipId = pulumi.Input.asInput<String>(membershipId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      rbacrolebindingId = pulumi.Input.asInput<String>(rbacrolebindingId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       membershipId = pulumi.Input.asInput<String>(membershipId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       rbacrolebindingId = pulumi.Input.asInput<String>(rbacrolebindingId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetMembershipRbacRoleBindingArgs {
     );
   }
 }
-

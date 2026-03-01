@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResourcePolicyDiskConsistencyGroupPolicy {
   /// Enable disk consistency on the resource policy.
   final bool enabled;
 
   /// Creates a new [ResourcePolicyDiskConsistencyGroupPolicy].
   /// [enabled] Enable disk consistency on the resource policy.
-  ResourcePolicyDiskConsistencyGroupPolicy({
-    required this.enabled,
-  });
+  ResourcePolicyDiskConsistencyGroupPolicy({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory ResourcePolicyDiskConsistencyGroupPolicy.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyDiskConsistencyGroupPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyDiskConsistencyGroupPolicy(
       enabled: map['enabled'] as bool,
     );
   }
 }
-

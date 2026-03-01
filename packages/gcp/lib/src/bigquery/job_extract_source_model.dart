@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class JobExtractSourceModel {
   /// The ID of the dataset containing this model.
   final String datasetId;
+
   /// The ID of the model.
   final String modelId;
+
   /// The ID of the project containing this model.
   final String projectId;
 
@@ -35,4 +36,3 @@ class JobExtractSourceModel {
     );
   }
 }
-

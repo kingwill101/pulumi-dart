@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SecondaryNetworkIpv4CidrBlockAssociation {
   /// Association ID for the IPv4 CIDR block.
   final String associationId;
+
   /// IPv4 CIDR block.
   final String cidrBlock;
+
   /// State of the IPv4 CIDR block association.
   final String state;
 
@@ -27,7 +28,9 @@ class SecondaryNetworkIpv4CidrBlockAssociation {
     };
   }
 
-  factory SecondaryNetworkIpv4CidrBlockAssociation.fromMap(Map<String, dynamic> map) {
+  factory SecondaryNetworkIpv4CidrBlockAssociation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecondaryNetworkIpv4CidrBlockAssociation(
       associationId: map['associationId'] as String,
       cidrBlock: map['cidrBlock'] as String,
@@ -35,4 +38,3 @@ class SecondaryNetworkIpv4CidrBlockAssociation {
     );
   }
 }
-

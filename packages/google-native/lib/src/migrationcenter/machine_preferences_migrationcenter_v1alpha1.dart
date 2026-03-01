@@ -10,20 +10,31 @@ class MachinePreferencesMigrationcenterV1alpha1 {
 
   /// Creates a new [MachinePreferencesMigrationcenterV1alpha1].
   /// [allowedMachineSeries] Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
-  MachinePreferencesMigrationcenterV1alpha1({
-    this.allowedMachineSeries,
-  });
+  MachinePreferencesMigrationcenterV1alpha1({this.allowedMachineSeries});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedMachineSeries': ?allowedMachineSeries == null ? null : pulumi.Input.encodeList<MachineSeriesMigrationcenterV1alpha1, Map<String, dynamic>>(allowedMachineSeries!, (value) => value.toMap()),
+      'allowedMachineSeries': ?allowedMachineSeries == null
+          ? null
+          : pulumi.Input.encodeList<
+              MachineSeriesMigrationcenterV1alpha1,
+              Map<String, dynamic>
+            >(allowedMachineSeries!, (value) => value.toMap()),
     };
   }
 
-  factory MachinePreferencesMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory MachinePreferencesMigrationcenterV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MachinePreferencesMigrationcenterV1alpha1(
-      allowedMachineSeries: map['allowedMachineSeries'] == null ? null : pulumi.Input.decodeList<MachineSeriesMigrationcenterV1alpha1>(map['allowedMachineSeries'], (value) => MachineSeriesMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      allowedMachineSeries: map['allowedMachineSeries'] == null
+          ? null
+          : pulumi.Input.decodeList<MachineSeriesMigrationcenterV1alpha1>(
+              map['allowedMachineSeries'],
+              (value) => MachineSeriesMigrationcenterV1alpha1.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

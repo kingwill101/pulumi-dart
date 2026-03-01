@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for the AzureAD Auth flow.
 class IdentityServiceAzureADConfigResponse {
   /// ID for the registered client application that makes authentication requests to the Azure AD identity provider.
   final String clientId;
+
   /// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
   final String clientSecret;
+
   /// Encrypted AzureAD client secret.
   final String encryptedClientSecret;
+
   /// The redirect URL that kubectl uses for authorization.
   final String kubectlRedirectUri;
+
   /// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
   final String tenant;
 
@@ -38,7 +41,9 @@ class IdentityServiceAzureADConfigResponse {
     };
   }
 
-  factory IdentityServiceAzureADConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory IdentityServiceAzureADConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityServiceAzureADConfigResponse(
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
@@ -48,4 +53,3 @@ class IdentityServiceAzureADConfigResponse {
     );
   }
 }
-

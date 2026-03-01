@@ -9,20 +9,23 @@ class MembershipSpec {
 
   /// Creates a new [MembershipSpec].
   /// [certificateManagement] Specifies workload certificate management.
-  MembershipSpec({
-    this.certificateManagement,
-  });
+  MembershipSpec({this.certificateManagement});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateManagement': ?certificateManagement == null ? null : certificateManagement!.value,
+      'certificateManagement': ?certificateManagement == null
+          ? null
+          : certificateManagement!.value,
     };
   }
 
   factory MembershipSpec.fromMap(Map<String, dynamic> map) {
     return MembershipSpec(
-      certificateManagement: map['certificateManagement'] == null ? null : MembershipSpecCertificateManagement.fromValue(map['certificateManagement'] as String),
+      certificateManagement: map['certificateManagement'] == null
+          ? null
+          : MembershipSpecCertificateManagement.fromValue(
+              map['certificateManagement'] as String,
+            ),
     );
   }
 }
-

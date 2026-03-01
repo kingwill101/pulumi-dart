@@ -7,20 +7,28 @@ import 'vpc_network_response.dart';
 class GetVmwareEngineNetworkResult {
   /// Creation time of this resource.
   final String createTime;
+
   /// User-provided description for this VMware Engine network.
   final String description;
+
   /// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date before the server processes a request. The server computes checksums based on the value of other fields in the request.
   final String etag;
+
   /// The resource name of the VMware Engine network. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
   final String name;
+
   /// State of the VMware Engine network.
   final String state;
+
   /// VMware Engine network type.
   final String type;
+
   /// System-generated unique identifier for the resource.
   final String uid;
+
   /// Last update time of this resource.
   final String updateTime;
+
   /// VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects, the internet, and other Google Cloud services.
   final List<VpcNetworkResponse> vpcNetworks;
 
@@ -56,7 +64,11 @@ class GetVmwareEngineNetworkResult {
       'type': type,
       'uid': uid,
       'updateTime': updateTime,
-      'vpcNetworks': pulumi.Input.encodeList<VpcNetworkResponse, Map<String, dynamic>>(vpcNetworks, (value) => value.toMap()),
+      'vpcNetworks':
+          pulumi.Input.encodeList<VpcNetworkResponse, Map<String, dynamic>>(
+            vpcNetworks,
+            (value) => value.toMap(),
+          ),
     };
   }
 
@@ -70,8 +82,11 @@ class GetVmwareEngineNetworkResult {
       type: map['type'] as String,
       uid: map['uid'] as String,
       updateTime: map['updateTime'] as String,
-      vpcNetworks: pulumi.Input.decodeList<VpcNetworkResponse>(map['vpcNetworks'], (value) => VpcNetworkResponse.fromMap((value as Map).cast<String, dynamic>())),
+      vpcNetworks: pulumi.Input.decodeList<VpcNetworkResponse>(
+        map['vpcNetworks'],
+        (value) =>
+            VpcNetworkResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

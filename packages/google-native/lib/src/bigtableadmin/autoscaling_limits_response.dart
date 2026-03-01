@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Limits for the number of nodes a Cluster can autoscale up/down to.
 class AutoscalingLimitsResponse {
   /// Maximum number of nodes to scale up to.
   final int maxServeNodes;
+
   /// Minimum number of nodes to scale down to.
   final int minServeNodes;
 
@@ -30,4 +30,3 @@ class AutoscalingLimitsResponse {
     );
   }
 }
-

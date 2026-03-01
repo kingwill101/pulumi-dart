@@ -7,6 +7,7 @@ import 'managed_cluster_response.dart';
 class WorkflowTemplatePlacementResponse {
   /// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
   final ClusterSelectorResponse clusterSelector;
+
   /// A cluster that is managed by the workflow.
   final ManagedClusterResponse managedCluster;
 
@@ -27,9 +28,12 @@ class WorkflowTemplatePlacementResponse {
 
   factory WorkflowTemplatePlacementResponse.fromMap(Map<String, dynamic> map) {
     return WorkflowTemplatePlacementResponse(
-      clusterSelector: ClusterSelectorResponse.fromMap((map['clusterSelector'] as Map).cast<String, dynamic>()),
-      managedCluster: ManagedClusterResponse.fromMap((map['managedCluster'] as Map).cast<String, dynamic>()),
+      clusterSelector: ClusterSelectorResponse.fromMap(
+        (map['clusterSelector'] as Map).cast<String, dynamic>(),
+      ),
+      managedCluster: ManagedClusterResponse.fromMap(
+        (map['managedCluster'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -10,20 +10,27 @@ class Filter {
 
   /// Creates a new [Filter].
   /// [eventType] Event types to allowlist.
-  Filter({
-    this.eventType,
-  });
+  Filter({this.eventType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'eventType': ?eventType == null ? null : pulumi.Input.encodeList<FilterEventTypeItem, String>(eventType!, (value) => value.value),
+      'eventType': ?eventType == null
+          ? null
+          : pulumi.Input.encodeList<FilterEventTypeItem, String>(
+              eventType!,
+              (value) => value.value,
+            ),
     };
   }
 
   factory Filter.fromMap(Map<String, dynamic> map) {
     return Filter(
-      eventType: map['eventType'] == null ? null : pulumi.Input.decodeList<FilterEventTypeItem>(map['eventType'], (value) => FilterEventTypeItem.fromValue(value as String)),
+      eventType: map['eventType'] == null
+          ? null
+          : pulumi.Input.decodeList<FilterEventTypeItem>(
+              map['eventType'],
+              (value) => FilterEventTypeItem.fromValue(value as String),
+            ),
     );
   }
 }
-

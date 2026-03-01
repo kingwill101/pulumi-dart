@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstanceBlueGreenUpdate {
   /// Enables low-downtime updates when `true`.
   /// Default is `false`.
@@ -15,14 +14,10 @@ class InstanceBlueGreenUpdate {
 
   /// Creates a new [InstanceBlueGreenUpdate].
   /// [enabled] Enables low-downtime updates when `true`.
-  InstanceBlueGreenUpdate({
-    this.enabled,
-  });
+  InstanceBlueGreenUpdate({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory InstanceBlueGreenUpdate.fromMap(Map<String, dynamic> map) {
@@ -31,4 +26,3 @@ class InstanceBlueGreenUpdate {
     );
   }
 }
-

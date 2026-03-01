@@ -34,14 +34,27 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
     };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata(
-      buildFinishedOn: map['buildFinishedOn'] == null ? null : map['buildFinishedOn'] as String,
-      buildInvocationId: map['buildInvocationId'] == null ? null : map['buildInvocationId'] as String,
-      buildStartedOn: map['buildStartedOn'] == null ? null : map['buildStartedOn'] as String,
-      completeness: map['completeness'] == null ? null : GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromMap((map['completeness'] as Map).cast<String, dynamic>()),
-      reproducible: map['reproducible'] == null ? null : map['reproducible'] as bool,
+      buildFinishedOn: map['buildFinishedOn'] == null
+          ? null
+          : map['buildFinishedOn'] as String,
+      buildInvocationId: map['buildInvocationId'] == null
+          ? null
+          : map['buildInvocationId'] as String,
+      buildStartedOn: map['buildStartedOn'] == null
+          ? null
+          : map['buildStartedOn'] as String,
+      completeness: map['completeness'] == null
+          ? null
+          : GrafeasV1SlsaProvenanceZeroTwoSlsaCompleteness.fromMap(
+              (map['completeness'] as Map).cast<String, dynamic>(),
+            ),
+      reproducible: map['reproducible'] == null
+          ? null
+          : map['reproducible'] as bool,
     );
   }
 }
-

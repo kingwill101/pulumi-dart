@@ -19,10 +19,9 @@ class GetMeshArgs {
     required String location,
     required String meshId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      meshId = pulumi.Input.asInput<String>(meshId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       meshId = pulumi.Input.asInput<String>(meshId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetMeshArgs {
     );
   }
 }
-

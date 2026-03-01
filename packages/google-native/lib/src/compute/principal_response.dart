@@ -1,26 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// [Deprecated] All fields defined in a principal are ANDed.
 class PrincipalResponse {
   /// An expression to specify custom condition.
   final String condition;
+
   /// The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
   final List<String> groups;
+
   /// IPv4 or IPv6 address or range (In CIDR format)
   final List<String> ips;
+
   /// The namespaces. Exact match, prefix match, and suffix match are supported.
   final List<String> namespaces;
+
   /// Negate of groups. Specifies exclusions.
   final List<String> notGroups;
+
   /// Negate of IPs. Specifies exclusions.
   final List<String> notIps;
+
   /// Negate of namespaces. Specifies exclusions.
   final List<String> notNamespaces;
+
   /// Negate of users. Specifies exclusions.
   final List<String> notUsers;
+
   /// A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
   final Map<String, String> properties;
+
   /// The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
   final List<String> users;
 
@@ -78,4 +86,3 @@ class PrincipalResponse {
     );
   }
 }
-

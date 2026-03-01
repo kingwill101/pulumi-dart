@@ -19,10 +19,9 @@ class GetRuleSetArgs {
     required String location,
     String? project,
     required String ruleSetId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      ruleSetId = pulumi.Input.asInput<String>(ruleSetId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       ruleSetId = pulumi.Input.asInput<String>(ruleSetId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRuleSetArgs {
     );
   }
 }
-

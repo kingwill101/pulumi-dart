@@ -1,25 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EndpointKinesisSettings {
   /// Shows detailed control information for table definition, column definition, and table and column changes in the Kinesis message output. Default is `false`.
   final bool? includeControlDetails;
+
   /// Include NULL and empty columns in the target. Default is `false`.
   final bool? includeNullAndEmpty;
+
   /// Shows the partition value within the Kinesis message output, unless the partition type is schema-table-type. Default is `false`.
   final bool? includePartitionValue;
+
   /// Includes any data definition language (DDL) operations that change the table in the control data. Default is `false`.
   final bool? includeTableAlterOperations;
+
   /// Provides detailed transaction information from the source database. Default is `false`.
   final bool? includeTransactionDetails;
+
   /// Output format for the records created. Default is `json`. Valid values are `json` and `json-unformatted` (a single line with no tab).
   final String? messageFormat;
+
   /// Prefixes schema and table names to partition values, when the partition type is primary-key-type. Default is `false`.
   final bool? partitionIncludeSchemaTable;
+
   /// ARN of the IAM Role with permissions to write to the Kinesis data stream.
   final String? serviceAccessRoleArn;
+
   /// ARN of the Kinesis data stream.
   final String? streamArn;
+
   /// Use up to 18 digit int instead of casting ints as doubles, available from AWS DMS version 3.5.4. Default is `false`.
   final bool? useLargeIntegerValue;
 
@@ -64,17 +72,34 @@ class EndpointKinesisSettings {
 
   factory EndpointKinesisSettings.fromMap(Map<String, dynamic> map) {
     return EndpointKinesisSettings(
-      includeControlDetails: map['includeControlDetails'] == null ? null : map['includeControlDetails'] as bool,
-      includeNullAndEmpty: map['includeNullAndEmpty'] == null ? null : map['includeNullAndEmpty'] as bool,
-      includePartitionValue: map['includePartitionValue'] == null ? null : map['includePartitionValue'] as bool,
-      includeTableAlterOperations: map['includeTableAlterOperations'] == null ? null : map['includeTableAlterOperations'] as bool,
-      includeTransactionDetails: map['includeTransactionDetails'] == null ? null : map['includeTransactionDetails'] as bool,
-      messageFormat: map['messageFormat'] == null ? null : map['messageFormat'] as String,
-      partitionIncludeSchemaTable: map['partitionIncludeSchemaTable'] == null ? null : map['partitionIncludeSchemaTable'] as bool,
-      serviceAccessRoleArn: map['serviceAccessRoleArn'] == null ? null : map['serviceAccessRoleArn'] as String,
+      includeControlDetails: map['includeControlDetails'] == null
+          ? null
+          : map['includeControlDetails'] as bool,
+      includeNullAndEmpty: map['includeNullAndEmpty'] == null
+          ? null
+          : map['includeNullAndEmpty'] as bool,
+      includePartitionValue: map['includePartitionValue'] == null
+          ? null
+          : map['includePartitionValue'] as bool,
+      includeTableAlterOperations: map['includeTableAlterOperations'] == null
+          ? null
+          : map['includeTableAlterOperations'] as bool,
+      includeTransactionDetails: map['includeTransactionDetails'] == null
+          ? null
+          : map['includeTransactionDetails'] as bool,
+      messageFormat: map['messageFormat'] == null
+          ? null
+          : map['messageFormat'] as String,
+      partitionIncludeSchemaTable: map['partitionIncludeSchemaTable'] == null
+          ? null
+          : map['partitionIncludeSchemaTable'] as bool,
+      serviceAccessRoleArn: map['serviceAccessRoleArn'] == null
+          ? null
+          : map['serviceAccessRoleArn'] as String,
       streamArn: map['streamArn'] == null ? null : map['streamArn'] as String,
-      useLargeIntegerValue: map['useLargeIntegerValue'] == null ? null : map['useLargeIntegerValue'] as bool,
+      useLargeIntegerValue: map['useLargeIntegerValue'] == null
+          ? null
+          : map['useLargeIntegerValue'] as bool,
     );
   }
 }
-

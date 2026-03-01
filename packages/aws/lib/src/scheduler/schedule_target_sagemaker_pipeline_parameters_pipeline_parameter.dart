@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ScheduleTargetSagemakerPipelineParametersPipelineParameter {
   /// Name of parameter to start execution of a SageMaker AI Model Building Pipeline.
   final String name;
+
   /// Value of parameter to start execution of a SageMaker AI Model Building Pipeline.
   final String value;
 
@@ -16,17 +16,15 @@ class ScheduleTargetSagemakerPipelineParametersPipelineParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory ScheduleTargetSagemakerPipelineParametersPipelineParameter.fromMap(Map<String, dynamic> map) {
+  factory ScheduleTargetSagemakerPipelineParametersPipelineParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduleTargetSagemakerPipelineParametersPipelineParameter(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

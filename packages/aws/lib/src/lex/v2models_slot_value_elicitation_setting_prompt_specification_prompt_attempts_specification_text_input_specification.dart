@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification {
   final int startTimeoutMs;
 
@@ -11,15 +10,14 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'startTimeoutMs': startTimeoutMs,
-    };
+    return <String, dynamic>{'startTimeoutMs': startTimeoutMs};
   }
 
-  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationTextInputSpecification(
       startTimeoutMs: map['startTimeoutMs'] as int,
     );
   }
 }
-

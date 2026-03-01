@@ -19,10 +19,9 @@ class GetInstanceArgs {
     String? fieldMask,
     required String instanceId,
     String? project,
-  }) :
-      fieldMask = pulumi.Input.asOptionalInput<String>(fieldMask),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : fieldMask = pulumi.Input.asOptionalInput<String>(fieldMask),
+       instanceId = pulumi.Input.asInput<String>(instanceId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetInstanceArgs {
     );
   }
 }
-

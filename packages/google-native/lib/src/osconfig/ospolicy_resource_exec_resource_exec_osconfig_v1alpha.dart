@@ -7,12 +7,16 @@ import 'ospolicy_resource_file_osconfig_v1alpha.dart';
 class OSPolicyResourceExecResourceExecOsconfigV1alpha {
   /// Optional arguments to pass to the source during execution.
   final List<String>? args;
+
   /// A remote or local file.
   final OSPolicyResourceFileOsconfigV1alpha? file;
+
   /// The script interpreter to use.
   final OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha interpreter;
+
   /// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
   final String? outputFilePath;
+
   /// An inline script. The size of the script is limited to 32KiB.
   final String? script;
 
@@ -40,14 +44,24 @@ class OSPolicyResourceExecResourceExecOsconfigV1alpha {
     };
   }
 
-  factory OSPolicyResourceExecResourceExecOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourceExecResourceExecOsconfigV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourceExecResourceExecOsconfigV1alpha(
       args: map['args'] == null ? null : (map['args'] as List).cast<String>(),
-      file: map['file'] == null ? null : OSPolicyResourceFileOsconfigV1alpha.fromMap((map['file'] as Map).cast<String, dynamic>()),
-      interpreter: OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha.fromValue(map['interpreter'] as String),
-      outputFilePath: map['outputFilePath'] == null ? null : map['outputFilePath'] as String,
+      file: map['file'] == null
+          ? null
+          : OSPolicyResourceFileOsconfigV1alpha.fromMap(
+              (map['file'] as Map).cast<String, dynamic>(),
+            ),
+      interpreter:
+          OSPolicyResourceExecResourceExecInterpreterOsconfigV1alpha.fromValue(
+            map['interpreter'] as String,
+          ),
+      outputFilePath: map['outputFilePath'] == null
+          ? null
+          : map['outputFilePath'] as String,
       script: map['script'] == null ? null : map['script'] as String,
     );
   }
 }
-

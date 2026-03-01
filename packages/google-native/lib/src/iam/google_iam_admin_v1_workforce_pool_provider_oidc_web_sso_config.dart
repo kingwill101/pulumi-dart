@@ -7,10 +7,14 @@ import 'google_iam_admin_v1_workforce_pool_provider_oidc_web_sso_config_response
 class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
   /// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
   final List<String>? additionalScopes;
+
   /// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
-  final GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior assertionClaimsBehavior;
+  final GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior
+  assertionClaimsBehavior;
+
   /// The Response Type to request for in the OIDC Authorization Request for web sign-in. The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
-  final GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType responseType;
+  final GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType
+  responseType;
 
   /// Creates a new [GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig].
   /// [additionalScopes] Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
@@ -30,12 +34,21 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
     };
   }
 
-  factory GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig(
-      additionalScopes: map['additionalScopes'] == null ? null : (map['additionalScopes'] as List).cast<String>(),
-      assertionClaimsBehavior: GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior.fromValue(map['assertionClaimsBehavior'] as String),
-      responseType: GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType.fromValue(map['responseType'] as String),
+      additionalScopes: map['additionalScopes'] == null
+          ? null
+          : (map['additionalScopes'] as List).cast<String>(),
+      assertionClaimsBehavior:
+          GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigAssertionClaimsBehavior.fromValue(
+            map['assertionClaimsBehavior'] as String,
+          ),
+      responseType:
+          GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfigResponseType.fromValue(
+            map['responseType'] as String,
+          ),
     );
   }
 }
-

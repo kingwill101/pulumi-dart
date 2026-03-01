@@ -28,13 +28,12 @@ class GetSessionEntityTypeDialogflowV2beta1Args {
     String? project,
     required String sessionId,
     required String userId,
-  }) :
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionId = pulumi.Input.asInput<String>(sessionId),
-      userId = pulumi.Input.asInput<String>(userId);
+  }) : entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+       environmentId = pulumi.Input.asInput<String>(environmentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sessionId = pulumi.Input.asInput<String>(sessionId),
+       userId = pulumi.Input.asInput<String>(userId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,7 +46,9 @@ class GetSessionEntityTypeDialogflowV2beta1Args {
     };
   }
 
-  factory GetSessionEntityTypeDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetSessionEntityTypeDialogflowV2beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSessionEntityTypeDialogflowV2beta1Args(
       entityTypeId: map['entityTypeId'] as String,
       environmentId: map['environmentId'] as String,
@@ -58,4 +59,3 @@ class GetSessionEntityTypeDialogflowV2beta1Args {
     );
   }
 }
-

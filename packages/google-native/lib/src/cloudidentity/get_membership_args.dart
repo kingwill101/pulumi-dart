@@ -13,18 +13,12 @@ class GetMembershipArgs {
   /// Creates a new [GetMembershipArgs].
   /// [groupId] Required.
   /// [membershipId] Required.
-  GetMembershipArgs({
-    required String groupId,
-    required String membershipId,
-  }) :
-      groupId = pulumi.Input.asInput<String>(groupId),
+  GetMembershipArgs({required String groupId, required String membershipId})
+    : groupId = pulumi.Input.asInput<String>(groupId),
       membershipId = pulumi.Input.asInput<String>(membershipId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupId': groupId,
-      'membershipId': membershipId,
-    };
+    return <String, dynamic>{'groupId': groupId, 'membershipId': membershipId};
   }
 
   factory GetMembershipArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetMembershipArgs {
     );
   }
 }
-

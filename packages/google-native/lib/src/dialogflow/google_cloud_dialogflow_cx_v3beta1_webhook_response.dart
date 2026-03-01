@@ -7,14 +7,21 @@ import 'google_cloud_dialogflow_cx_v3beta1_webhook_service_directory_config_resp
 class GoogleCloudDialogflowCxV3beta1WebhookResponse {
   /// Indicates whether the webhook is disabled.
   final bool disabled;
+
   /// The human-readable name of the webhook, unique within the agent.
   final String displayName;
+
   /// Configuration for a generic web service.
-  final GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse genericWebService;
+  final GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse
+  genericWebService;
+
   /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
   final String name;
+
   /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
-  final GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse serviceDirectory;
+  final GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse
+  serviceDirectory;
+
   /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
   final String timeout;
 
@@ -45,15 +52,22 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1WebhookResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1WebhookResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1WebhookResponse(
       disabled: map['disabled'] as bool,
       displayName: map['displayName'] as String,
-      genericWebService: GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse.fromMap((map['genericWebService'] as Map).cast<String, dynamic>()),
+      genericWebService:
+          GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse.fromMap(
+            (map['genericWebService'] as Map).cast<String, dynamic>(),
+          ),
       name: map['name'] as String,
-      serviceDirectory: GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse.fromMap((map['serviceDirectory'] as Map).cast<String, dynamic>()),
+      serviceDirectory:
+          GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse.fromMap(
+            (map['serviceDirectory'] as Map).cast<String, dynamic>(),
+          ),
       timeout: map['timeout'] as String,
     );
   }
 }
-

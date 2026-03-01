@@ -164,6 +164,7 @@ class SnapshotSettings extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Policy of which storage location is going to be resolved, and additional data
   /// that particularizes how the policy is going to be carried out
   /// Structure is documented below.
@@ -178,12 +179,14 @@ class SnapshotSettings extends pulumi.CustomResource {
     SnapshotSettingsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/snapshotSettings:SnapshotSettings',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/snapshotSettings:SnapshotSettings',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.project = registerOutput<String>('project');
-    this.storageLocation = registerOutput<SnapshotSettingsStorageLocation>('storageLocation');
+    this.storageLocation = registerOutput<SnapshotSettingsStorageLocation>(
+      'storageLocation',
+    );
   }
 }

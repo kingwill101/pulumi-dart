@@ -1,22 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRouteCalculator.
 class GetRouteCalculatorResult {
   /// ARN for the Route calculator resource. Use the ARN when you specify a resource across AWS.
   final String calculatorArn;
   final String calculatorName;
+
   /// Timestamp for when the route calculator resource was created in ISO 8601 format.
   final String createTime;
+
   /// Data provider of traffic and road network data.
   final String dataSource;
+
   /// Optional description of the route calculator resource.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// Key-value map of resource tags for the route calculator.
   final Map<String, String> tags;
+
   /// Timestamp for when the route calculator resource was last updated in ISO 8601 format.
   final String updateTime;
 
@@ -70,4 +75,3 @@ class GetRouteCalculatorResult {
     );
   }
 }
-

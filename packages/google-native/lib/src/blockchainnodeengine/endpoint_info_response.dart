@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Contains endpoint information through which to interact with a blockchain node.
 class EndpointInfoResponse {
   /// The assigned URL for the node JSON-RPC API endpoint.
   final String jsonRpcApiEndpoint;
+
   /// The assigned URL for the node WebSockets API endpoint.
   final String websocketsApiEndpoint;
 
@@ -30,4 +30,3 @@ class EndpointInfoResponse {
     );
   }
 }
-

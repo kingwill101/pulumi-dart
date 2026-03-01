@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResourceGroupArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of tags that are used to select the EC2 instances to be included in an Amazon Inspector assessment target.
   final pulumi.Input<Map<String, String>> tags;
 
   /// Creates a new [ResourceGroupArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of tags that are used to select the EC2 instances to be included in an Amazon Inspector assessment target.
-  ResourceGroupArgs({
-    String? region,
-    required Map<String, String> tags,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
+  ResourceGroupArgs({String? region, required Map<String, String> tags})
+    : region = pulumi.Input.asOptionalInput<String>(region),
       tags = pulumi.Input.asInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'tags': tags,
-    };
+    return <String, dynamic>{'region': ?region, 'tags': tags};
   }
 
   factory ResourceGroupArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class ResourceGroupArgs {
     );
   }
 }
-

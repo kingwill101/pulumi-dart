@@ -112,10 +112,13 @@ class GroupAssociation extends pulumi.CustomResource {
   /// ARN of the canary.
   late final pulumi.Output<String> canaryArn;
   late final pulumi.Output<String> groupArn;
+
   /// ID of the Group.
   late final pulumi.Output<String> groupId;
+
   /// Name of the group that the canary will be associated with.
   late final pulumi.Output<String> groupName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -128,11 +131,11 @@ class GroupAssociation extends pulumi.CustomResource {
     GroupAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:synthetics/groupAssociation:GroupAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:synthetics/groupAssociation:GroupAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.canaryArn = registerOutput<String>('canaryArn');
     this.groupArn = registerOutput<String>('groupArn');
     this.groupId = registerOutput<String>('groupId');

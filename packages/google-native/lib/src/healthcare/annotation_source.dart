@@ -9,20 +9,23 @@ class AnnotationSource {
 
   /// Creates a new [AnnotationSource].
   /// [cloudHealthcareSource] Cloud Healthcare API resource.
-  AnnotationSource({
-    this.cloudHealthcareSource,
-  });
+  AnnotationSource({this.cloudHealthcareSource});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudHealthcareSource': ?cloudHealthcareSource == null ? null : cloudHealthcareSource!.toMap(),
+      'cloudHealthcareSource': ?cloudHealthcareSource == null
+          ? null
+          : cloudHealthcareSource!.toMap(),
     };
   }
 
   factory AnnotationSource.fromMap(Map<String, dynamic> map) {
     return AnnotationSource(
-      cloudHealthcareSource: map['cloudHealthcareSource'] == null ? null : CloudHealthcareSource.fromMap((map['cloudHealthcareSource'] as Map).cast<String, dynamic>()),
+      cloudHealthcareSource: map['cloudHealthcareSource'] == null
+          ? null
+          : CloudHealthcareSource.fromMap(
+              (map['cloudHealthcareSource'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

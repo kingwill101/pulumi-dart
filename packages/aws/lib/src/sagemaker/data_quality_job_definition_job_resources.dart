@@ -8,20 +8,19 @@ class DataQualityJobDefinitionJobResources {
 
   /// Creates a new [DataQualityJobDefinitionJobResources].
   /// [clusterConfig] The configuration for the cluster resources used to run the processing job. Fields are documented below.
-  DataQualityJobDefinitionJobResources({
-    required this.clusterConfig,
-  });
+  DataQualityJobDefinitionJobResources({required this.clusterConfig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'clusterConfig': clusterConfig.toMap(),
-    };
+    return <String, dynamic>{'clusterConfig': clusterConfig.toMap()};
   }
 
-  factory DataQualityJobDefinitionJobResources.fromMap(Map<String, dynamic> map) {
+  factory DataQualityJobDefinitionJobResources.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataQualityJobDefinitionJobResources(
-      clusterConfig: DataQualityJobDefinitionJobResourcesClusterConfig.fromMap((map['clusterConfig'] as Map).cast<String, dynamic>()),
+      clusterConfig: DataQualityJobDefinitionJobResourcesClusterConfig.fromMap(
+        (map['clusterConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -10,16 +10,22 @@ import 'source_context_response.dart';
 class ApiResponse {
   /// The methods of this interface, in unspecified order.
   final List<MethodResponse> methods;
+
   /// Included interfaces. See Mixin.
   final List<MixinResponse> mixins;
+
   /// The fully qualified name of this interface, including package name followed by the interface's simple name.
   final String name;
+
   /// Any metadata attached to the interface.
   final List<OptionResponse> options;
+
   /// Source context for the protocol buffer service represented by this message.
   final SourceContextResponse sourceContext;
+
   /// The source syntax of the service.
   final String syntax;
+
   /// A version string for this interface. If specified, must have the form `major-version.minor-version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is empty, the major version is derived from the package name, as outlined below. If the field is not empty, the version in the package name will be verified to be consistent with what is provided here. The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals to users what to expect from different versions, and should be carefully chosen based on the product plan. The major version is also reflected in the package name of the interface, which must end in `v`, as in `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be used for experimental, non-GA interfaces.
   final String version;
 
@@ -43,10 +49,19 @@ class ApiResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'methods': pulumi.Input.encodeList<MethodResponse, Map<String, dynamic>>(methods, (value) => value.toMap()),
-      'mixins': pulumi.Input.encodeList<MixinResponse, Map<String, dynamic>>(mixins, (value) => value.toMap()),
+      'methods': pulumi.Input.encodeList<MethodResponse, Map<String, dynamic>>(
+        methods,
+        (value) => value.toMap(),
+      ),
+      'mixins': pulumi.Input.encodeList<MixinResponse, Map<String, dynamic>>(
+        mixins,
+        (value) => value.toMap(),
+      ),
       'name': name,
-      'options': pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(options, (value) => value.toMap()),
+      'options': pulumi.Input.encodeList<OptionResponse, Map<String, dynamic>>(
+        options,
+        (value) => value.toMap(),
+      ),
       'sourceContext': sourceContext.toMap(),
       'syntax': syntax,
       'version': version,
@@ -55,14 +70,27 @@ class ApiResponse {
 
   factory ApiResponse.fromMap(Map<String, dynamic> map) {
     return ApiResponse(
-      methods: pulumi.Input.decodeList<MethodResponse>(map['methods'], (value) => MethodResponse.fromMap((value as Map).cast<String, dynamic>())),
-      mixins: pulumi.Input.decodeList<MixinResponse>(map['mixins'], (value) => MixinResponse.fromMap((value as Map).cast<String, dynamic>())),
+      methods: pulumi.Input.decodeList<MethodResponse>(
+        map['methods'],
+        (value) =>
+            MethodResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      mixins: pulumi.Input.decodeList<MixinResponse>(
+        map['mixins'],
+        (value) =>
+            MixinResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       name: map['name'] as String,
-      options: pulumi.Input.decodeList<OptionResponse>(map['options'], (value) => OptionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      sourceContext: SourceContextResponse.fromMap((map['sourceContext'] as Map).cast<String, dynamic>()),
+      options: pulumi.Input.decodeList<OptionResponse>(
+        map['options'],
+        (value) =>
+            OptionResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      sourceContext: SourceContextResponse.fromMap(
+        (map['sourceContext'] as Map).cast<String, dynamic>(),
+      ),
       syntax: map['syntax'] as String,
       version: map['version'] as String,
     );
   }
 }
-

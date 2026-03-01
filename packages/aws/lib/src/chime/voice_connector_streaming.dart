@@ -610,14 +610,20 @@ import 'voice_connector_streaming_media_insights_configuration.dart';
 class VoiceConnectorStreaming extends pulumi.CustomResource {
   /// The retention period, in hours, for the Amazon Kinesis data.
   late final pulumi.Output<int> dataRetention;
+
   /// When true, media streaming to Amazon Kinesis is turned off. Default: `false`
   late final pulumi.Output<bool?> disabled;
+
   /// The media insights configuration. See `media_insights_configuration`.
-  late final pulumi.Output<VoiceConnectorStreamingMediaInsightsConfiguration?> mediaInsightsConfiguration;
+  late final pulumi.Output<VoiceConnectorStreamingMediaInsightsConfiguration?>
+  mediaInsightsConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The streaming notification targets. Valid Values: `EventBridge | SNS | SQS`
   late final pulumi.Output<List<String>?> streamingNotificationTargets;
+
   /// The Amazon Chime Voice Connector ID.
   late final pulumi.Output<String> voiceConnectorId;
 
@@ -630,16 +636,21 @@ class VoiceConnectorStreaming extends pulumi.CustomResource {
     VoiceConnectorStreamingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:chime/voiceConnectorStreaming:VoiceConnectorStreaming',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.dataRetention = registerOutput<int>('dataRetention');
     this.disabled = registerOutput<bool?>('disabled');
-    this.mediaInsightsConfiguration = registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>('mediaInsightsConfiguration');
+    this.mediaInsightsConfiguration =
+        registerOutput<VoiceConnectorStreamingMediaInsightsConfiguration?>(
+          'mediaInsightsConfiguration',
+        );
     this.region = registerOutput<String>('region');
-    this.streamingNotificationTargets = registerOutput<List<String>?>('streamingNotificationTargets');
+    this.streamingNotificationTargets = registerOutput<List<String>?>(
+      'streamingNotificationTargets',
+    );
     this.voiceConnectorId = registerOutput<String>('voiceConnectorId');
   }
 }

@@ -8,8 +8,10 @@ import 'options_response.dart';
 class DicomTagConfigResponse {
   /// Specifies custom tag selections and `Actions` to apply to them. Overrides `options` and `profile`. Conflicting `Actions` are applied in the order given.
   final List<ActionResponse> actions;
+
   /// Specifies additional options to apply, overriding the base `profile`.
   final OptionsResponse options;
+
   /// Base profile type for handling DICOM tags.
   final String profileType;
 
@@ -25,7 +27,10 @@ class DicomTagConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<ActionResponse, Map<String, dynamic>>(actions, (value) => value.toMap()),
+      'actions': pulumi.Input.encodeList<ActionResponse, Map<String, dynamic>>(
+        actions,
+        (value) => value.toMap(),
+      ),
       'options': options.toMap(),
       'profileType': profileType,
     };
@@ -33,10 +38,15 @@ class DicomTagConfigResponse {
 
   factory DicomTagConfigResponse.fromMap(Map<String, dynamic> map) {
     return DicomTagConfigResponse(
-      actions: pulumi.Input.decodeList<ActionResponse>(map['actions'], (value) => ActionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      options: OptionsResponse.fromMap((map['options'] as Map).cast<String, dynamic>()),
+      actions: pulumi.Input.decodeList<ActionResponse>(
+        map['actions'],
+        (value) =>
+            ActionResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      options: OptionsResponse.fromMap(
+        (map['options'] as Map).cast<String, dynamic>(),
+      ),
       profileType: map['profileType'] as String,
     );
   }
 }
-

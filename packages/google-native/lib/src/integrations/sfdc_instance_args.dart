@@ -9,17 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SfdcInstanceArgs {
   /// A list of AuthConfigs that can be tried to open the channel to SFDC
   final pulumi.Input<List<String>>? authConfigId;
+
   /// A description of the sfdc instance.
   final pulumi.Input<String>? description;
+
   /// User selected unique name/alias to easily reference an instance.
   final pulumi.Input<String>? displayName;
   final pulumi.Input<String>? location;
+
   /// Resource name of the SFDC instance projects/{project}/locations/{location}/sfdcInstances/{sfdcInstance}.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> productId;
   final pulumi.Input<String>? project;
+
   /// URL used for API calls after authentication (the login authority is configured within the referenced AuthConfig).
   final pulumi.Input<String>? serviceAuthority;
+
   /// The SFDC Org Id. This is defined in salesforce.
   final pulumi.Input<String>? sfdcOrgId;
 
@@ -43,16 +48,17 @@ class SfdcInstanceArgs {
     String? project,
     String? serviceAuthority,
     String? sfdcOrgId,
-  }) :
-      authConfigId = pulumi.Input.asOptionalInput<List<String>>(authConfigId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceAuthority = pulumi.Input.asOptionalInput<String>(serviceAuthority),
-      sfdcOrgId = pulumi.Input.asOptionalInput<String>(sfdcOrgId);
+  }) : authConfigId = pulumi.Input.asOptionalInput<List<String>>(authConfigId),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       productId = pulumi.Input.asInput<String>(productId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serviceAuthority = pulumi.Input.asOptionalInput<String>(
+         serviceAuthority,
+       ),
+       sfdcOrgId = pulumi.Input.asOptionalInput<String>(sfdcOrgId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,16 +76,23 @@ class SfdcInstanceArgs {
 
   factory SfdcInstanceArgs.fromMap(Map<String, dynamic> map) {
     return SfdcInstanceArgs(
-      authConfigId: map['authConfigId'] == null ? null : (map['authConfigId'] as List).cast<String>(),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      authConfigId: map['authConfigId'] == null
+          ? null
+          : (map['authConfigId'] as List).cast<String>(),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       productId: map['productId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      serviceAuthority: map['serviceAuthority'] == null ? null : map['serviceAuthority'] as String,
+      serviceAuthority: map['serviceAuthority'] == null
+          ? null
+          : map['serviceAuthority'] as String,
       sfdcOrgId: map['sfdcOrgId'] == null ? null : map['sfdcOrgId'] as String,
     );
   }
 }
-

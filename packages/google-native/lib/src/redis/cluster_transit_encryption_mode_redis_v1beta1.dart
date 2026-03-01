@@ -2,7 +2,9 @@
 enum ClusterTransitEncryptionModeRedisV1beta1 {
   transitEncryptionModeUnspecified("TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"),
   transitEncryptionModeDisabled("TRANSIT_ENCRYPTION_MODE_DISABLED"),
-  transitEncryptionModeServerAuthentication("TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION");
+  transitEncryptionModeServerAuthentication(
+    "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION",
+  );
 
   const ClusterTransitEncryptionModeRedisV1beta1(this.value);
   final String value;
@@ -13,7 +15,8 @@ enum ClusterTransitEncryptionModeRedisV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown ClusterTransitEncryptionModeRedisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ClusterTransitEncryptionModeRedisV1beta1 value: $value',
+    );
   }
 }
-

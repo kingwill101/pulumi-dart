@@ -9,13 +9,16 @@ enum PersistenceConfigRdbSnapshotPeriodRedisV1beta1 {
   const PersistenceConfigRdbSnapshotPeriodRedisV1beta1(this.value);
   final String value;
 
-  static PersistenceConfigRdbSnapshotPeriodRedisV1beta1 fromValue(String value) {
+  static PersistenceConfigRdbSnapshotPeriodRedisV1beta1 fromValue(
+    String value,
+  ) {
     for (final item in PersistenceConfigRdbSnapshotPeriodRedisV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown PersistenceConfigRdbSnapshotPeriodRedisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown PersistenceConfigRdbSnapshotPeriodRedisV1beta1 value: $value',
+    );
   }
 }
-

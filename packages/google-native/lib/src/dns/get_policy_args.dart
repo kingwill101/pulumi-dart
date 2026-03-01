@@ -19,10 +19,11 @@ class GetPolicyArgs {
     String? clientOperationId,
     required String policy,
     String? project,
-  }) :
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      policy = pulumi.Input.asInput<String>(policy),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : clientOperationId = pulumi.Input.asOptionalInput<String>(
+         clientOperationId,
+       ),
+       policy = pulumi.Input.asInput<String>(policy),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +35,11 @@ class GetPolicyArgs {
 
   factory GetPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetPolicyArgs(
-      clientOperationId: map['clientOperationId'] == null ? null : map['clientOperationId'] as String,
+      clientOperationId: map['clientOperationId'] == null
+          ? null
+          : map['clientOperationId'] as String,
       policy: map['policy'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

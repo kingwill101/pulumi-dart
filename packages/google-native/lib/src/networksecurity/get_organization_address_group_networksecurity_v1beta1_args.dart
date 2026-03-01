@@ -19,10 +19,9 @@ class GetOrganizationAddressGroupNetworksecurityV1beta1Args {
     required String addressGroupId,
     required String location,
     required String organizationId,
-  }) :
-      addressGroupId = pulumi.Input.asInput<String>(addressGroupId),
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : addressGroupId = pulumi.Input.asInput<String>(addressGroupId),
+       location = pulumi.Input.asInput<String>(location),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetOrganizationAddressGroupNetworksecurityV1beta1Args {
     };
   }
 
-  factory GetOrganizationAddressGroupNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationAddressGroupNetworksecurityV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationAddressGroupNetworksecurityV1beta1Args(
       addressGroupId: map['addressGroupId'] as String,
       location: map['location'] as String,
@@ -40,4 +41,3 @@ class GetOrganizationAddressGroupNetworksecurityV1beta1Args {
     );
   }
 }
-

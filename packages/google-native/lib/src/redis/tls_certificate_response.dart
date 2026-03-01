@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// TlsCertificate Resource
 class TlsCertificateResponse {
   /// PEM representation.
   final String cert;
+
   /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
   final String createTime;
+
   /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2020-05-18T00:00:00.094Z`.
   final String expireTime;
+
   /// Serial number, as extracted from the certificate.
   final String serialNumber;
+
   /// Sha1 Fingerprint of the certificate.
   final String sha1Fingerprint;
 
@@ -48,4 +51,3 @@ class TlsCertificateResponse {
     );
   }
 }
-

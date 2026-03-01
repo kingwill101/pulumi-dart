@@ -7,9 +7,11 @@ class StreamRuleSetCustomizationRule {
   /// BigQuery clustering rule.
   /// Structure is documented below.
   final StreamRuleSetCustomizationRuleBigqueryClustering? bigqueryClustering;
+
   /// BigQuery partitioning rule.
   /// Structure is documented below.
-  final StreamRuleSetCustomizationRuleBigqueryPartitioning? bigqueryPartitioning;
+  final StreamRuleSetCustomizationRuleBigqueryPartitioning?
+  bigqueryPartitioning;
 
   /// Creates a new [StreamRuleSetCustomizationRule].
   /// [bigqueryClustering] BigQuery clustering rule.
@@ -21,16 +23,27 @@ class StreamRuleSetCustomizationRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bigqueryClustering': ?bigqueryClustering == null ? null : bigqueryClustering!.toMap(),
-      'bigqueryPartitioning': ?bigqueryPartitioning == null ? null : bigqueryPartitioning!.toMap(),
+      'bigqueryClustering': ?bigqueryClustering == null
+          ? null
+          : bigqueryClustering!.toMap(),
+      'bigqueryPartitioning': ?bigqueryPartitioning == null
+          ? null
+          : bigqueryPartitioning!.toMap(),
     };
   }
 
   factory StreamRuleSetCustomizationRule.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRule(
-      bigqueryClustering: map['bigqueryClustering'] == null ? null : StreamRuleSetCustomizationRuleBigqueryClustering.fromMap((map['bigqueryClustering'] as Map).cast<String, dynamic>()),
-      bigqueryPartitioning: map['bigqueryPartitioning'] == null ? null : StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap((map['bigqueryPartitioning'] as Map).cast<String, dynamic>()),
+      bigqueryClustering: map['bigqueryClustering'] == null
+          ? null
+          : StreamRuleSetCustomizationRuleBigqueryClustering.fromMap(
+              (map['bigqueryClustering'] as Map).cast<String, dynamic>(),
+            ),
+      bigqueryPartitioning: map['bigqueryPartitioning'] == null
+          ? null
+          : StreamRuleSetCustomizationRuleBigqueryPartitioning.fromMap(
+              (map['bigqueryPartitioning'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

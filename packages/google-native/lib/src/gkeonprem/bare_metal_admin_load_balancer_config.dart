@@ -8,8 +8,10 @@ import 'bare_metal_admin_vip_config.dart';
 class BareMetalAdminLoadBalancerConfig {
   /// Manually configured load balancers.
   final BareMetalAdminManualLbConfig? manualLbConfig;
+
   /// Configures the ports that the load balancer will listen on.
   final BareMetalAdminPortConfig? portConfig;
+
   /// The VIPs used by the load balancer.
   final BareMetalAdminVipConfig? vipConfig;
 
@@ -25,7 +27,9 @@ class BareMetalAdminLoadBalancerConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'manualLbConfig': ?manualLbConfig == null ? null : manualLbConfig!.toMap(),
+      'manualLbConfig': ?manualLbConfig == null
+          ? null
+          : manualLbConfig!.toMap(),
       'portConfig': ?portConfig == null ? null : portConfig!.toMap(),
       'vipConfig': ?vipConfig == null ? null : vipConfig!.toMap(),
     };
@@ -33,10 +37,21 @@ class BareMetalAdminLoadBalancerConfig {
 
   factory BareMetalAdminLoadBalancerConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminLoadBalancerConfig(
-      manualLbConfig: map['manualLbConfig'] == null ? null : BareMetalAdminManualLbConfig.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>()),
-      portConfig: map['portConfig'] == null ? null : BareMetalAdminPortConfig.fromMap((map['portConfig'] as Map).cast<String, dynamic>()),
-      vipConfig: map['vipConfig'] == null ? null : BareMetalAdminVipConfig.fromMap((map['vipConfig'] as Map).cast<String, dynamic>()),
+      manualLbConfig: map['manualLbConfig'] == null
+          ? null
+          : BareMetalAdminManualLbConfig.fromMap(
+              (map['manualLbConfig'] as Map).cast<String, dynamic>(),
+            ),
+      portConfig: map['portConfig'] == null
+          ? null
+          : BareMetalAdminPortConfig.fromMap(
+              (map['portConfig'] as Map).cast<String, dynamic>(),
+            ),
+      vipConfig: map['vipConfig'] == null
+          ? null
+          : BareMetalAdminVipConfig.fromMap(
+              (map['vipConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -9,9 +9,7 @@ class AutomaticResponse {
 
   /// Creates a new [AutomaticResponse].
   /// [customerManagedEncryption] Optional. The customer-managed encryption configuration of the Secret. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
-  AutomaticResponse({
-    required this.customerManagedEncryption,
-  });
+  AutomaticResponse({required this.customerManagedEncryption});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class AutomaticResponse {
 
   factory AutomaticResponse.fromMap(Map<String, dynamic> map) {
     return AutomaticResponse(
-      customerManagedEncryption: CustomerManagedEncryptionResponse.fromMap((map['customerManagedEncryption'] as Map).cast<String, dynamic>()),
+      customerManagedEncryption: CustomerManagedEncryptionResponse.fromMap(
+        (map['customerManagedEncryption'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

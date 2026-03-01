@@ -7,17 +7,23 @@ import 'get_virtual_cluster_container_provider.dart';
 class GetVirtualClusterResult {
   /// ARN of the cluster.
   final String arn;
+
   /// Nested attribute containing information about the underlying container provider (EKS cluster) for your EMR Containers cluster.
   final List<GetVirtualClusterContainerProvider> containerProviders;
+
   /// Unix epoch time stamp in seconds for when the cluster was created.
   final String createdAt;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Name of the cluster.
   final String name;
   final String region;
+
   /// Status of the EKS cluster. One of `RUNNING`, `TERMINATING`, `TERMINATED`, `ARRESTED`.
   final String state;
+
   /// Key-value mapping of resource tags.
   final Map<String, String> tags;
   final String virtualClusterId;
@@ -47,7 +53,11 @@ class GetVirtualClusterResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'containerProviders': pulumi.Input.encodeList<GetVirtualClusterContainerProvider, Map<String, dynamic>>(containerProviders, (value) => value.toMap()),
+      'containerProviders':
+          pulumi.Input.encodeList<
+            GetVirtualClusterContainerProvider,
+            Map<String, dynamic>
+          >(containerProviders, (value) => value.toMap()),
       'createdAt': createdAt,
       'id': id,
       'name': name,
@@ -61,7 +71,13 @@ class GetVirtualClusterResult {
   factory GetVirtualClusterResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualClusterResult(
       arn: map['arn'] as String,
-      containerProviders: pulumi.Input.decodeList<GetVirtualClusterContainerProvider>(map['containerProviders'], (value) => GetVirtualClusterContainerProvider.fromMap((value as Map).cast<String, dynamic>())),
+      containerProviders:
+          pulumi.Input.decodeList<GetVirtualClusterContainerProvider>(
+            map['containerProviders'],
+            (value) => GetVirtualClusterContainerProvider.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       createdAt: map['createdAt'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
@@ -72,4 +88,3 @@ class GetVirtualClusterResult {
     );
   }
 }
-

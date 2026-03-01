@@ -16,4 +16,3 @@ enum ServiceDatabaseType {
     throw ArgumentError('Unknown ServiceDatabaseType value: $value');
   }
 }
-

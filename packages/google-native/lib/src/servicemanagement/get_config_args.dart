@@ -19,10 +19,9 @@ class GetConfigArgs {
     required String configId,
     required String serviceName,
     String? view,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      serviceName = pulumi.Input.asInput<String>(serviceName),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : configId = pulumi.Input.asInput<String>(configId),
+       serviceName = pulumi.Input.asInput<String>(serviceName),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetConfigArgs {
     );
   }
 }
-

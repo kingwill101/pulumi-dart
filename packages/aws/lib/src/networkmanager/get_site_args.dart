@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteArgs {
   /// ID of the Global Network of the site to retrieve.
   final pulumi.Input<String> globalNetworkId;
+
   /// ID of the specific site to retrieve.
   final pulumi.Input<String> siteId;
+
   /// Key-value tags for the Site.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -22,10 +24,9 @@ class GetSiteArgs {
     required String globalNetworkId,
     required String siteId,
     Map<String, String>? tags,
-  }) :
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
+       siteId = pulumi.Input.asInput<String>(siteId),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,8 +40,9 @@ class GetSiteArgs {
     return GetSiteArgs(
       globalNetworkId: map['globalNetworkId'] as String,
       siteId: map['siteId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

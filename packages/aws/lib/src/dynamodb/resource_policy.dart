@@ -118,14 +118,18 @@ import 'resource_policy_args.dart';
 class ResourcePolicy extends pulumi.CustomResource {
   /// Set this parameter to true to confirm that you want to remove your permissions to change the policy of this resource in the future.
   late final pulumi.Output<bool> confirmRemoveSelfResourceAccess;
+
   /// n Amazon Web Services resource-based policy document in JSON format. The maximum size supported for a resource-based policy document is 20 KB. DynamoDB counts whitespaces when calculating the size of a policy against this limit. For a full list of all considerations that you should keep in mind while attaching a resource-based policy, see Resource-based policy considerations.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The Amazon Resource Name (ARN) of the DynamoDB resource to which the policy will be attached. The resources you can specify include tables and streams. You can control index permissions using the base table's policy. To specify the same permission level for your table and its indexes, you can provide both the table and index Amazon Resource Name (ARN)s in the Resource field of a given Statement in your policy document. Alternatively, to specify different permissions for your table, indexes, or both, you can define multiple Statement fields in your policy document.
   late final pulumi.Output<String> resourceArn;
+
   /// A unique string that represents the revision ID of the policy. If you are comparing revision IDs, make sure to always use string comparison logic.
   late final pulumi.Output<String> revisionId;
 
@@ -138,12 +142,14 @@ class ResourcePolicy extends pulumi.CustomResource {
     ResourcePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:dynamodb/resourcePolicy:ResourcePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.confirmRemoveSelfResourceAccess = registerOutput<bool>('confirmRemoveSelfResourceAccess');
+         'aws:dynamodb/resourcePolicy:ResourcePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.confirmRemoveSelfResourceAccess = registerOutput<bool>(
+      'confirmRemoveSelfResourceAccess',
+    );
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');
     this.resourceArn = registerOutput<String>('resourceArn');

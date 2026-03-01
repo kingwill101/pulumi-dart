@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getEventCategories.
 class GetEventCategoriesResult {
   /// List of the event categories.
   final List<String> eventCategories;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
@@ -36,8 +36,9 @@ class GetEventCategoriesResult {
       eventCategories: (map['eventCategories'] as List).cast<String>(),
       id: map['id'] as String,
       region: map['region'] as String,
-      sourceType: map['sourceType'] == null ? null : map['sourceType'] as String,
+      sourceType: map['sourceType'] == null
+          ? null
+          : map['sourceType'] as String,
     );
   }
 }
-

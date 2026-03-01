@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ReceiptRuleStopAction {
   /// The position of the action in the receipt rule
   final int position;
+
   /// The scope to apply. The only acceptable value is `RuleSet`.
   final String scope;
+
   /// The ARN of an SNS topic to notify
   final String? topicArn;
 
@@ -35,4 +36,3 @@ class ReceiptRuleStopAction {
     );
   }
 }
-

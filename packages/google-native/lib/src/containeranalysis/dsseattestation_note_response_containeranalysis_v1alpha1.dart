@@ -9,20 +9,19 @@ class DSSEAttestationNoteResponseContaineranalysisV1alpha1 {
 
   /// Creates a new [DSSEAttestationNoteResponseContaineranalysisV1alpha1].
   /// [hint] DSSEHint hints at the purpose of the attestation authority.
-  DSSEAttestationNoteResponseContaineranalysisV1alpha1({
-    required this.hint,
-  });
+  DSSEAttestationNoteResponseContaineranalysisV1alpha1({required this.hint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hint': hint.toMap(),
-    };
+    return <String, dynamic>{'hint': hint.toMap()};
   }
 
-  factory DSSEAttestationNoteResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory DSSEAttestationNoteResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DSSEAttestationNoteResponseContaineranalysisV1alpha1(
-      hint: DSSEHintResponseContaineranalysisV1alpha1.fromMap((map['hint'] as Map).cast<String, dynamic>()),
+      hint: DSSEHintResponseContaineranalysisV1alpha1.fromMap(
+        (map['hint'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

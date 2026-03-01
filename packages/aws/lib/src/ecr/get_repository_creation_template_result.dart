@@ -8,26 +8,38 @@ import 'get_repository_creation_template_image_tag_mutability_exclusion_filter.d
 class GetRepositoryCreationTemplateResult {
   /// Which features this template applies to. Contains one or more of `CREATE_ON_PUSH`, `PULL_THROUGH_CACHE`, or `REPLICATION`.
   final List<String> appliedFors;
+
   /// The ARN of the custom role used for repository creation.
   final String customRoleArn;
+
   /// The description for this template.
   final String description;
+
   /// Encryption configuration for any created repositories. See Encryption Configuration below.
-  final List<GetRepositoryCreationTemplateEncryptionConfiguration> encryptionConfigurations;
+  final List<GetRepositoryCreationTemplateEncryptionConfiguration>
+  encryptionConfigurations;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The tag mutability setting for any created repositories.
   final String imageTagMutability;
+
   /// Block that defines filters to specify which image tags can override the default tag mutability setting.
-  final List<GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter> imageTagMutabilityExclusionFilters;
+  final List<GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter>
+  imageTagMutabilityExclusionFilters;
+
   /// The lifecycle policy document to apply to any created repositories.
   final String lifecyclePolicy;
   final String prefix;
   final String region;
+
   /// The registry ID the repository creation template applies to.
   final String registryId;
+
   /// The registry policy document to apply to any created repositories.
   final String repositoryPolicy;
+
   /// A map of tags to assign to any created repositories.
   final Map<String, String> resourceTags;
 
@@ -66,10 +78,18 @@ class GetRepositoryCreationTemplateResult {
       'appliedFors': appliedFors,
       'customRoleArn': customRoleArn,
       'description': description,
-      'encryptionConfigurations': pulumi.Input.encodeList<GetRepositoryCreationTemplateEncryptionConfiguration, Map<String, dynamic>>(encryptionConfigurations, (value) => value.toMap()),
+      'encryptionConfigurations':
+          pulumi.Input.encodeList<
+            GetRepositoryCreationTemplateEncryptionConfiguration,
+            Map<String, dynamic>
+          >(encryptionConfigurations, (value) => value.toMap()),
       'id': id,
       'imageTagMutability': imageTagMutability,
-      'imageTagMutabilityExclusionFilters': pulumi.Input.encodeList<GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter, Map<String, dynamic>>(imageTagMutabilityExclusionFilters, (value) => value.toMap()),
+      'imageTagMutabilityExclusionFilters':
+          pulumi.Input.encodeList<
+            GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter,
+            Map<String, dynamic>
+          >(imageTagMutabilityExclusionFilters, (value) => value.toMap()),
       'lifecyclePolicy': lifecyclePolicy,
       'prefix': prefix,
       'region': region,
@@ -79,15 +99,35 @@ class GetRepositoryCreationTemplateResult {
     };
   }
 
-  factory GetRepositoryCreationTemplateResult.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryCreationTemplateResult.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryCreationTemplateResult(
       appliedFors: (map['appliedFors'] as List).cast<String>(),
       customRoleArn: map['customRoleArn'] as String,
       description: map['description'] as String,
-      encryptionConfigurations: pulumi.Input.decodeList<GetRepositoryCreationTemplateEncryptionConfiguration>(map['encryptionConfigurations'], (value) => GetRepositoryCreationTemplateEncryptionConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      encryptionConfigurations:
+          pulumi.Input.decodeList<
+            GetRepositoryCreationTemplateEncryptionConfiguration
+          >(
+            map['encryptionConfigurations'],
+            (value) =>
+                GetRepositoryCreationTemplateEncryptionConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       id: map['id'] as String,
       imageTagMutability: map['imageTagMutability'] as String,
-      imageTagMutabilityExclusionFilters: pulumi.Input.decodeList<GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter>(map['imageTagMutabilityExclusionFilters'], (value) => GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap((value as Map).cast<String, dynamic>())),
+      imageTagMutabilityExclusionFilters:
+          pulumi.Input.decodeList<
+            GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter
+          >(
+            map['imageTagMutabilityExclusionFilters'],
+            (value) =>
+                GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       lifecyclePolicy: map['lifecyclePolicy'] as String,
       prefix: map['prefix'] as String,
       region: map['region'] as String,
@@ -97,4 +137,3 @@ class GetRepositoryCreationTemplateResult {
     );
   }
 }
-

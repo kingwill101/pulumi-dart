@@ -19,10 +19,9 @@ class GetConversationDialogflowV2beta1Args {
     required String conversationId,
     required String location,
     String? project,
-  }) :
-      conversationId = pulumi.Input.asInput<String>(conversationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : conversationId = pulumi.Input.asInput<String>(conversationId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetConversationDialogflowV2beta1Args {
     };
   }
 
-  factory GetConversationDialogflowV2beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetConversationDialogflowV2beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConversationDialogflowV2beta1Args(
       conversationId: map['conversationId'] as String,
       location: map['location'] as String,
@@ -40,4 +41,3 @@ class GetConversationDialogflowV2beta1Args {
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetInternalRangeNetworkconnectivityV1alpha1Args {
     required String internalRangeId,
     required String location,
     String? project,
-  }) :
-      internalRangeId = pulumi.Input.asInput<String>(internalRangeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : internalRangeId = pulumi.Input.asInput<String>(internalRangeId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetInternalRangeNetworkconnectivityV1alpha1Args {
     };
   }
 
-  factory GetInternalRangeNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetInternalRangeNetworkconnectivityV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInternalRangeNetworkconnectivityV1alpha1Args(
       internalRangeId: map['internalRangeId'] as String,
       location: map['location'] as String,
@@ -40,4 +41,3 @@ class GetInternalRangeNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

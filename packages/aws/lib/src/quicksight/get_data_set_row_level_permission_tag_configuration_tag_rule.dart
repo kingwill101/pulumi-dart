@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDataSetRowLevelPermissionTagConfigurationTagRule {
   final String columnName;
   final String matchAllValue;
@@ -28,7 +27,9 @@ class GetDataSetRowLevelPermissionTagConfigurationTagRule {
     };
   }
 
-  factory GetDataSetRowLevelPermissionTagConfigurationTagRule.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetRowLevelPermissionTagConfigurationTagRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetRowLevelPermissionTagConfigurationTagRule(
       columnName: map['columnName'] as String,
       matchAllValue: map['matchAllValue'] as String,
@@ -37,4 +38,3 @@ class GetDataSetRowLevelPermissionTagConfigurationTagRule {
     );
   }
 }
-

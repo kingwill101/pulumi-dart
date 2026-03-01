@@ -370,27 +370,41 @@ import 'ontap_storage_virtual_machine_endpoint.dart';
 /// ```
 class OntapStorageVirtualMachine extends pulumi.CustomResource {
   /// Configuration block that Amazon FSx uses to join the FSx ONTAP Storage Virtual Machine(SVM) to your Microsoft Active Directory (AD) directory. Detailed below.
-  late final pulumi.Output<OntapStorageVirtualMachineActiveDirectoryConfiguration?> activeDirectoryConfiguration;
+  late final pulumi.Output<
+    OntapStorageVirtualMachineActiveDirectoryConfiguration?
+  >
+  activeDirectoryConfiguration;
+
   /// Amazon Resource Name of the storage virtual machine.
   late final pulumi.Output<String> arn;
+
   /// The endpoints that are used to access data or to manage the storage virtual machine using the NetApp ONTAP CLI, REST API, or NetApp SnapMirror. See Endpoints below.
   late final pulumi.Output<List<OntapStorageVirtualMachineEndpoint>> endpoints;
+
   /// The ID of the Amazon FSx ONTAP File System that this SVM will be created on.
   late final pulumi.Output<String> fileSystemId;
+
   /// The name of the SVM. You can use a maximum of 47 alphanumeric characters, plus the underscore (_) special character.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Specifies the root volume security style, Valid values are `UNIX`, `NTFS`, and `MIXED`. All volumes created under this SVM will inherit the root security style unless the security style is specified on the volume. Default value is `UNIX`.
   late final pulumi.Output<String?> rootVolumeSecurityStyle;
+
   /// Describes the SVM's subtype, e.g. `DEFAULT`
   late final pulumi.Output<String> subtype;
+
   /// Specifies the password to use when logging on to the SVM using a secure shell (SSH) connection to the SVM's management endpoint. Doing so enables you to manage the SVM using the NetApp ONTAP CLI or REST API. If you do not specify a password, you can still use the file system's fsxadmin user to manage the SVM.
   late final pulumi.Output<String?> svmAdminPassword;
+
   /// A map of tags to assign to the storage virtual machine. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The SVM's UUID (universally unique identifier).
   late final pulumi.Output<String> uuid;
 
@@ -403,18 +417,25 @@ class OntapStorageVirtualMachine extends pulumi.CustomResource {
     OntapStorageVirtualMachineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:fsx/ontapStorageVirtualMachine:OntapStorageVirtualMachine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.activeDirectoryConfiguration = registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>('activeDirectoryConfiguration');
+         'aws:fsx/ontapStorageVirtualMachine:OntapStorageVirtualMachine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.activeDirectoryConfiguration =
+        registerOutput<OntapStorageVirtualMachineActiveDirectoryConfiguration?>(
+          'activeDirectoryConfiguration',
+        );
     this.arn = registerOutput<String>('arn');
-    this.endpoints = registerOutput<List<OntapStorageVirtualMachineEndpoint>>('endpoints');
+    this.endpoints = registerOutput<List<OntapStorageVirtualMachineEndpoint>>(
+      'endpoints',
+    );
     this.fileSystemId = registerOutput<String>('fileSystemId');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.rootVolumeSecurityStyle = registerOutput<String?>('rootVolumeSecurityStyle');
+    this.rootVolumeSecurityStyle = registerOutput<String?>(
+      'rootVolumeSecurityStyle',
+    );
     this.subtype = registerOutput<String>('subtype');
     this.svmAdminPassword = registerOutput<String?>('svmAdminPassword');
     this.tags = registerOutput<Map<String, String>?>('tags');

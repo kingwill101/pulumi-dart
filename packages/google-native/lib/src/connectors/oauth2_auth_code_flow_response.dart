@@ -6,18 +6,25 @@ import 'secret_response.dart';
 class Oauth2AuthCodeFlowResponse {
   /// Authorization code to be exchanged for access and refresh tokens.
   final String authCode;
+
   /// Auth URL for Authorization Code Flow
   final String authUri;
+
   /// Client ID for user-provided OAuth app.
   final String clientId;
+
   /// Client secret for user-provided OAuth app.
   final SecretResponse clientSecret;
+
   /// Whether to enable PKCE when the user performs the auth code flow.
   final bool enablePkce;
+
   /// PKCE verifier to be used during the auth code exchange.
   final String pkceVerifier;
+
   /// Redirect URI to be provided during the auth code exchange.
   final String redirectUri;
+
   /// Scopes the connection will request when the user performs the auth code flow.
   final List<String> scopes;
 
@@ -59,7 +66,9 @@ class Oauth2AuthCodeFlowResponse {
       authCode: map['authCode'] as String,
       authUri: map['authUri'] as String,
       clientId: map['clientId'] as String,
-      clientSecret: SecretResponse.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
+      clientSecret: SecretResponse.fromMap(
+        (map['clientSecret'] as Map).cast<String, dynamic>(),
+      ),
       enablePkce: map['enablePkce'] as bool,
       pkceVerifier: map['pkceVerifier'] as String,
       redirectUri: map['redirectUri'] as String,
@@ -67,4 +76,3 @@ class Oauth2AuthCodeFlowResponse {
     );
   }
 }
-

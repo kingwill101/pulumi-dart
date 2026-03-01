@@ -16,9 +16,10 @@ class GetNotificationConfigArgs {
   GetNotificationConfigArgs({
     required String notificationConfigId,
     String? project,
-  }) :
-      notificationConfigId = pulumi.Input.asInput<String>(notificationConfigId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : notificationConfigId = pulumi.Input.asInput<String>(
+         notificationConfigId,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +35,3 @@ class GetNotificationConfigArgs {
     );
   }
 }
-

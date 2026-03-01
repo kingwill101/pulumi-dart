@@ -9,20 +9,17 @@ class HostResponseWorkstationsV1beta {
 
   /// Creates a new [HostResponseWorkstationsV1beta].
   /// [gceInstance] Specifies a Compute Engine instance as the host.
-  HostResponseWorkstationsV1beta({
-    required this.gceInstance,
-  });
+  HostResponseWorkstationsV1beta({required this.gceInstance});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'gceInstance': gceInstance.toMap(),
-    };
+    return <String, dynamic>{'gceInstance': gceInstance.toMap()};
   }
 
   factory HostResponseWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return HostResponseWorkstationsV1beta(
-      gceInstance: GceInstanceResponseWorkstationsV1beta.fromMap((map['gceInstance'] as Map).cast<String, dynamic>()),
+      gceInstance: GceInstanceResponseWorkstationsV1beta.fromMap(
+        (map['gceInstance'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

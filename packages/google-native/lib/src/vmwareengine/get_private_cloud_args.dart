@@ -19,10 +19,9 @@ class GetPrivateCloudArgs {
     required String location,
     required String privateCloudId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       privateCloudId = pulumi.Input.asInput<String>(privateCloudId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetPrivateCloudArgs {
     );
   }
 }
-

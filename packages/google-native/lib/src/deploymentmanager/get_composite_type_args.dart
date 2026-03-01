@@ -13,11 +13,8 @@ class GetCompositeTypeArgs {
   /// Creates a new [GetCompositeTypeArgs].
   /// [compositeType] Required.
   /// [project] Optional.
-  GetCompositeTypeArgs({
-    required String compositeType,
-    String? project,
-  }) :
-      compositeType = pulumi.Input.asInput<String>(compositeType),
+  GetCompositeTypeArgs({required String compositeType, String? project})
+    : compositeType = pulumi.Input.asInput<String>(compositeType),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetCompositeTypeArgs {
     );
   }
 }
-

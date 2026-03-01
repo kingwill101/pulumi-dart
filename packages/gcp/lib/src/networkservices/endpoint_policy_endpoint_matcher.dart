@@ -9,9 +9,7 @@ class EndpointPolicyEndpointMatcher {
 
   /// Creates a new [EndpointPolicyEndpointMatcher].
   /// [metadataLabelMatcher] The matcher is based on node metadata presented by xDS clients.
-  EndpointPolicyEndpointMatcher({
-    required this.metadataLabelMatcher,
-  });
+  EndpointPolicyEndpointMatcher({required this.metadataLabelMatcher});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,10 @@ class EndpointPolicyEndpointMatcher {
 
   factory EndpointPolicyEndpointMatcher.fromMap(Map<String, dynamic> map) {
     return EndpointPolicyEndpointMatcher(
-      metadataLabelMatcher: EndpointPolicyEndpointMatcherMetadataLabelMatcher.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
+      metadataLabelMatcher:
+          EndpointPolicyEndpointMatcherMetadataLabelMatcher.fromMap(
+            (map['metadataLabelMatcher'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

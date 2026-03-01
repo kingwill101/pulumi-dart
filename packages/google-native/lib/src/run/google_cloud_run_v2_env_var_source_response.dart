@@ -9,20 +9,19 @@ class GoogleCloudRunV2EnvVarSourceResponse {
 
   /// Creates a new [GoogleCloudRunV2EnvVarSourceResponse].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.
-  GoogleCloudRunV2EnvVarSourceResponse({
-    required this.secretKeyRef,
-  });
+  GoogleCloudRunV2EnvVarSourceResponse({required this.secretKeyRef});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretKeyRef': secretKeyRef.toMap(),
-    };
+    return <String, dynamic>{'secretKeyRef': secretKeyRef.toMap()};
   }
 
-  factory GoogleCloudRunV2EnvVarSourceResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRunV2EnvVarSourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRunV2EnvVarSourceResponse(
-      secretKeyRef: GoogleCloudRunV2SecretKeySelectorResponse.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
+      secretKeyRef: GoogleCloudRunV2SecretKeySelectorResponse.fromMap(
+        (map['secretKeyRef'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

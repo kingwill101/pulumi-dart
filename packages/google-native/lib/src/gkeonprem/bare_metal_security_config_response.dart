@@ -9,20 +9,17 @@ class BareMetalSecurityConfigResponse {
 
   /// Creates a new [BareMetalSecurityConfigResponse].
   /// [authorization] Configures user access to the user cluster.
-  BareMetalSecurityConfigResponse({
-    required this.authorization,
-  });
+  BareMetalSecurityConfigResponse({required this.authorization});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'authorization': authorization.toMap(),
-    };
+    return <String, dynamic>{'authorization': authorization.toMap()};
   }
 
   factory BareMetalSecurityConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalSecurityConfigResponse(
-      authorization: AuthorizationResponse.fromMap((map['authorization'] as Map).cast<String, dynamic>()),
+      authorization: AuthorizationResponse.fromMap(
+        (map['authorization'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

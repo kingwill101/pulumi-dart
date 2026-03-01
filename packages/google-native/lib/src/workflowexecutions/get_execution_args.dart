@@ -25,12 +25,11 @@ class GetExecutionArgs {
     String? project,
     String? view,
     required String workflowId,
-  }) :
-      executionId = pulumi.Input.asInput<String>(executionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view),
-      workflowId = pulumi.Input.asInput<String>(workflowId);
+  }) : executionId = pulumi.Input.asInput<String>(executionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view),
+       workflowId = pulumi.Input.asInput<String>(workflowId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetExecutionArgs {
     );
   }
 }
-

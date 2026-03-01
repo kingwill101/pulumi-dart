@@ -9,20 +9,19 @@ class GoogleCloudDataplexV1ContentSqlScript {
 
   /// Creates a new [GoogleCloudDataplexV1ContentSqlScript].
   /// [engine] Query Engine to be used for the Sql Query.
-  GoogleCloudDataplexV1ContentSqlScript({
-    required this.engine,
-  });
+  GoogleCloudDataplexV1ContentSqlScript({required this.engine});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'engine': engine.value,
-    };
+    return <String, dynamic>{'engine': engine.value};
   }
 
-  factory GoogleCloudDataplexV1ContentSqlScript.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ContentSqlScript.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1ContentSqlScript(
-      engine: GoogleCloudDataplexV1ContentSqlScriptEngine.fromValue(map['engine'] as String),
+      engine: GoogleCloudDataplexV1ContentSqlScriptEngine.fromValue(
+        map['engine'] as String,
+      ),
     );
   }
 }
-

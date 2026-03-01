@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstanceFromTemplateShieldedInstanceConfig {
   /// Whether integrity monitoring is enabled for the instance.
   final bool? enableIntegrityMonitoring;
+
   /// Whether secure boot is enabled for the instance.
   final bool? enableSecureBoot;
+
   /// Whether the instance uses vTPM.
   final bool? enableVtpm;
 
@@ -27,12 +28,17 @@ class InstanceFromTemplateShieldedInstanceConfig {
     };
   }
 
-  factory InstanceFromTemplateShieldedInstanceConfig.fromMap(Map<String, dynamic> map) {
+  factory InstanceFromTemplateShieldedInstanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFromTemplateShieldedInstanceConfig(
-      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null ? null : map['enableIntegrityMonitoring'] as bool,
-      enableSecureBoot: map['enableSecureBoot'] == null ? null : map['enableSecureBoot'] as bool,
+      enableIntegrityMonitoring: map['enableIntegrityMonitoring'] == null
+          ? null
+          : map['enableIntegrityMonitoring'] as bool,
+      enableSecureBoot: map['enableSecureBoot'] == null
+          ? null
+          : map['enableSecureBoot'] as bool,
       enableVtpm: map['enableVtpm'] == null ? null : map['enableVtpm'] as bool,
     );
   }
 }
-

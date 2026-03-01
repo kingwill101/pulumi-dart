@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Information about the Kubernetes Gateway API service mesh configuration.
 class GatewayServiceMeshResponse {
   /// Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
   final String deployment;
+
   /// Name of the Gateway API HTTPRoute.
   final String httpRoute;
+
   /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
   final String routeUpdateWaitTime;
+
   /// Name of the Kubernetes Service.
   final String service;
 
@@ -42,4 +44,3 @@ class GatewayServiceMeshResponse {
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum RegistryLogLevel {
     throw ArgumentError('Unknown RegistryLogLevel value: $value');
   }
 }
-

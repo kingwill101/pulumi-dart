@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings {
   /// The size of an EBS storage volume for a space.
   final int ebsVolumeSizeInGb;
@@ -12,15 +11,14 @@ class SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ebsVolumeSizeInGb': ebsVolumeSizeInGb,
-    };
+    return <String, dynamic>{'ebsVolumeSizeInGb': ebsVolumeSizeInGb};
   }
 
-  factory SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings.fromMap(Map<String, dynamic> map) {
+  factory SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpaceSpaceSettingsSpaceStorageSettingsEbsStorageSettings(
       ebsVolumeSizeInGb: map['ebsVolumeSizeInGb'] as int,
     );
   }
 }
-

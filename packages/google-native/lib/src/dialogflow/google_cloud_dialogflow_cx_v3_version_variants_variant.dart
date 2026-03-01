@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A single flow version with specified traffic allocation.
 class GoogleCloudDialogflowCxV3VersionVariantsVariant {
   /// Whether the variant is for the control group.
   final bool? isControlGroup;
+
   /// Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single flow must sum up to 1.0.
   final double? trafficAllocation;
+
   /// The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
   final String? version;
 
@@ -28,12 +29,17 @@ class GoogleCloudDialogflowCxV3VersionVariantsVariant {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3VersionVariantsVariant.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3VersionVariantsVariant.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3VersionVariantsVariant(
-      isControlGroup: map['isControlGroup'] == null ? null : map['isControlGroup'] as bool,
-      trafficAllocation: map['trafficAllocation'] == null ? null : map['trafficAllocation'] as double,
+      isControlGroup: map['isControlGroup'] == null
+          ? null
+          : map['isControlGroup'] as bool,
+      trafficAllocation: map['trafficAllocation'] == null
+          ? null
+          : map['trafficAllocation'] as double,
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
-

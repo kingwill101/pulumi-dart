@@ -8,8 +8,10 @@ import 'google_privacy_dlp_v2_value.dart';
 class GooglePrivacyDlpV2Condition {
   /// Field within the record this condition is evaluated against.
   final GooglePrivacyDlpV2FieldId field;
+
   /// Operator used to compare the field or infoType to the value.
   final GooglePrivacyDlpV2ConditionOperator operator;
+
   /// Value to compare against. [Mandatory, except for `EXISTS` tests.]
   final GooglePrivacyDlpV2Value? value;
 
@@ -33,10 +35,17 @@ class GooglePrivacyDlpV2Condition {
 
   factory GooglePrivacyDlpV2Condition.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Condition(
-      field: GooglePrivacyDlpV2FieldId.fromMap((map['field'] as Map).cast<String, dynamic>()),
-      operator: GooglePrivacyDlpV2ConditionOperator.fromValue(map['operator'] as String),
-      value: map['value'] == null ? null : GooglePrivacyDlpV2Value.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      field: GooglePrivacyDlpV2FieldId.fromMap(
+        (map['field'] as Map).cast<String, dynamic>(),
+      ),
+      operator: GooglePrivacyDlpV2ConditionOperator.fromValue(
+        map['operator'] as String,
+      ),
+      value: map['value'] == null
+          ? null
+          : GooglePrivacyDlpV2Value.fromMap(
+              (map['value'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

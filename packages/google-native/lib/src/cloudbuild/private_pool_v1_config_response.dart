@@ -7,6 +7,7 @@ import 'worker_config_response.dart';
 class PrivatePoolV1ConfigResponse {
   /// Network configuration for the pool.
   final NetworkConfigResponse networkConfig;
+
   /// Machine configuration for the workers in the pool.
   final WorkerConfigResponse workerConfig;
 
@@ -27,9 +28,12 @@ class PrivatePoolV1ConfigResponse {
 
   factory PrivatePoolV1ConfigResponse.fromMap(Map<String, dynamic> map) {
     return PrivatePoolV1ConfigResponse(
-      networkConfig: NetworkConfigResponse.fromMap((map['networkConfig'] as Map).cast<String, dynamic>()),
-      workerConfig: WorkerConfigResponse.fromMap((map['workerConfig'] as Map).cast<String, dynamic>()),
+      networkConfig: NetworkConfigResponse.fromMap(
+        (map['networkConfig'] as Map).cast<String, dynamic>(),
+      ),
+      workerConfig: WorkerConfigResponse.fromMap(
+        (map['workerConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

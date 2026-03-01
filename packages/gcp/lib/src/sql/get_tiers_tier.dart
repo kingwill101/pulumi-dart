@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTiersTier {
   /// The maximum disk size of this tier in bytes.
   final int diskQuota;
+
   /// The maximum ram usage of this tier in bytes.
   final int ram;
+
   /// The applicable regions for this tier.
   final List<String> regions;
+
   /// An identifier for the machine type, for example, db-custom-1-3840.
   final String tier;
 
@@ -41,4 +43,3 @@ class GetTiersTier {
     );
   }
 }
-

@@ -13,11 +13,8 @@ class GetBackendBucketArgs {
   /// Creates a new [GetBackendBucketArgs].
   /// [backendBucket] Required.
   /// [project] Optional.
-  GetBackendBucketArgs({
-    required String backendBucket,
-    String? project,
-  }) :
-      backendBucket = pulumi.Input.asInput<String>(backendBucket),
+  GetBackendBucketArgs({required String backendBucket, String? project})
+    : backendBucket = pulumi.Input.asInput<String>(backendBucket),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetBackendBucketArgs {
     );
   }
 }
-

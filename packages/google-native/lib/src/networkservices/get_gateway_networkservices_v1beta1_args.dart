@@ -19,10 +19,9 @@ class GetGatewayNetworkservicesV1beta1Args {
     required String gatewayId,
     required String location,
     String? project,
-  }) :
-      gatewayId = pulumi.Input.asInput<String>(gatewayId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : gatewayId = pulumi.Input.asInput<String>(gatewayId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetGatewayNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetGatewayNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetGatewayNetworkservicesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGatewayNetworkservicesV1beta1Args(
       gatewayId: map['gatewayId'] as String,
       location: map['location'] as String,
@@ -40,4 +41,3 @@ class GetGatewayNetworkservicesV1beta1Args {
     );
   }
 }
-

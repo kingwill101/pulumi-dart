@@ -9,28 +9,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MaintenanceWindowArgs {
   /// Whether targets must be registered with the Maintenance Window before tasks can be defined for those targets.
   final pulumi.Input<bool>? allowUnassociatedTargets;
+
   /// The number of hours before the end of the Maintenance Window that Systems Manager stops scheduling new tasks for execution.
   final pulumi.Input<int> cutoff;
+
   /// A description for the maintenance window.
   final pulumi.Input<String>? description;
+
   /// The duration of the Maintenance Window in hours.
   final pulumi.Input<int> duration;
+
   /// Whether the maintenance window is enabled. Default: `true`.
   final pulumi.Input<bool>? enabled;
+
   /// Timestamp in [ISO-8601 extended format](https://www.iso.org/iso-8601-date-and-time-format.html) when to no longer run the maintenance window.
   final pulumi.Input<String>? endDate;
+
   /// The name of the maintenance window.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The schedule of the Maintenance Window in the form of a [cron or rate expression](https://docs.aws.amazon.com/systems-manager/latest/userguide/reference-cron-and-rate-expressions.html).
   final pulumi.Input<String> schedule;
+
   /// The number of days to wait after the date and time specified by a CRON expression before running the maintenance window. Valid range is `1` to `6`.
   final pulumi.Input<int>? scheduleOffset;
+
   /// Timezone for schedule in [Internet Assigned Numbers Authority (IANA) Time Zone Database format](https://www.iana.org/time-zones). For example: `America/Los_Angeles`, `etc/UTC`, or `Asia/Seoul`.
   final pulumi.Input<String>? scheduleTimezone;
+
   /// Timestamp in [ISO-8601 extended format](https://www.iso.org/iso-8601-date-and-time-format.html) when to begin the maintenance window.
   final pulumi.Input<String>? startDate;
+
   /// A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -62,20 +74,23 @@ class MaintenanceWindowArgs {
     String? scheduleTimezone,
     String? startDate,
     Map<String, String>? tags,
-  }) :
-      allowUnassociatedTargets = pulumi.Input.asOptionalInput<bool>(allowUnassociatedTargets),
-      cutoff = pulumi.Input.asInput<int>(cutoff),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      duration = pulumi.Input.asInput<int>(duration),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      endDate = pulumi.Input.asOptionalInput<String>(endDate),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schedule = pulumi.Input.asInput<String>(schedule),
-      scheduleOffset = pulumi.Input.asOptionalInput<int>(scheduleOffset),
-      scheduleTimezone = pulumi.Input.asOptionalInput<String>(scheduleTimezone),
-      startDate = pulumi.Input.asOptionalInput<String>(startDate),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : allowUnassociatedTargets = pulumi.Input.asOptionalInput<bool>(
+         allowUnassociatedTargets,
+       ),
+       cutoff = pulumi.Input.asInput<int>(cutoff),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       duration = pulumi.Input.asInput<int>(duration),
+       enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+       endDate = pulumi.Input.asOptionalInput<String>(endDate),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       schedule = pulumi.Input.asInput<String>(schedule),
+       scheduleOffset = pulumi.Input.asOptionalInput<int>(scheduleOffset),
+       scheduleTimezone = pulumi.Input.asOptionalInput<String>(
+         scheduleTimezone,
+       ),
+       startDate = pulumi.Input.asOptionalInput<String>(startDate),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,20 +112,29 @@ class MaintenanceWindowArgs {
 
   factory MaintenanceWindowArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowArgs(
-      allowUnassociatedTargets: map['allowUnassociatedTargets'] == null ? null : map['allowUnassociatedTargets'] as bool,
+      allowUnassociatedTargets: map['allowUnassociatedTargets'] == null
+          ? null
+          : map['allowUnassociatedTargets'] as bool,
       cutoff: map['cutoff'] as int,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       duration: map['duration'] as int,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       endDate: map['endDate'] == null ? null : map['endDate'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       schedule: map['schedule'] as String,
-      scheduleOffset: map['scheduleOffset'] == null ? null : map['scheduleOffset'] as int,
-      scheduleTimezone: map['scheduleTimezone'] == null ? null : map['scheduleTimezone'] as String,
+      scheduleOffset: map['scheduleOffset'] == null
+          ? null
+          : map['scheduleOffset'] as int,
+      scheduleTimezone: map['scheduleTimezone'] == null
+          ? null
+          : map['scheduleTimezone'] as String,
       startDate: map['startDate'] == null ? null : map['startDate'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

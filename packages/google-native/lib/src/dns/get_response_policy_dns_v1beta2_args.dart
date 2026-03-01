@@ -19,10 +19,11 @@ class GetResponsePolicyDnsV1beta2Args {
     String? clientOperationId,
     String? project,
     required String responsePolicy,
-  }) :
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      responsePolicy = pulumi.Input.asInput<String>(responsePolicy);
+  }) : clientOperationId = pulumi.Input.asOptionalInput<String>(
+         clientOperationId,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       responsePolicy = pulumi.Input.asInput<String>(responsePolicy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +35,11 @@ class GetResponsePolicyDnsV1beta2Args {
 
   factory GetResponsePolicyDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetResponsePolicyDnsV1beta2Args(
-      clientOperationId: map['clientOperationId'] == null ? null : map['clientOperationId'] as String,
+      clientOperationId: map['clientOperationId'] == null
+          ? null
+          : map['clientOperationId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       responsePolicy: map['responsePolicy'] as String,
     );
   }
 }
-

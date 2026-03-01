@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectCloudresourcemanagerV3Args {
   /// Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
   final pulumi.Input<String>? displayName;
+
   /// Optional. The labels associated with this project. Label keys must be between 1 and 63 characters long and must conform to the following regular expression: \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Label values must be between 0 and 63 characters long and must conform to the regular expression (\[a-z\](\[-a-z0-9\]*\[a-z0-9\])?)?. No more than 64 labels can be associated with a given resource. Clients should store labels in a representation such as JSON that does not depend on specific characters being disallowed. Example: `"myBusinessDimension" : "businessValue"`
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Optional. A reference to a parent Resource. eg., `organizations/123` or `folders/876`.
   final pulumi.Input<String>? parent;
+
   /// Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
   final pulumi.Input<String>? projectId;
 
@@ -26,11 +29,10 @@ class ProjectCloudresourcemanagerV3Args {
     Map<String, String>? labels,
     String? parent,
     String? projectId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId);
+  }) : displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       parent = pulumi.Input.asOptionalInput<String>(parent),
+       projectId = pulumi.Input.asOptionalInput<String>(projectId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,11 +45,14 @@ class ProjectCloudresourcemanagerV3Args {
 
   factory ProjectCloudresourcemanagerV3Args.fromMap(Map<String, dynamic> map) {
     return ProjectCloudresourcemanagerV3Args(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       parent: map['parent'] == null ? null : map['parent'] as String,
       projectId: map['projectId'] == null ? null : map['projectId'] as String,
     );
   }
 }
-

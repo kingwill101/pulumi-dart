@@ -9,14 +9,10 @@ class CustomLevelResponse {
 
   /// Creates a new [CustomLevelResponse].
   /// [expr] A Cloud CEL expression evaluating to a boolean.
-  CustomLevelResponse({
-    required this.expr,
-  });
+  CustomLevelResponse({required this.expr});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'expr': expr.toMap(),
-    };
+    return <String, dynamic>{'expr': expr.toMap()};
   }
 
   factory CustomLevelResponse.fromMap(Map<String, dynamic> map) {
@@ -25,4 +21,3 @@ class CustomLevelResponse {
     );
   }
 }
-

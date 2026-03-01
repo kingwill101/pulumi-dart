@@ -493,10 +493,13 @@ import 'resource_collection_tags.dart';
 class ResourceCollection extends pulumi.CustomResource {
   /// A collection of AWS CloudFormation stacks. See `cloudformation` below for additional details.
   late final pulumi.Output<ResourceCollectionCloudformation?> cloudformation;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// AWS tags used to filter the resources in the resource collection. See `tags` below for additional details.
   late final pulumi.Output<ResourceCollectionTags?> tags;
+
   /// Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.
   ///
   /// The following arguments are optional:
@@ -511,12 +514,14 @@ class ResourceCollection extends pulumi.CustomResource {
     ResourceCollectionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:devopsguru/resourceCollection:ResourceCollection',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.cloudformation = registerOutput<ResourceCollectionCloudformation?>('cloudformation');
+         'aws:devopsguru/resourceCollection:ResourceCollection',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.cloudformation = registerOutput<ResourceCollectionCloudformation?>(
+      'cloudformation',
+    );
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<ResourceCollectionTags?>('tags');
     this.type = registerOutput<String>('type');

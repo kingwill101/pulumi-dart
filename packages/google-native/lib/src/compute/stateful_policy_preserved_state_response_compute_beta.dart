@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration of preserved resources.
 class StatefulPolicyPreservedStateResponseComputeBeta {
   /// Disks created on the instances that will be preserved on instance delete, update, etc. This map is keyed with the device names of the disks.
   final Map<String, String> disks;
+
   /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
   final Map<String, String> externalIPs;
+
   /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name.
   final Map<String, String> internalIPs;
 
@@ -28,7 +29,9 @@ class StatefulPolicyPreservedStateResponseComputeBeta {
     };
   }
 
-  factory StatefulPolicyPreservedStateResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory StatefulPolicyPreservedStateResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StatefulPolicyPreservedStateResponseComputeBeta(
       disks: (map['disks'] as Map).cast<String, String>(),
       externalIPs: (map['externalIPs'] as Map).cast<String, String>(),
@@ -36,4 +39,3 @@ class StatefulPolicyPreservedStateResponseComputeBeta {
     );
   }
 }
-

@@ -8,22 +8,32 @@ import 'preference_set_virtual_machine_preferences_vmware_engine_preferences.dar
 class PreferenceSetVirtualMachinePreferences {
   /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
   final String? commitmentPlan;
+
   /// The user preferences relating to Compute Engine target platform.
   /// Structure is documented below.
-  final PreferenceSetVirtualMachinePreferencesComputeEnginePreferences? computeEnginePreferences;
+  final PreferenceSetVirtualMachinePreferencesComputeEnginePreferences?
+  computeEnginePreferences;
+
   /// The user preferences relating to target regions.
   /// Structure is documented below.
-  final PreferenceSetVirtualMachinePreferencesRegionPreferences? regionPreferences;
+  final PreferenceSetVirtualMachinePreferencesRegionPreferences?
+  regionPreferences;
+
   /// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
   final String? sizingOptimizationStrategy;
+
   /// Preferences concerning Sole Tenancy nodes and VMs.
   /// Structure is documented below.
-  final PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences? soleTenancyPreferences;
+  final PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences?
+  soleTenancyPreferences;
+
   /// Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
   final String? targetProduct;
+
   /// The user preferences relating to Google Cloud VMware Engine target platform.
   /// Structure is documented below.
-  final PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences? vmwareEnginePreferences;
+  final PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences?
+  vmwareEnginePreferences;
 
   /// Creates a new [PreferenceSetVirtualMachinePreferences].
   /// [commitmentPlan] Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
@@ -46,25 +56,56 @@ class PreferenceSetVirtualMachinePreferences {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'commitmentPlan': ?commitmentPlan,
-      'computeEnginePreferences': ?computeEnginePreferences == null ? null : computeEnginePreferences!.toMap(),
-      'regionPreferences': ?regionPreferences == null ? null : regionPreferences!.toMap(),
+      'computeEnginePreferences': ?computeEnginePreferences == null
+          ? null
+          : computeEnginePreferences!.toMap(),
+      'regionPreferences': ?regionPreferences == null
+          ? null
+          : regionPreferences!.toMap(),
       'sizingOptimizationStrategy': ?sizingOptimizationStrategy,
-      'soleTenancyPreferences': ?soleTenancyPreferences == null ? null : soleTenancyPreferences!.toMap(),
+      'soleTenancyPreferences': ?soleTenancyPreferences == null
+          ? null
+          : soleTenancyPreferences!.toMap(),
       'targetProduct': ?targetProduct,
-      'vmwareEnginePreferences': ?vmwareEnginePreferences == null ? null : vmwareEnginePreferences!.toMap(),
+      'vmwareEnginePreferences': ?vmwareEnginePreferences == null
+          ? null
+          : vmwareEnginePreferences!.toMap(),
     };
   }
 
-  factory PreferenceSetVirtualMachinePreferences.fromMap(Map<String, dynamic> map) {
+  factory PreferenceSetVirtualMachinePreferences.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreferenceSetVirtualMachinePreferences(
-      commitmentPlan: map['commitmentPlan'] == null ? null : map['commitmentPlan'] as String,
-      computeEnginePreferences: map['computeEnginePreferences'] == null ? null : PreferenceSetVirtualMachinePreferencesComputeEnginePreferences.fromMap((map['computeEnginePreferences'] as Map).cast<String, dynamic>()),
-      regionPreferences: map['regionPreferences'] == null ? null : PreferenceSetVirtualMachinePreferencesRegionPreferences.fromMap((map['regionPreferences'] as Map).cast<String, dynamic>()),
-      sizingOptimizationStrategy: map['sizingOptimizationStrategy'] == null ? null : map['sizingOptimizationStrategy'] as String,
-      soleTenancyPreferences: map['soleTenancyPreferences'] == null ? null : PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences.fromMap((map['soleTenancyPreferences'] as Map).cast<String, dynamic>()),
-      targetProduct: map['targetProduct'] == null ? null : map['targetProduct'] as String,
-      vmwareEnginePreferences: map['vmwareEnginePreferences'] == null ? null : PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences.fromMap((map['vmwareEnginePreferences'] as Map).cast<String, dynamic>()),
+      commitmentPlan: map['commitmentPlan'] == null
+          ? null
+          : map['commitmentPlan'] as String,
+      computeEnginePreferences: map['computeEnginePreferences'] == null
+          ? null
+          : PreferenceSetVirtualMachinePreferencesComputeEnginePreferences.fromMap(
+              (map['computeEnginePreferences'] as Map).cast<String, dynamic>(),
+            ),
+      regionPreferences: map['regionPreferences'] == null
+          ? null
+          : PreferenceSetVirtualMachinePreferencesRegionPreferences.fromMap(
+              (map['regionPreferences'] as Map).cast<String, dynamic>(),
+            ),
+      sizingOptimizationStrategy: map['sizingOptimizationStrategy'] == null
+          ? null
+          : map['sizingOptimizationStrategy'] as String,
+      soleTenancyPreferences: map['soleTenancyPreferences'] == null
+          ? null
+          : PreferenceSetVirtualMachinePreferencesSoleTenancyPreferences.fromMap(
+              (map['soleTenancyPreferences'] as Map).cast<String, dynamic>(),
+            ),
+      targetProduct: map['targetProduct'] == null
+          ? null
+          : map['targetProduct'] as String,
+      vmwareEnginePreferences: map['vmwareEnginePreferences'] == null
+          ? null
+          : PreferenceSetVirtualMachinePreferencesVmwareEnginePreferences.fromMap(
+              (map['vmwareEnginePreferences'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

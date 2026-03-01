@@ -9,10 +9,13 @@ import 'worker_resource_composer_v1beta1.dart';
 class WorkloadsConfigComposerV1beta1 {
   /// Optional. Resources used by Airflow schedulers.
   final SchedulerResourceComposerV1beta1? scheduler;
+
   /// Optional. Resources used by Airflow triggerers.
   final TriggererResourceComposerV1beta1? triggerer;
+
   /// Optional. Resources used by Airflow web server.
   final WebServerResourceComposerV1beta1? webServer;
+
   /// Optional. Resources used by Airflow workers.
   final WorkerResourceComposerV1beta1? worker;
 
@@ -39,11 +42,26 @@ class WorkloadsConfigComposerV1beta1 {
 
   factory WorkloadsConfigComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return WorkloadsConfigComposerV1beta1(
-      scheduler: map['scheduler'] == null ? null : SchedulerResourceComposerV1beta1.fromMap((map['scheduler'] as Map).cast<String, dynamic>()),
-      triggerer: map['triggerer'] == null ? null : TriggererResourceComposerV1beta1.fromMap((map['triggerer'] as Map).cast<String, dynamic>()),
-      webServer: map['webServer'] == null ? null : WebServerResourceComposerV1beta1.fromMap((map['webServer'] as Map).cast<String, dynamic>()),
-      worker: map['worker'] == null ? null : WorkerResourceComposerV1beta1.fromMap((map['worker'] as Map).cast<String, dynamic>()),
+      scheduler: map['scheduler'] == null
+          ? null
+          : SchedulerResourceComposerV1beta1.fromMap(
+              (map['scheduler'] as Map).cast<String, dynamic>(),
+            ),
+      triggerer: map['triggerer'] == null
+          ? null
+          : TriggererResourceComposerV1beta1.fromMap(
+              (map['triggerer'] as Map).cast<String, dynamic>(),
+            ),
+      webServer: map['webServer'] == null
+          ? null
+          : WebServerResourceComposerV1beta1.fromMap(
+              (map['webServer'] as Map).cast<String, dynamic>(),
+            ),
+      worker: map['worker'] == null
+          ? null
+          : WorkerResourceComposerV1beta1.fromMap(
+              (map['worker'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

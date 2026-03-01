@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
 class CVSSResponse {
   final String attackComplexity;
+
   /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
   final String attackVector;
   final String authentication;
   final String availabilityImpact;
+
   /// The base score is a function of the base metric scores.
   final double baseScore;
   final String confidentialityImpact;
@@ -80,4 +81,3 @@ class CVSSResponse {
     );
   }
 }
-

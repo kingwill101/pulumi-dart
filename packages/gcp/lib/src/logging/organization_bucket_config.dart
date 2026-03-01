@@ -189,20 +189,29 @@ import 'organization_bucket_config_index_config.dart';
 class OrganizationBucketConfig extends pulumi.CustomResource {
   /// The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
   late final pulumi.Output<String> bucketId;
+
   /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
   late final pulumi.Output<OrganizationBucketConfigCmekSettings?> cmekSettings;
+
   /// Describes this bucket.
   late final pulumi.Output<String> description;
+
   /// A list of indexed fields and related configuration data. Structure is documented below.
-  late final pulumi.Output<List<OrganizationBucketConfigIndexConfig>> indexConfigs;
+  late final pulumi.Output<List<OrganizationBucketConfigIndexConfig>>
+  indexConfigs;
+
   /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
   late final pulumi.Output<String> lifecycleState;
+
   /// The location of the bucket. The supported locations are: "global" "us-central1"
   late final pulumi.Output<String> location;
+
   /// The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
   late final pulumi.Output<String> name;
+
   /// The parent resource that contains the logging bucket.
   late final pulumi.Output<String> organization;
+
   /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
   late final pulumi.Output<int?> retentionDays;
 
@@ -215,15 +224,20 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
     OrganizationBucketConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/organizationBucketConfig:OrganizationBucketConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:logging/organizationBucketConfig:OrganizationBucketConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucketId = registerOutput<String>('bucketId');
-    this.cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings');
+    this.cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>(
+      'cmekSettings',
+    );
     this.description = registerOutput<String>('description');
-    this.indexConfigs = registerOutput<List<OrganizationBucketConfigIndexConfig>>('indexConfigs');
+    this.indexConfigs =
+        registerOutput<List<OrganizationBucketConfigIndexConfig>>(
+          'indexConfigs',
+        );
     this.lifecycleState = registerOutput<String>('lifecycleState');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

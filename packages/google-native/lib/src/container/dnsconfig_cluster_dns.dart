@@ -17,4 +17,3 @@ enum DNSConfigClusterDns {
     throw ArgumentError('Unknown DNSConfigClusterDns value: $value');
   }
 }
-

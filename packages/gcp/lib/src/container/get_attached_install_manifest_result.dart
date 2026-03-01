@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getAttachedInstallManifest.
 class GetAttachedInstallManifestResult {
   final String clusterId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
+
   /// A string with the YAML manifest that needs to be applied to the cluster.
   final String manifest;
   final String platformVersion;
@@ -50,4 +51,3 @@ class GetAttachedInstallManifestResult {
     );
   }
 }
-

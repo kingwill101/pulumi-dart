@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetNotificationChannelFilter {
   /// Events to receive notifications for.
   final List<String> messageTypes;
+
   /// Severity levels to receive notifications for.
   final List<String> severities;
 
@@ -29,4 +29,3 @@ class GetNotificationChannelFilter {
     );
   }
 }
-

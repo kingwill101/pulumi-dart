@@ -8,19 +8,26 @@ class GetApplicationResult {
   /// AWS account ID.
   final String applicationAccount;
   final String applicationArn;
+
   /// ARN of the application provider.
   final String applicationProviderArn;
+
   /// Description of the application.
   final String description;
+
   /// ARN of the application.
   final String id;
+
   /// ARN of the instance of IAM Identity Center.
   final String instanceArn;
+
   /// Name of the application.
   final String name;
+
   /// Options for the portal associated with an application. See the `aws.ssoadmin.Application` resource documentation. The attributes are the same.
   final List<GetApplicationPortalOption> portalOptions;
   final String region;
+
   /// Status of the application.
   final String status;
 
@@ -57,7 +64,11 @@ class GetApplicationResult {
       'id': id,
       'instanceArn': instanceArn,
       'name': name,
-      'portalOptions': pulumi.Input.encodeList<GetApplicationPortalOption, Map<String, dynamic>>(portalOptions, (value) => value.toMap()),
+      'portalOptions':
+          pulumi.Input.encodeList<
+            GetApplicationPortalOption,
+            Map<String, dynamic>
+          >(portalOptions, (value) => value.toMap()),
       'region': region,
       'status': status,
     };
@@ -72,10 +83,14 @@ class GetApplicationResult {
       id: map['id'] as String,
       instanceArn: map['instanceArn'] as String,
       name: map['name'] as String,
-      portalOptions: pulumi.Input.decodeList<GetApplicationPortalOption>(map['portalOptions'], (value) => GetApplicationPortalOption.fromMap((value as Map).cast<String, dynamic>())),
+      portalOptions: pulumi.Input.decodeList<GetApplicationPortalOption>(
+        map['portalOptions'],
+        (value) => GetApplicationPortalOption.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       region: map['region'] as String,
       status: map['status'] as String,
     );
   }
 }
-

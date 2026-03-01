@@ -25,12 +25,11 @@ class GetUserDataMappingArgs {
     required String location,
     String? project,
     required String userDataMappingId,
-  }) :
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userDataMappingId = pulumi.Input.asInput<String>(userDataMappingId);
+  }) : consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
+       datasetId = pulumi.Input.asInput<String>(datasetId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       userDataMappingId = pulumi.Input.asInput<String>(userDataMappingId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetUserDataMappingArgs {
     );
   }
 }
-

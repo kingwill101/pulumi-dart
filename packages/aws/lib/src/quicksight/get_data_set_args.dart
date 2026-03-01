@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataSetArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
+
   /// Identifier for the data set.
   final pulumi.Input<String> dataSetId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
   final pulumi.Input<Map<String, String>>? tags;
@@ -25,11 +27,10 @@ class GetDataSetArgs {
     required String dataSetId,
     String? region,
     Map<String, String>? tags,
-  }) :
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      dataSetId = pulumi.Input.asInput<String>(dataSetId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
+       dataSetId = pulumi.Input.asInput<String>(dataSetId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,11 +43,14 @@ class GetDataSetArgs {
 
   factory GetDataSetArgs.fromMap(Map<String, dynamic> map) {
     return GetDataSetArgs(
-      awsAccountId: map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
+      awsAccountId: map['awsAccountId'] == null
+          ? null
+          : map['awsAccountId'] as String,
       dataSetId: map['dataSetId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

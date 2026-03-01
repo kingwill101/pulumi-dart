@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies the bare metal user cluster's observability infrastructure.
 class BareMetalClusterOperationsConfigResponse {
   /// Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
@@ -13,15 +12,14 @@ class BareMetalClusterOperationsConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableApplicationLogs': enableApplicationLogs,
-    };
+    return <String, dynamic>{'enableApplicationLogs': enableApplicationLogs};
   }
 
-  factory BareMetalClusterOperationsConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory BareMetalClusterOperationsConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalClusterOperationsConfigResponse(
       enableApplicationLogs: map['enableApplicationLogs'] as bool,
     );
   }
 }
-

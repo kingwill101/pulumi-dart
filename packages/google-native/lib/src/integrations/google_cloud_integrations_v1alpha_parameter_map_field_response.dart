@@ -6,6 +6,7 @@ import 'google_cloud_integrations_v1alpha_value_type_response.dart';
 class GoogleCloudIntegrationsV1alphaParameterMapFieldResponse {
   /// Passing a literal value.
   final GoogleCloudIntegrationsV1alphaValueTypeResponse literalValue;
+
   /// Referencing one of the Integration variables.
   final String referenceKey;
 
@@ -24,11 +25,14 @@ class GoogleCloudIntegrationsV1alphaParameterMapFieldResponse {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaParameterMapFieldResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaParameterMapFieldResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaParameterMapFieldResponse(
-      literalValue: GoogleCloudIntegrationsV1alphaValueTypeResponse.fromMap((map['literalValue'] as Map).cast<String, dynamic>()),
+      literalValue: GoogleCloudIntegrationsV1alphaValueTypeResponse.fromMap(
+        (map['literalValue'] as Map).cast<String, dynamic>(),
+      ),
       referenceKey: map['referenceKey'] as String,
     );
   }
 }
-

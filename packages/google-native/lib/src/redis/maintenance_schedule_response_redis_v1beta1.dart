@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
 class MaintenanceScheduleResponseRedisV1beta1 {
   /// If the scheduled maintenance can be rescheduled, default is true.
   final bool canReschedule;
+
   /// The end time of any upcoming scheduled maintenance for this instance.
   final String endTime;
+
   /// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
   final String scheduleDeadlineTime;
+
   /// The start time of any upcoming scheduled maintenance for this instance.
   final String startTime;
 
@@ -33,7 +35,9 @@ class MaintenanceScheduleResponseRedisV1beta1 {
     };
   }
 
-  factory MaintenanceScheduleResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory MaintenanceScheduleResponseRedisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaintenanceScheduleResponseRedisV1beta1(
       canReschedule: map['canReschedule'] as bool,
       endTime: map['endTime'] as String,
@@ -42,4 +46,3 @@ class MaintenanceScheduleResponseRedisV1beta1 {
     );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetInstanceArgs {
   /// The instance id of the Lustre instance.
   final pulumi.Input<String> instanceId;
+
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The ID of the zone in which the resource belongs. If it is not provided, the provider zone is used.
   final pulumi.Input<String>? zone;
 
@@ -18,12 +20,8 @@ class GetInstanceArgs {
   /// [instanceId] The instance id of the Lustre instance.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [zone] The ID of the zone in which the resource belongs. If it is not provided, the provider zone is used.
-  GetInstanceArgs({
-    required String instanceId,
-    String? project,
-    String? zone,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
+  GetInstanceArgs({required String instanceId, String? project, String? zone})
+    : instanceId = pulumi.Input.asInput<String>(instanceId),
       project = pulumi.Input.asOptionalInput<String>(project),
       zone = pulumi.Input.asOptionalInput<String>(zone);
 
@@ -43,4 +41,3 @@ class GetInstanceArgs {
     );
   }
 }
-

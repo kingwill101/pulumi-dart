@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro {
   final String apiSecretKey;
 
@@ -11,15 +10,14 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicr
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'apiSecretKey': apiSecretKey,
-    };
+    return <String, dynamic>{'apiSecretKey': apiSecretKey};
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsTrendmicro(
       apiSecretKey: map['apiSecretKey'] as String,
     );
   }
 }
-

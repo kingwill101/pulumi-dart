@@ -22,11 +22,10 @@ class GetAliasArgs {
     required String environmentId,
     required String keystoreId,
     required String organizationId,
-  }) :
-      aliasId = pulumi.Input.asInput<String>(aliasId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      keystoreId = pulumi.Input.asInput<String>(keystoreId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : aliasId = pulumi.Input.asInput<String>(aliasId),
+       environmentId = pulumi.Input.asInput<String>(environmentId),
+       keystoreId = pulumi.Input.asInput<String>(keystoreId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetAliasArgs {
     );
   }
 }
-

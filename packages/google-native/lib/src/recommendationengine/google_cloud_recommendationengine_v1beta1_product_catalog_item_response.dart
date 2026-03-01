@@ -9,18 +9,27 @@ import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_price_ran
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
   /// Optional. The available quantity of the item.
   final String availableQuantity;
+
   /// Optional. Canonical URL directly linking to the item detail page with a length limit of 5 KiB..
   final String canonicalProductUri;
+
   /// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
   final Map<String, String> costs;
+
   /// Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
   final String currencyCode;
+
   /// Optional. The exact product price.
-  final GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse exactPrice;
+  final GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse
+  exactPrice;
+
   /// Optional. Product images for the catalog item.
   final List<GoogleCloudRecommendationengineV1beta1ImageResponse> images;
+
   /// Optional. The product price range.
-  final GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse priceRange;
+  final GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
+  priceRange;
+
   /// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
   final String stockState;
 
@@ -51,23 +60,43 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse {
       'costs': costs,
       'currencyCode': currencyCode,
       'exactPrice': exactPrice.toMap(),
-      'images': pulumi.Input.encodeList<GoogleCloudRecommendationengineV1beta1ImageResponse, Map<String, dynamic>>(images, (value) => value.toMap()),
+      'images':
+          pulumi.Input.encodeList<
+            GoogleCloudRecommendationengineV1beta1ImageResponse,
+            Map<String, dynamic>
+          >(images, (value) => value.toMap()),
       'priceRange': priceRange.toMap(),
       'stockState': stockState,
     };
   }
 
-  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse(
       availableQuantity: map['availableQuantity'] as String,
       canonicalProductUri: map['canonicalProductUri'] as String,
       costs: (map['costs'] as Map).cast<String, String>(),
       currencyCode: map['currencyCode'] as String,
-      exactPrice: GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse.fromMap((map['exactPrice'] as Map).cast<String, dynamic>()),
-      images: pulumi.Input.decodeList<GoogleCloudRecommendationengineV1beta1ImageResponse>(map['images'], (value) => GoogleCloudRecommendationengineV1beta1ImageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      priceRange: GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse.fromMap((map['priceRange'] as Map).cast<String, dynamic>()),
+      exactPrice:
+          GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse.fromMap(
+            (map['exactPrice'] as Map).cast<String, dynamic>(),
+          ),
+      images:
+          pulumi.Input.decodeList<
+            GoogleCloudRecommendationengineV1beta1ImageResponse
+          >(
+            map['images'],
+            (value) =>
+                GoogleCloudRecommendationengineV1beta1ImageResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      priceRange:
+          GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse.fromMap(
+            (map['priceRange'] as Map).cast<String, dynamic>(),
+          ),
       stockState: map['stockState'] as String,
     );
   }
 }
-

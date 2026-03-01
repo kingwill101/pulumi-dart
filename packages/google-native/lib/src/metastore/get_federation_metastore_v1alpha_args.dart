@@ -19,10 +19,9 @@ class GetFederationMetastoreV1alphaArgs {
     required String federationId,
     required String location,
     String? project,
-  }) :
-      federationId = pulumi.Input.asInput<String>(federationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : federationId = pulumi.Input.asInput<String>(federationId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetFederationMetastoreV1alphaArgs {
     );
   }
 }
-

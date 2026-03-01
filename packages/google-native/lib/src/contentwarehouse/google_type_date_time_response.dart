@@ -6,20 +6,28 @@ import 'google_type_time_zone_response.dart';
 class GoogleTypeDateTimeResponse {
   /// Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day.
   final int day;
+
   /// Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time.
   final int hours;
+
   /// Optional. Minutes of hour of day. Must be from 0 to 59, defaults to 0.
   final int minutes;
+
   /// Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month.
   final int month;
+
   /// Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0.
   final int nanos;
+
   /// Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds.
   final int seconds;
+
   /// Time zone.
   final GoogleTypeTimeZoneResponse timeZone;
+
   /// UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }.
   final String utcOffset;
+
   /// Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
   final int year;
 
@@ -67,10 +75,11 @@ class GoogleTypeDateTimeResponse {
       month: map['month'] as int,
       nanos: map['nanos'] as int,
       seconds: map['seconds'] as int,
-      timeZone: GoogleTypeTimeZoneResponse.fromMap((map['timeZone'] as Map).cast<String, dynamic>()),
+      timeZone: GoogleTypeTimeZoneResponse.fromMap(
+        (map['timeZone'] as Map).cast<String, dynamic>(),
+      ),
       utcOffset: map['utcOffset'] as String,
       year: map['year'] as int,
     );
   }
 }
-

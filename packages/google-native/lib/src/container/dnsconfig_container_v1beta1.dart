@@ -7,8 +7,10 @@ import 'dnsconfig_cluster_dns_scope_container_v1beta1.dart';
 class DNSConfigContainerV1beta1 {
   /// cluster_dns indicates which in-cluster DNS provider should be used.
   final DNSConfigClusterDnsContainerV1beta1? clusterDns;
+
   /// cluster_dns_domain is the suffix used for all cluster service records.
   final String? clusterDnsDomain;
+
   /// cluster_dns_scope indicates the scope of access to cluster DNS records.
   final DNSConfigClusterDnsScopeContainerV1beta1? clusterDnsScope;
 
@@ -26,16 +28,27 @@ class DNSConfigContainerV1beta1 {
     return <String, dynamic>{
       'clusterDns': ?clusterDns == null ? null : clusterDns!.value,
       'clusterDnsDomain': ?clusterDnsDomain,
-      'clusterDnsScope': ?clusterDnsScope == null ? null : clusterDnsScope!.value,
+      'clusterDnsScope': ?clusterDnsScope == null
+          ? null
+          : clusterDnsScope!.value,
     };
   }
 
   factory DNSConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return DNSConfigContainerV1beta1(
-      clusterDns: map['clusterDns'] == null ? null : DNSConfigClusterDnsContainerV1beta1.fromValue(map['clusterDns'] as String),
-      clusterDnsDomain: map['clusterDnsDomain'] == null ? null : map['clusterDnsDomain'] as String,
-      clusterDnsScope: map['clusterDnsScope'] == null ? null : DNSConfigClusterDnsScopeContainerV1beta1.fromValue(map['clusterDnsScope'] as String),
+      clusterDns: map['clusterDns'] == null
+          ? null
+          : DNSConfigClusterDnsContainerV1beta1.fromValue(
+              map['clusterDns'] as String,
+            ),
+      clusterDnsDomain: map['clusterDnsDomain'] == null
+          ? null
+          : map['clusterDnsDomain'] as String,
+      clusterDnsScope: map['clusterDnsScope'] == null
+          ? null
+          : DNSConfigClusterDnsScopeContainerV1beta1.fromValue(
+              map['clusterDnsScope'] as String,
+            ),
     );
   }
 }
-

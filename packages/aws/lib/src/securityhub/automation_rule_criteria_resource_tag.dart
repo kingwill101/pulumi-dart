@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AutomationRuleCriteriaResourceTag {
   final String comparison;
+
   /// The key of the map filter.
   final String key;
   final String value;
@@ -33,4 +33,3 @@ class AutomationRuleCriteriaResourceTag {
     );
   }
 }
-

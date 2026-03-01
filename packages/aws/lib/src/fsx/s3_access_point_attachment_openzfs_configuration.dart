@@ -4,7 +4,9 @@ import 's3_access_point_attachment_openzfs_configuration_file_system_identity.da
 
 class S3AccessPointAttachmentOpenzfsConfiguration {
   /// File system user identity to use for authorizing file read and write requests that are made using the S3 access point. See `file_system_identity` Block for details.
-  final S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity fileSystemIdentity;
+  final S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity
+  fileSystemIdentity;
+
   /// ID of the FSx for OpenZFS volume to which the S3 access point is attached.
   final String volumeId;
 
@@ -23,11 +25,15 @@ class S3AccessPointAttachmentOpenzfsConfiguration {
     };
   }
 
-  factory S3AccessPointAttachmentOpenzfsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory S3AccessPointAttachmentOpenzfsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return S3AccessPointAttachmentOpenzfsConfiguration(
-      fileSystemIdentity: S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity.fromMap((map['fileSystemIdentity'] as Map).cast<String, dynamic>()),
+      fileSystemIdentity:
+          S3AccessPointAttachmentOpenzfsConfigurationFileSystemIdentity.fromMap(
+            (map['fileSystemIdentity'] as Map).cast<String, dynamic>(),
+          ),
       volumeId: map['volumeId'] as String,
     );
   }
 }
-

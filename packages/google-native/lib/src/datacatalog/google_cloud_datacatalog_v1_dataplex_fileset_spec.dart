@@ -9,9 +9,7 @@ class GoogleCloudDatacatalogV1DataplexFilesetSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1DataplexFilesetSpec].
   /// [dataplexSpec] Common Dataplex fields.
-  GoogleCloudDatacatalogV1DataplexFilesetSpec({
-    this.dataplexSpec,
-  });
+  GoogleCloudDatacatalogV1DataplexFilesetSpec({this.dataplexSpec});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class GoogleCloudDatacatalogV1DataplexFilesetSpec {
     };
   }
 
-  factory GoogleCloudDatacatalogV1DataplexFilesetSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DataplexFilesetSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1DataplexFilesetSpec(
-      dataplexSpec: map['dataplexSpec'] == null ? null : GoogleCloudDatacatalogV1DataplexSpec.fromMap((map['dataplexSpec'] as Map).cast<String, dynamic>()),
+      dataplexSpec: map['dataplexSpec'] == null
+          ? null
+          : GoogleCloudDatacatalogV1DataplexSpec.fromMap(
+              (map['dataplexSpec'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

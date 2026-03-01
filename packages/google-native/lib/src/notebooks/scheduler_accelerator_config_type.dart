@@ -22,4 +22,3 @@ enum SchedulerAcceleratorConfigType {
     throw ArgumentError('Unknown SchedulerAcceleratorConfigType value: $value');
   }
 }
-

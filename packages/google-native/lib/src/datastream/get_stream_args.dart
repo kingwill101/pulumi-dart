@@ -19,10 +19,9 @@ class GetStreamArgs {
     required String location,
     String? project,
     required String streamId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      streamId = pulumi.Input.asInput<String>(streamId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       streamId = pulumi.Input.asInput<String>(streamId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetStreamArgs {
     );
   }
 }
-

@@ -10,20 +10,32 @@ class MonitoringComponentConfig {
 
   /// Creates a new [MonitoringComponentConfig].
   /// [enableComponents] Select components to collect metrics. An empty set would disable all monitoring.
-  MonitoringComponentConfig({
-    this.enableComponents,
-  });
+  MonitoringComponentConfig({this.enableComponents});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'enableComponents': ?enableComponents == null ? null : pulumi.Input.encodeList<MonitoringComponentConfigEnableComponentsItem, String>(enableComponents!, (value) => value.value),
+      'enableComponents': ?enableComponents == null
+          ? null
+          : pulumi.Input.encodeList<
+              MonitoringComponentConfigEnableComponentsItem,
+              String
+            >(enableComponents!, (value) => value.value),
     };
   }
 
   factory MonitoringComponentConfig.fromMap(Map<String, dynamic> map) {
     return MonitoringComponentConfig(
-      enableComponents: map['enableComponents'] == null ? null : pulumi.Input.decodeList<MonitoringComponentConfigEnableComponentsItem>(map['enableComponents'], (value) => MonitoringComponentConfigEnableComponentsItem.fromValue(value as String)),
+      enableComponents: map['enableComponents'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              MonitoringComponentConfigEnableComponentsItem
+            >(
+              map['enableComponents'],
+              (value) =>
+                  MonitoringComponentConfigEnableComponentsItem.fromValue(
+                    value as String,
+                  ),
+            ),
     );
   }
 }
-

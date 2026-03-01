@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UnitKindOutputVariableMappingFrom {
   /// Alias of the dependency that the outputVariable will pass its value to
   final String dependency;
+
   /// Name of the outputVariable on the dependency
   final String outputVariable;
 
@@ -29,4 +29,3 @@ class UnitKindOutputVariableMappingFrom {
     );
   }
 }
-

@@ -10,20 +10,31 @@ class VMwareClusterNetworkConfigStaticIpConfig {
 
   /// Creates a new [VMwareClusterNetworkConfigStaticIpConfig].
   /// [ipBlocks] Represents the configuration values for static IP allocation to nodes.
-  VMwareClusterNetworkConfigStaticIpConfig({
-    required this.ipBlocks,
-  });
+  VMwareClusterNetworkConfigStaticIpConfig({required this.ipBlocks});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipBlocks': pulumi.Input.encodeList<VMwareClusterNetworkConfigStaticIpConfigIpBlock, Map<String, dynamic>>(ipBlocks, (value) => value.toMap()),
+      'ipBlocks':
+          pulumi.Input.encodeList<
+            VMwareClusterNetworkConfigStaticIpConfigIpBlock,
+            Map<String, dynamic>
+          >(ipBlocks, (value) => value.toMap()),
     };
   }
 
-  factory VMwareClusterNetworkConfigStaticIpConfig.fromMap(Map<String, dynamic> map) {
+  factory VMwareClusterNetworkConfigStaticIpConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VMwareClusterNetworkConfigStaticIpConfig(
-      ipBlocks: pulumi.Input.decodeList<VMwareClusterNetworkConfigStaticIpConfigIpBlock>(map['ipBlocks'], (value) => VMwareClusterNetworkConfigStaticIpConfigIpBlock.fromMap((value as Map).cast<String, dynamic>())),
+      ipBlocks:
+          pulumi.Input.decodeList<
+            VMwareClusterNetworkConfigStaticIpConfigIpBlock
+          >(
+            map['ipBlocks'],
+            (value) => VMwareClusterNetworkConfigStaticIpConfigIpBlock.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

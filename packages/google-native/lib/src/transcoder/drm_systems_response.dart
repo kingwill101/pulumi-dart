@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Defines configuration for DRM systems in use.
 class DrmSystemsResponse {
   /// Clearkey configuration.
   final Map<String, dynamic> clearkey;
+
   /// Fairplay configuration.
   final Map<String, dynamic> fairplay;
+
   /// Playready configuration.
   final Map<String, dynamic> playready;
+
   /// Widevine configuration.
   final Map<String, dynamic> widevine;
 
@@ -42,4 +44,3 @@ class DrmSystemsResponse {
     );
   }
 }
-

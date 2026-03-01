@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
   /// Possible values are: `TIER_UNSPECIFIED`, `DEFAULT`, `TIER_1`.
   final String? totalEgressBandwidthTier;
@@ -17,10 +16,13 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfig(
-      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null ? null : map['totalEgressBandwidthTier'] as String,
+      totalEgressBandwidthTier: map['totalEgressBandwidthTier'] == null
+          ? null
+          : map['totalEgressBandwidthTier'] as String,
     );
   }
 }
-

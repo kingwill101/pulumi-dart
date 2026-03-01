@@ -7,12 +7,16 @@ import 'google_cloud_identitytoolkit_admin_v2_password_policy_version_response.d
 class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse {
   /// Users must have a password compliant with the password policy to sign-in.
   final bool forceUpgradeOnSignin;
+
   /// The last time the password policy on the project was updated.
   final String lastUpdateTime;
+
   /// Which enforcement mode to use for the password policy.
   final String passwordPolicyEnforcementState;
+
   /// Must be of length 1. Contains the strength attributes for the password policy.
-  final List<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse> passwordPolicyVersions;
+  final List<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse>
+  passwordPolicyVersions;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse].
   /// [forceUpgradeOnSignin] Users must have a password compliant with the password policy to sign-in.
@@ -31,17 +35,32 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse {
       'forceUpgradeOnSignin': forceUpgradeOnSignin,
       'lastUpdateTime': lastUpdateTime,
       'passwordPolicyEnforcementState': passwordPolicyEnforcementState,
-      'passwordPolicyVersions': pulumi.Input.encodeList<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse, Map<String, dynamic>>(passwordPolicyVersions, (value) => value.toMap()),
+      'passwordPolicyVersions':
+          pulumi.Input.encodeList<
+            GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse,
+            Map<String, dynamic>
+          >(passwordPolicyVersions, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfigResponse(
       forceUpgradeOnSignin: map['forceUpgradeOnSignin'] as bool,
       lastUpdateTime: map['lastUpdateTime'] as String,
-      passwordPolicyEnforcementState: map['passwordPolicyEnforcementState'] as String,
-      passwordPolicyVersions: pulumi.Input.decodeList<GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse>(map['passwordPolicyVersions'], (value) => GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      passwordPolicyEnforcementState:
+          map['passwordPolicyEnforcementState'] as String,
+      passwordPolicyVersions:
+          pulumi.Input.decodeList<
+            GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse
+          >(
+            map['passwordPolicyVersions'],
+            (value) =>
+                GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersionResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

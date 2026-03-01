@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDatabaseInstancesInstanceSettingAdvancedMachineFeature {
   /// The number of threads per physical core. Can be 1 or 2.
   final int threadsPerCore;
@@ -12,15 +11,14 @@ class GetDatabaseInstancesInstanceSettingAdvancedMachineFeature {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'threadsPerCore': threadsPerCore,
-    };
+    return <String, dynamic>{'threadsPerCore': threadsPerCore};
   }
 
-  factory GetDatabaseInstancesInstanceSettingAdvancedMachineFeature.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstancesInstanceSettingAdvancedMachineFeature.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstancesInstanceSettingAdvancedMachineFeature(
       threadsPerCore: map['threadsPerCore'] as int,
     );
   }
 }
-

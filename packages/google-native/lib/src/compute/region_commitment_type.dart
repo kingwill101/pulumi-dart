@@ -29,4 +29,3 @@ enum RegionCommitmentType {
     throw ArgumentError('Unknown RegionCommitmentType value: $value');
   }
 }
-

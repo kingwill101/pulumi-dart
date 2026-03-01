@@ -13,22 +13,30 @@ import 'standard_isolation.dart';
 class AppProfileArgs {
   /// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
   final pulumi.Input<String> appProfileId;
+
   /// Long form description of the use case for this AppProfile.
   final pulumi.Input<String>? description;
+
   /// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
   final pulumi.Input<String>? etag;
+
   /// If true, ignore safety checks when creating the app profile.
   final pulumi.Input<bool>? ignoreWarnings;
   final pulumi.Input<String> instanceId;
+
   /// Use a multi-cluster routing policy.
   final pulumi.Input<MultiClusterRoutingUseAny>? multiClusterRoutingUseAny;
+
   /// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
   final pulumi.Input<String>? name;
+
   /// This field has been deprecated in favor of `standard_isolation.priority`. If you set this field, `standard_isolation.priority` will be set instead. The priority of requests sent using this app profile.
   final pulumi.Input<AppProfilePriority>? priority;
   final pulumi.Input<String>? project;
+
   /// Use a single-cluster routing policy.
   final pulumi.Input<SingleClusterRouting>? singleClusterRouting;
+
   /// The standard options used for isolating this app profile's traffic from other use cases.
   final pulumi.Input<StandardIsolation>? standardIsolation;
 
@@ -56,18 +64,23 @@ class AppProfileArgs {
     String? project,
     SingleClusterRouting? singleClusterRouting,
     StandardIsolation? standardIsolation,
-  }) :
-      appProfileId = pulumi.Input.asInput<String>(appProfileId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      ignoreWarnings = pulumi.Input.asOptionalInput<bool>(ignoreWarnings),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      multiClusterRoutingUseAny = pulumi.Input.asOptionalInput<MultiClusterRoutingUseAny>(multiClusterRoutingUseAny),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      priority = pulumi.Input.asOptionalInput<AppProfilePriority>(priority),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      singleClusterRouting = pulumi.Input.asOptionalInput<SingleClusterRouting>(singleClusterRouting),
-      standardIsolation = pulumi.Input.asOptionalInput<StandardIsolation>(standardIsolation);
+  }) : appProfileId = pulumi.Input.asInput<String>(appProfileId),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       etag = pulumi.Input.asOptionalInput<String>(etag),
+       ignoreWarnings = pulumi.Input.asOptionalInput<bool>(ignoreWarnings),
+       instanceId = pulumi.Input.asInput<String>(instanceId),
+       multiClusterRoutingUseAny =
+           pulumi.Input.asOptionalInput<MultiClusterRoutingUseAny>(
+             multiClusterRoutingUseAny,
+           ),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       priority = pulumi.Input.asOptionalInput<AppProfilePriority>(priority),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       singleClusterRouting = pulumi
+           .Input.asOptionalInput<SingleClusterRouting>(singleClusterRouting),
+       standardIsolation = pulumi.Input.asOptionalInput<StandardIsolation>(
+         standardIsolation,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -76,29 +89,62 @@ class AppProfileArgs {
       'etag': ?etag,
       'ignoreWarnings': ?ignoreWarnings,
       'instanceId': instanceId,
-      'multiClusterRoutingUseAny': ?pulumi.Input.mapOptionalInputValue<MultiClusterRoutingUseAny, Map<String, dynamic>>(multiClusterRoutingUseAny, (value) => value.toMap()),
+      'multiClusterRoutingUseAny':
+          ?pulumi.Input.mapOptionalInputValue<
+            MultiClusterRoutingUseAny,
+            Map<String, dynamic>
+          >(multiClusterRoutingUseAny, (value) => value.toMap()),
       'name': ?name,
-      'priority': ?pulumi.Input.mapOptionalInputValue<AppProfilePriority, String>(priority, (value) => value.value),
+      'priority':
+          ?pulumi.Input.mapOptionalInputValue<AppProfilePriority, String>(
+            priority,
+            (value) => value.value,
+          ),
       'project': ?project,
-      'singleClusterRouting': ?pulumi.Input.mapOptionalInputValue<SingleClusterRouting, Map<String, dynamic>>(singleClusterRouting, (value) => value.toMap()),
-      'standardIsolation': ?pulumi.Input.mapOptionalInputValue<StandardIsolation, Map<String, dynamic>>(standardIsolation, (value) => value.toMap()),
+      'singleClusterRouting':
+          ?pulumi.Input.mapOptionalInputValue<
+            SingleClusterRouting,
+            Map<String, dynamic>
+          >(singleClusterRouting, (value) => value.toMap()),
+      'standardIsolation':
+          ?pulumi.Input.mapOptionalInputValue<
+            StandardIsolation,
+            Map<String, dynamic>
+          >(standardIsolation, (value) => value.toMap()),
     };
   }
 
   factory AppProfileArgs.fromMap(Map<String, dynamic> map) {
     return AppProfileArgs(
       appProfileId: map['appProfileId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       etag: map['etag'] == null ? null : map['etag'] as String,
-      ignoreWarnings: map['ignoreWarnings'] == null ? null : map['ignoreWarnings'] as bool,
+      ignoreWarnings: map['ignoreWarnings'] == null
+          ? null
+          : map['ignoreWarnings'] as bool,
       instanceId: map['instanceId'] as String,
-      multiClusterRoutingUseAny: map['multiClusterRoutingUseAny'] == null ? null : MultiClusterRoutingUseAny.fromMap((map['multiClusterRoutingUseAny'] as Map).cast<String, dynamic>()),
+      multiClusterRoutingUseAny: map['multiClusterRoutingUseAny'] == null
+          ? null
+          : MultiClusterRoutingUseAny.fromMap(
+              (map['multiClusterRoutingUseAny'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
-      priority: map['priority'] == null ? null : AppProfilePriority.fromValue(map['priority'] as String),
+      priority: map['priority'] == null
+          ? null
+          : AppProfilePriority.fromValue(map['priority'] as String),
       project: map['project'] == null ? null : map['project'] as String,
-      singleClusterRouting: map['singleClusterRouting'] == null ? null : SingleClusterRouting.fromMap((map['singleClusterRouting'] as Map).cast<String, dynamic>()),
-      standardIsolation: map['standardIsolation'] == null ? null : StandardIsolation.fromMap((map['standardIsolation'] as Map).cast<String, dynamic>()),
+      singleClusterRouting: map['singleClusterRouting'] == null
+          ? null
+          : SingleClusterRouting.fromMap(
+              (map['singleClusterRouting'] as Map).cast<String, dynamic>(),
+            ),
+      standardIsolation: map['standardIsolation'] == null
+          ? null
+          : StandardIsolation.fromMap(
+              (map['standardIsolation'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

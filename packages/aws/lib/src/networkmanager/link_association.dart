@@ -115,8 +115,10 @@ import 'link_association_args.dart';
 class LinkAssociation extends pulumi.CustomResource {
   /// ID of the device.
   late final pulumi.Output<String> deviceId;
+
   /// ID of the global network.
   late final pulumi.Output<String> globalNetworkId;
+
   /// ID of the link.
   late final pulumi.Output<String> linkId;
 
@@ -129,11 +131,11 @@ class LinkAssociation extends pulumi.CustomResource {
     LinkAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkmanager/linkAssociation:LinkAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:networkmanager/linkAssociation:LinkAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.deviceId = registerOutput<String>('deviceId');
     this.globalNetworkId = registerOutput<String>('globalNetworkId');
     this.linkId = registerOutput<String>('linkId');

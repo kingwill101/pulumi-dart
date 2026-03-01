@@ -8,20 +8,21 @@ class AgentcoreGatewayProtocolConfiguration {
 
   /// Creates a new [AgentcoreGatewayProtocolConfiguration].
   /// [mcp] Model Context Protocol (MCP) configuration block. See `mcp` below.
-  AgentcoreGatewayProtocolConfiguration({
-    this.mcp,
-  });
+  AgentcoreGatewayProtocolConfiguration({this.mcp});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mcp': ?mcp == null ? null : mcp!.toMap(),
-    };
+    return <String, dynamic>{'mcp': ?mcp == null ? null : mcp!.toMap()};
   }
 
-  factory AgentcoreGatewayProtocolConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayProtocolConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayProtocolConfiguration(
-      mcp: map['mcp'] == null ? null : AgentcoreGatewayProtocolConfigurationMcp.fromMap((map['mcp'] as Map).cast<String, dynamic>()),
+      mcp: map['mcp'] == null
+          ? null
+          : AgentcoreGatewayProtocolConfigurationMcp.fromMap(
+              (map['mcp'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

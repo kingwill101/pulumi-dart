@@ -8,20 +8,19 @@ class VirtualNodeSpecListenerTimeoutTcp {
 
   /// Creates a new [VirtualNodeSpecListenerTimeoutTcp].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
-  VirtualNodeSpecListenerTimeoutTcp({
-    this.idle,
-  });
+  VirtualNodeSpecListenerTimeoutTcp({this.idle});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'idle': ?idle == null ? null : idle!.toMap(),
-    };
+    return <String, dynamic>{'idle': ?idle == null ? null : idle!.toMap()};
   }
 
   factory VirtualNodeSpecListenerTimeoutTcp.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecListenerTimeoutTcp(
-      idle: map['idle'] == null ? null : VirtualNodeSpecListenerTimeoutTcpIdle.fromMap((map['idle'] as Map).cast<String, dynamic>()),
+      idle: map['idle'] == null
+          ? null
+          : VirtualNodeSpecListenerTimeoutTcpIdle.fromMap(
+              (map['idle'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

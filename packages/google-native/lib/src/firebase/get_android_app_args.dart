@@ -13,18 +13,12 @@ class GetAndroidAppArgs {
   /// Creates a new [GetAndroidAppArgs].
   /// [androidAppId] Required.
   /// [project] Optional.
-  GetAndroidAppArgs({
-    required String androidAppId,
-    String? project,
-  }) :
-      androidAppId = pulumi.Input.asInput<String>(androidAppId),
+  GetAndroidAppArgs({required String androidAppId, String? project})
+    : androidAppId = pulumi.Input.asInput<String>(androidAppId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'androidAppId': androidAppId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'androidAppId': androidAppId, 'project': ?project};
   }
 
   factory GetAndroidAppArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetAndroidAppArgs {
     );
   }
 }
-

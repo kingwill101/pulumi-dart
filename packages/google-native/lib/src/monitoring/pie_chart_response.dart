@@ -7,8 +7,10 @@ import 'pie_chart_data_set_response.dart';
 class PieChartResponse {
   /// Indicates the visualization type for the PieChart.
   final String chartType;
+
   /// The queries for the chart's data.
   final List<PieChartDataSetResponse> dataSets;
+
   /// Optional. Indicates whether or not the pie chart should show slices' labels
   final bool showLabels;
 
@@ -25,7 +27,11 @@ class PieChartResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'chartType': chartType,
-      'dataSets': pulumi.Input.encodeList<PieChartDataSetResponse, Map<String, dynamic>>(dataSets, (value) => value.toMap()),
+      'dataSets':
+          pulumi.Input.encodeList<
+            PieChartDataSetResponse,
+            Map<String, dynamic>
+          >(dataSets, (value) => value.toMap()),
       'showLabels': showLabels,
     };
   }
@@ -33,9 +39,13 @@ class PieChartResponse {
   factory PieChartResponse.fromMap(Map<String, dynamic> map) {
     return PieChartResponse(
       chartType: map['chartType'] as String,
-      dataSets: pulumi.Input.decodeList<PieChartDataSetResponse>(map['dataSets'], (value) => PieChartDataSetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dataSets: pulumi.Input.decodeList<PieChartDataSetResponse>(
+        map['dataSets'],
+        (value) => PieChartDataSetResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       showLabels: map['showLabels'] as bool,
     );
   }
 }
-

@@ -13,11 +13,8 @@ class GetSubscriptionArgs {
   /// Creates a new [GetSubscriptionArgs].
   /// [project] Optional.
   /// [subscriptionId] Required.
-  GetSubscriptionArgs({
-    String? project,
-    required String subscriptionId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetSubscriptionArgs({String? project, required String subscriptionId})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       subscriptionId = pulumi.Input.asInput<String>(subscriptionId);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetSubscriptionArgs {
     );
   }
 }
-

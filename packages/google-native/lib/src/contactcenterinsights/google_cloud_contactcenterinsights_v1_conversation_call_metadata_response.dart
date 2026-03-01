@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Call-specific metadata.
 class GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
   /// The audio channel that contains the agent.
   final int agentChannel;
+
   /// The audio channel that contains the customer.
   final int customerChannel;
 
@@ -23,11 +23,12 @@ class GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponse(
       agentChannel: map['agentChannel'] as int,
       customerChannel: map['customerChannel'] as int,
     );
   }
 }
-

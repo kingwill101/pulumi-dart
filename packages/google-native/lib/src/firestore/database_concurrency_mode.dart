@@ -17,4 +17,3 @@ enum DatabaseConcurrencyMode {
     throw ArgumentError('Unknown DatabaseConcurrencyMode value: $value');
   }
 }
-

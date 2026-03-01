@@ -14,7 +14,8 @@ enum InstanceSuspensionReasonItemSqladminV1beta4 {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceSuspensionReasonItemSqladminV1beta4 value: $value');
+    throw ArgumentError(
+      'Unknown InstanceSuspensionReasonItemSqladminV1beta4 value: $value',
+    );
   }
 }
-

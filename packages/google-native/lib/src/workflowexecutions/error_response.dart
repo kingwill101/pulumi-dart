@@ -6,8 +6,10 @@ import 'stack_trace_response.dart';
 class ErrorResponse {
   /// Human-readable stack trace string.
   final String context;
+
   /// Error message and data returned represented as a JSON string.
   final String payload;
+
   /// Stack trace with detailed information of where error was generated.
   final StackTraceResponse stackTrace;
 
@@ -33,8 +35,9 @@ class ErrorResponse {
     return ErrorResponse(
       context: map['context'] as String,
       payload: map['payload'] as String,
-      stackTrace: StackTraceResponse.fromMap((map['stackTrace'] as Map).cast<String, dynamic>()),
+      stackTrace: StackTraceResponse.fromMap(
+        (map['stackTrace'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

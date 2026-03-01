@@ -6,16 +6,14 @@ import 'vpc_access_connector_egress_setting.dart';
 class VpcAccessConnector {
   /// The egress setting for the connector, controlling what traffic is diverted through it.
   final VpcAccessConnectorEgressSetting? egressSetting;
+
   /// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
   final String? name;
 
   /// Creates a new [VpcAccessConnector].
   /// [egressSetting] The egress setting for the connector, controlling what traffic is diverted through it.
   /// [name] Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
-  VpcAccessConnector({
-    this.egressSetting,
-    this.name,
-  });
+  VpcAccessConnector({this.egressSetting, this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class VpcAccessConnector {
 
   factory VpcAccessConnector.fromMap(Map<String, dynamic> map) {
     return VpcAccessConnector(
-      egressSetting: map['egressSetting'] == null ? null : VpcAccessConnectorEgressSetting.fromValue(map['egressSetting'] as String),
+      egressSetting: map['egressSetting'] == null
+          ? null
+          : VpcAccessConnectorEgressSetting.fromValue(
+              map['egressSetting'] as String,
+            ),
       name: map['name'] == null ? null : map['name'] as String,
     );
   }
 }
-

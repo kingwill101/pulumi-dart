@@ -6,8 +6,10 @@ import 'get_service_template_vpc_access_network_interface.dart';
 class GetServiceTemplateVpcAccess {
   /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
   final String connector;
+
   /// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
   final String egress;
+
   /// Direct VPC egress settings. Currently only single network interface is supported.
   final List<GetServiceTemplateVpcAccessNetworkInterface> networkInterfaces;
 
@@ -25,7 +27,11 @@ class GetServiceTemplateVpcAccess {
     return <String, dynamic>{
       'connector': connector,
       'egress': egress,
-      'networkInterfaces': pulumi.Input.encodeList<GetServiceTemplateVpcAccessNetworkInterface, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces':
+          pulumi.Input.encodeList<
+            GetServiceTemplateVpcAccessNetworkInterface,
+            Map<String, dynamic>
+          >(networkInterfaces, (value) => value.toMap()),
     };
   }
 
@@ -33,8 +39,13 @@ class GetServiceTemplateVpcAccess {
     return GetServiceTemplateVpcAccess(
       connector: map['connector'] as String,
       egress: map['egress'] as String,
-      networkInterfaces: pulumi.Input.decodeList<GetServiceTemplateVpcAccessNetworkInterface>(map['networkInterfaces'], (value) => GetServiceTemplateVpcAccessNetworkInterface.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces:
+          pulumi.Input.decodeList<GetServiceTemplateVpcAccessNetworkInterface>(
+            map['networkInterfaces'],
+            (value) => GetServiceTemplateVpcAccessNetworkInterface.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

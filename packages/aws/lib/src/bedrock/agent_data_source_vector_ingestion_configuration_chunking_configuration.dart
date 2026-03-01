@@ -7,12 +7,18 @@ import 'agent_data_source_vector_ingestion_configuration_chunking_configuration_
 class AgentDataSourceVectorIngestionConfigurationChunkingConfiguration {
   /// Option for chunking your source data, either in fixed-sized chunks or as one chunk. Valid values: `FIXED_SIZE`, `HIERARCHICAL`, `SEMANTIC`, `NONE`.
   final String chunkingStrategy;
+
   /// Configurations for when you choose fixed-size chunking. Requires chunking_strategy as `FIXED_SIZE`. See `fixed_size_chunking_configuration` for details.
-  final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration? fixedSizeChunkingConfiguration;
+  final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration?
+  fixedSizeChunkingConfiguration;
+
   /// Configurations for when you choose hierarchical chunking. Requires chunking_strategy as `HIERARCHICAL`. See `hierarchical_chunking_configuration` for details.
-  final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration? hierarchicalChunkingConfiguration;
+  final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration?
+  hierarchicalChunkingConfiguration;
+
   /// Configurations for when you choose semantic chunking. Requires chunking_strategy as `SEMANTIC`. See `semantic_chunking_configuration` for details.
-  final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration? semanticChunkingConfiguration;
+  final AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration?
+  semanticChunkingConfiguration;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationChunkingConfiguration].
   /// [chunkingStrategy] Option for chunking your source data, either in fixed-sized chunks or as one chunk. Valid values: `FIXED_SIZE`, `HIERARCHICAL`, `SEMANTIC`, `NONE`.
@@ -29,19 +35,45 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'chunkingStrategy': chunkingStrategy,
-      'fixedSizeChunkingConfiguration': ?fixedSizeChunkingConfiguration == null ? null : fixedSizeChunkingConfiguration!.toMap(),
-      'hierarchicalChunkingConfiguration': ?hierarchicalChunkingConfiguration == null ? null : hierarchicalChunkingConfiguration!.toMap(),
-      'semanticChunkingConfiguration': ?semanticChunkingConfiguration == null ? null : semanticChunkingConfiguration!.toMap(),
+      'fixedSizeChunkingConfiguration': ?fixedSizeChunkingConfiguration == null
+          ? null
+          : fixedSizeChunkingConfiguration!.toMap(),
+      'hierarchicalChunkingConfiguration':
+          ?hierarchicalChunkingConfiguration == null
+          ? null
+          : hierarchicalChunkingConfiguration!.toMap(),
+      'semanticChunkingConfiguration': ?semanticChunkingConfiguration == null
+          ? null
+          : semanticChunkingConfiguration!.toMap(),
     };
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationChunkingConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentDataSourceVectorIngestionConfigurationChunkingConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentDataSourceVectorIngestionConfigurationChunkingConfiguration(
       chunkingStrategy: map['chunkingStrategy'] as String,
-      fixedSizeChunkingConfiguration: map['fixedSizeChunkingConfiguration'] == null ? null : AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration.fromMap((map['fixedSizeChunkingConfiguration'] as Map).cast<String, dynamic>()),
-      hierarchicalChunkingConfiguration: map['hierarchicalChunkingConfiguration'] == null ? null : AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration.fromMap((map['hierarchicalChunkingConfiguration'] as Map).cast<String, dynamic>()),
-      semanticChunkingConfiguration: map['semanticChunkingConfiguration'] == null ? null : AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap((map['semanticChunkingConfiguration'] as Map).cast<String, dynamic>()),
+      fixedSizeChunkingConfiguration:
+          map['fixedSizeChunkingConfiguration'] == null
+          ? null
+          : AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration.fromMap(
+              (map['fixedSizeChunkingConfiguration'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      hierarchicalChunkingConfiguration:
+          map['hierarchicalChunkingConfiguration'] == null
+          ? null
+          : AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration.fromMap(
+              (map['hierarchicalChunkingConfiguration'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      semanticChunkingConfiguration:
+          map['semanticChunkingConfiguration'] == null
+          ? null
+          : AgentDataSourceVectorIngestionConfigurationChunkingConfigurationSemanticChunkingConfiguration.fromMap(
+              (map['semanticChunkingConfiguration'] as Map)
+                  .cast<String, dynamic>(),
+            ),
     );
   }
 }
-

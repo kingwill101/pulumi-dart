@@ -25,12 +25,11 @@ class GetDeveloperAppArgs {
     String? entity,
     required String organizationId,
     String? query,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      developerId = pulumi.Input.asInput<String>(developerId),
-      entity = pulumi.Input.asOptionalInput<String>(entity),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      query = pulumi.Input.asOptionalInput<String>(query);
+  }) : appId = pulumi.Input.asInput<String>(appId),
+       developerId = pulumi.Input.asInput<String>(developerId),
+       entity = pulumi.Input.asOptionalInput<String>(entity),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       query = pulumi.Input.asOptionalInput<String>(query);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetDeveloperAppArgs {
     );
   }
 }
-

@@ -11,23 +11,28 @@ class GetDbServersDbServer {
   /// Creates a new [GetDbServersDbServer].
   /// [displayName] The Display name
   /// [properties] Required.
-  GetDbServersDbServer({
-    required this.displayName,
-    required this.properties,
-  });
+  GetDbServersDbServer({required this.displayName, required this.properties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': displayName,
-      'properties': pulumi.Input.encodeList<GetDbServersDbServerProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties':
+          pulumi.Input.encodeList<
+            GetDbServersDbServerProperty,
+            Map<String, dynamic>
+          >(properties, (value) => value.toMap()),
     };
   }
 
   factory GetDbServersDbServer.fromMap(Map<String, dynamic> map) {
     return GetDbServersDbServer(
       displayName: map['displayName'] as String,
-      properties: pulumi.Input.decodeList<GetDbServersDbServerProperty>(map['properties'], (value) => GetDbServersDbServerProperty.fromMap((value as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.decodeList<GetDbServersDbServerProperty>(
+        map['properties'],
+        (value) => GetDbServersDbServerProperty.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration options for private workstation clusters.
 class PrivateClusterConfigWorkstationsV1beta {
   /// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
   final List<String>? allowedProjects;
+
   /// Immutable. Whether Workstations endpoint is private.
   final bool? enablePrivateEndpoint;
 
@@ -23,11 +23,16 @@ class PrivateClusterConfigWorkstationsV1beta {
     };
   }
 
-  factory PrivateClusterConfigWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
+  factory PrivateClusterConfigWorkstationsV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PrivateClusterConfigWorkstationsV1beta(
-      allowedProjects: map['allowedProjects'] == null ? null : (map['allowedProjects'] as List).cast<String>(),
-      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null ? null : map['enablePrivateEndpoint'] as bool,
+      allowedProjects: map['allowedProjects'] == null
+          ? null
+          : (map['allowedProjects'] as List).cast<String>(),
+      enablePrivateEndpoint: map['enablePrivateEndpoint'] == null
+          ? null
+          : map['enablePrivateEndpoint'] as bool,
     );
   }
 }
-

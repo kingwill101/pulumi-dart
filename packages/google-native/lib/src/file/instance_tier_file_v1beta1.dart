@@ -22,4 +22,3 @@ enum InstanceTierFileV1beta1 {
     throw ArgumentError('Unknown InstanceTierFileV1beta1 value: $value');
   }
 }
-

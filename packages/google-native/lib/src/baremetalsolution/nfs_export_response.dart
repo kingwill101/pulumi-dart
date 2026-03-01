@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A NFS export entry.
 class NfsExportResponse {
   /// Allow dev flag in NfsShare AllowedClientsRequest.
   final bool allowDev;
+
   /// Allow the setuid flag.
   final bool allowSuid;
+
   /// A CIDR range.
   final String cidr;
+
   /// Either a single machine, identified by an ID, or a comma-separated list of machine IDs.
   final String machineId;
+
   /// Network to use to publish the export.
   final String networkId;
+
   /// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
   final bool noRootSquash;
+
   /// Export permissions.
   final String permissions;
 
@@ -60,4 +65,3 @@ class NfsExportResponse {
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetAppGatewayBeyondcorpV1alphaArgs {
     required String appGatewayId,
     required String location,
     String? project,
-  }) :
-      appGatewayId = pulumi.Input.asInput<String>(appGatewayId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : appGatewayId = pulumi.Input.asInput<String>(appGatewayId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetAppGatewayBeyondcorpV1alphaArgs {
     );
   }
 }
-

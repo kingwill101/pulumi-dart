@@ -29,7 +29,8 @@ enum ListingCategoriesItemAnalyticshubV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown ListingCategoriesItemAnalyticshubV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ListingCategoriesItemAnalyticshubV1beta1 value: $value',
+    );
   }
 }
-

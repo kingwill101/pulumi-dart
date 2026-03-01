@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Schedule for an instance operation.
 class ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta {
   /// Specifies the frequency for the operation, using the unix-cron format.
@@ -8,20 +7,17 @@ class ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta {
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
-  ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta({
-    this.schedule,
-  });
+  ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta({this.schedule});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'schedule': ?schedule,
-    };
+    return <String, dynamic>{'schedule': ?schedule};
   }
 
-  factory ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta(
       schedule: map['schedule'] == null ? null : map['schedule'] as String,
     );
   }
 }
-

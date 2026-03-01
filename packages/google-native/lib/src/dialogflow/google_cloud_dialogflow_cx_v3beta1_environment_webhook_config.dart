@@ -16,14 +16,27 @@ class GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'webhookOverrides': ?webhookOverrides == null ? null : pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1Webhook, Map<String, dynamic>>(webhookOverrides!, (value) => value.toMap()),
+      'webhookOverrides': ?webhookOverrides == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudDialogflowCxV3beta1Webhook,
+              Map<String, dynamic>
+            >(webhookOverrides!, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1EnvironmentWebhookConfig(
-      webhookOverrides: map['webhookOverrides'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1Webhook>(map['webhookOverrides'], (value) => GoogleCloudDialogflowCxV3beta1Webhook.fromMap((value as Map).cast<String, dynamic>())),
+      webhookOverrides: map['webhookOverrides'] == null
+          ? null
+          : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1Webhook>(
+              map['webhookOverrides'],
+              (value) => GoogleCloudDialogflowCxV3beta1Webhook.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

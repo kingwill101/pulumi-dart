@@ -10,20 +10,26 @@ class ValidationCheckStatusResponse {
 
   /// Creates a new [ValidationCheckStatusResponse].
   /// [result] Individual checks which failed as part of the Preflight check execution.
-  ValidationCheckStatusResponse({
-    required this.result,
-  });
+  ValidationCheckStatusResponse({required this.result});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'result': pulumi.Input.encodeList<ValidationCheckResultResponse, Map<String, dynamic>>(result, (value) => value.toMap()),
+      'result':
+          pulumi.Input.encodeList<
+            ValidationCheckResultResponse,
+            Map<String, dynamic>
+          >(result, (value) => value.toMap()),
     };
   }
 
   factory ValidationCheckStatusResponse.fromMap(Map<String, dynamic> map) {
     return ValidationCheckStatusResponse(
-      result: pulumi.Input.decodeList<ValidationCheckResultResponse>(map['result'], (value) => ValidationCheckResultResponse.fromMap((value as Map).cast<String, dynamic>())),
+      result: pulumi.Input.decodeList<ValidationCheckResultResponse>(
+        map['result'],
+        (value) => ValidationCheckResultResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

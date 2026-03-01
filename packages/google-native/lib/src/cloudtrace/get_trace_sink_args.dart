@@ -13,18 +13,12 @@ class GetTraceSinkArgs {
   /// Creates a new [GetTraceSinkArgs].
   /// [project] Optional.
   /// [traceSinkId] Required.
-  GetTraceSinkArgs({
-    String? project,
-    required String traceSinkId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetTraceSinkArgs({String? project, required String traceSinkId})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       traceSinkId = pulumi.Input.asInput<String>(traceSinkId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'traceSinkId': traceSinkId,
-    };
+    return <String, dynamic>{'project': ?project, 'traceSinkId': traceSinkId};
   }
 
   factory GetTraceSinkArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetTraceSinkArgs {
     );
   }
 }
-

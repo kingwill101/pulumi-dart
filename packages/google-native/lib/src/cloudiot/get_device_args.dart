@@ -25,12 +25,11 @@ class GetDeviceArgs {
     required String location,
     String? project,
     required String registryId,
-  }) :
-      deviceId = pulumi.Input.asInput<String>(deviceId),
-      fieldMask = pulumi.Input.asOptionalInput<String>(fieldMask),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      registryId = pulumi.Input.asInput<String>(registryId);
+  }) : deviceId = pulumi.Input.asInput<String>(deviceId),
+       fieldMask = pulumi.Input.asOptionalInput<String>(fieldMask),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       registryId = pulumi.Input.asInput<String>(registryId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetDeviceArgs {
     );
   }
 }
-

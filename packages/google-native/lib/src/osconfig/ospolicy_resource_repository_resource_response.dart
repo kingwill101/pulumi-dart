@@ -9,10 +9,13 @@ import 'ospolicy_resource_repository_resource_zypper_repository_response.dart';
 class OSPolicyResourceRepositoryResourceResponse {
   /// An Apt Repository.
   final OSPolicyResourceRepositoryResourceAptRepositoryResponse apt;
+
   /// A Goo Repository.
   final OSPolicyResourceRepositoryResourceGooRepositoryResponse goo;
+
   /// A Yum Repository.
   final OSPolicyResourceRepositoryResourceYumRepositoryResponse yum;
+
   /// A Zypper Repository.
   final OSPolicyResourceRepositoryResourceZypperRepositoryResponse zypper;
 
@@ -37,13 +40,23 @@ class OSPolicyResourceRepositoryResourceResponse {
     };
   }
 
-  factory OSPolicyResourceRepositoryResourceResponse.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourceRepositoryResourceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourceRepositoryResourceResponse(
-      apt: OSPolicyResourceRepositoryResourceAptRepositoryResponse.fromMap((map['apt'] as Map).cast<String, dynamic>()),
-      goo: OSPolicyResourceRepositoryResourceGooRepositoryResponse.fromMap((map['goo'] as Map).cast<String, dynamic>()),
-      yum: OSPolicyResourceRepositoryResourceYumRepositoryResponse.fromMap((map['yum'] as Map).cast<String, dynamic>()),
-      zypper: OSPolicyResourceRepositoryResourceZypperRepositoryResponse.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
+      apt: OSPolicyResourceRepositoryResourceAptRepositoryResponse.fromMap(
+        (map['apt'] as Map).cast<String, dynamic>(),
+      ),
+      goo: OSPolicyResourceRepositoryResourceGooRepositoryResponse.fromMap(
+        (map['goo'] as Map).cast<String, dynamic>(),
+      ),
+      yum: OSPolicyResourceRepositoryResourceYumRepositoryResponse.fromMap(
+        (map['yum'] as Map).cast<String, dynamic>(),
+      ),
+      zypper:
+          OSPolicyResourceRepositoryResourceZypperRepositoryResponse.fromMap(
+            (map['zypper'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

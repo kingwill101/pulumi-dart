@@ -260,6 +260,44 @@ func TestRunPluginAnalyzerAttachFailsWhenPluginExitsEarly(t *testing.T) {
 	}
 }
 
+func TestRunPluginAnalyzerAttachFailsWhenPolicyPackPortIsUnreachable(t *testing.T) {
+	execPath := newHelperDartExec(t)
+	host := &dartLanguageHost{
+		exec:          execPath,
+		engineAddress: "engine-address-not-used",
+	}
+
+	programDir := t.TempDir()
+	req := &pulumirpc.RunPluginRequest{
+		Pwd:  t.TempDir(),
+		Args: []string{"--policy-arg"},
+		Env: []string{
+			"HELPER_MODE=unreachable-port",
+			"EXPECTED_PLUGIN_ARG=--policy-arg",
+			"EXPECTED_PROGRAM_DIR=" + programDir,
+		},
+		Kind: string(apitype.AnalyzerPlugin),
+		Info: &pulumirpc.ProgramInfo{ProgramDirectory: programDir},
+	}
+
+	server := newCaptureRunPluginServer(context.Background())
+	errCh := make(chan error, 1)
+	go func() {
+		errCh <- host.RunPlugin(req, server)
+	}()
+
+	err := server.configurePolicyProxyWhenReady(t, 10*time.Second, &pulumirpc.AnalyzerStackConfigureRequest{})
+	require.NoError(t, err)
+
+	select {
+	case err := <-errCh:
+		require.Error(t, err)
+		assert.Contains(t, err.Error(), "could not attach policy pack proxy")
+	case <-time.After(15 * time.Second):
+		t.Fatal("timed out waiting for RunPlugin to return")
+	}
+}
+
 func configurePolicyProxy(port int, req *pulumirpc.AnalyzerStackConfigureRequest) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
@@ -490,6 +528,15 @@ func runAnalyzerHelperProcess() (int, error) {
 		return 0, nil
 	case "exit-early":
 		return 23, nil
+	case "unreachable-port":
+		lis, err := net.Listen("tcp", "127.0.0.1:0")
+		if err != nil {
+			return 18, err
+		}
+		port := lis.Addr().(*net.TCPAddr).Port
+		lis.Close()
+		fmt.Printf("%d\n", port)
+		return 0, nil
 	}
 
 	if expectedArg := os.Getenv("EXPECTED_PLUGIN_ARG"); expectedArg != "" {

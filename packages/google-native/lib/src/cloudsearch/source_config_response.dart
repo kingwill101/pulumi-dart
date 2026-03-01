@@ -8,8 +8,10 @@ import 'source_scoring_config_response.dart';
 class SourceConfigResponse {
   /// The crowding configuration for the source.
   final SourceCrowdingConfigResponse crowdingConfig;
+
   /// The scoring configuration for the source.
   final SourceScoringConfigResponse scoringConfig;
+
   /// The source for which this configuration is to be used.
   final SourceResponse source;
 
@@ -33,10 +35,15 @@ class SourceConfigResponse {
 
   factory SourceConfigResponse.fromMap(Map<String, dynamic> map) {
     return SourceConfigResponse(
-      crowdingConfig: SourceCrowdingConfigResponse.fromMap((map['crowdingConfig'] as Map).cast<String, dynamic>()),
-      scoringConfig: SourceScoringConfigResponse.fromMap((map['scoringConfig'] as Map).cast<String, dynamic>()),
-      source: SourceResponse.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      crowdingConfig: SourceCrowdingConfigResponse.fromMap(
+        (map['crowdingConfig'] as Map).cast<String, dynamic>(),
+      ),
+      scoringConfig: SourceScoringConfigResponse.fromMap(
+        (map['scoringConfig'] as Map).cast<String, dynamic>(),
+      ),
+      source: SourceResponse.fromMap(
+        (map['source'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

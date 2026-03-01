@@ -10,17 +10,23 @@ import 'maintenance_window_target_target.dart';
 class MaintenanceWindowTargetArgs {
   /// The description of the maintenance window target.
   final pulumi.Input<String>? description;
+
   /// The name of the maintenance window target.
   final pulumi.Input<String>? name;
+
   /// User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
   final pulumi.Input<String>? ownerInformation;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The type of target being registered with the Maintenance Window. Possible values are `INSTANCE` and `RESOURCE_GROUP`.
   final pulumi.Input<String> resourceType;
+
   /// The targets to register with the maintenance window. In other words, the instances to run commands on when the maintenance window runs. You can specify targets using instance IDs, resource group names, or tags that have been applied to instances. For more information about these examples formats see
   /// (https://docs.aws.amazon.com/systems-manager/latest/userguide/mw-cli-tutorial-targets-examples.html)
   final pulumi.Input<List<MaintenanceWindowTargetTarget>> targets;
+
   /// The Id of the maintenance window to register the target with.
   final pulumi.Input<String> windowId;
 
@@ -40,14 +46,17 @@ class MaintenanceWindowTargetArgs {
     required String resourceType,
     required List<MaintenanceWindowTargetTarget> targets,
     required String windowId,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      ownerInformation = pulumi.Input.asOptionalInput<String>(ownerInformation),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceType = pulumi.Input.asInput<String>(resourceType),
-      targets = pulumi.Input.asInput<List<MaintenanceWindowTargetTarget>>(targets),
-      windowId = pulumi.Input.asInput<String>(windowId);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       ownerInformation = pulumi.Input.asOptionalInput<String>(
+         ownerInformation,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       resourceType = pulumi.Input.asInput<String>(resourceType),
+       targets = pulumi.Input.asInput<List<MaintenanceWindowTargetTarget>>(
+         targets,
+       ),
+       windowId = pulumi.Input.asInput<String>(windowId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,21 +65,40 @@ class MaintenanceWindowTargetArgs {
       'ownerInformation': ?ownerInformation,
       'region': ?region,
       'resourceType': resourceType,
-      'targets': pulumi.Input.mapInputValue<List<MaintenanceWindowTargetTarget>, List<Map<String, dynamic>>>(targets, (value) => pulumi.Input.encodeList<MaintenanceWindowTargetTarget, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'targets':
+          pulumi.Input.mapInputValue<
+            List<MaintenanceWindowTargetTarget>,
+            List<Map<String, dynamic>>
+          >(
+            targets,
+            (value) =>
+                pulumi.Input.encodeList<
+                  MaintenanceWindowTargetTarget,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'windowId': windowId,
     };
   }
 
   factory MaintenanceWindowTargetArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowTargetArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      ownerInformation: map['ownerInformation'] == null ? null : map['ownerInformation'] as String,
+      ownerInformation: map['ownerInformation'] == null
+          ? null
+          : map['ownerInformation'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       resourceType: map['resourceType'] as String,
-      targets: pulumi.Input.decodeList<MaintenanceWindowTargetTarget>(map['targets'], (value) => MaintenanceWindowTargetTarget.fromMap((value as Map).cast<String, dynamic>())),
+      targets: pulumi.Input.decodeList<MaintenanceWindowTargetTarget>(
+        map['targets'],
+        (value) => MaintenanceWindowTargetTarget.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       windowId: map['windowId'] as String,
     );
   }
 }
-

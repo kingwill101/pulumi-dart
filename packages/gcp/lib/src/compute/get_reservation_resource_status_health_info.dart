@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetReservationResourceStatusHealthInfo {
   /// The number of reservation blocks that are degraded.
   final int degradedBlockCount;
+
   /// The health status of the reservation.
   final String healthStatus;
+
   /// The number of reservation blocks that are healthy.
   final int healthyBlockCount;
 
@@ -27,7 +28,9 @@ class GetReservationResourceStatusHealthInfo {
     };
   }
 
-  factory GetReservationResourceStatusHealthInfo.fromMap(Map<String, dynamic> map) {
+  factory GetReservationResourceStatusHealthInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReservationResourceStatusHealthInfo(
       degradedBlockCount: map['degradedBlockCount'] as int,
       healthStatus: map['healthStatus'] as String,
@@ -35,4 +38,3 @@ class GetReservationResourceStatusHealthInfo {
     );
   }
 }
-

@@ -11,12 +11,14 @@ class SloWindowsBasedSli {
   /// `good_total_ratio_threshold`, `metric_mean_in_range`,
   /// `metric_sum_in_range` must be set for `windows_based_sli`.
   final String? goodBadMetricFilter;
+
   /// Criterion that describes a window as good if its performance is
   /// high enough. One of `good_bad_metric_filter`,
   /// `good_total_ratio_threshold`, `metric_mean_in_range`,
   /// `metric_sum_in_range` must be set for `windows_based_sli`.
   /// Structure is documented below.
   final SloWindowsBasedSliGoodTotalRatioThreshold? goodTotalRatioThreshold;
+
   /// Criterion that describes a window as good if the metric's value
   /// is in a good range, *averaged* across returned streams.
   /// One of `good_bad_metric_filter`,
@@ -26,6 +28,7 @@ class SloWindowsBasedSli {
   /// `range.min <= X <= range.max` for a good window.
   /// Structure is documented below.
   final SloWindowsBasedSliMetricMeanInRange? metricMeanInRange;
+
   /// Criterion that describes a window as good if the metric's value
   /// is in a good range, *summed* across returned streams.
   /// Summed value `X` of `time_series` should satisfy
@@ -35,6 +38,7 @@ class SloWindowsBasedSli {
   /// `metric_sum_in_range` must be set for `windows_based_sli`.
   /// Structure is documented below.
   final SloWindowsBasedSliMetricSumInRange? metricSumInRange;
+
   /// Duration over which window quality is evaluated, given as a
   /// duration string "{X}s" representing X seconds. Must be an
   /// integer fraction of a day and at least 60s.
@@ -57,21 +61,42 @@ class SloWindowsBasedSli {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'goodBadMetricFilter': ?goodBadMetricFilter,
-      'goodTotalRatioThreshold': ?goodTotalRatioThreshold == null ? null : goodTotalRatioThreshold!.toMap(),
-      'metricMeanInRange': ?metricMeanInRange == null ? null : metricMeanInRange!.toMap(),
-      'metricSumInRange': ?metricSumInRange == null ? null : metricSumInRange!.toMap(),
+      'goodTotalRatioThreshold': ?goodTotalRatioThreshold == null
+          ? null
+          : goodTotalRatioThreshold!.toMap(),
+      'metricMeanInRange': ?metricMeanInRange == null
+          ? null
+          : metricMeanInRange!.toMap(),
+      'metricSumInRange': ?metricSumInRange == null
+          ? null
+          : metricSumInRange!.toMap(),
       'windowPeriod': ?windowPeriod,
     };
   }
 
   factory SloWindowsBasedSli.fromMap(Map<String, dynamic> map) {
     return SloWindowsBasedSli(
-      goodBadMetricFilter: map['goodBadMetricFilter'] == null ? null : map['goodBadMetricFilter'] as String,
-      goodTotalRatioThreshold: map['goodTotalRatioThreshold'] == null ? null : SloWindowsBasedSliGoodTotalRatioThreshold.fromMap((map['goodTotalRatioThreshold'] as Map).cast<String, dynamic>()),
-      metricMeanInRange: map['metricMeanInRange'] == null ? null : SloWindowsBasedSliMetricMeanInRange.fromMap((map['metricMeanInRange'] as Map).cast<String, dynamic>()),
-      metricSumInRange: map['metricSumInRange'] == null ? null : SloWindowsBasedSliMetricSumInRange.fromMap((map['metricSumInRange'] as Map).cast<String, dynamic>()),
-      windowPeriod: map['windowPeriod'] == null ? null : map['windowPeriod'] as String,
+      goodBadMetricFilter: map['goodBadMetricFilter'] == null
+          ? null
+          : map['goodBadMetricFilter'] as String,
+      goodTotalRatioThreshold: map['goodTotalRatioThreshold'] == null
+          ? null
+          : SloWindowsBasedSliGoodTotalRatioThreshold.fromMap(
+              (map['goodTotalRatioThreshold'] as Map).cast<String, dynamic>(),
+            ),
+      metricMeanInRange: map['metricMeanInRange'] == null
+          ? null
+          : SloWindowsBasedSliMetricMeanInRange.fromMap(
+              (map['metricMeanInRange'] as Map).cast<String, dynamic>(),
+            ),
+      metricSumInRange: map['metricSumInRange'] == null
+          ? null
+          : SloWindowsBasedSliMetricSumInRange.fromMap(
+              (map['metricSumInRange'] as Map).cast<String, dynamic>(),
+            ),
+      windowPeriod: map['windowPeriod'] == null
+          ? null
+          : map['windowPeriod'] as String,
     );
   }
 }
-

@@ -9,20 +9,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConsumerQuotaOverrideArgs {
   /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
   final pulumi.Input<Map<String, String>>? dimensions;
+
   /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
   /// If `force` is `true`, that safety check is ignored.
   final pulumi.Input<bool>? force;
+
   /// The limit on the metric, e.g. `/project/region`.
   /// > Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
   /// E.g. use `/project/user` instead of `1/{project}/{user}`.
   final pulumi.Input<String> limit;
+
   /// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
   final pulumi.Input<String> metric;
+
   /// The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
   final pulumi.Input<String> overrideValue;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The service that the metrics belong to, e.g. `compute.googleapis.com`.
   final pulumi.Input<String> service;
 
@@ -42,14 +48,15 @@ class ConsumerQuotaOverrideArgs {
     required String overrideValue,
     String? project,
     required String service,
-  }) :
-      dimensions = pulumi.Input.asOptionalInput<Map<String, String>>(dimensions),
-      force = pulumi.Input.asOptionalInput<bool>(force),
-      limit = pulumi.Input.asInput<String>(limit),
-      metric = pulumi.Input.asInput<String>(metric),
-      overrideValue = pulumi.Input.asInput<String>(overrideValue),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      service = pulumi.Input.asInput<String>(service);
+  }) : dimensions = pulumi.Input.asOptionalInput<Map<String, String>>(
+         dimensions,
+       ),
+       force = pulumi.Input.asOptionalInput<bool>(force),
+       limit = pulumi.Input.asInput<String>(limit),
+       metric = pulumi.Input.asInput<String>(metric),
+       overrideValue = pulumi.Input.asInput<String>(overrideValue),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       service = pulumi.Input.asInput<String>(service);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,7 +72,9 @@ class ConsumerQuotaOverrideArgs {
 
   factory ConsumerQuotaOverrideArgs.fromMap(Map<String, dynamic> map) {
     return ConsumerQuotaOverrideArgs(
-      dimensions: map['dimensions'] == null ? null : (map['dimensions'] as Map).cast<String, String>(),
+      dimensions: map['dimensions'] == null
+          ? null
+          : (map['dimensions'] as Map).cast<String, String>(),
       force: map['force'] == null ? null : map['force'] as bool,
       limit: map['limit'] as String,
       metric: map['metric'] as String,
@@ -75,4 +84,3 @@ class ConsumerQuotaOverrideArgs {
     );
   }
 }
-

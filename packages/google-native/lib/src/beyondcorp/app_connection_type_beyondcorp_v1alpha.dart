@@ -12,7 +12,8 @@ enum AppConnectionTypeBeyondcorpV1alpha {
         return item;
       }
     }
-    throw ArgumentError('Unknown AppConnectionTypeBeyondcorpV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown AppConnectionTypeBeyondcorpV1alpha value: $value',
+    );
   }
 }
-

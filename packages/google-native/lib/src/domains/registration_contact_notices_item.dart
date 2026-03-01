@@ -14,4 +14,3 @@ enum RegistrationContactNoticesItem {
     throw ArgumentError('Unknown RegistrationContactNoticesItem value: $value');
   }
 }
-

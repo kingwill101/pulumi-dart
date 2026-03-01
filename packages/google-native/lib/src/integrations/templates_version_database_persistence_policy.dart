@@ -1,6 +1,8 @@
 /// Optional. Flag to disable database persistence for execution data, including event execution info, execution export info, execution metadata index and execution param index.
 enum TemplatesVersionDatabasePersistencePolicy {
-  databasePersistencePolicyUnspecified("DATABASE_PERSISTENCE_POLICY_UNSPECIFIED"),
+  databasePersistencePolicyUnspecified(
+    "DATABASE_PERSISTENCE_POLICY_UNSPECIFIED",
+  ),
   databasePersistenceDisabled("DATABASE_PERSISTENCE_DISABLED"),
   databasePersistenceAsync("DATABASE_PERSISTENCE_ASYNC");
 
@@ -13,7 +15,8 @@ enum TemplatesVersionDatabasePersistencePolicy {
         return item;
       }
     }
-    throw ArgumentError('Unknown TemplatesVersionDatabasePersistencePolicy value: $value');
+    throw ArgumentError(
+      'Unknown TemplatesVersionDatabasePersistencePolicy value: $value',
+    );
   }
 }
-

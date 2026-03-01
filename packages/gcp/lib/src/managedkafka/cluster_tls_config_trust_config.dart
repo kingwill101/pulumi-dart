@@ -10,20 +10,29 @@ class ClusterTlsConfigTrustConfig {
 
   /// Creates a new [ClusterTlsConfigTrustConfig].
   /// [casConfigs] Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
-  ClusterTlsConfigTrustConfig({
-    this.casConfigs,
-  });
+  ClusterTlsConfigTrustConfig({this.casConfigs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'casConfigs': ?casConfigs == null ? null : pulumi.Input.encodeList<ClusterTlsConfigTrustConfigCasConfig, Map<String, dynamic>>(casConfigs!, (value) => value.toMap()),
+      'casConfigs': ?casConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              ClusterTlsConfigTrustConfigCasConfig,
+              Map<String, dynamic>
+            >(casConfigs!, (value) => value.toMap()),
     };
   }
 
   factory ClusterTlsConfigTrustConfig.fromMap(Map<String, dynamic> map) {
     return ClusterTlsConfigTrustConfig(
-      casConfigs: map['casConfigs'] == null ? null : pulumi.Input.decodeList<ClusterTlsConfigTrustConfigCasConfig>(map['casConfigs'], (value) => ClusterTlsConfigTrustConfigCasConfig.fromMap((value as Map).cast<String, dynamic>())),
+      casConfigs: map['casConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<ClusterTlsConfigTrustConfigCasConfig>(
+              map['casConfigs'],
+              (value) => ClusterTlsConfigTrustConfigCasConfig.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

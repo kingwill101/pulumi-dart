@@ -25,12 +25,11 @@ class GetAssetArgs {
     required String location,
     String? project,
     required String zone,
-  }) :
-      assetId = pulumi.Input.asInput<String>(assetId),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : assetId = pulumi.Input.asInput<String>(assetId),
+       lakeId = pulumi.Input.asInput<String>(lakeId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetAssetArgs {
     );
   }
 }
-

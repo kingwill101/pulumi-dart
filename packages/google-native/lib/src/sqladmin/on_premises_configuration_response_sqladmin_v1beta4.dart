@@ -6,20 +6,28 @@ import 'instance_reference_response_sqladmin_v1beta4.dart';
 class OnPremisesConfigurationResponseSqladminV1beta4 {
   /// PEM representation of the trusted CA's x509 certificate.
   final String caCertificate;
+
   /// PEM representation of the replica's x509 certificate.
   final String clientCertificate;
+
   /// PEM representation of the replica's private key. The corresponsing public key is encoded in the client's certificate.
   final String clientKey;
+
   /// The dump file to create the Cloud SQL replica.
   final String dumpFilePath;
+
   /// The host and port of the on-premises instance in host:port format
   final String hostPort;
+
   /// This is always `sql#onPremisesConfiguration`.
   final String kind;
+
   /// The password for connecting to on-premises instance.
   final String password;
+
   /// The reference to Cloud SQL instance if the source is Cloud SQL.
   final InstanceReferenceResponseSqladminV1beta4 sourceInstance;
+
   /// The username for connecting to on-premises instance.
   final String username;
 
@@ -59,7 +67,9 @@ class OnPremisesConfigurationResponseSqladminV1beta4 {
     };
   }
 
-  factory OnPremisesConfigurationResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory OnPremisesConfigurationResponseSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OnPremisesConfigurationResponseSqladminV1beta4(
       caCertificate: map['caCertificate'] as String,
       clientCertificate: map['clientCertificate'] as String,
@@ -68,9 +78,10 @@ class OnPremisesConfigurationResponseSqladminV1beta4 {
       hostPort: map['hostPort'] as String,
       kind: map['kind'] as String,
       password: map['password'] as String,
-      sourceInstance: InstanceReferenceResponseSqladminV1beta4.fromMap((map['sourceInstance'] as Map).cast<String, dynamic>()),
+      sourceInstance: InstanceReferenceResponseSqladminV1beta4.fromMap(
+        (map['sourceInstance'] as Map).cast<String, dynamic>(),
+      ),
       username: map['username'] as String,
     );
   }
 }
-

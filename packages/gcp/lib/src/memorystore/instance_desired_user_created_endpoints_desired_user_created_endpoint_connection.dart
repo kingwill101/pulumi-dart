@@ -6,7 +6,8 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection {
   /// Detailed information of a PSC connection that is created by the customer
   /// who owns the cluster.
   /// Structure is documented below.
-  final InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection? pscConnection;
+  final InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection?
+  pscConnection;
 
   /// Creates a new [InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection].
   /// [pscConnection] Detailed information of a PSC connection that is created by the customer
@@ -20,10 +21,15 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection {
     };
   }
 
-  factory InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection.fromMap(Map<String, dynamic> map) {
+  factory InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection(
-      pscConnection: map['pscConnection'] == null ? null : InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection.fromMap((map['pscConnection'] as Map).cast<String, dynamic>()),
+      pscConnection: map['pscConnection'] == null
+          ? null
+          : InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection.fromMap(
+              (map['pscConnection'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

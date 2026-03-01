@@ -7,8 +7,10 @@ import 'windows_update_settings_classifications_item.dart';
 class WindowsUpdateSettings {
   /// Only apply updates of these windows update classifications. If empty, all updates are applied.
   final List<WindowsUpdateSettingsClassificationsItem>? classifications;
+
   /// List of KBs to exclude from update.
   final List<String>? excludes;
+
   /// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
   final List<String>? exclusivePatches;
 
@@ -24,7 +26,12 @@ class WindowsUpdateSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'classifications': ?classifications == null ? null : pulumi.Input.encodeList<WindowsUpdateSettingsClassificationsItem, String>(classifications!, (value) => value.value),
+      'classifications': ?classifications == null
+          ? null
+          : pulumi.Input.encodeList<
+              WindowsUpdateSettingsClassificationsItem,
+              String
+            >(classifications!, (value) => value.value),
       'excludes': ?excludes,
       'exclusivePatches': ?exclusivePatches,
     };
@@ -32,10 +39,20 @@ class WindowsUpdateSettings {
 
   factory WindowsUpdateSettings.fromMap(Map<String, dynamic> map) {
     return WindowsUpdateSettings(
-      classifications: map['classifications'] == null ? null : pulumi.Input.decodeList<WindowsUpdateSettingsClassificationsItem>(map['classifications'], (value) => WindowsUpdateSettingsClassificationsItem.fromValue(value as String)),
-      excludes: map['excludes'] == null ? null : (map['excludes'] as List).cast<String>(),
-      exclusivePatches: map['exclusivePatches'] == null ? null : (map['exclusivePatches'] as List).cast<String>(),
+      classifications: map['classifications'] == null
+          ? null
+          : pulumi.Input.decodeList<WindowsUpdateSettingsClassificationsItem>(
+              map['classifications'],
+              (value) => WindowsUpdateSettingsClassificationsItem.fromValue(
+                value as String,
+              ),
+            ),
+      excludes: map['excludes'] == null
+          ? null
+          : (map['excludes'] as List).cast<String>(),
+      exclusivePatches: map['exclusivePatches'] == null
+          ? null
+          : (map['exclusivePatches'] as List).cast<String>(),
     );
   }
 }
-

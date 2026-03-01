@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Custom threshold for `cvr` optimization_objective.
 class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse {
   /// The name of the field to target. Currently supported values: `watch-percentage`, `watch-time`.
   final String targetField;
+
   /// The threshold to be applied to the target (e.g., 0.5).
   final double targetFieldValueFloat;
 
@@ -23,11 +23,12 @@ class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOpti
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigResponse(
       targetField: map['targetField'] as String,
       targetFieldValueFloat: map['targetFieldValueFloat'] as double,
     );
   }
 }
-

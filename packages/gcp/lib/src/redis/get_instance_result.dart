@@ -22,6 +22,7 @@ class GetInstanceResult {
   final Map<String, String> effectiveLabels;
   final String effectiveReservedIpRange;
   final String host;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final Map<String, String> labels;
@@ -150,13 +151,28 @@ class GetInstanceResult {
       'id': id,
       'labels': labels,
       'locationId': locationId,
-      'maintenancePolicies': pulumi.Input.encodeList<GetInstanceMaintenancePolicy, Map<String, dynamic>>(maintenancePolicies, (value) => value.toMap()),
-      'maintenanceSchedules': pulumi.Input.encodeList<GetInstanceMaintenanceSchedule, Map<String, dynamic>>(maintenanceSchedules, (value) => value.toMap()),
+      'maintenancePolicies':
+          pulumi.Input.encodeList<
+            GetInstanceMaintenancePolicy,
+            Map<String, dynamic>
+          >(maintenancePolicies, (value) => value.toMap()),
+      'maintenanceSchedules':
+          pulumi.Input.encodeList<
+            GetInstanceMaintenanceSchedule,
+            Map<String, dynamic>
+          >(maintenanceSchedules, (value) => value.toMap()),
       'maintenanceVersion': maintenanceVersion,
       'memorySizeGb': memorySizeGb,
       'name': name,
-      'nodes': pulumi.Input.encodeList<GetInstanceNode, Map<String, dynamic>>(nodes, (value) => value.toMap()),
-      'persistenceConfigs': pulumi.Input.encodeList<GetInstancePersistenceConfig, Map<String, dynamic>>(persistenceConfigs, (value) => value.toMap()),
+      'nodes': pulumi.Input.encodeList<GetInstanceNode, Map<String, dynamic>>(
+        nodes,
+        (value) => value.toMap(),
+      ),
+      'persistenceConfigs':
+          pulumi.Input.encodeList<
+            GetInstancePersistenceConfig,
+            Map<String, dynamic>
+          >(persistenceConfigs, (value) => value.toMap()),
       'persistenceIamIdentity': persistenceIamIdentity,
       'port': port,
       'project': ?project,
@@ -170,7 +186,11 @@ class GetInstanceResult {
       'replicaCount': replicaCount,
       'reservedIpRange': reservedIpRange,
       'secondaryIpRange': secondaryIpRange,
-      'serverCaCerts': pulumi.Input.encodeList<GetInstanceServerCaCert, Map<String, dynamic>>(serverCaCerts, (value) => value.toMap()),
+      'serverCaCerts':
+          pulumi.Input.encodeList<
+            GetInstanceServerCaCert,
+            Map<String, dynamic>
+          >(serverCaCerts, (value) => value.toMap()),
       'tier': tier,
       'transitEncryptionMode': transitEncryptionMode,
     };
@@ -194,13 +214,34 @@ class GetInstanceResult {
       id: map['id'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       locationId: map['locationId'] as String,
-      maintenancePolicies: pulumi.Input.decodeList<GetInstanceMaintenancePolicy>(map['maintenancePolicies'], (value) => GetInstanceMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      maintenanceSchedules: pulumi.Input.decodeList<GetInstanceMaintenanceSchedule>(map['maintenanceSchedules'], (value) => GetInstanceMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())),
+      maintenancePolicies:
+          pulumi.Input.decodeList<GetInstanceMaintenancePolicy>(
+            map['maintenancePolicies'],
+            (value) => GetInstanceMaintenancePolicy.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      maintenanceSchedules:
+          pulumi.Input.decodeList<GetInstanceMaintenanceSchedule>(
+            map['maintenanceSchedules'],
+            (value) => GetInstanceMaintenanceSchedule.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       maintenanceVersion: map['maintenanceVersion'] as String,
       memorySizeGb: map['memorySizeGb'] as int,
       name: map['name'] as String,
-      nodes: pulumi.Input.decodeList<GetInstanceNode>(map['nodes'], (value) => GetInstanceNode.fromMap((value as Map).cast<String, dynamic>())),
-      persistenceConfigs: pulumi.Input.decodeList<GetInstancePersistenceConfig>(map['persistenceConfigs'], (value) => GetInstancePersistenceConfig.fromMap((value as Map).cast<String, dynamic>())),
+      nodes: pulumi.Input.decodeList<GetInstanceNode>(
+        map['nodes'],
+        (value) =>
+            GetInstanceNode.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      persistenceConfigs: pulumi.Input.decodeList<GetInstancePersistenceConfig>(
+        map['persistenceConfigs'],
+        (value) => GetInstancePersistenceConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       persistenceIamIdentity: map['persistenceIamIdentity'] as String,
       port: map['port'] as int,
       project: map['project'] == null ? null : map['project'] as String,
@@ -214,10 +255,14 @@ class GetInstanceResult {
       replicaCount: map['replicaCount'] as int,
       reservedIpRange: map['reservedIpRange'] as String,
       secondaryIpRange: map['secondaryIpRange'] as String,
-      serverCaCerts: pulumi.Input.decodeList<GetInstanceServerCaCert>(map['serverCaCerts'], (value) => GetInstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())),
+      serverCaCerts: pulumi.Input.decodeList<GetInstanceServerCaCert>(
+        map['serverCaCerts'],
+        (value) => GetInstanceServerCaCert.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       tier: map['tier'] as String,
       transitEncryptionMode: map['transitEncryptionMode'] as String,
     );
   }
 }
-

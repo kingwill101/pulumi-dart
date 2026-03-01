@@ -26,9 +26,12 @@ class DSSEAttestationOccurrenceResponse {
 
   factory DSSEAttestationOccurrenceResponse.fromMap(Map<String, dynamic> map) {
     return DSSEAttestationOccurrenceResponse(
-      envelope: EnvelopeResponse.fromMap((map['envelope'] as Map).cast<String, dynamic>()),
-      statement: InTotoStatementResponse.fromMap((map['statement'] as Map).cast<String, dynamic>()),
+      envelope: EnvelopeResponse.fromMap(
+        (map['envelope'] as Map).cast<String, dynamic>(),
+      ),
+      statement: InTotoStatementResponse.fromMap(
+        (map['statement'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

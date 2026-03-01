@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AlertPolicyConditionConditionPrometheusQueryLanguage {
   /// The alerting rule name of this alert in the corresponding Prometheus
   /// configuration file.
@@ -13,17 +12,20 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
   /// valid Prometheus label name.
   final String? alertRule;
   final bool? disableMetricValidation;
+
   /// Alerts are considered firing once their PromQL expression evaluated
   /// to be "true" for this long. Alerts whose PromQL expression was not
   /// evaluated to be "true" for long enough are considered pending. The
   /// default value is zero. Must be zero or positive.
   final String? duration;
+
   /// How often this rule should be evaluated. Must be a positive multiple
   /// of 30 seconds or missing. The default value is 30 seconds. If this
   /// PrometheusQueryLanguageCondition was generated from a Prometheus
   /// alerting rule, then this value should be taken from the enclosing
   /// rule group.
   final String? evaluationInterval;
+
   /// Labels to add to or overwrite in the PromQL query result. Label names
   /// must be valid.
   /// Label values can be templatized by using variables. The only available
@@ -32,10 +34,12 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
   /// internal use. "labels" may be empty. This field is intended to be used
   /// for organizing and identifying the AlertPolicy.
   final Map<String, String>? labels;
+
   /// The PromQL expression to evaluate. Every evaluation cycle this
   /// expression is evaluated at the current time, and all resultant time
   /// series become pending/firing alerts. This field must not be empty.
   final String query;
+
   /// The rule group name of this alert in the corresponding Prometheus
   /// configuration file.
   /// Some external tools may require this field to be populated correctly
@@ -75,16 +79,23 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
     };
   }
 
-  factory AlertPolicyConditionConditionPrometheusQueryLanguage.fromMap(Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionPrometheusQueryLanguage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertPolicyConditionConditionPrometheusQueryLanguage(
       alertRule: map['alertRule'] == null ? null : map['alertRule'] as String,
-      disableMetricValidation: map['disableMetricValidation'] == null ? null : map['disableMetricValidation'] as bool,
+      disableMetricValidation: map['disableMetricValidation'] == null
+          ? null
+          : map['disableMetricValidation'] as bool,
       duration: map['duration'] == null ? null : map['duration'] as String,
-      evaluationInterval: map['evaluationInterval'] == null ? null : map['evaluationInterval'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      evaluationInterval: map['evaluationInterval'] == null
+          ? null
+          : map['evaluationInterval'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       query: map['query'] as String,
       ruleGroup: map['ruleGroup'] == null ? null : map['ruleGroup'] as String,
     );
   }
 }
-

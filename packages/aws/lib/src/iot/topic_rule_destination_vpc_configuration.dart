@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TopicRuleDestinationVpcConfiguration {
   /// The ARN of a role that has permission to create and attach to elastic network interfaces (ENIs).
   final String roleArn;
+
   /// The security groups of the VPC destination.
   final List<String>? securityGroups;
+
   /// The subnet IDs of the VPC destination.
   final List<String> subnetIds;
+
   /// The ID of the VPC.
   final String vpcId;
 
@@ -32,13 +34,16 @@ class TopicRuleDestinationVpcConfiguration {
     };
   }
 
-  factory TopicRuleDestinationVpcConfiguration.fromMap(Map<String, dynamic> map) {
+  factory TopicRuleDestinationVpcConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TopicRuleDestinationVpcConfiguration(
       roleArn: map['roleArn'] as String,
-      securityGroups: map['securityGroups'] == null ? null : (map['securityGroups'] as List).cast<String>(),
+      securityGroups: map['securityGroups'] == null
+          ? null
+          : (map['securityGroups'] as List).cast<String>(),
       subnetIds: (map['subnetIds'] as List).cast<String>(),
       vpcId: map['vpcId'] as String,
     );
   }
 }
-

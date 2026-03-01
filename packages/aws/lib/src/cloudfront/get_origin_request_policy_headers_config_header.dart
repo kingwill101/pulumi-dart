@@ -1,25 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetOriginRequestPolicyHeadersConfigHeader {
   final List<String> items;
 
   /// Creates a new [GetOriginRequestPolicyHeadersConfigHeader].
   /// [items] Required.
-  GetOriginRequestPolicyHeadersConfigHeader({
-    required this.items,
-  });
+  GetOriginRequestPolicyHeadersConfigHeader({required this.items});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'items': items,
-    };
+    return <String, dynamic>{'items': items};
   }
 
-  factory GetOriginRequestPolicyHeadersConfigHeader.fromMap(Map<String, dynamic> map) {
+  factory GetOriginRequestPolicyHeadersConfigHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOriginRequestPolicyHeadersConfigHeader(
       items: (map['items'] as List).cast<String>(),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd {
   final String secretName;
 
@@ -11,15 +10,14 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretName': secretName,
-    };
+    return <String, dynamic>{'secretName': secretName};
   }
 
-  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualGatewaySpecBackendDefaultClientPolicyTlCertificateSd(
       secretName: map['secretName'] as String,
     );
   }
 }
-

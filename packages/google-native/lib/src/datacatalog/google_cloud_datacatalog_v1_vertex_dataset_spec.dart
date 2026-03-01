@@ -6,6 +6,7 @@ import 'google_cloud_datacatalog_v1_vertex_dataset_spec_data_type.dart';
 class GoogleCloudDatacatalogV1VertexDatasetSpec {
   /// The number of DataItems in this Dataset. Only apply for non-structured Dataset.
   final String? dataItemCount;
+
   /// Type of the dataset.
   final GoogleCloudDatacatalogV1VertexDatasetSpecDataType? dataType;
 
@@ -24,11 +25,18 @@ class GoogleCloudDatacatalogV1VertexDatasetSpec {
     };
   }
 
-  factory GoogleCloudDatacatalogV1VertexDatasetSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1VertexDatasetSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1VertexDatasetSpec(
-      dataItemCount: map['dataItemCount'] == null ? null : map['dataItemCount'] as String,
-      dataType: map['dataType'] == null ? null : GoogleCloudDatacatalogV1VertexDatasetSpecDataType.fromValue(map['dataType'] as String),
+      dataItemCount: map['dataItemCount'] == null
+          ? null
+          : map['dataItemCount'] as String,
+      dataType: map['dataType'] == null
+          ? null
+          : GoogleCloudDatacatalogV1VertexDatasetSpecDataType.fromValue(
+              map['dataType'] as String,
+            ),
     );
   }
 }
-

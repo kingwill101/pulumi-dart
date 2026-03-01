@@ -11,13 +11,17 @@ enum GoogleCloudDialogflowV2beta1SuggestionFeatureType {
   const GoogleCloudDialogflowV2beta1SuggestionFeatureType(this.value);
   final String value;
 
-  static GoogleCloudDialogflowV2beta1SuggestionFeatureType fromValue(String value) {
-    for (final item in GoogleCloudDialogflowV2beta1SuggestionFeatureType.values) {
+  static GoogleCloudDialogflowV2beta1SuggestionFeatureType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowV2beta1SuggestionFeatureType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1SuggestionFeatureType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2beta1SuggestionFeatureType value: $value',
+    );
   }
 }
-

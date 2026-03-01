@@ -22,4 +22,3 @@ enum RegionBackendServiceProtocol {
     throw ArgumentError('Unknown RegionBackendServiceProtocol value: $value');
   }
 }
-

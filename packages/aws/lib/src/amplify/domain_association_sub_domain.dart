@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DomainAssociationSubDomain {
   /// Branch name setting for the subdomain.
   final String branchName;
+
   /// DNS record for the subdomain in a space-prefixed and space-delimited format (` CNAME <target>`).
   final String? dnsRecord;
+
   /// Prefix setting for the subdomain.
   final String prefix;
+
   /// Verified status of the subdomain.
   final bool? verified;
 
@@ -41,4 +43,3 @@ class DomainAssociationSubDomain {
     );
   }
 }
-

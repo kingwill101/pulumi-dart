@@ -6,16 +6,14 @@ import 'fingerprint_containeranalysis_v1alpha1.dart';
 class Basis {
   /// The fingerprint of the base image.
   final FingerprintContaineranalysisV1alpha1? fingerprint;
+
   /// The resource_url for the resource representing the basis of associated occurrence images.
   final String? resourceUrl;
 
   /// Creates a new [Basis].
   /// [fingerprint] The fingerprint of the base image.
   /// [resourceUrl] The resource_url for the resource representing the basis of associated occurrence images.
-  Basis({
-    this.fingerprint,
-    this.resourceUrl,
-  });
+  Basis({this.fingerprint, this.resourceUrl});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class Basis {
 
   factory Basis.fromMap(Map<String, dynamic> map) {
     return Basis(
-      fingerprint: map['fingerprint'] == null ? null : FingerprintContaineranalysisV1alpha1.fromMap((map['fingerprint'] as Map).cast<String, dynamic>()),
-      resourceUrl: map['resourceUrl'] == null ? null : map['resourceUrl'] as String,
+      fingerprint: map['fingerprint'] == null
+          ? null
+          : FingerprintContaineranalysisV1alpha1.fromMap(
+              (map['fingerprint'] as Map).cast<String, dynamic>(),
+            ),
+      resourceUrl: map['resourceUrl'] == null
+          ? null
+          : map['resourceUrl'] as String,
     );
   }
 }
-

@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Contact information for a customer account.
 class GoogleCloudChannelV1ContactInfo {
   /// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
   final String? email;
+
   /// The customer account contact's first name. Optional for Team customers.
   final String? firstName;
+
   /// The customer account contact's last name. Optional for Team customers.
   final String? lastName;
+
   /// The customer account's contact phone number.
   final String? phone;
+
   /// Optional. The customer account contact's job title.
   final String? title;
 
@@ -48,4 +51,3 @@ class GoogleCloudChannelV1ContactInfo {
     );
   }
 }
-

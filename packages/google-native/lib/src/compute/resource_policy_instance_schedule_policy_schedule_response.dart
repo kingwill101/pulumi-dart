@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Schedule for an instance operation.
 class ResourcePolicyInstanceSchedulePolicyScheduleResponse {
   /// Specifies the frequency for the operation, using the unix-cron format.
@@ -13,15 +12,14 @@ class ResourcePolicyInstanceSchedulePolicyScheduleResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'schedule': schedule,
-    };
+    return <String, dynamic>{'schedule': schedule};
   }
 
-  factory ResourcePolicyInstanceSchedulePolicyScheduleResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyInstanceSchedulePolicyScheduleResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyInstanceSchedulePolicyScheduleResponse(
       schedule: map['schedule'] as String,
     );
   }
 }
-

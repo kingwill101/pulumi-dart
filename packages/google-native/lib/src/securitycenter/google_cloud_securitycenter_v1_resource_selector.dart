@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Resource for selecting resource type.
 class GoogleCloudSecuritycenterV1ResourceSelector {
   /// The resource types to run the detector on.
@@ -8,20 +7,19 @@ class GoogleCloudSecuritycenterV1ResourceSelector {
 
   /// Creates a new [GoogleCloudSecuritycenterV1ResourceSelector].
   /// [resourceTypes] The resource types to run the detector on.
-  GoogleCloudSecuritycenterV1ResourceSelector({
-    this.resourceTypes,
-  });
+  GoogleCloudSecuritycenterV1ResourceSelector({this.resourceTypes});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceTypes': ?resourceTypes,
-    };
+    return <String, dynamic>{'resourceTypes': ?resourceTypes};
   }
 
-  factory GoogleCloudSecuritycenterV1ResourceSelector.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudSecuritycenterV1ResourceSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudSecuritycenterV1ResourceSelector(
-      resourceTypes: map['resourceTypes'] == null ? null : (map['resourceTypes'] as List).cast<String>(),
+      resourceTypes: map['resourceTypes'] == null
+          ? null
+          : (map['resourceTypes'] as List).cast<String>(),
     );
   }
 }
-

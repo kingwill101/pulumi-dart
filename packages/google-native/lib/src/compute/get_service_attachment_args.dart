@@ -19,10 +19,9 @@ class GetServiceAttachmentArgs {
     String? project,
     required String region,
     required String serviceAttachment,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      serviceAttachment = pulumi.Input.asInput<String>(serviceAttachment);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       serviceAttachment = pulumi.Input.asInput<String>(serviceAttachment);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetServiceAttachmentArgs {
     );
   }
 }
-

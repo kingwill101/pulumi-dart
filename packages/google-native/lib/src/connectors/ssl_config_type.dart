@@ -16,4 +16,3 @@ enum SslConfigType {
     throw ArgumentError('Unknown SslConfigType value: $value');
   }
 }
-

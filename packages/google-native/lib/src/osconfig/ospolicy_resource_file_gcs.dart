@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies a file available as a Cloud Storage Object.
 class OSPolicyResourceFileGcs {
   /// Bucket of the Cloud Storage object.
   final String bucket;
+
   /// Generation number of the Cloud Storage object.
   final String? generation;
+
   /// Name of the Cloud Storage object.
   final String object;
 
@@ -31,9 +32,10 @@ class OSPolicyResourceFileGcs {
   factory OSPolicyResourceFileGcs.fromMap(Map<String, dynamic> map) {
     return OSPolicyResourceFileGcs(
       bucket: map['bucket'] as String,
-      generation: map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null
+          ? null
+          : map['generation'] as String,
       object: map['object'] as String,
     );
   }
 }
-

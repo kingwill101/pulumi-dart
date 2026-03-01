@@ -8,8 +8,10 @@ import 'logging_config_log_actions_item.dart';
 class LoggingConfig {
   /// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
   final bool? enableOnpremGcsTransferLogs;
+
   /// States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
   final List<LoggingConfigLogActionStatesItem>? logActionStates;
+
   /// Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
   final List<LoggingConfigLogActionsItem>? logActions;
 
@@ -26,17 +28,39 @@ class LoggingConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enableOnpremGcsTransferLogs': ?enableOnpremGcsTransferLogs,
-      'logActionStates': ?logActionStates == null ? null : pulumi.Input.encodeList<LoggingConfigLogActionStatesItem, String>(logActionStates!, (value) => value.value),
-      'logActions': ?logActions == null ? null : pulumi.Input.encodeList<LoggingConfigLogActionsItem, String>(logActions!, (value) => value.value),
+      'logActionStates': ?logActionStates == null
+          ? null
+          : pulumi.Input.encodeList<LoggingConfigLogActionStatesItem, String>(
+              logActionStates!,
+              (value) => value.value,
+            ),
+      'logActions': ?logActions == null
+          ? null
+          : pulumi.Input.encodeList<LoggingConfigLogActionsItem, String>(
+              logActions!,
+              (value) => value.value,
+            ),
     };
   }
 
   factory LoggingConfig.fromMap(Map<String, dynamic> map) {
     return LoggingConfig(
-      enableOnpremGcsTransferLogs: map['enableOnpremGcsTransferLogs'] == null ? null : map['enableOnpremGcsTransferLogs'] as bool,
-      logActionStates: map['logActionStates'] == null ? null : pulumi.Input.decodeList<LoggingConfigLogActionStatesItem>(map['logActionStates'], (value) => LoggingConfigLogActionStatesItem.fromValue(value as String)),
-      logActions: map['logActions'] == null ? null : pulumi.Input.decodeList<LoggingConfigLogActionsItem>(map['logActions'], (value) => LoggingConfigLogActionsItem.fromValue(value as String)),
+      enableOnpremGcsTransferLogs: map['enableOnpremGcsTransferLogs'] == null
+          ? null
+          : map['enableOnpremGcsTransferLogs'] as bool,
+      logActionStates: map['logActionStates'] == null
+          ? null
+          : pulumi.Input.decodeList<LoggingConfigLogActionStatesItem>(
+              map['logActionStates'],
+              (value) =>
+                  LoggingConfigLogActionStatesItem.fromValue(value as String),
+            ),
+      logActions: map['logActions'] == null
+          ? null
+          : pulumi.Input.decodeList<LoggingConfigLogActionsItem>(
+              map['logActions'],
+              (value) => LoggingConfigLogActionsItem.fromValue(value as String),
+            ),
     );
   }
 }
-

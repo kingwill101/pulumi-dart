@@ -36,7 +36,11 @@ class SlsaProvenanceZeroTwoResponse {
       'buildType': buildType,
       'builder': builder,
       'invocation': invocation.toMap(),
-      'materials': pulumi.Input.encodeList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse, Map<String, dynamic>>(materials, (value) => value.toMap()),
+      'materials':
+          pulumi.Input.encodeList<
+            GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse,
+            Map<String, dynamic>
+          >(materials, (value) => value.toMap()),
       'metadata': metadata.toMap(),
     };
   }
@@ -46,10 +50,22 @@ class SlsaProvenanceZeroTwoResponse {
       buildConfig: (map['buildConfig'] as Map).cast<String, String>(),
       buildType: map['buildType'] as String,
       builder: (map['builder'] as Map).cast<String, dynamic>(),
-      invocation: GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap((map['invocation'] as Map).cast<String, dynamic>()),
-      materials: pulumi.Input.decodeList<GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse>(map['materials'], (value) => GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse.fromMap((value as Map).cast<String, dynamic>())),
-      metadata: GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
+      invocation: GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(
+        (map['invocation'] as Map).cast<String, dynamic>(),
+      ),
+      materials:
+          pulumi.Input.decodeList<
+            GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse
+          >(
+            map['materials'],
+            (value) =>
+                GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      metadata: GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap(
+        (map['metadata'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

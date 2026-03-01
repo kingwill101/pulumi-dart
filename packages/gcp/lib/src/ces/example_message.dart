@@ -7,29 +7,38 @@ class ExampleMessage {
   /// Content of the message as a series of chunks.
   /// Structure is documented below.
   final List<ExampleMessageChunk>? chunks;
+
   /// The role within the conversation, e.g., user, agent.
   final String? role;
 
   /// Creates a new [ExampleMessage].
   /// [chunks] Content of the message as a series of chunks.
   /// [role] The role within the conversation, e.g., user, agent.
-  ExampleMessage({
-    this.chunks,
-    this.role,
-  });
+  ExampleMessage({this.chunks, this.role});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'chunks': ?chunks == null ? null : pulumi.Input.encodeList<ExampleMessageChunk, Map<String, dynamic>>(chunks!, (value) => value.toMap()),
+      'chunks': ?chunks == null
+          ? null
+          : pulumi.Input.encodeList<ExampleMessageChunk, Map<String, dynamic>>(
+              chunks!,
+              (value) => value.toMap(),
+            ),
       'role': ?role,
     };
   }
 
   factory ExampleMessage.fromMap(Map<String, dynamic> map) {
     return ExampleMessage(
-      chunks: map['chunks'] == null ? null : pulumi.Input.decodeList<ExampleMessageChunk>(map['chunks'], (value) => ExampleMessageChunk.fromMap((value as Map).cast<String, dynamic>())),
+      chunks: map['chunks'] == null
+          ? null
+          : pulumi.Input.decodeList<ExampleMessageChunk>(
+              map['chunks'],
+              (value) => ExampleMessageChunk.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       role: map['role'] == null ? null : map['role'] as String,
     );
   }
 }
-

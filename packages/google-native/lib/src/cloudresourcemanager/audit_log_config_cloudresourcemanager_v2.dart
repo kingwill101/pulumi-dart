@@ -6,16 +6,14 @@ import 'audit_log_config_log_type_cloudresourcemanager_v2.dart';
 class AuditLogConfigCloudresourcemanagerV2 {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final List<String>? exemptedMembers;
+
   /// The log type that this config enables.
   final AuditLogConfigLogTypeCloudresourcemanagerV2? logType;
 
   /// Creates a new [AuditLogConfigCloudresourcemanagerV2].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigCloudresourcemanagerV2({
-    this.exemptedMembers,
-    this.logType,
-  });
+  AuditLogConfigCloudresourcemanagerV2({this.exemptedMembers, this.logType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,18 @@ class AuditLogConfigCloudresourcemanagerV2 {
     };
   }
 
-  factory AuditLogConfigCloudresourcemanagerV2.fromMap(Map<String, dynamic> map) {
+  factory AuditLogConfigCloudresourcemanagerV2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuditLogConfigCloudresourcemanagerV2(
-      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
-      logType: map['logType'] == null ? null : AuditLogConfigLogTypeCloudresourcemanagerV2.fromValue(map['logType'] as String),
+      exemptedMembers: map['exemptedMembers'] == null
+          ? null
+          : (map['exemptedMembers'] as List).cast<String>(),
+      logType: map['logType'] == null
+          ? null
+          : AuditLogConfigLogTypeCloudresourcemanagerV2.fromValue(
+              map['logType'] as String,
+            ),
     );
   }
 }
-

@@ -13,18 +13,12 @@ class GetGlobalAddressComputeBetaArgs {
   /// Creates a new [GetGlobalAddressComputeBetaArgs].
   /// [address] Required.
   /// [project] Optional.
-  GetGlobalAddressComputeBetaArgs({
-    required String address,
-    String? project,
-  }) :
-      address = pulumi.Input.asInput<String>(address),
+  GetGlobalAddressComputeBetaArgs({required String address, String? project})
+    : address = pulumi.Input.asInput<String>(address),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'address': address,
-      'project': ?project,
-    };
+    return <String, dynamic>{'address': address, 'project': ?project};
   }
 
   factory GetGlobalAddressComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetGlobalAddressComputeBetaArgs {
     );
   }
 }
-

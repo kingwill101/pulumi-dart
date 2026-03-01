@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDatabaseInstancesInstanceSettingLocationPreference {
   /// A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
   final String followGaeApplication;
+
   /// The preferred Compute Engine zone for the secondary/failover
   final String secondaryZone;
+
   /// To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
   final String zone;
 
@@ -27,7 +28,9 @@ class GetDatabaseInstancesInstanceSettingLocationPreference {
     };
   }
 
-  factory GetDatabaseInstancesInstanceSettingLocationPreference.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstancesInstanceSettingLocationPreference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstancesInstanceSettingLocationPreference(
       followGaeApplication: map['followGaeApplication'] as String,
       secondaryZone: map['secondaryZone'] as String,
@@ -35,4 +38,3 @@ class GetDatabaseInstancesInstanceSettingLocationPreference {
     );
   }
 }
-

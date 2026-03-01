@@ -14,7 +14,8 @@ enum InstancePolicyProvisioningModel {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstancePolicyProvisioningModel value: $value');
+    throw ArgumentError(
+      'Unknown InstancePolicyProvisioningModel value: $value',
+    );
   }
 }
-

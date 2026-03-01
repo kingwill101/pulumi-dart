@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTableWarmThroughput {
   final int readUnitsPerSecond;
   final int writeUnitsPerSecond;
@@ -27,4 +26,3 @@ class GetTableWarmThroughput {
     );
   }
 }
-

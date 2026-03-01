@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling
 class SchedulingNodeAffinityResponse {
   /// The label key of Node resource to reference.
   final String key;
+
   /// The operator to use for the node resources specified in the `values` parameter.
   final String operator;
+
   /// Corresponds to the label values of Node resource.
   final List<String> values;
 
@@ -36,4 +37,3 @@ class SchedulingNodeAffinityResponse {
     );
   }
 }
-

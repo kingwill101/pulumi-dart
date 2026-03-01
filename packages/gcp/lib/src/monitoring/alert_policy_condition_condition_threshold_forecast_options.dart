@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AlertPolicyConditionConditionThresholdForecastOptions {
   /// The length of time into the future to forecast
   /// whether a timeseries will violate the threshold.
@@ -17,15 +16,14 @@ class AlertPolicyConditionConditionThresholdForecastOptions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'forecastHorizon': forecastHorizon,
-    };
+    return <String, dynamic>{'forecastHorizon': forecastHorizon};
   }
 
-  factory AlertPolicyConditionConditionThresholdForecastOptions.fromMap(Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionThresholdForecastOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertPolicyConditionConditionThresholdForecastOptions(
       forecastHorizon: map['forecastHorizon'] as String,
     );
   }
 }
-

@@ -361,7 +361,8 @@ Future<GetAnnotationStoreResult> getAnnotationStore(
 /// Gets the specified Attribute definition.
 /// [args] Arguments passed to this invoke. {@macro pulumi_healthcare_v1beta1_get_attribute_definition_healthcare_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetAttributeDefinitionHealthcareV1beta1Result> getAttributeDefinitionHealthcareV1beta1(
+Future<GetAttributeDefinitionHealthcareV1beta1Result>
+getAttributeDefinitionHealthcareV1beta1(
   GetAttributeDefinitionHealthcareV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -393,7 +394,8 @@ Future<GetConsentHealthcareV1beta1Result> getConsentHealthcareV1beta1(
 /// Gets the specified Consent artifact.
 /// [args] Arguments passed to this invoke. {@macro pulumi_healthcare_v1beta1_get_consent_artifact_healthcare_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetConsentArtifactHealthcareV1beta1Result> getConsentArtifactHealthcareV1beta1(
+Future<GetConsentArtifactHealthcareV1beta1Result>
+getConsentArtifactHealthcareV1beta1(
   GetConsentArtifactHealthcareV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -441,7 +443,8 @@ Future<GetDatasetHealthcareV1beta1Result> getDatasetHealthcareV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_healthcare_v1beta1_get_dataset_annotation_store_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatasetAnnotationStoreIamPolicyResult> getDatasetAnnotationStoreIamPolicy(
+Future<GetDatasetAnnotationStoreIamPolicyResult>
+getDatasetAnnotationStoreIamPolicy(
   GetDatasetAnnotationStoreIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -457,7 +460,8 @@ Future<GetDatasetAnnotationStoreIamPolicyResult> getDatasetAnnotationStoreIamPol
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_healthcare_v1beta1_get_dataset_consent_store_iam_policy_healthcare_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatasetConsentStoreIamPolicyHealthcareV1beta1Result> getDatasetConsentStoreIamPolicyHealthcareV1beta1(
+Future<GetDatasetConsentStoreIamPolicyHealthcareV1beta1Result>
+getDatasetConsentStoreIamPolicyHealthcareV1beta1(
   GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -473,7 +477,8 @@ Future<GetDatasetConsentStoreIamPolicyHealthcareV1beta1Result> getDatasetConsent
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_healthcare_v1beta1_get_dataset_dicom_store_iam_policy_healthcare_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatasetDicomStoreIamPolicyHealthcareV1beta1Result> getDatasetDicomStoreIamPolicyHealthcareV1beta1(
+Future<GetDatasetDicomStoreIamPolicyHealthcareV1beta1Result>
+getDatasetDicomStoreIamPolicyHealthcareV1beta1(
   GetDatasetDicomStoreIamPolicyHealthcareV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -489,7 +494,8 @@ Future<GetDatasetDicomStoreIamPolicyHealthcareV1beta1Result> getDatasetDicomStor
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_healthcare_v1beta1_get_dataset_fhir_store_iam_policy_healthcare_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatasetFhirStoreIamPolicyHealthcareV1beta1Result> getDatasetFhirStoreIamPolicyHealthcareV1beta1(
+Future<GetDatasetFhirStoreIamPolicyHealthcareV1beta1Result>
+getDatasetFhirStoreIamPolicyHealthcareV1beta1(
   GetDatasetFhirStoreIamPolicyHealthcareV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -505,7 +511,8 @@ Future<GetDatasetFhirStoreIamPolicyHealthcareV1beta1Result> getDatasetFhirStoreI
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_healthcare_v1beta1_get_dataset_hl7_v2_store_iam_policy_healthcare_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatasetHl7V2StoreIamPolicyHealthcareV1beta1Result> getDatasetHl7V2StoreIamPolicyHealthcareV1beta1(
+Future<GetDatasetHl7V2StoreIamPolicyHealthcareV1beta1Result>
+getDatasetHl7V2StoreIamPolicyHealthcareV1beta1(
   GetDatasetHl7V2StoreIamPolicyHealthcareV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -521,7 +528,8 @@ Future<GetDatasetHl7V2StoreIamPolicyHealthcareV1beta1Result> getDatasetHl7V2Stor
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_healthcare_v1beta1_get_dataset_iam_policy_healthcare_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatasetIamPolicyHealthcareV1beta1Result> getDatasetIamPolicyHealthcareV1beta1(
+Future<GetDatasetIamPolicyHealthcareV1beta1Result>
+getDatasetIamPolicyHealthcareV1beta1(
   GetDatasetIamPolicyHealthcareV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -617,7 +625,8 @@ Future<GetMessageHealthcareV1beta1Result> getMessageHealthcareV1beta1(
 /// Gets the specified User data mapping.
 /// [args] Arguments passed to this invoke. {@macro pulumi_healthcare_v1beta1_get_user_data_mapping_healthcare_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetUserDataMappingHealthcareV1beta1Result> getUserDataMappingHealthcareV1beta1(
+Future<GetUserDataMappingHealthcareV1beta1Result>
+getUserDataMappingHealthcareV1beta1(
   GetUserDataMappingHealthcareV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

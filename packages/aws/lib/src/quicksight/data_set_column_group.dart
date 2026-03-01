@@ -8,20 +8,23 @@ class DataSetColumnGroup {
 
   /// Creates a new [DataSetColumnGroup].
   /// [geoSpatialColumnGroup] Geospatial column group that denotes a hierarchy. See geo_spatial_column_group.
-  DataSetColumnGroup({
-    this.geoSpatialColumnGroup,
-  });
+  DataSetColumnGroup({this.geoSpatialColumnGroup});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'geoSpatialColumnGroup': ?geoSpatialColumnGroup == null ? null : geoSpatialColumnGroup!.toMap(),
+      'geoSpatialColumnGroup': ?geoSpatialColumnGroup == null
+          ? null
+          : geoSpatialColumnGroup!.toMap(),
     };
   }
 
   factory DataSetColumnGroup.fromMap(Map<String, dynamic> map) {
     return DataSetColumnGroup(
-      geoSpatialColumnGroup: map['geoSpatialColumnGroup'] == null ? null : DataSetColumnGroupGeoSpatialColumnGroup.fromMap((map['geoSpatialColumnGroup'] as Map).cast<String, dynamic>()),
+      geoSpatialColumnGroup: map['geoSpatialColumnGroup'] == null
+          ? null
+          : DataSetColumnGroupGeoSpatialColumnGroup.fromMap(
+              (map['geoSpatialColumnGroup'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

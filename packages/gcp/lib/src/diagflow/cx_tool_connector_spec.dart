@@ -8,6 +8,7 @@ class CxToolConnectorSpec {
   /// Actions for the tool to use.
   /// Structure is documented below.
   final List<CxToolConnectorSpecAction> actions;
+
   /// Integration Connectors end-user authentication configuration.
   /// If configured, the end-user authentication fields will be passed in the Integration Connectors API request
   /// and override the admin, default authentication configured for the Connection.
@@ -16,6 +17,7 @@ class CxToolConnectorSpec {
   /// See: https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override        properties:
   /// Structure is documented below.
   final CxToolConnectorSpecEndUserAuthConfig? endUserAuthConfig;
+
   /// The full resource name of the referenced Integration Connectors Connection.
   /// Format: projects/*/locations/*/connections/*
   final String name;
@@ -32,18 +34,32 @@ class CxToolConnectorSpec {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': pulumi.Input.encodeList<CxToolConnectorSpecAction, Map<String, dynamic>>(actions, (value) => value.toMap()),
-      'endUserAuthConfig': ?endUserAuthConfig == null ? null : endUserAuthConfig!.toMap(),
+      'actions':
+          pulumi.Input.encodeList<
+            CxToolConnectorSpecAction,
+            Map<String, dynamic>
+          >(actions, (value) => value.toMap()),
+      'endUserAuthConfig': ?endUserAuthConfig == null
+          ? null
+          : endUserAuthConfig!.toMap(),
       'name': name,
     };
   }
 
   factory CxToolConnectorSpec.fromMap(Map<String, dynamic> map) {
     return CxToolConnectorSpec(
-      actions: pulumi.Input.decodeList<CxToolConnectorSpecAction>(map['actions'], (value) => CxToolConnectorSpecAction.fromMap((value as Map).cast<String, dynamic>())),
-      endUserAuthConfig: map['endUserAuthConfig'] == null ? null : CxToolConnectorSpecEndUserAuthConfig.fromMap((map['endUserAuthConfig'] as Map).cast<String, dynamic>()),
+      actions: pulumi.Input.decodeList<CxToolConnectorSpecAction>(
+        map['actions'],
+        (value) => CxToolConnectorSpecAction.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      endUserAuthConfig: map['endUserAuthConfig'] == null
+          ? null
+          : CxToolConnectorSpecEndUserAuthConfig.fromMap(
+              (map['endUserAuthConfig'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] as String,
     );
   }
 }
-

@@ -8,9 +8,7 @@ class ThemeConfigurationSheetTile {
 
   /// Creates a new [ThemeConfigurationSheetTile].
   /// [border] The border around a tile. See border.
-  ThemeConfigurationSheetTile({
-    this.border,
-  });
+  ThemeConfigurationSheetTile({this.border});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,11 @@ class ThemeConfigurationSheetTile {
 
   factory ThemeConfigurationSheetTile.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationSheetTile(
-      border: map['border'] == null ? null : ThemeConfigurationSheetTileBorder.fromMap((map['border'] as Map).cast<String, dynamic>()),
+      border: map['border'] == null
+          ? null
+          : ThemeConfigurationSheetTileBorder.fromMap(
+              (map['border'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

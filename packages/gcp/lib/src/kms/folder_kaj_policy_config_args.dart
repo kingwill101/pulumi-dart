@@ -12,7 +12,9 @@ class FolderKajPolicyConfigArgs {
   /// created in this folder. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  final pulumi.Input<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>? defaultKeyAccessJustificationPolicy;
+  final pulumi.Input<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>?
+  defaultKeyAccessJustificationPolicy;
+
   /// The numeric folder number for which to retrieve config.
   final pulumi.Input<String> folder;
 
@@ -20,24 +22,36 @@ class FolderKajPolicyConfigArgs {
   /// [defaultKeyAccessJustificationPolicy] The default key access justification policy used when a CryptoKey is
   /// [folder] The numeric folder number for which to retrieve config.
   FolderKajPolicyConfigArgs({
-    FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy? defaultKeyAccessJustificationPolicy,
+    FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy?
+    defaultKeyAccessJustificationPolicy,
     required String folder,
-  }) :
-      defaultKeyAccessJustificationPolicy = pulumi.Input.asOptionalInput<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy>(defaultKeyAccessJustificationPolicy),
-      folder = pulumi.Input.asInput<String>(folder);
+  }) : defaultKeyAccessJustificationPolicy =
+           pulumi.Input.asOptionalInput<
+             FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy
+           >(defaultKeyAccessJustificationPolicy),
+       folder = pulumi.Input.asInput<String>(folder);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultKeyAccessJustificationPolicy': ?pulumi.Input.mapOptionalInputValue<FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy, Map<String, dynamic>>(defaultKeyAccessJustificationPolicy, (value) => value.toMap()),
+      'defaultKeyAccessJustificationPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy,
+            Map<String, dynamic>
+          >(defaultKeyAccessJustificationPolicy, (value) => value.toMap()),
       'folder': folder,
     };
   }
 
   factory FolderKajPolicyConfigArgs.fromMap(Map<String, dynamic> map) {
     return FolderKajPolicyConfigArgs(
-      defaultKeyAccessJustificationPolicy: map['defaultKeyAccessJustificationPolicy'] == null ? null : FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((map['defaultKeyAccessJustificationPolicy'] as Map).cast<String, dynamic>()),
+      defaultKeyAccessJustificationPolicy:
+          map['defaultKeyAccessJustificationPolicy'] == null
+          ? null
+          : FolderKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap(
+              (map['defaultKeyAccessJustificationPolicy'] as Map)
+                  .cast<String, dynamic>(),
+            ),
       folder: map['folder'] as String,
     );
   }
 }
-

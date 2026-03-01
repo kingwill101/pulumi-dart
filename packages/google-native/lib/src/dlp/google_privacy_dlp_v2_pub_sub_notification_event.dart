@@ -15,7 +15,8 @@ enum GooglePrivacyDlpV2PubSubNotificationEvent {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2PubSubNotificationEvent value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2PubSubNotificationEvent value: $value',
+    );
   }
 }
-

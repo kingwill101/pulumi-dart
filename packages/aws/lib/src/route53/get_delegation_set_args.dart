@@ -12,21 +12,14 @@ class GetDelegationSetArgs {
 
   /// Creates a new [GetDelegationSetArgs].
   /// [id] Delegation set ID.
-  GetDelegationSetArgs({
-    required String id,
-  }) :
-      id = pulumi.Input.asInput<String>(id);
+  GetDelegationSetArgs({required String id})
+    : id = pulumi.Input.asInput<String>(id);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-    };
+    return <String, dynamic>{'id': id};
   }
 
   factory GetDelegationSetArgs.fromMap(Map<String, dynamic> map) {
-    return GetDelegationSetArgs(
-      id: map['id'] as String,
-    );
+    return GetDelegationSetArgs(id: map['id'] as String);
   }
 }
-

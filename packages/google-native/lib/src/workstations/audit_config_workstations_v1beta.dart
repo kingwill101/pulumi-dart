@@ -7,29 +7,38 @@ import 'audit_log_config_workstations_v1beta.dart';
 class AuditConfigWorkstationsV1beta {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigWorkstationsV1beta>? auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
   /// Creates a new [AuditConfigWorkstationsV1beta].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigWorkstationsV1beta({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfigWorkstationsV1beta({this.auditLogConfigs, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<AuditLogConfigWorkstationsV1beta, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'auditLogConfigs': ?auditLogConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              AuditLogConfigWorkstationsV1beta,
+              Map<String, dynamic>
+            >(auditLogConfigs!, (value) => value.toMap()),
       'service': ?service,
     };
   }
 
   factory AuditConfigWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
     return AuditConfigWorkstationsV1beta(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<AuditLogConfigWorkstationsV1beta>(map['auditLogConfigs'], (value) => AuditLogConfigWorkstationsV1beta.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigs: map['auditLogConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<AuditLogConfigWorkstationsV1beta>(
+              map['auditLogConfigs'],
+              (value) => AuditLogConfigWorkstationsV1beta.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
-

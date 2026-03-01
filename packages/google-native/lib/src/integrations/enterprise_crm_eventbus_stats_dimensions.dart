@@ -5,12 +5,14 @@ import 'enterprise_crm_eventbus_stats_dimensions_retry_attempt.dart';
 
 class EnterpriseCrmEventbusStatsDimensions {
   final String? clientId;
+
   /// Whether to include or exclude the enums matching the regex.
   final EnterpriseCrmEventbusStatsDimensionsEnumFilterType? enumFilterType;
   final String? errorEnumString;
   final EnterpriseCrmEventbusStatsDimensionsRetryAttempt? retryAttempt;
   final String? taskName;
   final String? taskNumber;
+
   /// Stats have been or will be aggregated on set fields for any semantically-meaningful combination.
   final String? triggerId;
   final String? warningEnumString;
@@ -56,19 +58,38 @@ class EnterpriseCrmEventbusStatsDimensions {
     };
   }
 
-  factory EnterpriseCrmEventbusStatsDimensions.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusStatsDimensions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusStatsDimensions(
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      enumFilterType: map['enumFilterType'] == null ? null : EnterpriseCrmEventbusStatsDimensionsEnumFilterType.fromValue(map['enumFilterType'] as String),
-      errorEnumString: map['errorEnumString'] == null ? null : map['errorEnumString'] as String,
-      retryAttempt: map['retryAttempt'] == null ? null : EnterpriseCrmEventbusStatsDimensionsRetryAttempt.fromValue(map['retryAttempt'] as String),
+      enumFilterType: map['enumFilterType'] == null
+          ? null
+          : EnterpriseCrmEventbusStatsDimensionsEnumFilterType.fromValue(
+              map['enumFilterType'] as String,
+            ),
+      errorEnumString: map['errorEnumString'] == null
+          ? null
+          : map['errorEnumString'] as String,
+      retryAttempt: map['retryAttempt'] == null
+          ? null
+          : EnterpriseCrmEventbusStatsDimensionsRetryAttempt.fromValue(
+              map['retryAttempt'] as String,
+            ),
       taskName: map['taskName'] == null ? null : map['taskName'] as String,
-      taskNumber: map['taskNumber'] == null ? null : map['taskNumber'] as String,
+      taskNumber: map['taskNumber'] == null
+          ? null
+          : map['taskNumber'] as String,
       triggerId: map['triggerId'] == null ? null : map['triggerId'] as String,
-      warningEnumString: map['warningEnumString'] == null ? null : map['warningEnumString'] as String,
-      workflowId: map['workflowId'] == null ? null : map['workflowId'] as String,
-      workflowName: map['workflowName'] == null ? null : map['workflowName'] as String,
+      warningEnumString: map['warningEnumString'] == null
+          ? null
+          : map['warningEnumString'] as String,
+      workflowId: map['workflowId'] == null
+          ? null
+          : map['workflowId'] as String,
+      workflowName: map['workflowName'] == null
+          ? null
+          : map['workflowName'] as String,
     );
   }
 }
-

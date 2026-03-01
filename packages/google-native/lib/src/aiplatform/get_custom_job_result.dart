@@ -8,26 +8,37 @@ import 'google_rpc_status_response.dart';
 class GetCustomJobResult {
   /// Time when the CustomJob was created.
   final String createTime;
+
   /// The display name of the CustomJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   final String displayName;
+
   /// Customer-managed encryption key options for a CustomJob. If this is set, then all resources created by the CustomJob will be encrypted with the provided encryption key.
   final GoogleCloudAiplatformV1EncryptionSpecResponse encryptionSpec;
+
   /// Time when the CustomJob entered any of the following states: `JOB_STATE_SUCCEEDED`, `JOB_STATE_FAILED`, `JOB_STATE_CANCELLED`.
   final String endTime;
+
   /// Only populated when job's state is `JOB_STATE_FAILED` or `JOB_STATE_CANCELLED`.
   final GoogleRpcStatusResponse error;
+
   /// Job spec.
   final GoogleCloudAiplatformV1CustomJobSpecResponse jobSpec;
+
   /// The labels with user-defined metadata to organize CustomJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
   final Map<String, String> labels;
+
   /// Resource name of a CustomJob.
   final String name;
+
   /// Time when the CustomJob for the first time entered the `JOB_STATE_RUNNING` state.
   final String startTime;
+
   /// The detailed state of the job.
   final String state;
+
   /// Time when the CustomJob was most recently updated.
   final String updateTime;
+
   /// URIs for accessing [interactive shells](https://cloud.google.com/vertex-ai/docs/training/monitor-debug-interactive-shell) (one URI for each training node). Only available if job_spec.enable_web_access is `true`. The keys are names of each node in the training job; for example, `workerpool0-0` for the primary node, `workerpool1-0` for the first node in the second worker pool, and `workerpool1-1` for the second node in the second worker pool. The values are the URIs for each node's interactive shell.
   final Map<String, String> webAccessUris;
 
@@ -80,10 +91,16 @@ class GetCustomJobResult {
     return GetCustomJobResult(
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
-      encryptionSpec: GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>()),
+      encryptionSpec: GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap(
+        (map['encryptionSpec'] as Map).cast<String, dynamic>(),
+      ),
       endTime: map['endTime'] as String,
-      error: GoogleRpcStatusResponse.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      jobSpec: GoogleCloudAiplatformV1CustomJobSpecResponse.fromMap((map['jobSpec'] as Map).cast<String, dynamic>()),
+      error: GoogleRpcStatusResponse.fromMap(
+        (map['error'] as Map).cast<String, dynamic>(),
+      ),
+      jobSpec: GoogleCloudAiplatformV1CustomJobSpecResponse.fromMap(
+        (map['jobSpec'] as Map).cast<String, dynamic>(),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       startTime: map['startTime'] as String,
@@ -93,4 +110,3 @@ class GetCustomJobResult {
     );
   }
 }
-

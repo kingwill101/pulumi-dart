@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ListenerRuleMatchHttpMatchHeaderMatchMatch {
   /// Specifies a contains type match.
   final String? contains;
+
   /// Specifies an exact type match.
   final String? exact;
+
   /// Specifies a prefix type match.
   /// Matches the value with the prefix.
   final String? prefix;
@@ -28,7 +29,9 @@ class ListenerRuleMatchHttpMatchHeaderMatchMatch {
     };
   }
 
-  factory ListenerRuleMatchHttpMatchHeaderMatchMatch.fromMap(Map<String, dynamic> map) {
+  factory ListenerRuleMatchHttpMatchHeaderMatchMatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ListenerRuleMatchHttpMatchHeaderMatchMatch(
       contains: map['contains'] == null ? null : map['contains'] as String,
       exact: map['exact'] == null ? null : map['exact'] as String,
@@ -36,4 +39,3 @@ class ListenerRuleMatchHttpMatchHeaderMatchMatch {
     );
   }
 }
-

@@ -13,7 +13,8 @@ enum OSPolicyResourcePackageResourceDesiredState {
         return item;
       }
     }
-    throw ArgumentError('Unknown OSPolicyResourcePackageResourceDesiredState value: $value');
+    throw ArgumentError(
+      'Unknown OSPolicyResourcePackageResourceDesiredState value: $value',
+    );
   }
 }
-

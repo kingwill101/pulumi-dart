@@ -34,14 +34,18 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse {
     };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataResponse(
       buildFinishedOn: map['buildFinishedOn'] as String,
       buildInvocationId: map['buildInvocationId'] as String,
       buildStartedOn: map['buildStartedOn'] as String,
-      completeness: GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap((map['completeness'] as Map).cast<String, dynamic>()),
+      completeness:
+          GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap(
+            (map['completeness'] as Map).cast<String, dynamic>(),
+          ),
       reproducible: map['reproducible'] as bool,
     );
   }
 }
-

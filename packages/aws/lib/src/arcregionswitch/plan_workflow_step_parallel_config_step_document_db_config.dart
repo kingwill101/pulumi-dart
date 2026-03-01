@@ -10,7 +10,8 @@ class PlanWorkflowStepParallelConfigStepDocumentDbConfig {
   final String? externalId;
   final String globalClusterIdentifier;
   final int? timeoutMinutes;
-  final List<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>? ungracefuls;
+  final List<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>?
+  ungracefuls;
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepDocumentDbConfig].
   /// [behavior] Required.
@@ -38,20 +39,42 @@ class PlanWorkflowStepParallelConfigStepDocumentDbConfig {
       'externalId': ?externalId,
       'globalClusterIdentifier': globalClusterIdentifier,
       'timeoutMinutes': ?timeoutMinutes,
-      'ungracefuls': ?ungracefuls == null ? null : pulumi.Input.encodeList<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful, Map<String, dynamic>>(ungracefuls!, (value) => value.toMap()),
+      'ungracefuls': ?ungracefuls == null
+          ? null
+          : pulumi.Input.encodeList<
+              PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful,
+              Map<String, dynamic>
+            >(ungracefuls!, (value) => value.toMap()),
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepDocumentDbConfig.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepDocumentDbConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepDocumentDbConfig(
       behavior: map['behavior'] as String,
-      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
+      crossAccountRole: map['crossAccountRole'] == null
+          ? null
+          : map['crossAccountRole'] as String,
       databaseClusterArns: (map['databaseClusterArns'] as List).cast<String>(),
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
+      externalId: map['externalId'] == null
+          ? null
+          : map['externalId'] as String,
       globalClusterIdentifier: map['globalClusterIdentifier'] as String,
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
-      ungracefuls: map['ungracefuls'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful.fromMap((value as Map).cast<String, dynamic>())),
+      timeoutMinutes: map['timeoutMinutes'] == null
+          ? null
+          : map['timeoutMinutes'] as int,
+      ungracefuls: map['ungracefuls'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful
+            >(
+              map['ungracefuls'],
+              (value) =>
+                  PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

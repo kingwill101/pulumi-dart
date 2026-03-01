@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings {
   /// The default size of the EBS storage volume for a private space.
   final int defaultEbsVolumeSizeInGb;
+
   /// The maximum size of the EBS storage volume for a private space.
   final int maximumEbsVolumeSizeInGb;
 
@@ -22,11 +22,12 @@ class DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings {
     };
   }
 
-  factory DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings.fromMap(Map<String, dynamic> map) {
+  factory DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDefaultSpaceSettingsSpaceStorageSettingsDefaultEbsStorageSettings(
       defaultEbsVolumeSizeInGb: map['defaultEbsVolumeSizeInGb'] as int,
       maximumEbsVolumeSizeInGb: map['maximumEbsVolumeSizeInGb'] as int,
     );
   }
 }
-

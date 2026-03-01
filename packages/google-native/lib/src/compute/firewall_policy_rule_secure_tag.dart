@@ -1,20 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FirewallPolicyRuleSecureTag {
   /// Name of the secure tag, created with TagManager's TagValue API.
   final String? name;
 
   /// Creates a new [FirewallPolicyRuleSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
-  FirewallPolicyRuleSecureTag({
-    this.name,
-  });
+  FirewallPolicyRuleSecureTag({this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory FirewallPolicyRuleSecureTag.fromMap(Map<String, dynamic> map) {
@@ -23,4 +18,3 @@ class FirewallPolicyRuleSecureTag {
     );
   }
 }
-

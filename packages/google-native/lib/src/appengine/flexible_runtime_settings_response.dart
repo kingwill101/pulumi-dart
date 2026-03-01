@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Runtime settings for the App Engine flexible environment.
 class FlexibleRuntimeSettingsResponse {
   /// The operating system of the application runtime.
   final String operatingSystem;
+
   /// The runtime version of an App Engine flexible application.
   final String runtimeVersion;
 
@@ -30,4 +30,3 @@ class FlexibleRuntimeSettingsResponse {
     );
   }
 }
-

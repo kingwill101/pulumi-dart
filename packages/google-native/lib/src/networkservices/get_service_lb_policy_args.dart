@@ -19,10 +19,9 @@ class GetServiceLbPolicyArgs {
     required String location,
     String? project,
     required String serviceLbPolicyId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceLbPolicyId = pulumi.Input.asInput<String>(serviceLbPolicyId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serviceLbPolicyId = pulumi.Input.asInput<String>(serviceLbPolicyId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetServiceLbPolicyArgs {
     );
   }
 }
-

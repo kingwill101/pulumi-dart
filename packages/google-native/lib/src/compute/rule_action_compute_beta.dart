@@ -19,4 +19,3 @@ enum RuleActionComputeBeta {
     throw ArgumentError('Unknown RuleActionComputeBeta value: $value');
   }
 }
-

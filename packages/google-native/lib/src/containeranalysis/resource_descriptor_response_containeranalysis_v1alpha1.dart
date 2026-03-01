@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResourceDescriptorResponseContaineranalysisV1alpha1 {
   final Map<String, String> annotations;
   final String content;
@@ -40,7 +39,9 @@ class ResourceDescriptorResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory ResourceDescriptorResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ResourceDescriptorResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceDescriptorResponseContaineranalysisV1alpha1(
       annotations: (map['annotations'] as Map).cast<String, String>(),
       content: map['content'] as String,
@@ -52,4 +53,3 @@ class ResourceDescriptorResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

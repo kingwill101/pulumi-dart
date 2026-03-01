@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva {
   final String instanceUrl;
 
@@ -11,15 +10,14 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceUrl': instanceUrl,
-    };
+    return <String, dynamic>{'instanceUrl': instanceUrl};
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva(
       instanceUrl: map['instanceUrl'] as String,
     );
   }
 }
-

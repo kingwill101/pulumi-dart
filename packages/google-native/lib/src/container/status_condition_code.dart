@@ -20,4 +20,3 @@ enum StatusConditionCode {
     throw ArgumentError('Unknown StatusConditionCode value: $value');
   }
 }
-

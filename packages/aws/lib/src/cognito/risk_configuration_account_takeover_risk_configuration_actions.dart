@@ -6,11 +6,16 @@ import 'risk_configuration_account_takeover_risk_configuration_actions_medium_ac
 
 class RiskConfigurationAccountTakeoverRiskConfigurationActions {
   /// Action to take for a high risk. See action block below.
-  final RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction? highAction;
+  final RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction?
+  highAction;
+
   /// Action to take for a low risk. See action block below.
-  final RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction? lowAction;
+  final RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction?
+  lowAction;
+
   /// Action to take for a medium risk. See action block below.
-  final RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction? mediumAction;
+  final RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction?
+  mediumAction;
 
   /// Creates a new [RiskConfigurationAccountTakeoverRiskConfigurationActions].
   /// [highAction] Action to take for a high risk. See action block below.
@@ -30,12 +35,25 @@ class RiskConfigurationAccountTakeoverRiskConfigurationActions {
     };
   }
 
-  factory RiskConfigurationAccountTakeoverRiskConfigurationActions.fromMap(Map<String, dynamic> map) {
+  factory RiskConfigurationAccountTakeoverRiskConfigurationActions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RiskConfigurationAccountTakeoverRiskConfigurationActions(
-      highAction: map['highAction'] == null ? null : RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction.fromMap((map['highAction'] as Map).cast<String, dynamic>()),
-      lowAction: map['lowAction'] == null ? null : RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction.fromMap((map['lowAction'] as Map).cast<String, dynamic>()),
-      mediumAction: map['mediumAction'] == null ? null : RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction.fromMap((map['mediumAction'] as Map).cast<String, dynamic>()),
+      highAction: map['highAction'] == null
+          ? null
+          : RiskConfigurationAccountTakeoverRiskConfigurationActionsHighAction.fromMap(
+              (map['highAction'] as Map).cast<String, dynamic>(),
+            ),
+      lowAction: map['lowAction'] == null
+          ? null
+          : RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction.fromMap(
+              (map['lowAction'] as Map).cast<String, dynamic>(),
+            ),
+      mediumAction: map['mediumAction'] == null
+          ? null
+          : RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction.fromMap(
+              (map['mediumAction'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

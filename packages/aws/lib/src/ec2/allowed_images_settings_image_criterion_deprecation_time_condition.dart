@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AllowedImagesSettingsImageCriterionDeprecationTimeCondition {
   /// Maximum number of days since the AMI was deprecated. Setting this to `0` means no deprecated images are allowed.
   final int? maximumDaysSinceDeprecated;
@@ -17,10 +16,13 @@ class AllowedImagesSettingsImageCriterionDeprecationTimeCondition {
     };
   }
 
-  factory AllowedImagesSettingsImageCriterionDeprecationTimeCondition.fromMap(Map<String, dynamic> map) {
+  factory AllowedImagesSettingsImageCriterionDeprecationTimeCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllowedImagesSettingsImageCriterionDeprecationTimeCondition(
-      maximumDaysSinceDeprecated: map['maximumDaysSinceDeprecated'] == null ? null : map['maximumDaysSinceDeprecated'] as int,
+      maximumDaysSinceDeprecated: map['maximumDaysSinceDeprecated'] == null
+          ? null
+          : map['maximumDaysSinceDeprecated'] as int,
     );
   }
 }
-

@@ -22,11 +22,10 @@ class GetEntityTypeAiplatformV1beta1Args {
     required String featurestoreId,
     required String location,
     String? project,
-  }) :
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+       featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetEntityTypeAiplatformV1beta1Args {
     );
   }
 }
-

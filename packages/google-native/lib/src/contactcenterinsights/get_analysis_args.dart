@@ -22,11 +22,10 @@ class GetAnalysisArgs {
     required String conversationId,
     required String location,
     String? project,
-  }) :
-      analysisId = pulumi.Input.asInput<String>(analysisId),
-      conversationId = pulumi.Input.asInput<String>(conversationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : analysisId = pulumi.Input.asInput<String>(analysisId),
+       conversationId = pulumi.Input.asInput<String>(conversationId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetAnalysisArgs {
     );
   }
 }
-

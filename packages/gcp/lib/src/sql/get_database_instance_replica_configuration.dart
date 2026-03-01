@@ -1,29 +1,39 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDatabaseInstanceReplicaConfiguration {
   /// PEM representation of the trusted CA's x509 certificate.
   final String caCertificate;
+
   /// Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
   final bool cascadableReplica;
+
   /// PEM representation of the replica's x509 certificate.
   final String clientCertificate;
+
   /// PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
   final String clientKey;
+
   /// The number of seconds between connect retries. MySQL's default is 60 seconds.
   final int connectRetryInterval;
+
   /// Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
   final String dumpFilePath;
+
   /// Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
   final bool failoverTarget;
+
   /// Time in ms between replication heartbeats.
   final int masterHeartbeatPeriod;
+
   /// Password for the replication connection.
   final String password;
+
   /// Permissible ciphers for use in SSL encryption.
   final String sslCipher;
+
   /// Username for replication connection.
   final String username;
+
   /// True if the master's common name value is checked during the SSL handshake.
   final bool verifyServerCertificate;
 
@@ -72,7 +82,9 @@ class GetDatabaseInstanceReplicaConfiguration {
     };
   }
 
-  factory GetDatabaseInstanceReplicaConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstanceReplicaConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstanceReplicaConfiguration(
       caCertificate: map['caCertificate'] as String,
       cascadableReplica: map['cascadableReplica'] as bool,
@@ -89,4 +101,3 @@ class GetDatabaseInstanceReplicaConfiguration {
     );
   }
 }
-

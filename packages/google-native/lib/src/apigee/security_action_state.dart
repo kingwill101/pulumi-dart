@@ -16,4 +16,3 @@ enum SecurityActionState {
     throw ArgumentError('Unknown SecurityActionState value: $value');
   }
 }
-

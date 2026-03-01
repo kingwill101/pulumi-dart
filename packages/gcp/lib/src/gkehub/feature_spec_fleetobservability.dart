@@ -9,9 +9,7 @@ class FeatureSpecFleetobservability {
 
   /// Creates a new [FeatureSpecFleetobservability].
   /// [loggingConfig] Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
-  FeatureSpecFleetobservability({
-    this.loggingConfig,
-  });
+  FeatureSpecFleetobservability({this.loggingConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class FeatureSpecFleetobservability {
 
   factory FeatureSpecFleetobservability.fromMap(Map<String, dynamic> map) {
     return FeatureSpecFleetobservability(
-      loggingConfig: map['loggingConfig'] == null ? null : FeatureSpecFleetobservabilityLoggingConfig.fromMap((map['loggingConfig'] as Map).cast<String, dynamic>()),
+      loggingConfig: map['loggingConfig'] == null
+          ? null
+          : FeatureSpecFleetobservabilityLoggingConfig.fromMap(
+              (map['loggingConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

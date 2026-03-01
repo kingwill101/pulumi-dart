@@ -9,20 +9,23 @@ class LoggingConfig {
 
   /// Creates a new [LoggingConfig].
   /// [componentConfig] Logging components configuration
-  LoggingConfig({
-    this.componentConfig,
-  });
+  LoggingConfig({this.componentConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'componentConfig': ?componentConfig == null ? null : componentConfig!.toMap(),
+      'componentConfig': ?componentConfig == null
+          ? null
+          : componentConfig!.toMap(),
     };
   }
 
   factory LoggingConfig.fromMap(Map<String, dynamic> map) {
     return LoggingConfig(
-      componentConfig: map['componentConfig'] == null ? null : LoggingComponentConfig.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: map['componentConfig'] == null
+          ? null
+          : LoggingComponentConfig.fromMap(
+              (map['componentConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

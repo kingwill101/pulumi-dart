@@ -8,29 +8,42 @@ import 'quota_limit_response.dart';
 class QuotaResponse {
   /// List of QuotaLimit definitions for the service.
   final List<QuotaLimitResponse> limits;
+
   /// List of MetricRule definitions, each one mapping a selected method to one or more metrics.
   final List<MetricRuleResponse> metricRules;
 
   /// Creates a new [QuotaResponse].
   /// [limits] List of QuotaLimit definitions for the service.
   /// [metricRules] List of MetricRule definitions, each one mapping a selected method to one or more metrics.
-  QuotaResponse({
-    required this.limits,
-    required this.metricRules,
-  });
+  QuotaResponse({required this.limits, required this.metricRules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'limits': pulumi.Input.encodeList<QuotaLimitResponse, Map<String, dynamic>>(limits, (value) => value.toMap()),
-      'metricRules': pulumi.Input.encodeList<MetricRuleResponse, Map<String, dynamic>>(metricRules, (value) => value.toMap()),
+      'limits':
+          pulumi.Input.encodeList<QuotaLimitResponse, Map<String, dynamic>>(
+            limits,
+            (value) => value.toMap(),
+          ),
+      'metricRules':
+          pulumi.Input.encodeList<MetricRuleResponse, Map<String, dynamic>>(
+            metricRules,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory QuotaResponse.fromMap(Map<String, dynamic> map) {
     return QuotaResponse(
-      limits: pulumi.Input.decodeList<QuotaLimitResponse>(map['limits'], (value) => QuotaLimitResponse.fromMap((value as Map).cast<String, dynamic>())),
-      metricRules: pulumi.Input.decodeList<MetricRuleResponse>(map['metricRules'], (value) => MetricRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      limits: pulumi.Input.decodeList<QuotaLimitResponse>(
+        map['limits'],
+        (value) =>
+            QuotaLimitResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      metricRules: pulumi.Input.decodeList<MetricRuleResponse>(
+        map['metricRules'],
+        (value) =>
+            MetricRuleResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

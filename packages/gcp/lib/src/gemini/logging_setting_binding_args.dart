@@ -11,18 +11,24 @@ class LoggingSettingBindingArgs {
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String>? location;
+
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> loggingSettingId;
+
   /// Product type of the setting binding.
   /// Possible values are: `GEMINI_CODE_ASSIST`.
   final pulumi.Input<String>? product;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Id of the setting binding.
   final pulumi.Input<String> settingBindingId;
+
   /// Target of the binding.
   final pulumi.Input<String> target;
 
@@ -42,14 +48,13 @@ class LoggingSettingBindingArgs {
     String? project,
     required String settingBindingId,
     required String target,
-  }) :
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      loggingSettingId = pulumi.Input.asInput<String>(loggingSettingId),
-      product = pulumi.Input.asOptionalInput<String>(product),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      settingBindingId = pulumi.Input.asInput<String>(settingBindingId),
-      target = pulumi.Input.asInput<String>(target);
+  }) : labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       loggingSettingId = pulumi.Input.asInput<String>(loggingSettingId),
+       product = pulumi.Input.asOptionalInput<String>(product),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       settingBindingId = pulumi.Input.asInput<String>(settingBindingId),
+       target = pulumi.Input.asInput<String>(target);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,7 +70,9 @@ class LoggingSettingBindingArgs {
 
   factory LoggingSettingBindingArgs.fromMap(Map<String, dynamic> map) {
     return LoggingSettingBindingArgs(
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       loggingSettingId: map['loggingSettingId'] as String,
       product: map['product'] == null ? null : map['product'] as String,
@@ -75,4 +82,3 @@ class LoggingSettingBindingArgs {
     );
   }
 }
-

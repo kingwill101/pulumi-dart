@@ -8,9 +8,7 @@ class RevisionAssetsAssetImportAssetsFromS3 {
 
   /// Creates a new [RevisionAssetsAssetImportAssetsFromS3].
   /// [assetSource] A block specifying the source bucket and key for the asset. This block supports the following:
-  RevisionAssetsAssetImportAssetsFromS3({
-    this.assetSource,
-  });
+  RevisionAssetsAssetImportAssetsFromS3({this.assetSource});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,10 +16,15 @@ class RevisionAssetsAssetImportAssetsFromS3 {
     };
   }
 
-  factory RevisionAssetsAssetImportAssetsFromS3.fromMap(Map<String, dynamic> map) {
+  factory RevisionAssetsAssetImportAssetsFromS3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RevisionAssetsAssetImportAssetsFromS3(
-      assetSource: map['assetSource'] == null ? null : RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap((map['assetSource'] as Map).cast<String, dynamic>()),
+      assetSource: map['assetSource'] == null
+          ? null
+          : RevisionAssetsAssetImportAssetsFromS3AssetSource.fromMap(
+              (map['assetSource'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

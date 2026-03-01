@@ -8,6 +8,7 @@ class GetRequiredTagsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// List of required tag configurations. See `required_tags` below.
   final List<GetRequiredTagsRequiredTag> requiredTags;
 
@@ -25,7 +26,11 @@ class GetRequiredTagsResult {
     return <String, dynamic>{
       'id': id,
       'region': region,
-      'requiredTags': pulumi.Input.encodeList<GetRequiredTagsRequiredTag, Map<String, dynamic>>(requiredTags, (value) => value.toMap()),
+      'requiredTags':
+          pulumi.Input.encodeList<
+            GetRequiredTagsRequiredTag,
+            Map<String, dynamic>
+          >(requiredTags, (value) => value.toMap()),
     };
   }
 
@@ -33,8 +38,12 @@ class GetRequiredTagsResult {
     return GetRequiredTagsResult(
       id: map['id'] as String,
       region: map['region'] as String,
-      requiredTags: pulumi.Input.decodeList<GetRequiredTagsRequiredTag>(map['requiredTags'], (value) => GetRequiredTagsRequiredTag.fromMap((value as Map).cast<String, dynamic>())),
+      requiredTags: pulumi.Input.decodeList<GetRequiredTagsRequiredTag>(
+        map['requiredTags'],
+        (value) => GetRequiredTagsRequiredTag.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

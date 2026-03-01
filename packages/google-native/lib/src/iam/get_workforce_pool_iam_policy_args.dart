@@ -16,9 +16,8 @@ class GetWorkforcePoolIamPolicyArgs {
   GetWorkforcePoolIamPolicyArgs({
     required String location,
     required String workforcePoolId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       workforcePoolId = pulumi.Input.asInput<String>(workforcePoolId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetWorkforcePoolIamPolicyArgs {
     );
   }
 }
-

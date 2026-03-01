@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AccountConnectorProviderOauthConfig {
   /// Required. User selected scopes to apply to the Oauth config
   /// In the event of changing scopes, user records under AccountConnector will
   /// be deleted and users will re-auth again.
   final List<String> scopes;
+
   /// List of providers that are owned by Developer Connect.
   /// Possible values:
   /// GITHUB
@@ -32,11 +32,14 @@ class AccountConnectorProviderOauthConfig {
     };
   }
 
-  factory AccountConnectorProviderOauthConfig.fromMap(Map<String, dynamic> map) {
+  factory AccountConnectorProviderOauthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccountConnectorProviderOauthConfig(
       scopes: (map['scopes'] as List).cast<String>(),
-      systemProviderId: map['systemProviderId'] == null ? null : map['systemProviderId'] as String,
+      systemProviderId: map['systemProviderId'] == null
+          ? null
+          : map['systemProviderId'] as String,
     );
   }
 }
-

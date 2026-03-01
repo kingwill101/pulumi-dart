@@ -57,10 +57,13 @@ import 'consumers_iam_binding_condition.dart';
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class ConsumersIamBinding extends pulumi.CustomResource {
   late final pulumi.Output<ConsumersIamBindingCondition?> condition;
+
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> consumerProject;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -74,10 +77,12 @@ class ConsumersIamBinding extends pulumi.CustomResource {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   late final pulumi.Output<List<String>> members;
+
   /// The role that should be applied. Only one
   /// `gcp.endpoints.ConsumersIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   late final pulumi.Output<String> role;
+
   /// The name of the service. Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> serviceName;
 
@@ -90,11 +95,11 @@ class ConsumersIamBinding extends pulumi.CustomResource {
     ConsumersIamBindingArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:endpoints/consumersIamBinding:ConsumersIamBinding',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:endpoints/consumersIamBinding:ConsumersIamBinding',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.condition = registerOutput<ConsumersIamBindingCondition?>('condition');
     this.consumerProject = registerOutput<String>('consumerProject');
     this.etag = registerOutput<String>('etag');

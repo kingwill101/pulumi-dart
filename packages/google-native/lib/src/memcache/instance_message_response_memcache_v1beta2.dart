@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstanceMessageResponseMemcacheV1beta2 {
   /// A code that correspond to one type of user-facing message.
   final String code;
+
   /// Message on memcached instance which will be exposed to users.
   final String message;
 
@@ -16,17 +16,15 @@ class InstanceMessageResponseMemcacheV1beta2 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'message': message,
-    };
+    return <String, dynamic>{'code': code, 'message': message};
   }
 
-  factory InstanceMessageResponseMemcacheV1beta2.fromMap(Map<String, dynamic> map) {
+  factory InstanceMessageResponseMemcacheV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceMessageResponseMemcacheV1beta2(
       code: map['code'] as String,
       message: map['message'] as String,
     );
   }
 }
-

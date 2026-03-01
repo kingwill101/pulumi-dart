@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Target scaling by request utilization. Only applicable in the App Engine flexible environment.
 class RequestUtilization {
   /// Target number of concurrent requests.
   final int? targetConcurrentRequests;
+
   /// Target requests per second.
   final int? targetRequestCountPerSecond;
 
@@ -25,9 +25,12 @@ class RequestUtilization {
 
   factory RequestUtilization.fromMap(Map<String, dynamic> map) {
     return RequestUtilization(
-      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : map['targetConcurrentRequests'] as int,
-      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : map['targetRequestCountPerSecond'] as int,
+      targetConcurrentRequests: map['targetConcurrentRequests'] == null
+          ? null
+          : map['targetConcurrentRequests'] as int,
+      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null
+          ? null
+          : map['targetRequestCountPerSecond'] as int,
     );
   }
 }
-

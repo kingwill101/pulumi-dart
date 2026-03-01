@@ -6,10 +6,13 @@ import 'machine_config.dart';
 class PrimaryInstanceSettings {
   /// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
   final Map<String, String>? databaseFlags;
+
   /// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
   final String id;
+
   /// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
   final Map<String, String>? labels;
+
   /// Configuration for the machines that host the underlying database engine.
   final MachineConfig? machineConfig;
 
@@ -36,11 +39,18 @@ class PrimaryInstanceSettings {
 
   factory PrimaryInstanceSettings.fromMap(Map<String, dynamic> map) {
     return PrimaryInstanceSettings(
-      databaseFlags: map['databaseFlags'] == null ? null : (map['databaseFlags'] as Map).cast<String, String>(),
+      databaseFlags: map['databaseFlags'] == null
+          ? null
+          : (map['databaseFlags'] as Map).cast<String, String>(),
       id: map['id'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      machineConfig: map['machineConfig'] == null ? null : MachineConfig.fromMap((map['machineConfig'] as Map).cast<String, dynamic>()),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
+      machineConfig: map['machineConfig'] == null
+          ? null
+          : MachineConfig.fromMap(
+              (map['machineConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

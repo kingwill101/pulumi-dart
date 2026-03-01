@@ -9,20 +9,17 @@ class CppSettingsResponse {
 
   /// Creates a new [CppSettingsResponse].
   /// [common] Some settings.
-  CppSettingsResponse({
-    required this.common,
-  });
+  CppSettingsResponse({required this.common});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'common': common.toMap(),
-    };
+    return <String, dynamic>{'common': common.toMap()};
   }
 
   factory CppSettingsResponse.fromMap(Map<String, dynamic> map) {
     return CppSettingsResponse(
-      common: CommonLanguageSettingsResponse.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: CommonLanguageSettingsResponse.fromMap(
+        (map['common'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

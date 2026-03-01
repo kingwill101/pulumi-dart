@@ -19,17 +19,12 @@ class GetDiskComputeV1Args {
     required String disk,
     String? project,
     required String zone,
-  }) :
-      disk = pulumi.Input.asInput<String>(disk),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : disk = pulumi.Input.asInput<String>(disk),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disk': disk,
-      'project': ?project,
-      'zone': zone,
-    };
+    return <String, dynamic>{'disk': disk, 'project': ?project, 'zone': zone};
   }
 
   factory GetDiskComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -40,4 +35,3 @@ class GetDiskComputeV1Args {
     );
   }
 }
-

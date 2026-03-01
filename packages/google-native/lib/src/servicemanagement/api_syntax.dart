@@ -16,4 +16,3 @@ enum ApiSyntax {
     throw ArgumentError('Unknown ApiSyntax value: $value');
   }
 }
-

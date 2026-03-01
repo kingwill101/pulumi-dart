@@ -9,20 +9,23 @@ class HttpConfig {
 
   /// Creates a new [HttpConfig].
   /// [httpEnabledState] If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-  HttpConfig({
-    this.httpEnabledState,
-  });
+  HttpConfig({this.httpEnabledState});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'httpEnabledState': ?httpEnabledState == null ? null : httpEnabledState!.value,
+      'httpEnabledState': ?httpEnabledState == null
+          ? null
+          : httpEnabledState!.value,
     };
   }
 
   factory HttpConfig.fromMap(Map<String, dynamic> map) {
     return HttpConfig(
-      httpEnabledState: map['httpEnabledState'] == null ? null : HttpConfigHttpEnabledState.fromValue(map['httpEnabledState'] as String),
+      httpEnabledState: map['httpEnabledState'] == null
+          ? null
+          : HttpConfigHttpEnabledState.fromValue(
+              map['httpEnabledState'] as String,
+            ),
     );
   }
 }
-

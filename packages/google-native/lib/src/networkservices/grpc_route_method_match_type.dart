@@ -16,4 +16,3 @@ enum GrpcRouteMethodMatchType {
     throw ArgumentError('Unknown GrpcRouteMethodMatchType value: $value');
   }
 }
-

@@ -13,7 +13,8 @@ enum GatewayTypeNetworkservicesV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown GatewayTypeNetworkservicesV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown GatewayTypeNetworkservicesV1beta1 value: $value',
+    );
   }
 }
-

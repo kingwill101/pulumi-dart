@@ -9,6 +9,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"unicode"
+	"unicode/utf8"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
@@ -1165,8 +1167,89 @@ func modulePathQualifierForName(modulePath, baseName string) string {
 	return b.String()
 }
 
-func typeNameCandidates(baseName, modulePath string, suffixes ...string) []string {
+func removeLeadingRunes(value string, count int) string {
+	if count <= 0 {
+		return value
+	}
+
+	for count > 0 && value != "" {
+		_, size := utf8.DecodeRuneInString(value)
+		if size == 0 {
+			return ""
+		}
+		value = value[size:]
+		count--
+	}
+	return value
+}
+
+func stripRedundantModulePrefix(baseName, modulePath string) string {
+	baseName = strings.TrimSpace(baseName)
+	if baseName == "" {
+		return ""
+	}
+
 	base := toDartClassName(baseName)
+	if base == "" {
+		return baseName
+	}
+
+	normalized := normalizedModulePath(modulePath)
+	if normalized == "" || normalized == "index" {
+		return base
+	}
+
+	parts := strings.Split(normalized, "/")
+	if len(parts) <= 1 {
+		return base
+	}
+
+	for i := 1; i < len(parts); i++ {
+		segment := toDartClassName(parts[i])
+		if segment == "" {
+			continue
+		}
+		if !strings.HasPrefix(base, segment) {
+			if !strings.HasPrefix(strings.ToLower(base), strings.ToLower(segment)) {
+				continue
+			}
+
+			tail := removeLeadingRunes(base, utf8.RuneCountInString(segment))
+			tailRune, _ := utf8.DecodeRuneInString(tail)
+			if tail == "" {
+				continue
+			}
+			if !unicode.IsUpper(tailRune) {
+				if unicode.IsDigit(tailRune) {
+					return tail
+				}
+				continue
+			}
+
+			return tail
+		}
+
+		tail := strings.TrimPrefix(base, segment)
+		if tail == "" {
+			continue
+		}
+
+		tailRune, _ := utf8.DecodeRuneInString(tail)
+		if !unicode.IsUpper(tailRune) {
+			if unicode.IsDigit(tailRune) {
+				return tail
+			}
+			continue
+		}
+
+		return tail
+	}
+
+	return base
+}
+
+func typeNameCandidates(baseName, modulePath string, suffixes ...string) []string {
+	base := stripRedundantModulePrefix(baseName, modulePath)
 	if base == "" {
 		base = "GeneratedType"
 	}

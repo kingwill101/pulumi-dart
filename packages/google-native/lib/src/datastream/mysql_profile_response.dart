@@ -6,12 +6,16 @@ import 'mysql_ssl_config_response.dart';
 class MysqlProfileResponse {
   /// Hostname for the MySQL connection.
   final String hostname;
+
   /// Input only. Password for the MySQL connection.
   final String password;
+
   /// Port for the MySQL connection, default value is 3306.
   final int port;
+
   /// SSL configuration for the MySQL connection.
   final MysqlSslConfigResponse sslConfig;
+
   /// Username for the MySQL connection.
   final String username;
 
@@ -44,9 +48,10 @@ class MysqlProfileResponse {
       hostname: map['hostname'] as String,
       password: map['password'] as String,
       port: map['port'] as int,
-      sslConfig: MysqlSslConfigResponse.fromMap((map['sslConfig'] as Map).cast<String, dynamic>()),
+      sslConfig: MysqlSslConfigResponse.fromMap(
+        (map['sslConfig'] as Map).cast<String, dynamic>(),
+      ),
       username: map['username'] as String,
     );
   }
 }
-

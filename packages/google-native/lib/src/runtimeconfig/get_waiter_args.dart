@@ -19,10 +19,9 @@ class GetWaiterArgs {
     required String configId,
     String? project,
     required String waiterId,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      waiterId = pulumi.Input.asInput<String>(waiterId);
+  }) : configId = pulumi.Input.asInput<String>(configId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       waiterId = pulumi.Input.asInput<String>(waiterId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetWaiterArgs {
     );
   }
 }
-

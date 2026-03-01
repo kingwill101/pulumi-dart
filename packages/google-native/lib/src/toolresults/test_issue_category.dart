@@ -16,4 +16,3 @@ enum TestIssueCategory {
     throw ArgumentError('Unknown TestIssueCategory value: $value');
   }
 }
-

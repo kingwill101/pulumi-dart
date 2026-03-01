@@ -17,4 +17,3 @@ enum AcceleratorConfigType {
     throw ArgumentError('Unknown AcceleratorConfigType value: $value');
   }
 }
-

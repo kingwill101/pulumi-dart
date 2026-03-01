@@ -6,6 +6,7 @@ import 'standard_rollout_policy_container_v1beta1.dart';
 class BlueGreenSettingsContainerV1beta1 {
   /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
   final String? nodePoolSoakDuration;
+
   /// Standard policy for the blue-green upgrade.
   final StandardRolloutPolicyContainerV1beta1? standardRolloutPolicy;
 
@@ -20,15 +21,22 @@ class BlueGreenSettingsContainerV1beta1 {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nodePoolSoakDuration': ?nodePoolSoakDuration,
-      'standardRolloutPolicy': ?standardRolloutPolicy == null ? null : standardRolloutPolicy!.toMap(),
+      'standardRolloutPolicy': ?standardRolloutPolicy == null
+          ? null
+          : standardRolloutPolicy!.toMap(),
     };
   }
 
   factory BlueGreenSettingsContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return BlueGreenSettingsContainerV1beta1(
-      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : map['nodePoolSoakDuration'] as String,
-      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : StandardRolloutPolicyContainerV1beta1.fromMap((map['standardRolloutPolicy'] as Map).cast<String, dynamic>()),
+      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null
+          ? null
+          : map['nodePoolSoakDuration'] as String,
+      standardRolloutPolicy: map['standardRolloutPolicy'] == null
+          ? null
+          : StandardRolloutPolicyContainerV1beta1.fromMap(
+              (map['standardRolloutPolicy'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

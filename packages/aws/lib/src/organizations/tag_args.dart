@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagArgs {
   /// Tag name.
   final pulumi.Input<String> key;
+
   /// Id of the Organizations resource to tag.
   final pulumi.Input<String> resourceId;
+
   /// Tag value.
   final pulumi.Input<String> value;
 
@@ -22,10 +24,9 @@ class TagArgs {
     required String key,
     required String resourceId,
     required String value,
-  }) :
-      key = pulumi.Input.asInput<String>(key),
-      resourceId = pulumi.Input.asInput<String>(resourceId),
-      value = pulumi.Input.asInput<String>(value);
+  }) : key = pulumi.Input.asInput<String>(key),
+       resourceId = pulumi.Input.asInput<String>(resourceId),
+       value = pulumi.Input.asInput<String>(value);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class TagArgs {
     );
   }
 }
-

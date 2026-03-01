@@ -16,4 +16,3 @@ enum BuildConfigDockerRegistry {
     throw ArgumentError('Unknown BuildConfigDockerRegistry value: $value');
   }
 }
-

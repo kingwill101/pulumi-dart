@@ -1,5 +1,7 @@
 enum ExecutionConfigUsagesItem {
-  executionEnvironmentUsageUnspecified("EXECUTION_ENVIRONMENT_USAGE_UNSPECIFIED"),
+  executionEnvironmentUsageUnspecified(
+    "EXECUTION_ENVIRONMENT_USAGE_UNSPECIFIED",
+  ),
   render("RENDER"),
   deploy("DEPLOY"),
   verify("VERIFY"),
@@ -18,4 +20,3 @@ enum ExecutionConfigUsagesItem {
     throw ArgumentError('Unknown ExecutionConfigUsagesItem value: $value');
   }
 }
-

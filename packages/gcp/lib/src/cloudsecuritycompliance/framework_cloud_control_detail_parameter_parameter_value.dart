@@ -6,14 +6,20 @@ import 'framework_cloud_control_detail_parameter_parameter_value_string_list_val
 class FrameworkCloudControlDetailParameterParameterValue {
   /// Represents a boolean value.
   final bool? boolValue;
+
   /// Represents a double value.
   final double? numberValue;
+
   /// Sub-parameter values.
   /// Structure is documented below.
-  final FrameworkCloudControlDetailParameterParameterValueOneofValue? oneofValue;
+  final FrameworkCloudControlDetailParameterParameterValueOneofValue?
+  oneofValue;
+
   /// A list of strings.
   /// Structure is documented below.
-  final FrameworkCloudControlDetailParameterParameterValueStringListValue? stringListValue;
+  final FrameworkCloudControlDetailParameterParameterValueStringListValue?
+  stringListValue;
+
   /// Represents a string value.
   final String? stringValue;
 
@@ -36,19 +42,34 @@ class FrameworkCloudControlDetailParameterParameterValue {
       'boolValue': ?boolValue,
       'numberValue': ?numberValue,
       'oneofValue': ?oneofValue == null ? null : oneofValue!.toMap(),
-      'stringListValue': ?stringListValue == null ? null : stringListValue!.toMap(),
+      'stringListValue': ?stringListValue == null
+          ? null
+          : stringListValue!.toMap(),
       'stringValue': ?stringValue,
     };
   }
 
-  factory FrameworkCloudControlDetailParameterParameterValue.fromMap(Map<String, dynamic> map) {
+  factory FrameworkCloudControlDetailParameterParameterValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrameworkCloudControlDetailParameterParameterValue(
       boolValue: map['boolValue'] == null ? null : map['boolValue'] as bool,
-      numberValue: map['numberValue'] == null ? null : map['numberValue'] as double,
-      oneofValue: map['oneofValue'] == null ? null : FrameworkCloudControlDetailParameterParameterValueOneofValue.fromMap((map['oneofValue'] as Map).cast<String, dynamic>()),
-      stringListValue: map['stringListValue'] == null ? null : FrameworkCloudControlDetailParameterParameterValueStringListValue.fromMap((map['stringListValue'] as Map).cast<String, dynamic>()),
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
+      numberValue: map['numberValue'] == null
+          ? null
+          : map['numberValue'] as double,
+      oneofValue: map['oneofValue'] == null
+          ? null
+          : FrameworkCloudControlDetailParameterParameterValueOneofValue.fromMap(
+              (map['oneofValue'] as Map).cast<String, dynamic>(),
+            ),
+      stringListValue: map['stringListValue'] == null
+          ? null
+          : FrameworkCloudControlDetailParameterParameterValueStringListValue.fromMap(
+              (map['stringListValue'] as Map).cast<String, dynamic>(),
+            ),
+      stringValue: map['stringValue'] == null
+          ? null
+          : map['stringValue'] as String,
     );
   }
 }
-

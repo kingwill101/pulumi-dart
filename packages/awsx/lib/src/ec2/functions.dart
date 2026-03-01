@@ -3,8 +3,7 @@ import 'get_default_vpc_result.dart';
 
 /// [NOT YET IMPLEMENTED] Get the Default VPC for a region.
 /// [options] Invoke options controlling this call.
-Future<GetDefaultVpcResult> getDefaultVpc(
-  {
+Future<GetDefaultVpcResult> getDefaultVpc({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

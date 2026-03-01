@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RoutingRuleActionInvokeApi {
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
   final String apiId;
+
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
   final String stage;
+
   /// Action to invoke a stage of a target API. Only REST APIs are supported.
   final bool? stripBasePath;
 
@@ -31,8 +32,9 @@ class RoutingRuleActionInvokeApi {
     return RoutingRuleActionInvokeApi(
       apiId: map['apiId'] as String,
       stage: map['stage'] as String,
-      stripBasePath: map['stripBasePath'] == null ? null : map['stripBasePath'] as bool,
+      stripBasePath: map['stripBasePath'] == null
+          ? null
+          : map['stripBasePath'] as bool,
     );
   }
 }
-

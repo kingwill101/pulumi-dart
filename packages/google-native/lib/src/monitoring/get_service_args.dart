@@ -19,10 +19,9 @@ class GetServiceArgs {
     required String serviceId,
     required String v3Id,
     required String v3Id1,
-  }) :
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      v3Id = pulumi.Input.asInput<String>(v3Id),
-      v3Id1 = pulumi.Input.asInput<String>(v3Id1);
+  }) : serviceId = pulumi.Input.asInput<String>(serviceId),
+       v3Id = pulumi.Input.asInput<String>(v3Id),
+       v3Id1 = pulumi.Input.asInput<String>(v3Id1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetServiceArgs {
     );
   }
 }
-

@@ -13,11 +13,8 @@ class GetTargetHttpsProxyArgs {
   /// Creates a new [GetTargetHttpsProxyArgs].
   /// [project] Optional.
   /// [targetHttpsProxy] Required.
-  GetTargetHttpsProxyArgs({
-    String? project,
-    required String targetHttpsProxy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetTargetHttpsProxyArgs({String? project, required String targetHttpsProxy})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       targetHttpsProxy = pulumi.Input.asInput<String>(targetHttpsProxy);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetTargetHttpsProxyArgs {
     );
   }
 }
-

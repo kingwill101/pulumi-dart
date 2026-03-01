@@ -6,8 +6,12 @@ import 'v2models_intent_confirmation_setting_declination_conditional_default_bra
 class V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponse {
   /// Whether the user can interrupt a speech response from Amazon Lex.
   final bool? allowInterrupt;
+
   /// Configuration blocks for responses that Amazon Lex can send to the user. Amazon Lex chooses the actual response to send at runtime. See `message_group`.
-  final List<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroup>? messageGroups;
+  final List<
+    V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroup
+  >?
+  messageGroups;
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.
@@ -20,15 +24,33 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchRespon
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowInterrupt': ?allowInterrupt,
-      'messageGroups': ?messageGroups == null ? null : pulumi.Input.encodeList<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroup, Map<String, dynamic>>(messageGroups!, (value) => value.toMap()),
+      'messageGroups': ?messageGroups == null
+          ? null
+          : pulumi.Input.encodeList<
+              V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroup,
+              Map<String, dynamic>
+            >(messageGroups!, (value) => value.toMap()),
     };
   }
 
-  factory V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponse.fromMap(Map<String, dynamic> map) {
+  factory V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponse(
-      allowInterrupt: map['allowInterrupt'] == null ? null : map['allowInterrupt'] as bool,
-      messageGroups: map['messageGroups'] == null ? null : pulumi.Input.decodeList<V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroup>(map['messageGroups'], (value) => V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroup.fromMap((value as Map).cast<String, dynamic>())),
+      allowInterrupt: map['allowInterrupt'] == null
+          ? null
+          : map['allowInterrupt'] as bool,
+      messageGroups: map['messageGroups'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroup
+            >(
+              map['messageGroups'],
+              (value) =>
+                  V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroup.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

@@ -7,16 +7,14 @@ import 'severity_override_severity.dart';
 class SeverityOverride {
   /// Threat action override.
   final SeverityOverrideAction action;
+
   /// Severity level to match.
   final SeverityOverrideSeverity severity;
 
   /// Creates a new [SeverityOverride].
   /// [action] Threat action override.
   /// [severity] Severity level to match.
-  SeverityOverride({
-    required this.action,
-    required this.severity,
-  });
+  SeverityOverride({required this.action, required this.severity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,4 +30,3 @@ class SeverityOverride {
     );
   }
 }
-

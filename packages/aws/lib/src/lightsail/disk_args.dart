@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DiskArgs {
   /// Availability Zone in which to create the disk.
   final pulumi.Input<String> availabilityZone;
+
   /// Name of the disk. Must begin with an alphabetic character and contain only alphanumeric characters, underscores, hyphens, and dots.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Size of the disk in GB.
   ///
   /// The following arguments are optional:
   final pulumi.Input<int> sizeInGb;
+
   /// Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -32,12 +36,11 @@ class DiskArgs {
     String? region,
     required int sizeInGb,
     Map<String, String>? tags,
-  }) :
-      availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      sizeInGb = pulumi.Input.asInput<int>(sizeInGb),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       sizeInGb = pulumi.Input.asInput<int>(sizeInGb),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,8 +58,9 @@ class DiskArgs {
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       sizeInGb: map['sizeInGb'] as int,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

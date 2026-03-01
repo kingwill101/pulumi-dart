@@ -9,20 +9,23 @@ class QueryContent {
 
   /// Creates a new [QueryContent].
   /// [iamPolicyAnalysisQuery] An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.
-  QueryContent({
-    this.iamPolicyAnalysisQuery,
-  });
+  QueryContent({this.iamPolicyAnalysisQuery});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iamPolicyAnalysisQuery': ?iamPolicyAnalysisQuery == null ? null : iamPolicyAnalysisQuery!.toMap(),
+      'iamPolicyAnalysisQuery': ?iamPolicyAnalysisQuery == null
+          ? null
+          : iamPolicyAnalysisQuery!.toMap(),
     };
   }
 
   factory QueryContent.fromMap(Map<String, dynamic> map) {
     return QueryContent(
-      iamPolicyAnalysisQuery: map['iamPolicyAnalysisQuery'] == null ? null : IamPolicyAnalysisQuery.fromMap((map['iamPolicyAnalysisQuery'] as Map).cast<String, dynamic>()),
+      iamPolicyAnalysisQuery: map['iamPolicyAnalysisQuery'] == null
+          ? null
+          : IamPolicyAnalysisQuery.fromMap(
+              (map['iamPolicyAnalysisQuery'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

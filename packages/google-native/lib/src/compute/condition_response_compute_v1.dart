@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// This is deprecated and has no effect. Do not use.
 class ConditionResponseComputeV1 {
   /// This is deprecated and has no effect. Do not use.
   final String iam;
+
   /// This is deprecated and has no effect. Do not use.
   final String op;
+
   /// This is deprecated and has no effect. Do not use.
   final String svc;
+
   /// This is deprecated and has no effect. Do not use.
   final String sys;
+
   /// This is deprecated and has no effect. Do not use.
   final List<String> values;
 
@@ -48,4 +51,3 @@ class ConditionResponseComputeV1 {
     );
   }
 }
-

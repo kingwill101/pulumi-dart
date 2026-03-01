@@ -13,7 +13,8 @@ enum ProcessingOptionsHtmlSanitizationJobsV4 {
         return item;
       }
     }
-    throw ArgumentError('Unknown ProcessingOptionsHtmlSanitizationJobsV4 value: $value');
+    throw ArgumentError(
+      'Unknown ProcessingOptionsHtmlSanitizationJobsV4 value: $value',
+    );
   }
 }
-

@@ -16,7 +16,8 @@ enum ValidationOptionsUndeclaredProperties {
         return item;
       }
     }
-    throw ArgumentError('Unknown ValidationOptionsUndeclaredProperties value: $value');
+    throw ArgumentError(
+      'Unknown ValidationOptionsUndeclaredProperties value: $value',
+    );
   }
 }
-

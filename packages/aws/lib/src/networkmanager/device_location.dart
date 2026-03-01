@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DeviceLocation {
   /// Physical address.
   final String? address;
+
   /// Latitude.
   final String? latitude;
+
   /// Longitude.
   final String? longitude;
 
@@ -13,11 +14,7 @@ class DeviceLocation {
   /// [address] Physical address.
   /// [latitude] Latitude.
   /// [longitude] Longitude.
-  DeviceLocation({
-    this.address,
-    this.latitude,
-    this.longitude,
-  });
+  DeviceLocation({this.address, this.latitude, this.longitude});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,4 +32,3 @@ class DeviceLocation {
     );
   }
 }
-

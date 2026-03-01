@@ -9,9 +9,7 @@ class FreeInstanceMetadata {
 
   /// Creates a new [FreeInstanceMetadata].
   /// [expireBehavior] Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
-  FreeInstanceMetadata({
-    this.expireBehavior,
-  });
+  FreeInstanceMetadata({this.expireBehavior});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class FreeInstanceMetadata {
 
   factory FreeInstanceMetadata.fromMap(Map<String, dynamic> map) {
     return FreeInstanceMetadata(
-      expireBehavior: map['expireBehavior'] == null ? null : FreeInstanceMetadataExpireBehavior.fromValue(map['expireBehavior'] as String),
+      expireBehavior: map['expireBehavior'] == null
+          ? null
+          : FreeInstanceMetadataExpireBehavior.fromValue(
+              map['expireBehavior'] as String,
+            ),
     );
   }
 }
-

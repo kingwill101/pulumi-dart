@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAccessPointArgs {
   /// AWS account ID for the account that owns the specified access point.
   final pulumi.Input<String>? accountId;
+
   /// Name of the access point.
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -18,12 +20,8 @@ class GetAccessPointArgs {
   /// [accountId] AWS account ID for the account that owns the specified access point.
   /// [name] Name of the access point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAccessPointArgs({
-    String? accountId,
-    required String name,
-    String? region,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId),
+  GetAccessPointArgs({String? accountId, required String name, String? region})
+    : accountId = pulumi.Input.asOptionalInput<String>(accountId),
       name = pulumi.Input.asInput<String>(name),
       region = pulumi.Input.asOptionalInput<String>(region);
 
@@ -43,4 +41,3 @@ class GetAccessPointArgs {
     );
   }
 }
-

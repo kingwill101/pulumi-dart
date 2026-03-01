@@ -6,7 +6,9 @@ import 'fleet_default_cluster_config_security_posture_config.dart';
 class FleetDefaultClusterConfig {
   /// Enable/Disable binary authorization features for the cluster.
   /// Structure is documented below.
-  final FleetDefaultClusterConfigBinaryAuthorizationConfig? binaryAuthorizationConfig;
+  final FleetDefaultClusterConfigBinaryAuthorizationConfig?
+  binaryAuthorizationConfig;
+
   /// Enable/Disable Security Posture features for the cluster.
   /// Structure is documented below.
   final FleetDefaultClusterConfigSecurityPostureConfig? securityPostureConfig;
@@ -21,16 +23,27 @@ class FleetDefaultClusterConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'binaryAuthorizationConfig': ?binaryAuthorizationConfig == null ? null : binaryAuthorizationConfig!.toMap(),
-      'securityPostureConfig': ?securityPostureConfig == null ? null : securityPostureConfig!.toMap(),
+      'binaryAuthorizationConfig': ?binaryAuthorizationConfig == null
+          ? null
+          : binaryAuthorizationConfig!.toMap(),
+      'securityPostureConfig': ?securityPostureConfig == null
+          ? null
+          : securityPostureConfig!.toMap(),
     };
   }
 
   factory FleetDefaultClusterConfig.fromMap(Map<String, dynamic> map) {
     return FleetDefaultClusterConfig(
-      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null ? null : FleetDefaultClusterConfigBinaryAuthorizationConfig.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>()),
-      securityPostureConfig: map['securityPostureConfig'] == null ? null : FleetDefaultClusterConfigSecurityPostureConfig.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>()),
+      binaryAuthorizationConfig: map['binaryAuthorizationConfig'] == null
+          ? null
+          : FleetDefaultClusterConfigBinaryAuthorizationConfig.fromMap(
+              (map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>(),
+            ),
+      securityPostureConfig: map['securityPostureConfig'] == null
+          ? null
+          : FleetDefaultClusterConfigSecurityPostureConfig.fromMap(
+              (map['securityPostureConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

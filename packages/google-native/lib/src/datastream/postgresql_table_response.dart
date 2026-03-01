@@ -7,6 +7,7 @@ import 'postgresql_column_response.dart';
 class PostgresqlTableResponse {
   /// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   final List<PostgresqlColumnResponse> postgresqlColumns;
+
   /// Table name.
   final String table;
 
@@ -20,16 +21,24 @@ class PostgresqlTableResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlColumns': pulumi.Input.encodeList<PostgresqlColumnResponse, Map<String, dynamic>>(postgresqlColumns, (value) => value.toMap()),
+      'postgresqlColumns':
+          pulumi.Input.encodeList<
+            PostgresqlColumnResponse,
+            Map<String, dynamic>
+          >(postgresqlColumns, (value) => value.toMap()),
       'table': table,
     };
   }
 
   factory PostgresqlTableResponse.fromMap(Map<String, dynamic> map) {
     return PostgresqlTableResponse(
-      postgresqlColumns: pulumi.Input.decodeList<PostgresqlColumnResponse>(map['postgresqlColumns'], (value) => PostgresqlColumnResponse.fromMap((value as Map).cast<String, dynamic>())),
+      postgresqlColumns: pulumi.Input.decodeList<PostgresqlColumnResponse>(
+        map['postgresqlColumns'],
+        (value) => PostgresqlColumnResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       table: map['table'] as String,
     );
   }
 }
-

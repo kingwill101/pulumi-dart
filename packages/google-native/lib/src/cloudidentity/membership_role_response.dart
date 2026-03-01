@@ -7,8 +7,10 @@ import 'restriction_evaluations_response.dart';
 class MembershipRoleResponse {
   /// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
   final ExpiryDetailResponse expiryDetail;
+
   /// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
   final String name;
+
   /// Evaluations of restrictions applied to parent group on this membership.
   final RestrictionEvaluationsResponse restrictionEvaluations;
 
@@ -32,10 +34,13 @@ class MembershipRoleResponse {
 
   factory MembershipRoleResponse.fromMap(Map<String, dynamic> map) {
     return MembershipRoleResponse(
-      expiryDetail: ExpiryDetailResponse.fromMap((map['expiryDetail'] as Map).cast<String, dynamic>()),
+      expiryDetail: ExpiryDetailResponse.fromMap(
+        (map['expiryDetail'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
-      restrictionEvaluations: RestrictionEvaluationsResponse.fromMap((map['restrictionEvaluations'] as Map).cast<String, dynamic>()),
+      restrictionEvaluations: RestrictionEvaluationsResponse.fromMap(
+        (map['restrictionEvaluations'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

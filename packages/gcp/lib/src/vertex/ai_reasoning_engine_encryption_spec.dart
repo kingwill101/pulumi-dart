@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AiReasoningEngineEncryptionSpec {
   /// Required. The Cloud KMS resource identifier of the customer managed
   /// encryption key used to protect a resource. Has the form:
@@ -11,14 +10,10 @@ class AiReasoningEngineEncryptionSpec {
 
   /// Creates a new [AiReasoningEngineEncryptionSpec].
   /// [kmsKeyName] Required. The Cloud KMS resource identifier of the customer managed
-  AiReasoningEngineEncryptionSpec({
-    required this.kmsKeyName,
-  });
+  AiReasoningEngineEncryptionSpec({required this.kmsKeyName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kmsKeyName': kmsKeyName};
   }
 
   factory AiReasoningEngineEncryptionSpec.fromMap(Map<String, dynamic> map) {
@@ -27,4 +22,3 @@ class AiReasoningEngineEncryptionSpec {
     );
   }
 }
-

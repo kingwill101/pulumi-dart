@@ -16,4 +16,3 @@ enum SslCertificateType {
     throw ArgumentError('Unknown SslCertificateType value: $value');
   }
 }
-

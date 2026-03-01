@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for resources used by Airflow workers.
 class WorkerResourceResponseComposerV1beta1 {
   /// Optional. CPU request and limit for a single Airflow worker replica.
   final double cpu;
+
   /// Optional. Maximum number of workers for autoscaling.
   final int maxCount;
+
   /// Optional. Memory (GB) request and limit for a single Airflow worker replica.
   final double memoryGb;
+
   /// Optional. Minimum number of workers for autoscaling.
   final int minCount;
+
   /// Optional. Storage (GB) request and limit for a single Airflow worker replica.
   final double storageGb;
 
@@ -38,7 +41,9 @@ class WorkerResourceResponseComposerV1beta1 {
     };
   }
 
-  factory WorkerResourceResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WorkerResourceResponseComposerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkerResourceResponseComposerV1beta1(
       cpu: map['cpu'] as double,
       maxCount: map['maxCount'] as int,
@@ -48,4 +53,3 @@ class WorkerResourceResponseComposerV1beta1 {
     );
   }
 }
-

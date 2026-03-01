@@ -7,10 +7,13 @@ class InboundSamlConfigIdpConfig {
   /// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
   /// Structure is documented below.
   final List<InboundSamlConfigIdpConfigIdpCertificate> idpCertificates;
+
   /// Unique identifier for all SAML entities
   final String idpEntityId;
+
   /// Indicates if outbounding SAMLRequest should be signed.
   final bool? signRequest;
+
   /// URL to send Authentication request to.
   final String ssoUrl;
 
@@ -28,7 +31,11 @@ class InboundSamlConfigIdpConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'idpCertificates': pulumi.Input.encodeList<InboundSamlConfigIdpConfigIdpCertificate, Map<String, dynamic>>(idpCertificates, (value) => value.toMap()),
+      'idpCertificates':
+          pulumi.Input.encodeList<
+            InboundSamlConfigIdpConfigIdpCertificate,
+            Map<String, dynamic>
+          >(idpCertificates, (value) => value.toMap()),
       'idpEntityId': idpEntityId,
       'signRequest': ?signRequest,
       'ssoUrl': ssoUrl,
@@ -37,11 +44,18 @@ class InboundSamlConfigIdpConfig {
 
   factory InboundSamlConfigIdpConfig.fromMap(Map<String, dynamic> map) {
     return InboundSamlConfigIdpConfig(
-      idpCertificates: pulumi.Input.decodeList<InboundSamlConfigIdpConfigIdpCertificate>(map['idpCertificates'], (value) => InboundSamlConfigIdpConfigIdpCertificate.fromMap((value as Map).cast<String, dynamic>())),
+      idpCertificates:
+          pulumi.Input.decodeList<InboundSamlConfigIdpConfigIdpCertificate>(
+            map['idpCertificates'],
+            (value) => InboundSamlConfigIdpConfigIdpCertificate.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       idpEntityId: map['idpEntityId'] as String,
-      signRequest: map['signRequest'] == null ? null : map['signRequest'] as bool,
+      signRequest: map['signRequest'] == null
+          ? null
+          : map['signRequest'] as bool,
       ssoUrl: map['ssoUrl'] as String,
     );
   }
 }
-

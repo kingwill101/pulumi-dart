@@ -19,10 +19,13 @@ class EndpointMatcherResponseNetworkservicesV1beta1 {
     };
   }
 
-  factory EndpointMatcherResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory EndpointMatcherResponseNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EndpointMatcherResponseNetworkservicesV1beta1(
-      metadataLabelMatcher: MetadataLabelMatcherResponse.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
+      metadataLabelMatcher: MetadataLabelMatcherResponse.fromMap(
+        (map['metadataLabelMatcher'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

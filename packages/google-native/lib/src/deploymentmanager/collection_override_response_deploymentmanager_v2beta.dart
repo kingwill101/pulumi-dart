@@ -6,6 +6,7 @@ import 'options_response_deploymentmanager_v2beta.dart';
 class CollectionOverrideResponseDeploymentmanagerV2beta {
   /// The collection that identifies this resource within its service.
   final String collection;
+
   /// The options to apply to this resource-level override
   final OptionsResponseDeploymentmanagerV2beta options;
 
@@ -24,11 +25,14 @@ class CollectionOverrideResponseDeploymentmanagerV2beta {
     };
   }
 
-  factory CollectionOverrideResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
+  factory CollectionOverrideResponseDeploymentmanagerV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CollectionOverrideResponseDeploymentmanagerV2beta(
       collection: map['collection'] as String,
-      options: OptionsResponseDeploymentmanagerV2beta.fromMap((map['options'] as Map).cast<String, dynamic>()),
+      options: OptionsResponseDeploymentmanagerV2beta.fromMap(
+        (map['options'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

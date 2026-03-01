@@ -10,20 +10,32 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageCarouselSelect].
   /// [items] Carousel items.
-  GoogleCloudDialogflowV2IntentMessageCarouselSelect({
-    required this.items,
-  });
+  GoogleCloudDialogflowV2IntentMessageCarouselSelect({required this.items});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': pulumi.Input.encodeList<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem, Map<String, dynamic>>(items, (value) => value.toMap()),
+      'items':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowV2IntentMessageCarouselSelectItem,
+            Map<String, dynamic>
+          >(items, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageCarouselSelect(
-      items: pulumi.Input.decodeList<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem>(map['items'], (value) => GoogleCloudDialogflowV2IntentMessageCarouselSelectItem.fromMap((value as Map).cast<String, dynamic>())),
+      items:
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowV2IntentMessageCarouselSelectItem
+          >(
+            map['items'],
+            (value) =>
+                GoogleCloudDialogflowV2IntentMessageCarouselSelectItem.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

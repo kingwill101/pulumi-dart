@@ -229,6 +229,7 @@ class DeploymentType extends pulumi.CustomResource {
   /// Default value is `CREATE_OR_ACQUIRE`.
   /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
   late final pulumi.Output<String?> createPolicy;
+
   /// Set the policy to use for deleting new resources on update/delete.
   /// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
   /// resource is deleted after removal from Deployment Manager. If
@@ -238,18 +239,24 @@ class DeploymentType extends pulumi.CustomResource {
   /// Default value is `DELETE`.
   /// Possible values are: `ABANDON`, `DELETE`.
   late final pulumi.Output<String?> deletePolicy;
+
   /// Unique identifier for deployment. Output only.
   late final pulumi.Output<String> deploymentId;
+
   /// Optional user-provided description of deployment.
   late final pulumi.Output<String?> description;
+
   /// Key-value pairs to apply to this labels.
   /// Structure is documented below.
   late final pulumi.Output<List<DeploymentLabel>?> labels;
+
   /// Output only. URL of the manifest representing the last manifest that
   /// was successfully deployed.
   late final pulumi.Output<String> manifest;
+
   /// Unique name for the deployment
   late final pulumi.Output<String> name;
+
   /// If set to true, a deployment is created with "shell" resources
   /// that are not actually instantiated. This allows you to preview a
   /// deployment. It can be updated to false to actually deploy
@@ -259,11 +266,14 @@ class DeploymentType extends pulumi.CustomResource {
   /// the provider will force-recreate deployments if either preview is updated
   /// to true or if other fields are updated while preview is true.
   late final pulumi.Output<bool?> preview;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Output only. Server defined URL for the resource.
   late final pulumi.Output<String> selfLink;
+
   /// Parameters that define your deployment, including the deployment
   /// configuration and relevant templates.
   /// Structure is documented below.
@@ -278,11 +288,11 @@ class DeploymentType extends pulumi.CustomResource {
     DeploymentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:deploymentmanager/deployment:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:deploymentmanager/deployment:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createPolicy = registerOutput<String?>('createPolicy');
     this.deletePolicy = registerOutput<String?>('deletePolicy');
     this.deploymentId = registerOutput<String>('deploymentId');

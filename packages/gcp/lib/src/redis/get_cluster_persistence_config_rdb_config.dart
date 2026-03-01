@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterPersistenceConfigRdbConfig {
   /// Optional. Available snapshot periods for scheduling.
   ///
@@ -9,6 +8,7 @@ class GetClusterPersistenceConfigRdbConfig {
   /// - TWELVE_HOURS:	Snapshot every 12 hours.
   /// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["SNAPSHOT_PERIOD_UNSPECIFIED", "ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
   final String rdbSnapshotPeriod;
+
   /// The time that the first snapshot was/will be attempted, and to which
   /// future snapshots will be aligned.
   /// If not provided, the current time will be used.
@@ -29,11 +29,12 @@ class GetClusterPersistenceConfigRdbConfig {
     };
   }
 
-  factory GetClusterPersistenceConfigRdbConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterPersistenceConfigRdbConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterPersistenceConfigRdbConfig(
       rdbSnapshotPeriod: map['rdbSnapshotPeriod'] as String,
       rdbSnapshotStartTime: map['rdbSnapshotStartTime'] as String,
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
   /// Optional. Specifies the disk name.
   final String? diskName;
+
   /// Optional. URL of the zone where the disk should be created.
   final List<String>? replicaZones;
 
@@ -22,11 +22,14 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
     };
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams(
       diskName: map['diskName'] == null ? null : map['diskName'] as String,
-      replicaZones: map['replicaZones'] == null ? null : (map['replicaZones'] as List).cast<String>(),
+      replicaZones: map['replicaZones'] == null
+          ? null
+          : (map['replicaZones'] as List).cast<String>(),
     );
   }
 }
-

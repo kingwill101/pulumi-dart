@@ -19,10 +19,9 @@ class GetFolderBucketArgs {
     required String bucketId,
     required String folderId,
     required String location,
-  }) :
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      folderId = pulumi.Input.asInput<String>(folderId),
-      location = pulumi.Input.asInput<String>(location);
+  }) : bucketId = pulumi.Input.asInput<String>(bucketId),
+       folderId = pulumi.Input.asInput<String>(folderId),
+       location = pulumi.Input.asInput<String>(location);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetFolderBucketArgs {
     );
   }
 }
-

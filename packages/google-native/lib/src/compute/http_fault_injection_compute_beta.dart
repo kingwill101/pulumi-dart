@@ -7,16 +7,14 @@ import 'http_fault_delay_compute_beta.dart';
 class HttpFaultInjectionComputeBeta {
   /// The specification for how client requests are aborted as part of fault injection.
   final HttpFaultAbortComputeBeta? abort;
+
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
   final HttpFaultDelayComputeBeta? delay;
 
   /// Creates a new [HttpFaultInjectionComputeBeta].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
   /// [delay] The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
-  HttpFaultInjectionComputeBeta({
-    this.abort,
-    this.delay,
-  });
+  HttpFaultInjectionComputeBeta({this.abort, this.delay});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class HttpFaultInjectionComputeBeta {
 
   factory HttpFaultInjectionComputeBeta.fromMap(Map<String, dynamic> map) {
     return HttpFaultInjectionComputeBeta(
-      abort: map['abort'] == null ? null : HttpFaultAbortComputeBeta.fromMap((map['abort'] as Map).cast<String, dynamic>()),
-      delay: map['delay'] == null ? null : HttpFaultDelayComputeBeta.fromMap((map['delay'] as Map).cast<String, dynamic>()),
+      abort: map['abort'] == null
+          ? null
+          : HttpFaultAbortComputeBeta.fromMap(
+              (map['abort'] as Map).cast<String, dynamic>(),
+            ),
+      delay: map['delay'] == null
+          ? null
+          : HttpFaultDelayComputeBeta.fromMap(
+              (map['delay'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

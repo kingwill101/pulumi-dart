@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServiceTemplateContainerSourceCodeCloudStorageSource {
   /// The Cloud Storage bucket name.
   final String bucket;
+
   /// The Cloud Storage object generation. The is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
   final String? generation;
+
   /// The Cloud Storage object name.
   final String object;
 
@@ -27,12 +28,15 @@ class ServiceTemplateContainerSourceCodeCloudStorageSource {
     };
   }
 
-  factory ServiceTemplateContainerSourceCodeCloudStorageSource.fromMap(Map<String, dynamic> map) {
+  factory ServiceTemplateContainerSourceCodeCloudStorageSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceTemplateContainerSourceCodeCloudStorageSource(
       bucket: map['bucket'] as String,
-      generation: map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null
+          ? null
+          : map['generation'] as String,
       object: map['object'] as String,
     );
   }
 }
-

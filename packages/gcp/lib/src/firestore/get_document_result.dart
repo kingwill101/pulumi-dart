@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDocument.
 class GetDocumentResult {
   final String collection;
@@ -8,6 +7,7 @@ class GetDocumentResult {
   final String database;
   final String documentId;
   final String fields;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -69,4 +69,3 @@ class GetDocumentResult {
     );
   }
 }
-

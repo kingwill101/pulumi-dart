@@ -19,10 +19,9 @@ class GetNatAddressArgs {
     required String instanceId,
     required String natAddressId,
     required String organizationId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      natAddressId = pulumi.Input.asInput<String>(natAddressId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : instanceId = pulumi.Input.asInput<String>(instanceId),
+       natAddressId = pulumi.Input.asInput<String>(natAddressId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetNatAddressArgs {
     );
   }
 }
-

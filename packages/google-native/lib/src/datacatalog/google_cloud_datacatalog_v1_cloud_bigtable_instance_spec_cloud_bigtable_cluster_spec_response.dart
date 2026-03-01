@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Spec that applies to clusters of an Instance of Cloud Bigtable.
 class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse {
   /// Name of the cluster.
   final String displayName;
+
   /// A link back to the parent resource, in this case Instance.
   final String linkedResource;
+
   /// Location of the cluster, typically a Cloud zone.
   final String location;
+
   /// Type of the resource. For a cluster this would be "CLUSTER".
   final String type;
 
@@ -33,7 +35,9 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecR
     };
   }
 
-  factory GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse(
       displayName: map['displayName'] as String,
       linkedResource: map['linkedResource'] as String,
@@ -42,4 +46,3 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecR
     );
   }
 }
-

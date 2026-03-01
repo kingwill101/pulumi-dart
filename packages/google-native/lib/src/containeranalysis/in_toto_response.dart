@@ -8,13 +8,17 @@ import 'signing_key_response.dart';
 class InTotoResponse {
   /// This field contains the expected command used to perform the step.
   final List<String> expectedCommand;
+
   /// The following fields contain in-toto artifact rules identifying the artifacts that enter this supply chain step, and exit the supply chain step, i.e. materials and products of the step.
   final List<ArtifactRuleResponse> expectedMaterials;
   final List<ArtifactRuleResponse> expectedProducts;
+
   /// This field contains the public keys that can be used to verify the signatures on the step metadata.
   final List<SigningKeyResponse> signingKeys;
+
   /// This field identifies the name of the step in the supply chain.
   final String stepName;
+
   /// This field contains a value that indicates the minimum number of keys that need to be used to sign the step's in-toto link.
   final String threshold;
 
@@ -37,9 +41,21 @@ class InTotoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'expectedCommand': expectedCommand,
-      'expectedMaterials': pulumi.Input.encodeList<ArtifactRuleResponse, Map<String, dynamic>>(expectedMaterials, (value) => value.toMap()),
-      'expectedProducts': pulumi.Input.encodeList<ArtifactRuleResponse, Map<String, dynamic>>(expectedProducts, (value) => value.toMap()),
-      'signingKeys': pulumi.Input.encodeList<SigningKeyResponse, Map<String, dynamic>>(signingKeys, (value) => value.toMap()),
+      'expectedMaterials':
+          pulumi.Input.encodeList<ArtifactRuleResponse, Map<String, dynamic>>(
+            expectedMaterials,
+            (value) => value.toMap(),
+          ),
+      'expectedProducts':
+          pulumi.Input.encodeList<ArtifactRuleResponse, Map<String, dynamic>>(
+            expectedProducts,
+            (value) => value.toMap(),
+          ),
+      'signingKeys':
+          pulumi.Input.encodeList<SigningKeyResponse, Map<String, dynamic>>(
+            signingKeys,
+            (value) => value.toMap(),
+          ),
       'stepName': stepName,
       'threshold': threshold,
     };
@@ -48,12 +64,25 @@ class InTotoResponse {
   factory InTotoResponse.fromMap(Map<String, dynamic> map) {
     return InTotoResponse(
       expectedCommand: (map['expectedCommand'] as List).cast<String>(),
-      expectedMaterials: pulumi.Input.decodeList<ArtifactRuleResponse>(map['expectedMaterials'], (value) => ArtifactRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      expectedProducts: pulumi.Input.decodeList<ArtifactRuleResponse>(map['expectedProducts'], (value) => ArtifactRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      signingKeys: pulumi.Input.decodeList<SigningKeyResponse>(map['signingKeys'], (value) => SigningKeyResponse.fromMap((value as Map).cast<String, dynamic>())),
+      expectedMaterials: pulumi.Input.decodeList<ArtifactRuleResponse>(
+        map['expectedMaterials'],
+        (value) => ArtifactRuleResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      expectedProducts: pulumi.Input.decodeList<ArtifactRuleResponse>(
+        map['expectedProducts'],
+        (value) => ArtifactRuleResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      signingKeys: pulumi.Input.decodeList<SigningKeyResponse>(
+        map['signingKeys'],
+        (value) =>
+            SigningKeyResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       stepName: map['stepName'] as String,
       threshold: map['threshold'] as String,
     );
   }
 }
-

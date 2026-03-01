@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
   /// A number that CloudFront uses as the value for the max-age directive in the Strict-Transport-Security HTTP response header.
   final int accessControlMaxAgeSec;
+
   /// Whether CloudFront includes the includeSubDomains directive in the Strict-Transport-Security HTTP response header.
   final bool includeSubdomains;
+
   /// Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
   final bool override;
+
   /// Whether CloudFront includes the preload directive in the Strict-Transport-Security HTTP response header.
   final bool preload;
 
@@ -32,7 +34,9 @@ class GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
     };
   }
 
-  factory GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap(Map<String, dynamic> map) {
+  factory GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity(
       accessControlMaxAgeSec: map['accessControlMaxAgeSec'] as int,
       includeSubdomains: map['includeSubdomains'] as bool,
@@ -41,4 +45,3 @@ class GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
     );
   }
 }
-

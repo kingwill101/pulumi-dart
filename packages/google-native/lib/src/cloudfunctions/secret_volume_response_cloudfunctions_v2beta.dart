@@ -7,10 +7,13 @@ import 'secret_version_response_cloudfunctions_v2beta.dart';
 class SecretVolumeResponseCloudfunctionsV2beta {
   /// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
   final String mountPath;
+
   /// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
   final String project;
+
   /// Name of the secret in secret manager (not the full resource name).
   final String secret;
+
   /// List of secret versions to mount for this secret. If empty, the `latest` version of the secret will be made available in a file named after the secret under the mount point.
   final List<SecretVersionResponseCloudfunctionsV2beta> versions;
 
@@ -31,17 +34,28 @@ class SecretVolumeResponseCloudfunctionsV2beta {
       'mountPath': mountPath,
       'project': project,
       'secret': secret,
-      'versions': pulumi.Input.encodeList<SecretVersionResponseCloudfunctionsV2beta, Map<String, dynamic>>(versions, (value) => value.toMap()),
+      'versions':
+          pulumi.Input.encodeList<
+            SecretVersionResponseCloudfunctionsV2beta,
+            Map<String, dynamic>
+          >(versions, (value) => value.toMap()),
     };
   }
 
-  factory SecretVolumeResponseCloudfunctionsV2beta.fromMap(Map<String, dynamic> map) {
+  factory SecretVolumeResponseCloudfunctionsV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecretVolumeResponseCloudfunctionsV2beta(
       mountPath: map['mountPath'] as String,
       project: map['project'] as String,
       secret: map['secret'] as String,
-      versions: pulumi.Input.decodeList<SecretVersionResponseCloudfunctionsV2beta>(map['versions'], (value) => SecretVersionResponseCloudfunctionsV2beta.fromMap((value as Map).cast<String, dynamic>())),
+      versions:
+          pulumi.Input.decodeList<SecretVersionResponseCloudfunctionsV2beta>(
+            map['versions'],
+            (value) => SecretVersionResponseCloudfunctionsV2beta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

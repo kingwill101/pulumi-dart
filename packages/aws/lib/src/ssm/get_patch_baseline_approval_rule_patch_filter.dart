@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetPatchBaselineApprovalRulePatchFilter {
   /// Key for the filter.
   final String key;
+
   /// Value for the filter.
   final List<String> values;
 
@@ -16,17 +16,15 @@ class GetPatchBaselineApprovalRulePatchFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'values': values,
-    };
+    return <String, dynamic>{'key': key, 'values': values};
   }
 
-  factory GetPatchBaselineApprovalRulePatchFilter.fromMap(Map<String, dynamic> map) {
+  factory GetPatchBaselineApprovalRulePatchFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPatchBaselineApprovalRulePatchFilter(
       key: map['key'] as String,
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
-

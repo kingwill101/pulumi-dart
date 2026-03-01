@@ -8,8 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_auditmanager_get_framework_get_framework_args_doc}
 class GetFrameworkArgs {
   final pulumi.Input<String> frameworkType;
+
   /// Name of the framework.
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -21,10 +23,9 @@ class GetFrameworkArgs {
     required String frameworkType,
     required String name,
     String? region,
-  }) :
-      frameworkType = pulumi.Input.asInput<String>(frameworkType),
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : frameworkType = pulumi.Input.asInput<String>(frameworkType),
+       name = pulumi.Input.asInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,4 +43,3 @@ class GetFrameworkArgs {
     );
   }
 }
-

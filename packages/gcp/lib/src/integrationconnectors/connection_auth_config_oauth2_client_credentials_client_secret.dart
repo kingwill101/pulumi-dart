@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectionAuthConfigOauth2ClientCredentialsClientSecret {
   /// The resource name of the secret version in the format,
   /// format as: projects/*/secrets/*/versions/*.
@@ -13,15 +12,14 @@ class ConnectionAuthConfigOauth2ClientCredentialsClientSecret {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'secretVersion': secretVersion,
-    };
+    return <String, dynamic>{'secretVersion': secretVersion};
   }
 
-  factory ConnectionAuthConfigOauth2ClientCredentialsClientSecret.fromMap(Map<String, dynamic> map) {
+  factory ConnectionAuthConfigOauth2ClientCredentialsClientSecret.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectionAuthConfigOauth2ClientCredentialsClientSecret(
       secretVersion: map['secretVersion'] as String,
     );
   }
 }
-

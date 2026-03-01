@@ -11,21 +11,14 @@ class GetOrganizationArgs {
 
   /// Creates a new [GetOrganizationArgs].
   /// [organizationId] Required.
-  GetOrganizationArgs({
-    required String organizationId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  GetOrganizationArgs({required String organizationId})
+    : organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'organizationId': organizationId,
-    };
+    return <String, dynamic>{'organizationId': organizationId};
   }
 
   factory GetOrganizationArgs.fromMap(Map<String, dynamic> map) {
-    return GetOrganizationArgs(
-      organizationId: map['organizationId'] as String,
-    );
+    return GetOrganizationArgs(organizationId: map['organizationId'] as String);
   }
 }
-

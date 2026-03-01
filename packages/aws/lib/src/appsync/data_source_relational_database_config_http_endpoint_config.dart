@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DataSourceRelationalDatabaseConfigHttpEndpointConfig {
   /// AWS secret store ARN for database credentials.
   final String awsSecretStoreArn;
+
   /// Logical database name.
   final String? databaseName;
+
   /// Amazon RDS cluster identifier.
   final String dbClusterIdentifier;
+
   /// AWS Region for RDS HTTP endpoint. Defaults to current region.
   final String? region;
+
   /// Logical schema name.
   final String? schema;
 
@@ -37,14 +40,17 @@ class DataSourceRelationalDatabaseConfigHttpEndpointConfig {
     };
   }
 
-  factory DataSourceRelationalDatabaseConfigHttpEndpointConfig.fromMap(Map<String, dynamic> map) {
+  factory DataSourceRelationalDatabaseConfigHttpEndpointConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSourceRelationalDatabaseConfigHttpEndpointConfig(
       awsSecretStoreArn: map['awsSecretStoreArn'] as String,
-      databaseName: map['databaseName'] == null ? null : map['databaseName'] as String,
+      databaseName: map['databaseName'] == null
+          ? null
+          : map['databaseName'] as String,
       dbClusterIdentifier: map['dbClusterIdentifier'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       schema: map['schema'] == null ? null : map['schema'] as String,
     );
   }
 }
-

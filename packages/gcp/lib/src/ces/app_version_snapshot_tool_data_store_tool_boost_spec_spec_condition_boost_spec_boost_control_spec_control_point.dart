@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint {
   /// (Output)
   /// Can be one of:
@@ -10,6 +9,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
   /// restricted subset of an ISO 8601 duration value). The pattern for
   /// this is: `nDnM]`.
   final String? attributeValue;
+
   /// (Output)
   /// The value between -1 to 1 by which to boost the score if the
   /// attribute_value evaluates to the value specified above.
@@ -30,11 +30,16 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
     };
   }
 
-  factory AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint(
-      attributeValue: map['attributeValue'] == null ? null : map['attributeValue'] as String,
-      boostAmount: map['boostAmount'] == null ? null : map['boostAmount'] as double,
+      attributeValue: map['attributeValue'] == null
+          ? null
+          : map['attributeValue'] as String,
+      boostAmount: map['boostAmount'] == null
+          ? null
+          : map['boostAmount'] as double,
     );
   }
 }
-

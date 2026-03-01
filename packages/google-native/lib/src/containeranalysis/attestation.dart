@@ -8,20 +8,23 @@ class Attestation {
 
   /// Creates a new [Attestation].
   /// [pgpSignedAttestation] Optional.
-  Attestation({
-    this.pgpSignedAttestation,
-  });
+  Attestation({this.pgpSignedAttestation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pgpSignedAttestation': ?pgpSignedAttestation == null ? null : pgpSignedAttestation!.toMap(),
+      'pgpSignedAttestation': ?pgpSignedAttestation == null
+          ? null
+          : pgpSignedAttestation!.toMap(),
     };
   }
 
   factory Attestation.fromMap(Map<String, dynamic> map) {
     return Attestation(
-      pgpSignedAttestation: map['pgpSignedAttestation'] == null ? null : PgpSignedAttestation.fromMap((map['pgpSignedAttestation'] as Map).cast<String, dynamic>()),
+      pgpSignedAttestation: map['pgpSignedAttestation'] == null
+          ? null
+          : PgpSignedAttestation.fromMap(
+              (map['pgpSignedAttestation'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

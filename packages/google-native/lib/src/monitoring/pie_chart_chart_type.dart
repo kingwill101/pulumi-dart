@@ -16,4 +16,3 @@ enum PieChartChartType {
     throw ArgumentError('Unknown PieChartChartType value: $value');
   }
 }
-

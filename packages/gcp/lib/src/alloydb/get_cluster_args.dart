@@ -10,9 +10,11 @@ class GetClusterArgs {
   /// The ID of the alloydb cluster that the instance belongs to.
   /// 'alloydb_cluster_id'
   final pulumi.Input<String> clusterId;
+
   /// (optional)
   /// The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
   final pulumi.Input<String>? location;
+
   /// (optional)
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -21,12 +23,8 @@ class GetClusterArgs {
   /// [clusterId] The ID of the alloydb cluster that the instance belongs to.
   /// [location] (optional)
   /// [project] (optional)
-  GetClusterArgs({
-    required String clusterId,
-    String? location,
-    String? project,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
+  GetClusterArgs({required String clusterId, String? location, String? project})
+    : clusterId = pulumi.Input.asInput<String>(clusterId),
       location = pulumi.Input.asOptionalInput<String>(location),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -46,4 +44,3 @@ class GetClusterArgs {
     );
   }
 }
-

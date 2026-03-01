@@ -317,8 +317,10 @@ import 'policy_attachment_args.dart';
 class PolicyAttachment extends pulumi.CustomResource {
   /// The unique identifier (ID) of the policy that you want to attach to the target.
   late final pulumi.Output<String> policyId;
+
   /// If set to `true`, destroy will **not** detach the policy and instead just remove the resource from state. This can be useful in situations where the attachment must be preserved to meet the AWS minimum requirement of 1 attached policy.
   late final pulumi.Output<bool?> skipDestroy;
+
   /// The unique identifier (ID) of the root, organizational unit, or account number that you want to attach the policy to.
   late final pulumi.Output<String> targetId;
 
@@ -331,11 +333,11 @@ class PolicyAttachment extends pulumi.CustomResource {
     PolicyAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:organizations/policyAttachment:PolicyAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:organizations/policyAttachment:PolicyAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.policyId = registerOutput<String>('policyId');
     this.skipDestroy = registerOutput<bool?>('skipDestroy');
     this.targetId = registerOutput<String>('targetId');

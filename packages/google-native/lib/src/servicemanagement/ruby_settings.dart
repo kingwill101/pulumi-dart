@@ -9,9 +9,7 @@ class RubySettings {
 
   /// Creates a new [RubySettings].
   /// [common] Some settings.
-  RubySettings({
-    this.common,
-  });
+  RubySettings({this.common});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class RubySettings {
 
   factory RubySettings.fromMap(Map<String, dynamic> map) {
     return RubySettings(
-      common: map['common'] == null ? null : CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: map['common'] == null
+          ? null
+          : CommonLanguageSettings.fromMap(
+              (map['common'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

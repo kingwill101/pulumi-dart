@@ -6,29 +6,40 @@ import 'scaling_plan_application_source_tag_filter.dart';
 class ScalingPlanApplicationSource {
   /// ARN of a AWS CloudFormation stack.
   final String? cloudformationStackArn;
+
   /// Set of tags.
   final List<ScalingPlanApplicationSourceTagFilter>? tagFilters;
 
   /// Creates a new [ScalingPlanApplicationSource].
   /// [cloudformationStackArn] ARN of a AWS CloudFormation stack.
   /// [tagFilters] Set of tags.
-  ScalingPlanApplicationSource({
-    this.cloudformationStackArn,
-    this.tagFilters,
-  });
+  ScalingPlanApplicationSource({this.cloudformationStackArn, this.tagFilters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'cloudformationStackArn': ?cloudformationStackArn,
-      'tagFilters': ?tagFilters == null ? null : pulumi.Input.encodeList<ScalingPlanApplicationSourceTagFilter, Map<String, dynamic>>(tagFilters!, (value) => value.toMap()),
+      'tagFilters': ?tagFilters == null
+          ? null
+          : pulumi.Input.encodeList<
+              ScalingPlanApplicationSourceTagFilter,
+              Map<String, dynamic>
+            >(tagFilters!, (value) => value.toMap()),
     };
   }
 
   factory ScalingPlanApplicationSource.fromMap(Map<String, dynamic> map) {
     return ScalingPlanApplicationSource(
-      cloudformationStackArn: map['cloudformationStackArn'] == null ? null : map['cloudformationStackArn'] as String,
-      tagFilters: map['tagFilters'] == null ? null : pulumi.Input.decodeList<ScalingPlanApplicationSourceTagFilter>(map['tagFilters'], (value) => ScalingPlanApplicationSourceTagFilter.fromMap((value as Map).cast<String, dynamic>())),
+      cloudformationStackArn: map['cloudformationStackArn'] == null
+          ? null
+          : map['cloudformationStackArn'] as String,
+      tagFilters: map['tagFilters'] == null
+          ? null
+          : pulumi.Input.decodeList<ScalingPlanApplicationSourceTagFilter>(
+              map['tagFilters'],
+              (value) => ScalingPlanApplicationSourceTagFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

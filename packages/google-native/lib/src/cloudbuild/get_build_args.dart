@@ -25,12 +25,11 @@ class GetBuildArgs {
     required String location,
     String? project,
     required String projectId,
-  }) :
-      buildId = pulumi.Input.asInput<String>(buildId),
-      id = pulumi.Input.asInput<String>(id),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      projectId = pulumi.Input.asInput<String>(projectId);
+  }) : buildId = pulumi.Input.asInput<String>(buildId),
+       id = pulumi.Input.asInput<String>(id),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       projectId = pulumi.Input.asInput<String>(projectId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetBuildArgs {
     );
   }
 }
-

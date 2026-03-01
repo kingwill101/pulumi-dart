@@ -14,36 +14,52 @@ import 'state_history_response.dart';
 class GetBatchResult {
   /// The time when the batch was created.
   final String createTime;
+
   /// The email address of the user who created the batch.
   final String creator;
+
   /// Optional. Environment configuration for the batch execution.
   final EnvironmentConfigResponse environmentConfig;
+
   /// Optional. The labels to associate with this batch. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a batch.
   final Map<String, String> labels;
+
   /// The resource name of the batch.
   final String name;
+
   /// The resource name of the operation associated with this batch.
   final String operation;
+
   /// Optional. PySpark batch config.
   final PySparkBatchResponse pysparkBatch;
+
   /// Optional. Runtime configuration for the batch execution.
   final RuntimeConfigResponse runtimeConfig;
+
   /// Runtime information about batch execution.
   final RuntimeInfoResponse runtimeInfo;
+
   /// Optional. Spark batch config.
   final SparkBatchResponse sparkBatch;
+
   /// Optional. SparkR batch config.
   final SparkRBatchResponse sparkRBatch;
+
   /// Optional. SparkSql batch config.
   final SparkSqlBatchResponse sparkSqlBatch;
+
   /// The state of the batch.
   final String state;
+
   /// Historical state information for the batch.
   final List<StateHistoryResponse> stateHistory;
+
   /// Batch state details, such as a failure description if the state is FAILED.
   final String stateMessage;
+
   /// The time when the batch entered a current state.
   final String stateTime;
+
   /// A batch UUID (Unique Universal Identifier). The service generates this value when it creates the batch.
   final String uuid;
 
@@ -100,7 +116,11 @@ class GetBatchResult {
       'sparkRBatch': sparkRBatch.toMap(),
       'sparkSqlBatch': sparkSqlBatch.toMap(),
       'state': state,
-      'stateHistory': pulumi.Input.encodeList<StateHistoryResponse, Map<String, dynamic>>(stateHistory, (value) => value.toMap()),
+      'stateHistory':
+          pulumi.Input.encodeList<StateHistoryResponse, Map<String, dynamic>>(
+            stateHistory,
+            (value) => value.toMap(),
+          ),
       'stateMessage': stateMessage,
       'stateTime': stateTime,
       'uuid': uuid,
@@ -111,22 +131,40 @@ class GetBatchResult {
     return GetBatchResult(
       createTime: map['createTime'] as String,
       creator: map['creator'] as String,
-      environmentConfig: EnvironmentConfigResponse.fromMap((map['environmentConfig'] as Map).cast<String, dynamic>()),
+      environmentConfig: EnvironmentConfigResponse.fromMap(
+        (map['environmentConfig'] as Map).cast<String, dynamic>(),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       operation: map['operation'] as String,
-      pysparkBatch: PySparkBatchResponse.fromMap((map['pysparkBatch'] as Map).cast<String, dynamic>()),
-      runtimeConfig: RuntimeConfigResponse.fromMap((map['runtimeConfig'] as Map).cast<String, dynamic>()),
-      runtimeInfo: RuntimeInfoResponse.fromMap((map['runtimeInfo'] as Map).cast<String, dynamic>()),
-      sparkBatch: SparkBatchResponse.fromMap((map['sparkBatch'] as Map).cast<String, dynamic>()),
-      sparkRBatch: SparkRBatchResponse.fromMap((map['sparkRBatch'] as Map).cast<String, dynamic>()),
-      sparkSqlBatch: SparkSqlBatchResponse.fromMap((map['sparkSqlBatch'] as Map).cast<String, dynamic>()),
+      pysparkBatch: PySparkBatchResponse.fromMap(
+        (map['pysparkBatch'] as Map).cast<String, dynamic>(),
+      ),
+      runtimeConfig: RuntimeConfigResponse.fromMap(
+        (map['runtimeConfig'] as Map).cast<String, dynamic>(),
+      ),
+      runtimeInfo: RuntimeInfoResponse.fromMap(
+        (map['runtimeInfo'] as Map).cast<String, dynamic>(),
+      ),
+      sparkBatch: SparkBatchResponse.fromMap(
+        (map['sparkBatch'] as Map).cast<String, dynamic>(),
+      ),
+      sparkRBatch: SparkRBatchResponse.fromMap(
+        (map['sparkRBatch'] as Map).cast<String, dynamic>(),
+      ),
+      sparkSqlBatch: SparkSqlBatchResponse.fromMap(
+        (map['sparkSqlBatch'] as Map).cast<String, dynamic>(),
+      ),
       state: map['state'] as String,
-      stateHistory: pulumi.Input.decodeList<StateHistoryResponse>(map['stateHistory'], (value) => StateHistoryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      stateHistory: pulumi.Input.decodeList<StateHistoryResponse>(
+        map['stateHistory'],
+        (value) => StateHistoryResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       stateMessage: map['stateMessage'] as String,
       stateTime: map['stateTime'] as String,
       uuid: map['uuid'] as String,
     );
   }
 }
-

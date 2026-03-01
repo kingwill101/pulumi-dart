@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// [Output Only] A connection connected to this service attachment.
 class ServiceAttachmentConnectedEndpointResponseComputeBeta {
   /// The url of the consumer network.
   final String consumerNetwork;
+
   /// The url of a connected endpoint.
   final String endpoint;
+
   /// The PSC connection id of the connected endpoint.
   final String pscConnectionId;
+
   /// The status of a connected endpoint to this service attachment.
   final String status;
 
@@ -33,7 +35,9 @@ class ServiceAttachmentConnectedEndpointResponseComputeBeta {
     };
   }
 
-  factory ServiceAttachmentConnectedEndpointResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ServiceAttachmentConnectedEndpointResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceAttachmentConnectedEndpointResponseComputeBeta(
       consumerNetwork: map['consumerNetwork'] as String,
       endpoint: map['endpoint'] as String,
@@ -42,4 +46,3 @@ class ServiceAttachmentConnectedEndpointResponseComputeBeta {
     );
   }
 }
-

@@ -16,9 +16,8 @@ class GetBackendBucketComputeV1Args {
   GetBackendBucketComputeV1Args({
     required String backendBucket,
     String? project,
-  }) :
-      backendBucket = pulumi.Input.asInput<String>(backendBucket),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : backendBucket = pulumi.Input.asInput<String>(backendBucket),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetBackendBucketComputeV1Args {
     );
   }
 }
-

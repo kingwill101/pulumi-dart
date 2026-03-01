@@ -9,9 +9,7 @@ class AccessLevelConditionVpcNetworkSource {
 
   /// Creates a new [AccessLevelConditionVpcNetworkSource].
   /// [vpcSubnetwork] Sub networks within a VPC network.
-  AccessLevelConditionVpcNetworkSource({
-    this.vpcSubnetwork,
-  });
+  AccessLevelConditionVpcNetworkSource({this.vpcSubnetwork});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class AccessLevelConditionVpcNetworkSource {
     };
   }
 
-  factory AccessLevelConditionVpcNetworkSource.fromMap(Map<String, dynamic> map) {
+  factory AccessLevelConditionVpcNetworkSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AccessLevelConditionVpcNetworkSource(
-      vpcSubnetwork: map['vpcSubnetwork'] == null ? null : AccessLevelConditionVpcNetworkSourceVpcSubnetwork.fromMap((map['vpcSubnetwork'] as Map).cast<String, dynamic>()),
+      vpcSubnetwork: map['vpcSubnetwork'] == null
+          ? null
+          : AccessLevelConditionVpcNetworkSourceVpcSubnetwork.fromMap(
+              (map['vpcSubnetwork'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

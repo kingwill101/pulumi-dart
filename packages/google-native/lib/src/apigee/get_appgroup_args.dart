@@ -13,11 +13,8 @@ class GetAppgroupArgs {
   /// Creates a new [GetAppgroupArgs].
   /// [appgroupId] Required.
   /// [organizationId] Required.
-  GetAppgroupArgs({
-    required String appgroupId,
-    required String organizationId,
-  }) :
-      appgroupId = pulumi.Input.asInput<String>(appgroupId),
+  GetAppgroupArgs({required String appgroupId, required String organizationId})
+    : appgroupId = pulumi.Input.asInput<String>(appgroupId),
       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetAppgroupArgs {
     );
   }
 }
-

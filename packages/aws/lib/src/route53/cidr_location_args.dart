@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CidrLocationArgs {
   /// CIDR blocks for the location.
   final pulumi.Input<List<String>> cidrBlocks;
+
   /// The ID of the CIDR collection to update.
   final pulumi.Input<String> cidrCollectionId;
+
   /// Name for the CIDR location.
   final pulumi.Input<String>? name;
 
@@ -22,10 +24,9 @@ class CidrLocationArgs {
     required List<String> cidrBlocks,
     required String cidrCollectionId,
     String? name,
-  }) :
-      cidrBlocks = pulumi.Input.asInput<List<String>>(cidrBlocks),
-      cidrCollectionId = pulumi.Input.asInput<String>(cidrCollectionId),
-      name = pulumi.Input.asOptionalInput<String>(name);
+  }) : cidrBlocks = pulumi.Input.asInput<List<String>>(cidrBlocks),
+       cidrCollectionId = pulumi.Input.asInput<String>(cidrCollectionId),
+       name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class CidrLocationArgs {
     );
   }
 }
-

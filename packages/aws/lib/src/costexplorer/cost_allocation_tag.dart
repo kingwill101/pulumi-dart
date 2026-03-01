@@ -109,8 +109,10 @@ import 'cost_allocation_tag_args.dart';
 class CostAllocationTag extends pulumi.CustomResource {
   /// The status of a cost allocation tag. Valid values are `Active` and `Inactive`.
   late final pulumi.Output<String> status;
+
   /// The key for the cost allocation tag.
   late final pulumi.Output<String> tagKey;
+
   /// The type of cost allocation tag.
   late final pulumi.Output<String> type;
 
@@ -123,11 +125,11 @@ class CostAllocationTag extends pulumi.CustomResource {
     CostAllocationTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:costexplorer/costAllocationTag:CostAllocationTag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:costexplorer/costAllocationTag:CostAllocationTag',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.status = registerOutput<String>('status');
     this.tagKey = registerOutput<String>('tagKey');
     this.type = registerOutput<String>('type');

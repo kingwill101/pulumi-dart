@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class OutboundConnectionRemoteDomainInfo {
   /// The name of the remote domain.
   final String domainName;
+
   /// The Account ID of the owner of the remote domain.
   final String ownerId;
+
   /// The region of the remote domain.
   final String region;
 
@@ -35,4 +36,3 @@ class OutboundConnectionRemoteDomainInfo {
     );
   }
 }
-

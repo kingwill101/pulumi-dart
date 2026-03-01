@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SigningCertificateArgs {
   /// The contents of the signing certificate in PEM-encoded format.
   final pulumi.Input<String> certificateBody;
+
   /// The status you want to assign to the certificate. `Active` means that the certificate can be used for programmatic calls to Amazon Web Services `Inactive` means that the certificate cannot be used.
   final pulumi.Input<String>? status;
+
   /// The name of the user the signing certificate is for.
   final pulumi.Input<String> userName;
 
@@ -22,10 +24,9 @@ class SigningCertificateArgs {
     required String certificateBody,
     String? status,
     required String userName,
-  }) :
-      certificateBody = pulumi.Input.asInput<String>(certificateBody),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      userName = pulumi.Input.asInput<String>(userName);
+  }) : certificateBody = pulumi.Input.asInput<String>(certificateBody),
+       status = pulumi.Input.asOptionalInput<String>(status),
+       userName = pulumi.Input.asInput<String>(userName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class SigningCertificateArgs {
     );
   }
 }
-

@@ -13,7 +13,8 @@ enum InternalRangeUsageNetworkconnectivityV1alpha1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown InternalRangeUsageNetworkconnectivityV1alpha1 value: $value');
+    throw ArgumentError(
+      'Unknown InternalRangeUsageNetworkconnectivityV1alpha1 value: $value',
+    );
   }
 }
-

@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A resource that reports the errors encountered while processing an import job.
 class ImportErrorResponse {
   /// The error information.
   final String errorDetails;
+
   /// The severity of the error.
   final String severity;
 
   /// Creates a new [ImportErrorResponse].
   /// [errorDetails] The error information.
   /// [severity] The severity of the error.
-  ImportErrorResponse({
-    required this.errorDetails,
-    required this.severity,
-  });
+  ImportErrorResponse({required this.errorDetails, required this.severity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,4 +27,3 @@ class ImportErrorResponse {
     );
   }
 }
-

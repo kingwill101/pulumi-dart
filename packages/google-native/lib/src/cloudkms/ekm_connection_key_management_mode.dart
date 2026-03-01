@@ -16,4 +16,3 @@ enum EkmConnectionKeyManagementMode {
     throw ArgumentError('Unknown EkmConnectionKeyManagementMode value: $value');
   }
 }
-

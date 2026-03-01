@@ -22,11 +22,10 @@ class GetDocumentArgs {
     required String knowledgeBaseId,
     required String location,
     String? project,
-  }) :
-      documentId = pulumi.Input.asInput<String>(documentId),
-      knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : documentId = pulumi.Input.asInput<String>(documentId),
+       knowledgeBaseId = pulumi.Input.asInput<String>(knowledgeBaseId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetDocumentArgs {
     );
   }
 }
-

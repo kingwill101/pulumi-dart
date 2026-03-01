@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Disk encryption configuration for an instance.
 class DiskEncryptionConfigurationResponseSqladminV1beta4 {
   /// This is always `sql#diskEncryptionConfiguration`.
   final String kind;
+
   /// Resource name of KMS key for disk encryption
   final String kmsKeyName;
 
@@ -17,17 +17,15 @@ class DiskEncryptionConfigurationResponseSqladminV1beta4 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'kind': kind,
-      'kmsKeyName': kmsKeyName,
-    };
+    return <String, dynamic>{'kind': kind, 'kmsKeyName': kmsKeyName};
   }
 
-  factory DiskEncryptionConfigurationResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory DiskEncryptionConfigurationResponseSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiskEncryptionConfigurationResponseSqladminV1beta4(
       kind: map['kind'] as String,
       kmsKeyName: map['kmsKeyName'] as String,
     );
   }
 }
-

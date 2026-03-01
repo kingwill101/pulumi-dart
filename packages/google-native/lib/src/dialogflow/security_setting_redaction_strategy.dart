@@ -12,7 +12,8 @@ enum SecuritySettingRedactionStrategy {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecuritySettingRedactionStrategy value: $value');
+    throw ArgumentError(
+      'Unknown SecuritySettingRedactionStrategy value: $value',
+    );
   }
 }
-

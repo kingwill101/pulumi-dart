@@ -16,14 +16,26 @@ class IdentityServiceMembershipSpecResponseGkehubV1alpha {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authMethods': pulumi.Input.encodeList<IdentityServiceAuthMethodResponseGkehubV1alpha, Map<String, dynamic>>(authMethods, (value) => value.toMap()),
+      'authMethods':
+          pulumi.Input.encodeList<
+            IdentityServiceAuthMethodResponseGkehubV1alpha,
+            Map<String, dynamic>
+          >(authMethods, (value) => value.toMap()),
     };
   }
 
-  factory IdentityServiceMembershipSpecResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory IdentityServiceMembershipSpecResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityServiceMembershipSpecResponseGkehubV1alpha(
-      authMethods: pulumi.Input.decodeList<IdentityServiceAuthMethodResponseGkehubV1alpha>(map['authMethods'], (value) => IdentityServiceAuthMethodResponseGkehubV1alpha.fromMap((value as Map).cast<String, dynamic>())),
+      authMethods:
+          pulumi
+              .Input.decodeList<IdentityServiceAuthMethodResponseGkehubV1alpha>(
+            map['authMethods'],
+            (value) => IdentityServiceAuthMethodResponseGkehubV1alpha.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

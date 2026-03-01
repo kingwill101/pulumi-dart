@@ -7,10 +7,13 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_select_item_info.dart';
 class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
   /// Optional. The main text describing the item.
   final String? description;
+
   /// Optional. The image to display.
   final GoogleCloudDialogflowV2beta1IntentMessageImage? image;
+
   /// Additional information about this option.
   final GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo info;
+
   /// The title of the list item.
   final String title;
 
@@ -35,13 +38,22 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageListSelectItem.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageListSelectItem.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageListSelectItem(
-      description: map['description'] == null ? null : map['description'] as String,
-      image: map['image'] == null ? null : GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      info: GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo.fromMap((map['info'] as Map).cast<String, dynamic>()),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      image: map['image'] == null
+          ? null
+          : GoogleCloudDialogflowV2beta1IntentMessageImage.fromMap(
+              (map['image'] as Map).cast<String, dynamic>(),
+            ),
+      info: GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo.fromMap(
+        (map['info'] as Map).cast<String, dynamic>(),
+      ),
       title: map['title'] as String,
     );
   }
 }
-

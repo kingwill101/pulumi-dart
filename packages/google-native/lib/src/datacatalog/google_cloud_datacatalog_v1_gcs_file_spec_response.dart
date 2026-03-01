@@ -6,8 +6,10 @@ import 'google_cloud_datacatalog_v1_system_timestamps_response.dart';
 class GoogleCloudDatacatalogV1GcsFileSpecResponse {
   /// Full file path. Example: `gs://bucket_name/a/b.txt`.
   final String filePath;
+
   /// Creation, modification, and expiration timestamps of a Cloud Storage file.
   final GoogleCloudDatacatalogV1SystemTimestampsResponse gcsTimestamps;
+
   /// File size in bytes.
   final String sizeBytes;
 
@@ -29,12 +31,15 @@ class GoogleCloudDatacatalogV1GcsFileSpecResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1GcsFileSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1GcsFileSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1GcsFileSpecResponse(
       filePath: map['filePath'] as String,
-      gcsTimestamps: GoogleCloudDatacatalogV1SystemTimestampsResponse.fromMap((map['gcsTimestamps'] as Map).cast<String, dynamic>()),
+      gcsTimestamps: GoogleCloudDatacatalogV1SystemTimestampsResponse.fromMap(
+        (map['gcsTimestamps'] as Map).cast<String, dynamic>(),
+      ),
       sizeBytes: map['sizeBytes'] as String,
     );
   }
 }
-

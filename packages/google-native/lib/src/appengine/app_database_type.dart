@@ -17,4 +17,3 @@ enum AppDatabaseType {
     throw ArgumentError('Unknown AppDatabaseType value: $value');
   }
 }
-

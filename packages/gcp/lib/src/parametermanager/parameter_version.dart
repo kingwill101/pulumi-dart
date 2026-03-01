@@ -785,21 +785,28 @@ import 'parameter_version_args.dart';
 class ParameterVersion extends pulumi.CustomResource {
   /// The time at which the Parameter Version was created.
   late final pulumi.Output<String> createTime;
+
   /// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
   late final pulumi.Output<bool?> disabled;
+
   /// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt parameter version payload. Format
   /// `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}/cryptoKeyVersions/{{crypto_key_version}}`
   late final pulumi.Output<String> kmsKeyVersion;
+
   /// The resource name of the Parameter Version. Format:
   /// `projects/{{project}}/locations/global/parameters/{{parameter_id}}/versions/{{parameter_version_id}}`
   late final pulumi.Output<String> name;
+
   /// Parameter Manager Parameter resource.
   late final pulumi.Output<String> parameter;
+
   /// The Parameter data.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> parameterData;
+
   /// Version ID of the Parameter Version Resource. This must be unique within the Parameter.
   late final pulumi.Output<String> parameterVersionId;
+
   /// The time at which the Parameter Version was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -812,11 +819,11 @@ class ParameterVersion extends pulumi.CustomResource {
     ParameterVersionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:parametermanager/parameterVersion:ParameterVersion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:parametermanager/parameterVersion:ParameterVersion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.disabled = registerOutput<bool?>('disabled');
     this.kmsKeyVersion = registerOutput<String>('kmsKeyVersion');

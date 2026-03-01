@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Command describes a step performed as part of the build pipeline.
 class CommandResponseContaineranalysisV1alpha1 {
   /// Command-line arguments used when executing this Command.
   final List<String> args;
+
   /// Working directory (relative to project source root) used when running this Command.
   final String dir;
+
   /// Environment variables set before running this Command.
   final List<String> env;
+
   /// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
   final String name;
+
   /// The ID(s) of the Command(s) that this Command depends on.
   final List<String> waitFor;
 
@@ -38,7 +41,9 @@ class CommandResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory CommandResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory CommandResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CommandResponseContaineranalysisV1alpha1(
       args: (map['args'] as List).cast<String>(),
       dir: map['dir'] as String,
@@ -48,4 +53,3 @@ class CommandResponseContaineranalysisV1alpha1 {
     );
   }
 }
-

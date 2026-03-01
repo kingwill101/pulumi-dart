@@ -9,9 +9,7 @@ class GoogleCloudContentwarehouseV1RequestMetadata {
 
   /// Creates a new [GoogleCloudContentwarehouseV1RequestMetadata].
   /// [userInfo] Provides user unique identification and groups information.
-  GoogleCloudContentwarehouseV1RequestMetadata({
-    this.userInfo,
-  });
+  GoogleCloudContentwarehouseV1RequestMetadata({this.userInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class GoogleCloudContentwarehouseV1RequestMetadata {
     };
   }
 
-  factory GoogleCloudContentwarehouseV1RequestMetadata.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1RequestMetadata.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1RequestMetadata(
-      userInfo: map['userInfo'] == null ? null : GoogleCloudContentwarehouseV1UserInfo.fromMap((map['userInfo'] as Map).cast<String, dynamic>()),
+      userInfo: map['userInfo'] == null
+          ? null
+          : GoogleCloudContentwarehouseV1UserInfo.fromMap(
+              (map['userInfo'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

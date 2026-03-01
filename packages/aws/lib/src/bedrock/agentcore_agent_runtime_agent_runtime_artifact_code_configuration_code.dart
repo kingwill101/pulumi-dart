@@ -8,20 +8,21 @@ class AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode {
 
   /// Creates a new [AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode].
   /// [s3] Configuration block for the Amazon S3 object that contains the source code for the agent runtime. See `s3` below.
-  AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode({
-    this.s3,
-  });
+  AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode({this.s3});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      's3': ?s3 == null ? null : s3!.toMap(),
-    };
+    return <String, dynamic>{'s3': ?s3 == null ? null : s3!.toMap()};
   }
 
-  factory AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCode(
-      s3: map['s3'] == null ? null : AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
+      s3: map['s3'] == null
+          ? null
+          : AgentcoreAgentRuntimeAgentRuntimeArtifactCodeConfigurationCodeS3.fromMap(
+              (map['s3'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

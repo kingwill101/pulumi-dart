@@ -1,21 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDbNodesDbNodeProperty {
   /// Output only
   final int dbNodeStorageSizeGb;
+
   /// Output only
   final String dbServerOcid;
+
   /// Output only
   final String hostname;
+
   /// Output only
   final int memorySizeGb;
+
   /// Output only
   final String ocid;
+
   /// Output only
   final int ocpuCount;
+
   /// Output only
   final String state;
+
   /// Output only
   final int totalCpuCoreCount;
 
@@ -65,4 +71,3 @@ class GetDbNodesDbNodeProperty {
     );
   }
 }
-

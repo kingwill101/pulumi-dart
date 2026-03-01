@@ -1,37 +1,46 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDistribution.
 class GetDistributionResult {
   /// List that contains information about CNAMEs (alternate domain names), if any, for this distribution.
   final List<String> aliases;
+
   /// ID of the Anycast static IP list that is associated with the distribution, if any.
   final String anycastIpListId;
+
   /// ARN (Amazon Resource Name) for the distribution. For example: arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where 123456789012 is your AWS account ID.
   final String arn;
+
   /// Domain name corresponding to the distribution. For
   /// example: `d604721fxaaqy9.cloudfront.net`.
   final String domainName;
   final bool enabled;
+
   /// Current version of the distribution's information. For example:
   /// `E2QWRUHAPOMQZL`.
   final String etag;
+
   /// CloudFront Route 53 zone ID that can be used to
   /// route an [Alias Resource Record Set][7] to. This attribute is simply an
   /// alias for the zone ID `Z2FDTNDATAQYW2`.
   final String hostedZoneId;
+
   /// Identifier for the distribution. For example: `EDFDVBD632BHDS5`.
   final String id;
+
   /// The number of invalidation batches
   /// currently in progress.
   final int inProgressValidationBatches;
+
   /// Date and time the distribution was last modified.
   final String lastModifiedTime;
+
   /// Current status of the distribution. `Deployed` if the
   /// distribution's information is fully propagated throughout the Amazon
   /// CloudFront system.
   final String status;
   final Map<String, String> tags;
+
   /// AWS WAF web ACL associated with this distribution.
   final String webAclId;
 
@@ -101,4 +110,3 @@ class GetDistributionResult {
     );
   }
 }
-

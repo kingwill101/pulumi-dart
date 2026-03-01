@@ -13,18 +13,12 @@ class GetRouteComputeV1Args {
   /// Creates a new [GetRouteComputeV1Args].
   /// [project] Optional.
   /// [route] Required.
-  GetRouteComputeV1Args({
-    String? project,
-    required String route,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetRouteComputeV1Args({String? project, required String route})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       route = pulumi.Input.asInput<String>(route);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'route': route,
-    };
+    return <String, dynamic>{'project': ?project, 'route': route};
   }
 
   factory GetRouteComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetRouteComputeV1Args {
     );
   }
 }
-

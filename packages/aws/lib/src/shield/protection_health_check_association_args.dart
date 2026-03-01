@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProtectionHealthCheckAssociationArgs {
   /// The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
   final pulumi.Input<String> healthCheckArn;
+
   /// The ID of the protected resource.
   final pulumi.Input<String> shieldProtectionId;
 
@@ -18,9 +19,8 @@ class ProtectionHealthCheckAssociationArgs {
   ProtectionHealthCheckAssociationArgs({
     required String healthCheckArn,
     required String shieldProtectionId,
-  }) :
-      healthCheckArn = pulumi.Input.asInput<String>(healthCheckArn),
-      shieldProtectionId = pulumi.Input.asInput<String>(shieldProtectionId);
+  }) : healthCheckArn = pulumi.Input.asInput<String>(healthCheckArn),
+       shieldProtectionId = pulumi.Input.asInput<String>(shieldProtectionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,11 +29,12 @@ class ProtectionHealthCheckAssociationArgs {
     };
   }
 
-  factory ProtectionHealthCheckAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory ProtectionHealthCheckAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProtectionHealthCheckAssociationArgs(
       healthCheckArn: map['healthCheckArn'] as String,
       shieldProtectionId: map['shieldProtectionId'] as String,
     );
   }
 }
-

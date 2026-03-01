@@ -5,7 +5,9 @@ import 'google_cloud_dialogflow_cx_v3_webhook_generic_web_service_response.dart'
 /// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
 class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse {
   /// Generic Service configuration of this webhook.
-  final GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse genericWebService;
+  final GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse
+  genericWebService;
+
   /// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
   final String service;
 
@@ -24,11 +26,15 @@ class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse(
-      genericWebService: GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse.fromMap((map['genericWebService'] as Map).cast<String, dynamic>()),
+      genericWebService:
+          GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse.fromMap(
+            (map['genericWebService'] as Map).cast<String, dynamic>(),
+          ),
       service: map['service'] as String,
     );
   }
 }
-

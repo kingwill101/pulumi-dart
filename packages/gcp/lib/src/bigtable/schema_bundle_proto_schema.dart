@@ -1,20 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SchemaBundleProtoSchema {
   /// Base64 encoded content of the file.
   final String protoDescriptors;
 
   /// Creates a new [SchemaBundleProtoSchema].
   /// [protoDescriptors] Base64 encoded content of the file.
-  SchemaBundleProtoSchema({
-    required this.protoDescriptors,
-  });
+  SchemaBundleProtoSchema({required this.protoDescriptors});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'protoDescriptors': protoDescriptors,
-    };
+    return <String, dynamic>{'protoDescriptors': protoDescriptors};
   }
 
   factory SchemaBundleProtoSchema.fromMap(Map<String, dynamic> map) {
@@ -23,4 +18,3 @@ class SchemaBundleProtoSchema {
     );
   }
 }
-

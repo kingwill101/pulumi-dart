@@ -17,4 +17,3 @@ enum InboundSsoAssignmentSsoMode {
     throw ArgumentError('Unknown InboundSsoAssignmentSsoMode value: $value');
   }
 }
-

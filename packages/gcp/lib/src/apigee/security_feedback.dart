@@ -507,27 +507,37 @@ import 'security_feedback_feedback_context.dart';
 class SecurityFeedback extends pulumi.CustomResource {
   /// Optional text the user can provide for additional, unstructured context.
   late final pulumi.Output<String?> comment;
+
   /// The time when this specific feedback id was created.
   late final pulumi.Output<String> createTime;
+
   /// The display name of the feedback.
   late final pulumi.Output<String?> displayName;
+
   /// One or more attribute/value pairs for constraining the feedback.
   /// Structure is documented below.
-  late final pulumi.Output<List<SecurityFeedbackFeedbackContext>> feedbackContexts;
+  late final pulumi.Output<List<SecurityFeedbackFeedbackContext>>
+  feedbackContexts;
+
   /// Resource ID of the security feedback.
   late final pulumi.Output<String> feedbackId;
+
   /// The type of feedback being submitted.
   /// Possible values are: `EXCLUDED_DETECTION`.
   late final pulumi.Output<String> feedbackType;
+
   /// Name of the security feedback resource,
   /// in the format `organizations/{{org_name}}/securityFeedback/{{feedback_id}}`.
   late final pulumi.Output<String> name;
+
   /// The Apigee Organization associated with the Apigee Security Feedback,
   /// in the format `organizations/{{org_name}}`.
   late final pulumi.Output<String> orgId;
+
   /// The reason for the feedback.
   /// Possible values are: `INTERNAL_SYSTEM`, `NON_RISK_CLIENT`, `NAT`, `PENETRATION_TEST`, `OTHER`.
   late final pulumi.Output<String?> reason;
+
   /// The time when this specific feedback id was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -540,15 +550,18 @@ class SecurityFeedback extends pulumi.CustomResource {
     SecurityFeedbackArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/securityFeedback:SecurityFeedback',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:apigee/securityFeedback:SecurityFeedback',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.comment = registerOutput<String?>('comment');
     this.createTime = registerOutput<String>('createTime');
     this.displayName = registerOutput<String?>('displayName');
-    this.feedbackContexts = registerOutput<List<SecurityFeedbackFeedbackContext>>('feedbackContexts');
+    this.feedbackContexts =
+        registerOutput<List<SecurityFeedbackFeedbackContext>>(
+          'feedbackContexts',
+        );
     this.feedbackId = registerOutput<String>('feedbackId');
     this.feedbackType = registerOutput<String>('feedbackType');
     this.name = registerOutput<String>('name');

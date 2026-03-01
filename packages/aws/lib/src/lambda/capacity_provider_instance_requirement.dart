@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CapacityProviderInstanceRequirement {
   /// List of allowed instance types (e.g., `["m5.xlarge"]`).
   final List<String> allowedInstanceTypes;
+
   /// List of CPU architectures. Valid values are `["x86_64"]` and `["arm64"]`.
   final List<String> architectures;
+
   /// List of excluded instance types. You can specify only one of `allowed_instance_types` or `excluded_instance_types`.
   final List<String> excludedInstanceTypes;
 
@@ -27,12 +28,15 @@ class CapacityProviderInstanceRequirement {
     };
   }
 
-  factory CapacityProviderInstanceRequirement.fromMap(Map<String, dynamic> map) {
+  factory CapacityProviderInstanceRequirement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapacityProviderInstanceRequirement(
-      allowedInstanceTypes: (map['allowedInstanceTypes'] as List).cast<String>(),
+      allowedInstanceTypes: (map['allowedInstanceTypes'] as List)
+          .cast<String>(),
       architectures: (map['architectures'] as List).cast<String>(),
-      excludedInstanceTypes: (map['excludedInstanceTypes'] as List).cast<String>(),
+      excludedInstanceTypes: (map['excludedInstanceTypes'] as List)
+          .cast<String>(),
     );
   }
 }
-

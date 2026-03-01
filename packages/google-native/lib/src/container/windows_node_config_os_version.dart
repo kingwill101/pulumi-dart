@@ -16,4 +16,3 @@ enum WindowsNodeConfigOsVersion {
     throw ArgumentError('Unknown WindowsNodeConfigOsVersion value: $value');
   }
 }
-

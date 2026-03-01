@@ -9,9 +9,7 @@ class SecurityGatewayServiceDiscovery {
 
   /// Creates a new [SecurityGatewayServiceDiscovery].
   /// [apiGateway] External API configuration.
-  SecurityGatewayServiceDiscovery({
-    this.apiGateway,
-  });
+  SecurityGatewayServiceDiscovery({this.apiGateway});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class SecurityGatewayServiceDiscovery {
 
   factory SecurityGatewayServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return SecurityGatewayServiceDiscovery(
-      apiGateway: map['apiGateway'] == null ? null : SecurityGatewayServiceDiscoveryApiGateway.fromMap((map['apiGateway'] as Map).cast<String, dynamic>()),
+      apiGateway: map['apiGateway'] == null
+          ? null
+          : SecurityGatewayServiceDiscoveryApiGateway.fromMap(
+              (map['apiGateway'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

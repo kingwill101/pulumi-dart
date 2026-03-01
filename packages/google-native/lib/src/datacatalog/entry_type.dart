@@ -29,4 +29,3 @@ enum EntryType {
     throw ArgumentError('Unknown EntryType value: $value');
   }
 }
-

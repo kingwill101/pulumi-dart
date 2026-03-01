@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Metadata associated with a Compute Engine instance.
 class InstanceInfoResponseNetworkmanagementV1beta1 {
   /// Name of a Compute Engine instance.
   final String displayName;
+
   /// External IP address of the network interface.
   final String externalIp;
+
   /// Name of the network interface of a Compute Engine instance.
   final String interface;
+
   /// Internal IP address of the network interface.
   final String internalIp;
+
   /// Network tags configured on the instance.
   final List<String> networkTags;
+
   /// URI of a Compute Engine network.
   final String networkUri;
+
   /// Service account authorized for the instance.
   final String serviceAccount;
+
   /// URI of a Compute Engine instance.
   final String uri;
 
@@ -53,7 +59,9 @@ class InstanceInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory InstanceInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory InstanceInfoResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceInfoResponseNetworkmanagementV1beta1(
       displayName: map['displayName'] as String,
       externalIp: map['externalIp'] as String,
@@ -66,4 +74,3 @@ class InstanceInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

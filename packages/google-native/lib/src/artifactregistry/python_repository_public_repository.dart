@@ -12,7 +12,8 @@ enum PythonRepositoryPublicRepository {
         return item;
       }
     }
-    throw ArgumentError('Unknown PythonRepositoryPublicRepository value: $value');
+    throw ArgumentError(
+      'Unknown PythonRepositoryPublicRepository value: $value',
+    );
   }
 }
-

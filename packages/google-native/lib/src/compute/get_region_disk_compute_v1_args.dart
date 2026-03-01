@@ -19,10 +19,9 @@ class GetRegionDiskComputeV1Args {
     required String disk,
     String? project,
     required String region,
-  }) :
-      disk = pulumi.Input.asInput<String>(disk),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : disk = pulumi.Input.asInput<String>(disk),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionDiskComputeV1Args {
     );
   }
 }
-

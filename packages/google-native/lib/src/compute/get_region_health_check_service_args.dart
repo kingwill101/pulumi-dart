@@ -19,10 +19,9 @@ class GetRegionHealthCheckServiceArgs {
     required String healthCheckService,
     String? project,
     required String region,
-  }) :
-      healthCheckService = pulumi.Input.asInput<String>(healthCheckService),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : healthCheckService = pulumi.Input.asInput<String>(healthCheckService),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionHealthCheckServiceArgs {
     );
   }
 }
-

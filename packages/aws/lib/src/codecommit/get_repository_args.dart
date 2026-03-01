@@ -9,17 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRepositoryArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Name for the repository. This needs to be less than 100 characters.
   final pulumi.Input<String> repositoryName;
 
   /// Creates a new [GetRepositoryArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repositoryName] Name for the repository. This needs to be less than 100 characters.
-  GetRepositoryArgs({
-    String? region,
-    required String repositoryName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
+  GetRepositoryArgs({String? region, required String repositoryName})
+    : region = pulumi.Input.asOptionalInput<String>(region),
       repositoryName = pulumi.Input.asInput<String>(repositoryName);
 
   Map<String, dynamic> toMap() {
@@ -36,4 +34,3 @@ class GetRepositoryArgs {
     );
   }
 }
-

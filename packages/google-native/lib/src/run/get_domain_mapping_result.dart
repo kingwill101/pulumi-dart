@@ -8,12 +8,16 @@ import 'object_meta_response.dart';
 class GetDomainMappingResult {
   /// The API version for this call such as "domains.cloudrun.com/v1".
   final String apiVersion;
+
   /// The kind of resource, in this case "DomainMapping".
   final String kind;
+
   /// Metadata associated with this BuildTemplate.
   final ObjectMetaResponse metadata;
+
   /// The spec for this DomainMapping.
   final DomainMappingSpecResponse spec;
+
   /// The current status of the DomainMapping.
   final DomainMappingStatusResponse status;
 
@@ -45,10 +49,15 @@ class GetDomainMappingResult {
     return GetDomainMappingResult(
       apiVersion: map['apiVersion'] as String,
       kind: map['kind'] as String,
-      metadata: ObjectMetaResponse.fromMap((map['metadata'] as Map).cast<String, dynamic>()),
-      spec: DomainMappingSpecResponse.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: DomainMappingStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      metadata: ObjectMetaResponse.fromMap(
+        (map['metadata'] as Map).cast<String, dynamic>(),
+      ),
+      spec: DomainMappingSpecResponse.fromMap(
+        (map['spec'] as Map).cast<String, dynamic>(),
+      ),
+      status: DomainMappingStatusResponse.fromMap(
+        (map['status'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

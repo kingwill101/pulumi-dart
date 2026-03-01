@@ -9,20 +9,27 @@ class OpenZfsVolumeNfsExports {
 
   /// Creates a new [OpenZfsVolumeNfsExports].
   /// [clientConfigurations] A list of configuration objects that contain the client and options for mounting the OpenZFS file system. Maximum of 25 items. See `client_configurations` Block below for details.
-  OpenZfsVolumeNfsExports({
-    required this.clientConfigurations,
-  });
+  OpenZfsVolumeNfsExports({required this.clientConfigurations});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientConfigurations': pulumi.Input.encodeList<OpenZfsVolumeNfsExportsClientConfiguration, Map<String, dynamic>>(clientConfigurations, (value) => value.toMap()),
+      'clientConfigurations':
+          pulumi.Input.encodeList<
+            OpenZfsVolumeNfsExportsClientConfiguration,
+            Map<String, dynamic>
+          >(clientConfigurations, (value) => value.toMap()),
     };
   }
 
   factory OpenZfsVolumeNfsExports.fromMap(Map<String, dynamic> map) {
     return OpenZfsVolumeNfsExports(
-      clientConfigurations: pulumi.Input.decodeList<OpenZfsVolumeNfsExportsClientConfiguration>(map['clientConfigurations'], (value) => OpenZfsVolumeNfsExportsClientConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      clientConfigurations:
+          pulumi.Input.decodeList<OpenZfsVolumeNfsExportsClientConfiguration>(
+            map['clientConfigurations'],
+            (value) => OpenZfsVolumeNfsExportsClientConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

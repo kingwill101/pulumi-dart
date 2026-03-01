@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class JobStatusError {
   /// The geographic location of the job. The default value is US.
   final String? location;
+
   /// A human-readable description of the error.
   final String? message;
+
   /// A short error code that summarizes the error.
   final String? reason;
 
@@ -13,11 +14,7 @@ class JobStatusError {
   /// [location] The geographic location of the job. The default value is US.
   /// [message] A human-readable description of the error.
   /// [reason] A short error code that summarizes the error.
-  JobStatusError({
-    this.location,
-    this.message,
-    this.reason,
-  });
+  JobStatusError({this.location, this.message, this.reason});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,4 +32,3 @@ class JobStatusError {
     );
   }
 }
-

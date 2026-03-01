@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class OrganizationRootPolicyType {
   /// Status of the policy type as it relates to the associated root.
   final String? status;
@@ -9,16 +8,10 @@ class OrganizationRootPolicyType {
   /// Creates a new [OrganizationRootPolicyType].
   /// [status] Status of the policy type as it relates to the associated root.
   /// [type] Optional.
-  OrganizationRootPolicyType({
-    this.status,
-    this.type,
-  });
+  OrganizationRootPolicyType({this.status, this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'status': ?status,
-      'type': ?type,
-    };
+    return <String, dynamic>{'status': ?status, 'type': ?type};
   }
 
   factory OrganizationRootPolicyType.fromMap(Map<String, dynamic> map) {
@@ -28,4 +21,3 @@ class OrganizationRootPolicyType {
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetTargetProjectVmmigrationV1alpha1Args {
     required String location,
     String? project,
     required String targetProjectId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      targetProjectId = pulumi.Input.asInput<String>(targetProjectId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       targetProjectId = pulumi.Input.asInput<String>(targetProjectId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetTargetProjectVmmigrationV1alpha1Args {
     };
   }
 
-  factory GetTargetProjectVmmigrationV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetTargetProjectVmmigrationV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTargetProjectVmmigrationV1alpha1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +41,3 @@ class GetTargetProjectVmmigrationV1alpha1Args {
     );
   }
 }
-

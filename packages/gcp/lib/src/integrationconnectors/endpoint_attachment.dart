@@ -163,31 +163,42 @@ import 'endpoint_attachment_args.dart';
 class EndpointAttachment extends pulumi.CustomResource {
   /// Time the Namespace was created in UTC.
   late final pulumi.Output<String> createTime;
+
   /// Description of the resource.
   late final pulumi.Output<String?> description;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Enable global access for endpoint attachment.
   late final pulumi.Output<bool?> endpointGlobalAccess;
+
   /// The Private Service Connect connection endpoint ip.
   late final pulumi.Output<String> endpointIp;
+
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Location in which Endpoint Attachment needs to be created.
   late final pulumi.Output<String> location;
+
   /// Name of Endpoint Attachment needs to be created.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The path of the service attachment.
   late final pulumi.Output<String> serviceAttachment;
+
   /// Time the Namespace was updated in UTC.
   late final pulumi.Output<String> updateTime;
 
@@ -200,14 +211,16 @@ class EndpointAttachment extends pulumi.CustomResource {
     EndpointAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:integrationconnectors/endpointAttachment:EndpointAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:integrationconnectors/endpointAttachment:EndpointAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.endpointGlobalAccess = registerOutput<bool?>('endpointGlobalAccess');
     this.endpointIp = registerOutput<String>('endpointIp');
     this.labels = registerOutput<Map<String, String>?>('labels');

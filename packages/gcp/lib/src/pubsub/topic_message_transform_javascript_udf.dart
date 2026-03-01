@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TopicMessageTransformJavascriptUdf {
   /// JavaScript code that contains a function `function_name` with the
   /// following signature:
@@ -31,6 +30,7 @@ class TopicMessageTransformJavascriptUdf {
   /// }
   /// ```
   final String code;
+
   /// Name of the JavaScript function that should be applied to Pub/Sub messages.
   final String functionName;
 
@@ -43,10 +43,7 @@ class TopicMessageTransformJavascriptUdf {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'functionName': functionName,
-    };
+    return <String, dynamic>{'code': code, 'functionName': functionName};
   }
 
   factory TopicMessageTransformJavascriptUdf.fromMap(Map<String, dynamic> map) {
@@ -56,4 +53,3 @@ class TopicMessageTransformJavascriptUdf {
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'replicating_step_response_vmmigration_v1alpha1.dart';
 class CycleStepResponseVmmigrationV1alpha1 {
   /// The time the cycle step has ended.
   final String endTime;
+
   /// Initializing replication step.
   final Map<String, dynamic> initializingReplication;
+
   /// Post processing step.
   final Map<String, dynamic> postProcessing;
+
   /// Replicating step.
   final ReplicatingStepResponseVmmigrationV1alpha1 replicating;
+
   /// The time the cycle step has started.
   final String startTime;
 
@@ -39,14 +43,18 @@ class CycleStepResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory CycleStepResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory CycleStepResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CycleStepResponseVmmigrationV1alpha1(
       endTime: map['endTime'] as String,
-      initializingReplication: (map['initializingReplication'] as Map).cast<String, dynamic>(),
+      initializingReplication: (map['initializingReplication'] as Map)
+          .cast<String, dynamic>(),
       postProcessing: (map['postProcessing'] as Map).cast<String, dynamic>(),
-      replicating: ReplicatingStepResponseVmmigrationV1alpha1.fromMap((map['replicating'] as Map).cast<String, dynamic>()),
+      replicating: ReplicatingStepResponseVmmigrationV1alpha1.fromMap(
+        (map['replicating'] as Map).cast<String, dynamic>(),
+      ),
       startTime: map['startTime'] as String,
     );
   }
 }
-

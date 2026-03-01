@@ -200,21 +200,30 @@ import 'plan_scan_setting.dart';
 /// ```
 class Plan extends pulumi.CustomResource {
   /// An object that specifies backup options for each resource type.
-  late final pulumi.Output<List<PlanAdvancedBackupSetting>?> advancedBackupSettings;
+  late final pulumi.Output<List<PlanAdvancedBackupSetting>?>
+  advancedBackupSettings;
+
   /// The ARN of the backup plan.
   late final pulumi.Output<String> arn;
+
   /// The display name of a backup plan.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A rule object that specifies a scheduled task that is used to back up a selection of resources.
   late final pulumi.Output<List<PlanRule>> rules;
+
   /// Block for scanning configuration for the backup rule and includes the malware scanner, and scan mode of either full or incremental. Detailed below.
   late final pulumi.Output<List<PlanScanSetting>?> scanSettings;
+
   /// Metadata that you can assign to help organize the plans you create. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
   late final pulumi.Output<String> version;
 
@@ -222,17 +231,17 @@ class Plan extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Plan]. {@macro pulumi_backup_plan_plan_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Plan(
-    String name, {
-    PlanArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:backup/plan:Plan',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.advancedBackupSettings = registerOutput<List<PlanAdvancedBackupSetting>?>('advancedBackupSettings');
+  Plan(String name, {PlanArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:backup/plan:Plan',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    this.advancedBackupSettings =
+        registerOutput<List<PlanAdvancedBackupSetting>?>(
+          'advancedBackupSettings',
+        );
     this.arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');

@@ -10,20 +10,27 @@ class RowLayout {
 
   /// Creates a new [RowLayout].
   /// [rows] The rows of content to display.
-  RowLayout({
-    this.rows,
-  });
+  RowLayout({this.rows});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rows': ?rows == null ? null : pulumi.Input.encodeList<Row, Map<String, dynamic>>(rows!, (value) => value.toMap()),
+      'rows': ?rows == null
+          ? null
+          : pulumi.Input.encodeList<Row, Map<String, dynamic>>(
+              rows!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory RowLayout.fromMap(Map<String, dynamic> map) {
     return RowLayout(
-      rows: map['rows'] == null ? null : pulumi.Input.decodeList<Row>(map['rows'], (value) => Row.fromMap((value as Map).cast<String, dynamic>())),
+      rows: map['rows'] == null
+          ? null
+          : pulumi.Input.decodeList<Row>(
+              map['rows'],
+              (value) => Row.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

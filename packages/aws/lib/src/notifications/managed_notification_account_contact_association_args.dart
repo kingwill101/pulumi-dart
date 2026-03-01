@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedNotificationAccountContactAssociationArgs {
   /// A unique value of an Account Contact Type to associate with the ManagedNotificationConfiguration. Valid values: `ACCOUNT_PRIMARY`, `ACCOUNT_ALTERNATE_BILLING`, `ACCOUNT_ALTERNATE_OPERATIONS`, `ACCOUNT_ALTERNATE_SECURITY`.
   final pulumi.Input<String> contactIdentifier;
+
   /// ARN of the managed notification configuration to associate the account contact with.
   final pulumi.Input<String> managedNotificationConfigurationArn;
 
@@ -18,22 +19,26 @@ class ManagedNotificationAccountContactAssociationArgs {
   ManagedNotificationAccountContactAssociationArgs({
     required String contactIdentifier,
     required String managedNotificationConfigurationArn,
-  }) :
-      contactIdentifier = pulumi.Input.asInput<String>(contactIdentifier),
-      managedNotificationConfigurationArn = pulumi.Input.asInput<String>(managedNotificationConfigurationArn);
+  }) : contactIdentifier = pulumi.Input.asInput<String>(contactIdentifier),
+       managedNotificationConfigurationArn = pulumi.Input.asInput<String>(
+         managedNotificationConfigurationArn,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'contactIdentifier': contactIdentifier,
-      'managedNotificationConfigurationArn': managedNotificationConfigurationArn,
+      'managedNotificationConfigurationArn':
+          managedNotificationConfigurationArn,
     };
   }
 
-  factory ManagedNotificationAccountContactAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory ManagedNotificationAccountContactAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedNotificationAccountContactAssociationArgs(
       contactIdentifier: map['contactIdentifier'] as String,
-      managedNotificationConfigurationArn: map['managedNotificationConfigurationArn'] as String,
+      managedNotificationConfigurationArn:
+          map['managedNotificationConfigurationArn'] as String,
     );
   }
 }
-

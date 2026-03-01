@@ -6,8 +6,10 @@ import 'version.dart';
 class Location {
   /// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
   final String? cpeUri;
+
   /// The path from which we gathered that this package/version is installed.
   final String? path;
+
   /// Deprecated. The version installed at this location.
   final Version? version;
 
@@ -15,11 +17,7 @@ class Location {
   /// [cpeUri] Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
   /// [path] The path from which we gathered that this package/version is installed.
   /// [version] Deprecated. The version installed at this location.
-  Location({
-    this.cpeUri,
-    this.path,
-    this.version,
-  });
+  Location({this.cpeUri, this.path, this.version});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,9 @@ class Location {
     return Location(
       cpeUri: map['cpeUri'] == null ? null : map['cpeUri'] as String,
       path: map['path'] == null ? null : map['path'] as String,
-      version: map['version'] == null ? null : Version.fromMap((map['version'] as Map).cast<String, dynamic>()),
+      version: map['version'] == null
+          ? null
+          : Version.fromMap((map['version'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

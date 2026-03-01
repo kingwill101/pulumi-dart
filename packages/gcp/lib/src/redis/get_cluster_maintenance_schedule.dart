@@ -1,16 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterMaintenanceSchedule {
   /// Output only. The end time of any upcoming scheduled maintenance for this cluster.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
   final String endTime;
+
   /// Output only. The deadline that the maintenance schedule start time
   /// can not go beyond, including reschedule.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
   final String scheduleDeadlineTime;
+
   /// Output only. The start time of any upcoming scheduled maintenance for this cluster.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
@@ -42,4 +43,3 @@ class GetClusterMaintenanceSchedule {
     );
   }
 }
-

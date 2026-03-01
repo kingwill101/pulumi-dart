@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig {
   /// Whether to enable multiple network interfaces for your pods.
   /// When set network_config.advanced_networking is automatically
@@ -9,20 +8,17 @@ class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig {
 
   /// Creates a new [BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig].
   /// [enabled] Whether to enable multiple network interfaces for your pods.
-  BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig({
-    this.enabled,
-  });
+  BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
-

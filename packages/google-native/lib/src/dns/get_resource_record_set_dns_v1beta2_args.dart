@@ -25,12 +25,13 @@ class GetResourceRecordSetDnsV1beta2Args {
     required String name,
     String? project,
     required String type,
-  }) :
-      clientOperationId = pulumi.Input.asOptionalInput<String>(clientOperationId),
-      managedZone = pulumi.Input.asInput<String>(managedZone),
-      name = pulumi.Input.asInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      type = pulumi.Input.asInput<String>(type);
+  }) : clientOperationId = pulumi.Input.asOptionalInput<String>(
+         clientOperationId,
+       ),
+       managedZone = pulumi.Input.asInput<String>(managedZone),
+       name = pulumi.Input.asInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,7 +45,9 @@ class GetResourceRecordSetDnsV1beta2Args {
 
   factory GetResourceRecordSetDnsV1beta2Args.fromMap(Map<String, dynamic> map) {
     return GetResourceRecordSetDnsV1beta2Args(
-      clientOperationId: map['clientOperationId'] == null ? null : map['clientOperationId'] as String,
+      clientOperationId: map['clientOperationId'] == null
+          ? null
+          : map['clientOperationId'] as String,
       managedZone: map['managedZone'] as String,
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -52,4 +55,3 @@ class GetResourceRecordSetDnsV1beta2Args {
     );
   }
 }
-

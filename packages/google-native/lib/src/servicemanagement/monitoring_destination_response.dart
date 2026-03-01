@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration of a specific monitoring destination (the producer project or the consumer project).
 class MonitoringDestinationResponse {
   /// Types of the metrics to report to this monitoring destination. Each type must be defined in Service.metrics section.
   final List<String> metrics;
+
   /// The monitored resource type. The type must be defined in Service.monitored_resources section.
   final String monitoredResource;
 
@@ -30,4 +30,3 @@ class MonitoringDestinationResponse {
     );
   }
 }
-

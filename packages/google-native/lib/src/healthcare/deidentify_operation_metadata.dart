@@ -9,9 +9,7 @@ class DeidentifyOperationMetadata {
 
   /// Creates a new [DeidentifyOperationMetadata].
   /// [fhirOutput] Details about the FHIR store to write the output to.
-  DeidentifyOperationMetadata({
-    this.fhirOutput,
-  });
+  DeidentifyOperationMetadata({this.fhirOutput});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class DeidentifyOperationMetadata {
 
   factory DeidentifyOperationMetadata.fromMap(Map<String, dynamic> map) {
     return DeidentifyOperationMetadata(
-      fhirOutput: map['fhirOutput'] == null ? null : FhirOutput.fromMap((map['fhirOutput'] as Map).cast<String, dynamic>()),
+      fhirOutput: map['fhirOutput'] == null
+          ? null
+          : FhirOutput.fromMap(
+              (map['fhirOutput'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

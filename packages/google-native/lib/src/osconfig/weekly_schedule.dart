@@ -9,14 +9,10 @@ class WeeklySchedule {
 
   /// Creates a new [WeeklySchedule].
   /// [dayOfWeek] Day of the week.
-  WeeklySchedule({
-    required this.dayOfWeek,
-  });
+  WeeklySchedule({required this.dayOfWeek});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dayOfWeek': dayOfWeek.value,
-    };
+    return <String, dynamic>{'dayOfWeek': dayOfWeek.value};
   }
 
   factory WeeklySchedule.fromMap(Map<String, dynamic> map) {
@@ -25,4 +21,3 @@ class WeeklySchedule {
     );
   }
 }
-

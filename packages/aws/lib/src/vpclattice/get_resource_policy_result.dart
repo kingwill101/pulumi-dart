@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getResourcePolicy.
 class GetResourcePolicyResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// JSON-encoded string representation of the applied resource policy.
   final String policy;
   final String region;
@@ -40,4 +40,3 @@ class GetResourcePolicyResult {
     );
   }
 }
-

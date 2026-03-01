@@ -17,4 +17,3 @@ enum StandardIsolationPriority {
     throw ArgumentError('Unknown StandardIsolationPriority value: $value');
   }
 }
-

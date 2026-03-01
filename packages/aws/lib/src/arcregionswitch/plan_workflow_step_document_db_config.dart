@@ -38,20 +38,37 @@ class PlanWorkflowStepDocumentDbConfig {
       'externalId': ?externalId,
       'globalClusterIdentifier': globalClusterIdentifier,
       'timeoutMinutes': ?timeoutMinutes,
-      'ungracefuls': ?ungracefuls == null ? null : pulumi.Input.encodeList<PlanWorkflowStepDocumentDbConfigUngraceful, Map<String, dynamic>>(ungracefuls!, (value) => value.toMap()),
+      'ungracefuls': ?ungracefuls == null
+          ? null
+          : pulumi.Input.encodeList<
+              PlanWorkflowStepDocumentDbConfigUngraceful,
+              Map<String, dynamic>
+            >(ungracefuls!, (value) => value.toMap()),
     };
   }
 
   factory PlanWorkflowStepDocumentDbConfig.fromMap(Map<String, dynamic> map) {
     return PlanWorkflowStepDocumentDbConfig(
       behavior: map['behavior'] as String,
-      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
+      crossAccountRole: map['crossAccountRole'] == null
+          ? null
+          : map['crossAccountRole'] as String,
       databaseClusterArns: (map['databaseClusterArns'] as List).cast<String>(),
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
+      externalId: map['externalId'] == null
+          ? null
+          : map['externalId'] as String,
       globalClusterIdentifier: map['globalClusterIdentifier'] as String,
-      timeoutMinutes: map['timeoutMinutes'] == null ? null : map['timeoutMinutes'] as int,
-      ungracefuls: map['ungracefuls'] == null ? null : pulumi.Input.decodeList<PlanWorkflowStepDocumentDbConfigUngraceful>(map['ungracefuls'], (value) => PlanWorkflowStepDocumentDbConfigUngraceful.fromMap((value as Map).cast<String, dynamic>())),
+      timeoutMinutes: map['timeoutMinutes'] == null
+          ? null
+          : map['timeoutMinutes'] as int,
+      ungracefuls: map['ungracefuls'] == null
+          ? null
+          : pulumi.Input.decodeList<PlanWorkflowStepDocumentDbConfigUngraceful>(
+              map['ungracefuls'],
+              (value) => PlanWorkflowStepDocumentDbConfigUngraceful.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

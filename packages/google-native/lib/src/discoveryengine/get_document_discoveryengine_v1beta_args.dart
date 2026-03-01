@@ -28,13 +28,12 @@ class GetDocumentDiscoveryengineV1betaArgs {
     required String documentId,
     required String location,
     String? project,
-  }) :
-      branchId = pulumi.Input.asInput<String>(branchId),
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      documentId = pulumi.Input.asInput<String>(documentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : branchId = pulumi.Input.asInput<String>(branchId),
+       collectionId = pulumi.Input.asInput<String>(collectionId),
+       dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
+       documentId = pulumi.Input.asInput<String>(documentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,7 +46,9 @@ class GetDocumentDiscoveryengineV1betaArgs {
     };
   }
 
-  factory GetDocumentDiscoveryengineV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetDocumentDiscoveryengineV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDocumentDiscoveryengineV1betaArgs(
       branchId: map['branchId'] as String,
       collectionId: map['collectionId'] as String,
@@ -58,4 +59,3 @@ class GetDocumentDiscoveryengineV1betaArgs {
     );
   }
 }
-

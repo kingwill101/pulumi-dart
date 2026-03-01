@@ -9,20 +9,28 @@ class GoogleCloudApigeeV1CertificateResponse {
 
   /// Creates a new [GoogleCloudApigeeV1CertificateResponse].
   /// [certInfo] Chain of certificates under this name.
-  GoogleCloudApigeeV1CertificateResponse({
-    required this.certInfo,
-  });
+  GoogleCloudApigeeV1CertificateResponse({required this.certInfo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certInfo': pulumi.Input.encodeList<GoogleCloudApigeeV1CertInfoResponse, Map<String, dynamic>>(certInfo, (value) => value.toMap()),
+      'certInfo':
+          pulumi.Input.encodeList<
+            GoogleCloudApigeeV1CertInfoResponse,
+            Map<String, dynamic>
+          >(certInfo, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudApigeeV1CertificateResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1CertificateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1CertificateResponse(
-      certInfo: pulumi.Input.decodeList<GoogleCloudApigeeV1CertInfoResponse>(map['certInfo'], (value) => GoogleCloudApigeeV1CertInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      certInfo: pulumi.Input.decodeList<GoogleCloudApigeeV1CertInfoResponse>(
+        map['certInfo'],
+        (value) => GoogleCloudApigeeV1CertInfoResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

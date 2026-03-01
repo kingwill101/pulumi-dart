@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LaunchTemplateInstanceRequirementsAcceleratorTotalMemoryMib {
   /// Maximum.
   final int? max;
+
   /// Minimum.
   final int? min;
 
@@ -16,17 +16,15 @@ class LaunchTemplateInstanceRequirementsAcceleratorTotalMemoryMib {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'max': ?max,
-      'min': ?min,
-    };
+    return <String, dynamic>{'max': ?max, 'min': ?min};
   }
 
-  factory LaunchTemplateInstanceRequirementsAcceleratorTotalMemoryMib.fromMap(Map<String, dynamic> map) {
+  factory LaunchTemplateInstanceRequirementsAcceleratorTotalMemoryMib.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LaunchTemplateInstanceRequirementsAcceleratorTotalMemoryMib(
       max: map['max'] == null ? null : map['max'] as int,
       min: map['min'] == null ? null : map['min'] as int,
     );
   }
 }
-

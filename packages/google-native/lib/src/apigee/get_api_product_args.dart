@@ -16,9 +16,8 @@ class GetApiProductArgs {
   GetApiProductArgs({
     required String apiproductId,
     required String organizationId,
-  }) :
-      apiproductId = pulumi.Input.asInput<String>(apiproductId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : apiproductId = pulumi.Input.asInput<String>(apiproductId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetApiProductArgs {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
   final String expirationTime;
   final String name;
@@ -24,7 +23,9 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
     };
   }
 
-  factory GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork(
       expirationTime: map['expirationTime'] as String,
       name: map['name'] as String,
@@ -32,4 +33,3 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
     );
   }
 }
-

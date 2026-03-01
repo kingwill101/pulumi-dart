@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetPrincipalApplicationAssignmentsApplicationAssignment {
   /// ARN of the application.
   final String applicationArn;
+
   /// An identifier for an object in IAM Identity Center, such as a user or group.
   final String principalId;
+
   /// Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
   final String principalType;
 
@@ -27,7 +28,9 @@ class GetPrincipalApplicationAssignmentsApplicationAssignment {
     };
   }
 
-  factory GetPrincipalApplicationAssignmentsApplicationAssignment.fromMap(Map<String, dynamic> map) {
+  factory GetPrincipalApplicationAssignmentsApplicationAssignment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPrincipalApplicationAssignmentsApplicationAssignment(
       applicationArn: map['applicationArn'] as String,
       principalId: map['principalId'] as String,
@@ -35,4 +38,3 @@ class GetPrincipalApplicationAssignmentsApplicationAssignment {
     );
   }
 }
-

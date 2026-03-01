@@ -6,8 +6,10 @@ import 'status_response.dart';
 class EncryptionInfoResponse {
   /// The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
   final StatusResponse encryptionStatus;
+
   /// The type of encryption used to protect this resource.
   final String encryptionType;
+
   /// The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
   final String kmsKeyVersion;
 
@@ -31,10 +33,11 @@ class EncryptionInfoResponse {
 
   factory EncryptionInfoResponse.fromMap(Map<String, dynamic> map) {
     return EncryptionInfoResponse(
-      encryptionStatus: StatusResponse.fromMap((map['encryptionStatus'] as Map).cast<String, dynamic>()),
+      encryptionStatus: StatusResponse.fromMap(
+        (map['encryptionStatus'] as Map).cast<String, dynamic>(),
+      ),
       encryptionType: map['encryptionType'] as String,
       kmsKeyVersion: map['kmsKeyVersion'] as String,
     );
   }
 }
-

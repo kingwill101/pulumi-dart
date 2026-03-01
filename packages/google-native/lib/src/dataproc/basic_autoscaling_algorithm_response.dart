@@ -7,8 +7,10 @@ import 'spark_standalone_autoscaling_config_response.dart';
 class BasicAutoscalingAlgorithmResponse {
   /// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
   final String cooldownPeriod;
+
   /// Optional. Spark Standalone autoscaling configuration
   final SparkStandaloneAutoscalingConfigResponse sparkStandaloneConfig;
+
   /// Optional. YARN autoscaling configuration.
   final BasicYarnAutoscalingConfigResponse yarnConfig;
 
@@ -33,9 +35,12 @@ class BasicAutoscalingAlgorithmResponse {
   factory BasicAutoscalingAlgorithmResponse.fromMap(Map<String, dynamic> map) {
     return BasicAutoscalingAlgorithmResponse(
       cooldownPeriod: map['cooldownPeriod'] as String,
-      sparkStandaloneConfig: SparkStandaloneAutoscalingConfigResponse.fromMap((map['sparkStandaloneConfig'] as Map).cast<String, dynamic>()),
-      yarnConfig: BasicYarnAutoscalingConfigResponse.fromMap((map['yarnConfig'] as Map).cast<String, dynamic>()),
+      sparkStandaloneConfig: SparkStandaloneAutoscalingConfigResponse.fromMap(
+        (map['sparkStandaloneConfig'] as Map).cast<String, dynamic>(),
+      ),
+      yarnConfig: BasicYarnAutoscalingConfigResponse.fromMap(
+        (map['yarnConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

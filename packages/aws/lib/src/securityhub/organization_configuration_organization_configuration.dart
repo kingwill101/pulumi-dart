@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class OrganizationConfigurationOrganizationConfiguration {
   /// Indicates whether the organization uses local or central configuration. If using central configuration, `auto_enable` must be set to `false` and `auto_enable_standards` set to `NONE`. More information can be found in the [documentation for central configuration](https://docs.aws.amazon.com/securityhub/latest/userguide/central-configuration-intro.html). Valid values: `LOCAL`, `CENTRAL`.
   final String configurationType;
@@ -12,15 +11,14 @@ class OrganizationConfigurationOrganizationConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'configurationType': configurationType,
-    };
+    return <String, dynamic>{'configurationType': configurationType};
   }
 
-  factory OrganizationConfigurationOrganizationConfiguration.fromMap(Map<String, dynamic> map) {
+  factory OrganizationConfigurationOrganizationConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationConfigurationOrganizationConfiguration(
       configurationType: map['configurationType'] as String,
     );
   }
 }
-

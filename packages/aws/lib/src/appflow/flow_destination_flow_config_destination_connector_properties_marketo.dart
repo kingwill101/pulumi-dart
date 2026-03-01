@@ -3,7 +3,8 @@
 import 'flow_destination_flow_config_destination_connector_properties_marketo_error_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo {
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesMarketoErrorHandlingConfig? errorHandlingConfig;
+  final FlowDestinationFlowConfigDestinationConnectorPropertiesMarketoErrorHandlingConfig?
+  errorHandlingConfig;
   final String object;
 
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo].
@@ -16,16 +17,23 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorHandlingConfig': ?errorHandlingConfig == null ? null : errorHandlingConfig!.toMap(),
+      'errorHandlingConfig': ?errorHandlingConfig == null
+          ? null
+          : errorHandlingConfig!.toMap(),
       'object': object,
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo.fromMap(Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesMarketo(
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesMarketoErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
+      errorHandlingConfig: map['errorHandlingConfig'] == null
+          ? null
+          : FlowDestinationFlowConfigDestinationConnectorPropertiesMarketoErrorHandlingConfig.fromMap(
+              (map['errorHandlingConfig'] as Map).cast<String, dynamic>(),
+            ),
       object: map['object'] as String,
     );
   }
 }
-

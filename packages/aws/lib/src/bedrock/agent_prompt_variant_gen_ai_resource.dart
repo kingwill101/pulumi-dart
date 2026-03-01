@@ -8,20 +8,19 @@ class AgentPromptVariantGenAiResource {
 
   /// Creates a new [AgentPromptVariantGenAiResource].
   /// [agent] Specifies an Amazon Bedrock agent with which to use the prompt. See Agent Configuration for more information.
-  AgentPromptVariantGenAiResource({
-    this.agent,
-  });
+  AgentPromptVariantGenAiResource({this.agent});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'agent': ?agent == null ? null : agent!.toMap(),
-    };
+    return <String, dynamic>{'agent': ?agent == null ? null : agent!.toMap()};
   }
 
   factory AgentPromptVariantGenAiResource.fromMap(Map<String, dynamic> map) {
     return AgentPromptVariantGenAiResource(
-      agent: map['agent'] == null ? null : AgentPromptVariantGenAiResourceAgent.fromMap((map['agent'] as Map).cast<String, dynamic>()),
+      agent: map['agent'] == null
+          ? null
+          : AgentPromptVariantGenAiResourceAgent.fromMap(
+              (map['agent'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

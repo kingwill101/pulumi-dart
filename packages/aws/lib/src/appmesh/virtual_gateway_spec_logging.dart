@@ -8,9 +8,7 @@ class VirtualGatewaySpecLogging {
 
   /// Creates a new [VirtualGatewaySpecLogging].
   /// [accessLog] Access log configuration for a virtual gateway.
-  VirtualGatewaySpecLogging({
-    this.accessLog,
-  });
+  VirtualGatewaySpecLogging({this.accessLog});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,11 @@ class VirtualGatewaySpecLogging {
 
   factory VirtualGatewaySpecLogging.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecLogging(
-      accessLog: map['accessLog'] == null ? null : VirtualGatewaySpecLoggingAccessLog.fromMap((map['accessLog'] as Map).cast<String, dynamic>()),
+      accessLog: map['accessLog'] == null
+          ? null
+          : VirtualGatewaySpecLoggingAccessLog.fromMap(
+              (map['accessLog'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

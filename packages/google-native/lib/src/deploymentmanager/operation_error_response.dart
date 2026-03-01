@@ -10,20 +10,26 @@ class OperationErrorResponse {
 
   /// Creates a new [OperationErrorResponse].
   /// [errors] The array of errors encountered while processing this operation.
-  OperationErrorResponse({
-    required this.errors,
-  });
+  OperationErrorResponse({required this.errors});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': pulumi.Input.encodeList<OperationErrorErrorsItemResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors':
+          pulumi.Input.encodeList<
+            OperationErrorErrorsItemResponse,
+            Map<String, dynamic>
+          >(errors, (value) => value.toMap()),
     };
   }
 
   factory OperationErrorResponse.fromMap(Map<String, dynamic> map) {
     return OperationErrorResponse(
-      errors: pulumi.Input.decodeList<OperationErrorErrorsItemResponse>(map['errors'], (value) => OperationErrorErrorsItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      errors: pulumi.Input.decodeList<OperationErrorErrorsItemResponse>(
+        map['errors'],
+        (value) => OperationErrorErrorsItemResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

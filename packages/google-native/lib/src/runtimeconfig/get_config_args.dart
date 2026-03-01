@@ -13,18 +13,12 @@ class GetConfigArgs {
   /// Creates a new [GetConfigArgs].
   /// [configId] Required.
   /// [project] Optional.
-  GetConfigArgs({
-    required String configId,
-    String? project,
-  }) :
-      configId = pulumi.Input.asInput<String>(configId),
+  GetConfigArgs({required String configId, String? project})
+    : configId = pulumi.Input.asInput<String>(configId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'configId': configId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'configId': configId, 'project': ?project};
   }
 
   factory GetConfigArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetConfigArgs {
     );
   }
 }
-

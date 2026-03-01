@@ -13,19 +13,19 @@ class GetInboundSsoAssignmentCloudidentityV1beta1Args {
   /// [inboundSsoAssignmentId] Required.
   GetInboundSsoAssignmentCloudidentityV1beta1Args({
     required String inboundSsoAssignmentId,
-  }) :
-      inboundSsoAssignmentId = pulumi.Input.asInput<String>(inboundSsoAssignmentId);
+  }) : inboundSsoAssignmentId = pulumi.Input.asInput<String>(
+         inboundSsoAssignmentId,
+       );
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'inboundSsoAssignmentId': inboundSsoAssignmentId,
-    };
+    return <String, dynamic>{'inboundSsoAssignmentId': inboundSsoAssignmentId};
   }
 
-  factory GetInboundSsoAssignmentCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetInboundSsoAssignmentCloudidentityV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInboundSsoAssignmentCloudidentityV1beta1Args(
       inboundSsoAssignmentId: map['inboundSsoAssignmentId'] as String,
     );
   }
 }
-

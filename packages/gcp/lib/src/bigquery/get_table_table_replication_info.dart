@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTableTableReplicationInfo {
   /// The interval at which the source materialized view is polled for updates. The default is 300000.
   final int replicationIntervalMs;
+
   /// The ID of the source dataset.
   final String sourceDatasetId;
+
   /// The ID of the source project.
   final String sourceProjectId;
+
   /// The ID of the source materialized view.
   final String sourceTableId;
 
@@ -41,4 +43,3 @@ class GetTableTableReplicationInfo {
     );
   }
 }
-

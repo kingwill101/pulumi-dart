@@ -10,14 +10,17 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
   /// Defines a distribution TimeSeries filter and thresholds used for
   /// measuring good service and total service.
   /// Structure is documented below.
-  final SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut? distributionCut;
+  final SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut?
+  distributionCut;
+
   /// A means to compute a ratio of `good_service` to `total_service`.
   /// Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
   /// Must specify exactly two of good, bad, and total service filters.
   /// The relationship good_service + bad_service = total_service
   /// will be assumed.
   /// Structure is documented below.
-  final SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio? goodTotalRatio;
+  final SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio?
+  goodTotalRatio;
 
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdPerformance].
   /// [distributionCut] Used when good_service is defined by a count of values aggregated in a
@@ -29,16 +32,29 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'distributionCut': ?distributionCut == null ? null : distributionCut!.toMap(),
-      'goodTotalRatio': ?goodTotalRatio == null ? null : goodTotalRatio!.toMap(),
+      'distributionCut': ?distributionCut == null
+          ? null
+          : distributionCut!.toMap(),
+      'goodTotalRatio': ?goodTotalRatio == null
+          ? null
+          : goodTotalRatio!.toMap(),
     };
   }
 
-  factory SloWindowsBasedSliGoodTotalRatioThresholdPerformance.fromMap(Map<String, dynamic> map) {
+  factory SloWindowsBasedSliGoodTotalRatioThresholdPerformance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SloWindowsBasedSliGoodTotalRatioThresholdPerformance(
-      distributionCut: map['distributionCut'] == null ? null : SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut.fromMap((map['distributionCut'] as Map).cast<String, dynamic>()),
-      goodTotalRatio: map['goodTotalRatio'] == null ? null : SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio.fromMap((map['goodTotalRatio'] as Map).cast<String, dynamic>()),
+      distributionCut: map['distributionCut'] == null
+          ? null
+          : SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut.fromMap(
+              (map['distributionCut'] as Map).cast<String, dynamic>(),
+            ),
+      goodTotalRatio: map['goodTotalRatio'] == null
+          ? null
+          : SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio.fromMap(
+              (map['goodTotalRatio'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

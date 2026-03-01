@@ -9,20 +9,17 @@ class JobSpecResponse {
 
   /// Creates a new [JobSpecResponse].
   /// [template] Optional. Describes the execution that will be created when running a job.
-  JobSpecResponse({
-    required this.template,
-  });
+  JobSpecResponse({required this.template});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'template': template.toMap(),
-    };
+    return <String, dynamic>{'template': template.toMap()};
   }
 
   factory JobSpecResponse.fromMap(Map<String, dynamic> map) {
     return JobSpecResponse(
-      template: ExecutionTemplateSpecResponse.fromMap((map['template'] as Map).cast<String, dynamic>()),
+      template: ExecutionTemplateSpecResponse.fromMap(
+        (map['template'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

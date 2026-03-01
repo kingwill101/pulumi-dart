@@ -22,13 +22,17 @@ enum EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType {
   const EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType(this.value);
   final String value;
 
-  static EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType fromValue(String value) {
-    for (final item in EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType.values) {
+  static EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType value: $value',
+    );
   }
 }
-

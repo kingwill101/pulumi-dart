@@ -16,4 +16,3 @@ enum DiscoveryConfigStatus {
     throw ArgumentError('Unknown DiscoveryConfigStatus value: $value');
   }
 }
-

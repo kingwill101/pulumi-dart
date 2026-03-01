@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess {
   /// Custom metadata. Dialogflow doesn't impose any structure on this.
   final String? metadata;
@@ -12,15 +11,14 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'metadata': ?metadata,
-    };
+    return <String, dynamic>{'metadata': ?metadata};
   }
 
-  factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess.fromMap(Map<String, dynamic> map) {
+  factory CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess(
       metadata: map['metadata'] == null ? null : map['metadata'] as String,
     );
   }
 }
-

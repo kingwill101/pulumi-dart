@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AddonsConfigAddonsConfigIntegrationConfig {
   /// Flag that specifies whether the Integration add-on is enabled.
   final bool? enabled;
 
   /// Creates a new [AddonsConfigAddonsConfigIntegrationConfig].
   /// [enabled] Flag that specifies whether the Integration add-on is enabled.
-  AddonsConfigAddonsConfigIntegrationConfig({
-    this.enabled,
-  });
+  AddonsConfigAddonsConfigIntegrationConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
-  factory AddonsConfigAddonsConfigIntegrationConfig.fromMap(Map<String, dynamic> map) {
+  factory AddonsConfigAddonsConfigIntegrationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AddonsConfigAddonsConfigIntegrationConfig(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
     );
   }
 }
-

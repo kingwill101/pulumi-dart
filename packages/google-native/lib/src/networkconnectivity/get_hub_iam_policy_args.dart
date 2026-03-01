@@ -19,10 +19,11 @@ class GetHubIamPolicyArgs {
     required String hubId,
     int? optionsRequestedPolicyVersion,
     String? project,
-  }) :
-      hubId = pulumi.Input.asInput<String>(hubId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : hubId = pulumi.Input.asInput<String>(hubId),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,9 +36,11 @@ class GetHubIamPolicyArgs {
   factory GetHubIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetHubIamPolicyArgs(
       hubId: map['hubId'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

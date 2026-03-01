@@ -13,7 +13,8 @@ enum TelemetryConfigLogFormatMetastoreV1alpha {
         return item;
       }
     }
-    throw ArgumentError('Unknown TelemetryConfigLogFormatMetastoreV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown TelemetryConfigLogFormatMetastoreV1alpha value: $value',
+    );
   }
 }
-

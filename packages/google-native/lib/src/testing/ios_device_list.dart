@@ -10,20 +10,23 @@ class IosDeviceList {
 
   /// Creates a new [IosDeviceList].
   /// [iosDevices] A list of iOS devices.
-  IosDeviceList({
-    required this.iosDevices,
-  });
+  IosDeviceList({required this.iosDevices});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'iosDevices': pulumi.Input.encodeList<IosDevice, Map<String, dynamic>>(iosDevices, (value) => value.toMap()),
+      'iosDevices': pulumi.Input.encodeList<IosDevice, Map<String, dynamic>>(
+        iosDevices,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory IosDeviceList.fromMap(Map<String, dynamic> map) {
     return IosDeviceList(
-      iosDevices: pulumi.Input.decodeList<IosDevice>(map['iosDevices'], (value) => IosDevice.fromMap((value as Map).cast<String, dynamic>())),
+      iosDevices: pulumi.Input.decodeList<IosDevice>(
+        map['iosDevices'],
+        (value) => IosDevice.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

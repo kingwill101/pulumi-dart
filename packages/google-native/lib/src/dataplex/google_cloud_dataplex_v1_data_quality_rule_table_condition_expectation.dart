@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
 class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation {
   /// Optional. The SQL expression.
@@ -13,15 +12,16 @@ class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sqlExpression': ?sqlExpression,
-    };
+    return <String, dynamic>{'sqlExpression': ?sqlExpression};
   }
 
-  factory GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation(
-      sqlExpression: map['sqlExpression'] == null ? null : map['sqlExpression'] as String,
+      sqlExpression: map['sqlExpression'] == null
+          ? null
+          : map['sqlExpression'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange {
   final int end;
   final int start;
@@ -14,17 +13,15 @@ class GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'end': end,
-      'start': start,
-    };
+    return <String, dynamic>{'end': end, 'start': start};
   }
 
-  factory GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange.fromMap(Map<String, dynamic> map) {
+  factory GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGatewayRouteSpecHttp2RouteMatchHeaderMatchRange(
       end: map['end'] as int,
       start: map['start'] as int,
     );
   }
 }
-

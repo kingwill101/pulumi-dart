@@ -1,18 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
   /// Type of archive files in this repository.
   /// Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
   final String archiveType;
+
   /// List of components for this repository. Must
   /// contain at least one item.
   final List<String> components;
+
   /// Distribution of this repository.
   final String distribution;
+
   /// URI of the key file for this repository. The agent
   /// maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
   final String? gpgKey;
+
   /// URI for this repository.
   final String uri;
 
@@ -40,7 +43,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt.fromMap(Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt(
       archiveType: map['archiveType'] as String,
       components: (map['components'] as List).cast<String>(),
@@ -50,4 +55,3 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
     );
   }
 }
-

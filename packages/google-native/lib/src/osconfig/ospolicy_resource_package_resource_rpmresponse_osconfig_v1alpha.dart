@@ -6,6 +6,7 @@ import 'ospolicy_resource_file_response_osconfig_v1alpha.dart';
 class OSPolicyResourcePackageResourceRPMResponseOsconfigV1alpha {
   /// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
   final bool pullDeps;
+
   /// An rpm package.
   final OSPolicyResourceFileResponseOsconfigV1alpha source;
 
@@ -18,17 +19,17 @@ class OSPolicyResourcePackageResourceRPMResponseOsconfigV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pullDeps': pullDeps,
-      'source': source.toMap(),
-    };
+    return <String, dynamic>{'pullDeps': pullDeps, 'source': source.toMap()};
   }
 
-  factory OSPolicyResourcePackageResourceRPMResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceRPMResponseOsconfigV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourcePackageResourceRPMResponseOsconfigV1alpha(
       pullDeps: map['pullDeps'] as bool,
-      source: OSPolicyResourceFileResponseOsconfigV1alpha.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      source: OSPolicyResourceFileResponseOsconfigV1alpha.fromMap(
+        (map['source'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

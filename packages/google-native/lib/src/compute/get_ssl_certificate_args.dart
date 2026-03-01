@@ -13,11 +13,8 @@ class GetSslCertificateArgs {
   /// Creates a new [GetSslCertificateArgs].
   /// [project] Optional.
   /// [sslCertificate] Required.
-  GetSslCertificateArgs({
-    String? project,
-    required String sslCertificate,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetSslCertificateArgs({String? project, required String sslCertificate})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       sslCertificate = pulumi.Input.asInput<String>(sslCertificate);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetSslCertificateArgs {
     );
   }
 }
-

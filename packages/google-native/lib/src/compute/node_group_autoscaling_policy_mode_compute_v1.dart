@@ -14,7 +14,8 @@ enum NodeGroupAutoscalingPolicyModeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown NodeGroupAutoscalingPolicyModeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown NodeGroupAutoscalingPolicyModeComputeV1 value: $value',
+    );
   }
 }
-

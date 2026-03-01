@@ -165,16 +165,22 @@ import 'log_scope_args.dart';
 class LogScope extends pulumi.CustomResource {
   /// Output only. The creation timestamp of the log scopes.
   late final pulumi.Output<String> createTime;
+
   /// Describes this log scopes.
   late final pulumi.Output<String?> description;
+
   /// The location of the resource. The only supported location is global so far.
   late final pulumi.Output<String> location;
+
   /// The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
   late final pulumi.Output<String> name;
+
   /// The parent of the resource.
   late final pulumi.Output<String> parent;
+
   /// Names of one or more parent resources : *  \`projects/[PROJECT_ID]\` May alternatively be one or more views : * \`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
   late final pulumi.Output<List<String>> resourceNames;
+
   /// Output only. The last update timestamp of the log scopes.
   late final pulumi.Output<String> updateTime;
 
@@ -187,11 +193,11 @@ class LogScope extends pulumi.CustomResource {
     LogScopeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/logScope:LogScope',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:logging/logScope:LogScope',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
     this.location = registerOutput<String>('location');

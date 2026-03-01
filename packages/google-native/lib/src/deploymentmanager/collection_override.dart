@@ -7,8 +7,10 @@ import 'options.dart';
 class CollectionOverride {
   /// The collection that identifies this resource within its service.
   final String? collection;
+
   /// Custom verb method mappings to support unordered list API mappings.
   final MethodMap? methodMap;
+
   /// The options to apply to this resource-level override
   final Options? options;
 
@@ -16,11 +18,7 @@ class CollectionOverride {
   /// [collection] The collection that identifies this resource within its service.
   /// [methodMap] Custom verb method mappings to support unordered list API mappings.
   /// [options] The options to apply to this resource-level override
-  CollectionOverride({
-    this.collection,
-    this.methodMap,
-    this.options,
-  });
+  CollectionOverride({this.collection, this.methodMap, this.options});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,17 @@ class CollectionOverride {
 
   factory CollectionOverride.fromMap(Map<String, dynamic> map) {
     return CollectionOverride(
-      collection: map['collection'] == null ? null : map['collection'] as String,
-      methodMap: map['methodMap'] == null ? null : MethodMap.fromMap((map['methodMap'] as Map).cast<String, dynamic>()),
-      options: map['options'] == null ? null : Options.fromMap((map['options'] as Map).cast<String, dynamic>()),
+      collection: map['collection'] == null
+          ? null
+          : map['collection'] as String,
+      methodMap: map['methodMap'] == null
+          ? null
+          : MethodMap.fromMap(
+              (map['methodMap'] as Map).cast<String, dynamic>(),
+            ),
+      options: map['options'] == null
+          ? null
+          : Options.fromMap((map['options'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

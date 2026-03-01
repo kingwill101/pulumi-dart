@@ -13,18 +13,12 @@ class GetLicenseComputeBetaArgs {
   /// Creates a new [GetLicenseComputeBetaArgs].
   /// [license] Required.
   /// [project] Optional.
-  GetLicenseComputeBetaArgs({
-    required String license,
-    String? project,
-  }) :
-      license = pulumi.Input.asInput<String>(license),
+  GetLicenseComputeBetaArgs({required String license, String? project})
+    : license = pulumi.Input.asInput<String>(license),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'license': license,
-      'project': ?project,
-    };
+    return <String, dynamic>{'license': license, 'project': ?project};
   }
 
   factory GetLicenseComputeBetaArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetLicenseComputeBetaArgs {
     );
   }
 }
-

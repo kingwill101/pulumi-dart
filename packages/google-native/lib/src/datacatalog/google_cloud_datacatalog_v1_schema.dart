@@ -10,20 +10,29 @@ class GoogleCloudDatacatalogV1Schema {
 
   /// Creates a new [GoogleCloudDatacatalogV1Schema].
   /// [columns] The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.
-  GoogleCloudDatacatalogV1Schema({
-    this.columns,
-  });
+  GoogleCloudDatacatalogV1Schema({this.columns});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columns': ?columns == null ? null : pulumi.Input.encodeList<GoogleCloudDatacatalogV1ColumnSchema, Map<String, dynamic>>(columns!, (value) => value.toMap()),
+      'columns': ?columns == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudDatacatalogV1ColumnSchema,
+              Map<String, dynamic>
+            >(columns!, (value) => value.toMap()),
     };
   }
 
   factory GoogleCloudDatacatalogV1Schema.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDatacatalogV1Schema(
-      columns: map['columns'] == null ? null : pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(map['columns'], (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap((value as Map).cast<String, dynamic>())),
+      columns: map['columns'] == null
+          ? null
+          : pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchema>(
+              map['columns'],
+              (value) => GoogleCloudDatacatalogV1ColumnSchema.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

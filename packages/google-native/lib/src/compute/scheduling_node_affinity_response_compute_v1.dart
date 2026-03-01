@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
 class SchedulingNodeAffinityResponseComputeV1 {
   /// Corresponds to the label key of Node resource.
   final String key;
+
   /// Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
   final String operator;
+
   /// Corresponds to the label values of Node resource.
   final List<String> values;
 
@@ -28,7 +29,9 @@ class SchedulingNodeAffinityResponseComputeV1 {
     };
   }
 
-  factory SchedulingNodeAffinityResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory SchedulingNodeAffinityResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SchedulingNodeAffinityResponseComputeV1(
       key: map['key'] as String,
       operator: map['operator'] as String,
@@ -36,4 +39,3 @@ class SchedulingNodeAffinityResponseComputeV1 {
     );
   }
 }
-

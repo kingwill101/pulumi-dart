@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// iOS app information
 class IosAppInfoResponse {
   /// The name of the app. Required
@@ -8,20 +7,13 @@ class IosAppInfoResponse {
 
   /// Creates a new [IosAppInfoResponse].
   /// [name] The name of the app. Required
-  IosAppInfoResponse({
-    required this.name,
-  });
+  IosAppInfoResponse({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory IosAppInfoResponse.fromMap(Map<String, dynamic> map) {
-    return IosAppInfoResponse(
-      name: map['name'] as String,
-    );
+    return IosAppInfoResponse(name: map['name'] as String);
   }
 }
-

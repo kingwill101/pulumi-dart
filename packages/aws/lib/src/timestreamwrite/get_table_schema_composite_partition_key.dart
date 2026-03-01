@@ -1,10 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTableSchemaCompositePartitionKey {
   final String enforcementInRecord;
+
   /// Name of the Timestream table.
   final String name;
+
   /// Type of partition key.
   final String type;
 
@@ -26,7 +27,9 @@ class GetTableSchemaCompositePartitionKey {
     };
   }
 
-  factory GetTableSchemaCompositePartitionKey.fromMap(Map<String, dynamic> map) {
+  factory GetTableSchemaCompositePartitionKey.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTableSchemaCompositePartitionKey(
       enforcementInRecord: map['enforcementInRecord'] as String,
       name: map['name'] as String,
@@ -34,4 +37,3 @@ class GetTableSchemaCompositePartitionKey {
     );
   }
 }
-

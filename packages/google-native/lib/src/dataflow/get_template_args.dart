@@ -22,11 +22,10 @@ class GetTemplateArgs {
     required String location,
     String? project,
     String? view,
-  }) :
-      gcsPath = pulumi.Input.asInput<String>(gcsPath),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : gcsPath = pulumi.Input.asInput<String>(gcsPath),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetTemplateArgs {
     );
   }
 }
-

@@ -12,7 +12,8 @@ enum FirewallPolicyRuleDirectionComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallPolicyRuleDirectionComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown FirewallPolicyRuleDirectionComputeV1 value: $value',
+    );
   }
 }
-

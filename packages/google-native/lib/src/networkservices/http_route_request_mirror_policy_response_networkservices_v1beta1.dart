@@ -14,15 +14,16 @@ class HttpRouteRequestMirrorPolicyResponseNetworkservicesV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destination': destination.toMap(),
-    };
+    return <String, dynamic>{'destination': destination.toMap()};
   }
 
-  factory HttpRouteRequestMirrorPolicyResponseNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory HttpRouteRequestMirrorPolicyResponseNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HttpRouteRequestMirrorPolicyResponseNetworkservicesV1beta1(
-      destination: HttpRouteDestinationResponseNetworkservicesV1beta1.fromMap((map['destination'] as Map).cast<String, dynamic>()),
+      destination: HttpRouteDestinationResponseNetworkservicesV1beta1.fromMap(
+        (map['destination'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

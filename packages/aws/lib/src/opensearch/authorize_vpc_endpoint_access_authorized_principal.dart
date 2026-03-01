@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AuthorizeVpcEndpointAccessAuthorizedPrincipal {
   /// IAM principal that is allowed to access to the domain.
   final String principal;
+
   /// Type of principal.
   final String principalType;
 
@@ -22,11 +22,12 @@ class AuthorizeVpcEndpointAccessAuthorizedPrincipal {
     };
   }
 
-  factory AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap(Map<String, dynamic> map) {
+  factory AuthorizeVpcEndpointAccessAuthorizedPrincipal.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthorizeVpcEndpointAccessAuthorizedPrincipal(
       principal: map['principal'] as String,
       principalType: map['principalType'] as String,
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetSecuritySettingArgs {
     required String location,
     String? project,
     required String securitySettingId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      securitySettingId = pulumi.Input.asInput<String>(securitySettingId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       securitySettingId = pulumi.Input.asInput<String>(securitySettingId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetSecuritySettingArgs {
     );
   }
 }
-

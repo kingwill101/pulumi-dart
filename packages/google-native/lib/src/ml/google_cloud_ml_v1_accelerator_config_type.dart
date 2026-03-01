@@ -22,7 +22,8 @@ enum GoogleCloudMlV1AcceleratorConfigType {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1AcceleratorConfigType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1AcceleratorConfigType value: $value',
+    );
   }
 }
-

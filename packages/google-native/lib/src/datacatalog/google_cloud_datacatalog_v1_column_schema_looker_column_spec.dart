@@ -9,20 +9,21 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec].
   /// [type] Looker specific column type of this column.
-  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec({
-    this.type,
-  });
+  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type == null ? null : type!.value,
-    };
+    return <String, dynamic>{'type': ?type == null ? null : type!.value};
   }
 
-  factory GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec(
-      type: map['type'] == null ? null : GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType.fromValue(
+              map['type'] as String,
+            ),
     );
   }
 }
-

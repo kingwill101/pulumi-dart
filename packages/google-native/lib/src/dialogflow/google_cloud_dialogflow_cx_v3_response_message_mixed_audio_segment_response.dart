@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents one segment of audio.
 class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentResponse {
   /// Whether the playback of this segment can be interrupted by the end user's speech and the client should then start the next Dialogflow request.
   final bool allowPlaybackInterruption;
+
   /// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
   final String audio;
+
   /// Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
   final String uri;
 
@@ -28,7 +29,9 @@ class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentResponse(
       allowPlaybackInterruption: map['allowPlaybackInterruption'] as bool,
       audio: map['audio'] as String,
@@ -36,4 +39,3 @@ class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegmentResponse {
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
 class IntComparisonFilterResponse {
   /// Integer compare value to be used
   final String value;
+
   /// Relation between source value and compare value
   final String valueComparison;
 
@@ -30,4 +30,3 @@ class IntComparisonFilterResponse {
     );
   }
 }
-

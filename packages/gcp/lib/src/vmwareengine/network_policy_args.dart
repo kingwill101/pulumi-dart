@@ -11,26 +11,33 @@ import 'network_policy_internet_access.dart';
 class NetworkPolicyArgs {
   /// User-provided description for this network policy.
   final pulumi.Input<String>? description;
+
   /// IP address range in CIDR notation used to create internet access and external IP access.
   /// An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any
   /// prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
   final pulumi.Input<String> edgeServicesCidr;
+
   /// Network service that allows External IP addresses to be assigned to VMware workloads.
   /// This service can only be enabled when internetAccess is also enabled.
   /// Structure is documented below.
   final pulumi.Input<NetworkPolicyExternalIp>? externalIp;
+
   /// Network service that allows VMware workloads to access the internet.
   /// Structure is documented below.
   final pulumi.Input<NetworkPolicyInternetAccess>? internetAccess;
+
   /// The resource name of the location (region) to create the new network policy in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-central1
   final pulumi.Input<String> location;
+
   /// The ID of the Network Policy.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The relative resource name of the VMware Engine network. Specify the name in the following form:
   /// projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
   /// can either be a project number or a project ID.
@@ -54,22 +61,32 @@ class NetworkPolicyArgs {
     String? name,
     String? project,
     required String vmwareEngineNetwork,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      edgeServicesCidr = pulumi.Input.asInput<String>(edgeServicesCidr),
-      externalIp = pulumi.Input.asOptionalInput<NetworkPolicyExternalIp>(externalIp),
-      internetAccess = pulumi.Input.asOptionalInput<NetworkPolicyInternetAccess>(internetAccess),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      vmwareEngineNetwork = pulumi.Input.asInput<String>(vmwareEngineNetwork);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       edgeServicesCidr = pulumi.Input.asInput<String>(edgeServicesCidr),
+       externalIp = pulumi.Input.asOptionalInput<NetworkPolicyExternalIp>(
+         externalIp,
+       ),
+       internetAccess = pulumi
+           .Input.asOptionalInput<NetworkPolicyInternetAccess>(internetAccess),
+       location = pulumi.Input.asInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       vmwareEngineNetwork = pulumi.Input.asInput<String>(vmwareEngineNetwork);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
       'edgeServicesCidr': edgeServicesCidr,
-      'externalIp': ?pulumi.Input.mapOptionalInputValue<NetworkPolicyExternalIp, Map<String, dynamic>>(externalIp, (value) => value.toMap()),
-      'internetAccess': ?pulumi.Input.mapOptionalInputValue<NetworkPolicyInternetAccess, Map<String, dynamic>>(internetAccess, (value) => value.toMap()),
+      'externalIp':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkPolicyExternalIp,
+            Map<String, dynamic>
+          >(externalIp, (value) => value.toMap()),
+      'internetAccess':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkPolicyInternetAccess,
+            Map<String, dynamic>
+          >(internetAccess, (value) => value.toMap()),
       'location': location,
       'name': ?name,
       'project': ?project,
@@ -79,10 +96,20 @@ class NetworkPolicyArgs {
 
   factory NetworkPolicyArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPolicyArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       edgeServicesCidr: map['edgeServicesCidr'] as String,
-      externalIp: map['externalIp'] == null ? null : NetworkPolicyExternalIp.fromMap((map['externalIp'] as Map).cast<String, dynamic>()),
-      internetAccess: map['internetAccess'] == null ? null : NetworkPolicyInternetAccess.fromMap((map['internetAccess'] as Map).cast<String, dynamic>()),
+      externalIp: map['externalIp'] == null
+          ? null
+          : NetworkPolicyExternalIp.fromMap(
+              (map['externalIp'] as Map).cast<String, dynamic>(),
+            ),
+      internetAccess: map['internetAccess'] == null
+          ? null
+          : NetworkPolicyInternetAccess.fromMap(
+              (map['internetAccess'] as Map).cast<String, dynamic>(),
+            ),
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -90,4 +117,3 @@ class NetworkPolicyArgs {
     );
   }
 }
-

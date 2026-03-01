@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// CIDR block with an optional name.
 class CidrBlockResponseComposerV1beta1 {
   /// CIDR block that must be specified in CIDR notation.
   final String cidrBlock;
+
   /// User-defined name that identifies the CIDR block.
   final String displayName;
 
@@ -30,4 +30,3 @@ class CidrBlockResponseComposerV1beta1 {
     );
   }
 }
-

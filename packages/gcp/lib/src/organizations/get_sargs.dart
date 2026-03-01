@@ -12,15 +12,11 @@ class GetSArgs {
 
   /// Creates a new [GetSArgs].
   /// [filter] An optional query string used to filter the Organizations to return in the response. Filter rules are case-insensitive. Further information can be found in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v1/organizations/search#request-body).
-  GetSArgs({
-    String? filter,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter);
+  GetSArgs({String? filter})
+    : filter = pulumi.Input.asOptionalInput<String>(filter);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': ?filter,
-    };
+    return <String, dynamic>{'filter': ?filter};
   }
 
   factory GetSArgs.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class GetSArgs {
     );
   }
 }
-

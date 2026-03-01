@@ -11,14 +11,20 @@ import 'google_cloud_apigee_v1_monetization_config_response.dart';
 class GoogleCloudApigeeV1AddonsConfigResponse {
   /// Configuration for the Advanced API Ops add-on.
   final GoogleCloudApigeeV1AdvancedApiOpsConfigResponse advancedApiOpsConfig;
+
   /// Configuration for the Analytics add-on.
   final GoogleCloudApigeeV1AnalyticsConfigResponse analyticsConfig;
+
   /// Configuration for the API Security add-on.
   final GoogleCloudApigeeV1ApiSecurityConfigResponse apiSecurityConfig;
+
   /// Configuration for the Connectors Platform add-on.
-  final GoogleCloudApigeeV1ConnectorsPlatformConfigResponse connectorsPlatformConfig;
+  final GoogleCloudApigeeV1ConnectorsPlatformConfigResponse
+  connectorsPlatformConfig;
+
   /// Configuration for the Integration add-on.
   final GoogleCloudApigeeV1IntegrationConfigResponse integrationConfig;
+
   /// Configuration for the Monetization add-on.
   final GoogleCloudApigeeV1MonetizationConfigResponse monetizationConfig;
 
@@ -49,15 +55,30 @@ class GoogleCloudApigeeV1AddonsConfigResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1AddonsConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1AddonsConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1AddonsConfigResponse(
-      advancedApiOpsConfig: GoogleCloudApigeeV1AdvancedApiOpsConfigResponse.fromMap((map['advancedApiOpsConfig'] as Map).cast<String, dynamic>()),
-      analyticsConfig: GoogleCloudApigeeV1AnalyticsConfigResponse.fromMap((map['analyticsConfig'] as Map).cast<String, dynamic>()),
-      apiSecurityConfig: GoogleCloudApigeeV1ApiSecurityConfigResponse.fromMap((map['apiSecurityConfig'] as Map).cast<String, dynamic>()),
-      connectorsPlatformConfig: GoogleCloudApigeeV1ConnectorsPlatformConfigResponse.fromMap((map['connectorsPlatformConfig'] as Map).cast<String, dynamic>()),
-      integrationConfig: GoogleCloudApigeeV1IntegrationConfigResponse.fromMap((map['integrationConfig'] as Map).cast<String, dynamic>()),
-      monetizationConfig: GoogleCloudApigeeV1MonetizationConfigResponse.fromMap((map['monetizationConfig'] as Map).cast<String, dynamic>()),
+      advancedApiOpsConfig:
+          GoogleCloudApigeeV1AdvancedApiOpsConfigResponse.fromMap(
+            (map['advancedApiOpsConfig'] as Map).cast<String, dynamic>(),
+          ),
+      analyticsConfig: GoogleCloudApigeeV1AnalyticsConfigResponse.fromMap(
+        (map['analyticsConfig'] as Map).cast<String, dynamic>(),
+      ),
+      apiSecurityConfig: GoogleCloudApigeeV1ApiSecurityConfigResponse.fromMap(
+        (map['apiSecurityConfig'] as Map).cast<String, dynamic>(),
+      ),
+      connectorsPlatformConfig:
+          GoogleCloudApigeeV1ConnectorsPlatformConfigResponse.fromMap(
+            (map['connectorsPlatformConfig'] as Map).cast<String, dynamic>(),
+          ),
+      integrationConfig: GoogleCloudApigeeV1IntegrationConfigResponse.fromMap(
+        (map['integrationConfig'] as Map).cast<String, dynamic>(),
+      ),
+      monetizationConfig: GoogleCloudApigeeV1MonetizationConfigResponse.fromMap(
+        (map['monetizationConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

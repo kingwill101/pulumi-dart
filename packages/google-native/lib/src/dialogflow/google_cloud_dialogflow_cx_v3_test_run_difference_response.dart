@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The description of differences between original and replayed agent output.
 class GoogleCloudDialogflowCxV3TestRunDifferenceResponse {
   /// A human readable description of the diff, showing the actual output vs expected output.
   final String description;
+
   /// The type of diff.
   final String type;
 
@@ -17,17 +17,15 @@ class GoogleCloudDialogflowCxV3TestRunDifferenceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'description': description,
-      'type': type,
-    };
+    return <String, dynamic>{'description': description, 'type': type};
   }
 
-  factory GoogleCloudDialogflowCxV3TestRunDifferenceResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3TestRunDifferenceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3TestRunDifferenceResponse(
       description: map['description'] as String,
       type: map['type'] as String,
     );
   }
 }
-

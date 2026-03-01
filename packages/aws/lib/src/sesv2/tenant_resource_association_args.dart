@@ -9,10 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TenantResourceAssociationArgs {
   /// AWS region for SESv2 operations. If not specified, the default provider region is used.
   final pulumi.Input<String>? region;
+
   /// ARN of the SES resource to associate with the tenant.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> resourceArn;
+
   /// Name of SES Tenant.
   final pulumi.Input<String> tenantName;
 
@@ -24,10 +26,9 @@ class TenantResourceAssociationArgs {
     String? region,
     required String resourceArn,
     required String tenantName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resourceArn = pulumi.Input.asInput<String>(resourceArn),
-      tenantName = pulumi.Input.asInput<String>(tenantName);
+  }) : region = pulumi.Input.asOptionalInput<String>(region),
+       resourceArn = pulumi.Input.asInput<String>(resourceArn),
+       tenantName = pulumi.Input.asInput<String>(tenantName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,4 +46,3 @@ class TenantResourceAssociationArgs {
     );
   }
 }
-

@@ -9,20 +9,27 @@ import 'get_managed_rule_group_rule.dart';
 class GetManagedRuleGroupResult {
   /// Labels that one or more rules in this rule group add to matching web requests. See Labels below for details.
   final List<GetManagedRuleGroupAvailableLabel> availableLabels;
+
   /// WCUs required for this rule group.
   final int capacity;
+
   /// Labels that one or more rules in this rule group match against in label match statements. See Labels below for details.
   final List<GetManagedRuleGroupConsumedLabel> consumedLabels;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Label namespace prefix for this rule group. All labels added by rules in this rule group have this prefix.
   final String labelNamespace;
+
   /// Name of the rule.
   final String name;
   final String region;
+
   /// High-level information about the rules. See Rules below for details.
   final List<GetManagedRuleGroupRule> rules;
   final String scope;
+
   /// ARN of the SNS topic that's used to provide notification of changes to the managed rule group.
   final String snsTopicArn;
   final String vendorName;
@@ -58,14 +65,26 @@ class GetManagedRuleGroupResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'availableLabels': pulumi.Input.encodeList<GetManagedRuleGroupAvailableLabel, Map<String, dynamic>>(availableLabels, (value) => value.toMap()),
+      'availableLabels':
+          pulumi.Input.encodeList<
+            GetManagedRuleGroupAvailableLabel,
+            Map<String, dynamic>
+          >(availableLabels, (value) => value.toMap()),
       'capacity': capacity,
-      'consumedLabels': pulumi.Input.encodeList<GetManagedRuleGroupConsumedLabel, Map<String, dynamic>>(consumedLabels, (value) => value.toMap()),
+      'consumedLabels':
+          pulumi.Input.encodeList<
+            GetManagedRuleGroupConsumedLabel,
+            Map<String, dynamic>
+          >(consumedLabels, (value) => value.toMap()),
       'id': id,
       'labelNamespace': labelNamespace,
       'name': name,
       'region': region,
-      'rules': pulumi.Input.encodeList<GetManagedRuleGroupRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<
+            GetManagedRuleGroupRule,
+            Map<String, dynamic>
+          >(rules, (value) => value.toMap()),
       'scope': scope,
       'snsTopicArn': snsTopicArn,
       'vendorName': vendorName,
@@ -75,19 +94,36 @@ class GetManagedRuleGroupResult {
 
   factory GetManagedRuleGroupResult.fromMap(Map<String, dynamic> map) {
     return GetManagedRuleGroupResult(
-      availableLabels: pulumi.Input.decodeList<GetManagedRuleGroupAvailableLabel>(map['availableLabels'], (value) => GetManagedRuleGroupAvailableLabel.fromMap((value as Map).cast<String, dynamic>())),
+      availableLabels:
+          pulumi.Input.decodeList<GetManagedRuleGroupAvailableLabel>(
+            map['availableLabels'],
+            (value) => GetManagedRuleGroupAvailableLabel.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       capacity: map['capacity'] as int,
-      consumedLabels: pulumi.Input.decodeList<GetManagedRuleGroupConsumedLabel>(map['consumedLabels'], (value) => GetManagedRuleGroupConsumedLabel.fromMap((value as Map).cast<String, dynamic>())),
+      consumedLabels: pulumi.Input.decodeList<GetManagedRuleGroupConsumedLabel>(
+        map['consumedLabels'],
+        (value) => GetManagedRuleGroupConsumedLabel.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       labelNamespace: map['labelNamespace'] as String,
       name: map['name'] as String,
       region: map['region'] as String,
-      rules: pulumi.Input.decodeList<GetManagedRuleGroupRule>(map['rules'], (value) => GetManagedRuleGroupRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetManagedRuleGroupRule>(
+        map['rules'],
+        (value) => GetManagedRuleGroupRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       scope: map['scope'] as String,
       snsTopicArn: map['snsTopicArn'] as String,
       vendorName: map['vendorName'] as String,
-      versionName: map['versionName'] == null ? null : map['versionName'] as String,
+      versionName: map['versionName'] == null
+          ? null
+          : map['versionName'] as String,
     );
   }
 }
-

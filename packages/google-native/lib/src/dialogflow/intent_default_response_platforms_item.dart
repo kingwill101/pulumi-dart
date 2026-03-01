@@ -19,7 +19,8 @@ enum IntentDefaultResponsePlatformsItem {
         return item;
       }
     }
-    throw ArgumentError('Unknown IntentDefaultResponsePlatformsItem value: $value');
+    throw ArgumentError(
+      'Unknown IntentDefaultResponsePlatformsItem value: $value',
+    );
   }
 }
-

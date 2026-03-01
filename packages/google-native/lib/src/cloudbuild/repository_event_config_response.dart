@@ -7,10 +7,13 @@ import 'push_filter_response.dart';
 class RepositoryEventConfigResponse {
   /// Filter to match changes in pull requests.
   final PullRequestFilterResponse pullRequest;
+
   /// Filter to match changes in refs like branches, tags.
   final PushFilterResponse push;
+
   /// The resource name of the Repo API resource.
   final String repository;
+
   /// The type of the SCM vendor the repository points to.
   final String repositoryType;
 
@@ -37,11 +40,14 @@ class RepositoryEventConfigResponse {
 
   factory RepositoryEventConfigResponse.fromMap(Map<String, dynamic> map) {
     return RepositoryEventConfigResponse(
-      pullRequest: PullRequestFilterResponse.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: PushFilterResponse.fromMap((map['push'] as Map).cast<String, dynamic>()),
+      pullRequest: PullRequestFilterResponse.fromMap(
+        (map['pullRequest'] as Map).cast<String, dynamic>(),
+      ),
+      push: PushFilterResponse.fromMap(
+        (map['push'] as Map).cast<String, dynamic>(),
+      ),
       repository: map['repository'] as String,
       repositoryType: map['repositoryType'] as String,
     );
   }
 }
-

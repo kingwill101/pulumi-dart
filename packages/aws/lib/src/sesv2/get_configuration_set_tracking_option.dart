@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetConfigurationSetTrackingOption {
   /// The domain to use for tracking open and click events.
   final String customRedirectDomain;
+
   /// The https policy to use for tracking open and click events. Valid values are `REQUIRE`, `REQUIRE_OPEN_ONLY` or `OPTIONAL`.
   final String httpsPolicy;
 
@@ -29,4 +29,3 @@ class GetConfigurationSetTrackingOption {
     );
   }
 }
-

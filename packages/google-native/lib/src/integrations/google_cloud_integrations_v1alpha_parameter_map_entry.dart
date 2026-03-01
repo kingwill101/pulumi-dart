@@ -6,16 +6,14 @@ import 'google_cloud_integrations_v1alpha_parameter_map_field.dart';
 class GoogleCloudIntegrationsV1alphaParameterMapEntry {
   /// Key of the map entry.
   final GoogleCloudIntegrationsV1alphaParameterMapField? key;
+
   /// Value of the map entry.
   final GoogleCloudIntegrationsV1alphaParameterMapField? value;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaParameterMapEntry].
   /// [key] Key of the map entry.
   /// [value] Value of the map entry.
-  GoogleCloudIntegrationsV1alphaParameterMapEntry({
-    this.key,
-    this.value,
-  });
+  GoogleCloudIntegrationsV1alphaParameterMapEntry({this.key, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,20 @@ class GoogleCloudIntegrationsV1alphaParameterMapEntry {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaParameterMapEntry.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaParameterMapEntry.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaParameterMapEntry(
-      key: map['key'] == null ? null : GoogleCloudIntegrationsV1alphaParameterMapField.fromMap((map['key'] as Map).cast<String, dynamic>()),
-      value: map['value'] == null ? null : GoogleCloudIntegrationsV1alphaParameterMapField.fromMap((map['value'] as Map).cast<String, dynamic>()),
+      key: map['key'] == null
+          ? null
+          : GoogleCloudIntegrationsV1alphaParameterMapField.fromMap(
+              (map['key'] as Map).cast<String, dynamic>(),
+            ),
+      value: map['value'] == null
+          ? null
+          : GoogleCloudIntegrationsV1alphaParameterMapField.fromMap(
+              (map['value'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

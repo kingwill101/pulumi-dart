@@ -14,7 +14,8 @@ enum NodeGroupMaintenancePolicyComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown NodeGroupMaintenancePolicyComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown NodeGroupMaintenancePolicyComputeBeta value: $value',
+    );
   }
 }
-

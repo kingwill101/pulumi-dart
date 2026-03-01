@@ -7,29 +7,40 @@ import 'method_selector.dart';
 class ApiOperation {
   /// API methods or permissions to allow. Method or permission must belong to the service specified by `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `service_name`.
   final List<MethodSelector>? methodSelectors;
+
   /// The name of the API whose methods or permissions the IngressPolicy or EgressPolicy want to allow. A single ApiOperation with `service_name` field set to `*` will allow all methods AND permissions for all services.
   final String? serviceName;
 
   /// Creates a new [ApiOperation].
   /// [methodSelectors] API methods or permissions to allow. Method or permission must belong to the service specified by `service_name` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `service_name`.
   /// [serviceName] The name of the API whose methods or permissions the IngressPolicy or EgressPolicy want to allow. A single ApiOperation with `service_name` field set to `*` will allow all methods AND permissions for all services.
-  ApiOperation({
-    this.methodSelectors,
-    this.serviceName,
-  });
+  ApiOperation({this.methodSelectors, this.serviceName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'methodSelectors': ?methodSelectors == null ? null : pulumi.Input.encodeList<MethodSelector, Map<String, dynamic>>(methodSelectors!, (value) => value.toMap()),
+      'methodSelectors': ?methodSelectors == null
+          ? null
+          : pulumi.Input.encodeList<MethodSelector, Map<String, dynamic>>(
+              methodSelectors!,
+              (value) => value.toMap(),
+            ),
       'serviceName': ?serviceName,
     };
   }
 
   factory ApiOperation.fromMap(Map<String, dynamic> map) {
     return ApiOperation(
-      methodSelectors: map['methodSelectors'] == null ? null : pulumi.Input.decodeList<MethodSelector>(map['methodSelectors'], (value) => MethodSelector.fromMap((value as Map).cast<String, dynamic>())),
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
+      methodSelectors: map['methodSelectors'] == null
+          ? null
+          : pulumi.Input.decodeList<MethodSelector>(
+              map['methodSelectors'],
+              (value) => MethodSelector.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      serviceName: map['serviceName'] == null
+          ? null
+          : map['serviceName'] as String,
     );
   }
 }
-

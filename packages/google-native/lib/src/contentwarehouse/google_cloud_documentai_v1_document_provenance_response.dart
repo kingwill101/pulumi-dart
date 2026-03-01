@@ -7,8 +7,10 @@ import 'google_cloud_documentai_v1_document_provenance_parent_response.dart';
 class GoogleCloudDocumentaiV1DocumentProvenanceResponse {
   /// References to the original elements that are replaced.
   final List<GoogleCloudDocumentaiV1DocumentProvenanceParentResponse> parents;
+
   /// The index of the revision that produced this element.
   final int revision;
+
   /// The type of provenance operation.
   final String type;
 
@@ -24,18 +26,32 @@ class GoogleCloudDocumentaiV1DocumentProvenanceResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parents': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentProvenanceParentResponse, Map<String, dynamic>>(parents, (value) => value.toMap()),
+      'parents':
+          pulumi.Input.encodeList<
+            GoogleCloudDocumentaiV1DocumentProvenanceParentResponse,
+            Map<String, dynamic>
+          >(parents, (value) => value.toMap()),
       'revision': revision,
       'type': type,
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentProvenanceResponse(
-      parents: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentProvenanceParentResponse>(map['parents'], (value) => GoogleCloudDocumentaiV1DocumentProvenanceParentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      parents:
+          pulumi.Input.decodeList<
+            GoogleCloudDocumentaiV1DocumentProvenanceParentResponse
+          >(
+            map['parents'],
+            (value) =>
+                GoogleCloudDocumentaiV1DocumentProvenanceParentResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       revision: map['revision'] as int,
       type: map['type'] as String,
     );
   }
 }
-

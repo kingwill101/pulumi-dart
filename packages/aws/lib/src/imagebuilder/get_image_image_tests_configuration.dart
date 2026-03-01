@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetImageImageTestsConfiguration {
   /// Whether image tests are enabled.
   final bool imageTestsEnabled;
+
   /// Number of minutes before image tests time out.
   final int timeoutMinutes;
 
@@ -29,4 +29,3 @@ class GetImageImageTestsConfiguration {
     );
   }
 }
-

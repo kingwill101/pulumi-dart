@@ -13,7 +13,8 @@ enum GoogleCloudRunV2VpcAccessEgress {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudRunV2VpcAccessEgress value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudRunV2VpcAccessEgress value: $value',
+    );
   }
 }
-

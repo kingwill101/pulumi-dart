@@ -10,12 +10,15 @@ import 'get_user_alternate_identifier.dart';
 class GetUserArgs {
   /// A unique identifier for a user or group that is not the primary identifier. Conflicts with `user_id` and `filter`. Detailed below.
   final pulumi.Input<GetUserAlternateIdentifier>? alternateIdentifier;
+
   /// Identity Store ID associated with the Single Sign-On Instance.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> identityStoreId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The identifier for a user in the Identity Store.
   ///
   /// > Exactly one of the above arguments must be provided. Passing both `filter` and `user_id` is allowed for backwards compatibility.
@@ -31,15 +34,21 @@ class GetUserArgs {
     required String identityStoreId,
     String? region,
     String? userId,
-  }) :
-      alternateIdentifier = pulumi.Input.asOptionalInput<GetUserAlternateIdentifier>(alternateIdentifier),
-      identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      userId = pulumi.Input.asOptionalInput<String>(userId);
+  }) : alternateIdentifier =
+           pulumi.Input.asOptionalInput<GetUserAlternateIdentifier>(
+             alternateIdentifier,
+           ),
+       identityStoreId = pulumi.Input.asInput<String>(identityStoreId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       userId = pulumi.Input.asOptionalInput<String>(userId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alternateIdentifier': ?pulumi.Input.mapOptionalInputValue<GetUserAlternateIdentifier, Map<String, dynamic>>(alternateIdentifier, (value) => value.toMap()),
+      'alternateIdentifier':
+          ?pulumi.Input.mapOptionalInputValue<
+            GetUserAlternateIdentifier,
+            Map<String, dynamic>
+          >(alternateIdentifier, (value) => value.toMap()),
       'identityStoreId': identityStoreId,
       'region': ?region,
       'userId': ?userId,
@@ -48,11 +57,14 @@ class GetUserArgs {
 
   factory GetUserArgs.fromMap(Map<String, dynamic> map) {
     return GetUserArgs(
-      alternateIdentifier: map['alternateIdentifier'] == null ? null : GetUserAlternateIdentifier.fromMap((map['alternateIdentifier'] as Map).cast<String, dynamic>()),
+      alternateIdentifier: map['alternateIdentifier'] == null
+          ? null
+          : GetUserAlternateIdentifier.fromMap(
+              (map['alternateIdentifier'] as Map).cast<String, dynamic>(),
+            ),
       identityStoreId: map['identityStoreId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       userId: map['userId'] == null ? null : map['userId'] as String,
     );
   }
 }
-

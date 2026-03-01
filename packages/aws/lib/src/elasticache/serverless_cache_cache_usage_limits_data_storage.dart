@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServerlessCacheCacheUsageLimitsDataStorage {
   /// The upper limit for data storage the cache is set to use. Must be between 1 and 5,000.
   final int? maximum;
+
   /// The lower limit for data storage the cache is set to use. Must be between 1 and 5,000.
   final int? minimum;
+
   /// The unit that the storage is measured in, in GB.
   final String unit;
 
@@ -27,7 +28,9 @@ class ServerlessCacheCacheUsageLimitsDataStorage {
     };
   }
 
-  factory ServerlessCacheCacheUsageLimitsDataStorage.fromMap(Map<String, dynamic> map) {
+  factory ServerlessCacheCacheUsageLimitsDataStorage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServerlessCacheCacheUsageLimitsDataStorage(
       maximum: map['maximum'] == null ? null : map['maximum'] as int,
       minimum: map['minimum'] == null ? null : map['minimum'] as int,
@@ -35,4 +38,3 @@ class ServerlessCacheCacheUsageLimitsDataStorage {
     );
   }
 }
-

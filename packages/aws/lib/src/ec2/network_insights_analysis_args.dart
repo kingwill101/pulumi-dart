@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkInsightsAnalysisArgs {
   /// A list of ARNs for resources the path must traverse.
   final pulumi.Input<List<String>>? filterInArns;
+
   /// ID of the Network Insights Path to run an analysis on.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> networkInsightsPathId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// If enabled, the resource will wait for the Network Insights Analysis status to change to `succeeded` or `failed`. Setting this to `false` will skip the process. Default: `true`.
   final pulumi.Input<bool>? waitForCompletion;
 
@@ -32,12 +36,15 @@ class NetworkInsightsAnalysisArgs {
     String? region,
     Map<String, String>? tags,
     bool? waitForCompletion,
-  }) :
-      filterInArns = pulumi.Input.asOptionalInput<List<String>>(filterInArns),
-      networkInsightsPathId = pulumi.Input.asInput<String>(networkInsightsPathId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      waitForCompletion = pulumi.Input.asOptionalInput<bool>(waitForCompletion);
+  }) : filterInArns = pulumi.Input.asOptionalInput<List<String>>(filterInArns),
+       networkInsightsPathId = pulumi.Input.asInput<String>(
+         networkInsightsPathId,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       waitForCompletion = pulumi.Input.asOptionalInput<bool>(
+         waitForCompletion,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -51,12 +58,17 @@ class NetworkInsightsAnalysisArgs {
 
   factory NetworkInsightsAnalysisArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInsightsAnalysisArgs(
-      filterInArns: map['filterInArns'] == null ? null : (map['filterInArns'] as List).cast<String>(),
+      filterInArns: map['filterInArns'] == null
+          ? null
+          : (map['filterInArns'] as List).cast<String>(),
       networkInsightsPathId: map['networkInsightsPathId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      waitForCompletion: map['waitForCompletion'] == null ? null : map['waitForCompletion'] as bool,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+      waitForCompletion: map['waitForCompletion'] == null
+          ? null
+          : map['waitForCompletion'] as bool,
     );
   }
 }
-

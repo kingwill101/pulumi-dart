@@ -25,12 +25,11 @@ class GetFeatureStoreFeatureAiplatformV1beta1Args {
     required String featurestoreId,
     required String location,
     String? project,
-  }) :
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      featureId = pulumi.Input.asInput<String>(featureId),
-      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+       featureId = pulumi.Input.asInput<String>(featureId),
+       featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +41,9 @@ class GetFeatureStoreFeatureAiplatformV1beta1Args {
     };
   }
 
-  factory GetFeatureStoreFeatureAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetFeatureStoreFeatureAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFeatureStoreFeatureAiplatformV1beta1Args(
       entityTypeId: map['entityTypeId'] as String,
       featureId: map['featureId'] as String,
@@ -52,4 +53,3 @@ class GetFeatureStoreFeatureAiplatformV1beta1Args {
     );
   }
 }
-

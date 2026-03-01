@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ReplicationInstanceKerberosAuthenticationSettings {
   /// ARN of the IAM role that grants AWS DMS access to the secret containing key cache file for the Kerberos authentication.
   final String keyCacheSecretIamArn;
+
   /// Secret ID that stores the key cache file required for Kerberos authentication.
   final String keyCacheSecretId;
+
   /// Contents of krb5 configuration file required for Kerberos authentication.
   final String krb5FileContents;
 
@@ -27,7 +28,9 @@ class ReplicationInstanceKerberosAuthenticationSettings {
     };
   }
 
-  factory ReplicationInstanceKerberosAuthenticationSettings.fromMap(Map<String, dynamic> map) {
+  factory ReplicationInstanceKerberosAuthenticationSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicationInstanceKerberosAuthenticationSettings(
       keyCacheSecretIamArn: map['keyCacheSecretIamArn'] as String,
       keyCacheSecretId: map['keyCacheSecretId'] as String,
@@ -35,4 +38,3 @@ class ReplicationInstanceKerberosAuthenticationSettings {
     );
   }
 }
-

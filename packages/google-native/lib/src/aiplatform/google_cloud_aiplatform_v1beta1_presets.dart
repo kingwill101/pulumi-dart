@@ -7,16 +7,14 @@ import 'google_cloud_aiplatform_v1beta1_presets_query.dart';
 class GoogleCloudAiplatformV1beta1Presets {
   /// The modality of the uploaded model, which automatically configures the distance measurement and feature normalization for the underlying example index and queries. If your model does not precisely fit one of these types, it is okay to choose the closest type.
   final GoogleCloudAiplatformV1beta1PresetsModality? modality;
+
   /// Preset option controlling parameters for speed-precision trade-off when querying for examples. If omitted, defaults to `PRECISE`.
   final GoogleCloudAiplatformV1beta1PresetsQuery? query;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1Presets].
   /// [modality] The modality of the uploaded model, which automatically configures the distance measurement and feature normalization for the underlying example index and queries. If your model does not precisely fit one of these types, it is okay to choose the closest type.
   /// [query] Preset option controlling parameters for speed-precision trade-off when querying for examples. If omitted, defaults to `PRECISE`.
-  GoogleCloudAiplatformV1beta1Presets({
-    this.modality,
-    this.query,
-  });
+  GoogleCloudAiplatformV1beta1Presets({this.modality, this.query});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,11 +23,20 @@ class GoogleCloudAiplatformV1beta1Presets {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1Presets.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1Presets.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1Presets(
-      modality: map['modality'] == null ? null : GoogleCloudAiplatformV1beta1PresetsModality.fromValue(map['modality'] as String),
-      query: map['query'] == null ? null : GoogleCloudAiplatformV1beta1PresetsQuery.fromValue(map['query'] as String),
+      modality: map['modality'] == null
+          ? null
+          : GoogleCloudAiplatformV1beta1PresetsModality.fromValue(
+              map['modality'] as String,
+            ),
+      query: map['query'] == null
+          ? null
+          : GoogleCloudAiplatformV1beta1PresetsQuery.fromValue(
+              map['query'] as String,
+            ),
     );
   }
 }
-

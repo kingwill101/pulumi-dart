@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterCacheNode {
   final String address;
+
   /// Availability Zone for the cache cluster.
   final String availabilityZone;
   final String id;
   final String outpostArn;
+
   /// The port number on which each of the cache nodes will
   /// accept connections.
   final int port;
@@ -45,4 +46,3 @@ class GetClusterCacheNode {
     );
   }
 }
-

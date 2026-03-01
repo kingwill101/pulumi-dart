@@ -5,9 +5,11 @@ import 'environment_entry_args.dart';
 class EnvironmentEntry extends pulumi.CustomResource {
   late final pulumi.Output<String> environmentId;
   late final pulumi.Output<String> keyvaluemapId;
+
   /// Resource URI that can be used to identify the scope of the key value map entries.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
+
   /// Data or payload that is being retrieved and associated with the unique key.
   late final pulumi.Output<String> value;
 
@@ -20,11 +22,11 @@ class EnvironmentEntry extends pulumi.CustomResource {
     EnvironmentEntryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:apigee/v1:EnvironmentEntry',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:apigee/v1:EnvironmentEntry',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.environmentId = registerOutput<String>('environmentId');
     this.keyvaluemapId = registerOutput<String>('keyvaluemapId');
     this.name = registerOutput<String>('name');

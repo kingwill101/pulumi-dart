@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ManagedZoneDnssecConfigDefaultKeySpec {
   /// String mnemonic specifying the DNSSEC algorithm of this key
   /// Possible values are: `ecdsap256sha256`, `ecdsap384sha384`, `rsasha1`, `rsasha256`, `rsasha512`.
   final String? algorithm;
+
   /// Length of the keys in bits
   final int? keyLength;
+
   /// Specifies whether this is a key signing key (KSK) or a zone
   /// signing key (ZSK). Key signing keys have the Secure Entry
   /// Point flag set and, when active, will only be used to sign
@@ -15,6 +16,7 @@ class ManagedZoneDnssecConfigDefaultKeySpec {
   /// to sign all other types of resource record sets.
   /// Possible values are: `keySigning`, `zoneSigning`.
   final String? keyType;
+
   /// Identifies what kind of resource this is
   final String? kind;
 
@@ -39,7 +41,9 @@ class ManagedZoneDnssecConfigDefaultKeySpec {
     };
   }
 
-  factory ManagedZoneDnssecConfigDefaultKeySpec.fromMap(Map<String, dynamic> map) {
+  factory ManagedZoneDnssecConfigDefaultKeySpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZoneDnssecConfigDefaultKeySpec(
       algorithm: map['algorithm'] == null ? null : map['algorithm'] as String,
       keyLength: map['keyLength'] == null ? null : map['keyLength'] as int,
@@ -48,4 +52,3 @@ class ManagedZoneDnssecConfigDefaultKeySpec {
     );
   }
 }
-

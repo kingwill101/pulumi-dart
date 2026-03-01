@@ -16,4 +16,3 @@ enum ApiProductQuotaCounterScope {
     throw ArgumentError('Unknown ApiProductQuotaCounterScope value: $value');
   }
 }
-

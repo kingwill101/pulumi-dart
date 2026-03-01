@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess {
   final String type;
 
@@ -11,15 +10,14 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type,
-    };
+    return <String, dynamic>{'type': type};
   }
 
-  factory GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess.fromMap(Map<String, dynamic> map) {
+  factory GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess(
       type: map['type'] as String,
     );
   }
 }
-

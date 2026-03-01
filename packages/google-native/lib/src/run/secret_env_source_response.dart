@@ -6,8 +6,10 @@ import 'local_object_reference_response.dart';
 class SecretEnvSourceResponse {
   /// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
   final LocalObjectReferenceResponse localObjectReference;
+
   /// The Secret to select from.
   final String name;
+
   /// Specify whether the Secret must be defined
   final bool optional;
 
@@ -31,10 +33,11 @@ class SecretEnvSourceResponse {
 
   factory SecretEnvSourceResponse.fromMap(Map<String, dynamic> map) {
     return SecretEnvSourceResponse(
-      localObjectReference: LocalObjectReferenceResponse.fromMap((map['localObjectReference'] as Map).cast<String, dynamic>()),
+      localObjectReference: LocalObjectReferenceResponse.fromMap(
+        (map['localObjectReference'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       optional: map['optional'] as bool,
     );
   }
 }
-

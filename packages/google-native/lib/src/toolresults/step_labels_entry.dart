@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class StepLabelsEntry {
   final String? key;
   final String? value;
@@ -8,16 +7,10 @@ class StepLabelsEntry {
   /// Creates a new [StepLabelsEntry].
   /// [key] Optional.
   /// [value] Optional.
-  StepLabelsEntry({
-    this.key,
-    this.value,
-  });
+  StepLabelsEntry({this.key, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': ?key,
-      'value': ?value,
-    };
+    return <String, dynamic>{'key': ?key, 'value': ?value};
   }
 
   factory StepLabelsEntry.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class StepLabelsEntry {
     );
   }
 }
-

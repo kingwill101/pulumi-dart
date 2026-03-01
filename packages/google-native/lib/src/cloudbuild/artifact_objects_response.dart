@@ -6,8 +6,10 @@ import 'time_span_response.dart';
 class ArtifactObjectsResponse {
   /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
   final String location;
+
   /// Path globs used to match files in the build's workspace.
   final List<String> paths;
+
   /// Stores timing information for pushing all artifact objects.
   final TimeSpanResponse timing;
 
@@ -33,8 +35,9 @@ class ArtifactObjectsResponse {
     return ArtifactObjectsResponse(
       location: map['location'] as String,
       paths: (map['paths'] as List).cast<String>(),
-      timing: TimeSpanResponse.fromMap((map['timing'] as Map).cast<String, dynamic>()),
+      timing: TimeSpanResponse.fromMap(
+        (map['timing'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

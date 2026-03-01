@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a single zypper package repository. These are added to a repo file that is managed at `/etc/zypp/repos.d/google_osconfig.repo`.
 class OSPolicyResourceRepositoryResourceZypperRepositoryResponseOsconfigV1alpha {
   /// The location of the repository directory.
   final String baseUrl;
+
   /// The display name of the repository.
   final String displayName;
+
   /// URIs of GPG keys.
   final List<String> gpgKeys;
 
@@ -28,7 +29,9 @@ class OSPolicyResourceRepositoryResourceZypperRepositoryResponseOsconfigV1alpha 
     };
   }
 
-  factory OSPolicyResourceRepositoryResourceZypperRepositoryResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourceRepositoryResourceZypperRepositoryResponseOsconfigV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourceRepositoryResourceZypperRepositoryResponseOsconfigV1alpha(
       baseUrl: map['baseUrl'] as String,
       displayName: map['displayName'] as String,
@@ -36,4 +39,3 @@ class OSPolicyResourceRepositoryResourceZypperRepositoryResponseOsconfigV1alpha 
     );
   }
 }
-

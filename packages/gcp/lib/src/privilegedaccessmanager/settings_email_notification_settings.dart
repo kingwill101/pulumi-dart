@@ -5,7 +5,9 @@ import 'settings_email_notification_settings_custom_notification_behavior.dart';
 class SettingsEmailNotificationSettings {
   /// CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
   /// Structure is documented below.
-  final SettingsEmailNotificationSettingsCustomNotificationBehavior? customNotificationBehavior;
+  final SettingsEmailNotificationSettingsCustomNotificationBehavior?
+  customNotificationBehavior;
+
   /// This option indicates that all email notifications are disabled.
   final Map<String, dynamic>? disableAllNotifications;
 
@@ -19,16 +21,24 @@ class SettingsEmailNotificationSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customNotificationBehavior': ?customNotificationBehavior == null ? null : customNotificationBehavior!.toMap(),
+      'customNotificationBehavior': ?customNotificationBehavior == null
+          ? null
+          : customNotificationBehavior!.toMap(),
       'disableAllNotifications': ?disableAllNotifications,
     };
   }
 
   factory SettingsEmailNotificationSettings.fromMap(Map<String, dynamic> map) {
     return SettingsEmailNotificationSettings(
-      customNotificationBehavior: map['customNotificationBehavior'] == null ? null : SettingsEmailNotificationSettingsCustomNotificationBehavior.fromMap((map['customNotificationBehavior'] as Map).cast<String, dynamic>()),
-      disableAllNotifications: map['disableAllNotifications'] == null ? null : (map['disableAllNotifications'] as Map).cast<String, dynamic>(),
+      customNotificationBehavior: map['customNotificationBehavior'] == null
+          ? null
+          : SettingsEmailNotificationSettingsCustomNotificationBehavior.fromMap(
+              (map['customNotificationBehavior'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      disableAllNotifications: map['disableAllNotifications'] == null
+          ? null
+          : (map['disableAllNotifications'] as Map).cast<String, dynamic>(),
     );
   }
 }
-

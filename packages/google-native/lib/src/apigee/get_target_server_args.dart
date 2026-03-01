@@ -19,10 +19,9 @@ class GetTargetServerArgs {
     required String environmentId,
     required String organizationId,
     required String targetserverId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      targetserverId = pulumi.Input.asInput<String>(targetserverId);
+  }) : environmentId = pulumi.Input.asInput<String>(environmentId),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       targetserverId = pulumi.Input.asInput<String>(targetserverId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTargetServerArgs {
     );
   }
 }
-

@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EventArchiveArgs {
   /// Description for the archive.
   final pulumi.Input<String>? description;
+
   /// Event pattern to use to filter events sent to the archive. By default, it attempts to archive every event received in the `event_source_arn`.
   final pulumi.Input<String>? eventPattern;
+
   /// ARN of the event bus associated with the archive. Only events from this event bus are sent to the archive.
   final pulumi.Input<String> eventSourceArn;
+
   /// Identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this archive. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN.
   final pulumi.Input<String>? kmsKeyIdentifier;
+
   /// Name of the archive. The archive name cannot exceed 48 characters.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The maximum number of days to retain events in the new event archive. By default, it archives indefinitely.
   final pulumi.Input<int>? retentionDays;
 
@@ -38,14 +44,15 @@ class EventArchiveArgs {
     String? name,
     String? region,
     int? retentionDays,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      eventPattern = pulumi.Input.asOptionalInput<String>(eventPattern),
-      eventSourceArn = pulumi.Input.asInput<String>(eventSourceArn),
-      kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(kmsKeyIdentifier),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       eventPattern = pulumi.Input.asOptionalInput<String>(eventPattern),
+       eventSourceArn = pulumi.Input.asInput<String>(eventSourceArn),
+       kmsKeyIdentifier = pulumi.Input.asOptionalInput<String>(
+         kmsKeyIdentifier,
+       ),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       retentionDays = pulumi.Input.asOptionalInput<int>(retentionDays);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,14 +68,21 @@ class EventArchiveArgs {
 
   factory EventArchiveArgs.fromMap(Map<String, dynamic> map) {
     return EventArchiveArgs(
-      description: map['description'] == null ? null : map['description'] as String,
-      eventPattern: map['eventPattern'] == null ? null : map['eventPattern'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      eventPattern: map['eventPattern'] == null
+          ? null
+          : map['eventPattern'] as String,
       eventSourceArn: map['eventSourceArn'] as String,
-      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null ? null : map['kmsKeyIdentifier'] as String,
+      kmsKeyIdentifier: map['kmsKeyIdentifier'] == null
+          ? null
+          : map['kmsKeyIdentifier'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      retentionDays: map['retentionDays'] == null ? null : map['retentionDays'] as int,
+      retentionDays: map['retentionDays'] == null
+          ? null
+          : map['retentionDays'] as int,
     );
   }
 }
-

@@ -251,7 +251,8 @@ Future<GetMembershipGkehubV1alpha2Result> getMembershipGkehubV1alpha2(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1alpha2_get_membership_iam_policy_gkehub_v1alpha2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMembershipIamPolicyGkehubV1alpha2Result> getMembershipIamPolicyGkehubV1alpha2(
+Future<GetMembershipIamPolicyGkehubV1alpha2Result>
+getMembershipIamPolicyGkehubV1alpha2(
   GetMembershipIamPolicyGkehubV1alpha2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -347,7 +348,8 @@ Future<GetMembershipGkehubV1alphaResult> getMembershipGkehubV1alpha(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1alpha_get_membership_iam_policy_gkehub_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMembershipIamPolicyGkehubV1alphaResult> getMembershipIamPolicyGkehubV1alpha(
+Future<GetMembershipIamPolicyGkehubV1alphaResult>
+getMembershipIamPolicyGkehubV1alpha(
   GetMembershipIamPolicyGkehubV1alphaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -459,7 +461,8 @@ Future<GetMembershipGkehubV1beta1Result> getMembershipGkehubV1beta1(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta1_get_membership_iam_policy_gkehub_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMembershipIamPolicyGkehubV1beta1Result> getMembershipIamPolicyGkehubV1beta1(
+Future<GetMembershipIamPolicyGkehubV1beta1Result>
+getMembershipIamPolicyGkehubV1beta1(
   GetMembershipIamPolicyGkehubV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -555,7 +558,8 @@ Future<GetMembershipGkehubV1betaResult> getMembershipGkehubV1beta(
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta_get_membership_iam_policy_gkehub_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMembershipIamPolicyGkehubV1betaResult> getMembershipIamPolicyGkehubV1beta(
+Future<GetMembershipIamPolicyGkehubV1betaResult>
+getMembershipIamPolicyGkehubV1beta(
   GetMembershipIamPolicyGkehubV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -571,7 +575,8 @@ Future<GetMembershipIamPolicyGkehubV1betaResult> getMembershipIamPolicyGkehubV1b
 /// Returns the details of a Membership RBACRoleBinding.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta_get_membership_rbac_role_binding_gkehub_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMembershipRbacRoleBindingGkehubV1betaResult> getMembershipRbacRoleBindingGkehubV1beta(
+Future<GetMembershipRbacRoleBindingGkehubV1betaResult>
+getMembershipRbacRoleBindingGkehubV1beta(
   GetMembershipRbacRoleBindingGkehubV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -635,7 +640,8 @@ Future<GetScopeIamPolicyGkehubV1betaResult> getScopeIamPolicyGkehubV1beta(
 /// Returns the details of a Scope RBACRoleBinding.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta_get_scope_rbac_role_binding_gkehub_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetScopeRbacRoleBindingGkehubV1betaResult> getScopeRbacRoleBindingGkehubV1beta(
+Future<GetScopeRbacRoleBindingGkehubV1betaResult>
+getScopeRbacRoleBindingGkehubV1beta(
   GetScopeRbacRoleBindingGkehubV1betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

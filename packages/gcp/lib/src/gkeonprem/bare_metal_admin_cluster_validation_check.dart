@@ -7,9 +7,11 @@ class BareMetalAdminClusterValidationCheck {
   /// (Output)
   /// Options used for the validation check.
   final String? options;
+
   /// (Output)
   /// The scenario when the preflight checks were run..
   final String? scenario;
+
   /// (Output)
   /// Specifies the detailed validation check status
   /// Structure is documented below.
@@ -29,16 +31,29 @@ class BareMetalAdminClusterValidationCheck {
     return <String, dynamic>{
       'options': ?options,
       'scenario': ?scenario,
-      'statuses': ?statuses == null ? null : pulumi.Input.encodeList<BareMetalAdminClusterValidationCheckStatus, Map<String, dynamic>>(statuses!, (value) => value.toMap()),
+      'statuses': ?statuses == null
+          ? null
+          : pulumi.Input.encodeList<
+              BareMetalAdminClusterValidationCheckStatus,
+              Map<String, dynamic>
+            >(statuses!, (value) => value.toMap()),
     };
   }
 
-  factory BareMetalAdminClusterValidationCheck.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterValidationCheck.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterValidationCheck(
       options: map['options'] == null ? null : map['options'] as String,
       scenario: map['scenario'] == null ? null : map['scenario'] as String,
-      statuses: map['statuses'] == null ? null : pulumi.Input.decodeList<BareMetalAdminClusterValidationCheckStatus>(map['statuses'], (value) => BareMetalAdminClusterValidationCheckStatus.fromMap((value as Map).cast<String, dynamic>())),
+      statuses: map['statuses'] == null
+          ? null
+          : pulumi.Input.decodeList<BareMetalAdminClusterValidationCheckStatus>(
+              map['statuses'],
+              (value) => BareMetalAdminClusterValidationCheckStatus.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

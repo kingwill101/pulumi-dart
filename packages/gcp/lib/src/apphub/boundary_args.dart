@@ -11,8 +11,10 @@ class BoundaryArgs {
   /// boundary.
   /// Format: `projects/{project-number}`
   final pulumi.Input<String>? crmNode;
+
   /// The location for the Boundary resource. Must be global.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -21,12 +23,8 @@ class BoundaryArgs {
   /// [crmNode] Optional. The resource name of the CRM node being attached to the
   /// [location] The location for the Boundary resource. Must be global.
   /// [project] The ID of the project in which the resource belongs.
-  BoundaryArgs({
-    String? crmNode,
-    required String location,
-    String? project,
-  }) :
-      crmNode = pulumi.Input.asOptionalInput<String>(crmNode),
+  BoundaryArgs({String? crmNode, required String location, String? project})
+    : crmNode = pulumi.Input.asOptionalInput<String>(crmNode),
       location = pulumi.Input.asInput<String>(location),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -46,4 +44,3 @@ class BoundaryArgs {
     );
   }
 }
-

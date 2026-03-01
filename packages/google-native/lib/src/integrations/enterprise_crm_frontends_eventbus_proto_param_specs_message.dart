@@ -8,20 +8,34 @@ class EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage].
   /// [parameters] Optional.
-  EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage({
-    this.parameters,
-  });
+  EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage({this.parameters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?parameters == null
+          ? null
+          : pulumi.Input.encodeList<
+              EnterpriseCrmFrontendsEventbusProtoParamSpecEntry,
+              Map<String, dynamic>
+            >(parameters!, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage(
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoParamSpecEntry>(map['parameters'], (value) => EnterpriseCrmFrontendsEventbusProtoParamSpecEntry.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: map['parameters'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              EnterpriseCrmFrontendsEventbusProtoParamSpecEntry
+            >(
+              map['parameters'],
+              (value) =>
+                  EnterpriseCrmFrontendsEventbusProtoParamSpecEntry.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

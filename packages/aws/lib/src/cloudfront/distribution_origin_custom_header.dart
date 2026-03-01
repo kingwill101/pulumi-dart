@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DistributionOriginCustomHeader {
   final String name;
   final String value;
@@ -8,16 +7,10 @@ class DistributionOriginCustomHeader {
   /// Creates a new [DistributionOriginCustomHeader].
   /// [name] Required.
   /// [value] Required.
-  DistributionOriginCustomHeader({
-    required this.name,
-    required this.value,
-  });
+  DistributionOriginCustomHeader({required this.name, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
   factory DistributionOriginCustomHeader.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class DistributionOriginCustomHeader {
     );
   }
 }
-

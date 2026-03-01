@@ -13,11 +13,8 @@ class GetDomainMappingArgs {
   /// Creates a new [GetDomainMappingArgs].
   /// [appId] Required.
   /// [domainMappingId] Required.
-  GetDomainMappingArgs({
-    required String appId,
-    required String domainMappingId,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
+  GetDomainMappingArgs({required String appId, required String domainMappingId})
+    : appId = pulumi.Input.asInput<String>(appId),
       domainMappingId = pulumi.Input.asInput<String>(domainMappingId);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetDomainMappingArgs {
     );
   }
 }
-

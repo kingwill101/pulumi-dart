@@ -9,9 +9,7 @@ class GooglePrivacyDlpV2Export {
 
   /// Creates a new [GooglePrivacyDlpV2Export].
   /// [profileTable] Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
-  GooglePrivacyDlpV2Export({
-    this.profileTable,
-  });
+  GooglePrivacyDlpV2Export({this.profileTable});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class GooglePrivacyDlpV2Export {
 
   factory GooglePrivacyDlpV2Export.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Export(
-      profileTable: map['profileTable'] == null ? null : GooglePrivacyDlpV2BigQueryTable.fromMap((map['profileTable'] as Map).cast<String, dynamic>()),
+      profileTable: map['profileTable'] == null
+          ? null
+          : GooglePrivacyDlpV2BigQueryTable.fromMap(
+              (map['profileTable'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -10,20 +10,32 @@ class GoogleCloudDataplexV1DataProfileResultProfileResponse {
 
   /// Creates a new [GoogleCloudDataplexV1DataProfileResultProfileResponse].
   /// [fields] List of fields with structural and profile information for each field.
-  GoogleCloudDataplexV1DataProfileResultProfileResponse({
-    required this.fields,
-  });
+  GoogleCloudDataplexV1DataProfileResultProfileResponse({required this.fields});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': pulumi.Input.encodeList<GoogleCloudDataplexV1DataProfileResultProfileFieldResponse, Map<String, dynamic>>(fields, (value) => value.toMap()),
+      'fields':
+          pulumi.Input.encodeList<
+            GoogleCloudDataplexV1DataProfileResultProfileFieldResponse,
+            Map<String, dynamic>
+          >(fields, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDataplexV1DataProfileResultProfileResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataProfileResultProfileResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataProfileResultProfileResponse(
-      fields: pulumi.Input.decodeList<GoogleCloudDataplexV1DataProfileResultProfileFieldResponse>(map['fields'], (value) => GoogleCloudDataplexV1DataProfileResultProfileFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
+      fields:
+          pulumi.Input.decodeList<
+            GoogleCloudDataplexV1DataProfileResultProfileFieldResponse
+          >(
+            map['fields'],
+            (value) =>
+                GoogleCloudDataplexV1DataProfileResultProfileFieldResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

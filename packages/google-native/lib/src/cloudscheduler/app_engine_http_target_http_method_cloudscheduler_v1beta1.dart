@@ -12,13 +12,17 @@ enum AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 {
   const AppEngineHttpTargetHttpMethodCloudschedulerV1beta1(this.value);
   final String value;
 
-  static AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 fromValue(String value) {
-    for (final item in AppEngineHttpTargetHttpMethodCloudschedulerV1beta1.values) {
+  static AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in AppEngineHttpTargetHttpMethodCloudschedulerV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown AppEngineHttpTargetHttpMethodCloudschedulerV1beta1 value: $value',
+    );
   }
 }
-

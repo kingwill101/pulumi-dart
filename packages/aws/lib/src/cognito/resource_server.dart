@@ -296,14 +296,19 @@ import 'resource_server_scope.dart';
 class ResourceServer extends pulumi.CustomResource {
   /// An identifier for the resource server.
   late final pulumi.Output<String> identifier;
+
   /// A name for the resource server.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A list of all scopes configured for this resource server in the format identifier/scope_name.
   late final pulumi.Output<List<String>> scopeIdentifiers;
+
   /// A list of Authorization Scope.
   late final pulumi.Output<List<ResourceServerScope>?> scopes;
+
   /// User pool the client belongs to.
   late final pulumi.Output<String> userPoolId;
 
@@ -316,11 +321,11 @@ class ResourceServer extends pulumi.CustomResource {
     ResourceServerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cognito/resourceServer:ResourceServer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:cognito/resourceServer:ResourceServer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.identifier = registerOutput<String>('identifier');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');

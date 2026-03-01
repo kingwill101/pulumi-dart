@@ -14,7 +14,8 @@ enum ClusterDatabaseVersionAlloydbV1beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown ClusterDatabaseVersionAlloydbV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ClusterDatabaseVersionAlloydbV1beta value: $value',
+    );
   }
 }
-

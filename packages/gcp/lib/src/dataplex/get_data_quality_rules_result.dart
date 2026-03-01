@@ -6,10 +6,12 @@ import 'get_data_quality_rules_rule.dart';
 /// Result data returned by getDataQualityRules.
 class GetDataQualityRulesResult {
   final String dataScanId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? location;
   final String? project;
+
   /// (Computed) The list of generated data quality rules. For more details, please see the datascan page.
   final List<GetDataQualityRulesRule> rules;
 
@@ -33,7 +35,11 @@ class GetDataQualityRulesResult {
       'id': id,
       'location': ?location,
       'project': ?project,
-      'rules': pulumi.Input.encodeList<GetDataQualityRulesRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<
+            GetDataQualityRulesRule,
+            Map<String, dynamic>
+          >(rules, (value) => value.toMap()),
     };
   }
 
@@ -43,8 +49,12 @@ class GetDataQualityRulesResult {
       id: map['id'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      rules: pulumi.Input.decodeList<GetDataQualityRulesRule>(map['rules'], (value) => GetDataQualityRulesRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<GetDataQualityRulesRule>(
+        map['rules'],
+        (value) => GetDataQualityRulesRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

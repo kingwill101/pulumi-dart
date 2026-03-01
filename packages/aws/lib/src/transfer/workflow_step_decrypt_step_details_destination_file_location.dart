@@ -5,9 +5,12 @@ import 'workflow_step_decrypt_step_details_destination_file_location_s3_file_loc
 
 class WorkflowStepDecryptStepDetailsDestinationFileLocation {
   /// Specifies the details for the EFS file being copied.
-  final WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation? efsFileLocation;
+  final WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation?
+  efsFileLocation;
+
   /// Specifies the details for the S3 file being copied.
-  final WorkflowStepDecryptStepDetailsDestinationFileLocationS3FileLocation? s3FileLocation;
+  final WorkflowStepDecryptStepDetailsDestinationFileLocationS3FileLocation?
+  s3FileLocation;
 
   /// Creates a new [WorkflowStepDecryptStepDetailsDestinationFileLocation].
   /// [efsFileLocation] Specifies the details for the EFS file being copied.
@@ -19,16 +22,29 @@ class WorkflowStepDecryptStepDetailsDestinationFileLocation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'efsFileLocation': ?efsFileLocation == null ? null : efsFileLocation!.toMap(),
-      's3FileLocation': ?s3FileLocation == null ? null : s3FileLocation!.toMap(),
+      'efsFileLocation': ?efsFileLocation == null
+          ? null
+          : efsFileLocation!.toMap(),
+      's3FileLocation': ?s3FileLocation == null
+          ? null
+          : s3FileLocation!.toMap(),
     };
   }
 
-  factory WorkflowStepDecryptStepDetailsDestinationFileLocation.fromMap(Map<String, dynamic> map) {
+  factory WorkflowStepDecryptStepDetailsDestinationFileLocation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowStepDecryptStepDetailsDestinationFileLocation(
-      efsFileLocation: map['efsFileLocation'] == null ? null : WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation.fromMap((map['efsFileLocation'] as Map).cast<String, dynamic>()),
-      s3FileLocation: map['s3FileLocation'] == null ? null : WorkflowStepDecryptStepDetailsDestinationFileLocationS3FileLocation.fromMap((map['s3FileLocation'] as Map).cast<String, dynamic>()),
+      efsFileLocation: map['efsFileLocation'] == null
+          ? null
+          : WorkflowStepDecryptStepDetailsDestinationFileLocationEfsFileLocation.fromMap(
+              (map['efsFileLocation'] as Map).cast<String, dynamic>(),
+            ),
+      s3FileLocation: map['s3FileLocation'] == null
+          ? null
+          : WorkflowStepDecryptStepDetailsDestinationFileLocationS3FileLocation.fromMap(
+              (map['s3FileLocation'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

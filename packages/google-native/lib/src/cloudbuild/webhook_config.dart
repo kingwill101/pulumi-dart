@@ -6,16 +6,14 @@ import 'webhook_config_state.dart';
 class WebhookConfig {
   /// Resource name for the secret required as a URL parameter.
   final String secret;
+
   /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
   final WebhookConfigState? state;
 
   /// Creates a new [WebhookConfig].
   /// [secret] Resource name for the secret required as a URL parameter.
   /// [state] Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-  WebhookConfig({
-    required this.secret,
-    this.state,
-  });
+  WebhookConfig({required this.secret, this.state});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,8 +25,9 @@ class WebhookConfig {
   factory WebhookConfig.fromMap(Map<String, dynamic> map) {
     return WebhookConfig(
       secret: map['secret'] as String,
-      state: map['state'] == null ? null : WebhookConfigState.fromValue(map['state'] as String),
+      state: map['state'] == null
+          ? null
+          : WebhookConfigState.fromValue(map['state'] as String),
     );
   }
 }
-

@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specified snapshot properties for scheduled snapshots created by this policy.
 class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta {
   /// Chain name that the snapshot is created in.
   final String? chainName;
+
   /// Indication to perform a 'guest aware' snapshot.
   final bool? guestFlush;
+
   /// Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label values may be empty.
   final Map<String, String>? labels;
+
   /// Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).
   final List<String>? storageLocations;
 
@@ -33,13 +35,18 @@ class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta {
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeBeta(
       chainName: map['chainName'] == null ? null : map['chainName'] as String,
       guestFlush: map['guestFlush'] == null ? null : map['guestFlush'] as bool,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      storageLocations: map['storageLocations'] == null ? null : (map['storageLocations'] as List).cast<String>(),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
+      storageLocations: map['storageLocations'] == null
+          ? null
+          : (map['storageLocations'] as List).cast<String>(),
     );
   }
 }
-

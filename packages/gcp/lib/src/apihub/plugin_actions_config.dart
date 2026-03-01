@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PluginActionsConfig {
   /// The description of the operation performed by the action.
   final String description;
+
   /// The display name of the action.
   final String displayName;
+
   /// The id of the action.
   final String id;
+
   /// The trigger mode supported by the action.
   /// Possible values:
   /// TRIGGER_MODE_UNSPECIFIED
@@ -46,4 +48,3 @@ class PluginActionsConfig {
     );
   }
 }
-

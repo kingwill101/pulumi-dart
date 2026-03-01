@@ -9,20 +9,17 @@ class GoSettingsResponse {
 
   /// Creates a new [GoSettingsResponse].
   /// [common] Some settings.
-  GoSettingsResponse({
-    required this.common,
-  });
+  GoSettingsResponse({required this.common});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'common': common.toMap(),
-    };
+    return <String, dynamic>{'common': common.toMap()};
   }
 
   factory GoSettingsResponse.fromMap(Map<String, dynamic> map) {
     return GoSettingsResponse(
-      common: CommonLanguageSettingsResponse.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: CommonLanguageSettingsResponse.fromMap(
+        (map['common'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -12,13 +12,17 @@ enum GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType {
   const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType(this.value);
   final String value;
 
-  static GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType fromValue(String value) {
-    for (final item in GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType.values) {
+  static GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType value: $value',
+    );
   }
 }
-

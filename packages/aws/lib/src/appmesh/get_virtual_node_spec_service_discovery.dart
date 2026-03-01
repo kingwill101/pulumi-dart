@@ -18,16 +18,35 @@ class GetVirtualNodeSpecServiceDiscovery {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsCloudMaps': pulumi.Input.encodeList<GetVirtualNodeSpecServiceDiscoveryAwsCloudMap, Map<String, dynamic>>(awsCloudMaps, (value) => value.toMap()),
-      'dns': pulumi.Input.encodeList<GetVirtualNodeSpecServiceDiscoveryDn, Map<String, dynamic>>(dns, (value) => value.toMap()),
+      'awsCloudMaps':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecServiceDiscoveryAwsCloudMap,
+            Map<String, dynamic>
+          >(awsCloudMaps, (value) => value.toMap()),
+      'dns':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecServiceDiscoveryDn,
+            Map<String, dynamic>
+          >(dns, (value) => value.toMap()),
     };
   }
 
   factory GetVirtualNodeSpecServiceDiscovery.fromMap(Map<String, dynamic> map) {
     return GetVirtualNodeSpecServiceDiscovery(
-      awsCloudMaps: pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscoveryAwsCloudMap>(map['awsCloudMaps'], (value) => GetVirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap((value as Map).cast<String, dynamic>())),
-      dns: pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscoveryDn>(map['dns'], (value) => GetVirtualNodeSpecServiceDiscoveryDn.fromMap((value as Map).cast<String, dynamic>())),
+      awsCloudMaps:
+          pulumi
+              .Input.decodeList<GetVirtualNodeSpecServiceDiscoveryAwsCloudMap>(
+            map['awsCloudMaps'],
+            (value) => GetVirtualNodeSpecServiceDiscoveryAwsCloudMap.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      dns: pulumi.Input.decodeList<GetVirtualNodeSpecServiceDiscoveryDn>(
+        map['dns'],
+        (value) => GetVirtualNodeSpecServiceDiscoveryDn.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

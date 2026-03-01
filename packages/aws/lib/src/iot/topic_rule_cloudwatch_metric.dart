@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TopicRuleCloudwatchMetric {
   /// The CloudWatch metric name.
   final String metricName;
+
   /// The CloudWatch metric namespace name.
   final String metricNamespace;
+
   /// An optional Unix timestamp (http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp).
   final String? metricTimestamp;
+
   /// The metric unit (supported units can be found here: http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit)
   final String metricUnit;
+
   /// The CloudWatch metric value.
   final String metricValue;
+
   /// The IAM role ARN that allows access to the CloudWatch metric.
   final String roleArn;
 
@@ -46,11 +50,12 @@ class TopicRuleCloudwatchMetric {
     return TopicRuleCloudwatchMetric(
       metricName: map['metricName'] as String,
       metricNamespace: map['metricNamespace'] as String,
-      metricTimestamp: map['metricTimestamp'] == null ? null : map['metricTimestamp'] as String,
+      metricTimestamp: map['metricTimestamp'] == null
+          ? null
+          : map['metricTimestamp'] as String,
       metricUnit: map['metricUnit'] as String,
       metricValue: map['metricValue'] as String,
       roleArn: map['roleArn'] as String,
     );
   }
 }
-

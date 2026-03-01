@@ -9,20 +9,19 @@ class GooglePrivacyDlpV2DiscoveryTargetResponse {
 
   /// Creates a new [GooglePrivacyDlpV2DiscoveryTargetResponse].
   /// [bigQueryTarget] BigQuery target for Discovery. The first target to match a table will be the one applied.
-  GooglePrivacyDlpV2DiscoveryTargetResponse({
-    required this.bigQueryTarget,
-  });
+  GooglePrivacyDlpV2DiscoveryTargetResponse({required this.bigQueryTarget});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bigQueryTarget': bigQueryTarget.toMap(),
-    };
+    return <String, dynamic>{'bigQueryTarget': bigQueryTarget.toMap()};
   }
 
-  factory GooglePrivacyDlpV2DiscoveryTargetResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoveryTargetResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DiscoveryTargetResponse(
-      bigQueryTarget: GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse.fromMap((map['bigQueryTarget'] as Map).cast<String, dynamic>()),
+      bigQueryTarget: GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse.fromMap(
+        (map['bigQueryTarget'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

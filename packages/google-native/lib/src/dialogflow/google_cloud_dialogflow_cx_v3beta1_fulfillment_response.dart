@@ -10,18 +10,29 @@ import 'google_cloud_dialogflow_cx_v3beta1_response_message_response.dart';
 class GoogleCloudDialogflowCxV3beta1FulfillmentResponse {
   /// Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the settings exposed at the higher level.
   final GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse advancedSettings;
+
   /// Conditional cases for this fulfillment.
-  final List<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse> conditionalCases;
+  final List<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse>
+  conditionalCases;
+
   /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated with no-match event handlers.
   final bool enableGenerativeFallback;
+
   /// The list of rich message responses to present to the user.
   final List<GoogleCloudDialogflowCxV3beta1ResponseMessageResponse> messages;
+
   /// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
   final bool returnPartialResponses;
+
   /// Set parameter values before executing the webhook.
-  final List<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse> setParameterActions;
+  final List<
+    GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse
+  >
+  setParameterActions;
+
   /// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
   final String tag;
+
   /// The webhook to call. Format: `projects//locations//agents//webhooks/`.
   final String webhook;
 
@@ -48,27 +59,70 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'advancedSettings': advancedSettings.toMap(),
-      'conditionalCases': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse, Map<String, dynamic>>(conditionalCases, (value) => value.toMap()),
+      'conditionalCases':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse,
+            Map<String, dynamic>
+          >(conditionalCases, (value) => value.toMap()),
       'enableGenerativeFallback': enableGenerativeFallback,
-      'messages': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1ResponseMessageResponse, Map<String, dynamic>>(messages, (value) => value.toMap()),
+      'messages':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowCxV3beta1ResponseMessageResponse,
+            Map<String, dynamic>
+          >(messages, (value) => value.toMap()),
       'returnPartialResponses': returnPartialResponses,
-      'setParameterActions': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse, Map<String, dynamic>>(setParameterActions, (value) => value.toMap()),
+      'setParameterActions':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse,
+            Map<String, dynamic>
+          >(setParameterActions, (value) => value.toMap()),
       'tag': tag,
       'webhook': webhook,
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1FulfillmentResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1FulfillmentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1FulfillmentResponse(
-      advancedSettings: GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse.fromMap((map['advancedSettings'] as Map).cast<String, dynamic>()),
-      conditionalCases: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse>(map['conditionalCases'], (value) => GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      advancedSettings:
+          GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse.fromMap(
+            (map['advancedSettings'] as Map).cast<String, dynamic>(),
+          ),
+      conditionalCases:
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse
+          >(
+            map['conditionalCases'],
+            (value) =>
+                GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       enableGenerativeFallback: map['enableGenerativeFallback'] as bool,
-      messages: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ResponseMessageResponse>(map['messages'], (value) => GoogleCloudDialogflowCxV3beta1ResponseMessageResponse.fromMap((value as Map).cast<String, dynamic>())),
+      messages:
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowCxV3beta1ResponseMessageResponse
+          >(
+            map['messages'],
+            (value) =>
+                GoogleCloudDialogflowCxV3beta1ResponseMessageResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       returnPartialResponses: map['returnPartialResponses'] as bool,
-      setParameterActions: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse>(map['setParameterActions'], (value) => GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      setParameterActions:
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse
+          >(
+            map['setParameterActions'],
+            (value) =>
+                GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       tag: map['tag'] as String,
       webhook: map['webhook'] as String,
     );
   }
 }
-

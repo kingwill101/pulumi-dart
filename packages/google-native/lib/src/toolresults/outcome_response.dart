@@ -9,12 +9,16 @@ import 'success_detail_response.dart';
 class OutcomeResponse {
   /// More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
   final FailureDetailResponse failureDetail;
+
   /// More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE. Optional
   final InconclusiveDetailResponse inconclusiveDetail;
+
   /// More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED. Optional
   final SkippedDetailResponse skippedDetail;
+
   /// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
   final SuccessDetailResponse successDetail;
+
   /// The simplest way to interpret a result. Required
   final String summary;
 
@@ -44,12 +48,19 @@ class OutcomeResponse {
 
   factory OutcomeResponse.fromMap(Map<String, dynamic> map) {
     return OutcomeResponse(
-      failureDetail: FailureDetailResponse.fromMap((map['failureDetail'] as Map).cast<String, dynamic>()),
-      inconclusiveDetail: InconclusiveDetailResponse.fromMap((map['inconclusiveDetail'] as Map).cast<String, dynamic>()),
-      skippedDetail: SkippedDetailResponse.fromMap((map['skippedDetail'] as Map).cast<String, dynamic>()),
-      successDetail: SuccessDetailResponse.fromMap((map['successDetail'] as Map).cast<String, dynamic>()),
+      failureDetail: FailureDetailResponse.fromMap(
+        (map['failureDetail'] as Map).cast<String, dynamic>(),
+      ),
+      inconclusiveDetail: InconclusiveDetailResponse.fromMap(
+        (map['inconclusiveDetail'] as Map).cast<String, dynamic>(),
+      ),
+      skippedDetail: SkippedDetailResponse.fromMap(
+        (map['skippedDetail'] as Map).cast<String, dynamic>(),
+      ),
+      successDetail: SuccessDetailResponse.fromMap(
+        (map['successDetail'] as Map).cast<String, dynamic>(),
+      ),
       summary: map['summary'] as String,
     );
   }
 }
-

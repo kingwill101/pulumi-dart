@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLocations.
 class GetLocationsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// Code for the locations.
   final List<String> locationCodes;
   final String region;
@@ -35,4 +35,3 @@ class GetLocationsResult {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetUserPoolDeviceConfiguration {
   /// - Whether a challenge is required on new devices.
   final bool challengeRequiredOnNewDevice;
+
   /// - Whether devices are only remembered if the user prompts it.
   final bool deviceOnlyRememberedOnUserPrompt;
 
@@ -25,8 +25,8 @@ class GetUserPoolDeviceConfiguration {
   factory GetUserPoolDeviceConfiguration.fromMap(Map<String, dynamic> map) {
     return GetUserPoolDeviceConfiguration(
       challengeRequiredOnNewDevice: map['challengeRequiredOnNewDevice'] as bool,
-      deviceOnlyRememberedOnUserPrompt: map['deviceOnlyRememberedOnUserPrompt'] as bool,
+      deviceOnlyRememberedOnUserPrompt:
+          map['deviceOnlyRememberedOnUserPrompt'] as bool,
     );
   }
 }
-

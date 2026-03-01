@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDomainIdentity.
 class GetDomainIdentityResult {
   /// ARN of the domain identity.
   final String arn;
+
   /// Name of the domain
   final String domain;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String region;
+
   /// Code which when added to the domain as a TXT record will signal to SES that the owner of the domain has authorized SES to act on their behalf.
   final String verificationToken;
 
@@ -47,4 +49,3 @@ class GetDomainIdentityResult {
     );
   }
 }
-

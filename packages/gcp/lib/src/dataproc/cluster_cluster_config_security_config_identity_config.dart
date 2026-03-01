@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterClusterConfigSecurityConfigIdentityConfig {
   /// The end user to service account mappings
   /// in a service account based multi-tenant cluster
@@ -20,10 +19,12 @@ class ClusterClusterConfigSecurityConfigIdentityConfig {
     };
   }
 
-  factory ClusterClusterConfigSecurityConfigIdentityConfig.fromMap(Map<String, dynamic> map) {
+  factory ClusterClusterConfigSecurityConfigIdentityConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterClusterConfigSecurityConfigIdentityConfig(
-      userServiceAccountMapping: (map['userServiceAccountMapping'] as Map).cast<String, String>(),
+      userServiceAccountMapping: (map['userServiceAccountMapping'] as Map)
+          .cast<String, String>(),
     );
   }
 }
-

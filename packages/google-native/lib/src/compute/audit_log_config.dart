@@ -6,8 +6,10 @@ import 'audit_log_config_log_type.dart';
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final List<String>? exemptedMembers;
+
   /// This is deprecated and has no effect. Do not use.
   final bool? ignoreChildExemptions;
+
   /// The log type that this config enables.
   final AuditLogConfigLogType? logType;
 
@@ -31,10 +33,15 @@ class AuditLogConfig {
 
   factory AuditLogConfig.fromMap(Map<String, dynamic> map) {
     return AuditLogConfig(
-      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
-      ignoreChildExemptions: map['ignoreChildExemptions'] == null ? null : map['ignoreChildExemptions'] as bool,
-      logType: map['logType'] == null ? null : AuditLogConfigLogType.fromValue(map['logType'] as String),
+      exemptedMembers: map['exemptedMembers'] == null
+          ? null
+          : (map['exemptedMembers'] as List).cast<String>(),
+      ignoreChildExemptions: map['ignoreChildExemptions'] == null
+          ? null
+          : map['ignoreChildExemptions'] as bool,
+      logType: map['logType'] == null
+          ? null
+          : AuditLogConfigLogType.fromValue(map['logType'] as String),
     );
   }
 }
-

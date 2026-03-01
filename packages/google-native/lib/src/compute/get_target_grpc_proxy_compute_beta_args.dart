@@ -16,9 +16,8 @@ class GetTargetGrpcProxyComputeBetaArgs {
   GetTargetGrpcProxyComputeBetaArgs({
     String? project,
     required String targetGrpcProxy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      targetGrpcProxy = pulumi.Input.asInput<String>(targetGrpcProxy);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       targetGrpcProxy = pulumi.Input.asInput<String>(targetGrpcProxy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetTargetGrpcProxyComputeBetaArgs {
     );
   }
 }
-

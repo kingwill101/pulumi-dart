@@ -9,9 +9,7 @@ class NamespaceActuationFeatureSpec {
 
   /// Creates a new [NamespaceActuationFeatureSpec].
   /// [actuationMode] actuation_mode controls the behavior of the controller
-  NamespaceActuationFeatureSpec({
-    this.actuationMode,
-  });
+  NamespaceActuationFeatureSpec({this.actuationMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class NamespaceActuationFeatureSpec {
 
   factory NamespaceActuationFeatureSpec.fromMap(Map<String, dynamic> map) {
     return NamespaceActuationFeatureSpec(
-      actuationMode: map['actuationMode'] == null ? null : NamespaceActuationFeatureSpecActuationMode.fromValue(map['actuationMode'] as String),
+      actuationMode: map['actuationMode'] == null
+          ? null
+          : NamespaceActuationFeatureSpecActuationMode.fromValue(
+              map['actuationMode'] as String,
+            ),
     );
   }
 }
-

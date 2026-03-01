@@ -10,20 +10,29 @@ class PostgresqlRdbms {
 
   /// Creates a new [PostgresqlRdbms].
   /// [postgresqlSchemas] PostgreSQL schemas in the database server.
-  PostgresqlRdbms({
-    this.postgresqlSchemas,
-  });
+  PostgresqlRdbms({this.postgresqlSchemas});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlSchemas': ?postgresqlSchemas == null ? null : pulumi.Input.encodeList<PostgresqlSchema, Map<String, dynamic>>(postgresqlSchemas!, (value) => value.toMap()),
+      'postgresqlSchemas': ?postgresqlSchemas == null
+          ? null
+          : pulumi.Input.encodeList<PostgresqlSchema, Map<String, dynamic>>(
+              postgresqlSchemas!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory PostgresqlRdbms.fromMap(Map<String, dynamic> map) {
     return PostgresqlRdbms(
-      postgresqlSchemas: map['postgresqlSchemas'] == null ? null : pulumi.Input.decodeList<PostgresqlSchema>(map['postgresqlSchemas'], (value) => PostgresqlSchema.fromMap((value as Map).cast<String, dynamic>())),
+      postgresqlSchemas: map['postgresqlSchemas'] == null
+          ? null
+          : pulumi.Input.decodeList<PostgresqlSchema>(
+              map['postgresqlSchemas'],
+              (value) => PostgresqlSchema.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WorkflowTemplateParameterValidationValues {
   /// Required. List of allowed values for the parameter.
   final List<String> values;
 
   /// Creates a new [WorkflowTemplateParameterValidationValues].
   /// [values] Required. List of allowed values for the parameter.
-  WorkflowTemplateParameterValidationValues({
-    required this.values,
-  });
+  WorkflowTemplateParameterValidationValues({required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory WorkflowTemplateParameterValidationValues.fromMap(Map<String, dynamic> map) {
+  factory WorkflowTemplateParameterValidationValues.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkflowTemplateParameterValidationValues(
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
-

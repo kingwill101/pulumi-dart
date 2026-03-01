@@ -19,10 +19,11 @@ class GetInstanceGroupManagerArgs {
     required String instanceGroupManager,
     String? project,
     required String zone,
-  }) :
-      instanceGroupManager = pulumi.Input.asInput<String>(instanceGroupManager),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : instanceGroupManager = pulumi.Input.asInput<String>(
+         instanceGroupManager,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetInstanceGroupManagerArgs {
     );
   }
 }
-

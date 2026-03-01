@@ -5,7 +5,9 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_basic_card_button_open_ur
 /// The button object that appears at the bottom of a card.
 class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse {
   /// Action to take when a user taps on the button.
-  final GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionResponse openUriAction;
+  final GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionResponse
+  openUriAction;
+
   /// The title of the button.
   final String title;
 
@@ -24,11 +26,15 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse(
-      openUriAction: GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionResponse.fromMap((map['openUriAction'] as Map).cast<String, dynamic>()),
+      openUriAction:
+          GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionResponse.fromMap(
+            (map['openUriAction'] as Map).cast<String, dynamic>(),
+          ),
       title: map['title'] as String,
     );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
   /// Client key value or parameter name to pass it through.
   final String clientKey;
+
   /// Issuer value or parameter name to pass it through.
   final String issuer;
+
   /// Subject value or parameter name to pass it through.
   final String subject;
 
@@ -27,7 +28,9 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
     };
   }
 
-  factory CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.fromMap(Map<String, dynamic> map) {
+  factory CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig(
       clientKey: map['clientKey'] as String,
       issuer: map['issuer'] as String,
@@ -35,4 +38,3 @@ class CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig {
     );
   }
 }
-

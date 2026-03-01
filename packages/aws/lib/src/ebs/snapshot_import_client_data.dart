@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SnapshotImportClientData {
   /// A user-defined comment about the disk upload.
   final String? comment;
+
   /// The time that the disk upload ends.
   final String? uploadEnd;
+
   /// The size of the uploaded disk image, in GiB.
   final double? uploadSize;
+
   /// The time that the disk upload starts.
   final String? uploadStart;
 
@@ -36,9 +38,12 @@ class SnapshotImportClientData {
     return SnapshotImportClientData(
       comment: map['comment'] == null ? null : map['comment'] as String,
       uploadEnd: map['uploadEnd'] == null ? null : map['uploadEnd'] as String,
-      uploadSize: map['uploadSize'] == null ? null : map['uploadSize'] as double,
-      uploadStart: map['uploadStart'] == null ? null : map['uploadStart'] as String,
+      uploadSize: map['uploadSize'] == null
+          ? null
+          : map['uploadSize'] as double,
+      uploadStart: map['uploadStart'] == null
+          ? null
+          : map['uploadStart'] as String,
     );
   }
 }
-

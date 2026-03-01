@@ -155,18 +155,23 @@ class HttpHealthCheck extends pulumi.CustomResource {
   /// How often (in seconds) to send a health check. The default value is 5
   /// seconds.
   late final pulumi.Output<int?> checkIntervalSec;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
+
   /// A so-far unhealthy instance will be marked healthy after this many
   /// consecutive successes. The default value is 2.
   late final pulumi.Output<int?> healthyThreshold;
+
   /// The value of the host header in the HTTP health check request. If
   /// left empty (default value), the public IP on behalf of which this
   /// health check is performed will be used.
   late final pulumi.Output<String?> host;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -175,21 +180,27 @@ class HttpHealthCheck extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The TCP port number for the HTTP health check request.
   /// The default value is 80.
   late final pulumi.Output<int?> port;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The request path of the HTTP health check request.
   /// The default value is /.
   late final pulumi.Output<String?> requestPath;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// How long (in seconds) to wait before claiming failure.
   /// The default value is 5 seconds.  It is invalid for timeoutSec to have
   /// greater value than checkIntervalSec.
   late final pulumi.Output<int?> timeoutSec;
+
   /// A so-far healthy instance will be marked unhealthy after this many
   /// consecutive failures. The default value is 2.
   late final pulumi.Output<int?> unhealthyThreshold;
@@ -203,11 +214,11 @@ class HttpHealthCheck extends pulumi.CustomResource {
     HttpHealthCheckArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/httpHealthCheck:HttpHealthCheck',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/httpHealthCheck:HttpHealthCheck',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.checkIntervalSec = registerOutput<int?>('checkIntervalSec');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');

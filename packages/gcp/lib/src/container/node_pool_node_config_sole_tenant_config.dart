@@ -6,6 +6,7 @@ import 'node_pool_node_config_sole_tenant_config_node_affinity.dart';
 class NodePoolNodeConfigSoleTenantConfig {
   /// Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
   final int? minNodeCpus;
+
   /// .
   final List<NodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities;
 
@@ -20,15 +21,27 @@ class NodePoolNodeConfigSoleTenantConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'minNodeCpus': ?minNodeCpus,
-      'nodeAffinities': pulumi.Input.encodeList<NodePoolNodeConfigSoleTenantConfigNodeAffinity, Map<String, dynamic>>(nodeAffinities, (value) => value.toMap()),
+      'nodeAffinities':
+          pulumi.Input.encodeList<
+            NodePoolNodeConfigSoleTenantConfigNodeAffinity,
+            Map<String, dynamic>
+          >(nodeAffinities, (value) => value.toMap()),
     };
   }
 
   factory NodePoolNodeConfigSoleTenantConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigSoleTenantConfig(
-      minNodeCpus: map['minNodeCpus'] == null ? null : map['minNodeCpus'] as int,
-      nodeAffinities: pulumi.Input.decodeList<NodePoolNodeConfigSoleTenantConfigNodeAffinity>(map['nodeAffinities'], (value) => NodePoolNodeConfigSoleTenantConfigNodeAffinity.fromMap((value as Map).cast<String, dynamic>())),
+      minNodeCpus: map['minNodeCpus'] == null
+          ? null
+          : map['minNodeCpus'] as int,
+      nodeAffinities:
+          pulumi
+              .Input.decodeList<NodePoolNodeConfigSoleTenantConfigNodeAffinity>(
+            map['nodeAffinities'],
+            (value) => NodePoolNodeConfigSoleTenantConfigNodeAffinity.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

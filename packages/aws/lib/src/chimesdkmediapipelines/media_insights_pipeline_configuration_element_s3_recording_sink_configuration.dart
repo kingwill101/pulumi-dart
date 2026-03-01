@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration {
   /// S3 URI to deliver recordings.
   final String? destination;
@@ -12,15 +11,16 @@ class MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'destination': ?destination,
-    };
+    return <String, dynamic>{'destination': ?destination};
   }
 
-  factory MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration(
-      destination: map['destination'] == null ? null : map['destination'] as String,
+      destination: map['destination'] == null
+          ? null
+          : map['destination'] as String,
     );
   }
 }
-

@@ -6,7 +6,8 @@ import 'stream_source_config_oracle_source_config_exclude_objects_oracle_schema.
 class StreamSourceConfigOracleSourceConfigExcludeObjects {
   /// Oracle schemas/databases in the database server
   /// Structure is documented below.
-  final List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema> oracleSchemas;
+  final List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema>
+  oracleSchemas;
 
   /// Creates a new [StreamSourceConfigOracleSourceConfigExcludeObjects].
   /// [oracleSchemas] Oracle schemas/databases in the database server
@@ -16,14 +17,28 @@ class StreamSourceConfigOracleSourceConfigExcludeObjects {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleSchemas': pulumi.Input.encodeList<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema, Map<String, dynamic>>(oracleSchemas, (value) => value.toMap()),
+      'oracleSchemas':
+          pulumi.Input.encodeList<
+            StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema,
+            Map<String, dynamic>
+          >(oracleSchemas, (value) => value.toMap()),
     };
   }
 
-  factory StreamSourceConfigOracleSourceConfigExcludeObjects.fromMap(Map<String, dynamic> map) {
+  factory StreamSourceConfigOracleSourceConfigExcludeObjects.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamSourceConfigOracleSourceConfigExcludeObjects(
-      oracleSchemas: pulumi.Input.decodeList<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema>(map['oracleSchemas'], (value) => StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema.fromMap((value as Map).cast<String, dynamic>())),
+      oracleSchemas:
+          pulumi.Input.decodeList<
+            StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema
+          >(
+            map['oracleSchemas'],
+            (value) =>
+                StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchema.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

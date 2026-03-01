@@ -6,16 +6,14 @@ import 'audit_log_config_log_type_deploymentmanager_v2beta.dart';
 class AuditLogConfigDeploymentmanagerV2beta {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final List<String>? exemptedMembers;
+
   /// The log type that this config enables.
   final AuditLogConfigLogTypeDeploymentmanagerV2beta? logType;
 
   /// Creates a new [AuditLogConfigDeploymentmanagerV2beta].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigDeploymentmanagerV2beta({
-    this.exemptedMembers,
-    this.logType,
-  });
+  AuditLogConfigDeploymentmanagerV2beta({this.exemptedMembers, this.logType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,18 @@ class AuditLogConfigDeploymentmanagerV2beta {
     };
   }
 
-  factory AuditLogConfigDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
+  factory AuditLogConfigDeploymentmanagerV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuditLogConfigDeploymentmanagerV2beta(
-      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
-      logType: map['logType'] == null ? null : AuditLogConfigLogTypeDeploymentmanagerV2beta.fromValue(map['logType'] as String),
+      exemptedMembers: map['exemptedMembers'] == null
+          ? null
+          : (map['exemptedMembers'] as List).cast<String>(),
+      logType: map['logType'] == null
+          ? null
+          : AuditLogConfigLogTypeDeploymentmanagerV2beta.fromValue(
+              map['logType'] as String,
+            ),
     );
   }
 }
-

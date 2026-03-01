@@ -6,10 +6,13 @@ import 'filter_protocol_version.dart';
 class Filter {
   /// Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
   final String? destRange;
+
   /// Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
   final String? ipProtocol;
+
   /// Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
   final FilterProtocolVersion protocolVersion;
+
   /// Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
   final String? srcRange;
 
@@ -37,10 +40,13 @@ class Filter {
   factory Filter.fromMap(Map<String, dynamic> map) {
     return Filter(
       destRange: map['destRange'] == null ? null : map['destRange'] as String,
-      ipProtocol: map['ipProtocol'] == null ? null : map['ipProtocol'] as String,
-      protocolVersion: FilterProtocolVersion.fromValue(map['protocolVersion'] as String),
+      ipProtocol: map['ipProtocol'] == null
+          ? null
+          : map['ipProtocol'] as String,
+      protocolVersion: FilterProtocolVersion.fromValue(
+        map['protocolVersion'] as String,
+      ),
       srcRange: map['srcRange'] == null ? null : map['srcRange'] as String,
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServerWorkflowDetailsOnUpload {
   /// Includes the necessary permissions for S3, EFS, and Lambda operations that Transfer can assume, so that all workflow steps can operate on the required resources.
   final String executionRole;
+
   /// A unique identifier for the workflow.
   final String workflowId;
 
@@ -29,4 +29,3 @@ class ServerWorkflowDetailsOnUpload {
     );
   }
 }
-

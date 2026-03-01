@@ -7,10 +7,13 @@ import 'breakdown_sort_order.dart';
 class Breakdown {
   /// The Aggregation function is applied across all data in each breakdown created.
   final AggregationFunction aggregationFunction;
+
   /// The name of the column in the dataset containing the breakdown values.
   final String column;
+
   /// A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field.
   final int limit;
+
   /// The sort order is applied to the values of the breakdown column.
   final BreakdownSortOrder sortOrder;
 
@@ -37,11 +40,12 @@ class Breakdown {
 
   factory Breakdown.fromMap(Map<String, dynamic> map) {
     return Breakdown(
-      aggregationFunction: AggregationFunction.fromMap((map['aggregationFunction'] as Map).cast<String, dynamic>()),
+      aggregationFunction: AggregationFunction.fromMap(
+        (map['aggregationFunction'] as Map).cast<String, dynamic>(),
+      ),
       column: map['column'] as String,
       limit: map['limit'] as int,
       sortOrder: BreakdownSortOrder.fromValue(map['sortOrder'] as String),
     );
   }
 }
-

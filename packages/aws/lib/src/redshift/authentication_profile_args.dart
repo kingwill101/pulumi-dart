@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AuthenticationProfileArgs {
   /// The content of the authentication profile in JSON format. The maximum length of the JSON string is determined by a quota for your account.
   final pulumi.Input<String> authenticationProfileContent;
+
   /// The name of the authentication profile.
   final pulumi.Input<String> authenticationProfileName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -22,10 +24,13 @@ class AuthenticationProfileArgs {
     required String authenticationProfileContent,
     required String authenticationProfileName,
     String? region,
-  }) :
-      authenticationProfileContent = pulumi.Input.asInput<String>(authenticationProfileContent),
-      authenticationProfileName = pulumi.Input.asInput<String>(authenticationProfileName),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : authenticationProfileContent = pulumi.Input.asInput<String>(
+         authenticationProfileContent,
+       ),
+       authenticationProfileName = pulumi.Input.asInput<String>(
+         authenticationProfileName,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +42,10 @@ class AuthenticationProfileArgs {
 
   factory AuthenticationProfileArgs.fromMap(Map<String, dynamic> map) {
     return AuthenticationProfileArgs(
-      authenticationProfileContent: map['authenticationProfileContent'] as String,
+      authenticationProfileContent:
+          map['authenticationProfileContent'] as String,
       authenticationProfileName: map['authenticationProfileName'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

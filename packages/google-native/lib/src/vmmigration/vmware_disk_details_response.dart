@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The details of a Vmware VM disk.
 class VmwareDiskDetailsResponse {
   /// The ordinal number of the disk.
   final int diskNumber;
+
   /// The disk label.
   final String label;
+
   /// Size in GB.
   final String sizeGb;
 
@@ -36,4 +37,3 @@ class VmwareDiskDetailsResponse {
     );
   }
 }
-

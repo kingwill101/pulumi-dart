@@ -18,7 +18,8 @@ enum GoogleCloudDocumentaiV1DocumentProvenanceType {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDocumentaiV1DocumentProvenanceType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDocumentaiV1DocumentProvenanceType value: $value',
+    );
   }
 }
-

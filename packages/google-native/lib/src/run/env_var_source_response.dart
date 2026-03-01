@@ -7,6 +7,7 @@ import 'secret_key_selector_response.dart';
 class EnvVarSourceResponse {
   /// Not supported by Cloud Run. Not supported in Cloud Run.
   final ConfigMapKeySelectorResponse configMapKeyRef;
+
   /// Selects a key (version) of a secret in Secret Manager.
   final SecretKeySelectorResponse secretKeyRef;
 
@@ -27,9 +28,12 @@ class EnvVarSourceResponse {
 
   factory EnvVarSourceResponse.fromMap(Map<String, dynamic> map) {
     return EnvVarSourceResponse(
-      configMapKeyRef: ConfigMapKeySelectorResponse.fromMap((map['configMapKeyRef'] as Map).cast<String, dynamic>()),
-      secretKeyRef: SecretKeySelectorResponse.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
+      configMapKeyRef: ConfigMapKeySelectorResponse.fromMap(
+        (map['configMapKeyRef'] as Map).cast<String, dynamic>(),
+      ),
+      secretKeyRef: SecretKeySelectorResponse.fromMap(
+        (map['secretKeyRef'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

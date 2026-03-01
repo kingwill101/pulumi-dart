@@ -11,17 +11,22 @@ import 'report_type_migrationcenter_v1alpha1.dart';
 class ReportMigrationcenterV1alpha1Args {
   /// Free-text description.
   final pulumi.Input<String>? description;
+
   /// User-friendly display name. Maximum length is 63 characters.
   final pulumi.Input<String>? displayName;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> reportConfigId;
+
   /// Required. User specified id for the report. It will become the last component of the report name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The id must match the regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?.
   final pulumi.Input<String> reportId;
+
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
+
   /// Report creation state.
   final pulumi.Input<ReportStateMigrationcenterV1alpha1>? state;
+
   /// Report type.
   final pulumi.Input<ReportTypeMigrationcenterV1alpha1>? type;
 
@@ -45,16 +50,19 @@ class ReportMigrationcenterV1alpha1Args {
     String? requestId,
     ReportStateMigrationcenterV1alpha1? state,
     ReportTypeMigrationcenterV1alpha1? type,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reportConfigId = pulumi.Input.asInput<String>(reportConfigId),
-      reportId = pulumi.Input.asInput<String>(reportId),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      state = pulumi.Input.asOptionalInput<ReportStateMigrationcenterV1alpha1>(state),
-      type = pulumi.Input.asOptionalInput<ReportTypeMigrationcenterV1alpha1>(type);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       reportConfigId = pulumi.Input.asInput<String>(reportConfigId),
+       reportId = pulumi.Input.asInput<String>(reportId),
+       requestId = pulumi.Input.asOptionalInput<String>(requestId),
+       state = pulumi.Input.asOptionalInput<ReportStateMigrationcenterV1alpha1>(
+         state,
+       ),
+       type = pulumi.Input.asOptionalInput<ReportTypeMigrationcenterV1alpha1>(
+         type,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,23 +73,40 @@ class ReportMigrationcenterV1alpha1Args {
       'reportConfigId': reportConfigId,
       'reportId': reportId,
       'requestId': ?requestId,
-      'state': ?pulumi.Input.mapOptionalInputValue<ReportStateMigrationcenterV1alpha1, String>(state, (value) => value.value),
-      'type': ?pulumi.Input.mapOptionalInputValue<ReportTypeMigrationcenterV1alpha1, String>(type, (value) => value.value),
+      'state':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReportStateMigrationcenterV1alpha1,
+            String
+          >(state, (value) => value.value),
+      'type':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReportTypeMigrationcenterV1alpha1,
+            String
+          >(type, (value) => value.value),
     };
   }
 
   factory ReportMigrationcenterV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return ReportMigrationcenterV1alpha1Args(
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       reportConfigId: map['reportConfigId'] as String,
       reportId: map['reportId'] as String,
       requestId: map['requestId'] == null ? null : map['requestId'] as String,
-      state: map['state'] == null ? null : ReportStateMigrationcenterV1alpha1.fromValue(map['state'] as String),
-      type: map['type'] == null ? null : ReportTypeMigrationcenterV1alpha1.fromValue(map['type'] as String),
+      state: map['state'] == null
+          ? null
+          : ReportStateMigrationcenterV1alpha1.fromValue(
+              map['state'] as String,
+            ),
+      type: map['type'] == null
+          ? null
+          : ReportTypeMigrationcenterV1alpha1.fromValue(map['type'] as String),
     );
   }
 }
-

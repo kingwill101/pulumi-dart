@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
   /// (Output)
   /// The email address of the service account used for authenticatation. CES
@@ -19,15 +18,16 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccount': ?serviceAccount,
-    };
+    return <String, dynamic>{'serviceAccount': ?serviceAccount};
   }
 
-  factory ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap(Map<String, dynamic> map) {
+  factory ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig(
-      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
+      serviceAccount: map['serviceAccount'] == null
+          ? null
+          : map['serviceAccount'] as String,
     );
   }
 }
-

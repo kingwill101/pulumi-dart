@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterNodeConfigKubeletConfigMemoryManager {
   /// The [Memory
   /// Manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/)
@@ -9,20 +8,17 @@ class ClusterNodeConfigKubeletConfigMemoryManager {
 
   /// Creates a new [ClusterNodeConfigKubeletConfigMemoryManager].
   /// [policy] The [Memory
-  ClusterNodeConfigKubeletConfigMemoryManager({
-    this.policy,
-  });
+  ClusterNodeConfigKubeletConfigMemoryManager({this.policy});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'policy': ?policy,
-    };
+    return <String, dynamic>{'policy': ?policy};
   }
 
-  factory ClusterNodeConfigKubeletConfigMemoryManager.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodeConfigKubeletConfigMemoryManager.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodeConfigKubeletConfigMemoryManager(
       policy: map['policy'] == null ? null : map['policy'] as String,
     );
   }
 }
-

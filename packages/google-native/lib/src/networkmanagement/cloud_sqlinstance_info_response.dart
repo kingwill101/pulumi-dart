@@ -1,18 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Metadata associated with a Cloud SQL instance.
 class CloudSQLInstanceInfoResponse {
   /// Name of a Cloud SQL instance.
   final String displayName;
+
   /// External IP address of a Cloud SQL instance.
   final String externalIp;
+
   /// Internal IP address of a Cloud SQL instance.
   final String internalIp;
+
   /// URI of a Cloud SQL instance network or empty string if the instance does not have one.
   final String networkUri;
+
   /// Region in which the Cloud SQL instance is running.
   final String region;
+
   /// URI of a Cloud SQL instance.
   final String uri;
 
@@ -54,4 +58,3 @@ class CloudSQLInstanceInfoResponse {
     );
   }
 }
-

@@ -16,9 +16,8 @@ class GetBackendServiceComputeV1Args {
   GetBackendServiceComputeV1Args({
     required String backendService,
     String? project,
-  }) :
-      backendService = pulumi.Input.asInput<String>(backendService),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : backendService = pulumi.Input.asInput<String>(backendService),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetBackendServiceComputeV1Args {
     );
   }
 }
-

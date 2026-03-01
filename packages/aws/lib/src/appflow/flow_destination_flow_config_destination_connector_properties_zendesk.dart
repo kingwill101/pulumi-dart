@@ -3,7 +3,8 @@
 import 'flow_destination_flow_config_destination_connector_properties_zendesk_error_handling_config.dart';
 
 class FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk {
-  final FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig? errorHandlingConfig;
+  final FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig?
+  errorHandlingConfig;
   final List<String>? idFieldNames;
   final String object;
   final String? writeOperationType;
@@ -22,20 +23,31 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errorHandlingConfig': ?errorHandlingConfig == null ? null : errorHandlingConfig!.toMap(),
+      'errorHandlingConfig': ?errorHandlingConfig == null
+          ? null
+          : errorHandlingConfig!.toMap(),
       'idFieldNames': ?idFieldNames,
       'object': object,
       'writeOperationType': ?writeOperationType,
     };
   }
 
-  factory FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk.fromMap(Map<String, dynamic> map) {
+  factory FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk(
-      errorHandlingConfig: map['errorHandlingConfig'] == null ? null : FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig.fromMap((map['errorHandlingConfig'] as Map).cast<String, dynamic>()),
-      idFieldNames: map['idFieldNames'] == null ? null : (map['idFieldNames'] as List).cast<String>(),
+      errorHandlingConfig: map['errorHandlingConfig'] == null
+          ? null
+          : FlowDestinationFlowConfigDestinationConnectorPropertiesZendeskErrorHandlingConfig.fromMap(
+              (map['errorHandlingConfig'] as Map).cast<String, dynamic>(),
+            ),
+      idFieldNames: map['idFieldNames'] == null
+          ? null
+          : (map['idFieldNames'] as List).cast<String>(),
       object: map['object'] as String,
-      writeOperationType: map['writeOperationType'] == null ? null : map['writeOperationType'] as String,
+      writeOperationType: map['writeOperationType'] == null
+          ? null
+          : map['writeOperationType'] as String,
     );
   }
 }
-

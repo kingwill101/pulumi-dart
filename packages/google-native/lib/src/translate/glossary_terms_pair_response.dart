@@ -6,6 +6,7 @@ import 'glossary_term_response.dart';
 class GlossaryTermsPairResponse {
   /// The source term is the term that will get match in the text,
   final GlossaryTermResponse sourceTerm;
+
   /// The term that will replace the match source term.
   final GlossaryTermResponse targetTerm;
 
@@ -26,9 +27,12 @@ class GlossaryTermsPairResponse {
 
   factory GlossaryTermsPairResponse.fromMap(Map<String, dynamic> map) {
     return GlossaryTermsPairResponse(
-      sourceTerm: GlossaryTermResponse.fromMap((map['sourceTerm'] as Map).cast<String, dynamic>()),
-      targetTerm: GlossaryTermResponse.fromMap((map['targetTerm'] as Map).cast<String, dynamic>()),
+      sourceTerm: GlossaryTermResponse.fromMap(
+        (map['sourceTerm'] as Map).cast<String, dynamic>(),
+      ),
+      targetTerm: GlossaryTermResponse.fromMap(
+        (map['targetTerm'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

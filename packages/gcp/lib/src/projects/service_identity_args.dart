@@ -10,6 +10,7 @@ class ServiceIdentityArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The service to generate identity for.
   ///
   /// - - -
@@ -18,18 +19,12 @@ class ServiceIdentityArgs {
   /// Creates a new [ServiceIdentityArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The service to generate identity for.
-  ServiceIdentityArgs({
-    String? project,
-    required String service,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  ServiceIdentityArgs({String? project, required String service})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       service = pulumi.Input.asInput<String>(service);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'service': service,
-    };
+    return <String, dynamic>{'project': ?project, 'service': service};
   }
 
   factory ServiceIdentityArgs.fromMap(Map<String, dynamic> map) {
@@ -39,4 +34,3 @@ class ServiceIdentityArgs {
     );
   }
 }
-

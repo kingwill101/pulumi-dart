@@ -16,21 +16,27 @@ class BudgetArgs {
   /// using threshold rules.
   /// Structure is documented below.
   final pulumi.Input<BudgetAllUpdatesRule>? allUpdatesRule;
+
   /// The budgeted amount for each usage period.
   /// Structure is documented below.
   final pulumi.Input<BudgetAmount> amount;
+
   /// ID of the billing account to set a budget on.
   final pulumi.Input<String> billingAccount;
+
   /// Filters that define which resources are used to compute the actual
   /// spend against the budget.
   /// Structure is documented below.
   final pulumi.Input<BudgetBudgetFilter>? budgetFilter;
+
   /// User data for display name in UI. Must be <= 60 chars.
   final pulumi.Input<String>? displayName;
+
   /// The ownership scope of the budget. The ownership scope and users'
   /// IAM permissions determine who has full access to the budget's data.
   /// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
   final pulumi.Input<String>? ownershipScope;
+
   /// Rules that trigger alerts (notifications of thresholds being
   /// crossed) when spend exceeds the specified percentages of the
   /// budget.
@@ -53,37 +59,84 @@ class BudgetArgs {
     String? displayName,
     String? ownershipScope,
     List<BudgetThresholdRule>? thresholdRules,
-  }) :
-      allUpdatesRule = pulumi.Input.asOptionalInput<BudgetAllUpdatesRule>(allUpdatesRule),
-      amount = pulumi.Input.asInput<BudgetAmount>(amount),
-      billingAccount = pulumi.Input.asInput<String>(billingAccount),
-      budgetFilter = pulumi.Input.asOptionalInput<BudgetBudgetFilter>(budgetFilter),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      ownershipScope = pulumi.Input.asOptionalInput<String>(ownershipScope),
-      thresholdRules = pulumi.Input.asOptionalInput<List<BudgetThresholdRule>>(thresholdRules);
+  }) : allUpdatesRule = pulumi.Input.asOptionalInput<BudgetAllUpdatesRule>(
+         allUpdatesRule,
+       ),
+       amount = pulumi.Input.asInput<BudgetAmount>(amount),
+       billingAccount = pulumi.Input.asInput<String>(billingAccount),
+       budgetFilter = pulumi.Input.asOptionalInput<BudgetBudgetFilter>(
+         budgetFilter,
+       ),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       ownershipScope = pulumi.Input.asOptionalInput<String>(ownershipScope),
+       thresholdRules = pulumi.Input.asOptionalInput<List<BudgetThresholdRule>>(
+         thresholdRules,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allUpdatesRule': ?pulumi.Input.mapOptionalInputValue<BudgetAllUpdatesRule, Map<String, dynamic>>(allUpdatesRule, (value) => value.toMap()),
-      'amount': pulumi.Input.mapInputValue<BudgetAmount, Map<String, dynamic>>(amount, (value) => value.toMap()),
+      'allUpdatesRule':
+          ?pulumi.Input.mapOptionalInputValue<
+            BudgetAllUpdatesRule,
+            Map<String, dynamic>
+          >(allUpdatesRule, (value) => value.toMap()),
+      'amount': pulumi.Input.mapInputValue<BudgetAmount, Map<String, dynamic>>(
+        amount,
+        (value) => value.toMap(),
+      ),
       'billingAccount': billingAccount,
-      'budgetFilter': ?pulumi.Input.mapOptionalInputValue<BudgetBudgetFilter, Map<String, dynamic>>(budgetFilter, (value) => value.toMap()),
+      'budgetFilter':
+          ?pulumi.Input.mapOptionalInputValue<
+            BudgetBudgetFilter,
+            Map<String, dynamic>
+          >(budgetFilter, (value) => value.toMap()),
       'displayName': ?displayName,
       'ownershipScope': ?ownershipScope,
-      'thresholdRules': ?pulumi.Input.mapOptionalInputValue<List<BudgetThresholdRule>, List<Map<String, dynamic>>>(thresholdRules, (value) => pulumi.Input.encodeList<BudgetThresholdRule, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'thresholdRules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BudgetThresholdRule>,
+            List<Map<String, dynamic>>
+          >(
+            thresholdRules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BudgetThresholdRule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory BudgetArgs.fromMap(Map<String, dynamic> map) {
     return BudgetArgs(
-      allUpdatesRule: map['allUpdatesRule'] == null ? null : BudgetAllUpdatesRule.fromMap((map['allUpdatesRule'] as Map).cast<String, dynamic>()),
-      amount: BudgetAmount.fromMap((map['amount'] as Map).cast<String, dynamic>()),
+      allUpdatesRule: map['allUpdatesRule'] == null
+          ? null
+          : BudgetAllUpdatesRule.fromMap(
+              (map['allUpdatesRule'] as Map).cast<String, dynamic>(),
+            ),
+      amount: BudgetAmount.fromMap(
+        (map['amount'] as Map).cast<String, dynamic>(),
+      ),
       billingAccount: map['billingAccount'] as String,
-      budgetFilter: map['budgetFilter'] == null ? null : BudgetBudgetFilter.fromMap((map['budgetFilter'] as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      ownershipScope: map['ownershipScope'] == null ? null : map['ownershipScope'] as String,
-      thresholdRules: map['thresholdRules'] == null ? null : pulumi.Input.decodeList<BudgetThresholdRule>(map['thresholdRules'], (value) => BudgetThresholdRule.fromMap((value as Map).cast<String, dynamic>())),
+      budgetFilter: map['budgetFilter'] == null
+          ? null
+          : BudgetBudgetFilter.fromMap(
+              (map['budgetFilter'] as Map).cast<String, dynamic>(),
+            ),
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      ownershipScope: map['ownershipScope'] == null
+          ? null
+          : map['ownershipScope'] as String,
+      thresholdRules: map['thresholdRules'] == null
+          ? null
+          : pulumi.Input.decodeList<BudgetThresholdRule>(
+              map['thresholdRules'],
+              (value) => BudgetThresholdRule.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

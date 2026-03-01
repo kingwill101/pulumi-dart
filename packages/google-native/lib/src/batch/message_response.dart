@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state.
 class MessageResponse {
   /// The new job state.
   final String newJobState;
+
   /// The new task state.
   final String newTaskState;
+
   /// The message type.
   final String type;
 
@@ -36,4 +37,3 @@ class MessageResponse {
     );
   }
 }
-

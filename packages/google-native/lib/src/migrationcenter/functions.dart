@@ -159,7 +159,8 @@ Future<GetGroupMigrationcenterV1alpha1Result> getGroupMigrationcenterV1alpha1(
 /// Gets an import data file.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1alpha1_get_import_data_file_migrationcenter_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetImportDataFileMigrationcenterV1alpha1Result> getImportDataFileMigrationcenterV1alpha1(
+Future<GetImportDataFileMigrationcenterV1alpha1Result>
+getImportDataFileMigrationcenterV1alpha1(
   GetImportDataFileMigrationcenterV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -175,7 +176,8 @@ Future<GetImportDataFileMigrationcenterV1alpha1Result> getImportDataFileMigratio
 /// Gets the details of an import job.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1alpha1_get_import_job_migrationcenter_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetImportJobMigrationcenterV1alpha1Result> getImportJobMigrationcenterV1alpha1(
+Future<GetImportJobMigrationcenterV1alpha1Result>
+getImportJobMigrationcenterV1alpha1(
   GetImportJobMigrationcenterV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -191,7 +193,8 @@ Future<GetImportJobMigrationcenterV1alpha1Result> getImportJobMigrationcenterV1a
 /// Gets the details of a preference set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1alpha1_get_preference_set_migrationcenter_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetPreferenceSetMigrationcenterV1alpha1Result> getPreferenceSetMigrationcenterV1alpha1(
+Future<GetPreferenceSetMigrationcenterV1alpha1Result>
+getPreferenceSetMigrationcenterV1alpha1(
   GetPreferenceSetMigrationcenterV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -223,7 +226,8 @@ Future<GetReportMigrationcenterV1alpha1Result> getReportMigrationcenterV1alpha1(
 /// Gets details of a single ReportConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_migrationcenter_v1alpha1_get_report_config_migrationcenter_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetReportConfigMigrationcenterV1alpha1Result> getReportConfigMigrationcenterV1alpha1(
+Future<GetReportConfigMigrationcenterV1alpha1Result>
+getReportConfigMigrationcenterV1alpha1(
   GetReportConfigMigrationcenterV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

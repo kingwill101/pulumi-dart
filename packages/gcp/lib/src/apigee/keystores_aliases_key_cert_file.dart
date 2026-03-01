@@ -31,25 +31,34 @@ import 'keystores_aliases_key_cert_file_timeouts.dart';
 class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
   /// Alias Name
   late final pulumi.Output<String> alias;
+
   /// Cert content
   ///
   ///
   /// - - -
   late final pulumi.Output<String> cert;
+
   /// Chain of certificates under this alias.
   /// Structure is documented below.
-  late final pulumi.Output<List<KeystoresAliasesKeyCertFileCertsInfo>> certsInfos;
+  late final pulumi.Output<List<KeystoresAliasesKeyCertFileCertsInfo>>
+  certsInfos;
+
   /// Environment associated with the alias
   late final pulumi.Output<String> environment;
+
   /// Private Key content, omit if uploading to truststore
   late final pulumi.Output<String?> key;
+
   /// Keystore Name
   late final pulumi.Output<String> keystore;
+
   /// Organization ID associated with the alias, without organization/ prefix
   late final pulumi.Output<String> orgId;
+
   /// Password for the Private Key if it's encrypted
   late final pulumi.Output<String?> password;
   late final pulumi.Output<KeystoresAliasesKeyCertFileTimeouts?> timeouts;
+
   /// Optional.Type of Alias
   late final pulumi.Output<String> type;
 
@@ -62,20 +71,25 @@ class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
     KeystoresAliasesKeyCertFileArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.alias = registerOutput<String>('alias');
     this.cert = registerOutput<String>('cert');
-    this.certsInfos = registerOutput<List<KeystoresAliasesKeyCertFileCertsInfo>>('certsInfos');
+    this.certsInfos =
+        registerOutput<List<KeystoresAliasesKeyCertFileCertsInfo>>(
+          'certsInfos',
+        );
     this.environment = registerOutput<String>('environment');
     this.key = registerOutput<String?>('key');
     this.keystore = registerOutput<String>('keystore');
     this.orgId = registerOutput<String>('orgId');
     this.password = registerOutput<String?>('password');
-    this.timeouts = registerOutput<KeystoresAliasesKeyCertFileTimeouts?>('timeouts');
+    this.timeouts = registerOutput<KeystoresAliasesKeyCertFileTimeouts?>(
+      'timeouts',
+    );
     this.type = registerOutput<String>('type');
   }
 }

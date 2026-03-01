@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BareMetalClusterControlPlaneApiServerArg {
   /// The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
   final String argument;
+
   /// The value of the arg as it will be passed to the API Server command line.
   final String value;
 
@@ -16,17 +16,15 @@ class BareMetalClusterControlPlaneApiServerArg {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'argument': argument,
-      'value': value,
-    };
+    return <String, dynamic>{'argument': argument, 'value': value};
   }
 
-  factory BareMetalClusterControlPlaneApiServerArg.fromMap(Map<String, dynamic> map) {
+  factory BareMetalClusterControlPlaneApiServerArg.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalClusterControlPlaneApiServerArg(
       argument: map['argument'] as String,
       value: map['value'] as String,
     );
   }
 }
-

@@ -7,20 +7,17 @@ class StatefulPolicyResponseComputeV1 {
 
   /// Creates a new [StatefulPolicyResponseComputeV1].
   /// [preservedState] Required.
-  StatefulPolicyResponseComputeV1({
-    required this.preservedState,
-  });
+  StatefulPolicyResponseComputeV1({required this.preservedState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'preservedState': preservedState.toMap(),
-    };
+    return <String, dynamic>{'preservedState': preservedState.toMap()};
   }
 
   factory StatefulPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return StatefulPolicyResponseComputeV1(
-      preservedState: StatefulPolicyPreservedStateResponseComputeV1.fromMap((map['preservedState'] as Map).cast<String, dynamic>()),
+      preservedState: StatefulPolicyPreservedStateResponseComputeV1.fromMap(
+        (map['preservedState'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

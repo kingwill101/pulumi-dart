@@ -10,13 +10,19 @@ import 'google_cloud_documentai_v1_document_provenance_response.dart';
 /// A detected token.
 class GoogleCloudDocumentaiV1DocumentPageTokenResponse {
   /// Detected break at the end of a Token.
-  final GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse detectedBreak;
+  final GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse
+  detectedBreak;
+
   /// A list of detected languages together with confidence.
-  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse> detectedLanguages;
+  final List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>
+  detectedLanguages;
+
   /// Layout for Token.
   final GoogleCloudDocumentaiV1DocumentPageLayoutResponse layout;
+
   /// The history of this annotation.
   final GoogleCloudDocumentaiV1DocumentProvenanceResponse provenance;
+
   /// Text style attributes.
   final GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse styleInfo;
 
@@ -37,21 +43,45 @@ class GoogleCloudDocumentaiV1DocumentPageTokenResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'detectedBreak': detectedBreak.toMap(),
-      'detectedLanguages': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse, Map<String, dynamic>>(detectedLanguages, (value) => value.toMap()),
+      'detectedLanguages':
+          pulumi.Input.encodeList<
+            GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse,
+            Map<String, dynamic>
+          >(detectedLanguages, (value) => value.toMap()),
       'layout': layout.toMap(),
       'provenance': provenance.toMap(),
       'styleInfo': styleInfo.toMap(),
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageTokenResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageTokenResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageTokenResponse(
-      detectedBreak: GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse.fromMap((map['detectedBreak'] as Map).cast<String, dynamic>()),
-      detectedLanguages: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse>(map['detectedLanguages'], (value) => GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap((map['layout'] as Map).cast<String, dynamic>()),
-      provenance: GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap((map['provenance'] as Map).cast<String, dynamic>()),
-      styleInfo: GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse.fromMap((map['styleInfo'] as Map).cast<String, dynamic>()),
+      detectedBreak:
+          GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse.fromMap(
+            (map['detectedBreak'] as Map).cast<String, dynamic>(),
+          ),
+      detectedLanguages:
+          pulumi.Input.decodeList<
+            GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse
+          >(
+            map['detectedLanguages'],
+            (value) =>
+                GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      layout: GoogleCloudDocumentaiV1DocumentPageLayoutResponse.fromMap(
+        (map['layout'] as Map).cast<String, dynamic>(),
+      ),
+      provenance: GoogleCloudDocumentaiV1DocumentProvenanceResponse.fromMap(
+        (map['provenance'] as Map).cast<String, dynamic>(),
+      ),
+      styleInfo:
+          GoogleCloudDocumentaiV1DocumentPageTokenStyleInfoResponse.fromMap(
+            (map['styleInfo'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

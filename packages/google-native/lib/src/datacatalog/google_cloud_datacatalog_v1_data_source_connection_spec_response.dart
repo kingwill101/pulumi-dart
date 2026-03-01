@@ -5,7 +5,8 @@ import 'google_cloud_datacatalog_v1_big_query_connection_spec_response.dart';
 /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later.
 class GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse {
   /// Fields specific to BigQuery connections.
-  final GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse bigqueryConnectionSpec;
+  final GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse
+  bigqueryConnectionSpec;
 
   /// Creates a new [GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse].
   /// [bigqueryConnectionSpec] Fields specific to BigQuery connections.
@@ -19,10 +20,14 @@ class GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse(
-      bigqueryConnectionSpec: GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse.fromMap((map['bigqueryConnectionSpec'] as Map).cast<String, dynamic>()),
+      bigqueryConnectionSpec:
+          GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse.fromMap(
+            (map['bigqueryConnectionSpec'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

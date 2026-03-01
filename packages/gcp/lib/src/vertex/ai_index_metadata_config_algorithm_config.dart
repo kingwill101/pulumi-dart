@@ -6,6 +6,7 @@ class AiIndexMetadataConfigAlgorithmConfig {
   /// Configuration options for using brute force search, which simply implements the
   /// standard linear search in the database for each query.
   final Map<String, dynamic>? bruteForceConfig;
+
   /// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
   /// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
   /// Structure is documented below.
@@ -26,11 +27,18 @@ class AiIndexMetadataConfigAlgorithmConfig {
     };
   }
 
-  factory AiIndexMetadataConfigAlgorithmConfig.fromMap(Map<String, dynamic> map) {
+  factory AiIndexMetadataConfigAlgorithmConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AiIndexMetadataConfigAlgorithmConfig(
-      bruteForceConfig: map['bruteForceConfig'] == null ? null : (map['bruteForceConfig'] as Map).cast<String, dynamic>(),
-      treeAhConfig: map['treeAhConfig'] == null ? null : AiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap((map['treeAhConfig'] as Map).cast<String, dynamic>()),
+      bruteForceConfig: map['bruteForceConfig'] == null
+          ? null
+          : (map['bruteForceConfig'] as Map).cast<String, dynamic>(),
+      treeAhConfig: map['treeAhConfig'] == null
+          ? null
+          : AiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap(
+              (map['treeAhConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

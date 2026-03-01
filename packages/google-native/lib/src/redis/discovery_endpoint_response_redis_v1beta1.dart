@@ -6,8 +6,10 @@ import 'psc_config_response_redis_v1beta1.dart';
 class DiscoveryEndpointResponseRedisV1beta1 {
   /// Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
   final String address;
+
   /// The port number of the exposed Redis endpoint.
   final int port;
+
   /// Customer configuration for where the endpoint is created and accessed from.
   final PscConfigResponseRedisV1beta1 pscConfig;
 
@@ -29,12 +31,15 @@ class DiscoveryEndpointResponseRedisV1beta1 {
     };
   }
 
-  factory DiscoveryEndpointResponseRedisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory DiscoveryEndpointResponseRedisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DiscoveryEndpointResponseRedisV1beta1(
       address: map['address'] as String,
       port: map['port'] as int,
-      pscConfig: PscConfigResponseRedisV1beta1.fromMap((map['pscConfig'] as Map).cast<String, dynamic>()),
+      pscConfig: PscConfigResponseRedisV1beta1.fromMap(
+        (map['pscConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

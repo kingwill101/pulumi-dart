@@ -13,18 +13,12 @@ class GetManagedZoneIamPolicyArgs {
   /// Creates a new [GetManagedZoneIamPolicyArgs].
   /// [managedZone] Required.
   /// [project] Optional.
-  GetManagedZoneIamPolicyArgs({
-    required String managedZone,
-    String? project,
-  }) :
-      managedZone = pulumi.Input.asInput<String>(managedZone),
+  GetManagedZoneIamPolicyArgs({required String managedZone, String? project})
+    : managedZone = pulumi.Input.asInput<String>(managedZone),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'managedZone': managedZone,
-      'project': ?project,
-    };
+    return <String, dynamic>{'managedZone': managedZone, 'project': ?project};
   }
 
   factory GetManagedZoneIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetManagedZoneIamPolicyArgs {
     );
   }
 }
-

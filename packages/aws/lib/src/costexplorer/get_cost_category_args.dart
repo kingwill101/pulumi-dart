@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCostCategoryArgs {
   /// Unique name for the Cost Category.
   final pulumi.Input<String> costCategoryArn;
+
   /// Configuration block for the specific `Tag` to use for `Expression`. See below.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -18,22 +19,19 @@ class GetCostCategoryArgs {
   GetCostCategoryArgs({
     required String costCategoryArn,
     Map<String, String>? tags,
-  }) :
-      costCategoryArn = pulumi.Input.asInput<String>(costCategoryArn),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : costCategoryArn = pulumi.Input.asInput<String>(costCategoryArn),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'costCategoryArn': costCategoryArn,
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'costCategoryArn': costCategoryArn, 'tags': ?tags};
   }
 
   factory GetCostCategoryArgs.fromMap(Map<String, dynamic> map) {
     return GetCostCategoryArgs(
       costCategoryArn: map['costCategoryArn'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

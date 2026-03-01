@@ -16,30 +16,43 @@ import 'trino_job_response.dart';
 class OrderedJobResponse {
   /// Optional. Job is a Flink job.
   final FlinkJobResponse flinkJob;
+
   /// Optional. Job is a Hadoop job.
   final HadoopJobResponse hadoopJob;
+
   /// Optional. Job is a Hive job.
   final HiveJobResponse hiveJob;
+
   /// Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
   final Map<String, String> labels;
+
   /// Optional. Job is a Pig job.
   final PigJobResponse pigJob;
+
   /// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
   final List<String> prerequisiteStepIds;
+
   /// Optional. Job is a Presto job.
   final PrestoJobResponse prestoJob;
+
   /// Optional. Job is a PySpark job.
   final PySparkJobResponse pysparkJob;
+
   /// Optional. Job scheduling configuration.
   final JobSchedulingResponse scheduling;
+
   /// Optional. Job is a Spark job.
   final SparkJobResponse sparkJob;
+
   /// Optional. Job is a SparkR job.
   final SparkRJobResponse sparkRJob;
+
   /// Optional. Job is a SparkSql job.
   final SparkSqlJobResponse sparkSqlJob;
+
   /// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
   final String stepId;
+
   /// Optional. Job is a Trino job.
   final TrinoJobResponse trinoJob;
 
@@ -96,21 +109,42 @@ class OrderedJobResponse {
 
   factory OrderedJobResponse.fromMap(Map<String, dynamic> map) {
     return OrderedJobResponse(
-      flinkJob: FlinkJobResponse.fromMap((map['flinkJob'] as Map).cast<String, dynamic>()),
-      hadoopJob: HadoopJobResponse.fromMap((map['hadoopJob'] as Map).cast<String, dynamic>()),
-      hiveJob: HiveJobResponse.fromMap((map['hiveJob'] as Map).cast<String, dynamic>()),
+      flinkJob: FlinkJobResponse.fromMap(
+        (map['flinkJob'] as Map).cast<String, dynamic>(),
+      ),
+      hadoopJob: HadoopJobResponse.fromMap(
+        (map['hadoopJob'] as Map).cast<String, dynamic>(),
+      ),
+      hiveJob: HiveJobResponse.fromMap(
+        (map['hiveJob'] as Map).cast<String, dynamic>(),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
-      pigJob: PigJobResponse.fromMap((map['pigJob'] as Map).cast<String, dynamic>()),
+      pigJob: PigJobResponse.fromMap(
+        (map['pigJob'] as Map).cast<String, dynamic>(),
+      ),
       prerequisiteStepIds: (map['prerequisiteStepIds'] as List).cast<String>(),
-      prestoJob: PrestoJobResponse.fromMap((map['prestoJob'] as Map).cast<String, dynamic>()),
-      pysparkJob: PySparkJobResponse.fromMap((map['pysparkJob'] as Map).cast<String, dynamic>()),
-      scheduling: JobSchedulingResponse.fromMap((map['scheduling'] as Map).cast<String, dynamic>()),
-      sparkJob: SparkJobResponse.fromMap((map['sparkJob'] as Map).cast<String, dynamic>()),
-      sparkRJob: SparkRJobResponse.fromMap((map['sparkRJob'] as Map).cast<String, dynamic>()),
-      sparkSqlJob: SparkSqlJobResponse.fromMap((map['sparkSqlJob'] as Map).cast<String, dynamic>()),
+      prestoJob: PrestoJobResponse.fromMap(
+        (map['prestoJob'] as Map).cast<String, dynamic>(),
+      ),
+      pysparkJob: PySparkJobResponse.fromMap(
+        (map['pysparkJob'] as Map).cast<String, dynamic>(),
+      ),
+      scheduling: JobSchedulingResponse.fromMap(
+        (map['scheduling'] as Map).cast<String, dynamic>(),
+      ),
+      sparkJob: SparkJobResponse.fromMap(
+        (map['sparkJob'] as Map).cast<String, dynamic>(),
+      ),
+      sparkRJob: SparkRJobResponse.fromMap(
+        (map['sparkRJob'] as Map).cast<String, dynamic>(),
+      ),
+      sparkSqlJob: SparkSqlJobResponse.fromMap(
+        (map['sparkSqlJob'] as Map).cast<String, dynamic>(),
+      ),
       stepId: map['stepId'] as String,
-      trinoJob: TrinoJobResponse.fromMap((map['trinoJob'] as Map).cast<String, dynamic>()),
+      trinoJob: TrinoJobResponse.fromMap(
+        (map['trinoJob'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetExportArgs {
     required String environmentId,
     required String exportId,
     required String organizationId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      exportId = pulumi.Input.asInput<String>(exportId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : environmentId = pulumi.Input.asInput<String>(environmentId),
+       exportId = pulumi.Input.asInput<String>(exportId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetExportArgs {
     );
   }
 }
-

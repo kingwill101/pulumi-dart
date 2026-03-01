@@ -12,31 +12,49 @@ import 'google_cloud_channel_v1_trial_settings_response.dart';
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class Entitlement extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
+
   /// Association information to other entitlements.
-  late final pulumi.Output<GoogleCloudChannelV1AssociationInfoResponse> associationInfo;
+  late final pulumi.Output<GoogleCloudChannelV1AssociationInfoResponse>
+  associationInfo;
+
   /// Optional. The billing account resource name that is used to pay for this entitlement.
   late final pulumi.Output<String> billingAccount;
+
   /// Commitment settings for a commitment-based Offer. Required for commitment based offers.
-  late final pulumi.Output<GoogleCloudChannelV1CommitmentSettingsResponse> commitmentSettings;
+  late final pulumi.Output<GoogleCloudChannelV1CommitmentSettingsResponse>
+  commitmentSettings;
+
   /// The time at which the entitlement is created.
   late final pulumi.Output<String> createTime;
   late final pulumi.Output<String> customerId;
+
   /// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
   late final pulumi.Output<String> name;
+
   /// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
   late final pulumi.Output<String> offer;
+
   /// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
-  late final pulumi.Output<List<GoogleCloudChannelV1ParameterResponse>> parameters;
+  late final pulumi.Output<List<GoogleCloudChannelV1ParameterResponse>>
+  parameters;
+
   /// Service provisioning details for the entitlement.
-  late final pulumi.Output<GoogleCloudChannelV1ProvisionedServiceResponse> provisionedService;
+  late final pulumi.Output<GoogleCloudChannelV1ProvisionedServiceResponse>
+  provisionedService;
+
   /// Current provisioning state of the entitlement.
   late final pulumi.Output<String> provisioningState;
+
   /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
   late final pulumi.Output<String> purchaseOrderId;
+
   /// Enumerable of all current suspension reasons for an entitlement.
   late final pulumi.Output<List<String>> suspensionReasons;
+
   /// Settings for trial offers.
-  late final pulumi.Output<GoogleCloudChannelV1TrialSettingsResponse> trialSettings;
+  late final pulumi.Output<GoogleCloudChannelV1TrialSettingsResponse>
+  trialSettings;
+
   /// The time at which the entitlement is updated.
   late final pulumi.Output<String> updateTime;
 
@@ -49,25 +67,40 @@ class Entitlement extends pulumi.CustomResource {
     EntitlementArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:cloudchannel/v1:Entitlement',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:cloudchannel/v1:Entitlement',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.accountId = registerOutput<String>('accountId');
-    this.associationInfo = registerOutput<GoogleCloudChannelV1AssociationInfoResponse>('associationInfo');
+    this.associationInfo =
+        registerOutput<GoogleCloudChannelV1AssociationInfoResponse>(
+          'associationInfo',
+        );
     this.billingAccount = registerOutput<String>('billingAccount');
-    this.commitmentSettings = registerOutput<GoogleCloudChannelV1CommitmentSettingsResponse>('commitmentSettings');
+    this.commitmentSettings =
+        registerOutput<GoogleCloudChannelV1CommitmentSettingsResponse>(
+          'commitmentSettings',
+        );
     this.createTime = registerOutput<String>('createTime');
     this.customerId = registerOutput<String>('customerId');
     this.name = registerOutput<String>('name');
     this.offer = registerOutput<String>('offer');
-    this.parameters = registerOutput<List<GoogleCloudChannelV1ParameterResponse>>('parameters');
-    this.provisionedService = registerOutput<GoogleCloudChannelV1ProvisionedServiceResponse>('provisionedService');
+    this.parameters =
+        registerOutput<List<GoogleCloudChannelV1ParameterResponse>>(
+          'parameters',
+        );
+    this.provisionedService =
+        registerOutput<GoogleCloudChannelV1ProvisionedServiceResponse>(
+          'provisionedService',
+        );
     this.provisioningState = registerOutput<String>('provisioningState');
     this.purchaseOrderId = registerOutput<String>('purchaseOrderId');
     this.suspensionReasons = registerOutput<List<String>>('suspensionReasons');
-    this.trialSettings = registerOutput<GoogleCloudChannelV1TrialSettingsResponse>('trialSettings');
+    this.trialSettings =
+        registerOutput<GoogleCloudChannelV1TrialSettingsResponse>(
+          'trialSettings',
+        );
     this.updateTime = registerOutput<String>('updateTime');
   }
 }

@@ -23,7 +23,8 @@ enum ExecutionStageStateExecutionStageState {
         return item;
       }
     }
-    throw ArgumentError('Unknown ExecutionStageStateExecutionStageState value: $value');
+    throw ArgumentError(
+      'Unknown ExecutionStageStateExecutionStageState value: $value',
+    );
   }
 }
-

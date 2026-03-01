@@ -17,4 +17,3 @@ enum ReleaseType {
     throw ArgumentError('Unknown ReleaseType value: $value');
   }
 }
-

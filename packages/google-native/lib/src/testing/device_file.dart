@@ -7,16 +7,14 @@ import 'regular_file.dart';
 class DeviceFile {
   /// A reference to an opaque binary blob file.
   final ObbFile? obbFile;
+
   /// A reference to a regular file.
   final RegularFile? regularFile;
 
   /// Creates a new [DeviceFile].
   /// [obbFile] A reference to an opaque binary blob file.
   /// [regularFile] A reference to a regular file.
-  DeviceFile({
-    this.obbFile,
-    this.regularFile,
-  });
+  DeviceFile({this.obbFile, this.regularFile});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,14 @@ class DeviceFile {
 
   factory DeviceFile.fromMap(Map<String, dynamic> map) {
     return DeviceFile(
-      obbFile: map['obbFile'] == null ? null : ObbFile.fromMap((map['obbFile'] as Map).cast<String, dynamic>()),
-      regularFile: map['regularFile'] == null ? null : RegularFile.fromMap((map['regularFile'] as Map).cast<String, dynamic>()),
+      obbFile: map['obbFile'] == null
+          ? null
+          : ObbFile.fromMap((map['obbFile'] as Map).cast<String, dynamic>()),
+      regularFile: map['regularFile'] == null
+          ? null
+          : RegularFile.fromMap(
+              (map['regularFile'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

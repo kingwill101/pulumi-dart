@@ -10,13 +10,16 @@ enum GoogleCloudMlV1PredictionInputOutputDataFormat {
   const GoogleCloudMlV1PredictionInputOutputDataFormat(this.value);
   final String value;
 
-  static GoogleCloudMlV1PredictionInputOutputDataFormat fromValue(String value) {
+  static GoogleCloudMlV1PredictionInputOutputDataFormat fromValue(
+    String value,
+  ) {
     for (final item in GoogleCloudMlV1PredictionInputOutputDataFormat.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudMlV1PredictionInputOutputDataFormat value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudMlV1PredictionInputOutputDataFormat value: $value',
+    );
   }
 }
-

@@ -7,6 +7,7 @@ import 'fleet_observability_feature_error_response_gkehub_v1beta.dart';
 class FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta {
   /// The high-level, machine-readable status of this Feature.
   final String code;
+
   /// Errors after reconciling the monitoring and logging feature if the code is not OK.
   final List<FleetObservabilityFeatureErrorResponseGkehubV1beta> errors;
 
@@ -21,15 +22,29 @@ class FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'code': code,
-      'errors': pulumi.Input.encodeList<FleetObservabilityFeatureErrorResponseGkehubV1beta, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors':
+          pulumi.Input.encodeList<
+            FleetObservabilityFeatureErrorResponseGkehubV1beta,
+            Map<String, dynamic>
+          >(errors, (value) => value.toMap()),
     };
   }
 
-  factory FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFleetObservabilityBaseFeatureStateResponseGkehubV1beta(
       code: map['code'] as String,
-      errors: pulumi.Input.decodeList<FleetObservabilityFeatureErrorResponseGkehubV1beta>(map['errors'], (value) => FleetObservabilityFeatureErrorResponseGkehubV1beta.fromMap((value as Map).cast<String, dynamic>())),
+      errors:
+          pulumi.Input.decodeList<
+            FleetObservabilityFeatureErrorResponseGkehubV1beta
+          >(
+            map['errors'],
+            (value) =>
+                FleetObservabilityFeatureErrorResponseGkehubV1beta.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

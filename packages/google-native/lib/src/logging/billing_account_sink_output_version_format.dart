@@ -13,7 +13,8 @@ enum BillingAccountSinkOutputVersionFormat {
         return item;
       }
     }
-    throw ArgumentError('Unknown BillingAccountSinkOutputVersionFormat value: $value');
+    throw ArgumentError(
+      'Unknown BillingAccountSinkOutputVersionFormat value: $value',
+    );
   }
 }
-

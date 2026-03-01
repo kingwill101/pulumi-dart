@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class Uint128ResponseComputeBeta {
   final String high;
   final String low;
@@ -8,16 +7,10 @@ class Uint128ResponseComputeBeta {
   /// Creates a new [Uint128ResponseComputeBeta].
   /// [high] Required.
   /// [low] Required.
-  Uint128ResponseComputeBeta({
-    required this.high,
-    required this.low,
-  });
+  Uint128ResponseComputeBeta({required this.high, required this.low});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'high': high,
-      'low': low,
-    };
+    return <String, dynamic>{'high': high, 'low': low};
   }
 
   factory Uint128ResponseComputeBeta.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class Uint128ResponseComputeBeta {
     );
   }
 }
-

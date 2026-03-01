@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity {
   /// Number of characters after the finding to consider.
   final int? windowAfter;
+
   /// Number of characters before the finding to consider.
   final int? windowBefore;
 
@@ -22,11 +22,16 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity {
     };
   }
 
-  factory PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity.fromMap(Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity(
-      windowAfter: map['windowAfter'] == null ? null : map['windowAfter'] as int,
-      windowBefore: map['windowBefore'] == null ? null : map['windowBefore'] as int,
+      windowAfter: map['windowAfter'] == null
+          ? null
+          : map['windowAfter'] as int,
+      windowBefore: map['windowBefore'] == null
+          ? null
+          : map['windowBefore'] as int,
     );
   }
 }
-

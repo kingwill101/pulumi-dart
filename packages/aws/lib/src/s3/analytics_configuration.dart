@@ -379,14 +379,19 @@ import 'analytics_configuration_storage_class_analysis.dart';
 class AnalyticsConfiguration extends pulumi.CustomResource {
   /// Name of the bucket this analytics configuration is associated with.
   late final pulumi.Output<String> bucket;
+
   /// Object filtering that accepts a prefix, tags, or a logical AND of prefix and tags (documented below).
   late final pulumi.Output<AnalyticsConfigurationFilter?> filter;
+
   /// Unique identifier of the analytics configuration for the bucket.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration for the analytics data export (documented below).
-  late final pulumi.Output<AnalyticsConfigurationStorageClassAnalysis?> storageClassAnalysis;
+  late final pulumi.Output<AnalyticsConfigurationStorageClassAnalysis?>
+  storageClassAnalysis;
 
   /// Creates a new [AnalyticsConfiguration].
   /// [name] The Pulumi resource name.
@@ -397,15 +402,18 @@ class AnalyticsConfiguration extends pulumi.CustomResource {
     AnalyticsConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:s3/analyticsConfiguration:AnalyticsConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucket = registerOutput<String>('bucket');
     this.filter = registerOutput<AnalyticsConfigurationFilter?>('filter');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.storageClassAnalysis = registerOutput<AnalyticsConfigurationStorageClassAnalysis?>('storageClassAnalysis');
+    this.storageClassAnalysis =
+        registerOutput<AnalyticsConfigurationStorageClassAnalysis?>(
+          'storageClassAnalysis',
+        );
   }
 }

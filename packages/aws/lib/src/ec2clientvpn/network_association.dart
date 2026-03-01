@@ -110,12 +110,16 @@ import 'network_association_args.dart';
 class NetworkAssociation extends pulumi.CustomResource {
   /// The unique ID of the target network association.
   late final pulumi.Output<String> associationId;
+
   /// The ID of the Client VPN endpoint.
   late final pulumi.Output<String> clientVpnEndpointId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The ID of the subnet to associate with the Client VPN endpoint.
   late final pulumi.Output<String> subnetId;
+
   /// The ID of the VPC in which the target subnet is located.
   late final pulumi.Output<String> vpcId;
 
@@ -128,11 +132,11 @@ class NetworkAssociation extends pulumi.CustomResource {
     NetworkAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2clientvpn/networkAssociation:NetworkAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ec2clientvpn/networkAssociation:NetworkAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.associationId = registerOutput<String>('associationId');
     this.clientVpnEndpointId = registerOutput<String>('clientVpnEndpointId');
     this.region = registerOutput<String>('region');

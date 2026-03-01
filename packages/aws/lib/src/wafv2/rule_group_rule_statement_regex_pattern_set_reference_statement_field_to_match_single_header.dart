@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader {
   /// The name of the query header to inspect. This setting must be provided as lower case characters.
   final String name;
@@ -12,15 +11,14 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleH
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchSingleHeader(
       name: map['name'] as String,
     );
   }
 }
-

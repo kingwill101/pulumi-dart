@@ -7,9 +7,12 @@ import 'monitoring_component_config_response_container_v1beta1.dart';
 /// MonitoringConfig is cluster monitoring configuration.
 class MonitoringConfigResponseContainerV1beta1 {
   /// Configuration of Advanced Datapath Observability features.
-  final AdvancedDatapathObservabilityConfigResponseContainerV1beta1 advancedDatapathObservabilityConfig;
+  final AdvancedDatapathObservabilityConfigResponseContainerV1beta1
+  advancedDatapathObservabilityConfig;
+
   /// Monitoring components configuration
   final MonitoringComponentConfigResponseContainerV1beta1 componentConfig;
+
   /// Enable Google Cloud Managed Service for Prometheus in the cluster.
   final ManagedPrometheusConfigResponseContainerV1beta1 managedPrometheusConfig;
 
@@ -25,18 +28,30 @@ class MonitoringConfigResponseContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedDatapathObservabilityConfig': advancedDatapathObservabilityConfig.toMap(),
+      'advancedDatapathObservabilityConfig': advancedDatapathObservabilityConfig
+          .toMap(),
       'componentConfig': componentConfig.toMap(),
       'managedPrometheusConfig': managedPrometheusConfig.toMap(),
     };
   }
 
-  factory MonitoringConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory MonitoringConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MonitoringConfigResponseContainerV1beta1(
-      advancedDatapathObservabilityConfig: AdvancedDatapathObservabilityConfigResponseContainerV1beta1.fromMap((map['advancedDatapathObservabilityConfig'] as Map).cast<String, dynamic>()),
-      componentConfig: MonitoringComponentConfigResponseContainerV1beta1.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
-      managedPrometheusConfig: ManagedPrometheusConfigResponseContainerV1beta1.fromMap((map['managedPrometheusConfig'] as Map).cast<String, dynamic>()),
+      advancedDatapathObservabilityConfig:
+          AdvancedDatapathObservabilityConfigResponseContainerV1beta1.fromMap(
+            (map['advancedDatapathObservabilityConfig'] as Map)
+                .cast<String, dynamic>(),
+          ),
+      componentConfig:
+          MonitoringComponentConfigResponseContainerV1beta1.fromMap(
+            (map['componentConfig'] as Map).cast<String, dynamic>(),
+          ),
+      managedPrometheusConfig:
+          ManagedPrometheusConfigResponseContainerV1beta1.fromMap(
+            (map['managedPrometheusConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

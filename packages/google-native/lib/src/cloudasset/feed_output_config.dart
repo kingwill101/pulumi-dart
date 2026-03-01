@@ -9,20 +9,23 @@ class FeedOutputConfig {
 
   /// Creates a new [FeedOutputConfig].
   /// [pubsubDestination] Destination on Pub/Sub.
-  FeedOutputConfig({
-    this.pubsubDestination,
-  });
+  FeedOutputConfig({this.pubsubDestination});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pubsubDestination': ?pubsubDestination == null ? null : pubsubDestination!.toMap(),
+      'pubsubDestination': ?pubsubDestination == null
+          ? null
+          : pubsubDestination!.toMap(),
     };
   }
 
   factory FeedOutputConfig.fromMap(Map<String, dynamic> map) {
     return FeedOutputConfig(
-      pubsubDestination: map['pubsubDestination'] == null ? null : PubsubDestination.fromMap((map['pubsubDestination'] as Map).cast<String, dynamic>()),
+      pubsubDestination: map['pubsubDestination'] == null
+          ? null
+          : PubsubDestination.fromMap(
+              (map['pubsubDestination'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

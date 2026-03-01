@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getInvocation.
 class GetInvocationResult {
   final String functionName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String input;
   final String? qualifier;
   final String region;
+
   /// String result of the Lambda function invocation.
   final String result;
   final String? tenantId;
@@ -55,4 +56,3 @@ class GetInvocationResult {
     );
   }
 }
-

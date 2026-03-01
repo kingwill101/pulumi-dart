@@ -8,8 +8,10 @@ import 'windows_based_sli.dart';
 class ServiceLevelIndicator {
   /// Basic SLI on a well-known service type.
   final BasicSli? basicSli;
+
   /// Request-based SLIs
   final RequestBasedSli? requestBased;
+
   /// Windows-based SLIs
   final WindowsBasedSli? windowsBased;
 
@@ -17,11 +19,7 @@ class ServiceLevelIndicator {
   /// [basicSli] Basic SLI on a well-known service type.
   /// [requestBased] Request-based SLIs
   /// [windowsBased] Windows-based SLIs
-  ServiceLevelIndicator({
-    this.basicSli,
-    this.requestBased,
-    this.windowsBased,
-  });
+  ServiceLevelIndicator({this.basicSli, this.requestBased, this.windowsBased});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,19 @@ class ServiceLevelIndicator {
 
   factory ServiceLevelIndicator.fromMap(Map<String, dynamic> map) {
     return ServiceLevelIndicator(
-      basicSli: map['basicSli'] == null ? null : BasicSli.fromMap((map['basicSli'] as Map).cast<String, dynamic>()),
-      requestBased: map['requestBased'] == null ? null : RequestBasedSli.fromMap((map['requestBased'] as Map).cast<String, dynamic>()),
-      windowsBased: map['windowsBased'] == null ? null : WindowsBasedSli.fromMap((map['windowsBased'] as Map).cast<String, dynamic>()),
+      basicSli: map['basicSli'] == null
+          ? null
+          : BasicSli.fromMap((map['basicSli'] as Map).cast<String, dynamic>()),
+      requestBased: map['requestBased'] == null
+          ? null
+          : RequestBasedSli.fromMap(
+              (map['requestBased'] as Map).cast<String, dynamic>(),
+            ),
+      windowsBased: map['windowsBased'] == null
+          ? null
+          : WindowsBasedSli.fromMap(
+              (map['windowsBased'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

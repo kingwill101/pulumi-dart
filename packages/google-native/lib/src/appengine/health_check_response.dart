@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.
 class HealthCheckResponse {
   /// Interval between health checks.
   final String checkInterval;
+
   /// Whether to explicitly disable health checks for this instance.
   final bool disableHealthCheck;
+
   /// Number of consecutive successful health checks required before receiving traffic.
   final int healthyThreshold;
+
   /// Host header to send when performing an HTTP health check. Example: "myapp.appspot.com"
   final String host;
+
   /// Number of consecutive failed health checks required before an instance is restarted.
   final int restartThreshold;
+
   /// Time before the health check is considered failed.
   final String timeout;
+
   /// Number of consecutive failed health checks required before removing traffic.
   final int unhealthyThreshold;
 
@@ -60,4 +65,3 @@ class HealthCheckResponse {
     );
   }
 }
-

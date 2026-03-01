@@ -13,7 +13,8 @@ enum RegionSslCertificateTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionSslCertificateTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionSslCertificateTypeComputeV1 value: $value',
+    );
   }
 }
-

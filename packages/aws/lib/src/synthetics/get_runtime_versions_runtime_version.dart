@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRuntimeVersionsRuntimeVersion {
   /// Date of deprecation if the runtme version is deprecated.
   final String deprecationDate;
+
   /// Description of the runtime version, created by Amazon.
   final String description;
+
   /// Date that the runtime version was released.
   final String releaseDate;
+
   /// Name of the runtime version.
   /// For a list of valid runtime versions, see [Canary Runtime Versions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html).
   final String versionName;
@@ -42,4 +44,3 @@ class GetRuntimeVersionsRuntimeVersion {
     );
   }
 }
-

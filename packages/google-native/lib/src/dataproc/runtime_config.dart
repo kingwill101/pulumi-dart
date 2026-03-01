@@ -6,10 +6,13 @@ import 'repository_config.dart';
 class RuntimeConfig {
   /// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
   final String? containerImage;
+
   /// Optional. A mapping of property names to values, which are used to configure workload execution.
   final Map<String, String>? properties;
+
   /// Optional. Dependency repository configuration.
   final RepositoryConfig? repositoryConfig;
+
   /// Optional. Version of the batch runtime.
   final String? version;
 
@@ -29,18 +32,27 @@ class RuntimeConfig {
     return <String, dynamic>{
       'containerImage': ?containerImage,
       'properties': ?properties,
-      'repositoryConfig': ?repositoryConfig == null ? null : repositoryConfig!.toMap(),
+      'repositoryConfig': ?repositoryConfig == null
+          ? null
+          : repositoryConfig!.toMap(),
       'version': ?version,
     };
   }
 
   factory RuntimeConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeConfig(
-      containerImage: map['containerImage'] == null ? null : map['containerImage'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
-      repositoryConfig: map['repositoryConfig'] == null ? null : RepositoryConfig.fromMap((map['repositoryConfig'] as Map).cast<String, dynamic>()),
+      containerImage: map['containerImage'] == null
+          ? null
+          : map['containerImage'] as String,
+      properties: map['properties'] == null
+          ? null
+          : (map['properties'] as Map).cast<String, String>(),
+      repositoryConfig: map['repositoryConfig'] == null
+          ? null
+          : RepositoryConfig.fromMap(
+              (map['repositoryConfig'] as Map).cast<String, dynamic>(),
+            ),
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
-

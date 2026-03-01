@@ -1,63 +1,88 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDbNode.
 class GetDbNodeResult {
   /// Additional information about the planned maintenance.
   final String additionalDetails;
   final String arn;
+
   /// The Oracle Cloud ID (OCID) of the backup IP address that's associated with the DB node.
   final String backupIpId;
+
   /// The OCID of the second backup VNIC.
   final String backupVnic2Id;
+
   /// The OCID of the backup VNIC.
   final String backupVnicId;
+
   /// The ID of the cloud VM cluster.
   final String cloudVmClusterId;
+
   /// The number of CPU cores enabled on the DB node.
   final int cpuCoreCount;
+
   /// The date and time when the DB node was created.
   final String createdAt;
+
   /// The unique identifier of the DB server that is associated with the DB node.
   final String dbServerId;
+
   /// The amount of local node storage, in gigabytes (GB), allocated on the DB node.
   final int dbStorageSizeInGbs;
+
   /// The OCID of the DB system.
   final String dbSystemId;
+
   /// The name of the fault domain the instance is contained in.
   final String faultDomain;
+
   /// The floating IP address assigned to the DB node.
   final String floatingIpAddress;
+
   /// The OCID of the host IP address that's associated with the DB node.
   final String hostIpId;
+
   /// The host name for the DB node.
   final String hostname;
   final String id;
+
   /// The type of database node maintenance. Either VMDB_REBOOT_MIGRATION or EXADBXS_REBOOT_MIGRATION.
   final String maintenanceType;
+
   /// The allocated memory in GBs on the DB node.
   final int memorySizeInGbs;
+
   /// The name of the OCI resource anchor for the DB node.
   final String ociResourceAnchorName;
+
   /// The OCID of the DB node.
   final String ocid;
+
   /// The private IP address assigned to the DB node.
   final String privateIpAddress;
   final String region;
+
   /// The size (in GB) of the block storage volume allocation for the DB system.
   final int softwareStorageSizeInGbs;
+
   /// The current status of the DB node.
   final String status;
+
   /// Additional information about the status of the DB node.
   final String statusReason;
+
   /// The end date and time of the maintenance window.
   final String timeMaintenanceWindowEnd;
+
   /// The start date and time of the maintenance window.
   final String timeMaintenanceWindowStart;
+
   /// The total number of CPU cores reserved on the DB node.
   final int totalCpuCoreCount;
+
   /// The OCID of the second VNIC.
   final String vnic2Id;
+
   /// The OCID of the VNIC.
   final String vnicId;
 
@@ -195,4 +220,3 @@ class GetDbNodeResult {
     );
   }
 }
-

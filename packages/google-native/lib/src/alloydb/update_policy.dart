@@ -9,20 +9,17 @@ class UpdatePolicy {
 
   /// Creates a new [UpdatePolicy].
   /// [mode] Mode for updating the instance.
-  UpdatePolicy({
-    this.mode,
-  });
+  UpdatePolicy({this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': ?mode == null ? null : mode!.value,
-    };
+    return <String, dynamic>{'mode': ?mode == null ? null : mode!.value};
   }
 
   factory UpdatePolicy.fromMap(Map<String, dynamic> map) {
     return UpdatePolicy(
-      mode: map['mode'] == null ? null : UpdatePolicyMode.fromValue(map['mode'] as String),
+      mode: map['mode'] == null
+          ? null
+          : UpdatePolicyMode.fromValue(map['mode'] as String),
     );
   }
 }
-

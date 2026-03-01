@@ -25,50 +25,73 @@ import 'vpn_tunnel_info_response_networkmanagement_v1beta1.dart';
 class StepResponseNetworkmanagementV1beta1 {
   /// Display information of the final state "abort" and reason.
   final AbortInfoResponseNetworkmanagementV1beta1 abort;
+
   /// Display information of an App Engine service version.
   final AppEngineVersionInfoResponseNetworkmanagementV1beta1 appEngineVersion;
+
   /// This is a step that leads to the final state Drop.
   final bool causesDrop;
+
   /// Display information of a Cloud Function.
   final CloudFunctionInfoResponseNetworkmanagementV1beta1 cloudFunction;
+
   /// Display information of a Cloud Run revision.
   final CloudRunRevisionInfoResponseNetworkmanagementV1beta1 cloudRunRevision;
+
   /// Display information of a Cloud SQL instance.
   final CloudSQLInstanceInfoResponseNetworkmanagementV1beta1 cloudSqlInstance;
+
   /// Display information of the final state "deliver" and reason.
   final DeliverInfoResponseNetworkmanagementV1beta1 deliver;
+
   /// A description of the step. Usually this is a summary of the state.
   final String description;
+
   /// Display information of the final state "drop" and reason.
   final DropInfoResponseNetworkmanagementV1beta1 drop;
+
   /// Display information of the source and destination under analysis. The endpoint information in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
   final EndpointInfoResponseNetworkmanagementV1beta1 endpoint;
+
   /// Display information of a Compute Engine firewall rule.
   final FirewallInfoResponseNetworkmanagementV1beta1 firewall;
+
   /// Display information of the final state "forward" and reason.
   final ForwardInfoResponseNetworkmanagementV1beta1 forward;
+
   /// Display information of a Compute Engine forwarding rule.
   final ForwardingRuleInfoResponseNetworkmanagementV1beta1 forwardingRule;
+
   /// Display information of a Google Kubernetes Engine cluster master.
   final GKEMasterInfoResponseNetworkmanagementV1beta1 gkeMaster;
+
   /// Display information of a Google service
   final GoogleServiceInfoResponseNetworkmanagementV1beta1 googleService;
+
   /// Display information of a Compute Engine instance.
   final InstanceInfoResponseNetworkmanagementV1beta1 instance;
+
   /// Display information of the load balancers.
   final LoadBalancerInfoResponseNetworkmanagementV1beta1 loadBalancer;
+
   /// Display information of a Google Cloud network.
   final NetworkInfoResponseNetworkmanagementV1beta1 network;
+
   /// Project ID that contains the configuration this step is validating.
   final String project;
+
   /// Display information of a Compute Engine route.
   final RouteInfoResponseNetworkmanagementV1beta1 route;
+
   /// Each step is in one of the pre-defined states.
   final String state;
+
   /// Display information of a VPC connector.
   final VpcConnectorInfoResponseNetworkmanagementV1beta1 vpcConnector;
+
   /// Display information of a Compute Engine VPN gateway.
   final VpnGatewayInfoResponseNetworkmanagementV1beta1 vpnGateway;
+
   /// Display information of a Compute Engine VPN tunnel.
   final VpnTunnelInfoResponseNetworkmanagementV1beta1 vpnTunnel;
 
@@ -153,33 +176,78 @@ class StepResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory StepResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory StepResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StepResponseNetworkmanagementV1beta1(
-      abort: AbortInfoResponseNetworkmanagementV1beta1.fromMap((map['abort'] as Map).cast<String, dynamic>()),
-      appEngineVersion: AppEngineVersionInfoResponseNetworkmanagementV1beta1.fromMap((map['appEngineVersion'] as Map).cast<String, dynamic>()),
+      abort: AbortInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['abort'] as Map).cast<String, dynamic>(),
+      ),
+      appEngineVersion:
+          AppEngineVersionInfoResponseNetworkmanagementV1beta1.fromMap(
+            (map['appEngineVersion'] as Map).cast<String, dynamic>(),
+          ),
       causesDrop: map['causesDrop'] as bool,
-      cloudFunction: CloudFunctionInfoResponseNetworkmanagementV1beta1.fromMap((map['cloudFunction'] as Map).cast<String, dynamic>()),
-      cloudRunRevision: CloudRunRevisionInfoResponseNetworkmanagementV1beta1.fromMap((map['cloudRunRevision'] as Map).cast<String, dynamic>()),
-      cloudSqlInstance: CloudSQLInstanceInfoResponseNetworkmanagementV1beta1.fromMap((map['cloudSqlInstance'] as Map).cast<String, dynamic>()),
-      deliver: DeliverInfoResponseNetworkmanagementV1beta1.fromMap((map['deliver'] as Map).cast<String, dynamic>()),
+      cloudFunction: CloudFunctionInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['cloudFunction'] as Map).cast<String, dynamic>(),
+      ),
+      cloudRunRevision:
+          CloudRunRevisionInfoResponseNetworkmanagementV1beta1.fromMap(
+            (map['cloudRunRevision'] as Map).cast<String, dynamic>(),
+          ),
+      cloudSqlInstance:
+          CloudSQLInstanceInfoResponseNetworkmanagementV1beta1.fromMap(
+            (map['cloudSqlInstance'] as Map).cast<String, dynamic>(),
+          ),
+      deliver: DeliverInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['deliver'] as Map).cast<String, dynamic>(),
+      ),
       description: map['description'] as String,
-      drop: DropInfoResponseNetworkmanagementV1beta1.fromMap((map['drop'] as Map).cast<String, dynamic>()),
-      endpoint: EndpointInfoResponseNetworkmanagementV1beta1.fromMap((map['endpoint'] as Map).cast<String, dynamic>()),
-      firewall: FirewallInfoResponseNetworkmanagementV1beta1.fromMap((map['firewall'] as Map).cast<String, dynamic>()),
-      forward: ForwardInfoResponseNetworkmanagementV1beta1.fromMap((map['forward'] as Map).cast<String, dynamic>()),
-      forwardingRule: ForwardingRuleInfoResponseNetworkmanagementV1beta1.fromMap((map['forwardingRule'] as Map).cast<String, dynamic>()),
-      gkeMaster: GKEMasterInfoResponseNetworkmanagementV1beta1.fromMap((map['gkeMaster'] as Map).cast<String, dynamic>()),
-      googleService: GoogleServiceInfoResponseNetworkmanagementV1beta1.fromMap((map['googleService'] as Map).cast<String, dynamic>()),
-      instance: InstanceInfoResponseNetworkmanagementV1beta1.fromMap((map['instance'] as Map).cast<String, dynamic>()),
-      loadBalancer: LoadBalancerInfoResponseNetworkmanagementV1beta1.fromMap((map['loadBalancer'] as Map).cast<String, dynamic>()),
-      network: NetworkInfoResponseNetworkmanagementV1beta1.fromMap((map['network'] as Map).cast<String, dynamic>()),
+      drop: DropInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['drop'] as Map).cast<String, dynamic>(),
+      ),
+      endpoint: EndpointInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['endpoint'] as Map).cast<String, dynamic>(),
+      ),
+      firewall: FirewallInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['firewall'] as Map).cast<String, dynamic>(),
+      ),
+      forward: ForwardInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['forward'] as Map).cast<String, dynamic>(),
+      ),
+      forwardingRule:
+          ForwardingRuleInfoResponseNetworkmanagementV1beta1.fromMap(
+            (map['forwardingRule'] as Map).cast<String, dynamic>(),
+          ),
+      gkeMaster: GKEMasterInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['gkeMaster'] as Map).cast<String, dynamic>(),
+      ),
+      googleService: GoogleServiceInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['googleService'] as Map).cast<String, dynamic>(),
+      ),
+      instance: InstanceInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['instance'] as Map).cast<String, dynamic>(),
+      ),
+      loadBalancer: LoadBalancerInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['loadBalancer'] as Map).cast<String, dynamic>(),
+      ),
+      network: NetworkInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['network'] as Map).cast<String, dynamic>(),
+      ),
       project: map['project'] as String,
-      route: RouteInfoResponseNetworkmanagementV1beta1.fromMap((map['route'] as Map).cast<String, dynamic>()),
+      route: RouteInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['route'] as Map).cast<String, dynamic>(),
+      ),
       state: map['state'] as String,
-      vpcConnector: VpcConnectorInfoResponseNetworkmanagementV1beta1.fromMap((map['vpcConnector'] as Map).cast<String, dynamic>()),
-      vpnGateway: VpnGatewayInfoResponseNetworkmanagementV1beta1.fromMap((map['vpnGateway'] as Map).cast<String, dynamic>()),
-      vpnTunnel: VpnTunnelInfoResponseNetworkmanagementV1beta1.fromMap((map['vpnTunnel'] as Map).cast<String, dynamic>()),
+      vpcConnector: VpcConnectorInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['vpcConnector'] as Map).cast<String, dynamic>(),
+      ),
+      vpnGateway: VpnGatewayInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['vpnGateway'] as Map).cast<String, dynamic>(),
+      ),
+      vpnTunnel: VpnTunnelInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['vpnTunnel'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

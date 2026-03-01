@@ -19,10 +19,9 @@ class GetReservationComputeV1Args {
     String? project,
     required String reservation,
     required String zone,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservation = pulumi.Input.asInput<String>(reservation),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       reservation = pulumi.Input.asInput<String>(reservation),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetReservationComputeV1Args {
     );
   }
 }
-

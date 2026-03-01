@@ -9,20 +9,17 @@ class VpcNetworkSourceResponse {
 
   /// Creates a new [VpcNetworkSourceResponse].
   /// [vpcSubnetwork] Sub-segment ranges of a VPC network.
-  VpcNetworkSourceResponse({
-    required this.vpcSubnetwork,
-  });
+  VpcNetworkSourceResponse({required this.vpcSubnetwork});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'vpcSubnetwork': vpcSubnetwork.toMap(),
-    };
+    return <String, dynamic>{'vpcSubnetwork': vpcSubnetwork.toMap()};
   }
 
   factory VpcNetworkSourceResponse.fromMap(Map<String, dynamic> map) {
     return VpcNetworkSourceResponse(
-      vpcSubnetwork: VpcSubNetworkResponse.fromMap((map['vpcSubnetwork'] as Map).cast<String, dynamic>()),
+      vpcSubnetwork: VpcSubNetworkResponse.fromMap(
+        (map['vpcSubnetwork'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

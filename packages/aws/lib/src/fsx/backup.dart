@@ -565,20 +565,28 @@ import 'backup_args.dart';
 class Backup extends pulumi.CustomResource {
   /// Amazon Resource Name of the backup.
   late final pulumi.Output<String> arn;
+
   /// The ID of the file system to back up. Required if backing up Lustre or Windows file systems.
   late final pulumi.Output<String?> fileSystemId;
+
   /// The ID of the AWS Key Management Service (AWS KMS) key used to encrypt the backup of the Amazon FSx file system's data at rest.
   late final pulumi.Output<String> kmsKeyId;
+
   /// AWS account identifier that created the file system.
   late final pulumi.Output<String> ownerId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The type of the file system backup.
   late final pulumi.Output<String> type;
+
   /// The ID of the volume to back up. Required if backing up a ONTAP Volume.
   ///
   /// Note - One of `file_system_id` or `volume_id` can be specified. `file_system_id` is used for Lustre and Windows, `volume_id` is used for ONTAP.
@@ -588,16 +596,13 @@ class Backup extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Backup]. {@macro pulumi_fsx_backup_backup_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Backup(
-    String name, {
-    BackupArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:fsx/backup:Backup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Backup(String name, {BackupArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:fsx/backup:Backup',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.arn = registerOutput<String>('arn');
     this.fileSystemId = registerOutput<String?>('fileSystemId');
     this.kmsKeyId = registerOutput<String>('kmsKeyId');

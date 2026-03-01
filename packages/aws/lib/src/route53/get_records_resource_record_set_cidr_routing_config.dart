@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRecordsResourceRecordSetCidrRoutingConfig {
   /// The CIDR collection ID.
   final String collectionId;
+
   /// The CIDR collection location name.
   final String locationName;
 
@@ -22,11 +22,12 @@ class GetRecordsResourceRecordSetCidrRoutingConfig {
     };
   }
 
-  factory GetRecordsResourceRecordSetCidrRoutingConfig.fromMap(Map<String, dynamic> map) {
+  factory GetRecordsResourceRecordSetCidrRoutingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRecordsResourceRecordSetCidrRoutingConfig(
       collectionId: map['collectionId'] as String,
       locationName: map['locationName'] as String,
     );
   }
 }
-

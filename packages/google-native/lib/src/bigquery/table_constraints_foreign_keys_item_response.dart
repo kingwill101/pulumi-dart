@@ -5,7 +5,8 @@ import 'table_constraints_foreign_keys_item_column_references_item_response.dart
 import 'table_constraints_foreign_keys_item_referenced_table_response.dart';
 
 class TableConstraintsForeignKeysItemResponse {
-  final List<TableConstraintsForeignKeysItemColumnReferencesItemResponse> columnReferences;
+  final List<TableConstraintsForeignKeysItemColumnReferencesItemResponse>
+  columnReferences;
   final String name;
   final TableConstraintsForeignKeysItemReferencedTableResponse referencedTable;
 
@@ -21,18 +22,35 @@ class TableConstraintsForeignKeysItemResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'columnReferences': pulumi.Input.encodeList<TableConstraintsForeignKeysItemColumnReferencesItemResponse, Map<String, dynamic>>(columnReferences, (value) => value.toMap()),
+      'columnReferences':
+          pulumi.Input.encodeList<
+            TableConstraintsForeignKeysItemColumnReferencesItemResponse,
+            Map<String, dynamic>
+          >(columnReferences, (value) => value.toMap()),
       'name': name,
       'referencedTable': referencedTable.toMap(),
     };
   }
 
-  factory TableConstraintsForeignKeysItemResponse.fromMap(Map<String, dynamic> map) {
+  factory TableConstraintsForeignKeysItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableConstraintsForeignKeysItemResponse(
-      columnReferences: pulumi.Input.decodeList<TableConstraintsForeignKeysItemColumnReferencesItemResponse>(map['columnReferences'], (value) => TableConstraintsForeignKeysItemColumnReferencesItemResponse.fromMap((value as Map).cast<String, dynamic>())),
+      columnReferences:
+          pulumi.Input.decodeList<
+            TableConstraintsForeignKeysItemColumnReferencesItemResponse
+          >(
+            map['columnReferences'],
+            (value) =>
+                TableConstraintsForeignKeysItemColumnReferencesItemResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       name: map['name'] as String,
-      referencedTable: TableConstraintsForeignKeysItemReferencedTableResponse.fromMap((map['referencedTable'] as Map).cast<String, dynamic>()),
+      referencedTable:
+          TableConstraintsForeignKeysItemReferencedTableResponse.fromMap(
+            (map['referencedTable'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

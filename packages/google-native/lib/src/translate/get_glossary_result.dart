@@ -8,18 +8,25 @@ import 'language_codes_set_response.dart';
 class GetGlossaryResult {
   /// Optional. The display name of the glossary.
   final String displayName;
+
   /// When the glossary creation was finished.
   final String endTime;
+
   /// The number of entries defined in the glossary.
   final int entryCount;
+
   /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
   final GlossaryInputConfigResponse inputConfig;
+
   /// Used with equivalent term set glossaries.
   final LanguageCodesSetResponse languageCodesSet;
+
   /// Used with unidirectional glossaries.
   final LanguageCodePairResponse languagePair;
+
   /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
   final String name;
+
   /// When CreateGlossary was called.
   final String submitTime;
 
@@ -61,12 +68,17 @@ class GetGlossaryResult {
       displayName: map['displayName'] as String,
       endTime: map['endTime'] as String,
       entryCount: map['entryCount'] as int,
-      inputConfig: GlossaryInputConfigResponse.fromMap((map['inputConfig'] as Map).cast<String, dynamic>()),
-      languageCodesSet: LanguageCodesSetResponse.fromMap((map['languageCodesSet'] as Map).cast<String, dynamic>()),
-      languagePair: LanguageCodePairResponse.fromMap((map['languagePair'] as Map).cast<String, dynamic>()),
+      inputConfig: GlossaryInputConfigResponse.fromMap(
+        (map['inputConfig'] as Map).cast<String, dynamic>(),
+      ),
+      languageCodesSet: LanguageCodesSetResponse.fromMap(
+        (map['languageCodesSet'] as Map).cast<String, dynamic>(),
+      ),
+      languagePair: LanguageCodePairResponse.fromMap(
+        (map['languagePair'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       submitTime: map['submitTime'] as String,
     );
   }
 }
-

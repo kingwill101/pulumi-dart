@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDatabaseInstanceSettingPasswordValidationPolicy {
   /// Password complexity.
   final String complexity;
+
   /// Disallow username as a part of the password.
   final bool disallowUsernameSubstring;
+
   /// Whether the password policy is enabled or not.
   final bool enablePasswordPolicy;
+
   /// Minimum number of characters allowed.
   final int minLength;
+
   /// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
   final String passwordChangeInterval;
+
   /// Number of previous passwords that cannot be reused.
   final int reuseInterval;
 
@@ -42,7 +46,9 @@ class GetDatabaseInstanceSettingPasswordValidationPolicy {
     };
   }
 
-  factory GetDatabaseInstanceSettingPasswordValidationPolicy.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstanceSettingPasswordValidationPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstanceSettingPasswordValidationPolicy(
       complexity: map['complexity'] as String,
       disallowUsernameSubstring: map['disallowUsernameSubstring'] as bool,
@@ -53,4 +59,3 @@ class GetDatabaseInstanceSettingPasswordValidationPolicy {
     );
   }
 }
-

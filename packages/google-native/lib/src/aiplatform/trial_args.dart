@@ -15,12 +15,8 @@ class TrialArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [studyId] Required.
-  TrialArgs({
-    String? location,
-    String? project,
-    required String studyId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
+  TrialArgs({String? location, String? project, required String studyId})
+    : location = pulumi.Input.asOptionalInput<String>(location),
       project = pulumi.Input.asOptionalInput<String>(project),
       studyId = pulumi.Input.asInput<String>(studyId);
 
@@ -40,4 +36,3 @@ class TrialArgs {
     );
   }
 }
-

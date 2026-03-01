@@ -5,7 +5,10 @@ import 'get_resource_policy_snapshot_schedule_policy_schedule_weekly_schedule_da
 
 class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
   /// May contain up to seven (one for each day of the week) snapshot times.
-  final List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek> dayOfWeeks;
+  final List<
+    GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek
+  >
+  dayOfWeeks;
 
   /// Creates a new [GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule].
   /// [dayOfWeeks] May contain up to seven (one for each day of the week) snapshot times.
@@ -15,14 +18,28 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dayOfWeeks': pulumi.Input.encodeList<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek, Map<String, dynamic>>(dayOfWeeks, (value) => value.toMap()),
+      'dayOfWeeks':
+          pulumi.Input.encodeList<
+            GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek,
+            Map<String, dynamic>
+          >(dayOfWeeks, (value) => value.toMap()),
     };
   }
 
-  factory GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule.fromMap(Map<String, dynamic> map) {
+  factory GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule(
-      dayOfWeeks: pulumi.Input.decodeList<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek>(map['dayOfWeeks'], (value) => GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek.fromMap((value as Map).cast<String, dynamic>())),
+      dayOfWeeks:
+          pulumi.Input.decodeList<
+            GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek
+          >(
+            map['dayOfWeeks'],
+            (value) =>
+                GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

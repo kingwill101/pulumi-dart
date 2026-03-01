@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Details of the schedule the pipeline runs on.
 class GoogleCloudDatapipelinesV1ScheduleSpecResponse {
   /// When the next Scheduler job is going to run.
   final String nextJobTime;
+
   /// Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
   final String schedule;
+
   /// Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
   final String timeZone;
 
@@ -28,7 +29,9 @@ class GoogleCloudDatapipelinesV1ScheduleSpecResponse {
     };
   }
 
-  factory GoogleCloudDatapipelinesV1ScheduleSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatapipelinesV1ScheduleSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatapipelinesV1ScheduleSpecResponse(
       nextJobTime: map['nextJobTime'] as String,
       schedule: map['schedule'] as String,
@@ -36,4 +39,3 @@ class GoogleCloudDatapipelinesV1ScheduleSpecResponse {
     );
   }
 }
-

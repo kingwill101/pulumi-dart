@@ -13,7 +13,8 @@ enum NodePoolAutoscalingLocationPolicy {
         return item;
       }
     }
-    throw ArgumentError('Unknown NodePoolAutoscalingLocationPolicy value: $value');
+    throw ArgumentError(
+      'Unknown NodePoolAutoscalingLocationPolicy value: $value',
+    );
   }
 }
-

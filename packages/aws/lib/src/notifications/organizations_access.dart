@@ -118,11 +118,11 @@ class OrganizationsAccess extends pulumi.CustomResource {
     OrganizationsAccessArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:notifications/organizationsAccess:OrganizationsAccess',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:notifications/organizationsAccess:OrganizationsAccess',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.enabled = registerOutput<bool>('enabled');
     this.timeouts = registerOutput<OrganizationsAccessTimeouts?>('timeouts');
   }

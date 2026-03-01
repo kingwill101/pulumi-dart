@@ -9,20 +9,17 @@ class NodeSettingsResponse {
 
   /// Creates a new [NodeSettingsResponse].
   /// [common] Some settings.
-  NodeSettingsResponse({
-    required this.common,
-  });
+  NodeSettingsResponse({required this.common});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'common': common.toMap(),
-    };
+    return <String, dynamic>{'common': common.toMap()};
   }
 
   factory NodeSettingsResponse.fromMap(Map<String, dynamic> map) {
     return NodeSettingsResponse(
-      common: CommonLanguageSettingsResponse.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: CommonLanguageSettingsResponse.fromMap(
+        (map['common'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

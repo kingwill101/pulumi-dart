@@ -8,9 +8,11 @@ class CloudControlParameterSpecValidation {
   /// Allowed set of values for the parameter.
   /// Structure is documented below.
   final CloudControlParameterSpecValidationAllowedValues? allowedValues;
+
   /// Number range for number parameters.
   /// Structure is documented below.
   final CloudControlParameterSpecValidationIntRange? intRange;
+
   /// Regular Expression Validator for parameter values.
   /// Structure is documented below.
   final CloudControlParameterSpecValidationRegexpPattern? regexpPattern;
@@ -33,12 +35,25 @@ class CloudControlParameterSpecValidation {
     };
   }
 
-  factory CloudControlParameterSpecValidation.fromMap(Map<String, dynamic> map) {
+  factory CloudControlParameterSpecValidation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudControlParameterSpecValidation(
-      allowedValues: map['allowedValues'] == null ? null : CloudControlParameterSpecValidationAllowedValues.fromMap((map['allowedValues'] as Map).cast<String, dynamic>()),
-      intRange: map['intRange'] == null ? null : CloudControlParameterSpecValidationIntRange.fromMap((map['intRange'] as Map).cast<String, dynamic>()),
-      regexpPattern: map['regexpPattern'] == null ? null : CloudControlParameterSpecValidationRegexpPattern.fromMap((map['regexpPattern'] as Map).cast<String, dynamic>()),
+      allowedValues: map['allowedValues'] == null
+          ? null
+          : CloudControlParameterSpecValidationAllowedValues.fromMap(
+              (map['allowedValues'] as Map).cast<String, dynamic>(),
+            ),
+      intRange: map['intRange'] == null
+          ? null
+          : CloudControlParameterSpecValidationIntRange.fromMap(
+              (map['intRange'] as Map).cast<String, dynamic>(),
+            ),
+      regexpPattern: map['regexpPattern'] == null
+          ? null
+          : CloudControlParameterSpecValidationRegexpPattern.fromMap(
+              (map['regexpPattern'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

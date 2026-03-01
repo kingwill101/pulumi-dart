@@ -7,8 +7,10 @@ import 'get_network_peering_connections_odb_peering_connection.dart';
 class GetNetworkPeeringConnectionsResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The list of ODB peering connections. A summary of an ODB peering connection.
-  final List<GetNetworkPeeringConnectionsOdbPeeringConnection> odbPeeringConnections;
+  final List<GetNetworkPeeringConnectionsOdbPeeringConnection>
+  odbPeeringConnections;
   final String region;
 
   /// Creates a new [GetNetworkPeeringConnectionsResult].
@@ -24,7 +26,11 @@ class GetNetworkPeeringConnectionsResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'odbPeeringConnections': pulumi.Input.encodeList<GetNetworkPeeringConnectionsOdbPeeringConnection, Map<String, dynamic>>(odbPeeringConnections, (value) => value.toMap()),
+      'odbPeeringConnections':
+          pulumi.Input.encodeList<
+            GetNetworkPeeringConnectionsOdbPeeringConnection,
+            Map<String, dynamic>
+          >(odbPeeringConnections, (value) => value.toMap()),
       'region': region,
     };
   }
@@ -32,9 +38,16 @@ class GetNetworkPeeringConnectionsResult {
   factory GetNetworkPeeringConnectionsResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringConnectionsResult(
       id: map['id'] as String,
-      odbPeeringConnections: pulumi.Input.decodeList<GetNetworkPeeringConnectionsOdbPeeringConnection>(map['odbPeeringConnections'], (value) => GetNetworkPeeringConnectionsOdbPeeringConnection.fromMap((value as Map).cast<String, dynamic>())),
+      odbPeeringConnections:
+          pulumi.Input.decodeList<
+            GetNetworkPeeringConnectionsOdbPeeringConnection
+          >(
+            map['odbPeeringConnections'],
+            (value) => GetNetworkPeeringConnectionsOdbPeeringConnection.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       region: map['region'] as String,
     );
   }
 }
-

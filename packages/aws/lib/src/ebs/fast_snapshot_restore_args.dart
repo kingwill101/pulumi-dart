@@ -10,8 +10,10 @@ import 'fast_snapshot_restore_timeouts.dart';
 class FastSnapshotRestoreArgs {
   /// Availability zone in which to enable fast snapshot restores.
   final pulumi.Input<String> availabilityZone;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the snapshot.
   final pulumi.Input<String> snapshotId;
   final pulumi.Input<FastSnapshotRestoreTimeouts>? timeouts;
@@ -26,18 +28,23 @@ class FastSnapshotRestoreArgs {
     String? region,
     required String snapshotId,
     FastSnapshotRestoreTimeouts? timeouts,
-  }) :
-      availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      snapshotId = pulumi.Input.asInput<String>(snapshotId),
-      timeouts = pulumi.Input.asOptionalInput<FastSnapshotRestoreTimeouts>(timeouts);
+  }) : availabilityZone = pulumi.Input.asInput<String>(availabilityZone),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       snapshotId = pulumi.Input.asInput<String>(snapshotId),
+       timeouts = pulumi.Input.asOptionalInput<FastSnapshotRestoreTimeouts>(
+         timeouts,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZone': availabilityZone,
       'region': ?region,
       'snapshotId': snapshotId,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<FastSnapshotRestoreTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            FastSnapshotRestoreTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
@@ -46,8 +53,11 @@ class FastSnapshotRestoreArgs {
       availabilityZone: map['availabilityZone'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       snapshotId: map['snapshotId'] as String,
-      timeouts: map['timeouts'] == null ? null : FastSnapshotRestoreTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null
+          ? null
+          : FastSnapshotRestoreTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -18,7 +18,8 @@ enum MonitoredResourceDescriptorLaunchStage {
         return item;
       }
     }
-    throw ArgumentError('Unknown MonitoredResourceDescriptorLaunchStage value: $value');
+    throw ArgumentError(
+      'Unknown MonitoredResourceDescriptorLaunchStage value: $value',
+    );
   }
 }
-

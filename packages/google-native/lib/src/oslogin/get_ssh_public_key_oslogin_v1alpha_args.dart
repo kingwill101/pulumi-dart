@@ -16,9 +16,8 @@ class GetSshPublicKeyOsloginV1alphaArgs {
   GetSshPublicKeyOsloginV1alphaArgs({
     required String sshPublicKeyId,
     required String userId,
-  }) :
-      sshPublicKeyId = pulumi.Input.asInput<String>(sshPublicKeyId),
-      userId = pulumi.Input.asInput<String>(userId);
+  }) : sshPublicKeyId = pulumi.Input.asInput<String>(sshPublicKeyId),
+       userId = pulumi.Input.asInput<String>(userId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetSshPublicKeyOsloginV1alphaArgs {
     );
   }
 }
-

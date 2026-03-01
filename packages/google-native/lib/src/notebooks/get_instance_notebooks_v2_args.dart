@@ -19,10 +19,9 @@ class GetInstanceNotebooksV2Args {
     required String instanceId,
     required String location,
     String? project,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : instanceId = pulumi.Input.asInput<String>(instanceId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetInstanceNotebooksV2Args {
     );
   }
 }
-

@@ -6,14 +6,19 @@ import 'deployment_occurrence_platform.dart';
 class DeploymentOccurrence {
   /// Address of the runtime element hosting this deployment.
   final String? address;
+
   /// Configuration used to create this deployment.
   final String? config;
+
   /// Beginning of the lifetime of this deployment.
   final String deployTime;
+
   /// Platform hosting this deployment.
   final DeploymentOccurrencePlatform? platform;
+
   /// End of the lifetime of this deployment.
   final String? undeployTime;
+
   /// Identity of the user that triggered this deployment.
   final String? userEmail;
 
@@ -49,10 +54,13 @@ class DeploymentOccurrence {
       address: map['address'] == null ? null : map['address'] as String,
       config: map['config'] == null ? null : map['config'] as String,
       deployTime: map['deployTime'] as String,
-      platform: map['platform'] == null ? null : DeploymentOccurrencePlatform.fromValue(map['platform'] as String),
-      undeployTime: map['undeployTime'] == null ? null : map['undeployTime'] as String,
+      platform: map['platform'] == null
+          ? null
+          : DeploymentOccurrencePlatform.fromValue(map['platform'] as String),
+      undeployTime: map['undeployTime'] == null
+          ? null
+          : map['undeployTime'] as String,
       userEmail: map['userEmail'] == null ? null : map['userEmail'] as String,
     );
   }
 }
-

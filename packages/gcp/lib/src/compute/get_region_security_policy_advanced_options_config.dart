@@ -5,14 +5,19 @@ import 'get_region_security_policy_advanced_options_config_json_custom_config.da
 
 class GetRegionSecurityPolicyAdvancedOptionsConfig {
   /// Custom configuration to apply the JSON parsing. Only applicable when JSON parsing is set to STANDARD.
-  final List<GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig> jsonCustomConfigs;
+  final List<GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig>
+  jsonCustomConfigs;
+
   /// JSON body parsing. Supported values include: "DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL". Possible values: ["DISABLED", "STANDARD", "STANDARD_WITH_GRAPHQL"]
   final String jsonParsing;
+
   /// Logging level. Supported values include: "NORMAL", "VERBOSE". Possible values: ["NORMAL", "VERBOSE"]
   final String logLevel;
+
   /// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB".
   /// Values are case insensitive. Possible values: ["8KB", "16KB", "32KB", "48KB", "64KB"]
   final String requestBodyInspectionSize;
+
   /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
   final List<String> userIpRequestHeaders;
 
@@ -32,7 +37,11 @@ class GetRegionSecurityPolicyAdvancedOptionsConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jsonCustomConfigs': pulumi.Input.encodeList<GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig, Map<String, dynamic>>(jsonCustomConfigs, (value) => value.toMap()),
+      'jsonCustomConfigs':
+          pulumi.Input.encodeList<
+            GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig,
+            Map<String, dynamic>
+          >(jsonCustomConfigs, (value) => value.toMap()),
       'jsonParsing': jsonParsing,
       'logLevel': logLevel,
       'requestBodyInspectionSize': requestBodyInspectionSize,
@@ -40,14 +49,25 @@ class GetRegionSecurityPolicyAdvancedOptionsConfig {
     };
   }
 
-  factory GetRegionSecurityPolicyAdvancedOptionsConfig.fromMap(Map<String, dynamic> map) {
+  factory GetRegionSecurityPolicyAdvancedOptionsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionSecurityPolicyAdvancedOptionsConfig(
-      jsonCustomConfigs: pulumi.Input.decodeList<GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig>(map['jsonCustomConfigs'], (value) => GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap((value as Map).cast<String, dynamic>())),
+      jsonCustomConfigs:
+          pulumi.Input.decodeList<
+            GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+          >(
+            map['jsonCustomConfigs'],
+            (value) =>
+                GetRegionSecurityPolicyAdvancedOptionsConfigJsonCustomConfig.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       jsonParsing: map['jsonParsing'] as String,
       logLevel: map['logLevel'] as String,
       requestBodyInspectionSize: map['requestBodyInspectionSize'] as String,
-      userIpRequestHeaders: (map['userIpRequestHeaders'] as List).cast<String>(),
+      userIpRequestHeaders: (map['userIpRequestHeaders'] as List)
+          .cast<String>(),
     );
   }
 }
-

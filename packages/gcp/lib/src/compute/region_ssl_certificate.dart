@@ -51,14 +51,19 @@ class RegionSslCertificate extends pulumi.CustomResource {
   /// The chain must include at least one intermediate cert.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> certificate;
+
   /// The unique identifier for the resource.
   late final pulumi.Output<int> certificateId;
+
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// Expire time of the certificate in RFC3339 text format.
   late final pulumi.Output<String> expireTime;
+
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -68,6 +73,7 @@ class RegionSslCertificate extends pulumi.CustomResource {
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
   late final pulumi.Output<String> name;
+
   /// Creates a unique name beginning with the
   /// specified prefix. Conflicts with `name`. Max length is 54 characters.
   /// Prefixes with lengths longer than 37 characters will use a shortened
@@ -77,15 +83,19 @@ class RegionSslCertificate extends pulumi.CustomResource {
   /// Resulting name for a `name_prefix` 38 - 54 characters:
   /// `name_prefix` + YYmmdd + 3 digit incremental counter
   late final pulumi.Output<String> namePrefix;
+
   /// The write-only private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   late final pulumi.Output<String> privateKey;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The Region in which the created regional ssl certificate should reside.
   /// If it is not provided, the provider region is used.
   late final pulumi.Output<String> region;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
 
@@ -98,11 +108,11 @@ class RegionSslCertificate extends pulumi.CustomResource {
     RegionSslCertificateArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/regionSslCertificate:RegionSslCertificate',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/regionSslCertificate:RegionSslCertificate',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.certificate = registerOutput<String>('certificate');
     this.certificateId = registerOutput<int>('certificateId');
     this.creationTimestamp = registerOutput<String>('creationTimestamp');

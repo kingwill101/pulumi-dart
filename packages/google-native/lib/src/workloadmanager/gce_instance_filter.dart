@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message describing compute engine instance filter
 class GceInstanceFilter {
   /// Service account of compute engine
@@ -8,20 +7,17 @@ class GceInstanceFilter {
 
   /// Creates a new [GceInstanceFilter].
   /// [serviceAccounts] Service account of compute engine
-  GceInstanceFilter({
-    this.serviceAccounts,
-  });
+  GceInstanceFilter({this.serviceAccounts});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccounts': ?serviceAccounts,
-    };
+    return <String, dynamic>{'serviceAccounts': ?serviceAccounts};
   }
 
   factory GceInstanceFilter.fromMap(Map<String, dynamic> map) {
     return GceInstanceFilter(
-      serviceAccounts: map['serviceAccounts'] == null ? null : (map['serviceAccounts'] as List).cast<String>(),
+      serviceAccounts: map['serviceAccounts'] == null
+          ? null
+          : (map['serviceAccounts'] as List).cast<String>(),
     );
   }
 }
-

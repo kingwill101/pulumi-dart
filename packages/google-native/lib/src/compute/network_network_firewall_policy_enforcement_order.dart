@@ -12,7 +12,8 @@ enum NetworkNetworkFirewallPolicyEnforcementOrder {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkNetworkFirewallPolicyEnforcementOrder value: $value');
+    throw ArgumentError(
+      'Unknown NetworkNetworkFirewallPolicyEnforcementOrder value: $value',
+    );
   }
 }
-

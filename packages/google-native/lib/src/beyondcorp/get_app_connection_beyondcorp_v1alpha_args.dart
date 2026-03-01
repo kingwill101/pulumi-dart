@@ -19,10 +19,9 @@ class GetAppConnectionBeyondcorpV1alphaArgs {
     required String appConnectionId,
     required String location,
     String? project,
-  }) :
-      appConnectionId = pulumi.Input.asInput<String>(appConnectionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : appConnectionId = pulumi.Input.asInput<String>(appConnectionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetAppConnectionBeyondcorpV1alphaArgs {
     };
   }
 
-  factory GetAppConnectionBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetAppConnectionBeyondcorpV1alphaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAppConnectionBeyondcorpV1alphaArgs(
       appConnectionId: map['appConnectionId'] as String,
       location: map['location'] as String,
@@ -40,4 +41,3 @@ class GetAppConnectionBeyondcorpV1alphaArgs {
     );
   }
 }
-

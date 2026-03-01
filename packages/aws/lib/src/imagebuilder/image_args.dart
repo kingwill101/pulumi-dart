@@ -13,28 +13,40 @@ import 'image_workflow.dart';
 class ImageArgs {
   /// Amazon Resource Name (ARN) of the container recipe.
   final pulumi.Input<String>? containerRecipeArn;
+
   /// Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
   final pulumi.Input<String>? distributionConfigurationArn;
+
   /// Whether additional information about the image being created is collected. Defaults to `true`.
   final pulumi.Input<bool>? enhancedImageMetadataEnabled;
+
   /// Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
   final pulumi.Input<String>? executionRole;
+
   /// Amazon Resource Name (ARN) of the image recipe.
   final pulumi.Input<String>? imageRecipeArn;
+
   /// Configuration block with image scanning configuration. Detailed below.
-  final pulumi.Input<ImageImageScanningConfiguration>? imageScanningConfiguration;
+  final pulumi.Input<ImageImageScanningConfiguration>?
+  imageScanningConfiguration;
+
   /// Configuration block with image tests configuration. Detailed below.
   final pulumi.Input<ImageImageTestsConfiguration>? imageTestsConfiguration;
+
   /// Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> infrastructureConfigurationArn;
+
   /// Configuration block with logging configuration. Detailed below.
   final pulumi.Input<ImageLoggingConfiguration>? loggingConfiguration;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags for the Image Builder Image. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Configuration block with the workflow configuration. Detailed below.
   final pulumi.Input<List<ImageWorkflow>>? workflows;
 
@@ -64,19 +76,35 @@ class ImageArgs {
     String? region,
     Map<String, String>? tags,
     List<ImageWorkflow>? workflows,
-  }) :
-      containerRecipeArn = pulumi.Input.asOptionalInput<String>(containerRecipeArn),
-      distributionConfigurationArn = pulumi.Input.asOptionalInput<String>(distributionConfigurationArn),
-      enhancedImageMetadataEnabled = pulumi.Input.asOptionalInput<bool>(enhancedImageMetadataEnabled),
-      executionRole = pulumi.Input.asOptionalInput<String>(executionRole),
-      imageRecipeArn = pulumi.Input.asOptionalInput<String>(imageRecipeArn),
-      imageScanningConfiguration = pulumi.Input.asOptionalInput<ImageImageScanningConfiguration>(imageScanningConfiguration),
-      imageTestsConfiguration = pulumi.Input.asOptionalInput<ImageImageTestsConfiguration>(imageTestsConfiguration),
-      infrastructureConfigurationArn = pulumi.Input.asInput<String>(infrastructureConfigurationArn),
-      loggingConfiguration = pulumi.Input.asOptionalInput<ImageLoggingConfiguration>(loggingConfiguration),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workflows = pulumi.Input.asOptionalInput<List<ImageWorkflow>>(workflows);
+  }) : containerRecipeArn = pulumi.Input.asOptionalInput<String>(
+         containerRecipeArn,
+       ),
+       distributionConfigurationArn = pulumi.Input.asOptionalInput<String>(
+         distributionConfigurationArn,
+       ),
+       enhancedImageMetadataEnabled = pulumi.Input.asOptionalInput<bool>(
+         enhancedImageMetadataEnabled,
+       ),
+       executionRole = pulumi.Input.asOptionalInput<String>(executionRole),
+       imageRecipeArn = pulumi.Input.asOptionalInput<String>(imageRecipeArn),
+       imageScanningConfiguration =
+           pulumi.Input.asOptionalInput<ImageImageScanningConfiguration>(
+             imageScanningConfiguration,
+           ),
+       imageTestsConfiguration =
+           pulumi.Input.asOptionalInput<ImageImageTestsConfiguration>(
+             imageTestsConfiguration,
+           ),
+       infrastructureConfigurationArn = pulumi.Input.asInput<String>(
+         infrastructureConfigurationArn,
+       ),
+       loggingConfiguration =
+           pulumi.Input.asOptionalInput<ImageLoggingConfiguration>(
+             loggingConfiguration,
+           ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       workflows = pulumi.Input.asOptionalInput<List<ImageWorkflow>>(workflows);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -85,31 +113,85 @@ class ImageArgs {
       'enhancedImageMetadataEnabled': ?enhancedImageMetadataEnabled,
       'executionRole': ?executionRole,
       'imageRecipeArn': ?imageRecipeArn,
-      'imageScanningConfiguration': ?pulumi.Input.mapOptionalInputValue<ImageImageScanningConfiguration, Map<String, dynamic>>(imageScanningConfiguration, (value) => value.toMap()),
-      'imageTestsConfiguration': ?pulumi.Input.mapOptionalInputValue<ImageImageTestsConfiguration, Map<String, dynamic>>(imageTestsConfiguration, (value) => value.toMap()),
+      'imageScanningConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageImageScanningConfiguration,
+            Map<String, dynamic>
+          >(imageScanningConfiguration, (value) => value.toMap()),
+      'imageTestsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageImageTestsConfiguration,
+            Map<String, dynamic>
+          >(imageTestsConfiguration, (value) => value.toMap()),
       'infrastructureConfigurationArn': infrastructureConfigurationArn,
-      'loggingConfiguration': ?pulumi.Input.mapOptionalInputValue<ImageLoggingConfiguration, Map<String, dynamic>>(loggingConfiguration, (value) => value.toMap()),
+      'loggingConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImageLoggingConfiguration,
+            Map<String, dynamic>
+          >(loggingConfiguration, (value) => value.toMap()),
       'region': ?region,
       'tags': ?tags,
-      'workflows': ?pulumi.Input.mapOptionalInputValue<List<ImageWorkflow>, List<Map<String, dynamic>>>(workflows, (value) => pulumi.Input.encodeList<ImageWorkflow, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'workflows':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ImageWorkflow>,
+            List<Map<String, dynamic>>
+          >(
+            workflows,
+            (value) =>
+                pulumi.Input.encodeList<ImageWorkflow, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
     };
   }
 
   factory ImageArgs.fromMap(Map<String, dynamic> map) {
     return ImageArgs(
-      containerRecipeArn: map['containerRecipeArn'] == null ? null : map['containerRecipeArn'] as String,
-      distributionConfigurationArn: map['distributionConfigurationArn'] == null ? null : map['distributionConfigurationArn'] as String,
-      enhancedImageMetadataEnabled: map['enhancedImageMetadataEnabled'] == null ? null : map['enhancedImageMetadataEnabled'] as bool,
-      executionRole: map['executionRole'] == null ? null : map['executionRole'] as String,
-      imageRecipeArn: map['imageRecipeArn'] == null ? null : map['imageRecipeArn'] as String,
-      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : ImageImageScanningConfiguration.fromMap((map['imageScanningConfiguration'] as Map).cast<String, dynamic>()),
-      imageTestsConfiguration: map['imageTestsConfiguration'] == null ? null : ImageImageTestsConfiguration.fromMap((map['imageTestsConfiguration'] as Map).cast<String, dynamic>()),
-      infrastructureConfigurationArn: map['infrastructureConfigurationArn'] as String,
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : ImageLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>()),
+      containerRecipeArn: map['containerRecipeArn'] == null
+          ? null
+          : map['containerRecipeArn'] as String,
+      distributionConfigurationArn: map['distributionConfigurationArn'] == null
+          ? null
+          : map['distributionConfigurationArn'] as String,
+      enhancedImageMetadataEnabled: map['enhancedImageMetadataEnabled'] == null
+          ? null
+          : map['enhancedImageMetadataEnabled'] as bool,
+      executionRole: map['executionRole'] == null
+          ? null
+          : map['executionRole'] as String,
+      imageRecipeArn: map['imageRecipeArn'] == null
+          ? null
+          : map['imageRecipeArn'] as String,
+      imageScanningConfiguration: map['imageScanningConfiguration'] == null
+          ? null
+          : ImageImageScanningConfiguration.fromMap(
+              (map['imageScanningConfiguration'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      imageTestsConfiguration: map['imageTestsConfiguration'] == null
+          ? null
+          : ImageImageTestsConfiguration.fromMap(
+              (map['imageTestsConfiguration'] as Map).cast<String, dynamic>(),
+            ),
+      infrastructureConfigurationArn:
+          map['infrastructureConfigurationArn'] as String,
+      loggingConfiguration: map['loggingConfiguration'] == null
+          ? null
+          : ImageLoggingConfiguration.fromMap(
+              (map['loggingConfiguration'] as Map).cast<String, dynamic>(),
+            ),
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      workflows: map['workflows'] == null ? null : pulumi.Input.decodeList<ImageWorkflow>(map['workflows'], (value) => ImageWorkflow.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+      workflows: map['workflows'] == null
+          ? null
+          : pulumi.Input.decodeList<ImageWorkflow>(
+              map['workflows'],
+              (value) =>
+                  ImageWorkflow.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

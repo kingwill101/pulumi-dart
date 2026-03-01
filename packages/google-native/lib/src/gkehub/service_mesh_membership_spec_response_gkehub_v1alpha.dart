@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
 class ServiceMeshMembershipSpecResponseGkehubV1alpha {
   /// Deprecated: use `management` instead Enables automatic control plane management.
   final String controlPlane;
+
   /// Determines which release channel to use for default injection and service mesh APIs.
   final String defaultChannel;
+
   /// Enables automatic Service Mesh management.
   final String management;
 
@@ -28,7 +29,9 @@ class ServiceMeshMembershipSpecResponseGkehubV1alpha {
     };
   }
 
-  factory ServiceMeshMembershipSpecResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ServiceMeshMembershipSpecResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServiceMeshMembershipSpecResponseGkehubV1alpha(
       controlPlane: map['controlPlane'] as String,
       defaultChannel: map['defaultChannel'] as String,
@@ -36,4 +39,3 @@ class ServiceMeshMembershipSpecResponseGkehubV1alpha {
     );
   }
 }
-

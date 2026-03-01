@@ -23,7 +23,11 @@ class CloudVmClusterIormConfigCache {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dbPlans': pulumi.Input.encodeList<CloudVmClusterIormConfigCacheDbPlan, Map<String, dynamic>>(dbPlans, (value) => value.toMap()),
+      'dbPlans':
+          pulumi.Input.encodeList<
+            CloudVmClusterIormConfigCacheDbPlan,
+            Map<String, dynamic>
+          >(dbPlans, (value) => value.toMap()),
       'lifecycleDetails': lifecycleDetails,
       'lifecycleState': lifecycleState,
       'objective': objective,
@@ -32,11 +36,15 @@ class CloudVmClusterIormConfigCache {
 
   factory CloudVmClusterIormConfigCache.fromMap(Map<String, dynamic> map) {
     return CloudVmClusterIormConfigCache(
-      dbPlans: pulumi.Input.decodeList<CloudVmClusterIormConfigCacheDbPlan>(map['dbPlans'], (value) => CloudVmClusterIormConfigCacheDbPlan.fromMap((value as Map).cast<String, dynamic>())),
+      dbPlans: pulumi.Input.decodeList<CloudVmClusterIormConfigCacheDbPlan>(
+        map['dbPlans'],
+        (value) => CloudVmClusterIormConfigCacheDbPlan.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       lifecycleDetails: map['lifecycleDetails'] as String,
       lifecycleState: map['lifecycleState'] as String,
       objective: map['objective'] as String,
     );
   }
 }
-

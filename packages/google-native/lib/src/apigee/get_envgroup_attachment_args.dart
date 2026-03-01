@@ -19,10 +19,9 @@ class GetEnvgroupAttachmentArgs {
     required String attachmentId,
     required String envgroupId,
     required String organizationId,
-  }) :
-      attachmentId = pulumi.Input.asInput<String>(attachmentId),
-      envgroupId = pulumi.Input.asInput<String>(envgroupId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : attachmentId = pulumi.Input.asInput<String>(attachmentId),
+       envgroupId = pulumi.Input.asInput<String>(envgroupId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetEnvgroupAttachmentArgs {
     );
   }
 }
-

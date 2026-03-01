@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyAttachmentArgs {
   /// The name of the policy to attach.
   final pulumi.Input<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The identity to which the policy is attached.
   final pulumi.Input<String> target;
 
@@ -22,10 +24,9 @@ class PolicyAttachmentArgs {
     required String policy,
     String? region,
     required String target,
-  }) :
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      target = pulumi.Input.asInput<String>(target);
+  }) : policy = pulumi.Input.asInput<String>(policy),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       target = pulumi.Input.asInput<String>(target);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class PolicyAttachmentArgs {
     );
   }
 }
-

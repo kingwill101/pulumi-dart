@@ -25,12 +25,13 @@ class GetServiceDatabaseIamPolicyMetastoreV1betaArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String serviceId,
-  }) :
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) : databaseId = pulumi.Input.asInput<String>(databaseId),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,14 +43,18 @@ class GetServiceDatabaseIamPolicyMetastoreV1betaArgs {
     };
   }
 
-  factory GetServiceDatabaseIamPolicyMetastoreV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetServiceDatabaseIamPolicyMetastoreV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceDatabaseIamPolicyMetastoreV1betaArgs(
       databaseId: map['databaseId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       serviceId: map['serviceId'] as String,
     );
   }
 }
-

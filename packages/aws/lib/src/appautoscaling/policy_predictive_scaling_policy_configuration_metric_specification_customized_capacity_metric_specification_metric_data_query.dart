@@ -5,12 +5,17 @@ import 'policy_predictive_scaling_policy_configuration_metric_specification_cust
 class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery {
   /// Math expression to perform on the returned data, if this object is performing a math expression.
   final String? expression;
+
   /// Short name that identifies the object's results in the response.
   final String id;
+
   /// Human-readable label for this metric or expression.
   final String? label;
+
   /// Information about the metric data to return. See supported fields below.
-  final PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat? metricStat;
+  final PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat?
+  metricStat;
+
   /// Whether to return the timestamps and raw data values of this metric.
   final bool? returnData;
 
@@ -38,14 +43,21 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCap
     };
   }
 
-  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery.fromMap(Map<String, dynamic> map) {
+  factory PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQuery(
-      expression: map['expression'] == null ? null : map['expression'] as String,
+      expression: map['expression'] == null
+          ? null
+          : map['expression'] as String,
       id: map['id'] as String,
       label: map['label'] == null ? null : map['label'] as String,
-      metricStat: map['metricStat'] == null ? null : PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat.fromMap((map['metricStat'] as Map).cast<String, dynamic>()),
+      metricStat: map['metricStat'] == null
+          ? null
+          : PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat.fromMap(
+              (map['metricStat'] as Map).cast<String, dynamic>(),
+            ),
       returnData: map['returnData'] == null ? null : map['returnData'] as bool,
     );
   }
 }
-

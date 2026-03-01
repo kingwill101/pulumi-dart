@@ -9,20 +9,25 @@ class ParsedDataResponse {
 
   /// Creates a new [ParsedDataResponse].
   /// [segments] Required.
-  ParsedDataResponse({
-    required this.segments,
-  });
+  ParsedDataResponse({required this.segments});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'segments': pulumi.Input.encodeList<SegmentResponse, Map<String, dynamic>>(segments, (value) => value.toMap()),
+      'segments':
+          pulumi.Input.encodeList<SegmentResponse, Map<String, dynamic>>(
+            segments,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory ParsedDataResponse.fromMap(Map<String, dynamic> map) {
     return ParsedDataResponse(
-      segments: pulumi.Input.decodeList<SegmentResponse>(map['segments'], (value) => SegmentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      segments: pulumi.Input.decodeList<SegmentResponse>(
+        map['segments'],
+        (value) =>
+            SegmentResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

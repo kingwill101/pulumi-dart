@@ -7,13 +7,16 @@ enum VpcAccessConnectorEgressSettingAppengineV1beta {
   const VpcAccessConnectorEgressSettingAppengineV1beta(this.value);
   final String value;
 
-  static VpcAccessConnectorEgressSettingAppengineV1beta fromValue(String value) {
+  static VpcAccessConnectorEgressSettingAppengineV1beta fromValue(
+    String value,
+  ) {
     for (final item in VpcAccessConnectorEgressSettingAppengineV1beta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown VpcAccessConnectorEgressSettingAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown VpcAccessConnectorEgressSettingAppengineV1beta value: $value',
+    );
   }
 }
-

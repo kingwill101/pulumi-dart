@@ -12,18 +12,25 @@ import 'on_prem_cluster_response.dart';
 class MembershipEndpointResponse {
   /// Optional. Specific information for a GDC Edge Appliance cluster.
   final ApplianceClusterResponse applianceCluster;
+
   /// Optional. Specific information for a Google Edge cluster.
   final EdgeClusterResponse edgeCluster;
+
   /// Optional. Specific information for a GKE-on-GCP cluster.
   final GkeClusterResponse gkeCluster;
+
   /// Whether the lifecycle of this membership is managed by a google cluster platform service.
   final bool googleManaged;
+
   /// Useful Kubernetes-specific metadata.
   final KubernetesMetadataResponse kubernetesMetadata;
+
   /// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
   final KubernetesResourceResponse kubernetesResource;
+
   /// Optional. Specific information for a GKE Multi-Cloud cluster.
   final MultiCloudClusterResponse multiCloudCluster;
+
   /// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is not allowed to use this field, it should have a nil "type" instead.
   final OnPremClusterResponse onPremCluster;
 
@@ -62,15 +69,28 @@ class MembershipEndpointResponse {
 
   factory MembershipEndpointResponse.fromMap(Map<String, dynamic> map) {
     return MembershipEndpointResponse(
-      applianceCluster: ApplianceClusterResponse.fromMap((map['applianceCluster'] as Map).cast<String, dynamic>()),
-      edgeCluster: EdgeClusterResponse.fromMap((map['edgeCluster'] as Map).cast<String, dynamic>()),
-      gkeCluster: GkeClusterResponse.fromMap((map['gkeCluster'] as Map).cast<String, dynamic>()),
+      applianceCluster: ApplianceClusterResponse.fromMap(
+        (map['applianceCluster'] as Map).cast<String, dynamic>(),
+      ),
+      edgeCluster: EdgeClusterResponse.fromMap(
+        (map['edgeCluster'] as Map).cast<String, dynamic>(),
+      ),
+      gkeCluster: GkeClusterResponse.fromMap(
+        (map['gkeCluster'] as Map).cast<String, dynamic>(),
+      ),
       googleManaged: map['googleManaged'] as bool,
-      kubernetesMetadata: KubernetesMetadataResponse.fromMap((map['kubernetesMetadata'] as Map).cast<String, dynamic>()),
-      kubernetesResource: KubernetesResourceResponse.fromMap((map['kubernetesResource'] as Map).cast<String, dynamic>()),
-      multiCloudCluster: MultiCloudClusterResponse.fromMap((map['multiCloudCluster'] as Map).cast<String, dynamic>()),
-      onPremCluster: OnPremClusterResponse.fromMap((map['onPremCluster'] as Map).cast<String, dynamic>()),
+      kubernetesMetadata: KubernetesMetadataResponse.fromMap(
+        (map['kubernetesMetadata'] as Map).cast<String, dynamic>(),
+      ),
+      kubernetesResource: KubernetesResourceResponse.fromMap(
+        (map['kubernetesResource'] as Map).cast<String, dynamic>(),
+      ),
+      multiCloudCluster: MultiCloudClusterResponse.fromMap(
+        (map['multiCloudCluster'] as Map).cast<String, dynamic>(),
+      ),
+      onPremCluster: OnPremClusterResponse.fromMap(
+        (map['onPremCluster'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

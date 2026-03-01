@@ -41,42 +41,56 @@ import 'api_config_openapi_document.dart';
 class ApiConfig extends pulumi.CustomResource {
   /// The API to attach the config to.
   late final pulumi.Output<String> api;
+
   /// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
   late final pulumi.Output<String> apiConfigId;
+
   /// Creates a unique name beginning with the
   /// specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
   late final pulumi.Output<String> apiConfigIdPrefix;
+
   /// A user-visible name for the API.
   late final pulumi.Output<String> displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Immutable. Gateway specific configuration.
   /// If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
   /// Structure is documented below.
   late final pulumi.Output<ApiConfigGatewayConfig?> gatewayConfig;
+
   /// gRPC service definition files. If specified, openapiDocuments must not be included.
   /// Structure is documented below.
   late final pulumi.Output<List<ApiConfigGrpcService>?> grpcServices;
+
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents.
   /// If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
   /// Structure is documented below.
-  late final pulumi.Output<List<ApiConfigManagedServiceConfig>?> managedServiceConfigs;
+  late final pulumi.Output<List<ApiConfigManagedServiceConfig>?>
+  managedServiceConfigs;
+
   /// The resource name of the API Config.
   late final pulumi.Output<String> name;
+
   /// OpenAPI specification documents. If specified, grpcServices and managedServiceConfigs must not be included.
   /// Structure is documented below.
   late final pulumi.Output<List<ApiConfigOpenapiDocument>?> openapiDocuments;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The ID of the associated Service Config (https://cloud.google.com/service-infrastructure/docs/glossary#config).
   late final pulumi.Output<String> serviceConfigId;
 
@@ -89,22 +103,33 @@ class ApiConfig extends pulumi.CustomResource {
     ApiConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:apigateway/apiConfig:ApiConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:apigateway/apiConfig:ApiConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.api = registerOutput<String>('api');
     this.apiConfigId = registerOutput<String>('apiConfigId');
     this.apiConfigIdPrefix = registerOutput<String>('apiConfigIdPrefix');
     this.displayName = registerOutput<String>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.gatewayConfig = registerOutput<ApiConfigGatewayConfig?>('gatewayConfig');
-    this.grpcServices = registerOutput<List<ApiConfigGrpcService>?>('grpcServices');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
+    this.gatewayConfig = registerOutput<ApiConfigGatewayConfig?>(
+      'gatewayConfig',
+    );
+    this.grpcServices = registerOutput<List<ApiConfigGrpcService>?>(
+      'grpcServices',
+    );
     this.labels = registerOutput<Map<String, String>?>('labels');
-    this.managedServiceConfigs = registerOutput<List<ApiConfigManagedServiceConfig>?>('managedServiceConfigs');
+    this.managedServiceConfigs =
+        registerOutput<List<ApiConfigManagedServiceConfig>?>(
+          'managedServiceConfigs',
+        );
     this.name = registerOutput<String>('name');
-    this.openapiDocuments = registerOutput<List<ApiConfigOpenapiDocument>?>('openapiDocuments');
+    this.openapiDocuments = registerOutput<List<ApiConfigOpenapiDocument>?>(
+      'openapiDocuments',
+    );
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.serviceConfigId = registerOutput<String>('serviceConfigId');

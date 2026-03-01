@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getCatalog.
 class GetCatalogResult {
   /// The creation time of the catalog.
   final String createTime;
+
   /// The deletion time of the catalog. Only set after the catalog is deleted.
   final String deleteTime;
+
   /// The time when this catalog is considered expired. Only set after the catalog is deleted.
   final String expireTime;
+
   /// The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}
   final String name;
+
   /// The last modification time of the catalog.
   final String updateTime;
 
@@ -48,4 +51,3 @@ class GetCatalogResult {
     );
   }
 }
-

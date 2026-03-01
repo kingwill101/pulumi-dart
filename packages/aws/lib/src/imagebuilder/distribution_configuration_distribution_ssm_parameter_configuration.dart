@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DistributionConfigurationDistributionSsmParameterConfiguration {
   /// AWS account ID that will own the parameter in the given region. This account must be specified as a target account in the distribution settings.
   final String? amiAccountId;
+
   /// Data type of the SSM parameter. Valid values are `text` and `aws:ec2:image`. AWS recommends using `aws:ec2:image`.
   final String? dataType;
+
   /// Name of the SSM parameter that will store the AMI ID after distribution.
   final String parameterName;
 
@@ -27,12 +28,15 @@ class DistributionConfigurationDistributionSsmParameterConfiguration {
     };
   }
 
-  factory DistributionConfigurationDistributionSsmParameterConfiguration.fromMap(Map<String, dynamic> map) {
+  factory DistributionConfigurationDistributionSsmParameterConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionConfigurationDistributionSsmParameterConfiguration(
-      amiAccountId: map['amiAccountId'] == null ? null : map['amiAccountId'] as String,
+      amiAccountId: map['amiAccountId'] == null
+          ? null
+          : map['amiAccountId'] as String,
       dataType: map['dataType'] == null ? null : map['dataType'] as String,
       parameterName: map['parameterName'] as String,
     );
   }
 }
-

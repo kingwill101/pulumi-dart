@@ -1,16 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getQueue.
 class GetQueueResult {
   /// The Arn of the queue.
   final String arn;
   final String id;
+
   /// The same as `id`.
   final String name;
   final String region;
+
   /// The status of the queue.
   final String status;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   final Map<String, String> tags;
 
@@ -52,4 +54,3 @@ class GetQueueResult {
     );
   }
 }
-

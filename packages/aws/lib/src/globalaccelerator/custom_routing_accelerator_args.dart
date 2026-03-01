@@ -10,14 +10,19 @@ import 'custom_routing_accelerator_attributes.dart';
 class CustomRoutingAcceleratorArgs {
   /// The attributes of the accelerator. Fields documented below.
   final pulumi.Input<CustomRoutingAcceleratorAttributes>? attributes;
+
   /// Indicates whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
   final pulumi.Input<bool>? enabled;
+
   /// The IP address type that an accelerator supports. For a custom routing accelerator, the value must be `"IPV4"`.
   final pulumi.Input<String>? ipAddressType;
+
   /// The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
   final pulumi.Input<List<String>>? ipAddresses;
+
   /// The name of a custom routing accelerator.
   final pulumi.Input<String>? name;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -35,17 +40,23 @@ class CustomRoutingAcceleratorArgs {
     List<String>? ipAddresses,
     String? name,
     Map<String, String>? tags,
-  }) :
-      attributes = pulumi.Input.asOptionalInput<CustomRoutingAcceleratorAttributes>(attributes),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
-      ipAddresses = pulumi.Input.asOptionalInput<List<String>>(ipAddresses),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : attributes =
+           pulumi.Input.asOptionalInput<CustomRoutingAcceleratorAttributes>(
+             attributes,
+           ),
+       enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+       ipAddressType = pulumi.Input.asOptionalInput<String>(ipAddressType),
+       ipAddresses = pulumi.Input.asOptionalInput<List<String>>(ipAddresses),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': ?pulumi.Input.mapOptionalInputValue<CustomRoutingAcceleratorAttributes, Map<String, dynamic>>(attributes, (value) => value.toMap()),
+      'attributes':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomRoutingAcceleratorAttributes,
+            Map<String, dynamic>
+          >(attributes, (value) => value.toMap()),
       'enabled': ?enabled,
       'ipAddressType': ?ipAddressType,
       'ipAddresses': ?ipAddresses,
@@ -56,13 +67,22 @@ class CustomRoutingAcceleratorArgs {
 
   factory CustomRoutingAcceleratorArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingAcceleratorArgs(
-      attributes: map['attributes'] == null ? null : CustomRoutingAcceleratorAttributes.fromMap((map['attributes'] as Map).cast<String, dynamic>()),
+      attributes: map['attributes'] == null
+          ? null
+          : CustomRoutingAcceleratorAttributes.fromMap(
+              (map['attributes'] as Map).cast<String, dynamic>(),
+            ),
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      ipAddressType: map['ipAddressType'] == null ? null : map['ipAddressType'] as String,
-      ipAddresses: map['ipAddresses'] == null ? null : (map['ipAddresses'] as List).cast<String>(),
+      ipAddressType: map['ipAddressType'] == null
+          ? null
+          : map['ipAddressType'] as String,
+      ipAddresses: map['ipAddresses'] == null
+          ? null
+          : (map['ipAddresses'] as List).cast<String>(),
       name: map['name'] == null ? null : map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

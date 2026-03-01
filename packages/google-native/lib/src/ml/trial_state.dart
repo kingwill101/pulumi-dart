@@ -18,4 +18,3 @@ enum TrialState {
     throw ArgumentError('Unknown TrialState value: $value');
   }
 }
-

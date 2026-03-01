@@ -19,10 +19,9 @@ class GetTcpRouteArgs {
     required String location,
     String? project,
     required String tcpRouteId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tcpRouteId = pulumi.Input.asInput<String>(tcpRouteId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tcpRouteId = pulumi.Input.asInput<String>(tcpRouteId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTcpRouteArgs {
     );
   }
 }
-

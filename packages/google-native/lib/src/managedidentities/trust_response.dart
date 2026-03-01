@@ -1,28 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a relationship between two domains. This allows a controller in one domain to authenticate a user in another domain. If the trust is being changed, it will be placed into the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an intermediate state.
 class TrustResponse {
   /// The time the instance was created.
   final String createTime;
+
   /// The last heartbeat time when the trust was known to be connected.
   final String lastTrustHeartbeatTime;
+
   /// Optional. The trust authentication type, which decides whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
   final bool selectiveAuthentication;
+
   /// The current state of the trust.
   final String state;
+
   /// Additional information about the current state of the trust, if available.
   final String stateDescription;
+
   /// The target DNS server IP addresses which can resolve the remote domain involved in the trust.
   final List<String> targetDnsIpAddresses;
+
   /// The fully qualified target domain name which will be in trust with the current domain.
   final String targetDomainName;
+
   /// The trust direction, which decides if the current domain is trusted, trusting, or both.
   final String trustDirection;
+
   /// The trust secret used for the handshake with the target domain. This will not be stored.
   final String trustHandshakeSecret;
+
   /// The type of trust represented by the trust resource.
   final String trustType;
+
   /// The last update time.
   final String updateTime;
 
@@ -75,7 +84,8 @@ class TrustResponse {
       selectiveAuthentication: map['selectiveAuthentication'] as bool,
       state: map['state'] as String,
       stateDescription: map['stateDescription'] as String,
-      targetDnsIpAddresses: (map['targetDnsIpAddresses'] as List).cast<String>(),
+      targetDnsIpAddresses: (map['targetDnsIpAddresses'] as List)
+          .cast<String>(),
       targetDomainName: map['targetDomainName'] as String,
       trustDirection: map['trustDirection'] as String,
       trustHandshakeSecret: map['trustHandshakeSecret'] as String,
@@ -84,4 +94,3 @@ class TrustResponse {
     );
   }
 }
-

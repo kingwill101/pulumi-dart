@@ -17,4 +17,3 @@ enum ReleaseChannelChannel {
     throw ArgumentError('Unknown ReleaseChannelChannel value: $value');
   }
 }
-

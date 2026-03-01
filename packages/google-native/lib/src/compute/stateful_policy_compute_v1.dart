@@ -7,20 +7,23 @@ class StatefulPolicyComputeV1 {
 
   /// Creates a new [StatefulPolicyComputeV1].
   /// [preservedState] Optional.
-  StatefulPolicyComputeV1({
-    this.preservedState,
-  });
+  StatefulPolicyComputeV1({this.preservedState});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'preservedState': ?preservedState == null ? null : preservedState!.toMap(),
+      'preservedState': ?preservedState == null
+          ? null
+          : preservedState!.toMap(),
     };
   }
 
   factory StatefulPolicyComputeV1.fromMap(Map<String, dynamic> map) {
     return StatefulPolicyComputeV1(
-      preservedState: map['preservedState'] == null ? null : StatefulPolicyPreservedStateComputeV1.fromMap((map['preservedState'] as Map).cast<String, dynamic>()),
+      preservedState: map['preservedState'] == null
+          ? null
+          : StatefulPolicyPreservedStateComputeV1.fromMap(
+              (map['preservedState'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

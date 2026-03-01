@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.
 class ApiConfigHandlerResponseAppengineV1beta {
   /// Action to take when users access resources that require authentication. Defaults to redirect.
   final String authFailAction;
+
   /// Level of login required to access this resource. Defaults to optional.
   final String login;
+
   /// Path to the script from the application root directory.
   final String script;
+
   /// Security (HTTPS) enforcement for this URL.
   final String securityLevel;
+
   /// URL to serve the endpoint at.
   final String url;
 
@@ -38,7 +41,9 @@ class ApiConfigHandlerResponseAppengineV1beta {
     };
   }
 
-  factory ApiConfigHandlerResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
+  factory ApiConfigHandlerResponseAppengineV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApiConfigHandlerResponseAppengineV1beta(
       authFailAction: map['authFailAction'] as String,
       login: map['login'] as String,
@@ -48,4 +53,3 @@ class ApiConfigHandlerResponseAppengineV1beta {
     );
   }
 }
-

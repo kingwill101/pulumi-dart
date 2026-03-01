@@ -6,12 +6,16 @@ import 'get_policies_policy_policy_query.dart';
 class GetPoliciesPolicy {
   /// The customer that the policy belongs to.
   final String customer;
+
   /// The resource name of the policy.
   final String name;
+
   /// A list containing the CEL query that defines which entities the policy applies to. Structure is documented below.
   final List<GetPoliciesPolicyPolicyQuery> policyQueries;
+
   /// The setting configured by this policy, represented as a JSON string.
   final String setting;
+
   /// The type of the policy.
   final String type;
 
@@ -33,7 +37,11 @@ class GetPoliciesPolicy {
     return <String, dynamic>{
       'customer': customer,
       'name': name,
-      'policyQueries': pulumi.Input.encodeList<GetPoliciesPolicyPolicyQuery, Map<String, dynamic>>(policyQueries, (value) => value.toMap()),
+      'policyQueries':
+          pulumi.Input.encodeList<
+            GetPoliciesPolicyPolicyQuery,
+            Map<String, dynamic>
+          >(policyQueries, (value) => value.toMap()),
       'setting': setting,
       'type': type,
     };
@@ -43,10 +51,14 @@ class GetPoliciesPolicy {
     return GetPoliciesPolicy(
       customer: map['customer'] as String,
       name: map['name'] as String,
-      policyQueries: pulumi.Input.decodeList<GetPoliciesPolicyPolicyQuery>(map['policyQueries'], (value) => GetPoliciesPolicyPolicyQuery.fromMap((value as Map).cast<String, dynamic>())),
+      policyQueries: pulumi.Input.decodeList<GetPoliciesPolicyPolicyQuery>(
+        map['policyQueries'],
+        (value) => GetPoliciesPolicyPolicyQuery.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       setting: map['setting'] as String,
       type: map['type'] as String,
     );
   }
 }
-

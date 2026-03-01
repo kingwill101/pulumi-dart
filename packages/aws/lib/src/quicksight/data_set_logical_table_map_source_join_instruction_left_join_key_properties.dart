@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties {
   /// A value that indicates that a row in a table is uniquely identified by the columns in a join key. This is used by Amazon QuickSight to optimize query performance.
   final bool? uniqueKey;
@@ -12,15 +11,14 @@ class DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uniqueKey': ?uniqueKey,
-    };
+    return <String, dynamic>{'uniqueKey': ?uniqueKey};
   }
 
-  factory DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties.fromMap(Map<String, dynamic> map) {
+  factory DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSetLogicalTableMapSourceJoinInstructionLeftJoinKeyProperties(
       uniqueKey: map['uniqueKey'] == null ? null : map['uniqueKey'] as bool,
     );
   }
 }
-

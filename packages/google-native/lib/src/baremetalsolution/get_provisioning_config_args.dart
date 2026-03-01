@@ -19,10 +19,11 @@ class GetProvisioningConfigArgs {
     required String location,
     String? project,
     required String provisioningConfigId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      provisioningConfigId = pulumi.Input.asInput<String>(provisioningConfigId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       provisioningConfigId = pulumi.Input.asInput<String>(
+         provisioningConfigId,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetProvisioningConfigArgs {
     );
   }
 }
-

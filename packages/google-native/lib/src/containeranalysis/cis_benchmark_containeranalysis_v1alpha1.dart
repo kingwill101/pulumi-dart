@@ -6,16 +6,14 @@ import 'cis_benchmark_severity_containeranalysis_v1alpha1.dart';
 class CisBenchmarkContaineranalysisV1alpha1 {
   /// The profile level of this CIS benchmark check.
   final int? profileLevel;
+
   /// The severity level of this CIS benchmark check.
   final CisBenchmarkSeverityContaineranalysisV1alpha1? severity;
 
   /// Creates a new [CisBenchmarkContaineranalysisV1alpha1].
   /// [profileLevel] The profile level of this CIS benchmark check.
   /// [severity] The severity level of this CIS benchmark check.
-  CisBenchmarkContaineranalysisV1alpha1({
-    this.profileLevel,
-    this.severity,
-  });
+  CisBenchmarkContaineranalysisV1alpha1({this.profileLevel, this.severity});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,11 +22,18 @@ class CisBenchmarkContaineranalysisV1alpha1 {
     };
   }
 
-  factory CisBenchmarkContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory CisBenchmarkContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CisBenchmarkContaineranalysisV1alpha1(
-      profileLevel: map['profileLevel'] == null ? null : map['profileLevel'] as int,
-      severity: map['severity'] == null ? null : CisBenchmarkSeverityContaineranalysisV1alpha1.fromValue(map['severity'] as String),
+      profileLevel: map['profileLevel'] == null
+          ? null
+          : map['profileLevel'] as int,
+      severity: map['severity'] == null
+          ? null
+          : CisBenchmarkSeverityContaineranalysisV1alpha1.fromValue(
+              map['severity'] as String,
+            ),
     );
   }
 }
-

@@ -9,20 +9,26 @@ class GetBucketObjectContentContext {
 
   /// Creates a new [GetBucketObjectContentContext].
   /// [customs] A list of custom context key-value pairs.
-  GetBucketObjectContentContext({
-    required this.customs,
-  });
+  GetBucketObjectContentContext({required this.customs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customs': pulumi.Input.encodeList<GetBucketObjectContentContextCustom, Map<String, dynamic>>(customs, (value) => value.toMap()),
+      'customs':
+          pulumi.Input.encodeList<
+            GetBucketObjectContentContextCustom,
+            Map<String, dynamic>
+          >(customs, (value) => value.toMap()),
     };
   }
 
   factory GetBucketObjectContentContext.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectContentContext(
-      customs: pulumi.Input.decodeList<GetBucketObjectContentContextCustom>(map['customs'], (value) => GetBucketObjectContentContextCustom.fromMap((value as Map).cast<String, dynamic>())),
+      customs: pulumi.Input.decodeList<GetBucketObjectContentContextCustom>(
+        map['customs'],
+        (value) => GetBucketObjectContentContextCustom.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EnvironmentEntryArgs {
   final pulumi.Input<String> environmentId;
   final pulumi.Input<String> keyvaluemapId;
+
   /// Resource URI that can be used to identify the scope of the key value map entries.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
+
   /// Data or payload that is being retrieved and associated with the unique key.
   final pulumi.Input<String> value;
 
@@ -27,12 +29,11 @@ class EnvironmentEntryArgs {
     String? name,
     required String organizationId,
     required String value,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      keyvaluemapId = pulumi.Input.asInput<String>(keyvaluemapId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      value = pulumi.Input.asInput<String>(value);
+  }) : environmentId = pulumi.Input.asInput<String>(environmentId),
+       keyvaluemapId = pulumi.Input.asInput<String>(keyvaluemapId),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       value = pulumi.Input.asInput<String>(value);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,4 +55,3 @@ class EnvironmentEntryArgs {
     );
   }
 }
-

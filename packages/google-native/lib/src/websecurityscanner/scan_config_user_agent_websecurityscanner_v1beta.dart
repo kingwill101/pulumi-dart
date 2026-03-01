@@ -14,7 +14,8 @@ enum ScanConfigUserAgentWebsecurityscannerV1beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown ScanConfigUserAgentWebsecurityscannerV1beta value: $value');
+    throw ArgumentError(
+      'Unknown ScanConfigUserAgentWebsecurityscannerV1beta value: $value',
+    );
   }
 }
-

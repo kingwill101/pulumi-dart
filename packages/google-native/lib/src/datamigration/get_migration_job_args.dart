@@ -19,10 +19,9 @@ class GetMigrationJobArgs {
     required String location,
     required String migrationJobId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      migrationJobId = pulumi.Input.asInput<String>(migrationJobId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       migrationJobId = pulumi.Input.asInput<String>(migrationJobId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetMigrationJobArgs {
     );
   }
 }
-

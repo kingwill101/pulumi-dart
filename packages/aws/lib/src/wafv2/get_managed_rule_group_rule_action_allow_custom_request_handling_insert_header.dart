@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader {
   /// Managed rule group name.
   final String name;
@@ -15,17 +14,15 @@ class GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader.fromMap(Map<String, dynamic> map) {
+  factory GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetManagedRuleGroupRuleActionAllowCustomRequestHandlingInsertHeader(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

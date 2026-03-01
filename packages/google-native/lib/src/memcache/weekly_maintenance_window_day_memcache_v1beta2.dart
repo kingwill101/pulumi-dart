@@ -18,7 +18,8 @@ enum WeeklyMaintenanceWindowDayMemcacheV1beta2 {
         return item;
       }
     }
-    throw ArgumentError('Unknown WeeklyMaintenanceWindowDayMemcacheV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown WeeklyMaintenanceWindowDayMemcacheV1beta2 value: $value',
+    );
   }
 }
-

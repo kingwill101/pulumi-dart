@@ -19,10 +19,9 @@ class GetSpecialistPoolArgs {
     required String location,
     String? project,
     required String specialistPoolId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      specialistPoolId = pulumi.Input.asInput<String>(specialistPoolId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       specialistPoolId = pulumi.Input.asInput<String>(specialistPoolId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetSpecialistPoolArgs {
     );
   }
 }
-

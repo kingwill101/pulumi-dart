@@ -13,7 +13,8 @@ enum SqlOutOfDiskReportSqlOutOfDiskState {
         return item;
       }
     }
-    throw ArgumentError('Unknown SqlOutOfDiskReportSqlOutOfDiskState value: $value');
+    throw ArgumentError(
+      'Unknown SqlOutOfDiskReportSqlOutOfDiskState value: $value',
+    );
   }
 }
-

@@ -16,4 +16,3 @@ enum AddressIpVersionComputeV1 {
     throw ArgumentError('Unknown AddressIpVersionComputeV1 value: $value');
   }
 }
-

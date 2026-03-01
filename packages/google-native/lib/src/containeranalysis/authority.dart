@@ -9,20 +9,19 @@ class Authority {
 
   /// Creates a new [Authority].
   /// [hint] Hint hints at the purpose of the attestation authority.
-  Authority({
-    this.hint,
-  });
+  Authority({this.hint});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'hint': ?hint == null ? null : hint!.toMap(),
-    };
+    return <String, dynamic>{'hint': ?hint == null ? null : hint!.toMap()};
   }
 
   factory Authority.fromMap(Map<String, dynamic> map) {
     return Authority(
-      hint: map['hint'] == null ? null : HintContaineranalysisV1beta1.fromMap((map['hint'] as Map).cast<String, dynamic>()),
+      hint: map['hint'] == null
+          ? null
+          : HintContaineranalysisV1beta1.fromMap(
+              (map['hint'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

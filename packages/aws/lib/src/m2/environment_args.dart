@@ -12,32 +12,44 @@ import 'environment_timeouts.dart';
 class EnvironmentArgs {
   final pulumi.Input<bool>? applyChangesDuringMaintenanceWindow;
   final pulumi.Input<String>? description;
+
   /// Engine type must be `microfocus` or `bluage`.
   final pulumi.Input<String> engineType;
+
   /// The specific version of the engine for the Environment.
   final pulumi.Input<String>? engineVersion;
+
   /// Force update the environment even if applications are running.
   final pulumi.Input<bool>? forceUpdate;
   final pulumi.Input<EnvironmentHighAvailabilityConfig>? highAvailabilityConfig;
+
   /// M2 Instance Type.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> instanceType;
+
   /// ARN of the KMS key to use for the Environment.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Name of the runtime environment. Must be unique within the account.
   final pulumi.Input<String>? name;
+
   /// Configures the maintenance window that you want for the runtime environment. The maintenance window must have the format `ddd:hh24:mi-ddd:hh24:mi` and must be less than 24 hours. If not provided a random value will be used.
   final pulumi.Input<String>? preferredMaintenanceWindow;
+
   /// Allow applications deployed to this environment to be publicly accessible.
   final pulumi.Input<bool>? publiclyAccessible;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of security group ids.
   final pulumi.Input<List<String>>? securityGroupIds;
   final pulumi.Input<EnvironmentStorageConfiguration>? storageConfiguration;
+
   /// List of subnet ids to deploy environment to.
   final pulumi.Input<List<String>>? subnetIds;
+
   /// Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<EnvironmentTimeouts>? timeouts;
@@ -78,33 +90,51 @@ class EnvironmentArgs {
     List<String>? subnetIds,
     Map<String, String>? tags,
     EnvironmentTimeouts? timeouts,
-  }) :
-      applyChangesDuringMaintenanceWindow = pulumi.Input.asOptionalInput<bool>(applyChangesDuringMaintenanceWindow),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      engineType = pulumi.Input.asInput<String>(engineType),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      forceUpdate = pulumi.Input.asOptionalInput<bool>(forceUpdate),
-      highAvailabilityConfig = pulumi.Input.asOptionalInput<EnvironmentHighAvailabilityConfig>(highAvailabilityConfig),
-      instanceType = pulumi.Input.asInput<String>(instanceType),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      preferredMaintenanceWindow = pulumi.Input.asOptionalInput<String>(preferredMaintenanceWindow),
-      publiclyAccessible = pulumi.Input.asOptionalInput<bool>(publiclyAccessible),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(securityGroupIds),
-      storageConfiguration = pulumi.Input.asOptionalInput<EnvironmentStorageConfiguration>(storageConfiguration),
-      subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<EnvironmentTimeouts>(timeouts);
+  }) : applyChangesDuringMaintenanceWindow = pulumi.Input.asOptionalInput<bool>(
+         applyChangesDuringMaintenanceWindow,
+       ),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       engineType = pulumi.Input.asInput<String>(engineType),
+       engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
+       forceUpdate = pulumi.Input.asOptionalInput<bool>(forceUpdate),
+       highAvailabilityConfig =
+           pulumi.Input.asOptionalInput<EnvironmentHighAvailabilityConfig>(
+             highAvailabilityConfig,
+           ),
+       instanceType = pulumi.Input.asInput<String>(instanceType),
+       kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       preferredMaintenanceWindow = pulumi.Input.asOptionalInput<String>(
+         preferredMaintenanceWindow,
+       ),
+       publiclyAccessible = pulumi.Input.asOptionalInput<bool>(
+         publiclyAccessible,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       securityGroupIds = pulumi.Input.asOptionalInput<List<String>>(
+         securityGroupIds,
+       ),
+       storageConfiguration =
+           pulumi.Input.asOptionalInput<EnvironmentStorageConfiguration>(
+             storageConfiguration,
+           ),
+       subnetIds = pulumi.Input.asOptionalInput<List<String>>(subnetIds),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       timeouts = pulumi.Input.asOptionalInput<EnvironmentTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applyChangesDuringMaintenanceWindow': ?applyChangesDuringMaintenanceWindow,
+      'applyChangesDuringMaintenanceWindow':
+          ?applyChangesDuringMaintenanceWindow,
       'description': ?description,
       'engineType': engineType,
       'engineVersion': ?engineVersion,
       'forceUpdate': ?forceUpdate,
-      'highAvailabilityConfig': ?pulumi.Input.mapOptionalInputValue<EnvironmentHighAvailabilityConfig, Map<String, dynamic>>(highAvailabilityConfig, (value) => value.toMap()),
+      'highAvailabilityConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnvironmentHighAvailabilityConfig,
+            Map<String, dynamic>
+          >(highAvailabilityConfig, (value) => value.toMap()),
       'instanceType': instanceType,
       'kmsKeyId': ?kmsKeyId,
       'name': ?name,
@@ -112,33 +142,71 @@ class EnvironmentArgs {
       'publiclyAccessible': ?publiclyAccessible,
       'region': ?region,
       'securityGroupIds': ?securityGroupIds,
-      'storageConfiguration': ?pulumi.Input.mapOptionalInputValue<EnvironmentStorageConfiguration, Map<String, dynamic>>(storageConfiguration, (value) => value.toMap()),
+      'storageConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnvironmentStorageConfiguration,
+            Map<String, dynamic>
+          >(storageConfiguration, (value) => value.toMap()),
       'subnetIds': ?subnetIds,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<EnvironmentTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            EnvironmentTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory EnvironmentArgs.fromMap(Map<String, dynamic> map) {
     return EnvironmentArgs(
-      applyChangesDuringMaintenanceWindow: map['applyChangesDuringMaintenanceWindow'] == null ? null : map['applyChangesDuringMaintenanceWindow'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
+      applyChangesDuringMaintenanceWindow:
+          map['applyChangesDuringMaintenanceWindow'] == null
+          ? null
+          : map['applyChangesDuringMaintenanceWindow'] as bool,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       engineType: map['engineType'] as String,
-      engineVersion: map['engineVersion'] == null ? null : map['engineVersion'] as String,
-      forceUpdate: map['forceUpdate'] == null ? null : map['forceUpdate'] as bool,
-      highAvailabilityConfig: map['highAvailabilityConfig'] == null ? null : EnvironmentHighAvailabilityConfig.fromMap((map['highAvailabilityConfig'] as Map).cast<String, dynamic>()),
+      engineVersion: map['engineVersion'] == null
+          ? null
+          : map['engineVersion'] as String,
+      forceUpdate: map['forceUpdate'] == null
+          ? null
+          : map['forceUpdate'] as bool,
+      highAvailabilityConfig: map['highAvailabilityConfig'] == null
+          ? null
+          : EnvironmentHighAvailabilityConfig.fromMap(
+              (map['highAvailabilityConfig'] as Map).cast<String, dynamic>(),
+            ),
       instanceType: map['instanceType'] as String,
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : map['preferredMaintenanceWindow'] as String,
-      publiclyAccessible: map['publiclyAccessible'] == null ? null : map['publiclyAccessible'] as bool,
+      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null
+          ? null
+          : map['preferredMaintenanceWindow'] as String,
+      publiclyAccessible: map['publiclyAccessible'] == null
+          ? null
+          : map['publiclyAccessible'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
-      securityGroupIds: map['securityGroupIds'] == null ? null : (map['securityGroupIds'] as List).cast<String>(),
-      storageConfiguration: map['storageConfiguration'] == null ? null : EnvironmentStorageConfiguration.fromMap((map['storageConfiguration'] as Map).cast<String, dynamic>()),
-      subnetIds: map['subnetIds'] == null ? null : (map['subnetIds'] as List).cast<String>(),
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      timeouts: map['timeouts'] == null ? null : EnvironmentTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      securityGroupIds: map['securityGroupIds'] == null
+          ? null
+          : (map['securityGroupIds'] as List).cast<String>(),
+      storageConfiguration: map['storageConfiguration'] == null
+          ? null
+          : EnvironmentStorageConfiguration.fromMap(
+              (map['storageConfiguration'] as Map).cast<String, dynamic>(),
+            ),
+      subnetIds: map['subnetIds'] == null
+          ? null
+          : (map['subnetIds'] as List).cast<String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+      timeouts: map['timeouts'] == null
+          ? null
+          : EnvironmentTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

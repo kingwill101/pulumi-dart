@@ -645,36 +645,49 @@ class ChatEngine extends pulumi.CustomResource {
   /// Configurations for a chat Engine.
   /// Structure is documented below.
   late final pulumi.Output<ChatEngineChatEngineConfig> chatEngineConfig;
+
   /// Additional information of the Chat Engine.
   /// Structure is documented below.
-  late final pulumi.Output<List<ChatEngineChatEngineMetadata>> chatEngineMetadatas;
+  late final pulumi.Output<List<ChatEngineChatEngineMetadata>>
+  chatEngineMetadatas;
+
   /// The collection ID.
   late final pulumi.Output<String> collectionId;
+
   /// Common config spec that specifies the metadata of the engine.
   /// Structure is documented below.
   late final pulumi.Output<ChatEngineCommonConfig?> commonConfig;
+
   /// Timestamp the Engine was created at.
   late final pulumi.Output<String> createTime;
+
   /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
   late final pulumi.Output<List<String>> dataStoreIds;
+
   /// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   late final pulumi.Output<String> displayName;
+
   /// The ID to use for chat engine.
   late final pulumi.Output<String> engineId;
+
   /// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`.
   late final pulumi.Output<String?> industryVertical;
+
   /// Location.
   late final pulumi.Output<String> location;
+
   /// The unique full resource name of the chat engine. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Timestamp the Engine was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -687,13 +700,18 @@ class ChatEngine extends pulumi.CustomResource {
     ChatEngineArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:discoveryengine/chatEngine:ChatEngine',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.chatEngineConfig = registerOutput<ChatEngineChatEngineConfig>('chatEngineConfig');
-    this.chatEngineMetadatas = registerOutput<List<ChatEngineChatEngineMetadata>>('chatEngineMetadatas');
+         'gcp:discoveryengine/chatEngine:ChatEngine',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.chatEngineConfig = registerOutput<ChatEngineChatEngineConfig>(
+      'chatEngineConfig',
+    );
+    this.chatEngineMetadatas =
+        registerOutput<List<ChatEngineChatEngineMetadata>>(
+          'chatEngineMetadatas',
+        );
     this.collectionId = registerOutput<String>('collectionId');
     this.commonConfig = registerOutput<ChatEngineCommonConfig?>('commonConfig');
     this.createTime = registerOutput<String>('createTime');

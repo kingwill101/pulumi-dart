@@ -9,9 +9,7 @@ class EndpointMatcherResponse {
 
   /// Creates a new [EndpointMatcherResponse].
   /// [metadataLabelMatcher] The matcher is based on node metadata presented by xDS clients.
-  EndpointMatcherResponse({
-    required this.metadataLabelMatcher,
-  });
+  EndpointMatcherResponse({required this.metadataLabelMatcher});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class EndpointMatcherResponse {
 
   factory EndpointMatcherResponse.fromMap(Map<String, dynamic> map) {
     return EndpointMatcherResponse(
-      metadataLabelMatcher: EndpointMatcherMetadataLabelMatcherResponse.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
+      metadataLabelMatcher: EndpointMatcherMetadataLabelMatcherResponse.fromMap(
+        (map['metadataLabelMatcher'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

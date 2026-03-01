@@ -15,7 +15,8 @@ enum GlobalForwardingRulePscConnectionStatus {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalForwardingRulePscConnectionStatus value: $value');
+    throw ArgumentError(
+      'Unknown GlobalForwardingRulePscConnectionStatus value: $value',
+    );
   }
 }
-

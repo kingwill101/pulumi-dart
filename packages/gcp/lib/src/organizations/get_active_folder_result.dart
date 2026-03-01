@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getActiveFolder.
 class GetActiveFolderResult {
   final String? apiMethod;
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The resource name of the Folder. This uniquely identifies the folder.
   final String name;
   final String parent;
@@ -45,4 +46,3 @@ class GetActiveFolderResult {
     );
   }
 }
-

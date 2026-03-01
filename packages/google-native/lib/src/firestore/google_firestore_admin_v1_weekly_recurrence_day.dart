@@ -18,7 +18,8 @@ enum GoogleFirestoreAdminV1WeeklyRecurrenceDay {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleFirestoreAdminV1WeeklyRecurrenceDay value: $value');
+    throw ArgumentError(
+      'Unknown GoogleFirestoreAdminV1WeeklyRecurrenceDay value: $value',
+    );
   }
 }
-

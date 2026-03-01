@@ -11,15 +11,20 @@ import 'retention_config.dart';
 /// {@macro pulumi_pubsublite_v1_topic_args_doc}
 class TopicArgs {
   final pulumi.Input<String>? location;
+
   /// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
   final pulumi.Input<String>? name;
+
   /// The settings for this topic's partitions.
   final pulumi.Input<PartitionConfig>? partitionConfig;
   final pulumi.Input<String>? project;
+
   /// The settings for this topic's Reservation usage.
   final pulumi.Input<ReservationConfig>? reservationConfig;
+
   /// The settings for this topic's message retention.
   final pulumi.Input<RetentionConfig>? retentionConfig;
+
   /// Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
   final pulumi.Input<String> topicId;
 
@@ -39,23 +44,40 @@ class TopicArgs {
     ReservationConfig? reservationConfig,
     RetentionConfig? retentionConfig,
     required String topicId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      partitionConfig = pulumi.Input.asOptionalInput<PartitionConfig>(partitionConfig),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservationConfig = pulumi.Input.asOptionalInput<ReservationConfig>(reservationConfig),
-      retentionConfig = pulumi.Input.asOptionalInput<RetentionConfig>(retentionConfig),
-      topicId = pulumi.Input.asInput<String>(topicId);
+  }) : location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       partitionConfig = pulumi.Input.asOptionalInput<PartitionConfig>(
+         partitionConfig,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       reservationConfig = pulumi.Input.asOptionalInput<ReservationConfig>(
+         reservationConfig,
+       ),
+       retentionConfig = pulumi.Input.asOptionalInput<RetentionConfig>(
+         retentionConfig,
+       ),
+       topicId = pulumi.Input.asInput<String>(topicId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'location': ?location,
       'name': ?name,
-      'partitionConfig': ?pulumi.Input.mapOptionalInputValue<PartitionConfig, Map<String, dynamic>>(partitionConfig, (value) => value.toMap()),
+      'partitionConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            PartitionConfig,
+            Map<String, dynamic>
+          >(partitionConfig, (value) => value.toMap()),
       'project': ?project,
-      'reservationConfig': ?pulumi.Input.mapOptionalInputValue<ReservationConfig, Map<String, dynamic>>(reservationConfig, (value) => value.toMap()),
-      'retentionConfig': ?pulumi.Input.mapOptionalInputValue<RetentionConfig, Map<String, dynamic>>(retentionConfig, (value) => value.toMap()),
+      'reservationConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            ReservationConfig,
+            Map<String, dynamic>
+          >(reservationConfig, (value) => value.toMap()),
+      'retentionConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            RetentionConfig,
+            Map<String, dynamic>
+          >(retentionConfig, (value) => value.toMap()),
       'topicId': topicId,
     };
   }
@@ -64,12 +86,23 @@ class TopicArgs {
     return TopicArgs(
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      partitionConfig: map['partitionConfig'] == null ? null : PartitionConfig.fromMap((map['partitionConfig'] as Map).cast<String, dynamic>()),
+      partitionConfig: map['partitionConfig'] == null
+          ? null
+          : PartitionConfig.fromMap(
+              (map['partitionConfig'] as Map).cast<String, dynamic>(),
+            ),
       project: map['project'] == null ? null : map['project'] as String,
-      reservationConfig: map['reservationConfig'] == null ? null : ReservationConfig.fromMap((map['reservationConfig'] as Map).cast<String, dynamic>()),
-      retentionConfig: map['retentionConfig'] == null ? null : RetentionConfig.fromMap((map['retentionConfig'] as Map).cast<String, dynamic>()),
+      reservationConfig: map['reservationConfig'] == null
+          ? null
+          : ReservationConfig.fromMap(
+              (map['reservationConfig'] as Map).cast<String, dynamic>(),
+            ),
+      retentionConfig: map['retentionConfig'] == null
+          ? null
+          : RetentionConfig.fromMap(
+              (map['retentionConfig'] as Map).cast<String, dynamic>(),
+            ),
       topicId: map['topicId'] as String,
     );
   }
 }
-

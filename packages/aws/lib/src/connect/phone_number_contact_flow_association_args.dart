@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PhoneNumberContactFlowAssociationArgs {
   /// Contact flow ID.
   final pulumi.Input<String> contactFlowId;
+
   /// Amazon Connect instance ID.
   final pulumi.Input<String> instanceId;
+
   /// Phone number ID.
   final pulumi.Input<String> phoneNumberId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,11 +29,10 @@ class PhoneNumberContactFlowAssociationArgs {
     required String instanceId,
     required String phoneNumberId,
     String? region,
-  }) :
-      contactFlowId = pulumi.Input.asInput<String>(contactFlowId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      phoneNumberId = pulumi.Input.asInput<String>(phoneNumberId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : contactFlowId = pulumi.Input.asInput<String>(contactFlowId),
+       instanceId = pulumi.Input.asInput<String>(instanceId),
+       phoneNumberId = pulumi.Input.asInput<String>(phoneNumberId),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,7 +43,9 @@ class PhoneNumberContactFlowAssociationArgs {
     };
   }
 
-  factory PhoneNumberContactFlowAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory PhoneNumberContactFlowAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PhoneNumberContactFlowAssociationArgs(
       contactFlowId: map['contactFlowId'] as String,
       instanceId: map['instanceId'] as String,
@@ -50,4 +54,3 @@ class PhoneNumberContactFlowAssociationArgs {
     );
   }
 }
-

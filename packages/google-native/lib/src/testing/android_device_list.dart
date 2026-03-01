@@ -10,20 +10,25 @@ class AndroidDeviceList {
 
   /// Creates a new [AndroidDeviceList].
   /// [androidDevices] A list of Android devices.
-  AndroidDeviceList({
-    required this.androidDevices,
-  });
+  AndroidDeviceList({required this.androidDevices});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidDevices': pulumi.Input.encodeList<AndroidDevice, Map<String, dynamic>>(androidDevices, (value) => value.toMap()),
+      'androidDevices':
+          pulumi.Input.encodeList<AndroidDevice, Map<String, dynamic>>(
+            androidDevices,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory AndroidDeviceList.fromMap(Map<String, dynamic> map) {
     return AndroidDeviceList(
-      androidDevices: pulumi.Input.decodeList<AndroidDevice>(map['androidDevices'], (value) => AndroidDevice.fromMap((value as Map).cast<String, dynamic>())),
+      androidDevices: pulumi.Input.decodeList<AndroidDevice>(
+        map['androidDevices'],
+        (value) =>
+            AndroidDevice.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

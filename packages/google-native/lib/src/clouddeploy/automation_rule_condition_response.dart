@@ -9,9 +9,7 @@ class AutomationRuleConditionResponse {
 
   /// Creates a new [AutomationRuleConditionResponse].
   /// [targetsPresentCondition] Optional. Details around targets enumerated in the rule.
-  AutomationRuleConditionResponse({
-    required this.targetsPresentCondition,
-  });
+  AutomationRuleConditionResponse({required this.targetsPresentCondition});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class AutomationRuleConditionResponse {
 
   factory AutomationRuleConditionResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleConditionResponse(
-      targetsPresentCondition: TargetsPresentConditionResponse.fromMap((map['targetsPresentCondition'] as Map).cast<String, dynamic>()),
+      targetsPresentCondition: TargetsPresentConditionResponse.fromMap(
+        (map['targetsPresentCondition'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

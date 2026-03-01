@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Readiness checking configuration for VM instances. Unhealthy instances are removed from traffic rotation.
 class ReadinessCheck {
   /// A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
   final String? appStartTimeout;
+
   /// Interval between health checks.
   final String? checkInterval;
+
   /// Number of consecutive failed checks required before removing traffic.
   final int? failureThreshold;
+
   /// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
   final String? host;
+
   /// The request path.
   final String? path;
+
   /// Number of consecutive successful checks required before receiving traffic.
   final int? successThreshold;
+
   /// Time before the check is considered failed.
   final String? timeout;
 
@@ -50,14 +55,21 @@ class ReadinessCheck {
 
   factory ReadinessCheck.fromMap(Map<String, dynamic> map) {
     return ReadinessCheck(
-      appStartTimeout: map['appStartTimeout'] == null ? null : map['appStartTimeout'] as String,
-      checkInterval: map['checkInterval'] == null ? null : map['checkInterval'] as String,
-      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as int,
+      appStartTimeout: map['appStartTimeout'] == null
+          ? null
+          : map['appStartTimeout'] as String,
+      checkInterval: map['checkInterval'] == null
+          ? null
+          : map['checkInterval'] as String,
+      failureThreshold: map['failureThreshold'] == null
+          ? null
+          : map['failureThreshold'] as int,
       host: map['host'] == null ? null : map['host'] as String,
       path: map['path'] == null ? null : map['path'] as String,
-      successThreshold: map['successThreshold'] == null ? null : map['successThreshold'] as int,
+      successThreshold: map['successThreshold'] == null
+          ? null
+          : map['successThreshold'] as int,
       timeout: map['timeout'] == null ? null : map['timeout'] as String,
     );
   }
 }
-

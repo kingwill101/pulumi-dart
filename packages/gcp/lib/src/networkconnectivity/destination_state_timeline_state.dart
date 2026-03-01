@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DestinationStateTimelineState {
   /// (Output)
   /// Accompanies only the transient states, which include `ADDING`,
@@ -9,6 +8,7 @@ class DestinationStateTimelineState {
   /// state is `ADDING`, this field shows the time when the resource state
   /// transitions to `ACTIVE`.
   final String? effectiveTime;
+
   /// (Output)
   /// The state of the resource.
   final String? state;
@@ -16,23 +16,18 @@ class DestinationStateTimelineState {
   /// Creates a new [DestinationStateTimelineState].
   /// [effectiveTime] (Output)
   /// [state] (Output)
-  DestinationStateTimelineState({
-    this.effectiveTime,
-    this.state,
-  });
+  DestinationStateTimelineState({this.effectiveTime, this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'effectiveTime': ?effectiveTime,
-      'state': ?state,
-    };
+    return <String, dynamic>{'effectiveTime': ?effectiveTime, 'state': ?state};
   }
 
   factory DestinationStateTimelineState.fromMap(Map<String, dynamic> map) {
     return DestinationStateTimelineState(
-      effectiveTime: map['effectiveTime'] == null ? null : map['effectiveTime'] as String,
+      effectiveTime: map['effectiveTime'] == null
+          ? null
+          : map['effectiveTime'] as String,
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
-

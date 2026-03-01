@@ -22,11 +22,10 @@ class GetGlossaryEntryArgs {
     required String glossaryId,
     required String location,
     String? project,
-  }) :
-      glossaryEntryId = pulumi.Input.asInput<String>(glossaryEntryId),
-      glossaryId = pulumi.Input.asInput<String>(glossaryId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : glossaryEntryId = pulumi.Input.asInput<String>(glossaryEntryId),
+       glossaryId = pulumi.Input.asInput<String>(glossaryId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetGlossaryEntryArgs {
     );
   }
 }
-

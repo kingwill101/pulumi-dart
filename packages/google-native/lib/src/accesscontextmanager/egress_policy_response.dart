@@ -7,16 +7,14 @@ import 'egress_to_response.dart';
 class EgressPolicyResponse {
   /// Defines conditions on the source of a request causing this EgressPolicy to apply.
   final EgressFromResponse egressFrom;
+
   /// Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply.
   final EgressToResponse egressTo;
 
   /// Creates a new [EgressPolicyResponse].
   /// [egressFrom] Defines conditions on the source of a request causing this EgressPolicy to apply.
   /// [egressTo] Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply.
-  EgressPolicyResponse({
-    required this.egressFrom,
-    required this.egressTo,
-  });
+  EgressPolicyResponse({required this.egressFrom, required this.egressTo});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,12 @@ class EgressPolicyResponse {
 
   factory EgressPolicyResponse.fromMap(Map<String, dynamic> map) {
     return EgressPolicyResponse(
-      egressFrom: EgressFromResponse.fromMap((map['egressFrom'] as Map).cast<String, dynamic>()),
-      egressTo: EgressToResponse.fromMap((map['egressTo'] as Map).cast<String, dynamic>()),
+      egressFrom: EgressFromResponse.fromMap(
+        (map['egressFrom'] as Map).cast<String, dynamic>(),
+      ),
+      egressTo: EgressToResponse.fromMap(
+        (map['egressTo'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

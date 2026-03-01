@@ -101,11 +101,11 @@ class OutboundWebIdentityFederation extends pulumi.CustomResource {
     Map<String, dynamic>? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
-          name,
-          pulumi.Input.mapToInputs(args ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:iam/outboundWebIdentityFederation:OutboundWebIdentityFederation',
+         name,
+         pulumi.Input.mapToInputs(args ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.issuerIdentifier = registerOutput<String>('issuerIdentifier');
   }
 }

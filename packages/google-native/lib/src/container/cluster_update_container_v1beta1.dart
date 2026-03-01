@@ -52,124 +52,195 @@ import 'workload_policy_config_container_v1beta1.dart';
 class ClusterUpdateContainerV1beta1 {
   /// The additional pod ranges to be added to the cluster. These pod ranges can be used by node pools to allocate pod IPs.
   final AdditionalPodRangesConfigContainerV1beta1? additionalPodRangesConfig;
+
   /// Configurations for the various addons available to run in the cluster.
   final AddonsConfigContainerV1beta1? desiredAddonsConfig;
+
   /// AuthenticatorGroupsConfig specifies the config for the cluster security groups settings.
-  final AuthenticatorGroupsConfigContainerV1beta1? desiredAuthenticatorGroupsConfig;
+  final AuthenticatorGroupsConfigContainerV1beta1?
+  desiredAuthenticatorGroupsConfig;
+
   /// The desired workload policy configuration for the autopilot cluster.
-  final WorkloadPolicyConfigContainerV1beta1? desiredAutopilotWorkloadPolicyConfig;
+  final WorkloadPolicyConfigContainerV1beta1?
+  desiredAutopilotWorkloadPolicyConfig;
+
   /// The desired configuration options for the Binary Authorization feature.
   final BinaryAuthorizationContainerV1beta1? desiredBinaryAuthorization;
+
   /// Cluster-level autoscaling configuration.
   final ClusterAutoscalingContainerV1beta1? desiredClusterAutoscaling;
+
   /// The desired telemetry integration for the cluster.
   final ClusterTelemetry? desiredClusterTelemetry;
+
   /// The desired configuration for the fine-grained cost management feature.
   final CostManagementConfigContainerV1beta1? desiredCostManagementConfig;
+
   /// Configuration of etcd encryption.
   final DatabaseEncryptionContainerV1beta1? desiredDatabaseEncryption;
+
   /// The desired datapath provider for the cluster.
-  final ClusterUpdateDesiredDatapathProviderContainerV1beta1? desiredDatapathProvider;
+  final ClusterUpdateDesiredDatapathProviderContainerV1beta1?
+  desiredDatapathProvider;
+
   /// The desired status of whether to disable default sNAT for this cluster.
   final DefaultSnatStatusContainerV1beta1? desiredDefaultSnatStatus;
+
   /// DNSConfig contains clusterDNS config for this cluster.
   final DNSConfigContainerV1beta1? desiredDnsConfig;
+
   /// Enable/Disable FQDN Network Policy for the cluster.
   final bool? desiredEnableFqdnNetworkPolicy;
+
   /// Enable/Disable private endpoint for the cluster's master.
   final bool? desiredEnablePrivateEndpoint;
+
   /// The desired fleet configuration for the cluster.
   final FleetContainerV1beta1? desiredFleet;
+
   /// The desired config of Gateway API on this cluster.
   final GatewayAPIConfigContainerV1beta1? desiredGatewayApiConfig;
+
   /// The desired GCFS config for the cluster.
   final GcfsConfigContainerV1beta1? desiredGcfsConfig;
+
   /// HostMaintenancePolicy contains the desired maintenance policy for the Google Compute Engine hosts.
   final HostMaintenancePolicy? desiredHostMaintenancePolicy;
+
   /// The desired Identity Service component configuration.
   final IdentityServiceConfigContainerV1beta1? desiredIdentityServiceConfig;
+
   /// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
   final String? desiredImageType;
+
   /// Specify the details of in-transit encryption.
-  final ClusterUpdateDesiredInTransitEncryptionConfig? desiredInTransitEncryptionConfig;
+  final ClusterUpdateDesiredInTransitEncryptionConfig?
+  desiredInTransitEncryptionConfig;
+
   /// The desired config of Intra-node visibility.
-  final IntraNodeVisibilityConfigContainerV1beta1? desiredIntraNodeVisibilityConfig;
+  final IntraNodeVisibilityConfigContainerV1beta1?
+  desiredIntraNodeVisibilityConfig;
+
   /// Beta APIs enabled for cluster.
   final K8sBetaAPIConfigContainerV1beta1? desiredK8sBetaApis;
+
   /// The desired L4 Internal Load Balancer Subsetting configuration.
   final ILBSubsettingConfigContainerV1beta1? desiredL4ilbSubsettingConfig;
+
   /// The desired list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This list must always include the cluster's primary zone. Warning: changing cluster locations will update the locations of all node pools and will result in nodes being added and/or removed.
   final List<String>? desiredLocations;
+
   /// The desired logging configuration.
   final LoggingConfigContainerV1beta1? desiredLoggingConfig;
+
   /// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
   final String? desiredLoggingService;
+
   /// Configuration for master components.
   final Map<String, dynamic>? desiredMaster;
+
   /// The desired configuration options for master authorized networks feature.
-  final MasterAuthorizedNetworksConfigContainerV1beta1? desiredMasterAuthorizedNetworksConfig;
+  final MasterAuthorizedNetworksConfigContainerV1beta1?
+  desiredMasterAuthorizedNetworksConfig;
+
   /// The Kubernetes version to change the master to. The only valid value is the latest supported version. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the default Kubernetes version
   final String? desiredMasterVersion;
+
   /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
   final MeshCertificatesContainerV1beta1? desiredMeshCertificates;
+
   /// The desired monitoring configuration.
   final MonitoringConfigContainerV1beta1? desiredMonitoringConfig;
+
   /// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
   final String? desiredMonitoringService;
+
   /// The desired network performance config.
-  final ClusterNetworkPerformanceConfigContainerV1beta1? desiredNetworkPerformanceConfig;
+  final ClusterNetworkPerformanceConfigContainerV1beta1?
+  desiredNetworkPerformanceConfig;
+
   /// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
   final NetworkTagsContainerV1beta1? desiredNodePoolAutoConfigNetworkTags;
+
   /// The desired resource manager tags that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
-  final ResourceManagerTagsContainerV1beta1? desiredNodePoolAutoConfigResourceManagerTags;
+  final ResourceManagerTagsContainerV1beta1?
+  desiredNodePoolAutoConfigResourceManagerTags;
+
   /// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
   final NodePoolAutoscalingContainerV1beta1? desiredNodePoolAutoscaling;
+
   /// The node pool to be upgraded. This field is mandatory if "desired_node_version", "desired_image_family", "desired_node_pool_autoscaling", or "desired_workload_metadata_config" is specified and there is more than one node pool on the cluster.
   final String? desiredNodePoolId;
+
   /// The desired node pool logging configuration defaults for the cluster.
   final NodePoolLoggingConfigContainerV1beta1? desiredNodePoolLoggingConfig;
+
   /// The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the Kubernetes master version
   final String? desiredNodeVersion;
+
   /// The desired notification configuration.
   final NotificationConfigContainerV1beta1? desiredNotificationConfig;
+
   /// The desired parent product config for the cluster.
   final ParentProductConfigContainerV1beta1? desiredParentProductConfig;
+
   /// The desired configuration options for the PodSecurityPolicy feature.
   final PodSecurityPolicyConfig? desiredPodSecurityPolicyConfig;
+
   /// The desired private cluster configuration.
   final PrivateClusterConfigContainerV1beta1? desiredPrivateClusterConfig;
+
   /// The desired state of IPv6 connectivity to Google Services.
-  final ClusterUpdateDesiredPrivateIpv6GoogleAccessContainerV1beta1? desiredPrivateIpv6GoogleAccess;
+  final ClusterUpdateDesiredPrivateIpv6GoogleAccessContainerV1beta1?
+  desiredPrivateIpv6GoogleAccess;
+
   /// Deprecated: Use DesiredSecurityPostureConfig instead. Enable/Disable Protect API features for the cluster.
   final ProtectConfig? desiredProtectConfig;
+
   /// The desired release channel configuration.
   final ReleaseChannelContainerV1beta1? desiredReleaseChannel;
+
   /// The desired configuration for exporting resource usage.
-  final ResourceUsageExportConfigContainerV1beta1? desiredResourceUsageExportConfig;
+  final ResourceUsageExportConfigContainerV1beta1?
+  desiredResourceUsageExportConfig;
+
   /// Enable/Disable Security Posture API features for the cluster.
   final SecurityPostureConfigContainerV1beta1? desiredSecurityPostureConfig;
+
   /// ServiceExternalIPsConfig specifies the config for the use of Services with ExternalIPs field.
-  final ServiceExternalIPsConfigContainerV1beta1? desiredServiceExternalIpsConfig;
+  final ServiceExternalIPsConfigContainerV1beta1?
+  desiredServiceExternalIpsConfig;
+
   /// Configuration for Shielded Nodes.
   final ShieldedNodesContainerV1beta1? desiredShieldedNodes;
+
   /// The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type.
   final ClusterUpdateDesiredStackTypeContainerV1beta1? desiredStackType;
+
   /// The desired Cloud TPU configuration.
   final TpuConfig? desiredTpuConfig;
+
   /// Cluster-level Vertical Pod Autoscaling configuration.
   final VerticalPodAutoscalingContainerV1beta1? desiredVerticalPodAutoscaling;
+
   /// Configuration for direct-path (via ALTS) with workload identity.
   final WorkloadALTSConfig? desiredWorkloadAltsConfig;
+
   /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
   final WorkloadCertificates? desiredWorkloadCertificates;
+
   /// Configuration for Workload Identity.
   final WorkloadIdentityConfigContainerV1beta1? desiredWorkloadIdentityConfig;
+
   /// Kubernetes open source beta apis enabled on the cluster. Only beta apis
   final K8sBetaAPIConfigContainerV1beta1? enableK8sBetaApis;
+
   /// The current etag of the cluster. If an etag is provided and does not match the current etag of the cluster, update will be blocked and an ABORTED error will be returned.
   final String? etag;
+
   /// The additional pod ranges that are to be removed from the cluster. The pod ranges specified here must have been specified earlier in the 'additional_pod_ranges_config' argument.
-  final AdditionalPodRangesConfigContainerV1beta1? removedAdditionalPodRangesConfig;
+  final AdditionalPodRangesConfigContainerV1beta1?
+  removedAdditionalPodRangesConfig;
 
   /// Creates a new [ClusterUpdateContainerV1beta1].
   /// [additionalPodRangesConfig] The additional pod ranges to be added to the cluster. These pod ranges can be used by node pools to allocate pod IPs.
@@ -297,132 +368,494 @@ class ClusterUpdateContainerV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalPodRangesConfig': ?additionalPodRangesConfig == null ? null : additionalPodRangesConfig!.toMap(),
-      'desiredAddonsConfig': ?desiredAddonsConfig == null ? null : desiredAddonsConfig!.toMap(),
-      'desiredAuthenticatorGroupsConfig': ?desiredAuthenticatorGroupsConfig == null ? null : desiredAuthenticatorGroupsConfig!.toMap(),
-      'desiredAutopilotWorkloadPolicyConfig': ?desiredAutopilotWorkloadPolicyConfig == null ? null : desiredAutopilotWorkloadPolicyConfig!.toMap(),
-      'desiredBinaryAuthorization': ?desiredBinaryAuthorization == null ? null : desiredBinaryAuthorization!.toMap(),
-      'desiredClusterAutoscaling': ?desiredClusterAutoscaling == null ? null : desiredClusterAutoscaling!.toMap(),
-      'desiredClusterTelemetry': ?desiredClusterTelemetry == null ? null : desiredClusterTelemetry!.toMap(),
-      'desiredCostManagementConfig': ?desiredCostManagementConfig == null ? null : desiredCostManagementConfig!.toMap(),
-      'desiredDatabaseEncryption': ?desiredDatabaseEncryption == null ? null : desiredDatabaseEncryption!.toMap(),
-      'desiredDatapathProvider': ?desiredDatapathProvider == null ? null : desiredDatapathProvider!.value,
-      'desiredDefaultSnatStatus': ?desiredDefaultSnatStatus == null ? null : desiredDefaultSnatStatus!.toMap(),
-      'desiredDnsConfig': ?desiredDnsConfig == null ? null : desiredDnsConfig!.toMap(),
+      'additionalPodRangesConfig': ?additionalPodRangesConfig == null
+          ? null
+          : additionalPodRangesConfig!.toMap(),
+      'desiredAddonsConfig': ?desiredAddonsConfig == null
+          ? null
+          : desiredAddonsConfig!.toMap(),
+      'desiredAuthenticatorGroupsConfig':
+          ?desiredAuthenticatorGroupsConfig == null
+          ? null
+          : desiredAuthenticatorGroupsConfig!.toMap(),
+      'desiredAutopilotWorkloadPolicyConfig':
+          ?desiredAutopilotWorkloadPolicyConfig == null
+          ? null
+          : desiredAutopilotWorkloadPolicyConfig!.toMap(),
+      'desiredBinaryAuthorization': ?desiredBinaryAuthorization == null
+          ? null
+          : desiredBinaryAuthorization!.toMap(),
+      'desiredClusterAutoscaling': ?desiredClusterAutoscaling == null
+          ? null
+          : desiredClusterAutoscaling!.toMap(),
+      'desiredClusterTelemetry': ?desiredClusterTelemetry == null
+          ? null
+          : desiredClusterTelemetry!.toMap(),
+      'desiredCostManagementConfig': ?desiredCostManagementConfig == null
+          ? null
+          : desiredCostManagementConfig!.toMap(),
+      'desiredDatabaseEncryption': ?desiredDatabaseEncryption == null
+          ? null
+          : desiredDatabaseEncryption!.toMap(),
+      'desiredDatapathProvider': ?desiredDatapathProvider == null
+          ? null
+          : desiredDatapathProvider!.value,
+      'desiredDefaultSnatStatus': ?desiredDefaultSnatStatus == null
+          ? null
+          : desiredDefaultSnatStatus!.toMap(),
+      'desiredDnsConfig': ?desiredDnsConfig == null
+          ? null
+          : desiredDnsConfig!.toMap(),
       'desiredEnableFqdnNetworkPolicy': ?desiredEnableFqdnNetworkPolicy,
       'desiredEnablePrivateEndpoint': ?desiredEnablePrivateEndpoint,
       'desiredFleet': ?desiredFleet == null ? null : desiredFleet!.toMap(),
-      'desiredGatewayApiConfig': ?desiredGatewayApiConfig == null ? null : desiredGatewayApiConfig!.toMap(),
-      'desiredGcfsConfig': ?desiredGcfsConfig == null ? null : desiredGcfsConfig!.toMap(),
-      'desiredHostMaintenancePolicy': ?desiredHostMaintenancePolicy == null ? null : desiredHostMaintenancePolicy!.toMap(),
-      'desiredIdentityServiceConfig': ?desiredIdentityServiceConfig == null ? null : desiredIdentityServiceConfig!.toMap(),
+      'desiredGatewayApiConfig': ?desiredGatewayApiConfig == null
+          ? null
+          : desiredGatewayApiConfig!.toMap(),
+      'desiredGcfsConfig': ?desiredGcfsConfig == null
+          ? null
+          : desiredGcfsConfig!.toMap(),
+      'desiredHostMaintenancePolicy': ?desiredHostMaintenancePolicy == null
+          ? null
+          : desiredHostMaintenancePolicy!.toMap(),
+      'desiredIdentityServiceConfig': ?desiredIdentityServiceConfig == null
+          ? null
+          : desiredIdentityServiceConfig!.toMap(),
       'desiredImageType': ?desiredImageType,
-      'desiredInTransitEncryptionConfig': ?desiredInTransitEncryptionConfig == null ? null : desiredInTransitEncryptionConfig!.value,
-      'desiredIntraNodeVisibilityConfig': ?desiredIntraNodeVisibilityConfig == null ? null : desiredIntraNodeVisibilityConfig!.toMap(),
-      'desiredK8sBetaApis': ?desiredK8sBetaApis == null ? null : desiredK8sBetaApis!.toMap(),
-      'desiredL4ilbSubsettingConfig': ?desiredL4ilbSubsettingConfig == null ? null : desiredL4ilbSubsettingConfig!.toMap(),
+      'desiredInTransitEncryptionConfig':
+          ?desiredInTransitEncryptionConfig == null
+          ? null
+          : desiredInTransitEncryptionConfig!.value,
+      'desiredIntraNodeVisibilityConfig':
+          ?desiredIntraNodeVisibilityConfig == null
+          ? null
+          : desiredIntraNodeVisibilityConfig!.toMap(),
+      'desiredK8sBetaApis': ?desiredK8sBetaApis == null
+          ? null
+          : desiredK8sBetaApis!.toMap(),
+      'desiredL4ilbSubsettingConfig': ?desiredL4ilbSubsettingConfig == null
+          ? null
+          : desiredL4ilbSubsettingConfig!.toMap(),
       'desiredLocations': ?desiredLocations,
-      'desiredLoggingConfig': ?desiredLoggingConfig == null ? null : desiredLoggingConfig!.toMap(),
+      'desiredLoggingConfig': ?desiredLoggingConfig == null
+          ? null
+          : desiredLoggingConfig!.toMap(),
       'desiredLoggingService': ?desiredLoggingService,
       'desiredMaster': ?desiredMaster,
-      'desiredMasterAuthorizedNetworksConfig': ?desiredMasterAuthorizedNetworksConfig == null ? null : desiredMasterAuthorizedNetworksConfig!.toMap(),
+      'desiredMasterAuthorizedNetworksConfig':
+          ?desiredMasterAuthorizedNetworksConfig == null
+          ? null
+          : desiredMasterAuthorizedNetworksConfig!.toMap(),
       'desiredMasterVersion': ?desiredMasterVersion,
-      'desiredMeshCertificates': ?desiredMeshCertificates == null ? null : desiredMeshCertificates!.toMap(),
-      'desiredMonitoringConfig': ?desiredMonitoringConfig == null ? null : desiredMonitoringConfig!.toMap(),
+      'desiredMeshCertificates': ?desiredMeshCertificates == null
+          ? null
+          : desiredMeshCertificates!.toMap(),
+      'desiredMonitoringConfig': ?desiredMonitoringConfig == null
+          ? null
+          : desiredMonitoringConfig!.toMap(),
       'desiredMonitoringService': ?desiredMonitoringService,
-      'desiredNetworkPerformanceConfig': ?desiredNetworkPerformanceConfig == null ? null : desiredNetworkPerformanceConfig!.toMap(),
-      'desiredNodePoolAutoConfigNetworkTags': ?desiredNodePoolAutoConfigNetworkTags == null ? null : desiredNodePoolAutoConfigNetworkTags!.toMap(),
-      'desiredNodePoolAutoConfigResourceManagerTags': ?desiredNodePoolAutoConfigResourceManagerTags == null ? null : desiredNodePoolAutoConfigResourceManagerTags!.toMap(),
-      'desiredNodePoolAutoscaling': ?desiredNodePoolAutoscaling == null ? null : desiredNodePoolAutoscaling!.toMap(),
+      'desiredNetworkPerformanceConfig':
+          ?desiredNetworkPerformanceConfig == null
+          ? null
+          : desiredNetworkPerformanceConfig!.toMap(),
+      'desiredNodePoolAutoConfigNetworkTags':
+          ?desiredNodePoolAutoConfigNetworkTags == null
+          ? null
+          : desiredNodePoolAutoConfigNetworkTags!.toMap(),
+      'desiredNodePoolAutoConfigResourceManagerTags':
+          ?desiredNodePoolAutoConfigResourceManagerTags == null
+          ? null
+          : desiredNodePoolAutoConfigResourceManagerTags!.toMap(),
+      'desiredNodePoolAutoscaling': ?desiredNodePoolAutoscaling == null
+          ? null
+          : desiredNodePoolAutoscaling!.toMap(),
       'desiredNodePoolId': ?desiredNodePoolId,
-      'desiredNodePoolLoggingConfig': ?desiredNodePoolLoggingConfig == null ? null : desiredNodePoolLoggingConfig!.toMap(),
+      'desiredNodePoolLoggingConfig': ?desiredNodePoolLoggingConfig == null
+          ? null
+          : desiredNodePoolLoggingConfig!.toMap(),
       'desiredNodeVersion': ?desiredNodeVersion,
-      'desiredNotificationConfig': ?desiredNotificationConfig == null ? null : desiredNotificationConfig!.toMap(),
-      'desiredParentProductConfig': ?desiredParentProductConfig == null ? null : desiredParentProductConfig!.toMap(),
-      'desiredPodSecurityPolicyConfig': ?desiredPodSecurityPolicyConfig == null ? null : desiredPodSecurityPolicyConfig!.toMap(),
-      'desiredPrivateClusterConfig': ?desiredPrivateClusterConfig == null ? null : desiredPrivateClusterConfig!.toMap(),
-      'desiredPrivateIpv6GoogleAccess': ?desiredPrivateIpv6GoogleAccess == null ? null : desiredPrivateIpv6GoogleAccess!.value,
-      'desiredProtectConfig': ?desiredProtectConfig == null ? null : desiredProtectConfig!.toMap(),
-      'desiredReleaseChannel': ?desiredReleaseChannel == null ? null : desiredReleaseChannel!.toMap(),
-      'desiredResourceUsageExportConfig': ?desiredResourceUsageExportConfig == null ? null : desiredResourceUsageExportConfig!.toMap(),
-      'desiredSecurityPostureConfig': ?desiredSecurityPostureConfig == null ? null : desiredSecurityPostureConfig!.toMap(),
-      'desiredServiceExternalIpsConfig': ?desiredServiceExternalIpsConfig == null ? null : desiredServiceExternalIpsConfig!.toMap(),
-      'desiredShieldedNodes': ?desiredShieldedNodes == null ? null : desiredShieldedNodes!.toMap(),
-      'desiredStackType': ?desiredStackType == null ? null : desiredStackType!.value,
-      'desiredTpuConfig': ?desiredTpuConfig == null ? null : desiredTpuConfig!.toMap(),
-      'desiredVerticalPodAutoscaling': ?desiredVerticalPodAutoscaling == null ? null : desiredVerticalPodAutoscaling!.toMap(),
-      'desiredWorkloadAltsConfig': ?desiredWorkloadAltsConfig == null ? null : desiredWorkloadAltsConfig!.toMap(),
-      'desiredWorkloadCertificates': ?desiredWorkloadCertificates == null ? null : desiredWorkloadCertificates!.toMap(),
-      'desiredWorkloadIdentityConfig': ?desiredWorkloadIdentityConfig == null ? null : desiredWorkloadIdentityConfig!.toMap(),
-      'enableK8sBetaApis': ?enableK8sBetaApis == null ? null : enableK8sBetaApis!.toMap(),
+      'desiredNotificationConfig': ?desiredNotificationConfig == null
+          ? null
+          : desiredNotificationConfig!.toMap(),
+      'desiredParentProductConfig': ?desiredParentProductConfig == null
+          ? null
+          : desiredParentProductConfig!.toMap(),
+      'desiredPodSecurityPolicyConfig': ?desiredPodSecurityPolicyConfig == null
+          ? null
+          : desiredPodSecurityPolicyConfig!.toMap(),
+      'desiredPrivateClusterConfig': ?desiredPrivateClusterConfig == null
+          ? null
+          : desiredPrivateClusterConfig!.toMap(),
+      'desiredPrivateIpv6GoogleAccess': ?desiredPrivateIpv6GoogleAccess == null
+          ? null
+          : desiredPrivateIpv6GoogleAccess!.value,
+      'desiredProtectConfig': ?desiredProtectConfig == null
+          ? null
+          : desiredProtectConfig!.toMap(),
+      'desiredReleaseChannel': ?desiredReleaseChannel == null
+          ? null
+          : desiredReleaseChannel!.toMap(),
+      'desiredResourceUsageExportConfig':
+          ?desiredResourceUsageExportConfig == null
+          ? null
+          : desiredResourceUsageExportConfig!.toMap(),
+      'desiredSecurityPostureConfig': ?desiredSecurityPostureConfig == null
+          ? null
+          : desiredSecurityPostureConfig!.toMap(),
+      'desiredServiceExternalIpsConfig':
+          ?desiredServiceExternalIpsConfig == null
+          ? null
+          : desiredServiceExternalIpsConfig!.toMap(),
+      'desiredShieldedNodes': ?desiredShieldedNodes == null
+          ? null
+          : desiredShieldedNodes!.toMap(),
+      'desiredStackType': ?desiredStackType == null
+          ? null
+          : desiredStackType!.value,
+      'desiredTpuConfig': ?desiredTpuConfig == null
+          ? null
+          : desiredTpuConfig!.toMap(),
+      'desiredVerticalPodAutoscaling': ?desiredVerticalPodAutoscaling == null
+          ? null
+          : desiredVerticalPodAutoscaling!.toMap(),
+      'desiredWorkloadAltsConfig': ?desiredWorkloadAltsConfig == null
+          ? null
+          : desiredWorkloadAltsConfig!.toMap(),
+      'desiredWorkloadCertificates': ?desiredWorkloadCertificates == null
+          ? null
+          : desiredWorkloadCertificates!.toMap(),
+      'desiredWorkloadIdentityConfig': ?desiredWorkloadIdentityConfig == null
+          ? null
+          : desiredWorkloadIdentityConfig!.toMap(),
+      'enableK8sBetaApis': ?enableK8sBetaApis == null
+          ? null
+          : enableK8sBetaApis!.toMap(),
       'etag': ?etag,
-      'removedAdditionalPodRangesConfig': ?removedAdditionalPodRangesConfig == null ? null : removedAdditionalPodRangesConfig!.toMap(),
+      'removedAdditionalPodRangesConfig':
+          ?removedAdditionalPodRangesConfig == null
+          ? null
+          : removedAdditionalPodRangesConfig!.toMap(),
     };
   }
 
   factory ClusterUpdateContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return ClusterUpdateContainerV1beta1(
-      additionalPodRangesConfig: map['additionalPodRangesConfig'] == null ? null : AdditionalPodRangesConfigContainerV1beta1.fromMap((map['additionalPodRangesConfig'] as Map).cast<String, dynamic>()),
-      desiredAddonsConfig: map['desiredAddonsConfig'] == null ? null : AddonsConfigContainerV1beta1.fromMap((map['desiredAddonsConfig'] as Map).cast<String, dynamic>()),
-      desiredAuthenticatorGroupsConfig: map['desiredAuthenticatorGroupsConfig'] == null ? null : AuthenticatorGroupsConfigContainerV1beta1.fromMap((map['desiredAuthenticatorGroupsConfig'] as Map).cast<String, dynamic>()),
-      desiredAutopilotWorkloadPolicyConfig: map['desiredAutopilotWorkloadPolicyConfig'] == null ? null : WorkloadPolicyConfigContainerV1beta1.fromMap((map['desiredAutopilotWorkloadPolicyConfig'] as Map).cast<String, dynamic>()),
-      desiredBinaryAuthorization: map['desiredBinaryAuthorization'] == null ? null : BinaryAuthorizationContainerV1beta1.fromMap((map['desiredBinaryAuthorization'] as Map).cast<String, dynamic>()),
-      desiredClusterAutoscaling: map['desiredClusterAutoscaling'] == null ? null : ClusterAutoscalingContainerV1beta1.fromMap((map['desiredClusterAutoscaling'] as Map).cast<String, dynamic>()),
-      desiredClusterTelemetry: map['desiredClusterTelemetry'] == null ? null : ClusterTelemetry.fromMap((map['desiredClusterTelemetry'] as Map).cast<String, dynamic>()),
-      desiredCostManagementConfig: map['desiredCostManagementConfig'] == null ? null : CostManagementConfigContainerV1beta1.fromMap((map['desiredCostManagementConfig'] as Map).cast<String, dynamic>()),
-      desiredDatabaseEncryption: map['desiredDatabaseEncryption'] == null ? null : DatabaseEncryptionContainerV1beta1.fromMap((map['desiredDatabaseEncryption'] as Map).cast<String, dynamic>()),
-      desiredDatapathProvider: map['desiredDatapathProvider'] == null ? null : ClusterUpdateDesiredDatapathProviderContainerV1beta1.fromValue(map['desiredDatapathProvider'] as String),
-      desiredDefaultSnatStatus: map['desiredDefaultSnatStatus'] == null ? null : DefaultSnatStatusContainerV1beta1.fromMap((map['desiredDefaultSnatStatus'] as Map).cast<String, dynamic>()),
-      desiredDnsConfig: map['desiredDnsConfig'] == null ? null : DNSConfigContainerV1beta1.fromMap((map['desiredDnsConfig'] as Map).cast<String, dynamic>()),
-      desiredEnableFqdnNetworkPolicy: map['desiredEnableFqdnNetworkPolicy'] == null ? null : map['desiredEnableFqdnNetworkPolicy'] as bool,
-      desiredEnablePrivateEndpoint: map['desiredEnablePrivateEndpoint'] == null ? null : map['desiredEnablePrivateEndpoint'] as bool,
-      desiredFleet: map['desiredFleet'] == null ? null : FleetContainerV1beta1.fromMap((map['desiredFleet'] as Map).cast<String, dynamic>()),
-      desiredGatewayApiConfig: map['desiredGatewayApiConfig'] == null ? null : GatewayAPIConfigContainerV1beta1.fromMap((map['desiredGatewayApiConfig'] as Map).cast<String, dynamic>()),
-      desiredGcfsConfig: map['desiredGcfsConfig'] == null ? null : GcfsConfigContainerV1beta1.fromMap((map['desiredGcfsConfig'] as Map).cast<String, dynamic>()),
-      desiredHostMaintenancePolicy: map['desiredHostMaintenancePolicy'] == null ? null : HostMaintenancePolicy.fromMap((map['desiredHostMaintenancePolicy'] as Map).cast<String, dynamic>()),
-      desiredIdentityServiceConfig: map['desiredIdentityServiceConfig'] == null ? null : IdentityServiceConfigContainerV1beta1.fromMap((map['desiredIdentityServiceConfig'] as Map).cast<String, dynamic>()),
-      desiredImageType: map['desiredImageType'] == null ? null : map['desiredImageType'] as String,
-      desiredInTransitEncryptionConfig: map['desiredInTransitEncryptionConfig'] == null ? null : ClusterUpdateDesiredInTransitEncryptionConfig.fromValue(map['desiredInTransitEncryptionConfig'] as String),
-      desiredIntraNodeVisibilityConfig: map['desiredIntraNodeVisibilityConfig'] == null ? null : IntraNodeVisibilityConfigContainerV1beta1.fromMap((map['desiredIntraNodeVisibilityConfig'] as Map).cast<String, dynamic>()),
-      desiredK8sBetaApis: map['desiredK8sBetaApis'] == null ? null : K8sBetaAPIConfigContainerV1beta1.fromMap((map['desiredK8sBetaApis'] as Map).cast<String, dynamic>()),
-      desiredL4ilbSubsettingConfig: map['desiredL4ilbSubsettingConfig'] == null ? null : ILBSubsettingConfigContainerV1beta1.fromMap((map['desiredL4ilbSubsettingConfig'] as Map).cast<String, dynamic>()),
-      desiredLocations: map['desiredLocations'] == null ? null : (map['desiredLocations'] as List).cast<String>(),
-      desiredLoggingConfig: map['desiredLoggingConfig'] == null ? null : LoggingConfigContainerV1beta1.fromMap((map['desiredLoggingConfig'] as Map).cast<String, dynamic>()),
-      desiredLoggingService: map['desiredLoggingService'] == null ? null : map['desiredLoggingService'] as String,
-      desiredMaster: map['desiredMaster'] == null ? null : (map['desiredMaster'] as Map).cast<String, dynamic>(),
-      desiredMasterAuthorizedNetworksConfig: map['desiredMasterAuthorizedNetworksConfig'] == null ? null : MasterAuthorizedNetworksConfigContainerV1beta1.fromMap((map['desiredMasterAuthorizedNetworksConfig'] as Map).cast<String, dynamic>()),
-      desiredMasterVersion: map['desiredMasterVersion'] == null ? null : map['desiredMasterVersion'] as String,
-      desiredMeshCertificates: map['desiredMeshCertificates'] == null ? null : MeshCertificatesContainerV1beta1.fromMap((map['desiredMeshCertificates'] as Map).cast<String, dynamic>()),
-      desiredMonitoringConfig: map['desiredMonitoringConfig'] == null ? null : MonitoringConfigContainerV1beta1.fromMap((map['desiredMonitoringConfig'] as Map).cast<String, dynamic>()),
-      desiredMonitoringService: map['desiredMonitoringService'] == null ? null : map['desiredMonitoringService'] as String,
-      desiredNetworkPerformanceConfig: map['desiredNetworkPerformanceConfig'] == null ? null : ClusterNetworkPerformanceConfigContainerV1beta1.fromMap((map['desiredNetworkPerformanceConfig'] as Map).cast<String, dynamic>()),
-      desiredNodePoolAutoConfigNetworkTags: map['desiredNodePoolAutoConfigNetworkTags'] == null ? null : NetworkTagsContainerV1beta1.fromMap((map['desiredNodePoolAutoConfigNetworkTags'] as Map).cast<String, dynamic>()),
-      desiredNodePoolAutoConfigResourceManagerTags: map['desiredNodePoolAutoConfigResourceManagerTags'] == null ? null : ResourceManagerTagsContainerV1beta1.fromMap((map['desiredNodePoolAutoConfigResourceManagerTags'] as Map).cast<String, dynamic>()),
-      desiredNodePoolAutoscaling: map['desiredNodePoolAutoscaling'] == null ? null : NodePoolAutoscalingContainerV1beta1.fromMap((map['desiredNodePoolAutoscaling'] as Map).cast<String, dynamic>()),
-      desiredNodePoolId: map['desiredNodePoolId'] == null ? null : map['desiredNodePoolId'] as String,
-      desiredNodePoolLoggingConfig: map['desiredNodePoolLoggingConfig'] == null ? null : NodePoolLoggingConfigContainerV1beta1.fromMap((map['desiredNodePoolLoggingConfig'] as Map).cast<String, dynamic>()),
-      desiredNodeVersion: map['desiredNodeVersion'] == null ? null : map['desiredNodeVersion'] as String,
-      desiredNotificationConfig: map['desiredNotificationConfig'] == null ? null : NotificationConfigContainerV1beta1.fromMap((map['desiredNotificationConfig'] as Map).cast<String, dynamic>()),
-      desiredParentProductConfig: map['desiredParentProductConfig'] == null ? null : ParentProductConfigContainerV1beta1.fromMap((map['desiredParentProductConfig'] as Map).cast<String, dynamic>()),
-      desiredPodSecurityPolicyConfig: map['desiredPodSecurityPolicyConfig'] == null ? null : PodSecurityPolicyConfig.fromMap((map['desiredPodSecurityPolicyConfig'] as Map).cast<String, dynamic>()),
-      desiredPrivateClusterConfig: map['desiredPrivateClusterConfig'] == null ? null : PrivateClusterConfigContainerV1beta1.fromMap((map['desiredPrivateClusterConfig'] as Map).cast<String, dynamic>()),
-      desiredPrivateIpv6GoogleAccess: map['desiredPrivateIpv6GoogleAccess'] == null ? null : ClusterUpdateDesiredPrivateIpv6GoogleAccessContainerV1beta1.fromValue(map['desiredPrivateIpv6GoogleAccess'] as String),
-      desiredProtectConfig: map['desiredProtectConfig'] == null ? null : ProtectConfig.fromMap((map['desiredProtectConfig'] as Map).cast<String, dynamic>()),
-      desiredReleaseChannel: map['desiredReleaseChannel'] == null ? null : ReleaseChannelContainerV1beta1.fromMap((map['desiredReleaseChannel'] as Map).cast<String, dynamic>()),
-      desiredResourceUsageExportConfig: map['desiredResourceUsageExportConfig'] == null ? null : ResourceUsageExportConfigContainerV1beta1.fromMap((map['desiredResourceUsageExportConfig'] as Map).cast<String, dynamic>()),
-      desiredSecurityPostureConfig: map['desiredSecurityPostureConfig'] == null ? null : SecurityPostureConfigContainerV1beta1.fromMap((map['desiredSecurityPostureConfig'] as Map).cast<String, dynamic>()),
-      desiredServiceExternalIpsConfig: map['desiredServiceExternalIpsConfig'] == null ? null : ServiceExternalIPsConfigContainerV1beta1.fromMap((map['desiredServiceExternalIpsConfig'] as Map).cast<String, dynamic>()),
-      desiredShieldedNodes: map['desiredShieldedNodes'] == null ? null : ShieldedNodesContainerV1beta1.fromMap((map['desiredShieldedNodes'] as Map).cast<String, dynamic>()),
-      desiredStackType: map['desiredStackType'] == null ? null : ClusterUpdateDesiredStackTypeContainerV1beta1.fromValue(map['desiredStackType'] as String),
-      desiredTpuConfig: map['desiredTpuConfig'] == null ? null : TpuConfig.fromMap((map['desiredTpuConfig'] as Map).cast<String, dynamic>()),
-      desiredVerticalPodAutoscaling: map['desiredVerticalPodAutoscaling'] == null ? null : VerticalPodAutoscalingContainerV1beta1.fromMap((map['desiredVerticalPodAutoscaling'] as Map).cast<String, dynamic>()),
-      desiredWorkloadAltsConfig: map['desiredWorkloadAltsConfig'] == null ? null : WorkloadALTSConfig.fromMap((map['desiredWorkloadAltsConfig'] as Map).cast<String, dynamic>()),
-      desiredWorkloadCertificates: map['desiredWorkloadCertificates'] == null ? null : WorkloadCertificates.fromMap((map['desiredWorkloadCertificates'] as Map).cast<String, dynamic>()),
-      desiredWorkloadIdentityConfig: map['desiredWorkloadIdentityConfig'] == null ? null : WorkloadIdentityConfigContainerV1beta1.fromMap((map['desiredWorkloadIdentityConfig'] as Map).cast<String, dynamic>()),
-      enableK8sBetaApis: map['enableK8sBetaApis'] == null ? null : K8sBetaAPIConfigContainerV1beta1.fromMap((map['enableK8sBetaApis'] as Map).cast<String, dynamic>()),
+      additionalPodRangesConfig: map['additionalPodRangesConfig'] == null
+          ? null
+          : AdditionalPodRangesConfigContainerV1beta1.fromMap(
+              (map['additionalPodRangesConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredAddonsConfig: map['desiredAddonsConfig'] == null
+          ? null
+          : AddonsConfigContainerV1beta1.fromMap(
+              (map['desiredAddonsConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredAuthenticatorGroupsConfig:
+          map['desiredAuthenticatorGroupsConfig'] == null
+          ? null
+          : AuthenticatorGroupsConfigContainerV1beta1.fromMap(
+              (map['desiredAuthenticatorGroupsConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredAutopilotWorkloadPolicyConfig:
+          map['desiredAutopilotWorkloadPolicyConfig'] == null
+          ? null
+          : WorkloadPolicyConfigContainerV1beta1.fromMap(
+              (map['desiredAutopilotWorkloadPolicyConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredBinaryAuthorization: map['desiredBinaryAuthorization'] == null
+          ? null
+          : BinaryAuthorizationContainerV1beta1.fromMap(
+              (map['desiredBinaryAuthorization'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredClusterAutoscaling: map['desiredClusterAutoscaling'] == null
+          ? null
+          : ClusterAutoscalingContainerV1beta1.fromMap(
+              (map['desiredClusterAutoscaling'] as Map).cast<String, dynamic>(),
+            ),
+      desiredClusterTelemetry: map['desiredClusterTelemetry'] == null
+          ? null
+          : ClusterTelemetry.fromMap(
+              (map['desiredClusterTelemetry'] as Map).cast<String, dynamic>(),
+            ),
+      desiredCostManagementConfig: map['desiredCostManagementConfig'] == null
+          ? null
+          : CostManagementConfigContainerV1beta1.fromMap(
+              (map['desiredCostManagementConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredDatabaseEncryption: map['desiredDatabaseEncryption'] == null
+          ? null
+          : DatabaseEncryptionContainerV1beta1.fromMap(
+              (map['desiredDatabaseEncryption'] as Map).cast<String, dynamic>(),
+            ),
+      desiredDatapathProvider: map['desiredDatapathProvider'] == null
+          ? null
+          : ClusterUpdateDesiredDatapathProviderContainerV1beta1.fromValue(
+              map['desiredDatapathProvider'] as String,
+            ),
+      desiredDefaultSnatStatus: map['desiredDefaultSnatStatus'] == null
+          ? null
+          : DefaultSnatStatusContainerV1beta1.fromMap(
+              (map['desiredDefaultSnatStatus'] as Map).cast<String, dynamic>(),
+            ),
+      desiredDnsConfig: map['desiredDnsConfig'] == null
+          ? null
+          : DNSConfigContainerV1beta1.fromMap(
+              (map['desiredDnsConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredEnableFqdnNetworkPolicy:
+          map['desiredEnableFqdnNetworkPolicy'] == null
+          ? null
+          : map['desiredEnableFqdnNetworkPolicy'] as bool,
+      desiredEnablePrivateEndpoint: map['desiredEnablePrivateEndpoint'] == null
+          ? null
+          : map['desiredEnablePrivateEndpoint'] as bool,
+      desiredFleet: map['desiredFleet'] == null
+          ? null
+          : FleetContainerV1beta1.fromMap(
+              (map['desiredFleet'] as Map).cast<String, dynamic>(),
+            ),
+      desiredGatewayApiConfig: map['desiredGatewayApiConfig'] == null
+          ? null
+          : GatewayAPIConfigContainerV1beta1.fromMap(
+              (map['desiredGatewayApiConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredGcfsConfig: map['desiredGcfsConfig'] == null
+          ? null
+          : GcfsConfigContainerV1beta1.fromMap(
+              (map['desiredGcfsConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredHostMaintenancePolicy: map['desiredHostMaintenancePolicy'] == null
+          ? null
+          : HostMaintenancePolicy.fromMap(
+              (map['desiredHostMaintenancePolicy'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredIdentityServiceConfig: map['desiredIdentityServiceConfig'] == null
+          ? null
+          : IdentityServiceConfigContainerV1beta1.fromMap(
+              (map['desiredIdentityServiceConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredImageType: map['desiredImageType'] == null
+          ? null
+          : map['desiredImageType'] as String,
+      desiredInTransitEncryptionConfig:
+          map['desiredInTransitEncryptionConfig'] == null
+          ? null
+          : ClusterUpdateDesiredInTransitEncryptionConfig.fromValue(
+              map['desiredInTransitEncryptionConfig'] as String,
+            ),
+      desiredIntraNodeVisibilityConfig:
+          map['desiredIntraNodeVisibilityConfig'] == null
+          ? null
+          : IntraNodeVisibilityConfigContainerV1beta1.fromMap(
+              (map['desiredIntraNodeVisibilityConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredK8sBetaApis: map['desiredK8sBetaApis'] == null
+          ? null
+          : K8sBetaAPIConfigContainerV1beta1.fromMap(
+              (map['desiredK8sBetaApis'] as Map).cast<String, dynamic>(),
+            ),
+      desiredL4ilbSubsettingConfig: map['desiredL4ilbSubsettingConfig'] == null
+          ? null
+          : ILBSubsettingConfigContainerV1beta1.fromMap(
+              (map['desiredL4ilbSubsettingConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredLocations: map['desiredLocations'] == null
+          ? null
+          : (map['desiredLocations'] as List).cast<String>(),
+      desiredLoggingConfig: map['desiredLoggingConfig'] == null
+          ? null
+          : LoggingConfigContainerV1beta1.fromMap(
+              (map['desiredLoggingConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredLoggingService: map['desiredLoggingService'] == null
+          ? null
+          : map['desiredLoggingService'] as String,
+      desiredMaster: map['desiredMaster'] == null
+          ? null
+          : (map['desiredMaster'] as Map).cast<String, dynamic>(),
+      desiredMasterAuthorizedNetworksConfig:
+          map['desiredMasterAuthorizedNetworksConfig'] == null
+          ? null
+          : MasterAuthorizedNetworksConfigContainerV1beta1.fromMap(
+              (map['desiredMasterAuthorizedNetworksConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredMasterVersion: map['desiredMasterVersion'] == null
+          ? null
+          : map['desiredMasterVersion'] as String,
+      desiredMeshCertificates: map['desiredMeshCertificates'] == null
+          ? null
+          : MeshCertificatesContainerV1beta1.fromMap(
+              (map['desiredMeshCertificates'] as Map).cast<String, dynamic>(),
+            ),
+      desiredMonitoringConfig: map['desiredMonitoringConfig'] == null
+          ? null
+          : MonitoringConfigContainerV1beta1.fromMap(
+              (map['desiredMonitoringConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredMonitoringService: map['desiredMonitoringService'] == null
+          ? null
+          : map['desiredMonitoringService'] as String,
+      desiredNetworkPerformanceConfig:
+          map['desiredNetworkPerformanceConfig'] == null
+          ? null
+          : ClusterNetworkPerformanceConfigContainerV1beta1.fromMap(
+              (map['desiredNetworkPerformanceConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredNodePoolAutoConfigNetworkTags:
+          map['desiredNodePoolAutoConfigNetworkTags'] == null
+          ? null
+          : NetworkTagsContainerV1beta1.fromMap(
+              (map['desiredNodePoolAutoConfigNetworkTags'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredNodePoolAutoConfigResourceManagerTags:
+          map['desiredNodePoolAutoConfigResourceManagerTags'] == null
+          ? null
+          : ResourceManagerTagsContainerV1beta1.fromMap(
+              (map['desiredNodePoolAutoConfigResourceManagerTags'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredNodePoolAutoscaling: map['desiredNodePoolAutoscaling'] == null
+          ? null
+          : NodePoolAutoscalingContainerV1beta1.fromMap(
+              (map['desiredNodePoolAutoscaling'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredNodePoolId: map['desiredNodePoolId'] == null
+          ? null
+          : map['desiredNodePoolId'] as String,
+      desiredNodePoolLoggingConfig: map['desiredNodePoolLoggingConfig'] == null
+          ? null
+          : NodePoolLoggingConfigContainerV1beta1.fromMap(
+              (map['desiredNodePoolLoggingConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredNodeVersion: map['desiredNodeVersion'] == null
+          ? null
+          : map['desiredNodeVersion'] as String,
+      desiredNotificationConfig: map['desiredNotificationConfig'] == null
+          ? null
+          : NotificationConfigContainerV1beta1.fromMap(
+              (map['desiredNotificationConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredParentProductConfig: map['desiredParentProductConfig'] == null
+          ? null
+          : ParentProductConfigContainerV1beta1.fromMap(
+              (map['desiredParentProductConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredPodSecurityPolicyConfig:
+          map['desiredPodSecurityPolicyConfig'] == null
+          ? null
+          : PodSecurityPolicyConfig.fromMap(
+              (map['desiredPodSecurityPolicyConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredPrivateClusterConfig: map['desiredPrivateClusterConfig'] == null
+          ? null
+          : PrivateClusterConfigContainerV1beta1.fromMap(
+              (map['desiredPrivateClusterConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredPrivateIpv6GoogleAccess:
+          map['desiredPrivateIpv6GoogleAccess'] == null
+          ? null
+          : ClusterUpdateDesiredPrivateIpv6GoogleAccessContainerV1beta1.fromValue(
+              map['desiredPrivateIpv6GoogleAccess'] as String,
+            ),
+      desiredProtectConfig: map['desiredProtectConfig'] == null
+          ? null
+          : ProtectConfig.fromMap(
+              (map['desiredProtectConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredReleaseChannel: map['desiredReleaseChannel'] == null
+          ? null
+          : ReleaseChannelContainerV1beta1.fromMap(
+              (map['desiredReleaseChannel'] as Map).cast<String, dynamic>(),
+            ),
+      desiredResourceUsageExportConfig:
+          map['desiredResourceUsageExportConfig'] == null
+          ? null
+          : ResourceUsageExportConfigContainerV1beta1.fromMap(
+              (map['desiredResourceUsageExportConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredSecurityPostureConfig: map['desiredSecurityPostureConfig'] == null
+          ? null
+          : SecurityPostureConfigContainerV1beta1.fromMap(
+              (map['desiredSecurityPostureConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredServiceExternalIpsConfig:
+          map['desiredServiceExternalIpsConfig'] == null
+          ? null
+          : ServiceExternalIPsConfigContainerV1beta1.fromMap(
+              (map['desiredServiceExternalIpsConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredShieldedNodes: map['desiredShieldedNodes'] == null
+          ? null
+          : ShieldedNodesContainerV1beta1.fromMap(
+              (map['desiredShieldedNodes'] as Map).cast<String, dynamic>(),
+            ),
+      desiredStackType: map['desiredStackType'] == null
+          ? null
+          : ClusterUpdateDesiredStackTypeContainerV1beta1.fromValue(
+              map['desiredStackType'] as String,
+            ),
+      desiredTpuConfig: map['desiredTpuConfig'] == null
+          ? null
+          : TpuConfig.fromMap(
+              (map['desiredTpuConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredVerticalPodAutoscaling:
+          map['desiredVerticalPodAutoscaling'] == null
+          ? null
+          : VerticalPodAutoscalingContainerV1beta1.fromMap(
+              (map['desiredVerticalPodAutoscaling'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredWorkloadAltsConfig: map['desiredWorkloadAltsConfig'] == null
+          ? null
+          : WorkloadALTSConfig.fromMap(
+              (map['desiredWorkloadAltsConfig'] as Map).cast<String, dynamic>(),
+            ),
+      desiredWorkloadCertificates: map['desiredWorkloadCertificates'] == null
+          ? null
+          : WorkloadCertificates.fromMap(
+              (map['desiredWorkloadCertificates'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      desiredWorkloadIdentityConfig:
+          map['desiredWorkloadIdentityConfig'] == null
+          ? null
+          : WorkloadIdentityConfigContainerV1beta1.fromMap(
+              (map['desiredWorkloadIdentityConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      enableK8sBetaApis: map['enableK8sBetaApis'] == null
+          ? null
+          : K8sBetaAPIConfigContainerV1beta1.fromMap(
+              (map['enableK8sBetaApis'] as Map).cast<String, dynamic>(),
+            ),
       etag: map['etag'] == null ? null : map['etag'] as String,
-      removedAdditionalPodRangesConfig: map['removedAdditionalPodRangesConfig'] == null ? null : AdditionalPodRangesConfigContainerV1beta1.fromMap((map['removedAdditionalPodRangesConfig'] as Map).cast<String, dynamic>()),
+      removedAdditionalPodRangesConfig:
+          map['removedAdditionalPodRangesConfig'] == null
+          ? null
+          : AdditionalPodRangesConfigContainerV1beta1.fromMap(
+              (map['removedAdditionalPodRangesConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
     );
   }
 }
-

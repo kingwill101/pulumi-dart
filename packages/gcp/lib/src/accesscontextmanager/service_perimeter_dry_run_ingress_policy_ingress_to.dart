@@ -8,6 +8,7 @@ class ServicePerimeterDryRunIngressPolicyIngressTo {
   /// are allowed to perform in this `ServicePerimeter`.
   /// Structure is documented below.
   final List<ServicePerimeterDryRunIngressPolicyIngressToOperation>? operations;
+
   /// A list of resources, currently only projects in the form
   /// `projects/<projectnumber>`, protected by this `ServicePerimeter`
   /// that are allowed to be accessed by sources defined in the
@@ -17,6 +18,7 @@ class ServicePerimeterDryRunIngressPolicyIngressTo {
   /// resources inside the perimeter, provided that the request
   /// also matches the `operations` field.
   final List<String>? resources;
+
   /// A list of IAM roles that represent the set of operations that the sources
   /// specified in the corresponding `IngressFrom`
   /// are allowed to perform.
@@ -34,18 +36,38 @@ class ServicePerimeterDryRunIngressPolicyIngressTo {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'operations': ?operations == null ? null : pulumi.Input.encodeList<ServicePerimeterDryRunIngressPolicyIngressToOperation, Map<String, dynamic>>(operations!, (value) => value.toMap()),
+      'operations': ?operations == null
+          ? null
+          : pulumi.Input.encodeList<
+              ServicePerimeterDryRunIngressPolicyIngressToOperation,
+              Map<String, dynamic>
+            >(operations!, (value) => value.toMap()),
       'resources': ?resources,
       'roles': ?roles,
     };
   }
 
-  factory ServicePerimeterDryRunIngressPolicyIngressTo.fromMap(Map<String, dynamic> map) {
+  factory ServicePerimeterDryRunIngressPolicyIngressTo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ServicePerimeterDryRunIngressPolicyIngressTo(
-      operations: map['operations'] == null ? null : pulumi.Input.decodeList<ServicePerimeterDryRunIngressPolicyIngressToOperation>(map['operations'], (value) => ServicePerimeterDryRunIngressPolicyIngressToOperation.fromMap((value as Map).cast<String, dynamic>())),
-      resources: map['resources'] == null ? null : (map['resources'] as List).cast<String>(),
-      roles: map['roles'] == null ? null : (map['roles'] as List).cast<String>(),
+      operations: map['operations'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              ServicePerimeterDryRunIngressPolicyIngressToOperation
+            >(
+              map['operations'],
+              (value) =>
+                  ServicePerimeterDryRunIngressPolicyIngressToOperation.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      resources: map['resources'] == null
+          ? null
+          : (map['resources'] as List).cast<String>(),
+      roles: map['roles'] == null
+          ? null
+          : (map['roles'] as List).cast<String>(),
     );
   }
 }
-

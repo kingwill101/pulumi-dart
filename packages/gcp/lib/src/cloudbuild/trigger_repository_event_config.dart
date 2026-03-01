@@ -7,9 +7,11 @@ class TriggerRepositoryEventConfig {
   /// Contains filter properties for matching Pull Requests.
   /// Structure is documented below.
   final TriggerRepositoryEventConfigPullRequest? pullRequest;
+
   /// Contains filter properties for matching git pushes.
   /// Structure is documented below.
   final TriggerRepositoryEventConfigPush? push;
+
   /// The resource name of the Repo API resource.
   final String? repository;
 
@@ -17,11 +19,7 @@ class TriggerRepositoryEventConfig {
   /// [pullRequest] Contains filter properties for matching Pull Requests.
   /// [push] Contains filter properties for matching git pushes.
   /// [repository] The resource name of the Repo API resource.
-  TriggerRepositoryEventConfig({
-    this.pullRequest,
-    this.push,
-    this.repository,
-  });
+  TriggerRepositoryEventConfig({this.pullRequest, this.push, this.repository});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,19 @@ class TriggerRepositoryEventConfig {
 
   factory TriggerRepositoryEventConfig.fromMap(Map<String, dynamic> map) {
     return TriggerRepositoryEventConfig(
-      pullRequest: map['pullRequest'] == null ? null : TriggerRepositoryEventConfigPullRequest.fromMap((map['pullRequest'] as Map).cast<String, dynamic>()),
-      push: map['push'] == null ? null : TriggerRepositoryEventConfigPush.fromMap((map['push'] as Map).cast<String, dynamic>()),
-      repository: map['repository'] == null ? null : map['repository'] as String,
+      pullRequest: map['pullRequest'] == null
+          ? null
+          : TriggerRepositoryEventConfigPullRequest.fromMap(
+              (map['pullRequest'] as Map).cast<String, dynamic>(),
+            ),
+      push: map['push'] == null
+          ? null
+          : TriggerRepositoryEventConfigPush.fromMap(
+              (map['push'] as Map).cast<String, dynamic>(),
+            ),
+      repository: map['repository'] == null
+          ? null
+          : map['repository'] as String,
     );
   }
 }
-

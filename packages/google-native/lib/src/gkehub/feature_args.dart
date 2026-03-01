@@ -11,18 +11,25 @@ import 'common_fleet_default_member_config_spec.dart';
 class FeatureArgs {
   /// The ID of the feature to create.
   final pulumi.Input<String>? featureId;
+
   /// Optional. Feature configuration applicable to all memberships of the fleet.
-  final pulumi.Input<CommonFleetDefaultMemberConfigSpec>? fleetDefaultMemberConfig;
+  final pulumi.Input<CommonFleetDefaultMemberConfigSpec>?
+  fleetDefaultMemberConfig;
+
   /// Labels for this Feature.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
   final pulumi.Input<Map<String, String>>? membershipSpecs;
   final pulumi.Input<String>? project;
+
   /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
+
   /// Optional. Scope-specific configuration for this Feature. If this Feature does not support any per-Scope configuration, this field may be unused. The keys indicate which Scope the configuration is for, in the form: `projects/{p}/locations/global/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Scope is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
   final pulumi.Input<Map<String, String>>? scopeSpecs;
+
   /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
   final pulumi.Input<CommonFeatureSpec>? spec;
 
@@ -46,43 +53,70 @@ class FeatureArgs {
     String? requestId,
     Map<String, String>? scopeSpecs,
     CommonFeatureSpec? spec,
-  }) :
-      featureId = pulumi.Input.asOptionalInput<String>(featureId),
-      fleetDefaultMemberConfig = pulumi.Input.asOptionalInput<CommonFleetDefaultMemberConfigSpec>(fleetDefaultMemberConfig),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      membershipSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(membershipSpecs),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      scopeSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(scopeSpecs),
-      spec = pulumi.Input.asOptionalInput<CommonFeatureSpec>(spec);
+  }) : featureId = pulumi.Input.asOptionalInput<String>(featureId),
+       fleetDefaultMemberConfig =
+           pulumi.Input.asOptionalInput<CommonFleetDefaultMemberConfigSpec>(
+             fleetDefaultMemberConfig,
+           ),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       membershipSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(
+         membershipSpecs,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       requestId = pulumi.Input.asOptionalInput<String>(requestId),
+       scopeSpecs = pulumi.Input.asOptionalInput<Map<String, String>>(
+         scopeSpecs,
+       ),
+       spec = pulumi.Input.asOptionalInput<CommonFeatureSpec>(spec);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'featureId': ?featureId,
-      'fleetDefaultMemberConfig': ?pulumi.Input.mapOptionalInputValue<CommonFleetDefaultMemberConfigSpec, Map<String, dynamic>>(fleetDefaultMemberConfig, (value) => value.toMap()),
+      'fleetDefaultMemberConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            CommonFleetDefaultMemberConfigSpec,
+            Map<String, dynamic>
+          >(fleetDefaultMemberConfig, (value) => value.toMap()),
       'labels': ?labels,
       'location': ?location,
       'membershipSpecs': ?membershipSpecs,
       'project': ?project,
       'requestId': ?requestId,
       'scopeSpecs': ?scopeSpecs,
-      'spec': ?pulumi.Input.mapOptionalInputValue<CommonFeatureSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            CommonFeatureSpec,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
     };
   }
 
   factory FeatureArgs.fromMap(Map<String, dynamic> map) {
     return FeatureArgs(
       featureId: map['featureId'] == null ? null : map['featureId'] as String,
-      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null ? null : CommonFleetDefaultMemberConfigSpec.fromMap((map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      fleetDefaultMemberConfig: map['fleetDefaultMemberConfig'] == null
+          ? null
+          : CommonFleetDefaultMemberConfigSpec.fromMap(
+              (map['fleetDefaultMemberConfig'] as Map).cast<String, dynamic>(),
+            ),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
-      membershipSpecs: map['membershipSpecs'] == null ? null : (map['membershipSpecs'] as Map).cast<String, String>(),
+      membershipSpecs: map['membershipSpecs'] == null
+          ? null
+          : (map['membershipSpecs'] as Map).cast<String, String>(),
       project: map['project'] == null ? null : map['project'] as String,
       requestId: map['requestId'] == null ? null : map['requestId'] as String,
-      scopeSpecs: map['scopeSpecs'] == null ? null : (map['scopeSpecs'] as Map).cast<String, String>(),
-      spec: map['spec'] == null ? null : CommonFeatureSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      scopeSpecs: map['scopeSpecs'] == null
+          ? null
+          : (map['scopeSpecs'] as Map).cast<String, String>(),
+      spec: map['spec'] == null
+          ? null
+          : CommonFeatureSpec.fromMap(
+              (map['spec'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

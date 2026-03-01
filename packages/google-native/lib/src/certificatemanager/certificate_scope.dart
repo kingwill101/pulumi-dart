@@ -16,4 +16,3 @@ enum CertificateScope {
     throw ArgumentError('Unknown CertificateScope value: $value');
   }
 }
-

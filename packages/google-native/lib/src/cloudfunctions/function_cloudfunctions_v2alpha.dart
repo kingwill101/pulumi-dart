@@ -8,33 +8,52 @@ import 'service_config_response_cloudfunctions_v2alpha.dart';
 /// Creates a new function. If a function with the given name already exists in the specified project, the long running operation will return `ALREADY_EXISTS` error.
 class FunctionCloudfunctionsV2alpha extends pulumi.CustomResource {
   /// Describes the Build step of the function that builds a container from the given source.
-  late final pulumi.Output<BuildConfigResponseCloudfunctionsV2alpha> buildConfig;
+  late final pulumi.Output<BuildConfigResponseCloudfunctionsV2alpha>
+  buildConfig;
+
   /// User-provided description of a function.
   late final pulumi.Output<String> description;
+
   /// Describe whether the function is 1st Gen or 2nd Gen.
   late final pulumi.Output<String> environment;
+
   /// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
-  late final pulumi.Output<EventTriggerResponseCloudfunctionsV2alpha> eventTrigger;
+  late final pulumi.Output<EventTriggerResponseCloudfunctionsV2alpha>
+  eventTrigger;
+
   /// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
   late final pulumi.Output<String?> functionId;
+
   /// [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
   late final pulumi.Output<String> kmsKeyName;
+
   /// Labels associated with this Cloud Function.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
+
   /// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// Reserved for future use.
   late final pulumi.Output<bool> satisfiesPzs;
+
   /// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
-  late final pulumi.Output<ServiceConfigResponseCloudfunctionsV2alpha> serviceConfig;
+  late final pulumi.Output<ServiceConfigResponseCloudfunctionsV2alpha>
+  serviceConfig;
+
   /// State of the function.
   late final pulumi.Output<String> state;
+
   /// State Messages for this Cloud Function.
-  late final pulumi.Output<List<GoogleCloudFunctionsV2alphaStateMessageResponse>> stateMessages;
+  late final pulumi.Output<
+    List<GoogleCloudFunctionsV2alphaStateMessageResponse>
+  >
+  stateMessages;
+
   /// The last update timestamp of a Cloud Function.
   late final pulumi.Output<String> updateTime;
+
   /// The deployed url for the function.
   late final pulumi.Output<String> url;
 
@@ -47,15 +66,20 @@ class FunctionCloudfunctionsV2alpha extends pulumi.CustomResource {
     FunctionCloudfunctionsV2alphaArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:cloudfunctions/v2alpha:Function',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.buildConfig = registerOutput<BuildConfigResponseCloudfunctionsV2alpha>('buildConfig');
+         'google-native:cloudfunctions/v2alpha:Function',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.buildConfig = registerOutput<BuildConfigResponseCloudfunctionsV2alpha>(
+      'buildConfig',
+    );
     this.description = registerOutput<String>('description');
     this.environment = registerOutput<String>('environment');
-    this.eventTrigger = registerOutput<EventTriggerResponseCloudfunctionsV2alpha>('eventTrigger');
+    this.eventTrigger =
+        registerOutput<EventTriggerResponseCloudfunctionsV2alpha>(
+          'eventTrigger',
+        );
     this.functionId = registerOutput<String?>('functionId');
     this.kmsKeyName = registerOutput<String>('kmsKeyName');
     this.labels = registerOutput<Map<String, String>>('labels');
@@ -63,9 +87,15 @@ class FunctionCloudfunctionsV2alpha extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.satisfiesPzs = registerOutput<bool>('satisfiesPzs');
-    this.serviceConfig = registerOutput<ServiceConfigResponseCloudfunctionsV2alpha>('serviceConfig');
+    this.serviceConfig =
+        registerOutput<ServiceConfigResponseCloudfunctionsV2alpha>(
+          'serviceConfig',
+        );
     this.state = registerOutput<String>('state');
-    this.stateMessages = registerOutput<List<GoogleCloudFunctionsV2alphaStateMessageResponse>>('stateMessages');
+    this.stateMessages =
+        registerOutput<List<GoogleCloudFunctionsV2alphaStateMessageResponse>>(
+          'stateMessages',
+        );
     this.updateTime = registerOutput<String>('updateTime');
     this.url = registerOutput<String>('url');
   }

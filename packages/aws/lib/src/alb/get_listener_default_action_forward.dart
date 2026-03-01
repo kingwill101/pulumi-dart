@@ -18,16 +18,35 @@ class GetListenerDefaultActionForward {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'stickinesses': pulumi.Input.encodeList<GetListenerDefaultActionForwardStickiness, Map<String, dynamic>>(stickinesses, (value) => value.toMap()),
-      'targetGroups': pulumi.Input.encodeList<GetListenerDefaultActionForwardTargetGroup, Map<String, dynamic>>(targetGroups, (value) => value.toMap()),
+      'stickinesses':
+          pulumi.Input.encodeList<
+            GetListenerDefaultActionForwardStickiness,
+            Map<String, dynamic>
+          >(stickinesses, (value) => value.toMap()),
+      'targetGroups':
+          pulumi.Input.encodeList<
+            GetListenerDefaultActionForwardTargetGroup,
+            Map<String, dynamic>
+          >(targetGroups, (value) => value.toMap()),
     };
   }
 
   factory GetListenerDefaultActionForward.fromMap(Map<String, dynamic> map) {
     return GetListenerDefaultActionForward(
-      stickinesses: pulumi.Input.decodeList<GetListenerDefaultActionForwardStickiness>(map['stickinesses'], (value) => GetListenerDefaultActionForwardStickiness.fromMap((value as Map).cast<String, dynamic>())),
-      targetGroups: pulumi.Input.decodeList<GetListenerDefaultActionForwardTargetGroup>(map['targetGroups'], (value) => GetListenerDefaultActionForwardTargetGroup.fromMap((value as Map).cast<String, dynamic>())),
+      stickinesses:
+          pulumi.Input.decodeList<GetListenerDefaultActionForwardStickiness>(
+            map['stickinesses'],
+            (value) => GetListenerDefaultActionForwardStickiness.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      targetGroups:
+          pulumi.Input.decodeList<GetListenerDefaultActionForwardTargetGroup>(
+            map['targetGroups'],
+            (value) => GetListenerDefaultActionForwardTargetGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

@@ -10,21 +10,29 @@ import 'google_cloud_identitytoolkit_admin_v2_oauth_response_type.dart';
 class OauthIdpConfigArgs {
   /// The client id of an OAuth client.
   final pulumi.Input<String>? clientId;
+
   /// The client secret of the OAuth client, to enable OIDC code flow.
   final pulumi.Input<String>? clientSecret;
+
   /// The config's display name set by developers.
   final pulumi.Input<String>? displayName;
+
   /// True if allows the user to sign in with the provider.
   final pulumi.Input<bool>? enabled;
+
   /// For OIDC Idps, the issuer identifier.
   final pulumi.Input<String>? issuer;
+
   /// The name of the OAuthIdpConfig resource, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'. Ignored during create requests.
   final pulumi.Input<String>? name;
+
   /// The id to use for this config.
   final pulumi.Input<String>? oauthIdpConfigId;
   final pulumi.Input<String>? project;
+
   /// The response type to request for in the OAuth authorization flow. You can set either `id_token` or `code` to true, but not both. Setting both types to be simultaneously true (`{code: true, id_token: true}`) is not yet supported.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2OAuthResponseType>? responseType;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2OAuthResponseType>?
+  responseType;
   final pulumi.Input<String> tenantId;
 
   /// Creates a new [OauthIdpConfigArgs].
@@ -49,17 +57,21 @@ class OauthIdpConfigArgs {
     String? project,
     GoogleCloudIdentitytoolkitAdminV2OAuthResponseType? responseType,
     required String tenantId,
-  }) :
-      clientId = pulumi.Input.asOptionalInput<String>(clientId),
-      clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      issuer = pulumi.Input.asOptionalInput<String>(issuer),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      oauthIdpConfigId = pulumi.Input.asOptionalInput<String>(oauthIdpConfigId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      responseType = pulumi.Input.asOptionalInput<GoogleCloudIdentitytoolkitAdminV2OAuthResponseType>(responseType),
-      tenantId = pulumi.Input.asInput<String>(tenantId);
+  }) : clientId = pulumi.Input.asOptionalInput<String>(clientId),
+       clientSecret = pulumi.Input.asOptionalInput<String>(clientSecret),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+       issuer = pulumi.Input.asOptionalInput<String>(issuer),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       oauthIdpConfigId = pulumi.Input.asOptionalInput<String>(
+         oauthIdpConfigId,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       responseType =
+           pulumi.Input.asOptionalInput<
+             GoogleCloudIdentitytoolkitAdminV2OAuthResponseType
+           >(responseType),
+       tenantId = pulumi.Input.asInput<String>(tenantId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,7 +83,11 @@ class OauthIdpConfigArgs {
       'name': ?name,
       'oauthIdpConfigId': ?oauthIdpConfigId,
       'project': ?project,
-      'responseType': ?pulumi.Input.mapOptionalInputValue<GoogleCloudIdentitytoolkitAdminV2OAuthResponseType, Map<String, dynamic>>(responseType, (value) => value.toMap()),
+      'responseType':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudIdentitytoolkitAdminV2OAuthResponseType,
+            Map<String, dynamic>
+          >(responseType, (value) => value.toMap()),
       'tenantId': tenantId,
     };
   }
@@ -79,16 +95,25 @@ class OauthIdpConfigArgs {
   factory OauthIdpConfigArgs.fromMap(Map<String, dynamic> map) {
     return OauthIdpConfigArgs(
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      clientSecret: map['clientSecret'] == null
+          ? null
+          : map['clientSecret'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
       issuer: map['issuer'] == null ? null : map['issuer'] as String,
       name: map['name'] == null ? null : map['name'] as String,
-      oauthIdpConfigId: map['oauthIdpConfigId'] == null ? null : map['oauthIdpConfigId'] as String,
+      oauthIdpConfigId: map['oauthIdpConfigId'] == null
+          ? null
+          : map['oauthIdpConfigId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      responseType: map['responseType'] == null ? null : GoogleCloudIdentitytoolkitAdminV2OAuthResponseType.fromMap((map['responseType'] as Map).cast<String, dynamic>()),
+      responseType: map['responseType'] == null
+          ? null
+          : GoogleCloudIdentitytoolkitAdminV2OAuthResponseType.fromMap(
+              (map['responseType'] as Map).cast<String, dynamic>(),
+            ),
       tenantId: map['tenantId'] as String,
     );
   }
 }
-

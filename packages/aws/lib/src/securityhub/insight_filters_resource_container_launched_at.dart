@@ -5,8 +5,10 @@ import 'insight_filters_resource_container_launched_at_date_range.dart';
 class InsightFiltersResourceContainerLaunchedAt {
   /// A configuration block of the date range for the date filter. See date_range below for more details.
   final InsightFiltersResourceContainerLaunchedAtDateRange? dateRange;
+
   /// An end date for the date filter. Required with `start` if `date_range` is not specified.
   final String? end;
+
   /// A start date for the date filter. Required with `end` if `date_range` is not specified.
   final String? start;
 
@@ -28,12 +30,17 @@ class InsightFiltersResourceContainerLaunchedAt {
     };
   }
 
-  factory InsightFiltersResourceContainerLaunchedAt.fromMap(Map<String, dynamic> map) {
+  factory InsightFiltersResourceContainerLaunchedAt.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InsightFiltersResourceContainerLaunchedAt(
-      dateRange: map['dateRange'] == null ? null : InsightFiltersResourceContainerLaunchedAtDateRange.fromMap((map['dateRange'] as Map).cast<String, dynamic>()),
+      dateRange: map['dateRange'] == null
+          ? null
+          : InsightFiltersResourceContainerLaunchedAtDateRange.fromMap(
+              (map['dateRange'] as Map).cast<String, dynamic>(),
+            ),
       end: map['end'] == null ? null : map['end'] as String,
       start: map['start'] == null ? null : map['start'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RepositoryExternalConnections {
   /// The name of the external connection associated with a repository.
   final String externalConnectionName;
@@ -28,9 +27,10 @@ class RepositoryExternalConnections {
   factory RepositoryExternalConnections.fromMap(Map<String, dynamic> map) {
     return RepositoryExternalConnections(
       externalConnectionName: map['externalConnectionName'] as String,
-      packageFormat: map['packageFormat'] == null ? null : map['packageFormat'] as String,
+      packageFormat: map['packageFormat'] == null
+          ? null
+          : map['packageFormat'] as String,
       status: map['status'] == null ? null : map['status'] as String,
     );
   }
 }
-

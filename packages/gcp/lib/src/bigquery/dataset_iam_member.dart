@@ -1965,10 +1965,13 @@ class DatasetIamMember extends pulumi.CustomResource {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
   late final pulumi.Output<DatasetIamMemberCondition?> condition;
+
   /// The dataset ID.
   late final pulumi.Output<String> datasetId;
+
   /// (Computed) The etag of the dataset's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
@@ -1982,9 +1985,11 @@ class DatasetIamMember extends pulumi.CustomResource {
   /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
   /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
   late final pulumi.Output<String> member;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The role that should be applied. Only one
   /// `gcp.bigquery.DatasetIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -1999,11 +2004,11 @@ class DatasetIamMember extends pulumi.CustomResource {
     DatasetIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigquery/datasetIamMember:DatasetIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:bigquery/datasetIamMember:DatasetIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.condition = registerOutput<DatasetIamMemberCondition?>('condition');
     this.datasetId = registerOutput<String>('datasetId');
     this.etag = registerOutput<String>('etag');

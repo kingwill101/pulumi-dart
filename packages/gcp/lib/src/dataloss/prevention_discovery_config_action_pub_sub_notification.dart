@@ -6,12 +6,16 @@ class PreventionDiscoveryConfigActionPubSubNotification {
   /// How much data to include in the pub/sub message.
   /// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
   final String? detailOfMessage;
+
   /// The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
   /// Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
   final String? event;
+
   /// Conditions for triggering pubsub
   /// Structure is documented below.
-  final PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition? pubsubCondition;
+  final PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition?
+  pubsubCondition;
+
   /// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
   final String? topic;
 
@@ -31,18 +35,27 @@ class PreventionDiscoveryConfigActionPubSubNotification {
     return <String, dynamic>{
       'detailOfMessage': ?detailOfMessage,
       'event': ?event,
-      'pubsubCondition': ?pubsubCondition == null ? null : pubsubCondition!.toMap(),
+      'pubsubCondition': ?pubsubCondition == null
+          ? null
+          : pubsubCondition!.toMap(),
       'topic': ?topic,
     };
   }
 
-  factory PreventionDiscoveryConfigActionPubSubNotification.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigActionPubSubNotification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigActionPubSubNotification(
-      detailOfMessage: map['detailOfMessage'] == null ? null : map['detailOfMessage'] as String,
+      detailOfMessage: map['detailOfMessage'] == null
+          ? null
+          : map['detailOfMessage'] as String,
       event: map['event'] == null ? null : map['event'] as String,
-      pubsubCondition: map['pubsubCondition'] == null ? null : PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition.fromMap((map['pubsubCondition'] as Map).cast<String, dynamic>()),
+      pubsubCondition: map['pubsubCondition'] == null
+          ? null
+          : PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition.fromMap(
+              (map['pubsubCondition'] as Map).cast<String, dynamic>(),
+            ),
       topic: map['topic'] == null ? null : map['topic'] as String,
     );
   }
 }
-

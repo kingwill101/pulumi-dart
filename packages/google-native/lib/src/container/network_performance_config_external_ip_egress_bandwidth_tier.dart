@@ -6,13 +6,17 @@ enum NetworkPerformanceConfigExternalIpEgressBandwidthTier {
   const NetworkPerformanceConfigExternalIpEgressBandwidthTier(this.value);
   final String value;
 
-  static NetworkPerformanceConfigExternalIpEgressBandwidthTier fromValue(String value) {
-    for (final item in NetworkPerformanceConfigExternalIpEgressBandwidthTier.values) {
+  static NetworkPerformanceConfigExternalIpEgressBandwidthTier fromValue(
+    String value,
+  ) {
+    for (final item
+        in NetworkPerformanceConfigExternalIpEgressBandwidthTier.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkPerformanceConfigExternalIpEgressBandwidthTier value: $value');
+    throw ArgumentError(
+      'Unknown NetworkPerformanceConfigExternalIpEgressBandwidthTier value: $value',
+    );
   }
 }
-

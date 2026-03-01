@@ -24,13 +24,17 @@ enum EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId {
   const EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId(this.value);
   final String value;
 
-  static EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId.values) {
+  static EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId value: $value',
+    );
   }
 }
-

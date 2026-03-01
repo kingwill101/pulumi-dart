@@ -6,10 +6,13 @@ import 'vulnerability_location_containeranalysis_v1beta1.dart';
 class PackageIssueContaineranalysisV1beta1 {
   /// The location of the vulnerability.
   final VulnerabilityLocationContaineranalysisV1beta1 affectedLocation;
+
   /// The location of the available fix for vulnerability.
   final VulnerabilityLocationContaineranalysisV1beta1? fixedLocation;
+
   /// The type of package (e.g. OS, MAVEN, GO).
   final String? packageType;
+
   /// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
   final String? severityName;
 
@@ -34,13 +37,24 @@ class PackageIssueContaineranalysisV1beta1 {
     };
   }
 
-  factory PackageIssueContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory PackageIssueContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PackageIssueContaineranalysisV1beta1(
-      affectedLocation: VulnerabilityLocationContaineranalysisV1beta1.fromMap((map['affectedLocation'] as Map).cast<String, dynamic>()),
-      fixedLocation: map['fixedLocation'] == null ? null : VulnerabilityLocationContaineranalysisV1beta1.fromMap((map['fixedLocation'] as Map).cast<String, dynamic>()),
-      packageType: map['packageType'] == null ? null : map['packageType'] as String,
-      severityName: map['severityName'] == null ? null : map['severityName'] as String,
+      affectedLocation: VulnerabilityLocationContaineranalysisV1beta1.fromMap(
+        (map['affectedLocation'] as Map).cast<String, dynamic>(),
+      ),
+      fixedLocation: map['fixedLocation'] == null
+          ? null
+          : VulnerabilityLocationContaineranalysisV1beta1.fromMap(
+              (map['fixedLocation'] as Map).cast<String, dynamic>(),
+            ),
+      packageType: map['packageType'] == null
+          ? null
+          : map['packageType'] as String,
+      severityName: map['severityName'] == null
+          ? null
+          : map['severityName'] as String,
     );
   }
 }
-

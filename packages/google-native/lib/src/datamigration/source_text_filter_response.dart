@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Filter for text-based data types like varchar.
 class SourceTextFilterResponse {
   /// Optional. The filter will match columns with length smaller than or equal to this number.
   final String sourceMaxLengthFilter;
+
   /// Optional. The filter will match columns with length greater than or equal to this number.
   final String sourceMinLengthFilter;
 
@@ -30,4 +30,3 @@ class SourceTextFilterResponse {
     );
   }
 }
-

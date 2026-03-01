@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfigComputeV1 {
   /// Defines whether the instance should have confidential compute enabled.
@@ -8,9 +7,7 @@ class ConfidentialInstanceConfigComputeV1 {
 
   /// Creates a new [ConfidentialInstanceConfigComputeV1].
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled.
-  ConfidentialInstanceConfigComputeV1({
-    this.enableConfidentialCompute,
-  });
+  ConfidentialInstanceConfigComputeV1({this.enableConfidentialCompute});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -18,10 +15,13 @@ class ConfidentialInstanceConfigComputeV1 {
     };
   }
 
-  factory ConfidentialInstanceConfigComputeV1.fromMap(Map<String, dynamic> map) {
+  factory ConfidentialInstanceConfigComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfidentialInstanceConfigComputeV1(
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : map['enableConfidentialCompute'] as bool,
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null
+          ? null
+          : map['enableConfidentialCompute'] as bool,
     );
   }
 }
-

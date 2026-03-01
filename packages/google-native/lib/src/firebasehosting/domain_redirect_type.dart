@@ -15,4 +15,3 @@ enum DomainRedirectType {
     throw ArgumentError('Unknown DomainRedirectType value: $value');
   }
 }
-

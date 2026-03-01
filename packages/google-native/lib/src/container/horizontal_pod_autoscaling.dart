@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration options for the horizontal pod autoscaling feature, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods.
 class HorizontalPodAutoscaling {
   /// Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring.
@@ -8,14 +7,10 @@ class HorizontalPodAutoscaling {
 
   /// Creates a new [HorizontalPodAutoscaling].
   /// [disabled] Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring.
-  HorizontalPodAutoscaling({
-    this.disabled,
-  });
+  HorizontalPodAutoscaling({this.disabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'disabled': ?disabled,
-    };
+    return <String, dynamic>{'disabled': ?disabled};
   }
 
   factory HorizontalPodAutoscaling.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class HorizontalPodAutoscaling {
     );
   }
 }
-

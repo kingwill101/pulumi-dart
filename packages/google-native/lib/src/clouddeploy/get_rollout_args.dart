@@ -25,12 +25,11 @@ class GetRolloutArgs {
     String? project,
     required String releaseId,
     required String rolloutId,
-  }) :
-      deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      releaseId = pulumi.Input.asInput<String>(releaseId),
-      rolloutId = pulumi.Input.asInput<String>(rolloutId);
+  }) : deliveryPipelineId = pulumi.Input.asInput<String>(deliveryPipelineId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       releaseId = pulumi.Input.asInput<String>(releaseId),
+       rolloutId = pulumi.Input.asInput<String>(rolloutId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetRolloutArgs {
     );
   }
 }
-

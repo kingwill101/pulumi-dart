@@ -12,13 +12,16 @@ enum RegionBackendServiceLocalityLbPolicyComputeBeta {
   const RegionBackendServiceLocalityLbPolicyComputeBeta(this.value);
   final String value;
 
-  static RegionBackendServiceLocalityLbPolicyComputeBeta fromValue(String value) {
+  static RegionBackendServiceLocalityLbPolicyComputeBeta fromValue(
+    String value,
+  ) {
     for (final item in RegionBackendServiceLocalityLbPolicyComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionBackendServiceLocalityLbPolicyComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionBackendServiceLocalityLbPolicyComputeBeta value: $value',
+    );
   }
 }
-

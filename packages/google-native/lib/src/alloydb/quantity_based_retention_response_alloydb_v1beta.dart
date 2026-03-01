@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A quantity based policy specifies that a certain number of the most recent successful backups should be retained.
 class QuantityBasedRetentionResponseAlloydbV1beta {
   /// The number of backups to retain.
@@ -8,20 +7,17 @@ class QuantityBasedRetentionResponseAlloydbV1beta {
 
   /// Creates a new [QuantityBasedRetentionResponseAlloydbV1beta].
   /// [count] The number of backups to retain.
-  QuantityBasedRetentionResponseAlloydbV1beta({
-    required this.count,
-  });
+  QuantityBasedRetentionResponseAlloydbV1beta({required this.count});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-    };
+    return <String, dynamic>{'count': count};
   }
 
-  factory QuantityBasedRetentionResponseAlloydbV1beta.fromMap(Map<String, dynamic> map) {
+  factory QuantityBasedRetentionResponseAlloydbV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return QuantityBasedRetentionResponseAlloydbV1beta(
       count: map['count'] as int,
     );
   }
 }
-

@@ -18,7 +18,8 @@ enum RegionBackendServiceSessionAffinity {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionBackendServiceSessionAffinity value: $value');
+    throw ArgumentError(
+      'Unknown RegionBackendServiceSessionAffinity value: $value',
+    );
   }
 }
-

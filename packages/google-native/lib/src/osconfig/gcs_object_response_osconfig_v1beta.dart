@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Google Cloud Storage object representation.
 class GcsObjectResponseOsconfigV1beta {
   /// Bucket of the Google Cloud Storage object.
   final String bucket;
+
   /// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
   final String generationNumber;
+
   /// Name of the Google Cloud Storage object.
   final String object;
 
@@ -36,4 +37,3 @@ class GcsObjectResponseOsconfigV1beta {
     );
   }
 }
-

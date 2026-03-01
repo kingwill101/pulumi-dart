@@ -19,10 +19,9 @@ class GetRegionSecurityPolicyComputeV1Args {
     String? project,
     required String region,
     required String securityPolicy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetRegionSecurityPolicyComputeV1Args {
     };
   }
 
-  factory GetRegionSecurityPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
+  factory GetRegionSecurityPolicyComputeV1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionSecurityPolicyComputeV1Args(
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] as String,
@@ -40,4 +41,3 @@ class GetRegionSecurityPolicyComputeV1Args {
     );
   }
 }
-

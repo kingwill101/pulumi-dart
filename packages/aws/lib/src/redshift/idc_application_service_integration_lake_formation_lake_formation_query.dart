@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery {
   /// Determines whether the query scope is enabled or disabled.
   final String authorization;
@@ -12,15 +11,14 @@ class IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'authorization': authorization,
-    };
+    return <String, dynamic>{'authorization': authorization};
   }
 
-  factory IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery.fromMap(Map<String, dynamic> map) {
+  factory IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery(
       authorization: map['authorization'] as String,
     );
   }
 }
-

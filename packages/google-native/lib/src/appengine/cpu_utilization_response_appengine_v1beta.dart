@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Target scaling by CPU usage.
 class CpuUtilizationResponseAppengineV1beta {
   /// Period of time over which CPU utilization is calculated.
   final String aggregationWindowLength;
+
   /// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
   final double targetUtilization;
 
@@ -23,11 +23,12 @@ class CpuUtilizationResponseAppengineV1beta {
     };
   }
 
-  factory CpuUtilizationResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
+  factory CpuUtilizationResponseAppengineV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CpuUtilizationResponseAppengineV1beta(
       aggregationWindowLength: map['aggregationWindowLength'] as String,
       targetUtilization: map['targetUtilization'] as double,
     );
   }
 }
-

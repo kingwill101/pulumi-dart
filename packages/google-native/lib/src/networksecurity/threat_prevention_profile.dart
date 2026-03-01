@@ -8,29 +8,50 @@ import 'threat_override.dart';
 class ThreatPreventionProfile {
   /// Optional. Configuration for overriding threats actions by severity match.
   final List<SeverityOverride>? severityOverrides;
+
   /// Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
   final List<ThreatOverride>? threatOverrides;
 
   /// Creates a new [ThreatPreventionProfile].
   /// [severityOverrides] Optional. Configuration for overriding threats actions by severity match.
   /// [threatOverrides] Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied.
-  ThreatPreventionProfile({
-    this.severityOverrides,
-    this.threatOverrides,
-  });
+  ThreatPreventionProfile({this.severityOverrides, this.threatOverrides});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'severityOverrides': ?severityOverrides == null ? null : pulumi.Input.encodeList<SeverityOverride, Map<String, dynamic>>(severityOverrides!, (value) => value.toMap()),
-      'threatOverrides': ?threatOverrides == null ? null : pulumi.Input.encodeList<ThreatOverride, Map<String, dynamic>>(threatOverrides!, (value) => value.toMap()),
+      'severityOverrides': ?severityOverrides == null
+          ? null
+          : pulumi.Input.encodeList<SeverityOverride, Map<String, dynamic>>(
+              severityOverrides!,
+              (value) => value.toMap(),
+            ),
+      'threatOverrides': ?threatOverrides == null
+          ? null
+          : pulumi.Input.encodeList<ThreatOverride, Map<String, dynamic>>(
+              threatOverrides!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory ThreatPreventionProfile.fromMap(Map<String, dynamic> map) {
     return ThreatPreventionProfile(
-      severityOverrides: map['severityOverrides'] == null ? null : pulumi.Input.decodeList<SeverityOverride>(map['severityOverrides'], (value) => SeverityOverride.fromMap((value as Map).cast<String, dynamic>())),
-      threatOverrides: map['threatOverrides'] == null ? null : pulumi.Input.decodeList<ThreatOverride>(map['threatOverrides'], (value) => ThreatOverride.fromMap((value as Map).cast<String, dynamic>())),
+      severityOverrides: map['severityOverrides'] == null
+          ? null
+          : pulumi.Input.decodeList<SeverityOverride>(
+              map['severityOverrides'],
+              (value) => SeverityOverride.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      threatOverrides: map['threatOverrides'] == null
+          ? null
+          : pulumi.Input.decodeList<ThreatOverride>(
+              map['threatOverrides'],
+              (value) => ThreatOverride.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

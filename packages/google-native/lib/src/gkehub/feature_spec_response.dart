@@ -6,6 +6,7 @@ import 'membership_spec_response.dart';
 class FeatureSpecResponse {
   /// Specifies default membership spec. Users can override the default in the member_configs for each member.
   final MembershipSpecResponse defaultConfig;
+
   /// Immutable. Specifies CA configuration.
   final String provisionGoogleCa;
 
@@ -26,9 +27,10 @@ class FeatureSpecResponse {
 
   factory FeatureSpecResponse.fromMap(Map<String, dynamic> map) {
     return FeatureSpecResponse(
-      defaultConfig: MembershipSpecResponse.fromMap((map['defaultConfig'] as Map).cast<String, dynamic>()),
+      defaultConfig: MembershipSpecResponse.fromMap(
+        (map['defaultConfig'] as Map).cast<String, dynamic>(),
+      ),
       provisionGoogleCa: map['provisionGoogleCa'] as String,
     );
   }
 }
-

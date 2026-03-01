@@ -9,10 +9,7 @@ class GrafeasV1beta1IntotoArtifact {
   /// Creates a new [GrafeasV1beta1IntotoArtifact].
   /// [hashes] Optional.
   /// [resourceUri] Optional.
-  GrafeasV1beta1IntotoArtifact({
-    this.hashes,
-    this.resourceUri,
-  });
+  GrafeasV1beta1IntotoArtifact({this.hashes, this.resourceUri});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,9 +20,14 @@ class GrafeasV1beta1IntotoArtifact {
 
   factory GrafeasV1beta1IntotoArtifact.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1IntotoArtifact(
-      hashes: map['hashes'] == null ? null : ArtifactHashes.fromMap((map['hashes'] as Map).cast<String, dynamic>()),
-      resourceUri: map['resourceUri'] == null ? null : map['resourceUri'] as String,
+      hashes: map['hashes'] == null
+          ? null
+          : ArtifactHashes.fromMap(
+              (map['hashes'] as Map).cast<String, dynamic>(),
+            ),
+      resourceUri: map['resourceUri'] == null
+          ? null
+          : map['resourceUri'] as String,
     );
   }
 }
-

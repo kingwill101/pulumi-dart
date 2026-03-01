@@ -22,11 +22,12 @@ class GetDatacenterConnectorArgs {
     required String location,
     String? project,
     required String sourceId,
-  }) :
-      datacenterConnectorId = pulumi.Input.asInput<String>(datacenterConnectorId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceId = pulumi.Input.asInput<String>(sourceId);
+  }) : datacenterConnectorId = pulumi.Input.asInput<String>(
+         datacenterConnectorId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sourceId = pulumi.Input.asInput<String>(sourceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +47,3 @@ class GetDatacenterConnectorArgs {
     );
   }
 }
-

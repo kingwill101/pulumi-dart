@@ -16,4 +16,3 @@ enum SslConfigTrustModel {
     throw ArgumentError('Unknown SslConfigTrustModel value: $value');
   }
 }
-

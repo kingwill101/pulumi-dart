@@ -25,12 +25,11 @@ class GetSfdcChannelArgs {
     String? project,
     required String sfdcChannelId,
     required String sfdcInstanceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sfdcChannelId = pulumi.Input.asInput<String>(sfdcChannelId),
-      sfdcInstanceId = pulumi.Input.asInput<String>(sfdcInstanceId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       productId = pulumi.Input.asInput<String>(productId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sfdcChannelId = pulumi.Input.asInput<String>(sfdcChannelId),
+       sfdcInstanceId = pulumi.Input.asInput<String>(sfdcInstanceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetSfdcChannelArgs {
     );
   }
 }
-

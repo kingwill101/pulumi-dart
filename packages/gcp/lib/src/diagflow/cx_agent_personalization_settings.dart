@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CxAgentPersonalizationSettings {
   /// Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
   /// The data will be merged with the [QueryParameters.end_user_metadata](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/QueryParameters#FIELDS.end_user_metadata)
@@ -10,20 +9,17 @@ class CxAgentPersonalizationSettings {
 
   /// Creates a new [CxAgentPersonalizationSettings].
   /// [defaultEndUserMetadata] Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
-  CxAgentPersonalizationSettings({
-    this.defaultEndUserMetadata,
-  });
+  CxAgentPersonalizationSettings({this.defaultEndUserMetadata});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'defaultEndUserMetadata': ?defaultEndUserMetadata,
-    };
+    return <String, dynamic>{'defaultEndUserMetadata': ?defaultEndUserMetadata};
   }
 
   factory CxAgentPersonalizationSettings.fromMap(Map<String, dynamic> map) {
     return CxAgentPersonalizationSettings(
-      defaultEndUserMetadata: map['defaultEndUserMetadata'] == null ? null : map['defaultEndUserMetadata'] as String,
+      defaultEndUserMetadata: map['defaultEndUserMetadata'] == null
+          ? null
+          : map['defaultEndUserMetadata'] as String,
     );
   }
 }
-

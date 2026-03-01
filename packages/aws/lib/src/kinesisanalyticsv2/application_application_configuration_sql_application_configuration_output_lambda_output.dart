@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput {
   /// The ARN of the destination Lambda function to write to.
   final String resourceArn;
@@ -12,15 +11,14 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambda
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceArn': resourceArn,
-    };
+    return <String, dynamic>{'resourceArn': resourceArn};
   }
 
-  factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput.fromMap(Map<String, dynamic> map) {
+  factory ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationOutputLambdaOutput(
       resourceArn: map['resourceArn'] as String,
     );
   }
 }
-

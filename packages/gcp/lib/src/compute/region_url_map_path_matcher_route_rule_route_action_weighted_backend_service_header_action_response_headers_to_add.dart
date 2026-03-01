@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
   /// The name of the header.
   final String headerName;
+
   /// The value of the header to add.
   final String headerValue;
+
   /// If false, headerValue is appended to any values that already exist for the header. If true, headerValue is set for the header, discarding any values that were set for that header.
   /// The default value is false.
   final bool replace;
@@ -28,7 +29,9 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
     };
   }
 
-  factory RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd.fromMap(Map<String, dynamic> map) {
+  factory RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd(
       headerName: map['headerName'] as String,
       headerValue: map['headerValue'] as String,
@@ -36,4 +39,3 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAct
     );
   }
 }
-

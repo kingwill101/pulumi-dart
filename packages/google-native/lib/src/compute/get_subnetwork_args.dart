@@ -19,10 +19,9 @@ class GetSubnetworkArgs {
     String? project,
     required String region,
     required String subnetwork,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      subnetwork = pulumi.Input.asInput<String>(subnetwork);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       subnetwork = pulumi.Input.asInput<String>(subnetwork);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetSubnetworkArgs {
     );
   }
 }
-

@@ -11,8 +11,10 @@ class GetFunctionUrlArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> functionName;
+
   /// Alias name or `$LATEST`.
   final pulumi.Input<String>? qualifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -24,10 +26,9 @@ class GetFunctionUrlArgs {
     required String functionName,
     String? qualifier,
     String? region,
-  }) :
-      functionName = pulumi.Input.asInput<String>(functionName),
-      qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : functionName = pulumi.Input.asInput<String>(functionName),
+       qualifier = pulumi.Input.asOptionalInput<String>(qualifier),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,4 +46,3 @@ class GetFunctionUrlArgs {
     );
   }
 }
-

@@ -8,10 +8,13 @@ import 'windows_update.dart';
 class UpgradeOccurrence {
   /// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
   final UpgradeDistribution? distribution;
+
   /// Required for non-Windows OS. The package this Upgrade is for.
   final String? package;
+
   /// Required for non-Windows OS. The version of the package in a machine + human readable form.
   final Version? parsedVersion;
+
   /// Required for Windows OS. Represents the metadata about the Windows update.
   final WindowsUpdate? windowsUpdate;
 
@@ -38,11 +41,22 @@ class UpgradeOccurrence {
 
   factory UpgradeOccurrence.fromMap(Map<String, dynamic> map) {
     return UpgradeOccurrence(
-      distribution: map['distribution'] == null ? null : UpgradeDistribution.fromMap((map['distribution'] as Map).cast<String, dynamic>()),
+      distribution: map['distribution'] == null
+          ? null
+          : UpgradeDistribution.fromMap(
+              (map['distribution'] as Map).cast<String, dynamic>(),
+            ),
       package: map['package'] == null ? null : map['package'] as String,
-      parsedVersion: map['parsedVersion'] == null ? null : Version.fromMap((map['parsedVersion'] as Map).cast<String, dynamic>()),
-      windowsUpdate: map['windowsUpdate'] == null ? null : WindowsUpdate.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>()),
+      parsedVersion: map['parsedVersion'] == null
+          ? null
+          : Version.fromMap(
+              (map['parsedVersion'] as Map).cast<String, dynamic>(),
+            ),
+      windowsUpdate: map['windowsUpdate'] == null
+          ? null
+          : WindowsUpdate.fromMap(
+              (map['windowsUpdate'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

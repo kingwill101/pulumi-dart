@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Options of a Hive database.
 class HiveDatabaseOptionsResponse {
   /// Cloud Storage folder URI where the database data is stored, starting with "gs://".
   final String locationUri;
+
   /// Stores user supplied Hive database parameters.
   final Map<String, String> parameters;
 
@@ -30,4 +30,3 @@ class HiveDatabaseOptionsResponse {
     );
   }
 }
-

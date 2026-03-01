@@ -9,10 +9,13 @@ import 'service_mesh_membership_spec_response_gkehub_v1alpha.dart';
 class CommonFleetDefaultMemberConfigSpecResponseGkehubV1alpha {
   /// Config Management-specific spec.
   final ConfigManagementMembershipSpecResponseGkehubV1alpha configmanagement;
+
   /// Identity Service-specific spec.
   final IdentityServiceMembershipSpecResponseGkehubV1alpha identityservice;
+
   /// Anthos Service Mesh-specific spec
   final ServiceMeshMembershipSpecResponseGkehubV1alpha mesh;
+
   /// Policy Controller spec.
   final PolicyControllerMembershipSpecResponseGkehubV1alpha policycontroller;
 
@@ -37,13 +40,25 @@ class CommonFleetDefaultMemberConfigSpecResponseGkehubV1alpha {
     };
   }
 
-  factory CommonFleetDefaultMemberConfigSpecResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory CommonFleetDefaultMemberConfigSpecResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CommonFleetDefaultMemberConfigSpecResponseGkehubV1alpha(
-      configmanagement: ConfigManagementMembershipSpecResponseGkehubV1alpha.fromMap((map['configmanagement'] as Map).cast<String, dynamic>()),
-      identityservice: IdentityServiceMembershipSpecResponseGkehubV1alpha.fromMap((map['identityservice'] as Map).cast<String, dynamic>()),
-      mesh: ServiceMeshMembershipSpecResponseGkehubV1alpha.fromMap((map['mesh'] as Map).cast<String, dynamic>()),
-      policycontroller: PolicyControllerMembershipSpecResponseGkehubV1alpha.fromMap((map['policycontroller'] as Map).cast<String, dynamic>()),
+      configmanagement:
+          ConfigManagementMembershipSpecResponseGkehubV1alpha.fromMap(
+            (map['configmanagement'] as Map).cast<String, dynamic>(),
+          ),
+      identityservice:
+          IdentityServiceMembershipSpecResponseGkehubV1alpha.fromMap(
+            (map['identityservice'] as Map).cast<String, dynamic>(),
+          ),
+      mesh: ServiceMeshMembershipSpecResponseGkehubV1alpha.fromMap(
+        (map['mesh'] as Map).cast<String, dynamic>(),
+      ),
+      policycontroller:
+          PolicyControllerMembershipSpecResponseGkehubV1alpha.fromMap(
+            (map['policycontroller'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

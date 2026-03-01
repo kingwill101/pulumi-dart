@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class VpcEndpointServicePrivateDnsNameConfiguration {
   /// Name of the record subdomain the service provider needs to create.
   final String? name;
+
   /// Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is `verified`.
   final String? state;
+
   /// Endpoint service verification type, for example `TXT`.
   final String? type;
+
   /// Value the service provider adds to the private DNS name domain record before verification.
   final String? value;
 
@@ -32,7 +34,9 @@ class VpcEndpointServicePrivateDnsNameConfiguration {
     };
   }
 
-  factory VpcEndpointServicePrivateDnsNameConfiguration.fromMap(Map<String, dynamic> map) {
+  factory VpcEndpointServicePrivateDnsNameConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VpcEndpointServicePrivateDnsNameConfiguration(
       name: map['name'] == null ? null : map['name'] as String,
       state: map['state'] == null ? null : map['state'] as String,
@@ -41,4 +45,3 @@ class VpcEndpointServicePrivateDnsNameConfiguration {
     );
   }
 }
-

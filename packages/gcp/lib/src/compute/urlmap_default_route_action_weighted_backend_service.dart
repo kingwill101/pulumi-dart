@@ -7,12 +7,15 @@ class URLMapDefaultRouteActionWeightedBackendService {
   /// request to backendService, the loadbalancer applies any relevant headerActions
   /// specified as part of this backendServiceWeight.
   final String? backendService;
+
   /// Specifies changes to request and response headers that need to take effect for
   /// the selected backendService.
   /// headerAction specified here take effect before headerAction in the enclosing
   /// HttpRouteRule, PathMatcher and UrlMap.
   /// Structure is documented below.
-  final URLMapDefaultRouteActionWeightedBackendServiceHeaderAction? headerAction;
+  final URLMapDefaultRouteActionWeightedBackendServiceHeaderAction?
+  headerAction;
+
   /// Specifies the fraction of traffic sent to backendService, computed as
   /// weight / (sum of all weightedBackendService weights in routeAction) .
   /// The selection of a backend service is determined only for new traffic. Once a user's request
@@ -39,12 +42,19 @@ class URLMapDefaultRouteActionWeightedBackendService {
     };
   }
 
-  factory URLMapDefaultRouteActionWeightedBackendService.fromMap(Map<String, dynamic> map) {
+  factory URLMapDefaultRouteActionWeightedBackendService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return URLMapDefaultRouteActionWeightedBackendService(
-      backendService: map['backendService'] == null ? null : map['backendService'] as String,
-      headerAction: map['headerAction'] == null ? null : URLMapDefaultRouteActionWeightedBackendServiceHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>()),
+      backendService: map['backendService'] == null
+          ? null
+          : map['backendService'] as String,
+      headerAction: map['headerAction'] == null
+          ? null
+          : URLMapDefaultRouteActionWeightedBackendServiceHeaderAction.fromMap(
+              (map['headerAction'] as Map).cast<String, dynamic>(),
+            ),
       weight: map['weight'] == null ? null : map['weight'] as int,
     );
   }
 }
-

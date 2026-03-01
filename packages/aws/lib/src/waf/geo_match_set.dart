@@ -163,8 +163,11 @@ import 'geo_match_set_geo_match_constraint.dart';
 class GeoMatchSet extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN)
   late final pulumi.Output<String> arn;
+
   /// The GeoMatchConstraint objects which contain the country that you want AWS WAF to search for.
-  late final pulumi.Output<List<GeoMatchSetGeoMatchConstraint>?> geoMatchConstraints;
+  late final pulumi.Output<List<GeoMatchSetGeoMatchConstraint>?>
+  geoMatchConstraints;
+
   /// The name or description of the GeoMatchSet.
   late final pulumi.Output<String> name;
 
@@ -177,13 +180,16 @@ class GeoMatchSet extends pulumi.CustomResource {
     GeoMatchSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:waf/geoMatchSet:GeoMatchSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:waf/geoMatchSet:GeoMatchSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
-    this.geoMatchConstraints = registerOutput<List<GeoMatchSetGeoMatchConstraint>?>('geoMatchConstraints');
+    this.geoMatchConstraints =
+        registerOutput<List<GeoMatchSetGeoMatchConstraint>?>(
+          'geoMatchConstraints',
+        );
     this.name = registerOutput<String>('name');
   }
 }

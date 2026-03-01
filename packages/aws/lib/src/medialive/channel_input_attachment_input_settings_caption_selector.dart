@@ -4,11 +4,13 @@ import 'channel_input_attachment_input_settings_caption_selector_selector_settin
 
 class ChannelInputAttachmentInputSettingsCaptionSelector {
   final String? languageCode;
+
   /// Name of the Channel.
   ///
   /// The following arguments are optional:
   final String name;
-  final ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings? selectorSettings;
+  final ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings?
+  selectorSettings;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelector].
   /// [languageCode] Optional.
@@ -24,16 +26,25 @@ class ChannelInputAttachmentInputSettingsCaptionSelector {
     return <String, dynamic>{
       'languageCode': ?languageCode,
       'name': name,
-      'selectorSettings': ?selectorSettings == null ? null : selectorSettings!.toMap(),
+      'selectorSettings': ?selectorSettings == null
+          ? null
+          : selectorSettings!.toMap(),
     };
   }
 
-  factory ChannelInputAttachmentInputSettingsCaptionSelector.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsCaptionSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentInputSettingsCaptionSelector(
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
+      languageCode: map['languageCode'] == null
+          ? null
+          : map['languageCode'] as String,
       name: map['name'] as String,
-      selectorSettings: map['selectorSettings'] == null ? null : ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings.fromMap((map['selectorSettings'] as Map).cast<String, dynamic>()),
+      selectorSettings: map['selectorSettings'] == null
+          ? null
+          : ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings.fromMap(
+              (map['selectorSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

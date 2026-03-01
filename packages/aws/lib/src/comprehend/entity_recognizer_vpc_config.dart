@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EntityRecognizerVpcConfig {
   /// List of security group IDs.
   final List<String> securityGroupIds;
+
   /// List of VPC subnets.
   final List<String> subnets;
 
@@ -29,4 +29,3 @@ class EntityRecognizerVpcConfig {
     );
   }
 }
-

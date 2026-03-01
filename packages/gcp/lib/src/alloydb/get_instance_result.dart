@@ -25,6 +25,7 @@ class GetInstanceResult {
   final Map<String, String> effectiveAnnotations;
   final Map<String, String> effectiveLabels;
   final String gceZone;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String instanceId;
@@ -125,10 +126,18 @@ class GetInstanceResult {
       'activationPolicy': activationPolicy,
       'annotations': annotations,
       'availabilityType': availabilityType,
-      'clientConnectionConfigs': pulumi.Input.encodeList<GetInstanceClientConnectionConfig, Map<String, dynamic>>(clientConnectionConfigs, (value) => value.toMap()),
+      'clientConnectionConfigs':
+          pulumi.Input.encodeList<
+            GetInstanceClientConnectionConfig,
+            Map<String, dynamic>
+          >(clientConnectionConfigs, (value) => value.toMap()),
       'cluster': cluster,
       'clusterId': clusterId,
-      'connectionPoolConfigs': pulumi.Input.encodeList<GetInstanceConnectionPoolConfig, Map<String, dynamic>>(connectionPoolConfigs, (value) => value.toMap()),
+      'connectionPoolConfigs':
+          pulumi.Input.encodeList<
+            GetInstanceConnectionPoolConfig,
+            Map<String, dynamic>
+          >(connectionPoolConfigs, (value) => value.toMap()),
       'createTime': createTime,
       'databaseFlags': databaseFlags,
       'displayName': displayName,
@@ -141,17 +150,41 @@ class GetInstanceResult {
       'ipAddress': ipAddress,
       'labels': labels,
       'location': ?location,
-      'machineConfigs': pulumi.Input.encodeList<GetInstanceMachineConfig, Map<String, dynamic>>(machineConfigs, (value) => value.toMap()),
+      'machineConfigs':
+          pulumi.Input.encodeList<
+            GetInstanceMachineConfig,
+            Map<String, dynamic>
+          >(machineConfigs, (value) => value.toMap()),
       'name': name,
-      'networkConfigs': pulumi.Input.encodeList<GetInstanceNetworkConfig, Map<String, dynamic>>(networkConfigs, (value) => value.toMap()),
-      'observabilityConfigs': pulumi.Input.encodeList<GetInstanceObservabilityConfig, Map<String, dynamic>>(observabilityConfigs, (value) => value.toMap()),
+      'networkConfigs':
+          pulumi.Input.encodeList<
+            GetInstanceNetworkConfig,
+            Map<String, dynamic>
+          >(networkConfigs, (value) => value.toMap()),
+      'observabilityConfigs':
+          pulumi.Input.encodeList<
+            GetInstanceObservabilityConfig,
+            Map<String, dynamic>
+          >(observabilityConfigs, (value) => value.toMap()),
       'outboundPublicIpAddresses': outboundPublicIpAddresses,
       'project': ?project,
-      'pscInstanceConfigs': pulumi.Input.encodeList<GetInstancePscInstanceConfig, Map<String, dynamic>>(pscInstanceConfigs, (value) => value.toMap()),
+      'pscInstanceConfigs':
+          pulumi.Input.encodeList<
+            GetInstancePscInstanceConfig,
+            Map<String, dynamic>
+          >(pscInstanceConfigs, (value) => value.toMap()),
       'publicIpAddress': publicIpAddress,
       'pulumiLabels': pulumiLabels,
-      'queryInsightsConfigs': pulumi.Input.encodeList<GetInstanceQueryInsightsConfig, Map<String, dynamic>>(queryInsightsConfigs, (value) => value.toMap()),
-      'readPoolConfigs': pulumi.Input.encodeList<GetInstanceReadPoolConfig, Map<String, dynamic>>(readPoolConfigs, (value) => value.toMap()),
+      'queryInsightsConfigs':
+          pulumi.Input.encodeList<
+            GetInstanceQueryInsightsConfig,
+            Map<String, dynamic>
+          >(queryInsightsConfigs, (value) => value.toMap()),
+      'readPoolConfigs':
+          pulumi.Input.encodeList<
+            GetInstanceReadPoolConfig,
+            Map<String, dynamic>
+          >(readPoolConfigs, (value) => value.toMap()),
       'reconciling': reconciling,
       'state': state,
       'uid': uid,
@@ -164,14 +197,27 @@ class GetInstanceResult {
       activationPolicy: map['activationPolicy'] as String,
       annotations: (map['annotations'] as Map).cast<String, String>(),
       availabilityType: map['availabilityType'] as String,
-      clientConnectionConfigs: pulumi.Input.decodeList<GetInstanceClientConnectionConfig>(map['clientConnectionConfigs'], (value) => GetInstanceClientConnectionConfig.fromMap((value as Map).cast<String, dynamic>())),
+      clientConnectionConfigs:
+          pulumi.Input.decodeList<GetInstanceClientConnectionConfig>(
+            map['clientConnectionConfigs'],
+            (value) => GetInstanceClientConnectionConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       cluster: map['cluster'] as String,
       clusterId: map['clusterId'] as String,
-      connectionPoolConfigs: pulumi.Input.decodeList<GetInstanceConnectionPoolConfig>(map['connectionPoolConfigs'], (value) => GetInstanceConnectionPoolConfig.fromMap((value as Map).cast<String, dynamic>())),
+      connectionPoolConfigs:
+          pulumi.Input.decodeList<GetInstanceConnectionPoolConfig>(
+            map['connectionPoolConfigs'],
+            (value) => GetInstanceConnectionPoolConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       createTime: map['createTime'] as String,
       databaseFlags: (map['databaseFlags'] as Map).cast<String, String>(),
       displayName: map['displayName'] as String,
-      effectiveAnnotations: (map['effectiveAnnotations'] as Map).cast<String, String>(),
+      effectiveAnnotations: (map['effectiveAnnotations'] as Map)
+          .cast<String, String>(),
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
       gceZone: map['gceZone'] as String,
       id: map['id'] as String,
@@ -180,17 +226,50 @@ class GetInstanceResult {
       ipAddress: map['ipAddress'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
-      machineConfigs: pulumi.Input.decodeList<GetInstanceMachineConfig>(map['machineConfigs'], (value) => GetInstanceMachineConfig.fromMap((value as Map).cast<String, dynamic>())),
+      machineConfigs: pulumi.Input.decodeList<GetInstanceMachineConfig>(
+        map['machineConfigs'],
+        (value) => GetInstanceMachineConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       name: map['name'] as String,
-      networkConfigs: pulumi.Input.decodeList<GetInstanceNetworkConfig>(map['networkConfigs'], (value) => GetInstanceNetworkConfig.fromMap((value as Map).cast<String, dynamic>())),
-      observabilityConfigs: pulumi.Input.decodeList<GetInstanceObservabilityConfig>(map['observabilityConfigs'], (value) => GetInstanceObservabilityConfig.fromMap((value as Map).cast<String, dynamic>())),
-      outboundPublicIpAddresses: (map['outboundPublicIpAddresses'] as List).cast<String>(),
+      networkConfigs: pulumi.Input.decodeList<GetInstanceNetworkConfig>(
+        map['networkConfigs'],
+        (value) => GetInstanceNetworkConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      observabilityConfigs:
+          pulumi.Input.decodeList<GetInstanceObservabilityConfig>(
+            map['observabilityConfigs'],
+            (value) => GetInstanceObservabilityConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      outboundPublicIpAddresses: (map['outboundPublicIpAddresses'] as List)
+          .cast<String>(),
       project: map['project'] == null ? null : map['project'] as String,
-      pscInstanceConfigs: pulumi.Input.decodeList<GetInstancePscInstanceConfig>(map['pscInstanceConfigs'], (value) => GetInstancePscInstanceConfig.fromMap((value as Map).cast<String, dynamic>())),
+      pscInstanceConfigs: pulumi.Input.decodeList<GetInstancePscInstanceConfig>(
+        map['pscInstanceConfigs'],
+        (value) => GetInstancePscInstanceConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       publicIpAddress: map['publicIpAddress'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      queryInsightsConfigs: pulumi.Input.decodeList<GetInstanceQueryInsightsConfig>(map['queryInsightsConfigs'], (value) => GetInstanceQueryInsightsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      readPoolConfigs: pulumi.Input.decodeList<GetInstanceReadPoolConfig>(map['readPoolConfigs'], (value) => GetInstanceReadPoolConfig.fromMap((value as Map).cast<String, dynamic>())),
+      queryInsightsConfigs:
+          pulumi.Input.decodeList<GetInstanceQueryInsightsConfig>(
+            map['queryInsightsConfigs'],
+            (value) => GetInstanceQueryInsightsConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      readPoolConfigs: pulumi.Input.decodeList<GetInstanceReadPoolConfig>(
+        map['readPoolConfigs'],
+        (value) => GetInstanceReadPoolConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       reconciling: map['reconciling'] as bool,
       state: map['state'] as String,
       uid: map['uid'] as String,
@@ -198,4 +277,3 @@ class GetInstanceResult {
     );
   }
 }
-

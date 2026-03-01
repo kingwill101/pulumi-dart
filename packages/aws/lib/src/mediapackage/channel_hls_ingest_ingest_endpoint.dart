@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChannelHlsIngestIngestEndpoint {
   /// The password
   final String? password;
+
   /// The URL
   final String? url;
+
   /// The username
   final String? username;
 
@@ -13,11 +14,7 @@ class ChannelHlsIngestIngestEndpoint {
   /// [password] The password
   /// [url] The URL
   /// [username] The username
-  ChannelHlsIngestIngestEndpoint({
-    this.password,
-    this.url,
-    this.username,
-  });
+  ChannelHlsIngestIngestEndpoint({this.password, this.url, this.username});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,4 +32,3 @@ class ChannelHlsIngestIngestEndpoint {
     );
   }
 }
-

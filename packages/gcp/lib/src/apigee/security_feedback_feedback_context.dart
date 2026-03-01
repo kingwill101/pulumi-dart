@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SecurityFeedbackFeedbackContext {
   /// The attribute the user is providing feedback about.
   /// Possible values are: `ATTRIBUTE_ENVIRONMENTS`, `ATTRIBUTE_IP_ADDRESS_RANGES`.
   final String attribute;
+
   /// The values of the attribute the user is providing feedback about, separated by commas.
   final List<String> values;
 
@@ -17,10 +17,7 @@ class SecurityFeedbackFeedbackContext {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'attribute': attribute,
-      'values': values,
-    };
+    return <String, dynamic>{'attribute': attribute, 'values': values};
   }
 
   factory SecurityFeedbackFeedbackContext.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class SecurityFeedbackFeedbackContext {
     );
   }
 }
-

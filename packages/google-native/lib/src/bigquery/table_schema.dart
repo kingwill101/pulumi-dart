@@ -9,20 +9,29 @@ class TableSchema {
 
   /// Creates a new [TableSchema].
   /// [fields] Describes the fields in a table.
-  TableSchema({
-    this.fields,
-  });
+  TableSchema({this.fields});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': ?fields == null ? null : pulumi.Input.encodeList<TableFieldSchema, Map<String, dynamic>>(fields!, (value) => value.toMap()),
+      'fields': ?fields == null
+          ? null
+          : pulumi.Input.encodeList<TableFieldSchema, Map<String, dynamic>>(
+              fields!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory TableSchema.fromMap(Map<String, dynamic> map) {
     return TableSchema(
-      fields: map['fields'] == null ? null : pulumi.Input.decodeList<TableFieldSchema>(map['fields'], (value) => TableFieldSchema.fromMap((value as Map).cast<String, dynamic>())),
+      fields: map['fields'] == null
+          ? null
+          : pulumi.Input.decodeList<TableFieldSchema>(
+              map['fields'],
+              (value) => TableFieldSchema.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

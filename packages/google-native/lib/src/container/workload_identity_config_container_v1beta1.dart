@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 class WorkloadIdentityConfigContainerV1beta1 {
   /// IAM Identity Namespace to attach all Kubernetes Service Accounts to.
   final String? identityNamespace;
+
   /// identity provider is the third party identity provider.
   final String? identityProvider;
+
   /// The workload pool to attach all Kubernetes service accounts to.
   final String? workloadPool;
 
@@ -28,12 +29,19 @@ class WorkloadIdentityConfigContainerV1beta1 {
     };
   }
 
-  factory WorkloadIdentityConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WorkloadIdentityConfigContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkloadIdentityConfigContainerV1beta1(
-      identityNamespace: map['identityNamespace'] == null ? null : map['identityNamespace'] as String,
-      identityProvider: map['identityProvider'] == null ? null : map['identityProvider'] as String,
-      workloadPool: map['workloadPool'] == null ? null : map['workloadPool'] as String,
+      identityNamespace: map['identityNamespace'] == null
+          ? null
+          : map['identityNamespace'] as String,
+      identityProvider: map['identityProvider'] == null
+          ? null
+          : map['identityProvider'] as String,
+      workloadPool: map['workloadPool'] == null
+          ? null
+          : map['workloadPool'] as String,
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
 class GoogleCloudRunV2ExecutionReferenceResponse {
   /// Creation timestamp of the execution.
   final String completionTime;
+
   /// Creation timestamp of the execution.
   final String createTime;
+
   /// Name of the execution.
   final String name;
 
@@ -28,7 +29,9 @@ class GoogleCloudRunV2ExecutionReferenceResponse {
     };
   }
 
-  factory GoogleCloudRunV2ExecutionReferenceResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRunV2ExecutionReferenceResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRunV2ExecutionReferenceResponse(
       completionTime: map['completionTime'] as String,
       createTime: map['createTime'] as String,
@@ -36,4 +39,3 @@ class GoogleCloudRunV2ExecutionReferenceResponse {
     );
   }
 }
-

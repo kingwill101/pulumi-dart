@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies {
   /// List of item names, such as cookies, headers, or query strings.
   final List<String>? items;
@@ -12,15 +11,16 @@ class CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'items': ?items,
-    };
+    return <String, dynamic>{'items': ?items};
   }
 
-  factory CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies.fromMap(Map<String, dynamic> map) {
+  factory CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfigCookies(
-      items: map['items'] == null ? null : (map['items'] as List).cast<String>(),
+      items: map['items'] == null
+          ? null
+          : (map['items'] as List).cast<String>(),
     );
   }
 }
-

@@ -1,14 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getExport.
 class GetExportResult {
   /// ARN of stack that contains the exported output name and value.
   final String exportingStackId;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
   final String region;
+
   /// Value from Cloudformation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
   final String value;
 
@@ -46,4 +47,3 @@ class GetExportResult {
     );
   }
 }
-

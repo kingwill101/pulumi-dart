@@ -7,6 +7,7 @@ class CxIntentTrainingPhrase {
   /// (Output)
   /// The unique identifier of the training phrase.
   final String? id;
+
   /// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
   /// Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
   /// Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
@@ -16,6 +17,7 @@ class CxIntentTrainingPhrase {
   /// Part.text is set to a part of the phrase that you want to annotate, and the parameterId field is set.
   /// Structure is documented below.
   final List<CxIntentTrainingPhrasePart> parts;
+
   /// Indicates how many times this example was added to the intent.
   final int? repeatCount;
 
@@ -23,16 +25,16 @@ class CxIntentTrainingPhrase {
   /// [id] (Output)
   /// [parts] The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
   /// [repeatCount] Indicates how many times this example was added to the intent.
-  CxIntentTrainingPhrase({
-    this.id,
-    required this.parts,
-    this.repeatCount,
-  });
+  CxIntentTrainingPhrase({this.id, required this.parts, this.repeatCount});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'parts': pulumi.Input.encodeList<CxIntentTrainingPhrasePart, Map<String, dynamic>>(parts, (value) => value.toMap()),
+      'parts':
+          pulumi.Input.encodeList<
+            CxIntentTrainingPhrasePart,
+            Map<String, dynamic>
+          >(parts, (value) => value.toMap()),
       'repeatCount': ?repeatCount,
     };
   }
@@ -40,9 +42,15 @@ class CxIntentTrainingPhrase {
   factory CxIntentTrainingPhrase.fromMap(Map<String, dynamic> map) {
     return CxIntentTrainingPhrase(
       id: map['id'] == null ? null : map['id'] as String,
-      parts: pulumi.Input.decodeList<CxIntentTrainingPhrasePart>(map['parts'], (value) => CxIntentTrainingPhrasePart.fromMap((value as Map).cast<String, dynamic>())),
-      repeatCount: map['repeatCount'] == null ? null : map['repeatCount'] as int,
+      parts: pulumi.Input.decodeList<CxIntentTrainingPhrasePart>(
+        map['parts'],
+        (value) => CxIntentTrainingPhrasePart.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      repeatCount: map['repeatCount'] == null
+          ? null
+          : map['repeatCount'] as int,
     );
   }
 }
-

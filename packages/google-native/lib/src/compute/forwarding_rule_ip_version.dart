@@ -16,4 +16,3 @@ enum ForwardingRuleIpVersion {
     throw ArgumentError('Unknown ForwardingRuleIpVersion value: $value');
   }
 }
-

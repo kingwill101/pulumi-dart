@@ -8,10 +8,14 @@ import 'get_authority_config_x509_config_key_usage_unknown_extended_key_usage.da
 class GetAuthorityConfigX509ConfigKeyUsage {
   /// Describes high-level ways in which a key may be used.
   final List<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage> baseKeyUsages;
+
   /// Describes high-level ways in which a key may be used.
-  final List<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage> extendedKeyUsages;
+  final List<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage>
+  extendedKeyUsages;
+
   /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-  final List<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
+  final List<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage>
+  unknownExtendedKeyUsages;
 
   /// Creates a new [GetAuthorityConfigX509ConfigKeyUsage].
   /// [baseKeyUsages] Describes high-level ways in which a key may be used.
@@ -25,18 +29,57 @@ class GetAuthorityConfigX509ConfigKeyUsage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'baseKeyUsages': pulumi.Input.encodeList<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage, Map<String, dynamic>>(baseKeyUsages, (value) => value.toMap()),
-      'extendedKeyUsages': pulumi.Input.encodeList<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage, Map<String, dynamic>>(extendedKeyUsages, (value) => value.toMap()),
-      'unknownExtendedKeyUsages': pulumi.Input.encodeList<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage, Map<String, dynamic>>(unknownExtendedKeyUsages, (value) => value.toMap()),
+      'baseKeyUsages':
+          pulumi.Input.encodeList<
+            GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage,
+            Map<String, dynamic>
+          >(baseKeyUsages, (value) => value.toMap()),
+      'extendedKeyUsages':
+          pulumi.Input.encodeList<
+            GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage,
+            Map<String, dynamic>
+          >(extendedKeyUsages, (value) => value.toMap()),
+      'unknownExtendedKeyUsages':
+          pulumi.Input.encodeList<
+            GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage,
+            Map<String, dynamic>
+          >(unknownExtendedKeyUsages, (value) => value.toMap()),
     };
   }
 
-  factory GetAuthorityConfigX509ConfigKeyUsage.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorityConfigX509ConfigKeyUsage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorityConfigX509ConfigKeyUsage(
-      baseKeyUsages: pulumi.Input.decodeList<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage>(map['baseKeyUsages'], (value) => GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage.fromMap((value as Map).cast<String, dynamic>())),
-      extendedKeyUsages: pulumi.Input.decodeList<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage>(map['extendedKeyUsages'], (value) => GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>())),
-      unknownExtendedKeyUsages: pulumi.Input.decodeList<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage>(map['unknownExtendedKeyUsages'], (value) => GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage.fromMap((value as Map).cast<String, dynamic>())),
+      baseKeyUsages:
+          pulumi.Input.decodeList<
+            GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage
+          >(
+            map['baseKeyUsages'],
+            (value) => GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      extendedKeyUsages:
+          pulumi.Input.decodeList<
+            GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage
+          >(
+            map['extendedKeyUsages'],
+            (value) =>
+                GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      unknownExtendedKeyUsages:
+          pulumi.Input.decodeList<
+            GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage
+          >(
+            map['unknownExtendedKeyUsages'],
+            (value) =>
+                GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

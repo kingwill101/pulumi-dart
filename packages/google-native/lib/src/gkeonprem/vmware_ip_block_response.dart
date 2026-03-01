@@ -7,8 +7,10 @@ import 'vmware_host_ip_response.dart';
 class VmwareIpBlockResponse {
   /// The network gateway used by the VMware user cluster.
   final String gateway;
+
   /// The node's network configurations used by the VMware user cluster.
   final List<VmwareHostIpResponse> ips;
+
   /// The netmask used by the VMware user cluster.
   final String netmask;
 
@@ -25,7 +27,11 @@ class VmwareIpBlockResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'gateway': gateway,
-      'ips': pulumi.Input.encodeList<VmwareHostIpResponse, Map<String, dynamic>>(ips, (value) => value.toMap()),
+      'ips':
+          pulumi.Input.encodeList<VmwareHostIpResponse, Map<String, dynamic>>(
+            ips,
+            (value) => value.toMap(),
+          ),
       'netmask': netmask,
     };
   }
@@ -33,9 +39,13 @@ class VmwareIpBlockResponse {
   factory VmwareIpBlockResponse.fromMap(Map<String, dynamic> map) {
     return VmwareIpBlockResponse(
       gateway: map['gateway'] as String,
-      ips: pulumi.Input.decodeList<VmwareHostIpResponse>(map['ips'], (value) => VmwareHostIpResponse.fromMap((value as Map).cast<String, dynamic>())),
+      ips: pulumi.Input.decodeList<VmwareHostIpResponse>(
+        map['ips'],
+        (value) => VmwareHostIpResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       netmask: map['netmask'] as String,
     );
   }
 }
-

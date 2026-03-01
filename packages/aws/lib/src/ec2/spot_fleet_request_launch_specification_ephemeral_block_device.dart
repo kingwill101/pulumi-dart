@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SpotFleetRequestLaunchSpecificationEphemeralBlockDevice {
   final String deviceName;
   final String virtualName;
@@ -20,11 +19,12 @@ class SpotFleetRequestLaunchSpecificationEphemeralBlockDevice {
     };
   }
 
-  factory SpotFleetRequestLaunchSpecificationEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
+  factory SpotFleetRequestLaunchSpecificationEphemeralBlockDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpotFleetRequestLaunchSpecificationEphemeralBlockDevice(
       deviceName: map['deviceName'] as String,
       virtualName: map['virtualName'] as String,
     );
   }
 }
-

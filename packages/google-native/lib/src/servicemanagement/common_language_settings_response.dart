@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Required information for every language.
 class CommonLanguageSettingsResponse {
   /// The destination where API teams want this client library to be published.
   final List<String> destinations;
+
   /// Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
   final String referenceDocsUri;
 
@@ -30,4 +30,3 @@ class CommonLanguageSettingsResponse {
     );
   }
 }
-

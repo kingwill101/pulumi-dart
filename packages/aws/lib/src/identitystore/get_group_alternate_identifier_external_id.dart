@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetGroupAlternateIdentifierExternalId {
   /// The identifier issued to this resource by an external identity provider.
   final String id;
+
   /// The issuer for an external identifier.
   final String issuer;
 
@@ -16,17 +16,15 @@ class GetGroupAlternateIdentifierExternalId {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'issuer': issuer,
-    };
+    return <String, dynamic>{'id': id, 'issuer': issuer};
   }
 
-  factory GetGroupAlternateIdentifierExternalId.fromMap(Map<String, dynamic> map) {
+  factory GetGroupAlternateIdentifierExternalId.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupAlternateIdentifierExternalId(
       id: map['id'] as String,
       issuer: map['issuer'] as String,
     );
   }
 }
-

@@ -12,20 +12,17 @@ class WorkloadIdentityPoolProviderX509 {
 
   /// Creates a new [WorkloadIdentityPoolProviderX509].
   /// [trustStore] A Trust store, use this trust store as a wrapper to config the trust
-  WorkloadIdentityPoolProviderX509({
-    required this.trustStore,
-  });
+  WorkloadIdentityPoolProviderX509({required this.trustStore});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'trustStore': trustStore.toMap(),
-    };
+    return <String, dynamic>{'trustStore': trustStore.toMap()};
   }
 
   factory WorkloadIdentityPoolProviderX509.fromMap(Map<String, dynamic> map) {
     return WorkloadIdentityPoolProviderX509(
-      trustStore: WorkloadIdentityPoolProviderX509TrustStore.fromMap((map['trustStore'] as Map).cast<String, dynamic>()),
+      trustStore: WorkloadIdentityPoolProviderX509TrustStore.fromMap(
+        (map['trustStore'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

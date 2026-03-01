@@ -6,7 +6,8 @@ import 'stream_source_config_sql_server_source_config_exclude_objects_schema.dar
 class StreamSourceConfigSqlServerSourceConfigExcludeObjects {
   /// Spanner schemas in the database
   /// Structure is documented below.
-  final List<StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema> schemas;
+  final List<StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema>
+  schemas;
 
   /// Creates a new [StreamSourceConfigSqlServerSourceConfigExcludeObjects].
   /// [schemas] Spanner schemas in the database
@@ -16,14 +17,28 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjects {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'schemas': pulumi.Input.encodeList<StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema, Map<String, dynamic>>(schemas, (value) => value.toMap()),
+      'schemas':
+          pulumi.Input.encodeList<
+            StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema,
+            Map<String, dynamic>
+          >(schemas, (value) => value.toMap()),
     };
   }
 
-  factory StreamSourceConfigSqlServerSourceConfigExcludeObjects.fromMap(Map<String, dynamic> map) {
+  factory StreamSourceConfigSqlServerSourceConfigExcludeObjects.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamSourceConfigSqlServerSourceConfigExcludeObjects(
-      schemas: pulumi.Input.decodeList<StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema>(map['schemas'], (value) => StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema.fromMap((value as Map).cast<String, dynamic>())),
+      schemas:
+          pulumi.Input.decodeList<
+            StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema
+          >(
+            map['schemas'],
+            (value) =>
+                StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// An HTTP header.
 class GoogleCloudApigeeV1SecurityActionHttpHeaderResponse {
   /// The header name to be sent to the target.
   final String name;
+
   /// The header value to be sent to the target.
   final String value;
 
@@ -17,17 +17,15 @@ class GoogleCloudApigeeV1SecurityActionHttpHeaderResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GoogleCloudApigeeV1SecurityActionHttpHeaderResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1SecurityActionHttpHeaderResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1SecurityActionHttpHeaderResponse(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLBIPRanges.
 class GetLBIPRangesResult {
   /// The IP ranges used for health checks when **HTTP(S), SSL proxy, TCP proxy, and Internal load balancing** is used
   final List<String> httpSslTcpInternals;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// The IP ranges used for health checks when **Network load balancing** is used
   final List<String> networks;
 
@@ -36,4 +37,3 @@ class GetLBIPRangesResult {
     );
   }
 }
-

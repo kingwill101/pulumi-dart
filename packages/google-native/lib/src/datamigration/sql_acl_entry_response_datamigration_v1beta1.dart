@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// An entry for an Access Control list.
 class SqlAclEntryResponseDatamigrationV1beta1 {
   /// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example: `2012-11-15T16:19:00.094Z`.
   final String expireTime;
+
   /// A label to identify this entry.
   final String label;
+
   /// Input only. The time-to-leave of this access control entry.
   final String ttl;
+
   /// The allowlisted value for the access control list.
   final String value;
 
@@ -33,7 +35,9 @@ class SqlAclEntryResponseDatamigrationV1beta1 {
     };
   }
 
-  factory SqlAclEntryResponseDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
+  factory SqlAclEntryResponseDatamigrationV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SqlAclEntryResponseDatamigrationV1beta1(
       expireTime: map['expireTime'] as String,
       label: map['label'] as String,
@@ -42,4 +46,3 @@ class SqlAclEntryResponseDatamigrationV1beta1 {
     );
   }
 }
-

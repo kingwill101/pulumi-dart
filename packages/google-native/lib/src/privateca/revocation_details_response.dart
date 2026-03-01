@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Describes fields that are relavent to the revocation of a Certificate.
 class RevocationDetailsResponse {
   /// Indicates why a Certificate was revoked.
   final String revocationState;
+
   /// The time at which this Certificate was revoked.
   final String revocationTime;
 
@@ -30,4 +30,3 @@ class RevocationDetailsResponse {
     );
   }
 }
-

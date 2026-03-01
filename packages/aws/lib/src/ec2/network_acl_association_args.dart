@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NetworkAclAssociationArgs {
   /// The ID of the network ACL.
   final pulumi.Input<String> networkAclId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the associated Subnet.
   final pulumi.Input<String> subnetId;
 
@@ -22,10 +24,9 @@ class NetworkAclAssociationArgs {
     required String networkAclId,
     String? region,
     required String subnetId,
-  }) :
-      networkAclId = pulumi.Input.asInput<String>(networkAclId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      subnetId = pulumi.Input.asInput<String>(subnetId);
+  }) : networkAclId = pulumi.Input.asInput<String>(networkAclId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       subnetId = pulumi.Input.asInput<String>(subnetId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class NetworkAclAssociationArgs {
     );
   }
 }
-

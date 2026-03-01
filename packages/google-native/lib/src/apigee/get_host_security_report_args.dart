@@ -16,9 +16,10 @@ class GetHostSecurityReportArgs {
   GetHostSecurityReportArgs({
     required String hostSecurityReportId,
     required String organizationId,
-  }) :
-      hostSecurityReportId = pulumi.Input.asInput<String>(hostSecurityReportId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : hostSecurityReportId = pulumi.Input.asInput<String>(
+         hostSecurityReportId,
+       ),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +35,3 @@ class GetHostSecurityReportArgs {
     );
   }
 }
-

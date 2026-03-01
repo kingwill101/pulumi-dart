@@ -16,9 +16,8 @@ class GetSecurityPolicyComputeV1Args {
   GetSecurityPolicyComputeV1Args({
     String? project,
     required String securityPolicy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       securityPolicy = pulumi.Input.asInput<String>(securityPolicy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetSecurityPolicyComputeV1Args {
     );
   }
 }
-

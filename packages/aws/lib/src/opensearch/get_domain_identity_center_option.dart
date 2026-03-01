@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDomainIdentityCenterOption {
   /// Boolean whether IAM Identity Center is enabled for API access.
   final bool enabledApiAccess;
+
   /// ARN of the IAM Identity Center instance to create an OpenSearch UI application that uses IAM Identity Center for authentication.
   final String identityCenterInstanceArn;
+
   /// Attribute that contains the backend role identifier (such as group name or group ID) in IAM Identity Center.
   final String rolesKey;
+
   /// Attribute that contains the subject identifier (such as username, user ID, or email) in IAM Identity Center.
   final String subjectKey;
 
@@ -41,4 +43,3 @@ class GetDomainIdentityCenterOption {
     );
   }
 }
-

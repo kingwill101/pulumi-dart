@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
 class IssuanceModes {
   /// Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
   final bool? allowConfigBasedIssuance;
+
   /// Optional. When true, allows callers to create Certificates by specifying a CSR.
   final bool? allowCsrBasedIssuance;
 
   /// Creates a new [IssuanceModes].
   /// [allowConfigBasedIssuance] Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
   /// [allowCsrBasedIssuance] Optional. When true, allows callers to create Certificates by specifying a CSR.
-  IssuanceModes({
-    this.allowConfigBasedIssuance,
-    this.allowCsrBasedIssuance,
-  });
+  IssuanceModes({this.allowConfigBasedIssuance, this.allowCsrBasedIssuance});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +22,12 @@ class IssuanceModes {
 
   factory IssuanceModes.fromMap(Map<String, dynamic> map) {
     return IssuanceModes(
-      allowConfigBasedIssuance: map['allowConfigBasedIssuance'] == null ? null : map['allowConfigBasedIssuance'] as bool,
-      allowCsrBasedIssuance: map['allowCsrBasedIssuance'] == null ? null : map['allowCsrBasedIssuance'] as bool,
+      allowConfigBasedIssuance: map['allowConfigBasedIssuance'] == null
+          ? null
+          : map['allowConfigBasedIssuance'] as bool,
+      allowCsrBasedIssuance: map['allowCsrBasedIssuance'] == null
+          ? null
+          : map['allowCsrBasedIssuance'] as bool,
     );
   }
 }
-

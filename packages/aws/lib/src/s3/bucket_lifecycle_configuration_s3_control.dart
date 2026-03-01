@@ -228,10 +228,13 @@ import 'bucket_lifecycle_configuration_s3_control_args.dart';
 class BucketLifecycleConfigurationS3Control extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block(s) containing lifecycle rules for the bucket.
-  late final pulumi.Output<List<BucketLifecycleConfigurationRuleS3Control>> rules;
+  late final pulumi.Output<List<BucketLifecycleConfigurationRuleS3Control>>
+  rules;
 
   /// Creates a new [BucketLifecycleConfigurationS3Control].
   /// [name] The Pulumi resource name.
@@ -242,13 +245,16 @@ class BucketLifecycleConfigurationS3Control extends pulumi.CustomResource {
     BucketLifecycleConfigurationS3ControlArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:s3control/bucketLifecycleConfiguration:BucketLifecycleConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucket = registerOutput<String>('bucket');
     this.region = registerOutput<String>('region');
-    this.rules = registerOutput<List<BucketLifecycleConfigurationRuleS3Control>>('rules');
+    this.rules =
+        registerOutput<List<BucketLifecycleConfigurationRuleS3Control>>(
+          'rules',
+        );
   }
 }

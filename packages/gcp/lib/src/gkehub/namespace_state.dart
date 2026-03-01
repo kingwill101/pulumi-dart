@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class NamespaceState {
   /// (Output)
   /// Code describes the state of a Namespace resource.
@@ -8,14 +7,10 @@ class NamespaceState {
 
   /// Creates a new [NamespaceState].
   /// [code] (Output)
-  NamespaceState({
-    this.code,
-  });
+  NamespaceState({this.code});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code,
-    };
+    return <String, dynamic>{'code': ?code};
   }
 
   factory NamespaceState.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class NamespaceState {
     );
   }
 }
-

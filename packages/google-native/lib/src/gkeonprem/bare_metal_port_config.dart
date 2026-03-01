@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies load balancer ports for the bare metal user cluster.
 class BareMetalPortConfig {
   /// The port that control plane hosted load balancers will listen on.
@@ -8,9 +7,7 @@ class BareMetalPortConfig {
 
   /// Creates a new [BareMetalPortConfig].
   /// [controlPlaneLoadBalancerPort] The port that control plane hosted load balancers will listen on.
-  BareMetalPortConfig({
-    this.controlPlaneLoadBalancerPort,
-  });
+  BareMetalPortConfig({this.controlPlaneLoadBalancerPort});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +17,9 @@ class BareMetalPortConfig {
 
   factory BareMetalPortConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalPortConfig(
-      controlPlaneLoadBalancerPort: map['controlPlaneLoadBalancerPort'] == null ? null : map['controlPlaneLoadBalancerPort'] as int,
+      controlPlaneLoadBalancerPort: map['controlPlaneLoadBalancerPort'] == null
+          ? null
+          : map['controlPlaneLoadBalancerPort'] as int,
     );
   }
 }
-

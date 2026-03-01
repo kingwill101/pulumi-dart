@@ -450,13 +450,16 @@ import 'access_level_condition_vpc_network_source.dart';
 class AccessLevelCondition extends pulumi.CustomResource {
   /// The name of the Access Level to add this condition to.
   late final pulumi.Output<String> accessLevel;
+
   /// The name of the Access Policy this resource belongs to.
   late final pulumi.Output<String> accessPolicyId;
+
   /// Device specific restrictions, all restrictions must hold for
   /// the Condition to be true. If not specified, all devices are
   /// allowed.
   /// Structure is documented below.
   late final pulumi.Output<AccessLevelConditionDevicePolicy?> devicePolicy;
+
   /// A list of CIDR block IP subnetwork specification. May be IPv4
   /// or IPv6.
   /// Note that for a CIDR IP address block, the specified IP address
@@ -468,6 +471,7 @@ class AccessLevelCondition extends pulumi.CustomResource {
   /// listed subnets in order for this Condition to be true.
   /// If empty, all IP addresses are allowed.
   late final pulumi.Output<List<String>?> ipSubnetworks;
+
   /// An allowed list of members (users, service accounts).
   /// Using groups is not supported yet.
   /// The signed-in user originating the request must be a part of one
@@ -476,23 +480,28 @@ class AccessLevelCondition extends pulumi.CustomResource {
   /// groups, etc.).
   /// Formats: `user:{emailid}`, `serviceAccount:{emailid}`
   late final pulumi.Output<List<String>?> members;
+
   /// Whether to negate the Condition. If true, the Condition becomes
   /// a NAND over its non-empty fields, each field must be false for
   /// the Condition overall to be satisfied. Defaults to false.
   late final pulumi.Output<bool?> negate;
+
   /// The request must originate from one of the provided
   /// countries/regions.
   /// Format: A valid ISO 3166-1 alpha-2 code.
   late final pulumi.Output<List<String>?> regions;
+
   /// A list of other access levels defined in the same Policy,
   /// referenced by resource name. Referencing an AccessLevel which
   /// does not exist is an error. All access levels listed must be
   /// granted for the Condition to be true.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
   late final pulumi.Output<List<String>?> requiredAccessLevels;
+
   /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
   /// Structure is documented below.
-  late final pulumi.Output<List<AccessLevelConditionVpcNetworkSource>?> vpcNetworkSources;
+  late final pulumi.Output<List<AccessLevelConditionVpcNetworkSource>?>
+  vpcNetworkSources;
 
   /// Creates a new [AccessLevelCondition].
   /// [name] The Pulumi resource name.
@@ -503,19 +512,26 @@ class AccessLevelCondition extends pulumi.CustomResource {
     AccessLevelConditionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.accessLevel = registerOutput<String>('accessLevel');
     this.accessPolicyId = registerOutput<String>('accessPolicyId');
-    this.devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>('devicePolicy');
+    this.devicePolicy = registerOutput<AccessLevelConditionDevicePolicy?>(
+      'devicePolicy',
+    );
     this.ipSubnetworks = registerOutput<List<String>?>('ipSubnetworks');
     this.members = registerOutput<List<String>?>('members');
     this.negate = registerOutput<bool?>('negate');
     this.regions = registerOutput<List<String>?>('regions');
-    this.requiredAccessLevels = registerOutput<List<String>?>('requiredAccessLevels');
-    this.vpcNetworkSources = registerOutput<List<AccessLevelConditionVpcNetworkSource>?>('vpcNetworkSources');
+    this.requiredAccessLevels = registerOutput<List<String>?>(
+      'requiredAccessLevels',
+    );
+    this.vpcNetworkSources =
+        registerOutput<List<AccessLevelConditionVpcNetworkSource>?>(
+          'vpcNetworkSources',
+        );
   }
 }

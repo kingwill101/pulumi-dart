@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AuthConfigDecryptedCredentialJwt {
   /// (Output)
   /// The token calculated by the header, payload and signature.
   final String? jwt;
+
   /// Identifies which algorithm is used to generate the signature.
   final String? jwtHeader;
+
   /// Contains a set of claims. The JWT specification defines seven Registered Claim Names which are the standard fields commonly included in tokens. Custom claims are usually also included, depending on the purpose of the token.
   final String? jwtPayload;
+
   /// User's pre-shared secret to sign the token.
   final String? secret;
 
@@ -37,9 +39,10 @@ class AuthConfigDecryptedCredentialJwt {
     return AuthConfigDecryptedCredentialJwt(
       jwt: map['jwt'] == null ? null : map['jwt'] as String,
       jwtHeader: map['jwtHeader'] == null ? null : map['jwtHeader'] as String,
-      jwtPayload: map['jwtPayload'] == null ? null : map['jwtPayload'] as String,
+      jwtPayload: map['jwtPayload'] == null
+          ? null
+          : map['jwtPayload'] as String,
       secret: map['secret'] == null ? null : map['secret'] as String,
     );
   }
 }
-

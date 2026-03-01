@@ -1,26 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The number of spokes of a given type that are associated with a specific hub. The type indicates what kind of resource is associated with the spoke.
 class SpokeTypeCountResponse {
   /// The total number of spokes of this type that are associated with the hub.
   final String count;
+
   /// The type of the spokes.
   final String spokeType;
 
   /// Creates a new [SpokeTypeCountResponse].
   /// [count] The total number of spokes of this type that are associated with the hub.
   /// [spokeType] The type of the spokes.
-  SpokeTypeCountResponse({
-    required this.count,
-    required this.spokeType,
-  });
+  SpokeTypeCountResponse({required this.count, required this.spokeType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-      'spokeType': spokeType,
-    };
+    return <String, dynamic>{'count': count, 'spokeType': spokeType};
   }
 
   factory SpokeTypeCountResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +24,3 @@ class SpokeTypeCountResponse {
     );
   }
 }
-

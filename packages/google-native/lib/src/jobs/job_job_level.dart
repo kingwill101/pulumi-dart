@@ -19,4 +19,3 @@ enum JobJobLevel {
     throw ArgumentError('Unknown JobJobLevel value: $value');
   }
 }
-

@@ -11,15 +11,11 @@ class GetBillingAccountArgs {
 
   /// Creates a new [GetBillingAccountArgs].
   /// [billingAccountId] Required.
-  GetBillingAccountArgs({
-    required String billingAccountId,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId);
+  GetBillingAccountArgs({required String billingAccountId})
+    : billingAccountId = pulumi.Input.asInput<String>(billingAccountId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'billingAccountId': billingAccountId,
-    };
+    return <String, dynamic>{'billingAccountId': billingAccountId};
   }
 
   factory GetBillingAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -28,4 +24,3 @@ class GetBillingAccountArgs {
     );
   }
 }
-

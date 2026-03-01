@@ -14,7 +14,8 @@ enum AuditLogConfigLogTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuditLogConfigLogTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown AuditLogConfigLogTypeComputeBeta value: $value',
+    );
   }
 }
-

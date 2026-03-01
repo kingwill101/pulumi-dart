@@ -21,4 +21,3 @@ enum RegionHealthCheckType {
     throw ArgumentError('Unknown RegionHealthCheckType value: $value');
   }
 }
-

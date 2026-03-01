@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RulesetSourceFile {
   /// Textual Content.
   final String content;
+
   /// Fingerprint (e.g. github sha) associated with the `File`.
   final String? fingerprint;
+
   /// File name.
   final String name;
 
@@ -30,9 +31,10 @@ class RulesetSourceFile {
   factory RulesetSourceFile.fromMap(Map<String, dynamic> map) {
     return RulesetSourceFile(
       content: map['content'] as String,
-      fingerprint: map['fingerprint'] == null ? null : map['fingerprint'] as String,
+      fingerprint: map['fingerprint'] == null
+          ? null
+          : map['fingerprint'] as String,
       name: map['name'] as String,
     );
   }
 }
-

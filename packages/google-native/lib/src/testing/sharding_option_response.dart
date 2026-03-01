@@ -8,8 +8,10 @@ import 'uniform_sharding_response.dart';
 class ShardingOptionResponse {
   /// Shards test cases into the specified groups of packages, classes, and/or methods.
   final ManualShardingResponse manualSharding;
+
   /// Shards test based on previous test case timing records.
   final SmartShardingResponse smartSharding;
+
   /// Uniformly shards test cases given a total number of shards.
   final UniformShardingResponse uniformSharding;
 
@@ -33,10 +35,15 @@ class ShardingOptionResponse {
 
   factory ShardingOptionResponse.fromMap(Map<String, dynamic> map) {
     return ShardingOptionResponse(
-      manualSharding: ManualShardingResponse.fromMap((map['manualSharding'] as Map).cast<String, dynamic>()),
-      smartSharding: SmartShardingResponse.fromMap((map['smartSharding'] as Map).cast<String, dynamic>()),
-      uniformSharding: UniformShardingResponse.fromMap((map['uniformSharding'] as Map).cast<String, dynamic>()),
+      manualSharding: ManualShardingResponse.fromMap(
+        (map['manualSharding'] as Map).cast<String, dynamic>(),
+      ),
+      smartSharding: SmartShardingResponse.fromMap(
+        (map['smartSharding'] as Map).cast<String, dynamic>(),
+      ),
+      uniformSharding: UniformShardingResponse.fromMap(
+        (map['uniformSharding'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetEndpointMysqlSetting {
   final String afterConnectScript;
   final String authenticationMethod;
@@ -56,7 +55,8 @@ class GetEndpointMysqlSetting {
     return GetEndpointMysqlSetting(
       afterConnectScript: map['afterConnectScript'] as String,
       authenticationMethod: map['authenticationMethod'] as String,
-      cleanSourceMetadataOnMismatch: map['cleanSourceMetadataOnMismatch'] as bool,
+      cleanSourceMetadataOnMismatch:
+          map['cleanSourceMetadataOnMismatch'] as bool,
       eventsPollInterval: map['eventsPollInterval'] as int,
       executeTimeout: map['executeTimeout'] as int,
       maxFileSize: map['maxFileSize'] as int,
@@ -67,4 +67,3 @@ class GetEndpointMysqlSetting {
     );
   }
 }
-

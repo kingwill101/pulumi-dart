@@ -11,12 +11,16 @@ class GeofenceCollectionArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> collectionName;
+
   /// The optional description for the geofence collection.
   final pulumi.Input<String>? description;
+
   /// A key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
   final pulumi.Input<String>? kmsKeyId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value tags for the geofence collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -32,12 +36,11 @@ class GeofenceCollectionArgs {
     String? kmsKeyId,
     String? region,
     Map<String, String>? tags,
-  }) :
-      collectionName = pulumi.Input.asInput<String>(collectionName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : collectionName = pulumi.Input.asInput<String>(collectionName),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       kmsKeyId = pulumi.Input.asOptionalInput<String>(kmsKeyId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +55,14 @@ class GeofenceCollectionArgs {
   factory GeofenceCollectionArgs.fromMap(Map<String, dynamic> map) {
     return GeofenceCollectionArgs(
       collectionName: map['collectionName'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       kmsKeyId: map['kmsKeyId'] == null ? null : map['kmsKeyId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

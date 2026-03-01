@@ -16,9 +16,8 @@ class GetOrganizationBigQueryExportArgs {
   GetOrganizationBigQueryExportArgs({
     required String bigQueryExportId,
     required String organizationId,
-  }) :
-      bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : bigQueryExportId = pulumi.Input.asInput<String>(bigQueryExportId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetOrganizationBigQueryExportArgs {
     );
   }
 }
-

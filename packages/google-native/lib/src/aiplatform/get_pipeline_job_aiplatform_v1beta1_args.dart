@@ -19,10 +19,9 @@ class GetPipelineJobAiplatformV1beta1Args {
     required String location,
     required String pipelineJobId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      pipelineJobId = pulumi.Input.asInput<String>(pipelineJobId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       pipelineJobId = pulumi.Input.asInput<String>(pipelineJobId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetPipelineJobAiplatformV1beta1Args {
     };
   }
 
-  factory GetPipelineJobAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetPipelineJobAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPipelineJobAiplatformV1beta1Args(
       location: map['location'] as String,
       pipelineJobId: map['pipelineJobId'] as String,
@@ -40,4 +41,3 @@ class GetPipelineJobAiplatformV1beta1Args {
     );
   }
 }
-

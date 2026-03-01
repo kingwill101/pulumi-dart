@@ -13,11 +13,8 @@ class GetTargetSslProxyArgs {
   /// Creates a new [GetTargetSslProxyArgs].
   /// [project] Optional.
   /// [targetSslProxy] Required.
-  GetTargetSslProxyArgs({
-    String? project,
-    required String targetSslProxy,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetTargetSslProxyArgs({String? project, required String targetSslProxy})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       targetSslProxy = pulumi.Input.asInput<String>(targetSslProxy);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetTargetSslProxyArgs {
     );
   }
 }
-

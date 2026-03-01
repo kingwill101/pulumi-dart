@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 class OneTimeSchedule {
   /// The desired patch job execution time.
@@ -8,20 +7,13 @@ class OneTimeSchedule {
 
   /// Creates a new [OneTimeSchedule].
   /// [executeTime] The desired patch job execution time.
-  OneTimeSchedule({
-    required this.executeTime,
-  });
+  OneTimeSchedule({required this.executeTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'executeTime': executeTime,
-    };
+    return <String, dynamic>{'executeTime': executeTime};
   }
 
   factory OneTimeSchedule.fromMap(Map<String, dynamic> map) {
-    return OneTimeSchedule(
-      executeTime: map['executeTime'] as String,
-    );
+    return OneTimeSchedule(executeTime: map['executeTime'] as String);
   }
 }
-

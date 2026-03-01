@@ -8,10 +8,13 @@ import 'zip_info.dart';
 class DeploymentType {
   /// Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
   final CloudBuildOptions? cloudBuildOptions;
+
   /// The Docker image for the container that runs the version. Only applicable for instances running in the App Engine flexible environment.
   final ContainerInfo? container;
+
   /// Manifest of the files stored in Google Cloud Storage that are included as part of this version. All files must be readable using the credentials supplied with this call.
   final Map<String, String>? files;
+
   /// The zip file for this deployment, if this is a zip deployment.
   final ZipInfo? zip;
 
@@ -29,7 +32,9 @@ class DeploymentType {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudBuildOptions': ?cloudBuildOptions == null ? null : cloudBuildOptions!.toMap(),
+      'cloudBuildOptions': ?cloudBuildOptions == null
+          ? null
+          : cloudBuildOptions!.toMap(),
       'container': ?container == null ? null : container!.toMap(),
       'files': ?files,
       'zip': ?zip == null ? null : zip!.toMap(),
@@ -38,11 +43,22 @@ class DeploymentType {
 
   factory DeploymentType.fromMap(Map<String, dynamic> map) {
     return DeploymentType(
-      cloudBuildOptions: map['cloudBuildOptions'] == null ? null : CloudBuildOptions.fromMap((map['cloudBuildOptions'] as Map).cast<String, dynamic>()),
-      container: map['container'] == null ? null : ContainerInfo.fromMap((map['container'] as Map).cast<String, dynamic>()),
-      files: map['files'] == null ? null : (map['files'] as Map).cast<String, String>(),
-      zip: map['zip'] == null ? null : ZipInfo.fromMap((map['zip'] as Map).cast<String, dynamic>()),
+      cloudBuildOptions: map['cloudBuildOptions'] == null
+          ? null
+          : CloudBuildOptions.fromMap(
+              (map['cloudBuildOptions'] as Map).cast<String, dynamic>(),
+            ),
+      container: map['container'] == null
+          ? null
+          : ContainerInfo.fromMap(
+              (map['container'] as Map).cast<String, dynamic>(),
+            ),
+      files: map['files'] == null
+          ? null
+          : (map['files'] as Map).cast<String, String>(),
+      zip: map['zip'] == null
+          ? null
+          : ZipInfo.fromMap((map['zip'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

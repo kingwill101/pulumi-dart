@@ -7,6 +7,7 @@ import 'google_cloud_identitytoolkit_admin_v2_allowlist_only_response.dart';
 class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse {
   /// A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
   final GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse allowByDefault;
+
   /// A policy of only allowing regions by explicitly adding them to an allowlist.
   final GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse allowlistOnly;
 
@@ -25,11 +26,18 @@ class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse(
-      allowByDefault: GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse.fromMap((map['allowByDefault'] as Map).cast<String, dynamic>()),
-      allowlistOnly: GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse.fromMap((map['allowlistOnly'] as Map).cast<String, dynamic>()),
+      allowByDefault:
+          GoogleCloudIdentitytoolkitAdminV2AllowByDefaultResponse.fromMap(
+            (map['allowByDefault'] as Map).cast<String, dynamic>(),
+          ),
+      allowlistOnly:
+          GoogleCloudIdentitytoolkitAdminV2AllowlistOnlyResponse.fromMap(
+            (map['allowlistOnly'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

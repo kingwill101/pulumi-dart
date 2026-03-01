@@ -6,10 +6,13 @@ import 'storage_source_source_fetcher.dart';
 class StorageSource {
   /// Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   final String? bucket;
+
   /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
   final String? generation;
+
   /// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
   final String? object;
+
   /// Optional. Option to specify the tool to fetch the source file for the build.
   final StorageSourceSourceFetcher? sourceFetcher;
 
@@ -37,10 +40,15 @@ class StorageSource {
   factory StorageSource.fromMap(Map<String, dynamic> map) {
     return StorageSource(
       bucket: map['bucket'] == null ? null : map['bucket'] as String,
-      generation: map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null
+          ? null
+          : map['generation'] as String,
       object: map['object'] == null ? null : map['object'] as String,
-      sourceFetcher: map['sourceFetcher'] == null ? null : StorageSourceSourceFetcher.fromValue(map['sourceFetcher'] as String),
+      sourceFetcher: map['sourceFetcher'] == null
+          ? null
+          : StorageSourceSourceFetcher.fromValue(
+              map['sourceFetcher'] as String,
+            ),
     );
   }
 }
-

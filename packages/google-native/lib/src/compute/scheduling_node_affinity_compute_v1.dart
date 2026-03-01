@@ -6,8 +6,10 @@ import 'scheduling_node_affinity_operator_compute_v1.dart';
 class SchedulingNodeAffinityComputeV1 {
   /// Corresponds to the label key of Node resource.
   final String? key;
+
   /// Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
   final SchedulingNodeAffinityOperatorComputeV1? operator;
+
   /// Corresponds to the label values of Node resource.
   final List<String>? values;
 
@@ -15,11 +17,7 @@ class SchedulingNodeAffinityComputeV1 {
   /// [key] Corresponds to the label key of Node resource.
   /// [operator] Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
   /// [values] Corresponds to the label values of Node resource.
-  SchedulingNodeAffinityComputeV1({
-    this.key,
-    this.operator,
-    this.values,
-  });
+  SchedulingNodeAffinityComputeV1({this.key, this.operator, this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,9 +30,14 @@ class SchedulingNodeAffinityComputeV1 {
   factory SchedulingNodeAffinityComputeV1.fromMap(Map<String, dynamic> map) {
     return SchedulingNodeAffinityComputeV1(
       key: map['key'] == null ? null : map['key'] as String,
-      operator: map['operator'] == null ? null : SchedulingNodeAffinityOperatorComputeV1.fromValue(map['operator'] as String),
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      operator: map['operator'] == null
+          ? null
+          : SchedulingNodeAffinityOperatorComputeV1.fromValue(
+              map['operator'] as String,
+            ),
+      values: map['values'] == null
+          ? null
+          : (map['values'] as List).cast<String>(),
     );
   }
 }
-

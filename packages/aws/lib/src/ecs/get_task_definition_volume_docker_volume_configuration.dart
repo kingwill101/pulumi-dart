@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTaskDefinitionVolumeDockerVolumeConfiguration {
   /// If this value is `true`, the Docker volume is created if it does not already exist. *Note*: This field is only used if the scope is `shared`.
   final bool autoprovision;
+
   /// Docker volume driver to use. The driver value must match the driver name provided by Docker because it is used for task placement.
   final String driver;
+
   /// Map of Docker driver specific options.
   final Map<String, String> driverOpts;
+
   /// Map of custom metadata to add to your Docker volume.
   final Map<String, String> labels;
+
   /// Scope for the Docker volume, which determines its lifecycle, either `task` or `shared`.  Docker volumes that are scoped to a `task` are automatically provisioned when the task starts and destroyed when the task stops. Docker volumes that are scoped as `shared` persist after the task stops.
   final String scope;
 
@@ -37,7 +40,9 @@ class GetTaskDefinitionVolumeDockerVolumeConfiguration {
     };
   }
 
-  factory GetTaskDefinitionVolumeDockerVolumeConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetTaskDefinitionVolumeDockerVolumeConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTaskDefinitionVolumeDockerVolumeConfiguration(
       autoprovision: map['autoprovision'] as bool,
       driver: map['driver'] as String,
@@ -47,4 +52,3 @@ class GetTaskDefinitionVolumeDockerVolumeConfiguration {
     );
   }
 }
-

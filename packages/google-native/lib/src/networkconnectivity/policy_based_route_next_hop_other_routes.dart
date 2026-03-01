@@ -12,7 +12,8 @@ enum PolicyBasedRouteNextHopOtherRoutes {
         return item;
       }
     }
-    throw ArgumentError('Unknown PolicyBasedRouteNextHopOtherRoutes value: $value');
+    throw ArgumentError(
+      'Unknown PolicyBasedRouteNextHopOtherRoutes value: $value',
+    );
   }
 }
-

@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetServerlessLifecyclePolicyArgs {
   /// Name of the policy
   final pulumi.Input<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Type of lifecycle policy. Must be `retention`.
   final pulumi.Input<String> type;
 
@@ -22,17 +24,12 @@ class GetServerlessLifecyclePolicyArgs {
     required String name,
     String? region,
     required String type,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      type = pulumi.Input.asInput<String>(type);
+  }) : name = pulumi.Input.asInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       type = pulumi.Input.asInput<String>(type);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'region': ?region,
-      'type': type,
-    };
+    return <String, dynamic>{'name': name, 'region': ?region, 'type': type};
   }
 
   factory GetServerlessLifecyclePolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -43,4 +40,3 @@ class GetServerlessLifecyclePolicyArgs {
     );
   }
 }
-

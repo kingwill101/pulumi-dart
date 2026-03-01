@@ -4,7 +4,8 @@ import 'allocation_aggregate_reservation_reserved_resource_info_accelerator_comp
 
 class AllocationAggregateReservationReservedResourceInfoComputeBeta {
   /// Properties of accelerator resources in this reservation.
-  final AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta? accelerator;
+  final AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta?
+  accelerator;
 
   /// Creates a new [AllocationAggregateReservationReservedResourceInfoComputeBeta].
   /// [accelerator] Properties of accelerator resources in this reservation.
@@ -18,10 +19,15 @@ class AllocationAggregateReservationReservedResourceInfoComputeBeta {
     };
   }
 
-  factory AllocationAggregateReservationReservedResourceInfoComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory AllocationAggregateReservationReservedResourceInfoComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AllocationAggregateReservationReservedResourceInfoComputeBeta(
-      accelerator: map['accelerator'] == null ? null : AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta.fromMap((map['accelerator'] as Map).cast<String, dynamic>()),
+      accelerator: map['accelerator'] == null
+          ? null
+          : AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta.fromMap(
+              (map['accelerator'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

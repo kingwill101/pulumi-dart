@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for a service.
 class ServiceConfig {
   /// Optional. Domain name of the service. Example: console.cloud.google
@@ -8,14 +7,10 @@ class ServiceConfig {
 
   /// Creates a new [ServiceConfig].
   /// [domain] Optional. Domain name of the service. Example: console.cloud.google
-  ServiceConfig({
-    this.domain,
-  });
+  ServiceConfig({this.domain});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'domain': ?domain,
-    };
+    return <String, dynamic>{'domain': ?domain};
   }
 
   factory ServiceConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ServiceConfig {
     );
   }
 }
-

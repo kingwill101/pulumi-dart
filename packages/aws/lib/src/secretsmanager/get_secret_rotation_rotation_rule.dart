@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetSecretRotationRotationRule {
   /// Number of days between automatic scheduled rotations of the secret.
   final int automaticallyAfterDays;
+
   /// Length of the rotation window in hours.
   final String duration;
+
   /// A `cron()` or `rate()` expression that defines the schedule for rotating the secret.
   final String scheduleExpression;
 
@@ -35,4 +36,3 @@ class GetSecretRotationRotationRule {
     );
   }
 }
-

@@ -6,10 +6,13 @@ import 'prevention_inspect_template_inspect_config_rule_set_rule_hotword_rule.da
 class PreventionInspectTemplateInspectConfigRuleSetRule {
   /// The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
   /// Structure is documented below.
-  final PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule? exclusionRule;
+  final PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule?
+  exclusionRule;
+
   /// Hotword-based detection rule.
   /// Structure is documented below.
-  final PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule? hotwordRule;
+  final PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule?
+  hotwordRule;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRule].
   /// [exclusionRule] The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
@@ -26,11 +29,20 @@ class PreventionInspectTemplateInspectConfigRuleSetRule {
     };
   }
 
-  factory PreventionInspectTemplateInspectConfigRuleSetRule.fromMap(Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigRuleSetRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionInspectTemplateInspectConfigRuleSetRule(
-      exclusionRule: map['exclusionRule'] == null ? null : PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule.fromMap((map['exclusionRule'] as Map).cast<String, dynamic>()),
-      hotwordRule: map['hotwordRule'] == null ? null : PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule.fromMap((map['hotwordRule'] as Map).cast<String, dynamic>()),
+      exclusionRule: map['exclusionRule'] == null
+          ? null
+          : PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule.fromMap(
+              (map['exclusionRule'] as Map).cast<String, dynamic>(),
+            ),
+      hotwordRule: map['hotwordRule'] == null
+          ? null
+          : PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule.fromMap(
+              (map['hotwordRule'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

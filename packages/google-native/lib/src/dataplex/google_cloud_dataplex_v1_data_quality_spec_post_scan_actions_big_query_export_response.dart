@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The configuration of BigQuery export post scan action.
 class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse {
   /// Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
@@ -13,15 +12,14 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse 
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resultsTable': resultsTable,
-    };
+    return <String, dynamic>{'resultsTable': resultsTable};
   }
 
-  factory GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExportResponse(
       resultsTable: map['resultsTable'] as String,
     );
   }
 }
-

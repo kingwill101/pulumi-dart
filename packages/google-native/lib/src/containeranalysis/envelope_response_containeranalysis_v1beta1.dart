@@ -23,16 +23,30 @@ class EnvelopeResponseContaineranalysisV1beta1 {
     return <String, dynamic>{
       'payload': payload,
       'payloadType': payloadType,
-      'signatures': pulumi.Input.encodeList<EnvelopeSignatureResponseContaineranalysisV1beta1, Map<String, dynamic>>(signatures, (value) => value.toMap()),
+      'signatures':
+          pulumi.Input.encodeList<
+            EnvelopeSignatureResponseContaineranalysisV1beta1,
+            Map<String, dynamic>
+          >(signatures, (value) => value.toMap()),
     };
   }
 
-  factory EnvelopeResponseContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory EnvelopeResponseContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvelopeResponseContaineranalysisV1beta1(
       payload: map['payload'] as String,
       payloadType: map['payloadType'] as String,
-      signatures: pulumi.Input.decodeList<EnvelopeSignatureResponseContaineranalysisV1beta1>(map['signatures'], (value) => EnvelopeSignatureResponseContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      signatures:
+          pulumi.Input.decodeList<
+            EnvelopeSignatureResponseContaineranalysisV1beta1
+          >(
+            map['signatures'],
+            (value) =>
+                EnvelopeSignatureResponseContaineranalysisV1beta1.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

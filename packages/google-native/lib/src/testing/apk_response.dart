@@ -6,16 +6,14 @@ import 'file_reference_response.dart';
 class ApkResponse {
   /// The path to an APK to be installed on the device before the test begins.
   final FileReferenceResponse location;
+
   /// The java package for the APK to be installed. Value is determined by examining the application's manifest.
   final String packageName;
 
   /// Creates a new [ApkResponse].
   /// [location] The path to an APK to be installed on the device before the test begins.
   /// [packageName] The java package for the APK to be installed. Value is determined by examining the application's manifest.
-  ApkResponse({
-    required this.location,
-    required this.packageName,
-  });
+  ApkResponse({required this.location, required this.packageName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,10 @@ class ApkResponse {
 
   factory ApkResponse.fromMap(Map<String, dynamic> map) {
     return ApkResponse(
-      location: FileReferenceResponse.fromMap((map['location'] as Map).cast<String, dynamic>()),
+      location: FileReferenceResponse.fromMap(
+        (map['location'] as Map).cast<String, dynamic>(),
+      ),
       packageName: map['packageName'] as String,
     );
   }
 }
-

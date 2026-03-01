@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
   final Map<String, String>? digest;
@@ -25,12 +24,17 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
     };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource(
-      digest: map['digest'] == null ? null : (map['digest'] as Map).cast<String, String>(),
-      entryPoint: map['entryPoint'] == null ? null : map['entryPoint'] as String,
+      digest: map['digest'] == null
+          ? null
+          : (map['digest'] as Map).cast<String, String>(),
+      entryPoint: map['entryPoint'] == null
+          ? null
+          : map['entryPoint'] as String,
       uri: map['uri'] == null ? null : map['uri'] as String,
     );
   }
 }
-

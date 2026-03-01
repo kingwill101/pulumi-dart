@@ -7,6 +7,7 @@ import 'bare_metal_lvp_share_config_response.dart';
 class BareMetalStorageConfigResponse {
   /// Specifies the config for local PersistentVolumes backed by mounted node disks. These disks need to be formatted and mounted by the user, which can be done before or after cluster creation.
   final BareMetalLvpConfigResponse lvpNodeMountsConfig;
+
   /// Specifies the config for local PersistentVolumes backed by subdirectories in a shared filesystem. These subdirectores are automatically created during cluster creation.
   final BareMetalLvpShareConfigResponse lvpShareConfig;
 
@@ -27,9 +28,12 @@ class BareMetalStorageConfigResponse {
 
   factory BareMetalStorageConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalStorageConfigResponse(
-      lvpNodeMountsConfig: BareMetalLvpConfigResponse.fromMap((map['lvpNodeMountsConfig'] as Map).cast<String, dynamic>()),
-      lvpShareConfig: BareMetalLvpShareConfigResponse.fromMap((map['lvpShareConfig'] as Map).cast<String, dynamic>()),
+      lvpNodeMountsConfig: BareMetalLvpConfigResponse.fromMap(
+        (map['lvpNodeMountsConfig'] as Map).cast<String, dynamic>(),
+      ),
+      lvpShareConfig: BareMetalLvpShareConfigResponse.fromMap(
+        (map['lvpShareConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

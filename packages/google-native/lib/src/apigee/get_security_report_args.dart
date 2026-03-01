@@ -19,10 +19,9 @@ class GetSecurityReportArgs {
     required String environmentId,
     required String organizationId,
     required String securityReportId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      securityReportId = pulumi.Input.asInput<String>(securityReportId);
+  }) : environmentId = pulumi.Input.asInput<String>(environmentId),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       securityReportId = pulumi.Input.asInput<String>(securityReportId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetSecurityReportArgs {
     );
   }
 }
-

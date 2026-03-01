@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DelegatedAdminAccountArgs {
   /// Account to enable as delegated admin account.
   final pulumi.Input<String> accountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [DelegatedAdminAccountArgs].
   /// [accountId] Account to enable as delegated admin account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DelegatedAdminAccountArgs({
-    required String accountId,
-    String? region,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
+  DelegatedAdminAccountArgs({required String accountId, String? region})
+    : accountId = pulumi.Input.asInput<String>(accountId),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountId': accountId,
-      'region': ?region,
-    };
+    return <String, dynamic>{'accountId': accountId, 'region': ?region};
   }
 
   factory DelegatedAdminAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class DelegatedAdminAccountArgs {
     );
   }
 }
-

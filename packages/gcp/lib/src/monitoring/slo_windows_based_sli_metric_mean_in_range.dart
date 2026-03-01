@@ -12,6 +12,7 @@ class SloWindowsBasedSliMetricMeanInRange {
   /// good service.
   /// Structure is documented below.
   final SloWindowsBasedSliMetricMeanInRangeRange range;
+
   /// A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// specifying the TimeSeries to use for evaluating window
   /// The provided TimeSeries must have ValueType = INT64 or
@@ -29,17 +30,17 @@ class SloWindowsBasedSliMetricMeanInRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'range': range.toMap(),
-      'timeSeries': timeSeries,
-    };
+    return <String, dynamic>{'range': range.toMap(), 'timeSeries': timeSeries};
   }
 
-  factory SloWindowsBasedSliMetricMeanInRange.fromMap(Map<String, dynamic> map) {
+  factory SloWindowsBasedSliMetricMeanInRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SloWindowsBasedSliMetricMeanInRange(
-      range: SloWindowsBasedSliMetricMeanInRangeRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
+      range: SloWindowsBasedSliMetricMeanInRangeRange.fromMap(
+        (map['range'] as Map).cast<String, dynamic>(),
+      ),
       timeSeries: map['timeSeries'] as String,
     );
   }
 }
-

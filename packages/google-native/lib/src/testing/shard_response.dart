@@ -6,10 +6,13 @@ import 'test_targets_for_shard_response.dart';
 class ShardResponse {
   /// The estimated shard duration based on previous test case timing records, if available.
   final String estimatedShardDuration;
+
   /// The total number of shards.
   final int numShards;
+
   /// The index of the shard among all the shards.
   final int shardIndex;
+
   /// Test targets for each shard. Only set for manual sharding.
   final TestTargetsForShardResponse testTargetsForShard;
 
@@ -39,8 +42,9 @@ class ShardResponse {
       estimatedShardDuration: map['estimatedShardDuration'] as String,
       numShards: map['numShards'] as int,
       shardIndex: map['shardIndex'] as int,
-      testTargetsForShard: TestTargetsForShardResponse.fromMap((map['testTargetsForShard'] as Map).cast<String, dynamic>()),
+      testTargetsForShard: TestTargetsForShardResponse.fromMap(
+        (map['testTargetsForShard'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

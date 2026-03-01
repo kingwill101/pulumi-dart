@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GroupMembershipArgs {
   /// The IAM Group name to attach the list of `users` to
   final pulumi.Input<String> group;
+
   /// The name to identify the Group Membership
   final pulumi.Input<String>? name;
+
   /// A list of IAM User names to associate with the Group
   final pulumi.Input<List<String>> users;
 
@@ -22,17 +24,12 @@ class GroupMembershipArgs {
     required String group,
     String? name,
     required List<String> users,
-  }) :
-      group = pulumi.Input.asInput<String>(group),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      users = pulumi.Input.asInput<List<String>>(users);
+  }) : group = pulumi.Input.asInput<String>(group),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       users = pulumi.Input.asInput<List<String>>(users);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'group': group,
-      'name': ?name,
-      'users': users,
-    };
+    return <String, dynamic>{'group': group, 'name': ?name, 'users': users};
   }
 
   factory GroupMembershipArgs.fromMap(Map<String, dynamic> map) {
@@ -43,4 +40,3 @@ class GroupMembershipArgs {
     );
   }
 }
-

@@ -14,7 +14,8 @@ enum ModelPeriodicTuningStateRetailV2beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown ModelPeriodicTuningStateRetailV2beta value: $value');
+    throw ArgumentError(
+      'Unknown ModelPeriodicTuningStateRetailV2beta value: $value',
+    );
   }
 }
-

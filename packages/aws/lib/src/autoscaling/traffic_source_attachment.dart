@@ -124,8 +124,10 @@ import 'traffic_source_attachment_traffic_source.dart';
 class TrafficSourceAttachment extends pulumi.CustomResource {
   /// The name of the Auto Scaling group.
   late final pulumi.Output<String> autoscalingGroupName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The unique identifiers of a traffic sources.
   late final pulumi.Output<TrafficSourceAttachmentTrafficSource?> trafficSource;
 
@@ -138,13 +140,15 @@ class TrafficSourceAttachment extends pulumi.CustomResource {
     TrafficSourceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:autoscaling/trafficSourceAttachment:TrafficSourceAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     this.region = registerOutput<String>('region');
-    this.trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>('trafficSource');
+    this.trafficSource = registerOutput<TrafficSourceAttachmentTrafficSource?>(
+      'trafficSource',
+    );
   }
 }

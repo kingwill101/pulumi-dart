@@ -6,16 +6,14 @@ class AiFeatureGroupBigQuery {
   /// The BigQuery source URI that points to either a BigQuery Table or View.
   /// Structure is documented below.
   final AiFeatureGroupBigQueryBigQuerySource bigQuerySource;
+
   /// Columns to construct entityId / row keys. If not provided defaults to entityId.
   final List<String>? entityIdColumns;
 
   /// Creates a new [AiFeatureGroupBigQuery].
   /// [bigQuerySource] The BigQuery source URI that points to either a BigQuery Table or View.
   /// [entityIdColumns] Columns to construct entityId / row keys. If not provided defaults to entityId.
-  AiFeatureGroupBigQuery({
-    required this.bigQuerySource,
-    this.entityIdColumns,
-  });
+  AiFeatureGroupBigQuery({required this.bigQuerySource, this.entityIdColumns});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class AiFeatureGroupBigQuery {
 
   factory AiFeatureGroupBigQuery.fromMap(Map<String, dynamic> map) {
     return AiFeatureGroupBigQuery(
-      bigQuerySource: AiFeatureGroupBigQueryBigQuerySource.fromMap((map['bigQuerySource'] as Map).cast<String, dynamic>()),
-      entityIdColumns: map['entityIdColumns'] == null ? null : (map['entityIdColumns'] as List).cast<String>(),
+      bigQuerySource: AiFeatureGroupBigQueryBigQuerySource.fromMap(
+        (map['bigQuerySource'] as Map).cast<String, dynamic>(),
+      ),
+      entityIdColumns: map['entityIdColumns'] == null
+          ? null
+          : (map['entityIdColumns'] as List).cast<String>(),
     );
   }
 }
-

@@ -6,12 +6,17 @@ import 'instance_group_autoscaling_policy_config_response_dataproc_v1beta2.dart'
 /// Result data returned by getAutoscalingPolicy.
 class GetAutoscalingPolicyDataprocV1beta2Result {
   final BasicAutoscalingAlgorithmResponseDataprocV1beta2 basicAlgorithm;
+
   /// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   final String name;
+
   /// Optional. Describes how the autoscaler will operate for secondary workers.
-  final InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2 secondaryWorkerConfig;
+  final InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2
+  secondaryWorkerConfig;
+
   /// Describes how the autoscaler will operate for primary workers.
-  final InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2 workerConfig;
+  final InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2
+  workerConfig;
 
   /// Creates a new [GetAutoscalingPolicyDataprocV1beta2Result].
   /// [basicAlgorithm] Required.
@@ -34,13 +39,22 @@ class GetAutoscalingPolicyDataprocV1beta2Result {
     };
   }
 
-  factory GetAutoscalingPolicyDataprocV1beta2Result.fromMap(Map<String, dynamic> map) {
+  factory GetAutoscalingPolicyDataprocV1beta2Result.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAutoscalingPolicyDataprocV1beta2Result(
-      basicAlgorithm: BasicAutoscalingAlgorithmResponseDataprocV1beta2.fromMap((map['basicAlgorithm'] as Map).cast<String, dynamic>()),
+      basicAlgorithm: BasicAutoscalingAlgorithmResponseDataprocV1beta2.fromMap(
+        (map['basicAlgorithm'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
-      secondaryWorkerConfig: InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2.fromMap((map['secondaryWorkerConfig'] as Map).cast<String, dynamic>()),
-      workerConfig: InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2.fromMap((map['workerConfig'] as Map).cast<String, dynamic>()),
+      secondaryWorkerConfig:
+          InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2.fromMap(
+            (map['secondaryWorkerConfig'] as Map).cast<String, dynamic>(),
+          ),
+      workerConfig:
+          InstanceGroupAutoscalingPolicyConfigResponseDataprocV1beta2.fromMap(
+            (map['workerConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -7,9 +7,7 @@ class SecurityPolicyDdosProtectionConfig {
 
   /// Creates a new [SecurityPolicyDdosProtectionConfig].
   /// [ddosProtection] Optional.
-  SecurityPolicyDdosProtectionConfig({
-    this.ddosProtection,
-  });
+  SecurityPolicyDdosProtectionConfig({this.ddosProtection});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,8 +17,11 @@ class SecurityPolicyDdosProtectionConfig {
 
   factory SecurityPolicyDdosProtectionConfig.fromMap(Map<String, dynamic> map) {
     return SecurityPolicyDdosProtectionConfig(
-      ddosProtection: map['ddosProtection'] == null ? null : SecurityPolicyDdosProtectionConfigDdosProtection.fromValue(map['ddosProtection'] as String),
+      ddosProtection: map['ddosProtection'] == null
+          ? null
+          : SecurityPolicyDdosProtectionConfigDdosProtection.fromValue(
+              map['ddosProtection'] as String,
+            ),
     );
   }
 }
-

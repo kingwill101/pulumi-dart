@@ -17,7 +17,8 @@ enum RegionHealthCheckTypeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionHealthCheckTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionHealthCheckTypeComputeBeta value: $value',
+    );
   }
 }
-

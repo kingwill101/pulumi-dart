@@ -6,16 +6,14 @@ import 'build_signature_response.dart';
 class BuildTypeResponse {
   /// Version of the builder which produced this Note.
   final String builderVersion;
+
   /// Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
   final BuildSignatureResponse signature;
 
   /// Creates a new [BuildTypeResponse].
   /// [builderVersion] Version of the builder which produced this Note.
   /// [signature] Signature of the build in Occurrences pointing to the Note containing this `BuilderDetails`.
-  BuildTypeResponse({
-    required this.builderVersion,
-    required this.signature,
-  });
+  BuildTypeResponse({required this.builderVersion, required this.signature});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,8 +25,9 @@ class BuildTypeResponse {
   factory BuildTypeResponse.fromMap(Map<String, dynamic> map) {
     return BuildTypeResponse(
       builderVersion: map['builderVersion'] as String,
-      signature: BuildSignatureResponse.fromMap((map['signature'] as Map).cast<String, dynamic>()),
+      signature: BuildSignatureResponse.fromMap(
+        (map['signature'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

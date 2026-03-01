@@ -1,15 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EdgeCacheOriginTimeout {
   /// The maximum duration to wait for a single origin connection to be established, including DNS lookup, TLS handshake and TCP/QUIC connection establishment.
   /// Defaults to 5 seconds. The timeout must be a value between 1s and 15s.
   /// The connectTimeout capped by the deadline set by the request's maxAttemptsTimeout.  The last connection attempt may have a smaller connectTimeout in order to adhere to the overall maxAttemptsTimeout.
   final String? connectTimeout;
+
   /// The maximum time across all connection attempts to the origin, including failover origins, before returning an error to the client. A HTTP 504 will be returned if the timeout is reached before a response is returned.
   /// Defaults to 15 seconds. The timeout must be a value between 1s and 30s.
   /// If a failoverOrigin is specified, the maxAttemptsTimeout of the first configured origin sets the deadline for all connection attempts across all failoverOrigins.
   final String? maxAttemptsTimeout;
+
   /// The maximum duration to wait between reads of a single HTTP connection/stream.
   /// Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
   /// The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
@@ -17,6 +18,7 @@ class EdgeCacheOriginTimeout {
   ///
   /// <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
   final String? readTimeout;
+
   /// The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
   /// Defaults to 30 seconds. The timeout must be a value between 1s and 120s.
   /// The responseTimeout starts after the connection has been established.
@@ -47,11 +49,18 @@ class EdgeCacheOriginTimeout {
 
   factory EdgeCacheOriginTimeout.fromMap(Map<String, dynamic> map) {
     return EdgeCacheOriginTimeout(
-      connectTimeout: map['connectTimeout'] == null ? null : map['connectTimeout'] as String,
-      maxAttemptsTimeout: map['maxAttemptsTimeout'] == null ? null : map['maxAttemptsTimeout'] as String,
-      readTimeout: map['readTimeout'] == null ? null : map['readTimeout'] as String,
-      responseTimeout: map['responseTimeout'] == null ? null : map['responseTimeout'] as String,
+      connectTimeout: map['connectTimeout'] == null
+          ? null
+          : map['connectTimeout'] as String,
+      maxAttemptsTimeout: map['maxAttemptsTimeout'] == null
+          ? null
+          : map['maxAttemptsTimeout'] as String,
+      readTimeout: map['readTimeout'] == null
+          ? null
+          : map['readTimeout'] as String,
+      responseTimeout: map['responseTimeout'] == null
+          ? null
+          : map['responseTimeout'] as String,
     );
   }
 }
-

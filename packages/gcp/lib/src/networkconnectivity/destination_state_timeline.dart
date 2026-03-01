@@ -11,20 +11,29 @@ class DestinationStateTimeline {
 
   /// Creates a new [DestinationStateTimeline].
   /// [states] (Output)
-  DestinationStateTimeline({
-    this.states,
-  });
+  DestinationStateTimeline({this.states});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'states': ?states == null ? null : pulumi.Input.encodeList<DestinationStateTimelineState, Map<String, dynamic>>(states!, (value) => value.toMap()),
+      'states': ?states == null
+          ? null
+          : pulumi.Input.encodeList<
+              DestinationStateTimelineState,
+              Map<String, dynamic>
+            >(states!, (value) => value.toMap()),
     };
   }
 
   factory DestinationStateTimeline.fromMap(Map<String, dynamic> map) {
     return DestinationStateTimeline(
-      states: map['states'] == null ? null : pulumi.Input.decodeList<DestinationStateTimelineState>(map['states'], (value) => DestinationStateTimelineState.fromMap((value as Map).cast<String, dynamic>())),
+      states: map['states'] == null
+          ? null
+          : pulumi.Input.decodeList<DestinationStateTimelineState>(
+              map['states'],
+              (value) => DestinationStateTimelineState.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

@@ -7,16 +7,21 @@ import 'annotation_args.dart';
 class Annotation extends pulumi.CustomResource {
   /// Create time stamp.
   late final pulumi.Output<String> createTime;
+
   /// Labels as key value pairs.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
+
   /// name of resource.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
+
   /// Optional. An optional request ID to identify requests.
   late final pulumi.Output<String?> requestId;
+
   /// Type of an annotation.
   late final pulumi.Output<String> type;
+
   /// Update time stamp.
   late final pulumi.Output<String> updateTime;
 
@@ -29,11 +34,11 @@ class Annotation extends pulumi.CustomResource {
     AnnotationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:rapidmigrationassessment/v1:Annotation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:rapidmigrationassessment/v1:Annotation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.labels = registerOutput<Map<String, String>>('labels');
     this.location = registerOutput<String>('location');

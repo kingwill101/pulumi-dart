@@ -7,13 +7,17 @@ enum RouterBgpPeerBfdSessionInitializationModeComputeV1 {
   const RouterBgpPeerBfdSessionInitializationModeComputeV1(this.value);
   final String value;
 
-  static RouterBgpPeerBfdSessionInitializationModeComputeV1 fromValue(String value) {
-    for (final item in RouterBgpPeerBfdSessionInitializationModeComputeV1.values) {
+  static RouterBgpPeerBfdSessionInitializationModeComputeV1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in RouterBgpPeerBfdSessionInitializationModeComputeV1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterBgpPeerBfdSessionInitializationModeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RouterBgpPeerBfdSessionInitializationModeComputeV1 value: $value',
+    );
   }
 }
-

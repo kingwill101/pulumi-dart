@@ -8,12 +8,16 @@ import 'statistical_time_series_filter.dart';
 class TimeSeriesFilter {
   /// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
   final Aggregation? aggregation;
+
   /// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
   final String filter;
+
   /// Ranking based time series filter.
   final PickTimeSeriesFilter? pickTimeSeriesFilter;
+
   /// Apply a second aggregation after aggregation is applied.
   final Aggregation? secondaryAggregation;
+
   /// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
   final StatisticalTimeSeriesFilter? statisticalTimeSeriesFilter;
 
@@ -35,20 +39,42 @@ class TimeSeriesFilter {
     return <String, dynamic>{
       'aggregation': ?aggregation == null ? null : aggregation!.toMap(),
       'filter': filter,
-      'pickTimeSeriesFilter': ?pickTimeSeriesFilter == null ? null : pickTimeSeriesFilter!.toMap(),
-      'secondaryAggregation': ?secondaryAggregation == null ? null : secondaryAggregation!.toMap(),
-      'statisticalTimeSeriesFilter': ?statisticalTimeSeriesFilter == null ? null : statisticalTimeSeriesFilter!.toMap(),
+      'pickTimeSeriesFilter': ?pickTimeSeriesFilter == null
+          ? null
+          : pickTimeSeriesFilter!.toMap(),
+      'secondaryAggregation': ?secondaryAggregation == null
+          ? null
+          : secondaryAggregation!.toMap(),
+      'statisticalTimeSeriesFilter': ?statisticalTimeSeriesFilter == null
+          ? null
+          : statisticalTimeSeriesFilter!.toMap(),
     };
   }
 
   factory TimeSeriesFilter.fromMap(Map<String, dynamic> map) {
     return TimeSeriesFilter(
-      aggregation: map['aggregation'] == null ? null : Aggregation.fromMap((map['aggregation'] as Map).cast<String, dynamic>()),
+      aggregation: map['aggregation'] == null
+          ? null
+          : Aggregation.fromMap(
+              (map['aggregation'] as Map).cast<String, dynamic>(),
+            ),
       filter: map['filter'] as String,
-      pickTimeSeriesFilter: map['pickTimeSeriesFilter'] == null ? null : PickTimeSeriesFilter.fromMap((map['pickTimeSeriesFilter'] as Map).cast<String, dynamic>()),
-      secondaryAggregation: map['secondaryAggregation'] == null ? null : Aggregation.fromMap((map['secondaryAggregation'] as Map).cast<String, dynamic>()),
-      statisticalTimeSeriesFilter: map['statisticalTimeSeriesFilter'] == null ? null : StatisticalTimeSeriesFilter.fromMap((map['statisticalTimeSeriesFilter'] as Map).cast<String, dynamic>()),
+      pickTimeSeriesFilter: map['pickTimeSeriesFilter'] == null
+          ? null
+          : PickTimeSeriesFilter.fromMap(
+              (map['pickTimeSeriesFilter'] as Map).cast<String, dynamic>(),
+            ),
+      secondaryAggregation: map['secondaryAggregation'] == null
+          ? null
+          : Aggregation.fromMap(
+              (map['secondaryAggregation'] as Map).cast<String, dynamic>(),
+            ),
+      statisticalTimeSeriesFilter: map['statisticalTimeSeriesFilter'] == null
+          ? null
+          : StatisticalTimeSeriesFilter.fromMap(
+              (map['statisticalTimeSeriesFilter'] as Map)
+                  .cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfigResponseComputeBeta {
   /// Defines the type of technology used by the confidential instance.
   final String confidentialInstanceType;
+
   /// Defines whether the instance should have confidential compute enabled.
   final bool enableConfidentialCompute;
 
@@ -23,11 +23,12 @@ class ConfidentialInstanceConfigResponseComputeBeta {
     };
   }
 
-  factory ConfidentialInstanceConfigResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ConfidentialInstanceConfigResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfidentialInstanceConfigResponseComputeBeta(
       confidentialInstanceType: map['confidentialInstanceType'] as String,
       enableConfidentialCompute: map['enableConfidentialCompute'] as bool,
     );
   }
 }
-

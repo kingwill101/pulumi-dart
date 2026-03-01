@@ -9,20 +9,23 @@ class PrincipalInfo {
 
   /// Creates a new [PrincipalInfo].
   /// [serviceAccount] A GCP service account.
-  PrincipalInfo({
-    this.serviceAccount,
-  });
+  PrincipalInfo({this.serviceAccount});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceAccount': ?serviceAccount == null ? null : serviceAccount!.toMap(),
+      'serviceAccount': ?serviceAccount == null
+          ? null
+          : serviceAccount!.toMap(),
     };
   }
 
   factory PrincipalInfo.fromMap(Map<String, dynamic> map) {
     return PrincipalInfo(
-      serviceAccount: map['serviceAccount'] == null ? null : ServiceAccount.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
+      serviceAccount: map['serviceAccount'] == null
+          ? null
+          : ServiceAccount.fromMap(
+              (map['serviceAccount'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LayerVersionPermissionArgs {
   /// Action that will be allowed. `lambda:GetLayerVersion` is the standard value for layer access.
   final pulumi.Input<String> action;
+
   /// Name or ARN of the Lambda Layer.
   final pulumi.Input<String> layerName;
+
   /// AWS Organization ID that should be able to use your Lambda Layer. `principal` should be set to `*` when `organization_id` is provided.
   final pulumi.Input<String>? organizationId;
+
   /// AWS account ID that should be able to use your Lambda Layer. Use `*` to share with all AWS accounts.
   final pulumi.Input<String> principal;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Whether to retain the permission when the resource is destroyed. Default is `false`.
   final pulumi.Input<bool>? skipDestroy;
+
   /// Unique identifier for the permission statement.
   final pulumi.Input<String> statementId;
+
   /// Version of Lambda Layer to grant access to. Note: permissions only apply to a single version of a layer.
   ///
   /// The following arguments are optional:
@@ -44,15 +51,14 @@ class LayerVersionPermissionArgs {
     bool? skipDestroy,
     required String statementId,
     required int versionNumber,
-  }) :
-      action = pulumi.Input.asInput<String>(action),
-      layerName = pulumi.Input.asInput<String>(layerName),
-      organizationId = pulumi.Input.asOptionalInput<String>(organizationId),
-      principal = pulumi.Input.asInput<String>(principal),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      statementId = pulumi.Input.asInput<String>(statementId),
-      versionNumber = pulumi.Input.asInput<int>(versionNumber);
+  }) : action = pulumi.Input.asInput<String>(action),
+       layerName = pulumi.Input.asInput<String>(layerName),
+       organizationId = pulumi.Input.asOptionalInput<String>(organizationId),
+       principal = pulumi.Input.asInput<String>(principal),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
+       statementId = pulumi.Input.asInput<String>(statementId),
+       versionNumber = pulumi.Input.asInput<int>(versionNumber);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,13 +77,16 @@ class LayerVersionPermissionArgs {
     return LayerVersionPermissionArgs(
       action: map['action'] as String,
       layerName: map['layerName'] as String,
-      organizationId: map['organizationId'] == null ? null : map['organizationId'] as String,
+      organizationId: map['organizationId'] == null
+          ? null
+          : map['organizationId'] as String,
       principal: map['principal'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      skipDestroy: map['skipDestroy'] == null ? null : map['skipDestroy'] as bool,
+      skipDestroy: map['skipDestroy'] == null
+          ? null
+          : map['skipDestroy'] as bool,
       statementId: map['statementId'] as String,
       versionNumber: map['versionNumber'] as int,
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'eventing_status_response.dart';
 class EventingRuntimeDataResponse {
   /// Events listener endpoint. The value will populated after provisioning the events listener.
   final String eventsListenerEndpoint;
+
   /// Events listener PSC Service attachment. The value will be populated after provisioning the events listener with private connectivity enabled.
   final String eventsListenerPscSa;
+
   /// Current status of eventing.
   final EventingStatusResponse status;
 
@@ -33,8 +35,9 @@ class EventingRuntimeDataResponse {
     return EventingRuntimeDataResponse(
       eventsListenerEndpoint: map['eventsListenerEndpoint'] as String,
       eventsListenerPscSa: map['eventsListenerPscSa'] as String,
-      status: EventingStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      status: EventingStatusResponse.fromMap(
+        (map['status'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

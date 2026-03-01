@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getEnvironmentBlueprint.
 class GetEnvironmentBlueprintResult {
   /// Provider of the blueprint
   final String blueprintProvider;
+
   /// Description of the blueprint
   final String description;
   final String domainId;
+
   /// ID of the environment blueprint
   final String id;
   final bool managed;
@@ -56,4 +57,3 @@ class GetEnvironmentBlueprintResult {
     );
   }
 }
-

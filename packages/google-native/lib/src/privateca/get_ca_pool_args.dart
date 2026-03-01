@@ -19,10 +19,9 @@ class GetCaPoolArgs {
     required String caPoolId,
     required String location,
     String? project,
-  }) :
-      caPoolId = pulumi.Input.asInput<String>(caPoolId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : caPoolId = pulumi.Input.asInput<String>(caPoolId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetCaPoolArgs {
     );
   }
 }
-

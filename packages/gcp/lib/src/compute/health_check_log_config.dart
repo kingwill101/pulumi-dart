@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class HealthCheckLogConfig {
   /// Indicates whether or not to export logs. This is false by default,
   /// which means no health check logging will be done.
@@ -8,14 +7,10 @@ class HealthCheckLogConfig {
 
   /// Creates a new [HealthCheckLogConfig].
   /// [enable] Indicates whether or not to export logs. This is false by default,
-  HealthCheckLogConfig({
-    this.enable,
-  });
+  HealthCheckLogConfig({this.enable});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enable': ?enable,
-    };
+    return <String, dynamic>{'enable': ?enable};
   }
 
   factory HealthCheckLogConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class HealthCheckLogConfig {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CloudControlParameterSpecSubParameterValidationRegexpPattern {
   /// Regex Pattern to match the value(s) of parameter.
   final String pattern;
@@ -12,15 +11,14 @@ class CloudControlParameterSpecSubParameterValidationRegexpPattern {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pattern': pattern,
-    };
+    return <String, dynamic>{'pattern': pattern};
   }
 
-  factory CloudControlParameterSpecSubParameterValidationRegexpPattern.fromMap(Map<String, dynamic> map) {
+  factory CloudControlParameterSpecSubParameterValidationRegexpPattern.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudControlParameterSpecSubParameterValidationRegexpPattern(
       pattern: map['pattern'] as String,
     );
   }
 }
-

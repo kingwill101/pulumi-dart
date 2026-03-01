@@ -19,10 +19,9 @@ class GetRegionSnapshotArgs {
     String? project,
     required String region,
     required String snapshot,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      snapshot = pulumi.Input.asInput<String>(snapshot);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       snapshot = pulumi.Input.asInput<String>(snapshot);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegionSnapshotArgs {
     );
   }
 }
-

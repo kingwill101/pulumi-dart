@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
   /// Amount of 1G hugepages.
   final int hugepageSize1g;
+
   /// Amount of 2M hugepages.
   final int hugepageSize2m;
 
@@ -22,11 +22,12 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
     };
   }
 
-  factory GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig(
       hugepageSize1g: map['hugepageSize1g'] as int,
       hugepageSize2m: map['hugepageSize2m'] as int,
     );
   }
 }
-

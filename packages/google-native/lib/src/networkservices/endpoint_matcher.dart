@@ -9,20 +9,23 @@ class EndpointMatcher {
 
   /// Creates a new [EndpointMatcher].
   /// [metadataLabelMatcher] The matcher is based on node metadata presented by xDS clients.
-  EndpointMatcher({
-    this.metadataLabelMatcher,
-  });
+  EndpointMatcher({this.metadataLabelMatcher});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metadataLabelMatcher': ?metadataLabelMatcher == null ? null : metadataLabelMatcher!.toMap(),
+      'metadataLabelMatcher': ?metadataLabelMatcher == null
+          ? null
+          : metadataLabelMatcher!.toMap(),
     };
   }
 
   factory EndpointMatcher.fromMap(Map<String, dynamic> map) {
     return EndpointMatcher(
-      metadataLabelMatcher: map['metadataLabelMatcher'] == null ? null : EndpointMatcherMetadataLabelMatcher.fromMap((map['metadataLabelMatcher'] as Map).cast<String, dynamic>()),
+      metadataLabelMatcher: map['metadataLabelMatcher'] == null
+          ? null
+          : EndpointMatcherMetadataLabelMatcher.fromMap(
+              (map['metadataLabelMatcher'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

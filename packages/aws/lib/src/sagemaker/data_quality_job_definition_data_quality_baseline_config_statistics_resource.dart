@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource {
   /// The Amazon S3 URI for the statistics resource.
   final String? s3Uri;
@@ -12,15 +11,14 @@ class DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      's3Uri': ?s3Uri,
-    };
+    return <String, dynamic>{'s3Uri': ?s3Uri};
   }
 
-  factory DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource.fromMap(Map<String, dynamic> map) {
+  factory DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource(
       s3Uri: map['s3Uri'] == null ? null : map['s3Uri'] as String,
     );
   }
 }
-

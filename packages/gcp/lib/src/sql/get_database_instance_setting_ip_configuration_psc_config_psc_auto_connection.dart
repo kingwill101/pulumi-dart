@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection {
   /// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
   final String consumerNetwork;
+
   /// The connection policy status of the consumer network.
   final String consumerNetworkStatus;
+
   /// The project ID of consumer service project of this consumer endpoint.
   final String consumerServiceProjectId;
+
   /// The IP address of the consumer endpoint.
   final String ipAddress;
+
   /// The connection status of the consumer endpoint.
   final String status;
 
@@ -37,7 +40,9 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection {
     };
   }
 
-  factory GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection.fromMap(Map<String, dynamic> map) {
+  factory GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection(
       consumerNetwork: map['consumerNetwork'] as String,
       consumerNetworkStatus: map['consumerNetworkStatus'] as String,
@@ -47,4 +52,3 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection {
     );
   }
 }
-

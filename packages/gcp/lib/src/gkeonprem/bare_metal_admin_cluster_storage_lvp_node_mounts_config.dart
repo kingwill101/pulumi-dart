@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BareMetalAdminClusterStorageLvpNodeMountsConfig {
   /// The host machine path.
   final String path;
+
   /// The StorageClass name that PVs will be created with.
   final String storageClass;
 
@@ -16,17 +16,15 @@ class BareMetalAdminClusterStorageLvpNodeMountsConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': path,
-      'storageClass': storageClass,
-    };
+    return <String, dynamic>{'path': path, 'storageClass': storageClass};
   }
 
-  factory BareMetalAdminClusterStorageLvpNodeMountsConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterStorageLvpNodeMountsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterStorageLvpNodeMountsConfig(
       path: map['path'] as String,
       storageClass: map['storageClass'] as String,
     );
   }
 }
-

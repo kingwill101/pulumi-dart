@@ -41,7 +41,9 @@ class ValueResponse {
   factory ValueResponse.fromMap(Map<String, dynamic> map) {
     return ValueResponse(
       booleanValue: map['booleanValue'] as bool,
-      dateValue: DateResponse.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
+      dateValue: DateResponse.fromMap(
+        (map['dateValue'] as Map).cast<String, dynamic>(),
+      ),
       doubleValue: map['doubleValue'] as double,
       integerValue: map['integerValue'] as String,
       stringValue: map['stringValue'] as String,
@@ -49,4 +51,3 @@ class ValueResponse {
     );
   }
 }
-

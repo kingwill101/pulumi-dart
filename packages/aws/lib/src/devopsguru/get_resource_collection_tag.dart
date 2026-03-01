@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetResourceCollectionTag {
   /// An AWS tag key that is used to identify the AWS resources that DevOps Guru analyzes.
   final String appBoundaryKey;
+
   /// Array of tag values.
   final List<String> tagValues;
 
@@ -29,4 +29,3 @@ class GetResourceCollectionTag {
     );
   }
 }
-

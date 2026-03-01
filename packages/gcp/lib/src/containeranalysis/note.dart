@@ -366,26 +366,36 @@ class Note extends pulumi.CustomResource {
   /// project.
   /// Structure is documented below.
   late final pulumi.Output<NoteAttestationAuthority> attestationAuthority;
+
   /// The time this note was created.
   late final pulumi.Output<String> createTime;
+
   /// Time of expiration for this note. Leave empty if note does not expire.
   late final pulumi.Output<String?> expirationTime;
+
   /// The type of analysis this note describes
   late final pulumi.Output<String> kind;
+
   /// A detailed description of the note
   late final pulumi.Output<String?> longDescription;
+
   /// The name of the note.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Names of other notes related to this note.
   late final pulumi.Output<List<String>?> relatedNoteNames;
+
   /// URLs associated with this note and related metadata.
   /// Structure is documented below.
   late final pulumi.Output<List<NoteRelatedUrl>?> relatedUrls;
+
   /// A one sentence description of the note.
   late final pulumi.Output<String?> shortDescription;
+
   /// The time this note was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -393,17 +403,16 @@ class Note extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Note]. {@macro pulumi_containeranalysis_note_note_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Note(
-    String name, {
-    NoteArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:containeranalysis/note:Note',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority');
+  Note(String name, {NoteArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:containeranalysis/note:Note',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    this.attestationAuthority = registerOutput<NoteAttestationAuthority>(
+      'attestationAuthority',
+    );
     this.createTime = registerOutput<String>('createTime');
     this.expirationTime = registerOutput<String?>('expirationTime');
     this.kind = registerOutput<String>('kind');

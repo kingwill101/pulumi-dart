@@ -2,8 +2,12 @@
 enum SoleTenancyPreferencesHostMaintenancePolicy {
   hostMaintenancePolicyUnspecified("HOST_MAINTENANCE_POLICY_UNSPECIFIED"),
   hostMaintenancePolicyDefault("HOST_MAINTENANCE_POLICY_DEFAULT"),
-  hostMaintenancePolicyRestartInPlace("HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE"),
-  hostMaintenancePolicyMigrateWithinNodeGroup("HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP");
+  hostMaintenancePolicyRestartInPlace(
+    "HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE",
+  ),
+  hostMaintenancePolicyMigrateWithinNodeGroup(
+    "HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP",
+  );
 
   const SoleTenancyPreferencesHostMaintenancePolicy(this.value);
   final String value;
@@ -14,7 +18,8 @@ enum SoleTenancyPreferencesHostMaintenancePolicy {
         return item;
       }
     }
-    throw ArgumentError('Unknown SoleTenancyPreferencesHostMaintenancePolicy value: $value');
+    throw ArgumentError(
+      'Unknown SoleTenancyPreferencesHostMaintenancePolicy value: $value',
+    );
   }
 }
-

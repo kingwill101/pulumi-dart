@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AccessPolicyArgs {
   /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
   final pulumi.Input<String> parent;
+
   /// The scopes of the AccessPolicy. Scopes define which resources a policy can restrict and where its resources can be referenced. For example, policy A with `scopes=["folders/123"]` has the following behavior: - ServicePerimeter can only restrict projects within `folders/123`. - ServicePerimeter within policy A can only reference access levels defined within policy A. - Only one policy can include a given scope; thus, attempting to create a second policy which includes `folders/123` will result in an error. If no scopes are provided, then any resource within the organization can be restricted. Scopes cannot be modified after a policy is created. Policies can only have a single scope. Format: list of `folders/{folder_number}` or `projects/{project_number}`
   final pulumi.Input<List<String>>? scopes;
+
   /// Human readable title. Does not affect behavior.
   final pulumi.Input<String> title;
 
@@ -22,10 +24,9 @@ class AccessPolicyArgs {
     required String parent,
     List<String>? scopes,
     required String title,
-  }) :
-      parent = pulumi.Input.asInput<String>(parent),
-      scopes = pulumi.Input.asOptionalInput<List<String>>(scopes),
-      title = pulumi.Input.asInput<String>(title);
+  }) : parent = pulumi.Input.asInput<String>(parent),
+       scopes = pulumi.Input.asOptionalInput<List<String>>(scopes),
+       title = pulumi.Input.asInput<String>(title);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +39,10 @@ class AccessPolicyArgs {
   factory AccessPolicyArgs.fromMap(Map<String, dynamic> map) {
     return AccessPolicyArgs(
       parent: map['parent'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      scopes: map['scopes'] == null
+          ? null
+          : (map['scopes'] as List).cast<String>(),
       title: map['title'] as String,
     );
   }
 }
-

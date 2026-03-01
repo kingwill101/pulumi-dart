@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetBucketsBucket {
   /// User-provided bucket labels, in key/value pairs.
   final Map<String, String> labels;
+
   /// The location of the bucket.
   final String location;
+
   /// The name of the bucket.
   final String name;
+
   /// A url reference to the bucket.
   final String selfLink;
+
   /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket.
   final String storageClass;
 
@@ -47,4 +50,3 @@ class GetBucketsBucket {
     );
   }
 }
-

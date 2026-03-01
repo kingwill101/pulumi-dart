@@ -16,9 +16,8 @@ class GetExternalVpnGatewayComputeV1Args {
   GetExternalVpnGatewayComputeV1Args({
     required String externalVpnGateway,
     String? project,
-  }) :
-      externalVpnGateway = pulumi.Input.asInput<String>(externalVpnGateway),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : externalVpnGateway = pulumi.Input.asInput<String>(externalVpnGateway),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetExternalVpnGatewayComputeV1Args {
     );
   }
 }
-

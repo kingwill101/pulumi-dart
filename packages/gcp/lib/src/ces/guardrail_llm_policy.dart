@@ -7,16 +7,20 @@ class GuardrailLlmPolicy {
   /// Enabling this setting applies the policy check to all utterances,
   /// including those that would normally be skipped.
   final bool? allowShortUtterance;
+
   /// If an error occurs during the policy check, fail open and do not trigger
   /// the guardrail.
   final bool? failOpen;
+
   /// When checking this policy, consider the last 'n' messages in the
   /// conversation.
   /// When not set a default value of 10 will be used.
   final int? maxConversationMessages;
+
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
   final GuardrailLlmPolicyModelSettings? modelSettings;
+
   /// Defines when to apply the policy check during the conversation. If set to
   /// `POLICY_SCOPE_UNSPECIFIED`, the policy will be applied to the user input.
   /// When applying the policy to the agent response, additional latency will
@@ -27,6 +31,7 @@ class GuardrailLlmPolicy {
   /// USER_QUERY_AND_AGENT_RESPONSE
   /// Possible values are: `USER_QUERY`, `AGENT_RESPONSE`, `USER_QUERY_AND_AGENT_RESPONSE`.
   final String policyScope;
+
   /// Policy prompt.
   final String prompt;
 
@@ -59,13 +64,20 @@ class GuardrailLlmPolicy {
 
   factory GuardrailLlmPolicy.fromMap(Map<String, dynamic> map) {
     return GuardrailLlmPolicy(
-      allowShortUtterance: map['allowShortUtterance'] == null ? null : map['allowShortUtterance'] as bool,
+      allowShortUtterance: map['allowShortUtterance'] == null
+          ? null
+          : map['allowShortUtterance'] as bool,
       failOpen: map['failOpen'] == null ? null : map['failOpen'] as bool,
-      maxConversationMessages: map['maxConversationMessages'] == null ? null : map['maxConversationMessages'] as int,
-      modelSettings: map['modelSettings'] == null ? null : GuardrailLlmPolicyModelSettings.fromMap((map['modelSettings'] as Map).cast<String, dynamic>()),
+      maxConversationMessages: map['maxConversationMessages'] == null
+          ? null
+          : map['maxConversationMessages'] as int,
+      modelSettings: map['modelSettings'] == null
+          ? null
+          : GuardrailLlmPolicyModelSettings.fromMap(
+              (map['modelSettings'] as Map).cast<String, dynamic>(),
+            ),
       policyScope: map['policyScope'] as String,
       prompt: map['prompt'] as String,
     );
   }
 }
-

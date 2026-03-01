@@ -16,4 +16,3 @@ enum UserUserTypeAlloydbV1beta {
     throw ArgumentError('Unknown UserUserTypeAlloydbV1beta value: $value');
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A signature object consists of the KeyID used and the signature itself.
 class GrafeasV1beta1IntotoSignature {
   final String? keyid;
@@ -9,16 +8,10 @@ class GrafeasV1beta1IntotoSignature {
   /// Creates a new [GrafeasV1beta1IntotoSignature].
   /// [keyid] Optional.
   /// [sig] Optional.
-  GrafeasV1beta1IntotoSignature({
-    this.keyid,
-    this.sig,
-  });
+  GrafeasV1beta1IntotoSignature({this.keyid, this.sig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyid': ?keyid,
-      'sig': ?sig,
-    };
+    return <String, dynamic>{'keyid': ?keyid, 'sig': ?sig};
   }
 
   factory GrafeasV1beta1IntotoSignature.fromMap(Map<String, dynamic> map) {
@@ -28,4 +21,3 @@ class GrafeasV1beta1IntotoSignature {
     );
   }
 }
-

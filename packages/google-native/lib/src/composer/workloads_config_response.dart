@@ -9,10 +9,13 @@ import 'worker_resource_response.dart';
 class WorkloadsConfigResponse {
   /// Optional. Resources used by Airflow schedulers.
   final SchedulerResourceResponse scheduler;
+
   /// Optional. Resources used by Airflow triggerers.
   final TriggererResourceResponse triggerer;
+
   /// Optional. Resources used by Airflow web server.
   final WebServerResourceResponse webServer;
+
   /// Optional. Resources used by Airflow workers.
   final WorkerResourceResponse worker;
 
@@ -39,11 +42,18 @@ class WorkloadsConfigResponse {
 
   factory WorkloadsConfigResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadsConfigResponse(
-      scheduler: SchedulerResourceResponse.fromMap((map['scheduler'] as Map).cast<String, dynamic>()),
-      triggerer: TriggererResourceResponse.fromMap((map['triggerer'] as Map).cast<String, dynamic>()),
-      webServer: WebServerResourceResponse.fromMap((map['webServer'] as Map).cast<String, dynamic>()),
-      worker: WorkerResourceResponse.fromMap((map['worker'] as Map).cast<String, dynamic>()),
+      scheduler: SchedulerResourceResponse.fromMap(
+        (map['scheduler'] as Map).cast<String, dynamic>(),
+      ),
+      triggerer: TriggererResourceResponse.fromMap(
+        (map['triggerer'] as Map).cast<String, dynamic>(),
+      ),
+      webServer: WebServerResourceResponse.fromMap(
+        (map['webServer'] as Map).cast<String, dynamic>(),
+      ),
+      worker: WorkerResourceResponse.fromMap(
+        (map['worker'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

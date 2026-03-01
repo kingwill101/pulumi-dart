@@ -8,6 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigee_v1_keystore_args_doc}
 class KeystoreArgs {
   final pulumi.Input<String> environmentId;
+
   /// Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
@@ -20,10 +21,9 @@ class KeystoreArgs {
     required String environmentId,
     String? name,
     required String organizationId,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : environmentId = pulumi.Input.asInput<String>(environmentId),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,4 +41,3 @@ class KeystoreArgs {
     );
   }
 }
-

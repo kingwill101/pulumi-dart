@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetIdentityPoolCognitoIdentityProvider {
   final String clientId;
   final String providerName;
@@ -24,7 +23,9 @@ class GetIdentityPoolCognitoIdentityProvider {
     };
   }
 
-  factory GetIdentityPoolCognitoIdentityProvider.fromMap(Map<String, dynamic> map) {
+  factory GetIdentityPoolCognitoIdentityProvider.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetIdentityPoolCognitoIdentityProvider(
       clientId: map['clientId'] as String,
       providerName: map['providerName'] as String,
@@ -32,4 +33,3 @@ class GetIdentityPoolCognitoIdentityProvider {
     );
   }
 }
-

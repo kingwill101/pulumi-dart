@@ -101,7 +101,8 @@ Future<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(
 /// Gets the details of a data exchange.
 /// [args] Arguments passed to this invoke. {@macro pulumi_analyticshub_v1beta1_get_data_exchange_analyticshub_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDataExchangeAnalyticshubV1beta1Result> getDataExchangeAnalyticshubV1beta1(
+Future<GetDataExchangeAnalyticshubV1beta1Result>
+getDataExchangeAnalyticshubV1beta1(
   GetDataExchangeAnalyticshubV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -117,7 +118,8 @@ Future<GetDataExchangeAnalyticshubV1beta1Result> getDataExchangeAnalyticshubV1be
 /// Gets the IAM policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_analyticshub_v1beta1_get_data_exchange_iam_policy_analyticshub_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDataExchangeIamPolicyAnalyticshubV1beta1Result> getDataExchangeIamPolicyAnalyticshubV1beta1(
+Future<GetDataExchangeIamPolicyAnalyticshubV1beta1Result>
+getDataExchangeIamPolicyAnalyticshubV1beta1(
   GetDataExchangeIamPolicyAnalyticshubV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -133,7 +135,8 @@ Future<GetDataExchangeIamPolicyAnalyticshubV1beta1Result> getDataExchangeIamPoli
 /// Gets the IAM policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_analyticshub_v1beta1_get_data_exchange_listing_iam_policy_analyticshub_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDataExchangeListingIamPolicyAnalyticshubV1beta1Result> getDataExchangeListingIamPolicyAnalyticshubV1beta1(
+Future<GetDataExchangeListingIamPolicyAnalyticshubV1beta1Result>
+getDataExchangeListingIamPolicyAnalyticshubV1beta1(
   GetDataExchangeListingIamPolicyAnalyticshubV1beta1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -143,7 +146,9 @@ Future<GetDataExchangeListingIamPolicyAnalyticshubV1beta1Result> getDataExchange
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetDataExchangeListingIamPolicyAnalyticshubV1beta1Result.fromMap(result);
+  return GetDataExchangeListingIamPolicyAnalyticshubV1beta1Result.fromMap(
+    result,
+  );
 }
 
 /// Gets the details of a listing.

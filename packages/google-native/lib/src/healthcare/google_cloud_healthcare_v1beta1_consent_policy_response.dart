@@ -8,6 +8,7 @@ import 'expr_response_healthcare_v1beta1.dart';
 class GoogleCloudHealthcareV1beta1ConsentPolicyResponse {
   /// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
   final ExprResponseHealthcareV1beta1 authorizationRule;
+
   /// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
   final List<AttributeResponseHealthcareV1beta1> resourceAttributes;
 
@@ -22,15 +23,28 @@ class GoogleCloudHealthcareV1beta1ConsentPolicyResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authorizationRule': authorizationRule.toMap(),
-      'resourceAttributes': pulumi.Input.encodeList<AttributeResponseHealthcareV1beta1, Map<String, dynamic>>(resourceAttributes, (value) => value.toMap()),
+      'resourceAttributes':
+          pulumi.Input.encodeList<
+            AttributeResponseHealthcareV1beta1,
+            Map<String, dynamic>
+          >(resourceAttributes, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudHealthcareV1beta1ConsentPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudHealthcareV1beta1ConsentPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudHealthcareV1beta1ConsentPolicyResponse(
-      authorizationRule: ExprResponseHealthcareV1beta1.fromMap((map['authorizationRule'] as Map).cast<String, dynamic>()),
-      resourceAttributes: pulumi.Input.decodeList<AttributeResponseHealthcareV1beta1>(map['resourceAttributes'], (value) => AttributeResponseHealthcareV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      authorizationRule: ExprResponseHealthcareV1beta1.fromMap(
+        (map['authorizationRule'] as Map).cast<String, dynamic>(),
+      ),
+      resourceAttributes:
+          pulumi.Input.decodeList<AttributeResponseHealthcareV1beta1>(
+            map['resourceAttributes'],
+            (value) => AttributeResponseHealthcareV1beta1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

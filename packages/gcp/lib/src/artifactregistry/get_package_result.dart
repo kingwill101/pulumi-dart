@@ -1,20 +1,23 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getPackage.
 class GetPackageResult {
   /// Client specified annotations.
   final Map<String, String> annotations;
+
   /// The time, as a RFC 3339 string, this package was created.
   final String createTime;
+
   /// The display name of the package.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String location;
   final String name;
   final String? project;
   final String repositoryId;
+
   /// The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
   final String updateTime;
 
@@ -68,4 +71,3 @@ class GetPackageResult {
     );
   }
 }
-

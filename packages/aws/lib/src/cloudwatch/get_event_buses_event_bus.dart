@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetEventBusesEventBus {
   /// The ARN of the event bus.
   final String arn;
+
   /// The time the event bus was created.
   final String creationTime;
+
   /// The event bus description.
   final String description;
+
   /// The time the event bus was last modified.
   final String lastModifiedTime;
+
   /// The name of the event bus.
   final String name;
+
   /// The permissions policy of the event bus, describing which other AWS accounts can write events to this event bus.
   final String policy;
 
@@ -53,4 +57,3 @@ class GetEventBusesEventBus {
     );
   }
 }
-

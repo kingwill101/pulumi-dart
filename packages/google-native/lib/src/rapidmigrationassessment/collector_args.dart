@@ -9,24 +9,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CollectorArgs {
   /// How many days to collect data.
   final pulumi.Input<int>? collectionDays;
+
   /// Required. Id of the requesting object.
   final pulumi.Input<String> collectorId;
+
   /// User specified description of the Collector.
   final pulumi.Input<String>? description;
+
   /// User specified name of the Collector.
   final pulumi.Input<String>? displayName;
+
   /// Uri for EULA (End User License Agreement) from customer.
   final pulumi.Input<String>? eulaUri;
+
   /// User specified expected asset count.
   final pulumi.Input<String>? expectedAssetCount;
+
   /// Labels as key value pairs.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// name of resource.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Optional. An optional request ID to identify requests.
   final pulumi.Input<String>? requestId;
+
   /// Service Account email used to ingest data to this Collector.
   final pulumi.Input<String>? serviceAccount;
 
@@ -56,19 +65,20 @@ class CollectorArgs {
     String? project,
     String? requestId,
     String? serviceAccount,
-  }) :
-      collectionDays = pulumi.Input.asOptionalInput<int>(collectionDays),
-      collectorId = pulumi.Input.asInput<String>(collectorId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      eulaUri = pulumi.Input.asOptionalInput<String>(eulaUri),
-      expectedAssetCount = pulumi.Input.asOptionalInput<String>(expectedAssetCount),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount);
+  }) : collectionDays = pulumi.Input.asOptionalInput<int>(collectionDays),
+       collectorId = pulumi.Input.asInput<String>(collectorId),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       eulaUri = pulumi.Input.asOptionalInput<String>(eulaUri),
+       expectedAssetCount = pulumi.Input.asOptionalInput<String>(
+         expectedAssetCount,
+       ),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       requestId = pulumi.Input.asOptionalInput<String>(requestId),
+       serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,19 +99,30 @@ class CollectorArgs {
 
   factory CollectorArgs.fromMap(Map<String, dynamic> map) {
     return CollectorArgs(
-      collectionDays: map['collectionDays'] == null ? null : map['collectionDays'] as int,
+      collectionDays: map['collectionDays'] == null
+          ? null
+          : map['collectionDays'] as int,
       collectorId: map['collectorId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
       eulaUri: map['eulaUri'] == null ? null : map['eulaUri'] as String,
-      expectedAssetCount: map['expectedAssetCount'] == null ? null : map['expectedAssetCount'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      expectedAssetCount: map['expectedAssetCount'] == null
+          ? null
+          : map['expectedAssetCount'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       requestId: map['requestId'] == null ? null : map['requestId'] as String,
-      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
+      serviceAccount: map['serviceAccount'] == null
+          ? null
+          : map['serviceAccount'] as String,
     );
   }
 }
-

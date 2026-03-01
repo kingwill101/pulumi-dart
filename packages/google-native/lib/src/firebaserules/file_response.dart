@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// `File` containing source content.
 class FileResponse {
   /// Textual Content.
   final String content;
+
   /// Fingerprint (e.g. github sha) associated with the `File`.
   final String fingerprint;
+
   /// File name.
   final String name;
 
@@ -36,4 +37,3 @@ class FileResponse {
     );
   }
 }
-

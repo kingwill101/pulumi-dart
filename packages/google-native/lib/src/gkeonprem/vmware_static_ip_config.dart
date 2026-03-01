@@ -10,20 +10,28 @@ class VmwareStaticIpConfig {
 
   /// Creates a new [VmwareStaticIpConfig].
   /// [ipBlocks] Represents the configuration values for static IP allocation to nodes.
-  VmwareStaticIpConfig({
-    this.ipBlocks,
-  });
+  VmwareStaticIpConfig({this.ipBlocks});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipBlocks': ?ipBlocks == null ? null : pulumi.Input.encodeList<VmwareIpBlock, Map<String, dynamic>>(ipBlocks!, (value) => value.toMap()),
+      'ipBlocks': ?ipBlocks == null
+          ? null
+          : pulumi.Input.encodeList<VmwareIpBlock, Map<String, dynamic>>(
+              ipBlocks!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory VmwareStaticIpConfig.fromMap(Map<String, dynamic> map) {
     return VmwareStaticIpConfig(
-      ipBlocks: map['ipBlocks'] == null ? null : pulumi.Input.decodeList<VmwareIpBlock>(map['ipBlocks'], (value) => VmwareIpBlock.fromMap((value as Map).cast<String, dynamic>())),
+      ipBlocks: map['ipBlocks'] == null
+          ? null
+          : pulumi.Input.decodeList<VmwareIpBlock>(
+              map['ipBlocks'],
+              (value) =>
+                  VmwareIpBlock.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

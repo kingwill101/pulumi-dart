@@ -14,4 +14,3 @@ enum SubsettingPolicyComputeBeta {
     throw ArgumentError('Unknown SubsettingPolicyComputeBeta value: $value');
   }
 }
-

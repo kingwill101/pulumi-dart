@@ -12,7 +12,8 @@ enum VpnGatewayGatewayIpVersionComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown VpnGatewayGatewayIpVersionComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown VpnGatewayGatewayIpVersionComputeBeta value: $value',
+    );
   }
 }
-

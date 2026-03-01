@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message describing Azure Credentials using tenant ID, client ID and secret.
 class ClientSecretCredentialsResponseVmmigrationV1alpha1 {
   /// Azure client ID.
   final String clientId;
+
   /// Input only. Azure client secret.
   final String clientSecret;
+
   /// Azure tenant ID.
   final String tenantId;
 
@@ -28,7 +29,9 @@ class ClientSecretCredentialsResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory ClientSecretCredentialsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory ClientSecretCredentialsResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClientSecretCredentialsResponseVmmigrationV1alpha1(
       clientId: map['clientId'] as String,
       clientSecret: map['clientSecret'] as String,
@@ -36,4 +39,3 @@ class ClientSecretCredentialsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

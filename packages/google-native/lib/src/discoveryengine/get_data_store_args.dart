@@ -22,11 +22,10 @@ class GetDataStoreArgs {
     required String dataStoreId,
     required String location,
     String? project,
-  }) :
-      collectionId = pulumi.Input.asInput<String>(collectionId),
-      dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : collectionId = pulumi.Input.asInput<String>(collectionId),
+       dataStoreId = pulumi.Input.asInput<String>(dataStoreId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetDataStoreArgs {
     );
   }
 }
-

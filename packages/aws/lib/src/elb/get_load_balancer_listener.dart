@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLoadBalancerListener {
   final int instancePort;
   final String instanceProtocol;
@@ -42,4 +41,3 @@ class GetLoadBalancerListener {
     );
   }
 }
-

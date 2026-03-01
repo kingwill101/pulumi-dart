@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
   /// Maximum age of the snapshot that is allowed to be kept.
   final int maxRetentionDays;
+
   /// Specifies the behavior to apply to scheduled snapshots when
   /// the source disk is deleted.
   /// Default value is `KEEP_AUTO_SNAPSHOTS`.
@@ -25,11 +25,14 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicy {
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicySnapshotSchedulePolicyRetentionPolicy(
       maxRetentionDays: map['maxRetentionDays'] as int,
-      onSourceDiskDelete: map['onSourceDiskDelete'] == null ? null : map['onSourceDiskDelete'] as String,
+      onSourceDiskDelete: map['onSourceDiskDelete'] == null
+          ? null
+          : map['onSourceDiskDelete'] as String,
     );
   }
 }
-

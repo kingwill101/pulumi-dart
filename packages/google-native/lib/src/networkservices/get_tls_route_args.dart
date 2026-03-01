@@ -19,10 +19,9 @@ class GetTlsRouteArgs {
     required String location,
     String? project,
     required String tlsRouteId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tlsRouteId = pulumi.Input.asInput<String>(tlsRouteId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tlsRouteId = pulumi.Input.asInput<String>(tlsRouteId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTlsRouteArgs {
     );
   }
 }
-

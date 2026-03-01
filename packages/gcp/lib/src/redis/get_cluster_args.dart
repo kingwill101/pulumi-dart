@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClusterArgs {
   /// The name of the Redis cluster.
   final pulumi.Input<String> name;
+
   /// (optional)
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The region of the Redis cluster.
   final pulumi.Input<String>? region;
 
@@ -19,12 +21,8 @@ class GetClusterArgs {
   /// [name] The name of the Redis cluster.
   /// [project] (optional)
   /// [region] The region of the Redis cluster.
-  GetClusterArgs({
-    required String name,
-    String? project,
-    String? region,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
+  GetClusterArgs({required String name, String? project, String? region})
+    : name = pulumi.Input.asInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
@@ -44,4 +42,3 @@ class GetClusterArgs {
     );
   }
 }
-

@@ -10,11 +10,14 @@ class KeyHandleArgs {
   /// The location for the KeyHandle.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
   final pulumi.Input<String> location;
+
   /// The resource name for the KeyHandle.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Selector of the resource type where we want to protect resources.
   /// For example, `storage.googleapis.com/Bucket`.
   final pulumi.Input<String> resourceTypeSelector;
@@ -29,11 +32,12 @@ class KeyHandleArgs {
     String? name,
     String? project,
     required String resourceTypeSelector,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resourceTypeSelector = pulumi.Input.asInput<String>(resourceTypeSelector);
+  }) : location = pulumi.Input.asInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       resourceTypeSelector = pulumi.Input.asInput<String>(
+         resourceTypeSelector,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,4 +57,3 @@ class KeyHandleArgs {
     );
   }
 }
-

@@ -12,20 +12,21 @@ class JobConfigElementaryStreamVideoStream {
 
   /// Creates a new [JobConfigElementaryStreamVideoStream].
   /// [h264] H264 codec settings
-  JobConfigElementaryStreamVideoStream({
-    this.h264,
-  });
+  JobConfigElementaryStreamVideoStream({this.h264});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'h264': ?h264 == null ? null : h264!.toMap(),
-    };
+    return <String, dynamic>{'h264': ?h264 == null ? null : h264!.toMap()};
   }
 
-  factory JobConfigElementaryStreamVideoStream.fromMap(Map<String, dynamic> map) {
+  factory JobConfigElementaryStreamVideoStream.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobConfigElementaryStreamVideoStream(
-      h264: map['h264'] == null ? null : JobConfigElementaryStreamVideoStreamH264.fromMap((map['h264'] as Map).cast<String, dynamic>()),
+      h264: map['h264'] == null
+          ? null
+          : JobConfigElementaryStreamVideoStreamH264.fromMap(
+              (map['h264'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

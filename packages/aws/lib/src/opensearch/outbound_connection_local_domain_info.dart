@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class OutboundConnectionLocalDomainInfo {
   /// The name of the local domain.
   final String domainName;
+
   /// The Account ID of the owner of the local domain.
   final String ownerId;
+
   /// The region of the local domain.
   final String region;
 
@@ -35,4 +36,3 @@ class OutboundConnectionLocalDomainInfo {
     );
   }
 }
-

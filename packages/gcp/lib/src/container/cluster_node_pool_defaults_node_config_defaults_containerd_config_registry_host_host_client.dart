@@ -5,9 +5,12 @@ import 'cluster_node_pool_defaults_node_config_defaults_containerd_config_regist
 
 class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient {
   /// Configures the client certificate.
-  final ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert cert;
+  final ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert
+  cert;
+
   /// Configures the client private key.
-  final ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey? key;
+  final ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey?
+  key;
 
   /// Creates a new [ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient].
   /// [cert] Configures the client certificate.
@@ -24,11 +27,19 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostC
     };
   }
 
-  factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient(
-      cert: ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert.fromMap((map['cert'] as Map).cast<String, dynamic>()),
-      key: map['key'] == null ? null : ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey.fromMap((map['key'] as Map).cast<String, dynamic>()),
+      cert:
+          ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientCert.fromMap(
+            (map['cert'] as Map).cast<String, dynamic>(),
+          ),
+      key: map['key'] == null
+          ? null
+          : ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKey.fromMap(
+              (map['key'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

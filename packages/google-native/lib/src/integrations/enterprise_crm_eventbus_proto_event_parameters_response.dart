@@ -10,20 +10,31 @@ class EnterpriseCrmEventbusProtoEventParametersResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoEventParametersResponse].
   /// [parameters] Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution.
-  EnterpriseCrmEventbusProtoEventParametersResponse({
-    required this.parameters,
-  });
+  EnterpriseCrmEventbusProtoEventParametersResponse({required this.parameters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': pulumi.Input.encodeList<EnterpriseCrmEventbusProtoParameterEntryResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.encodeList<
+            EnterpriseCrmEventbusProtoParameterEntryResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoEventParametersResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoEventParametersResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoEventParametersResponse(
-      parameters: pulumi.Input.decodeList<EnterpriseCrmEventbusProtoParameterEntryResponse>(map['parameters'], (value) => EnterpriseCrmEventbusProtoParameterEntryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      parameters:
+          pulumi.Input.decodeList<
+            EnterpriseCrmEventbusProtoParameterEntryResponse
+          >(
+            map['parameters'],
+            (value) => EnterpriseCrmEventbusProtoParameterEntryResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

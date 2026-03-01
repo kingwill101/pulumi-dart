@@ -12,7 +12,8 @@ enum GooglePrivacyDlpV2CustomInfoTypeExclusionType {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2CustomInfoTypeExclusionType value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2CustomInfoTypeExclusionType value: $value',
+    );
   }
 }
-

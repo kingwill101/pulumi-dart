@@ -9,12 +9,15 @@ import 'release_type.dart';
 /// {@macro pulumi_firebasehosting_v1beta1_release_args_doc}
 class ReleaseArgs {
   final pulumi.Input<String> channelId;
+
   /// The deploy description when the release was created. The value can be up to 512 characters.
   final pulumi.Input<String>? message;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> siteId;
+
   /// Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
   final pulumi.Input<ReleaseType>? type;
+
   /// The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`.
   final pulumi.Input<String>? versionName;
 
@@ -32,13 +35,12 @@ class ReleaseArgs {
     required String siteId,
     ReleaseType? type,
     String? versionName,
-  }) :
-      channelId = pulumi.Input.asInput<String>(channelId),
-      message = pulumi.Input.asOptionalInput<String>(message),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      type = pulumi.Input.asOptionalInput<ReleaseType>(type),
-      versionName = pulumi.Input.asOptionalInput<String>(versionName);
+  }) : channelId = pulumi.Input.asInput<String>(channelId),
+       message = pulumi.Input.asOptionalInput<String>(message),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       siteId = pulumi.Input.asInput<String>(siteId),
+       type = pulumi.Input.asOptionalInput<ReleaseType>(type),
+       versionName = pulumi.Input.asOptionalInput<String>(versionName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,7 +48,10 @@ class ReleaseArgs {
       'message': ?message,
       'project': ?project,
       'siteId': siteId,
-      'type': ?pulumi.Input.mapOptionalInputValue<ReleaseType, String>(type, (value) => value.value),
+      'type': ?pulumi.Input.mapOptionalInputValue<ReleaseType, String>(
+        type,
+        (value) => value.value,
+      ),
       'versionName': ?versionName,
     };
   }
@@ -57,9 +62,12 @@ class ReleaseArgs {
       message: map['message'] == null ? null : map['message'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       siteId: map['siteId'] as String,
-      type: map['type'] == null ? null : ReleaseType.fromValue(map['type'] as String),
-      versionName: map['versionName'] == null ? null : map['versionName'] as String,
+      type: map['type'] == null
+          ? null
+          : ReleaseType.fromValue(map['type'] as String),
+      versionName: map['versionName'] == null
+          ? null
+          : map['versionName'] as String,
     );
   }
 }
-

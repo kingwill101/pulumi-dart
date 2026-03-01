@@ -19,10 +19,9 @@ class GetPacketMirroringComputeBetaArgs {
     required String packetMirroring,
     String? project,
     required String region,
-  }) :
-      packetMirroring = pulumi.Input.asInput<String>(packetMirroring),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : packetMirroring = pulumi.Input.asInput<String>(packetMirroring),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetPacketMirroringComputeBetaArgs {
     );
   }
 }
-

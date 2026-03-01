@@ -16,4 +16,3 @@ enum LoggingServerSourceType {
     throw ArgumentError('Unknown LoggingServerSourceType value: $value');
   }
 }
-

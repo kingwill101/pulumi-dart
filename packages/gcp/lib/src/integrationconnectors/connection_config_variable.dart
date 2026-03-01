@@ -6,16 +6,21 @@ import 'connection_config_variable_secret_value.dart';
 class ConnectionConfigVariable {
   /// Boolean Value of configVariable
   final bool? booleanValue;
+
   /// Encryption key value of configVariable.
   /// Structure is documented below.
   final ConnectionConfigVariableEncryptionKeyValue? encryptionKeyValue;
+
   /// Integer Value of configVariable
   final int? integerValue;
+
   /// Key for the configVariable
   final String key;
+
   /// Secret value of configVariable.
   /// Structure is documented below.
   final ConnectionConfigVariableSecretValue? secretValue;
+
   /// String Value of configVariabley
   final String? stringValue;
 
@@ -38,7 +43,9 @@ class ConnectionConfigVariable {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'booleanValue': ?booleanValue,
-      'encryptionKeyValue': ?encryptionKeyValue == null ? null : encryptionKeyValue!.toMap(),
+      'encryptionKeyValue': ?encryptionKeyValue == null
+          ? null
+          : encryptionKeyValue!.toMap(),
       'integerValue': ?integerValue,
       'key': key,
       'secretValue': ?secretValue == null ? null : secretValue!.toMap(),
@@ -48,13 +55,26 @@ class ConnectionConfigVariable {
 
   factory ConnectionConfigVariable.fromMap(Map<String, dynamic> map) {
     return ConnectionConfigVariable(
-      booleanValue: map['booleanValue'] == null ? null : map['booleanValue'] as bool,
-      encryptionKeyValue: map['encryptionKeyValue'] == null ? null : ConnectionConfigVariableEncryptionKeyValue.fromMap((map['encryptionKeyValue'] as Map).cast<String, dynamic>()),
-      integerValue: map['integerValue'] == null ? null : map['integerValue'] as int,
+      booleanValue: map['booleanValue'] == null
+          ? null
+          : map['booleanValue'] as bool,
+      encryptionKeyValue: map['encryptionKeyValue'] == null
+          ? null
+          : ConnectionConfigVariableEncryptionKeyValue.fromMap(
+              (map['encryptionKeyValue'] as Map).cast<String, dynamic>(),
+            ),
+      integerValue: map['integerValue'] == null
+          ? null
+          : map['integerValue'] as int,
       key: map['key'] as String,
-      secretValue: map['secretValue'] == null ? null : ConnectionConfigVariableSecretValue.fromMap((map['secretValue'] as Map).cast<String, dynamic>()),
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
+      secretValue: map['secretValue'] == null
+          ? null
+          : ConnectionConfigVariableSecretValue.fromMap(
+              (map['secretValue'] as Map).cast<String, dynamic>(),
+            ),
+      stringValue: map['stringValue'] == null
+          ? null
+          : map['stringValue'] as String,
     );
   }
 }
-

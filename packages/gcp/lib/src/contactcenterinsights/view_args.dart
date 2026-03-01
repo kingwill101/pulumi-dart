@@ -9,11 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ViewArgs {
   /// The human-readable display name of the view.
   final pulumi.Input<String>? displayName;
+
   /// Location of the resource.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// A filter to reduce conversation results to a specific subset.
   /// Refer to https://cloud.google.com/contact-center/insights/docs/filtering
   /// for details.
@@ -29,11 +32,10 @@ class ViewArgs {
     required String location,
     String? project,
     String? value,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      value = pulumi.Input.asOptionalInput<String>(value);
+  }) : displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       value = pulumi.Input.asOptionalInput<String>(value);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,11 +48,12 @@ class ViewArgs {
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       value: map['value'] == null ? null : map['value'] as String,
     );
   }
 }
-

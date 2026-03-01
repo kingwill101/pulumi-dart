@@ -7,6 +7,7 @@ import 'google_iam_v1_audit_log_config_networksecurity_v1beta1.dart';
 class GoogleIamV1AuditConfigNetworksecurityV1beta1 {
   /// The configuration for logging of each type of permission.
   final List<GoogleIamV1AuditLogConfigNetworksecurityV1beta1>? auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
@@ -20,16 +21,32 @@ class GoogleIamV1AuditConfigNetworksecurityV1beta1 {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<GoogleIamV1AuditLogConfigNetworksecurityV1beta1, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'auditLogConfigs': ?auditLogConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleIamV1AuditLogConfigNetworksecurityV1beta1,
+              Map<String, dynamic>
+            >(auditLogConfigs!, (value) => value.toMap()),
       'service': ?service,
     };
   }
 
-  factory GoogleIamV1AuditConfigNetworksecurityV1beta1.fromMap(Map<String, dynamic> map) {
+  factory GoogleIamV1AuditConfigNetworksecurityV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleIamV1AuditConfigNetworksecurityV1beta1(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<GoogleIamV1AuditLogConfigNetworksecurityV1beta1>(map['auditLogConfigs'], (value) => GoogleIamV1AuditLogConfigNetworksecurityV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigs: map['auditLogConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              GoogleIamV1AuditLogConfigNetworksecurityV1beta1
+            >(
+              map['auditLogConfigs'],
+              (value) =>
+                  GoogleIamV1AuditLogConfigNetworksecurityV1beta1.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
-

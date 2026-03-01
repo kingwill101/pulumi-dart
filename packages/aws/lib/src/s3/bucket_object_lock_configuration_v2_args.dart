@@ -10,14 +10,19 @@ import 'bucket_object_lock_configuration_v2_rule.dart';
 class BucketObjectLockConfigurationV2Args {
   /// Name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
+
   /// Indicates whether this bucket has an Object Lock configuration enabled. Defaults to `Enabled`. Valid values: `Enabled`.
   final pulumi.Input<String>? objectLockEnabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configuration block for specifying the Object Lock rule for the specified object. See below.
   final pulumi.Input<BucketObjectLockConfigurationV2Rule>? rule;
+
   /// This argument is deprecated and no longer needed to enable Object Lock.
   /// To enable Object Lock for an existing bucket, you must first enable versioning on the bucket and then enable Object Lock. For more details on versioning, see the `aws.s3.BucketVersioning` resource.
   final pulumi.Input<String>? token;
@@ -36,13 +41,18 @@ class BucketObjectLockConfigurationV2Args {
     String? region,
     BucketObjectLockConfigurationV2Rule? rule,
     String? token,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      objectLockEnabled = pulumi.Input.asOptionalInput<String>(objectLockEnabled),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rule = pulumi.Input.asOptionalInput<BucketObjectLockConfigurationV2Rule>(rule),
-      token = pulumi.Input.asOptionalInput<String>(token);
+  }) : bucket = pulumi.Input.asInput<String>(bucket),
+       expectedBucketOwner = pulumi.Input.asOptionalInput<String>(
+         expectedBucketOwner,
+       ),
+       objectLockEnabled = pulumi.Input.asOptionalInput<String>(
+         objectLockEnabled,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       rule = pulumi.Input.asOptionalInput<BucketObjectLockConfigurationV2Rule>(
+         rule,
+       ),
+       token = pulumi.Input.asOptionalInput<String>(token);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,20 +60,33 @@ class BucketObjectLockConfigurationV2Args {
       'expectedBucketOwner': ?expectedBucketOwner,
       'objectLockEnabled': ?objectLockEnabled,
       'region': ?region,
-      'rule': ?pulumi.Input.mapOptionalInputValue<BucketObjectLockConfigurationV2Rule, Map<String, dynamic>>(rule, (value) => value.toMap()),
+      'rule':
+          ?pulumi.Input.mapOptionalInputValue<
+            BucketObjectLockConfigurationV2Rule,
+            Map<String, dynamic>
+          >(rule, (value) => value.toMap()),
       'token': ?token,
     };
   }
 
-  factory BucketObjectLockConfigurationV2Args.fromMap(Map<String, dynamic> map) {
+  factory BucketObjectLockConfigurationV2Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketObjectLockConfigurationV2Args(
       bucket: map['bucket'] as String,
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : map['expectedBucketOwner'] as String,
-      objectLockEnabled: map['objectLockEnabled'] == null ? null : map['objectLockEnabled'] as String,
+      expectedBucketOwner: map['expectedBucketOwner'] == null
+          ? null
+          : map['expectedBucketOwner'] as String,
+      objectLockEnabled: map['objectLockEnabled'] == null
+          ? null
+          : map['objectLockEnabled'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      rule: map['rule'] == null ? null : BucketObjectLockConfigurationV2Rule.fromMap((map['rule'] as Map).cast<String, dynamic>()),
+      rule: map['rule'] == null
+          ? null
+          : BucketObjectLockConfigurationV2Rule.fromMap(
+              (map['rule'] as Map).cast<String, dynamic>(),
+            ),
       token: map['token'] == null ? null : map['token'] as String,
     );
   }
 }
-

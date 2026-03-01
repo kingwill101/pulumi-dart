@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization {
   /// Fraction of backend capacity utilization (set in HTTP(s) load
   /// balancing configuration) that autoscaler should maintain. Must
@@ -14,15 +13,14 @@ class RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'target': target,
-    };
+    return <String, dynamic>{'target': target};
   }
 
-  factory RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization.fromMap(Map<String, dynamic> map) {
+  factory RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization(
       target: map['target'] as double,
     );
   }
 }
-

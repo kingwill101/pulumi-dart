@@ -13,7 +13,8 @@ enum GoogleCloudDataplexV1AssetResourceSpecType {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1AssetResourceSpecType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1AssetResourceSpecType value: $value',
+    );
   }
 }
-

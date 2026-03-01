@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Target scaling by disk usage. Only applicable in the App Engine flexible environment.
 class DiskUtilizationAppengineV1beta {
   /// Target bytes read per second.
   final int? targetReadBytesPerSecond;
+
   /// Target ops read per seconds.
   final int? targetReadOpsPerSecond;
+
   /// Target bytes written per second.
   final int? targetWriteBytesPerSecond;
+
   /// Target ops written per second.
   final int? targetWriteOpsPerSecond;
 
@@ -35,11 +37,18 @@ class DiskUtilizationAppengineV1beta {
 
   factory DiskUtilizationAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return DiskUtilizationAppengineV1beta(
-      targetReadBytesPerSecond: map['targetReadBytesPerSecond'] == null ? null : map['targetReadBytesPerSecond'] as int,
-      targetReadOpsPerSecond: map['targetReadOpsPerSecond'] == null ? null : map['targetReadOpsPerSecond'] as int,
-      targetWriteBytesPerSecond: map['targetWriteBytesPerSecond'] == null ? null : map['targetWriteBytesPerSecond'] as int,
-      targetWriteOpsPerSecond: map['targetWriteOpsPerSecond'] == null ? null : map['targetWriteOpsPerSecond'] as int,
+      targetReadBytesPerSecond: map['targetReadBytesPerSecond'] == null
+          ? null
+          : map['targetReadBytesPerSecond'] as int,
+      targetReadOpsPerSecond: map['targetReadOpsPerSecond'] == null
+          ? null
+          : map['targetReadOpsPerSecond'] as int,
+      targetWriteBytesPerSecond: map['targetWriteBytesPerSecond'] == null
+          ? null
+          : map['targetWriteBytesPerSecond'] as int,
+      targetWriteOpsPerSecond: map['targetWriteOpsPerSecond'] == null
+          ? null
+          : map['targetWriteOpsPerSecond'] as int,
     );
   }
 }
-

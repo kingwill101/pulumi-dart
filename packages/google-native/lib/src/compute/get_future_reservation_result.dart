@@ -10,34 +10,49 @@ import 'share_settings_response.dart';
 class GetFutureReservationResult {
   /// Future timestamp when the FR auto-created reservations will be deleted by GCE. Format of this field must be a valid href="https://www.ietf.org/rfc/rfc3339.txt">RFC3339 value.
   final String autoCreatedReservationsDeleteTime;
+
   /// Specifies the duration of auto-created reservations. It represents relative time to future reservation start_time when auto-created reservations will be automatically deleted by GCE. Duration time unit is represented as a count of seconds and fractions of seconds at nanosecond resolution.
   final DurationResponse autoCreatedReservationsDuration;
+
   /// Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [auto_created_reservations_delete_time, auto_created_reservations_duration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
   final bool autoDeleteAutoCreatedReservations;
+
   /// The creation timestamp for this future reservation in RFC3339 text format.
   final String creationTimestamp;
+
   /// An optional description of this resource. Provide this property when you create the future reservation.
   final String description;
+
   /// Type of the resource. Always compute#futureReservation for future reservations.
   final String kind;
+
   /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   final String name;
+
   /// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
   final String namePrefix;
+
   /// Planning state before being submitted for evaluation
   final String planningStatus;
+
   /// Server-defined fully-qualified URL for this resource.
   final String selfLink;
+
   /// Server-defined URL for this resource with the resource id.
   final String selfLinkWithId;
+
   /// List of Projects/Folders to share with.
   final ShareSettingsResponse shareSettings;
+
   /// Future Reservation configuration to indicate instance properties and total count.
   final FutureReservationSpecificSKUPropertiesResponse specificSkuProperties;
+
   /// [Output only] Status of the Future Reservation
   final FutureReservationStatusResponse status;
+
   /// Time window for this Future Reservation.
   final FutureReservationTimeWindowResponse timeWindow;
+
   /// URL of the Zone where this future reservation resides.
   final String zone;
 
@@ -80,7 +95,8 @@ class GetFutureReservationResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoCreatedReservationsDeleteTime': autoCreatedReservationsDeleteTime,
-      'autoCreatedReservationsDuration': autoCreatedReservationsDuration.toMap(),
+      'autoCreatedReservationsDuration': autoCreatedReservationsDuration
+          .toMap(),
       'autoDeleteAutoCreatedReservations': autoDeleteAutoCreatedReservations,
       'creationTimestamp': creationTimestamp,
       'description': description,
@@ -100,9 +116,13 @@ class GetFutureReservationResult {
 
   factory GetFutureReservationResult.fromMap(Map<String, dynamic> map) {
     return GetFutureReservationResult(
-      autoCreatedReservationsDeleteTime: map['autoCreatedReservationsDeleteTime'] as String,
-      autoCreatedReservationsDuration: DurationResponse.fromMap((map['autoCreatedReservationsDuration'] as Map).cast<String, dynamic>()),
-      autoDeleteAutoCreatedReservations: map['autoDeleteAutoCreatedReservations'] as bool,
+      autoCreatedReservationsDeleteTime:
+          map['autoCreatedReservationsDeleteTime'] as String,
+      autoCreatedReservationsDuration: DurationResponse.fromMap(
+        (map['autoCreatedReservationsDuration'] as Map).cast<String, dynamic>(),
+      ),
+      autoDeleteAutoCreatedReservations:
+          map['autoDeleteAutoCreatedReservations'] as bool,
       creationTimestamp: map['creationTimestamp'] as String,
       description: map['description'] as String,
       kind: map['kind'] as String,
@@ -111,12 +131,20 @@ class GetFutureReservationResult {
       planningStatus: map['planningStatus'] as String,
       selfLink: map['selfLink'] as String,
       selfLinkWithId: map['selfLinkWithId'] as String,
-      shareSettings: ShareSettingsResponse.fromMap((map['shareSettings'] as Map).cast<String, dynamic>()),
-      specificSkuProperties: FutureReservationSpecificSKUPropertiesResponse.fromMap((map['specificSkuProperties'] as Map).cast<String, dynamic>()),
-      status: FutureReservationStatusResponse.fromMap((map['status'] as Map).cast<String, dynamic>()),
-      timeWindow: FutureReservationTimeWindowResponse.fromMap((map['timeWindow'] as Map).cast<String, dynamic>()),
+      shareSettings: ShareSettingsResponse.fromMap(
+        (map['shareSettings'] as Map).cast<String, dynamic>(),
+      ),
+      specificSkuProperties:
+          FutureReservationSpecificSKUPropertiesResponse.fromMap(
+            (map['specificSkuProperties'] as Map).cast<String, dynamic>(),
+          ),
+      status: FutureReservationStatusResponse.fromMap(
+        (map['status'] as Map).cast<String, dynamic>(),
+      ),
+      timeWindow: FutureReservationTimeWindowResponse.fromMap(
+        (map['timeWindow'] as Map).cast<String, dynamic>(),
+      ),
       zone: map['zone'] as String,
     );
   }
 }
-

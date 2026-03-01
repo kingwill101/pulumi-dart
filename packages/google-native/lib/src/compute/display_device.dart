@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A set of Display Device options
 class DisplayDevice {
   /// Defines whether the instance has Display enabled.
@@ -8,20 +7,17 @@ class DisplayDevice {
 
   /// Creates a new [DisplayDevice].
   /// [enableDisplay] Defines whether the instance has Display enabled.
-  DisplayDevice({
-    this.enableDisplay,
-  });
+  DisplayDevice({this.enableDisplay});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableDisplay': ?enableDisplay,
-    };
+    return <String, dynamic>{'enableDisplay': ?enableDisplay};
   }
 
   factory DisplayDevice.fromMap(Map<String, dynamic> map) {
     return DisplayDevice(
-      enableDisplay: map['enableDisplay'] == null ? null : map['enableDisplay'] as bool,
+      enableDisplay: map['enableDisplay'] == null
+          ? null
+          : map['enableDisplay'] as bool,
     );
   }
 }
-

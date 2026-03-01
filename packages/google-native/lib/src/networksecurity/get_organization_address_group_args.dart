@@ -19,10 +19,9 @@ class GetOrganizationAddressGroupArgs {
     required String addressGroupId,
     required String location,
     required String organizationId,
-  }) :
-      addressGroupId = pulumi.Input.asInput<String>(addressGroupId),
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : addressGroupId = pulumi.Input.asInput<String>(addressGroupId),
+       location = pulumi.Input.asInput<String>(location),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetOrganizationAddressGroupArgs {
     );
   }
 }
-

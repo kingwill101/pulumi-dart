@@ -7,29 +7,44 @@ import 'app_authorization_credential_oauth2_credential.dart';
 class AppAuthorizationCredential {
   /// Contains API key credential information.
   final List<AppAuthorizationCredentialApiKeyCredential>? apiKeyCredentials;
+
   /// Contains OAuth2 client credential information.
   final AppAuthorizationCredentialOauth2Credential? oauth2Credential;
 
   /// Creates a new [AppAuthorizationCredential].
   /// [apiKeyCredentials] Contains API key credential information.
   /// [oauth2Credential] Contains OAuth2 client credential information.
-  AppAuthorizationCredential({
-    this.apiKeyCredentials,
-    this.oauth2Credential,
-  });
+  AppAuthorizationCredential({this.apiKeyCredentials, this.oauth2Credential});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiKeyCredentials': ?apiKeyCredentials == null ? null : pulumi.Input.encodeList<AppAuthorizationCredentialApiKeyCredential, Map<String, dynamic>>(apiKeyCredentials!, (value) => value.toMap()),
-      'oauth2Credential': ?oauth2Credential == null ? null : oauth2Credential!.toMap(),
+      'apiKeyCredentials': ?apiKeyCredentials == null
+          ? null
+          : pulumi.Input.encodeList<
+              AppAuthorizationCredentialApiKeyCredential,
+              Map<String, dynamic>
+            >(apiKeyCredentials!, (value) => value.toMap()),
+      'oauth2Credential': ?oauth2Credential == null
+          ? null
+          : oauth2Credential!.toMap(),
     };
   }
 
   factory AppAuthorizationCredential.fromMap(Map<String, dynamic> map) {
     return AppAuthorizationCredential(
-      apiKeyCredentials: map['apiKeyCredentials'] == null ? null : pulumi.Input.decodeList<AppAuthorizationCredentialApiKeyCredential>(map['apiKeyCredentials'], (value) => AppAuthorizationCredentialApiKeyCredential.fromMap((value as Map).cast<String, dynamic>())),
-      oauth2Credential: map['oauth2Credential'] == null ? null : AppAuthorizationCredentialOauth2Credential.fromMap((map['oauth2Credential'] as Map).cast<String, dynamic>()),
+      apiKeyCredentials: map['apiKeyCredentials'] == null
+          ? null
+          : pulumi.Input.decodeList<AppAuthorizationCredentialApiKeyCredential>(
+              map['apiKeyCredentials'],
+              (value) => AppAuthorizationCredentialApiKeyCredential.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      oauth2Credential: map['oauth2Credential'] == null
+          ? null
+          : AppAuthorizationCredentialOauth2Credential.fromMap(
+              (map['oauth2Credential'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

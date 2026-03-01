@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTopicMessageStoragePolicy {
   /// A list of IDs of GCP regions where messages that are published to
   /// the topic may be persisted in storage. Messages published by
@@ -9,6 +8,7 @@ class GetTopicMessageStoragePolicy {
   /// allowed regions. An empty list means that no regions are allowed,
   /// and is not a valid configuration.
   final List<String> allowedPersistenceRegions;
+
   /// If true, 'allowedPersistenceRegions' is also used to enforce in-transit
   /// guarantees for messages. That is, Pub/Sub will fail topics.publish
   /// operations on this topic and subscribe operations on any subscription
@@ -32,9 +32,9 @@ class GetTopicMessageStoragePolicy {
 
   factory GetTopicMessageStoragePolicy.fromMap(Map<String, dynamic> map) {
     return GetTopicMessageStoragePolicy(
-      allowedPersistenceRegions: (map['allowedPersistenceRegions'] as List).cast<String>(),
+      allowedPersistenceRegions: (map['allowedPersistenceRegions'] as List)
+          .cast<String>(),
       enforceInTransit: map['enforceInTransit'] as bool,
     );
   }
 }
-

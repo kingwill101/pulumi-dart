@@ -19,10 +19,9 @@ class GetReservationArgs {
     required String location,
     String? project,
     required String reservationId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reservationId = pulumi.Input.asInput<String>(reservationId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       reservationId = pulumi.Input.asInput<String>(reservationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetReservationArgs {
     );
   }
 }
-

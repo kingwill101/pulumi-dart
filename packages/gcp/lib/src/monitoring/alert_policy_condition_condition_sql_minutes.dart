@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AlertPolicyConditionConditionSqlMinutes {
   /// Number of minutes between runs. The interval must be greater than or
   /// equal to 5 minutes and less than or equal to 1440 minutes.
@@ -8,20 +7,17 @@ class AlertPolicyConditionConditionSqlMinutes {
 
   /// Creates a new [AlertPolicyConditionConditionSqlMinutes].
   /// [periodicity] Number of minutes between runs. The interval must be greater than or
-  AlertPolicyConditionConditionSqlMinutes({
-    required this.periodicity,
-  });
+  AlertPolicyConditionConditionSqlMinutes({required this.periodicity});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'periodicity': periodicity,
-    };
+    return <String, dynamic>{'periodicity': periodicity};
   }
 
-  factory AlertPolicyConditionConditionSqlMinutes.fromMap(Map<String, dynamic> map) {
+  factory AlertPolicyConditionConditionSqlMinutes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AlertPolicyConditionConditionSqlMinutes(
       periodicity: map['periodicity'] as int,
     );
   }
 }
-

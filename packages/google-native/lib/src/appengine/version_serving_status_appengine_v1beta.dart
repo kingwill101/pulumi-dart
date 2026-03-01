@@ -13,7 +13,8 @@ enum VersionServingStatusAppengineV1beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown VersionServingStatusAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown VersionServingStatusAppengineV1beta value: $value',
+    );
   }
 }
-

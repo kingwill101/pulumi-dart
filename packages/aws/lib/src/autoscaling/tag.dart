@@ -120,8 +120,10 @@ import 'tag_tag.dart';
 class Tag extends pulumi.CustomResource {
   /// Name of the Autoscaling Group to apply the tag to.
   late final pulumi.Output<String> autoscalingGroupName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Tag to create. The `tag` block is documented below.
   late final pulumi.Output<TagTag> tag;
 
@@ -129,16 +131,13 @@ class Tag extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Tag]. {@macro pulumi_autoscaling_tag_tag_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Tag(
-    String name, {
-    TagArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'aws:autoscaling/tag:Tag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Tag(String name, {TagArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'aws:autoscaling/tag:Tag',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.autoscalingGroupName = registerOutput<String>('autoscalingGroupName');
     this.region = registerOutput<String>('region');
     this.tag = registerOutput<TagTag>('tag');

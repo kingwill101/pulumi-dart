@@ -19,10 +19,11 @@ class GetOrganizationsDeidentifyTemplateArgs {
     required String deidentifyTemplateId,
     required String location,
     required String organizationId,
-  }) :
-      deidentifyTemplateId = pulumi.Input.asInput<String>(deidentifyTemplateId),
-      location = pulumi.Input.asInput<String>(location),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : deidentifyTemplateId = pulumi.Input.asInput<String>(
+         deidentifyTemplateId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +33,9 @@ class GetOrganizationsDeidentifyTemplateArgs {
     };
   }
 
-  factory GetOrganizationsDeidentifyTemplateArgs.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationsDeidentifyTemplateArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationsDeidentifyTemplateArgs(
       deidentifyTemplateId: map['deidentifyTemplateId'] as String,
       location: map['location'] as String,
@@ -40,4 +43,3 @@ class GetOrganizationsDeidentifyTemplateArgs {
     );
   }
 }
-

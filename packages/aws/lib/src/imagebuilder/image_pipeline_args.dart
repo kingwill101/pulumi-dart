@@ -14,36 +14,53 @@ import 'image_pipeline_workflow.dart';
 class ImagePipelineArgs {
   /// Amazon Resource Name (ARN) of the container recipe.
   final pulumi.Input<String>? containerRecipeArn;
+
   /// Description of the image pipeline.
   final pulumi.Input<String>? description;
+
   /// Amazon Resource Name (ARN) of the Image Builder Distribution Configuration.
   final pulumi.Input<String>? distributionConfigurationArn;
+
   /// Whether additional information about the image being created is collected. Defaults to `true`.
   final pulumi.Input<bool>? enhancedImageMetadataEnabled;
+
   /// Amazon Resource Name (ARN) of the service-linked role to be used by Image Builder to [execute workflows](https://docs.aws.amazon.com/imagebuilder/latest/userguide/manage-image-workflows.html).
   final pulumi.Input<String>? executionRole;
+
   /// Amazon Resource Name (ARN) of the image recipe.
   final pulumi.Input<String>? imageRecipeArn;
+
   /// Configuration block with image scanning configuration. Detailed below.
-  final pulumi.Input<ImagePipelineImageScanningConfiguration>? imageScanningConfiguration;
+  final pulumi.Input<ImagePipelineImageScanningConfiguration>?
+  imageScanningConfiguration;
+
   /// Configuration block with image tests configuration. Detailed below.
-  final pulumi.Input<ImagePipelineImageTestsConfiguration>? imageTestsConfiguration;
+  final pulumi.Input<ImagePipelineImageTestsConfiguration>?
+  imageTestsConfiguration;
+
   /// Amazon Resource Name (ARN) of the Image Builder Infrastructure Configuration.
   final pulumi.Input<String> infrastructureConfigurationArn;
+
   /// Configuration block with logging configuration. Detailed below.
   final pulumi.Input<ImagePipelineLoggingConfiguration>? loggingConfiguration;
+
   /// Name of the image pipeline.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Configuration block with schedule settings. Detailed below.
   final pulumi.Input<ImagePipelineSchedule>? schedule;
+
   /// Status of the image pipeline. Valid values are `DISABLED` and `ENABLED`. Defaults to `ENABLED`.
   final pulumi.Input<String>? status;
+
   /// Key-value map of resource tags for the image pipeline. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// Configuration block with the workflow configuration. Detailed below.
   final pulumi.Input<List<ImagePipelineWorkflow>>? workflows;
 
@@ -81,23 +98,41 @@ class ImagePipelineArgs {
     String? status,
     Map<String, String>? tags,
     List<ImagePipelineWorkflow>? workflows,
-  }) :
-      containerRecipeArn = pulumi.Input.asOptionalInput<String>(containerRecipeArn),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      distributionConfigurationArn = pulumi.Input.asOptionalInput<String>(distributionConfigurationArn),
-      enhancedImageMetadataEnabled = pulumi.Input.asOptionalInput<bool>(enhancedImageMetadataEnabled),
-      executionRole = pulumi.Input.asOptionalInput<String>(executionRole),
-      imageRecipeArn = pulumi.Input.asOptionalInput<String>(imageRecipeArn),
-      imageScanningConfiguration = pulumi.Input.asOptionalInput<ImagePipelineImageScanningConfiguration>(imageScanningConfiguration),
-      imageTestsConfiguration = pulumi.Input.asOptionalInput<ImagePipelineImageTestsConfiguration>(imageTestsConfiguration),
-      infrastructureConfigurationArn = pulumi.Input.asInput<String>(infrastructureConfigurationArn),
-      loggingConfiguration = pulumi.Input.asOptionalInput<ImagePipelineLoggingConfiguration>(loggingConfiguration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      schedule = pulumi.Input.asOptionalInput<ImagePipelineSchedule>(schedule),
-      status = pulumi.Input.asOptionalInput<String>(status),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      workflows = pulumi.Input.asOptionalInput<List<ImagePipelineWorkflow>>(workflows);
+  }) : containerRecipeArn = pulumi.Input.asOptionalInput<String>(
+         containerRecipeArn,
+       ),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       distributionConfigurationArn = pulumi.Input.asOptionalInput<String>(
+         distributionConfigurationArn,
+       ),
+       enhancedImageMetadataEnabled = pulumi.Input.asOptionalInput<bool>(
+         enhancedImageMetadataEnabled,
+       ),
+       executionRole = pulumi.Input.asOptionalInput<String>(executionRole),
+       imageRecipeArn = pulumi.Input.asOptionalInput<String>(imageRecipeArn),
+       imageScanningConfiguration =
+           pulumi.Input.asOptionalInput<
+             ImagePipelineImageScanningConfiguration
+           >(imageScanningConfiguration),
+       imageTestsConfiguration =
+           pulumi.Input.asOptionalInput<ImagePipelineImageTestsConfiguration>(
+             imageTestsConfiguration,
+           ),
+       infrastructureConfigurationArn = pulumi.Input.asInput<String>(
+         infrastructureConfigurationArn,
+       ),
+       loggingConfiguration =
+           pulumi.Input.asOptionalInput<ImagePipelineLoggingConfiguration>(
+             loggingConfiguration,
+           ),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       schedule = pulumi.Input.asOptionalInput<ImagePipelineSchedule>(schedule),
+       status = pulumi.Input.asOptionalInput<String>(status),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       workflows = pulumi.Input.asOptionalInput<List<ImagePipelineWorkflow>>(
+         workflows,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -107,38 +142,103 @@ class ImagePipelineArgs {
       'enhancedImageMetadataEnabled': ?enhancedImageMetadataEnabled,
       'executionRole': ?executionRole,
       'imageRecipeArn': ?imageRecipeArn,
-      'imageScanningConfiguration': ?pulumi.Input.mapOptionalInputValue<ImagePipelineImageScanningConfiguration, Map<String, dynamic>>(imageScanningConfiguration, (value) => value.toMap()),
-      'imageTestsConfiguration': ?pulumi.Input.mapOptionalInputValue<ImagePipelineImageTestsConfiguration, Map<String, dynamic>>(imageTestsConfiguration, (value) => value.toMap()),
+      'imageScanningConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImagePipelineImageScanningConfiguration,
+            Map<String, dynamic>
+          >(imageScanningConfiguration, (value) => value.toMap()),
+      'imageTestsConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImagePipelineImageTestsConfiguration,
+            Map<String, dynamic>
+          >(imageTestsConfiguration, (value) => value.toMap()),
       'infrastructureConfigurationArn': infrastructureConfigurationArn,
-      'loggingConfiguration': ?pulumi.Input.mapOptionalInputValue<ImagePipelineLoggingConfiguration, Map<String, dynamic>>(loggingConfiguration, (value) => value.toMap()),
+      'loggingConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImagePipelineLoggingConfiguration,
+            Map<String, dynamic>
+          >(loggingConfiguration, (value) => value.toMap()),
       'name': ?name,
       'region': ?region,
-      'schedule': ?pulumi.Input.mapOptionalInputValue<ImagePipelineSchedule, Map<String, dynamic>>(schedule, (value) => value.toMap()),
+      'schedule':
+          ?pulumi.Input.mapOptionalInputValue<
+            ImagePipelineSchedule,
+            Map<String, dynamic>
+          >(schedule, (value) => value.toMap()),
       'status': ?status,
       'tags': ?tags,
-      'workflows': ?pulumi.Input.mapOptionalInputValue<List<ImagePipelineWorkflow>, List<Map<String, dynamic>>>(workflows, (value) => pulumi.Input.encodeList<ImagePipelineWorkflow, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'workflows':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<ImagePipelineWorkflow>,
+            List<Map<String, dynamic>>
+          >(
+            workflows,
+            (value) =>
+                pulumi.Input.encodeList<
+                  ImagePipelineWorkflow,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory ImagePipelineArgs.fromMap(Map<String, dynamic> map) {
     return ImagePipelineArgs(
-      containerRecipeArn: map['containerRecipeArn'] == null ? null : map['containerRecipeArn'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      distributionConfigurationArn: map['distributionConfigurationArn'] == null ? null : map['distributionConfigurationArn'] as String,
-      enhancedImageMetadataEnabled: map['enhancedImageMetadataEnabled'] == null ? null : map['enhancedImageMetadataEnabled'] as bool,
-      executionRole: map['executionRole'] == null ? null : map['executionRole'] as String,
-      imageRecipeArn: map['imageRecipeArn'] == null ? null : map['imageRecipeArn'] as String,
-      imageScanningConfiguration: map['imageScanningConfiguration'] == null ? null : ImagePipelineImageScanningConfiguration.fromMap((map['imageScanningConfiguration'] as Map).cast<String, dynamic>()),
-      imageTestsConfiguration: map['imageTestsConfiguration'] == null ? null : ImagePipelineImageTestsConfiguration.fromMap((map['imageTestsConfiguration'] as Map).cast<String, dynamic>()),
-      infrastructureConfigurationArn: map['infrastructureConfigurationArn'] as String,
-      loggingConfiguration: map['loggingConfiguration'] == null ? null : ImagePipelineLoggingConfiguration.fromMap((map['loggingConfiguration'] as Map).cast<String, dynamic>()),
+      containerRecipeArn: map['containerRecipeArn'] == null
+          ? null
+          : map['containerRecipeArn'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      distributionConfigurationArn: map['distributionConfigurationArn'] == null
+          ? null
+          : map['distributionConfigurationArn'] as String,
+      enhancedImageMetadataEnabled: map['enhancedImageMetadataEnabled'] == null
+          ? null
+          : map['enhancedImageMetadataEnabled'] as bool,
+      executionRole: map['executionRole'] == null
+          ? null
+          : map['executionRole'] as String,
+      imageRecipeArn: map['imageRecipeArn'] == null
+          ? null
+          : map['imageRecipeArn'] as String,
+      imageScanningConfiguration: map['imageScanningConfiguration'] == null
+          ? null
+          : ImagePipelineImageScanningConfiguration.fromMap(
+              (map['imageScanningConfiguration'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      imageTestsConfiguration: map['imageTestsConfiguration'] == null
+          ? null
+          : ImagePipelineImageTestsConfiguration.fromMap(
+              (map['imageTestsConfiguration'] as Map).cast<String, dynamic>(),
+            ),
+      infrastructureConfigurationArn:
+          map['infrastructureConfigurationArn'] as String,
+      loggingConfiguration: map['loggingConfiguration'] == null
+          ? null
+          : ImagePipelineLoggingConfiguration.fromMap(
+              (map['loggingConfiguration'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      schedule: map['schedule'] == null ? null : ImagePipelineSchedule.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
+      schedule: map['schedule'] == null
+          ? null
+          : ImagePipelineSchedule.fromMap(
+              (map['schedule'] as Map).cast<String, dynamic>(),
+            ),
       status: map['status'] == null ? null : map['status'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      workflows: map['workflows'] == null ? null : pulumi.Input.decodeList<ImagePipelineWorkflow>(map['workflows'], (value) => ImagePipelineWorkflow.fromMap((value as Map).cast<String, dynamic>())),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+      workflows: map['workflows'] == null
+          ? null
+          : pulumi.Input.decodeList<ImagePipelineWorkflow>(
+              map['workflows'],
+              (value) => ImagePipelineWorkflow.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

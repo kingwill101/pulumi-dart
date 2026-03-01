@@ -19,10 +19,9 @@ class GetPhraseMatcherArgs {
     required String location,
     required String phraseMatcherId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      phraseMatcherId = pulumi.Input.asInput<String>(phraseMatcherId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       phraseMatcherId = pulumi.Input.asInput<String>(phraseMatcherId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetPhraseMatcherArgs {
     );
   }
 }
-

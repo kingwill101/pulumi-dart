@@ -13,7 +13,8 @@ enum ResourcePolicyGroupPlacementPolicyCollocation {
         return item;
       }
     }
-    throw ArgumentError('Unknown ResourcePolicyGroupPlacementPolicyCollocation value: $value');
+    throw ArgumentError(
+      'Unknown ResourcePolicyGroupPlacementPolicyCollocation value: $value',
+    );
   }
 }
-

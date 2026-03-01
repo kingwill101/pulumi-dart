@@ -6,6 +6,7 @@ import 'get_access_point_root_directory_creation_info.dart';
 class GetAccessPointRootDirectory {
   /// Single element list containing information on the creation permissions of the directory
   final List<GetAccessPointRootDirectoryCreationInfo> creationInfos;
+
   /// Path exposed as the root directory
   final String path;
 
@@ -19,16 +20,25 @@ class GetAccessPointRootDirectory {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creationInfos': pulumi.Input.encodeList<GetAccessPointRootDirectoryCreationInfo, Map<String, dynamic>>(creationInfos, (value) => value.toMap()),
+      'creationInfos':
+          pulumi.Input.encodeList<
+            GetAccessPointRootDirectoryCreationInfo,
+            Map<String, dynamic>
+          >(creationInfos, (value) => value.toMap()),
       'path': path,
     };
   }
 
   factory GetAccessPointRootDirectory.fromMap(Map<String, dynamic> map) {
     return GetAccessPointRootDirectory(
-      creationInfos: pulumi.Input.decodeList<GetAccessPointRootDirectoryCreationInfo>(map['creationInfos'], (value) => GetAccessPointRootDirectoryCreationInfo.fromMap((value as Map).cast<String, dynamic>())),
+      creationInfos:
+          pulumi.Input.decodeList<GetAccessPointRootDirectoryCreationInfo>(
+            map['creationInfos'],
+            (value) => GetAccessPointRootDirectoryCreationInfo.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       path: map['path'] as String,
     );
   }
 }
-

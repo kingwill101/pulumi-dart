@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification {
   /// Specifies the strategy to use in launching On-Demand instance fleets. Currently, the only option is `lowest-price` (the default), which launches the lowest price first.
   final String allocationStrategy;
@@ -12,15 +11,14 @@ class ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'allocationStrategy': allocationStrategy,
-    };
+    return <String, dynamic>{'allocationStrategy': allocationStrategy};
   }
 
-  factory ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap(Map<String, dynamic> map) {
+  factory ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterMasterInstanceFleetLaunchSpecificationsOnDemandSpecification(
       allocationStrategy: map['allocationStrategy'] as String,
     );
   }
 }
-

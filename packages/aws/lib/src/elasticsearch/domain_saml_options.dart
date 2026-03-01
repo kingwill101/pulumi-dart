@@ -263,8 +263,10 @@ class DomainSamlOptions extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> domainName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The SAML authentication options for an AWS Elasticsearch Domain.
   late final pulumi.Output<DomainSamlOptionsSamlOptions?> samlOptions;
 
@@ -277,13 +279,15 @@ class DomainSamlOptions extends pulumi.CustomResource {
     DomainSamlOptionsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:elasticsearch/domainSamlOptions:DomainSamlOptions',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:elasticsearch/domainSamlOptions:DomainSamlOptions',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.domainName = registerOutput<String>('domainName');
     this.region = registerOutput<String>('region');
-    this.samlOptions = registerOutput<DomainSamlOptionsSamlOptions?>('samlOptions');
+    this.samlOptions = registerOutput<DomainSamlOptionsSamlOptions?>(
+      'samlOptions',
+    );
   }
 }

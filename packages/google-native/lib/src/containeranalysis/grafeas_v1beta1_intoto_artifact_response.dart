@@ -21,11 +21,14 @@ class GrafeasV1beta1IntotoArtifactResponse {
     };
   }
 
-  factory GrafeasV1beta1IntotoArtifactResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1beta1IntotoArtifactResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1beta1IntotoArtifactResponse(
-      hashes: ArtifactHashesResponse.fromMap((map['hashes'] as Map).cast<String, dynamic>()),
+      hashes: ArtifactHashesResponse.fromMap(
+        (map['hashes'] as Map).cast<String, dynamic>(),
+      ),
       resourceUri: map['resourceUri'] as String,
     );
   }
 }
-

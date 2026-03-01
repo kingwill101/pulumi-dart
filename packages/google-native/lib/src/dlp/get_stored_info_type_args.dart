@@ -19,10 +19,9 @@ class GetStoredInfoTypeArgs {
     required String location,
     String? project,
     required String storedInfoTypeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      storedInfoTypeId = pulumi.Input.asInput<String>(storedInfoTypeId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       storedInfoTypeId = pulumi.Input.asInput<String>(storedInfoTypeId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetStoredInfoTypeArgs {
     );
   }
 }
-

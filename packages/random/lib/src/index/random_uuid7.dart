@@ -143,6 +143,7 @@ import 'random_uuid7_args.dart';
 class RandomUuid7 extends pulumi.CustomResource {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   late final pulumi.Output<Map<String, String>?> keepers;
+
   /// The generated uuid presented in string format.
   late final pulumi.Output<String> result;
 
@@ -155,11 +156,11 @@ class RandomUuid7 extends pulumi.CustomResource {
     RandomUuid7Args? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'random:index/randomUuid7:RandomUuid7',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'random:index/randomUuid7:RandomUuid7',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.keepers = registerOutput<Map<String, String>?>('keepers');
     this.result = registerOutput<String>('result');
   }

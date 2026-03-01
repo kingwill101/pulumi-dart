@@ -6,16 +6,14 @@ import 'encryption_key_type.dart';
 class EncryptionKey {
   /// The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
   final String? kmsKeyName;
+
   /// Type.
   final EncryptionKeyType? type;
 
   /// Creates a new [EncryptionKey].
   /// [kmsKeyName] The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
   /// [type] Type.
-  EncryptionKey({
-    this.kmsKeyName,
-    this.type,
-  });
+  EncryptionKey({this.kmsKeyName, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class EncryptionKey {
 
   factory EncryptionKey.fromMap(Map<String, dynamic> map) {
     return EncryptionKey(
-      kmsKeyName: map['kmsKeyName'] == null ? null : map['kmsKeyName'] as String,
-      type: map['type'] == null ? null : EncryptionKeyType.fromValue(map['type'] as String),
+      kmsKeyName: map['kmsKeyName'] == null
+          ? null
+          : map['kmsKeyName'] as String,
+      type: map['type'] == null
+          ? null
+          : EncryptionKeyType.fromValue(map['type'] as String),
     );
   }
 }
-

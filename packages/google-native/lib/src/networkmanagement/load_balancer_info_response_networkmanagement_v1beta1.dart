@@ -7,12 +7,16 @@ import 'load_balancer_backend_response_networkmanagement_v1beta1.dart';
 class LoadBalancerInfoResponseNetworkmanagementV1beta1 {
   /// Type of load balancer's backend configuration.
   final String backendType;
+
   /// Backend configuration URI.
   final String backendUri;
+
   /// Information for the loadbalancer backends.
   final List<LoadBalancerBackendResponseNetworkmanagementV1beta1> backends;
+
   /// URI of the health check for the load balancer. Deprecated and no longer populated as different load balancer backends might have different health checks.
   final String healthCheckUri;
+
   /// Type of the load balancer.
   final String loadBalancerType;
 
@@ -34,20 +38,34 @@ class LoadBalancerInfoResponseNetworkmanagementV1beta1 {
     return <String, dynamic>{
       'backendType': backendType,
       'backendUri': backendUri,
-      'backends': pulumi.Input.encodeList<LoadBalancerBackendResponseNetworkmanagementV1beta1, Map<String, dynamic>>(backends, (value) => value.toMap()),
+      'backends':
+          pulumi.Input.encodeList<
+            LoadBalancerBackendResponseNetworkmanagementV1beta1,
+            Map<String, dynamic>
+          >(backends, (value) => value.toMap()),
       'healthCheckUri': healthCheckUri,
       'loadBalancerType': loadBalancerType,
     };
   }
 
-  factory LoadBalancerInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory LoadBalancerInfoResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoadBalancerInfoResponseNetworkmanagementV1beta1(
       backendType: map['backendType'] as String,
       backendUri: map['backendUri'] as String,
-      backends: pulumi.Input.decodeList<LoadBalancerBackendResponseNetworkmanagementV1beta1>(map['backends'], (value) => LoadBalancerBackendResponseNetworkmanagementV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      backends:
+          pulumi.Input.decodeList<
+            LoadBalancerBackendResponseNetworkmanagementV1beta1
+          >(
+            map['backends'],
+            (value) =>
+                LoadBalancerBackendResponseNetworkmanagementV1beta1.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       healthCheckUri: map['healthCheckUri'] as String,
       loadBalancerType: map['loadBalancerType'] as String,
     );
   }
 }
-

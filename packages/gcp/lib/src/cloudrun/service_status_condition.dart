@@ -1,16 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ServiceStatusCondition {
   /// (Output)
   /// Human readable message indicating details about the current status.
   final String? message;
+
   /// (Output)
   /// One-word CamelCase reason for the condition's current status.
   final String? reason;
+
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
   final String? status;
+
   /// (Output)
   /// Type of domain mapping condition.
   final String? type;
@@ -20,12 +22,7 @@ class ServiceStatusCondition {
   /// [reason] (Output)
   /// [status] (Output)
   /// [type] (Output)
-  ServiceStatusCondition({
-    this.message,
-    this.reason,
-    this.status,
-    this.type,
-  });
+  ServiceStatusCondition({this.message, this.reason, this.status, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,4 +42,3 @@ class ServiceStatusCondition {
     );
   }
 }
-

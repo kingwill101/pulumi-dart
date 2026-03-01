@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetListenerDefaultActionRedirect {
   final String host;
   final String path;
+
   /// Port of the listener. Required if `arn` is not set.
   final String port;
   final String protocol;
@@ -48,4 +48,3 @@ class GetListenerDefaultActionRedirect {
     );
   }
 }
-

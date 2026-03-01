@@ -17,4 +17,3 @@ enum SettingsDataDiskType {
     throw ArgumentError('Unknown SettingsDataDiskType value: $value');
   }
 }
-

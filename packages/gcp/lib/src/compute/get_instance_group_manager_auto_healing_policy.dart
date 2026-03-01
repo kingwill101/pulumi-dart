@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstanceGroupManagerAutoHealingPolicy {
   /// The health check resource that signals autohealing.
   final String healthCheck;
+
   /// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
   final int initialDelaySec;
 
@@ -22,11 +22,12 @@ class GetInstanceGroupManagerAutoHealingPolicy {
     };
   }
 
-  factory GetInstanceGroupManagerAutoHealingPolicy.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceGroupManagerAutoHealingPolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceGroupManagerAutoHealingPolicy(
       healthCheck: map['healthCheck'] as String,
       initialDelaySec: map['initialDelaySec'] as int,
     );
   }
 }
-

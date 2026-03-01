@@ -14,10 +14,12 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
   /// - SUNDAY: Sunday
   /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final String day;
+
   /// Required. The length of the maintenance window, ranging from 3 hours to 8 hours.
   /// A duration in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s".
   final String duration;
+
   /// Required. Start time of the window in UTC time.
   /// Structure is documented below.
   final InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime startTime;
@@ -40,12 +42,16 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
     };
   }
 
-  factory InstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap(Map<String, dynamic> map) {
+  factory InstanceMaintenancePolicyWeeklyMaintenanceWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceMaintenancePolicyWeeklyMaintenanceWindow(
       day: map['day'] as String,
       duration: map['duration'] as String,
-      startTime: InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      startTime:
+          InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime.fromMap(
+            (map['startTime'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

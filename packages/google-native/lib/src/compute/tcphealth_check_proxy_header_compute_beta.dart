@@ -12,7 +12,8 @@ enum TCPHealthCheckProxyHeaderComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown TCPHealthCheckProxyHeaderComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown TCPHealthCheckProxyHeaderComputeBeta value: $value',
+    );
   }
 }
-

@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetProfilesProfilesProfile {
   /// ARN of the Profile.
   final String arn;
+
   /// ID of the Profile.
   final String id;
+
   /// Name of the Profile.
   final String name;
+
   /// Share status of the Profile. Valid values [AWS docs](https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_Profile.html)
   final String shareStatus;
 
@@ -41,4 +43,3 @@ class GetProfilesProfilesProfile {
     );
   }
 }
-

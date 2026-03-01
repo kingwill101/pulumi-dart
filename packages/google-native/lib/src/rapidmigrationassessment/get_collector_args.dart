@@ -19,10 +19,9 @@ class GetCollectorArgs {
     required String collectorId,
     required String location,
     String? project,
-  }) :
-      collectorId = pulumi.Input.asInput<String>(collectorId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : collectorId = pulumi.Input.asInput<String>(collectorId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetCollectorArgs {
     );
   }
 }
-

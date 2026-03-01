@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRouteSpecHttpRouteMatchPath {
   final String exact;
   final String regex;
@@ -8,16 +7,10 @@ class GetRouteSpecHttpRouteMatchPath {
   /// Creates a new [GetRouteSpecHttpRouteMatchPath].
   /// [exact] Required.
   /// [regex] Required.
-  GetRouteSpecHttpRouteMatchPath({
-    required this.exact,
-    required this.regex,
-  });
+  GetRouteSpecHttpRouteMatchPath({required this.exact, required this.regex});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'exact': exact,
-      'regex': regex,
-    };
+    return <String, dynamic>{'exact': exact, 'regex': regex};
   }
 
   factory GetRouteSpecHttpRouteMatchPath.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class GetRouteSpecHttpRouteMatchPath {
     );
   }
 }
-

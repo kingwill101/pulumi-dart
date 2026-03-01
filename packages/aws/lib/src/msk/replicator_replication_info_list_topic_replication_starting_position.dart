@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ReplicatorReplicationInfoListTopicReplicationStartingPosition {
   /// The type of replication starting position. Supports `LATEST` and `EARLIEST`.
   final String? type;
 
   /// Creates a new [ReplicatorReplicationInfoListTopicReplicationStartingPosition].
   /// [type] The type of replication starting position. Supports `LATEST` and `EARLIEST`.
-  ReplicatorReplicationInfoListTopicReplicationStartingPosition({
-    this.type,
-  });
+  ReplicatorReplicationInfoListTopicReplicationStartingPosition({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
-  factory ReplicatorReplicationInfoListTopicReplicationStartingPosition.fromMap(Map<String, dynamic> map) {
+  factory ReplicatorReplicationInfoListTopicReplicationStartingPosition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReplicatorReplicationInfoListTopicReplicationStartingPosition(
       type: map['type'] == null ? null : map['type'] as String,
     );
   }
 }
-

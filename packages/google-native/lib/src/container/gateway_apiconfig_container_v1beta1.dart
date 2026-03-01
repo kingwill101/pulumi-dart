@@ -9,9 +9,7 @@ class GatewayAPIConfigContainerV1beta1 {
 
   /// Creates a new [GatewayAPIConfigContainerV1beta1].
   /// [channel] The Gateway API release channel to use for Gateway API.
-  GatewayAPIConfigContainerV1beta1({
-    this.channel,
-  });
+  GatewayAPIConfigContainerV1beta1({this.channel});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class GatewayAPIConfigContainerV1beta1 {
 
   factory GatewayAPIConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return GatewayAPIConfigContainerV1beta1(
-      channel: map['channel'] == null ? null : GatewayAPIConfigChannelContainerV1beta1.fromValue(map['channel'] as String),
+      channel: map['channel'] == null
+          ? null
+          : GatewayAPIConfigChannelContainerV1beta1.fromValue(
+              map['channel'] as String,
+            ),
     );
   }
 }
-

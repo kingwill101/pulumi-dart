@@ -8,13 +8,18 @@ class InterconnectApplicationAwareInterconnect {
   /// Bandwidth Percentage policy allows you to have granular control over how your Interconnect
   /// bandwidth is utilized among your workloads mapping to different traffic classes.
   /// Structure is documented below.
-  final InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy? bandwidthPercentagePolicy;
+  final InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy?
+  bandwidthPercentagePolicy;
+
   /// A description for the AAI profile on this interconnect.
   final String? profileDescription;
+
   /// Optional field to specify a list of shape average percentages to be
   /// applied in conjunction with StrictPriorityPolicy or BandwidthPercentagePolicy
   /// Structure is documented below.
-  final List<InterconnectApplicationAwareInterconnectShapeAveragePercentage>? shapeAveragePercentages;
+  final List<InterconnectApplicationAwareInterconnectShapeAveragePercentage>?
+  shapeAveragePercentages;
+
   /// Specify configuration for StrictPriorityPolicy.
   final Map<String, dynamic>? strictPriorityPolicy;
 
@@ -32,20 +37,46 @@ class InterconnectApplicationAwareInterconnect {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'bandwidthPercentagePolicy': ?bandwidthPercentagePolicy == null ? null : bandwidthPercentagePolicy!.toMap(),
+      'bandwidthPercentagePolicy': ?bandwidthPercentagePolicy == null
+          ? null
+          : bandwidthPercentagePolicy!.toMap(),
       'profileDescription': ?profileDescription,
-      'shapeAveragePercentages': ?shapeAveragePercentages == null ? null : pulumi.Input.encodeList<InterconnectApplicationAwareInterconnectShapeAveragePercentage, Map<String, dynamic>>(shapeAveragePercentages!, (value) => value.toMap()),
+      'shapeAveragePercentages': ?shapeAveragePercentages == null
+          ? null
+          : pulumi.Input.encodeList<
+              InterconnectApplicationAwareInterconnectShapeAveragePercentage,
+              Map<String, dynamic>
+            >(shapeAveragePercentages!, (value) => value.toMap()),
       'strictPriorityPolicy': ?strictPriorityPolicy,
     };
   }
 
-  factory InterconnectApplicationAwareInterconnect.fromMap(Map<String, dynamic> map) {
+  factory InterconnectApplicationAwareInterconnect.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterconnectApplicationAwareInterconnect(
-      bandwidthPercentagePolicy: map['bandwidthPercentagePolicy'] == null ? null : InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.fromMap((map['bandwidthPercentagePolicy'] as Map).cast<String, dynamic>()),
-      profileDescription: map['profileDescription'] == null ? null : map['profileDescription'] as String,
-      shapeAveragePercentages: map['shapeAveragePercentages'] == null ? null : pulumi.Input.decodeList<InterconnectApplicationAwareInterconnectShapeAveragePercentage>(map['shapeAveragePercentages'], (value) => InterconnectApplicationAwareInterconnectShapeAveragePercentage.fromMap((value as Map).cast<String, dynamic>())),
-      strictPriorityPolicy: map['strictPriorityPolicy'] == null ? null : (map['strictPriorityPolicy'] as Map).cast<String, dynamic>(),
+      bandwidthPercentagePolicy: map['bandwidthPercentagePolicy'] == null
+          ? null
+          : InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy.fromMap(
+              (map['bandwidthPercentagePolicy'] as Map).cast<String, dynamic>(),
+            ),
+      profileDescription: map['profileDescription'] == null
+          ? null
+          : map['profileDescription'] as String,
+      shapeAveragePercentages: map['shapeAveragePercentages'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              InterconnectApplicationAwareInterconnectShapeAveragePercentage
+            >(
+              map['shapeAveragePercentages'],
+              (value) =>
+                  InterconnectApplicationAwareInterconnectShapeAveragePercentage.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      strictPriorityPolicy: map['strictPriorityPolicy'] == null
+          ? null
+          : (map['strictPriorityPolicy'] as Map).cast<String, dynamic>(),
     );
   }
 }
-

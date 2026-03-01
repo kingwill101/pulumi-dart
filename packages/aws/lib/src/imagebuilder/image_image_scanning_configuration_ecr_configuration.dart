@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ImageImageScanningConfigurationEcrConfiguration {
   /// Set of tags for Image Builder to apply to the output container image that that Amazon Inspector scans.
   final List<String>? containerTags;
+
   /// The name of the container repository that Amazon Inspector scans to identify findings for your container images.
   final String? repositoryName;
 
@@ -22,11 +22,16 @@ class ImageImageScanningConfigurationEcrConfiguration {
     };
   }
 
-  factory ImageImageScanningConfigurationEcrConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ImageImageScanningConfigurationEcrConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ImageImageScanningConfigurationEcrConfiguration(
-      containerTags: map['containerTags'] == null ? null : (map['containerTags'] as List).cast<String>(),
-      repositoryName: map['repositoryName'] == null ? null : map['repositoryName'] as String,
+      containerTags: map['containerTags'] == null
+          ? null
+          : (map['containerTags'] as List).cast<String>(),
+      repositoryName: map['repositoryName'] == null
+          ? null
+          : map['repositoryName'] as String,
     );
   }
 }
-

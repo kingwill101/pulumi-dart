@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TestGridProjectVpcConfig {
   /// A list of VPC security group IDs in your Amazon VPC.
   final List<String> securityGroupIds;
+
   /// A list of VPC subnet IDs in your Amazon VPC.
   final List<String> subnetIds;
+
   /// The ID of the Amazon VPC.
   final String vpcId;
 
@@ -35,4 +36,3 @@ class TestGridProjectVpcConfig {
     );
   }
 }
-

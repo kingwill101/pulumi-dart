@@ -450,39 +450,52 @@ import 'repository_workspace_compilation_overrides.dart';
 class Repository extends pulumi.CustomResource {
   /// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
   late final pulumi.Output<String?> deletionPolicy;
+
   /// Optional. The repository's user-friendly name.
   late final pulumi.Output<String?> displayName;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Optional. If set, configures this repository to be linked to a Git remote.
   /// Structure is documented below.
   late final pulumi.Output<RepositoryGitRemoteSettings?> gitRemoteSettings;
+
   /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources.
   /// It is not possible to add or update the encryption key after the repository is created. Example projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]
   late final pulumi.Output<String?> kmsKeyName;
+
   /// Optional. Repository user labels.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The repository's name.
   late final pulumi.Output<String> name;
+
   /// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
   late final pulumi.Output<String?> npmrcEnvironmentVariablesSecretVersion;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// A reference to the region
   late final pulumi.Output<String?> region;
+
   /// The service account to run workflow invocations under.
   late final pulumi.Output<String?> serviceAccount;
+
   /// If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
   /// Structure is documented below.
-  late final pulumi.Output<RepositoryWorkspaceCompilationOverrides?> workspaceCompilationOverrides;
+  late final pulumi.Output<RepositoryWorkspaceCompilationOverrides?>
+  workspaceCompilationOverrides;
 
   /// Creates a new [Repository].
   /// [name] The Pulumi resource name.
@@ -493,23 +506,32 @@ class Repository extends pulumi.CustomResource {
     RepositoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataform/repository:Repository',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:dataform/repository:Repository',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.deletionPolicy = registerOutput<String?>('deletionPolicy');
     this.displayName = registerOutput<String?>('displayName');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.gitRemoteSettings = registerOutput<RepositoryGitRemoteSettings?>('gitRemoteSettings');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
+    this.gitRemoteSettings = registerOutput<RepositoryGitRemoteSettings?>(
+      'gitRemoteSettings',
+    );
     this.kmsKeyName = registerOutput<String?>('kmsKeyName');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');
-    this.npmrcEnvironmentVariablesSecretVersion = registerOutput<String?>('npmrcEnvironmentVariablesSecretVersion');
+    this.npmrcEnvironmentVariablesSecretVersion = registerOutput<String?>(
+      'npmrcEnvironmentVariablesSecretVersion',
+    );
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
     this.region = registerOutput<String?>('region');
     this.serviceAccount = registerOutput<String?>('serviceAccount');
-    this.workspaceCompilationOverrides = registerOutput<RepositoryWorkspaceCompilationOverrides?>('workspaceCompilationOverrides');
+    this.workspaceCompilationOverrides =
+        registerOutput<RepositoryWorkspaceCompilationOverrides?>(
+          'workspaceCompilationOverrides',
+        );
   }
 }

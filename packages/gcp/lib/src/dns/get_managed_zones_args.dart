@@ -12,15 +12,11 @@ class GetManagedZonesArgs {
 
   /// Creates a new [GetManagedZonesArgs].
   /// [project] The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-  GetManagedZonesArgs({
-    String? project,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project);
+  GetManagedZonesArgs({String? project})
+    : project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-    };
+    return <String, dynamic>{'project': ?project};
   }
 
   factory GetManagedZonesArgs.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class GetManagedZonesArgs {
     );
   }
 }
-

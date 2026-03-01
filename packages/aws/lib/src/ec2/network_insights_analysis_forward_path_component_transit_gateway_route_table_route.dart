@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class NetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute {
   final String? attachmentId;
   final String? destinationCidr;
@@ -40,16 +39,29 @@ class NetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute {
     };
   }
 
-  factory NetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute.fromMap(Map<String, dynamic> map) {
+  factory NetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute(
-      attachmentId: map['attachmentId'] == null ? null : map['attachmentId'] as String,
-      destinationCidr: map['destinationCidr'] == null ? null : map['destinationCidr'] as String,
-      prefixListId: map['prefixListId'] == null ? null : map['prefixListId'] as String,
-      resourceId: map['resourceId'] == null ? null : map['resourceId'] as String,
-      resourceType: map['resourceType'] == null ? null : map['resourceType'] as String,
-      routeOrigin: map['routeOrigin'] == null ? null : map['routeOrigin'] as String,
+      attachmentId: map['attachmentId'] == null
+          ? null
+          : map['attachmentId'] as String,
+      destinationCidr: map['destinationCidr'] == null
+          ? null
+          : map['destinationCidr'] as String,
+      prefixListId: map['prefixListId'] == null
+          ? null
+          : map['prefixListId'] as String,
+      resourceId: map['resourceId'] == null
+          ? null
+          : map['resourceId'] as String,
+      resourceType: map['resourceType'] == null
+          ? null
+          : map['resourceType'] as String,
+      routeOrigin: map['routeOrigin'] == null
+          ? null
+          : map['routeOrigin'] as String,
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
-

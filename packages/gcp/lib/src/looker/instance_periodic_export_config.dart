@@ -6,10 +6,12 @@ class InstancePeriodicExportConfig {
   /// Cloud Storage bucket URI for periodic export.
   /// Format: gs://{bucket_name}
   final String gcsUri;
+
   /// Name of the CMEK key in KMS.
   /// Format:
   /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
   final String kmsKey;
+
   /// Time in UTC to start the periodic export job.
   /// Structure is documented below.
   final InstancePeriodicExportConfigStartTime startTime;
@@ -36,8 +38,9 @@ class InstancePeriodicExportConfig {
     return InstancePeriodicExportConfig(
       gcsUri: map['gcsUri'] as String,
       kmsKey: map['kmsKey'] as String,
-      startTime: InstancePeriodicExportConfigStartTime.fromMap((map['startTime'] as Map).cast<String, dynamic>()),
+      startTime: InstancePeriodicExportConfigStartTime.fromMap(
+        (map['startTime'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

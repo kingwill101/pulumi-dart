@@ -10,20 +10,29 @@ class WebServerNetworkAccessControl {
 
   /// Creates a new [WebServerNetworkAccessControl].
   /// [allowedIpRanges] A collection of allowed IP ranges with descriptions.
-  WebServerNetworkAccessControl({
-    this.allowedIpRanges,
-  });
+  WebServerNetworkAccessControl({this.allowedIpRanges});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedIpRanges': ?allowedIpRanges == null ? null : pulumi.Input.encodeList<AllowedIpRange, Map<String, dynamic>>(allowedIpRanges!, (value) => value.toMap()),
+      'allowedIpRanges': ?allowedIpRanges == null
+          ? null
+          : pulumi.Input.encodeList<AllowedIpRange, Map<String, dynamic>>(
+              allowedIpRanges!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory WebServerNetworkAccessControl.fromMap(Map<String, dynamic> map) {
     return WebServerNetworkAccessControl(
-      allowedIpRanges: map['allowedIpRanges'] == null ? null : pulumi.Input.decodeList<AllowedIpRange>(map['allowedIpRanges'], (value) => AllowedIpRange.fromMap((value as Map).cast<String, dynamic>())),
+      allowedIpRanges: map['allowedIpRanges'] == null
+          ? null
+          : pulumi.Input.decodeList<AllowedIpRange>(
+              map['allowedIpRanges'],
+              (value) => AllowedIpRange.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

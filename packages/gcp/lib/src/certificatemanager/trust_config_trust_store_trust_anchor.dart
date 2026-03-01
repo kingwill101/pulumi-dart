@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TrustConfigTrustStoreTrustAnchor {
   /// PEM root certificate of the PKI used for validation.
   /// Each certificate provided in PEM format may occupy up to 5kB.
@@ -9,20 +8,17 @@ class TrustConfigTrustStoreTrustAnchor {
 
   /// Creates a new [TrustConfigTrustStoreTrustAnchor].
   /// [pemCertificate] PEM root certificate of the PKI used for validation.
-  TrustConfigTrustStoreTrustAnchor({
-    this.pemCertificate,
-  });
+  TrustConfigTrustStoreTrustAnchor({this.pemCertificate});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pemCertificate': ?pemCertificate,
-    };
+    return <String, dynamic>{'pemCertificate': ?pemCertificate};
   }
 
   factory TrustConfigTrustStoreTrustAnchor.fromMap(Map<String, dynamic> map) {
     return TrustConfigTrustStoreTrustAnchor(
-      pemCertificate: map['pemCertificate'] == null ? null : map['pemCertificate'] as String,
+      pemCertificate: map['pemCertificate'] == null
+          ? null
+          : map['pemCertificate'] as String,
     );
   }
 }
-

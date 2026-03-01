@@ -8,6 +8,7 @@ class GuardrailLlmPromptSecurity {
   /// violating the policy based on the LLM classification.
   /// Structure is documented below.
   final GuardrailLlmPromptSecurityCustomPolicy? customPolicy;
+
   /// Configuration for default system security settings.
   /// Structure is documented below.
   final GuardrailLlmPromptSecurityDefaultSettings? defaultSettings;
@@ -15,23 +16,29 @@ class GuardrailLlmPromptSecurity {
   /// Creates a new [GuardrailLlmPromptSecurity].
   /// [customPolicy] Guardrail that blocks the conversation if the LLM response is considered
   /// [defaultSettings] Configuration for default system security settings.
-  GuardrailLlmPromptSecurity({
-    this.customPolicy,
-    this.defaultSettings,
-  });
+  GuardrailLlmPromptSecurity({this.customPolicy, this.defaultSettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customPolicy': ?customPolicy == null ? null : customPolicy!.toMap(),
-      'defaultSettings': ?defaultSettings == null ? null : defaultSettings!.toMap(),
+      'defaultSettings': ?defaultSettings == null
+          ? null
+          : defaultSettings!.toMap(),
     };
   }
 
   factory GuardrailLlmPromptSecurity.fromMap(Map<String, dynamic> map) {
     return GuardrailLlmPromptSecurity(
-      customPolicy: map['customPolicy'] == null ? null : GuardrailLlmPromptSecurityCustomPolicy.fromMap((map['customPolicy'] as Map).cast<String, dynamic>()),
-      defaultSettings: map['defaultSettings'] == null ? null : GuardrailLlmPromptSecurityDefaultSettings.fromMap((map['defaultSettings'] as Map).cast<String, dynamic>()),
+      customPolicy: map['customPolicy'] == null
+          ? null
+          : GuardrailLlmPromptSecurityCustomPolicy.fromMap(
+              (map['customPolicy'] as Map).cast<String, dynamic>(),
+            ),
+      defaultSettings: map['defaultSettings'] == null
+          ? null
+          : GuardrailLlmPromptSecurityDefaultSettings.fromMap(
+              (map['defaultSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

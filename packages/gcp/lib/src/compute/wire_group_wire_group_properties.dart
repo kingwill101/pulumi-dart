@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WireGroupWireGroupProperties {
   /// Type of wire group (enum).
   /// WIRE: a single pseudowire over two Interconnect connections   with no redundancy.
@@ -10,14 +9,10 @@ class WireGroupWireGroupProperties {
 
   /// Creates a new [WireGroupWireGroupProperties].
   /// [type] Type of wire group (enum).
-  WireGroupWireGroupProperties({
-    this.type,
-  });
+  WireGroupWireGroupProperties({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type,
-    };
+    return <String, dynamic>{'type': ?type};
   }
 
   factory WireGroupWireGroupProperties.fromMap(Map<String, dynamic> map) {
@@ -26,4 +21,3 @@ class WireGroupWireGroupProperties {
     );
   }
 }
-

@@ -509,8 +509,10 @@ import 'web_acl_association_args.dart';
 class WebAclAssociation extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN of the resource to associate with. For example, an Application Load Balancer or API Gateway Stage.
   late final pulumi.Output<String> resourceArn;
+
   /// The ID of the WAF Regional WebACL to create an association.
   late final pulumi.Output<String> webAclId;
 
@@ -523,11 +525,11 @@ class WebAclAssociation extends pulumi.CustomResource {
     WebAclAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:wafregional/webAclAssociation:WebAclAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:wafregional/webAclAssociation:WebAclAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.region = registerOutput<String>('region');
     this.resourceArn = registerOutput<String>('resourceArn');
     this.webAclId = registerOutput<String>('webAclId');

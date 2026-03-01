@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Define behaviors for DTMF (dual tone multi frequency).
 class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
   /// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g. when 3 is pressed, return the account balance).
   final bool? enabled;
+
   /// The digit that terminates a DTMF digit sequence.
   final String? finishDigit;
+
   /// Max length of DTMF digits.
   final int? maxDigits;
 
@@ -28,12 +29,15 @@ class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      finishDigit: map['finishDigit'] == null ? null : map['finishDigit'] as String,
+      finishDigit: map['finishDigit'] == null
+          ? null
+          : map['finishDigit'] as String,
       maxDigits: map['maxDigits'] == null ? null : map['maxDigits'] as int,
     );
   }
 }
-

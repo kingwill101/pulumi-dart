@@ -6,8 +6,10 @@ import 'encryption_config_alloydb_v1alpha.dart';
 class ContinuousBackupConfigAlloydbV1alpha {
   /// Whether ContinuousBackup is enabled.
   final bool? enabled;
+
   /// The encryption config can be specified to encrypt the backups with a customer-managed encryption key (CMEK). When this field is not specified, the backup will then use default encryption scheme to protect the user data.
   final EncryptionConfigAlloydbV1alpha? encryptionConfig;
+
   /// The number of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window. If not set, defaults to 14 days.
   final int? recoveryWindowDays;
 
@@ -24,17 +26,26 @@ class ContinuousBackupConfigAlloydbV1alpha {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'enabled': ?enabled,
-      'encryptionConfig': ?encryptionConfig == null ? null : encryptionConfig!.toMap(),
+      'encryptionConfig': ?encryptionConfig == null
+          ? null
+          : encryptionConfig!.toMap(),
       'recoveryWindowDays': ?recoveryWindowDays,
     };
   }
 
-  factory ContinuousBackupConfigAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ContinuousBackupConfigAlloydbV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContinuousBackupConfigAlloydbV1alpha(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      encryptionConfig: map['encryptionConfig'] == null ? null : EncryptionConfigAlloydbV1alpha.fromMap((map['encryptionConfig'] as Map).cast<String, dynamic>()),
-      recoveryWindowDays: map['recoveryWindowDays'] == null ? null : map['recoveryWindowDays'] as int,
+      encryptionConfig: map['encryptionConfig'] == null
+          ? null
+          : EncryptionConfigAlloydbV1alpha.fromMap(
+              (map['encryptionConfig'] as Map).cast<String, dynamic>(),
+            ),
+      recoveryWindowDays: map['recoveryWindowDays'] == null
+          ? null
+          : map['recoveryWindowDays'] as int,
     );
   }
 }
-

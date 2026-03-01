@@ -281,23 +281,31 @@ class WorkforcePoolProviderKey extends pulumi.CustomResource {
   /// The time after which the key will be permanently deleted and cannot be recovered.
   /// Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
   late final pulumi.Output<String> expireTime;
+
   /// Immutable. Public half of the asymmetric key.
   /// Structure is documented below.
   late final pulumi.Output<WorkforcePoolProviderKeyKeyData> keyData;
+
   /// The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   late final pulumi.Output<String> keyId;
+
   /// The location for the resource.
   late final pulumi.Output<String> location;
+
   /// Identifier. The resource name of the key.
   /// Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}/keys/{keyId}`
   late final pulumi.Output<String> name;
+
   /// The ID of the provider.
   late final pulumi.Output<String> providerId;
+
   /// The state of the key.
   late final pulumi.Output<String> state;
+
   /// The purpose of the key.
   /// Possible values are: `ENCRYPTION`.
   late final pulumi.Output<String> use;
+
   /// The ID of the workforce pool.
   late final pulumi.Output<String> workforcePoolId;
 
@@ -310,11 +318,11 @@ class WorkforcePoolProviderKey extends pulumi.CustomResource {
     WorkforcePoolProviderKeyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:iam/workforcePoolProviderKey:WorkforcePoolProviderKey',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.expireTime = registerOutput<String>('expireTime');
     this.keyData = registerOutput<WorkforcePoolProviderKeyKeyData>('keyData');
     this.keyId = registerOutput<String>('keyId');

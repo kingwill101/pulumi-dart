@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetContributorManagedInsightRulesManagedRuleRuleState {
   /// Name of the Contributor Insights rule that contains data for the specified Amazon Web Services resource.
   final String ruleName;
+
   /// Indicates whether the rule is enabled or disabled.
   final String state;
 
@@ -16,17 +16,15 @@ class GetContributorManagedInsightRulesManagedRuleRuleState {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'ruleName': ruleName,
-      'state': state,
-    };
+    return <String, dynamic>{'ruleName': ruleName, 'state': state};
   }
 
-  factory GetContributorManagedInsightRulesManagedRuleRuleState.fromMap(Map<String, dynamic> map) {
+  factory GetContributorManagedInsightRulesManagedRuleRuleState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetContributorManagedInsightRulesManagedRuleRuleState(
       ruleName: map['ruleName'] as String,
       state: map['state'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration {
   /// Lambda Function to deliver results.
   final String insightsTarget;
@@ -12,15 +11,14 @@ class MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'insightsTarget': insightsTarget,
-    };
+    return <String, dynamic>{'insightsTarget': insightsTarget};
   }
 
-  factory MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration.fromMap(Map<String, dynamic> map) {
+  factory MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MediaInsightsPipelineConfigurationElementLambdaFunctionSinkConfiguration(
       insightsTarget: map['insightsTarget'] as String,
     );
   }
 }
-

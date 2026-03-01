@@ -17,7 +17,8 @@ enum GlobalForwardingRuleIpProtocolComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalForwardingRuleIpProtocolComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown GlobalForwardingRuleIpProtocolComputeV1 value: $value',
+    );
   }
 }
-

@@ -7,8 +7,10 @@ import 'secret_env_source.dart';
 class EnvFromSource {
   /// The ConfigMap to select from
   final ConfigMapEnvSource? configMapRef;
+
   /// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
   final String? prefix;
+
   /// The Secret to select from
   final SecretEnvSource? secretRef;
 
@@ -16,11 +18,7 @@ class EnvFromSource {
   /// [configMapRef] The ConfigMap to select from
   /// [prefix] An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
   /// [secretRef] The Secret to select from
-  EnvFromSource({
-    this.configMapRef,
-    this.prefix,
-    this.secretRef,
-  });
+  EnvFromSource({this.configMapRef, this.prefix, this.secretRef});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,17 @@ class EnvFromSource {
 
   factory EnvFromSource.fromMap(Map<String, dynamic> map) {
     return EnvFromSource(
-      configMapRef: map['configMapRef'] == null ? null : ConfigMapEnvSource.fromMap((map['configMapRef'] as Map).cast<String, dynamic>()),
+      configMapRef: map['configMapRef'] == null
+          ? null
+          : ConfigMapEnvSource.fromMap(
+              (map['configMapRef'] as Map).cast<String, dynamic>(),
+            ),
       prefix: map['prefix'] == null ? null : map['prefix'] as String,
-      secretRef: map['secretRef'] == null ? null : SecretEnvSource.fromMap((map['secretRef'] as Map).cast<String, dynamic>()),
+      secretRef: map['secretRef'] == null
+          ? null
+          : SecretEnvSource.fromMap(
+              (map['secretRef'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

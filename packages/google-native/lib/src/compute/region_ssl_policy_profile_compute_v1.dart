@@ -14,7 +14,8 @@ enum RegionSslPolicyProfileComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionSslPolicyProfileComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionSslPolicyProfileComputeV1 value: $value',
+    );
   }
 }
-

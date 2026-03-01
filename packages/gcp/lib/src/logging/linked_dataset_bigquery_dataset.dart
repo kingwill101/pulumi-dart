@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LinkedDatasetBigqueryDataset {
   /// (Output)
   /// Output only. The full resource name of the BigQuery dataset. The DATASET_ID will match the ID
@@ -11,14 +10,10 @@ class LinkedDatasetBigqueryDataset {
 
   /// Creates a new [LinkedDatasetBigqueryDataset].
   /// [datasetId] (Output)
-  LinkedDatasetBigqueryDataset({
-    this.datasetId,
-  });
+  LinkedDatasetBigqueryDataset({this.datasetId});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'datasetId': ?datasetId,
-    };
+    return <String, dynamic>{'datasetId': ?datasetId};
   }
 
   factory LinkedDatasetBigqueryDataset.fromMap(Map<String, dynamic> map) {
@@ -27,4 +22,3 @@ class LinkedDatasetBigqueryDataset {
     );
   }
 }
-

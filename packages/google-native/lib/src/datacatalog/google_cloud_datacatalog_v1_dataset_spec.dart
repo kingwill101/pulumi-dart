@@ -9,20 +9,25 @@ class GoogleCloudDatacatalogV1DatasetSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1DatasetSpec].
   /// [vertexDatasetSpec] Vertex AI Dataset specific fields
-  GoogleCloudDatacatalogV1DatasetSpec({
-    this.vertexDatasetSpec,
-  });
+  GoogleCloudDatacatalogV1DatasetSpec({this.vertexDatasetSpec});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'vertexDatasetSpec': ?vertexDatasetSpec == null ? null : vertexDatasetSpec!.toMap(),
+      'vertexDatasetSpec': ?vertexDatasetSpec == null
+          ? null
+          : vertexDatasetSpec!.toMap(),
     };
   }
 
-  factory GoogleCloudDatacatalogV1DatasetSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1DatasetSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1DatasetSpec(
-      vertexDatasetSpec: map['vertexDatasetSpec'] == null ? null : GoogleCloudDatacatalogV1VertexDatasetSpec.fromMap((map['vertexDatasetSpec'] as Map).cast<String, dynamic>()),
+      vertexDatasetSpec: map['vertexDatasetSpec'] == null
+          ? null
+          : GoogleCloudDatacatalogV1VertexDatasetSpec.fromMap(
+              (map['vertexDatasetSpec'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

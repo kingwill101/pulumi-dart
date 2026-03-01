@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetCloudExadataInfrastructureCustomerContactsToSendToOci {
   final String email;
 
@@ -11,15 +10,14 @@ class GetCloudExadataInfrastructureCustomerContactsToSendToOci {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'email': email,
-    };
+    return <String, dynamic>{'email': email};
   }
 
-  factory GetCloudExadataInfrastructureCustomerContactsToSendToOci.fromMap(Map<String, dynamic> map) {
+  factory GetCloudExadataInfrastructureCustomerContactsToSendToOci.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetCloudExadataInfrastructureCustomerContactsToSendToOci(
       email: map['email'] as String,
     );
   }
 }
-

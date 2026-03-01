@@ -13,15 +13,17 @@ class InstanceGroupManagerResizeRequestStatusResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'error': error.toMap(),
-    };
+    return <String, dynamic>{'error': error.toMap()};
   }
 
-  factory InstanceGroupManagerResizeRequestStatusResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerResizeRequestStatusResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerResizeRequestStatusResponseComputeBeta(
-      error: InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta.fromMap((map['error'] as Map).cast<String, dynamic>()),
+      error:
+          InstanceGroupManagerResizeRequestStatusErrorResponseComputeBeta.fromMap(
+            (map['error'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -7,8 +7,10 @@ import 'api_operation.dart';
 class EgressTo {
   /// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
   final List<String>? externalResources;
+
   /// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
   final List<ApiOperation>? operations;
+
   /// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
   final List<String>? resources;
 
@@ -16,26 +18,36 @@ class EgressTo {
   /// [externalResources] A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported. For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
   /// [operations] A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
   /// [resources] A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
-  EgressTo({
-    this.externalResources,
-    this.operations,
-    this.resources,
-  });
+  EgressTo({this.externalResources, this.operations, this.resources});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'externalResources': ?externalResources,
-      'operations': ?operations == null ? null : pulumi.Input.encodeList<ApiOperation, Map<String, dynamic>>(operations!, (value) => value.toMap()),
+      'operations': ?operations == null
+          ? null
+          : pulumi.Input.encodeList<ApiOperation, Map<String, dynamic>>(
+              operations!,
+              (value) => value.toMap(),
+            ),
       'resources': ?resources,
     };
   }
 
   factory EgressTo.fromMap(Map<String, dynamic> map) {
     return EgressTo(
-      externalResources: map['externalResources'] == null ? null : (map['externalResources'] as List).cast<String>(),
-      operations: map['operations'] == null ? null : pulumi.Input.decodeList<ApiOperation>(map['operations'], (value) => ApiOperation.fromMap((value as Map).cast<String, dynamic>())),
-      resources: map['resources'] == null ? null : (map['resources'] as List).cast<String>(),
+      externalResources: map['externalResources'] == null
+          ? null
+          : (map['externalResources'] as List).cast<String>(),
+      operations: map['operations'] == null
+          ? null
+          : pulumi.Input.decodeList<ApiOperation>(
+              map['operations'],
+              (value) =>
+                  ApiOperation.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      resources: map['resources'] == null
+          ? null
+          : (map['resources'] as List).cast<String>(),
     );
   }
 }
-

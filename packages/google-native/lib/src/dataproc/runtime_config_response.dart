@@ -6,10 +6,13 @@ import 'repository_config_response.dart';
 class RuntimeConfigResponse {
   /// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
   final String containerImage;
+
   /// Optional. A mapping of property names to values, which are used to configure workload execution.
   final Map<String, String> properties;
+
   /// Optional. Dependency repository configuration.
   final RepositoryConfigResponse repositoryConfig;
+
   /// Optional. Version of the batch runtime.
   final String version;
 
@@ -38,9 +41,10 @@ class RuntimeConfigResponse {
     return RuntimeConfigResponse(
       containerImage: map['containerImage'] as String,
       properties: (map['properties'] as Map).cast<String, String>(),
-      repositoryConfig: RepositoryConfigResponse.fromMap((map['repositoryConfig'] as Map).cast<String, dynamic>()),
+      repositoryConfig: RepositoryConfigResponse.fromMap(
+        (map['repositoryConfig'] as Map).cast<String, dynamic>(),
+      ),
       version: map['version'] as String,
     );
   }
 }
-

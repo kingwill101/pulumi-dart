@@ -11,6 +11,7 @@ class GetSubscriptionArgs {
   ///
   /// - - -
   final pulumi.Input<String> name;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -18,18 +19,12 @@ class GetSubscriptionArgs {
   /// Creates a new [GetSubscriptionArgs].
   /// [name] The name of the Cloud Pub/Sub Subscription.
   /// [project] The project in which the resource belongs. If it
-  GetSubscriptionArgs({
-    required String name,
-    String? project,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
+  GetSubscriptionArgs({required String name, String? project})
+    : name = pulumi.Input.asInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'project': ?project,
-    };
+    return <String, dynamic>{'name': name, 'project': ?project};
   }
 
   factory GetSubscriptionArgs.fromMap(Map<String, dynamic> map) {
@@ -39,4 +34,3 @@ class GetSubscriptionArgs {
     );
   }
 }
-

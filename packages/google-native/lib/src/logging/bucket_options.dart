@@ -8,8 +8,10 @@ import 'linear.dart';
 class BucketOptions {
   /// The explicit buckets.
   final Explicit? explicitBuckets;
+
   /// The exponential buckets.
   final Exponential? exponentialBuckets;
+
   /// The linear bucket.
   final Linear? linearBuckets;
 
@@ -25,18 +27,33 @@ class BucketOptions {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'explicitBuckets': ?explicitBuckets == null ? null : explicitBuckets!.toMap(),
-      'exponentialBuckets': ?exponentialBuckets == null ? null : exponentialBuckets!.toMap(),
+      'explicitBuckets': ?explicitBuckets == null
+          ? null
+          : explicitBuckets!.toMap(),
+      'exponentialBuckets': ?exponentialBuckets == null
+          ? null
+          : exponentialBuckets!.toMap(),
       'linearBuckets': ?linearBuckets == null ? null : linearBuckets!.toMap(),
     };
   }
 
   factory BucketOptions.fromMap(Map<String, dynamic> map) {
     return BucketOptions(
-      explicitBuckets: map['explicitBuckets'] == null ? null : Explicit.fromMap((map['explicitBuckets'] as Map).cast<String, dynamic>()),
-      exponentialBuckets: map['exponentialBuckets'] == null ? null : Exponential.fromMap((map['exponentialBuckets'] as Map).cast<String, dynamic>()),
-      linearBuckets: map['linearBuckets'] == null ? null : Linear.fromMap((map['linearBuckets'] as Map).cast<String, dynamic>()),
+      explicitBuckets: map['explicitBuckets'] == null
+          ? null
+          : Explicit.fromMap(
+              (map['explicitBuckets'] as Map).cast<String, dynamic>(),
+            ),
+      exponentialBuckets: map['exponentialBuckets'] == null
+          ? null
+          : Exponential.fromMap(
+              (map['exponentialBuckets'] as Map).cast<String, dynamic>(),
+            ),
+      linearBuckets: map['linearBuckets'] == null
+          ? null
+          : Linear.fromMap(
+              (map['linearBuckets'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

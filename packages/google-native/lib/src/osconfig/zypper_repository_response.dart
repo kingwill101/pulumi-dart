@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
 class ZypperRepositoryResponse {
   /// The location of the repository directory.
   final String baseUrl;
+
   /// The display name of the repository.
   final String displayName;
+
   /// URIs of GPG keys.
   final List<String> gpgKeys;
 
@@ -36,4 +37,3 @@ class ZypperRepositoryResponse {
     );
   }
 }
-

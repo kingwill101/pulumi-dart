@@ -6,10 +6,13 @@ import 'normalized_coordinate_response.dart';
 class AnimationFadeResponse {
   /// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
   final String endTimeOffset;
+
   /// Type of fade animation: `FADE_IN` or `FADE_OUT`.
   final String fadeType;
+
   /// The time to start the fade animation, in seconds. Default: 0
   final String startTimeOffset;
+
   /// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
   final NormalizedCoordinateResponse xy;
 
@@ -39,8 +42,9 @@ class AnimationFadeResponse {
       endTimeOffset: map['endTimeOffset'] as String,
       fadeType: map['fadeType'] as String,
       startTimeOffset: map['startTimeOffset'] as String,
-      xy: NormalizedCoordinateResponse.fromMap((map['xy'] as Map).cast<String, dynamic>()),
+      xy: NormalizedCoordinateResponse.fromMap(
+        (map['xy'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

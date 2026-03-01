@@ -12,12 +12,16 @@ class GetQueryLogConfigArgs {
   /// several valid keys, for a full reference, check out
   /// [Route53resolver Filter value in the AWS API reference][1].
   final pulumi.Input<List<GetQueryLogConfigFilter>>? filters;
+
   /// The name of the query logging configuration.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the Route53 Resolver Query Logging Configuration.
   final pulumi.Input<String>? resolverQueryLogConfigId;
+
   /// Map of tags to assign to the service.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -33,16 +37,30 @@ class GetQueryLogConfigArgs {
     String? region,
     String? resolverQueryLogConfigId,
     Map<String, String>? tags,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetQueryLogConfigFilter>>(filters),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolverQueryLogConfigId = pulumi.Input.asOptionalInput<String>(resolverQueryLogConfigId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : filters = pulumi.Input.asOptionalInput<List<GetQueryLogConfigFilter>>(
+         filters,
+       ),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       resolverQueryLogConfigId = pulumi.Input.asOptionalInput<String>(
+         resolverQueryLogConfigId,
+       ),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetQueryLogConfigFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetQueryLogConfigFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetQueryLogConfigFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetQueryLogConfigFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'name': ?name,
       'region': ?region,
       'resolverQueryLogConfigId': ?resolverQueryLogConfigId,
@@ -52,12 +70,22 @@ class GetQueryLogConfigArgs {
 
   factory GetQueryLogConfigArgs.fromMap(Map<String, dynamic> map) {
     return GetQueryLogConfigArgs(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetQueryLogConfigFilter>(map['filters'], (value) => GetQueryLogConfigFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<GetQueryLogConfigFilter>(
+              map['filters'],
+              (value) => GetQueryLogConfigFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      resolverQueryLogConfigId: map['resolverQueryLogConfigId'] == null ? null : map['resolverQueryLogConfigId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      resolverQueryLogConfigId: map['resolverQueryLogConfigId'] == null
+          ? null
+          : map['resolverQueryLogConfigId'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

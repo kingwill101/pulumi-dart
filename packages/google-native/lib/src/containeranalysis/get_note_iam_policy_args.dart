@@ -13,18 +13,12 @@ class GetNoteIamPolicyArgs {
   /// Creates a new [GetNoteIamPolicyArgs].
   /// [noteId] Required.
   /// [project] Optional.
-  GetNoteIamPolicyArgs({
-    required String noteId,
-    String? project,
-  }) :
-      noteId = pulumi.Input.asInput<String>(noteId),
+  GetNoteIamPolicyArgs({required String noteId, String? project})
+    : noteId = pulumi.Input.asInput<String>(noteId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'noteId': noteId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'noteId': noteId, 'project': ?project};
   }
 
   factory GetNoteIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetNoteIamPolicyArgs {
     );
   }
 }
-

@@ -8,8 +8,10 @@ class GetFunctionEventTrigger {
   /// See the documentation on [calling Cloud Functions](https://cloud.google.com/functions/docs/calling/)
   /// for a full reference of accepted triggers.
   final String eventType;
+
   /// Policy for failed executions. Structure is documented below.
   final List<GetFunctionEventTriggerFailurePolicy> failurePolicies;
+
   /// The name of the resource whose events are being observed, for example, `"myBucket"`
   final String resource;
 
@@ -26,7 +28,11 @@ class GetFunctionEventTrigger {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'eventType': eventType,
-      'failurePolicies': pulumi.Input.encodeList<GetFunctionEventTriggerFailurePolicy, Map<String, dynamic>>(failurePolicies, (value) => value.toMap()),
+      'failurePolicies':
+          pulumi.Input.encodeList<
+            GetFunctionEventTriggerFailurePolicy,
+            Map<String, dynamic>
+          >(failurePolicies, (value) => value.toMap()),
       'resource': resource,
     };
   }
@@ -34,9 +40,14 @@ class GetFunctionEventTrigger {
   factory GetFunctionEventTrigger.fromMap(Map<String, dynamic> map) {
     return GetFunctionEventTrigger(
       eventType: map['eventType'] as String,
-      failurePolicies: pulumi.Input.decodeList<GetFunctionEventTriggerFailurePolicy>(map['failurePolicies'], (value) => GetFunctionEventTriggerFailurePolicy.fromMap((value as Map).cast<String, dynamic>())),
+      failurePolicies:
+          pulumi.Input.decodeList<GetFunctionEventTriggerFailurePolicy>(
+            map['failurePolicies'],
+            (value) => GetFunctionEventTriggerFailurePolicy.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       resource: map['resource'] as String,
     );
   }
 }
-

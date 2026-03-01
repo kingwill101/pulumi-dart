@@ -9,20 +9,21 @@ class GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak {
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak].
   /// [type] Detected break type.
-  GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak({
-    this.type,
-  });
+  GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type == null ? null : type!.value,
-    };
+    return <String, dynamic>{'type': ?type == null ? null : type!.value};
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak(
-      type: map['type'] == null ? null : GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType.fromValue(
+              map['type'] as String,
+            ),
     );
   }
 }
-

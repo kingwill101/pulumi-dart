@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDirectoryArgs {
   /// Directory identifier for registration in WorkSpaces service.
   final pulumi.Input<String> directoryId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags assigned to the WorkSpaces directory.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -22,10 +24,9 @@ class GetDirectoryArgs {
     required String directoryId,
     String? region,
     Map<String, String>? tags,
-  }) :
-      directoryId = pulumi.Input.asInput<String>(directoryId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : directoryId = pulumi.Input.asInput<String>(directoryId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -39,8 +40,9 @@ class GetDirectoryArgs {
     return GetDirectoryArgs(
       directoryId: map['directoryId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

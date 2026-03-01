@@ -22,11 +22,10 @@ class GetInstanceArgs {
     String? project,
     String? view,
     required String zone,
-  }) :
-      instance = pulumi.Input.asInput<String>(instance),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : instance = pulumi.Input.asInput<String>(instance),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetInstanceArgs {
     );
   }
 }
-

@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetModelArgs {
   /// Model identifier.
   final pulumi.Input<String> modelId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
   /// Creates a new [GetModelArgs].
   /// [modelId] Model identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetModelArgs({
-    required String modelId,
-    String? region,
-  }) :
-      modelId = pulumi.Input.asInput<String>(modelId),
+  GetModelArgs({required String modelId, String? region})
+    : modelId = pulumi.Input.asInput<String>(modelId),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'modelId': modelId,
-      'region': ?region,
-    };
+    return <String, dynamic>{'modelId': modelId, 'region': ?region};
   }
 
   factory GetModelArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetModelArgs {
     );
   }
 }
-

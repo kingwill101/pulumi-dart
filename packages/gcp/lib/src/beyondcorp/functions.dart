@@ -537,7 +537,8 @@ Future<GetSecurityGatewayResult> getSecurityGateway(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_beyondcorp_get_security_gateway_application_iam_policy_get_security_gateway_application_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetSecurityGatewayApplicationIamPolicyResult> getSecurityGatewayApplicationIamPolicy(
+Future<GetSecurityGatewayApplicationIamPolicyResult>
+getSecurityGatewayApplicationIamPolicy(
   GetSecurityGatewayApplicationIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The reason a spoke is inactive.
 class StateReasonResponse {
   /// The code associated with this reason.
   final String code;
+
   /// Human-readable details about this reason.
   final String message;
+
   /// Additional information provided by the user in the RejectSpoke call.
   final String userDetails;
 
@@ -36,4 +37,3 @@ class StateReasonResponse {
     );
   }
 }
-

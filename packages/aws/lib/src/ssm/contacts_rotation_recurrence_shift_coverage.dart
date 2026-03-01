@@ -18,16 +18,30 @@ class ContactsRotationRecurrenceShiftCoverage {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'coverageTimes': pulumi.Input.encodeList<ContactsRotationRecurrenceShiftCoverageCoverageTime, Map<String, dynamic>>(coverageTimes, (value) => value.toMap()),
+      'coverageTimes':
+          pulumi.Input.encodeList<
+            ContactsRotationRecurrenceShiftCoverageCoverageTime,
+            Map<String, dynamic>
+          >(coverageTimes, (value) => value.toMap()),
       'mapBlockKey': mapBlockKey,
     };
   }
 
-  factory ContactsRotationRecurrenceShiftCoverage.fromMap(Map<String, dynamic> map) {
+  factory ContactsRotationRecurrenceShiftCoverage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContactsRotationRecurrenceShiftCoverage(
-      coverageTimes: pulumi.Input.decodeList<ContactsRotationRecurrenceShiftCoverageCoverageTime>(map['coverageTimes'], (value) => ContactsRotationRecurrenceShiftCoverageCoverageTime.fromMap((value as Map).cast<String, dynamic>())),
+      coverageTimes:
+          pulumi.Input.decodeList<
+            ContactsRotationRecurrenceShiftCoverageCoverageTime
+          >(
+            map['coverageTimes'],
+            (value) =>
+                ContactsRotationRecurrenceShiftCoverageCoverageTime.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       mapBlockKey: map['mapBlockKey'] as String,
     );
   }
 }
-

@@ -9,9 +9,7 @@ class BareMetalAdminSecurityConfig {
 
   /// Creates a new [BareMetalAdminSecurityConfig].
   /// [authorization] Configures user access to the admin cluster.
-  BareMetalAdminSecurityConfig({
-    this.authorization,
-  });
+  BareMetalAdminSecurityConfig({this.authorization});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class BareMetalAdminSecurityConfig {
 
   factory BareMetalAdminSecurityConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminSecurityConfig(
-      authorization: map['authorization'] == null ? null : Authorization.fromMap((map['authorization'] as Map).cast<String, dynamic>()),
+      authorization: map['authorization'] == null
+          ? null
+          : Authorization.fromMap(
+              (map['authorization'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

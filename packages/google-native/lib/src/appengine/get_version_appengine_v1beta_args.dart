@@ -25,12 +25,13 @@ class GetVersionAppengineV1betaArgs {
     required String serviceId,
     required String versionId,
     String? view,
-  }) :
-      appId = pulumi.Input.asInput<String>(appId),
-      includeExtraData = pulumi.Input.asOptionalInput<String>(includeExtraData),
-      serviceId = pulumi.Input.asInput<String>(serviceId),
-      versionId = pulumi.Input.asInput<String>(versionId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : appId = pulumi.Input.asInput<String>(appId),
+       includeExtraData = pulumi.Input.asOptionalInput<String>(
+         includeExtraData,
+       ),
+       serviceId = pulumi.Input.asInput<String>(serviceId),
+       versionId = pulumi.Input.asInput<String>(versionId),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +46,12 @@ class GetVersionAppengineV1betaArgs {
   factory GetVersionAppengineV1betaArgs.fromMap(Map<String, dynamic> map) {
     return GetVersionAppengineV1betaArgs(
       appId: map['appId'] as String,
-      includeExtraData: map['includeExtraData'] == null ? null : map['includeExtraData'] as String,
+      includeExtraData: map['includeExtraData'] == null
+          ? null
+          : map['includeExtraData'] as String,
       serviceId: map['serviceId'] as String,
       versionId: map['versionId'] as String,
       view: map['view'] == null ? null : map['view'] as String,
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Metadata for a Spanner connector used by the job.
 class SpannerIODetailsResponse {
   /// DatabaseId accessed in the connection.
   final String databaseId;
+
   /// InstanceId accessed in the connection.
   final String instanceId;
+
   /// ProjectId accessed in the connection.
   final String project;
 
@@ -36,4 +37,3 @@ class SpannerIODetailsResponse {
     );
   }
 }
-

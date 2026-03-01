@@ -12,7 +12,8 @@ enum SchedulingOnHostMaintenanceComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown SchedulingOnHostMaintenanceComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SchedulingOnHostMaintenanceComputeBeta value: $value',
+    );
   }
 }
-

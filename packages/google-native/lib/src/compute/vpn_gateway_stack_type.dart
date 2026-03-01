@@ -16,4 +16,3 @@ enum VpnGatewayStackType {
     throw ArgumentError('Unknown VpnGatewayStackType value: $value');
   }
 }
-

@@ -2003,6 +2003,7 @@ import 'iampolicy_args.dart';
 class IAMPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the project's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The `gcp.organizations.getIAMPolicy` data source that represents
   /// the IAM policy that will be applied to the project. The policy will be
   /// merged with any existing policy applied to the project.
@@ -2012,6 +2013,7 @@ class IAMPolicy extends pulumi.CustomResource {
   /// Deleting this removes all policies from the project, locking out users without
   /// organization-level access.
   late final pulumi.Output<String> policyData;
+
   /// The project id of the target project. This is not
   /// inferred from the provider.
   late final pulumi.Output<String> project;
@@ -2025,11 +2027,11 @@ class IAMPolicy extends pulumi.CustomResource {
     IAMPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/iAMPolicy:IAMPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:projects/iAMPolicy:IAMPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.etag = registerOutput<String>('etag');
     this.policyData = registerOutput<String>('policyData');
     this.project = registerOutput<String>('project');

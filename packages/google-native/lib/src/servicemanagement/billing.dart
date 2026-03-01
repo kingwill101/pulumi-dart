@@ -10,20 +10,29 @@ class Billing {
 
   /// Creates a new [Billing].
   /// [consumerDestinations] Billing configurations for sending metrics to the consumer project. There can be multiple consumer destinations per service, each one must have a different monitored resource type. A metric can be used in at most one consumer destination.
-  Billing({
-    this.consumerDestinations,
-  });
+  Billing({this.consumerDestinations});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumerDestinations': ?consumerDestinations == null ? null : pulumi.Input.encodeList<BillingDestination, Map<String, dynamic>>(consumerDestinations!, (value) => value.toMap()),
+      'consumerDestinations': ?consumerDestinations == null
+          ? null
+          : pulumi.Input.encodeList<BillingDestination, Map<String, dynamic>>(
+              consumerDestinations!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory Billing.fromMap(Map<String, dynamic> map) {
     return Billing(
-      consumerDestinations: map['consumerDestinations'] == null ? null : pulumi.Input.decodeList<BillingDestination>(map['consumerDestinations'], (value) => BillingDestination.fromMap((value as Map).cast<String, dynamic>())),
+      consumerDestinations: map['consumerDestinations'] == null
+          ? null
+          : pulumi.Input.decodeList<BillingDestination>(
+              map['consumerDestinations'],
+              (value) => BillingDestination.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

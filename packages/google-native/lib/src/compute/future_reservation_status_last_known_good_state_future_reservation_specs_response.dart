@@ -8,8 +8,10 @@ import 'share_settings_response.dart';
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse {
   /// The previous share settings of the Future Reservation.
   final ShareSettingsResponse shareSettings;
+
   /// The previous instance related properties of the Future Reservation.
   final FutureReservationSpecificSKUPropertiesResponse specificSkuProperties;
+
   /// The previous time window of the Future Reservation.
   final FutureReservationTimeWindowResponse timeWindow;
 
@@ -31,12 +33,20 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse {
     };
   }
 
-  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponse(
-      shareSettings: ShareSettingsResponse.fromMap((map['shareSettings'] as Map).cast<String, dynamic>()),
-      specificSkuProperties: FutureReservationSpecificSKUPropertiesResponse.fromMap((map['specificSkuProperties'] as Map).cast<String, dynamic>()),
-      timeWindow: FutureReservationTimeWindowResponse.fromMap((map['timeWindow'] as Map).cast<String, dynamic>()),
+      shareSettings: ShareSettingsResponse.fromMap(
+        (map['shareSettings'] as Map).cast<String, dynamic>(),
+      ),
+      specificSkuProperties:
+          FutureReservationSpecificSKUPropertiesResponse.fromMap(
+            (map['specificSkuProperties'] as Map).cast<String, dynamic>(),
+          ),
+      timeWindow: FutureReservationTimeWindowResponse.fromMap(
+        (map['timeWindow'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

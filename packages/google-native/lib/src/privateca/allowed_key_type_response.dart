@@ -7,16 +7,14 @@ import 'rsa_key_type_response.dart';
 class AllowedKeyTypeResponse {
   /// Represents an allowed Elliptic Curve key type.
   final EcKeyTypeResponse ellipticCurve;
+
   /// Represents an allowed RSA key type.
   final RsaKeyTypeResponse rsa;
 
   /// Creates a new [AllowedKeyTypeResponse].
   /// [ellipticCurve] Represents an allowed Elliptic Curve key type.
   /// [rsa] Represents an allowed RSA key type.
-  AllowedKeyTypeResponse({
-    required this.ellipticCurve,
-    required this.rsa,
-  });
+  AllowedKeyTypeResponse({required this.ellipticCurve, required this.rsa});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,12 @@ class AllowedKeyTypeResponse {
 
   factory AllowedKeyTypeResponse.fromMap(Map<String, dynamic> map) {
     return AllowedKeyTypeResponse(
-      ellipticCurve: EcKeyTypeResponse.fromMap((map['ellipticCurve'] as Map).cast<String, dynamic>()),
-      rsa: RsaKeyTypeResponse.fromMap((map['rsa'] as Map).cast<String, dynamic>()),
+      ellipticCurve: EcKeyTypeResponse.fromMap(
+        (map['ellipticCurve'] as Map).cast<String, dynamic>(),
+      ),
+      rsa: RsaKeyTypeResponse.fromMap(
+        (map['rsa'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

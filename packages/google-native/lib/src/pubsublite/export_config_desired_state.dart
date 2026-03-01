@@ -18,4 +18,3 @@ enum ExportConfigDesiredState {
     throw ArgumentError('Unknown ExportConfigDesiredState value: $value');
   }
 }
-

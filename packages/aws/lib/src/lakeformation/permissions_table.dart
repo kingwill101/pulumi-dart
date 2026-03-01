@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PermissionsTable {
   /// Identifier for the Data Catalog. By default, it is the account ID of the caller.
   final String? catalogId;
+
   /// Name of the database for the table. Unique to a Data Catalog.
   final String databaseName;
+
   /// Name of the table.
   final String? name;
+
   /// Whether to use a wildcard representing every table under a database. Defaults to `false`.
   ///
   /// The following arguments are optional:
@@ -43,4 +45,3 @@ class PermissionsTable {
     );
   }
 }
-

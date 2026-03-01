@@ -11,13 +11,17 @@ enum RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1 {
   const RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1(this.value);
   final String value;
 
-  static RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1 fromValue(String value) {
-    for (final item in RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1.values) {
+  static RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionNetworkEndpointGroupNetworkEndpointTypeComputeV1 value: $value',
+    );
   }
 }
-

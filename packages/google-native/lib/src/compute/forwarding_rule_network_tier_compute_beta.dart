@@ -14,7 +14,8 @@ enum ForwardingRuleNetworkTierComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown ForwardingRuleNetworkTierComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ForwardingRuleNetworkTierComputeBeta value: $value',
+    );
   }
 }
-

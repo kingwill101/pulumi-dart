@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// `ApiCategory` represents an API category. [Catalog items](/apigee/docs/reference/apis/apigee/rest/v1/organizations.sites.apidocs) can be tagged with API categories; users viewing the API catalog in the portal will have the option to browse the catalog by category.
 class GoogleCloudApigeeV1ApiCategoryResponse {
   /// Name of the category.
   final String name;
+
   /// Name of the portal.
   final String siteId;
+
   /// Time the category was last modified in milliseconds since epoch.
   final String updateTime;
 
@@ -28,7 +29,9 @@ class GoogleCloudApigeeV1ApiCategoryResponse {
     };
   }
 
-  factory GoogleCloudApigeeV1ApiCategoryResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudApigeeV1ApiCategoryResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudApigeeV1ApiCategoryResponse(
       name: map['name'] as String,
       siteId: map['siteId'] as String,
@@ -36,4 +39,3 @@ class GoogleCloudApigeeV1ApiCategoryResponse {
     );
   }
 }
-

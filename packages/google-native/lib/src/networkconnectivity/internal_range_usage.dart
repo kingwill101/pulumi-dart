@@ -16,4 +16,3 @@ enum InternalRangeUsage {
     throw ArgumentError('Unknown InternalRangeUsage value: $value');
   }
 }
-

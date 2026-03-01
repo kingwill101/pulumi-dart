@@ -5,10 +5,13 @@ import 'labeling_job_labeling_job_algorithms_config_labeling_job_resource_config
 class LabelingJobLabelingJobAlgorithmsConfig {
   /// ARN of the final model used for auto-labeling.
   final String? initialActiveLearningModelArn;
+
   /// ARN of the algorithm used for auto-labeling.
   final String labelingJobAlgorithmSpecificationArn;
+
   /// Configuration information for the labeling job. Fields are documented below.
-  final LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig? labelingJobResourceConfig;
+  final LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig?
+  labelingJobResourceConfig;
 
   /// Creates a new [LabelingJobLabelingJobAlgorithmsConfig].
   /// [initialActiveLearningModelArn] ARN of the final model used for auto-labeling.
@@ -23,17 +26,29 @@ class LabelingJobLabelingJobAlgorithmsConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'initialActiveLearningModelArn': ?initialActiveLearningModelArn,
-      'labelingJobAlgorithmSpecificationArn': labelingJobAlgorithmSpecificationArn,
-      'labelingJobResourceConfig': ?labelingJobResourceConfig == null ? null : labelingJobResourceConfig!.toMap(),
+      'labelingJobAlgorithmSpecificationArn':
+          labelingJobAlgorithmSpecificationArn,
+      'labelingJobResourceConfig': ?labelingJobResourceConfig == null
+          ? null
+          : labelingJobResourceConfig!.toMap(),
     };
   }
 
-  factory LabelingJobLabelingJobAlgorithmsConfig.fromMap(Map<String, dynamic> map) {
+  factory LabelingJobLabelingJobAlgorithmsConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LabelingJobLabelingJobAlgorithmsConfig(
-      initialActiveLearningModelArn: map['initialActiveLearningModelArn'] == null ? null : map['initialActiveLearningModelArn'] as String,
-      labelingJobAlgorithmSpecificationArn: map['labelingJobAlgorithmSpecificationArn'] as String,
-      labelingJobResourceConfig: map['labelingJobResourceConfig'] == null ? null : LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig.fromMap((map['labelingJobResourceConfig'] as Map).cast<String, dynamic>()),
+      initialActiveLearningModelArn:
+          map['initialActiveLearningModelArn'] == null
+          ? null
+          : map['initialActiveLearningModelArn'] as String,
+      labelingJobAlgorithmSpecificationArn:
+          map['labelingJobAlgorithmSpecificationArn'] as String,
+      labelingJobResourceConfig: map['labelingJobResourceConfig'] == null
+          ? null
+          : LabelingJobLabelingJobAlgorithmsConfigLabelingJobResourceConfig.fromMap(
+              (map['labelingJobResourceConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

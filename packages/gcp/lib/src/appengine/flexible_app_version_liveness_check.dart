@@ -1,19 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FlexibleAppVersionLivenessCheck {
   /// Interval between health checks.
   final String? checkInterval;
+
   /// Number of consecutive failed checks required before considering the VM unhealthy. Default: 4.
   final double? failureThreshold;
+
   /// Host header to send when performing a HTTP Readiness check. Example: "myapp.appspot.com"
   final String? host;
+
   /// The initial delay before starting to execute the checks. Default: "300s"
   final String? initialDelay;
+
   /// The request path.
   final String path;
+
   /// Number of consecutive successful checks required before considering the VM healthy. Default: 2.
   final double? successThreshold;
+
   /// Time before the check is considered failed. Default: "4s"
   final String? timeout;
 
@@ -49,14 +54,21 @@ class FlexibleAppVersionLivenessCheck {
 
   factory FlexibleAppVersionLivenessCheck.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionLivenessCheck(
-      checkInterval: map['checkInterval'] == null ? null : map['checkInterval'] as String,
-      failureThreshold: map['failureThreshold'] == null ? null : map['failureThreshold'] as double,
+      checkInterval: map['checkInterval'] == null
+          ? null
+          : map['checkInterval'] as String,
+      failureThreshold: map['failureThreshold'] == null
+          ? null
+          : map['failureThreshold'] as double,
       host: map['host'] == null ? null : map['host'] as String,
-      initialDelay: map['initialDelay'] == null ? null : map['initialDelay'] as String,
+      initialDelay: map['initialDelay'] == null
+          ? null
+          : map['initialDelay'] as String,
       path: map['path'] as String,
-      successThreshold: map['successThreshold'] == null ? null : map['successThreshold'] as double,
+      successThreshold: map['successThreshold'] == null
+          ? null
+          : map['successThreshold'] as double,
       timeout: map['timeout'] == null ? null : map['timeout'] as String,
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectionCloudSqlCredential {
   /// Password for database.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final String password;
+
   /// Username for database.
   final String username;
 
@@ -17,10 +17,7 @@ class ConnectionCloudSqlCredential {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'password': password,
-      'username': username,
-    };
+    return <String, dynamic>{'password': password, 'username': username};
   }
 
   factory ConnectionCloudSqlCredential.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class ConnectionCloudSqlCredential {
     );
   }
 }
-

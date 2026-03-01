@@ -25,12 +25,11 @@ class GetReportArgs {
     required String reportConfigId,
     required String reportId,
     String? view,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      reportConfigId = pulumi.Input.asInput<String>(reportConfigId),
-      reportId = pulumi.Input.asInput<String>(reportId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       reportConfigId = pulumi.Input.asInput<String>(reportConfigId),
+       reportId = pulumi.Input.asInput<String>(reportId),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetReportArgs {
     );
   }
 }
-

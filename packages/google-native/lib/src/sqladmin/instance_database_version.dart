@@ -50,4 +50,3 @@ enum InstanceDatabaseVersion {
     throw ArgumentError('Unknown InstanceDatabaseVersion value: $value');
   }
 }
-

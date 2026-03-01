@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta {
   /// Named instance selections configuring properties that the group will use when creating new VMs.
   final Map<String, String> instanceSelectionLists;
@@ -12,15 +11,15 @@ class InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceSelectionLists': instanceSelectionLists,
-    };
+    return <String, dynamic>{'instanceSelectionLists': instanceSelectionLists};
   }
 
-  factory InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerInstanceFlexibilityPolicyResponseComputeBeta(
-      instanceSelectionLists: (map['instanceSelectionLists'] as Map).cast<String, String>(),
+      instanceSelectionLists: (map['instanceSelectionLists'] as Map)
+          .cast<String, String>(),
     );
   }
 }
-

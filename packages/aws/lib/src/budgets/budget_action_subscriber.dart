@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BudgetActionSubscriber {
   /// The address that AWS sends budget notifications to, either an SNS topic or an email.
   final String address;
+
   /// The type of notification that AWS sends to a subscriber. Valid values are `SNS` or `EMAIL`.
   final String subscriptionType;
 
@@ -29,4 +29,3 @@ class BudgetActionSubscriber {
     );
   }
 }
-

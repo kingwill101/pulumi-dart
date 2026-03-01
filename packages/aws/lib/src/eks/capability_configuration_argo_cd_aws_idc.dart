@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CapabilityConfigurationArgoCdAwsIdc {
   /// ARN of the IAM Identity Center instance.
   final String idcInstanceArn;
   final String? idcManagedApplicationArn;
+
   /// Region of the IAM Identity Center instance.
   final String? idcRegion;
 
@@ -26,12 +26,15 @@ class CapabilityConfigurationArgoCdAwsIdc {
     };
   }
 
-  factory CapabilityConfigurationArgoCdAwsIdc.fromMap(Map<String, dynamic> map) {
+  factory CapabilityConfigurationArgoCdAwsIdc.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CapabilityConfigurationArgoCdAwsIdc(
       idcInstanceArn: map['idcInstanceArn'] as String,
-      idcManagedApplicationArn: map['idcManagedApplicationArn'] == null ? null : map['idcManagedApplicationArn'] as String,
+      idcManagedApplicationArn: map['idcManagedApplicationArn'] == null
+          ? null
+          : map['idcManagedApplicationArn'] as String,
       idcRegion: map['idcRegion'] == null ? null : map['idcRegion'] as String,
     );
   }
 }
-

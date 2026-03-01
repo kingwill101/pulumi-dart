@@ -12,28 +12,34 @@ import 'urlmap_path_matcher_route_rule_url_redirect.dart';
 class URLMapPathMatcherRouteRule {
   /// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
   /// Structure is documented below.
-  final URLMapPathMatcherRouteRuleCustomErrorResponsePolicy? customErrorResponsePolicy;
+  final URLMapPathMatcherRouteRuleCustomErrorResponsePolicy?
+  customErrorResponsePolicy;
+
   /// Specifies changes to request and response headers that need to take effect for
   /// the selected backendService. The headerAction specified here are applied before
   /// the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].r
   /// outeAction.weightedBackendService.backendServiceWeightAction[].headerAction
   /// Structure is documented below.
   final URLMapPathMatcherRouteRuleHeaderAction? headerAction;
+
   /// Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director.
   /// httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// See ForwardingRule for more details.
   /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   /// Structure is documented below.
   final List<URLMapPathMatcherRouteRuleHttpFilterConfig>? httpFilterConfigs;
+
   /// Outbound route specific metadata supplied to networkservices.HttpFilter resources enabled by Traffic Director.
   /// httpFilterMetadata only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// See ForwardingRule for more details.
   /// Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   /// Structure is documented below.
   final List<URLMapPathMatcherRouteRuleHttpFilterMetadata>? httpFilterMetadatas;
+
   /// The rules for determining a match.
   /// Structure is documented below.
   final List<URLMapPathMatcherRouteRuleMatchRule>? matchRules;
+
   /// For routeRules within a given pathMatcher, priority determines the order
   /// in which load balancer will interpret routeRules. RouteRules are evaluated
   /// in order of priority, from the lowest to highest number. The priority of
@@ -48,6 +54,7 @@ class URLMapPathMatcherRouteRule {
   /// you could add rules numbered from 6 to 8, 10 to 11, and 13 to 15 in the
   /// future without any impact on existing rules.
   final int priority;
+
   /// In response to a matching matchRule, the load balancer performs advanced routing
   /// actions like URL rewrites, header transformations, etc. prior to forwarding the
   /// request to the selected backend. If  routeAction specifies any
@@ -56,6 +63,7 @@ class URLMapPathMatcherRouteRule {
   /// or urlRedirect must be set.
   /// Structure is documented below.
   final URLMapPathMatcherRouteRuleRouteAction? routeAction;
+
   /// The backend service resource to which traffic is
   /// directed if this rule is matched. If routeAction is additionally specified,
   /// advanced routing actions like URL Rewrites, etc. take effect prior to sending
@@ -64,6 +72,7 @@ class URLMapPathMatcherRouteRule {
   /// weightedBackendServices, service must not be specified. Only one of urlRedirect,
   /// service or routeAction.weightedBackendService must be set.
   final String? service;
+
   /// When this rule is matched, the request is redirected to a URL specified by
   /// urlRedirect. If urlRedirect is specified, service or routeAction must not be
   /// set.
@@ -94,11 +103,28 @@ class URLMapPathMatcherRouteRule {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customErrorResponsePolicy': ?customErrorResponsePolicy == null ? null : customErrorResponsePolicy!.toMap(),
+      'customErrorResponsePolicy': ?customErrorResponsePolicy == null
+          ? null
+          : customErrorResponsePolicy!.toMap(),
       'headerAction': ?headerAction == null ? null : headerAction!.toMap(),
-      'httpFilterConfigs': ?httpFilterConfigs == null ? null : pulumi.Input.encodeList<URLMapPathMatcherRouteRuleHttpFilterConfig, Map<String, dynamic>>(httpFilterConfigs!, (value) => value.toMap()),
-      'httpFilterMetadatas': ?httpFilterMetadatas == null ? null : pulumi.Input.encodeList<URLMapPathMatcherRouteRuleHttpFilterMetadata, Map<String, dynamic>>(httpFilterMetadatas!, (value) => value.toMap()),
-      'matchRules': ?matchRules == null ? null : pulumi.Input.encodeList<URLMapPathMatcherRouteRuleMatchRule, Map<String, dynamic>>(matchRules!, (value) => value.toMap()),
+      'httpFilterConfigs': ?httpFilterConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              URLMapPathMatcherRouteRuleHttpFilterConfig,
+              Map<String, dynamic>
+            >(httpFilterConfigs!, (value) => value.toMap()),
+      'httpFilterMetadatas': ?httpFilterMetadatas == null
+          ? null
+          : pulumi.Input.encodeList<
+              URLMapPathMatcherRouteRuleHttpFilterMetadata,
+              Map<String, dynamic>
+            >(httpFilterMetadatas!, (value) => value.toMap()),
+      'matchRules': ?matchRules == null
+          ? null
+          : pulumi.Input.encodeList<
+              URLMapPathMatcherRouteRuleMatchRule,
+              Map<String, dynamic>
+            >(matchRules!, (value) => value.toMap()),
       'priority': priority,
       'routeAction': ?routeAction == null ? null : routeAction!.toMap(),
       'service': ?service,
@@ -108,16 +134,53 @@ class URLMapPathMatcherRouteRule {
 
   factory URLMapPathMatcherRouteRule.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherRouteRule(
-      customErrorResponsePolicy: map['customErrorResponsePolicy'] == null ? null : URLMapPathMatcherRouteRuleCustomErrorResponsePolicy.fromMap((map['customErrorResponsePolicy'] as Map).cast<String, dynamic>()),
-      headerAction: map['headerAction'] == null ? null : URLMapPathMatcherRouteRuleHeaderAction.fromMap((map['headerAction'] as Map).cast<String, dynamic>()),
-      httpFilterConfigs: map['httpFilterConfigs'] == null ? null : pulumi.Input.decodeList<URLMapPathMatcherRouteRuleHttpFilterConfig>(map['httpFilterConfigs'], (value) => URLMapPathMatcherRouteRuleHttpFilterConfig.fromMap((value as Map).cast<String, dynamic>())),
-      httpFilterMetadatas: map['httpFilterMetadatas'] == null ? null : pulumi.Input.decodeList<URLMapPathMatcherRouteRuleHttpFilterMetadata>(map['httpFilterMetadatas'], (value) => URLMapPathMatcherRouteRuleHttpFilterMetadata.fromMap((value as Map).cast<String, dynamic>())),
-      matchRules: map['matchRules'] == null ? null : pulumi.Input.decodeList<URLMapPathMatcherRouteRuleMatchRule>(map['matchRules'], (value) => URLMapPathMatcherRouteRuleMatchRule.fromMap((value as Map).cast<String, dynamic>())),
+      customErrorResponsePolicy: map['customErrorResponsePolicy'] == null
+          ? null
+          : URLMapPathMatcherRouteRuleCustomErrorResponsePolicy.fromMap(
+              (map['customErrorResponsePolicy'] as Map).cast<String, dynamic>(),
+            ),
+      headerAction: map['headerAction'] == null
+          ? null
+          : URLMapPathMatcherRouteRuleHeaderAction.fromMap(
+              (map['headerAction'] as Map).cast<String, dynamic>(),
+            ),
+      httpFilterConfigs: map['httpFilterConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<URLMapPathMatcherRouteRuleHttpFilterConfig>(
+              map['httpFilterConfigs'],
+              (value) => URLMapPathMatcherRouteRuleHttpFilterConfig.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      httpFilterMetadatas: map['httpFilterMetadatas'] == null
+          ? null
+          : pulumi
+                .Input.decodeList<URLMapPathMatcherRouteRuleHttpFilterMetadata>(
+              map['httpFilterMetadatas'],
+              (value) => URLMapPathMatcherRouteRuleHttpFilterMetadata.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      matchRules: map['matchRules'] == null
+          ? null
+          : pulumi.Input.decodeList<URLMapPathMatcherRouteRuleMatchRule>(
+              map['matchRules'],
+              (value) => URLMapPathMatcherRouteRuleMatchRule.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       priority: map['priority'] as int,
-      routeAction: map['routeAction'] == null ? null : URLMapPathMatcherRouteRuleRouteAction.fromMap((map['routeAction'] as Map).cast<String, dynamic>()),
+      routeAction: map['routeAction'] == null
+          ? null
+          : URLMapPathMatcherRouteRuleRouteAction.fromMap(
+              (map['routeAction'] as Map).cast<String, dynamic>(),
+            ),
       service: map['service'] == null ? null : map['service'] as String,
-      urlRedirect: map['urlRedirect'] == null ? null : URLMapPathMatcherRouteRuleUrlRedirect.fromMap((map['urlRedirect'] as Map).cast<String, dynamic>()),
+      urlRedirect: map['urlRedirect'] == null
+          ? null
+          : URLMapPathMatcherRouteRuleUrlRedirect.fromMap(
+              (map['urlRedirect'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterTrialMetadata {
   /// End time of the trial cluster.
   final String endTime;
+
   /// Grace end time of the trial cluster.
   final String graceEndTime;
+
   /// Start time of the trial cluster.
   final String startTime;
+
   /// Upgrade time of the trial cluster to standard cluster.
   final String upgradeTime;
 
@@ -41,4 +43,3 @@ class GetClusterTrialMetadata {
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum IngressFromIdentityType {
     throw ArgumentError('Unknown IngressFromIdentityType value: $value');
   }
 }
-

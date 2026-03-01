@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TableExternalDataConfigurationAvroOptions {
   /// If is set to true, indicates whether
   /// to interpret logical types as the corresponding BigQuery data type
@@ -14,15 +13,14 @@ class TableExternalDataConfigurationAvroOptions {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'useAvroLogicalTypes': useAvroLogicalTypes,
-    };
+    return <String, dynamic>{'useAvroLogicalTypes': useAvroLogicalTypes};
   }
 
-  factory TableExternalDataConfigurationAvroOptions.fromMap(Map<String, dynamic> map) {
+  factory TableExternalDataConfigurationAvroOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableExternalDataConfigurationAvroOptions(
       useAvroLogicalTypes: map['useAvroLogicalTypes'] as bool,
     );
   }
 }
-

@@ -13,11 +13,14 @@ class GlossaryEntryArgs {
   final pulumi.Input<String>? description;
   final pulumi.Input<String> glossaryId;
   final pulumi.Input<String>? location;
+
   /// The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Used for an unidirectional glossary.
   final pulumi.Input<GlossaryTermsPair>? termsPair;
+
   /// Used for an equivalent term sets glossary.
   final pulumi.Input<GlossaryTermsSet>? termsSet;
 
@@ -37,14 +40,13 @@ class GlossaryEntryArgs {
     String? project,
     GlossaryTermsPair? termsPair,
     GlossaryTermsSet? termsSet,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      glossaryId = pulumi.Input.asInput<String>(glossaryId),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      termsPair = pulumi.Input.asOptionalInput<GlossaryTermsPair>(termsPair),
-      termsSet = pulumi.Input.asOptionalInput<GlossaryTermsSet>(termsSet);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       glossaryId = pulumi.Input.asInput<String>(glossaryId),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       termsPair = pulumi.Input.asOptionalInput<GlossaryTermsPair>(termsPair),
+       termsSet = pulumi.Input.asOptionalInput<GlossaryTermsSet>(termsSet);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,21 +55,38 @@ class GlossaryEntryArgs {
       'location': ?location,
       'name': ?name,
       'project': ?project,
-      'termsPair': ?pulumi.Input.mapOptionalInputValue<GlossaryTermsPair, Map<String, dynamic>>(termsPair, (value) => value.toMap()),
-      'termsSet': ?pulumi.Input.mapOptionalInputValue<GlossaryTermsSet, Map<String, dynamic>>(termsSet, (value) => value.toMap()),
+      'termsPair':
+          ?pulumi.Input.mapOptionalInputValue<
+            GlossaryTermsPair,
+            Map<String, dynamic>
+          >(termsPair, (value) => value.toMap()),
+      'termsSet':
+          ?pulumi.Input.mapOptionalInputValue<
+            GlossaryTermsSet,
+            Map<String, dynamic>
+          >(termsSet, (value) => value.toMap()),
     };
   }
 
   factory GlossaryEntryArgs.fromMap(Map<String, dynamic> map) {
     return GlossaryEntryArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       glossaryId: map['glossaryId'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      termsPair: map['termsPair'] == null ? null : GlossaryTermsPair.fromMap((map['termsPair'] as Map).cast<String, dynamic>()),
-      termsSet: map['termsSet'] == null ? null : GlossaryTermsSet.fromMap((map['termsSet'] as Map).cast<String, dynamic>()),
+      termsPair: map['termsPair'] == null
+          ? null
+          : GlossaryTermsPair.fromMap(
+              (map['termsPair'] as Map).cast<String, dynamic>(),
+            ),
+      termsSet: map['termsSet'] == null
+          ? null
+          : GlossaryTermsSet.fromMap(
+              (map['termsSet'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

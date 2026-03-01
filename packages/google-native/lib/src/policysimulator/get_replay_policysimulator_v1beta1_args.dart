@@ -19,10 +19,9 @@ class GetReplayPolicysimulatorV1beta1Args {
     required String location,
     String? project,
     required String replayId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      replayId = pulumi.Input.asInput<String>(replayId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       replayId = pulumi.Input.asInput<String>(replayId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetReplayPolicysimulatorV1beta1Args {
     };
   }
 
-  factory GetReplayPolicysimulatorV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetReplayPolicysimulatorV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReplayPolicysimulatorV1beta1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +41,3 @@ class GetReplayPolicysimulatorV1beta1Args {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
   /// (Output)
   /// The [Cloud Storage](https://cloud.google.com/storage) bucket to store the
@@ -9,6 +8,7 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
   /// you should grant `storage.objects.create` permission to the CES service
   /// agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
   final String? gcsBucket;
+
   /// (Output)
   /// The Cloud Storage path prefix for audio recordings.
   /// This prefix can include the following placeholders, which will be
@@ -37,11 +37,14 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
     };
   }
 
-  factory AppVersionSnapshotAppLoggingSettingAudioRecordingConfig.fromMap(Map<String, dynamic> map) {
+  factory AppVersionSnapshotAppLoggingSettingAudioRecordingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AppVersionSnapshotAppLoggingSettingAudioRecordingConfig(
       gcsBucket: map['gcsBucket'] == null ? null : map['gcsBucket'] as String,
-      gcsPathPrefix: map['gcsPathPrefix'] == null ? null : map['gcsPathPrefix'] as String,
+      gcsPathPrefix: map['gcsPathPrefix'] == null
+          ? null
+          : map['gcsPathPrefix'] as String,
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'sds_config_response.dart';
 class TlsValidationContextResponse {
   /// The path to the file holding the CA certificate to validate the client or server certificate.
   final String certificatePath;
+
   /// Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.
   final SdsConfigResponse sdsConfig;
+
   /// Defines how TLS certificates are obtained.
   final String validationSource;
 
@@ -32,9 +34,10 @@ class TlsValidationContextResponse {
   factory TlsValidationContextResponse.fromMap(Map<String, dynamic> map) {
     return TlsValidationContextResponse(
       certificatePath: map['certificatePath'] as String,
-      sdsConfig: SdsConfigResponse.fromMap((map['sdsConfig'] as Map).cast<String, dynamic>()),
+      sdsConfig: SdsConfigResponse.fromMap(
+        (map['sdsConfig'] as Map).cast<String, dynamic>(),
+      ),
       validationSource: map['validationSource'] as String,
     );
   }
 }
-

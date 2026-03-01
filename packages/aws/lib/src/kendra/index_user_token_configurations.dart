@@ -5,9 +5,12 @@ import 'index_user_token_configurations_jwt_token_type_configuration.dart';
 
 class IndexUserTokenConfigurations {
   /// A block that specifies the information about the JSON token type configuration. Detailed below.
-  final IndexUserTokenConfigurationsJsonTokenTypeConfiguration? jsonTokenTypeConfiguration;
+  final IndexUserTokenConfigurationsJsonTokenTypeConfiguration?
+  jsonTokenTypeConfiguration;
+
   /// A block that specifies the information about the JWT token type configuration. Detailed below.
-  final IndexUserTokenConfigurationsJwtTokenTypeConfiguration? jwtTokenTypeConfiguration;
+  final IndexUserTokenConfigurationsJwtTokenTypeConfiguration?
+  jwtTokenTypeConfiguration;
 
   /// Creates a new [IndexUserTokenConfigurations].
   /// [jsonTokenTypeConfiguration] A block that specifies the information about the JSON token type configuration. Detailed below.
@@ -19,16 +22,28 @@ class IndexUserTokenConfigurations {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'jsonTokenTypeConfiguration': ?jsonTokenTypeConfiguration == null ? null : jsonTokenTypeConfiguration!.toMap(),
-      'jwtTokenTypeConfiguration': ?jwtTokenTypeConfiguration == null ? null : jwtTokenTypeConfiguration!.toMap(),
+      'jsonTokenTypeConfiguration': ?jsonTokenTypeConfiguration == null
+          ? null
+          : jsonTokenTypeConfiguration!.toMap(),
+      'jwtTokenTypeConfiguration': ?jwtTokenTypeConfiguration == null
+          ? null
+          : jwtTokenTypeConfiguration!.toMap(),
     };
   }
 
   factory IndexUserTokenConfigurations.fromMap(Map<String, dynamic> map) {
     return IndexUserTokenConfigurations(
-      jsonTokenTypeConfiguration: map['jsonTokenTypeConfiguration'] == null ? null : IndexUserTokenConfigurationsJsonTokenTypeConfiguration.fromMap((map['jsonTokenTypeConfiguration'] as Map).cast<String, dynamic>()),
-      jwtTokenTypeConfiguration: map['jwtTokenTypeConfiguration'] == null ? null : IndexUserTokenConfigurationsJwtTokenTypeConfiguration.fromMap((map['jwtTokenTypeConfiguration'] as Map).cast<String, dynamic>()),
+      jsonTokenTypeConfiguration: map['jsonTokenTypeConfiguration'] == null
+          ? null
+          : IndexUserTokenConfigurationsJsonTokenTypeConfiguration.fromMap(
+              (map['jsonTokenTypeConfiguration'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      jwtTokenTypeConfiguration: map['jwtTokenTypeConfiguration'] == null
+          ? null
+          : IndexUserTokenConfigurationsJwtTokenTypeConfiguration.fromMap(
+              (map['jwtTokenTypeConfiguration'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

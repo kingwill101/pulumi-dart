@@ -6,8 +6,10 @@ import 'security_group.dart';
 class DefaultSecurityGroup {
   /// Args to use when creating the security group. Can't be specified if `securityGroupId` is used.
   final SecurityGroup? args;
+
   /// Id of existing security group to use instead of creating a new security group. Cannot be used in combination with `args` or `opts`.
   final String? securityGroupId;
+
   /// Skips creation of the security group if set to `true`.
   final bool? skip;
 
@@ -15,11 +17,7 @@ class DefaultSecurityGroup {
   /// [args] Args to use when creating the security group. Can't be specified if `securityGroupId` is used.
   /// [securityGroupId] Id of existing security group to use instead of creating a new security group. Cannot be used in combination with `args` or `opts`.
   /// [skip] Skips creation of the security group if set to `true`.
-  DefaultSecurityGroup({
-    this.args,
-    this.securityGroupId,
-    this.skip,
-  });
+  DefaultSecurityGroup({this.args, this.securityGroupId, this.skip});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,10 +29,13 @@ class DefaultSecurityGroup {
 
   factory DefaultSecurityGroup.fromMap(Map<String, dynamic> map) {
     return DefaultSecurityGroup(
-      args: map['args'] == null ? null : SecurityGroup.fromMap((map['args'] as Map).cast<String, dynamic>()),
-      securityGroupId: map['securityGroupId'] == null ? null : map['securityGroupId'] as String,
+      args: map['args'] == null
+          ? null
+          : SecurityGroup.fromMap((map['args'] as Map).cast<String, dynamic>()),
+      securityGroupId: map['securityGroupId'] == null
+          ? null
+          : map['securityGroupId'] as String,
       skip: map['skip'] == null ? null : map['skip'] as bool,
     );
   }
 }
-

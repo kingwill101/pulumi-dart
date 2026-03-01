@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// All error details of the fleet observability feature.
 class FleetObservabilityFeatureErrorResponseGkehubV1alpha {
   /// The code of the error.
   final String code;
+
   /// A human-readable description of the current status.
   final String description;
 
@@ -17,17 +17,15 @@ class FleetObservabilityFeatureErrorResponseGkehubV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'description': description,
-    };
+    return <String, dynamic>{'code': code, 'description': description};
   }
 
-  factory FleetObservabilityFeatureErrorResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFeatureErrorResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFeatureErrorResponseGkehubV1alpha(
       code: map['code'] as String,
       description: map['description'] as String,
     );
   }
 }
-

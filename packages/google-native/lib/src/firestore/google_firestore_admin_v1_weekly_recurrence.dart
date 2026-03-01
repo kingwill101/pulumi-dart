@@ -9,20 +9,21 @@ class GoogleFirestoreAdminV1WeeklyRecurrence {
 
   /// Creates a new [GoogleFirestoreAdminV1WeeklyRecurrence].
   /// [day] The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
-  GoogleFirestoreAdminV1WeeklyRecurrence({
-    this.day,
-  });
+  GoogleFirestoreAdminV1WeeklyRecurrence({this.day});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'day': ?day == null ? null : day!.value,
-    };
+    return <String, dynamic>{'day': ?day == null ? null : day!.value};
   }
 
-  factory GoogleFirestoreAdminV1WeeklyRecurrence.fromMap(Map<String, dynamic> map) {
+  factory GoogleFirestoreAdminV1WeeklyRecurrence.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleFirestoreAdminV1WeeklyRecurrence(
-      day: map['day'] == null ? null : GoogleFirestoreAdminV1WeeklyRecurrenceDay.fromValue(map['day'] as String),
+      day: map['day'] == null
+          ? null
+          : GoogleFirestoreAdminV1WeeklyRecurrenceDay.fromValue(
+              map['day'] as String,
+            ),
     );
   }
 }
-

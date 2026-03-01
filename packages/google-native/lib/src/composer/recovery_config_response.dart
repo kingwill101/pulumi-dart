@@ -9,9 +9,7 @@ class RecoveryConfigResponse {
 
   /// Creates a new [RecoveryConfigResponse].
   /// [scheduledSnapshotsConfig] Optional. The configuration for scheduled snapshot creation mechanism.
-  RecoveryConfigResponse({
-    required this.scheduledSnapshotsConfig,
-  });
+  RecoveryConfigResponse({required this.scheduledSnapshotsConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class RecoveryConfigResponse {
 
   factory RecoveryConfigResponse.fromMap(Map<String, dynamic> map) {
     return RecoveryConfigResponse(
-      scheduledSnapshotsConfig: ScheduledSnapshotsConfigResponse.fromMap((map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>()),
+      scheduledSnapshotsConfig: ScheduledSnapshotsConfigResponse.fromMap(
+        (map['scheduledSnapshotsConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

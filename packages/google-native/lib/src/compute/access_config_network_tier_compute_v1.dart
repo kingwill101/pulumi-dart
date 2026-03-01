@@ -14,7 +14,8 @@ enum AccessConfigNetworkTierComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown AccessConfigNetworkTierComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown AccessConfigNetworkTierComputeV1 value: $value',
+    );
   }
 }
-

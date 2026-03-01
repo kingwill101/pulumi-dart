@@ -17,7 +17,8 @@ enum GlobalForwardingRuleIpProtocolComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalForwardingRuleIpProtocolComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalForwardingRuleIpProtocolComputeBeta value: $value',
+    );
   }
 }
-

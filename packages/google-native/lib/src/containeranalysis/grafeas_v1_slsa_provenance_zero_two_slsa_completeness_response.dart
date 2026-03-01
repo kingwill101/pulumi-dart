@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Indicates that the builder claims certain fields in this message to be complete.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse {
   final bool environment;
@@ -25,7 +24,9 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse {
     };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse(
       environment: map['environment'] as bool,
       materials: map['materials'] as bool,
@@ -33,4 +34,3 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse {
     );
   }
 }
-

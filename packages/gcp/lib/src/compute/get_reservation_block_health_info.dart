@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetReservationBlockHealthInfo {
   /// The number of sub-blocks that are degraded.
   final int degradedSubBlockCount;
+
   /// The health status of the reservation block.
   final String healthStatus;
+
   /// The number of sub-blocks that are healthy.
   final int healthySubBlockCount;
 
@@ -35,4 +36,3 @@ class GetReservationBlockHealthInfo {
     );
   }
 }
-

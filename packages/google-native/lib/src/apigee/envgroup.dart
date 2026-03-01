@@ -5,13 +5,17 @@ import 'envgroup_args.dart';
 class Envgroup extends pulumi.CustomResource {
   /// The time at which the environment group was created as milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
+
   /// Host names for this environment group.
   late final pulumi.Output<List<String>> hostnames;
+
   /// The time at which the environment group was last updated as milliseconds since epoch.
   late final pulumi.Output<String> lastModifiedAt;
+
   /// ID of the environment group. Overrides any ID in the environment_group resource.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
+
   /// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
   late final pulumi.Output<String> state;
 
@@ -24,11 +28,11 @@ class Envgroup extends pulumi.CustomResource {
     EnvgroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:apigee/v1:Envgroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:apigee/v1:Envgroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createdAt = registerOutput<String>('createdAt');
     this.hostnames = registerOutput<List<String>>('hostnames');
     this.lastModifiedAt = registerOutput<String>('lastModifiedAt');

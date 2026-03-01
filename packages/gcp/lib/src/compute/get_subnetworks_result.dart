@@ -6,10 +6,12 @@ import 'get_subnetworks_subnetwork.dart';
 /// Result data returned by getSubnetworks.
 class GetSubnetworksResult {
   final String? filter;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? project;
   final String? region;
+
   /// A list of all retrieved GCE subnetworks. Structure is defined below.
   final List<GetSubnetworksSubnetwork> subnetworks;
 
@@ -33,7 +35,11 @@ class GetSubnetworksResult {
       'id': id,
       'project': ?project,
       'region': ?region,
-      'subnetworks': pulumi.Input.encodeList<GetSubnetworksSubnetwork, Map<String, dynamic>>(subnetworks, (value) => value.toMap()),
+      'subnetworks':
+          pulumi.Input.encodeList<
+            GetSubnetworksSubnetwork,
+            Map<String, dynamic>
+          >(subnetworks, (value) => value.toMap()),
     };
   }
 
@@ -43,8 +49,12 @@ class GetSubnetworksResult {
       id: map['id'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      subnetworks: pulumi.Input.decodeList<GetSubnetworksSubnetwork>(map['subnetworks'], (value) => GetSubnetworksSubnetwork.fromMap((value as Map).cast<String, dynamic>())),
+      subnetworks: pulumi.Input.decodeList<GetSubnetworksSubnetwork>(
+        map['subnetworks'],
+        (value) => GetSubnetworksSubnetwork.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

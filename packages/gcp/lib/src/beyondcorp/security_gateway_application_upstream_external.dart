@@ -10,20 +10,32 @@ class SecurityGatewayApplicationUpstreamExternal {
 
   /// Creates a new [SecurityGatewayApplicationUpstreamExternal].
   /// [endpoints] List of the endpoints to forward traffic to.
-  SecurityGatewayApplicationUpstreamExternal({
-    required this.endpoints,
-  });
+  SecurityGatewayApplicationUpstreamExternal({required this.endpoints});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endpoints': pulumi.Input.encodeList<SecurityGatewayApplicationUpstreamExternalEndpoint, Map<String, dynamic>>(endpoints, (value) => value.toMap()),
+      'endpoints':
+          pulumi.Input.encodeList<
+            SecurityGatewayApplicationUpstreamExternalEndpoint,
+            Map<String, dynamic>
+          >(endpoints, (value) => value.toMap()),
     };
   }
 
-  factory SecurityGatewayApplicationUpstreamExternal.fromMap(Map<String, dynamic> map) {
+  factory SecurityGatewayApplicationUpstreamExternal.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityGatewayApplicationUpstreamExternal(
-      endpoints: pulumi.Input.decodeList<SecurityGatewayApplicationUpstreamExternalEndpoint>(map['endpoints'], (value) => SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      endpoints:
+          pulumi.Input.decodeList<
+            SecurityGatewayApplicationUpstreamExternalEndpoint
+          >(
+            map['endpoints'],
+            (value) =>
+                SecurityGatewayApplicationUpstreamExternalEndpoint.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

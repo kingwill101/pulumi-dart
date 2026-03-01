@@ -9,9 +9,7 @@ class PythonSettings {
 
   /// Creates a new [PythonSettings].
   /// [common] Some settings.
-  PythonSettings({
-    this.common,
-  });
+  PythonSettings({this.common});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class PythonSettings {
 
   factory PythonSettings.fromMap(Map<String, dynamic> map) {
     return PythonSettings(
-      common: map['common'] == null ? null : CommonLanguageSettings.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: map['common'] == null
+          ? null
+          : CommonLanguageSettings.fromMap(
+              (map['common'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

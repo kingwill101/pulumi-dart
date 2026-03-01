@@ -9,9 +9,7 @@ class RestrictionEvaluationsResponse {
 
   /// Creates a new [RestrictionEvaluationsResponse].
   /// [memberRestrictionEvaluation] Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
-  RestrictionEvaluationsResponse({
-    required this.memberRestrictionEvaluation,
-  });
+  RestrictionEvaluationsResponse({required this.memberRestrictionEvaluation});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,10 @@ class RestrictionEvaluationsResponse {
 
   factory RestrictionEvaluationsResponse.fromMap(Map<String, dynamic> map) {
     return RestrictionEvaluationsResponse(
-      memberRestrictionEvaluation: MembershipRoleRestrictionEvaluationResponse.fromMap((map['memberRestrictionEvaluation'] as Map).cast<String, dynamic>()),
+      memberRestrictionEvaluation:
+          MembershipRoleRestrictionEvaluationResponse.fromMap(
+            (map['memberRestrictionEvaluation'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

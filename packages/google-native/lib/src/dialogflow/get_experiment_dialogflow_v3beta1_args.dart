@@ -25,12 +25,11 @@ class GetExperimentDialogflowV3beta1Args {
     required String experimentId,
     required String location,
     String? project,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      experimentId = pulumi.Input.asInput<String>(experimentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : agentId = pulumi.Input.asInput<String>(agentId),
+       environmentId = pulumi.Input.asInput<String>(environmentId),
+       experimentId = pulumi.Input.asInput<String>(experimentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetExperimentDialogflowV3beta1Args {
     );
   }
 }
-

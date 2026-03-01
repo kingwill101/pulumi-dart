@@ -4,16 +4,22 @@ enum GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType {
   standardView("STANDARD_VIEW"),
   materializedView("MATERIALIZED_VIEW");
 
-  const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType(this.value);
+  const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType(
+    this.value,
+  );
   final String value;
 
-  static GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType fromValue(String value) {
-    for (final item in GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType.values) {
+  static GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType value: $value',
+    );
   }
 }
-

@@ -19,10 +19,9 @@ class GetRestorePlanArgs {
     required String location,
     String? project,
     required String restorePlanId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      restorePlanId = pulumi.Input.asInput<String>(restorePlanId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       restorePlanId = pulumi.Input.asInput<String>(restorePlanId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRestorePlanArgs {
     );
   }
 }
-

@@ -8,10 +8,13 @@ import 'video_stream.dart';
 class ElementaryStream {
   /// Encoding of an audio stream.
   final AudioStream? audioStream;
+
   /// A unique key for this elementary stream.
   final String? key;
+
   /// Encoding of a text stream. For example, closed captions or subtitles.
   final TextStream? textStream;
+
   /// Encoding of a video stream.
   final VideoStream? videoStream;
 
@@ -38,11 +41,22 @@ class ElementaryStream {
 
   factory ElementaryStream.fromMap(Map<String, dynamic> map) {
     return ElementaryStream(
-      audioStream: map['audioStream'] == null ? null : AudioStream.fromMap((map['audioStream'] as Map).cast<String, dynamic>()),
+      audioStream: map['audioStream'] == null
+          ? null
+          : AudioStream.fromMap(
+              (map['audioStream'] as Map).cast<String, dynamic>(),
+            ),
       key: map['key'] == null ? null : map['key'] as String,
-      textStream: map['textStream'] == null ? null : TextStream.fromMap((map['textStream'] as Map).cast<String, dynamic>()),
-      videoStream: map['videoStream'] == null ? null : VideoStream.fromMap((map['videoStream'] as Map).cast<String, dynamic>()),
+      textStream: map['textStream'] == null
+          ? null
+          : TextStream.fromMap(
+              (map['textStream'] as Map).cast<String, dynamic>(),
+            ),
+      videoStream: map['videoStream'] == null
+          ? null
+          : VideoStream.fromMap(
+              (map['videoStream'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

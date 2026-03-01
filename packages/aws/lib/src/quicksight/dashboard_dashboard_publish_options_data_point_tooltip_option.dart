@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DashboardDashboardPublishOptionsDataPointTooltipOption {
   /// Availability status. Possibles values: ENABLED, DISABLED.
   final String? availabilityStatus;
@@ -12,15 +11,16 @@ class DashboardDashboardPublishOptionsDataPointTooltipOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'availabilityStatus': ?availabilityStatus,
-    };
+    return <String, dynamic>{'availabilityStatus': ?availabilityStatus};
   }
 
-  factory DashboardDashboardPublishOptionsDataPointTooltipOption.fromMap(Map<String, dynamic> map) {
+  factory DashboardDashboardPublishOptionsDataPointTooltipOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DashboardDashboardPublishOptionsDataPointTooltipOption(
-      availabilityStatus: map['availabilityStatus'] == null ? null : map['availabilityStatus'] as String,
+      availabilityStatus: map['availabilityStatus'] == null
+          ? null
+          : map['availabilityStatus'] as String,
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The details of a Vmware VM disk.
 class VmwareDiskDetailsResponseVmmigrationV1alpha1 {
   /// The ordinal number of the disk.
   final int diskNumber;
+
   /// The disk label.
   final String label;
+
   /// Size in GB.
   final String sizeGb;
 
@@ -28,7 +29,9 @@ class VmwareDiskDetailsResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory VmwareDiskDetailsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory VmwareDiskDetailsResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareDiskDetailsResponseVmmigrationV1alpha1(
       diskNumber: map['diskNumber'] as int,
       label: map['label'] as String,
@@ -36,4 +39,3 @@ class VmwareDiskDetailsResponseVmmigrationV1alpha1 {
     );
   }
 }
-

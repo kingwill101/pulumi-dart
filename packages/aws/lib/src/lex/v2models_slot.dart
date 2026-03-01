@@ -646,32 +646,46 @@ import 'v2models_slot_value_elicitation_setting.dart';
 class V2modelsSlot extends pulumi.CustomResource {
   /// Identifier of the bot associated with the slot.
   late final pulumi.Output<String> botId;
+
   /// Version of the bot associated with the slot.
   late final pulumi.Output<String> botVersion;
+
   /// Description of the slot.
   late final pulumi.Output<String?> description;
+
   /// Identifier of the intent that contains the slot.
   late final pulumi.Output<String> intentId;
+
   /// Identifier of the language and locale that the slot will be used in.
   late final pulumi.Output<String> localeId;
+
   /// Whether the slot returns multiple values in one response.
   /// See the `multiple_values_setting` argument reference below.
-  late final pulumi.Output<List<V2modelsSlotMultipleValuesSetting>?> multipleValuesSettings;
+  late final pulumi.Output<List<V2modelsSlotMultipleValuesSetting>?>
+  multipleValuesSettings;
+
   /// Name of the slot.
   late final pulumi.Output<String> name;
+
   /// Determines how slot values are used in Amazon CloudWatch logs.
   /// See the `obfuscation_setting` argument reference below.
-  late final pulumi.Output<List<V2modelsSlotObfuscationSetting>?> obfuscationSettings;
+  late final pulumi.Output<List<V2modelsSlotObfuscationSetting>?>
+  obfuscationSettings;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Unique identifier associated with the slot.
   late final pulumi.Output<String> slotId;
+
   /// Unique identifier for the slot type associated with this slot.
   late final pulumi.Output<String> slotTypeId;
+
   /// Specifications for the constituent sub slots and the expression for the composite slot.
   /// See the `sub_slot_setting` argument reference below.
   late final pulumi.Output<List<V2modelsSlotSubSlotSetting>?> subSlotSettings;
   late final pulumi.Output<V2modelsSlotTimeouts?> timeouts;
+
   /// Prompts that Amazon Lex sends to the user to elicit a response that provides the value for the slot.
   /// If you configure this block without `prompt_specification.*.prompt_attempts_specification`, AWS will provide default `prompt_attempts_specification` blocks for the initial prompt (map key `Initial`) and each retry attempt (map keys `Retry1`, `Retry2`, etc.).
   /// This will cause Terraform to report differences.
@@ -679,7 +693,8 @@ class V2modelsSlot extends pulumi.CustomResource {
   /// See the `value_elicitation_setting` argument reference below.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<V2modelsSlotValueElicitationSetting> valueElicitationSetting;
+  late final pulumi.Output<V2modelsSlotValueElicitationSetting>
+  valueElicitationSetting;
 
   /// Creates a new [V2modelsSlot].
   /// [name] The Pulumi resource name.
@@ -690,24 +705,35 @@ class V2modelsSlot extends pulumi.CustomResource {
     V2modelsSlotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:lex/v2modelsSlot:V2modelsSlot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:lex/v2modelsSlot:V2modelsSlot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.botId = registerOutput<String>('botId');
     this.botVersion = registerOutput<String>('botVersion');
     this.description = registerOutput<String?>('description');
     this.intentId = registerOutput<String>('intentId');
     this.localeId = registerOutput<String>('localeId');
-    this.multipleValuesSettings = registerOutput<List<V2modelsSlotMultipleValuesSetting>?>('multipleValuesSettings');
+    this.multipleValuesSettings =
+        registerOutput<List<V2modelsSlotMultipleValuesSetting>?>(
+          'multipleValuesSettings',
+        );
     this.name = registerOutput<String>('name');
-    this.obfuscationSettings = registerOutput<List<V2modelsSlotObfuscationSetting>?>('obfuscationSettings');
+    this.obfuscationSettings =
+        registerOutput<List<V2modelsSlotObfuscationSetting>?>(
+          'obfuscationSettings',
+        );
     this.region = registerOutput<String>('region');
     this.slotId = registerOutput<String>('slotId');
     this.slotTypeId = registerOutput<String>('slotTypeId');
-    this.subSlotSettings = registerOutput<List<V2modelsSlotSubSlotSetting>?>('subSlotSettings');
+    this.subSlotSettings = registerOutput<List<V2modelsSlotSubSlotSetting>?>(
+      'subSlotSettings',
+    );
     this.timeouts = registerOutput<V2modelsSlotTimeouts?>('timeouts');
-    this.valueElicitationSetting = registerOutput<V2modelsSlotValueElicitationSetting>('valueElicitationSetting');
+    this.valueElicitationSetting =
+        registerOutput<V2modelsSlotValueElicitationSetting>(
+          'valueElicitationSetting',
+        );
   }
 }

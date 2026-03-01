@@ -7,24 +7,41 @@ class EdgeCacheOriginOriginOverrideActionHeaderAction {
   /// Describes a header to add.
   /// You may add a maximum of 25 request headers.
   /// Structure is documented below.
-  final List<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>? requestHeadersToAdds;
+  final List<
+    EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd
+  >?
+  requestHeadersToAdds;
 
   /// Creates a new [EdgeCacheOriginOriginOverrideActionHeaderAction].
   /// [requestHeadersToAdds] Describes a header to add.
-  EdgeCacheOriginOriginOverrideActionHeaderAction({
-    this.requestHeadersToAdds,
-  });
+  EdgeCacheOriginOriginOverrideActionHeaderAction({this.requestHeadersToAdds});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestHeadersToAdds': ?requestHeadersToAdds == null ? null : pulumi.Input.encodeList<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd, Map<String, dynamic>>(requestHeadersToAdds!, (value) => value.toMap()),
+      'requestHeadersToAdds': ?requestHeadersToAdds == null
+          ? null
+          : pulumi.Input.encodeList<
+              EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd,
+              Map<String, dynamic>
+            >(requestHeadersToAdds!, (value) => value.toMap()),
     };
   }
 
-  factory EdgeCacheOriginOriginOverrideActionHeaderAction.fromMap(Map<String, dynamic> map) {
+  factory EdgeCacheOriginOriginOverrideActionHeaderAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EdgeCacheOriginOriginOverrideActionHeaderAction(
-      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : pulumi.Input.decodeList<EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd>(map['requestHeadersToAdds'], (value) => EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.fromMap((value as Map).cast<String, dynamic>())),
+      requestHeadersToAdds: map['requestHeadersToAdds'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd
+            >(
+              map['requestHeadersToAdds'],
+              (value) =>
+                  EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAdd.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

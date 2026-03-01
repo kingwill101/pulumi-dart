@@ -13,7 +13,8 @@ enum GoogleFirestoreAdminV1IndexFieldOrder {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleFirestoreAdminV1IndexFieldOrder value: $value');
+    throw ArgumentError(
+      'Unknown GoogleFirestoreAdminV1IndexFieldOrder value: $value',
+    );
   }
 }
-

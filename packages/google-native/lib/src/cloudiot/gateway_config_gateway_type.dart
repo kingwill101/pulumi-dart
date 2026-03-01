@@ -16,4 +16,3 @@ enum GatewayConfigGatewayType {
     throw ArgumentError('Unknown GatewayConfigGatewayType value: $value');
   }
 }
-

@@ -10,20 +10,26 @@ class NamespacedNamesResponse {
 
   /// Creates a new [NamespacedNamesResponse].
   /// [namespacedNames] Optional. A list of namespaced Kubernetes resources.
-  NamespacedNamesResponse({
-    required this.namespacedNames,
-  });
+  NamespacedNamesResponse({required this.namespacedNames});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'namespacedNames': pulumi.Input.encodeList<NamespacedNameResponse, Map<String, dynamic>>(namespacedNames, (value) => value.toMap()),
+      'namespacedNames':
+          pulumi.Input.encodeList<NamespacedNameResponse, Map<String, dynamic>>(
+            namespacedNames,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory NamespacedNamesResponse.fromMap(Map<String, dynamic> map) {
     return NamespacedNamesResponse(
-      namespacedNames: pulumi.Input.decodeList<NamespacedNameResponse>(map['namespacedNames'], (value) => NamespacedNameResponse.fromMap((value as Map).cast<String, dynamic>())),
+      namespacedNames: pulumi.Input.decodeList<NamespacedNameResponse>(
+        map['namespacedNames'],
+        (value) => NamespacedNameResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

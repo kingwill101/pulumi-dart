@@ -1846,12 +1846,16 @@ import 'cluster_user_created_connections_cluster_endpoint.dart';
 class ClusterUserCreatedConnections extends pulumi.CustomResource {
   /// A list of cluster endpoints
   /// Structure is documented below.
-  late final pulumi.Output<List<ClusterUserCreatedConnectionsClusterEndpoint>?> clusterEndpoints;
+  late final pulumi.Output<List<ClusterUserCreatedConnectionsClusterEndpoint>?>
+  clusterEndpoints;
+
   /// The name of the Redis cluster these endpoints should be added to.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The name of the region of the Redis cluster these endpoints should be added to.
   late final pulumi.Output<String> region;
 
@@ -1864,12 +1868,15 @@ class ClusterUserCreatedConnections extends pulumi.CustomResource {
     ClusterUserCreatedConnectionsArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.clusterEndpoints = registerOutput<List<ClusterUserCreatedConnectionsClusterEndpoint>?>('clusterEndpoints');
+         'gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.clusterEndpoints =
+        registerOutput<List<ClusterUserCreatedConnectionsClusterEndpoint>?>(
+          'clusterEndpoints',
+        );
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.region = registerOutput<String>('region');

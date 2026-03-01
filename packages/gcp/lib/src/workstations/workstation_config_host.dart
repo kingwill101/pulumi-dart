@@ -9,9 +9,7 @@ class WorkstationConfigHost {
 
   /// Creates a new [WorkstationConfigHost].
   /// [gceInstance] A runtime using a Compute Engine instance.
-  WorkstationConfigHost({
-    this.gceInstance,
-  });
+  WorkstationConfigHost({this.gceInstance});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class WorkstationConfigHost {
 
   factory WorkstationConfigHost.fromMap(Map<String, dynamic> map) {
     return WorkstationConfigHost(
-      gceInstance: map['gceInstance'] == null ? null : WorkstationConfigHostGceInstance.fromMap((map['gceInstance'] as Map).cast<String, dynamic>()),
+      gceInstance: map['gceInstance'] == null
+          ? null
+          : WorkstationConfigHostGceInstance.fromMap(
+              (map['gceInstance'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

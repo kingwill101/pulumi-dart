@@ -13,11 +13,8 @@ class GetGuestPolicyArgs {
   /// Creates a new [GetGuestPolicyArgs].
   /// [guestPolicyId] Required.
   /// [project] Optional.
-  GetGuestPolicyArgs({
-    required String guestPolicyId,
-    String? project,
-  }) :
-      guestPolicyId = pulumi.Input.asInput<String>(guestPolicyId),
+  GetGuestPolicyArgs({required String guestPolicyId, String? project})
+    : guestPolicyId = pulumi.Input.asInput<String>(guestPolicyId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetGuestPolicyArgs {
     );
   }
 }
-

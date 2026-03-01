@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CustomLogSourceAttribute {
   /// The ARN of the AWS Glue crawler.
   final String crawlerArn;
+
   /// The ARN of the AWS Glue database where results are written.
   final String databaseArn;
+
   /// The ARN of the AWS Glue table.
   final String tableArn;
 
@@ -35,4 +36,3 @@ class CustomLogSourceAttribute {
     );
   }
 }
-

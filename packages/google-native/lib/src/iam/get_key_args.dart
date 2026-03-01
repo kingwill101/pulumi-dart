@@ -22,11 +22,10 @@ class GetKeyArgs {
     String? project,
     String? publicKeyType,
     required String serviceAccountId,
-  }) :
-      keyId = pulumi.Input.asInput<String>(keyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publicKeyType = pulumi.Input.asOptionalInput<String>(publicKeyType),
-      serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
+  }) : keyId = pulumi.Input.asInput<String>(keyId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       publicKeyType = pulumi.Input.asOptionalInput<String>(publicKeyType),
+       serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +40,10 @@ class GetKeyArgs {
     return GetKeyArgs(
       keyId: map['keyId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      publicKeyType: map['publicKeyType'] == null ? null : map['publicKeyType'] as String,
+      publicKeyType: map['publicKeyType'] == null
+          ? null
+          : map['publicKeyType'] as String,
       serviceAccountId: map['serviceAccountId'] as String,
     );
   }
 }
-

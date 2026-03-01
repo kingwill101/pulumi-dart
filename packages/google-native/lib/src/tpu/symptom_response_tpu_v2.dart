@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A Symptom instance.
 class SymptomResponseTpuV2 {
   /// Timestamp when the Symptom is created.
   final String createTime;
+
   /// Detailed information of the current Symptom.
   final String details;
+
   /// Type of the Symptom.
   final String symptomType;
+
   /// A string used to uniquely distinguish a worker within a TPU node.
   final String workerId;
 
@@ -42,4 +44,3 @@ class SymptomResponseTpuV2 {
     );
   }
 }
-

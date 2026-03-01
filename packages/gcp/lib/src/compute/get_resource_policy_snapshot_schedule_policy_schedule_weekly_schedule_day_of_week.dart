@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
   /// The day of the week to create the snapshot. e.g. MONDAY Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
   final String day;
+
   /// Time within the window to start the operations.
   /// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
   final String startTime;
@@ -17,17 +17,15 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'day': day,
-      'startTime': startTime,
-    };
+    return <String, dynamic>{'day': day, 'startTime': startTime};
   }
 
-  factory GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek.fromMap(Map<String, dynamic> map) {
+  factory GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek(
       day: map['day'] as String,
       startTime: map['startTime'] as String,
     );
   }
 }
-

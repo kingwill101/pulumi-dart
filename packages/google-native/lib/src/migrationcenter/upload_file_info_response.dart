@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A resource that contains a URI to which a data file can be uploaded.
 class UploadFileInfoResponse {
   /// The headers that were used to sign the URI.
   final Map<String, String> headers;
+
   /// Upload URI for the file.
   final String signedUri;
+
   /// Expiration time of the upload URI.
   final String uriExpirationTime;
 
@@ -36,4 +37,3 @@ class UploadFileInfoResponse {
     );
   }
 }
-

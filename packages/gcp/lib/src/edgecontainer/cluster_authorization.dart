@@ -11,20 +11,17 @@ class ClusterAuthorization {
 
   /// Creates a new [ClusterAuthorization].
   /// [adminUsers] User that will be granted the cluster-admin role on the cluster, providing
-  ClusterAuthorization({
-    required this.adminUsers,
-  });
+  ClusterAuthorization({required this.adminUsers});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'adminUsers': adminUsers.toMap(),
-    };
+    return <String, dynamic>{'adminUsers': adminUsers.toMap()};
   }
 
   factory ClusterAuthorization.fromMap(Map<String, dynamic> map) {
     return ClusterAuthorization(
-      adminUsers: ClusterAuthorizationAdminUsers.fromMap((map['adminUsers'] as Map).cast<String, dynamic>()),
+      adminUsers: ClusterAuthorizationAdminUsers.fromMap(
+        (map['adminUsers'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

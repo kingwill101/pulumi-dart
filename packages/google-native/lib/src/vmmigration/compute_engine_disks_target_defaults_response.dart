@@ -8,12 +8,16 @@ import 'persistent_disk_defaults_response.dart';
 class ComputeEngineDisksTargetDefaultsResponse {
   /// The details of each Persistent Disk to create.
   final List<PersistentDiskDefaultsResponse> disks;
+
   /// Details of the disk only migration target.
   final Map<String, dynamic> disksTargetDefaults;
+
   /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
   final String targetProject;
+
   /// Details of the VM migration target.
   final DisksMigrationVmTargetDefaultsResponse vmTargetDefaults;
+
   /// The zone in which to create the Persistent Disks.
   final String zone;
 
@@ -33,7 +37,11 @@ class ComputeEngineDisksTargetDefaultsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'disks': pulumi.Input.encodeList<PersistentDiskDefaultsResponse, Map<String, dynamic>>(disks, (value) => value.toMap()),
+      'disks':
+          pulumi.Input.encodeList<
+            PersistentDiskDefaultsResponse,
+            Map<String, dynamic>
+          >(disks, (value) => value.toMap()),
       'disksTargetDefaults': disksTargetDefaults,
       'targetProject': targetProject,
       'vmTargetDefaults': vmTargetDefaults.toMap(),
@@ -41,14 +49,23 @@ class ComputeEngineDisksTargetDefaultsResponse {
     };
   }
 
-  factory ComputeEngineDisksTargetDefaultsResponse.fromMap(Map<String, dynamic> map) {
+  factory ComputeEngineDisksTargetDefaultsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ComputeEngineDisksTargetDefaultsResponse(
-      disks: pulumi.Input.decodeList<PersistentDiskDefaultsResponse>(map['disks'], (value) => PersistentDiskDefaultsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      disksTargetDefaults: (map['disksTargetDefaults'] as Map).cast<String, dynamic>(),
+      disks: pulumi.Input.decodeList<PersistentDiskDefaultsResponse>(
+        map['disks'],
+        (value) => PersistentDiskDefaultsResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      disksTargetDefaults: (map['disksTargetDefaults'] as Map)
+          .cast<String, dynamic>(),
       targetProject: map['targetProject'] as String,
-      vmTargetDefaults: DisksMigrationVmTargetDefaultsResponse.fromMap((map['vmTargetDefaults'] as Map).cast<String, dynamic>()),
+      vmTargetDefaults: DisksMigrationVmTargetDefaultsResponse.fromMap(
+        (map['vmTargetDefaults'] as Map).cast<String, dynamic>(),
+      ),
       zone: map['zone'] as String,
     );
   }
 }
-

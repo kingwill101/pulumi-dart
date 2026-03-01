@@ -25,12 +25,11 @@ class GetAnnotationArgs {
     required String datasetId,
     required String location,
     String? project,
-  }) :
-      annotationId = pulumi.Input.asInput<String>(annotationId),
-      annotationStoreId = pulumi.Input.asInput<String>(annotationStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : annotationId = pulumi.Input.asInput<String>(annotationId),
+       annotationStoreId = pulumi.Input.asInput<String>(annotationStoreId),
+       datasetId = pulumi.Input.asInput<String>(datasetId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetAnnotationArgs {
     );
   }
 }
-

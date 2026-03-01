@@ -195,7 +195,8 @@ Future<GetCutoverJobVmmigrationV1alpha1Result> getCutoverJobVmmigrationV1alpha1(
 /// Gets details of a single DatacenterConnector.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1alpha1_get_datacenter_connector_vmmigration_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDatacenterConnectorVmmigrationV1alpha1Result> getDatacenterConnectorVmmigrationV1alpha1(
+Future<GetDatacenterConnectorVmmigrationV1alpha1Result>
+getDatacenterConnectorVmmigrationV1alpha1(
   GetDatacenterConnectorVmmigrationV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -227,7 +228,8 @@ Future<GetGroupVmmigrationV1alpha1Result> getGroupVmmigrationV1alpha1(
 /// Gets details of a single MigratingVm.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1alpha1_get_migrating_vm_vmmigration_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetMigratingVmVmmigrationV1alpha1Result> getMigratingVmVmmigrationV1alpha1(
+Future<GetMigratingVmVmmigrationV1alpha1Result>
+getMigratingVmVmmigrationV1alpha1(
   GetMigratingVmVmmigrationV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -259,7 +261,8 @@ Future<GetSourceVmmigrationV1alpha1Result> getSourceVmmigrationV1alpha1(
 /// Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1alpha1_get_target_project_vmmigration_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTargetProjectVmmigrationV1alpha1Result> getTargetProjectVmmigrationV1alpha1(
+Future<GetTargetProjectVmmigrationV1alpha1Result>
+getTargetProjectVmmigrationV1alpha1(
   GetTargetProjectVmmigrationV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -275,7 +278,8 @@ Future<GetTargetProjectVmmigrationV1alpha1Result> getTargetProjectVmmigrationV1a
 /// Gets a single Utilization Report.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1alpha1_get_utilization_report_vmmigration_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetUtilizationReportVmmigrationV1alpha1Result> getUtilizationReportVmmigrationV1alpha1(
+Future<GetUtilizationReportVmmigrationV1alpha1Result>
+getUtilizationReportVmmigrationV1alpha1(
   GetUtilizationReportVmmigrationV1alpha1Args args, {
   pulumi.InvokeOptions? options,
 }) async {

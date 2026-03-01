@@ -13,9 +13,7 @@ class CxPageAdvancedSettings {
 
   /// Creates a new [CxPageAdvancedSettings].
   /// [dtmfSettings] Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
-  CxPageAdvancedSettings({
-    this.dtmfSettings,
-  });
+  CxPageAdvancedSettings({this.dtmfSettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,8 +23,11 @@ class CxPageAdvancedSettings {
 
   factory CxPageAdvancedSettings.fromMap(Map<String, dynamic> map) {
     return CxPageAdvancedSettings(
-      dtmfSettings: map['dtmfSettings'] == null ? null : CxPageAdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>()),
+      dtmfSettings: map['dtmfSettings'] == null
+          ? null
+          : CxPageAdvancedSettingsDtmfSettings.fromMap(
+              (map['dtmfSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

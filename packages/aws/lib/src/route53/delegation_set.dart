@@ -162,9 +162,11 @@ import 'delegation_set_args.dart';
 class DelegationSet extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) of the Delegation Set.
   late final pulumi.Output<String> arn;
+
   /// A list of authoritative name servers for the hosted zone
   /// (effectively a list of NS records).
   late final pulumi.Output<List<String>> nameServers;
+
   /// This is a reference name used in Caller Reference
   /// (helpful for identifying single delegation set amongst others)
   late final pulumi.Output<String?> referenceName;
@@ -178,11 +180,11 @@ class DelegationSet extends pulumi.CustomResource {
     DelegationSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:route53/delegationSet:DelegationSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:route53/delegationSet:DelegationSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.nameServers = registerOutput<List<String>>('nameServers');
     this.referenceName = registerOutput<String?>('referenceName');

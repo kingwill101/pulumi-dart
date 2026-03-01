@@ -135,18 +135,24 @@ import 'organization_security_policy_args.dart';
 class OrganizationSecurityPolicy extends pulumi.CustomResource {
   /// A textual description for the organization security policy.
   late final pulumi.Output<String?> description;
+
   /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
   late final pulumi.Output<String?> displayName;
+
   /// Fingerprint of this resource. This field is used internally during
   /// updates of this resource.
   late final pulumi.Output<String> fingerprint;
+
   /// The parent of this OrganizationSecurityPolicy in the Cloud Resource Hierarchy.
   /// Format: organizations/{organization_id} or folders/{folder_id}
   late final pulumi.Output<String> parent;
+
   /// The unique identifier for the resource. This identifier is defined by the server.
   late final pulumi.Output<String> policyId;
+
   /// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is CLOUD_ARMOR.
   late final pulumi.Output<String?> shortName;
+
   /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
   /// **NOTE** : 'FIREWALL' type is deprecated and will be removed in a future major release. Please use 'google_compute_firewall_policy' instead."
   /// Possible values are: `FIREWALL`, `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_INTERNAL_SERVICE`, `CLOUD_ARMOR_NETWORK`.
@@ -161,11 +167,11 @@ class OrganizationSecurityPolicy extends pulumi.CustomResource {
     OrganizationSecurityPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.description = registerOutput<String?>('description');
     this.displayName = registerOutput<String?>('displayName');
     this.fingerprint = registerOutput<String>('fingerprint');

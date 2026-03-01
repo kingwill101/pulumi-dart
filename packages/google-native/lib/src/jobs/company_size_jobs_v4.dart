@@ -21,4 +21,3 @@ enum CompanySizeJobsV4 {
     throw ArgumentError('Unknown CompanySizeJobsV4 value: $value');
   }
 }
-

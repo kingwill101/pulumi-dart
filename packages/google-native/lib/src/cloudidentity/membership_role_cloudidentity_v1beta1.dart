@@ -7,8 +7,10 @@ import 'restriction_evaluations_cloudidentity_v1beta1.dart';
 class MembershipRoleCloudidentityV1beta1 {
   /// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
   final ExpiryDetailCloudidentityV1beta1? expiryDetail;
+
   /// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
   final String? name;
+
   /// Evaluations of restrictions applied to parent group on this membership.
   final RestrictionEvaluationsCloudidentityV1beta1? restrictionEvaluations;
 
@@ -26,16 +28,25 @@ class MembershipRoleCloudidentityV1beta1 {
     return <String, dynamic>{
       'expiryDetail': ?expiryDetail == null ? null : expiryDetail!.toMap(),
       'name': ?name,
-      'restrictionEvaluations': ?restrictionEvaluations == null ? null : restrictionEvaluations!.toMap(),
+      'restrictionEvaluations': ?restrictionEvaluations == null
+          ? null
+          : restrictionEvaluations!.toMap(),
     };
   }
 
   factory MembershipRoleCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
     return MembershipRoleCloudidentityV1beta1(
-      expiryDetail: map['expiryDetail'] == null ? null : ExpiryDetailCloudidentityV1beta1.fromMap((map['expiryDetail'] as Map).cast<String, dynamic>()),
+      expiryDetail: map['expiryDetail'] == null
+          ? null
+          : ExpiryDetailCloudidentityV1beta1.fromMap(
+              (map['expiryDetail'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
-      restrictionEvaluations: map['restrictionEvaluations'] == null ? null : RestrictionEvaluationsCloudidentityV1beta1.fromMap((map['restrictionEvaluations'] as Map).cast<String, dynamic>()),
+      restrictionEvaluations: map['restrictionEvaluations'] == null
+          ? null
+          : RestrictionEvaluationsCloudidentityV1beta1.fromMap(
+              (map['restrictionEvaluations'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

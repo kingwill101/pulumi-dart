@@ -12,21 +12,14 @@ class GetInstanceProfilesArgs {
 
   /// Creates a new [GetInstanceProfilesArgs].
   /// [roleName] IAM role name.
-  GetInstanceProfilesArgs({
-    required String roleName,
-  }) :
-      roleName = pulumi.Input.asInput<String>(roleName);
+  GetInstanceProfilesArgs({required String roleName})
+    : roleName = pulumi.Input.asInput<String>(roleName);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'roleName': roleName,
-    };
+    return <String, dynamic>{'roleName': roleName};
   }
 
   factory GetInstanceProfilesArgs.fromMap(Map<String, dynamic> map) {
-    return GetInstanceProfilesArgs(
-      roleName: map['roleName'] as String,
-    );
+    return GetInstanceProfilesArgs(roleName: map['roleName'] as String);
   }
 }
-

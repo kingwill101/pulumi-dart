@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class NodePoolManagement {
   /// Whether the nodes will be automatically repaired. Enabled by default.
   final bool? autoRepair;
+
   /// Whether the nodes will be automatically upgraded. Enabled by default.
   final bool? autoUpgrade;
 
   /// Creates a new [NodePoolManagement].
   /// [autoRepair] Whether the nodes will be automatically repaired. Enabled by default.
   /// [autoUpgrade] Whether the nodes will be automatically upgraded. Enabled by default.
-  NodePoolManagement({
-    this.autoRepair,
-    this.autoUpgrade,
-  });
+  NodePoolManagement({this.autoRepair, this.autoUpgrade});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,8 +22,9 @@ class NodePoolManagement {
   factory NodePoolManagement.fromMap(Map<String, dynamic> map) {
     return NodePoolManagement(
       autoRepair: map['autoRepair'] == null ? null : map['autoRepair'] as bool,
-      autoUpgrade: map['autoUpgrade'] == null ? null : map['autoUpgrade'] as bool,
+      autoUpgrade: map['autoUpgrade'] == null
+          ? null
+          : map['autoUpgrade'] as bool,
     );
   }
 }
-

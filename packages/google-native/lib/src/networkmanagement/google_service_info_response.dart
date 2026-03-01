@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be a publicly routable address, some Google Services use special routes within Google production infrastructure to reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths
 class GoogleServiceInfoResponse {
   /// Recognized type of a Google Service.
   final String googleServiceType;
+
   /// Source IP address.
   final String sourceIp;
 
@@ -30,4 +30,3 @@ class GoogleServiceInfoResponse {
     );
   }
 }
-

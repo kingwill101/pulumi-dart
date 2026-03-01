@@ -12,7 +12,8 @@ enum NetworkEndpointGroupClientPortMappingMode {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkEndpointGroupClientPortMappingMode value: $value');
+    throw ArgumentError(
+      'Unknown NetworkEndpointGroupClientPortMappingMode value: $value',
+    );
   }
 }
-

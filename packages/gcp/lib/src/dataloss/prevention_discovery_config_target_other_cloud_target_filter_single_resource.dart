@@ -8,7 +8,8 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource {
   ///
   ///
   /// <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
-  final PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket? amazonS3Bucket;
+  final PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket?
+  amazonS3Bucket;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource].
   /// [amazonS3Bucket] Amazon S3 bucket.
@@ -18,14 +19,21 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'amazonS3Bucket': ?amazonS3Bucket == null ? null : amazonS3Bucket!.toMap(),
+      'amazonS3Bucket': ?amazonS3Bucket == null
+          ? null
+          : amazonS3Bucket!.toMap(),
     };
   }
 
-  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResource(
-      amazonS3Bucket: map['amazonS3Bucket'] == null ? null : PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket.fromMap((map['amazonS3Bucket'] as Map).cast<String, dynamic>()),
+      amazonS3Bucket: map['amazonS3Bucket'] == null
+          ? null
+          : PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket.fromMap(
+              (map['amazonS3Bucket'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

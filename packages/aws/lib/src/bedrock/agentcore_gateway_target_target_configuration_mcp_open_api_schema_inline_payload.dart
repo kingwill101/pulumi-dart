@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload {
   /// The inline schema payload content.
   final String payload;
@@ -12,15 +11,14 @@ class AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'payload': payload,
-    };
+    return <String, dynamic>{'payload': payload};
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchemaInlinePayload(
       payload: map['payload'] as String,
     );
   }
 }
-

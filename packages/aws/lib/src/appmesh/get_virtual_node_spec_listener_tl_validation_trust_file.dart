@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetVirtualNodeSpecListenerTlValidationTrustFile {
   final String certificateChain;
 
@@ -11,15 +10,14 @@ class GetVirtualNodeSpecListenerTlValidationTrustFile {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'certificateChain': certificateChain,
-    };
+    return <String, dynamic>{'certificateChain': certificateChain};
   }
 
-  factory GetVirtualNodeSpecListenerTlValidationTrustFile.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerTlValidationTrustFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecListenerTlValidationTrustFile(
       certificateChain: map['certificateChain'] as String,
     );
   }
 }
-

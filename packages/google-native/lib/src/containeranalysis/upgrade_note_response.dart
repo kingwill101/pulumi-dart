@@ -9,10 +9,13 @@ import 'windows_update_response.dart';
 class UpgradeNoteResponse {
   /// Metadata about the upgrade for each specific operating system.
   final List<UpgradeDistributionResponse> distributions;
+
   /// Required for non-Windows OS. The package this Upgrade is for.
   final String package;
+
   /// Required for non-Windows OS. The version of the package in machine + human readable form.
   final VersionResponse version;
+
   /// Required for Windows OS. Represents the metadata about the Windows update.
   final WindowsUpdateResponse windowsUpdate;
 
@@ -30,7 +33,11 @@ class UpgradeNoteResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'distributions': pulumi.Input.encodeList<UpgradeDistributionResponse, Map<String, dynamic>>(distributions, (value) => value.toMap()),
+      'distributions':
+          pulumi.Input.encodeList<
+            UpgradeDistributionResponse,
+            Map<String, dynamic>
+          >(distributions, (value) => value.toMap()),
       'package': package,
       'version': version.toMap(),
       'windowsUpdate': windowsUpdate.toMap(),
@@ -39,11 +46,19 @@ class UpgradeNoteResponse {
 
   factory UpgradeNoteResponse.fromMap(Map<String, dynamic> map) {
     return UpgradeNoteResponse(
-      distributions: pulumi.Input.decodeList<UpgradeDistributionResponse>(map['distributions'], (value) => UpgradeDistributionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      distributions: pulumi.Input.decodeList<UpgradeDistributionResponse>(
+        map['distributions'],
+        (value) => UpgradeDistributionResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       package: map['package'] as String,
-      version: VersionResponse.fromMap((map['version'] as Map).cast<String, dynamic>()),
-      windowsUpdate: WindowsUpdateResponse.fromMap((map['windowsUpdate'] as Map).cast<String, dynamic>()),
+      version: VersionResponse.fromMap(
+        (map['version'] as Map).cast<String, dynamic>(),
+      ),
+      windowsUpdate: WindowsUpdateResponse.fromMap(
+        (map['windowsUpdate'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

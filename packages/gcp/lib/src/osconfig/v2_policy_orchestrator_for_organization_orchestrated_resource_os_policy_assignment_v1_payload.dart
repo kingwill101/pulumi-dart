@@ -12,38 +12,54 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// For a given OS policy assignment, there is only one revision with a value
   /// of 'true' for this field.
   final bool? baseline;
+
   /// Output only. Indicates that this revision deletes the OS policy assignment.
   final bool? deleted;
+
   /// Optional. Freeform text describing the purpose of the resource.
   final String? description;
+
   /// Output only. This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   final String? etag;
+
   /// Filters to select target VMs for an assignment.
   ///
   /// If more than one filter criteria is specified below, a VM will be selected
   /// if and only if it satisfies all of them.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter instanceFilter;
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter
+  instanceFilter;
+
   /// Immutable. Identifier. In form of
   /// * `organizations/{organization_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `folders/{folder_id}/locations/global/policyOrchestrators/{orchestrator_id}`
   /// * `projects/{project_id_or_number}/locations/global/policyOrchestrators/{orchestrator_id}`
   final String? name;
+
   /// Required. List of OS policies to be applied to the VMs.
-  final List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy> osPolicies;
+  final List<
+    V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy
+  >
+  osPolicies;
+
   /// Output only. Set to true, if the there are ongoing changes being applied by the
   /// orchestrator.
   final bool? reconciling;
+
   /// Output only. The timestamp that the revision was created.
   final String? revisionCreateTime;
+
   /// Output only. The assignment revision ID
   /// A new revision is committed whenever a rollout is triggered for a OS policy
   /// assignment
   final String? revisionId;
+
   /// Message to configure the rollout at the zonal level for the OS policy
   /// assignment.
-  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRollout rollout;
+  final V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
+  rollout;
+
   /// Output only. OS policy assignment rollout state
   /// Possible values:
   /// ROLLOUT_STATE_UNSPECIFIED
@@ -52,6 +68,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// CANCELLED
   /// SUCCEEDED
   final String? rolloutState;
+
   /// Output only. Server generated unique id for the OS policy assignment resource.
   final String? uid;
 
@@ -93,7 +110,11 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
       'etag': ?etag,
       'instanceFilter': instanceFilter.toMap(),
       'name': ?name,
-      'osPolicies': pulumi.Input.encodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy, Map<String, dynamic>>(osPolicies, (value) => value.toMap()),
+      'osPolicies':
+          pulumi.Input.encodeList<
+            V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy,
+            Map<String, dynamic>
+          >(osPolicies, (value) => value.toMap()),
       'reconciling': ?reconciling,
       'revisionCreateTime': ?revisionCreateTime,
       'revisionId': ?revisionId,
@@ -103,22 +124,48 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     };
   }
 
-  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1Payload.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1Payload(
       baseline: map['baseline'] == null ? null : map['baseline'] as bool,
       deleted: map['deleted'] == null ? null : map['deleted'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       etag: map['etag'] == null ? null : map['etag'] as String,
-      instanceFilter: V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter.fromMap((map['instanceFilter'] as Map).cast<String, dynamic>()),
+      instanceFilter:
+          V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter.fromMap(
+            (map['instanceFilter'] as Map).cast<String, dynamic>(),
+          ),
       name: map['name'] == null ? null : map['name'] as String,
-      osPolicies: pulumi.Input.decodeList<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy>(map['osPolicies'], (value) => V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      reconciling: map['reconciling'] == null ? null : map['reconciling'] as bool,
-      revisionCreateTime: map['revisionCreateTime'] == null ? null : map['revisionCreateTime'] as String,
-      revisionId: map['revisionId'] == null ? null : map['revisionId'] as String,
-      rollout: V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRollout.fromMap((map['rollout'] as Map).cast<String, dynamic>()),
-      rolloutState: map['rolloutState'] == null ? null : map['rolloutState'] as String,
+      osPolicies:
+          pulumi.Input.decodeList<
+            V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy
+          >(
+            map['osPolicies'],
+            (value) =>
+                V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      reconciling: map['reconciling'] == null
+          ? null
+          : map['reconciling'] as bool,
+      revisionCreateTime: map['revisionCreateTime'] == null
+          ? null
+          : map['revisionCreateTime'] as String,
+      revisionId: map['revisionId'] == null
+          ? null
+          : map['revisionId'] as String,
+      rollout:
+          V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRollout.fromMap(
+            (map['rollout'] as Map).cast<String, dynamic>(),
+          ),
+      rolloutState: map['rolloutState'] == null
+          ? null
+          : map['rolloutState'] as String,
       uid: map['uid'] == null ? null : map['uid'] as String,
     );
   }
 }
-

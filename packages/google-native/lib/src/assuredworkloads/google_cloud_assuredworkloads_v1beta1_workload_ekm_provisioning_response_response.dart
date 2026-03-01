@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// External key management systems(EKM) Provisioning response
 class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse {
   /// Indicates Ekm provisioning error if any.
   final String ekmProvisioningErrorDomain;
+
   /// Detailed error message if Ekm provisioning fails
   final String ekmProvisioningErrorMapping;
+
   /// Indicates Ekm enrollment Provisioning of a given workload.
   final String ekmProvisioningState;
 
@@ -28,7 +29,9 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse 
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse(
       ekmProvisioningErrorDomain: map['ekmProvisioningErrorDomain'] as String,
       ekmProvisioningErrorMapping: map['ekmProvisioningErrorMapping'] as String,
@@ -36,4 +39,3 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse 
     );
   }
 }
-

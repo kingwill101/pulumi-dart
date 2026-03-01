@@ -16,4 +16,3 @@ enum UriOverrideScheme {
     throw ArgumentError('Unknown UriOverrideScheme value: $value');
   }
 }
-

@@ -18,7 +18,8 @@ enum TargetPoolSessionAffinityComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetPoolSessionAffinityComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown TargetPoolSessionAffinityComputeV1 value: $value',
+    );
   }
 }
-

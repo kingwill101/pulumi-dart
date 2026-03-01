@@ -10,20 +10,26 @@ class OracleRdbmsResponse {
 
   /// Creates a new [OracleRdbmsResponse].
   /// [oracleSchemas] Oracle schemas/databases in the database server.
-  OracleRdbmsResponse({
-    required this.oracleSchemas,
-  });
+  OracleRdbmsResponse({required this.oracleSchemas});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleSchemas': pulumi.Input.encodeList<OracleSchemaResponse, Map<String, dynamic>>(oracleSchemas, (value) => value.toMap()),
+      'oracleSchemas':
+          pulumi.Input.encodeList<OracleSchemaResponse, Map<String, dynamic>>(
+            oracleSchemas,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory OracleRdbmsResponse.fromMap(Map<String, dynamic> map) {
     return OracleRdbmsResponse(
-      oracleSchemas: pulumi.Input.decodeList<OracleSchemaResponse>(map['oracleSchemas'], (value) => OracleSchemaResponse.fromMap((value as Map).cast<String, dynamic>())),
+      oracleSchemas: pulumi.Input.decodeList<OracleSchemaResponse>(
+        map['oracleSchemas'],
+        (value) => OracleSchemaResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

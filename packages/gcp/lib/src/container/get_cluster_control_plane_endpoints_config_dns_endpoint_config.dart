@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
   /// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
   final bool allowExternalTraffic;
+
   /// Controls whether the k8s certs auth is allowed via dns.
   final bool enableK8sCertsViaDns;
+
   /// Controls whether the k8s token auth is allowed via dns.
   final bool enableK8sTokensViaDns;
+
   /// The cluster's DNS endpoint.
   final String endpoint;
 
@@ -32,7 +34,9 @@ class GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
     };
   }
 
-  factory GetClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap(Map<String, dynamic> map) {
+  factory GetClusterControlPlaneEndpointsConfigDnsEndpointConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClusterControlPlaneEndpointsConfigDnsEndpointConfig(
       allowExternalTraffic: map['allowExternalTraffic'] as bool,
       enableK8sCertsViaDns: map['enableK8sCertsViaDns'] as bool,
@@ -41,4 +45,3 @@ class GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
     );
   }
 }
-

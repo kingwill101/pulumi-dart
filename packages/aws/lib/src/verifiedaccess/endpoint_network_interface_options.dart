@@ -25,18 +25,31 @@ class EndpointNetworkInterfaceOptions {
     return <String, dynamic>{
       'networkInterfaceId': ?networkInterfaceId,
       'port': ?port,
-      'portRanges': ?portRanges == null ? null : pulumi.Input.encodeList<EndpointNetworkInterfaceOptionsPortRange, Map<String, dynamic>>(portRanges!, (value) => value.toMap()),
+      'portRanges': ?portRanges == null
+          ? null
+          : pulumi.Input.encodeList<
+              EndpointNetworkInterfaceOptionsPortRange,
+              Map<String, dynamic>
+            >(portRanges!, (value) => value.toMap()),
       'protocol': ?protocol,
     };
   }
 
   factory EndpointNetworkInterfaceOptions.fromMap(Map<String, dynamic> map) {
     return EndpointNetworkInterfaceOptions(
-      networkInterfaceId: map['networkInterfaceId'] == null ? null : map['networkInterfaceId'] as String,
+      networkInterfaceId: map['networkInterfaceId'] == null
+          ? null
+          : map['networkInterfaceId'] as String,
       port: map['port'] == null ? null : map['port'] as int,
-      portRanges: map['portRanges'] == null ? null : pulumi.Input.decodeList<EndpointNetworkInterfaceOptionsPortRange>(map['portRanges'], (value) => EndpointNetworkInterfaceOptionsPortRange.fromMap((value as Map).cast<String, dynamic>())),
+      portRanges: map['portRanges'] == null
+          ? null
+          : pulumi.Input.decodeList<EndpointNetworkInterfaceOptionsPortRange>(
+              map['portRanges'],
+              (value) => EndpointNetworkInterfaceOptionsPortRange.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       protocol: map['protocol'] == null ? null : map['protocol'] as String,
     );
   }
 }
-

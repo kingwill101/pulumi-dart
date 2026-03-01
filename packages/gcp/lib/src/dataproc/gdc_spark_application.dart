@@ -1221,57 +1221,83 @@ class GdcSparkApplication extends pulumi.CustomResource {
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
+
   /// An ApplicationEnvironment from which to inherit configuration properties.
   late final pulumi.Output<String?> applicationEnvironment;
+
   /// The timestamp when the resource was created.
   late final pulumi.Output<String> createTime;
+
   /// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
   late final pulumi.Output<List<String>?> dependencyImages;
+
   /// User-provided human-readable name to be used in user interfaces.
   late final pulumi.Output<String?> displayName;
   late final pulumi.Output<Map<String, String>> effectiveAnnotations;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// The labels to associate with this application. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The location of the spark application.
   late final pulumi.Output<String> location;
+
   /// URL for a monitoring UI for this application (for eventual Spark PHS/UI support) Out of scope for private GA
   late final pulumi.Output<String> monitoringEndpoint;
+
   /// Identifier. The name of the application. Format: projects/{project}/locations/{location}/serviceInstances/{service_instance}/sparkApplications/{application}
   late final pulumi.Output<String> name;
+
   /// The Kubernetes namespace in which to create the application. This namespace must already exist on the cluster.
   late final pulumi.Output<String?> namespace;
+
   /// An HCFS URI pointing to the location of stdout and stdout of the application Mainly useful for Pantheon and gcloud Not in scope for private GA
   late final pulumi.Output<String> outputUri;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// application-specific properties.
   late final pulumi.Output<Map<String, String>?> properties;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// Represents the PySparkApplicationConfig.
   /// Structure is documented below.
-  late final pulumi.Output<GdcSparkApplicationPysparkApplicationConfig?> pysparkApplicationConfig;
+  late final pulumi.Output<GdcSparkApplicationPysparkApplicationConfig?>
+  pysparkApplicationConfig;
+
   /// Whether the application is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
   late final pulumi.Output<bool> reconciling;
+
   /// The id of the service instance to which this spark application belongs.
   late final pulumi.Output<String> serviceinstance;
+
   /// Represents the SparkApplicationConfig.
   /// Structure is documented below.
-  late final pulumi.Output<GdcSparkApplicationSparkApplicationConfig?> sparkApplicationConfig;
+  late final pulumi.Output<GdcSparkApplicationSparkApplicationConfig?>
+  sparkApplicationConfig;
+
   /// The id of the application
   late final pulumi.Output<String> sparkApplicationId;
+
   /// Represents the SparkRApplicationConfig.
   /// Structure is documented below.
-  late final pulumi.Output<GdcSparkApplicationSparkRApplicationConfig?> sparkRApplicationConfig;
+  late final pulumi.Output<GdcSparkApplicationSparkRApplicationConfig?>
+  sparkRApplicationConfig;
+
   /// Represents the SparkRApplicationConfig.
   /// Structure is documented below.
-  late final pulumi.Output<GdcSparkApplicationSparkSqlApplicationConfig?> sparkSqlApplicationConfig;
+  late final pulumi.Output<GdcSparkApplicationSparkSqlApplicationConfig?>
+  sparkSqlApplicationConfig;
+
   /// The current state.
   /// Possible values:
   /// * `STATE_UNSPECIFIED`
@@ -1282,12 +1308,16 @@ class GdcSparkApplication extends pulumi.CustomResource {
   /// * `SUCCEEDED`
   /// * `FAILED`
   late final pulumi.Output<String> state;
+
   /// A message explaining the current state.
   late final pulumi.Output<String> stateMessage;
+
   /// System generated unique identifier for this application, formatted as UUID4.
   late final pulumi.Output<String> uid;
+
   /// The timestamp when the resource was most recently updated.
   late final pulumi.Output<String> updateTime;
+
   /// The Dataproc version of this application.
   late final pulumi.Output<String?> version;
 
@@ -1300,18 +1330,24 @@ class GdcSparkApplication extends pulumi.CustomResource {
     GdcSparkApplicationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dataproc/gdcSparkApplication:GdcSparkApplication',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:dataproc/gdcSparkApplication:GdcSparkApplication',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.annotations = registerOutput<Map<String, String>?>('annotations');
-    this.applicationEnvironment = registerOutput<String?>('applicationEnvironment');
+    this.applicationEnvironment = registerOutput<String?>(
+      'applicationEnvironment',
+    );
     this.createTime = registerOutput<String>('createTime');
     this.dependencyImages = registerOutput<List<String>?>('dependencyImages');
     this.displayName = registerOutput<String?>('displayName');
-    this.effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveAnnotations = registerOutput<Map<String, String>>(
+      'effectiveAnnotations',
+    );
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
     this.monitoringEndpoint = registerOutput<String>('monitoringEndpoint');
@@ -1321,13 +1357,25 @@ class GdcSparkApplication extends pulumi.CustomResource {
     this.project = registerOutput<String>('project');
     this.properties = registerOutput<Map<String, String>?>('properties');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.pysparkApplicationConfig = registerOutput<GdcSparkApplicationPysparkApplicationConfig?>('pysparkApplicationConfig');
+    this.pysparkApplicationConfig =
+        registerOutput<GdcSparkApplicationPysparkApplicationConfig?>(
+          'pysparkApplicationConfig',
+        );
     this.reconciling = registerOutput<bool>('reconciling');
     this.serviceinstance = registerOutput<String>('serviceinstance');
-    this.sparkApplicationConfig = registerOutput<GdcSparkApplicationSparkApplicationConfig?>('sparkApplicationConfig');
+    this.sparkApplicationConfig =
+        registerOutput<GdcSparkApplicationSparkApplicationConfig?>(
+          'sparkApplicationConfig',
+        );
     this.sparkApplicationId = registerOutput<String>('sparkApplicationId');
-    this.sparkRApplicationConfig = registerOutput<GdcSparkApplicationSparkRApplicationConfig?>('sparkRApplicationConfig');
-    this.sparkSqlApplicationConfig = registerOutput<GdcSparkApplicationSparkSqlApplicationConfig?>('sparkSqlApplicationConfig');
+    this.sparkRApplicationConfig =
+        registerOutput<GdcSparkApplicationSparkRApplicationConfig?>(
+          'sparkRApplicationConfig',
+        );
+    this.sparkSqlApplicationConfig =
+        registerOutput<GdcSparkApplicationSparkSqlApplicationConfig?>(
+          'sparkSqlApplicationConfig',
+        );
     this.state = registerOutput<String>('state');
     this.stateMessage = registerOutput<String>('stateMessage');
     this.uid = registerOutput<String>('uid');

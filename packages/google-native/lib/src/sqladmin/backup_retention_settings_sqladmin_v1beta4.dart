@@ -6,6 +6,7 @@ import 'backup_retention_settings_retention_unit_sqladmin_v1beta4.dart';
 class BackupRetentionSettingsSqladminV1beta4 {
   /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
   final int? retainedBackups;
+
   /// The unit that 'retained_backups' represents.
   final BackupRetentionSettingsRetentionUnitSqladminV1beta4? retentionUnit;
 
@@ -24,11 +25,18 @@ class BackupRetentionSettingsSqladminV1beta4 {
     };
   }
 
-  factory BackupRetentionSettingsSqladminV1beta4.fromMap(Map<String, dynamic> map) {
+  factory BackupRetentionSettingsSqladminV1beta4.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BackupRetentionSettingsSqladminV1beta4(
-      retainedBackups: map['retainedBackups'] == null ? null : map['retainedBackups'] as int,
-      retentionUnit: map['retentionUnit'] == null ? null : BackupRetentionSettingsRetentionUnitSqladminV1beta4.fromValue(map['retentionUnit'] as String),
+      retainedBackups: map['retainedBackups'] == null
+          ? null
+          : map['retainedBackups'] as int,
+      retentionUnit: map['retentionUnit'] == null
+          ? null
+          : BackupRetentionSettingsRetentionUnitSqladminV1beta4.fromValue(
+              map['retentionUnit'] as String,
+            ),
     );
   }
 }
-

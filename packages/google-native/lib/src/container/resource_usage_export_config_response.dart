@@ -7,8 +7,10 @@ import 'consumption_metering_config_response.dart';
 class ResourceUsageExportConfigResponse {
   /// Configuration to use BigQuery as usage export destination.
   final BigQueryDestinationResponse bigqueryDestination;
+
   /// Configuration to enable resource consumption metering.
   final ConsumptionMeteringConfigResponse consumptionMeteringConfig;
+
   /// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created in the cluster to meter network egress traffic.
   final bool enableNetworkEgressMetering;
 
@@ -32,10 +34,13 @@ class ResourceUsageExportConfigResponse {
 
   factory ResourceUsageExportConfigResponse.fromMap(Map<String, dynamic> map) {
     return ResourceUsageExportConfigResponse(
-      bigqueryDestination: BigQueryDestinationResponse.fromMap((map['bigqueryDestination'] as Map).cast<String, dynamic>()),
-      consumptionMeteringConfig: ConsumptionMeteringConfigResponse.fromMap((map['consumptionMeteringConfig'] as Map).cast<String, dynamic>()),
+      bigqueryDestination: BigQueryDestinationResponse.fromMap(
+        (map['bigqueryDestination'] as Map).cast<String, dynamic>(),
+      ),
+      consumptionMeteringConfig: ConsumptionMeteringConfigResponse.fromMap(
+        (map['consumptionMeteringConfig'] as Map).cast<String, dynamic>(),
+      ),
       enableNetworkEgressMetering: map['enableNetworkEgressMetering'] as bool,
     );
   }
 }
-

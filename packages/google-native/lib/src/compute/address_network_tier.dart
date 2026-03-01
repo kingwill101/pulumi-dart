@@ -18,4 +18,3 @@ enum AddressNetworkTier {
     throw ArgumentError('Unknown AddressNetworkTier value: $value');
   }
 }
-

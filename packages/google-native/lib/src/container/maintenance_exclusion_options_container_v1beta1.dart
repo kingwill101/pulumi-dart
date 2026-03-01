@@ -9,20 +9,21 @@ class MaintenanceExclusionOptionsContainerV1beta1 {
 
   /// Creates a new [MaintenanceExclusionOptionsContainerV1beta1].
   /// [scope] Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
-  MaintenanceExclusionOptionsContainerV1beta1({
-    this.scope,
-  });
+  MaintenanceExclusionOptionsContainerV1beta1({this.scope});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'scope': ?scope == null ? null : scope!.value,
-    };
+    return <String, dynamic>{'scope': ?scope == null ? null : scope!.value};
   }
 
-  factory MaintenanceExclusionOptionsContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory MaintenanceExclusionOptionsContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MaintenanceExclusionOptionsContainerV1beta1(
-      scope: map['scope'] == null ? null : MaintenanceExclusionOptionsScopeContainerV1beta1.fromValue(map['scope'] as String),
+      scope: map['scope'] == null
+          ? null
+          : MaintenanceExclusionOptionsScopeContainerV1beta1.fromValue(
+              map['scope'] as String,
+            ),
     );
   }
 }
-

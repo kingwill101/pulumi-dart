@@ -17,4 +17,3 @@ enum ProjectLifecycleState {
     throw ArgumentError('Unknown ProjectLifecycleState value: $value');
   }
 }
-

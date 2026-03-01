@@ -100,8 +100,10 @@ import 'receipt_rule_set_args.dart';
 class ReceiptRuleSet extends pulumi.CustomResource {
   /// SES receipt rule set ARN.
   late final pulumi.Output<String> arn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Name of the rule set.
   late final pulumi.Output<String> ruleSetName;
 
@@ -114,11 +116,11 @@ class ReceiptRuleSet extends pulumi.CustomResource {
     ReceiptRuleSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ses/receiptRuleSet:ReceiptRuleSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ses/receiptRuleSet:ReceiptRuleSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.region = registerOutput<String>('region');
     this.ruleSetName = registerOutput<String>('ruleSetName');

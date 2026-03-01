@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Settings for revision-level scaling settings.
 class GoogleCloudRunV2RevisionScaling {
   /// Maximum number of serving instances that this resource should have.
   final int? maxInstanceCount;
+
   /// Minimum number of serving instances that this resource should have.
   final int? minInstanceCount;
 
@@ -25,9 +25,12 @@ class GoogleCloudRunV2RevisionScaling {
 
   factory GoogleCloudRunV2RevisionScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2RevisionScaling(
-      maxInstanceCount: map['maxInstanceCount'] == null ? null : map['maxInstanceCount'] as int,
-      minInstanceCount: map['minInstanceCount'] == null ? null : map['minInstanceCount'] as int,
+      maxInstanceCount: map['maxInstanceCount'] == null
+          ? null
+          : map['maxInstanceCount'] as int,
+      minInstanceCount: map['minInstanceCount'] == null
+          ? null
+          : map['minInstanceCount'] as int,
     );
   }
 }
-

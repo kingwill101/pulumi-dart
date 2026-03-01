@@ -9,20 +9,29 @@ class ThemeConfigurationTypography {
 
   /// Creates a new [ThemeConfigurationTypography].
   /// [fontFamilies] Determines the list of font families. Maximum number of 5 items. See font_families.
-  ThemeConfigurationTypography({
-    this.fontFamilies,
-  });
+  ThemeConfigurationTypography({this.fontFamilies});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fontFamilies': ?fontFamilies == null ? null : pulumi.Input.encodeList<ThemeConfigurationTypographyFontFamily, Map<String, dynamic>>(fontFamilies!, (value) => value.toMap()),
+      'fontFamilies': ?fontFamilies == null
+          ? null
+          : pulumi.Input.encodeList<
+              ThemeConfigurationTypographyFontFamily,
+              Map<String, dynamic>
+            >(fontFamilies!, (value) => value.toMap()),
     };
   }
 
   factory ThemeConfigurationTypography.fromMap(Map<String, dynamic> map) {
     return ThemeConfigurationTypography(
-      fontFamilies: map['fontFamilies'] == null ? null : pulumi.Input.decodeList<ThemeConfigurationTypographyFontFamily>(map['fontFamilies'], (value) => ThemeConfigurationTypographyFontFamily.fromMap((value as Map).cast<String, dynamic>())),
+      fontFamilies: map['fontFamilies'] == null
+          ? null
+          : pulumi.Input.decodeList<ThemeConfigurationTypographyFontFamily>(
+              map['fontFamilies'],
+              (value) => ThemeConfigurationTypographyFontFamily.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

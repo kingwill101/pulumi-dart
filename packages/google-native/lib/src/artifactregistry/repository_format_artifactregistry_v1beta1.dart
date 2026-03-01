@@ -18,7 +18,8 @@ enum RepositoryFormatArtifactregistryV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown RepositoryFormatArtifactregistryV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown RepositoryFormatArtifactregistryV1beta1 value: $value',
+    );
   }
 }
-

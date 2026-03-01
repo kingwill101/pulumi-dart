@@ -7,14 +7,19 @@ import 'json_file_format_datastream_v1alpha1.dart';
 class GcsDestinationConfigDatastreamV1alpha1 {
   /// AVRO file format configuration.
   final Map<String, dynamic>? avroFileFormat;
+
   /// The maximum duration for which new events are added before a file is closed and a new file is created.
   final String? fileRotationInterval;
+
   /// The maximum file size to be saved in the bucket.
   final int? fileRotationMb;
+
   /// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
   final GcsDestinationConfigGcsFileFormat? gcsFileFormat;
+
   /// JSON file format configuration.
   final JsonFileFormatDatastreamV1alpha1? jsonFileFormat;
+
   /// Path inside the Cloud Storage bucket to write data to.
   final String? path;
 
@@ -40,20 +45,37 @@ class GcsDestinationConfigDatastreamV1alpha1 {
       'fileRotationInterval': ?fileRotationInterval,
       'fileRotationMb': ?fileRotationMb,
       'gcsFileFormat': ?gcsFileFormat == null ? null : gcsFileFormat!.value,
-      'jsonFileFormat': ?jsonFileFormat == null ? null : jsonFileFormat!.toMap(),
+      'jsonFileFormat': ?jsonFileFormat == null
+          ? null
+          : jsonFileFormat!.toMap(),
       'path': ?path,
     };
   }
 
-  factory GcsDestinationConfigDatastreamV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory GcsDestinationConfigDatastreamV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GcsDestinationConfigDatastreamV1alpha1(
-      avroFileFormat: map['avroFileFormat'] == null ? null : (map['avroFileFormat'] as Map).cast<String, dynamic>(),
-      fileRotationInterval: map['fileRotationInterval'] == null ? null : map['fileRotationInterval'] as String,
-      fileRotationMb: map['fileRotationMb'] == null ? null : map['fileRotationMb'] as int,
-      gcsFileFormat: map['gcsFileFormat'] == null ? null : GcsDestinationConfigGcsFileFormat.fromValue(map['gcsFileFormat'] as String),
-      jsonFileFormat: map['jsonFileFormat'] == null ? null : JsonFileFormatDatastreamV1alpha1.fromMap((map['jsonFileFormat'] as Map).cast<String, dynamic>()),
+      avroFileFormat: map['avroFileFormat'] == null
+          ? null
+          : (map['avroFileFormat'] as Map).cast<String, dynamic>(),
+      fileRotationInterval: map['fileRotationInterval'] == null
+          ? null
+          : map['fileRotationInterval'] as String,
+      fileRotationMb: map['fileRotationMb'] == null
+          ? null
+          : map['fileRotationMb'] as int,
+      gcsFileFormat: map['gcsFileFormat'] == null
+          ? null
+          : GcsDestinationConfigGcsFileFormat.fromValue(
+              map['gcsFileFormat'] as String,
+            ),
+      jsonFileFormat: map['jsonFileFormat'] == null
+          ? null
+          : JsonFileFormatDatastreamV1alpha1.fromMap(
+              (map['jsonFileFormat'] as Map).cast<String, dynamic>(),
+            ),
       path: map['path'] == null ? null : map['path'] as String,
     );
   }
 }
-

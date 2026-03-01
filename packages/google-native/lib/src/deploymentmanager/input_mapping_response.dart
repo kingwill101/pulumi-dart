@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// InputMapping creates a 'virtual' property that will be injected into the properties before sending the request to the underlying API.
 class InputMappingResponse {
   /// The name of the field that is going to be injected.
   final String fieldName;
+
   /// The location where this mapping applies.
   final String location;
+
   /// Regex to evaluate on method to decide if input applies.
   final String methodMatch;
+
   /// A jsonPath expression to select an element.
   final String value;
 
@@ -42,4 +44,3 @@ class InputMappingResponse {
     );
   }
 }
-

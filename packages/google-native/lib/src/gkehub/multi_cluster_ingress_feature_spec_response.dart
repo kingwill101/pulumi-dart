@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 class MultiClusterIngressFeatureSpecResponse {
   /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
@@ -8,20 +7,17 @@ class MultiClusterIngressFeatureSpecResponse {
 
   /// Creates a new [MultiClusterIngressFeatureSpecResponse].
   /// [configMembership] Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
-  MultiClusterIngressFeatureSpecResponse({
-    required this.configMembership,
-  });
+  MultiClusterIngressFeatureSpecResponse({required this.configMembership});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'configMembership': configMembership,
-    };
+    return <String, dynamic>{'configMembership': configMembership};
   }
 
-  factory MultiClusterIngressFeatureSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory MultiClusterIngressFeatureSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MultiClusterIngressFeatureSpecResponse(
       configMembership: map['configMembership'] as String,
     );
   }
 }
-

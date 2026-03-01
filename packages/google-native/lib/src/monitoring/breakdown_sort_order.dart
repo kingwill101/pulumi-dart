@@ -17,4 +17,3 @@ enum BreakdownSortOrder {
     throw ArgumentError('Unknown BreakdownSortOrder value: $value');
   }
 }
-

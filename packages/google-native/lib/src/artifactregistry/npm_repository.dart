@@ -9,20 +9,23 @@ class NpmRepository {
 
   /// Creates a new [NpmRepository].
   /// [publicRepository] One of the publicly available Npm repositories supported by Artifact Registry.
-  NpmRepository({
-    this.publicRepository,
-  });
+  NpmRepository({this.publicRepository});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository': ?publicRepository == null ? null : publicRepository!.value,
+      'publicRepository': ?publicRepository == null
+          ? null
+          : publicRepository!.value,
     };
   }
 
   factory NpmRepository.fromMap(Map<String, dynamic> map) {
     return NpmRepository(
-      publicRepository: map['publicRepository'] == null ? null : NpmRepositoryPublicRepository.fromValue(map['publicRepository'] as String),
+      publicRepository: map['publicRepository'] == null
+          ? null
+          : NpmRepositoryPublicRepository.fromValue(
+              map['publicRepository'] as String,
+            ),
     );
   }
 }
-

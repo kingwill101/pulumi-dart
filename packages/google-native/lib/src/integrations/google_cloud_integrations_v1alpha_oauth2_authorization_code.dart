@@ -8,24 +8,35 @@ import 'google_cloud_integrations_v1alpha_parameter_map.dart';
 class GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
   /// The access token received from the token endpoint.
   final GoogleCloudIntegrationsV1alphaAccessToken? accessToken;
+
   /// Indicates if the user has opted in Google Reauth Policy. If opted in, the refresh token will be valid for 20 hours, after which time users must re-authenticate in order to obtain a new one.
   final bool? applyReauthPolicy;
+
   /// The Auth Code that is used to initially retrieve the access token.
   final String? authCode;
+
   /// The auth url endpoint to send the auth code request to.
   final String? authEndpoint;
+
   /// The auth parameters sent along with the auth code request.
   final GoogleCloudIntegrationsV1alphaParameterMap? authParams;
+
   /// The client's id.
   final String? clientId;
+
   /// The client's secret.
   final String? clientSecret;
+
   /// Represent how to pass parameters to fetch access token
-  final GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType? requestType;
+  final GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType?
+  requestType;
+
   /// A space-delimited list of requested scope permissions.
   final String? scope;
+
   /// The token url endpoint to send the token request to.
   final String? tokenEndpoint;
+
   /// The token parameters sent along with the token request.
   final GoogleCloudIntegrationsV1alphaParameterMap? tokenParams;
 
@@ -71,20 +82,45 @@ class GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode(
-      accessToken: map['accessToken'] == null ? null : GoogleCloudIntegrationsV1alphaAccessToken.fromMap((map['accessToken'] as Map).cast<String, dynamic>()),
-      applyReauthPolicy: map['applyReauthPolicy'] == null ? null : map['applyReauthPolicy'] as bool,
+      accessToken: map['accessToken'] == null
+          ? null
+          : GoogleCloudIntegrationsV1alphaAccessToken.fromMap(
+              (map['accessToken'] as Map).cast<String, dynamic>(),
+            ),
+      applyReauthPolicy: map['applyReauthPolicy'] == null
+          ? null
+          : map['applyReauthPolicy'] as bool,
       authCode: map['authCode'] == null ? null : map['authCode'] as String,
-      authEndpoint: map['authEndpoint'] == null ? null : map['authEndpoint'] as String,
-      authParams: map['authParams'] == null ? null : GoogleCloudIntegrationsV1alphaParameterMap.fromMap((map['authParams'] as Map).cast<String, dynamic>()),
+      authEndpoint: map['authEndpoint'] == null
+          ? null
+          : map['authEndpoint'] as String,
+      authParams: map['authParams'] == null
+          ? null
+          : GoogleCloudIntegrationsV1alphaParameterMap.fromMap(
+              (map['authParams'] as Map).cast<String, dynamic>(),
+            ),
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      requestType: map['requestType'] == null ? null : GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType.fromValue(map['requestType'] as String),
+      clientSecret: map['clientSecret'] == null
+          ? null
+          : map['clientSecret'] as String,
+      requestType: map['requestType'] == null
+          ? null
+          : GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCodeRequestType.fromValue(
+              map['requestType'] as String,
+            ),
       scope: map['scope'] == null ? null : map['scope'] as String,
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : map['tokenEndpoint'] as String,
-      tokenParams: map['tokenParams'] == null ? null : GoogleCloudIntegrationsV1alphaParameterMap.fromMap((map['tokenParams'] as Map).cast<String, dynamic>()),
+      tokenEndpoint: map['tokenEndpoint'] == null
+          ? null
+          : map['tokenEndpoint'] as String,
+      tokenParams: map['tokenParams'] == null
+          ? null
+          : GoogleCloudIntegrationsV1alphaParameterMap.fromMap(
+              (map['tokenParams'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

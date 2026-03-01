@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetKeyRingsKeyRing {
   final String id;
   final String name;
@@ -8,16 +7,10 @@ class GetKeyRingsKeyRing {
   /// Creates a new [GetKeyRingsKeyRing].
   /// [id] Required.
   /// [name] Required.
-  GetKeyRingsKeyRing({
-    required this.id,
-    required this.name,
-  });
+  GetKeyRingsKeyRing({required this.id, required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-    };
+    return <String, dynamic>{'id': id, 'name': name};
   }
 
   factory GetKeyRingsKeyRing.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class GetKeyRingsKeyRing {
     );
   }
 }
-

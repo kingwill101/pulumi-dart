@@ -6,6 +6,7 @@ import 'cluster_remote_network_config_remote_pod_networks.dart';
 class ClusterRemoteNetworkConfig {
   /// Configuration block with remote node network configuration for EKS Hybrid Nodes. Detailed below.
   final ClusterRemoteNetworkConfigRemoteNodeNetworks remoteNodeNetworks;
+
   /// Configuration block with remote pod network configuration for EKS Hybrid Nodes. Detailed below.
   final ClusterRemoteNetworkConfigRemotePodNetworks? remotePodNetworks;
 
@@ -20,15 +21,22 @@ class ClusterRemoteNetworkConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'remoteNodeNetworks': remoteNodeNetworks.toMap(),
-      'remotePodNetworks': ?remotePodNetworks == null ? null : remotePodNetworks!.toMap(),
+      'remotePodNetworks': ?remotePodNetworks == null
+          ? null
+          : remotePodNetworks!.toMap(),
     };
   }
 
   factory ClusterRemoteNetworkConfig.fromMap(Map<String, dynamic> map) {
     return ClusterRemoteNetworkConfig(
-      remoteNodeNetworks: ClusterRemoteNetworkConfigRemoteNodeNetworks.fromMap((map['remoteNodeNetworks'] as Map).cast<String, dynamic>()),
-      remotePodNetworks: map['remotePodNetworks'] == null ? null : ClusterRemoteNetworkConfigRemotePodNetworks.fromMap((map['remotePodNetworks'] as Map).cast<String, dynamic>()),
+      remoteNodeNetworks: ClusterRemoteNetworkConfigRemoteNodeNetworks.fromMap(
+        (map['remoteNodeNetworks'] as Map).cast<String, dynamic>(),
+      ),
+      remotePodNetworks: map['remotePodNetworks'] == null
+          ? null
+          : ClusterRemoteNetworkConfigRemotePodNetworks.fromMap(
+              (map['remotePodNetworks'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

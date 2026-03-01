@@ -7,6 +7,7 @@ import 'weekly_maintenance_window_memcache_v1beta2.dart';
 class GoogleCloudMemcacheV1beta2MaintenancePolicy {
   /// Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
   final String? description;
+
   /// Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_windows is expected to be one.
   final List<WeeklyMaintenanceWindowMemcacheV1beta2> weeklyMaintenanceWindow;
 
@@ -21,15 +22,28 @@ class GoogleCloudMemcacheV1beta2MaintenancePolicy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'weeklyMaintenanceWindow': pulumi.Input.encodeList<WeeklyMaintenanceWindowMemcacheV1beta2, Map<String, dynamic>>(weeklyMaintenanceWindow, (value) => value.toMap()),
+      'weeklyMaintenanceWindow':
+          pulumi.Input.encodeList<
+            WeeklyMaintenanceWindowMemcacheV1beta2,
+            Map<String, dynamic>
+          >(weeklyMaintenanceWindow, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudMemcacheV1beta2MaintenancePolicy.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMemcacheV1beta2MaintenancePolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMemcacheV1beta2MaintenancePolicy(
-      description: map['description'] == null ? null : map['description'] as String,
-      weeklyMaintenanceWindow: pulumi.Input.decodeList<WeeklyMaintenanceWindowMemcacheV1beta2>(map['weeklyMaintenanceWindow'], (value) => WeeklyMaintenanceWindowMemcacheV1beta2.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      weeklyMaintenanceWindow:
+          pulumi.Input.decodeList<WeeklyMaintenanceWindowMemcacheV1beta2>(
+            map['weeklyMaintenanceWindow'],
+            (value) => WeeklyMaintenanceWindowMemcacheV1beta2.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

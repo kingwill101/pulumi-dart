@@ -13,7 +13,8 @@ enum RouterNatSourceSubnetworkIpRangesToNat {
         return item;
       }
     }
-    throw ArgumentError('Unknown RouterNatSourceSubnetworkIpRangesToNat value: $value');
+    throw ArgumentError(
+      'Unknown RouterNatSourceSubnetworkIpRangesToNat value: $value',
+    );
   }
 }
-

@@ -8,14 +8,18 @@ class PreventionDiscoveryConfigTargetCloudSqlTarget {
   /// In addition to matching the filter, these conditions must be true before a profile is generated.
   /// Structure is documented below.
   final PreventionDiscoveryConfigTargetCloudSqlTargetConditions? conditions;
+
   /// Disable profiling for database resources that match this filter.
   final Map<String, dynamic>? disabled;
+
   /// Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
   /// Structure is documented below.
   final PreventionDiscoveryConfigTargetCloudSqlTargetFilter filter;
+
   /// How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
   /// Structure is documented below.
-  final PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence? generationCadence;
+  final PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence?
+  generationCadence;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTarget].
   /// [conditions] In addition to matching the filter, these conditions must be true before a profile is generated.
@@ -34,17 +38,32 @@ class PreventionDiscoveryConfigTargetCloudSqlTarget {
       'conditions': ?conditions == null ? null : conditions!.toMap(),
       'disabled': ?disabled,
       'filter': filter.toMap(),
-      'generationCadence': ?generationCadence == null ? null : generationCadence!.toMap(),
+      'generationCadence': ?generationCadence == null
+          ? null
+          : generationCadence!.toMap(),
     };
   }
 
-  factory PreventionDiscoveryConfigTargetCloudSqlTarget.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigTargetCloudSqlTarget.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigTargetCloudSqlTarget(
-      conditions: map['conditions'] == null ? null : PreventionDiscoveryConfigTargetCloudSqlTargetConditions.fromMap((map['conditions'] as Map).cast<String, dynamic>()),
-      disabled: map['disabled'] == null ? null : (map['disabled'] as Map).cast<String, dynamic>(),
-      filter: PreventionDiscoveryConfigTargetCloudSqlTargetFilter.fromMap((map['filter'] as Map).cast<String, dynamic>()),
-      generationCadence: map['generationCadence'] == null ? null : PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence.fromMap((map['generationCadence'] as Map).cast<String, dynamic>()),
+      conditions: map['conditions'] == null
+          ? null
+          : PreventionDiscoveryConfigTargetCloudSqlTargetConditions.fromMap(
+              (map['conditions'] as Map).cast<String, dynamic>(),
+            ),
+      disabled: map['disabled'] == null
+          ? null
+          : (map['disabled'] as Map).cast<String, dynamic>(),
+      filter: PreventionDiscoveryConfigTargetCloudSqlTargetFilter.fromMap(
+        (map['filter'] as Map).cast<String, dynamic>(),
+      ),
+      generationCadence: map['generationCadence'] == null
+          ? null
+          : PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence.fromMap(
+              (map['generationCadence'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

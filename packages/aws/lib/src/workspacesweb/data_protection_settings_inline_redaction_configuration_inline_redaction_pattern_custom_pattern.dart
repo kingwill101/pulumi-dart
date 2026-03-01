@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern {
   /// The keyword regex for the customer pattern.
   final String? keywordRegex;
+
   /// The pattern description for the customer pattern.
   final String? patternDescription;
+
   /// The pattern name for the custom pattern.
   final String patternName;
+
   /// The pattern regex for the customer pattern. The format must follow JavaScript regex format.
   final String patternRegex;
 
@@ -32,13 +34,18 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCu
     };
   }
 
-  factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern.fromMap(Map<String, dynamic> map) {
+  factory DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern(
-      keywordRegex: map['keywordRegex'] == null ? null : map['keywordRegex'] as String,
-      patternDescription: map['patternDescription'] == null ? null : map['patternDescription'] as String,
+      keywordRegex: map['keywordRegex'] == null
+          ? null
+          : map['keywordRegex'] as String,
+      patternDescription: map['patternDescription'] == null
+          ? null
+          : map['patternDescription'] as String,
       patternName: map['patternName'] as String,
       patternRegex: map['patternRegex'] as String,
     );
   }
 }
-

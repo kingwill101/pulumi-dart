@@ -7,6 +7,7 @@ import 'fleet_observability_fleet_observability_monitoring_state_response.dart';
 class FleetObservabilityFeatureStateResponse {
   /// The feature state of default logging.
   final FleetObservabilityFleetObservabilityLoggingStateResponse logging;
+
   /// The feature state of fleet monitoring.
   final FleetObservabilityFleetObservabilityMonitoringStateResponse monitoring;
 
@@ -25,11 +26,17 @@ class FleetObservabilityFeatureStateResponse {
     };
   }
 
-  factory FleetObservabilityFeatureStateResponse.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFeatureStateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFeatureStateResponse(
-      logging: FleetObservabilityFleetObservabilityLoggingStateResponse.fromMap((map['logging'] as Map).cast<String, dynamic>()),
-      monitoring: FleetObservabilityFleetObservabilityMonitoringStateResponse.fromMap((map['monitoring'] as Map).cast<String, dynamic>()),
+      logging: FleetObservabilityFleetObservabilityLoggingStateResponse.fromMap(
+        (map['logging'] as Map).cast<String, dynamic>(),
+      ),
+      monitoring:
+          FleetObservabilityFleetObservabilityMonitoringStateResponse.fromMap(
+            (map['monitoring'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class IndexingConfigurationThingIndexingConfigurationFilter {
   /// List of shadow names that you select to index.
   final List<String>? namedShadowNames;
@@ -12,15 +11,16 @@ class IndexingConfigurationThingIndexingConfigurationFilter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'namedShadowNames': ?namedShadowNames,
-    };
+    return <String, dynamic>{'namedShadowNames': ?namedShadowNames};
   }
 
-  factory IndexingConfigurationThingIndexingConfigurationFilter.fromMap(Map<String, dynamic> map) {
+  factory IndexingConfigurationThingIndexingConfigurationFilter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IndexingConfigurationThingIndexingConfigurationFilter(
-      namedShadowNames: map['namedShadowNames'] == null ? null : (map['namedShadowNames'] as List).cast<String>(),
+      namedShadowNames: map['namedShadowNames'] == null
+          ? null
+          : (map['namedShadowNames'] as List).cast<String>(),
     );
   }
 }
-

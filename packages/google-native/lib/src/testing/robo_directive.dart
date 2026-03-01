@@ -6,8 +6,10 @@ import 'robo_directive_action_type.dart';
 class RoboDirective {
   /// The type of action that Robo should perform on the specified element.
   final RoboDirectiveActionType actionType;
+
   /// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
   final String? inputText;
+
   /// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
   final String resourceName;
 
@@ -31,10 +33,11 @@ class RoboDirective {
 
   factory RoboDirective.fromMap(Map<String, dynamic> map) {
     return RoboDirective(
-      actionType: RoboDirectiveActionType.fromValue(map['actionType'] as String),
+      actionType: RoboDirectiveActionType.fromValue(
+        map['actionType'] as String,
+      ),
       inputText: map['inputText'] == null ? null : map['inputText'] as String,
       resourceName: map['resourceName'] as String,
     );
   }
 }
-

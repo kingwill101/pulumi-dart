@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource {
   /// KMS key required to decrypt the contents of the grammar, if any.
   final String kmsKeyArn;
+
   /// Name of the Amazon S3 bucket that contains the grammar source.
   final String s3BucketName;
+
   /// Path to the grammar in the Amazon S3 bucket.
   final String s3ObjectKey;
 
@@ -27,7 +28,9 @@ class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource {
     };
   }
 
-  factory V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource.fromMap(Map<String, dynamic> map) {
+  factory V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource(
       kmsKeyArn: map['kmsKeyArn'] as String,
       s3BucketName: map['s3BucketName'] as String,
@@ -35,4 +38,3 @@ class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource {
     );
   }
 }
-

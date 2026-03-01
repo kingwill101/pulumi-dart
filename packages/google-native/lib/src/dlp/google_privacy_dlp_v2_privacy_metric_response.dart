@@ -11,14 +11,20 @@ import 'google_privacy_dlp_v2_numerical_stats_config_response.dart';
 class GooglePrivacyDlpV2PrivacyMetricResponse {
   /// Categorical stats
   final GooglePrivacyDlpV2CategoricalStatsConfigResponse categoricalStatsConfig;
+
   /// delta-presence
-  final GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse deltaPresenceEstimationConfig;
+  final GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse
+  deltaPresenceEstimationConfig;
+
   /// K-anonymity
   final GooglePrivacyDlpV2KAnonymityConfigResponse kAnonymityConfig;
+
   /// k-map
   final GooglePrivacyDlpV2KMapEstimationConfigResponse kMapEstimationConfig;
+
   /// l-diversity
   final GooglePrivacyDlpV2LDiversityConfigResponse lDiversityConfig;
+
   /// Numerical stats
   final GooglePrivacyDlpV2NumericalStatsConfigResponse numericalStatsConfig;
 
@@ -49,15 +55,33 @@ class GooglePrivacyDlpV2PrivacyMetricResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2PrivacyMetricResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2PrivacyMetricResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2PrivacyMetricResponse(
-      categoricalStatsConfig: GooglePrivacyDlpV2CategoricalStatsConfigResponse.fromMap((map['categoricalStatsConfig'] as Map).cast<String, dynamic>()),
-      deltaPresenceEstimationConfig: GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse.fromMap((map['deltaPresenceEstimationConfig'] as Map).cast<String, dynamic>()),
-      kAnonymityConfig: GooglePrivacyDlpV2KAnonymityConfigResponse.fromMap((map['kAnonymityConfig'] as Map).cast<String, dynamic>()),
-      kMapEstimationConfig: GooglePrivacyDlpV2KMapEstimationConfigResponse.fromMap((map['kMapEstimationConfig'] as Map).cast<String, dynamic>()),
-      lDiversityConfig: GooglePrivacyDlpV2LDiversityConfigResponse.fromMap((map['lDiversityConfig'] as Map).cast<String, dynamic>()),
-      numericalStatsConfig: GooglePrivacyDlpV2NumericalStatsConfigResponse.fromMap((map['numericalStatsConfig'] as Map).cast<String, dynamic>()),
+      categoricalStatsConfig:
+          GooglePrivacyDlpV2CategoricalStatsConfigResponse.fromMap(
+            (map['categoricalStatsConfig'] as Map).cast<String, dynamic>(),
+          ),
+      deltaPresenceEstimationConfig:
+          GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse.fromMap(
+            (map['deltaPresenceEstimationConfig'] as Map)
+                .cast<String, dynamic>(),
+          ),
+      kAnonymityConfig: GooglePrivacyDlpV2KAnonymityConfigResponse.fromMap(
+        (map['kAnonymityConfig'] as Map).cast<String, dynamic>(),
+      ),
+      kMapEstimationConfig:
+          GooglePrivacyDlpV2KMapEstimationConfigResponse.fromMap(
+            (map['kMapEstimationConfig'] as Map).cast<String, dynamic>(),
+          ),
+      lDiversityConfig: GooglePrivacyDlpV2LDiversityConfigResponse.fromMap(
+        (map['lDiversityConfig'] as Map).cast<String, dynamic>(),
+      ),
+      numericalStatsConfig:
+          GooglePrivacyDlpV2NumericalStatsConfigResponse.fromMap(
+            (map['numericalStatsConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

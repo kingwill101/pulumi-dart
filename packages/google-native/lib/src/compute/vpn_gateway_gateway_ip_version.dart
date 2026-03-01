@@ -15,4 +15,3 @@ enum VpnGatewayGatewayIpVersion {
     throw ArgumentError('Unknown VpnGatewayGatewayIpVersion value: $value');
   }
 }
-

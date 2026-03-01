@@ -16,24 +16,35 @@ import 'google_cloud_retail_v2beta_rule_twoway_synonyms_action.dart';
 class GoogleCloudRetailV2betaRule {
   /// A boost action.
   final GoogleCloudRetailV2betaRuleBoostAction? boostAction;
+
   /// The condition that triggers the rule. If the condition is empty, the rule will always apply.
   final GoogleCloudRetailV2betaCondition condition;
+
   /// Prevents term from being associated with other terms.
   final GoogleCloudRetailV2betaRuleDoNotAssociateAction? doNotAssociateAction;
+
   /// Filters results.
   final GoogleCloudRetailV2betaRuleFilterAction? filterAction;
+
   /// Force returns an attribute as a facet in the request.
-  final GoogleCloudRetailV2betaRuleForceReturnFacetAction? forceReturnFacetAction;
+  final GoogleCloudRetailV2betaRuleForceReturnFacetAction?
+  forceReturnFacetAction;
+
   /// Ignores specific terms from query during search.
   final GoogleCloudRetailV2betaRuleIgnoreAction? ignoreAction;
+
   /// Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
   final GoogleCloudRetailV2betaRuleOnewaySynonymsAction? onewaySynonymsAction;
+
   /// Redirects a shopper to a specific page.
   final GoogleCloudRetailV2betaRuleRedirectAction? redirectAction;
+
   /// Remove an attribute as a facet in the request (if present).
   final GoogleCloudRetailV2betaRuleRemoveFacetAction? removeFacetAction;
+
   /// Replaces specific terms in the query.
   final GoogleCloudRetailV2betaRuleReplacementAction? replacementAction;
+
   /// Treats a set of terms as synonyms of one another.
   final GoogleCloudRetailV2betaRuleTwowaySynonymsAction? twowaySynonymsAction;
 
@@ -67,32 +78,87 @@ class GoogleCloudRetailV2betaRule {
     return <String, dynamic>{
       'boostAction': ?boostAction == null ? null : boostAction!.toMap(),
       'condition': condition.toMap(),
-      'doNotAssociateAction': ?doNotAssociateAction == null ? null : doNotAssociateAction!.toMap(),
+      'doNotAssociateAction': ?doNotAssociateAction == null
+          ? null
+          : doNotAssociateAction!.toMap(),
       'filterAction': ?filterAction == null ? null : filterAction!.toMap(),
-      'forceReturnFacetAction': ?forceReturnFacetAction == null ? null : forceReturnFacetAction!.toMap(),
+      'forceReturnFacetAction': ?forceReturnFacetAction == null
+          ? null
+          : forceReturnFacetAction!.toMap(),
       'ignoreAction': ?ignoreAction == null ? null : ignoreAction!.toMap(),
-      'onewaySynonymsAction': ?onewaySynonymsAction == null ? null : onewaySynonymsAction!.toMap(),
-      'redirectAction': ?redirectAction == null ? null : redirectAction!.toMap(),
-      'removeFacetAction': ?removeFacetAction == null ? null : removeFacetAction!.toMap(),
-      'replacementAction': ?replacementAction == null ? null : replacementAction!.toMap(),
-      'twowaySynonymsAction': ?twowaySynonymsAction == null ? null : twowaySynonymsAction!.toMap(),
+      'onewaySynonymsAction': ?onewaySynonymsAction == null
+          ? null
+          : onewaySynonymsAction!.toMap(),
+      'redirectAction': ?redirectAction == null
+          ? null
+          : redirectAction!.toMap(),
+      'removeFacetAction': ?removeFacetAction == null
+          ? null
+          : removeFacetAction!.toMap(),
+      'replacementAction': ?replacementAction == null
+          ? null
+          : replacementAction!.toMap(),
+      'twowaySynonymsAction': ?twowaySynonymsAction == null
+          ? null
+          : twowaySynonymsAction!.toMap(),
     };
   }
 
   factory GoogleCloudRetailV2betaRule.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2betaRule(
-      boostAction: map['boostAction'] == null ? null : GoogleCloudRetailV2betaRuleBoostAction.fromMap((map['boostAction'] as Map).cast<String, dynamic>()),
-      condition: GoogleCloudRetailV2betaCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
-      doNotAssociateAction: map['doNotAssociateAction'] == null ? null : GoogleCloudRetailV2betaRuleDoNotAssociateAction.fromMap((map['doNotAssociateAction'] as Map).cast<String, dynamic>()),
-      filterAction: map['filterAction'] == null ? null : GoogleCloudRetailV2betaRuleFilterAction.fromMap((map['filterAction'] as Map).cast<String, dynamic>()),
-      forceReturnFacetAction: map['forceReturnFacetAction'] == null ? null : GoogleCloudRetailV2betaRuleForceReturnFacetAction.fromMap((map['forceReturnFacetAction'] as Map).cast<String, dynamic>()),
-      ignoreAction: map['ignoreAction'] == null ? null : GoogleCloudRetailV2betaRuleIgnoreAction.fromMap((map['ignoreAction'] as Map).cast<String, dynamic>()),
-      onewaySynonymsAction: map['onewaySynonymsAction'] == null ? null : GoogleCloudRetailV2betaRuleOnewaySynonymsAction.fromMap((map['onewaySynonymsAction'] as Map).cast<String, dynamic>()),
-      redirectAction: map['redirectAction'] == null ? null : GoogleCloudRetailV2betaRuleRedirectAction.fromMap((map['redirectAction'] as Map).cast<String, dynamic>()),
-      removeFacetAction: map['removeFacetAction'] == null ? null : GoogleCloudRetailV2betaRuleRemoveFacetAction.fromMap((map['removeFacetAction'] as Map).cast<String, dynamic>()),
-      replacementAction: map['replacementAction'] == null ? null : GoogleCloudRetailV2betaRuleReplacementAction.fromMap((map['replacementAction'] as Map).cast<String, dynamic>()),
-      twowaySynonymsAction: map['twowaySynonymsAction'] == null ? null : GoogleCloudRetailV2betaRuleTwowaySynonymsAction.fromMap((map['twowaySynonymsAction'] as Map).cast<String, dynamic>()),
+      boostAction: map['boostAction'] == null
+          ? null
+          : GoogleCloudRetailV2betaRuleBoostAction.fromMap(
+              (map['boostAction'] as Map).cast<String, dynamic>(),
+            ),
+      condition: GoogleCloudRetailV2betaCondition.fromMap(
+        (map['condition'] as Map).cast<String, dynamic>(),
+      ),
+      doNotAssociateAction: map['doNotAssociateAction'] == null
+          ? null
+          : GoogleCloudRetailV2betaRuleDoNotAssociateAction.fromMap(
+              (map['doNotAssociateAction'] as Map).cast<String, dynamic>(),
+            ),
+      filterAction: map['filterAction'] == null
+          ? null
+          : GoogleCloudRetailV2betaRuleFilterAction.fromMap(
+              (map['filterAction'] as Map).cast<String, dynamic>(),
+            ),
+      forceReturnFacetAction: map['forceReturnFacetAction'] == null
+          ? null
+          : GoogleCloudRetailV2betaRuleForceReturnFacetAction.fromMap(
+              (map['forceReturnFacetAction'] as Map).cast<String, dynamic>(),
+            ),
+      ignoreAction: map['ignoreAction'] == null
+          ? null
+          : GoogleCloudRetailV2betaRuleIgnoreAction.fromMap(
+              (map['ignoreAction'] as Map).cast<String, dynamic>(),
+            ),
+      onewaySynonymsAction: map['onewaySynonymsAction'] == null
+          ? null
+          : GoogleCloudRetailV2betaRuleOnewaySynonymsAction.fromMap(
+              (map['onewaySynonymsAction'] as Map).cast<String, dynamic>(),
+            ),
+      redirectAction: map['redirectAction'] == null
+          ? null
+          : GoogleCloudRetailV2betaRuleRedirectAction.fromMap(
+              (map['redirectAction'] as Map).cast<String, dynamic>(),
+            ),
+      removeFacetAction: map['removeFacetAction'] == null
+          ? null
+          : GoogleCloudRetailV2betaRuleRemoveFacetAction.fromMap(
+              (map['removeFacetAction'] as Map).cast<String, dynamic>(),
+            ),
+      replacementAction: map['replacementAction'] == null
+          ? null
+          : GoogleCloudRetailV2betaRuleReplacementAction.fromMap(
+              (map['replacementAction'] as Map).cast<String, dynamic>(),
+            ),
+      twowaySynonymsAction: map['twowaySynonymsAction'] == null
+          ? null
+          : GoogleCloudRetailV2betaRuleTwowaySynonymsAction.fromMap(
+              (map['twowaySynonymsAction'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

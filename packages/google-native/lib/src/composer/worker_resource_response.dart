@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for resources used by Airflow workers.
 class WorkerResourceResponse {
   /// Optional. CPU request and limit for a single Airflow worker replica.
   final double cpu;
+
   /// Optional. Maximum number of workers for autoscaling.
   final int maxCount;
+
   /// Optional. Memory (GB) request and limit for a single Airflow worker replica.
   final double memoryGb;
+
   /// Optional. Minimum number of workers for autoscaling.
   final int minCount;
+
   /// Optional. Storage (GB) request and limit for a single Airflow worker replica.
   final double storageGb;
 
@@ -48,4 +51,3 @@ class WorkerResourceResponse {
     );
   }
 }
-

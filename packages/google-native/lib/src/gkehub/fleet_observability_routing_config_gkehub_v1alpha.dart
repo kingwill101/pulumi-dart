@@ -9,20 +9,21 @@ class FleetObservabilityRoutingConfigGkehubV1alpha {
 
   /// Creates a new [FleetObservabilityRoutingConfigGkehubV1alpha].
   /// [mode] mode configures the logs routing mode.
-  FleetObservabilityRoutingConfigGkehubV1alpha({
-    this.mode,
-  });
+  FleetObservabilityRoutingConfigGkehubV1alpha({this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': ?mode == null ? null : mode!.value,
-    };
+    return <String, dynamic>{'mode': ?mode == null ? null : mode!.value};
   }
 
-  factory FleetObservabilityRoutingConfigGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityRoutingConfigGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityRoutingConfigGkehubV1alpha(
-      mode: map['mode'] == null ? null : FleetObservabilityRoutingConfigModeGkehubV1alpha.fromValue(map['mode'] as String),
+      mode: map['mode'] == null
+          ? null
+          : FleetObservabilityRoutingConfigModeGkehubV1alpha.fromValue(
+              map['mode'] as String,
+            ),
     );
   }
 }
-

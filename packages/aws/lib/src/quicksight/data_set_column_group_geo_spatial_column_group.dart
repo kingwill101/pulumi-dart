@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DataSetColumnGroupGeoSpatialColumnGroup {
   /// Columns in this hierarchy.
   final List<String> columns;
+
   /// Country code. Valid values are `US`.
   final String countryCode;
+
   /// A display name for the hierarchy.
   final String name;
 
@@ -27,7 +28,9 @@ class DataSetColumnGroupGeoSpatialColumnGroup {
     };
   }
 
-  factory DataSetColumnGroupGeoSpatialColumnGroup.fromMap(Map<String, dynamic> map) {
+  factory DataSetColumnGroupGeoSpatialColumnGroup.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataSetColumnGroupGeoSpatialColumnGroup(
       columns: (map['columns'] as List).cast<String>(),
       countryCode: map['countryCode'] as String,
@@ -35,4 +38,3 @@ class DataSetColumnGroupGeoSpatialColumnGroup {
     );
   }
 }
-

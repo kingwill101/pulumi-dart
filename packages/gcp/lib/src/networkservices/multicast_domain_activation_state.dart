@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MulticastDomainActivationState {
   /// (Output)
   /// The state of the multicast resource.
@@ -16,14 +15,10 @@ class MulticastDomainActivationState {
 
   /// Creates a new [MulticastDomainActivationState].
   /// [state] (Output)
-  MulticastDomainActivationState({
-    this.state,
-  });
+  MulticastDomainActivationState({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory MulticastDomainActivationState.fromMap(Map<String, dynamic> map) {
@@ -32,4 +27,3 @@ class MulticastDomainActivationState {
     );
   }
 }
-

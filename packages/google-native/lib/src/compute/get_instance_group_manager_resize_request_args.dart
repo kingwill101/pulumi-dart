@@ -22,11 +22,12 @@ class GetInstanceGroupManagerResizeRequestArgs {
     String? project,
     required String resizeRequest,
     required String zone,
-  }) :
-      instanceGroupManager = pulumi.Input.asInput<String>(instanceGroupManager),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resizeRequest = pulumi.Input.asInput<String>(resizeRequest),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : instanceGroupManager = pulumi.Input.asInput<String>(
+         instanceGroupManager,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       resizeRequest = pulumi.Input.asInput<String>(resizeRequest),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,7 +38,9 @@ class GetInstanceGroupManagerResizeRequestArgs {
     };
   }
 
-  factory GetInstanceGroupManagerResizeRequestArgs.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceGroupManagerResizeRequestArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceGroupManagerResizeRequestArgs(
       instanceGroupManager: map['instanceGroupManager'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -46,4 +49,3 @@ class GetInstanceGroupManagerResizeRequestArgs {
     );
   }
 }
-

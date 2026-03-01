@@ -13,18 +13,12 @@ class GetUrlMapArgs {
   /// Creates a new [GetUrlMapArgs].
   /// [project] Optional.
   /// [urlMap] Required.
-  GetUrlMapArgs({
-    String? project,
-    required String urlMap,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetUrlMapArgs({String? project, required String urlMap})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       urlMap = pulumi.Input.asInput<String>(urlMap);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'urlMap': urlMap,
-    };
+    return <String, dynamic>{'project': ?project, 'urlMap': urlMap};
   }
 
   factory GetUrlMapArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetUrlMapArgs {
     );
   }
 }
-

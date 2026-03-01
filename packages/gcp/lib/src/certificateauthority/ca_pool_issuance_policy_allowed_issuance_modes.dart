@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CaPoolIssuancePolicyAllowedIssuanceModes {
   /// When true, allows callers to create Certificates by specifying a CertificateConfig.
   final bool allowConfigBasedIssuance;
+
   /// When true, allows callers to create Certificates by specifying a CSR.
   final bool allowCsrBasedIssuance;
 
@@ -22,11 +22,12 @@ class CaPoolIssuancePolicyAllowedIssuanceModes {
     };
   }
 
-  factory CaPoolIssuancePolicyAllowedIssuanceModes.fromMap(Map<String, dynamic> map) {
+  factory CaPoolIssuancePolicyAllowedIssuanceModes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CaPoolIssuancePolicyAllowedIssuanceModes(
       allowConfigBasedIssuance: map['allowConfigBasedIssuance'] as bool,
       allowCsrBasedIssuance: map['allowCsrBasedIssuance'] as bool,
     );
   }
 }
-

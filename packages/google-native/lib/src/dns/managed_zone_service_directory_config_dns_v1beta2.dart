@@ -5,16 +5,14 @@ import 'managed_zone_service_directory_config_namespace_dns_v1beta2.dart';
 /// Contains information about Service Directory-backed zones.
 class ManagedZoneServiceDirectoryConfigDnsV1beta2 {
   final String? kind;
+
   /// Contains information about the namespace associated with the zone.
   final ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2? namespace;
 
   /// Creates a new [ManagedZoneServiceDirectoryConfigDnsV1beta2].
   /// [kind] Optional.
   /// [namespace] Contains information about the namespace associated with the zone.
-  ManagedZoneServiceDirectoryConfigDnsV1beta2({
-    this.kind,
-    this.namespace,
-  });
+  ManagedZoneServiceDirectoryConfigDnsV1beta2({this.kind, this.namespace});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,11 +21,16 @@ class ManagedZoneServiceDirectoryConfigDnsV1beta2 {
     };
   }
 
-  factory ManagedZoneServiceDirectoryConfigDnsV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ManagedZoneServiceDirectoryConfigDnsV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZoneServiceDirectoryConfigDnsV1beta2(
       kind: map['kind'] == null ? null : map['kind'] as String,
-      namespace: map['namespace'] == null ? null : ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2.fromMap((map['namespace'] as Map).cast<String, dynamic>()),
+      namespace: map['namespace'] == null
+          ? null
+          : ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2.fromMap(
+              (map['namespace'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

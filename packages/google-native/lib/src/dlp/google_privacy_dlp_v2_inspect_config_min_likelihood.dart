@@ -16,7 +16,8 @@ enum GooglePrivacyDlpV2InspectConfigMinLikelihood {
         return item;
       }
     }
-    throw ArgumentError('Unknown GooglePrivacyDlpV2InspectConfigMinLikelihood value: $value');
+    throw ArgumentError(
+      'Unknown GooglePrivacyDlpV2InspectConfigMinLikelihood value: $value',
+    );
   }
 }
-

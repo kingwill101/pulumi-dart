@@ -7,8 +7,10 @@ import 'vmware_vm_details.dart';
 class VmUtilizationInfo {
   /// Utilization metrics for this VM.
   final VmUtilizationMetrics? utilization;
+
   /// The VM's ID in the source.
   final String? vmId;
+
   /// The description of the VM in a Source of type Vmware.
   final VmwareVmDetails? vmwareVmDetails;
 
@@ -16,26 +18,31 @@ class VmUtilizationInfo {
   /// [utilization] Utilization metrics for this VM.
   /// [vmId] The VM's ID in the source.
   /// [vmwareVmDetails] The description of the VM in a Source of type Vmware.
-  VmUtilizationInfo({
-    this.utilization,
-    this.vmId,
-    this.vmwareVmDetails,
-  });
+  VmUtilizationInfo({this.utilization, this.vmId, this.vmwareVmDetails});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'utilization': ?utilization == null ? null : utilization!.toMap(),
       'vmId': ?vmId,
-      'vmwareVmDetails': ?vmwareVmDetails == null ? null : vmwareVmDetails!.toMap(),
+      'vmwareVmDetails': ?vmwareVmDetails == null
+          ? null
+          : vmwareVmDetails!.toMap(),
     };
   }
 
   factory VmUtilizationInfo.fromMap(Map<String, dynamic> map) {
     return VmUtilizationInfo(
-      utilization: map['utilization'] == null ? null : VmUtilizationMetrics.fromMap((map['utilization'] as Map).cast<String, dynamic>()),
+      utilization: map['utilization'] == null
+          ? null
+          : VmUtilizationMetrics.fromMap(
+              (map['utilization'] as Map).cast<String, dynamic>(),
+            ),
       vmId: map['vmId'] == null ? null : map['vmId'] as String,
-      vmwareVmDetails: map['vmwareVmDetails'] == null ? null : VmwareVmDetails.fromMap((map['vmwareVmDetails'] as Map).cast<String, dynamic>()),
+      vmwareVmDetails: map['vmwareVmDetails'] == null
+          ? null
+          : VmwareVmDetails.fromMap(
+              (map['vmwareVmDetails'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

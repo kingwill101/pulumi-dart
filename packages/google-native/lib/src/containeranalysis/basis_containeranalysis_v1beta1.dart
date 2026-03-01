@@ -6,6 +6,7 @@ import 'fingerprint_containeranalysis_v1beta1.dart';
 class BasisContaineranalysisV1beta1 {
   /// Immutable. The fingerprint of the base image.
   final FingerprintContaineranalysisV1beta1 fingerprint;
+
   /// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
   final String resourceUrl;
 
@@ -26,9 +27,10 @@ class BasisContaineranalysisV1beta1 {
 
   factory BasisContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
     return BasisContaineranalysisV1beta1(
-      fingerprint: FingerprintContaineranalysisV1beta1.fromMap((map['fingerprint'] as Map).cast<String, dynamic>()),
+      fingerprint: FingerprintContaineranalysisV1beta1.fromMap(
+        (map['fingerprint'] as Map).cast<String, dynamic>(),
+      ),
       resourceUrl: map['resourceUrl'] as String,
     );
   }
 }
-

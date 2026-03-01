@@ -6,6 +6,7 @@ import 'nat_gateway_strategy.dart';
 class NatGatewayConfiguration {
   /// A list of EIP allocation IDs to assign to the NAT Gateways. Optional. If specified, the number of supplied values must match the chosen strategy (either one, or the number of availability zones).
   final List<String>? elasticIpAllocationIds;
+
   /// The strategy for deploying NAT Gateways.
   final NatGatewayStrategy strategy;
 
@@ -26,9 +27,10 @@ class NatGatewayConfiguration {
 
   factory NatGatewayConfiguration.fromMap(Map<String, dynamic> map) {
     return NatGatewayConfiguration(
-      elasticIpAllocationIds: map['elasticIpAllocationIds'] == null ? null : (map['elasticIpAllocationIds'] as List).cast<String>(),
+      elasticIpAllocationIds: map['elasticIpAllocationIds'] == null
+          ? null
+          : (map['elasticIpAllocationIds'] as List).cast<String>(),
       strategy: NatGatewayStrategy.fromValue(map['strategy'] as String),
     );
   }
 }
-

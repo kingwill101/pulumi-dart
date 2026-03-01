@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta {
   /// The match operator for the field.
   final String op;
+
   /// The value of the field.
   final String val;
 
@@ -16,17 +16,15 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComput
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'op': op,
-      'val': val,
-    };
+    return <String, dynamic>{'op': op, 'val': val};
   }
 
-  factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseComputeBeta(
       op: map['op'] as String,
       val: map['val'] as String,
     );
   }
 }
-

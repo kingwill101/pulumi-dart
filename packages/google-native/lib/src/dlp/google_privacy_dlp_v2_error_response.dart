@@ -6,6 +6,7 @@ import 'google_rpc_status_response.dart';
 class GooglePrivacyDlpV2ErrorResponse {
   /// Detailed error codes and messages.
   final GoogleRpcStatusResponse details;
+
   /// The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
   final List<String> timestamps;
 
@@ -26,9 +27,10 @@ class GooglePrivacyDlpV2ErrorResponse {
 
   factory GooglePrivacyDlpV2ErrorResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ErrorResponse(
-      details: GoogleRpcStatusResponse.fromMap((map['details'] as Map).cast<String, dynamic>()),
+      details: GoogleRpcStatusResponse.fromMap(
+        (map['details'] as Map).cast<String, dynamic>(),
+      ),
       timestamps: (map['timestamps'] as List).cast<String>(),
     );
   }
 }
-

@@ -10,20 +10,31 @@ class GoogleCloudDialogflowCxV3EnvironmentWebhookConfig {
 
   /// Creates a new [GoogleCloudDialogflowCxV3EnvironmentWebhookConfig].
   /// [webhookOverrides] The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
-  GoogleCloudDialogflowCxV3EnvironmentWebhookConfig({
-    this.webhookOverrides,
-  });
+  GoogleCloudDialogflowCxV3EnvironmentWebhookConfig({this.webhookOverrides});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'webhookOverrides': ?webhookOverrides == null ? null : pulumi.Input.encodeList<GoogleCloudDialogflowCxV3Webhook, Map<String, dynamic>>(webhookOverrides!, (value) => value.toMap()),
+      'webhookOverrides': ?webhookOverrides == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudDialogflowCxV3Webhook,
+              Map<String, dynamic>
+            >(webhookOverrides!, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3EnvironmentWebhookConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3EnvironmentWebhookConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3EnvironmentWebhookConfig(
-      webhookOverrides: map['webhookOverrides'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3Webhook>(map['webhookOverrides'], (value) => GoogleCloudDialogflowCxV3Webhook.fromMap((value as Map).cast<String, dynamic>())),
+      webhookOverrides: map['webhookOverrides'] == null
+          ? null
+          : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3Webhook>(
+              map['webhookOverrides'],
+              (value) => GoogleCloudDialogflowCxV3Webhook.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

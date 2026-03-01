@@ -8,10 +8,12 @@ import 'get_keys_zone_signing_key.dart';
 class GetKeysResult {
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// A list of Key-signing key (KSK) records. Structure is documented below. Additionally, the DS record is provided:
   final List<GetKeysKeySigningKey> keySigningKeys;
   final String managedZone;
   final String project;
+
   /// A list of Zone-signing key (ZSK) records. Structure is documented below.
   final List<GetKeysZoneSigningKey> zoneSigningKeys;
 
@@ -32,21 +34,38 @@ class GetKeysResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,
-      'keySigningKeys': pulumi.Input.encodeList<GetKeysKeySigningKey, Map<String, dynamic>>(keySigningKeys, (value) => value.toMap()),
+      'keySigningKeys':
+          pulumi.Input.encodeList<GetKeysKeySigningKey, Map<String, dynamic>>(
+            keySigningKeys,
+            (value) => value.toMap(),
+          ),
       'managedZone': managedZone,
       'project': project,
-      'zoneSigningKeys': pulumi.Input.encodeList<GetKeysZoneSigningKey, Map<String, dynamic>>(zoneSigningKeys, (value) => value.toMap()),
+      'zoneSigningKeys':
+          pulumi.Input.encodeList<GetKeysZoneSigningKey, Map<String, dynamic>>(
+            zoneSigningKeys,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory GetKeysResult.fromMap(Map<String, dynamic> map) {
     return GetKeysResult(
       id: map['id'] as String,
-      keySigningKeys: pulumi.Input.decodeList<GetKeysKeySigningKey>(map['keySigningKeys'], (value) => GetKeysKeySigningKey.fromMap((value as Map).cast<String, dynamic>())),
+      keySigningKeys: pulumi.Input.decodeList<GetKeysKeySigningKey>(
+        map['keySigningKeys'],
+        (value) => GetKeysKeySigningKey.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       managedZone: map['managedZone'] as String,
       project: map['project'] as String,
-      zoneSigningKeys: pulumi.Input.decodeList<GetKeysZoneSigningKey>(map['zoneSigningKeys'], (value) => GetKeysZoneSigningKey.fromMap((value as Map).cast<String, dynamic>())),
+      zoneSigningKeys: pulumi.Input.decodeList<GetKeysZoneSigningKey>(
+        map['zoneSigningKeys'],
+        (value) => GetKeysZoneSigningKey.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

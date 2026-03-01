@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BackupScheduleWeeklyRecurrence {
   /// The day of week to run.
   /// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
@@ -8,14 +7,10 @@ class BackupScheduleWeeklyRecurrence {
 
   /// Creates a new [BackupScheduleWeeklyRecurrence].
   /// [day] The day of week to run.
-  BackupScheduleWeeklyRecurrence({
-    this.day,
-  });
+  BackupScheduleWeeklyRecurrence({this.day});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'day': ?day,
-    };
+    return <String, dynamic>{'day': ?day};
   }
 
   factory BackupScheduleWeeklyRecurrence.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class BackupScheduleWeeklyRecurrence {
     );
   }
 }
-

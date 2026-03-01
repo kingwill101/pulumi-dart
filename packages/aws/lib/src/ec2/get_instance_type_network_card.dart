@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstanceTypeNetworkCard {
   final double baselineBandwidth;
   final int index;
@@ -42,4 +41,3 @@ class GetInstanceTypeNetworkCard {
     );
   }
 }
-

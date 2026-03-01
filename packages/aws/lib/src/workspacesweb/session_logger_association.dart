@@ -362,8 +362,10 @@ import 'session_logger_association_args.dart';
 class SessionLoggerAssociation extends pulumi.CustomResource {
   /// ARN of the web portal.
   late final pulumi.Output<String> portalArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN of the session logger.
   ///
   /// The following arguments are optional:
@@ -378,11 +380,11 @@ class SessionLoggerAssociation extends pulumi.CustomResource {
     SessionLoggerAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:workspacesweb/sessionLoggerAssociation:SessionLoggerAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:workspacesweb/sessionLoggerAssociation:SessionLoggerAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.portalArn = registerOutput<String>('portalArn');
     this.region = registerOutput<String>('region');
     this.sessionLoggerArn = registerOutput<String>('sessionLoggerArn');

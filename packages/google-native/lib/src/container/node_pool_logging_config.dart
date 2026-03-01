@@ -9,9 +9,7 @@ class NodePoolLoggingConfig {
 
   /// Creates a new [NodePoolLoggingConfig].
   /// [variantConfig] Logging variant configuration.
-  NodePoolLoggingConfig({
-    this.variantConfig,
-  });
+  NodePoolLoggingConfig({this.variantConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class NodePoolLoggingConfig {
 
   factory NodePoolLoggingConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolLoggingConfig(
-      variantConfig: map['variantConfig'] == null ? null : LoggingVariantConfig.fromMap((map['variantConfig'] as Map).cast<String, dynamic>()),
+      variantConfig: map['variantConfig'] == null
+          ? null
+          : LoggingVariantConfig.fromMap(
+              (map['variantConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

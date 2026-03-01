@@ -9,9 +9,7 @@ class BinaryAuthorization {
 
   /// Creates a new [BinaryAuthorization].
   /// [evaluationMode] Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
-  BinaryAuthorization({
-    this.evaluationMode,
-  });
+  BinaryAuthorization({this.evaluationMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class BinaryAuthorization {
 
   factory BinaryAuthorization.fromMap(Map<String, dynamic> map) {
     return BinaryAuthorization(
-      evaluationMode: map['evaluationMode'] == null ? null : BinaryAuthorizationEvaluationMode.fromValue(map['evaluationMode'] as String),
+      evaluationMode: map['evaluationMode'] == null
+          ? null
+          : BinaryAuthorizationEvaluationMode.fromValue(
+              map['evaluationMode'] as String,
+            ),
     );
   }
 }
-

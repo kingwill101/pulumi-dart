@@ -6,24 +6,34 @@ import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
 class GetTensorboardAiplatformV1beta1Result {
   /// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
   final String blobStoragePathPrefix;
+
   /// Timestamp when this Tensorboard was created.
   final String createTime;
+
   /// Description of this Tensorboard.
   final String description;
+
   /// User provided name of this Tensorboard.
   final String displayName;
+
   /// Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
   final GoogleCloudAiplatformV1beta1EncryptionSpecResponse encryptionSpec;
+
   /// Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   final String etag;
+
   /// Used to indicate if the TensorBoard instance is the default one. Each project & region can have at most one default TensorBoard instance. Creation of a default TensorBoard instance and updating an existing TensorBoard instance to be default will mark all other TensorBoard instances (if any) as non default.
   final bool isDefault;
+
   /// The labels with user-defined metadata to organize your Tensorboards. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Tensorboard (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
   final Map<String, String> labels;
+
   /// Name of the Tensorboard. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
   final String name;
+
   /// The number of Runs stored in this Tensorboard.
   final int runCount;
+
   /// Timestamp when this Tensorboard was last updated.
   final String updateTime;
 
@@ -69,13 +79,18 @@ class GetTensorboardAiplatformV1beta1Result {
     };
   }
 
-  factory GetTensorboardAiplatformV1beta1Result.fromMap(Map<String, dynamic> map) {
+  factory GetTensorboardAiplatformV1beta1Result.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTensorboardAiplatformV1beta1Result(
       blobStoragePathPrefix: map['blobStoragePathPrefix'] as String,
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
-      encryptionSpec: GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>()),
+      encryptionSpec:
+          GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap(
+            (map['encryptionSpec'] as Map).cast<String, dynamic>(),
+          ),
       etag: map['etag'] as String,
       isDefault: map['isDefault'] as bool,
       labels: (map['labels'] as Map).cast<String, String>(),
@@ -85,4 +100,3 @@ class GetTensorboardAiplatformV1beta1Result {
     );
   }
 }
-

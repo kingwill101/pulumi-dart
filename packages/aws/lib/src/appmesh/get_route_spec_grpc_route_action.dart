@@ -8,20 +8,27 @@ class GetRouteSpecGrpcRouteAction {
 
   /// Creates a new [GetRouteSpecGrpcRouteAction].
   /// [weightedTargets] Required.
-  GetRouteSpecGrpcRouteAction({
-    required this.weightedTargets,
-  });
+  GetRouteSpecGrpcRouteAction({required this.weightedTargets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'weightedTargets': pulumi.Input.encodeList<GetRouteSpecGrpcRouteActionWeightedTarget, Map<String, dynamic>>(weightedTargets, (value) => value.toMap()),
+      'weightedTargets':
+          pulumi.Input.encodeList<
+            GetRouteSpecGrpcRouteActionWeightedTarget,
+            Map<String, dynamic>
+          >(weightedTargets, (value) => value.toMap()),
     };
   }
 
   factory GetRouteSpecGrpcRouteAction.fromMap(Map<String, dynamic> map) {
     return GetRouteSpecGrpcRouteAction(
-      weightedTargets: pulumi.Input.decodeList<GetRouteSpecGrpcRouteActionWeightedTarget>(map['weightedTargets'], (value) => GetRouteSpecGrpcRouteActionWeightedTarget.fromMap((value as Map).cast<String, dynamic>())),
+      weightedTargets:
+          pulumi.Input.decodeList<GetRouteSpecGrpcRouteActionWeightedTarget>(
+            map['weightedTargets'],
+            (value) => GetRouteSpecGrpcRouteActionWeightedTarget.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

@@ -7,10 +7,12 @@ import 'enterprise_crm_logging_gws_sanitize_options_response.dart';
 class EnterpriseCrmEventbusProtoLogSettingsResponse {
   /// The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.
   final String logFieldName;
+
   /// Contains the scrubbing options, such as whether to scrub, obfuscate, etc.
   final EnterpriseCrmLoggingGwsSanitizeOptionsResponse sanitizeOptions;
   final String seedPeriod;
   final String seedScope;
+
   /// Contains the field limits for shortening, such as max string length and max array length.
   final EnterpriseCrmLoggingGwsFieldLimitsResponse shorteningLimits;
 
@@ -38,14 +40,19 @@ class EnterpriseCrmEventbusProtoLogSettingsResponse {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoLogSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoLogSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoLogSettingsResponse(
       logFieldName: map['logFieldName'] as String,
-      sanitizeOptions: EnterpriseCrmLoggingGwsSanitizeOptionsResponse.fromMap((map['sanitizeOptions'] as Map).cast<String, dynamic>()),
+      sanitizeOptions: EnterpriseCrmLoggingGwsSanitizeOptionsResponse.fromMap(
+        (map['sanitizeOptions'] as Map).cast<String, dynamic>(),
+      ),
       seedPeriod: map['seedPeriod'] as String,
       seedScope: map['seedScope'] as String,
-      shorteningLimits: EnterpriseCrmLoggingGwsFieldLimitsResponse.fromMap((map['shorteningLimits'] as Map).cast<String, dynamic>()),
+      shorteningLimits: EnterpriseCrmLoggingGwsFieldLimitsResponse.fromMap(
+        (map['shorteningLimits'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

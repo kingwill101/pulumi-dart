@@ -13,18 +13,12 @@ class GetRoleArgs {
   /// Creates a new [GetRoleArgs].
   /// [project] Optional.
   /// [roleId] Required.
-  GetRoleArgs({
-    String? project,
-    required String roleId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetRoleArgs({String? project, required String roleId})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       roleId = pulumi.Input.asInput<String>(roleId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'roleId': roleId,
-    };
+    return <String, dynamic>{'project': ?project, 'roleId': roleId};
   }
 
   factory GetRoleArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetRoleArgs {
     );
   }
 }
-

@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOriginRequestPolicyArgs {
   /// Identifier for the origin request policy.
   final pulumi.Input<String>? id;
+
   /// Unique name to identify the origin request policy.
   final pulumi.Input<String>? name;
 
   /// Creates a new [GetOriginRequestPolicyArgs].
   /// [id] Identifier for the origin request policy.
   /// [name] Unique name to identify the origin request policy.
-  GetOriginRequestPolicyArgs({
-    String? id,
-    String? name,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
+  GetOriginRequestPolicyArgs({String? id, String? name})
+    : id = pulumi.Input.asOptionalInput<String>(id),
       name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': ?name,
-    };
+    return <String, dynamic>{'id': ?id, 'name': ?name};
   }
 
   factory GetOriginRequestPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetOriginRequestPolicyArgs {
     );
   }
 }
-

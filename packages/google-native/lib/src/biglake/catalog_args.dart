@@ -16,12 +16,8 @@ class CatalogArgs {
   /// [catalogId] Required. The ID to use for the catalog, which will become the final component of the catalog's resource name.
   /// [location] Optional.
   /// [project] Optional.
-  CatalogArgs({
-    required String catalogId,
-    String? location,
-    String? project,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
+  CatalogArgs({required String catalogId, String? location, String? project})
+    : catalogId = pulumi.Input.asInput<String>(catalogId),
       location = pulumi.Input.asOptionalInput<String>(location),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -41,4 +37,3 @@ class CatalogArgs {
     );
   }
 }
-

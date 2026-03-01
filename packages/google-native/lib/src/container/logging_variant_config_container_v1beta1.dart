@@ -9,9 +9,7 @@ class LoggingVariantConfigContainerV1beta1 {
 
   /// Creates a new [LoggingVariantConfigContainerV1beta1].
   /// [variant] Logging variant deployed on nodes.
-  LoggingVariantConfigContainerV1beta1({
-    this.variant,
-  });
+  LoggingVariantConfigContainerV1beta1({this.variant});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class LoggingVariantConfigContainerV1beta1 {
     };
   }
 
-  factory LoggingVariantConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory LoggingVariantConfigContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoggingVariantConfigContainerV1beta1(
-      variant: map['variant'] == null ? null : LoggingVariantConfigVariantContainerV1beta1.fromValue(map['variant'] as String),
+      variant: map['variant'] == null
+          ? null
+          : LoggingVariantConfigVariantContainerV1beta1.fromValue(
+              map['variant'] as String,
+            ),
     );
   }
 }
-

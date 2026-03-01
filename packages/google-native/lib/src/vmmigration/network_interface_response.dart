@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// NetworkInterface represents a NIC of a VM.
 class NetworkInterfaceResponse {
   /// The external IP to define in the NIC.
   final String externalIp;
+
   /// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
   final String internalIp;
+
   /// The network to connect the NIC to.
   final String network;
+
   /// The subnetwork to connect the NIC to.
   final String subnetwork;
 
@@ -42,4 +44,3 @@ class NetworkInterfaceResponse {
     );
   }
 }
-

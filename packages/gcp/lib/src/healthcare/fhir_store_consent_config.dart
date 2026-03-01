@@ -6,15 +6,20 @@ import 'fhir_store_consent_config_consent_header_handling.dart';
 class FhirStoreConsentConfig {
   /// Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
   /// Structure is documented below.
-  final FhirStoreConsentConfigAccessDeterminationLogConfig? accessDeterminationLogConfig;
+  final FhirStoreConsentConfigAccessDeterminationLogConfig?
+  accessDeterminationLogConfig;
+
   /// The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
   final bool? accessEnforced;
+
   /// Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
   /// Structure is documented below.
   final FhirStoreConsentConfigConsentHeaderHandling? consentHeaderHandling;
+
   /// (Output)
   /// The versioned names of the enforced admin Consent resource(s), in the format projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}/_history/{version_id}. For FHIR stores with disableResourceVersioning=true, the format is projects/{projectId}/locations/{location}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/Consent/{resourceId}. This field can only be updated using [fhirStores.applyAdminConsents][].
   final List<String>? enforcedAdminConsents;
+
   /// Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
   /// Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
   final String version;
@@ -35,9 +40,13 @@ class FhirStoreConsentConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessDeterminationLogConfig': ?accessDeterminationLogConfig == null ? null : accessDeterminationLogConfig!.toMap(),
+      'accessDeterminationLogConfig': ?accessDeterminationLogConfig == null
+          ? null
+          : accessDeterminationLogConfig!.toMap(),
       'accessEnforced': ?accessEnforced,
-      'consentHeaderHandling': ?consentHeaderHandling == null ? null : consentHeaderHandling!.toMap(),
+      'consentHeaderHandling': ?consentHeaderHandling == null
+          ? null
+          : consentHeaderHandling!.toMap(),
       'enforcedAdminConsents': ?enforcedAdminConsents,
       'version': version,
     };
@@ -45,12 +54,24 @@ class FhirStoreConsentConfig {
 
   factory FhirStoreConsentConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreConsentConfig(
-      accessDeterminationLogConfig: map['accessDeterminationLogConfig'] == null ? null : FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap((map['accessDeterminationLogConfig'] as Map).cast<String, dynamic>()),
-      accessEnforced: map['accessEnforced'] == null ? null : map['accessEnforced'] as bool,
-      consentHeaderHandling: map['consentHeaderHandling'] == null ? null : FhirStoreConsentConfigConsentHeaderHandling.fromMap((map['consentHeaderHandling'] as Map).cast<String, dynamic>()),
-      enforcedAdminConsents: map['enforcedAdminConsents'] == null ? null : (map['enforcedAdminConsents'] as List).cast<String>(),
+      accessDeterminationLogConfig: map['accessDeterminationLogConfig'] == null
+          ? null
+          : FhirStoreConsentConfigAccessDeterminationLogConfig.fromMap(
+              (map['accessDeterminationLogConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      accessEnforced: map['accessEnforced'] == null
+          ? null
+          : map['accessEnforced'] as bool,
+      consentHeaderHandling: map['consentHeaderHandling'] == null
+          ? null
+          : FhirStoreConsentConfigConsentHeaderHandling.fromMap(
+              (map['consentHeaderHandling'] as Map).cast<String, dynamic>(),
+            ),
+      enforcedAdminConsents: map['enforcedAdminConsents'] == null
+          ? null
+          : (map['enforcedAdminConsents'] as List).cast<String>(),
       version: map['version'] as String,
     );
   }
 }
-

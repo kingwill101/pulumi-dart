@@ -18,32 +18,50 @@ import 'google_cloud_dialogflow_v2_intent_message_text_response.dart';
 class GoogleCloudDialogflowV2IntentMessageResponse {
   /// The basic card response for Actions on Google.
   final GoogleCloudDialogflowV2IntentMessageBasicCardResponse basicCard;
+
   /// Browse carousel card for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponse browseCarouselCard;
+  final GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponse
+  browseCarouselCard;
+
   /// The card response.
   final GoogleCloudDialogflowV2IntentMessageCardResponse card;
+
   /// The carousel card response for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse carouselSelect;
+  final GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse
+  carouselSelect;
+
   /// The image response.
   final GoogleCloudDialogflowV2IntentMessageImageResponse image;
+
   /// The link out suggestion chip for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse linkOutSuggestion;
+  final GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse
+  linkOutSuggestion;
+
   /// The list card response for Actions on Google.
   final GoogleCloudDialogflowV2IntentMessageListSelectResponse listSelect;
+
   /// The media content card for Actions on Google.
   final GoogleCloudDialogflowV2IntentMessageMediaContentResponse mediaContent;
+
   /// A custom platform-specific response.
   final Map<String, String> payload;
+
   /// Optional. The platform that this message is intended for.
   final String platform;
+
   /// The quick replies response.
   final GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse quickReplies;
+
   /// The voice and text-only responses for Actions on Google.
-  final GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse simpleResponses;
+  final GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse
+  simpleResponses;
+
   /// The suggestion chips for Actions on Google.
   final GoogleCloudDialogflowV2IntentMessageSuggestionsResponse suggestions;
+
   /// Table card for Actions on Google.
   final GoogleCloudDialogflowV2IntentMessageTableCardResponse tableCard;
+
   /// The text response.
   final GoogleCloudDialogflowV2IntentMessageTextResponse text;
 
@@ -101,24 +119,59 @@ class GoogleCloudDialogflowV2IntentMessageResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageResponse(
-      basicCard: GoogleCloudDialogflowV2IntentMessageBasicCardResponse.fromMap((map['basicCard'] as Map).cast<String, dynamic>()),
-      browseCarouselCard: GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponse.fromMap((map['browseCarouselCard'] as Map).cast<String, dynamic>()),
-      card: GoogleCloudDialogflowV2IntentMessageCardResponse.fromMap((map['card'] as Map).cast<String, dynamic>()),
-      carouselSelect: GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse.fromMap((map['carouselSelect'] as Map).cast<String, dynamic>()),
-      image: GoogleCloudDialogflowV2IntentMessageImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      linkOutSuggestion: GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse.fromMap((map['linkOutSuggestion'] as Map).cast<String, dynamic>()),
-      listSelect: GoogleCloudDialogflowV2IntentMessageListSelectResponse.fromMap((map['listSelect'] as Map).cast<String, dynamic>()),
-      mediaContent: GoogleCloudDialogflowV2IntentMessageMediaContentResponse.fromMap((map['mediaContent'] as Map).cast<String, dynamic>()),
+      basicCard: GoogleCloudDialogflowV2IntentMessageBasicCardResponse.fromMap(
+        (map['basicCard'] as Map).cast<String, dynamic>(),
+      ),
+      browseCarouselCard:
+          GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponse.fromMap(
+            (map['browseCarouselCard'] as Map).cast<String, dynamic>(),
+          ),
+      card: GoogleCloudDialogflowV2IntentMessageCardResponse.fromMap(
+        (map['card'] as Map).cast<String, dynamic>(),
+      ),
+      carouselSelect:
+          GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse.fromMap(
+            (map['carouselSelect'] as Map).cast<String, dynamic>(),
+          ),
+      image: GoogleCloudDialogflowV2IntentMessageImageResponse.fromMap(
+        (map['image'] as Map).cast<String, dynamic>(),
+      ),
+      linkOutSuggestion:
+          GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse.fromMap(
+            (map['linkOutSuggestion'] as Map).cast<String, dynamic>(),
+          ),
+      listSelect:
+          GoogleCloudDialogflowV2IntentMessageListSelectResponse.fromMap(
+            (map['listSelect'] as Map).cast<String, dynamic>(),
+          ),
+      mediaContent:
+          GoogleCloudDialogflowV2IntentMessageMediaContentResponse.fromMap(
+            (map['mediaContent'] as Map).cast<String, dynamic>(),
+          ),
       payload: (map['payload'] as Map).cast<String, String>(),
       platform: map['platform'] as String,
-      quickReplies: GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse.fromMap((map['quickReplies'] as Map).cast<String, dynamic>()),
-      simpleResponses: GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse.fromMap((map['simpleResponses'] as Map).cast<String, dynamic>()),
-      suggestions: GoogleCloudDialogflowV2IntentMessageSuggestionsResponse.fromMap((map['suggestions'] as Map).cast<String, dynamic>()),
-      tableCard: GoogleCloudDialogflowV2IntentMessageTableCardResponse.fromMap((map['tableCard'] as Map).cast<String, dynamic>()),
-      text: GoogleCloudDialogflowV2IntentMessageTextResponse.fromMap((map['text'] as Map).cast<String, dynamic>()),
+      quickReplies:
+          GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse.fromMap(
+            (map['quickReplies'] as Map).cast<String, dynamic>(),
+          ),
+      simpleResponses:
+          GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse.fromMap(
+            (map['simpleResponses'] as Map).cast<String, dynamic>(),
+          ),
+      suggestions:
+          GoogleCloudDialogflowV2IntentMessageSuggestionsResponse.fromMap(
+            (map['suggestions'] as Map).cast<String, dynamic>(),
+          ),
+      tableCard: GoogleCloudDialogflowV2IntentMessageTableCardResponse.fromMap(
+        (map['tableCard'] as Map).cast<String, dynamic>(),
+      ),
+      text: GoogleCloudDialogflowV2IntentMessageTextResponse.fromMap(
+        (map['text'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

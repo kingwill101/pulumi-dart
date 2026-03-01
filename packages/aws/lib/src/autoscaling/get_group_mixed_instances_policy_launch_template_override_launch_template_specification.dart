@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification {
   /// ID of the launch template.
   final String launchTemplateId;
+
   /// Name of the launch template.
   final String launchTemplateName;
+
   /// Template version.
   final String version;
 
@@ -27,7 +28,9 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificat
     };
   }
 
-  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap(Map<String, dynamic> map) {
+  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification(
       launchTemplateId: map['launchTemplateId'] as String,
       launchTemplateName: map['launchTemplateName'] as String,
@@ -35,4 +38,3 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificat
     );
   }
 }
-

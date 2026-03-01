@@ -16,14 +16,19 @@ import 'serverless_security_config_saml_options.dart';
 class ServerlessSecurityConfig extends pulumi.CustomResource {
   /// Version of the configuration.
   late final pulumi.Output<String> configVersion;
+
   /// Description of the security configuration.
   late final pulumi.Output<String?> description;
+
   /// Name of the policy.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration block for SAML options.
   late final pulumi.Output<ServerlessSecurityConfigSamlOptions?> samlOptions;
+
   /// Type of configuration. Must be `saml`.
   ///
   /// The following arguments are optional:
@@ -38,16 +43,18 @@ class ServerlessSecurityConfig extends pulumi.CustomResource {
     ServerlessSecurityConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:opensearch/serverlessSecurityConfig:ServerlessSecurityConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:opensearch/serverlessSecurityConfig:ServerlessSecurityConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.configVersion = registerOutput<String>('configVersion');
     this.description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     this.region = registerOutput<String>('region');
-    this.samlOptions = registerOutput<ServerlessSecurityConfigSamlOptions?>('samlOptions');
+    this.samlOptions = registerOutput<ServerlessSecurityConfigSamlOptions?>(
+      'samlOptions',
+    );
     this.type = registerOutput<String>('type');
   }
 }

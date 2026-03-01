@@ -6,16 +6,14 @@ import 'google_iam_v1_audit_log_config_log_type.dart';
 class GoogleIamV1AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   final List<String>? exemptedMembers;
+
   /// The log type that this config enables.
   final GoogleIamV1AuditLogConfigLogType? logType;
 
   /// Creates a new [GoogleIamV1AuditLogConfig].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  GoogleIamV1AuditLogConfig({
-    this.exemptedMembers,
-    this.logType,
-  });
+  GoogleIamV1AuditLogConfig({this.exemptedMembers, this.logType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,14 @@ class GoogleIamV1AuditLogConfig {
 
   factory GoogleIamV1AuditLogConfig.fromMap(Map<String, dynamic> map) {
     return GoogleIamV1AuditLogConfig(
-      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
-      logType: map['logType'] == null ? null : GoogleIamV1AuditLogConfigLogType.fromValue(map['logType'] as String),
+      exemptedMembers: map['exemptedMembers'] == null
+          ? null
+          : (map['exemptedMembers'] as List).cast<String>(),
+      logType: map['logType'] == null
+          ? null
+          : GoogleIamV1AuditLogConfigLogType.fromValue(
+              map['logType'] as String,
+            ),
     );
   }
 }
-

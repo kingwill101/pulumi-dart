@@ -11,26 +11,33 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationState {
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
   final V2PolicyOrchestratorOrchestrationStateCurrentIterationStateError? error;
+
   /// (Output)
   /// Output only. Number of orchestration actions which failed so far. For more details,
   /// query the Cloud Logs.
   final String? failedActions;
+
   /// (Output)
   /// Output only. Finish time of the wave iteration.
   final String? finishTime;
+
   /// (Output)
   /// Output only. Overall number of actions done by the orchestrator so far.
   final String? performedActions;
+
   /// (Output)
   /// Output only. An estimated percentage of the progress. Number between 0 and 100.
   final double? progress;
+
   /// (Output)
   /// Output only. Handle to the Progressive Rollouts API rollout resource, which contains
   /// detailed information about a particular orchestration iteration.
   final String? rolloutResource;
+
   /// (Output)
   /// Output only. Start time of the wave iteration.
   final String? startTime;
+
   /// Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
   /// Allowed values:
   /// - `ACTIVE` - orchestrator is actively looking for actions to be taken.
@@ -73,17 +80,30 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationState {
     };
   }
 
-  factory V2PolicyOrchestratorOrchestrationStateCurrentIterationState.fromMap(Map<String, dynamic> map) {
+  factory V2PolicyOrchestratorOrchestrationStateCurrentIterationState.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return V2PolicyOrchestratorOrchestrationStateCurrentIterationState(
-      error: map['error'] == null ? null : V2PolicyOrchestratorOrchestrationStateCurrentIterationStateError.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      failedActions: map['failedActions'] == null ? null : map['failedActions'] as String,
-      finishTime: map['finishTime'] == null ? null : map['finishTime'] as String,
-      performedActions: map['performedActions'] == null ? null : map['performedActions'] as String,
+      error: map['error'] == null
+          ? null
+          : V2PolicyOrchestratorOrchestrationStateCurrentIterationStateError.fromMap(
+              (map['error'] as Map).cast<String, dynamic>(),
+            ),
+      failedActions: map['failedActions'] == null
+          ? null
+          : map['failedActions'] as String,
+      finishTime: map['finishTime'] == null
+          ? null
+          : map['finishTime'] as String,
+      performedActions: map['performedActions'] == null
+          ? null
+          : map['performedActions'] as String,
       progress: map['progress'] == null ? null : map['progress'] as double,
-      rolloutResource: map['rolloutResource'] == null ? null : map['rolloutResource'] as String,
+      rolloutResource: map['rolloutResource'] == null
+          ? null
+          : map['rolloutResource'] as String,
       startTime: map['startTime'] == null ? null : map['startTime'] as String,
       state: map['state'] == null ? null : map['state'] as String,
     );
   }
 }
-

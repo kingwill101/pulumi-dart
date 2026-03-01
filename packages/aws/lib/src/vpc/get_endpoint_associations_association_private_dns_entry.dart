@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetEndpointAssociationsAssociationPrivateDnsEntry {
   /// DNS name.
   final String dnsName;
+
   /// ID of the private hosted zone.
   final String hostedZoneId;
 
@@ -16,17 +16,15 @@ class GetEndpointAssociationsAssociationPrivateDnsEntry {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dnsName': dnsName,
-      'hostedZoneId': hostedZoneId,
-    };
+    return <String, dynamic>{'dnsName': dnsName, 'hostedZoneId': hostedZoneId};
   }
 
-  factory GetEndpointAssociationsAssociationPrivateDnsEntry.fromMap(Map<String, dynamic> map) {
+  factory GetEndpointAssociationsAssociationPrivateDnsEntry.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEndpointAssociationsAssociationPrivateDnsEntry(
       dnsName: map['dnsName'] as String,
       hostedZoneId: map['hostedZoneId'] as String,
     );
   }
 }
-

@@ -8,26 +8,37 @@ import 'runtime_software_config_post_startup_script_behavior.dart';
 class RuntimeSoftwareConfig {
   /// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
   final String? customGpuDriverPath;
+
   /// Bool indicating whether JupyterLab terminal will be available or not. Default: False
   final bool? disableTerminal;
+
   /// Verifies core internal services are running. Default: True
   final bool? enableHealthMonitoring;
+
   /// Runtime will automatically shutdown after idle_shutdown_time. Default: True
   final bool? idleShutdown;
+
   /// Time in minutes to wait before shutting down runtime. Default: 180 minutes
   final int? idleShutdownTimeout;
+
   /// Install Nvidia Driver automatically. Default: True
   final bool? installGpuDriver;
+
   /// Optional. Use a list of container images to use as Kernels in the notebook instance.
   final List<ContainerImage>? kernels;
+
   /// Bool indicating whether mixer client should be disabled. Default: False
   final bool? mixerDisabled;
+
   /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
   final String? notebookUpgradeSchedule;
+
   /// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
   final String? postStartupScript;
+
   /// Behavior for the post startup script.
-  final RuntimeSoftwareConfigPostStartupScriptBehavior? postStartupScriptBehavior;
+  final RuntimeSoftwareConfigPostStartupScriptBehavior?
+  postStartupScriptBehavior;
 
   /// Creates a new [RuntimeSoftwareConfig].
   /// [customGpuDriverPath] Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -63,28 +74,63 @@ class RuntimeSoftwareConfig {
       'idleShutdown': ?idleShutdown,
       'idleShutdownTimeout': ?idleShutdownTimeout,
       'installGpuDriver': ?installGpuDriver,
-      'kernels': ?kernels == null ? null : pulumi.Input.encodeList<ContainerImage, Map<String, dynamic>>(kernels!, (value) => value.toMap()),
+      'kernels': ?kernels == null
+          ? null
+          : pulumi.Input.encodeList<ContainerImage, Map<String, dynamic>>(
+              kernels!,
+              (value) => value.toMap(),
+            ),
       'mixerDisabled': ?mixerDisabled,
       'notebookUpgradeSchedule': ?notebookUpgradeSchedule,
       'postStartupScript': ?postStartupScript,
-      'postStartupScriptBehavior': ?postStartupScriptBehavior == null ? null : postStartupScriptBehavior!.value,
+      'postStartupScriptBehavior': ?postStartupScriptBehavior == null
+          ? null
+          : postStartupScriptBehavior!.value,
     };
   }
 
   factory RuntimeSoftwareConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeSoftwareConfig(
-      customGpuDriverPath: map['customGpuDriverPath'] == null ? null : map['customGpuDriverPath'] as String,
-      disableTerminal: map['disableTerminal'] == null ? null : map['disableTerminal'] as bool,
-      enableHealthMonitoring: map['enableHealthMonitoring'] == null ? null : map['enableHealthMonitoring'] as bool,
-      idleShutdown: map['idleShutdown'] == null ? null : map['idleShutdown'] as bool,
-      idleShutdownTimeout: map['idleShutdownTimeout'] == null ? null : map['idleShutdownTimeout'] as int,
-      installGpuDriver: map['installGpuDriver'] == null ? null : map['installGpuDriver'] as bool,
-      kernels: map['kernels'] == null ? null : pulumi.Input.decodeList<ContainerImage>(map['kernels'], (value) => ContainerImage.fromMap((value as Map).cast<String, dynamic>())),
-      mixerDisabled: map['mixerDisabled'] == null ? null : map['mixerDisabled'] as bool,
-      notebookUpgradeSchedule: map['notebookUpgradeSchedule'] == null ? null : map['notebookUpgradeSchedule'] as String,
-      postStartupScript: map['postStartupScript'] == null ? null : map['postStartupScript'] as String,
-      postStartupScriptBehavior: map['postStartupScriptBehavior'] == null ? null : RuntimeSoftwareConfigPostStartupScriptBehavior.fromValue(map['postStartupScriptBehavior'] as String),
+      customGpuDriverPath: map['customGpuDriverPath'] == null
+          ? null
+          : map['customGpuDriverPath'] as String,
+      disableTerminal: map['disableTerminal'] == null
+          ? null
+          : map['disableTerminal'] as bool,
+      enableHealthMonitoring: map['enableHealthMonitoring'] == null
+          ? null
+          : map['enableHealthMonitoring'] as bool,
+      idleShutdown: map['idleShutdown'] == null
+          ? null
+          : map['idleShutdown'] as bool,
+      idleShutdownTimeout: map['idleShutdownTimeout'] == null
+          ? null
+          : map['idleShutdownTimeout'] as int,
+      installGpuDriver: map['installGpuDriver'] == null
+          ? null
+          : map['installGpuDriver'] as bool,
+      kernels: map['kernels'] == null
+          ? null
+          : pulumi.Input.decodeList<ContainerImage>(
+              map['kernels'],
+              (value) => ContainerImage.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      mixerDisabled: map['mixerDisabled'] == null
+          ? null
+          : map['mixerDisabled'] as bool,
+      notebookUpgradeSchedule: map['notebookUpgradeSchedule'] == null
+          ? null
+          : map['notebookUpgradeSchedule'] as String,
+      postStartupScript: map['postStartupScript'] == null
+          ? null
+          : map['postStartupScript'] as String,
+      postStartupScriptBehavior: map['postStartupScriptBehavior'] == null
+          ? null
+          : RuntimeSoftwareConfigPostStartupScriptBehavior.fromValue(
+              map['postStartupScriptBehavior'] as String,
+            ),
     );
   }
 }
-

@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApprovalRuleTemplateArgs {
   /// The content of the approval rule template. Maximum of 3000 characters.
   final pulumi.Input<String> content;
+
   /// The description of the approval rule template. Maximum of 1000 characters.
   final pulumi.Input<String>? description;
+
   /// The name for the approval rule template. Maximum of 100 characters.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,11 +29,10 @@ class ApprovalRuleTemplateArgs {
     String? description,
     String? name,
     String? region,
-  }) :
-      content = pulumi.Input.asInput<String>(content),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : content = pulumi.Input.asInput<String>(content),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +46,11 @@ class ApprovalRuleTemplateArgs {
   factory ApprovalRuleTemplateArgs.fromMap(Map<String, dynamic> map) {
     return ApprovalRuleTemplateArgs(
       content: map['content'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

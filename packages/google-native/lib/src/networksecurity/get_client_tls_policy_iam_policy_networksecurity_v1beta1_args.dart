@@ -22,11 +22,12 @@ class GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Args {
     required String location,
     int? optionsRequestedPolicyVersion,
     String? project,
-  }) :
-      clientTlsPolicyId = pulumi.Input.asInput<String>(clientTlsPolicyId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : clientTlsPolicyId = pulumi.Input.asInput<String>(clientTlsPolicyId),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,13 +38,17 @@ class GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Args {
     };
   }
 
-  factory GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetClientTlsPolicyIamPolicyNetworksecurityV1beta1Args(
       clientTlsPolicyId: map['clientTlsPolicyId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

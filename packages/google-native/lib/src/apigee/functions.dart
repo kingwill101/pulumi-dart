@@ -551,7 +551,8 @@ Future<GetOrganizationResult> getOrganization(
 /// Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigee_v1_get_organization_environment_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetOrganizationEnvironmentIamPolicyResult> getOrganizationEnvironmentIamPolicy(
+Future<GetOrganizationEnvironmentIamPolicyResult>
+getOrganizationEnvironmentIamPolicy(
   GetOrganizationEnvironmentIamPolicyArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

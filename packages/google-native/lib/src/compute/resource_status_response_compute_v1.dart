@@ -26,8 +26,9 @@ class ResourceStatusResponseComputeV1 {
   factory ResourceStatusResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return ResourceStatusResponseComputeV1(
       physicalHost: map['physicalHost'] as String,
-      upcomingMaintenance: UpcomingMaintenanceResponseComputeV1.fromMap((map['upcomingMaintenance'] as Map).cast<String, dynamic>()),
+      upcomingMaintenance: UpcomingMaintenanceResponseComputeV1.fromMap(
+        (map['upcomingMaintenance'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

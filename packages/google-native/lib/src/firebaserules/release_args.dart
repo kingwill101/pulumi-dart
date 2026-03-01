@@ -10,6 +10,7 @@ class ReleaseArgs {
   /// Format: `projects/{project_id}/releases/{release_id}`
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   final pulumi.Input<String> rulesetName;
 
@@ -17,12 +18,8 @@ class ReleaseArgs {
   /// [name] Format: `projects/{project_id}/releases/{release_id}`
   /// [project] Optional.
   /// [rulesetName] Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-  ReleaseArgs({
-    String? name,
-    String? project,
-    required String rulesetName,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
+  ReleaseArgs({String? name, String? project, required String rulesetName})
+    : name = pulumi.Input.asOptionalInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project),
       rulesetName = pulumi.Input.asInput<String>(rulesetName);
 
@@ -42,4 +39,3 @@ class ReleaseArgs {
     );
   }
 }
-

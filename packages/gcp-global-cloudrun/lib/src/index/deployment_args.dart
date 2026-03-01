@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentArgs {
   /// The name of the image to deploy to cloudrun
   final pulumi.Input<String> imageName;
+
   /// The project in which to create the cloudrun resources
   final pulumi.Input<String> projectId;
+
   /// The name of the cloudrun service
   final pulumi.Input<String> serviceName;
 
@@ -22,10 +24,9 @@ class DeploymentArgs {
     required String imageName,
     required String projectId,
     required String serviceName,
-  }) :
-      imageName = pulumi.Input.asInput<String>(imageName),
-      projectId = pulumi.Input.asInput<String>(projectId),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+  }) : imageName = pulumi.Input.asInput<String>(imageName),
+       projectId = pulumi.Input.asInput<String>(projectId),
+       serviceName = pulumi.Input.asInput<String>(serviceName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class DeploymentArgs {
     );
   }
 }
-

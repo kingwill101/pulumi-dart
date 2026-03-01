@@ -8,30 +8,43 @@ import 'revocation_details_response.dart';
 class GetCertificateResult {
   /// A structured description of the issued X.509 certificate.
   final CertificateDescriptionResponse certificateDescription;
+
   /// Immutable. The resource name for a CertificateTemplate used to issue this certificate, in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified, the caller must have the necessary permission to use this template. If this is omitted, no template will be used. This template must be in the same location as the Certificate.
   final String certificateTemplate;
+
   /// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
   final CertificateConfigResponse config;
+
   /// The time at which this Certificate was created.
   final String createTime;
+
   /// The resource name of the issuing CertificateAuthority in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
   final String issuerCertificateAuthority;
+
   /// Optional. Labels with user-defined metadata.
   final Map<String, String> labels;
+
   /// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
   final String lifetime;
+
   /// The resource name for this Certificate in the format `projects/*/locations/*/caPools/*/certificates/*`.
   final String name;
+
   /// The pem-encoded, signed X.509 certificate.
   final String pemCertificate;
+
   /// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
   final List<String> pemCertificateChain;
+
   /// Immutable. A pem-encoded X.509 certificate signing request (CSR).
   final String pemCsr;
+
   /// Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
   final RevocationDetailsResponse revocationDetails;
+
   /// Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used.
   final String subjectMode;
+
   /// The time at which this Certificate was updated.
   final String updateTime;
 
@@ -88,9 +101,13 @@ class GetCertificateResult {
 
   factory GetCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetCertificateResult(
-      certificateDescription: CertificateDescriptionResponse.fromMap((map['certificateDescription'] as Map).cast<String, dynamic>()),
+      certificateDescription: CertificateDescriptionResponse.fromMap(
+        (map['certificateDescription'] as Map).cast<String, dynamic>(),
+      ),
       certificateTemplate: map['certificateTemplate'] as String,
-      config: CertificateConfigResponse.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      config: CertificateConfigResponse.fromMap(
+        (map['config'] as Map).cast<String, dynamic>(),
+      ),
       createTime: map['createTime'] as String,
       issuerCertificateAuthority: map['issuerCertificateAuthority'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
@@ -99,10 +116,11 @@ class GetCertificateResult {
       pemCertificate: map['pemCertificate'] as String,
       pemCertificateChain: (map['pemCertificateChain'] as List).cast<String>(),
       pemCsr: map['pemCsr'] as String,
-      revocationDetails: RevocationDetailsResponse.fromMap((map['revocationDetails'] as Map).cast<String, dynamic>()),
+      revocationDetails: RevocationDetailsResponse.fromMap(
+        (map['revocationDetails'] as Map).cast<String, dynamic>(),
+      ),
       subjectMode: map['subjectMode'] as String,
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

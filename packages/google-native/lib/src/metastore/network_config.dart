@@ -10,20 +10,28 @@ class NetworkConfig {
 
   /// Creates a new [NetworkConfig].
   /// [consumers] Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
-  NetworkConfig({
-    this.consumers,
-  });
+  NetworkConfig({this.consumers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumers': ?consumers == null ? null : pulumi.Input.encodeList<Consumer, Map<String, dynamic>>(consumers!, (value) => value.toMap()),
+      'consumers': ?consumers == null
+          ? null
+          : pulumi.Input.encodeList<Consumer, Map<String, dynamic>>(
+              consumers!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory NetworkConfig.fromMap(Map<String, dynamic> map) {
     return NetworkConfig(
-      consumers: map['consumers'] == null ? null : pulumi.Input.decodeList<Consumer>(map['consumers'], (value) => Consumer.fromMap((value as Map).cast<String, dynamic>())),
+      consumers: map['consumers'] == null
+          ? null
+          : pulumi.Input.decodeList<Consumer>(
+              map['consumers'],
+              (value) =>
+                  Consumer.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

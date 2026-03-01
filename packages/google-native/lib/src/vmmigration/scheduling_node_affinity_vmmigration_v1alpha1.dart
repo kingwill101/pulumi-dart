@@ -6,8 +6,10 @@ import 'scheduling_node_affinity_operator_vmmigration_v1alpha1.dart';
 class SchedulingNodeAffinityVmmigrationV1alpha1 {
   /// The label key of Node resource to reference.
   final String? key;
+
   /// The operator to use for the node resources specified in the `values` parameter.
   final SchedulingNodeAffinityOperatorVmmigrationV1alpha1? operator;
+
   /// Corresponds to the label values of Node resource.
   final List<String>? values;
 
@@ -29,12 +31,19 @@ class SchedulingNodeAffinityVmmigrationV1alpha1 {
     };
   }
 
-  factory SchedulingNodeAffinityVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory SchedulingNodeAffinityVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SchedulingNodeAffinityVmmigrationV1alpha1(
       key: map['key'] == null ? null : map['key'] as String,
-      operator: map['operator'] == null ? null : SchedulingNodeAffinityOperatorVmmigrationV1alpha1.fromValue(map['operator'] as String),
-      values: map['values'] == null ? null : (map['values'] as List).cast<String>(),
+      operator: map['operator'] == null
+          ? null
+          : SchedulingNodeAffinityOperatorVmmigrationV1alpha1.fromValue(
+              map['operator'] as String,
+            ),
+      values: map['values'] == null
+          ? null
+          : (map['values'] as List).cast<String>(),
     );
   }
 }
-

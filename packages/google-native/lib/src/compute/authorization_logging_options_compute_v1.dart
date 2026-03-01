@@ -9,9 +9,7 @@ class AuthorizationLoggingOptionsComputeV1 {
 
   /// Creates a new [AuthorizationLoggingOptionsComputeV1].
   /// [permissionType] This is deprecated and has no effect. Do not use.
-  AuthorizationLoggingOptionsComputeV1({
-    this.permissionType,
-  });
+  AuthorizationLoggingOptionsComputeV1({this.permissionType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class AuthorizationLoggingOptionsComputeV1 {
     };
   }
 
-  factory AuthorizationLoggingOptionsComputeV1.fromMap(Map<String, dynamic> map) {
+  factory AuthorizationLoggingOptionsComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthorizationLoggingOptionsComputeV1(
-      permissionType: map['permissionType'] == null ? null : AuthorizationLoggingOptionsPermissionTypeComputeV1.fromValue(map['permissionType'] as String),
+      permissionType: map['permissionType'] == null
+          ? null
+          : AuthorizationLoggingOptionsPermissionTypeComputeV1.fromValue(
+              map['permissionType'] as String,
+            ),
     );
   }
 }
-

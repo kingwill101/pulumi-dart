@@ -6,6 +6,7 @@ import 'spark_history_server_config_response.dart';
 class PeripheralsConfigResponse {
   /// Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
   final String metastoreService;
+
   /// Optional. The Spark History Server configuration for the workload.
   final SparkHistoryServerConfigResponse sparkHistoryServerConfig;
 
@@ -27,8 +28,9 @@ class PeripheralsConfigResponse {
   factory PeripheralsConfigResponse.fromMap(Map<String, dynamic> map) {
     return PeripheralsConfigResponse(
       metastoreService: map['metastoreService'] as String,
-      sparkHistoryServerConfig: SparkHistoryServerConfigResponse.fromMap((map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>()),
+      sparkHistoryServerConfig: SparkHistoryServerConfigResponse.fromMap(
+        (map['sparkHistoryServerConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -8,18 +8,25 @@ import 'google_type_time_of_day.dart';
 class GooglePrivacyDlpV2Value {
   /// boolean
   final bool? booleanValue;
+
   /// date
   final GoogleTypeDate? dateValue;
+
   /// day of week
   final GooglePrivacyDlpV2ValueDayOfWeekValue? dayOfWeekValue;
+
   /// float
   final double? floatValue;
+
   /// integer
   final String? integerValue;
+
   /// string
   final String? stringValue;
+
   /// time of day
   final GoogleTypeTimeOfDay? timeValue;
+
   /// timestamp
   final String? timestampValue;
 
@@ -58,15 +65,36 @@ class GooglePrivacyDlpV2Value {
 
   factory GooglePrivacyDlpV2Value.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Value(
-      booleanValue: map['booleanValue'] == null ? null : map['booleanValue'] as bool,
-      dateValue: map['dateValue'] == null ? null : GoogleTypeDate.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
-      dayOfWeekValue: map['dayOfWeekValue'] == null ? null : GooglePrivacyDlpV2ValueDayOfWeekValue.fromValue(map['dayOfWeekValue'] as String),
-      floatValue: map['floatValue'] == null ? null : map['floatValue'] as double,
-      integerValue: map['integerValue'] == null ? null : map['integerValue'] as String,
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
-      timeValue: map['timeValue'] == null ? null : GoogleTypeTimeOfDay.fromMap((map['timeValue'] as Map).cast<String, dynamic>()),
-      timestampValue: map['timestampValue'] == null ? null : map['timestampValue'] as String,
+      booleanValue: map['booleanValue'] == null
+          ? null
+          : map['booleanValue'] as bool,
+      dateValue: map['dateValue'] == null
+          ? null
+          : GoogleTypeDate.fromMap(
+              (map['dateValue'] as Map).cast<String, dynamic>(),
+            ),
+      dayOfWeekValue: map['dayOfWeekValue'] == null
+          ? null
+          : GooglePrivacyDlpV2ValueDayOfWeekValue.fromValue(
+              map['dayOfWeekValue'] as String,
+            ),
+      floatValue: map['floatValue'] == null
+          ? null
+          : map['floatValue'] as double,
+      integerValue: map['integerValue'] == null
+          ? null
+          : map['integerValue'] as String,
+      stringValue: map['stringValue'] == null
+          ? null
+          : map['stringValue'] as String,
+      timeValue: map['timeValue'] == null
+          ? null
+          : GoogleTypeTimeOfDay.fromMap(
+              (map['timeValue'] as Map).cast<String, dynamic>(),
+            ),
+      timestampValue: map['timestampValue'] == null
+          ? null
+          : map['timestampValue'] as String,
     );
   }
 }
-

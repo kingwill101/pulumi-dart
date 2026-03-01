@@ -18,13 +18,17 @@ enum EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType {
   const EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType(this.value);
   final String value;
 
-  static EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType fromValue(String value) {
-    for (final item in EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType.values) {
+  static EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType fromValue(
+    String value,
+  ) {
+    for (final item
+        in EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType value: $value',
+    );
   }
 }
-

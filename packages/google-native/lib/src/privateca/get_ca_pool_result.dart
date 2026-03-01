@@ -7,12 +7,16 @@ import 'publishing_options_response.dart';
 class GetCaPoolResult {
   /// Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
   final IssuancePolicyResponse issuancePolicy;
+
   /// Optional. Labels with user-defined metadata.
   final Map<String, String> labels;
+
   /// The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
   final String name;
+
   /// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
   final PublishingOptionsResponse publishingOptions;
+
   /// Immutable. The Tier of this CaPool.
   final String tier;
 
@@ -42,12 +46,15 @@ class GetCaPoolResult {
 
   factory GetCaPoolResult.fromMap(Map<String, dynamic> map) {
     return GetCaPoolResult(
-      issuancePolicy: IssuancePolicyResponse.fromMap((map['issuancePolicy'] as Map).cast<String, dynamic>()),
+      issuancePolicy: IssuancePolicyResponse.fromMap(
+        (map['issuancePolicy'] as Map).cast<String, dynamic>(),
+      ),
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
-      publishingOptions: PublishingOptionsResponse.fromMap((map['publishingOptions'] as Map).cast<String, dynamic>()),
+      publishingOptions: PublishingOptionsResponse.fromMap(
+        (map['publishingOptions'] as Map).cast<String, dynamic>(),
+      ),
       tier: map['tier'] as String,
     );
   }
 }
-

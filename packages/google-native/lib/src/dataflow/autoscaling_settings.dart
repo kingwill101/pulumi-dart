@@ -6,16 +6,14 @@ import 'autoscaling_settings_algorithm.dart';
 class AutoscalingSettings {
   /// The algorithm to use for autoscaling.
   final AutoscalingSettingsAlgorithm? algorithm;
+
   /// The maximum number of workers to cap scaling at.
   final int? maxNumWorkers;
 
   /// Creates a new [AutoscalingSettings].
   /// [algorithm] The algorithm to use for autoscaling.
   /// [maxNumWorkers] The maximum number of workers to cap scaling at.
-  AutoscalingSettings({
-    this.algorithm,
-    this.maxNumWorkers,
-  });
+  AutoscalingSettings({this.algorithm, this.maxNumWorkers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class AutoscalingSettings {
 
   factory AutoscalingSettings.fromMap(Map<String, dynamic> map) {
     return AutoscalingSettings(
-      algorithm: map['algorithm'] == null ? null : AutoscalingSettingsAlgorithm.fromValue(map['algorithm'] as String),
-      maxNumWorkers: map['maxNumWorkers'] == null ? null : map['maxNumWorkers'] as int,
+      algorithm: map['algorithm'] == null
+          ? null
+          : AutoscalingSettingsAlgorithm.fromValue(map['algorithm'] as String),
+      maxNumWorkers: map['maxNumWorkers'] == null
+          ? null
+          : map['maxNumWorkers'] as int,
     );
   }
 }
-

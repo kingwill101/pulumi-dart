@@ -114,12 +114,14 @@ class NotificationHub extends pulumi.CustomResource {
     NotificationHubArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:notifications/notificationHub:NotificationHub',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.notificationHubRegion = registerOutput<String>('notificationHubRegion');
+         'aws:notifications/notificationHub:NotificationHub',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.notificationHubRegion = registerOutput<String>(
+      'notificationHubRegion',
+    );
     this.timeouts = registerOutput<NotificationHubTimeouts?>('timeouts');
   }
 }

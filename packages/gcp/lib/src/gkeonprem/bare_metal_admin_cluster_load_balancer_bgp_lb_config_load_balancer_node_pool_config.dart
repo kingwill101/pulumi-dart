@@ -5,7 +5,8 @@ import 'bare_metal_admin_cluster_load_balancer_bgp_lb_config_load_balancer_node_
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
   /// A nested object resource.
   /// Structure is documented below.
-  final BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig? nodePoolConfig;
+  final BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig?
+  nodePoolConfig;
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig].
   /// [nodePoolConfig] A nested object resource.
@@ -15,14 +16,21 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodePoolConfig': ?nodePoolConfig == null ? null : nodePoolConfig!.toMap(),
+      'nodePoolConfig': ?nodePoolConfig == null
+          ? null
+          : nodePoolConfig!.toMap(),
     };
   }
 
-  factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig(
-      nodePoolConfig: map['nodePoolConfig'] == null ? null : BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig.fromMap((map['nodePoolConfig'] as Map).cast<String, dynamic>()),
+      nodePoolConfig: map['nodePoolConfig'] == null
+          ? null
+          : BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig.fromMap(
+              (map['nodePoolConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

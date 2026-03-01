@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentPromptVariantTemplateConfigurationTextInputVariable {
   /// The name of the variable.
   final String name;
@@ -12,15 +11,14 @@ class AgentPromptVariantTemplateConfigurationTextInputVariable {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory AgentPromptVariantTemplateConfigurationTextInputVariable.fromMap(Map<String, dynamic> map) {
+  factory AgentPromptVariantTemplateConfigurationTextInputVariable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentPromptVariantTemplateConfigurationTextInputVariable(
       name: map['name'] as String,
     );
   }
 }
-

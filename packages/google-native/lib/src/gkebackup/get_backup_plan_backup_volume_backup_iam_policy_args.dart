@@ -28,13 +28,14 @@ class GetBackupPlanBackupVolumeBackupIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String volumeBackupId,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      volumeBackupId = pulumi.Input.asInput<String>(volumeBackupId);
+  }) : backupId = pulumi.Input.asInput<String>(backupId),
+       backupPlanId = pulumi.Input.asInput<String>(backupPlanId),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       volumeBackupId = pulumi.Input.asInput<String>(volumeBackupId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,15 +48,19 @@ class GetBackupPlanBackupVolumeBackupIamPolicyArgs {
     };
   }
 
-  factory GetBackupPlanBackupVolumeBackupIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetBackupPlanBackupVolumeBackupIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetBackupPlanBackupVolumeBackupIamPolicyArgs(
       backupId: map['backupId'] as String,
       backupPlanId: map['backupPlanId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       volumeBackupId: map['volumeBackupId'] as String,
     );
   }
 }
-

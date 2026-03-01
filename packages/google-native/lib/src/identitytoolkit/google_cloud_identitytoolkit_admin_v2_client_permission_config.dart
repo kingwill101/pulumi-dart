@@ -9,9 +9,7 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig].
   /// [permissions] Configuration related to restricting a user's ability to affect their account.
-  GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig({
-    this.permissions,
-  });
+  GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig({this.permissions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig {
     };
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig(
-      permissions: map['permissions'] == null ? null : GoogleCloudIdentitytoolkitAdminV2ClientPermissions.fromMap((map['permissions'] as Map).cast<String, dynamic>()),
+      permissions: map['permissions'] == null
+          ? null
+          : GoogleCloudIdentitytoolkitAdminV2ClientPermissions.fromMap(
+              (map['permissions'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -145,10 +145,13 @@ import 'bucket_accelerate_configuration_args.dart';
 class BucketAccelerateConfiguration extends pulumi.CustomResource {
   /// Name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// Account ID of the expected bucket owner.
   late final pulumi.Output<String?> expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Transfer acceleration state of the bucket. Valid values: `Enabled`, `Suspended`.
   late final pulumi.Output<String> status;
 
@@ -161,11 +164,11 @@ class BucketAccelerateConfiguration extends pulumi.CustomResource {
     BucketAccelerateConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3/bucketAccelerateConfiguration:BucketAccelerateConfiguration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:s3/bucketAccelerateConfiguration:BucketAccelerateConfiguration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucket = registerOutput<String>('bucket');
     this.expectedBucketOwner = registerOutput<String?>('expectedBucketOwner');
     this.region = registerOutput<String>('region');

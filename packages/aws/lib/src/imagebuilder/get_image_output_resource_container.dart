@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetImageOutputResourceContainer {
   /// Set of URIs for created containers.
   final List<String> imageUris;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final String region;
 
@@ -16,10 +16,7 @@ class GetImageOutputResourceContainer {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'imageUris': imageUris,
-      'region': region,
-    };
+    return <String, dynamic>{'imageUris': imageUris, 'region': region};
   }
 
   factory GetImageOutputResourceContainer.fromMap(Map<String, dynamic> map) {
@@ -29,4 +26,3 @@ class GetImageOutputResourceContainer {
     );
   }
 }
-

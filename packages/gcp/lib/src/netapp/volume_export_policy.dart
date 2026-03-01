@@ -10,20 +10,26 @@ class VolumeExportPolicy {
 
   /// Creates a new [VolumeExportPolicy].
   /// [rules] Export rules (up to 5) control NFS volume access.
-  VolumeExportPolicy({
-    required this.rules,
-  });
+  VolumeExportPolicy({required this.rules});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'rules': pulumi.Input.encodeList<VolumeExportPolicyRule, Map<String, dynamic>>(rules, (value) => value.toMap()),
+      'rules':
+          pulumi.Input.encodeList<VolumeExportPolicyRule, Map<String, dynamic>>(
+            rules,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory VolumeExportPolicy.fromMap(Map<String, dynamic> map) {
     return VolumeExportPolicy(
-      rules: pulumi.Input.decodeList<VolumeExportPolicyRule>(map['rules'], (value) => VolumeExportPolicyRule.fromMap((value as Map).cast<String, dynamic>())),
+      rules: pulumi.Input.decodeList<VolumeExportPolicyRule>(
+        map['rules'],
+        (value) => VolumeExportPolicyRule.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -6,7 +6,11 @@ import 'stream_backfill_all_postgresql_excluded_objects_postgresql_schema_postgr
 class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable {
   /// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>? postgresqlColumns;
+  final List<
+    StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn
+  >?
+  postgresqlColumns;
+
   /// Table name.
   final String table;
 
@@ -20,16 +24,32 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable 
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'postgresqlColumns': ?postgresqlColumns == null ? null : pulumi.Input.encodeList<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn, Map<String, dynamic>>(postgresqlColumns!, (value) => value.toMap()),
+      'postgresqlColumns': ?postgresqlColumns == null
+          ? null
+          : pulumi.Input.encodeList<
+              StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn,
+              Map<String, dynamic>
+            >(postgresqlColumns!, (value) => value.toMap()),
       'table': table,
     };
   }
 
-  factory StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTable(
-      postgresqlColumns: map['postgresqlColumns'] == null ? null : pulumi.Input.decodeList<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn>(map['postgresqlColumns'], (value) => StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.fromMap((value as Map).cast<String, dynamic>())),
+      postgresqlColumns: map['postgresqlColumns'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn
+            >(
+              map['postgresqlColumns'],
+              (value) =>
+                  StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       table: map['table'] as String,
     );
   }
 }
-

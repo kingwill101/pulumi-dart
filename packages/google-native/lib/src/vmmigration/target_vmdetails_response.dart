@@ -9,44 +9,64 @@ import 'network_interface_response_vmmigration_v1alpha1.dart';
 class TargetVMDetailsResponse {
   /// The OS license returned from the adaptation module report.
   final AppliedLicenseResponseVmmigrationV1alpha1 appliedLicense;
+
   /// The VM Boot Option, as set in the source VM.
   final String bootOption;
+
   /// Compute instance scheduling information (if empty default is used).
   final ComputeSchedulingResponseVmmigrationV1alpha1 computeScheduling;
+
   /// The disk type to use in the VM.
   final String diskType;
+
   /// The external IP to define in the VM.
   final String externalIp;
+
   /// The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
   final String internalIp;
+
   /// A map of labels to associate with the VM.
   final Map<String, String> labels;
+
   /// The license type to use in OS adaptation.
   final String licenseType;
+
   /// The machine type to create the VM with.
   final String machineType;
+
   /// The machine type series to create the VM with.
   final String machineTypeSeries;
+
   /// The metadata key/value pairs to assign to the VM.
   final Map<String, String> metadata;
+
   /// The name of the VM to create.
   final String name;
+
   /// The network to connect the VM to.
   final String network;
+
   /// List of NICs connected to this VM.
   final List<NetworkInterfaceResponseVmmigrationV1alpha1> networkInterfaces;
+
   /// A list of network tags to associate with the VM.
   final List<String> networkTags;
+
   /// The project in which to create the VM.
   final String project;
+
   /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
   final bool secureBoot;
+
   /// The service account to associate the VM with.
   final String serviceAccount;
+
   /// The subnetwork to connect the VM to.
   final String subnetwork;
+
   /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
   final String targetProject;
+
   /// The zone in which to create the VM.
   final String zone;
 
@@ -111,7 +131,11 @@ class TargetVMDetailsResponse {
       'metadata': metadata,
       'name': name,
       'network': network,
-      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfaceResponseVmmigrationV1alpha1, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
+      'networkInterfaces':
+          pulumi.Input.encodeList<
+            NetworkInterfaceResponseVmmigrationV1alpha1,
+            Map<String, dynamic>
+          >(networkInterfaces, (value) => value.toMap()),
       'networkTags': networkTags,
       'project': project,
       'secureBoot': secureBoot,
@@ -124,9 +148,13 @@ class TargetVMDetailsResponse {
 
   factory TargetVMDetailsResponse.fromMap(Map<String, dynamic> map) {
     return TargetVMDetailsResponse(
-      appliedLicense: AppliedLicenseResponseVmmigrationV1alpha1.fromMap((map['appliedLicense'] as Map).cast<String, dynamic>()),
+      appliedLicense: AppliedLicenseResponseVmmigrationV1alpha1.fromMap(
+        (map['appliedLicense'] as Map).cast<String, dynamic>(),
+      ),
       bootOption: map['bootOption'] as String,
-      computeScheduling: ComputeSchedulingResponseVmmigrationV1alpha1.fromMap((map['computeScheduling'] as Map).cast<String, dynamic>()),
+      computeScheduling: ComputeSchedulingResponseVmmigrationV1alpha1.fromMap(
+        (map['computeScheduling'] as Map).cast<String, dynamic>(),
+      ),
       diskType: map['diskType'] as String,
       externalIp: map['externalIp'] as String,
       internalIp: map['internalIp'] as String,
@@ -137,7 +165,13 @@ class TargetVMDetailsResponse {
       metadata: (map['metadata'] as Map).cast<String, String>(),
       name: map['name'] as String,
       network: map['network'] as String,
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfaceResponseVmmigrationV1alpha1>(map['networkInterfaces'], (value) => NetworkInterfaceResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      networkInterfaces:
+          pulumi.Input.decodeList<NetworkInterfaceResponseVmmigrationV1alpha1>(
+            map['networkInterfaces'],
+            (value) => NetworkInterfaceResponseVmmigrationV1alpha1.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       networkTags: (map['networkTags'] as List).cast<String>(),
       project: map['project'] as String,
       secureBoot: map['secureBoot'] as bool,
@@ -148,4 +182,3 @@ class TargetVMDetailsResponse {
     );
   }
 }
-

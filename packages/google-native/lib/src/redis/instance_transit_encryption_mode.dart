@@ -16,4 +16,3 @@ enum InstanceTransitEncryptionMode {
     throw ArgumentError('Unknown InstanceTransitEncryptionMode value: $value');
   }
 }
-

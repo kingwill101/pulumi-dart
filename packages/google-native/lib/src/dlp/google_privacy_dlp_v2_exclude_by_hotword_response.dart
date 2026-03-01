@@ -7,6 +7,7 @@ import 'google_privacy_dlp_v2_regex_response.dart';
 class GooglePrivacyDlpV2ExcludeByHotwordResponse {
   /// Regular expression pattern defining what qualifies as a hotword.
   final GooglePrivacyDlpV2RegexResponse hotwordRegex;
+
   /// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
   final GooglePrivacyDlpV2ProximityResponse proximity;
 
@@ -25,11 +26,16 @@ class GooglePrivacyDlpV2ExcludeByHotwordResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2ExcludeByHotwordResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2ExcludeByHotwordResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2ExcludeByHotwordResponse(
-      hotwordRegex: GooglePrivacyDlpV2RegexResponse.fromMap((map['hotwordRegex'] as Map).cast<String, dynamic>()),
-      proximity: GooglePrivacyDlpV2ProximityResponse.fromMap((map['proximity'] as Map).cast<String, dynamic>()),
+      hotwordRegex: GooglePrivacyDlpV2RegexResponse.fromMap(
+        (map['hotwordRegex'] as Map).cast<String, dynamic>(),
+      ),
+      proximity: GooglePrivacyDlpV2ProximityResponse.fromMap(
+        (map['proximity'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

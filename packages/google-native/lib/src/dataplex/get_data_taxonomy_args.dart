@@ -19,10 +19,9 @@ class GetDataTaxonomyArgs {
     required String dataTaxonomyId,
     required String location,
     String? project,
-  }) :
-      dataTaxonomyId = pulumi.Input.asInput<String>(dataTaxonomyId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : dataTaxonomyId = pulumi.Input.asInput<String>(dataTaxonomyId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetDataTaxonomyArgs {
     );
   }
 }
-

@@ -5,24 +5,37 @@ import 'bucket_v2_object_lock_configuration_rule_default_retention.dart';
 
 class BucketV2ObjectLockConfigurationRule {
   /// Default retention period that you want to apply to new objects placed in this bucket (documented below).
-  final List<BucketV2ObjectLockConfigurationRuleDefaultRetention> defaultRetentions;
+  final List<BucketV2ObjectLockConfigurationRuleDefaultRetention>
+  defaultRetentions;
 
   /// Creates a new [BucketV2ObjectLockConfigurationRule].
   /// [defaultRetentions] Default retention period that you want to apply to new objects placed in this bucket (documented below).
-  BucketV2ObjectLockConfigurationRule({
-    required this.defaultRetentions,
-  });
+  BucketV2ObjectLockConfigurationRule({required this.defaultRetentions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultRetentions': pulumi.Input.encodeList<BucketV2ObjectLockConfigurationRuleDefaultRetention, Map<String, dynamic>>(defaultRetentions, (value) => value.toMap()),
+      'defaultRetentions':
+          pulumi.Input.encodeList<
+            BucketV2ObjectLockConfigurationRuleDefaultRetention,
+            Map<String, dynamic>
+          >(defaultRetentions, (value) => value.toMap()),
     };
   }
 
-  factory BucketV2ObjectLockConfigurationRule.fromMap(Map<String, dynamic> map) {
+  factory BucketV2ObjectLockConfigurationRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketV2ObjectLockConfigurationRule(
-      defaultRetentions: pulumi.Input.decodeList<BucketV2ObjectLockConfigurationRuleDefaultRetention>(map['defaultRetentions'], (value) => BucketV2ObjectLockConfigurationRuleDefaultRetention.fromMap((value as Map).cast<String, dynamic>())),
+      defaultRetentions:
+          pulumi.Input.decodeList<
+            BucketV2ObjectLockConfigurationRuleDefaultRetention
+          >(
+            map['defaultRetentions'],
+            (value) =>
+                BucketV2ObjectLockConfigurationRuleDefaultRetention.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

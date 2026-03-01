@@ -8,29 +8,41 @@ import 'version_source_response.dart';
 class Hl7TypesConfigResponse {
   /// The HL7v2 type definitions.
   final List<TypeResponse> type;
+
   /// The version selectors that this config applies to. A message must match ALL version sources to apply.
   final List<VersionSourceResponse> version;
 
   /// Creates a new [Hl7TypesConfigResponse].
   /// [type] The HL7v2 type definitions.
   /// [version] The version selectors that this config applies to. A message must match ALL version sources to apply.
-  Hl7TypesConfigResponse({
-    required this.type,
-    required this.version,
-  });
+  Hl7TypesConfigResponse({required this.type, required this.version});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'type': pulumi.Input.encodeList<TypeResponse, Map<String, dynamic>>(type, (value) => value.toMap()),
-      'version': pulumi.Input.encodeList<VersionSourceResponse, Map<String, dynamic>>(version, (value) => value.toMap()),
+      'type': pulumi.Input.encodeList<TypeResponse, Map<String, dynamic>>(
+        type,
+        (value) => value.toMap(),
+      ),
+      'version':
+          pulumi.Input.encodeList<VersionSourceResponse, Map<String, dynamic>>(
+            version,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory Hl7TypesConfigResponse.fromMap(Map<String, dynamic> map) {
     return Hl7TypesConfigResponse(
-      type: pulumi.Input.decodeList<TypeResponse>(map['type'], (value) => TypeResponse.fromMap((value as Map).cast<String, dynamic>())),
-      version: pulumi.Input.decodeList<VersionSourceResponse>(map['version'], (value) => VersionSourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      type: pulumi.Input.decodeList<TypeResponse>(
+        map['type'],
+        (value) => TypeResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
+      version: pulumi.Input.decodeList<VersionSourceResponse>(
+        map['version'],
+        (value) => VersionSourceResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

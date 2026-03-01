@@ -11,11 +11,14 @@ import 'model_card_export_job_timeouts.dart';
 class ModelCardExportJobArgs {
   /// Name of the model card export job.
   final pulumi.Input<String> modelCardExportJobName;
+
   /// Name of the model card.
   final pulumi.Input<String> modelCardName;
   final pulumi.Input<int>? modelCardVersion;
+
   /// Export output details. Fields are documented below.
   final pulumi.Input<ModelCardExportJobOutputConfig> outputConfig;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration
   final pulumi.Input<String>? region;
   final pulumi.Input<ModelCardExportJobTimeouts>? timeouts;
@@ -34,22 +37,35 @@ class ModelCardExportJobArgs {
     required ModelCardExportJobOutputConfig outputConfig,
     String? region,
     ModelCardExportJobTimeouts? timeouts,
-  }) :
-      modelCardExportJobName = pulumi.Input.asInput<String>(modelCardExportJobName),
-      modelCardName = pulumi.Input.asInput<String>(modelCardName),
-      modelCardVersion = pulumi.Input.asOptionalInput<int>(modelCardVersion),
-      outputConfig = pulumi.Input.asInput<ModelCardExportJobOutputConfig>(outputConfig),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<ModelCardExportJobTimeouts>(timeouts);
+  }) : modelCardExportJobName = pulumi.Input.asInput<String>(
+         modelCardExportJobName,
+       ),
+       modelCardName = pulumi.Input.asInput<String>(modelCardName),
+       modelCardVersion = pulumi.Input.asOptionalInput<int>(modelCardVersion),
+       outputConfig = pulumi.Input.asInput<ModelCardExportJobOutputConfig>(
+         outputConfig,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       timeouts = pulumi.Input.asOptionalInput<ModelCardExportJobTimeouts>(
+         timeouts,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'modelCardExportJobName': modelCardExportJobName,
       'modelCardName': modelCardName,
       'modelCardVersion': ?modelCardVersion,
-      'outputConfig': pulumi.Input.mapInputValue<ModelCardExportJobOutputConfig, Map<String, dynamic>>(outputConfig, (value) => value.toMap()),
+      'outputConfig':
+          pulumi.Input.mapInputValue<
+            ModelCardExportJobOutputConfig,
+            Map<String, dynamic>
+          >(outputConfig, (value) => value.toMap()),
       'region': ?region,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<ModelCardExportJobTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            ModelCardExportJobTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
@@ -57,11 +73,18 @@ class ModelCardExportJobArgs {
     return ModelCardExportJobArgs(
       modelCardExportJobName: map['modelCardExportJobName'] as String,
       modelCardName: map['modelCardName'] as String,
-      modelCardVersion: map['modelCardVersion'] == null ? null : map['modelCardVersion'] as int,
-      outputConfig: ModelCardExportJobOutputConfig.fromMap((map['outputConfig'] as Map).cast<String, dynamic>()),
+      modelCardVersion: map['modelCardVersion'] == null
+          ? null
+          : map['modelCardVersion'] as int,
+      outputConfig: ModelCardExportJobOutputConfig.fromMap(
+        (map['outputConfig'] as Map).cast<String, dynamic>(),
+      ),
       region: map['region'] == null ? null : map['region'] as String,
-      timeouts: map['timeouts'] == null ? null : ModelCardExportJobTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null
+          ? null
+          : ModelCardExportJobTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

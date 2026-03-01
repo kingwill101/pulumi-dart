@@ -10,9 +10,11 @@ class ViewArgs {
   /// The human-readable display name of the view.
   final pulumi.Input<String>? displayName;
   final pulumi.Input<String>? location;
+
   /// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// String with specific view properties, must be non-empty.
   final pulumi.Input<String>? value;
 
@@ -28,12 +30,11 @@ class ViewArgs {
     String? name,
     String? project,
     String? value,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      value = pulumi.Input.asOptionalInput<String>(value);
+  }) : displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       value = pulumi.Input.asOptionalInput<String>(value);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,7 +48,9 @@ class ViewArgs {
 
   factory ViewArgs.fromMap(Map<String, dynamic> map) {
     return ViewArgs(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -55,4 +58,3 @@ class ViewArgs {
     );
   }
 }
-

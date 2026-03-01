@@ -9,14 +9,18 @@ class ConnectionEventingConfig {
   /// List containing additional auth configs.
   /// Structure is documented below.
   final List<ConnectionEventingConfigAdditionalVariable>? additionalVariables;
+
   /// authConfig for Eventing Configuration.
   /// Structure is documented below.
   final ConnectionEventingConfigAuthConfig? authConfig;
+
   /// Enrichment Enabled.
   final bool? enrichmentEnabled;
+
   /// registrationDestinationConfig
   /// Structure is documented below.
-  final ConnectionEventingConfigRegistrationDestinationConfig registrationDestinationConfig;
+  final ConnectionEventingConfigRegistrationDestinationConfig
+  registrationDestinationConfig;
 
   /// Creates a new [ConnectionEventingConfig].
   /// [additionalVariables] List containing additional auth configs.
@@ -32,7 +36,12 @@ class ConnectionEventingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalVariables': ?additionalVariables == null ? null : pulumi.Input.encodeList<ConnectionEventingConfigAdditionalVariable, Map<String, dynamic>>(additionalVariables!, (value) => value.toMap()),
+      'additionalVariables': ?additionalVariables == null
+          ? null
+          : pulumi.Input.encodeList<
+              ConnectionEventingConfigAdditionalVariable,
+              Map<String, dynamic>
+            >(additionalVariables!, (value) => value.toMap()),
       'authConfig': ?authConfig == null ? null : authConfig!.toMap(),
       'enrichmentEnabled': ?enrichmentEnabled,
       'registrationDestinationConfig': registrationDestinationConfig.toMap(),
@@ -41,11 +50,27 @@ class ConnectionEventingConfig {
 
   factory ConnectionEventingConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionEventingConfig(
-      additionalVariables: map['additionalVariables'] == null ? null : pulumi.Input.decodeList<ConnectionEventingConfigAdditionalVariable>(map['additionalVariables'], (value) => ConnectionEventingConfigAdditionalVariable.fromMap((value as Map).cast<String, dynamic>())),
-      authConfig: map['authConfig'] == null ? null : ConnectionEventingConfigAuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>()),
-      enrichmentEnabled: map['enrichmentEnabled'] == null ? null : map['enrichmentEnabled'] as bool,
-      registrationDestinationConfig: ConnectionEventingConfigRegistrationDestinationConfig.fromMap((map['registrationDestinationConfig'] as Map).cast<String, dynamic>()),
+      additionalVariables: map['additionalVariables'] == null
+          ? null
+          : pulumi.Input.decodeList<ConnectionEventingConfigAdditionalVariable>(
+              map['additionalVariables'],
+              (value) => ConnectionEventingConfigAdditionalVariable.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      authConfig: map['authConfig'] == null
+          ? null
+          : ConnectionEventingConfigAuthConfig.fromMap(
+              (map['authConfig'] as Map).cast<String, dynamic>(),
+            ),
+      enrichmentEnabled: map['enrichmentEnabled'] == null
+          ? null
+          : map['enrichmentEnabled'] as bool,
+      registrationDestinationConfig:
+          ConnectionEventingConfigRegistrationDestinationConfig.fromMap(
+            (map['registrationDestinationConfig'] as Map)
+                .cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UserSettingsToolbarConfiguration {
   /// List of toolbar items to be hidden.
   final List<String>? hiddenToolbarItems;
+
   /// Maximum display resolution that is allowed for the session.
   final String? maxDisplayResolution;
+
   /// Type of toolbar displayed during the session.
   final String? toolbarType;
+
   /// Visual mode of the toolbar.
   final String? visualMode;
 
@@ -34,11 +36,18 @@ class UserSettingsToolbarConfiguration {
 
   factory UserSettingsToolbarConfiguration.fromMap(Map<String, dynamic> map) {
     return UserSettingsToolbarConfiguration(
-      hiddenToolbarItems: map['hiddenToolbarItems'] == null ? null : (map['hiddenToolbarItems'] as List).cast<String>(),
-      maxDisplayResolution: map['maxDisplayResolution'] == null ? null : map['maxDisplayResolution'] as String,
-      toolbarType: map['toolbarType'] == null ? null : map['toolbarType'] as String,
-      visualMode: map['visualMode'] == null ? null : map['visualMode'] as String,
+      hiddenToolbarItems: map['hiddenToolbarItems'] == null
+          ? null
+          : (map['hiddenToolbarItems'] as List).cast<String>(),
+      maxDisplayResolution: map['maxDisplayResolution'] == null
+          ? null
+          : map['maxDisplayResolution'] as String,
+      toolbarType: map['toolbarType'] == null
+          ? null
+          : map['toolbarType'] as String,
+      visualMode: map['visualMode'] == null
+          ? null
+          : map['visualMode'] as String,
     );
   }
 }
-

@@ -8,9 +8,7 @@ class BucketObjectv2OverrideProvider {
 
   /// Creates a new [BucketObjectv2OverrideProvider].
   /// [defaultTags] Override the provider `default_tags` configuration block.
-  BucketObjectv2OverrideProvider({
-    this.defaultTags,
-  });
+  BucketObjectv2OverrideProvider({this.defaultTags});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,8 +18,11 @@ class BucketObjectv2OverrideProvider {
 
   factory BucketObjectv2OverrideProvider.fromMap(Map<String, dynamic> map) {
     return BucketObjectv2OverrideProvider(
-      defaultTags: map['defaultTags'] == null ? null : BucketObjectv2OverrideProviderDefaultTags.fromMap((map['defaultTags'] as Map).cast<String, dynamic>()),
+      defaultTags: map['defaultTags'] == null
+          ? null
+          : BucketObjectv2OverrideProviderDefaultTags.fromMap(
+              (map['defaultTags'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

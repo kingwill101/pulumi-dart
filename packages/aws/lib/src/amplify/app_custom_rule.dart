@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AppCustomRule {
   /// Condition for a URL rewrite or redirect rule, such as a country code.
   final String? condition;
+
   /// Source pattern for a URL rewrite or redirect rule.
   final String source;
+
   /// Status code for a URL rewrite or redirect rule. Valid values: `200`, `301`, `302`, `404`, `404-200`.
   final String? status;
+
   /// Target pattern for a URL rewrite or redirect rule.
   final String target;
 
@@ -41,4 +43,3 @@ class AppCustomRule {
     );
   }
 }
-

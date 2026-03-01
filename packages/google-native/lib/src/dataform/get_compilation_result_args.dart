@@ -22,11 +22,10 @@ class GetCompilationResultArgs {
     required String location,
     String? project,
     required String repositoryId,
-  }) :
-      compilationResultId = pulumi.Input.asInput<String>(compilationResultId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId);
+  }) : compilationResultId = pulumi.Input.asInput<String>(compilationResultId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       repositoryId = pulumi.Input.asInput<String>(repositoryId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetCompilationResultArgs {
     );
   }
 }
-

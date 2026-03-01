@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader {
   final List<String> items;
 
@@ -11,15 +10,14 @@ class GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'items': items,
-    };
+    return <String, dynamic>{'items': items};
   }
 
-  factory GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader.fromMap(Map<String, dynamic> map) {
+  factory GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResponseHeadersPolicyCorsConfigAccessControlExposeHeader(
       items: (map['items'] as List).cast<String>(),
     );
   }
 }
-

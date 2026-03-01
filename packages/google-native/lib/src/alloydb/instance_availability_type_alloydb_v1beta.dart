@@ -13,7 +13,8 @@ enum InstanceAvailabilityTypeAlloydbV1beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceAvailabilityTypeAlloydbV1beta value: $value');
+    throw ArgumentError(
+      'Unknown InstanceAvailabilityTypeAlloydbV1beta value: $value',
+    );
   }
 }
-

@@ -13,18 +13,12 @@ class GetRepoArgs {
   /// Creates a new [GetRepoArgs].
   /// [project] Optional.
   /// [repoId] Required.
-  GetRepoArgs({
-    String? project,
-    required String repoId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetRepoArgs({String? project, required String repoId})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       repoId = pulumi.Input.asInput<String>(repoId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'repoId': repoId,
-    };
+    return <String, dynamic>{'project': ?project, 'repoId': repoId};
   }
 
   factory GetRepoArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetRepoArgs {
     );
   }
 }
-

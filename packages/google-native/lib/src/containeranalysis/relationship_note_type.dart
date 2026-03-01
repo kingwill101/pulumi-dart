@@ -57,4 +57,3 @@ enum RelationshipNoteType {
     throw ArgumentError('Unknown RelationshipNoteType value: $value');
   }
 }
-

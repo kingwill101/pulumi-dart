@@ -19,17 +19,12 @@ class GetFeedArgs {
     required String feedId,
     required String v1Id,
     required String v1Id1,
-  }) :
-      feedId = pulumi.Input.asInput<String>(feedId),
-      v1Id = pulumi.Input.asInput<String>(v1Id),
-      v1Id1 = pulumi.Input.asInput<String>(v1Id1);
+  }) : feedId = pulumi.Input.asInput<String>(feedId),
+       v1Id = pulumi.Input.asInput<String>(v1Id),
+       v1Id1 = pulumi.Input.asInput<String>(v1Id1);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'feedId': feedId,
-      'v1Id': v1Id,
-      'v1Id1': v1Id1,
-    };
+    return <String, dynamic>{'feedId': feedId, 'v1Id': v1Id, 'v1Id1': v1Id1};
   }
 
   factory GetFeedArgs.fromMap(Map<String, dynamic> map) {
@@ -40,4 +35,3 @@ class GetFeedArgs {
     );
   }
 }
-

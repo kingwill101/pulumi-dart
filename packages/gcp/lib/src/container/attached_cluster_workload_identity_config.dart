@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AttachedClusterWorkloadIdentityConfig {
   /// The ID of the OIDC Identity Provider (IdP) associated to
   /// the Workload Identity Pool.
   final String? identityProvider;
+
   /// The OIDC issuer URL for this cluster.
   final String? issuerUri;
+
   /// The Workload Identity Pool associated to the cluster.
   final String? workloadPool;
 
@@ -28,12 +29,17 @@ class AttachedClusterWorkloadIdentityConfig {
     };
   }
 
-  factory AttachedClusterWorkloadIdentityConfig.fromMap(Map<String, dynamic> map) {
+  factory AttachedClusterWorkloadIdentityConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AttachedClusterWorkloadIdentityConfig(
-      identityProvider: map['identityProvider'] == null ? null : map['identityProvider'] as String,
+      identityProvider: map['identityProvider'] == null
+          ? null
+          : map['identityProvider'] as String,
       issuerUri: map['issuerUri'] == null ? null : map['issuerUri'] as String,
-      workloadPool: map['workloadPool'] == null ? null : map['workloadPool'] as String,
+      workloadPool: map['workloadPool'] == null
+          ? null
+          : map['workloadPool'] as String,
     );
   }
 }
-

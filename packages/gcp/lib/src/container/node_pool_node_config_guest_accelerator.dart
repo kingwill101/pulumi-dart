@@ -6,12 +6,17 @@ import 'node_pool_node_config_guest_accelerator_gpu_sharing_config.dart';
 class NodePoolNodeConfigGuestAccelerator {
   /// The number of the accelerator cards exposed to an instance.
   final int count;
+
   /// Configuration for auto installation of GPU driver.
-  final NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig? gpuDriverInstallationConfig;
+  final NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig?
+  gpuDriverInstallationConfig;
+
   /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
   final String? gpuPartitionSize;
+
   /// Configuration for GPU sharing.
   final NodePoolNodeConfigGuestAcceleratorGpuSharingConfig? gpuSharingConfig;
+
   /// The accelerator type resource name.
   final String type;
 
@@ -32,9 +37,13 @@ class NodePoolNodeConfigGuestAccelerator {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'count': count,
-      'gpuDriverInstallationConfig': ?gpuDriverInstallationConfig == null ? null : gpuDriverInstallationConfig!.toMap(),
+      'gpuDriverInstallationConfig': ?gpuDriverInstallationConfig == null
+          ? null
+          : gpuDriverInstallationConfig!.toMap(),
       'gpuPartitionSize': ?gpuPartitionSize,
-      'gpuSharingConfig': ?gpuSharingConfig == null ? null : gpuSharingConfig!.toMap(),
+      'gpuSharingConfig': ?gpuSharingConfig == null
+          ? null
+          : gpuSharingConfig!.toMap(),
       'type': type,
     };
   }
@@ -42,11 +51,21 @@ class NodePoolNodeConfigGuestAccelerator {
   factory NodePoolNodeConfigGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigGuestAccelerator(
       count: map['count'] as int,
-      gpuDriverInstallationConfig: map['gpuDriverInstallationConfig'] == null ? null : NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap((map['gpuDriverInstallationConfig'] as Map).cast<String, dynamic>()),
-      gpuPartitionSize: map['gpuPartitionSize'] == null ? null : map['gpuPartitionSize'] as String,
-      gpuSharingConfig: map['gpuSharingConfig'] == null ? null : NodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap((map['gpuSharingConfig'] as Map).cast<String, dynamic>()),
+      gpuDriverInstallationConfig: map['gpuDriverInstallationConfig'] == null
+          ? null
+          : NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig.fromMap(
+              (map['gpuDriverInstallationConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      gpuPartitionSize: map['gpuPartitionSize'] == null
+          ? null
+          : map['gpuPartitionSize'] as String,
+      gpuSharingConfig: map['gpuSharingConfig'] == null
+          ? null
+          : NodePoolNodeConfigGuestAcceleratorGpuSharingConfig.fromMap(
+              (map['gpuSharingConfig'] as Map).cast<String, dynamic>(),
+            ),
       type: map['type'] as String,
     );
   }
 }
-

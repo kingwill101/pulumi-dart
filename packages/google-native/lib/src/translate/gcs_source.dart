@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The Google Cloud Storage location for the input content.
 class GcsSource {
   /// Source data URI. For example, `gs://my_bucket/my_object`.
@@ -8,20 +7,13 @@ class GcsSource {
 
   /// Creates a new [GcsSource].
   /// [inputUri] Source data URI. For example, `gs://my_bucket/my_object`.
-  GcsSource({
-    required this.inputUri,
-  });
+  GcsSource({required this.inputUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'inputUri': inputUri,
-    };
+    return <String, dynamic>{'inputUri': inputUri};
   }
 
   factory GcsSource.fromMap(Map<String, dynamic> map) {
-    return GcsSource(
-      inputUri: map['inputUri'] as String,
-    );
+    return GcsSource(inputUri: map['inputUri'] as String);
   }
 }
-

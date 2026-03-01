@@ -15,4 +15,3 @@ enum PacketMirroringEnableComputeV1 {
     throw ArgumentError('Unknown PacketMirroringEnableComputeV1 value: $value');
   }
 }
-

@@ -12,6 +12,7 @@ class StudyAiplatformV1beta1Args {
   final pulumi.Input<String> displayName;
   final pulumi.Input<String>? location;
   final pulumi.Input<String>? project;
+
   /// Configuration of the Study.
   final pulumi.Input<GoogleCloudAiplatformV1beta1StudySpec> studySpec;
 
@@ -25,18 +26,23 @@ class StudyAiplatformV1beta1Args {
     String? location,
     String? project,
     required GoogleCloudAiplatformV1beta1StudySpec studySpec,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      studySpec = pulumi.Input.asInput<GoogleCloudAiplatformV1beta1StudySpec>(studySpec);
+  }) : displayName = pulumi.Input.asInput<String>(displayName),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       studySpec = pulumi.Input.asInput<GoogleCloudAiplatformV1beta1StudySpec>(
+         studySpec,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': displayName,
       'location': ?location,
       'project': ?project,
-      'studySpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1beta1StudySpec, Map<String, dynamic>>(studySpec, (value) => value.toMap()),
+      'studySpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1beta1StudySpec,
+            Map<String, dynamic>
+          >(studySpec, (value) => value.toMap()),
     };
   }
 
@@ -45,8 +51,9 @@ class StudyAiplatformV1beta1Args {
       displayName: map['displayName'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      studySpec: GoogleCloudAiplatformV1beta1StudySpec.fromMap((map['studySpec'] as Map).cast<String, dynamic>()),
+      studySpec: GoogleCloudAiplatformV1beta1StudySpec.fromMap(
+        (map['studySpec'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

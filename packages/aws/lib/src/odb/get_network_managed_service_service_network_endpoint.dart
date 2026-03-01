@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetNetworkManagedServiceServiceNetworkEndpoint {
   final String vpcEndpointId;
   final String vpcEndpointType;
@@ -20,11 +19,12 @@ class GetNetworkManagedServiceServiceNetworkEndpoint {
     };
   }
 
-  factory GetNetworkManagedServiceServiceNetworkEndpoint.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkManagedServiceServiceNetworkEndpoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkManagedServiceServiceNetworkEndpoint(
       vpcEndpointId: map['vpcEndpointId'] as String,
       vpcEndpointType: map['vpcEndpointType'] as String,
     );
   }
 }
-

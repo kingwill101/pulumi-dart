@@ -8,8 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apigee_v1_envgroup_attachment_args_doc}
 class EnvgroupAttachmentArgs {
   final pulumi.Input<String> envgroupId;
+
   /// ID of the attached environment.
   final pulumi.Input<String> environment;
+
   /// ID of the environment group attachment.
   final pulumi.Input<String>? name;
   final pulumi.Input<String> organizationId;
@@ -24,11 +26,10 @@ class EnvgroupAttachmentArgs {
     required String environment,
     String? name,
     required String organizationId,
-  }) :
-      envgroupId = pulumi.Input.asInput<String>(envgroupId),
-      environment = pulumi.Input.asInput<String>(environment),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : envgroupId = pulumi.Input.asInput<String>(envgroupId),
+       environment = pulumi.Input.asInput<String>(environment),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,4 +49,3 @@ class EnvgroupAttachmentArgs {
     );
   }
 }
-

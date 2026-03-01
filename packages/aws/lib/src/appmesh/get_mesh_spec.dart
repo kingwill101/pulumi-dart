@@ -11,23 +11,37 @@ class GetMeshSpec {
   /// Creates a new [GetMeshSpec].
   /// [egressFilters] Required.
   /// [serviceDiscoveries] Required.
-  GetMeshSpec({
-    required this.egressFilters,
-    required this.serviceDiscoveries,
-  });
+  GetMeshSpec({required this.egressFilters, required this.serviceDiscoveries});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'egressFilters': pulumi.Input.encodeList<GetMeshSpecEgressFilter, Map<String, dynamic>>(egressFilters, (value) => value.toMap()),
-      'serviceDiscoveries': pulumi.Input.encodeList<GetMeshSpecServiceDiscovery, Map<String, dynamic>>(serviceDiscoveries, (value) => value.toMap()),
+      'egressFilters':
+          pulumi.Input.encodeList<
+            GetMeshSpecEgressFilter,
+            Map<String, dynamic>
+          >(egressFilters, (value) => value.toMap()),
+      'serviceDiscoveries':
+          pulumi.Input.encodeList<
+            GetMeshSpecServiceDiscovery,
+            Map<String, dynamic>
+          >(serviceDiscoveries, (value) => value.toMap()),
     };
   }
 
   factory GetMeshSpec.fromMap(Map<String, dynamic> map) {
     return GetMeshSpec(
-      egressFilters: pulumi.Input.decodeList<GetMeshSpecEgressFilter>(map['egressFilters'], (value) => GetMeshSpecEgressFilter.fromMap((value as Map).cast<String, dynamic>())),
-      serviceDiscoveries: pulumi.Input.decodeList<GetMeshSpecServiceDiscovery>(map['serviceDiscoveries'], (value) => GetMeshSpecServiceDiscovery.fromMap((value as Map).cast<String, dynamic>())),
+      egressFilters: pulumi.Input.decodeList<GetMeshSpecEgressFilter>(
+        map['egressFilters'],
+        (value) => GetMeshSpecEgressFilter.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      serviceDiscoveries: pulumi.Input.decodeList<GetMeshSpecServiceDiscovery>(
+        map['serviceDiscoveries'],
+        (value) => GetMeshSpecServiceDiscovery.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

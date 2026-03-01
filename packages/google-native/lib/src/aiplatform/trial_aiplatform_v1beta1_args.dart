@@ -19,10 +19,9 @@ class TrialAiplatformV1beta1Args {
     String? location,
     String? project,
     required String studyId,
-  }) :
-      location = pulumi.Input.asOptionalInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      studyId = pulumi.Input.asInput<String>(studyId);
+  }) : location = pulumi.Input.asOptionalInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       studyId = pulumi.Input.asInput<String>(studyId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class TrialAiplatformV1beta1Args {
     );
   }
 }
-

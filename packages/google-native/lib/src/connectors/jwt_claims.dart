@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// JWT claims used for the jwt-bearer authorization grant.
 class JwtClaims {
   /// Value for the "aud" claim.
   final String? audience;
+
   /// Value for the "iss" claim.
   final String? issuer;
+
   /// Value for the "sub" claim.
   final String? subject;
 
@@ -14,11 +15,7 @@ class JwtClaims {
   /// [audience] Value for the "aud" claim.
   /// [issuer] Value for the "iss" claim.
   /// [subject] Value for the "sub" claim.
-  JwtClaims({
-    this.audience,
-    this.issuer,
-    this.subject,
-  });
+  JwtClaims({this.audience, this.issuer, this.subject});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,4 +33,3 @@ class JwtClaims {
     );
   }
 }
-

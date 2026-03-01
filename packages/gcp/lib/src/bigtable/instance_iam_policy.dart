@@ -777,6 +777,7 @@ import 'instance_iam_policy_args.dart';
 class InstanceIamPolicy extends pulumi.CustomResource {
   /// (Computed) The etag of the instances's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The name or relative resource id of the instance to manage IAM policies for.
   ///
   /// For `gcp.bigtable.InstanceIamMember` or `gcp.bigtable.InstanceIamBinding`:
@@ -793,11 +794,11 @@ class InstanceIamPolicy extends pulumi.CustomResource {
     InstanceIamPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:bigtable/instanceIamPolicy:InstanceIamPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:bigtable/instanceIamPolicy:InstanceIamPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.etag = registerOutput<String>('etag');
     this.instance = registerOutput<String>('instance');
     this.policyData = registerOutput<String>('policyData');

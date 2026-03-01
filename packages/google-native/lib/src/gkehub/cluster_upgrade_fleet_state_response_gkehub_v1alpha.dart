@@ -6,8 +6,10 @@ import 'cluster_upgrade_gkeupgrade_feature_state_response_gkehub_v1alpha.dart';
 class ClusterUpgradeFleetStateResponseGkehubV1alpha {
   /// This fleets whose upstream_fleets contain the current fleet. The fleet name should be either fleet project number or id.
   final List<String> downstreamFleets;
+
   /// Feature state for GKE clusters.
   final ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1alpha gkeState;
+
   /// A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. The membership resource is in the format: `projects/{p}/locations/{l}/membership/{m}`.
   final Map<String, String> ignored;
 
@@ -29,12 +31,16 @@ class ClusterUpgradeFleetStateResponseGkehubV1alpha {
     };
   }
 
-  factory ClusterUpgradeFleetStateResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ClusterUpgradeFleetStateResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterUpgradeFleetStateResponseGkehubV1alpha(
       downstreamFleets: (map['downstreamFleets'] as List).cast<String>(),
-      gkeState: ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1alpha.fromMap((map['gkeState'] as Map).cast<String, dynamic>()),
+      gkeState:
+          ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1alpha.fromMap(
+            (map['gkeState'] as Map).cast<String, dynamic>(),
+          ),
       ignored: (map['ignored'] as Map).cast<String, String>(),
     );
   }
 }
-

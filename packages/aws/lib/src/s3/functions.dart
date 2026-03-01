@@ -1244,7 +1244,8 @@ Future<GetBucketPolicyResult> getBucketPolicy(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_s3_get_bucket_replication_configuration_get_bucket_replication_configuration_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetBucketReplicationConfigurationResult> getBucketReplicationConfiguration(
+Future<GetBucketReplicationConfigurationResult>
+getBucketReplicationConfiguration(
   GetBucketReplicationConfigurationArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -1350,8 +1351,7 @@ Future<GetBucketReplicationConfigurationResult> getBucketReplicationConfiguratio
 ///   canonicalUserId: ${current.id}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetCanonicalUserIdResult> getCanonicalUserId(
-  {
+Future<GetCanonicalUserIdResult> getCanonicalUserId({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

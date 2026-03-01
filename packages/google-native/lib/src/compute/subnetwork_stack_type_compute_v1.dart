@@ -15,4 +15,3 @@ enum SubnetworkStackTypeComputeV1 {
     throw ArgumentError('Unknown SubnetworkStackTypeComputeV1 value: $value');
   }
 }
-

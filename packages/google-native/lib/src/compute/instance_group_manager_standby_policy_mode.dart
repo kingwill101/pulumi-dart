@@ -12,7 +12,8 @@ enum InstanceGroupManagerStandbyPolicyMode {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerStandbyPolicyMode value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerStandbyPolicyMode value: $value',
+    );
   }
 }
-

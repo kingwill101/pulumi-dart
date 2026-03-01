@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
   /// Optional. Enables display for the Compute Engine VM.
   final bool? enableDisplay;
@@ -12,15 +11,16 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableDisplay': ?enableDisplay,
-    };
+    return <String, dynamic>{'enableDisplay': ?enableDisplay};
   }
 
-  factory RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice.fromMap(Map<String, dynamic> map) {
+  factory RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice(
-      enableDisplay: map['enableDisplay'] == null ? null : map['enableDisplay'] as bool,
+      enableDisplay: map['enableDisplay'] == null
+          ? null
+          : map['enableDisplay'] as bool,
     );
   }
 }
-

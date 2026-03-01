@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents the config of disk options.
 class GoogleCloudMlV1DiskConfigResponse {
   /// Size in GB of the boot disk (default is 100GB).
   final int bootDiskSizeGb;
+
   /// Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
   final String bootDiskType;
 
@@ -30,4 +30,3 @@ class GoogleCloudMlV1DiskConfigResponse {
     );
   }
 }
-

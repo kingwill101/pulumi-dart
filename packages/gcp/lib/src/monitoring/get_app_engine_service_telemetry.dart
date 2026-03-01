@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetAppEngineServiceTelemetry {
   /// The full name of the resource that defines this service.
   /// Formatted as described in
@@ -9,14 +8,10 @@ class GetAppEngineServiceTelemetry {
 
   /// Creates a new [GetAppEngineServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  GetAppEngineServiceTelemetry({
-    required this.resourceName,
-  });
+  GetAppEngineServiceTelemetry({required this.resourceName});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceName': resourceName,
-    };
+    return <String, dynamic>{'resourceName': resourceName};
   }
 
   factory GetAppEngineServiceTelemetry.fromMap(Map<String, dynamic> map) {
@@ -25,4 +20,3 @@ class GetAppEngineServiceTelemetry {
     );
   }
 }
-

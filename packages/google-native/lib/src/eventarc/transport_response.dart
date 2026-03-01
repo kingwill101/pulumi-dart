@@ -9,20 +9,17 @@ class TransportResponse {
 
   /// Creates a new [TransportResponse].
   /// [pubsub] The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
-  TransportResponse({
-    required this.pubsub,
-  });
+  TransportResponse({required this.pubsub});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pubsub': pubsub.toMap(),
-    };
+    return <String, dynamic>{'pubsub': pubsub.toMap()};
   }
 
   factory TransportResponse.fromMap(Map<String, dynamic> map) {
     return TransportResponse(
-      pubsub: PubsubResponse.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
+      pubsub: PubsubResponse.fromMap(
+        (map['pubsub'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

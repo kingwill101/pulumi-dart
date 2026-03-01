@@ -19,10 +19,15 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings {
     };
   }
 
-  factory GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings(
-      kmsSettings: map['kmsSettings'] == null ? null : GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromMap((map['kmsSettings'] as Map).cast<String, dynamic>()),
+      kmsSettings: map['kmsSettings'] == null
+          ? null
+          : GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromMap(
+              (map['kmsSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

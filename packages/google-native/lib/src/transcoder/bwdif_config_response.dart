@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Bob Weaver Deinterlacing Filter Configuration.
 class BwdifConfigResponse {
   /// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
   final bool deinterlaceAllFrames;
+
   /// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
   final String mode;
+
   /// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
   final String parity;
 
@@ -36,4 +37,3 @@ class BwdifConfigResponse {
     );
   }
 }
-

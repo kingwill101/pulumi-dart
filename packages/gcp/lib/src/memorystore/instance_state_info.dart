@@ -11,20 +11,29 @@ class InstanceStateInfo {
 
   /// Creates a new [InstanceStateInfo].
   /// [updateInfos] (Output)
-  InstanceStateInfo({
-    this.updateInfos,
-  });
+  InstanceStateInfo({this.updateInfos});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'updateInfos': ?updateInfos == null ? null : pulumi.Input.encodeList<InstanceStateInfoUpdateInfo, Map<String, dynamic>>(updateInfos!, (value) => value.toMap()),
+      'updateInfos': ?updateInfos == null
+          ? null
+          : pulumi.Input.encodeList<
+              InstanceStateInfoUpdateInfo,
+              Map<String, dynamic>
+            >(updateInfos!, (value) => value.toMap()),
     };
   }
 
   factory InstanceStateInfo.fromMap(Map<String, dynamic> map) {
     return InstanceStateInfo(
-      updateInfos: map['updateInfos'] == null ? null : pulumi.Input.decodeList<InstanceStateInfoUpdateInfo>(map['updateInfos'], (value) => InstanceStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>())),
+      updateInfos: map['updateInfos'] == null
+          ? null
+          : pulumi.Input.decodeList<InstanceStateInfoUpdateInfo>(
+              map['updateInfos'],
+              (value) => InstanceStateInfoUpdateInfo.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

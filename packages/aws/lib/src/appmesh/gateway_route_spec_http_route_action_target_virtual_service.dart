@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GatewayRouteSpecHttpRouteActionTargetVirtualService {
   /// Name of the virtual service that traffic is routed to. Must be between 1 and 255 characters in length.
   final String virtualServiceName;
@@ -12,15 +11,14 @@ class GatewayRouteSpecHttpRouteActionTargetVirtualService {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'virtualServiceName': virtualServiceName,
-    };
+    return <String, dynamic>{'virtualServiceName': virtualServiceName};
   }
 
-  factory GatewayRouteSpecHttpRouteActionTargetVirtualService.fromMap(Map<String, dynamic> map) {
+  factory GatewayRouteSpecHttpRouteActionTargetVirtualService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GatewayRouteSpecHttpRouteActionTargetVirtualService(
       virtualServiceName: map['virtualServiceName'] as String,
     );
   }
 }
-

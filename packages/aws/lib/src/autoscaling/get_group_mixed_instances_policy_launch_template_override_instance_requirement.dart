@@ -12,53 +12,103 @@ import 'get_group_mixed_instances_policy_launch_template_override_instance_requi
 import 'get_group_mixed_instances_policy_launch_template_override_instance_requirement_vcpu_count.dart';
 
 class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement {
-  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount> acceleratorCounts;
+  final List<
+    GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount
+  >
+  acceleratorCounts;
+
   /// List of accelerator manufacturer names.
   final List<String> acceleratorManufacturers;
+
   /// List of accelerator names.
   final List<String> acceleratorNames;
+
   /// List of objects describing the minimum and maximum total memory of the accelerators.
-  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib> acceleratorTotalMemoryMibs;
+  final List<
+    GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib
+  >
+  acceleratorTotalMemoryMibs;
+
   /// List of accelerator types.
   final List<String> acceleratorTypes;
+
   /// List of instance types to apply the specified attributes against.
   final List<String> allowedInstanceTypes;
+
   /// Indicates whether bare metal instances are included, excluded, or required.
   final String bareMetal;
+
   /// List of objects describing the minimum and maximum baseline EBS bandwidth (Mbps).
-  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp> baselineEbsBandwidthMbps;
+  final List<
+    GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp
+  >
+  baselineEbsBandwidthMbps;
+
   /// Indicates whether burstable performance instance types are included, excluded, or required.
   final String burstablePerformance;
+
   /// List of CPU manufacturer names.
   final List<String> cpuManufacturers;
+
   /// List of excluded instance types.
   final List<String> excludedInstanceTypes;
+
   /// List of instance generation names.
   final List<String> instanceGenerations;
+
   /// Indicates whether instance types with instance store volumes are included, excluded, or required.
   final String localStorage;
+
   /// List of local storage type names.
   final List<String> localStorageTypes;
+
   /// Price protection threshold for Spot Instances.
   final int maxSpotPriceAsPercentageOfOptimalOnDemandPrice;
+
   /// List of objects describing the minimum and maximum amount of memory (GiB) per vCPU.
-  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus> memoryGibPerVcpus;
+  final List<
+    GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus
+  >
+  memoryGibPerVcpus;
+
   /// List of objects describing the minimum and maximum amount of memory (MiB).
-  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib> memoryMibs;
+  final List<
+    GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib
+  >
+  memoryMibs;
+
   /// List of objects describing the minimum and maximum amount of network bandwidth (Gbps).
-  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkBandwidthGbp> networkBandwidthGbps;
+  final List<
+    GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkBandwidthGbp
+  >
+  networkBandwidthGbps;
+
   /// List of objects describing the minimum and maximum amount of network interfaces.
-  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkInterfaceCount> networkInterfaceCounts;
+  final List<
+    GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkInterfaceCount
+  >
+  networkInterfaceCounts;
+
   /// Price protection threshold for On-Demand Instances.
   final int onDemandMaxPricePercentageOverLowestPrice;
+
   /// Indicates whether instance types must support On-Demand Instance Hibernation.
   final bool requireHibernateSupport;
+
   /// Price protection threshold for Spot Instances.
   final int spotMaxPricePercentageOverLowestPrice;
+
   /// List of objects describing the minimum and maximum total storage (GB).
-  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb> totalLocalStorageGbs;
+  final List<
+    GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb
+  >
+  totalLocalStorageGbs;
+
   /// List of objects describing the minimum and maximum number of vCPUs.
-  final List<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount> vcpuCounts;
+  final List<
+    GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount
+  >
+  vcpuCounts;
 
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement].
   /// [acceleratorCounts] Required.
@@ -114,60 +164,187 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acceleratorCounts': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount, Map<String, dynamic>>(acceleratorCounts, (value) => value.toMap()),
+      'acceleratorCounts':
+          pulumi.Input.encodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount,
+            Map<String, dynamic>
+          >(acceleratorCounts, (value) => value.toMap()),
       'acceleratorManufacturers': acceleratorManufacturers,
       'acceleratorNames': acceleratorNames,
-      'acceleratorTotalMemoryMibs': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib, Map<String, dynamic>>(acceleratorTotalMemoryMibs, (value) => value.toMap()),
+      'acceleratorTotalMemoryMibs':
+          pulumi.Input.encodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib,
+            Map<String, dynamic>
+          >(acceleratorTotalMemoryMibs, (value) => value.toMap()),
       'acceleratorTypes': acceleratorTypes,
       'allowedInstanceTypes': allowedInstanceTypes,
       'bareMetal': bareMetal,
-      'baselineEbsBandwidthMbps': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp, Map<String, dynamic>>(baselineEbsBandwidthMbps, (value) => value.toMap()),
+      'baselineEbsBandwidthMbps':
+          pulumi.Input.encodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp,
+            Map<String, dynamic>
+          >(baselineEbsBandwidthMbps, (value) => value.toMap()),
       'burstablePerformance': burstablePerformance,
       'cpuManufacturers': cpuManufacturers,
       'excludedInstanceTypes': excludedInstanceTypes,
       'instanceGenerations': instanceGenerations,
       'localStorage': localStorage,
       'localStorageTypes': localStorageTypes,
-      'maxSpotPriceAsPercentageOfOptimalOnDemandPrice': maxSpotPriceAsPercentageOfOptimalOnDemandPrice,
-      'memoryGibPerVcpus': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus, Map<String, dynamic>>(memoryGibPerVcpus, (value) => value.toMap()),
-      'memoryMibs': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib, Map<String, dynamic>>(memoryMibs, (value) => value.toMap()),
-      'networkBandwidthGbps': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkBandwidthGbp, Map<String, dynamic>>(networkBandwidthGbps, (value) => value.toMap()),
-      'networkInterfaceCounts': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkInterfaceCount, Map<String, dynamic>>(networkInterfaceCounts, (value) => value.toMap()),
-      'onDemandMaxPricePercentageOverLowestPrice': onDemandMaxPricePercentageOverLowestPrice,
+      'maxSpotPriceAsPercentageOfOptimalOnDemandPrice':
+          maxSpotPriceAsPercentageOfOptimalOnDemandPrice,
+      'memoryGibPerVcpus':
+          pulumi.Input.encodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus,
+            Map<String, dynamic>
+          >(memoryGibPerVcpus, (value) => value.toMap()),
+      'memoryMibs':
+          pulumi.Input.encodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib,
+            Map<String, dynamic>
+          >(memoryMibs, (value) => value.toMap()),
+      'networkBandwidthGbps':
+          pulumi.Input.encodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkBandwidthGbp,
+            Map<String, dynamic>
+          >(networkBandwidthGbps, (value) => value.toMap()),
+      'networkInterfaceCounts':
+          pulumi.Input.encodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkInterfaceCount,
+            Map<String, dynamic>
+          >(networkInterfaceCounts, (value) => value.toMap()),
+      'onDemandMaxPricePercentageOverLowestPrice':
+          onDemandMaxPricePercentageOverLowestPrice,
       'requireHibernateSupport': requireHibernateSupport,
-      'spotMaxPricePercentageOverLowestPrice': spotMaxPricePercentageOverLowestPrice,
-      'totalLocalStorageGbs': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb, Map<String, dynamic>>(totalLocalStorageGbs, (value) => value.toMap()),
-      'vcpuCounts': pulumi.Input.encodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount, Map<String, dynamic>>(vcpuCounts, (value) => value.toMap()),
+      'spotMaxPricePercentageOverLowestPrice':
+          spotMaxPricePercentageOverLowestPrice,
+      'totalLocalStorageGbs':
+          pulumi.Input.encodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb,
+            Map<String, dynamic>
+          >(totalLocalStorageGbs, (value) => value.toMap()),
+      'vcpuCounts':
+          pulumi.Input.encodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount,
+            Map<String, dynamic>
+          >(vcpuCounts, (value) => value.toMap()),
     };
   }
 
-  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement.fromMap(Map<String, dynamic> map) {
+  factory GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirement(
-      acceleratorCounts: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount>(map['acceleratorCounts'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount.fromMap((value as Map).cast<String, dynamic>())),
-      acceleratorManufacturers: (map['acceleratorManufacturers'] as List).cast<String>(),
+      acceleratorCounts:
+          pulumi.Input.decodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount
+          >(
+            map['acceleratorCounts'],
+            (value) =>
+                GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorCount.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      acceleratorManufacturers: (map['acceleratorManufacturers'] as List)
+          .cast<String>(),
       acceleratorNames: (map['acceleratorNames'] as List).cast<String>(),
-      acceleratorTotalMemoryMibs: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib>(map['acceleratorTotalMemoryMibs'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib.fromMap((value as Map).cast<String, dynamic>())),
+      acceleratorTotalMemoryMibs:
+          pulumi.Input.decodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib
+          >(
+            map['acceleratorTotalMemoryMibs'],
+            (value) =>
+                GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       acceleratorTypes: (map['acceleratorTypes'] as List).cast<String>(),
-      allowedInstanceTypes: (map['allowedInstanceTypes'] as List).cast<String>(),
+      allowedInstanceTypes: (map['allowedInstanceTypes'] as List)
+          .cast<String>(),
       bareMetal: map['bareMetal'] as String,
-      baselineEbsBandwidthMbps: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp>(map['baselineEbsBandwidthMbps'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp.fromMap((value as Map).cast<String, dynamic>())),
+      baselineEbsBandwidthMbps:
+          pulumi.Input.decodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp
+          >(
+            map['baselineEbsBandwidthMbps'],
+            (value) =>
+                GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementBaselineEbsBandwidthMbp.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       burstablePerformance: map['burstablePerformance'] as String,
       cpuManufacturers: (map['cpuManufacturers'] as List).cast<String>(),
-      excludedInstanceTypes: (map['excludedInstanceTypes'] as List).cast<String>(),
+      excludedInstanceTypes: (map['excludedInstanceTypes'] as List)
+          .cast<String>(),
       instanceGenerations: (map['instanceGenerations'] as List).cast<String>(),
       localStorage: map['localStorage'] as String,
       localStorageTypes: (map['localStorageTypes'] as List).cast<String>(),
-      maxSpotPriceAsPercentageOfOptimalOnDemandPrice: map['maxSpotPriceAsPercentageOfOptimalOnDemandPrice'] as int,
-      memoryGibPerVcpus: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus>(map['memoryGibPerVcpus'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus.fromMap((value as Map).cast<String, dynamic>())),
-      memoryMibs: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib>(map['memoryMibs'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib.fromMap((value as Map).cast<String, dynamic>())),
-      networkBandwidthGbps: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkBandwidthGbp>(map['networkBandwidthGbps'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkBandwidthGbp.fromMap((value as Map).cast<String, dynamic>())),
-      networkInterfaceCounts: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkInterfaceCount>(map['networkInterfaceCounts'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkInterfaceCount.fromMap((value as Map).cast<String, dynamic>())),
-      onDemandMaxPricePercentageOverLowestPrice: map['onDemandMaxPricePercentageOverLowestPrice'] as int,
+      maxSpotPriceAsPercentageOfOptimalOnDemandPrice:
+          map['maxSpotPriceAsPercentageOfOptimalOnDemandPrice'] as int,
+      memoryGibPerVcpus:
+          pulumi.Input.decodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus
+          >(
+            map['memoryGibPerVcpus'],
+            (value) =>
+                GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      memoryMibs:
+          pulumi.Input.decodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib
+          >(
+            map['memoryMibs'],
+            (value) =>
+                GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryMib.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      networkBandwidthGbps:
+          pulumi.Input.decodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkBandwidthGbp
+          >(
+            map['networkBandwidthGbps'],
+            (value) =>
+                GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkBandwidthGbp.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      networkInterfaceCounts:
+          pulumi.Input.decodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkInterfaceCount
+          >(
+            map['networkInterfaceCounts'],
+            (value) =>
+                GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementNetworkInterfaceCount.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      onDemandMaxPricePercentageOverLowestPrice:
+          map['onDemandMaxPricePercentageOverLowestPrice'] as int,
       requireHibernateSupport: map['requireHibernateSupport'] as bool,
-      spotMaxPricePercentageOverLowestPrice: map['spotMaxPricePercentageOverLowestPrice'] as int,
-      totalLocalStorageGbs: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb>(map['totalLocalStorageGbs'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb.fromMap((value as Map).cast<String, dynamic>())),
-      vcpuCounts: pulumi.Input.decodeList<GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount>(map['vcpuCounts'], (value) => GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount.fromMap((value as Map).cast<String, dynamic>())),
+      spotMaxPricePercentageOverLowestPrice:
+          map['spotMaxPricePercentageOverLowestPrice'] as int,
+      totalLocalStorageGbs:
+          pulumi.Input.decodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb
+          >(
+            map['totalLocalStorageGbs'],
+            (value) =>
+                GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementTotalLocalStorageGb.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      vcpuCounts:
+          pulumi.Input.decodeList<
+            GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount
+          >(
+            map['vcpuCounts'],
+            (value) =>
+                GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

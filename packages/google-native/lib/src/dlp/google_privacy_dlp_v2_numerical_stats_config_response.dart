@@ -9,20 +9,19 @@ class GooglePrivacyDlpV2NumericalStatsConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2NumericalStatsConfigResponse].
   /// [field] Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.
-  GooglePrivacyDlpV2NumericalStatsConfigResponse({
-    required this.field,
-  });
+  GooglePrivacyDlpV2NumericalStatsConfigResponse({required this.field});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'field': field.toMap(),
-    };
+    return <String, dynamic>{'field': field.toMap()};
   }
 
-  factory GooglePrivacyDlpV2NumericalStatsConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2NumericalStatsConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2NumericalStatsConfigResponse(
-      field: GooglePrivacyDlpV2FieldIdResponse.fromMap((map['field'] as Map).cast<String, dynamic>()),
+      field: GooglePrivacyDlpV2FieldIdResponse.fromMap(
+        (map['field'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

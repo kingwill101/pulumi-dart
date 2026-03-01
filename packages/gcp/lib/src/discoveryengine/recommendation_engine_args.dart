@@ -12,23 +12,31 @@ class RecommendationEngineArgs {
   /// Common config spec that specifies the metadata of the engine.
   /// Structure is documented below.
   final pulumi.Input<RecommendationEngineCommonConfig>? commonConfig;
+
   /// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
   final pulumi.Input<List<String>> dataStoreIds;
+
   /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   final pulumi.Input<String> displayName;
+
   /// Unique ID to use for Recommendation Engine.
   final pulumi.Input<String> engineId;
+
   /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`, `MEDIA`.
   final pulumi.Input<String>? industryVertical;
+
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
+
   /// Configurations for a Media Recommendation Engine. Only applicable on the data stores
   /// with SOLUTION_TYPE_RECOMMENDATION solution type and MEDIA industry vertical.
   /// Structure is documented below.
-  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfig>? mediaRecommendationEngineConfig;
+  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfig>?
+  mediaRecommendationEngineConfig;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -49,42 +57,69 @@ class RecommendationEngineArgs {
     required String engineId,
     String? industryVertical,
     required String location,
-    RecommendationEngineMediaRecommendationEngineConfig? mediaRecommendationEngineConfig,
+    RecommendationEngineMediaRecommendationEngineConfig?
+    mediaRecommendationEngineConfig,
     String? project,
-  }) :
-      commonConfig = pulumi.Input.asOptionalInput<RecommendationEngineCommonConfig>(commonConfig),
-      dataStoreIds = pulumi.Input.asInput<List<String>>(dataStoreIds),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      engineId = pulumi.Input.asInput<String>(engineId),
-      industryVertical = pulumi.Input.asOptionalInput<String>(industryVertical),
-      location = pulumi.Input.asInput<String>(location),
-      mediaRecommendationEngineConfig = pulumi.Input.asOptionalInput<RecommendationEngineMediaRecommendationEngineConfig>(mediaRecommendationEngineConfig),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : commonConfig =
+           pulumi.Input.asOptionalInput<RecommendationEngineCommonConfig>(
+             commonConfig,
+           ),
+       dataStoreIds = pulumi.Input.asInput<List<String>>(dataStoreIds),
+       displayName = pulumi.Input.asInput<String>(displayName),
+       engineId = pulumi.Input.asInput<String>(engineId),
+       industryVertical = pulumi.Input.asOptionalInput<String>(
+         industryVertical,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       mediaRecommendationEngineConfig =
+           pulumi.Input.asOptionalInput<
+             RecommendationEngineMediaRecommendationEngineConfig
+           >(mediaRecommendationEngineConfig),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'commonConfig': ?pulumi.Input.mapOptionalInputValue<RecommendationEngineCommonConfig, Map<String, dynamic>>(commonConfig, (value) => value.toMap()),
+      'commonConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            RecommendationEngineCommonConfig,
+            Map<String, dynamic>
+          >(commonConfig, (value) => value.toMap()),
       'dataStoreIds': dataStoreIds,
       'displayName': displayName,
       'engineId': engineId,
       'industryVertical': ?industryVertical,
       'location': location,
-      'mediaRecommendationEngineConfig': ?pulumi.Input.mapOptionalInputValue<RecommendationEngineMediaRecommendationEngineConfig, Map<String, dynamic>>(mediaRecommendationEngineConfig, (value) => value.toMap()),
+      'mediaRecommendationEngineConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            RecommendationEngineMediaRecommendationEngineConfig,
+            Map<String, dynamic>
+          >(mediaRecommendationEngineConfig, (value) => value.toMap()),
       'project': ?project,
     };
   }
 
   factory RecommendationEngineArgs.fromMap(Map<String, dynamic> map) {
     return RecommendationEngineArgs(
-      commonConfig: map['commonConfig'] == null ? null : RecommendationEngineCommonConfig.fromMap((map['commonConfig'] as Map).cast<String, dynamic>()),
+      commonConfig: map['commonConfig'] == null
+          ? null
+          : RecommendationEngineCommonConfig.fromMap(
+              (map['commonConfig'] as Map).cast<String, dynamic>(),
+            ),
       dataStoreIds: (map['dataStoreIds'] as List).cast<String>(),
       displayName: map['displayName'] as String,
       engineId: map['engineId'] as String,
-      industryVertical: map['industryVertical'] == null ? null : map['industryVertical'] as String,
+      industryVertical: map['industryVertical'] == null
+          ? null
+          : map['industryVertical'] as String,
       location: map['location'] as String,
-      mediaRecommendationEngineConfig: map['mediaRecommendationEngineConfig'] == null ? null : RecommendationEngineMediaRecommendationEngineConfig.fromMap((map['mediaRecommendationEngineConfig'] as Map).cast<String, dynamic>()),
+      mediaRecommendationEngineConfig:
+          map['mediaRecommendationEngineConfig'] == null
+          ? null
+          : RecommendationEngineMediaRecommendationEngineConfig.fromMap(
+              (map['mediaRecommendationEngineConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

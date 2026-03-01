@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ActiveReceiptRuleSetArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the rule set
   final pulumi.Input<String> ruleSetName;
 
   /// Creates a new [ActiveReceiptRuleSetArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleSetName] The name of the rule set
-  ActiveReceiptRuleSetArgs({
-    String? region,
-    required String ruleSetName,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
+  ActiveReceiptRuleSetArgs({String? region, required String ruleSetName})
+    : region = pulumi.Input.asOptionalInput<String>(region),
       ruleSetName = pulumi.Input.asInput<String>(ruleSetName);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'ruleSetName': ruleSetName,
-    };
+    return <String, dynamic>{'region': ?region, 'ruleSetName': ruleSetName};
   }
 
   factory ActiveReceiptRuleSetArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class ActiveReceiptRuleSetArgs {
     );
   }
 }
-

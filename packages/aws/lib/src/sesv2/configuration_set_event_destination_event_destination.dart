@@ -8,19 +8,30 @@ import 'configuration_set_event_destination_event_destination_sns_destination.da
 
 class ConfigurationSetEventDestinationEventDestination {
   /// An object that defines an Amazon CloudWatch destination for email events. See `cloud_watch_destination` Block for details.
-  final ConfigurationSetEventDestinationEventDestinationCloudWatchDestination? cloudWatchDestination;
+  final ConfigurationSetEventDestinationEventDestinationCloudWatchDestination?
+  cloudWatchDestination;
+
   /// When the event destination is enabled, the specified event types are sent to the destinations. Default: `false`.
   final bool? enabled;
+
   /// An object that defines an Amazon EventBridge destination for email events. You can use Amazon EventBridge to send notifications when certain email events occur. See `event_bridge_destination` Block for details.
-  final ConfigurationSetEventDestinationEventDestinationEventBridgeDestination? eventBridgeDestination;
+  final ConfigurationSetEventDestinationEventDestinationEventBridgeDestination?
+  eventBridgeDestination;
+
   /// An object that defines an Amazon Kinesis Data Firehose destination for email events. See `kinesis_firehose_destination` Block for details.
-  final ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination? kinesisFirehoseDestination;
+  final ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination?
+  kinesisFirehoseDestination;
+
   /// An array that specifies which events the Amazon SES API v2 should send to the destinations. Valid values: `SEND`, `REJECT`, `BOUNCE`, `COMPLAINT`, `DELIVERY`, `OPEN`, `CLICK`, `RENDERING_FAILURE`, `DELIVERY_DELAY`, `SUBSCRIPTION`.
   final List<String> matchingEventTypes;
+
   /// An object that defines an Amazon Pinpoint project destination for email events. See `pinpoint_destination` Block for details.
-  final ConfigurationSetEventDestinationEventDestinationPinpointDestination? pinpointDestination;
+  final ConfigurationSetEventDestinationEventDestinationPinpointDestination?
+  pinpointDestination;
+
   /// An object that defines an Amazon SNS destination for email events. See `sns_destination` Block for details.
-  final ConfigurationSetEventDestinationEventDestinationSnsDestination? snsDestination;
+  final ConfigurationSetEventDestinationEventDestinationSnsDestination?
+  snsDestination;
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestination].
   /// [cloudWatchDestination] An object that defines an Amazon CloudWatch destination for email events. See `cloud_watch_destination` Block for details.
@@ -42,26 +53,58 @@ class ConfigurationSetEventDestinationEventDestination {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudWatchDestination': ?cloudWatchDestination == null ? null : cloudWatchDestination!.toMap(),
+      'cloudWatchDestination': ?cloudWatchDestination == null
+          ? null
+          : cloudWatchDestination!.toMap(),
       'enabled': ?enabled,
-      'eventBridgeDestination': ?eventBridgeDestination == null ? null : eventBridgeDestination!.toMap(),
-      'kinesisFirehoseDestination': ?kinesisFirehoseDestination == null ? null : kinesisFirehoseDestination!.toMap(),
+      'eventBridgeDestination': ?eventBridgeDestination == null
+          ? null
+          : eventBridgeDestination!.toMap(),
+      'kinesisFirehoseDestination': ?kinesisFirehoseDestination == null
+          ? null
+          : kinesisFirehoseDestination!.toMap(),
       'matchingEventTypes': matchingEventTypes,
-      'pinpointDestination': ?pinpointDestination == null ? null : pinpointDestination!.toMap(),
-      'snsDestination': ?snsDestination == null ? null : snsDestination!.toMap(),
+      'pinpointDestination': ?pinpointDestination == null
+          ? null
+          : pinpointDestination!.toMap(),
+      'snsDestination': ?snsDestination == null
+          ? null
+          : snsDestination!.toMap(),
     };
   }
 
-  factory ConfigurationSetEventDestinationEventDestination.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationSetEventDestinationEventDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationSetEventDestinationEventDestination(
-      cloudWatchDestination: map['cloudWatchDestination'] == null ? null : ConfigurationSetEventDestinationEventDestinationCloudWatchDestination.fromMap((map['cloudWatchDestination'] as Map).cast<String, dynamic>()),
+      cloudWatchDestination: map['cloudWatchDestination'] == null
+          ? null
+          : ConfigurationSetEventDestinationEventDestinationCloudWatchDestination.fromMap(
+              (map['cloudWatchDestination'] as Map).cast<String, dynamic>(),
+            ),
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      eventBridgeDestination: map['eventBridgeDestination'] == null ? null : ConfigurationSetEventDestinationEventDestinationEventBridgeDestination.fromMap((map['eventBridgeDestination'] as Map).cast<String, dynamic>()),
-      kinesisFirehoseDestination: map['kinesisFirehoseDestination'] == null ? null : ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination.fromMap((map['kinesisFirehoseDestination'] as Map).cast<String, dynamic>()),
+      eventBridgeDestination: map['eventBridgeDestination'] == null
+          ? null
+          : ConfigurationSetEventDestinationEventDestinationEventBridgeDestination.fromMap(
+              (map['eventBridgeDestination'] as Map).cast<String, dynamic>(),
+            ),
+      kinesisFirehoseDestination: map['kinesisFirehoseDestination'] == null
+          ? null
+          : ConfigurationSetEventDestinationEventDestinationKinesisFirehoseDestination.fromMap(
+              (map['kinesisFirehoseDestination'] as Map)
+                  .cast<String, dynamic>(),
+            ),
       matchingEventTypes: (map['matchingEventTypes'] as List).cast<String>(),
-      pinpointDestination: map['pinpointDestination'] == null ? null : ConfigurationSetEventDestinationEventDestinationPinpointDestination.fromMap((map['pinpointDestination'] as Map).cast<String, dynamic>()),
-      snsDestination: map['snsDestination'] == null ? null : ConfigurationSetEventDestinationEventDestinationSnsDestination.fromMap((map['snsDestination'] as Map).cast<String, dynamic>()),
+      pinpointDestination: map['pinpointDestination'] == null
+          ? null
+          : ConfigurationSetEventDestinationEventDestinationPinpointDestination.fromMap(
+              (map['pinpointDestination'] as Map).cast<String, dynamic>(),
+            ),
+      snsDestination: map['snsDestination'] == null
+          ? null
+          : ConfigurationSetEventDestinationEventDestinationSnsDestination.fromMap(
+              (map['snsDestination'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

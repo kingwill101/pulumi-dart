@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderDestinationPortRange {
   final int from;
   final int to;
@@ -14,17 +13,15 @@ class GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderDestinationPort
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'from': from,
-      'to': to,
-    };
+    return <String, dynamic>{'from': from, 'to': to};
   }
 
-  factory GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderDestinationPortRange.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderDestinationPortRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkInsightsAnalysisReturnPathComponentOutboundHeaderDestinationPortRange(
       from: map['from'] as int,
       to: map['to'] as int,
     );
   }
 }
-

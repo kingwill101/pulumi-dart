@@ -9,9 +9,7 @@ class NotificationConfigContainerV1beta1 {
 
   /// Creates a new [NotificationConfigContainerV1beta1].
   /// [pubsub] Notification config for Pub/Sub.
-  NotificationConfigContainerV1beta1({
-    this.pubsub,
-  });
+  NotificationConfigContainerV1beta1({this.pubsub});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class NotificationConfigContainerV1beta1 {
 
   factory NotificationConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return NotificationConfigContainerV1beta1(
-      pubsub: map['pubsub'] == null ? null : PubSubContainerV1beta1.fromMap((map['pubsub'] as Map).cast<String, dynamic>()),
+      pubsub: map['pubsub'] == null
+          ? null
+          : PubSubContainerV1beta1.fromMap(
+              (map['pubsub'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

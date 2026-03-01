@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Metadata for a BigQuery connector used by the job.
 class BigQueryIODetailsResponse {
   /// Dataset accessed in the connection.
   final String dataset;
+
   /// Project accessed in the connection.
   final String project;
+
   /// Query used to access data in the connection.
   final String query;
+
   /// Table accessed in the connection.
   final String table;
 
@@ -42,4 +44,3 @@ class BigQueryIODetailsResponse {
     );
   }
 }
-

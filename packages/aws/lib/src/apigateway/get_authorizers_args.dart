@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAuthorizersArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the associated REST API.
   final pulumi.Input<String> restApiId;
 
   /// Creates a new [GetAuthorizersArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] ID of the associated REST API.
-  GetAuthorizersArgs({
-    String? region,
-    required String restApiId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
+  GetAuthorizersArgs({String? region, required String restApiId})
+    : region = pulumi.Input.asOptionalInput<String>(region),
       restApiId = pulumi.Input.asInput<String>(restApiId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'region': ?region,
-      'restApiId': restApiId,
-    };
+    return <String, dynamic>{'region': ?region, 'restApiId': restApiId};
   }
 
   factory GetAuthorizersArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetAuthorizersArgs {
     );
   }
 }
-

@@ -125,30 +125,43 @@ import 'vpc_attachment_accepter_args.dart';
 class VpcAttachmentAccepter extends pulumi.CustomResource {
   /// Whether Appliance Mode support is enabled. Valid values: `disable`, `enable`.
   late final pulumi.Output<String> applianceModeSupport;
+
   /// Whether DNS support is enabled. Valid values: `disable`, `enable`.
   late final pulumi.Output<String> dnsSupport;
+
   /// Whether IPv6 support is enabled. Valid values: `disable`, `enable`.
   late final pulumi.Output<String> ipv6Support;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Whether Security Group Referencing Support is enabled. Valid values: `disable`, `enable`.
   late final pulumi.Output<String> securityGroupReferencingSupport;
+
   /// Identifiers of EC2 Subnets.
   late final pulumi.Output<List<String>> subnetIds;
+
   /// Key-value tags for the EC2 Transit Gateway VPC Attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// The ID of the EC2 Transit Gateway Attachment to manage.
   late final pulumi.Output<String> transitGatewayAttachmentId;
+
   /// Boolean whether the VPC Attachment should be associated with the EC2 Transit Gateway association default route table. Default value: `true`.
   late final pulumi.Output<bool?> transitGatewayDefaultRouteTableAssociation;
+
   /// Boolean whether the VPC Attachment should propagate routes with the EC2 Transit Gateway propagation default route table. Default value: `true`.
   late final pulumi.Output<bool?> transitGatewayDefaultRouteTablePropagation;
+
   /// Identifier of EC2 Transit Gateway.
   late final pulumi.Output<String> transitGatewayId;
+
   /// Identifier of EC2 VPC.
   late final pulumi.Output<String> vpcId;
+
   /// Identifier of the AWS account that owns the EC2 VPC.
   late final pulumi.Output<String> vpcOwnerId;
 
@@ -161,22 +174,30 @@ class VpcAttachmentAccepter extends pulumi.CustomResource {
     VpcAttachmentAccepterArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ec2transitgateway/vpcAttachmentAccepter:VpcAttachmentAccepter',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.applianceModeSupport = registerOutput<String>('applianceModeSupport');
     this.dnsSupport = registerOutput<String>('dnsSupport');
     this.ipv6Support = registerOutput<String>('ipv6Support');
     this.region = registerOutput<String>('region');
-    this.securityGroupReferencingSupport = registerOutput<String>('securityGroupReferencingSupport');
+    this.securityGroupReferencingSupport = registerOutput<String>(
+      'securityGroupReferencingSupport',
+    );
     this.subnetIds = registerOutput<List<String>>('subnetIds');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
-    this.transitGatewayAttachmentId = registerOutput<String>('transitGatewayAttachmentId');
-    this.transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>('transitGatewayDefaultRouteTableAssociation');
-    this.transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>('transitGatewayDefaultRouteTablePropagation');
+    this.transitGatewayAttachmentId = registerOutput<String>(
+      'transitGatewayAttachmentId',
+    );
+    this.transitGatewayDefaultRouteTableAssociation = registerOutput<bool?>(
+      'transitGatewayDefaultRouteTableAssociation',
+    );
+    this.transitGatewayDefaultRouteTablePropagation = registerOutput<bool?>(
+      'transitGatewayDefaultRouteTablePropagation',
+    );
     this.transitGatewayId = registerOutput<String>('transitGatewayId');
     this.vpcId = registerOutput<String>('vpcId');
     this.vpcOwnerId = registerOutput<String>('vpcOwnerId');

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
 class RoutingVPC {
   /// The URI of the VPC network.
@@ -8,20 +7,13 @@ class RoutingVPC {
 
   /// Creates a new [RoutingVPC].
   /// [uri] The URI of the VPC network.
-  RoutingVPC({
-    this.uri,
-  });
+  RoutingVPC({this.uri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': ?uri,
-    };
+    return <String, dynamic>{'uri': ?uri};
   }
 
   factory RoutingVPC.fromMap(Map<String, dynamic> map) {
-    return RoutingVPC(
-      uri: map['uri'] == null ? null : map['uri'] as String,
-    );
+    return RoutingVPC(uri: map['uri'] == null ? null : map['uri'] as String);
   }
 }
-

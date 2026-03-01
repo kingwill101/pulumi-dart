@@ -19,10 +19,9 @@ class GetHttpRouteArgs {
     required String httpRouteId,
     required String location,
     String? project,
-  }) :
-      httpRouteId = pulumi.Input.asInput<String>(httpRouteId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : httpRouteId = pulumi.Input.asInput<String>(httpRouteId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetHttpRouteArgs {
     );
   }
 }
-

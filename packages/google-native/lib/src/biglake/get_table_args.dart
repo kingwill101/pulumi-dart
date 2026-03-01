@@ -25,12 +25,11 @@ class GetTableArgs {
     required String location,
     String? project,
     required String tableId,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tableId = pulumi.Input.asInput<String>(tableId);
+  }) : catalogId = pulumi.Input.asInput<String>(catalogId),
+       databaseId = pulumi.Input.asInput<String>(databaseId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tableId = pulumi.Input.asInput<String>(tableId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetTableArgs {
     );
   }
 }
-

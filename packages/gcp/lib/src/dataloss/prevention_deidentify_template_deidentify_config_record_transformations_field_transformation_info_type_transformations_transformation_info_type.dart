@@ -5,9 +5,12 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoType {
   /// Name of the information type.
   final String name;
+
   /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScore? sensitivityScore;
+  final PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScore?
+  sensitivityScore;
+
   /// Version name for this InfoType.
   final String? version;
 
@@ -24,17 +27,24 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'sensitivityScore': ?sensitivityScore == null ? null : sensitivityScore!.toMap(),
+      'sensitivityScore': ?sensitivityScore == null
+          ? null
+          : sensitivityScore!.toMap(),
       'version': ?version,
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoType.fromMap(Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoType(
       name: map['name'] as String,
-      sensitivityScore: map['sensitivityScore'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScore.fromMap((map['sensitivityScore'] as Map).cast<String, dynamic>()),
+      sensitivityScore: map['sensitivityScore'] == null
+          ? null
+          : PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScore.fromMap(
+              (map['sensitivityScore'] as Map).cast<String, dynamic>(),
+            ),
       version: map['version'] == null ? null : map['version'] as String,
     );
   }
 }
-

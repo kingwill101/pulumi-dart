@@ -19,10 +19,9 @@ class GetWorkerPoolArgs {
     required String instanceId,
     String? project,
     required String workerpoolId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workerpoolId = pulumi.Input.asInput<String>(workerpoolId);
+  }) : instanceId = pulumi.Input.asInput<String>(instanceId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       workerpoolId = pulumi.Input.asInput<String>(workerpoolId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetWorkerPoolArgs {
     );
   }
 }
-

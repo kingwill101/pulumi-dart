@@ -25,12 +25,11 @@ class GetContentitemArgs {
     required String location,
     String? project,
     String? view,
-  }) :
-      contentitemId = pulumi.Input.asInput<String>(contentitemId),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : contentitemId = pulumi.Input.asInput<String>(contentitemId),
+       lakeId = pulumi.Input.asInput<String>(lakeId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetContentitemArgs {
     );
   }
 }
-

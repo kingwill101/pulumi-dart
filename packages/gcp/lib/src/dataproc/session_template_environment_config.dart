@@ -7,6 +7,7 @@ class SessionTemplateEnvironmentConfig {
   /// Execution configuration for a workload.
   /// Structure is documented below.
   final SessionTemplateEnvironmentConfigExecutionConfig? executionConfig;
+
   /// Peripherals configuration that workload has access to.
   /// Structure is documented below.
   final SessionTemplateEnvironmentConfigPeripheralsConfig? peripheralsConfig;
@@ -21,16 +22,27 @@ class SessionTemplateEnvironmentConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'executionConfig': ?executionConfig == null ? null : executionConfig!.toMap(),
-      'peripheralsConfig': ?peripheralsConfig == null ? null : peripheralsConfig!.toMap(),
+      'executionConfig': ?executionConfig == null
+          ? null
+          : executionConfig!.toMap(),
+      'peripheralsConfig': ?peripheralsConfig == null
+          ? null
+          : peripheralsConfig!.toMap(),
     };
   }
 
   factory SessionTemplateEnvironmentConfig.fromMap(Map<String, dynamic> map) {
     return SessionTemplateEnvironmentConfig(
-      executionConfig: map['executionConfig'] == null ? null : SessionTemplateEnvironmentConfigExecutionConfig.fromMap((map['executionConfig'] as Map).cast<String, dynamic>()),
-      peripheralsConfig: map['peripheralsConfig'] == null ? null : SessionTemplateEnvironmentConfigPeripheralsConfig.fromMap((map['peripheralsConfig'] as Map).cast<String, dynamic>()),
+      executionConfig: map['executionConfig'] == null
+          ? null
+          : SessionTemplateEnvironmentConfigExecutionConfig.fromMap(
+              (map['executionConfig'] as Map).cast<String, dynamic>(),
+            ),
+      peripheralsConfig: map['peripheralsConfig'] == null
+          ? null
+          : SessionTemplateEnvironmentConfigPeripheralsConfig.fromMap(
+              (map['peripheralsConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

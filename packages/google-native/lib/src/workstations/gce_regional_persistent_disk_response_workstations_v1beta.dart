@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is repeated, but it may contain only one entry. It creates a [persistent disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home` when the session starts and detaches when the session ends. If this field is empty, workstations created with this configuration do not have a persistent home directory.
 class GceRegionalPersistentDiskResponseWorkstationsV1beta {
   /// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home directory. Defaults to `"pd-standard"`.
   final String diskType;
+
   /// Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
   final String fsType;
+
   /// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
   final String reclaimPolicy;
+
   /// Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
   final int sizeGb;
+
   /// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
   final String sourceSnapshot;
 
@@ -38,7 +41,9 @@ class GceRegionalPersistentDiskResponseWorkstationsV1beta {
     };
   }
 
-  factory GceRegionalPersistentDiskResponseWorkstationsV1beta.fromMap(Map<String, dynamic> map) {
+  factory GceRegionalPersistentDiskResponseWorkstationsV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GceRegionalPersistentDiskResponseWorkstationsV1beta(
       diskType: map['diskType'] as String,
       fsType: map['fsType'] as String,
@@ -48,4 +53,3 @@ class GceRegionalPersistentDiskResponseWorkstationsV1beta {
     );
   }
 }
-

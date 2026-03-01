@@ -4552,8 +4552,7 @@ Future<GetInterconnectLocationsResult> getInterconnectLocations(
 ///       arguments: {}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetLBIPRangesResult> getLBIPRanges(
-  {
+Future<GetLBIPRangesResult> getLBIPRanges({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

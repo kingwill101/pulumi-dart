@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetNatGatewayAvailabilityZoneAddress {
   /// List of allocation IDs of the Elastic IP addresses (EIPs) to be used for handling outbound NAT traffic in this specific Availability Zone.
   final List<String> allocationIds;
+
   /// Availability Zone where this specific NAT gateway configuration is active.
   final String availabilityZone;
+
   /// Availability Zone ID where this specific NAT gateway configuration is active
   final String availabilityZoneId;
 
@@ -27,7 +28,9 @@ class GetNatGatewayAvailabilityZoneAddress {
     };
   }
 
-  factory GetNatGatewayAvailabilityZoneAddress.fromMap(Map<String, dynamic> map) {
+  factory GetNatGatewayAvailabilityZoneAddress.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNatGatewayAvailabilityZoneAddress(
       allocationIds: (map['allocationIds'] as List).cast<String>(),
       availabilityZone: map['availabilityZone'] as String,
@@ -35,4 +38,3 @@ class GetNatGatewayAvailabilityZoneAddress {
     );
   }
 }
-

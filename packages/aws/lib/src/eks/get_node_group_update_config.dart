@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetNodeGroupUpdateConfig {
   final int maxUnavailable;
   final int maxUnavailablePercentage;
@@ -32,4 +31,3 @@ class GetNodeGroupUpdateConfig {
     );
   }
 }
-

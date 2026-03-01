@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TableHiveOptionsStorageDescriptor {
   /// The fully qualified Java class name of the input format.
   final String? inputFormat;
+
   /// Cloud Storage folder URI where the table data is stored, starting with "gs://".
   final String? locationUri;
+
   /// The fully qualified Java class name of the output format.
   final String? outputFormat;
 
@@ -29,10 +30,15 @@ class TableHiveOptionsStorageDescriptor {
 
   factory TableHiveOptionsStorageDescriptor.fromMap(Map<String, dynamic> map) {
     return TableHiveOptionsStorageDescriptor(
-      inputFormat: map['inputFormat'] == null ? null : map['inputFormat'] as String,
-      locationUri: map['locationUri'] == null ? null : map['locationUri'] as String,
-      outputFormat: map['outputFormat'] == null ? null : map['outputFormat'] as String,
+      inputFormat: map['inputFormat'] == null
+          ? null
+          : map['inputFormat'] as String,
+      locationUri: map['locationUri'] == null
+          ? null
+          : map['locationUri'] as String,
+      outputFormat: map['outputFormat'] == null
+          ? null
+          : map['outputFormat'] as String,
     );
   }
 }
-

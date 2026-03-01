@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Exact product price.
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
   /// Optional. Display price of the product.
   final double? displayPrice;
+
   /// Optional. Price of the product without any discount. If zero, by default set to be the 'displayPrice'.
   final double? originalPrice;
 
@@ -23,11 +23,16 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
     };
   }
 
-  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice(
-      displayPrice: map['displayPrice'] == null ? null : map['displayPrice'] as double,
-      originalPrice: map['originalPrice'] == null ? null : map['originalPrice'] as double,
+      displayPrice: map['displayPrice'] == null
+          ? null
+          : map['displayPrice'] as double,
+      originalPrice: map['originalPrice'] == null
+          ? null
+          : map['originalPrice'] as double,
     );
   }
 }
-

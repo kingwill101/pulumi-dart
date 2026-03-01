@@ -6,8 +6,10 @@ import 'storage_descriptor_response.dart';
 class HiveTableOptionsResponse {
   /// Stores user supplied Hive table parameters.
   final Map<String, String> parameters;
+
   /// Stores physical storage information of the data.
   final StorageDescriptorResponse storageDescriptor;
+
   /// Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
   final String tableType;
 
@@ -32,9 +34,10 @@ class HiveTableOptionsResponse {
   factory HiveTableOptionsResponse.fromMap(Map<String, dynamic> map) {
     return HiveTableOptionsResponse(
       parameters: (map['parameters'] as Map).cast<String, String>(),
-      storageDescriptor: StorageDescriptorResponse.fromMap((map['storageDescriptor'] as Map).cast<String, dynamic>()),
+      storageDescriptor: StorageDescriptorResponse.fromMap(
+        (map['storageDescriptor'] as Map).cast<String, dynamic>(),
+      ),
       tableType: map['tableType'] as String,
     );
   }
 }
-

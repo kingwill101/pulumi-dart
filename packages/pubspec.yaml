@@ -1,5 +1,5 @@
 name: pulumi_packages_workspace
-publish_to: none
+resolution: workspace
 environment:
   sdk: ^3.10.0
 workspace:

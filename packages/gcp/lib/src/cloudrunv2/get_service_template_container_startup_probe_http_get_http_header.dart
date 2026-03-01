@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetServiceTemplateContainerStartupProbeHttpGetHttpHeader {
   /// The name of the Cloud Run v2 Service.
   final String name;
+
   /// The header field value
   final String value;
 
@@ -16,17 +16,15 @@ class GetServiceTemplateContainerStartupProbeHttpGetHttpHeader {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'value': value,
-    };
+    return <String, dynamic>{'name': name, 'value': value};
   }
 
-  factory GetServiceTemplateContainerStartupProbeHttpGetHttpHeader.fromMap(Map<String, dynamic> map) {
+  factory GetServiceTemplateContainerStartupProbeHttpGetHttpHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceTemplateContainerStartupProbeHttpGetHttpHeader(
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

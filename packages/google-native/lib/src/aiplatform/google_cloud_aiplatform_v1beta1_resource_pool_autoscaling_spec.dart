@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The min/max number of replicas allowed if enabling autoscaling
 class GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec {
   /// Optional. max replicas in the node pool, must be ≥ replica_count and > min_replica_count or will throw error
   final String? maxReplicaCount;
+
   /// Optional. min replicas in the node pool, must be ≤ replica_count and < max_replica_count or will throw error
   final String? minReplicaCount;
 
@@ -23,11 +23,16 @@ class GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec(
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : map['maxReplicaCount'] as String,
-      minReplicaCount: map['minReplicaCount'] == null ? null : map['minReplicaCount'] as String,
+      maxReplicaCount: map['maxReplicaCount'] == null
+          ? null
+          : map['maxReplicaCount'] as String,
+      minReplicaCount: map['minReplicaCount'] == null
+          ? null
+          : map['minReplicaCount'] as String,
     );
   }
 }
-

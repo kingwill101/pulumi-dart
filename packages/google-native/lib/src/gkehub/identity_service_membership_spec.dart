@@ -10,20 +10,29 @@ class IdentityServiceMembershipSpec {
 
   /// Creates a new [IdentityServiceMembershipSpec].
   /// [authMethods] A member may support multiple auth methods.
-  IdentityServiceMembershipSpec({
-    this.authMethods,
-  });
+  IdentityServiceMembershipSpec({this.authMethods});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authMethods': ?authMethods == null ? null : pulumi.Input.encodeList<IdentityServiceAuthMethod, Map<String, dynamic>>(authMethods!, (value) => value.toMap()),
+      'authMethods': ?authMethods == null
+          ? null
+          : pulumi.Input.encodeList<
+              IdentityServiceAuthMethod,
+              Map<String, dynamic>
+            >(authMethods!, (value) => value.toMap()),
     };
   }
 
   factory IdentityServiceMembershipSpec.fromMap(Map<String, dynamic> map) {
     return IdentityServiceMembershipSpec(
-      authMethods: map['authMethods'] == null ? null : pulumi.Input.decodeList<IdentityServiceAuthMethod>(map['authMethods'], (value) => IdentityServiceAuthMethod.fromMap((value as Map).cast<String, dynamic>())),
+      authMethods: map['authMethods'] == null
+          ? null
+          : pulumi.Input.decodeList<IdentityServiceAuthMethod>(
+              map['authMethods'],
+              (value) => IdentityServiceAuthMethod.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

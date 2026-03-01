@@ -6,6 +6,7 @@ import 'ssl_config_alloydb_v1alpha.dart';
 class ClientConnectionConfigAlloydbV1alpha {
   /// Optional. Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
   final bool? requireConnectors;
+
   /// Optional. SSL config option for this instance.
   final SslConfigAlloydbV1alpha? sslConfig;
 
@@ -24,11 +25,18 @@ class ClientConnectionConfigAlloydbV1alpha {
     };
   }
 
-  factory ClientConnectionConfigAlloydbV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ClientConnectionConfigAlloydbV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClientConnectionConfigAlloydbV1alpha(
-      requireConnectors: map['requireConnectors'] == null ? null : map['requireConnectors'] as bool,
-      sslConfig: map['sslConfig'] == null ? null : SslConfigAlloydbV1alpha.fromMap((map['sslConfig'] as Map).cast<String, dynamic>()),
+      requireConnectors: map['requireConnectors'] == null
+          ? null
+          : map['requireConnectors'] as bool,
+      sslConfig: map['sslConfig'] == null
+          ? null
+          : SslConfigAlloydbV1alpha.fromMap(
+              (map['sslConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

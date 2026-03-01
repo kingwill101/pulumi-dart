@@ -11,20 +11,26 @@ import 'cx_playbook_llm_model_settings.dart';
 class CxPlaybookArgs {
   /// The human-readable name of the playbook, unique within an agent.
   final pulumi.Input<String> displayName;
+
   /// High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
   final pulumi.Input<String> goal;
+
   /// Instruction to accomplish target goal.
   /// Structure is documented below.
   final pulumi.Input<CxPlaybookInstruction>? instruction;
+
   /// Llm model settings for the playbook.
   /// Structure is documented below.
   final pulumi.Input<CxPlaybookLlmModelSettings>? llmModelSettings;
+
   /// The agent to create a Playbook for.
   /// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>.
   final pulumi.Input<String>? parent;
+
   /// Type of the playbook.
   /// Possible values are: `PLAYBOOK_TYPE_UNSPECIFIED`, `TASK`, `ROUTINE`.
   final pulumi.Input<String>? playbookType;
+
   /// The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
   final pulumi.Input<List<String>>? referencedTools;
 
@@ -44,21 +50,33 @@ class CxPlaybookArgs {
     String? parent,
     String? playbookType,
     List<String>? referencedTools,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      goal = pulumi.Input.asInput<String>(goal),
-      instruction = pulumi.Input.asOptionalInput<CxPlaybookInstruction>(instruction),
-      llmModelSettings = pulumi.Input.asOptionalInput<CxPlaybookLlmModelSettings>(llmModelSettings),
-      parent = pulumi.Input.asOptionalInput<String>(parent),
-      playbookType = pulumi.Input.asOptionalInput<String>(playbookType),
-      referencedTools = pulumi.Input.asOptionalInput<List<String>>(referencedTools);
+  }) : displayName = pulumi.Input.asInput<String>(displayName),
+       goal = pulumi.Input.asInput<String>(goal),
+       instruction = pulumi.Input.asOptionalInput<CxPlaybookInstruction>(
+         instruction,
+       ),
+       llmModelSettings = pulumi
+           .Input.asOptionalInput<CxPlaybookLlmModelSettings>(llmModelSettings),
+       parent = pulumi.Input.asOptionalInput<String>(parent),
+       playbookType = pulumi.Input.asOptionalInput<String>(playbookType),
+       referencedTools = pulumi.Input.asOptionalInput<List<String>>(
+         referencedTools,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': displayName,
       'goal': goal,
-      'instruction': ?pulumi.Input.mapOptionalInputValue<CxPlaybookInstruction, Map<String, dynamic>>(instruction, (value) => value.toMap()),
-      'llmModelSettings': ?pulumi.Input.mapOptionalInputValue<CxPlaybookLlmModelSettings, Map<String, dynamic>>(llmModelSettings, (value) => value.toMap()),
+      'instruction':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPlaybookInstruction,
+            Map<String, dynamic>
+          >(instruction, (value) => value.toMap()),
+      'llmModelSettings':
+          ?pulumi.Input.mapOptionalInputValue<
+            CxPlaybookLlmModelSettings,
+            Map<String, dynamic>
+          >(llmModelSettings, (value) => value.toMap()),
       'parent': ?parent,
       'playbookType': ?playbookType,
       'referencedTools': ?referencedTools,
@@ -69,12 +87,23 @@ class CxPlaybookArgs {
     return CxPlaybookArgs(
       displayName: map['displayName'] as String,
       goal: map['goal'] as String,
-      instruction: map['instruction'] == null ? null : CxPlaybookInstruction.fromMap((map['instruction'] as Map).cast<String, dynamic>()),
-      llmModelSettings: map['llmModelSettings'] == null ? null : CxPlaybookLlmModelSettings.fromMap((map['llmModelSettings'] as Map).cast<String, dynamic>()),
+      instruction: map['instruction'] == null
+          ? null
+          : CxPlaybookInstruction.fromMap(
+              (map['instruction'] as Map).cast<String, dynamic>(),
+            ),
+      llmModelSettings: map['llmModelSettings'] == null
+          ? null
+          : CxPlaybookLlmModelSettings.fromMap(
+              (map['llmModelSettings'] as Map).cast<String, dynamic>(),
+            ),
       parent: map['parent'] == null ? null : map['parent'] as String,
-      playbookType: map['playbookType'] == null ? null : map['playbookType'] as String,
-      referencedTools: map['referencedTools'] == null ? null : (map['referencedTools'] as List).cast<String>(),
+      playbookType: map['playbookType'] == null
+          ? null
+          : map['playbookType'] as String,
+      referencedTools: map['referencedTools'] == null
+          ? null
+          : (map['referencedTools'] as List).cast<String>(),
     );
   }
 }
-

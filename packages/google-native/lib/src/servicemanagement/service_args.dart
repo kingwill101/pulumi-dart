@@ -9,17 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceArgs {
   /// ID of the project that produces and owns this service.
   final pulumi.Input<String>? producerProjectId;
+
   /// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
   final pulumi.Input<String>? serviceName;
 
   /// Creates a new [ServiceArgs].
   /// [producerProjectId] ID of the project that produces and owns this service.
   /// [serviceName] The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
-  ServiceArgs({
-    String? producerProjectId,
-    String? serviceName,
-  }) :
-      producerProjectId = pulumi.Input.asOptionalInput<String>(producerProjectId),
+  ServiceArgs({String? producerProjectId, String? serviceName})
+    : producerProjectId = pulumi.Input.asOptionalInput<String>(
+        producerProjectId,
+      ),
       serviceName = pulumi.Input.asOptionalInput<String>(serviceName);
 
   Map<String, dynamic> toMap() {
@@ -31,9 +31,12 @@ class ServiceArgs {
 
   factory ServiceArgs.fromMap(Map<String, dynamic> map) {
     return ServiceArgs(
-      producerProjectId: map['producerProjectId'] == null ? null : map['producerProjectId'] as String,
-      serviceName: map['serviceName'] == null ? null : map['serviceName'] as String,
+      producerProjectId: map['producerProjectId'] == null
+          ? null
+          : map['producerProjectId'] as String,
+      serviceName: map['serviceName'] == null
+          ? null
+          : map['serviceName'] as String,
     );
   }
 }
-

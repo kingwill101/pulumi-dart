@@ -19,10 +19,9 @@ class GetProcessorArgs {
     required String location,
     required String processorId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      processorId = pulumi.Input.asInput<String>(processorId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       processorId = pulumi.Input.asInput<String>(processorId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetProcessorArgs {
     );
   }
 }
-

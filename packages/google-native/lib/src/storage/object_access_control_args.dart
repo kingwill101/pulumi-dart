@@ -10,10 +10,13 @@ import 'object_access_control_project_team.dart';
 class ObjectAccessControlArgs {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// The domain associated with the entity, if any.
   final pulumi.Input<String>? domain;
+
   /// The email address associated with the entity, if any.
   final pulumi.Input<String>? email;
+
   /// The entity holding the permission, in one of the following forms:
   /// - user-userId
   /// - user-email
@@ -27,24 +30,34 @@ class ObjectAccessControlArgs {
   /// - The group example@googlegroups.com would be group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
   final pulumi.Input<String>? entity;
+
   /// The ID for the entity, if any.
   final pulumi.Input<String>? entityId;
+
   /// HTTP 1.1 Entity tag for the access-control entry.
   final pulumi.Input<String>? etag;
+
   /// The content generation of the object, if applied to an object.
   final pulumi.Input<String>? generation;
+
   /// The ID of the access-control entry.
   final pulumi.Input<String>? id;
+
   /// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
   final pulumi.Input<String>? kind;
+
   /// The name of the object, if applied to an object.
   final pulumi.Input<String> object;
+
   /// The project team associated with the entity, if any.
   final pulumi.Input<ObjectAccessControlProjectTeam>? projectTeam;
+
   /// The access permission for the entity.
   final pulumi.Input<String>? role;
+
   /// The link to this access-control entry.
   final pulumi.Input<String>? selfLink;
+
   /// The project to be billed for this request. Required for Requester Pays buckets.
   final pulumi.Input<String>? userProject;
 
@@ -78,21 +91,21 @@ class ObjectAccessControlArgs {
     String? role,
     String? selfLink,
     String? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      entity = pulumi.Input.asOptionalInput<String>(entity),
-      entityId = pulumi.Input.asOptionalInput<String>(entityId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      generation = pulumi.Input.asOptionalInput<String>(generation),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      object = pulumi.Input.asInput<String>(object),
-      projectTeam = pulumi.Input.asOptionalInput<ObjectAccessControlProjectTeam>(projectTeam),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+  }) : bucket = pulumi.Input.asInput<String>(bucket),
+       domain = pulumi.Input.asOptionalInput<String>(domain),
+       email = pulumi.Input.asOptionalInput<String>(email),
+       entity = pulumi.Input.asOptionalInput<String>(entity),
+       entityId = pulumi.Input.asOptionalInput<String>(entityId),
+       etag = pulumi.Input.asOptionalInput<String>(etag),
+       generation = pulumi.Input.asOptionalInput<String>(generation),
+       id = pulumi.Input.asOptionalInput<String>(id),
+       kind = pulumi.Input.asOptionalInput<String>(kind),
+       object = pulumi.Input.asInput<String>(object),
+       projectTeam = pulumi
+           .Input.asOptionalInput<ObjectAccessControlProjectTeam>(projectTeam),
+       role = pulumi.Input.asOptionalInput<String>(role),
+       selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
+       userProject = pulumi.Input.asOptionalInput<String>(userProject);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,7 +119,11 @@ class ObjectAccessControlArgs {
       'id': ?id,
       'kind': ?kind,
       'object': object,
-      'projectTeam': ?pulumi.Input.mapOptionalInputValue<ObjectAccessControlProjectTeam, Map<String, dynamic>>(projectTeam, (value) => value.toMap()),
+      'projectTeam':
+          ?pulumi.Input.mapOptionalInputValue<
+            ObjectAccessControlProjectTeam,
+            Map<String, dynamic>
+          >(projectTeam, (value) => value.toMap()),
       'role': ?role,
       'selfLink': ?selfLink,
       'userProject': ?userProject,
@@ -121,15 +138,22 @@ class ObjectAccessControlArgs {
       entity: map['entity'] == null ? null : map['entity'] as String,
       entityId: map['entityId'] == null ? null : map['entityId'] as String,
       etag: map['etag'] == null ? null : map['etag'] as String,
-      generation: map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null
+          ? null
+          : map['generation'] as String,
       id: map['id'] == null ? null : map['id'] as String,
       kind: map['kind'] == null ? null : map['kind'] as String,
       object: map['object'] as String,
-      projectTeam: map['projectTeam'] == null ? null : ObjectAccessControlProjectTeam.fromMap((map['projectTeam'] as Map).cast<String, dynamic>()),
+      projectTeam: map['projectTeam'] == null
+          ? null
+          : ObjectAccessControlProjectTeam.fromMap(
+              (map['projectTeam'] as Map).cast<String, dynamic>(),
+            ),
       role: map['role'] == null ? null : map['role'] as String,
       selfLink: map['selfLink'] == null ? null : map['selfLink'] as String,
-      userProject: map['userProject'] == null ? null : map['userProject'] as String,
+      userProject: map['userProject'] == null
+          ? null
+          : map['userProject'] as String,
     );
   }
 }
-

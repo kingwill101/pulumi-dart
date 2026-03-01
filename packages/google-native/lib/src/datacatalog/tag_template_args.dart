@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagTemplateArgs {
   /// Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
   final pulumi.Input<String>? displayName;
+
   /// Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
   final pulumi.Input<Map<String, String>> fields;
+
   /// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
   final pulumi.Input<bool>? isPubliclyReadable;
   final pulumi.Input<String>? location;
+
   /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
   final pulumi.Input<String> tagTemplateId;
 
@@ -36,14 +40,15 @@ class TagTemplateArgs {
     String? name,
     String? project,
     required String tagTemplateId,
-  }) :
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      fields = pulumi.Input.asInput<Map<String, String>>(fields),
-      isPubliclyReadable = pulumi.Input.asOptionalInput<bool>(isPubliclyReadable),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      tagTemplateId = pulumi.Input.asInput<String>(tagTemplateId);
+  }) : displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       fields = pulumi.Input.asInput<Map<String, String>>(fields),
+       isPubliclyReadable = pulumi.Input.asOptionalInput<bool>(
+         isPubliclyReadable,
+       ),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       tagTemplateId = pulumi.Input.asInput<String>(tagTemplateId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,9 +64,13 @@ class TagTemplateArgs {
 
   factory TagTemplateArgs.fromMap(Map<String, dynamic> map) {
     return TagTemplateArgs(
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
       fields: (map['fields'] as Map).cast<String, String>(),
-      isPubliclyReadable: map['isPubliclyReadable'] == null ? null : map['isPubliclyReadable'] as bool,
+      isPubliclyReadable: map['isPubliclyReadable'] == null
+          ? null
+          : map['isPubliclyReadable'] as bool,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -69,4 +78,3 @@ class TagTemplateArgs {
     );
   }
 }
-

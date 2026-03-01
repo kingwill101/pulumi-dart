@@ -8,13 +8,17 @@ enum GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState {
   const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState(this.value);
   final String value;
 
-  static GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState fromValue(String value) {
-    for (final item in GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState.values) {
+  static GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState value: $value',
+    );
   }
 }
-

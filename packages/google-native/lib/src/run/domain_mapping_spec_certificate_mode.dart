@@ -13,7 +13,8 @@ enum DomainMappingSpecCertificateMode {
         return item;
       }
     }
-    throw ArgumentError('Unknown DomainMappingSpecCertificateMode value: $value');
+    throw ArgumentError(
+      'Unknown DomainMappingSpecCertificateMode value: $value',
+    );
   }
 }
-

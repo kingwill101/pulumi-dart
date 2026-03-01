@@ -308,12 +308,16 @@ import 'identity_pool_provider_principal_tag_args.dart';
 class IdentityPoolProviderPrincipalTag extends pulumi.CustomResource {
   /// An identity pool ID.
   late final pulumi.Output<String> identityPoolId;
+
   /// The name of the identity provider.
   late final pulumi.Output<String> identityProviderName;
+
   /// String to string map of variables.
   late final pulumi.Output<Map<String, String>?> principalTags;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// use default (username and clientID) attribute mappings.
   late final pulumi.Output<bool?> useDefaults;
 
@@ -326,11 +330,11 @@ class IdentityPoolProviderPrincipalTag extends pulumi.CustomResource {
     IdentityPoolProviderPrincipalTagArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:cognito/identityPoolProviderPrincipalTag:IdentityPoolProviderPrincipalTag',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:cognito/identityPoolProviderPrincipalTag:IdentityPoolProviderPrincipalTag',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.identityPoolId = registerOutput<String>('identityPoolId');
     this.identityProviderName = registerOutput<String>('identityProviderName');
     this.principalTags = registerOutput<Map<String, String>?>('principalTags');

@@ -10,20 +10,25 @@ class NetworkConfigResponse {
 
   /// Creates a new [NetworkConfigResponse].
   /// [consumers] Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
-  NetworkConfigResponse({
-    required this.consumers,
-  });
+  NetworkConfigResponse({required this.consumers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'consumers': pulumi.Input.encodeList<ConsumerResponse, Map<String, dynamic>>(consumers, (value) => value.toMap()),
+      'consumers':
+          pulumi.Input.encodeList<ConsumerResponse, Map<String, dynamic>>(
+            consumers,
+            (value) => value.toMap(),
+          ),
     };
   }
 
   factory NetworkConfigResponse.fromMap(Map<String, dynamic> map) {
     return NetworkConfigResponse(
-      consumers: pulumi.Input.decodeList<ConsumerResponse>(map['consumers'], (value) => ConsumerResponse.fromMap((value as Map).cast<String, dynamic>())),
+      consumers: pulumi.Input.decodeList<ConsumerResponse>(
+        map['consumers'],
+        (value) =>
+            ConsumerResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

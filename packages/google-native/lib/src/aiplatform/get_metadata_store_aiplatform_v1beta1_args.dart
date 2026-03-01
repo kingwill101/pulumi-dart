@@ -19,10 +19,9 @@ class GetMetadataStoreAiplatformV1beta1Args {
     required String location,
     required String metadataStoreId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       metadataStoreId = pulumi.Input.asInput<String>(metadataStoreId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetMetadataStoreAiplatformV1beta1Args {
     };
   }
 
-  factory GetMetadataStoreAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetMetadataStoreAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetMetadataStoreAiplatformV1beta1Args(
       location: map['location'] as String,
       metadataStoreId: map['metadataStoreId'] as String,
@@ -40,4 +41,3 @@ class GetMetadataStoreAiplatformV1beta1Args {
     );
   }
 }
-

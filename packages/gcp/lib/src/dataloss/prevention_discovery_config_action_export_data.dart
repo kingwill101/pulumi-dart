@@ -9,9 +9,7 @@ class PreventionDiscoveryConfigActionExportData {
 
   /// Creates a new [PreventionDiscoveryConfigActionExportData].
   /// [profileTable] Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
-  PreventionDiscoveryConfigActionExportData({
-    this.profileTable,
-  });
+  PreventionDiscoveryConfigActionExportData({this.profileTable});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class PreventionDiscoveryConfigActionExportData {
     };
   }
 
-  factory PreventionDiscoveryConfigActionExportData.fromMap(Map<String, dynamic> map) {
+  factory PreventionDiscoveryConfigActionExportData.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDiscoveryConfigActionExportData(
-      profileTable: map['profileTable'] == null ? null : PreventionDiscoveryConfigActionExportDataProfileTable.fromMap((map['profileTable'] as Map).cast<String, dynamic>()),
+      profileTable: map['profileTable'] == null
+          ? null
+          : PreventionDiscoveryConfigActionExportDataProfileTable.fromMap(
+              (map['profileTable'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

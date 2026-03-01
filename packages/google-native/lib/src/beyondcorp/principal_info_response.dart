@@ -9,20 +9,17 @@ class PrincipalInfoResponse {
 
   /// Creates a new [PrincipalInfoResponse].
   /// [serviceAccount] A GCP service account.
-  PrincipalInfoResponse({
-    required this.serviceAccount,
-  });
+  PrincipalInfoResponse({required this.serviceAccount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serviceAccount': serviceAccount.toMap(),
-    };
+    return <String, dynamic>{'serviceAccount': serviceAccount.toMap()};
   }
 
   factory PrincipalInfoResponse.fromMap(Map<String, dynamic> map) {
     return PrincipalInfoResponse(
-      serviceAccount: ServiceAccountResponse.fromMap((map['serviceAccount'] as Map).cast<String, dynamic>()),
+      serviceAccount: ServiceAccountResponse.fromMap(
+        (map['serviceAccount'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -6,11 +6,14 @@ import 'tool_client_function_response.dart';
 class ToolClientFunction {
   /// The function description.
   final String? description;
+
   /// The function name.
   final String name;
+
   /// Represents a select subset of an OpenAPI 3.0 schema object.
   /// Structure is documented below.
   final ToolClientFunctionParameters? parameters;
+
   /// Represents a select subset of an OpenAPI 3.0 schema object.
   /// Structure is documented below.
   final ToolClientFunctionResponse? response;
@@ -38,11 +41,20 @@ class ToolClientFunction {
 
   factory ToolClientFunction.fromMap(Map<String, dynamic> map) {
     return ToolClientFunction(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       name: map['name'] as String,
-      parameters: map['parameters'] == null ? null : ToolClientFunctionParameters.fromMap((map['parameters'] as Map).cast<String, dynamic>()),
-      response: map['response'] == null ? null : ToolClientFunctionResponse.fromMap((map['response'] as Map).cast<String, dynamic>()),
+      parameters: map['parameters'] == null
+          ? null
+          : ToolClientFunctionParameters.fromMap(
+              (map['parameters'] as Map).cast<String, dynamic>(),
+            ),
+      response: map['response'] == null
+          ? null
+          : ToolClientFunctionResponse.fromMap(
+              (map['response'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

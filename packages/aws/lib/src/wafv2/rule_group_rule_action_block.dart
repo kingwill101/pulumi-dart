@@ -8,20 +8,23 @@ class RuleGroupRuleActionBlock {
 
   /// Creates a new [RuleGroupRuleActionBlock].
   /// [customResponse] Defines a custom response for the web request. See Custom Response below for details.
-  RuleGroupRuleActionBlock({
-    this.customResponse,
-  });
+  RuleGroupRuleActionBlock({this.customResponse});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customResponse': ?customResponse == null ? null : customResponse!.toMap(),
+      'customResponse': ?customResponse == null
+          ? null
+          : customResponse!.toMap(),
     };
   }
 
   factory RuleGroupRuleActionBlock.fromMap(Map<String, dynamic> map) {
     return RuleGroupRuleActionBlock(
-      customResponse: map['customResponse'] == null ? null : RuleGroupRuleActionBlockCustomResponse.fromMap((map['customResponse'] as Map).cast<String, dynamic>()),
+      customResponse: map['customResponse'] == null
+          ? null
+          : RuleGroupRuleActionBlockCustomResponse.fromMap(
+              (map['customResponse'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

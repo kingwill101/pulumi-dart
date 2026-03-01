@@ -5,14 +5,19 @@ import 'vpc_origin_vpc_origin_endpoint_config_origin_ssl_protocols.dart';
 class VpcOriginVpcOriginEndpointConfig {
   /// The VPC origin ARN.
   final String arn;
+
   /// The HTTP port for the CloudFront VPC origin endpoint configuration.
   final int httpPort;
+
   /// The HTTPS port for the CloudFront VPC origin endpoint configuration.
   final int httpsPort;
+
   /// The name of the CloudFront VPC origin endpoint configuration.
   final String name;
+
   /// The origin protocol policy for the CloudFront VPC origin endpoint configuration.
   final String originProtocolPolicy;
+
   /// A complex type that contains information about the SSL/TLS protocols that CloudFront can use when establishing an HTTPS connection with your origin.
   final VpcOriginVpcOriginEndpointConfigOriginSslProtocols originSslProtocols;
 
@@ -50,8 +55,10 @@ class VpcOriginVpcOriginEndpointConfig {
       httpsPort: map['httpsPort'] as int,
       name: map['name'] as String,
       originProtocolPolicy: map['originProtocolPolicy'] as String,
-      originSslProtocols: VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap((map['originSslProtocols'] as Map).cast<String, dynamic>()),
+      originSslProtocols:
+          VpcOriginVpcOriginEndpointConfigOriginSslProtocols.fromMap(
+            (map['originSslProtocols'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

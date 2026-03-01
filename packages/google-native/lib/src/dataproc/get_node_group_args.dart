@@ -22,11 +22,10 @@ class GetNodeGroupArgs {
     required String nodeGroupId,
     String? project,
     required String regionId,
-  }) :
-      clusterId = pulumi.Input.asInput<String>(clusterId),
-      nodeGroupId = pulumi.Input.asInput<String>(nodeGroupId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regionId = pulumi.Input.asInput<String>(regionId);
+  }) : clusterId = pulumi.Input.asInput<String>(clusterId),
+       nodeGroupId = pulumi.Input.asInput<String>(nodeGroupId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       regionId = pulumi.Input.asInput<String>(regionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetNodeGroupArgs {
     );
   }
 }
-

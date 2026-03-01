@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier {
   /// The Salesforce object name.
   final String objectName;
@@ -12,15 +11,14 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'objectName': objectName,
-    };
+    return <String, dynamic>{'objectName': objectName};
   }
 
-  factory StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.fromMap(Map<String, dynamic> map) {
+  factory StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifier(
       objectName: map['objectName'] as String,
     );
   }
 }
-

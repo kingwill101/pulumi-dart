@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DomainDefaultUserSettingsStudioWebPortalSettings {
   /// The Applications supported in Studio that are hidden from the Studio left navigation pane.
   final List<String>? hiddenAppTypes;
+
   /// The instance types you are hiding from the Studio user interface.
   final List<String>? hiddenInstanceTypes;
+
   /// The machine learning tools that are hidden from the Studio left navigation pane.
   final List<String>? hiddenMlTools;
 
@@ -27,12 +28,19 @@ class DomainDefaultUserSettingsStudioWebPortalSettings {
     };
   }
 
-  factory DomainDefaultUserSettingsStudioWebPortalSettings.fromMap(Map<String, dynamic> map) {
+  factory DomainDefaultUserSettingsStudioWebPortalSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainDefaultUserSettingsStudioWebPortalSettings(
-      hiddenAppTypes: map['hiddenAppTypes'] == null ? null : (map['hiddenAppTypes'] as List).cast<String>(),
-      hiddenInstanceTypes: map['hiddenInstanceTypes'] == null ? null : (map['hiddenInstanceTypes'] as List).cast<String>(),
-      hiddenMlTools: map['hiddenMlTools'] == null ? null : (map['hiddenMlTools'] as List).cast<String>(),
+      hiddenAppTypes: map['hiddenAppTypes'] == null
+          ? null
+          : (map['hiddenAppTypes'] as List).cast<String>(),
+      hiddenInstanceTypes: map['hiddenInstanceTypes'] == null
+          ? null
+          : (map['hiddenInstanceTypes'] as List).cast<String>(),
+      hiddenMlTools: map['hiddenMlTools'] == null
+          ? null
+          : (map['hiddenMlTools'] as List).cast<String>(),
     );
   }
 }
-

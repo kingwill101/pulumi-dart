@@ -14,11 +14,11 @@ class DeploymentType extends pulumi.ComponentResource {
     DeploymentArgs? args,
     pulumi.ComponentResourceOptions? options,
   }) : super(
-          'gcp-global-cloudrun:index:Deployment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.ComponentResourceOptions(),
-        ) {
+         'gcp-global-cloudrun:index:Deployment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.ComponentResourceOptions(),
+       ) {
     this.ipAddress = registerOutput<String>('ipAddress');
   }
 }

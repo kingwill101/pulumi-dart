@@ -19,10 +19,11 @@ class GetCapacityCommitmentArgs {
     required String capacityCommitmentId,
     required String location,
     String? project,
-  }) :
-      capacityCommitmentId = pulumi.Input.asInput<String>(capacityCommitmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : capacityCommitmentId = pulumi.Input.asInput<String>(
+         capacityCommitmentId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetCapacityCommitmentArgs {
     );
   }
 }
-

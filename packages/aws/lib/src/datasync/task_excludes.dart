@@ -1,32 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TaskExcludes {
   /// The type of filter rule to apply. Valid values: `SIMPLE_PATTERN`.
   final String? filterType;
+
   /// A single filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is, a pipe), for example: `/folder1|/folder2`
   final String? value;
 
   /// Creates a new [TaskExcludes].
   /// [filterType] The type of filter rule to apply. Valid values: `SIMPLE_PATTERN`.
   /// [value] A single filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is, a pipe), for example: `/folder1|/folder2`
-  TaskExcludes({
-    this.filterType,
-    this.value,
-  });
+  TaskExcludes({this.filterType, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filterType': ?filterType,
-      'value': ?value,
-    };
+    return <String, dynamic>{'filterType': ?filterType, 'value': ?value};
   }
 
   factory TaskExcludes.fromMap(Map<String, dynamic> map) {
     return TaskExcludes(
-      filterType: map['filterType'] == null ? null : map['filterType'] as String,
+      filterType: map['filterType'] == null
+          ? null
+          : map['filterType'] as String,
       value: map['value'] == null ? null : map['value'] as String,
     );
   }
 }
-

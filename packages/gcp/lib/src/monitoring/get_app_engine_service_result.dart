@@ -7,14 +7,17 @@ import 'get_app_engine_service_telemetry.dart';
 class GetAppEngineServiceResult {
   /// Name used for UI elements listing this (Monitoring) Service.
   final String displayName;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String moduleId;
+
   /// The full REST resource name for this channel. The syntax is:
   /// `projects/[PROJECT_ID]/services/[SERVICE_ID]`.
   final String name;
   final String? project;
   final String serviceId;
+
   /// Configuration for how to query telemetry on the Service. Structure is documented below.
   final List<GetAppEngineServiceTelemetry> telemetries;
   final Map<String, String> userLabels;
@@ -47,7 +50,11 @@ class GetAppEngineServiceResult {
       'name': name,
       'project': ?project,
       'serviceId': serviceId,
-      'telemetries': pulumi.Input.encodeList<GetAppEngineServiceTelemetry, Map<String, dynamic>>(telemetries, (value) => value.toMap()),
+      'telemetries':
+          pulumi.Input.encodeList<
+            GetAppEngineServiceTelemetry,
+            Map<String, dynamic>
+          >(telemetries, (value) => value.toMap()),
       'userLabels': userLabels,
     };
   }
@@ -60,9 +67,13 @@ class GetAppEngineServiceResult {
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       serviceId: map['serviceId'] as String,
-      telemetries: pulumi.Input.decodeList<GetAppEngineServiceTelemetry>(map['telemetries'], (value) => GetAppEngineServiceTelemetry.fromMap((value as Map).cast<String, dynamic>())),
+      telemetries: pulumi.Input.decodeList<GetAppEngineServiceTelemetry>(
+        map['telemetries'],
+        (value) => GetAppEngineServiceTelemetry.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       userLabels: (map['userLabels'] as Map).cast<String, String>(),
     );
   }
 }
-

@@ -7,6 +7,7 @@ class GetGroupMembershipsMembershipRole {
   /// The MembershipRole expiry details, only supported for MEMBER role.
   /// Other roles cannot be accompanied with MEMBER role having expiry.
   final List<GetGroupMembershipsMembershipRoleExpiryDetail> expiryDetails;
+
   /// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
   final String name;
 
@@ -20,16 +21,26 @@ class GetGroupMembershipsMembershipRole {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expiryDetails': pulumi.Input.encodeList<GetGroupMembershipsMembershipRoleExpiryDetail, Map<String, dynamic>>(expiryDetails, (value) => value.toMap()),
+      'expiryDetails':
+          pulumi.Input.encodeList<
+            GetGroupMembershipsMembershipRoleExpiryDetail,
+            Map<String, dynamic>
+          >(expiryDetails, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory GetGroupMembershipsMembershipRole.fromMap(Map<String, dynamic> map) {
     return GetGroupMembershipsMembershipRole(
-      expiryDetails: pulumi.Input.decodeList<GetGroupMembershipsMembershipRoleExpiryDetail>(map['expiryDetails'], (value) => GetGroupMembershipsMembershipRoleExpiryDetail.fromMap((value as Map).cast<String, dynamic>())),
+      expiryDetails:
+          pulumi
+              .Input.decodeList<GetGroupMembershipsMembershipRoleExpiryDetail>(
+            map['expiryDetails'],
+            (value) => GetGroupMembershipsMembershipRoleExpiryDetail.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       name: map['name'] as String,
     );
   }
 }
-

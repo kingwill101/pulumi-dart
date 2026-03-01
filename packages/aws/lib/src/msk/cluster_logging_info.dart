@@ -8,20 +8,17 @@ class ClusterLoggingInfo {
 
   /// Creates a new [ClusterLoggingInfo].
   /// [brokerLogs] Configuration block for Broker Logs settings for logging info. See logging_info broker_logs Argument Reference below.
-  ClusterLoggingInfo({
-    required this.brokerLogs,
-  });
+  ClusterLoggingInfo({required this.brokerLogs});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'brokerLogs': brokerLogs.toMap(),
-    };
+    return <String, dynamic>{'brokerLogs': brokerLogs.toMap()};
   }
 
   factory ClusterLoggingInfo.fromMap(Map<String, dynamic> map) {
     return ClusterLoggingInfo(
-      brokerLogs: ClusterLoggingInfoBrokerLogs.fromMap((map['brokerLogs'] as Map).cast<String, dynamic>()),
+      brokerLogs: ClusterLoggingInfoBrokerLogs.fromMap(
+        (map['brokerLogs'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getNetblockIPRanges.
 class GetNetblockIPRangesResult {
   /// Retrieve list of all CIDR blocks.
   final List<String> cidrBlocks;
+
   /// Retrieve list of the IPv4 CIDR blocks
   final List<String> cidrBlocksIpv4s;
+
   /// Retrieve list of the IPv6 CIDR blocks, if available.
   final List<String> cidrBlocksIpv6s;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? rangeType;
@@ -47,4 +49,3 @@ class GetNetblockIPRangesResult {
     );
   }
 }
-

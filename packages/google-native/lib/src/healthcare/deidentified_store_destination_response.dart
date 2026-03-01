@@ -6,6 +6,7 @@ import 'deidentify_config_response.dart';
 class DeidentifiedStoreDestinationResponse {
   /// The configuration to use when de-identifying resources that are added to this store.
   final DeidentifyConfigResponse config;
+
   /// The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
   final String store;
 
@@ -18,17 +19,17 @@ class DeidentifiedStoreDestinationResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'config': config.toMap(),
-      'store': store,
-    };
+    return <String, dynamic>{'config': config.toMap(), 'store': store};
   }
 
-  factory DeidentifiedStoreDestinationResponse.fromMap(Map<String, dynamic> map) {
+  factory DeidentifiedStoreDestinationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeidentifiedStoreDestinationResponse(
-      config: DeidentifyConfigResponse.fromMap((map['config'] as Map).cast<String, dynamic>()),
+      config: DeidentifyConfigResponse.fromMap(
+        (map['config'] as Map).cast<String, dynamic>(),
+      ),
       store: map['store'] as String,
     );
   }
 }
-

@@ -9,16 +9,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FolderExclusionArgs {
   /// A human-readable description.
   final pulumi.Input<String>? description;
+
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
   final pulumi.Input<bool>? disabled;
+
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
   final pulumi.Input<String> filter;
+
   /// The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
   /// accepted.
   final pulumi.Input<String> folder;
+
   /// The name of the logging exclusion.
   final pulumi.Input<String>? name;
 
@@ -34,12 +38,11 @@ class FolderExclusionArgs {
     required String filter,
     required String folder,
     String? name,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      disabled = pulumi.Input.asOptionalInput<bool>(disabled),
-      filter = pulumi.Input.asInput<String>(filter),
-      folder = pulumi.Input.asInput<String>(folder),
-      name = pulumi.Input.asOptionalInput<String>(name);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       disabled = pulumi.Input.asOptionalInput<bool>(disabled),
+       filter = pulumi.Input.asInput<String>(filter),
+       folder = pulumi.Input.asInput<String>(folder),
+       name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,7 +56,9 @@ class FolderExclusionArgs {
 
   factory FolderExclusionArgs.fromMap(Map<String, dynamic> map) {
     return FolderExclusionArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       disabled: map['disabled'] == null ? null : map['disabled'] as bool,
       filter: map['filter'] as String,
       folder: map['folder'] as String,
@@ -61,4 +66,3 @@ class FolderExclusionArgs {
     );
   }
 }
-

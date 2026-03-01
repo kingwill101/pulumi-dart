@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LakeIamBindingCondition {
   final String? description;
   final String expression;
@@ -26,10 +25,11 @@ class LakeIamBindingCondition {
 
   factory LakeIamBindingCondition.fromMap(Map<String, dynamic> map) {
     return LakeIamBindingCondition(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       expression: map['expression'] as String,
       title: map['title'] as String,
     );
   }
 }
-

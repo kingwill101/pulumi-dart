@@ -6,7 +6,9 @@ import 'get_user_pool_admin_create_user_config_invite_message_template.dart';
 class GetUserPoolAdminCreateUserConfig {
   /// - Whether only admins can create users.
   final bool allowAdminCreateUserOnly;
-  final List<GetUserPoolAdminCreateUserConfigInviteMessageTemplate> inviteMessageTemplates;
+  final List<GetUserPoolAdminCreateUserConfigInviteMessageTemplate>
+  inviteMessageTemplates;
+
   /// - Number of days an unconfirmed user account remains valid.
   /// * invite_message_template - Templates for invitation messages.
   final int unusedAccountValidityDays;
@@ -24,7 +26,11 @@ class GetUserPoolAdminCreateUserConfig {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowAdminCreateUserOnly': allowAdminCreateUserOnly,
-      'inviteMessageTemplates': pulumi.Input.encodeList<GetUserPoolAdminCreateUserConfigInviteMessageTemplate, Map<String, dynamic>>(inviteMessageTemplates, (value) => value.toMap()),
+      'inviteMessageTemplates':
+          pulumi.Input.encodeList<
+            GetUserPoolAdminCreateUserConfigInviteMessageTemplate,
+            Map<String, dynamic>
+          >(inviteMessageTemplates, (value) => value.toMap()),
       'unusedAccountValidityDays': unusedAccountValidityDays,
     };
   }
@@ -32,9 +38,17 @@ class GetUserPoolAdminCreateUserConfig {
   factory GetUserPoolAdminCreateUserConfig.fromMap(Map<String, dynamic> map) {
     return GetUserPoolAdminCreateUserConfig(
       allowAdminCreateUserOnly: map['allowAdminCreateUserOnly'] as bool,
-      inviteMessageTemplates: pulumi.Input.decodeList<GetUserPoolAdminCreateUserConfigInviteMessageTemplate>(map['inviteMessageTemplates'], (value) => GetUserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap((value as Map).cast<String, dynamic>())),
+      inviteMessageTemplates:
+          pulumi.Input.decodeList<
+            GetUserPoolAdminCreateUserConfigInviteMessageTemplate
+          >(
+            map['inviteMessageTemplates'],
+            (value) =>
+                GetUserPoolAdminCreateUserConfigInviteMessageTemplate.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       unusedAccountValidityDays: map['unusedAccountValidityDays'] as int,
     );
   }
 }
-

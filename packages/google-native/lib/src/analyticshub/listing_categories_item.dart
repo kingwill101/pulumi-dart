@@ -32,4 +32,3 @@ enum ListingCategoriesItem {
     throw ArgumentError('Unknown ListingCategoriesItem value: $value');
   }
 }
-

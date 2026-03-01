@@ -19,10 +19,9 @@ class GetAppProfileArgs {
     required String appProfileId,
     required String instanceId,
     String? project,
-  }) :
-      appProfileId = pulumi.Input.asInput<String>(appProfileId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : appProfileId = pulumi.Input.asInput<String>(appProfileId),
+       instanceId = pulumi.Input.asInput<String>(instanceId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetAppProfileArgs {
     );
   }
 }
-

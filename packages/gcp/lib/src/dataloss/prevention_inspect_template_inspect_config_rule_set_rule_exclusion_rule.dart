@@ -8,20 +8,28 @@ import 'prevention_inspect_template_inspect_config_rule_set_rule_exclusion_rule_
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule {
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  final PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary? dictionary;
+  final PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary?
+  dictionary;
+
   /// Drop if the hotword rule is contained in the proximate context.
   /// For tabular data, the context includes the column name.
   /// Structure is documented below.
-  final PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword? excludeByHotword;
+  final PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword?
+  excludeByHotword;
+
   /// Set of infoTypes for which findings would affect this rule.
   /// Structure is documented below.
-  final PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes? excludeInfoTypes;
+  final PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes?
+  excludeInfoTypes;
+
   /// How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
   /// Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
   final String matchingType;
+
   /// Regular expression which defines the rule.
   /// Structure is documented below.
-  final PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex? regex;
+  final PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex?
+  regex;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule].
   /// [dictionary] Dictionary which defines the rule.
@@ -40,21 +48,42 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dictionary': ?dictionary == null ? null : dictionary!.toMap(),
-      'excludeByHotword': ?excludeByHotword == null ? null : excludeByHotword!.toMap(),
-      'excludeInfoTypes': ?excludeInfoTypes == null ? null : excludeInfoTypes!.toMap(),
+      'excludeByHotword': ?excludeByHotword == null
+          ? null
+          : excludeByHotword!.toMap(),
+      'excludeInfoTypes': ?excludeInfoTypes == null
+          ? null
+          : excludeInfoTypes!.toMap(),
       'matchingType': matchingType,
       'regex': ?regex == null ? null : regex!.toMap(),
     };
   }
 
-  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule.fromMap(Map<String, dynamic> map) {
+  factory PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule(
-      dictionary: map['dictionary'] == null ? null : PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary.fromMap((map['dictionary'] as Map).cast<String, dynamic>()),
-      excludeByHotword: map['excludeByHotword'] == null ? null : PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword.fromMap((map['excludeByHotword'] as Map).cast<String, dynamic>()),
-      excludeInfoTypes: map['excludeInfoTypes'] == null ? null : PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.fromMap((map['excludeInfoTypes'] as Map).cast<String, dynamic>()),
+      dictionary: map['dictionary'] == null
+          ? null
+          : PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary.fromMap(
+              (map['dictionary'] as Map).cast<String, dynamic>(),
+            ),
+      excludeByHotword: map['excludeByHotword'] == null
+          ? null
+          : PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword.fromMap(
+              (map['excludeByHotword'] as Map).cast<String, dynamic>(),
+            ),
+      excludeInfoTypes: map['excludeInfoTypes'] == null
+          ? null
+          : PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes.fromMap(
+              (map['excludeInfoTypes'] as Map).cast<String, dynamic>(),
+            ),
       matchingType: map['matchingType'] as String,
-      regex: map['regex'] == null ? null : PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex.fromMap((map['regex'] as Map).cast<String, dynamic>()),
+      regex: map['regex'] == null
+          ? null
+          : PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex.fromMap(
+              (map['regex'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

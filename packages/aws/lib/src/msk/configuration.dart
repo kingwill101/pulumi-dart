@@ -132,16 +132,22 @@ import 'configuration_args.dart';
 class Configuration extends pulumi.CustomResource {
   /// Amazon Resource Name (ARN) of the configuration.
   late final pulumi.Output<String> arn;
+
   /// Description of the configuration.
   late final pulumi.Output<String?> description;
+
   /// List of Apache Kafka versions which can use this configuration.
   late final pulumi.Output<List<String>?> kafkaVersions;
+
   /// Latest revision of the configuration.
   late final pulumi.Output<int> latestRevision;
+
   /// Name of the configuration.
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Contents of the server.properties file. Supported properties are documented in the [MSK Developer Guide](https://docs.aws.amazon.com/msk/latest/developerguide/msk-configuration-properties.html).
   late final pulumi.Output<String> serverProperties;
 
@@ -154,11 +160,11 @@ class Configuration extends pulumi.CustomResource {
     ConfigurationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:msk/configuration:Configuration',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:msk/configuration:Configuration',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.description = registerOutput<String?>('description');
     this.kafkaVersions = registerOutput<List<String>?>('kafkaVersions');

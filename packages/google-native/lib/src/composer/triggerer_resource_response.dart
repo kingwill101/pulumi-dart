@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for resources used by Airflow triggerers.
 class TriggererResourceResponse {
   /// Optional. The number of triggerers.
   final int count;
+
   /// Optional. CPU request and limit for a single Airflow triggerer replica.
   final double cpu;
+
   /// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
   final double memoryGb;
 
@@ -21,11 +22,7 @@ class TriggererResourceResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-      'cpu': cpu,
-      'memoryGb': memoryGb,
-    };
+    return <String, dynamic>{'count': count, 'cpu': cpu, 'memoryGb': memoryGb};
   }
 
   factory TriggererResourceResponse.fromMap(Map<String, dynamic> map) {
@@ -36,4 +33,3 @@ class TriggererResourceResponse {
     );
   }
 }
-

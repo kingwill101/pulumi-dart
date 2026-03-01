@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentcoreGatewayInterceptorConfigurationInputConfiguration {
   /// Whether to pass request headers to the interceptor.
   final bool passRequestHeaders;
@@ -12,15 +11,14 @@ class AgentcoreGatewayInterceptorConfigurationInputConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'passRequestHeaders': passRequestHeaders,
-    };
+    return <String, dynamic>{'passRequestHeaders': passRequestHeaders};
   }
 
-  factory AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayInterceptorConfigurationInputConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayInterceptorConfigurationInputConfiguration(
       passRequestHeaders: map['passRequestHeaders'] as bool,
     );
   }
 }
-

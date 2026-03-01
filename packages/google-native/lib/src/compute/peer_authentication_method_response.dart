@@ -9,20 +9,17 @@ class PeerAuthenticationMethodResponse {
 
   /// Creates a new [PeerAuthenticationMethodResponse].
   /// [mtls] Set if mTLS is used for peer authentication.
-  PeerAuthenticationMethodResponse({
-    required this.mtls,
-  });
+  PeerAuthenticationMethodResponse({required this.mtls});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mtls': mtls.toMap(),
-    };
+    return <String, dynamic>{'mtls': mtls.toMap()};
   }
 
   factory PeerAuthenticationMethodResponse.fromMap(Map<String, dynamic> map) {
     return PeerAuthenticationMethodResponse(
-      mtls: MutualTlsResponse.fromMap((map['mtls'] as Map).cast<String, dynamic>()),
+      mtls: MutualTlsResponse.fromMap(
+        (map['mtls'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

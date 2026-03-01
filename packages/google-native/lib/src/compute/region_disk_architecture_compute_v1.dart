@@ -13,7 +13,8 @@ enum RegionDiskArchitectureComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionDiskArchitectureComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionDiskArchitectureComputeV1 value: $value',
+    );
   }
 }
-

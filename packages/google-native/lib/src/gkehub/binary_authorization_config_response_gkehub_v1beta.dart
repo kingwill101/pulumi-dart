@@ -7,6 +7,7 @@ import 'policy_binding_response_gkehub_v1beta.dart';
 class BinaryAuthorizationConfigResponseGkehubV1beta {
   /// Optional. Mode of operation for binauthz policy evaluation.
   final String evaluationMode;
+
   /// Optional. Binauthz policies that apply to this cluster.
   final List<PolicyBindingResponseGkehubV1beta> policyBindings;
 
@@ -21,15 +22,26 @@ class BinaryAuthorizationConfigResponseGkehubV1beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'evaluationMode': evaluationMode,
-      'policyBindings': pulumi.Input.encodeList<PolicyBindingResponseGkehubV1beta, Map<String, dynamic>>(policyBindings, (value) => value.toMap()),
+      'policyBindings':
+          pulumi.Input.encodeList<
+            PolicyBindingResponseGkehubV1beta,
+            Map<String, dynamic>
+          >(policyBindings, (value) => value.toMap()),
     };
   }
 
-  factory BinaryAuthorizationConfigResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory BinaryAuthorizationConfigResponseGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BinaryAuthorizationConfigResponseGkehubV1beta(
       evaluationMode: map['evaluationMode'] as String,
-      policyBindings: pulumi.Input.decodeList<PolicyBindingResponseGkehubV1beta>(map['policyBindings'], (value) => PolicyBindingResponseGkehubV1beta.fromMap((value as Map).cast<String, dynamic>())),
+      policyBindings:
+          pulumi.Input.decodeList<PolicyBindingResponseGkehubV1beta>(
+            map['policyBindings'],
+            (value) => PolicyBindingResponseGkehubV1beta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

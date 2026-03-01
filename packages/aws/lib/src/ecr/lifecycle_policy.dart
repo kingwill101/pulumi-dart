@@ -790,10 +790,13 @@ import 'lifecycle_policy_args.dart';
 class LifecyclePolicy extends pulumi.CustomResource {
   /// The policy document. This is a JSON formatted string. See more details about [Policy Parameters](http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html#lifecycle_policy_parameters) in the official AWS docs. Consider using the `aws.ecr.getLifecyclePolicyDocument` data_source to generate/manage the JSON document used for the `policy` argument.
   late final pulumi.Output<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The registry ID where the repository was created.
   late final pulumi.Output<String> registryId;
+
   /// Name of the repository to apply the policy.
   late final pulumi.Output<String> repository;
 
@@ -806,11 +809,11 @@ class LifecyclePolicy extends pulumi.CustomResource {
     LifecyclePolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ecr/lifecyclePolicy:LifecyclePolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ecr/lifecyclePolicy:LifecyclePolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.policy = registerOutput<String>('policy');
     this.region = registerOutput<String>('region');
     this.registryId = registerOutput<String>('registryId');

@@ -1,23 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
   /// The key may be used to sign certificates.
   final bool certSign;
+
   /// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
   final bool contentCommitment;
+
   /// The key may be used sign certificate revocation lists.
   final bool crlSign;
+
   /// The key may be used to encipher data.
   final bool dataEncipherment;
+
   /// The key may be used to decipher only.
   final bool decipherOnly;
+
   /// The key may be used for digital signatures.
   final bool digitalSignature;
+
   /// The key may be used to encipher only.
   final bool encipherOnly;
+
   /// The key may be used in a key agreement protocol.
   final bool keyAgreement;
+
   /// The key may be used to encipher other keys.
   final bool keyEncipherment;
 
@@ -57,7 +64,9 @@ class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
     };
   }
 
-  factory GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage.fromMap(Map<String, dynamic> map) {
+  factory GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage(
       certSign: map['certSign'] as bool,
       contentCommitment: map['contentCommitment'] as bool,
@@ -71,4 +80,3 @@ class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
     );
   }
 }
-

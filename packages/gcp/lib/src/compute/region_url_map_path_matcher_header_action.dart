@@ -7,12 +7,17 @@ import 'region_url_map_path_matcher_header_action_response_headers_to_add.dart';
 class RegionUrlMapPathMatcherHeaderAction {
   /// Headers to add to a matching request before forwarding the request to the backendService.
   /// Structure is documented below.
-  final List<RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd>? requestHeadersToAdds;
+  final List<RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd>?
+  requestHeadersToAdds;
+
   /// A list of header names for headers that need to be removed from the request before forwarding the request to the backendService.
   final List<String>? requestHeadersToRemoves;
+
   /// Headers to add the response before sending the response back to the client.
   /// Structure is documented below.
-  final List<RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd>? responseHeadersToAdds;
+  final List<RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd>?
+  responseHeadersToAdds;
+
   /// A list of header names for headers that need to be removed from the response before sending the response back to the client.
   final List<String>? responseHeadersToRemoves;
 
@@ -30,20 +35,55 @@ class RegionUrlMapPathMatcherHeaderAction {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'requestHeadersToAdds': ?requestHeadersToAdds == null ? null : pulumi.Input.encodeList<RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd, Map<String, dynamic>>(requestHeadersToAdds!, (value) => value.toMap()),
+      'requestHeadersToAdds': ?requestHeadersToAdds == null
+          ? null
+          : pulumi.Input.encodeList<
+              RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd,
+              Map<String, dynamic>
+            >(requestHeadersToAdds!, (value) => value.toMap()),
       'requestHeadersToRemoves': ?requestHeadersToRemoves,
-      'responseHeadersToAdds': ?responseHeadersToAdds == null ? null : pulumi.Input.encodeList<RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd, Map<String, dynamic>>(responseHeadersToAdds!, (value) => value.toMap()),
+      'responseHeadersToAdds': ?responseHeadersToAdds == null
+          ? null
+          : pulumi.Input.encodeList<
+              RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd,
+              Map<String, dynamic>
+            >(responseHeadersToAdds!, (value) => value.toMap()),
       'responseHeadersToRemoves': ?responseHeadersToRemoves,
     };
   }
 
-  factory RegionUrlMapPathMatcherHeaderAction.fromMap(Map<String, dynamic> map) {
+  factory RegionUrlMapPathMatcherHeaderAction.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionUrlMapPathMatcherHeaderAction(
-      requestHeadersToAdds: map['requestHeadersToAdds'] == null ? null : pulumi.Input.decodeList<RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd>(map['requestHeadersToAdds'], (value) => RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd.fromMap((value as Map).cast<String, dynamic>())),
-      requestHeadersToRemoves: map['requestHeadersToRemoves'] == null ? null : (map['requestHeadersToRemoves'] as List).cast<String>(),
-      responseHeadersToAdds: map['responseHeadersToAdds'] == null ? null : pulumi.Input.decodeList<RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd>(map['responseHeadersToAdds'], (value) => RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd.fromMap((value as Map).cast<String, dynamic>())),
-      responseHeadersToRemoves: map['responseHeadersToRemoves'] == null ? null : (map['responseHeadersToRemoves'] as List).cast<String>(),
+      requestHeadersToAdds: map['requestHeadersToAdds'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd
+            >(
+              map['requestHeadersToAdds'],
+              (value) =>
+                  RegionUrlMapPathMatcherHeaderActionRequestHeadersToAdd.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      requestHeadersToRemoves: map['requestHeadersToRemoves'] == null
+          ? null
+          : (map['requestHeadersToRemoves'] as List).cast<String>(),
+      responseHeadersToAdds: map['responseHeadersToAdds'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd
+            >(
+              map['responseHeadersToAdds'],
+              (value) =>
+                  RegionUrlMapPathMatcherHeaderActionResponseHeadersToAdd.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      responseHeadersToRemoves: map['responseHeadersToRemoves'] == null
+          ? null
+          : (map['responseHeadersToRemoves'] as List).cast<String>(),
     );
   }
 }
-

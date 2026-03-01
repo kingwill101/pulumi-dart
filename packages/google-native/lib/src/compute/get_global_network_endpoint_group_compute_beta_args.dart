@@ -16,9 +16,10 @@ class GetGlobalNetworkEndpointGroupComputeBetaArgs {
   GetGlobalNetworkEndpointGroupComputeBetaArgs({
     required String networkEndpointGroup,
     String? project,
-  }) :
-      networkEndpointGroup = pulumi.Input.asInput<String>(networkEndpointGroup),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : networkEndpointGroup = pulumi.Input.asInput<String>(
+         networkEndpointGroup,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,11 +28,12 @@ class GetGlobalNetworkEndpointGroupComputeBetaArgs {
     };
   }
 
-  factory GetGlobalNetworkEndpointGroupComputeBetaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetGlobalNetworkEndpointGroupComputeBetaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetGlobalNetworkEndpointGroupComputeBetaArgs(
       networkEndpointGroup: map['networkEndpointGroup'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

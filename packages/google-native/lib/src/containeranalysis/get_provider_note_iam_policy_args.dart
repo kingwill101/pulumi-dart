@@ -16,15 +16,11 @@ class GetProviderNoteIamPolicyArgs {
   GetProviderNoteIamPolicyArgs({
     required String noteId,
     required String providerId,
-  }) :
-      noteId = pulumi.Input.asInput<String>(noteId),
-      providerId = pulumi.Input.asInput<String>(providerId);
+  }) : noteId = pulumi.Input.asInput<String>(noteId),
+       providerId = pulumi.Input.asInput<String>(providerId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'noteId': noteId,
-      'providerId': providerId,
-    };
+    return <String, dynamic>{'noteId': noteId, 'providerId': providerId};
   }
 
   factory GetProviderNoteIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +30,3 @@ class GetProviderNoteIamPolicyArgs {
     );
   }
 }
-

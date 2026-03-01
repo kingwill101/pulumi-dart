@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MemberDetectorFeatureAdditionalConfiguration {
   /// The name of the additional configuration. Valid values: `EKS_ADDON_MANAGEMENT`, `ECS_FARGATE_AGENT_MANAGEMENT`.
   final String name;
+
   /// The status of the additional configuration. Valid values: `ENABLED`, `DISABLED`.
   final String status;
 
@@ -16,17 +16,15 @@ class MemberDetectorFeatureAdditionalConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'status': status,
-    };
+    return <String, dynamic>{'name': name, 'status': status};
   }
 
-  factory MemberDetectorFeatureAdditionalConfiguration.fromMap(Map<String, dynamic> map) {
+  factory MemberDetectorFeatureAdditionalConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MemberDetectorFeatureAdditionalConfiguration(
       name: map['name'] as String,
       status: map['status'] as String,
     );
   }
 }
-

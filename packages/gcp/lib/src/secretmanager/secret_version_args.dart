@@ -14,18 +14,24 @@ class SecretVersionArgs {
   /// * DISABLE
   /// * ABANDON
   final pulumi.Input<String>? deletionPolicy;
+
   /// The current state of the SecretVersion.
   final pulumi.Input<bool>? enabled;
+
   /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
   final pulumi.Input<bool>? isSecretDataBase64;
+
   /// The ID of the project in which the resource belongs. If it is not provided,
   /// the provider project is used
   final pulumi.Input<String>? project;
+
   /// Secret Manager secret resource
   final pulumi.Input<String> secret;
+
   /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? secretData;
+
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// The secret data. Must be no larger than 64KiB. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
@@ -33,6 +39,7 @@ class SecretVersionArgs {
   ///
   /// > **Note:** One of `secret_data` or `secret_data_wo` can only be set.
   final pulumi.Input<String>? secretDataWo;
+
   /// Triggers update of secret data write-only. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   final pulumi.Input<int>? secretDataWoVersion;
 
@@ -54,15 +61,18 @@ class SecretVersionArgs {
     String? secretData,
     String? secretDataWo,
     int? secretDataWoVersion,
-  }) :
-      deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
-      enabled = pulumi.Input.asOptionalInput<bool>(enabled),
-      isSecretDataBase64 = pulumi.Input.asOptionalInput<bool>(isSecretDataBase64),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      secret = pulumi.Input.asInput<String>(secret),
-      secretData = pulumi.Input.asOptionalInput<String>(secretData),
-      secretDataWo = pulumi.Input.asOptionalInput<String>(secretDataWo),
-      secretDataWoVersion = pulumi.Input.asOptionalInput<int>(secretDataWoVersion);
+  }) : deletionPolicy = pulumi.Input.asOptionalInput<String>(deletionPolicy),
+       enabled = pulumi.Input.asOptionalInput<bool>(enabled),
+       isSecretDataBase64 = pulumi.Input.asOptionalInput<bool>(
+         isSecretDataBase64,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       secret = pulumi.Input.asInput<String>(secret),
+       secretData = pulumi.Input.asOptionalInput<String>(secretData),
+       secretDataWo = pulumi.Input.asOptionalInput<String>(secretDataWo),
+       secretDataWoVersion = pulumi.Input.asOptionalInput<int>(
+         secretDataWoVersion,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -79,15 +89,24 @@ class SecretVersionArgs {
 
   factory SecretVersionArgs.fromMap(Map<String, dynamic> map) {
     return SecretVersionArgs(
-      deletionPolicy: map['deletionPolicy'] == null ? null : map['deletionPolicy'] as String,
+      deletionPolicy: map['deletionPolicy'] == null
+          ? null
+          : map['deletionPolicy'] as String,
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      isSecretDataBase64: map['isSecretDataBase64'] == null ? null : map['isSecretDataBase64'] as bool,
+      isSecretDataBase64: map['isSecretDataBase64'] == null
+          ? null
+          : map['isSecretDataBase64'] as bool,
       project: map['project'] == null ? null : map['project'] as String,
       secret: map['secret'] as String,
-      secretData: map['secretData'] == null ? null : map['secretData'] as String,
-      secretDataWo: map['secretDataWo'] == null ? null : map['secretDataWo'] as String,
-      secretDataWoVersion: map['secretDataWoVersion'] == null ? null : map['secretDataWoVersion'] as int,
+      secretData: map['secretData'] == null
+          ? null
+          : map['secretData'] as String,
+      secretDataWo: map['secretDataWo'] == null
+          ? null
+          : map['secretDataWo'] as String,
+      secretDataWoVersion: map['secretDataWoVersion'] == null
+          ? null
+          : map['secretDataWoVersion'] as int,
     );
   }
 }
-

@@ -9,20 +9,17 @@ class GrafeasV1beta1PackageDetails {
 
   /// Creates a new [GrafeasV1beta1PackageDetails].
   /// [installation] Where the package was installed.
-  GrafeasV1beta1PackageDetails({
-    required this.installation,
-  });
+  GrafeasV1beta1PackageDetails({required this.installation});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'installation': installation.toMap(),
-    };
+    return <String, dynamic>{'installation': installation.toMap()};
   }
 
   factory GrafeasV1beta1PackageDetails.fromMap(Map<String, dynamic> map) {
     return GrafeasV1beta1PackageDetails(
-      installation: InstallationContaineranalysisV1beta1.fromMap((map['installation'] as Map).cast<String, dynamic>()),
+      installation: InstallationContaineranalysisV1beta1.fromMap(
+        (map['installation'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

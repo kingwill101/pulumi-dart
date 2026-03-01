@@ -13,18 +13,12 @@ class GetDeploymentArgs {
   /// Creates a new [GetDeploymentArgs].
   /// [deployment] Required.
   /// [project] Optional.
-  GetDeploymentArgs({
-    required String deployment,
-    String? project,
-  }) :
-      deployment = pulumi.Input.asInput<String>(deployment),
+  GetDeploymentArgs({required String deployment, String? project})
+    : deployment = pulumi.Input.asInput<String>(deployment),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'deployment': deployment,
-      'project': ?project,
-    };
+    return <String, dynamic>{'deployment': deployment, 'project': ?project};
   }
 
   factory GetDeploymentArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetDeploymentArgs {
     );
   }
 }
-

@@ -7,29 +7,38 @@ import 'audit_log_config_gkehub_v1alpha2.dart';
 class AuditConfigGkehubV1alpha2 {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigGkehubV1alpha2>? auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
   /// Creates a new [AuditConfigGkehubV1alpha2].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigGkehubV1alpha2({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfigGkehubV1alpha2({this.auditLogConfigs, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<AuditLogConfigGkehubV1alpha2, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'auditLogConfigs': ?auditLogConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              AuditLogConfigGkehubV1alpha2,
+              Map<String, dynamic>
+            >(auditLogConfigs!, (value) => value.toMap()),
       'service': ?service,
     };
   }
 
   factory AuditConfigGkehubV1alpha2.fromMap(Map<String, dynamic> map) {
     return AuditConfigGkehubV1alpha2(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<AuditLogConfigGkehubV1alpha2>(map['auditLogConfigs'], (value) => AuditLogConfigGkehubV1alpha2.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigs: map['auditLogConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<AuditLogConfigGkehubV1alpha2>(
+              map['auditLogConfigs'],
+              (value) => AuditLogConfigGkehubV1alpha2.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
-

@@ -9,9 +9,7 @@ class GooglePrivacyDlpV2TimePartConfig {
 
   /// Creates a new [GooglePrivacyDlpV2TimePartConfig].
   /// [partToExtract] The part of the time to keep.
-  GooglePrivacyDlpV2TimePartConfig({
-    this.partToExtract,
-  });
+  GooglePrivacyDlpV2TimePartConfig({this.partToExtract});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class GooglePrivacyDlpV2TimePartConfig {
 
   factory GooglePrivacyDlpV2TimePartConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TimePartConfig(
-      partToExtract: map['partToExtract'] == null ? null : GooglePrivacyDlpV2TimePartConfigPartToExtract.fromValue(map['partToExtract'] as String),
+      partToExtract: map['partToExtract'] == null
+          ? null
+          : GooglePrivacyDlpV2TimePartConfigPartToExtract.fromValue(
+              map['partToExtract'] as String,
+            ),
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetJobRunV2Args {
     required String jobId,
     required String location,
     String? project,
-  }) :
-      jobId = pulumi.Input.asInput<String>(jobId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : jobId = pulumi.Input.asInput<String>(jobId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetJobRunV2Args {
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetQueuedResourceArgs {
     required String location,
     String? project,
     required String queuedResourceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queuedResourceId = pulumi.Input.asInput<String>(queuedResourceId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       queuedResourceId = pulumi.Input.asInput<String>(queuedResourceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetQueuedResourceArgs {
     );
   }
 }
-

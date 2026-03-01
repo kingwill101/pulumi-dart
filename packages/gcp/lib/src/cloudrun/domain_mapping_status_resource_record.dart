@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DomainMappingStatusResourceRecord {
   /// Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
   final String? name;
+
   /// (Output)
   /// Data for this record. Values vary by record type, as defined in RFC 1035
   /// (section 5) and RFC 1034 (section 3.6.1).
   final String? rrdata;
+
   /// Resource record type. Example: `AAAA`.
   /// Possible values are: `A`, `AAAA`, `CNAME`.
   final String? type;
@@ -16,18 +17,10 @@ class DomainMappingStatusResourceRecord {
   /// [name] Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
   /// [rrdata] (Output)
   /// [type] Resource record type. Example: `AAAA`.
-  DomainMappingStatusResourceRecord({
-    this.name,
-    this.rrdata,
-    this.type,
-  });
+  DomainMappingStatusResourceRecord({this.name, this.rrdata, this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'rrdata': ?rrdata,
-      'type': ?type,
-    };
+    return <String, dynamic>{'name': ?name, 'rrdata': ?rrdata, 'type': ?type};
   }
 
   factory DomainMappingStatusResourceRecord.fromMap(Map<String, dynamic> map) {
@@ -38,4 +31,3 @@ class DomainMappingStatusResourceRecord {
     );
   }
 }
-

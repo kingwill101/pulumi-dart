@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BuildMetadata {
   final String? finishedOn;
   final String? invocationId;
@@ -10,11 +9,7 @@ class BuildMetadata {
   /// [finishedOn] Optional.
   /// [invocationId] Optional.
   /// [startedOn] Optional.
-  BuildMetadata({
-    this.finishedOn,
-    this.invocationId,
-    this.startedOn,
-  });
+  BuildMetadata({this.finishedOn, this.invocationId, this.startedOn});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,10 +21,13 @@ class BuildMetadata {
 
   factory BuildMetadata.fromMap(Map<String, dynamic> map) {
     return BuildMetadata(
-      finishedOn: map['finishedOn'] == null ? null : map['finishedOn'] as String,
-      invocationId: map['invocationId'] == null ? null : map['invocationId'] as String,
+      finishedOn: map['finishedOn'] == null
+          ? null
+          : map['finishedOn'] as String,
+      invocationId: map['invocationId'] == null
+          ? null
+          : map['invocationId'] as String,
       startedOn: map['startedOn'] == null ? null : map['startedOn'] as String,
     );
   }
 }
-

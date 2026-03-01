@@ -15,7 +15,8 @@ enum PolicyControllerHubConfigInstallSpec {
         return item;
       }
     }
-    throw ArgumentError('Unknown PolicyControllerHubConfigInstallSpec value: $value');
+    throw ArgumentError(
+      'Unknown PolicyControllerHubConfigInstallSpec value: $value',
+    );
   }
 }
-

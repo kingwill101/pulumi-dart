@@ -6,6 +6,7 @@ import 'centralization_rule_for_organization_rule_source.dart';
 class CentralizationRuleForOrganizationRule {
   /// Configuration block for the destination where logs will be centralized. See `destination` below.
   final CentralizationRuleForOrganizationRuleDestination destination;
+
   /// Configuration block for the source of logs to be centralized. See `source` below.
   final CentralizationRuleForOrganizationRuleSource source;
 
@@ -24,11 +25,16 @@ class CentralizationRuleForOrganizationRule {
     };
   }
 
-  factory CentralizationRuleForOrganizationRule.fromMap(Map<String, dynamic> map) {
+  factory CentralizationRuleForOrganizationRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CentralizationRuleForOrganizationRule(
-      destination: CentralizationRuleForOrganizationRuleDestination.fromMap((map['destination'] as Map).cast<String, dynamic>()),
-      source: CentralizationRuleForOrganizationRuleSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      destination: CentralizationRuleForOrganizationRuleDestination.fromMap(
+        (map['destination'] as Map).cast<String, dynamic>(),
+      ),
+      source: CentralizationRuleForOrganizationRuleSource.fromMap(
+        (map['source'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

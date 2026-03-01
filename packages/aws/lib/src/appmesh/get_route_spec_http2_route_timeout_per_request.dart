@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRouteSpecHttp2RouteTimeoutPerRequest {
   final String unit;
   final int value;
@@ -14,17 +13,15 @@ class GetRouteSpecHttp2RouteTimeoutPerRequest {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'unit': unit,
-      'value': value,
-    };
+    return <String, dynamic>{'unit': unit, 'value': value};
   }
 
-  factory GetRouteSpecHttp2RouteTimeoutPerRequest.fromMap(Map<String, dynamic> map) {
+  factory GetRouteSpecHttp2RouteTimeoutPerRequest.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRouteSpecHttp2RouteTimeoutPerRequest(
       unit: map['unit'] as String,
       value: map['value'] as int,
     );
   }
 }
-

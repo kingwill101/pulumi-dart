@@ -22,11 +22,10 @@ class GetShareArgs {
     required String location,
     String? project,
     required String shareId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      shareId = pulumi.Input.asInput<String>(shareId);
+  }) : instanceId = pulumi.Input.asInput<String>(instanceId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       shareId = pulumi.Input.asInput<String>(shareId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetShareArgs {
     );
   }
 }
-

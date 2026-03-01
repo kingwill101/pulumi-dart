@@ -12,7 +12,8 @@ enum GoogleCloudAiplatformV1PresetsQuery {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudAiplatformV1PresetsQuery value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudAiplatformV1PresetsQuery value: $value',
+    );
   }
 }
-

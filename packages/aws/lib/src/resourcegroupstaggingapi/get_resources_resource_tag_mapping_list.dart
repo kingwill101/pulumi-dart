@@ -5,9 +5,12 @@ import 'get_resources_resource_tag_mapping_list_compliance_detail.dart';
 
 class GetResourcesResourceTagMappingList {
   /// List of objects with information that shows whether a resource is compliant with the effective tag policy, including details on any noncompliant tag keys.
-  final List<GetResourcesResourceTagMappingListComplianceDetail> complianceDetails;
+  final List<GetResourcesResourceTagMappingListComplianceDetail>
+  complianceDetails;
+
   /// ARN of the resource.
   final String resourceArn;
+
   /// Map of tags assigned to the resource.
   final Map<String, String> tags;
 
@@ -23,7 +26,11 @@ class GetResourcesResourceTagMappingList {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'complianceDetails': pulumi.Input.encodeList<GetResourcesResourceTagMappingListComplianceDetail, Map<String, dynamic>>(complianceDetails, (value) => value.toMap()),
+      'complianceDetails':
+          pulumi.Input.encodeList<
+            GetResourcesResourceTagMappingListComplianceDetail,
+            Map<String, dynamic>
+          >(complianceDetails, (value) => value.toMap()),
       'resourceArn': resourceArn,
       'tags': tags,
     };
@@ -31,10 +38,18 @@ class GetResourcesResourceTagMappingList {
 
   factory GetResourcesResourceTagMappingList.fromMap(Map<String, dynamic> map) {
     return GetResourcesResourceTagMappingList(
-      complianceDetails: pulumi.Input.decodeList<GetResourcesResourceTagMappingListComplianceDetail>(map['complianceDetails'], (value) => GetResourcesResourceTagMappingListComplianceDetail.fromMap((value as Map).cast<String, dynamic>())),
+      complianceDetails:
+          pulumi.Input.decodeList<
+            GetResourcesResourceTagMappingListComplianceDetail
+          >(
+            map['complianceDetails'],
+            (value) =>
+                GetResourcesResourceTagMappingListComplianceDetail.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       resourceArn: map['resourceArn'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

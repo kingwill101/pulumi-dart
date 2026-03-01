@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class JobTemplateTemplateVolumeSecretItem {
   /// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
   final int? mode;
+
   /// The relative path of the secret in the container.
   final String path;
+
   /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
   final String version;
 
@@ -20,14 +21,12 @@ class JobTemplateTemplateVolumeSecretItem {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': ?mode,
-      'path': path,
-      'version': version,
-    };
+    return <String, dynamic>{'mode': ?mode, 'path': path, 'version': version};
   }
 
-  factory JobTemplateTemplateVolumeSecretItem.fromMap(Map<String, dynamic> map) {
+  factory JobTemplateTemplateVolumeSecretItem.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobTemplateTemplateVolumeSecretItem(
       mode: map['mode'] == null ? null : map['mode'] as int,
       path: map['path'] as String,
@@ -35,4 +34,3 @@ class JobTemplateTemplateVolumeSecretItem {
     );
   }
 }
-

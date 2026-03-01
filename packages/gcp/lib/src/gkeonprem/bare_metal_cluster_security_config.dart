@@ -9,9 +9,7 @@ class BareMetalClusterSecurityConfig {
 
   /// Creates a new [BareMetalClusterSecurityConfig].
   /// [authorization] Configures user access to the Bare Metal User cluster.
-  BareMetalClusterSecurityConfig({
-    this.authorization,
-  });
+  BareMetalClusterSecurityConfig({this.authorization});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class BareMetalClusterSecurityConfig {
 
   factory BareMetalClusterSecurityConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterSecurityConfig(
-      authorization: map['authorization'] == null ? null : BareMetalClusterSecurityConfigAuthorization.fromMap((map['authorization'] as Map).cast<String, dynamic>()),
+      authorization: map['authorization'] == null
+          ? null
+          : BareMetalClusterSecurityConfigAuthorization.fromMap(
+              (map['authorization'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

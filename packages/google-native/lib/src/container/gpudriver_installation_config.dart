@@ -9,20 +9,23 @@ class GPUDriverInstallationConfig {
 
   /// Creates a new [GPUDriverInstallationConfig].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.
-  GPUDriverInstallationConfig({
-    this.gpuDriverVersion,
-  });
+  GPUDriverInstallationConfig({this.gpuDriverVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'gpuDriverVersion': ?gpuDriverVersion == null ? null : gpuDriverVersion!.value,
+      'gpuDriverVersion': ?gpuDriverVersion == null
+          ? null
+          : gpuDriverVersion!.value,
     };
   }
 
   factory GPUDriverInstallationConfig.fromMap(Map<String, dynamic> map) {
     return GPUDriverInstallationConfig(
-      gpuDriverVersion: map['gpuDriverVersion'] == null ? null : GPUDriverInstallationConfigGpuDriverVersion.fromValue(map['gpuDriverVersion'] as String),
+      gpuDriverVersion: map['gpuDriverVersion'] == null
+          ? null
+          : GPUDriverInstallationConfigGpuDriverVersion.fromValue(
+              map['gpuDriverVersion'] as String,
+            ),
     );
   }
 }
-

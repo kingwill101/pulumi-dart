@@ -5,9 +5,12 @@ import 'get_listener_rule_action_jwt_validation_additional_claim.dart';
 
 class GetListenerRuleActionJwtValidation {
   /// Additional claims to validate.
-  final List<GetListenerRuleActionJwtValidationAdditionalClaim>? additionalClaims;
+  final List<GetListenerRuleActionJwtValidationAdditionalClaim>?
+  additionalClaims;
+
   /// Issuer of the JWT.
   final String issuer;
+
   /// JSON Web Key Set (JWKS) endpoint.
   final String jwksEndpoint;
 
@@ -23,7 +26,12 @@ class GetListenerRuleActionJwtValidation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalClaims': ?additionalClaims == null ? null : pulumi.Input.encodeList<GetListenerRuleActionJwtValidationAdditionalClaim, Map<String, dynamic>>(additionalClaims!, (value) => value.toMap()),
+      'additionalClaims': ?additionalClaims == null
+          ? null
+          : pulumi.Input.encodeList<
+              GetListenerRuleActionJwtValidationAdditionalClaim,
+              Map<String, dynamic>
+            >(additionalClaims!, (value) => value.toMap()),
       'issuer': issuer,
       'jwksEndpoint': jwksEndpoint,
     };
@@ -31,10 +39,19 @@ class GetListenerRuleActionJwtValidation {
 
   factory GetListenerRuleActionJwtValidation.fromMap(Map<String, dynamic> map) {
     return GetListenerRuleActionJwtValidation(
-      additionalClaims: map['additionalClaims'] == null ? null : pulumi.Input.decodeList<GetListenerRuleActionJwtValidationAdditionalClaim>(map['additionalClaims'], (value) => GetListenerRuleActionJwtValidationAdditionalClaim.fromMap((value as Map).cast<String, dynamic>())),
+      additionalClaims: map['additionalClaims'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              GetListenerRuleActionJwtValidationAdditionalClaim
+            >(
+              map['additionalClaims'],
+              (value) =>
+                  GetListenerRuleActionJwtValidationAdditionalClaim.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       issuer: map['issuer'] as String,
       jwksEndpoint: map['jwksEndpoint'] as String,
     );
   }
 }
-

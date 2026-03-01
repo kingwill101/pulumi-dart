@@ -19,17 +19,12 @@ class GetCaseArgs {
     required String caseId,
     required String v2Id,
     required String v2Id1,
-  }) :
-      caseId = pulumi.Input.asInput<String>(caseId),
-      v2Id = pulumi.Input.asInput<String>(v2Id),
-      v2Id1 = pulumi.Input.asInput<String>(v2Id1);
+  }) : caseId = pulumi.Input.asInput<String>(caseId),
+       v2Id = pulumi.Input.asInput<String>(v2Id),
+       v2Id1 = pulumi.Input.asInput<String>(v2Id1);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'caseId': caseId,
-      'v2Id': v2Id,
-      'v2Id1': v2Id1,
-    };
+    return <String, dynamic>{'caseId': caseId, 'v2Id': v2Id, 'v2Id1': v2Id1};
   }
 
   factory GetCaseArgs.fromMap(Map<String, dynamic> map) {
@@ -40,4 +35,3 @@ class GetCaseArgs {
     );
   }
 }
-

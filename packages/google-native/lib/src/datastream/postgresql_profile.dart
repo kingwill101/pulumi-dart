@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// PostgreSQL database profile.
 class PostgresqlProfile {
   /// Database for the PostgreSQL connection.
   final String database;
+
   /// Hostname for the PostgreSQL connection.
   final String hostname;
+
   /// Password for the PostgreSQL connection.
   final String password;
+
   /// Port for the PostgreSQL connection, default value is 5432.
   final int? port;
+
   /// Username for the PostgreSQL connection.
   final String username;
 
@@ -48,4 +51,3 @@ class PostgresqlProfile {
     );
   }
 }
-

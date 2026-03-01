@@ -13,11 +13,8 @@ class GetEvaluationJobArgs {
   /// Creates a new [GetEvaluationJobArgs].
   /// [evaluationJobId] Required.
   /// [project] Optional.
-  GetEvaluationJobArgs({
-    required String evaluationJobId,
-    String? project,
-  }) :
-      evaluationJobId = pulumi.Input.asInput<String>(evaluationJobId),
+  GetEvaluationJobArgs({required String evaluationJobId, String? project})
+    : evaluationJobId = pulumi.Input.asInput<String>(evaluationJobId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetEvaluationJobArgs {
     );
   }
 }
-

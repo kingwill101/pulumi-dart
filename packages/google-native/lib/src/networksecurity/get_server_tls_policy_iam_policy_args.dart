@@ -22,11 +22,12 @@ class GetServerTlsPolicyIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String serverTlsPolicyId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serverTlsPolicyId = pulumi.Input.asInput<String>(serverTlsPolicyId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serverTlsPolicyId = pulumi.Input.asInput<String>(serverTlsPolicyId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +41,12 @@ class GetServerTlsPolicyIamPolicyArgs {
   factory GetServerTlsPolicyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetServerTlsPolicyIamPolicyArgs(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       serverTlsPolicyId: map['serverTlsPolicyId'] as String,
     );
   }
 }
-

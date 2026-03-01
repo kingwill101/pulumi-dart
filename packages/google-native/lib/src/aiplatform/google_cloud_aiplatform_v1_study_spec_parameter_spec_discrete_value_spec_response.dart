@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Value specification for a parameter in `DISCRETE` type.
 class GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpecResponse {
   /// A default value for a `DISCRETE` parameter that is assumed to be a relatively good starting point. Unset value signals that there is no offered starting point. It automatically rounds to the nearest feasible discrete point. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
   final double defaultValue;
+
   /// A list of possible values. The list should be in increasing order and at least 1e-10 apart. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values.
   final List<double> values;
 
@@ -17,17 +17,15 @@ class GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpecResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'defaultValue': defaultValue,
-      'values': values,
-    };
+    return <String, dynamic>{'defaultValue': defaultValue, 'values': values};
   }
 
-  factory GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1StudySpecParameterSpecDiscreteValueSpecResponse(
       defaultValue: map['defaultValue'] as double,
       values: (map['values'] as List).cast<double>(),
     );
   }
 }
-

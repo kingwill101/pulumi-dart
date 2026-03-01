@@ -9,20 +9,23 @@ class RepositoryConfig {
 
   /// Creates a new [RepositoryConfig].
   /// [pypiRepositoryConfig] Optional. Configuration for PyPi repository.
-  RepositoryConfig({
-    this.pypiRepositoryConfig,
-  });
+  RepositoryConfig({this.pypiRepositoryConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'pypiRepositoryConfig': ?pypiRepositoryConfig == null ? null : pypiRepositoryConfig!.toMap(),
+      'pypiRepositoryConfig': ?pypiRepositoryConfig == null
+          ? null
+          : pypiRepositoryConfig!.toMap(),
     };
   }
 
   factory RepositoryConfig.fromMap(Map<String, dynamic> map) {
     return RepositoryConfig(
-      pypiRepositoryConfig: map['pypiRepositoryConfig'] == null ? null : PyPiRepositoryConfig.fromMap((map['pypiRepositoryConfig'] as Map).cast<String, dynamic>()),
+      pypiRepositoryConfig: map['pypiRepositoryConfig'] == null
+          ? null
+          : PyPiRepositoryConfig.fromMap(
+              (map['pypiRepositoryConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

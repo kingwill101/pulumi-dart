@@ -6,13 +6,16 @@ import 'organization_policy_list_policy_deny.dart';
 class OrganizationPolicyListPolicy {
   /// or `deny` - (Optional) One or the other must be set.
   final OrganizationPolicyListPolicyAllow? allow;
+
   /// One or the other must be set.
   final OrganizationPolicyListPolicyDeny? deny;
+
   /// If set to true, the values from the effective Policy of the parent resource
   /// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
   ///
   /// The `allow` or `deny` blocks support:
   final bool? inheritFromParent;
+
   /// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
   final String? suggestedValue;
 
@@ -39,11 +42,22 @@ class OrganizationPolicyListPolicy {
 
   factory OrganizationPolicyListPolicy.fromMap(Map<String, dynamic> map) {
     return OrganizationPolicyListPolicy(
-      allow: map['allow'] == null ? null : OrganizationPolicyListPolicyAllow.fromMap((map['allow'] as Map).cast<String, dynamic>()),
-      deny: map['deny'] == null ? null : OrganizationPolicyListPolicyDeny.fromMap((map['deny'] as Map).cast<String, dynamic>()),
-      inheritFromParent: map['inheritFromParent'] == null ? null : map['inheritFromParent'] as bool,
-      suggestedValue: map['suggestedValue'] == null ? null : map['suggestedValue'] as String,
+      allow: map['allow'] == null
+          ? null
+          : OrganizationPolicyListPolicyAllow.fromMap(
+              (map['allow'] as Map).cast<String, dynamic>(),
+            ),
+      deny: map['deny'] == null
+          ? null
+          : OrganizationPolicyListPolicyDeny.fromMap(
+              (map['deny'] as Map).cast<String, dynamic>(),
+            ),
+      inheritFromParent: map['inheritFromParent'] == null
+          ? null
+          : map['inheritFromParent'] as bool,
+      suggestedValue: map['suggestedValue'] == null
+          ? null
+          : map['suggestedValue'] as String,
     );
   }
 }
-

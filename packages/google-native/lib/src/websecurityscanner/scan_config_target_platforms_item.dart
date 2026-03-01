@@ -17,4 +17,3 @@ enum ScanConfigTargetPlatformsItem {
     throw ArgumentError('Unknown ScanConfigTargetPlatformsItem value: $value');
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LaunchConfigurationEphemeralBlockDevice {
   final String deviceName;
   final bool? noDevice;
@@ -24,12 +23,15 @@ class LaunchConfigurationEphemeralBlockDevice {
     };
   }
 
-  factory LaunchConfigurationEphemeralBlockDevice.fromMap(Map<String, dynamic> map) {
+  factory LaunchConfigurationEphemeralBlockDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LaunchConfigurationEphemeralBlockDevice(
       deviceName: map['deviceName'] as String,
       noDevice: map['noDevice'] == null ? null : map['noDevice'] as bool,
-      virtualName: map['virtualName'] == null ? null : map['virtualName'] as String,
+      virtualName: map['virtualName'] == null
+          ? null
+          : map['virtualName'] as String,
     );
   }
 }
-

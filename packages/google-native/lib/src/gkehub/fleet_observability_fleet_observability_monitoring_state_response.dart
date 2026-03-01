@@ -14,15 +14,17 @@ class FleetObservabilityFleetObservabilityMonitoringStateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': state.toMap(),
-    };
+    return <String, dynamic>{'state': state.toMap()};
   }
 
-  factory FleetObservabilityFleetObservabilityMonitoringStateResponse.fromMap(Map<String, dynamic> map) {
+  factory FleetObservabilityFleetObservabilityMonitoringStateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FleetObservabilityFleetObservabilityMonitoringStateResponse(
-      state: FleetObservabilityFleetObservabilityBaseFeatureStateResponse.fromMap((map['state'] as Map).cast<String, dynamic>()),
+      state:
+          FleetObservabilityFleetObservabilityBaseFeatureStateResponse.fromMap(
+            (map['state'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -9,20 +9,17 @@ class SdsConfigResponse {
 
   /// Creates a new [SdsConfigResponse].
   /// [grpcServiceConfig] The configuration to access the SDS server over GRPC.
-  SdsConfigResponse({
-    required this.grpcServiceConfig,
-  });
+  SdsConfigResponse({required this.grpcServiceConfig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'grpcServiceConfig': grpcServiceConfig.toMap(),
-    };
+    return <String, dynamic>{'grpcServiceConfig': grpcServiceConfig.toMap()};
   }
 
   factory SdsConfigResponse.fromMap(Map<String, dynamic> map) {
     return SdsConfigResponse(
-      grpcServiceConfig: GrpcServiceConfigResponse.fromMap((map['grpcServiceConfig'] as Map).cast<String, dynamic>()),
+      grpcServiceConfig: GrpcServiceConfigResponse.fromMap(
+        (map['grpcServiceConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -4,6 +4,7 @@ import 'instance_group_manager_standby_policy_mode_compute_beta.dart';
 
 class InstanceGroupManagerStandbyPolicyComputeBeta {
   final int? initialDelaySec;
+
   /// Defines behaviour of using instances from standby pool to resize MIG.
   final InstanceGroupManagerStandbyPolicyModeComputeBeta? mode;
 
@@ -22,11 +23,18 @@ class InstanceGroupManagerStandbyPolicyComputeBeta {
     };
   }
 
-  factory InstanceGroupManagerStandbyPolicyComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory InstanceGroupManagerStandbyPolicyComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceGroupManagerStandbyPolicyComputeBeta(
-      initialDelaySec: map['initialDelaySec'] == null ? null : map['initialDelaySec'] as int,
-      mode: map['mode'] == null ? null : InstanceGroupManagerStandbyPolicyModeComputeBeta.fromValue(map['mode'] as String),
+      initialDelaySec: map['initialDelaySec'] == null
+          ? null
+          : map['initialDelaySec'] as int,
+      mode: map['mode'] == null
+          ? null
+          : InstanceGroupManagerStandbyPolicyModeComputeBeta.fromValue(
+              map['mode'] as String,
+            ),
     );
   }
 }
-

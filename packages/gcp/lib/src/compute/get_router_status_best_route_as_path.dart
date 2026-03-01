@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetRouterStatusBestRouteAsPath {
   /// The AS numbers of the AS Path.
   final List<int> asLists;
+
   /// The type of the AS Path, which can be one of the following values:
   /// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
   /// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
@@ -33,4 +33,3 @@ class GetRouterStatusBestRouteAsPath {
     );
   }
 }
-

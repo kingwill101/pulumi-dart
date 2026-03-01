@@ -18,4 +18,3 @@ enum ConditionSys {
     throw ArgumentError('Unknown ConditionSys value: $value');
   }
 }
-

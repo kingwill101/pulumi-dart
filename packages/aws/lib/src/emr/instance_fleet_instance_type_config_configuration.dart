@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstanceFleetInstanceTypeConfigConfiguration {
   /// The classification within a configuration.
   final String? classification;
+
   /// A map of properties specified within a configuration classification
   final Map<String, String>? properties;
 
@@ -22,11 +22,16 @@ class InstanceFleetInstanceTypeConfigConfiguration {
     };
   }
 
-  factory InstanceFleetInstanceTypeConfigConfiguration.fromMap(Map<String, dynamic> map) {
+  factory InstanceFleetInstanceTypeConfigConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstanceFleetInstanceTypeConfigConfiguration(
-      classification: map['classification'] == null ? null : map['classification'] as String,
-      properties: map['properties'] == null ? null : (map['properties'] as Map).cast<String, String>(),
+      classification: map['classification'] == null
+          ? null
+          : map['classification'] as String,
+      properties: map['properties'] == null
+          ? null
+          : (map['properties'] as Map).cast<String, String>(),
     );
   }
 }
-

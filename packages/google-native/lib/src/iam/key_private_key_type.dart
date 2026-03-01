@@ -16,4 +16,3 @@ enum KeyPrivateKeyType {
     throw ArgumentError('Unknown KeyPrivateKeyType value: $value');
   }
 }
-

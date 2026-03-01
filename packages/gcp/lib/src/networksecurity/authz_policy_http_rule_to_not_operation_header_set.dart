@@ -10,20 +10,34 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSet {
 
   /// Creates a new [AuthzPolicyHttpRuleToNotOperationHeaderSet].
   /// [headers] A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
-  AuthzPolicyHttpRuleToNotOperationHeaderSet({
-    this.headers,
-  });
+  AuthzPolicyHttpRuleToNotOperationHeaderSet({this.headers});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'headers': ?headers == null ? null : pulumi.Input.encodeList<AuthzPolicyHttpRuleToNotOperationHeaderSetHeader, Map<String, dynamic>>(headers!, (value) => value.toMap()),
+      'headers': ?headers == null
+          ? null
+          : pulumi.Input.encodeList<
+              AuthzPolicyHttpRuleToNotOperationHeaderSetHeader,
+              Map<String, dynamic>
+            >(headers!, (value) => value.toMap()),
     };
   }
 
-  factory AuthzPolicyHttpRuleToNotOperationHeaderSet.fromMap(Map<String, dynamic> map) {
+  factory AuthzPolicyHttpRuleToNotOperationHeaderSet.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthzPolicyHttpRuleToNotOperationHeaderSet(
-      headers: map['headers'] == null ? null : pulumi.Input.decodeList<AuthzPolicyHttpRuleToNotOperationHeaderSetHeader>(map['headers'], (value) => AuthzPolicyHttpRuleToNotOperationHeaderSetHeader.fromMap((value as Map).cast<String, dynamic>())),
+      headers: map['headers'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              AuthzPolicyHttpRuleToNotOperationHeaderSetHeader
+            >(
+              map['headers'],
+              (value) =>
+                  AuthzPolicyHttpRuleToNotOperationHeaderSetHeader.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetEntryGroupIamPolicyArgs {
     required String entryGroupId,
     required String location,
     String? project,
-  }) :
-      entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetEntryGroupIamPolicyArgs {
     );
   }
 }
-

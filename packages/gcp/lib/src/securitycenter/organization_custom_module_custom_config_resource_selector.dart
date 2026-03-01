@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class OrganizationCustomModuleCustomConfigResourceSelector {
   /// The resource types to run the detector on.
   final List<String> resourceTypes;
@@ -12,15 +11,14 @@ class OrganizationCustomModuleCustomConfigResourceSelector {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceTypes': resourceTypes,
-    };
+    return <String, dynamic>{'resourceTypes': resourceTypes};
   }
 
-  factory OrganizationCustomModuleCustomConfigResourceSelector.fromMap(Map<String, dynamic> map) {
+  factory OrganizationCustomModuleCustomConfigResourceSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OrganizationCustomModuleCustomConfigResourceSelector(
       resourceTypes: (map['resourceTypes'] as List).cast<String>(),
     );
   }
 }
-

@@ -18,4 +18,3 @@ enum DeviceLogLevel {
     throw ArgumentError('Unknown DeviceLogLevel value: $value');
   }
 }
-

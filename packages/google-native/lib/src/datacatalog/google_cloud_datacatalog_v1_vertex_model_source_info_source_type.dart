@@ -9,13 +9,17 @@ enum GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType {
   const GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType(this.value);
   final String value;
 
-  static GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType fromValue(String value) {
-    for (final item in GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType.values) {
+  static GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDatacatalogV1VertexModelSourceInfoSourceType value: $value',
+    );
   }
 }
-

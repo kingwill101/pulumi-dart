@@ -8,13 +8,17 @@ enum ConfidentialInstanceConfigConfidentialInstanceType {
   const ConfidentialInstanceConfigConfidentialInstanceType(this.value);
   final String value;
 
-  static ConfidentialInstanceConfigConfidentialInstanceType fromValue(String value) {
-    for (final item in ConfidentialInstanceConfigConfidentialInstanceType.values) {
+  static ConfidentialInstanceConfigConfidentialInstanceType fromValue(
+    String value,
+  ) {
+    for (final item
+        in ConfidentialInstanceConfigConfidentialInstanceType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ConfidentialInstanceConfigConfidentialInstanceType value: $value');
+    throw ArgumentError(
+      'Unknown ConfidentialInstanceConfigConfidentialInstanceType value: $value',
+    );
   }
 }
-

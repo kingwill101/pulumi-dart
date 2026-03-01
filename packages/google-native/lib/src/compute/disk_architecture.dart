@@ -16,4 +16,3 @@ enum DiskArchitecture {
     throw ArgumentError('Unknown DiskArchitecture value: $value');
   }
 }
-

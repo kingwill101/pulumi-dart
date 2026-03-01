@@ -22,11 +22,10 @@ class GetSessionArgs {
     required String instanceId,
     String? project,
     required String sessionId,
-  }) :
-      databaseId = pulumi.Input.asInput<String>(databaseId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionId = pulumi.Input.asInput<String>(sessionId);
+  }) : databaseId = pulumi.Input.asInput<String>(databaseId),
+       instanceId = pulumi.Input.asInput<String>(instanceId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sessionId = pulumi.Input.asInput<String>(sessionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetSessionArgs {
     );
   }
 }
-

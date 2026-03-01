@@ -28,13 +28,12 @@ class GetPartitionArgs {
     required String partitionId,
     String? project,
     required String zone,
-  }) :
-      entityId = pulumi.Input.asInput<String>(entityId),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asInput<String>(location),
-      partitionId = pulumi.Input.asInput<String>(partitionId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : entityId = pulumi.Input.asInput<String>(entityId),
+       lakeId = pulumi.Input.asInput<String>(lakeId),
+       location = pulumi.Input.asInput<String>(location),
+       partitionId = pulumi.Input.asInput<String>(partitionId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,4 +57,3 @@ class GetPartitionArgs {
     );
   }
 }
-

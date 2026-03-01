@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute {
   final String destinationCidr;
   final String destinationPrefixListId;
@@ -52,7 +51,9 @@ class GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute {
     };
   }
 
-  factory GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute.fromMap(Map<String, dynamic> map) {
+  factory GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute(
       destinationCidr: map['destinationCidr'] as String,
       destinationPrefixListId: map['destinationPrefixListId'] as String,
@@ -67,4 +68,3 @@ class GetNetworkInsightsAnalysisForwardPathComponentRouteTableRoute {
     );
   }
 }
-

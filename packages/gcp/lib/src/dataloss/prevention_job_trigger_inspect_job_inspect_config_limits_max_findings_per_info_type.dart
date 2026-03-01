@@ -7,7 +7,9 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType {
   /// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
   /// specified in another InfoTypeLimit.
   /// Structure is documented below.
-  final PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType? infoType;
+  final PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType?
+  infoType;
+
   /// Max findings limit for the given infoType.
   final int? maxFindings;
 
@@ -26,11 +28,18 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType {
     };
   }
 
-  factory PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap(Map<String, dynamic> map) {
+  factory PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType(
-      infoType: map['infoType'] == null ? null : PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap((map['infoType'] as Map).cast<String, dynamic>()),
-      maxFindings: map['maxFindings'] == null ? null : map['maxFindings'] as int,
+      infoType: map['infoType'] == null
+          ? null
+          : PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap(
+              (map['infoType'] as Map).cast<String, dynamic>(),
+            ),
+      maxFindings: map['maxFindings'] == null
+          ? null
+          : map['maxFindings'] as int,
     );
   }
 }
-

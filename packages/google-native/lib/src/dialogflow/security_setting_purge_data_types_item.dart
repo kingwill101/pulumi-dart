@@ -11,7 +11,8 @@ enum SecuritySettingPurgeDataTypesItem {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecuritySettingPurgeDataTypesItem value: $value');
+    throw ArgumentError(
+      'Unknown SecuritySettingPurgeDataTypesItem value: $value',
+    );
   }
 }
-

@@ -153,7 +153,7 @@ _This file is preserved across SDK regeneration done via task generate:<provider
 }
 
 func generatedPackageAnalysisOptions() []byte {
-	return []byte(`include: package:very_good_analysis/analysis_options.yaml
+	return []byte(`include: package:lints/recommended.yaml
 `)
 }
 
@@ -170,6 +170,9 @@ func buildGeneratedPubspec(
 			"sdk": "^3.10.0",
 		},
 		Dependencies: map[string]interface{}{},
+	}
+	pubspec.DevDependencies = map[string]interface{}{
+		"lints": "^5.0.0",
 	}
 
 	schemaDependencyNames := make([]string, 0, len(schemaDependencies))
@@ -217,28 +220,42 @@ func inferLocalPulumiDependencyFromProject(startDir string) string {
 	}
 
 	pubspec, err := ReadAndParsePubspec(pubspecPath)
-	if err != nil || pubspec == nil || pubspec.Dependencies == nil {
+	if err != nil || pubspec == nil {
 		return ""
 	}
 
-	pulumiDependency, ok := pubspec.Dependencies["pulumi"]
-	if !ok {
-		return ""
+	readPathFromDependencyMap := func(dependencies map[string]interface{}) string {
+		pulumiDependency, ok := dependencies["pulumi"]
+		if !ok {
+			return ""
+		}
+
+		version := getDependencyVersion(pulumiDependency)
+		if !strings.HasPrefix(version, "path:") {
+			return ""
+		}
+
+		pulumiPath := strings.TrimSpace(strings.TrimPrefix(version, "path:"))
+		if pulumiPath == "" {
+			return ""
+		}
+		if !filepath.IsAbs(pulumiPath) {
+			pulumiPath = filepath.Join(filepath.Dir(pubspecPath), pulumiPath)
+		}
+		return filepath.Clean(pulumiPath)
 	}
 
-	version := getDependencyVersion(pulumiDependency)
-	if !strings.HasPrefix(version, "path:") {
-		return ""
+	if pubspec.Dependencies != nil {
+		if pulumiPath := readPathFromDependencyMap(pubspec.Dependencies); pulumiPath != "" {
+			return pulumiPath
+		}
 	}
-
-	pulumiPath := strings.TrimSpace(strings.TrimPrefix(version, "path:"))
-	if pulumiPath == "" {
-		return ""
+	if pubspec.DependencyOverrides != nil {
+		if pulumiPath := readPathFromDependencyMap(pubspec.DependencyOverrides); pulumiPath != "" {
+			return pulumiPath
+		}
 	}
-	if !filepath.IsAbs(pulumiPath) {
-		pulumiPath = filepath.Join(filepath.Dir(pubspecPath), pulumiPath)
-	}
-	return filepath.Clean(pulumiPath)
+	return ""
 }
 
 func toPubspecTopics(keywords []string) []string {

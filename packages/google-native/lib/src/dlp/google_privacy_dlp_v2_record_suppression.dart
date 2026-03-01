@@ -9,9 +9,7 @@ class GooglePrivacyDlpV2RecordSuppression {
 
   /// Creates a new [GooglePrivacyDlpV2RecordSuppression].
   /// [condition] A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-  GooglePrivacyDlpV2RecordSuppression({
-    this.condition,
-  });
+  GooglePrivacyDlpV2RecordSuppression({this.condition});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class GooglePrivacyDlpV2RecordSuppression {
     };
   }
 
-  factory GooglePrivacyDlpV2RecordSuppression.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2RecordSuppression.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2RecordSuppression(
-      condition: map['condition'] == null ? null : GooglePrivacyDlpV2RecordCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null
+          ? null
+          : GooglePrivacyDlpV2RecordCondition.fromMap(
+              (map['condition'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TableConstraintsForeignKeysItemReferencedTableResponse {
   final String datasetId;
   final String project;
@@ -24,7 +23,9 @@ class TableConstraintsForeignKeysItemReferencedTableResponse {
     };
   }
 
-  factory TableConstraintsForeignKeysItemReferencedTableResponse.fromMap(Map<String, dynamic> map) {
+  factory TableConstraintsForeignKeysItemReferencedTableResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableConstraintsForeignKeysItemReferencedTableResponse(
       datasetId: map['datasetId'] as String,
       project: map['project'] as String,
@@ -32,4 +33,3 @@ class TableConstraintsForeignKeysItemReferencedTableResponse {
     );
   }
 }
-

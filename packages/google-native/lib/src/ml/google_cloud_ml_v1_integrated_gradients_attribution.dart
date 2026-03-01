@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365
 class GoogleCloudMlV1IntegratedGradientsAttribution {
   /// Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
@@ -8,20 +7,19 @@ class GoogleCloudMlV1IntegratedGradientsAttribution {
 
   /// Creates a new [GoogleCloudMlV1IntegratedGradientsAttribution].
   /// [numIntegralSteps] Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
-  GoogleCloudMlV1IntegratedGradientsAttribution({
-    this.numIntegralSteps,
-  });
+  GoogleCloudMlV1IntegratedGradientsAttribution({this.numIntegralSteps});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'numIntegralSteps': ?numIntegralSteps,
-    };
+    return <String, dynamic>{'numIntegralSteps': ?numIntegralSteps};
   }
 
-  factory GoogleCloudMlV1IntegratedGradientsAttribution.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1IntegratedGradientsAttribution.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1IntegratedGradientsAttribution(
-      numIntegralSteps: map['numIntegralSteps'] == null ? null : map['numIntegralSteps'] as int,
+      numIntegralSteps: map['numIntegralSteps'] == null
+          ? null
+          : map['numIntegralSteps'] as int,
     );
   }
 }
-

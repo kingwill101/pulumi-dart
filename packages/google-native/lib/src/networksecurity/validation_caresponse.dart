@@ -7,6 +7,7 @@ import 'google_cloud_networksecurity_v1_grpc_endpoint_response.dart';
 class ValidationCAResponse {
   /// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
   final CertificateProviderInstanceResponse certificateProviderInstance;
+
   /// gRPC specific configuration to access the gRPC server to obtain the CA certificate.
   final GoogleCloudNetworksecurityV1GrpcEndpointResponse grpcEndpoint;
 
@@ -27,9 +28,12 @@ class ValidationCAResponse {
 
   factory ValidationCAResponse.fromMap(Map<String, dynamic> map) {
     return ValidationCAResponse(
-      certificateProviderInstance: CertificateProviderInstanceResponse.fromMap((map['certificateProviderInstance'] as Map).cast<String, dynamic>()),
-      grpcEndpoint: GoogleCloudNetworksecurityV1GrpcEndpointResponse.fromMap((map['grpcEndpoint'] as Map).cast<String, dynamic>()),
+      certificateProviderInstance: CertificateProviderInstanceResponse.fromMap(
+        (map['certificateProviderInstance'] as Map).cast<String, dynamic>(),
+      ),
+      grpcEndpoint: GoogleCloudNetworksecurityV1GrpcEndpointResponse.fromMap(
+        (map['grpcEndpoint'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -9,9 +9,7 @@ class VmwareControlPlaneV2ConfigResponse {
 
   /// Creates a new [VmwareControlPlaneV2ConfigResponse].
   /// [controlPlaneIpBlock] Static IP addresses for the control plane nodes.
-  VmwareControlPlaneV2ConfigResponse({
-    required this.controlPlaneIpBlock,
-  });
+  VmwareControlPlaneV2ConfigResponse({required this.controlPlaneIpBlock});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class VmwareControlPlaneV2ConfigResponse {
 
   factory VmwareControlPlaneV2ConfigResponse.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneV2ConfigResponse(
-      controlPlaneIpBlock: VmwareIpBlockResponse.fromMap((map['controlPlaneIpBlock'] as Map).cast<String, dynamic>()),
+      controlPlaneIpBlock: VmwareIpBlockResponse.fromMap(
+        (map['controlPlaneIpBlock'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

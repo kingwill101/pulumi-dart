@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The detailed info for a custom job executor.
 class GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse {
   /// The names of the previously failed CustomJob. The list includes the all attempts in chronological order.
   final List<String> failedJobs;
+
   /// The name of the CustomJob.
   final String job;
 
@@ -17,17 +17,15 @@ class GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailRespo
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'failedJobs': failedJobs,
-      'job': job,
-    };
+    return <String, dynamic>{'failedJobs': failedJobs, 'job': job};
   }
 
-  factory GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailCustomJobDetailResponse(
       failedJobs: (map['failedJobs'] as List).cast<String>(),
       job: map['job'] as String,
     );
   }
 }
-

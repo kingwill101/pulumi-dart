@@ -9,9 +9,7 @@ class HeaderOverride {
 
   /// Creates a new [HeaderOverride].
   /// [header] header embodying a key and a value.
-  HeaderOverride({
-    this.header,
-  });
+  HeaderOverride({this.header});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class HeaderOverride {
 
   factory HeaderOverride.fromMap(Map<String, dynamic> map) {
     return HeaderOverride(
-      header: map['header'] == null ? null : Header.fromMap((map['header'] as Map).cast<String, dynamic>()),
+      header: map['header'] == null
+          ? null
+          : Header.fromMap((map['header'] as Map).cast<String, dynamic>()),
     );
   }
 }
-

@@ -6,10 +6,16 @@ import 'network_insights_analysis_forward_path_component_inbound_header_source_p
 
 class NetworkInsightsAnalysisForwardPathComponentInboundHeader {
   final List<String>? destinationAddresses;
-  final List<NetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange>? destinationPortRanges;
+  final List<
+    NetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange
+  >?
+  destinationPortRanges;
   final String? protocol;
   final List<String>? sourceAddresses;
-  final List<NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange>? sourcePortRanges;
+  final List<
+    NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange
+  >?
+  sourcePortRanges;
 
   /// Creates a new [NetworkInsightsAnalysisForwardPathComponentInboundHeader].
   /// [destinationAddresses] Optional.
@@ -28,21 +34,56 @@ class NetworkInsightsAnalysisForwardPathComponentInboundHeader {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destinationAddresses': ?destinationAddresses,
-      'destinationPortRanges': ?destinationPortRanges == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange, Map<String, dynamic>>(destinationPortRanges!, (value) => value.toMap()),
+      'destinationPortRanges': ?destinationPortRanges == null
+          ? null
+          : pulumi.Input.encodeList<
+              NetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange,
+              Map<String, dynamic>
+            >(destinationPortRanges!, (value) => value.toMap()),
       'protocol': ?protocol,
       'sourceAddresses': ?sourceAddresses,
-      'sourcePortRanges': ?sourcePortRanges == null ? null : pulumi.Input.encodeList<NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange, Map<String, dynamic>>(sourcePortRanges!, (value) => value.toMap()),
+      'sourcePortRanges': ?sourcePortRanges == null
+          ? null
+          : pulumi.Input.encodeList<
+              NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange,
+              Map<String, dynamic>
+            >(sourcePortRanges!, (value) => value.toMap()),
     };
   }
 
-  factory NetworkInsightsAnalysisForwardPathComponentInboundHeader.fromMap(Map<String, dynamic> map) {
+  factory NetworkInsightsAnalysisForwardPathComponentInboundHeader.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInsightsAnalysisForwardPathComponentInboundHeader(
-      destinationAddresses: map['destinationAddresses'] == null ? null : (map['destinationAddresses'] as List).cast<String>(),
-      destinationPortRanges: map['destinationPortRanges'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange>(map['destinationPortRanges'], (value) => NetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange.fromMap((value as Map).cast<String, dynamic>())),
+      destinationAddresses: map['destinationAddresses'] == null
+          ? null
+          : (map['destinationAddresses'] as List).cast<String>(),
+      destinationPortRanges: map['destinationPortRanges'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              NetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange
+            >(
+              map['destinationPortRanges'],
+              (value) =>
+                  NetworkInsightsAnalysisForwardPathComponentInboundHeaderDestinationPortRange.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       protocol: map['protocol'] == null ? null : map['protocol'] as String,
-      sourceAddresses: map['sourceAddresses'] == null ? null : (map['sourceAddresses'] as List).cast<String>(),
-      sourcePortRanges: map['sourcePortRanges'] == null ? null : pulumi.Input.decodeList<NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange>(map['sourcePortRanges'], (value) => NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange.fromMap((value as Map).cast<String, dynamic>())),
+      sourceAddresses: map['sourceAddresses'] == null
+          ? null
+          : (map['sourceAddresses'] as List).cast<String>(),
+      sourcePortRanges: map['sourcePortRanges'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange
+            >(
+              map['sourcePortRanges'],
+              (value) =>
+                  NetworkInsightsAnalysisForwardPathComponentInboundHeaderSourcePortRange.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

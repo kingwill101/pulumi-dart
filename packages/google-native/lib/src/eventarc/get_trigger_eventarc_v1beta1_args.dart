@@ -19,10 +19,9 @@ class GetTriggerEventarcV1beta1Args {
     required String location,
     String? project,
     required String triggerId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      triggerId = pulumi.Input.asInput<String>(triggerId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       triggerId = pulumi.Input.asInput<String>(triggerId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTriggerEventarcV1beta1Args {
     );
   }
 }
-

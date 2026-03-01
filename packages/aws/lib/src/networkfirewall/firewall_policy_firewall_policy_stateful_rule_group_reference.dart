@@ -7,10 +7,14 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReference {
   ///
   /// For details, refer to [AWS active threat defense for AWS Network Firewall](https://docs.aws.amazon.com/network-firewall/latest/developerguide/aws-managed-rule-groups-atd.html) in the AWS Network Firewall Developer Guide.
   final String? deepThreatInspection;
+
   /// Configuration block for override values
-  final FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride? override;
+  final FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride?
+  override;
+
   /// An integer setting that indicates the order in which to apply the stateful rule groups in a single policy. This argument must be specified if the policy has a `stateful_engine_options` block with a `rule_order` value of `STRICT_ORDER`. AWS Network Firewall applies each stateful rule group to a packet starting with the group that has the lowest priority setting.
   final int? priority;
+
   /// The Amazon Resource Name (ARN) of the stateful rule group.
   final String resourceArn;
 
@@ -35,13 +39,20 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReference {
     };
   }
 
-  factory FirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap(Map<String, dynamic> map) {
+  factory FirewallPolicyFirewallPolicyStatefulRuleGroupReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirewallPolicyFirewallPolicyStatefulRuleGroupReference(
-      deepThreatInspection: map['deepThreatInspection'] == null ? null : map['deepThreatInspection'] as String,
-      override: map['override'] == null ? null : FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap((map['override'] as Map).cast<String, dynamic>()),
+      deepThreatInspection: map['deepThreatInspection'] == null
+          ? null
+          : map['deepThreatInspection'] as String,
+      override: map['override'] == null
+          ? null
+          : FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride.fromMap(
+              (map['override'] as Map).cast<String, dynamic>(),
+            ),
       priority: map['priority'] == null ? null : map['priority'] as int,
       resourceArn: map['resourceArn'] as String,
     );
   }
 }
-

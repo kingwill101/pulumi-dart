@@ -8,10 +8,14 @@ import 'agentcore_gateway_target_target_configuration_mcp_smithy_model.dart';
 class AgentcoreGatewayTargetTargetConfigurationMcp {
   /// Lambda function target configuration. See `lambda` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpLambda? lambda;
+
   /// MCP server target configuration. See `mcp_server` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpMcpServer? mcpServer;
+
   /// OpenAPI schema-based target configuration. See `api_schema_configuration` below.
-  final AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema? openApiSchema;
+  final AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema?
+  openApiSchema;
+
   /// Smithy model-based target configuration. See `api_schema_configuration` below.
   final AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel? smithyModel;
 
@@ -36,13 +40,30 @@ class AgentcoreGatewayTargetTargetConfigurationMcp {
     };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcp.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcp.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayTargetTargetConfigurationMcp(
-      lambda: map['lambda'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap((map['lambda'] as Map).cast<String, dynamic>()),
-      mcpServer: map['mcpServer'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap((map['mcpServer'] as Map).cast<String, dynamic>()),
-      openApiSchema: map['openApiSchema'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema.fromMap((map['openApiSchema'] as Map).cast<String, dynamic>()),
-      smithyModel: map['smithyModel'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel.fromMap((map['smithyModel'] as Map).cast<String, dynamic>()),
+      lambda: map['lambda'] == null
+          ? null
+          : AgentcoreGatewayTargetTargetConfigurationMcpLambda.fromMap(
+              (map['lambda'] as Map).cast<String, dynamic>(),
+            ),
+      mcpServer: map['mcpServer'] == null
+          ? null
+          : AgentcoreGatewayTargetTargetConfigurationMcpMcpServer.fromMap(
+              (map['mcpServer'] as Map).cast<String, dynamic>(),
+            ),
+      openApiSchema: map['openApiSchema'] == null
+          ? null
+          : AgentcoreGatewayTargetTargetConfigurationMcpOpenApiSchema.fromMap(
+              (map['openApiSchema'] as Map).cast<String, dynamic>(),
+            ),
+      smithyModel: map['smithyModel'] == null
+          ? null
+          : AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel.fromMap(
+              (map['smithyModel'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

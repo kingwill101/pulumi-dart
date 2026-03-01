@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configures various aspects of Dataform code compilation.
 class CodeCompilationConfigResponse {
   /// Optional. The default schema (BigQuery dataset ID) for assertions.
   final String assertionSchema;
+
   /// Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
   final String databaseSuffix;
+
   /// Optional. The default database (Google Cloud project ID).
   final String defaultDatabase;
+
   /// Optional. The default BigQuery location to use. Defaults to "US". See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
   final String defaultLocation;
+
   /// Optional. The default schema (BigQuery dataset ID).
   final String defaultSchema;
+
   /// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
   final String schemaSuffix;
+
   /// Optional. The prefix that should be prepended to all table names.
   final String tablePrefix;
+
   /// Optional. User-defined variables that are made available to project code during compilation.
   final Map<String, String> vars;
 
@@ -66,4 +72,3 @@ class CodeCompilationConfigResponse {
     );
   }
 }
-

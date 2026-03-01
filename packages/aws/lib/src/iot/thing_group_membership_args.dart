@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ThingGroupMembershipArgs {
   /// Override dynamic thing groups with static thing groups when 10-group limit is reached. If a thing belongs to 10 thing groups, and one or more of those groups are dynamic thing groups, adding a thing to a static group removes the thing from the last dynamic group.
   final pulumi.Input<bool>? overrideDynamicGroup;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The name of the group to which you are adding a thing.
   final pulumi.Input<String> thingGroupName;
+
   /// The name of the thing to add to a group.
   final pulumi.Input<String> thingName;
 
@@ -26,11 +29,12 @@ class ThingGroupMembershipArgs {
     String? region,
     required String thingGroupName,
     required String thingName,
-  }) :
-      overrideDynamicGroup = pulumi.Input.asOptionalInput<bool>(overrideDynamicGroup),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      thingGroupName = pulumi.Input.asInput<String>(thingGroupName),
-      thingName = pulumi.Input.asInput<String>(thingName);
+  }) : overrideDynamicGroup = pulumi.Input.asOptionalInput<bool>(
+         overrideDynamicGroup,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       thingGroupName = pulumi.Input.asInput<String>(thingGroupName),
+       thingName = pulumi.Input.asInput<String>(thingName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,11 +47,12 @@ class ThingGroupMembershipArgs {
 
   factory ThingGroupMembershipArgs.fromMap(Map<String, dynamic> map) {
     return ThingGroupMembershipArgs(
-      overrideDynamicGroup: map['overrideDynamicGroup'] == null ? null : map['overrideDynamicGroup'] as bool,
+      overrideDynamicGroup: map['overrideDynamicGroup'] == null
+          ? null
+          : map['overrideDynamicGroup'] as bool,
       region: map['region'] == null ? null : map['region'] as String,
       thingGroupName: map['thingGroupName'] as String,
       thingName: map['thingName'] as String,
     );
   }
 }
-

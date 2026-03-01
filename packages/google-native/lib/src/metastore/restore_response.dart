@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The details of a metadata restore operation.
 class RestoreResponse {
   /// The relative resource name of the metastore service backup to restore from, in the following form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
   final String backup;
+
   /// Optional. A Cloud Storage URI specifying where the backup artifacts are stored, in the format gs:///.
   final String backupLocation;
+
   /// The restore details containing the revision of the service to be restored to, in format of JSON.
   final String details;
+
   /// The time when the restore ended.
   final String endTime;
+
   /// The time when the restore started.
   final String startTime;
+
   /// The current state of the restore.
   final String state;
+
   /// The type of restore.
   final String type;
 
@@ -60,4 +65,3 @@ class RestoreResponse {
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DatastoreNfsDatastoreGoogleFileService {
   /// Google filestore instance resource name
   /// e.g. projects/my-project/locations/me-west1-b/instances/my-instance
   final String? filestoreInstance;
+
   /// Google netapp volume resource name
   /// e.g. projects/my-project/locations/me-west1-b/volumes/my-volume
   final String? netappVolume;
@@ -24,11 +24,16 @@ class DatastoreNfsDatastoreGoogleFileService {
     };
   }
 
-  factory DatastoreNfsDatastoreGoogleFileService.fromMap(Map<String, dynamic> map) {
+  factory DatastoreNfsDatastoreGoogleFileService.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatastoreNfsDatastoreGoogleFileService(
-      filestoreInstance: map['filestoreInstance'] == null ? null : map['filestoreInstance'] as String,
-      netappVolume: map['netappVolume'] == null ? null : map['netappVolume'] as String,
+      filestoreInstance: map['filestoreInstance'] == null
+          ? null
+          : map['filestoreInstance'] as String,
+      netappVolume: map['netappVolume'] == null
+          ? null
+          : map['netappVolume'] as String,
     );
   }
 }
-

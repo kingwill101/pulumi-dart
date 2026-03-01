@@ -5,13 +5,18 @@ import 'ospolicy_resource_repository_resource_apt_repository_archive_type_osconf
 /// Represents a single apt package repository. These will be added to a repo file that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`.
 class OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha {
   /// Type of archive files in this repository.
-  final OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha archiveType;
+  final OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha
+  archiveType;
+
   /// List of components for this repository. Must contain at least one item.
   final List<String> components;
+
   /// Distribution of this repository.
   final String distribution;
+
   /// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
   final String? gpgKey;
+
   /// URI for this repository.
   final String uri;
 
@@ -39,9 +44,14 @@ class OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha {
     };
   }
 
-  factory OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha(
-      archiveType: OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha.fromValue(map['archiveType'] as String),
+      archiveType:
+          OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOsconfigV1alpha.fromValue(
+            map['archiveType'] as String,
+          ),
       components: (map['components'] as List).cast<String>(),
       distribution: map['distribution'] as String,
       gpgKey: map['gpgKey'] == null ? null : map['gpgKey'] as String,
@@ -49,4 +59,3 @@ class OSPolicyResourceRepositoryResourceAptRepositoryOsconfigV1alpha {
     );
   }
 }
-

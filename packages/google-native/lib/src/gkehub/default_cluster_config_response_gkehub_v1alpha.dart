@@ -6,7 +6,9 @@ import 'security_posture_config_response_gkehub_v1alpha.dart';
 /// DefaultClusterConfig describes the default cluster configurations to be applied to all clusters born-in-fleet.
 class DefaultClusterConfigResponseGkehubV1alpha {
   /// Optional. Enable/Disable binary authorization features for the cluster.
-  final BinaryAuthorizationConfigResponseGkehubV1alpha binaryAuthorizationConfig;
+  final BinaryAuthorizationConfigResponseGkehubV1alpha
+  binaryAuthorizationConfig;
+
   /// Enable/Disable Security Posture features for the cluster.
   final SecurityPostureConfigResponseGkehubV1alpha securityPostureConfig;
 
@@ -25,11 +27,17 @@ class DefaultClusterConfigResponseGkehubV1alpha {
     };
   }
 
-  factory DefaultClusterConfigResponseGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory DefaultClusterConfigResponseGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DefaultClusterConfigResponseGkehubV1alpha(
-      binaryAuthorizationConfig: BinaryAuthorizationConfigResponseGkehubV1alpha.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>()),
-      securityPostureConfig: SecurityPostureConfigResponseGkehubV1alpha.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>()),
+      binaryAuthorizationConfig:
+          BinaryAuthorizationConfigResponseGkehubV1alpha.fromMap(
+            (map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>(),
+          ),
+      securityPostureConfig: SecurityPostureConfigResponseGkehubV1alpha.fromMap(
+        (map['securityPostureConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

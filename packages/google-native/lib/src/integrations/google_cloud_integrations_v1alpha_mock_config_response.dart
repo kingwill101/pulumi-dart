@@ -7,8 +7,10 @@ import 'google_cloud_integrations_v1alpha_event_parameter_response.dart';
 class GoogleCloudIntegrationsV1alphaMockConfigResponse {
   /// Optional. Number of times the given task should fail for failure mock strategy
   final String failedExecutions;
+
   /// Mockstrategy defines how the particular task should be mocked during test execution
   final String mockStrategy;
+
   /// Optional. List of key-value pairs for specific mock strategy
   final List<GoogleCloudIntegrationsV1alphaEventParameterResponse> parameters;
 
@@ -26,16 +28,30 @@ class GoogleCloudIntegrationsV1alphaMockConfigResponse {
     return <String, dynamic>{
       'failedExecutions': failedExecutions,
       'mockStrategy': mockStrategy,
-      'parameters': pulumi.Input.encodeList<GoogleCloudIntegrationsV1alphaEventParameterResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.encodeList<
+            GoogleCloudIntegrationsV1alphaEventParameterResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaMockConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaMockConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaMockConfigResponse(
       failedExecutions: map['failedExecutions'] as String,
       mockStrategy: map['mockStrategy'] as String,
-      parameters: pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaEventParameterResponse>(map['parameters'], (value) => GoogleCloudIntegrationsV1alphaEventParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
+      parameters:
+          pulumi.Input.decodeList<
+            GoogleCloudIntegrationsV1alphaEventParameterResponse
+          >(
+            map['parameters'],
+            (value) =>
+                GoogleCloudIntegrationsV1alphaEventParameterResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

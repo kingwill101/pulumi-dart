@@ -9,20 +9,27 @@ class GetThemeConfigurationTypography {
 
   /// Creates a new [GetThemeConfigurationTypography].
   /// [fontFamilies] Determines the list of font families. Maximum number of 5 items. See font_families.
-  GetThemeConfigurationTypography({
-    required this.fontFamilies,
-  });
+  GetThemeConfigurationTypography({required this.fontFamilies});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fontFamilies': pulumi.Input.encodeList<GetThemeConfigurationTypographyFontFamily, Map<String, dynamic>>(fontFamilies, (value) => value.toMap()),
+      'fontFamilies':
+          pulumi.Input.encodeList<
+            GetThemeConfigurationTypographyFontFamily,
+            Map<String, dynamic>
+          >(fontFamilies, (value) => value.toMap()),
     };
   }
 
   factory GetThemeConfigurationTypography.fromMap(Map<String, dynamic> map) {
     return GetThemeConfigurationTypography(
-      fontFamilies: pulumi.Input.decodeList<GetThemeConfigurationTypographyFontFamily>(map['fontFamilies'], (value) => GetThemeConfigurationTypographyFontFamily.fromMap((value as Map).cast<String, dynamic>())),
+      fontFamilies:
+          pulumi.Input.decodeList<GetThemeConfigurationTypographyFontFamily>(
+            map['fontFamilies'],
+            (value) => GetThemeConfigurationTypographyFontFamily.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

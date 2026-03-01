@@ -30,4 +30,3 @@ enum DiscoveryAnalysisKind {
     throw ArgumentError('Unknown DiscoveryAnalysisKind value: $value');
   }
 }
-

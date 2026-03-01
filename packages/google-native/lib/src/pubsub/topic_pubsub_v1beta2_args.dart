@@ -20,10 +20,9 @@ class TopicPubsubV1beta2Args {
     String? name,
     String? project,
     required String topicId,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      topicId = pulumi.Input.asInput<String>(topicId);
+  }) : name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       topicId = pulumi.Input.asInput<String>(topicId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,4 +40,3 @@ class TopicPubsubV1beta2Args {
     );
   }
 }
-

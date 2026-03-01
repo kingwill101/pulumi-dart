@@ -17,4 +17,3 @@ enum GatewayConfigGatewayAuthMethod {
     throw ArgumentError('Unknown GatewayConfigGatewayAuthMethod value: $value');
   }
 }
-

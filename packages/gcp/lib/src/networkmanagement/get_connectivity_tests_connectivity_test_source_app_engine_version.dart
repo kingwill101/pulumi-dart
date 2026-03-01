@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetConnectivityTestsConnectivityTestSourceAppEngineVersion {
   /// A Cloud Run revision URI.
   final String uri;
@@ -12,15 +11,14 @@ class GetConnectivityTestsConnectivityTestSourceAppEngineVersion {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'uri': uri,
-    };
+    return <String, dynamic>{'uri': uri};
   }
 
-  factory GetConnectivityTestsConnectivityTestSourceAppEngineVersion.fromMap(Map<String, dynamic> map) {
+  factory GetConnectivityTestsConnectivityTestSourceAppEngineVersion.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectivityTestsConnectivityTestSourceAppEngineVersion(
       uri: map['uri'] as String,
     );
   }
 }
-

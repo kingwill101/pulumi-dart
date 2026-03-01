@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProvisionedConcurrencyConfigArgs {
   /// Name or Amazon Resource Name (ARN) of the Lambda Function.
   final pulumi.Input<String> functionName;
+
   /// Amount of capacity to allocate. Must be greater than or equal to 1.
   final pulumi.Input<int> provisionedConcurrentExecutions;
+
   /// Lambda Function version or Lambda Alias name.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> qualifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Whether to retain the provisioned concurrency configuration upon destruction. Defaults to `false`. If set to `true`, the resource is simply removed from state instead.
   final pulumi.Input<bool>? skipDestroy;
 
@@ -32,12 +36,13 @@ class ProvisionedConcurrencyConfigArgs {
     required String qualifier,
     String? region,
     bool? skipDestroy,
-  }) :
-      functionName = pulumi.Input.asInput<String>(functionName),
-      provisionedConcurrentExecutions = pulumi.Input.asInput<int>(provisionedConcurrentExecutions),
-      qualifier = pulumi.Input.asInput<String>(qualifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy);
+  }) : functionName = pulumi.Input.asInput<String>(functionName),
+       provisionedConcurrentExecutions = pulumi.Input.asInput<int>(
+         provisionedConcurrentExecutions,
+       ),
+       qualifier = pulumi.Input.asInput<String>(qualifier),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +57,13 @@ class ProvisionedConcurrencyConfigArgs {
   factory ProvisionedConcurrencyConfigArgs.fromMap(Map<String, dynamic> map) {
     return ProvisionedConcurrencyConfigArgs(
       functionName: map['functionName'] as String,
-      provisionedConcurrentExecutions: map['provisionedConcurrentExecutions'] as int,
+      provisionedConcurrentExecutions:
+          map['provisionedConcurrentExecutions'] as int,
       qualifier: map['qualifier'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      skipDestroy: map['skipDestroy'] == null ? null : map['skipDestroy'] as bool,
+      skipDestroy: map['skipDestroy'] == null
+          ? null
+          : map['skipDestroy'] as bool,
     );
   }
 }
-

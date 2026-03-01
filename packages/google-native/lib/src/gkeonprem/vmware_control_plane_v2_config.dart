@@ -9,20 +9,23 @@ class VmwareControlPlaneV2Config {
 
   /// Creates a new [VmwareControlPlaneV2Config].
   /// [controlPlaneIpBlock] Static IP addresses for the control plane nodes.
-  VmwareControlPlaneV2Config({
-    this.controlPlaneIpBlock,
-  });
+  VmwareControlPlaneV2Config({this.controlPlaneIpBlock});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'controlPlaneIpBlock': ?controlPlaneIpBlock == null ? null : controlPlaneIpBlock!.toMap(),
+      'controlPlaneIpBlock': ?controlPlaneIpBlock == null
+          ? null
+          : controlPlaneIpBlock!.toMap(),
     };
   }
 
   factory VmwareControlPlaneV2Config.fromMap(Map<String, dynamic> map) {
     return VmwareControlPlaneV2Config(
-      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null ? null : VmwareIpBlock.fromMap((map['controlPlaneIpBlock'] as Map).cast<String, dynamic>()),
+      controlPlaneIpBlock: map['controlPlaneIpBlock'] == null
+          ? null
+          : VmwareIpBlock.fromMap(
+              (map['controlPlaneIpBlock'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

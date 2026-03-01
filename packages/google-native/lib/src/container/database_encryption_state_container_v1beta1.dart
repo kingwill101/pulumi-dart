@@ -13,7 +13,8 @@ enum DatabaseEncryptionStateContainerV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown DatabaseEncryptionStateContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown DatabaseEncryptionStateContainerV1beta1 value: $value',
+    );
   }
 }
-

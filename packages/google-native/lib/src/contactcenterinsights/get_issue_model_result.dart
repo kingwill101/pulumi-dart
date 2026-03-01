@@ -7,22 +7,33 @@ import 'google_cloud_contactcenterinsights_v1_issue_model_label_stats_response.d
 class GetIssueModelResult {
   /// The time at which this issue model was created.
   final String createTime;
+
   /// The representative name for the issue model.
   final String displayName;
+
   /// Configs for the input data that used to create the issue model.
-  final GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse inputDataConfig;
+  final GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse
+  inputDataConfig;
+
   /// Number of issues in this issue model.
   final String issueCount;
+
   /// Language of the model.
   final String languageCode;
+
   /// Type of the model.
   final String modelType;
+
   /// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
   final String name;
+
   /// State of the model.
   final String state;
+
   /// Immutable. The issue model's label statistics on its training data.
-  final GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse trainingStats;
+  final GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse
+  trainingStats;
+
   /// The most recent time at which the issue model was updated.
   final String updateTime;
 
@@ -69,15 +80,20 @@ class GetIssueModelResult {
     return GetIssueModelResult(
       createTime: map['createTime'] as String,
       displayName: map['displayName'] as String,
-      inputDataConfig: GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse.fromMap((map['inputDataConfig'] as Map).cast<String, dynamic>()),
+      inputDataConfig:
+          GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse.fromMap(
+            (map['inputDataConfig'] as Map).cast<String, dynamic>(),
+          ),
       issueCount: map['issueCount'] as String,
       languageCode: map['languageCode'] as String,
       modelType: map['modelType'] as String,
       name: map['name'] as String,
       state: map['state'] as String,
-      trainingStats: GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse.fromMap((map['trainingStats'] as Map).cast<String, dynamic>()),
+      trainingStats:
+          GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse.fromMap(
+            (map['trainingStats'] as Map).cast<String, dynamic>(),
+          ),
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

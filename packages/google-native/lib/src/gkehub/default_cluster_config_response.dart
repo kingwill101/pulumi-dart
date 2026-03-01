@@ -7,6 +7,7 @@ import 'security_posture_config_response.dart';
 class DefaultClusterConfigResponse {
   /// Optional. Enable/Disable binary authorization features for the cluster.
   final BinaryAuthorizationConfigResponse binaryAuthorizationConfig;
+
   /// Enable/Disable Security Posture features for the cluster.
   final SecurityPostureConfigResponse securityPostureConfig;
 
@@ -27,9 +28,12 @@ class DefaultClusterConfigResponse {
 
   factory DefaultClusterConfigResponse.fromMap(Map<String, dynamic> map) {
     return DefaultClusterConfigResponse(
-      binaryAuthorizationConfig: BinaryAuthorizationConfigResponse.fromMap((map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>()),
-      securityPostureConfig: SecurityPostureConfigResponse.fromMap((map['securityPostureConfig'] as Map).cast<String, dynamic>()),
+      binaryAuthorizationConfig: BinaryAuthorizationConfigResponse.fromMap(
+        (map['binaryAuthorizationConfig'] as Map).cast<String, dynamic>(),
+      ),
+      securityPostureConfig: SecurityPostureConfigResponse.fromMap(
+        (map['securityPostureConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -3,16 +3,23 @@ enum InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta {
   recreate("RECREATE"),
   substitute("SUBSTITUTE");
 
-  const InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta(this.value);
+  const InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta(
+    this.value,
+  );
   final String value;
 
-  static InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta fromValue(String value) {
-    for (final item in InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta.values) {
+  static InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown InstanceGroupManagerUpdatePolicyReplacementMethodComputeBeta value: $value',
+    );
   }
 }
-

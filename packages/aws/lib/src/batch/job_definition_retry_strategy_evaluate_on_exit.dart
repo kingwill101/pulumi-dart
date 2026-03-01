@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class JobDefinitionRetryStrategyEvaluateOnExit {
   /// Action to take if all of the specified conditions are met. The values are not case sensitive. Valid values: `retry`, `exit`.
   final String action;
+
   /// Glob pattern to match against the decimal representation of the exit code returned for a job.
   final String? onExitCode;
+
   /// Glob pattern to match against the reason returned for a job.
   final String? onReason;
+
   /// Glob pattern to match against the status reason returned for a job.
   final String? onStatusReason;
 
@@ -32,13 +34,18 @@ class JobDefinitionRetryStrategyEvaluateOnExit {
     };
   }
 
-  factory JobDefinitionRetryStrategyEvaluateOnExit.fromMap(Map<String, dynamic> map) {
+  factory JobDefinitionRetryStrategyEvaluateOnExit.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return JobDefinitionRetryStrategyEvaluateOnExit(
       action: map['action'] as String,
-      onExitCode: map['onExitCode'] == null ? null : map['onExitCode'] as String,
+      onExitCode: map['onExitCode'] == null
+          ? null
+          : map['onExitCode'] as String,
       onReason: map['onReason'] == null ? null : map['onReason'] as String,
-      onStatusReason: map['onStatusReason'] == null ? null : map['onStatusReason'] as String,
+      onStatusReason: map['onStatusReason'] == null
+          ? null
+          : map['onStatusReason'] as String,
     );
   }
 }
-

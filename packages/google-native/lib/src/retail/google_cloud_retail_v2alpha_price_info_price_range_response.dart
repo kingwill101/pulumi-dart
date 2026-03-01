@@ -6,6 +6,7 @@ import 'google_cloud_retail_v2alpha_interval_response.dart';
 class GoogleCloudRetailV2alphaPriceInfoPriceRangeResponse {
   /// The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id.
   final GoogleCloudRetailV2alphaIntervalResponse originalPrice;
+
   /// The inclusive Product.pricing_info.price interval of all variant Product having the same Product.primary_product_id.
   final GoogleCloudRetailV2alphaIntervalResponse price;
 
@@ -24,11 +25,16 @@ class GoogleCloudRetailV2alphaPriceInfoPriceRangeResponse {
     };
   }
 
-  factory GoogleCloudRetailV2alphaPriceInfoPriceRangeResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2alphaPriceInfoPriceRangeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2alphaPriceInfoPriceRangeResponse(
-      originalPrice: GoogleCloudRetailV2alphaIntervalResponse.fromMap((map['originalPrice'] as Map).cast<String, dynamic>()),
-      price: GoogleCloudRetailV2alphaIntervalResponse.fromMap((map['price'] as Map).cast<String, dynamic>()),
+      originalPrice: GoogleCloudRetailV2alphaIntervalResponse.fromMap(
+        (map['originalPrice'] as Map).cast<String, dynamic>(),
+      ),
+      price: GoogleCloudRetailV2alphaIntervalResponse.fromMap(
+        (map['price'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TemplateAliasArgs {
   /// Display name of the template alias.
   final pulumi.Input<String> aliasName;
+
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String>? awsAccountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ID of the template.
   final pulumi.Input<String> templateId;
+
   /// Version number of the template.
   ///
   /// The following arguments are optional:
@@ -32,12 +36,11 @@ class TemplateAliasArgs {
     String? region,
     required String templateId,
     required int templateVersionNumber,
-  }) :
-      aliasName = pulumi.Input.asInput<String>(aliasName),
-      awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      templateId = pulumi.Input.asInput<String>(templateId),
-      templateVersionNumber = pulumi.Input.asInput<int>(templateVersionNumber);
+  }) : aliasName = pulumi.Input.asInput<String>(aliasName),
+       awsAccountId = pulumi.Input.asOptionalInput<String>(awsAccountId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       templateId = pulumi.Input.asInput<String>(templateId),
+       templateVersionNumber = pulumi.Input.asInput<int>(templateVersionNumber);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +55,12 @@ class TemplateAliasArgs {
   factory TemplateAliasArgs.fromMap(Map<String, dynamic> map) {
     return TemplateAliasArgs(
       aliasName: map['aliasName'] as String,
-      awsAccountId: map['awsAccountId'] == null ? null : map['awsAccountId'] as String,
+      awsAccountId: map['awsAccountId'] == null
+          ? null
+          : map['awsAccountId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       templateId: map['templateId'] as String,
       templateVersionNumber: map['templateVersionNumber'] as int,
     );
   }
 }
-

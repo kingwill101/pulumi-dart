@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstancePscConfigServiceAttachment {
   /// (Output)
   /// Status of the service attachment connection.
   final String? connectionStatus;
+
   /// Fully qualified domain name that will be used in the private DNS record created for the service attachment.
   final String? localFqdn;
+
   /// URI of the service attachment to connect to.
   final String? targetServiceAttachmentUri;
 
@@ -30,10 +31,13 @@ class InstancePscConfigServiceAttachment {
 
   factory InstancePscConfigServiceAttachment.fromMap(Map<String, dynamic> map) {
     return InstancePscConfigServiceAttachment(
-      connectionStatus: map['connectionStatus'] == null ? null : map['connectionStatus'] as String,
+      connectionStatus: map['connectionStatus'] == null
+          ? null
+          : map['connectionStatus'] as String,
       localFqdn: map['localFqdn'] == null ? null : map['localFqdn'] as String,
-      targetServiceAttachmentUri: map['targetServiceAttachmentUri'] == null ? null : map['targetServiceAttachmentUri'] as String,
+      targetServiceAttachmentUri: map['targetServiceAttachmentUri'] == null
+          ? null
+          : map['targetServiceAttachmentUri'] as String,
     );
   }
 }
-

@@ -5,9 +5,11 @@ import 'certificate_template_predefined_values_additional_extension_object_id.da
 class CertificateTemplatePredefinedValuesAdditionalExtension {
   /// Optional. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
   final bool? critical;
+
   /// Required. The OID for this X.509 extension.
   /// Structure is documented below.
   final CertificateTemplatePredefinedValuesAdditionalExtensionObjectId objectId;
+
   /// Required. The value of this X.509 extension.
   final String value;
 
@@ -29,12 +31,16 @@ class CertificateTemplatePredefinedValuesAdditionalExtension {
     };
   }
 
-  factory CertificateTemplatePredefinedValuesAdditionalExtension.fromMap(Map<String, dynamic> map) {
+  factory CertificateTemplatePredefinedValuesAdditionalExtension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateTemplatePredefinedValuesAdditionalExtension(
       critical: map['critical'] == null ? null : map['critical'] as bool,
-      objectId: CertificateTemplatePredefinedValuesAdditionalExtensionObjectId.fromMap((map['objectId'] as Map).cast<String, dynamic>()),
+      objectId:
+          CertificateTemplatePredefinedValuesAdditionalExtensionObjectId.fromMap(
+            (map['objectId'] as Map).cast<String, dynamic>(),
+          ),
       value: map['value'] as String,
     );
   }
 }
-

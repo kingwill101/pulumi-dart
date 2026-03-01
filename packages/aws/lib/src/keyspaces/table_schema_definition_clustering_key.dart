@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TableSchemaDefinitionClusteringKey {
   /// The name of the clustering key column.
   final String name;
+
   /// The order modifier. Valid values: `ASC`, `DESC`.
   final String orderBy;
 
@@ -16,10 +16,7 @@ class TableSchemaDefinitionClusteringKey {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'orderBy': orderBy,
-    };
+    return <String, dynamic>{'name': name, 'orderBy': orderBy};
   }
 
   factory TableSchemaDefinitionClusteringKey.fromMap(Map<String, dynamic> map) {
@@ -29,4 +26,3 @@ class TableSchemaDefinitionClusteringKey {
     );
   }
 }
-

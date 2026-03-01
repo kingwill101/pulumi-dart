@@ -345,24 +345,33 @@ import 'cost_category_split_charge_rule.dart';
 class CostCategory extends pulumi.CustomResource {
   /// ARN of the cost category.
   late final pulumi.Output<String> arn;
+
   /// Default value for the cost category.
   late final pulumi.Output<String?> defaultValue;
+
   /// Effective end data of your Cost Category.
   late final pulumi.Output<String> effectiveEnd;
+
   /// The Cost Category's effective start date. It can only be a billing start date (first day of the month). If the date isn't provided, it's the first day of the current month. Dates can't be before the previous twelve months, or in the future. For example `2022-11-01T00:00:00Z`.
   late final pulumi.Output<String> effectiveStart;
+
   /// Unique name for the Cost Category.
   late final pulumi.Output<String> name;
+
   /// Rule schema version in this particular Cost Category.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> ruleVersion;
+
   /// Configuration block for the Cost Category rules used to categorize costs. See below.
   late final pulumi.Output<List<CostCategoryRule>> rules;
+
   /// Configuration block for the split charge rules used to allocate your charges between your Cost Category values. See below.
   late final pulumi.Output<List<CostCategorySplitChargeRule>?> splitChargeRules;
+
   /// Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -375,11 +384,11 @@ class CostCategory extends pulumi.CustomResource {
     CostCategoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:costexplorer/costCategory:CostCategory',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:costexplorer/costCategory:CostCategory',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.defaultValue = registerOutput<String?>('defaultValue');
     this.effectiveEnd = registerOutput<String>('effectiveEnd');
@@ -387,7 +396,9 @@ class CostCategory extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.ruleVersion = registerOutput<String>('ruleVersion');
     this.rules = registerOutput<List<CostCategoryRule>>('rules');
-    this.splitChargeRules = registerOutput<List<CostCategorySplitChargeRule>?>('splitChargeRules');
+    this.splitChargeRules = registerOutput<List<CostCategorySplitChargeRule>?>(
+      'splitChargeRules',
+    );
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');
   }

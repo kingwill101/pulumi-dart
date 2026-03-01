@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Settings for answer feedback collection.
 class GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings {
   /// Optional. If enabled, end users will be able to provide answer feedback to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
@@ -13,15 +12,16 @@ class GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableAnswerFeedback': ?enableAnswerFeedback,
-    };
+    return <String, dynamic>{'enableAnswerFeedback': ?enableAnswerFeedback};
   }
 
-  factory GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings(
-      enableAnswerFeedback: map['enableAnswerFeedback'] == null ? null : map['enableAnswerFeedback'] as bool,
+      enableAnswerFeedback: map['enableAnswerFeedback'] == null
+          ? null
+          : map['enableAnswerFeedback'] as bool,
     );
   }
 }
-

@@ -19,10 +19,11 @@ class GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs {
     int? optionsRequestedPolicyVersion,
     required String organizationId,
     required String partnerTenantId,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId);
+  }) : optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       partnerTenantId = pulumi.Input.asInput<String>(partnerTenantId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,12 +33,16 @@ class GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs {
     };
   }
 
-  factory GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       organizationId: map['organizationId'] as String,
       partnerTenantId: map['partnerTenantId'] as String,
     );
   }
 }
-

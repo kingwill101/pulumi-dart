@@ -8,8 +8,10 @@ import 'bare_metal_admin_vip_config_response.dart';
 class BareMetalAdminLoadBalancerConfigResponse {
   /// Manually configured load balancers.
   final BareMetalAdminManualLbConfigResponse manualLbConfig;
+
   /// Configures the ports that the load balancer will listen on.
   final BareMetalAdminPortConfigResponse portConfig;
+
   /// The VIPs used by the load balancer.
   final BareMetalAdminVipConfigResponse vipConfig;
 
@@ -31,12 +33,19 @@ class BareMetalAdminLoadBalancerConfigResponse {
     };
   }
 
-  factory BareMetalAdminLoadBalancerConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory BareMetalAdminLoadBalancerConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalAdminLoadBalancerConfigResponse(
-      manualLbConfig: BareMetalAdminManualLbConfigResponse.fromMap((map['manualLbConfig'] as Map).cast<String, dynamic>()),
-      portConfig: BareMetalAdminPortConfigResponse.fromMap((map['portConfig'] as Map).cast<String, dynamic>()),
-      vipConfig: BareMetalAdminVipConfigResponse.fromMap((map['vipConfig'] as Map).cast<String, dynamic>()),
+      manualLbConfig: BareMetalAdminManualLbConfigResponse.fromMap(
+        (map['manualLbConfig'] as Map).cast<String, dynamic>(),
+      ),
+      portConfig: BareMetalAdminPortConfigResponse.fromMap(
+        (map['portConfig'] as Map).cast<String, dynamic>(),
+      ),
+      vipConfig: BareMetalAdminVipConfigResponse.fromMap(
+        (map['vipConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

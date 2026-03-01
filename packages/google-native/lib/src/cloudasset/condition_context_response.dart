@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The IAM conditions context.
 class ConditionContextResponse {
   /// The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
@@ -8,20 +7,13 @@ class ConditionContextResponse {
 
   /// Creates a new [ConditionContextResponse].
   /// [accessTime] The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
-  ConditionContextResponse({
-    required this.accessTime,
-  });
+  ConditionContextResponse({required this.accessTime});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accessTime': accessTime,
-    };
+    return <String, dynamic>{'accessTime': accessTime};
   }
 
   factory ConditionContextResponse.fromMap(Map<String, dynamic> map) {
-    return ConditionContextResponse(
-      accessTime: map['accessTime'] as String,
-    );
+    return ConditionContextResponse(accessTime: map['accessTime'] as String);
   }
 }
-

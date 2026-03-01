@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class StepDimensionValueEntryResponse {
   final String key;
   final String value;
@@ -8,16 +7,10 @@ class StepDimensionValueEntryResponse {
   /// Creates a new [StepDimensionValueEntryResponse].
   /// [key] Required.
   /// [value] Required.
-  StepDimensionValueEntryResponse({
-    required this.key,
-    required this.value,
-  });
+  StepDimensionValueEntryResponse({required this.key, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
   factory StepDimensionValueEntryResponse.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class StepDimensionValueEntryResponse {
     );
   }
 }
-

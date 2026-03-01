@@ -13,7 +13,8 @@ enum RegionSecurityPolicyTypeComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionSecurityPolicyTypeComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown RegionSecurityPolicyTypeComputeV1 value: $value',
+    );
   }
 }
-

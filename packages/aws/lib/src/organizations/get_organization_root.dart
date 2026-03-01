@@ -6,10 +6,13 @@ import 'get_organization_root_policy_type.dart';
 class GetOrganizationRoot {
   /// ARN of the root.
   final String arn;
+
   /// Identifier of the root.
   final String id;
+
   /// Name of the policy type.
   final String name;
+
   /// List of policy types enabled for this root. All elements have these attributes:
   final List<GetOrganizationRootPolicyType> policyTypes;
 
@@ -30,7 +33,11 @@ class GetOrganizationRoot {
       'arn': arn,
       'id': id,
       'name': name,
-      'policyTypes': pulumi.Input.encodeList<GetOrganizationRootPolicyType, Map<String, dynamic>>(policyTypes, (value) => value.toMap()),
+      'policyTypes':
+          pulumi.Input.encodeList<
+            GetOrganizationRootPolicyType,
+            Map<String, dynamic>
+          >(policyTypes, (value) => value.toMap()),
     };
   }
 
@@ -39,8 +46,12 @@ class GetOrganizationRoot {
       arn: map['arn'] as String,
       id: map['id'] as String,
       name: map['name'] as String,
-      policyTypes: pulumi.Input.decodeList<GetOrganizationRootPolicyType>(map['policyTypes'], (value) => GetOrganizationRootPolicyType.fromMap((value as Map).cast<String, dynamic>())),
+      policyTypes: pulumi.Input.decodeList<GetOrganizationRootPolicyType>(
+        map['policyTypes'],
+        (value) => GetOrganizationRootPolicyType.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

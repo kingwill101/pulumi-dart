@@ -6,10 +6,13 @@ import 'lifecycle_policy_policy_details_schedule_cross_region_copy_rule_retain_r
 class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule {
   final String? cmkArn;
   final bool? copyTags;
-  final LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule? deprecateRule;
+  final LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule?
+  deprecateRule;
   final bool encrypted;
-  final LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule? retainRule;
+  final LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule?
+  retainRule;
   final String? target;
+
   /// Use only for DLM policies of `policy_type=IMAGE_MANAGEMENT`. The target Region or the Amazon Resource Name (ARN) of the target Outpost for the snapshot copies.
   final String? targetRegion;
 
@@ -43,16 +46,27 @@ class LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule {
     };
   }
 
-  factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule.fromMap(Map<String, dynamic> map) {
+  factory LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRule(
       cmkArn: map['cmkArn'] == null ? null : map['cmkArn'] as String,
       copyTags: map['copyTags'] == null ? null : map['copyTags'] as bool,
-      deprecateRule: map['deprecateRule'] == null ? null : LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule.fromMap((map['deprecateRule'] as Map).cast<String, dynamic>()),
+      deprecateRule: map['deprecateRule'] == null
+          ? null
+          : LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleDeprecateRule.fromMap(
+              (map['deprecateRule'] as Map).cast<String, dynamic>(),
+            ),
       encrypted: map['encrypted'] as bool,
-      retainRule: map['retainRule'] == null ? null : LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap((map['retainRule'] as Map).cast<String, dynamic>()),
+      retainRule: map['retainRule'] == null
+          ? null
+          : LifecyclePolicyPolicyDetailsScheduleCrossRegionCopyRuleRetainRule.fromMap(
+              (map['retainRule'] as Map).cast<String, dynamic>(),
+            ),
       target: map['target'] == null ? null : map['target'] as String,
-      targetRegion: map['targetRegion'] == null ? null : map['targetRegion'] as String,
+      targetRegion: map['targetRegion'] == null
+          ? null
+          : map['targetRegion'] as String,
     );
   }
 }
-

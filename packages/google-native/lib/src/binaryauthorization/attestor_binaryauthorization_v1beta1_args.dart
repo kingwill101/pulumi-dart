@@ -10,13 +10,17 @@ import 'user_owned_drydock_note.dart';
 class AttestorBinaryauthorizationV1beta1Args {
   /// Required. The attestors ID.
   final pulumi.Input<String> attestorId;
+
   /// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
   final pulumi.Input<String>? description;
+
   /// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
   final pulumi.Input<String>? etag;
+
   /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// A Drydock ATTESTATION_AUTHORITY Note, created by the user.
   final pulumi.Input<UserOwnedDrydockNote>? userOwnedDrydockNote;
 
@@ -34,13 +38,13 @@ class AttestorBinaryauthorizationV1beta1Args {
     String? name,
     String? project,
     UserOwnedDrydockNote? userOwnedDrydockNote,
-  }) :
-      attestorId = pulumi.Input.asInput<String>(attestorId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userOwnedDrydockNote = pulumi.Input.asOptionalInput<UserOwnedDrydockNote>(userOwnedDrydockNote);
+  }) : attestorId = pulumi.Input.asInput<String>(attestorId),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       etag = pulumi.Input.asOptionalInput<String>(etag),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       userOwnedDrydockNote = pulumi
+           .Input.asOptionalInput<UserOwnedDrydockNote>(userOwnedDrydockNote);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,19 +53,30 @@ class AttestorBinaryauthorizationV1beta1Args {
       'etag': ?etag,
       'name': ?name,
       'project': ?project,
-      'userOwnedDrydockNote': ?pulumi.Input.mapOptionalInputValue<UserOwnedDrydockNote, Map<String, dynamic>>(userOwnedDrydockNote, (value) => value.toMap()),
+      'userOwnedDrydockNote':
+          ?pulumi.Input.mapOptionalInputValue<
+            UserOwnedDrydockNote,
+            Map<String, dynamic>
+          >(userOwnedDrydockNote, (value) => value.toMap()),
     };
   }
 
-  factory AttestorBinaryauthorizationV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory AttestorBinaryauthorizationV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AttestorBinaryauthorizationV1beta1Args(
       attestorId: map['attestorId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       etag: map['etag'] == null ? null : map['etag'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      userOwnedDrydockNote: map['userOwnedDrydockNote'] == null ? null : UserOwnedDrydockNote.fromMap((map['userOwnedDrydockNote'] as Map).cast<String, dynamic>()),
+      userOwnedDrydockNote: map['userOwnedDrydockNote'] == null
+          ? null
+          : UserOwnedDrydockNote.fromMap(
+              (map['userOwnedDrydockNote'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

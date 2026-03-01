@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getKnowledgeBase.
 class GetKnowledgeBaseResult {
   /// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
   final String displayName;
+
   /// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
   final String languageCode;
+
   /// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
   final String name;
 
@@ -36,4 +37,3 @@ class GetKnowledgeBaseResult {
     );
   }
 }
-

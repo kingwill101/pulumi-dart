@@ -15,4 +15,3 @@ enum ServerBindingType {
     throw ArgumentError('Unknown ServerBindingType value: $value');
   }
 }
-

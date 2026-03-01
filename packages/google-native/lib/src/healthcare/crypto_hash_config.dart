@@ -6,16 +6,14 @@ import 'kms_wrapped_crypto_key.dart';
 class CryptoHashConfig {
   /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
   final String? cryptoKey;
+
   /// KMS wrapped key. Must not be set if `crypto_key` is set.
   final KmsWrappedCryptoKey? kmsWrapped;
 
   /// Creates a new [CryptoHashConfig].
   /// [cryptoKey] An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
   /// [kmsWrapped] KMS wrapped key. Must not be set if `crypto_key` is set.
-  CryptoHashConfig({
-    this.cryptoKey,
-    this.kmsWrapped,
-  });
+  CryptoHashConfig({this.cryptoKey, this.kmsWrapped});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,8 +25,11 @@ class CryptoHashConfig {
   factory CryptoHashConfig.fromMap(Map<String, dynamic> map) {
     return CryptoHashConfig(
       cryptoKey: map['cryptoKey'] == null ? null : map['cryptoKey'] as String,
-      kmsWrapped: map['kmsWrapped'] == null ? null : KmsWrappedCryptoKey.fromMap((map['kmsWrapped'] as Map).cast<String, dynamic>()),
+      kmsWrapped: map['kmsWrapped'] == null
+          ? null
+          : KmsWrappedCryptoKey.fromMap(
+              (map['kmsWrapped'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -8,20 +8,19 @@ class VirtualNodeSpecLoggingAccessLog {
 
   /// Creates a new [VirtualNodeSpecLoggingAccessLog].
   /// [file] File object to send virtual node access logs to.
-  VirtualNodeSpecLoggingAccessLog({
-    this.file,
-  });
+  VirtualNodeSpecLoggingAccessLog({this.file});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'file': ?file == null ? null : file!.toMap(),
-    };
+    return <String, dynamic>{'file': ?file == null ? null : file!.toMap()};
   }
 
   factory VirtualNodeSpecLoggingAccessLog.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecLoggingAccessLog(
-      file: map['file'] == null ? null : VirtualNodeSpecLoggingAccessLogFile.fromMap((map['file'] as Map).cast<String, dynamic>()),
+      file: map['file'] == null
+          ? null
+          : VirtualNodeSpecLoggingAccessLogFile.fromMap(
+              (map['file'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

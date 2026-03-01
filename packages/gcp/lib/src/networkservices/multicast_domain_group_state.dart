@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MulticastDomainGroupState {
   /// (Output)
   /// The state of the multicast resource.
@@ -16,14 +15,10 @@ class MulticastDomainGroupState {
 
   /// Creates a new [MulticastDomainGroupState].
   /// [state] (Output)
-  MulticastDomainGroupState({
-    this.state,
-  });
+  MulticastDomainGroupState({this.state});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': ?state,
-    };
+    return <String, dynamic>{'state': ?state};
   }
 
   factory MulticastDomainGroupState.fromMap(Map<String, dynamic> map) {
@@ -32,4 +27,3 @@ class MulticastDomainGroupState {
     );
   }
 }
-

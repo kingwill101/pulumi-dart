@@ -6,13 +6,12 @@ class ClusterUserCreatedConnectionsClusterEndpointConnection {
   /// Detailed information of a PSC connection that is created by the customer
   /// who owns the cluster.
   /// Structure is documented below.
-  final ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection? pscConnection;
+  final ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection?
+  pscConnection;
 
   /// Creates a new [ClusterUserCreatedConnectionsClusterEndpointConnection].
   /// [pscConnection] Detailed information of a PSC connection that is created by the customer
-  ClusterUserCreatedConnectionsClusterEndpointConnection({
-    this.pscConnection,
-  });
+  ClusterUserCreatedConnectionsClusterEndpointConnection({this.pscConnection});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -20,10 +19,15 @@ class ClusterUserCreatedConnectionsClusterEndpointConnection {
     };
   }
 
-  factory ClusterUserCreatedConnectionsClusterEndpointConnection.fromMap(Map<String, dynamic> map) {
+  factory ClusterUserCreatedConnectionsClusterEndpointConnection.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterUserCreatedConnectionsClusterEndpointConnection(
-      pscConnection: map['pscConnection'] == null ? null : ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection.fromMap((map['pscConnection'] as Map).cast<String, dynamic>()),
+      pscConnection: map['pscConnection'] == null
+          ? null
+          : ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection.fromMap(
+              (map['pscConnection'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

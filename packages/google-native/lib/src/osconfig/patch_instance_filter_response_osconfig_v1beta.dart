@@ -7,12 +7,16 @@ import 'patch_instance_filter_group_label_response_osconfig_v1beta.dart';
 class PatchInstanceFilterResponseOsconfigV1beta {
   /// Target all VM instances in the project. If true, no other criteria is permitted.
   final bool all;
+
   /// Targets VM instances matching at least one of these label sets. This allows targeting of disparate groups, for example "env=prod or env=staging".
   final List<PatchInstanceFilterGroupLabelResponseOsconfigV1beta> groupLabels;
+
   /// Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group VMs when targeting configs, for example prefix="prod-".
   final List<String> instanceNamePrefixes;
+
   /// Targets any of the VM instances specified. Instances are specified by their URI in the form `zones/[ZONE]/instances/[INSTANCE_NAME]`, `projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`, or `https://www.googleapis.com/compute/v1/projects/[PROJECT_ID]/zones/[ZONE]/instances/[INSTANCE_NAME]`
   final List<String> instances;
+
   /// Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
   final List<String> zones;
 
@@ -33,21 +37,36 @@ class PatchInstanceFilterResponseOsconfigV1beta {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'all': all,
-      'groupLabels': pulumi.Input.encodeList<PatchInstanceFilterGroupLabelResponseOsconfigV1beta, Map<String, dynamic>>(groupLabels, (value) => value.toMap()),
+      'groupLabels':
+          pulumi.Input.encodeList<
+            PatchInstanceFilterGroupLabelResponseOsconfigV1beta,
+            Map<String, dynamic>
+          >(groupLabels, (value) => value.toMap()),
       'instanceNamePrefixes': instanceNamePrefixes,
       'instances': instances,
       'zones': zones,
     };
   }
 
-  factory PatchInstanceFilterResponseOsconfigV1beta.fromMap(Map<String, dynamic> map) {
+  factory PatchInstanceFilterResponseOsconfigV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PatchInstanceFilterResponseOsconfigV1beta(
       all: map['all'] as bool,
-      groupLabels: pulumi.Input.decodeList<PatchInstanceFilterGroupLabelResponseOsconfigV1beta>(map['groupLabels'], (value) => PatchInstanceFilterGroupLabelResponseOsconfigV1beta.fromMap((value as Map).cast<String, dynamic>())),
-      instanceNamePrefixes: (map['instanceNamePrefixes'] as List).cast<String>(),
+      groupLabels:
+          pulumi.Input.decodeList<
+            PatchInstanceFilterGroupLabelResponseOsconfigV1beta
+          >(
+            map['groupLabels'],
+            (value) =>
+                PatchInstanceFilterGroupLabelResponseOsconfigV1beta.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      instanceNamePrefixes: (map['instanceNamePrefixes'] as List)
+          .cast<String>(),
       instances: (map['instances'] as List).cast<String>(),
       zones: (map['zones'] as List).cast<String>(),
     );
   }
 }
-

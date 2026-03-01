@@ -16,4 +16,3 @@ enum ModelTrainingState {
     throw ArgumentError('Unknown ModelTrainingState value: $value');
   }
 }
-

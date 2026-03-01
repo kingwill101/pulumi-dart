@@ -7,10 +7,13 @@ import 'google_cloud_dialogflow_v2_intent_message_select_item_info_response.dart
 class GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse {
   /// Optional. The body text of the card.
   final String description;
+
   /// Optional. The image to display.
   final GoogleCloudDialogflowV2IntentMessageImageResponse image;
+
   /// Additional info about the option item.
   final GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse info;
+
   /// Title of the carousel item.
   final String title;
 
@@ -35,13 +38,18 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse(
       description: map['description'] as String,
-      image: GoogleCloudDialogflowV2IntentMessageImageResponse.fromMap((map['image'] as Map).cast<String, dynamic>()),
-      info: GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse.fromMap((map['info'] as Map).cast<String, dynamic>()),
+      image: GoogleCloudDialogflowV2IntentMessageImageResponse.fromMap(
+        (map['image'] as Map).cast<String, dynamic>(),
+      ),
+      info: GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse.fromMap(
+        (map['info'] as Map).cast<String, dynamic>(),
+      ),
       title: map['title'] as String,
     );
   }
 }
-

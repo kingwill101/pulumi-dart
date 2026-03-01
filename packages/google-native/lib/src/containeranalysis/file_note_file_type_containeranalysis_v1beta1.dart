@@ -22,7 +22,8 @@ enum FileNoteFileTypeContaineranalysisV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown FileNoteFileTypeContaineranalysisV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown FileNoteFileTypeContaineranalysisV1beta1 value: $value',
+    );
   }
 }
-

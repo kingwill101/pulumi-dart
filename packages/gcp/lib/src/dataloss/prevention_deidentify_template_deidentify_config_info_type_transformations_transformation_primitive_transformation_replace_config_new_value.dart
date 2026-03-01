@@ -6,21 +6,30 @@ import 'prevention_deidentify_template_deidentify_config_info_type_transformatio
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue {
   /// A boolean value.
   final bool? booleanValue;
+
   /// Represents a whole or partial calendar date.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue? dateValue;
+  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue?
+  dateValue;
+
   /// Represents a day of the week.
   /// Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
   final String? dayOfWeekValue;
+
   /// A float value.
   final double? floatValue;
+
   /// An integer value (int64 format)
   final int? integerValue;
+
   /// A string value.
   final String? stringValue;
+
   /// Represents a time of day.
   /// Structure is documented below.
-  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue? timeValue;
+  final PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue?
+  timeValue;
+
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   final String? timestampValue;
@@ -58,17 +67,38 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     };
   }
 
-  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue.fromMap(Map<String, dynamic> map) {
+  factory PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValue(
-      booleanValue: map['booleanValue'] == null ? null : map['booleanValue'] as bool,
-      dateValue: map['dateValue'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue.fromMap((map['dateValue'] as Map).cast<String, dynamic>()),
-      dayOfWeekValue: map['dayOfWeekValue'] == null ? null : map['dayOfWeekValue'] as String,
-      floatValue: map['floatValue'] == null ? null : map['floatValue'] as double,
-      integerValue: map['integerValue'] == null ? null : map['integerValue'] as int,
-      stringValue: map['stringValue'] == null ? null : map['stringValue'] as String,
-      timeValue: map['timeValue'] == null ? null : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue.fromMap((map['timeValue'] as Map).cast<String, dynamic>()),
-      timestampValue: map['timestampValue'] == null ? null : map['timestampValue'] as String,
+      booleanValue: map['booleanValue'] == null
+          ? null
+          : map['booleanValue'] as bool,
+      dateValue: map['dateValue'] == null
+          ? null
+          : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue.fromMap(
+              (map['dateValue'] as Map).cast<String, dynamic>(),
+            ),
+      dayOfWeekValue: map['dayOfWeekValue'] == null
+          ? null
+          : map['dayOfWeekValue'] as String,
+      floatValue: map['floatValue'] == null
+          ? null
+          : map['floatValue'] as double,
+      integerValue: map['integerValue'] == null
+          ? null
+          : map['integerValue'] as int,
+      stringValue: map['stringValue'] == null
+          ? null
+          : map['stringValue'] as String,
+      timeValue: map['timeValue'] == null
+          ? null
+          : PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue.fromMap(
+              (map['timeValue'] as Map).cast<String, dynamic>(),
+            ),
+      timestampValue: map['timestampValue'] == null
+          ? null
+          : map['timestampValue'] as String,
     );
   }
 }
-

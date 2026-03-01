@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// ParentProductConfig is the configuration of the parent product of the cluster. This field is used by Google internal products that are built on top of a GKE cluster and take the ownership of the cluster.
 class ParentProductConfigResponse {
   /// Labels contain the configuration of the parent product.
   final Map<String, String> labels;
+
   /// Name of the parent product associated with the cluster.
   final String productName;
 
@@ -17,10 +17,7 @@ class ParentProductConfigResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'labels': labels,
-      'productName': productName,
-    };
+    return <String, dynamic>{'labels': labels, 'productName': productName};
   }
 
   factory ParentProductConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class ParentProductConfigResponse {
     );
   }
 }
-

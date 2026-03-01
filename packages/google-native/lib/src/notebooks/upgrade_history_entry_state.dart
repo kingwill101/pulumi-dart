@@ -17,4 +17,3 @@ enum UpgradeHistoryEntryState {
     throw ArgumentError('Unknown UpgradeHistoryEntryState value: $value');
   }
 }
-

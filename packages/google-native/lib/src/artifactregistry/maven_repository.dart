@@ -9,20 +9,23 @@ class MavenRepository {
 
   /// Creates a new [MavenRepository].
   /// [publicRepository] One of the publicly available Maven repositories supported by Artifact Registry.
-  MavenRepository({
-    this.publicRepository,
-  });
+  MavenRepository({this.publicRepository});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository': ?publicRepository == null ? null : publicRepository!.value,
+      'publicRepository': ?publicRepository == null
+          ? null
+          : publicRepository!.value,
     };
   }
 
   factory MavenRepository.fromMap(Map<String, dynamic> map) {
     return MavenRepository(
-      publicRepository: map['publicRepository'] == null ? null : MavenRepositoryPublicRepository.fromValue(map['publicRepository'] as String),
+      publicRepository: map['publicRepository'] == null
+          ? null
+          : MavenRepositoryPublicRepository.fromValue(
+              map['publicRepository'] as String,
+            ),
     );
   }
 }
-

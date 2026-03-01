@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
 class MavenRepositoryConfigResponse {
   /// The repository with this flag will allow publishing the same snapshot versions.
   final bool allowSnapshotOverwrites;
+
   /// Version policy defines the versions that the registry will accept.
   final String versionPolicy;
 
@@ -30,4 +30,3 @@ class MavenRepositoryConfigResponse {
     );
   }
 }
-

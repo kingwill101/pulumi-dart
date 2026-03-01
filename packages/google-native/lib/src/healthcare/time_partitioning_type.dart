@@ -18,4 +18,3 @@ enum TimePartitioningType {
     throw ArgumentError('Unknown TimePartitioningType value: $value');
   }
 }
-

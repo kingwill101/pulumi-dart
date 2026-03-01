@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Serializer and deserializer information.
 class SerDeInfoResponse {
   /// The fully qualified Java class name of the serialization library.
@@ -8,14 +7,10 @@ class SerDeInfoResponse {
 
   /// Creates a new [SerDeInfoResponse].
   /// [serializationLib] The fully qualified Java class name of the serialization library.
-  SerDeInfoResponse({
-    required this.serializationLib,
-  });
+  SerDeInfoResponse({required this.serializationLib});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'serializationLib': serializationLib,
-    };
+    return <String, dynamic>{'serializationLib': serializationLib};
   }
 
   factory SerDeInfoResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class SerDeInfoResponse {
     );
   }
 }
-

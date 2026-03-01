@@ -9,20 +9,23 @@ class BareMetalAdminNetworkConfig {
 
   /// Creates a new [BareMetalAdminNetworkConfig].
   /// [islandModeCidr] Configuration for Island mode CIDR.
-  BareMetalAdminNetworkConfig({
-    this.islandModeCidr,
-  });
+  BareMetalAdminNetworkConfig({this.islandModeCidr});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'islandModeCidr': ?islandModeCidr == null ? null : islandModeCidr!.toMap(),
+      'islandModeCidr': ?islandModeCidr == null
+          ? null
+          : islandModeCidr!.toMap(),
     };
   }
 
   factory BareMetalAdminNetworkConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminNetworkConfig(
-      islandModeCidr: map['islandModeCidr'] == null ? null : BareMetalAdminIslandModeCidrConfig.fromMap((map['islandModeCidr'] as Map).cast<String, dynamic>()),
+      islandModeCidr: map['islandModeCidr'] == null
+          ? null
+          : BareMetalAdminIslandModeCidrConfig.fromMap(
+              (map['islandModeCidr'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

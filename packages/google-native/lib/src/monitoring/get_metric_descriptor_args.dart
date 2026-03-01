@@ -13,11 +13,8 @@ class GetMetricDescriptorArgs {
   /// Creates a new [GetMetricDescriptorArgs].
   /// [metricDescriptorId] Required.
   /// [project] Optional.
-  GetMetricDescriptorArgs({
-    required String metricDescriptorId,
-    String? project,
-  }) :
-      metricDescriptorId = pulumi.Input.asInput<String>(metricDescriptorId),
+  GetMetricDescriptorArgs({required String metricDescriptorId, String? project})
+    : metricDescriptorId = pulumi.Input.asInput<String>(metricDescriptorId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetMetricDescriptorArgs {
     );
   }
 }
-

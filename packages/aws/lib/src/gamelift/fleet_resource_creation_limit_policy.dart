@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FleetResourceCreationLimitPolicy {
   /// Maximum number of game sessions that an individual can create during the policy period.
   final int? newGameSessionsPerCreator;
+
   /// Time span used in evaluating the resource creation limit policy.
   final int? policyPeriodInMinutes;
 
@@ -24,9 +24,12 @@ class FleetResourceCreationLimitPolicy {
 
   factory FleetResourceCreationLimitPolicy.fromMap(Map<String, dynamic> map) {
     return FleetResourceCreationLimitPolicy(
-      newGameSessionsPerCreator: map['newGameSessionsPerCreator'] == null ? null : map['newGameSessionsPerCreator'] as int,
-      policyPeriodInMinutes: map['policyPeriodInMinutes'] == null ? null : map['policyPeriodInMinutes'] as int,
+      newGameSessionsPerCreator: map['newGameSessionsPerCreator'] == null
+          ? null
+          : map['newGameSessionsPerCreator'] as int,
+      policyPeriodInMinutes: map['policyPeriodInMinutes'] == null
+          ? null
+          : map['policyPeriodInMinutes'] as int,
     );
   }
 }
-

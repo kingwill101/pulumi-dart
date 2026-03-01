@@ -5,10 +5,13 @@ import 'web_acl_logging_configuration_redacted_field_single_header.dart';
 class WebAclLoggingConfigurationRedactedField {
   /// HTTP method to be redacted. It must be specified as an empty configuration block `{}`. The method indicates the type of operation that the request is asking the origin to perform.
   final Map<String, dynamic>? method;
+
   /// Whether to redact the query string. It must be specified as an empty configuration block `{}`. The query string is the part of a URL that appears after a `?` character, if any.
   final Map<String, dynamic>? queryString;
+
   /// "single_header" refers to the redaction of a single header. For more information, please see the details below under Single Header.
   final WebAclLoggingConfigurationRedactedFieldSingleHeader? singleHeader;
+
   /// Configuration block that redacts the request URI path. It should be specified as an empty configuration block `{}`. The URI path is the part of a web request that identifies a resource, such as `/images/daily-ad.jpg`.
   final Map<String, dynamic>? uriPath;
 
@@ -33,13 +36,24 @@ class WebAclLoggingConfigurationRedactedField {
     };
   }
 
-  factory WebAclLoggingConfigurationRedactedField.fromMap(Map<String, dynamic> map) {
+  factory WebAclLoggingConfigurationRedactedField.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclLoggingConfigurationRedactedField(
-      method: map['method'] == null ? null : (map['method'] as Map).cast<String, dynamic>(),
-      queryString: map['queryString'] == null ? null : (map['queryString'] as Map).cast<String, dynamic>(),
-      singleHeader: map['singleHeader'] == null ? null : WebAclLoggingConfigurationRedactedFieldSingleHeader.fromMap((map['singleHeader'] as Map).cast<String, dynamic>()),
-      uriPath: map['uriPath'] == null ? null : (map['uriPath'] as Map).cast<String, dynamic>(),
+      method: map['method'] == null
+          ? null
+          : (map['method'] as Map).cast<String, dynamic>(),
+      queryString: map['queryString'] == null
+          ? null
+          : (map['queryString'] as Map).cast<String, dynamic>(),
+      singleHeader: map['singleHeader'] == null
+          ? null
+          : WebAclLoggingConfigurationRedactedFieldSingleHeader.fromMap(
+              (map['singleHeader'] as Map).cast<String, dynamic>(),
+            ),
+      uriPath: map['uriPath'] == null
+          ? null
+          : (map['uriPath'] as Map).cast<String, dynamic>(),
     );
   }
 }
-

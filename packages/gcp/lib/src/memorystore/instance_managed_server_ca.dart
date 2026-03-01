@@ -11,20 +11,29 @@ class InstanceManagedServerCa {
 
   /// Creates a new [InstanceManagedServerCa].
   /// [caCerts] (Output)
-  InstanceManagedServerCa({
-    this.caCerts,
-  });
+  InstanceManagedServerCa({this.caCerts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'caCerts': ?caCerts == null ? null : pulumi.Input.encodeList<InstanceManagedServerCaCaCert, Map<String, dynamic>>(caCerts!, (value) => value.toMap()),
+      'caCerts': ?caCerts == null
+          ? null
+          : pulumi.Input.encodeList<
+              InstanceManagedServerCaCaCert,
+              Map<String, dynamic>
+            >(caCerts!, (value) => value.toMap()),
     };
   }
 
   factory InstanceManagedServerCa.fromMap(Map<String, dynamic> map) {
     return InstanceManagedServerCa(
-      caCerts: map['caCerts'] == null ? null : pulumi.Input.decodeList<InstanceManagedServerCaCaCert>(map['caCerts'], (value) => InstanceManagedServerCaCaCert.fromMap((value as Map).cast<String, dynamic>())),
+      caCerts: map['caCerts'] == null
+          ? null
+          : pulumi.Input.decodeList<InstanceManagedServerCaCaCert>(
+              map['caCerts'],
+              (value) => InstanceManagedServerCaCaCert.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

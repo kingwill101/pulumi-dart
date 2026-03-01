@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// An artifact that can be deployed in some runtime.
 class DeployableResponse {
   /// Resource URI for the artifact being deployed.
@@ -8,14 +7,10 @@ class DeployableResponse {
 
   /// Creates a new [DeployableResponse].
   /// [resourceUri] Resource URI for the artifact being deployed.
-  DeployableResponse({
-    required this.resourceUri,
-  });
+  DeployableResponse({required this.resourceUri});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'resourceUri': resourceUri,
-    };
+    return <String, dynamic>{'resourceUri': resourceUri};
   }
 
   factory DeployableResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class DeployableResponse {
     );
   }
 }
-

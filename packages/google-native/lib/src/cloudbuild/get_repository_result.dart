@@ -1,20 +1,25 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRepository.
 class GetRepositoryResult {
   /// Allows clients to store small amounts of arbitrary data.
   final Map<String, String> annotations;
+
   /// Server assigned timestamp for when the connection was created.
   final String createTime;
+
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
   final String etag;
+
   /// Immutable. Resource name of the repository, in the format `projects/*/locations/*/connections/*/repositories/*`.
   final String name;
+
   /// Git Clone HTTPS URI.
   final String remoteUri;
+
   /// Server assigned timestamp for when the connection was updated.
   final String updateTime;
+
   /// External ID of the webhook created for the repository.
   final String webhookId;
 
@@ -60,4 +65,3 @@ class GetRepositoryResult {
     );
   }
 }
-

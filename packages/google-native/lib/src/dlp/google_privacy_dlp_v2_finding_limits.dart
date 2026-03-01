@@ -7,8 +7,10 @@ import 'google_privacy_dlp_v2_info_type_limit.dart';
 class GooglePrivacyDlpV2FindingLimits {
   /// Configuration of findings limit given for specified infoTypes.
   final List<GooglePrivacyDlpV2InfoTypeLimit>? maxFindingsPerInfoType;
+
   /// Max number of findings that are returned for each item scanned. When set within an InspectContentRequest, this field is ignored. This value isn't a hard limit. If the number of findings for an item reaches this limit, the inspection of that item ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns for the item can be multiple times higher than this value.
   final int? maxFindingsPerItem;
+
   /// Max number of findings that are returned per request or job. If you set this field in an InspectContentRequest, the resulting maximum value is the value that you set or 3,000, whichever is lower. This value isn't a hard limit. If an inspection reaches this limit, the inspection ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns can be multiple times higher than this value.
   final int? maxFindingsPerRequest;
 
@@ -24,7 +26,12 @@ class GooglePrivacyDlpV2FindingLimits {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'maxFindingsPerInfoType': ?maxFindingsPerInfoType == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2InfoTypeLimit, Map<String, dynamic>>(maxFindingsPerInfoType!, (value) => value.toMap()),
+      'maxFindingsPerInfoType': ?maxFindingsPerInfoType == null
+          ? null
+          : pulumi.Input.encodeList<
+              GooglePrivacyDlpV2InfoTypeLimit,
+              Map<String, dynamic>
+            >(maxFindingsPerInfoType!, (value) => value.toMap()),
       'maxFindingsPerItem': ?maxFindingsPerItem,
       'maxFindingsPerRequest': ?maxFindingsPerRequest,
     };
@@ -32,10 +39,20 @@ class GooglePrivacyDlpV2FindingLimits {
 
   factory GooglePrivacyDlpV2FindingLimits.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2FindingLimits(
-      maxFindingsPerInfoType: map['maxFindingsPerInfoType'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeLimit>(map['maxFindingsPerInfoType'], (value) => GooglePrivacyDlpV2InfoTypeLimit.fromMap((value as Map).cast<String, dynamic>())),
-      maxFindingsPerItem: map['maxFindingsPerItem'] == null ? null : map['maxFindingsPerItem'] as int,
-      maxFindingsPerRequest: map['maxFindingsPerRequest'] == null ? null : map['maxFindingsPerRequest'] as int,
+      maxFindingsPerInfoType: map['maxFindingsPerInfoType'] == null
+          ? null
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2InfoTypeLimit>(
+              map['maxFindingsPerInfoType'],
+              (value) => GooglePrivacyDlpV2InfoTypeLimit.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      maxFindingsPerItem: map['maxFindingsPerItem'] == null
+          ? null
+          : map['maxFindingsPerItem'] as int,
+      maxFindingsPerRequest: map['maxFindingsPerRequest'] == null
+          ? null
+          : map['maxFindingsPerRequest'] as int,
     );
   }
 }
-

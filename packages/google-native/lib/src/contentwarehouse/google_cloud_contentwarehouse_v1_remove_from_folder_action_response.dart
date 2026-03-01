@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents the action responsible for remove a document from a specific folder.
 class GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse {
   /// Condition of the action to be executed.
   final String condition;
+
   /// Name of the folder under which new document is to be added. Format: projects/{project_number}/locations/{location}/documents/{document_id}.
   final String folder;
 
@@ -17,17 +17,15 @@ class GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'condition': condition,
-      'folder': folder,
-    };
+    return <String, dynamic>{'condition': condition, 'folder': folder};
   }
 
-  factory GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse(
       condition: map['condition'] as String,
       folder: map['folder'] as String,
     );
   }
 }
-

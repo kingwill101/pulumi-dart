@@ -25,12 +25,13 @@ class GetFeaturestoreEntityTypeIamPolicyArgs {
     required String location,
     int? optionsRequestedPolicyVersion,
     String? project,
-  }) :
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+       featurestoreId = pulumi.Input.asInput<String>(featurestoreId),
+       location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,14 +43,18 @@ class GetFeaturestoreEntityTypeIamPolicyArgs {
     };
   }
 
-  factory GetFeaturestoreEntityTypeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetFeaturestoreEntityTypeIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFeaturestoreEntityTypeIamPolicyArgs(
       entityTypeId: map['entityTypeId'] as String,
       featurestoreId: map['featurestoreId'] as String,
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'google_cloud_contactcenterinsights_v1_issue_assignment_response.dart';
 class GoogleCloudContactcenterinsightsV1IssueModelResultResponse {
   /// Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
   final String issueModel;
+
   /// All the matched issues.
   final List<GoogleCloudContactcenterinsightsV1IssueAssignmentResponse> issues;
 
@@ -21,15 +22,29 @@ class GoogleCloudContactcenterinsightsV1IssueModelResultResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'issueModel': issueModel,
-      'issues': pulumi.Input.encodeList<GoogleCloudContactcenterinsightsV1IssueAssignmentResponse, Map<String, dynamic>>(issues, (value) => value.toMap()),
+      'issues':
+          pulumi.Input.encodeList<
+            GoogleCloudContactcenterinsightsV1IssueAssignmentResponse,
+            Map<String, dynamic>
+          >(issues, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1IssueModelResultResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1IssueModelResultResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1IssueModelResultResponse(
       issueModel: map['issueModel'] as String,
-      issues: pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1IssueAssignmentResponse>(map['issues'], (value) => GoogleCloudContactcenterinsightsV1IssueAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      issues:
+          pulumi.Input.decodeList<
+            GoogleCloudContactcenterinsightsV1IssueAssignmentResponse
+          >(
+            map['issues'],
+            (value) =>
+                GoogleCloudContactcenterinsightsV1IssueAssignmentResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

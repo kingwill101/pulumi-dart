@@ -7,14 +7,19 @@ import 'enterprise_crm_eventbus_proto_combined_condition.dart';
 class EnterpriseCrmEventbusProtoNextTask {
   /// Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`
   final List<EnterpriseCrmEventbusProtoCombinedCondition>? combinedConditions;
+
   /// Standard filter expression for this task to become an eligible next task.
   final String? condition;
+
   /// User-provided description intended to give more business context about the next task edge or condition.
   final String? description;
+
   /// User-provided label that is attached to this edge in the UI.
   final String? label;
+
   /// ID of the next task.
   final String? taskConfigId;
+
   /// Task number of the next task.
   final String? taskNumber;
 
@@ -36,7 +41,12 @@ class EnterpriseCrmEventbusProtoNextTask {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'combinedConditions': ?combinedConditions == null ? null : pulumi.Input.encodeList<EnterpriseCrmEventbusProtoCombinedCondition, Map<String, dynamic>>(combinedConditions!, (value) => value.toMap()),
+      'combinedConditions': ?combinedConditions == null
+          ? null
+          : pulumi.Input.encodeList<
+              EnterpriseCrmEventbusProtoCombinedCondition,
+              Map<String, dynamic>
+            >(combinedConditions!, (value) => value.toMap()),
       'condition': ?condition,
       'description': ?description,
       'label': ?label,
@@ -47,13 +57,26 @@ class EnterpriseCrmEventbusProtoNextTask {
 
   factory EnterpriseCrmEventbusProtoNextTask.fromMap(Map<String, dynamic> map) {
     return EnterpriseCrmEventbusProtoNextTask(
-      combinedConditions: map['combinedConditions'] == null ? null : pulumi.Input.decodeList<EnterpriseCrmEventbusProtoCombinedCondition>(map['combinedConditions'], (value) => EnterpriseCrmEventbusProtoCombinedCondition.fromMap((value as Map).cast<String, dynamic>())),
+      combinedConditions: map['combinedConditions'] == null
+          ? null
+          : pulumi
+                .Input.decodeList<EnterpriseCrmEventbusProtoCombinedCondition>(
+              map['combinedConditions'],
+              (value) => EnterpriseCrmEventbusProtoCombinedCondition.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       condition: map['condition'] == null ? null : map['condition'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       label: map['label'] == null ? null : map['label'] as String,
-      taskConfigId: map['taskConfigId'] == null ? null : map['taskConfigId'] as String,
-      taskNumber: map['taskNumber'] == null ? null : map['taskNumber'] as String,
+      taskConfigId: map['taskConfigId'] == null
+          ? null
+          : map['taskConfigId'] as String,
+      taskNumber: map['taskNumber'] == null
+          ? null
+          : map['taskNumber'] as String,
     );
   }
 }
-

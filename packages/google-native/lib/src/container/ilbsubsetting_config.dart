@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer subsetting on this cluster.
 class ILBSubsettingConfig {
   /// Enables l4 ILB subsetting for this cluster.
@@ -8,14 +7,10 @@ class ILBSubsettingConfig {
 
   /// Creates a new [ILBSubsettingConfig].
   /// [enabled] Enables l4 ILB subsetting for this cluster.
-  ILBSubsettingConfig({
-    this.enabled,
-  });
+  ILBSubsettingConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ILBSubsettingConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ILBSubsettingConfig {
     );
   }
 }
-

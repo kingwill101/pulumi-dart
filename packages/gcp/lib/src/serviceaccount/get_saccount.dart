@@ -1,21 +1,26 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetSAccount {
   /// The Google service account ID (the part before the `@` sign in the `email`)
   final String accountId;
+
   /// Whether a service account is disabled or not.
   final bool disabled;
+
   /// The display name for the service account.
   final String displayName;
+
   /// The e-mail address of the service account. This value
   /// should be referenced from any `gcp.organizations.getIAMPolicy` data sources
   /// that would grant the service account privileges.
   final String email;
+
   /// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
   final String member;
+
   /// The fully-qualified name of the service account.
   final String name;
+
   /// The unique id of the service account.
   final String uniqueId;
 
@@ -61,4 +66,3 @@ class GetSAccount {
     );
   }
 }
-

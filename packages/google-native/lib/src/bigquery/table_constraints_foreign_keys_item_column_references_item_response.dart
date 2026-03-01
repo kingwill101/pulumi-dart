@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TableConstraintsForeignKeysItemColumnReferencesItemResponse {
   final String referencedColumn;
   final String referencingColumn;
@@ -20,11 +19,12 @@ class TableConstraintsForeignKeysItemColumnReferencesItemResponse {
     };
   }
 
-  factory TableConstraintsForeignKeysItemColumnReferencesItemResponse.fromMap(Map<String, dynamic> map) {
+  factory TableConstraintsForeignKeysItemColumnReferencesItemResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TableConstraintsForeignKeysItemColumnReferencesItemResponse(
       referencedColumn: map['referencedColumn'] as String,
       referencingColumn: map['referencingColumn'] as String,
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The response type to request for in the OAuth authorization flow. You can set either `id_token` or `code` to true, but not both. Setting both types to be simultaneously true (`{code: true, id_token: true}`) is not yet supported. See https://openid.net/specs/openid-connect-core-1_0.html#Authentication for a mapping of response type to OAuth 2.0 flow.
 class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse {
   /// If true, authorization code is returned from IdP's authorization endpoint.
   final bool code;
+
   /// If true, ID token is returned from IdP's authorization endpoint.
   final bool idToken;
+
   /// Do not use. The `token` response type is not supported at the moment.
   final bool token;
 
@@ -21,14 +22,12 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'idToken': idToken,
-      'token': token,
-    };
+    return <String, dynamic>{'code': code, 'idToken': idToken, 'token': token};
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse(
       code: map['code'] as bool,
       idToken: map['idToken'] as bool,
@@ -36,4 +35,3 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse {
     );
   }
 }
-

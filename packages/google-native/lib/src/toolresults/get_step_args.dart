@@ -22,11 +22,10 @@ class GetStepArgs {
     required String historyId,
     String? project,
     required String stepId,
-  }) :
-      executionId = pulumi.Input.asInput<String>(executionId),
-      historyId = pulumi.Input.asInput<String>(historyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      stepId = pulumi.Input.asInput<String>(stepId);
+  }) : executionId = pulumi.Input.asInput<String>(executionId),
+       historyId = pulumi.Input.asInput<String>(historyId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       stepId = pulumi.Input.asInput<String>(stepId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetStepArgs {
     );
   }
 }
-

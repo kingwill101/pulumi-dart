@@ -1,26 +1,24 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConfigurationSetVdmOptionsDashboardOptions {
   /// Specifies the status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
   final String? engagementMetrics;
 
   /// Creates a new [ConfigurationSetVdmOptionsDashboardOptions].
   /// [engagementMetrics] Specifies the status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
-  ConfigurationSetVdmOptionsDashboardOptions({
-    this.engagementMetrics,
-  });
+  ConfigurationSetVdmOptionsDashboardOptions({this.engagementMetrics});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'engagementMetrics': ?engagementMetrics,
-    };
+    return <String, dynamic>{'engagementMetrics': ?engagementMetrics};
   }
 
-  factory ConfigurationSetVdmOptionsDashboardOptions.fromMap(Map<String, dynamic> map) {
+  factory ConfigurationSetVdmOptionsDashboardOptions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigurationSetVdmOptionsDashboardOptions(
-      engagementMetrics: map['engagementMetrics'] == null ? null : map['engagementMetrics'] as String,
+      engagementMetrics: map['engagementMetrics'] == null
+          ? null
+          : map['engagementMetrics'] as String,
     );
   }
 }
-

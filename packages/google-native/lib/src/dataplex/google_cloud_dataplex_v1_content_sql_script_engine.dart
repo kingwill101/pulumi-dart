@@ -12,7 +12,8 @@ enum GoogleCloudDataplexV1ContentSqlScriptEngine {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1ContentSqlScriptEngine value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1ContentSqlScriptEngine value: $value',
+    );
   }
 }
-

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ParameterGroupParameter {
   /// "immediate" (default), or "pending-reboot". Some
   /// engines can't apply some parameters without a reboot, and you will need to
   /// specify "pending-reboot" here.
   final String? applyMethod;
+
   /// The name of the DB parameter.
   final String name;
+
   /// The value of the DB parameter.
   final String value;
 
@@ -31,10 +32,11 @@ class ParameterGroupParameter {
 
   factory ParameterGroupParameter.fromMap(Map<String, dynamic> map) {
     return ParameterGroupParameter(
-      applyMethod: map['applyMethod'] == null ? null : map['applyMethod'] as String,
+      applyMethod: map['applyMethod'] == null
+          ? null
+          : map['applyMethod'] as String,
       name: map['name'] as String,
       value: map['value'] as String,
     );
   }
 }
-

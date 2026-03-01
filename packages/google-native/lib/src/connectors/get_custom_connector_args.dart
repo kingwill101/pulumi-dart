@@ -13,11 +13,8 @@ class GetCustomConnectorArgs {
   /// Creates a new [GetCustomConnectorArgs].
   /// [customConnectorId] Required.
   /// [project] Optional.
-  GetCustomConnectorArgs({
-    required String customConnectorId,
-    String? project,
-  }) :
-      customConnectorId = pulumi.Input.asInput<String>(customConnectorId),
+  GetCustomConnectorArgs({required String customConnectorId, String? project})
+    : customConnectorId = pulumi.Input.asInput<String>(customConnectorId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetCustomConnectorArgs {
     );
   }
 }
-

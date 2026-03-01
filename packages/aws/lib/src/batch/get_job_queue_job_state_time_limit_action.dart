@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetJobQueueJobStateTimeLimitAction {
   final String action;
   final int maxTimeSeconds;
   final String reason;
+
   /// Describes the ability of the queue to accept new jobs (for example, `ENABLED` or `DISABLED`).
   final String state;
 
@@ -38,4 +38,3 @@ class GetJobQueueJobStateTimeLimitAction {
     );
   }
 }
-

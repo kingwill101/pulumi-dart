@@ -11,23 +11,29 @@ class Filter {
   /// Creates a new [Filter].
   /// [compositeFilter] Optional.
   /// [valueFilter] Optional.
-  Filter({
-    this.compositeFilter,
-    this.valueFilter,
-  });
+  Filter({this.compositeFilter, this.valueFilter});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compositeFilter': ?compositeFilter == null ? null : compositeFilter!.toMap(),
+      'compositeFilter': ?compositeFilter == null
+          ? null
+          : compositeFilter!.toMap(),
       'valueFilter': ?valueFilter == null ? null : valueFilter!.toMap(),
     };
   }
 
   factory Filter.fromMap(Map<String, dynamic> map) {
     return Filter(
-      compositeFilter: map['compositeFilter'] == null ? null : CompositeFilter.fromMap((map['compositeFilter'] as Map).cast<String, dynamic>()),
-      valueFilter: map['valueFilter'] == null ? null : ValueFilter.fromMap((map['valueFilter'] as Map).cast<String, dynamic>()),
+      compositeFilter: map['compositeFilter'] == null
+          ? null
+          : CompositeFilter.fromMap(
+              (map['compositeFilter'] as Map).cast<String, dynamic>(),
+            ),
+      valueFilter: map['valueFilter'] == null
+          ? null
+          : ValueFilter.fromMap(
+              (map['valueFilter'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

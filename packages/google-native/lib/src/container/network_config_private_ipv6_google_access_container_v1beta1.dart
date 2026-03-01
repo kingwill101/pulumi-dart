@@ -3,18 +3,24 @@ enum NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1 {
   privateIpv6GoogleAccessUnspecified("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"),
   privateIpv6GoogleAccessDisabled("PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED"),
   privateIpv6GoogleAccessToGoogle("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE"),
-  privateIpv6GoogleAccessBidirectional("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL");
+  privateIpv6GoogleAccessBidirectional(
+    "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL",
+  );
 
   const NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1(this.value);
   final String value;
 
-  static NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1 fromValue(String value) {
-    for (final item in NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1.values) {
+  static NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown NetworkConfigPrivateIpv6GoogleAccessContainerV1beta1 value: $value',
+    );
   }
 }
-

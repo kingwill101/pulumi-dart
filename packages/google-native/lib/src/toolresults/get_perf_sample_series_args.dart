@@ -25,12 +25,11 @@ class GetPerfSampleSeriesArgs {
     String? project,
     required String sampleSeriesId,
     required String stepId,
-  }) :
-      executionId = pulumi.Input.asInput<String>(executionId),
-      historyId = pulumi.Input.asInput<String>(historyId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sampleSeriesId = pulumi.Input.asInput<String>(sampleSeriesId),
-      stepId = pulumi.Input.asInput<String>(stepId);
+  }) : executionId = pulumi.Input.asInput<String>(executionId),
+       historyId = pulumi.Input.asInput<String>(historyId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sampleSeriesId = pulumi.Input.asInput<String>(sampleSeriesId),
+       stepId = pulumi.Input.asInput<String>(stepId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetPerfSampleSeriesArgs {
     );
   }
 }
-

@@ -6,20 +6,28 @@ import 'certificate_template_response.dart';
 class CertificateAttributesResponse {
   /// The X.509 extension for CertificateTemplate.
   final CertificateTemplateResponse certificateTemplate;
+
   /// The encoded certificate fingerprint.
   final String fingerprint;
+
   /// The name of the issuer of this certificate.
   final String issuer;
+
   /// Serial number of the certificate, Example: "123456789".
   final String serialNumber;
+
   /// The subject name of this certificate.
   final String subject;
+
   /// The certificate thumbprint.
   final String thumbprint;
+
   /// Validation state of this certificate.
   final String validationState;
+
   /// Certificate not valid at or after this timestamp.
   final String validityExpirationTime;
+
   /// Certificate not valid before this timestamp.
   final String validityStartTime;
 
@@ -61,7 +69,9 @@ class CertificateAttributesResponse {
 
   factory CertificateAttributesResponse.fromMap(Map<String, dynamic> map) {
     return CertificateAttributesResponse(
-      certificateTemplate: CertificateTemplateResponse.fromMap((map['certificateTemplate'] as Map).cast<String, dynamic>()),
+      certificateTemplate: CertificateTemplateResponse.fromMap(
+        (map['certificateTemplate'] as Map).cast<String, dynamic>(),
+      ),
       fingerprint: map['fingerprint'] as String,
       issuer: map['issuer'] as String,
       serialNumber: map['serialNumber'] as String,
@@ -73,4 +83,3 @@ class CertificateAttributesResponse {
     );
   }
 }
-

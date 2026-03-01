@@ -10,20 +10,34 @@ class GooglePrivacyDlpV2BigQueryTableTypes {
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryTableTypes].
   /// [types] A set of BigQuery table types.
-  GooglePrivacyDlpV2BigQueryTableTypes({
-    this.types,
-  });
+  GooglePrivacyDlpV2BigQueryTableTypes({this.types});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'types': ?types == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2BigQueryTableTypesTypesItem, String>(types!, (value) => value.value),
+      'types': ?types == null
+          ? null
+          : pulumi.Input.encodeList<
+              GooglePrivacyDlpV2BigQueryTableTypesTypesItem,
+              String
+            >(types!, (value) => value.value),
     };
   }
 
-  factory GooglePrivacyDlpV2BigQueryTableTypes.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryTableTypes.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2BigQueryTableTypes(
-      types: map['types'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2BigQueryTableTypesTypesItem>(map['types'], (value) => GooglePrivacyDlpV2BigQueryTableTypesTypesItem.fromValue(value as String)),
+      types: map['types'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              GooglePrivacyDlpV2BigQueryTableTypesTypesItem
+            >(
+              map['types'],
+              (value) =>
+                  GooglePrivacyDlpV2BigQueryTableTypesTypesItem.fromValue(
+                    value as String,
+                  ),
+            ),
     );
   }
 }
-

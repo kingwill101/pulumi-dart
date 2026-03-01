@@ -8,8 +8,10 @@ import 'iap_credential_websecurityscanner_v1beta.dart';
 class AuthenticationWebsecurityscannerV1beta {
   /// Authentication using a custom account.
   final CustomAccountWebsecurityscannerV1beta? customAccount;
+
   /// Authentication using a Google account.
   final GoogleAccountWebsecurityscannerV1beta? googleAccount;
+
   /// Authentication using Identity-Aware-Proxy (IAP).
   final IapCredentialWebsecurityscannerV1beta? iapCredential;
 
@@ -31,12 +33,25 @@ class AuthenticationWebsecurityscannerV1beta {
     };
   }
 
-  factory AuthenticationWebsecurityscannerV1beta.fromMap(Map<String, dynamic> map) {
+  factory AuthenticationWebsecurityscannerV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuthenticationWebsecurityscannerV1beta(
-      customAccount: map['customAccount'] == null ? null : CustomAccountWebsecurityscannerV1beta.fromMap((map['customAccount'] as Map).cast<String, dynamic>()),
-      googleAccount: map['googleAccount'] == null ? null : GoogleAccountWebsecurityscannerV1beta.fromMap((map['googleAccount'] as Map).cast<String, dynamic>()),
-      iapCredential: map['iapCredential'] == null ? null : IapCredentialWebsecurityscannerV1beta.fromMap((map['iapCredential'] as Map).cast<String, dynamic>()),
+      customAccount: map['customAccount'] == null
+          ? null
+          : CustomAccountWebsecurityscannerV1beta.fromMap(
+              (map['customAccount'] as Map).cast<String, dynamic>(),
+            ),
+      googleAccount: map['googleAccount'] == null
+          ? null
+          : GoogleAccountWebsecurityscannerV1beta.fromMap(
+              (map['googleAccount'] as Map).cast<String, dynamic>(),
+            ),
+      iapCredential: map['iapCredential'] == null
+          ? null
+          : IapCredentialWebsecurityscannerV1beta.fromMap(
+              (map['iapCredential'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

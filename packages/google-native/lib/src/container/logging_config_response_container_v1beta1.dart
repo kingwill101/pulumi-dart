@@ -9,20 +9,19 @@ class LoggingConfigResponseContainerV1beta1 {
 
   /// Creates a new [LoggingConfigResponseContainerV1beta1].
   /// [componentConfig] Logging components configuration
-  LoggingConfigResponseContainerV1beta1({
-    required this.componentConfig,
-  });
+  LoggingConfigResponseContainerV1beta1({required this.componentConfig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'componentConfig': componentConfig.toMap(),
-    };
+    return <String, dynamic>{'componentConfig': componentConfig.toMap()};
   }
 
-  factory LoggingConfigResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory LoggingConfigResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LoggingConfigResponseContainerV1beta1(
-      componentConfig: LoggingComponentConfigResponseContainerV1beta1.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: LoggingComponentConfigResponseContainerV1beta1.fromMap(
+        (map['componentConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

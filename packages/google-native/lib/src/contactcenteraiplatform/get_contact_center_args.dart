@@ -19,10 +19,9 @@ class GetContactCenterArgs {
     required String contactCenterId,
     required String location,
     String? project,
-  }) :
-      contactCenterId = pulumi.Input.asInput<String>(contactCenterId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : contactCenterId = pulumi.Input.asInput<String>(contactCenterId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetContactCenterArgs {
     );
   }
 }
-

@@ -22,11 +22,12 @@ class GetCertificateMapEntryArgs {
     required String certificateMapId,
     required String location,
     String? project,
-  }) :
-      certificateMapEntryId = pulumi.Input.asInput<String>(certificateMapEntryId),
-      certificateMapId = pulumi.Input.asInput<String>(certificateMapId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : certificateMapEntryId = pulumi.Input.asInput<String>(
+         certificateMapEntryId,
+       ),
+       certificateMapId = pulumi.Input.asInput<String>(certificateMapId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +47,3 @@ class GetCertificateMapEntryArgs {
     );
   }
 }
-

@@ -25,12 +25,11 @@ class GetExecutionWorkflowexecutionsV1betaArgs {
     String? project,
     String? view,
     required String workflowId,
-  }) :
-      executionId = pulumi.Input.asInput<String>(executionId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view),
-      workflowId = pulumi.Input.asInput<String>(workflowId);
+  }) : executionId = pulumi.Input.asInput<String>(executionId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view),
+       workflowId = pulumi.Input.asInput<String>(workflowId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +41,9 @@ class GetExecutionWorkflowexecutionsV1betaArgs {
     };
   }
 
-  factory GetExecutionWorkflowexecutionsV1betaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetExecutionWorkflowexecutionsV1betaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetExecutionWorkflowexecutionsV1betaArgs(
       executionId: map['executionId'] as String,
       location: map['location'] as String,
@@ -52,4 +53,3 @@ class GetExecutionWorkflowexecutionsV1betaArgs {
     );
   }
 }
-

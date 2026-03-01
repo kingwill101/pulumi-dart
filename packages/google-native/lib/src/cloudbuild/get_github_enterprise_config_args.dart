@@ -25,12 +25,13 @@ class GetGithubEnterpriseConfigArgs {
     required String location,
     String? project,
     String? projectId,
-  }) :
-      configId = pulumi.Input.asOptionalInput<String>(configId),
-      githubEnterpriseConfigId = pulumi.Input.asInput<String>(githubEnterpriseConfigId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId);
+  }) : configId = pulumi.Input.asOptionalInput<String>(configId),
+       githubEnterpriseConfigId = pulumi.Input.asInput<String>(
+         githubEnterpriseConfigId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       projectId = pulumi.Input.asOptionalInput<String>(projectId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +53,3 @@ class GetGithubEnterpriseConfigArgs {
     );
   }
 }
-

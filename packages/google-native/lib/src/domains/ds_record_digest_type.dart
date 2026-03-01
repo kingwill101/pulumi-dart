@@ -18,4 +18,3 @@ enum DsRecordDigestType {
     throw ArgumentError('Unknown DsRecordDigestType value: $value');
   }
 }
-

@@ -9,20 +9,13 @@ class Gateway {
 
   /// Creates a new [Gateway].
   /// [type] The type of hosting used by the gateway.
-  Gateway({
-    required this.type,
-  });
+  Gateway({required this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': type.value,
-    };
+    return <String, dynamic>{'type': type.value};
   }
 
   factory Gateway.fromMap(Map<String, dynamic> map) {
-    return Gateway(
-      type: GatewayType.fromValue(map['type'] as String),
-    );
+    return Gateway(type: GatewayType.fromValue(map['type'] as String));
   }
 }
-

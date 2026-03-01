@@ -13,18 +13,12 @@ class GetExclusionArgs {
   /// Creates a new [GetExclusionArgs].
   /// [exclusionId] Required.
   /// [project] Optional.
-  GetExclusionArgs({
-    required String exclusionId,
-    String? project,
-  }) :
-      exclusionId = pulumi.Input.asInput<String>(exclusionId),
+  GetExclusionArgs({required String exclusionId, String? project})
+    : exclusionId = pulumi.Input.asInput<String>(exclusionId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'exclusionId': exclusionId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'exclusionId': exclusionId, 'project': ?project};
   }
 
   factory GetExclusionArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetExclusionArgs {
     );
   }
 }
-

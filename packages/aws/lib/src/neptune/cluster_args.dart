@@ -10,64 +10,95 @@ import 'cluster_serverless_v2_scaling_configuration.dart';
 class ClusterArgs {
   /// Whether upgrades between different major versions are allowed. You must set it to `true` when providing an `engine_version` parameter that uses a different major version than the DB cluster's current version. Default is `false`.
   final pulumi.Input<bool>? allowMajorVersionUpgrade;
+
   /// Whether any cluster modifications are applied immediately, or during the next maintenance window. Default is `false`.
   final pulumi.Input<bool>? applyImmediately;
+
   /// List of EC2 Availability Zones that instances in the Neptune cluster can be created in.
   final pulumi.Input<List<String>>? availabilityZones;
+
   /// Days to retain backups for. Default `1`
   final pulumi.Input<int>? backupRetentionPeriod;
+
   /// Cluster identifier. If omitted, Terraform will assign a random, unique identifier.
   final pulumi.Input<String>? clusterIdentifier;
+
   /// Creates a unique cluster identifier beginning with the specified prefix. Conflicts with `cluster_identifier`.
   final pulumi.Input<String>? clusterIdentifierPrefix;
+
   /// If set to true, tags are copied to any snapshot of the DB cluster that is created.
   final pulumi.Input<bool>? copyTagsToSnapshot;
+
   /// Value that indicates whether the DB cluster has deletion protection enabled.The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled.
   final pulumi.Input<bool>? deletionProtection;
+
   /// List of the log types this DB cluster is configured to export to Cloudwatch Logs. Currently only supports `audit` and `slowquery`.
   final pulumi.Input<List<String>>? enableCloudwatchLogsExports;
+
   /// Name of the database engine to be used for this Neptune cluster. Defaults to `neptune`.
   final pulumi.Input<String>? engine;
+
   /// Database engine version.
   final pulumi.Input<String>? engineVersion;
+
   /// Name of your final Neptune snapshot when this Neptune cluster is deleted. If omitted, no final snapshot will be made.
   final pulumi.Input<String>? finalSnapshotIdentifier;
+
   /// Global cluster identifier specified on `aws.neptune.GlobalCluster`.
   final pulumi.Input<String>? globalClusterIdentifier;
+
   /// Whether or not mappings of AWS Identity and Access Management (IAM) accounts to database accounts is enabled.
   final pulumi.Input<bool>? iamDatabaseAuthenticationEnabled;
+
   /// List of ARNs for the IAM roles to associate to the Neptune Cluster.
   final pulumi.Input<List<String>>? iamRoles;
+
   /// ARN for the KMS encryption key. When specifying `kms_key_arn`, `storage_encrypted` needs to be set to true.
   final pulumi.Input<String>? kmsKeyArn;
+
   /// Cluster parameter group to associate with the cluster.
   final pulumi.Input<String>? neptuneClusterParameterGroupName;
+
   /// Name of DB parameter group to apply to all instances in the cluster. When upgrading, AWS does not return this value, so do not reference it in other arguments—either leave it unset, configure each instance directly, or ensure it matches the `engine_version`.
   final pulumi.Input<String>? neptuneInstanceParameterGroupName;
+
   /// Neptune subnet group to associate with this Neptune instance.
   final pulumi.Input<String>? neptuneSubnetGroupName;
+
   /// Port on which the Neptune accepts connections. Default is `8182`.
   final pulumi.Input<int>? port;
+
   /// Daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter. Time in UTC. Default: A 30-minute window selected at random from an 8-hour block of time per regionE.g., 04:00-09:00
   final pulumi.Input<String>? preferredBackupWindow;
+
   /// Weekly time range during which system maintenance can occur, in (UTC) e.g., wed:04:00-wed:04:30
   final pulumi.Input<String>? preferredMaintenanceWindow;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of a source Neptune cluster or Neptune instance if this Neptune cluster is to be created as a Read Replica.
   final pulumi.Input<String>? replicationSourceIdentifier;
+
   /// If set, create the Neptune cluster as a serverless one. See Serverless for example block attributes.
-  final pulumi.Input<ClusterServerlessV2ScalingConfiguration>? serverlessV2ScalingConfiguration;
+  final pulumi.Input<ClusterServerlessV2ScalingConfiguration>?
+  serverlessV2ScalingConfiguration;
+
   /// Whether a final Neptune snapshot is created before the Neptune cluster is deleted. If true is specified, no Neptune snapshot is created. If false is specified, a Neptune snapshot is created before the Neptune cluster is deleted, using the value from `final_snapshot_identifier`. Default is `false`.
   final pulumi.Input<bool>? skipFinalSnapshot;
+
   /// Whether or not to create this cluster from a snapshot. You can use either the name or ARN when specifying a Neptune cluster snapshot, or the ARN when specifying a Neptune snapshot. Automated snapshots **should not** be used for this attribute, unless from a different cluster. Automated snapshots are deleted as part of cluster destruction when the resource is replaced.
   final pulumi.Input<String>? snapshotIdentifier;
+
   /// Whether the Neptune cluster is encrypted. The default is `false` if not specified.
   final pulumi.Input<bool>? storageEncrypted;
+
   /// Storage type associated with the cluster `standard/iopt1`. Default: `standard`.
   final pulumi.Input<String>? storageType;
+
   /// Map of tags to assign to the Neptune cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
+
   /// List of VPC security groups to associate with the Cluster
   final pulumi.Input<List<String>>? vpcSecurityGroupIds;
 
@@ -135,38 +166,80 @@ class ClusterArgs {
     String? storageType,
     Map<String, String>? tags,
     List<String>? vpcSecurityGroupIds,
-  }) :
-      allowMajorVersionUpgrade = pulumi.Input.asOptionalInput<bool>(allowMajorVersionUpgrade),
-      applyImmediately = pulumi.Input.asOptionalInput<bool>(applyImmediately),
-      availabilityZones = pulumi.Input.asOptionalInput<List<String>>(availabilityZones),
-      backupRetentionPeriod = pulumi.Input.asOptionalInput<int>(backupRetentionPeriod),
-      clusterIdentifier = pulumi.Input.asOptionalInput<String>(clusterIdentifier),
-      clusterIdentifierPrefix = pulumi.Input.asOptionalInput<String>(clusterIdentifierPrefix),
-      copyTagsToSnapshot = pulumi.Input.asOptionalInput<bool>(copyTagsToSnapshot),
-      deletionProtection = pulumi.Input.asOptionalInput<bool>(deletionProtection),
-      enableCloudwatchLogsExports = pulumi.Input.asOptionalInput<List<String>>(enableCloudwatchLogsExports),
-      engine = pulumi.Input.asOptionalInput<String>(engine),
-      engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
-      finalSnapshotIdentifier = pulumi.Input.asOptionalInput<String>(finalSnapshotIdentifier),
-      globalClusterIdentifier = pulumi.Input.asOptionalInput<String>(globalClusterIdentifier),
-      iamDatabaseAuthenticationEnabled = pulumi.Input.asOptionalInput<bool>(iamDatabaseAuthenticationEnabled),
-      iamRoles = pulumi.Input.asOptionalInput<List<String>>(iamRoles),
-      kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
-      neptuneClusterParameterGroupName = pulumi.Input.asOptionalInput<String>(neptuneClusterParameterGroupName),
-      neptuneInstanceParameterGroupName = pulumi.Input.asOptionalInput<String>(neptuneInstanceParameterGroupName),
-      neptuneSubnetGroupName = pulumi.Input.asOptionalInput<String>(neptuneSubnetGroupName),
-      port = pulumi.Input.asOptionalInput<int>(port),
-      preferredBackupWindow = pulumi.Input.asOptionalInput<String>(preferredBackupWindow),
-      preferredMaintenanceWindow = pulumi.Input.asOptionalInput<String>(preferredMaintenanceWindow),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      replicationSourceIdentifier = pulumi.Input.asOptionalInput<String>(replicationSourceIdentifier),
-      serverlessV2ScalingConfiguration = pulumi.Input.asOptionalInput<ClusterServerlessV2ScalingConfiguration>(serverlessV2ScalingConfiguration),
-      skipFinalSnapshot = pulumi.Input.asOptionalInput<bool>(skipFinalSnapshot),
-      snapshotIdentifier = pulumi.Input.asOptionalInput<String>(snapshotIdentifier),
-      storageEncrypted = pulumi.Input.asOptionalInput<bool>(storageEncrypted),
-      storageType = pulumi.Input.asOptionalInput<String>(storageType),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      vpcSecurityGroupIds = pulumi.Input.asOptionalInput<List<String>>(vpcSecurityGroupIds);
+  }) : allowMajorVersionUpgrade = pulumi.Input.asOptionalInput<bool>(
+         allowMajorVersionUpgrade,
+       ),
+       applyImmediately = pulumi.Input.asOptionalInput<bool>(applyImmediately),
+       availabilityZones = pulumi.Input.asOptionalInput<List<String>>(
+         availabilityZones,
+       ),
+       backupRetentionPeriod = pulumi.Input.asOptionalInput<int>(
+         backupRetentionPeriod,
+       ),
+       clusterIdentifier = pulumi.Input.asOptionalInput<String>(
+         clusterIdentifier,
+       ),
+       clusterIdentifierPrefix = pulumi.Input.asOptionalInput<String>(
+         clusterIdentifierPrefix,
+       ),
+       copyTagsToSnapshot = pulumi.Input.asOptionalInput<bool>(
+         copyTagsToSnapshot,
+       ),
+       deletionProtection = pulumi.Input.asOptionalInput<bool>(
+         deletionProtection,
+       ),
+       enableCloudwatchLogsExports = pulumi.Input.asOptionalInput<List<String>>(
+         enableCloudwatchLogsExports,
+       ),
+       engine = pulumi.Input.asOptionalInput<String>(engine),
+       engineVersion = pulumi.Input.asOptionalInput<String>(engineVersion),
+       finalSnapshotIdentifier = pulumi.Input.asOptionalInput<String>(
+         finalSnapshotIdentifier,
+       ),
+       globalClusterIdentifier = pulumi.Input.asOptionalInput<String>(
+         globalClusterIdentifier,
+       ),
+       iamDatabaseAuthenticationEnabled = pulumi.Input.asOptionalInput<bool>(
+         iamDatabaseAuthenticationEnabled,
+       ),
+       iamRoles = pulumi.Input.asOptionalInput<List<String>>(iamRoles),
+       kmsKeyArn = pulumi.Input.asOptionalInput<String>(kmsKeyArn),
+       neptuneClusterParameterGroupName = pulumi.Input.asOptionalInput<String>(
+         neptuneClusterParameterGroupName,
+       ),
+       neptuneInstanceParameterGroupName = pulumi.Input.asOptionalInput<String>(
+         neptuneInstanceParameterGroupName,
+       ),
+       neptuneSubnetGroupName = pulumi.Input.asOptionalInput<String>(
+         neptuneSubnetGroupName,
+       ),
+       port = pulumi.Input.asOptionalInput<int>(port),
+       preferredBackupWindow = pulumi.Input.asOptionalInput<String>(
+         preferredBackupWindow,
+       ),
+       preferredMaintenanceWindow = pulumi.Input.asOptionalInput<String>(
+         preferredMaintenanceWindow,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       replicationSourceIdentifier = pulumi.Input.asOptionalInput<String>(
+         replicationSourceIdentifier,
+       ),
+       serverlessV2ScalingConfiguration =
+           pulumi.Input.asOptionalInput<
+             ClusterServerlessV2ScalingConfiguration
+           >(serverlessV2ScalingConfiguration),
+       skipFinalSnapshot = pulumi.Input.asOptionalInput<bool>(
+         skipFinalSnapshot,
+       ),
+       snapshotIdentifier = pulumi.Input.asOptionalInput<String>(
+         snapshotIdentifier,
+       ),
+       storageEncrypted = pulumi.Input.asOptionalInput<bool>(storageEncrypted),
+       storageType = pulumi.Input.asOptionalInput<String>(storageType),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       vpcSecurityGroupIds = pulumi.Input.asOptionalInput<List<String>>(
+         vpcSecurityGroupIds,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -194,7 +267,11 @@ class ClusterArgs {
       'preferredMaintenanceWindow': ?preferredMaintenanceWindow,
       'region': ?region,
       'replicationSourceIdentifier': ?replicationSourceIdentifier,
-      'serverlessV2ScalingConfiguration': ?pulumi.Input.mapOptionalInputValue<ClusterServerlessV2ScalingConfiguration, Map<String, dynamic>>(serverlessV2ScalingConfiguration, (value) => value.toMap()),
+      'serverlessV2ScalingConfiguration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ClusterServerlessV2ScalingConfiguration,
+            Map<String, dynamic>
+          >(serverlessV2ScalingConfiguration, (value) => value.toMap()),
       'skipFinalSnapshot': ?skipFinalSnapshot,
       'snapshotIdentifier': ?snapshotIdentifier,
       'storageEncrypted': ?storageEncrypted,
@@ -206,38 +283,98 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      allowMajorVersionUpgrade: map['allowMajorVersionUpgrade'] == null ? null : map['allowMajorVersionUpgrade'] as bool,
-      applyImmediately: map['applyImmediately'] == null ? null : map['applyImmediately'] as bool,
-      availabilityZones: map['availabilityZones'] == null ? null : (map['availabilityZones'] as List).cast<String>(),
-      backupRetentionPeriod: map['backupRetentionPeriod'] == null ? null : map['backupRetentionPeriod'] as int,
-      clusterIdentifier: map['clusterIdentifier'] == null ? null : map['clusterIdentifier'] as String,
-      clusterIdentifierPrefix: map['clusterIdentifierPrefix'] == null ? null : map['clusterIdentifierPrefix'] as String,
-      copyTagsToSnapshot: map['copyTagsToSnapshot'] == null ? null : map['copyTagsToSnapshot'] as bool,
-      deletionProtection: map['deletionProtection'] == null ? null : map['deletionProtection'] as bool,
-      enableCloudwatchLogsExports: map['enableCloudwatchLogsExports'] == null ? null : (map['enableCloudwatchLogsExports'] as List).cast<String>(),
+      allowMajorVersionUpgrade: map['allowMajorVersionUpgrade'] == null
+          ? null
+          : map['allowMajorVersionUpgrade'] as bool,
+      applyImmediately: map['applyImmediately'] == null
+          ? null
+          : map['applyImmediately'] as bool,
+      availabilityZones: map['availabilityZones'] == null
+          ? null
+          : (map['availabilityZones'] as List).cast<String>(),
+      backupRetentionPeriod: map['backupRetentionPeriod'] == null
+          ? null
+          : map['backupRetentionPeriod'] as int,
+      clusterIdentifier: map['clusterIdentifier'] == null
+          ? null
+          : map['clusterIdentifier'] as String,
+      clusterIdentifierPrefix: map['clusterIdentifierPrefix'] == null
+          ? null
+          : map['clusterIdentifierPrefix'] as String,
+      copyTagsToSnapshot: map['copyTagsToSnapshot'] == null
+          ? null
+          : map['copyTagsToSnapshot'] as bool,
+      deletionProtection: map['deletionProtection'] == null
+          ? null
+          : map['deletionProtection'] as bool,
+      enableCloudwatchLogsExports: map['enableCloudwatchLogsExports'] == null
+          ? null
+          : (map['enableCloudwatchLogsExports'] as List).cast<String>(),
       engine: map['engine'] == null ? null : map['engine'] as String,
-      engineVersion: map['engineVersion'] == null ? null : map['engineVersion'] as String,
-      finalSnapshotIdentifier: map['finalSnapshotIdentifier'] == null ? null : map['finalSnapshotIdentifier'] as String,
-      globalClusterIdentifier: map['globalClusterIdentifier'] == null ? null : map['globalClusterIdentifier'] as String,
-      iamDatabaseAuthenticationEnabled: map['iamDatabaseAuthenticationEnabled'] == null ? null : map['iamDatabaseAuthenticationEnabled'] as bool,
-      iamRoles: map['iamRoles'] == null ? null : (map['iamRoles'] as List).cast<String>(),
+      engineVersion: map['engineVersion'] == null
+          ? null
+          : map['engineVersion'] as String,
+      finalSnapshotIdentifier: map['finalSnapshotIdentifier'] == null
+          ? null
+          : map['finalSnapshotIdentifier'] as String,
+      globalClusterIdentifier: map['globalClusterIdentifier'] == null
+          ? null
+          : map['globalClusterIdentifier'] as String,
+      iamDatabaseAuthenticationEnabled:
+          map['iamDatabaseAuthenticationEnabled'] == null
+          ? null
+          : map['iamDatabaseAuthenticationEnabled'] as bool,
+      iamRoles: map['iamRoles'] == null
+          ? null
+          : (map['iamRoles'] as List).cast<String>(),
       kmsKeyArn: map['kmsKeyArn'] == null ? null : map['kmsKeyArn'] as String,
-      neptuneClusterParameterGroupName: map['neptuneClusterParameterGroupName'] == null ? null : map['neptuneClusterParameterGroupName'] as String,
-      neptuneInstanceParameterGroupName: map['neptuneInstanceParameterGroupName'] == null ? null : map['neptuneInstanceParameterGroupName'] as String,
-      neptuneSubnetGroupName: map['neptuneSubnetGroupName'] == null ? null : map['neptuneSubnetGroupName'] as String,
+      neptuneClusterParameterGroupName:
+          map['neptuneClusterParameterGroupName'] == null
+          ? null
+          : map['neptuneClusterParameterGroupName'] as String,
+      neptuneInstanceParameterGroupName:
+          map['neptuneInstanceParameterGroupName'] == null
+          ? null
+          : map['neptuneInstanceParameterGroupName'] as String,
+      neptuneSubnetGroupName: map['neptuneSubnetGroupName'] == null
+          ? null
+          : map['neptuneSubnetGroupName'] as String,
       port: map['port'] == null ? null : map['port'] as int,
-      preferredBackupWindow: map['preferredBackupWindow'] == null ? null : map['preferredBackupWindow'] as String,
-      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null ? null : map['preferredMaintenanceWindow'] as String,
+      preferredBackupWindow: map['preferredBackupWindow'] == null
+          ? null
+          : map['preferredBackupWindow'] as String,
+      preferredMaintenanceWindow: map['preferredMaintenanceWindow'] == null
+          ? null
+          : map['preferredMaintenanceWindow'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      replicationSourceIdentifier: map['replicationSourceIdentifier'] == null ? null : map['replicationSourceIdentifier'] as String,
-      serverlessV2ScalingConfiguration: map['serverlessV2ScalingConfiguration'] == null ? null : ClusterServerlessV2ScalingConfiguration.fromMap((map['serverlessV2ScalingConfiguration'] as Map).cast<String, dynamic>()),
-      skipFinalSnapshot: map['skipFinalSnapshot'] == null ? null : map['skipFinalSnapshot'] as bool,
-      snapshotIdentifier: map['snapshotIdentifier'] == null ? null : map['snapshotIdentifier'] as String,
-      storageEncrypted: map['storageEncrypted'] == null ? null : map['storageEncrypted'] as bool,
-      storageType: map['storageType'] == null ? null : map['storageType'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null ? null : (map['vpcSecurityGroupIds'] as List).cast<String>(),
+      replicationSourceIdentifier: map['replicationSourceIdentifier'] == null
+          ? null
+          : map['replicationSourceIdentifier'] as String,
+      serverlessV2ScalingConfiguration:
+          map['serverlessV2ScalingConfiguration'] == null
+          ? null
+          : ClusterServerlessV2ScalingConfiguration.fromMap(
+              (map['serverlessV2ScalingConfiguration'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      skipFinalSnapshot: map['skipFinalSnapshot'] == null
+          ? null
+          : map['skipFinalSnapshot'] as bool,
+      snapshotIdentifier: map['snapshotIdentifier'] == null
+          ? null
+          : map['snapshotIdentifier'] as String,
+      storageEncrypted: map['storageEncrypted'] == null
+          ? null
+          : map['storageEncrypted'] as bool,
+      storageType: map['storageType'] == null
+          ? null
+          : map['storageType'] as String,
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+      vpcSecurityGroupIds: map['vpcSecurityGroupIds'] == null
+          ? null
+          : (map['vpcSecurityGroupIds'] as List).cast<String>(),
     );
   }
 }
-

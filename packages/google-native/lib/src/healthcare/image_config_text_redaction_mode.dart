@@ -17,4 +17,3 @@ enum ImageConfigTextRedactionMode {
     throw ArgumentError('Unknown ImageConfigTextRedactionMode value: $value');
   }
 }
-

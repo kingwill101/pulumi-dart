@@ -9,9 +9,7 @@ class BareMetalNodePoolUpgradePolicyResponse {
 
   /// Creates a new [BareMetalNodePoolUpgradePolicyResponse].
   /// [parallelUpgradeConfig] The parallel upgrade settings for worker node pools.
-  BareMetalNodePoolUpgradePolicyResponse({
-    required this.parallelUpgradeConfig,
-  });
+  BareMetalNodePoolUpgradePolicyResponse({required this.parallelUpgradeConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,13 @@ class BareMetalNodePoolUpgradePolicyResponse {
     };
   }
 
-  factory BareMetalNodePoolUpgradePolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory BareMetalNodePoolUpgradePolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalNodePoolUpgradePolicyResponse(
-      parallelUpgradeConfig: BareMetalParallelUpgradeConfigResponse.fromMap((map['parallelUpgradeConfig'] as Map).cast<String, dynamic>()),
+      parallelUpgradeConfig: BareMetalParallelUpgradeConfigResponse.fromMap(
+        (map['parallelUpgradeConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

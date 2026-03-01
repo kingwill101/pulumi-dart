@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConformancePackInputParameter {
   /// The input key.
   final String parameterName;
+
   /// The input value.
   final String parameterValue;
 
@@ -29,4 +29,3 @@ class ConformancePackInputParameter {
     );
   }
 }
-

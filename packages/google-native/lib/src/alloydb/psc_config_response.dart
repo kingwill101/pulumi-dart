@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// PscConfig contains PSC related configuration at a cluster level. NEXT ID: 2
 class PscConfigResponse {
   /// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
@@ -8,20 +7,13 @@ class PscConfigResponse {
 
   /// Creates a new [PscConfigResponse].
   /// [pscEnabled] Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
-  PscConfigResponse({
-    required this.pscEnabled,
-  });
+  PscConfigResponse({required this.pscEnabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pscEnabled': pscEnabled,
-    };
+    return <String, dynamic>{'pscEnabled': pscEnabled};
   }
 
   factory PscConfigResponse.fromMap(Map<String, dynamic> map) {
-    return PscConfigResponse(
-      pscEnabled: map['pscEnabled'] as bool,
-    );
+    return PscConfigResponse(pscEnabled: map['pscEnabled'] as bool);
   }
 }
-

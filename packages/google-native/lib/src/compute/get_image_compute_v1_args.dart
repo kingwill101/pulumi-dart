@@ -13,18 +13,12 @@ class GetImageComputeV1Args {
   /// Creates a new [GetImageComputeV1Args].
   /// [image] Required.
   /// [project] Optional.
-  GetImageComputeV1Args({
-    required String image,
-    String? project,
-  }) :
-      image = pulumi.Input.asInput<String>(image),
+  GetImageComputeV1Args({required String image, String? project})
+    : image = pulumi.Input.asInput<String>(image),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'image': image,
-      'project': ?project,
-    };
+    return <String, dynamic>{'image': image, 'project': ?project};
   }
 
   factory GetImageComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetImageComputeV1Args {
     );
   }
 }
-

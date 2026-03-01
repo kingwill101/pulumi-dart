@@ -1,26 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Label object for TypeProviders
 class TypeProviderLabelEntryResponse {
   /// Key of the label
   final String key;
+
   /// Value of the label
   final String value;
 
   /// Creates a new [TypeProviderLabelEntryResponse].
   /// [key] Key of the label
   /// [value] Value of the label
-  TypeProviderLabelEntryResponse({
-    required this.key,
-    required this.value,
-  });
+  TypeProviderLabelEntryResponse({required this.key, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
   factory TypeProviderLabelEntryResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +24,3 @@ class TypeProviderLabelEntryResponse {
     );
   }
 }
-

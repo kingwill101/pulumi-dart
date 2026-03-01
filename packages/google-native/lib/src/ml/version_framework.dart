@@ -17,4 +17,3 @@ enum VersionFramework {
     throw ArgumentError('Unknown VersionFramework value: $value');
   }
 }
-

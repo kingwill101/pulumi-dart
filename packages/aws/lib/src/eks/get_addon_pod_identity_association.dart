@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetAddonPodIdentityAssociation {
   /// ARN of the IAM role associated with the EKS add-on.
   final String roleArn;
+
   /// Service account associated with the EKS add-on.
   final String serviceAccount;
 
@@ -29,4 +29,3 @@ class GetAddonPodIdentityAssociation {
     );
   }
 }
-

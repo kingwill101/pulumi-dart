@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse {
   /// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
@@ -13,15 +12,14 @@ class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enableInsightsExport': enableInsightsExport,
-    };
+    return <String, dynamic>{'enableInsightsExport': enableInsightsExport};
   }
 
-  factory GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse(
       enableInsightsExport: map['enableInsightsExport'] as bool,
     );
   }
 }
-

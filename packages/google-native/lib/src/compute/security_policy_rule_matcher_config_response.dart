@@ -7,10 +7,13 @@ import 'security_policy_rule_matcher_config_layer4_config_response.dart';
 class SecurityPolicyRuleMatcherConfigResponse {
   /// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
   final List<String> destIpRanges;
+
   /// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
   final List<SecurityPolicyRuleMatcherConfigDestinationPortResponse> destPorts;
+
   /// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
   final List<SecurityPolicyRuleMatcherConfigLayer4ConfigResponse> layer4Configs;
+
   /// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
   final List<String> srcIpRanges;
 
@@ -29,19 +32,46 @@ class SecurityPolicyRuleMatcherConfigResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'destIpRanges': destIpRanges,
-      'destPorts': pulumi.Input.encodeList<SecurityPolicyRuleMatcherConfigDestinationPortResponse, Map<String, dynamic>>(destPorts, (value) => value.toMap()),
-      'layer4Configs': pulumi.Input.encodeList<SecurityPolicyRuleMatcherConfigLayer4ConfigResponse, Map<String, dynamic>>(layer4Configs, (value) => value.toMap()),
+      'destPorts':
+          pulumi.Input.encodeList<
+            SecurityPolicyRuleMatcherConfigDestinationPortResponse,
+            Map<String, dynamic>
+          >(destPorts, (value) => value.toMap()),
+      'layer4Configs':
+          pulumi.Input.encodeList<
+            SecurityPolicyRuleMatcherConfigLayer4ConfigResponse,
+            Map<String, dynamic>
+          >(layer4Configs, (value) => value.toMap()),
       'srcIpRanges': srcIpRanges,
     };
   }
 
-  factory SecurityPolicyRuleMatcherConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory SecurityPolicyRuleMatcherConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityPolicyRuleMatcherConfigResponse(
       destIpRanges: (map['destIpRanges'] as List).cast<String>(),
-      destPorts: pulumi.Input.decodeList<SecurityPolicyRuleMatcherConfigDestinationPortResponse>(map['destPorts'], (value) => SecurityPolicyRuleMatcherConfigDestinationPortResponse.fromMap((value as Map).cast<String, dynamic>())),
-      layer4Configs: pulumi.Input.decodeList<SecurityPolicyRuleMatcherConfigLayer4ConfigResponse>(map['layer4Configs'], (value) => SecurityPolicyRuleMatcherConfigLayer4ConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
+      destPorts:
+          pulumi.Input.decodeList<
+            SecurityPolicyRuleMatcherConfigDestinationPortResponse
+          >(
+            map['destPorts'],
+            (value) =>
+                SecurityPolicyRuleMatcherConfigDestinationPortResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
+      layer4Configs:
+          pulumi.Input.decodeList<
+            SecurityPolicyRuleMatcherConfigLayer4ConfigResponse
+          >(
+            map['layer4Configs'],
+            (value) =>
+                SecurityPolicyRuleMatcherConfigLayer4ConfigResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       srcIpRanges: (map['srcIpRanges'] as List).cast<String>(),
     );
   }
 }
-

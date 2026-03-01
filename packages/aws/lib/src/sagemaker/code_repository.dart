@@ -345,14 +345,19 @@ import 'code_repository_git_config.dart';
 class CodeRepository extends pulumi.CustomResource {
   /// The Amazon Resource Name (ARN) assigned by AWS to this Code Repository.
   late final pulumi.Output<String> arn;
+
   /// The name of the Code Repository (must be unique).
   late final pulumi.Output<String> codeRepositoryName;
+
   /// Specifies details about the repository. see Git Config details below.
   late final pulumi.Output<CodeRepositoryGitConfig> gitConfig;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
@@ -365,11 +370,11 @@ class CodeRepository extends pulumi.CustomResource {
     CodeRepositoryArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:sagemaker/codeRepository:CodeRepository',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:sagemaker/codeRepository:CodeRepository',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.codeRepositoryName = registerOutput<String>('codeRepositoryName');
     this.gitConfig = registerOutput<CodeRepositoryGitConfig>('gitConfig');

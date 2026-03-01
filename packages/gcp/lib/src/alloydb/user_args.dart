@@ -10,11 +10,14 @@ class UserArgs {
   /// Identifies the alloydb cluster. Must be in the format
   /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
   final pulumi.Input<String> cluster;
+
   /// List of database roles this database user has.
   final pulumi.Input<List<String>>? databaseRoles;
+
   /// Password for this database user.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
   final pulumi.Input<String>? password;
+
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// Password for this database user.
@@ -22,10 +25,13 @@ class UserArgs {
   ///
   /// > **Note:** One of `password` or `password_wo` can only be set.
   final pulumi.Input<String>? passwordWo;
+
   /// Triggers update of `password_wo` write-only. Increment this value when an update to `password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   final pulumi.Input<String>? passwordWoVersion;
+
   /// The database role name of the user.
   final pulumi.Input<String> userId;
+
   /// The type of this user.
   /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
   final pulumi.Input<String> userType;
@@ -46,14 +52,17 @@ class UserArgs {
     String? passwordWoVersion,
     required String userId,
     required String userType,
-  }) :
-      cluster = pulumi.Input.asInput<String>(cluster),
-      databaseRoles = pulumi.Input.asOptionalInput<List<String>>(databaseRoles),
-      password = pulumi.Input.asOptionalInput<String>(password),
-      passwordWo = pulumi.Input.asOptionalInput<String>(passwordWo),
-      passwordWoVersion = pulumi.Input.asOptionalInput<String>(passwordWoVersion),
-      userId = pulumi.Input.asInput<String>(userId),
-      userType = pulumi.Input.asInput<String>(userType);
+  }) : cluster = pulumi.Input.asInput<String>(cluster),
+       databaseRoles = pulumi.Input.asOptionalInput<List<String>>(
+         databaseRoles,
+       ),
+       password = pulumi.Input.asOptionalInput<String>(password),
+       passwordWo = pulumi.Input.asOptionalInput<String>(passwordWo),
+       passwordWoVersion = pulumi.Input.asOptionalInput<String>(
+         passwordWoVersion,
+       ),
+       userId = pulumi.Input.asInput<String>(userId),
+       userType = pulumi.Input.asInput<String>(userType);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -70,13 +79,18 @@ class UserArgs {
   factory UserArgs.fromMap(Map<String, dynamic> map) {
     return UserArgs(
       cluster: map['cluster'] as String,
-      databaseRoles: map['databaseRoles'] == null ? null : (map['databaseRoles'] as List).cast<String>(),
+      databaseRoles: map['databaseRoles'] == null
+          ? null
+          : (map['databaseRoles'] as List).cast<String>(),
       password: map['password'] == null ? null : map['password'] as String,
-      passwordWo: map['passwordWo'] == null ? null : map['passwordWo'] as String,
-      passwordWoVersion: map['passwordWoVersion'] == null ? null : map['passwordWoVersion'] as String,
+      passwordWo: map['passwordWo'] == null
+          ? null
+          : map['passwordWo'] as String,
+      passwordWoVersion: map['passwordWoVersion'] == null
+          ? null
+          : map['passwordWoVersion'] as String,
       userId: map['userId'] as String,
       userType: map['userType'] as String,
     );
   }
 }
-

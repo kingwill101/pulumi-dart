@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The reCAPTCHA key config. reCAPTCHA Enterprise offers different keys for different client platforms.
 class GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse {
   /// The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}"
   final String key;
+
   /// The client's platform type.
   final String type;
 
@@ -17,17 +17,15 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'type': type,
-    };
+    return <String, dynamic>{'key': key, 'type': type};
   }
 
-  factory GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse(
       key: map['key'] as String,
       type: map['type'] as String,
     );
   }
 }
-

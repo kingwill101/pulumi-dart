@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRegionSSLPolicy.
 class GetRegionSSLPolicyResult {
   final String creationTimestamp;
@@ -8,6 +7,7 @@ class GetRegionSSLPolicyResult {
   final String description;
   final List<String> enabledFeatures;
   final String fingerprint;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String minTlsVersion;
@@ -79,4 +79,3 @@ class GetRegionSSLPolicyResult {
     );
   }
 }
-

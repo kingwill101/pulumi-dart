@@ -19,10 +19,9 @@ class GetZoneQueuedResourceArgs {
     String? project,
     required String queuedResource,
     required String zone,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queuedResource = pulumi.Input.asInput<String>(queuedResource),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       queuedResource = pulumi.Input.asInput<String>(queuedResource),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetZoneQueuedResourceArgs {
     );
   }
 }
-

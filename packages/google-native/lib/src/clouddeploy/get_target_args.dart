@@ -19,10 +19,9 @@ class GetTargetArgs {
     required String location,
     String? project,
     required String targetId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      targetId = pulumi.Input.asInput<String>(targetId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       targetId = pulumi.Input.asInput<String>(targetId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTargetArgs {
     );
   }
 }
-

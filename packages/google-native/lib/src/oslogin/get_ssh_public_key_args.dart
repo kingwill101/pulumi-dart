@@ -13,11 +13,8 @@ class GetSshPublicKeyArgs {
   /// Creates a new [GetSshPublicKeyArgs].
   /// [sshPublicKeyId] Required.
   /// [userId] Required.
-  GetSshPublicKeyArgs({
-    required String sshPublicKeyId,
-    required String userId,
-  }) :
-      sshPublicKeyId = pulumi.Input.asInput<String>(sshPublicKeyId),
+  GetSshPublicKeyArgs({required String sshPublicKeyId, required String userId})
+    : sshPublicKeyId = pulumi.Input.asInput<String>(sshPublicKeyId),
       userId = pulumi.Input.asInput<String>(userId);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetSshPublicKeyArgs {
     );
   }
 }
-

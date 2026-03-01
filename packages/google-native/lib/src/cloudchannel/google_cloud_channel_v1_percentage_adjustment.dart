@@ -9,9 +9,7 @@ class GoogleCloudChannelV1PercentageAdjustment {
 
   /// Creates a new [GoogleCloudChannelV1PercentageAdjustment].
   /// [percentage] The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
-  GoogleCloudChannelV1PercentageAdjustment({
-    this.percentage,
-  });
+  GoogleCloudChannelV1PercentageAdjustment({this.percentage});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class GoogleCloudChannelV1PercentageAdjustment {
     };
   }
 
-  factory GoogleCloudChannelV1PercentageAdjustment.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1PercentageAdjustment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1PercentageAdjustment(
-      percentage: map['percentage'] == null ? null : GoogleTypeDecimal.fromMap((map['percentage'] as Map).cast<String, dynamic>()),
+      percentage: map['percentage'] == null
+          ? null
+          : GoogleTypeDecimal.fromMap(
+              (map['percentage'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

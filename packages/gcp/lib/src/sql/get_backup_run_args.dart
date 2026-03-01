@@ -10,11 +10,14 @@ class GetBackupRunArgs {
   /// The identifier for this backup run. Unique only for a specific Cloud SQL instance.
   /// If left empty and multiple backups exist for the instance, `most_recent` must be set to `true`.
   final pulumi.Input<int>? backupId;
+
   /// The name of the instance the backup is taken from.
   final pulumi.Input<String> instance;
+
   /// Toggles use of the most recent backup run if multiple backups exist for a
   /// Cloud SQL instance.
   final pulumi.Input<bool>? mostRecent;
+
   /// The project to list instances for. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -29,11 +32,10 @@ class GetBackupRunArgs {
     required String instance,
     bool? mostRecent,
     String? project,
-  }) :
-      backupId = pulumi.Input.asOptionalInput<int>(backupId),
-      instance = pulumi.Input.asInput<String>(instance),
-      mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : backupId = pulumi.Input.asOptionalInput<int>(backupId),
+       instance = pulumi.Input.asInput<String>(instance),
+       mostRecent = pulumi.Input.asOptionalInput<bool>(mostRecent),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,4 +55,3 @@ class GetBackupRunArgs {
     );
   }
 }
-

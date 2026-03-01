@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2 {
   /// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
   final String? deletionTime;
   final String? kind;
+
   /// The fully qualified URL of the namespace associated with the zone. Format must be https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
   final String? namespaceUrl;
 
@@ -26,12 +26,17 @@ class ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2 {
     };
   }
 
-  factory ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2.fromMap(Map<String, dynamic> map) {
+  factory ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ManagedZoneServiceDirectoryConfigNamespaceDnsV1beta2(
-      deletionTime: map['deletionTime'] == null ? null : map['deletionTime'] as String,
+      deletionTime: map['deletionTime'] == null
+          ? null
+          : map['deletionTime'] as String,
       kind: map['kind'] == null ? null : map['kind'] as String,
-      namespaceUrl: map['namespaceUrl'] == null ? null : map['namespaceUrl'] as String,
+      namespaceUrl: map['namespaceUrl'] == null
+          ? null
+          : map['namespaceUrl'] as String,
     );
   }
 }
-

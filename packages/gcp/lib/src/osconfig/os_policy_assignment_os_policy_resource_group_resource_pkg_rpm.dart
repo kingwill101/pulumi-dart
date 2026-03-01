@@ -7,6 +7,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
   /// install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
   /// true: `yum -y install package.rpm` or `zypper -y install package.rpm`
   final bool? pullDeps;
+
   /// An rpm package. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource source;
@@ -20,17 +21,18 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pullDeps': ?pullDeps,
-      'source': source.toMap(),
-    };
+    return <String, dynamic>{'pullDeps': ?pullDeps, 'source': source.toMap()};
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm.fromMap(Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm(
       pullDeps: map['pullDeps'] == null ? null : map['pullDeps'] as bool,
-      source: OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource.fromMap((map['source'] as Map).cast<String, dynamic>()),
+      source:
+          OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource.fromMap(
+            (map['source'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

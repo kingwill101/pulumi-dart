@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria {
   /// The delimiter of the selection criteria being used.
   final String? delimiter;
+
   /// The max depth of the selection criteria.
   final int? maxDepth;
+
   /// The minimum number of storage bytes percentage whose metrics will be selected.
   final double? minStorageBytesPercentage;
 
@@ -27,12 +28,15 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
     };
   }
 
-  factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria.fromMap(Map<String, dynamic> map) {
+  factory StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetricsSelectionCriteria(
       delimiter: map['delimiter'] == null ? null : map['delimiter'] as String,
       maxDepth: map['maxDepth'] == null ? null : map['maxDepth'] as int,
-      minStorageBytesPercentage: map['minStorageBytesPercentage'] == null ? null : map['minStorageBytesPercentage'] as double,
+      minStorageBytesPercentage: map['minStorageBytesPercentage'] == null
+          ? null
+          : map['minStorageBytesPercentage'] as double,
     );
   }
 }
-

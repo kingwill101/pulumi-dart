@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Metadata associated with a Google Kubernetes Engine (GKE) cluster master.
 class GKEMasterInfoResponseNetworkmanagementV1beta1 {
   /// URI of a GKE cluster network.
   final String clusterNetworkUri;
+
   /// URI of a GKE cluster.
   final String clusterUri;
+
   /// External IP address of a GKE cluster master.
   final String externalIp;
+
   /// Internal IP address of a GKE cluster master.
   final String internalIp;
 
@@ -33,7 +35,9 @@ class GKEMasterInfoResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory GKEMasterInfoResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory GKEMasterInfoResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GKEMasterInfoResponseNetworkmanagementV1beta1(
       clusterNetworkUri: map['clusterNetworkUri'] as String,
       clusterUri: map['clusterUri'] as String,
@@ -42,4 +46,3 @@ class GKEMasterInfoResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetVpnGatewayComputeV1Args {
     String? project,
     required String region,
     required String vpnGateway,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      vpnGateway = pulumi.Input.asInput<String>(vpnGateway);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       vpnGateway = pulumi.Input.asInput<String>(vpnGateway);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetVpnGatewayComputeV1Args {
     );
   }
 }
-

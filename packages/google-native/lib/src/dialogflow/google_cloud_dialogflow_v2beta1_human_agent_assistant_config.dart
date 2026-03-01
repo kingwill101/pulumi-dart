@@ -7,11 +7,17 @@ import 'google_cloud_dialogflow_v2beta1_notification_config.dart';
 /// Defines the Human Agent Assistant to connect to a conversation.
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig {
   /// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
-  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig? endUserSuggestionConfig;
+  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig?
+  endUserSuggestionConfig;
+
   /// Configuration for agent assistance of human agent participant.
-  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig? humanAgentSuggestionConfig;
+  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig?
+  humanAgentSuggestionConfig;
+
   /// Configuration for message analysis.
-  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig? messageAnalysisConfig;
+  final GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig?
+  messageAnalysisConfig;
+
   /// Pub/Sub topic on which to publish new agent assistant events.
   final GoogleCloudDialogflowV2beta1NotificationConfig? notificationConfig;
 
@@ -29,20 +35,46 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'endUserSuggestionConfig': ?endUserSuggestionConfig == null ? null : endUserSuggestionConfig!.toMap(),
-      'humanAgentSuggestionConfig': ?humanAgentSuggestionConfig == null ? null : humanAgentSuggestionConfig!.toMap(),
-      'messageAnalysisConfig': ?messageAnalysisConfig == null ? null : messageAnalysisConfig!.toMap(),
-      'notificationConfig': ?notificationConfig == null ? null : notificationConfig!.toMap(),
+      'endUserSuggestionConfig': ?endUserSuggestionConfig == null
+          ? null
+          : endUserSuggestionConfig!.toMap(),
+      'humanAgentSuggestionConfig': ?humanAgentSuggestionConfig == null
+          ? null
+          : humanAgentSuggestionConfig!.toMap(),
+      'messageAnalysisConfig': ?messageAnalysisConfig == null
+          ? null
+          : messageAnalysisConfig!.toMap(),
+      'notificationConfig': ?notificationConfig == null
+          ? null
+          : notificationConfig!.toMap(),
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig(
-      endUserSuggestionConfig: map['endUserSuggestionConfig'] == null ? null : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig.fromMap((map['endUserSuggestionConfig'] as Map).cast<String, dynamic>()),
-      humanAgentSuggestionConfig: map['humanAgentSuggestionConfig'] == null ? null : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig.fromMap((map['humanAgentSuggestionConfig'] as Map).cast<String, dynamic>()),
-      messageAnalysisConfig: map['messageAnalysisConfig'] == null ? null : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig.fromMap((map['messageAnalysisConfig'] as Map).cast<String, dynamic>()),
-      notificationConfig: map['notificationConfig'] == null ? null : GoogleCloudDialogflowV2beta1NotificationConfig.fromMap((map['notificationConfig'] as Map).cast<String, dynamic>()),
+      endUserSuggestionConfig: map['endUserSuggestionConfig'] == null
+          ? null
+          : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig.fromMap(
+              (map['endUserSuggestionConfig'] as Map).cast<String, dynamic>(),
+            ),
+      humanAgentSuggestionConfig: map['humanAgentSuggestionConfig'] == null
+          ? null
+          : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig.fromMap(
+              (map['humanAgentSuggestionConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      messageAnalysisConfig: map['messageAnalysisConfig'] == null
+          ? null
+          : GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig.fromMap(
+              (map['messageAnalysisConfig'] as Map).cast<String, dynamic>(),
+            ),
+      notificationConfig: map['notificationConfig'] == null
+          ? null
+          : GoogleCloudDialogflowV2beta1NotificationConfig.fromMap(
+              (map['notificationConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

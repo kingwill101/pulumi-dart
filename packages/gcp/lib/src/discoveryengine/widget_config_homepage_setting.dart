@@ -10,20 +10,29 @@ class WidgetConfigHomepageSetting {
 
   /// Creates a new [WidgetConfigHomepageSetting].
   /// [shortcuts] The shortcuts to display on the homepage.
-  WidgetConfigHomepageSetting({
-    this.shortcuts,
-  });
+  WidgetConfigHomepageSetting({this.shortcuts});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'shortcuts': ?shortcuts == null ? null : pulumi.Input.encodeList<WidgetConfigHomepageSettingShortcut, Map<String, dynamic>>(shortcuts!, (value) => value.toMap()),
+      'shortcuts': ?shortcuts == null
+          ? null
+          : pulumi.Input.encodeList<
+              WidgetConfigHomepageSettingShortcut,
+              Map<String, dynamic>
+            >(shortcuts!, (value) => value.toMap()),
     };
   }
 
   factory WidgetConfigHomepageSetting.fromMap(Map<String, dynamic> map) {
     return WidgetConfigHomepageSetting(
-      shortcuts: map['shortcuts'] == null ? null : pulumi.Input.decodeList<WidgetConfigHomepageSettingShortcut>(map['shortcuts'], (value) => WidgetConfigHomepageSettingShortcut.fromMap((value as Map).cast<String, dynamic>())),
+      shortcuts: map['shortcuts'] == null
+          ? null
+          : pulumi.Input.decodeList<WidgetConfigHomepageSettingShortcut>(
+              map['shortcuts'],
+              (value) => WidgetConfigHomepageSettingShortcut.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

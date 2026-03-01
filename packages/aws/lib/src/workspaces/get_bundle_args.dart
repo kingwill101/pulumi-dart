@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBundleArgs {
   /// ID of the bundle.
   final pulumi.Input<String>? bundleId;
+
   /// Name of the bundle. You cannot combine this parameter with `bundle_id`.
   final pulumi.Input<String>? name;
+
   /// Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
   final pulumi.Input<String>? owner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -21,13 +24,8 @@ class GetBundleArgs {
   /// [name] Name of the bundle. You cannot combine this parameter with `bundle_id`.
   /// [owner] Owner of the bundles. You have to leave it blank for own bundles. You cannot combine this parameter with `bundle_id`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetBundleArgs({
-    String? bundleId,
-    String? name,
-    String? owner,
-    String? region,
-  }) :
-      bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
+  GetBundleArgs({String? bundleId, String? name, String? owner, String? region})
+    : bundleId = pulumi.Input.asOptionalInput<String>(bundleId),
       name = pulumi.Input.asOptionalInput<String>(name),
       owner = pulumi.Input.asOptionalInput<String>(owner),
       region = pulumi.Input.asOptionalInput<String>(region);
@@ -50,4 +48,3 @@ class GetBundleArgs {
     );
   }
 }
-

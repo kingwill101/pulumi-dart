@@ -7,8 +7,10 @@ import 'options_response.dart';
 class CollectionOverrideResponse {
   /// The collection that identifies this resource within its service.
   final String collection;
+
   /// Custom verb method mappings to support unordered list API mappings.
   final MethodMapResponse methodMap;
+
   /// The options to apply to this resource-level override
   final OptionsResponse options;
 
@@ -33,9 +35,12 @@ class CollectionOverrideResponse {
   factory CollectionOverrideResponse.fromMap(Map<String, dynamic> map) {
     return CollectionOverrideResponse(
       collection: map['collection'] as String,
-      methodMap: MethodMapResponse.fromMap((map['methodMap'] as Map).cast<String, dynamic>()),
-      options: OptionsResponse.fromMap((map['options'] as Map).cast<String, dynamic>()),
+      methodMap: MethodMapResponse.fromMap(
+        (map['methodMap'] as Map).cast<String, dynamic>(),
+      ),
+      options: OptionsResponse.fromMap(
+        (map['options'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

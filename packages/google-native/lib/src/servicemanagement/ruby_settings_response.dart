@@ -9,20 +9,17 @@ class RubySettingsResponse {
 
   /// Creates a new [RubySettingsResponse].
   /// [common] Some settings.
-  RubySettingsResponse({
-    required this.common,
-  });
+  RubySettingsResponse({required this.common});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'common': common.toMap(),
-    };
+    return <String, dynamic>{'common': common.toMap()};
   }
 
   factory RubySettingsResponse.fromMap(Map<String, dynamic> map) {
     return RubySettingsResponse(
-      common: CommonLanguageSettingsResponse.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: CommonLanguageSettingsResponse.fromMap(
+        (map['common'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

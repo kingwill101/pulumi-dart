@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetMulticastDomainMember {
   /// The IP address assigned to the transit gateway multicast group.
   final String groupIpAddress;
+
   /// The group members' network interface ID.
   final String networkInterfaceId;
 
@@ -29,4 +29,3 @@ class GetMulticastDomainMember {
     );
   }
 }
-

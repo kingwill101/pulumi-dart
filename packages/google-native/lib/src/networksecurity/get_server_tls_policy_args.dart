@@ -19,10 +19,9 @@ class GetServerTlsPolicyArgs {
     required String location,
     String? project,
     required String serverTlsPolicyId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serverTlsPolicyId = pulumi.Input.asInput<String>(serverTlsPolicyId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serverTlsPolicyId = pulumi.Input.asInput<String>(serverTlsPolicyId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetServerTlsPolicyArgs {
     );
   }
 }
-

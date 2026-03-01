@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class VirtualNodeSpecServiceDiscoveryDns {
   /// DNS host name for your virtual node.
   final String hostname;
+
   /// The preferred IP version that this virtual node uses. Valid values: `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, `IPv6_ONLY`.
   final String? ipPreference;
+
   /// The DNS response type for the virtual node. Valid values: `LOADBALANCER`, `ENDPOINTS`.
   final String? responseType;
 
@@ -30,9 +31,12 @@ class VirtualNodeSpecServiceDiscoveryDns {
   factory VirtualNodeSpecServiceDiscoveryDns.fromMap(Map<String, dynamic> map) {
     return VirtualNodeSpecServiceDiscoveryDns(
       hostname: map['hostname'] as String,
-      ipPreference: map['ipPreference'] == null ? null : map['ipPreference'] as String,
-      responseType: map['responseType'] == null ? null : map['responseType'] as String,
+      ipPreference: map['ipPreference'] == null
+          ? null
+          : map['ipPreference'] as String,
+      responseType: map['responseType'] == null
+          ? null
+          : map['responseType'] as String,
     );
   }
 }
-

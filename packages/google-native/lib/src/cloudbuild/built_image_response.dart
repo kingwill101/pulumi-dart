@@ -6,8 +6,10 @@ import 'time_span_response.dart';
 class BuiltImageResponse {
   /// Docker Registry 2.0 digest.
   final String digest;
+
   /// Name used to push the container image to Google Container Registry, as presented to `docker push`.
   final String name;
+
   /// Stores timing information for pushing the specified image.
   final TimeSpanResponse pushTiming;
 
@@ -33,8 +35,9 @@ class BuiltImageResponse {
     return BuiltImageResponse(
       digest: map['digest'] as String,
       name: map['name'] as String,
-      pushTiming: TimeSpanResponse.fromMap((map['pushTiming'] as Map).cast<String, dynamic>()),
+      pushTiming: TimeSpanResponse.fromMap(
+        (map['pushTiming'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

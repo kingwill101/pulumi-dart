@@ -7,8 +7,10 @@ import 'google_cloud_discoveryengine_v1alpha_text_input_response.dart';
 class GoogleCloudDiscoveryengineV1alphaConversationMessageResponse {
   /// Message creation timestamp.
   final String createTime;
+
   /// Search reply.
   final GoogleCloudDiscoveryengineV1alphaReplyResponse reply;
+
   /// User text input.
   final GoogleCloudDiscoveryengineV1alphaTextInputResponse userInput;
 
@@ -30,12 +32,17 @@ class GoogleCloudDiscoveryengineV1alphaConversationMessageResponse {
     };
   }
 
-  factory GoogleCloudDiscoveryengineV1alphaConversationMessageResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDiscoveryengineV1alphaConversationMessageResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDiscoveryengineV1alphaConversationMessageResponse(
       createTime: map['createTime'] as String,
-      reply: GoogleCloudDiscoveryengineV1alphaReplyResponse.fromMap((map['reply'] as Map).cast<String, dynamic>()),
-      userInput: GoogleCloudDiscoveryengineV1alphaTextInputResponse.fromMap((map['userInput'] as Map).cast<String, dynamic>()),
+      reply: GoogleCloudDiscoveryengineV1alphaReplyResponse.fromMap(
+        (map['reply'] as Map).cast<String, dynamic>(),
+      ),
+      userInput: GoogleCloudDiscoveryengineV1alphaTextInputResponse.fromMap(
+        (map['userInput'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

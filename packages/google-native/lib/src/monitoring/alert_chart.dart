@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A chart that displays alert policy data.
 class AlertChart {
   /// The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
@@ -8,20 +7,13 @@ class AlertChart {
 
   /// Creates a new [AlertChart].
   /// [name] The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
-  AlertChart({
-    required this.name,
-  });
+  AlertChart({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory AlertChart.fromMap(Map<String, dynamic> map) {
-    return AlertChart(
-      name: map['name'] as String,
-    );
+    return AlertChart(name: map['name'] as String);
   }
 }
-

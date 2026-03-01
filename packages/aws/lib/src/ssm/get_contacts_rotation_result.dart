@@ -6,18 +6,24 @@ import 'get_contacts_rotation_recurrence.dart';
 /// Result data returned by getContactsRotation.
 class GetContactsRotationResult {
   final String arn;
+
   /// The Amazon Resource Names (ARNs) of the contacts to add to the rotation. The order in which you list the contacts is their shift order in the rotation schedule.
   final List<String> contactIds;
   final String id;
+
   /// The name for the rotation.
   final String name;
+
   /// Information about when an on-call rotation is in effect and how long the rotation period lasts.
   final List<GetContactsRotationRecurrence> recurrences;
   final String region;
+
   /// The date and time, in RFC 3339 format, that the rotation goes into effect.
   final String startTime;
+
   /// A map of tags to assign to the resource.
   final Map<String, String> tags;
+
   /// The time zone to base the rotation’s activity on in Internet Assigned Numbers Authority (IANA) format.
   final String timeZoneId;
 
@@ -49,7 +55,11 @@ class GetContactsRotationResult {
       'contactIds': contactIds,
       'id': id,
       'name': name,
-      'recurrences': pulumi.Input.encodeList<GetContactsRotationRecurrence, Map<String, dynamic>>(recurrences, (value) => value.toMap()),
+      'recurrences':
+          pulumi.Input.encodeList<
+            GetContactsRotationRecurrence,
+            Map<String, dynamic>
+          >(recurrences, (value) => value.toMap()),
       'region': region,
       'startTime': startTime,
       'tags': tags,
@@ -63,7 +73,12 @@ class GetContactsRotationResult {
       contactIds: (map['contactIds'] as List).cast<String>(),
       id: map['id'] as String,
       name: map['name'] as String,
-      recurrences: pulumi.Input.decodeList<GetContactsRotationRecurrence>(map['recurrences'], (value) => GetContactsRotationRecurrence.fromMap((value as Map).cast<String, dynamic>())),
+      recurrences: pulumi.Input.decodeList<GetContactsRotationRecurrence>(
+        map['recurrences'],
+        (value) => GetContactsRotationRecurrence.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       region: map['region'] as String,
       startTime: map['startTime'] as String,
       tags: (map['tags'] as Map).cast<String, String>(),
@@ -71,4 +86,3 @@ class GetContactsRotationResult {
     );
   }
 }
-

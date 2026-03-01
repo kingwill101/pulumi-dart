@@ -15,7 +15,8 @@ enum OnPremClusterClusterTypeGkehubV1alpha {
         return item;
       }
     }
-    throw ArgumentError('Unknown OnPremClusterClusterTypeGkehubV1alpha value: $value');
+    throw ArgumentError(
+      'Unknown OnPremClusterClusterTypeGkehubV1alpha value: $value',
+    );
   }
 }
-

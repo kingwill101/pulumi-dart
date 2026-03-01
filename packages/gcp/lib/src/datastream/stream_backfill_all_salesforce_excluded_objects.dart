@@ -10,20 +10,31 @@ class StreamBackfillAllSalesforceExcludedObjects {
 
   /// Creates a new [StreamBackfillAllSalesforceExcludedObjects].
   /// [objects] Salesforce objects in Salesforce Org.
-  StreamBackfillAllSalesforceExcludedObjects({
-    required this.objects,
-  });
+  StreamBackfillAllSalesforceExcludedObjects({required this.objects});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'objects': pulumi.Input.encodeList<StreamBackfillAllSalesforceExcludedObjectsObject, Map<String, dynamic>>(objects, (value) => value.toMap()),
+      'objects':
+          pulumi.Input.encodeList<
+            StreamBackfillAllSalesforceExcludedObjectsObject,
+            Map<String, dynamic>
+          >(objects, (value) => value.toMap()),
     };
   }
 
-  factory StreamBackfillAllSalesforceExcludedObjects.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllSalesforceExcludedObjects.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllSalesforceExcludedObjects(
-      objects: pulumi.Input.decodeList<StreamBackfillAllSalesforceExcludedObjectsObject>(map['objects'], (value) => StreamBackfillAllSalesforceExcludedObjectsObject.fromMap((value as Map).cast<String, dynamic>())),
+      objects:
+          pulumi.Input.decodeList<
+            StreamBackfillAllSalesforceExcludedObjectsObject
+          >(
+            map['objects'],
+            (value) => StreamBackfillAllSalesforceExcludedObjectsObject.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

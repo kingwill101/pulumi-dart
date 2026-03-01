@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LaunchGroup {
   /// Specifies the description of the launch group.
   final String? description;
+
   /// Specifies the name of the feature that the launch is using.
   final String feature;
+
   /// Specifies the name of the lahnch group.
   final String name;
+
   /// Specifies the feature variation to use for this launch group.
   final String variation;
 
@@ -34,11 +36,12 @@ class LaunchGroup {
 
   factory LaunchGroup.fromMap(Map<String, dynamic> map) {
     return LaunchGroup(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       feature: map['feature'] as String,
       name: map['name'] as String,
       variation: map['variation'] as String,
     );
   }
 }
-

@@ -1,24 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
 class ResourcePolicyGroupPlacementPolicyResponse {
   /// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
   final int availabilityDomainCount;
+
   /// Specifies network collocation
   final String collocation;
+
   /// Specifies network locality
   final String locality;
+
   /// Specifies the number of max logical switches.
   final int maxDistance;
+
   /// Scope specifies the availability domain to which the VMs should be spread.
   final String scope;
+
   /// Specifies the number of slices in a multislice workload.
   final int sliceCount;
+
   /// Specifies instances to hosts placement relationship
   final String style;
+
   /// Specifies the shape of the TPU slice
   final String tpuTopology;
+
   /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
   final int vmCount;
 
@@ -58,7 +65,9 @@ class ResourcePolicyGroupPlacementPolicyResponse {
     };
   }
 
-  factory ResourcePolicyGroupPlacementPolicyResponse.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicyGroupPlacementPolicyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicyGroupPlacementPolicyResponse(
       availabilityDomainCount: map['availabilityDomainCount'] as int,
       collocation: map['collocation'] as String,
@@ -72,4 +81,3 @@ class ResourcePolicyGroupPlacementPolicyResponse {
     );
   }
 }
-

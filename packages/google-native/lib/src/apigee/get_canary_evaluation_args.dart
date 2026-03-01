@@ -19,10 +19,9 @@ class GetCanaryEvaluationArgs {
     required String canaryevaluationId,
     required String instanceId,
     required String organizationId,
-  }) :
-      canaryevaluationId = pulumi.Input.asInput<String>(canaryevaluationId),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : canaryevaluationId = pulumi.Input.asInput<String>(canaryevaluationId),
+       instanceId = pulumi.Input.asInput<String>(instanceId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetCanaryEvaluationArgs {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents two-dimensional positions.
 class EnterpriseCrmEventbusProtoCoordinateResponse {
   final int x;
@@ -15,17 +14,15 @@ class EnterpriseCrmEventbusProtoCoordinateResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'x': x,
-      'y': y,
-    };
+    return <String, dynamic>{'x': x, 'y': y};
   }
 
-  factory EnterpriseCrmEventbusProtoCoordinateResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoCoordinateResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoCoordinateResponse(
       x: map['x'] as int,
       y: map['y'] as int,
     );
   }
 }
-

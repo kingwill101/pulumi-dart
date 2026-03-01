@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLoadBalancerHealthCheckLog {
   final String bucket;
   final bool enabled;
@@ -32,4 +31,3 @@ class GetLoadBalancerHealthCheckLog {
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterStateInfoUpdateInfo {
   /// Target number of replica nodes per shard.
   final int targetReplicaCount;
+
   /// Target number of shards for redis cluster.
   final int targetShardCount;
 
@@ -29,4 +29,3 @@ class GetClusterStateInfoUpdateInfo {
     );
   }
 }
-

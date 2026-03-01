@@ -22,11 +22,10 @@ class GetRouteArgs {
     required String privateConnectionId,
     String? project,
     required String routeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      routeId = pulumi.Input.asInput<String>(routeId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       routeId = pulumi.Input.asInput<String>(routeId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetRouteArgs {
     );
   }
 }
-

@@ -16,4 +16,3 @@ enum RuntimeAccessConfigAccessType {
     throw ArgumentError('Unknown RuntimeAccessConfigAccessType value: $value');
   }
 }
-

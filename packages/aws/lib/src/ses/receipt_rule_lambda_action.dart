@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ReceiptRuleLambdaAction {
   /// The ARN of the Lambda function to invoke
   final String functionArn;
+
   /// `Event` or `RequestResponse`
   final String? invocationType;
+
   /// The position of the action in the receipt rule
   final int position;
+
   /// The ARN of an SNS topic to notify
   final String? topicArn;
 
@@ -35,10 +37,11 @@ class ReceiptRuleLambdaAction {
   factory ReceiptRuleLambdaAction.fromMap(Map<String, dynamic> map) {
     return ReceiptRuleLambdaAction(
       functionArn: map['functionArn'] as String,
-      invocationType: map['invocationType'] == null ? null : map['invocationType'] as String,
+      invocationType: map['invocationType'] == null
+          ? null
+          : map['invocationType'] as String,
       position: map['position'] as int,
       topicArn: map['topicArn'] == null ? null : map['topicArn'] as String,
     );
   }
 }
-

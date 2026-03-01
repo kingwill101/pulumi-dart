@@ -8,20 +8,19 @@ class LocationFsxOntapFileSystemProtocolNfs {
 
   /// Creates a new [LocationFsxOntapFileSystemProtocolNfs].
   /// [mountOptions] Mount options that are available for DataSync to access an NFS location. See NFS Mount Options below.
-  LocationFsxOntapFileSystemProtocolNfs({
-    required this.mountOptions,
-  });
+  LocationFsxOntapFileSystemProtocolNfs({required this.mountOptions});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mountOptions': mountOptions.toMap(),
-    };
+    return <String, dynamic>{'mountOptions': mountOptions.toMap()};
   }
 
-  factory LocationFsxOntapFileSystemProtocolNfs.fromMap(Map<String, dynamic> map) {
+  factory LocationFsxOntapFileSystemProtocolNfs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LocationFsxOntapFileSystemProtocolNfs(
-      mountOptions: LocationFsxOntapFileSystemProtocolNfsMountOptions.fromMap((map['mountOptions'] as Map).cast<String, dynamic>()),
+      mountOptions: LocationFsxOntapFileSystemProtocolNfsMountOptions.fromMap(
+        (map['mountOptions'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'google_cloud_aiplatform_v1beta1_machine_spec.dart';
 class GoogleCloudAiplatformV1beta1BatchDedicatedResources {
   /// Immutable. The specification of a single machine.
   final GoogleCloudAiplatformV1beta1MachineSpec machineSpec;
+
   /// Immutable. The maximum number of machine replicas the batch operation may be scaled to. The default value is 10.
   final int? maxReplicaCount;
+
   /// Immutable. The number of machine replicas used at the start of the batch operation. If not set, Vertex AI decides starting number, not greater than max_replica_count
   final int? startingReplicaCount;
 
@@ -29,12 +31,19 @@ class GoogleCloudAiplatformV1beta1BatchDedicatedResources {
     };
   }
 
-  factory GoogleCloudAiplatformV1beta1BatchDedicatedResources.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1BatchDedicatedResources.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1BatchDedicatedResources(
-      machineSpec: GoogleCloudAiplatformV1beta1MachineSpec.fromMap((map['machineSpec'] as Map).cast<String, dynamic>()),
-      maxReplicaCount: map['maxReplicaCount'] == null ? null : map['maxReplicaCount'] as int,
-      startingReplicaCount: map['startingReplicaCount'] == null ? null : map['startingReplicaCount'] as int,
+      machineSpec: GoogleCloudAiplatformV1beta1MachineSpec.fromMap(
+        (map['machineSpec'] as Map).cast<String, dynamic>(),
+      ),
+      maxReplicaCount: map['maxReplicaCount'] == null
+          ? null
+          : map['maxReplicaCount'] as int,
+      startingReplicaCount: map['startingReplicaCount'] == null
+          ? null
+          : map['startingReplicaCount'] as int,
     );
   }
 }
-

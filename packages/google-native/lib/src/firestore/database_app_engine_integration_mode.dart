@@ -1,6 +1,8 @@
 /// The App Engine integration mode to use for this database.
 enum DatabaseAppEngineIntegrationMode {
-  appEngineIntegrationModeUnspecified("APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED"),
+  appEngineIntegrationModeUnspecified(
+    "APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED",
+  ),
   enabled("ENABLED"),
   disabled("DISABLED");
 
@@ -13,7 +15,8 @@ enum DatabaseAppEngineIntegrationMode {
         return item;
       }
     }
-    throw ArgumentError('Unknown DatabaseAppEngineIntegrationMode value: $value');
+    throw ArgumentError(
+      'Unknown DatabaseAppEngineIntegrationMode value: $value',
+    );
   }
 }
-

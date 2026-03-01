@@ -9,31 +9,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGatewayArgs {
   /// Name of the gateway to retrieve.
   final pulumi.Input<String> name;
+
   /// A map of tags assigned to the gateway.
   final pulumi.Input<Map<String, String>>? tags;
 
   /// Creates a new [GetGatewayArgs].
   /// [name] Name of the gateway to retrieve.
   /// [tags] A map of tags assigned to the gateway.
-  GetGatewayArgs({
-    required String name,
-    Map<String, String>? tags,
-  }) :
-      name = pulumi.Input.asInput<String>(name),
+  GetGatewayArgs({required String name, Map<String, String>? tags})
+    : name = pulumi.Input.asInput<String>(name),
       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'name': name, 'tags': ?tags};
   }
 
   factory GetGatewayArgs.fromMap(Map<String, dynamic> map) {
     return GetGatewayArgs(
       name: map['name'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

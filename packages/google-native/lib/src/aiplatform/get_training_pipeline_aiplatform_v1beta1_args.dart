@@ -19,10 +19,9 @@ class GetTrainingPipelineAiplatformV1beta1Args {
     required String location,
     String? project,
     required String trainingPipelineId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trainingPipelineId = pulumi.Input.asInput<String>(trainingPipelineId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       trainingPipelineId = pulumi.Input.asInput<String>(trainingPipelineId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetTrainingPipelineAiplatformV1beta1Args {
     };
   }
 
-  factory GetTrainingPipelineAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetTrainingPipelineAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetTrainingPipelineAiplatformV1beta1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +41,3 @@ class GetTrainingPipelineAiplatformV1beta1Args {
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
 class NetworkPolicyResponseContainerV1beta1 {
   /// Whether network policy is enabled on the cluster.
   final bool enabled;
+
   /// The selected network policy provider.
   final String provider;
 
@@ -17,17 +17,15 @@ class NetworkPolicyResponseContainerV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-      'provider': provider,
-    };
+    return <String, dynamic>{'enabled': enabled, 'provider': provider};
   }
 
-  factory NetworkPolicyResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory NetworkPolicyResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkPolicyResponseContainerV1beta1(
       enabled: map['enabled'] as bool,
       provider: map['provider'] as String,
     );
   }
 }
-

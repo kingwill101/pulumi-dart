@@ -4,7 +4,8 @@ import 'agentcore_gateway_target_target_configuration_mcp_smithy_model_inline_pa
 import 'agentcore_gateway_target_target_configuration_mcp_smithy_model_s3.dart';
 
 class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel {
-  final AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload? inlinePayload;
+  final AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload?
+  inlinePayload;
   final AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3? s3;
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel].
@@ -22,11 +23,20 @@ class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel {
     };
   }
 
-  factory AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreGatewayTargetTargetConfigurationMcpSmithyModel(
-      inlinePayload: map['inlinePayload'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload.fromMap((map['inlinePayload'] as Map).cast<String, dynamic>()),
-      s3: map['s3'] == null ? null : AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3.fromMap((map['s3'] as Map).cast<String, dynamic>()),
+      inlinePayload: map['inlinePayload'] == null
+          ? null
+          : AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload.fromMap(
+              (map['inlinePayload'] as Map).cast<String, dynamic>(),
+            ),
+      s3: map['s3'] == null
+          ? null
+          : AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelS3.fromMap(
+              (map['s3'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

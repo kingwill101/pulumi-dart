@@ -223,6 +223,7 @@ import 'role_policies_exclusive_args.dart';
 class RolePoliciesExclusive extends pulumi.CustomResource {
   /// A list of inline policy names to be assigned to the role. Policies attached to this role but not configured in this argument will be removed.
   late final pulumi.Output<List<String>> policyNames;
+
   /// IAM role name.
   late final pulumi.Output<String> roleName;
 
@@ -235,11 +236,11 @@ class RolePoliciesExclusive extends pulumi.CustomResource {
     RolePoliciesExclusiveArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iam/rolePoliciesExclusive:RolePoliciesExclusive',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:iam/rolePoliciesExclusive:RolePoliciesExclusive',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.policyNames = registerOutput<List<String>>('policyNames');
     this.roleName = registerOutput<String>('roleName');
   }

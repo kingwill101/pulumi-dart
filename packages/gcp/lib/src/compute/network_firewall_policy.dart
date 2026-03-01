@@ -130,26 +130,35 @@ import 'network_firewall_policy_args.dart';
 class NetworkFirewallPolicy extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String?> description;
+
   /// Fingerprint of the resource. This field is used internally during updates of this resource.
   late final pulumi.Output<String> fingerprint;
+
   /// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The unique identifier for the resource. This identifier is defined by the server.
   late final pulumi.Output<String> networkFirewallPolicyId;
+
   /// Policy type is used to determine which resources (networks) the policy can be associated with.
   /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
   /// Different policy types may support some of the Firewall Rules features.
   /// Possible values are: `VPC_POLICY`.
   late final pulumi.Output<String> policyType;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
   late final pulumi.Output<int> ruleTupleCount;
+
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
+
   /// Server-defined URL for this resource with the resource id.
   late final pulumi.Output<String> selfLinkWithId;
 
@@ -162,16 +171,18 @@ class NetworkFirewallPolicy extends pulumi.CustomResource {
     NetworkFirewallPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');
     this.fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
-    this.networkFirewallPolicyId = registerOutput<String>('networkFirewallPolicyId');
+    this.networkFirewallPolicyId = registerOutput<String>(
+      'networkFirewallPolicyId',
+    );
     this.policyType = registerOutput<String>('policyType');
     this.project = registerOutput<String>('project');
     this.ruleTupleCount = registerOutput<int>('ruleTupleCount');

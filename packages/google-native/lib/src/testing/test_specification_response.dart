@@ -13,24 +13,34 @@ import 'test_setup_response.dart';
 class TestSpecificationResponse {
   /// An Android instrumentation test.
   final AndroidInstrumentationTestResponse androidInstrumentationTest;
+
   /// An Android robo test.
   final AndroidRoboTestResponse androidRoboTest;
+
   /// An Android Application with a Test Loop.
   final AndroidTestLoopResponse androidTestLoop;
+
   /// Disables performance metrics recording. May reduce test latency.
   final bool disablePerformanceMetrics;
+
   /// Disables video recording. May reduce test latency.
   final bool disableVideoRecording;
+
   /// An iOS Robo test.
   final IosRoboTestResponse iosRoboTest;
+
   /// An iOS application with a test loop.
   final IosTestLoopResponse iosTestLoop;
+
   /// Test setup requirements for iOS.
   final IosTestSetupResponse iosTestSetup;
+
   /// An iOS XCTest, via an .xctestrun file.
   final IosXcTestResponse iosXcTest;
+
   /// Test setup requirements for Android e.g. files to install, bootstrap scripts.
   final TestSetupResponse testSetup;
+
   /// Max time a test execution is allowed to run before it is automatically cancelled. The default value is 5 min.
   final String testTimeout;
 
@@ -78,18 +88,33 @@ class TestSpecificationResponse {
 
   factory TestSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return TestSpecificationResponse(
-      androidInstrumentationTest: AndroidInstrumentationTestResponse.fromMap((map['androidInstrumentationTest'] as Map).cast<String, dynamic>()),
-      androidRoboTest: AndroidRoboTestResponse.fromMap((map['androidRoboTest'] as Map).cast<String, dynamic>()),
-      androidTestLoop: AndroidTestLoopResponse.fromMap((map['androidTestLoop'] as Map).cast<String, dynamic>()),
+      androidInstrumentationTest: AndroidInstrumentationTestResponse.fromMap(
+        (map['androidInstrumentationTest'] as Map).cast<String, dynamic>(),
+      ),
+      androidRoboTest: AndroidRoboTestResponse.fromMap(
+        (map['androidRoboTest'] as Map).cast<String, dynamic>(),
+      ),
+      androidTestLoop: AndroidTestLoopResponse.fromMap(
+        (map['androidTestLoop'] as Map).cast<String, dynamic>(),
+      ),
       disablePerformanceMetrics: map['disablePerformanceMetrics'] as bool,
       disableVideoRecording: map['disableVideoRecording'] as bool,
-      iosRoboTest: IosRoboTestResponse.fromMap((map['iosRoboTest'] as Map).cast<String, dynamic>()),
-      iosTestLoop: IosTestLoopResponse.fromMap((map['iosTestLoop'] as Map).cast<String, dynamic>()),
-      iosTestSetup: IosTestSetupResponse.fromMap((map['iosTestSetup'] as Map).cast<String, dynamic>()),
-      iosXcTest: IosXcTestResponse.fromMap((map['iosXcTest'] as Map).cast<String, dynamic>()),
-      testSetup: TestSetupResponse.fromMap((map['testSetup'] as Map).cast<String, dynamic>()),
+      iosRoboTest: IosRoboTestResponse.fromMap(
+        (map['iosRoboTest'] as Map).cast<String, dynamic>(),
+      ),
+      iosTestLoop: IosTestLoopResponse.fromMap(
+        (map['iosTestLoop'] as Map).cast<String, dynamic>(),
+      ),
+      iosTestSetup: IosTestSetupResponse.fromMap(
+        (map['iosTestSetup'] as Map).cast<String, dynamic>(),
+      ),
+      iosXcTest: IosXcTestResponse.fromMap(
+        (map['iosXcTest'] as Map).cast<String, dynamic>(),
+      ),
+      testSetup: TestSetupResponse.fromMap(
+        (map['testSetup'] as Map).cast<String, dynamic>(),
+      ),
       testTimeout: map['testTimeout'] as String,
     );
   }
 }
-

@@ -12,15 +12,11 @@ class GetAccountPublicAccessBlockArgs {
 
   /// Creates a new [GetAccountPublicAccessBlockArgs].
   /// [accountId] AWS account ID to configure. Defaults to automatically determined account ID of the AWS provider.
-  GetAccountPublicAccessBlockArgs({
-    String? accountId,
-  }) :
-      accountId = pulumi.Input.asOptionalInput<String>(accountId);
+  GetAccountPublicAccessBlockArgs({String? accountId})
+    : accountId = pulumi.Input.asOptionalInput<String>(accountId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'accountId': ?accountId,
-    };
+    return <String, dynamic>{'accountId': ?accountId};
   }
 
   factory GetAccountPublicAccessBlockArgs.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class GetAccountPublicAccessBlockArgs {
     );
   }
 }
-

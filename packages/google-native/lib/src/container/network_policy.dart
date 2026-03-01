@@ -6,16 +6,14 @@ import 'network_policy_provider.dart';
 class NetworkPolicy {
   /// Whether network policy is enabled on the cluster.
   final bool? enabled;
+
   /// The selected network policy provider.
   final NetworkPolicyProvider? provider;
 
   /// Creates a new [NetworkPolicy].
   /// [enabled] Whether network policy is enabled on the cluster.
   /// [provider] The selected network policy provider.
-  NetworkPolicy({
-    this.enabled,
-    this.provider,
-  });
+  NetworkPolicy({this.enabled, this.provider});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,8 +25,9 @@ class NetworkPolicy {
   factory NetworkPolicy.fromMap(Map<String, dynamic> map) {
     return NetworkPolicy(
       enabled: map['enabled'] == null ? null : map['enabled'] as bool,
-      provider: map['provider'] == null ? null : NetworkPolicyProvider.fromValue(map['provider'] as String),
+      provider: map['provider'] == null
+          ? null
+          : NetworkPolicyProvider.fromValue(map['provider'] as String),
     );
   }
 }
-

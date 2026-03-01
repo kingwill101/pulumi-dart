@@ -25,12 +25,11 @@ class GetProductRetailV2betaArgs {
     required String location,
     required String productId,
     String? project,
-  }) :
-      branchId = pulumi.Input.asInput<String>(branchId),
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      location = pulumi.Input.asInput<String>(location),
-      productId = pulumi.Input.asInput<String>(productId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : branchId = pulumi.Input.asInput<String>(branchId),
+       catalogId = pulumi.Input.asInput<String>(catalogId),
+       location = pulumi.Input.asInput<String>(location),
+       productId = pulumi.Input.asInput<String>(productId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetProductRetailV2betaArgs {
     );
   }
 }
-

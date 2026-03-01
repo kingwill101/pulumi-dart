@@ -18,4 +18,3 @@ enum UrlMapSecurityLevel {
     throw ArgumentError('Unknown UrlMapSecurityLevel value: $value');
   }
 }
-

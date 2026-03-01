@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchUriFragment {
   /// What AWS WAF should do if it fails to completely parse the JSON body. Valid values are `MATCH` (default) and `NO_MATCH`.
   final String? fallbackBehavior;
@@ -12,15 +11,16 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementF
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fallbackBehavior': ?fallbackBehavior,
-    };
+    return <String, dynamic>{'fallbackBehavior': ?fallbackBehavior};
   }
 
-  factory WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchUriFragment.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchUriFragment.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchUriFragment(
-      fallbackBehavior: map['fallbackBehavior'] == null ? null : map['fallbackBehavior'] as String,
+      fallbackBehavior: map['fallbackBehavior'] == null
+          ? null
+          : map['fallbackBehavior'] as String,
     );
   }
 }
-

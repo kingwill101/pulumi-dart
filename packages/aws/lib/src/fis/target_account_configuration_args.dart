@@ -9,14 +9,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetAccountConfigurationArgs {
   /// Account ID of the target account.
   final pulumi.Input<String> accountId;
+
   /// Description of the target account.
   final pulumi.Input<String>? description;
+
   /// Experiment Template ID.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> experimentTemplateId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// ARN of the IAM Role for the target account.
   final pulumi.Input<String>? roleArn;
 
@@ -32,12 +36,13 @@ class TargetAccountConfigurationArgs {
     required String experimentTemplateId,
     String? region,
     String? roleArn,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      experimentTemplateId = pulumi.Input.asInput<String>(experimentTemplateId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      roleArn = pulumi.Input.asOptionalInput<String>(roleArn);
+  }) : accountId = pulumi.Input.asInput<String>(accountId),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       experimentTemplateId = pulumi.Input.asInput<String>(
+         experimentTemplateId,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       roleArn = pulumi.Input.asOptionalInput<String>(roleArn);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,11 +57,12 @@ class TargetAccountConfigurationArgs {
   factory TargetAccountConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return TargetAccountConfigurationArgs(
       accountId: map['accountId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       experimentTemplateId: map['experimentTemplateId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       roleArn: map['roleArn'] == null ? null : map['roleArn'] as String,
     );
   }
 }
-

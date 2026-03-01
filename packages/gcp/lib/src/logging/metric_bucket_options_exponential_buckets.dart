@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class MetricBucketOptionsExponentialBuckets {
   /// Must be greater than 1.
   final double growthFactor;
+
   /// Must be greater than 0.
   final int numFiniteBuckets;
+
   /// Must be greater than 0.
   final double scale;
 
@@ -27,7 +28,9 @@ class MetricBucketOptionsExponentialBuckets {
     };
   }
 
-  factory MetricBucketOptionsExponentialBuckets.fromMap(Map<String, dynamic> map) {
+  factory MetricBucketOptionsExponentialBuckets.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MetricBucketOptionsExponentialBuckets(
       growthFactor: map['growthFactor'] as double,
       numFiniteBuckets: map['numFiniteBuckets'] as int,
@@ -35,4 +38,3 @@ class MetricBucketOptionsExponentialBuckets {
     );
   }
 }
-

@@ -15,7 +15,8 @@ enum GoogleCloudContentwarehouseV1RuleTriggerType {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudContentwarehouseV1RuleTriggerType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudContentwarehouseV1RuleTriggerType value: $value',
+    );
   }
 }
-

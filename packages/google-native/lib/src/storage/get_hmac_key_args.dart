@@ -19,10 +19,9 @@ class GetHmacKeyArgs {
     required String accessId,
     String? project,
     String? userProject,
-  }) :
-      accessId = pulumi.Input.asInput<String>(accessId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+  }) : accessId = pulumi.Input.asInput<String>(accessId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       userProject = pulumi.Input.asOptionalInput<String>(userProject);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,8 +35,9 @@ class GetHmacKeyArgs {
     return GetHmacKeyArgs(
       accessId: map['accessId'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      userProject: map['userProject'] == null ? null : map['userProject'] as String,
+      userProject: map['userProject'] == null
+          ? null
+          : map['userProject'] as String,
     );
   }
 }
-

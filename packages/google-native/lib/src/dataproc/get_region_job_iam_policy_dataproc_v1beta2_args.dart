@@ -22,11 +22,12 @@ class GetRegionJobIamPolicyDataprocV1beta2Args {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String regionId,
-  }) :
-      jobId = pulumi.Input.asInput<String>(jobId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      regionId = pulumi.Input.asInput<String>(regionId);
+  }) : jobId = pulumi.Input.asInput<String>(jobId),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       regionId = pulumi.Input.asInput<String>(regionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,13 +38,17 @@ class GetRegionJobIamPolicyDataprocV1beta2Args {
     };
   }
 
-  factory GetRegionJobIamPolicyDataprocV1beta2Args.fromMap(Map<String, dynamic> map) {
+  factory GetRegionJobIamPolicyDataprocV1beta2Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionJobIamPolicyDataprocV1beta2Args(
       jobId: map['jobId'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       regionId: map['regionId'] as String,
     );
   }
 }
-

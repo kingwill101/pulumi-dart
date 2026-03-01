@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetQuerySuggestionsBlockListArgs {
   /// Identifier of the index that contains the block list.
   final pulumi.Input<String> indexId;
+
   /// Identifier of the block list.
   final pulumi.Input<String> querySuggestionsBlockListId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Metadata that helps organize the block list you create.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -26,11 +29,12 @@ class GetQuerySuggestionsBlockListArgs {
     required String querySuggestionsBlockListId,
     String? region,
     Map<String, String>? tags,
-  }) :
-      indexId = pulumi.Input.asInput<String>(indexId),
-      querySuggestionsBlockListId = pulumi.Input.asInput<String>(querySuggestionsBlockListId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : indexId = pulumi.Input.asInput<String>(indexId),
+       querySuggestionsBlockListId = pulumi.Input.asInput<String>(
+         querySuggestionsBlockListId,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,8 +50,9 @@ class GetQuerySuggestionsBlockListArgs {
       indexId: map['indexId'] as String,
       querySuggestionsBlockListId: map['querySuggestionsBlockListId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

@@ -19,10 +19,11 @@ class GetDataAttributeBindingArgs {
     required String dataAttributeBindingId,
     required String location,
     String? project,
-  }) :
-      dataAttributeBindingId = pulumi.Input.asInput<String>(dataAttributeBindingId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : dataAttributeBindingId = pulumi.Input.asInput<String>(
+         dataAttributeBindingId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetDataAttributeBindingArgs {
     );
   }
 }
-

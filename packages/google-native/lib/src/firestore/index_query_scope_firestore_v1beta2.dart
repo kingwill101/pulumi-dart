@@ -13,7 +13,8 @@ enum IndexQueryScopeFirestoreV1beta2 {
         return item;
       }
     }
-    throw ArgumentError('Unknown IndexQueryScopeFirestoreV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown IndexQueryScopeFirestoreV1beta2 value: $value',
+    );
   }
 }
-

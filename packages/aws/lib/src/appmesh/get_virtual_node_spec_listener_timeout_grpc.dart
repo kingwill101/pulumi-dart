@@ -18,16 +18,38 @@ class GetVirtualNodeSpecListenerTimeoutGrpc {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'idles': pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutGrpcIdle, Map<String, dynamic>>(idles, (value) => value.toMap()),
-      'perRequests': pulumi.Input.encodeList<GetVirtualNodeSpecListenerTimeoutGrpcPerRequest, Map<String, dynamic>>(perRequests, (value) => value.toMap()),
+      'idles':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecListenerTimeoutGrpcIdle,
+            Map<String, dynamic>
+          >(idles, (value) => value.toMap()),
+      'perRequests':
+          pulumi.Input.encodeList<
+            GetVirtualNodeSpecListenerTimeoutGrpcPerRequest,
+            Map<String, dynamic>
+          >(perRequests, (value) => value.toMap()),
     };
   }
 
-  factory GetVirtualNodeSpecListenerTimeoutGrpc.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerTimeoutGrpc.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecListenerTimeoutGrpc(
-      idles: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpcIdle>(map['idles'], (value) => GetVirtualNodeSpecListenerTimeoutGrpcIdle.fromMap((value as Map).cast<String, dynamic>())),
-      perRequests: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpcPerRequest>(map['perRequests'], (value) => GetVirtualNodeSpecListenerTimeoutGrpcPerRequest.fromMap((value as Map).cast<String, dynamic>())),
+      idles: pulumi.Input.decodeList<GetVirtualNodeSpecListenerTimeoutGrpcIdle>(
+        map['idles'],
+        (value) => GetVirtualNodeSpecListenerTimeoutGrpcIdle.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      perRequests:
+          pulumi.Input.decodeList<
+            GetVirtualNodeSpecListenerTimeoutGrpcPerRequest
+          >(
+            map['perRequests'],
+            (value) => GetVirtualNodeSpecListenerTimeoutGrpcPerRequest.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

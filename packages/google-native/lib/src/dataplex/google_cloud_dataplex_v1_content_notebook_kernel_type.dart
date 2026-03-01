@@ -6,13 +6,16 @@ enum GoogleCloudDataplexV1ContentNotebookKernelType {
   const GoogleCloudDataplexV1ContentNotebookKernelType(this.value);
   final String value;
 
-  static GoogleCloudDataplexV1ContentNotebookKernelType fromValue(String value) {
+  static GoogleCloudDataplexV1ContentNotebookKernelType fromValue(
+    String value,
+  ) {
     for (final item in GoogleCloudDataplexV1ContentNotebookKernelType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDataplexV1ContentNotebookKernelType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDataplexV1ContentNotebookKernelType value: $value',
+    );
   }
 }
-

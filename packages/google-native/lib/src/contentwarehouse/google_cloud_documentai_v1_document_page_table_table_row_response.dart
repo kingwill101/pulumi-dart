@@ -16,14 +16,28 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cells': pulumi.Input.encodeList<GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse, Map<String, dynamic>>(cells, (value) => value.toMap()),
+      'cells':
+          pulumi.Input.encodeList<
+            GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse,
+            Map<String, dynamic>
+          >(cells, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1DocumentPageTableTableRowResponse(
-      cells: pulumi.Input.decodeList<GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse>(map['cells'], (value) => GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse.fromMap((value as Map).cast<String, dynamic>())),
+      cells:
+          pulumi.Input.decodeList<
+            GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse
+          >(
+            map['cells'],
+            (value) =>
+                GoogleCloudDocumentaiV1DocumentPageTableTableCellResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'duration.dart';
 class AndroidTest {
   /// Information about the application under test.
   final AndroidAppInfo? androidAppInfo;
+
   /// An Android instrumentation test.
   final AndroidInstrumentationTest? androidInstrumentationTest;
+
   /// An Android robo test.
   final AndroidRoboTest? androidRoboTest;
+
   /// An Android test loop.
   final Map<String, dynamic>? androidTestLoop;
+
   /// Max time a test is allowed to run before it is automatically cancelled.
   final Duration? testTimeout;
 
@@ -34,9 +38,15 @@ class AndroidTest {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'androidAppInfo': ?androidAppInfo == null ? null : androidAppInfo!.toMap(),
-      'androidInstrumentationTest': ?androidInstrumentationTest == null ? null : androidInstrumentationTest!.toMap(),
-      'androidRoboTest': ?androidRoboTest == null ? null : androidRoboTest!.toMap(),
+      'androidAppInfo': ?androidAppInfo == null
+          ? null
+          : androidAppInfo!.toMap(),
+      'androidInstrumentationTest': ?androidInstrumentationTest == null
+          ? null
+          : androidInstrumentationTest!.toMap(),
+      'androidRoboTest': ?androidRoboTest == null
+          ? null
+          : androidRoboTest!.toMap(),
       'androidTestLoop': ?androidTestLoop,
       'testTimeout': ?testTimeout == null ? null : testTimeout!.toMap(),
     };
@@ -44,12 +54,30 @@ class AndroidTest {
 
   factory AndroidTest.fromMap(Map<String, dynamic> map) {
     return AndroidTest(
-      androidAppInfo: map['androidAppInfo'] == null ? null : AndroidAppInfo.fromMap((map['androidAppInfo'] as Map).cast<String, dynamic>()),
-      androidInstrumentationTest: map['androidInstrumentationTest'] == null ? null : AndroidInstrumentationTest.fromMap((map['androidInstrumentationTest'] as Map).cast<String, dynamic>()),
-      androidRoboTest: map['androidRoboTest'] == null ? null : AndroidRoboTest.fromMap((map['androidRoboTest'] as Map).cast<String, dynamic>()),
-      androidTestLoop: map['androidTestLoop'] == null ? null : (map['androidTestLoop'] as Map).cast<String, dynamic>(),
-      testTimeout: map['testTimeout'] == null ? null : Duration.fromMap((map['testTimeout'] as Map).cast<String, dynamic>()),
+      androidAppInfo: map['androidAppInfo'] == null
+          ? null
+          : AndroidAppInfo.fromMap(
+              (map['androidAppInfo'] as Map).cast<String, dynamic>(),
+            ),
+      androidInstrumentationTest: map['androidInstrumentationTest'] == null
+          ? null
+          : AndroidInstrumentationTest.fromMap(
+              (map['androidInstrumentationTest'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      androidRoboTest: map['androidRoboTest'] == null
+          ? null
+          : AndroidRoboTest.fromMap(
+              (map['androidRoboTest'] as Map).cast<String, dynamic>(),
+            ),
+      androidTestLoop: map['androidTestLoop'] == null
+          ? null
+          : (map['androidTestLoop'] as Map).cast<String, dynamic>(),
+      testTimeout: map['testTimeout'] == null
+          ? null
+          : Duration.fromMap(
+              (map['testTimeout'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

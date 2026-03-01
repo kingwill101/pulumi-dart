@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetHealthCheckGrpcTlsHealthCheck {
   /// The gRPC service name for the health check.
   /// The value of grpcServiceName has the following meanings by convention:
@@ -8,9 +7,11 @@ class GetHealthCheckGrpcTlsHealthCheck {
   /// - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
   /// The grpcServiceName can only be ASCII.
   final String grpcServiceName;
+
   /// The port number for the health check request.
   /// Must be specified if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
   final int port;
+
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   ///
@@ -52,4 +53,3 @@ class GetHealthCheckGrpcTlsHealthCheck {
     );
   }
 }
-

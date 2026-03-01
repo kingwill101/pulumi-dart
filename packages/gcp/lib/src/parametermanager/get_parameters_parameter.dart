@@ -7,23 +7,32 @@ class GetParametersParameter {
   /// The time at which the parameter was created.
   final String createTime;
   final Map<String, String> effectiveLabels;
+
   /// The format type of the parameter.
   final String format;
+
   /// The resource name of the Cloud KMS CryptoKey used to encrypt parameter version payload. Format `projects/{{project}}/locations/global/keyRings/{{key_ring}}/cryptoKeys/{{crypto_key}}`
   final String kmsKey;
+
   /// The labels assigned to the parameter.
   final Map<String, String> labels;
+
   /// The resource name of the parameter. Format: `projects/{{project}}/locations/global/parameters/{{parameter_id}}`
   final String name;
+
   /// The unique name of the resource.
   final String parameterId;
+
   /// An object containing a unique resource identity tied to the parameter. Structure is documented below.
   final List<GetParametersParameterPolicyMember> policyMembers;
+
   /// The ID of the project.
   final String project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final Map<String, String> pulumiLabels;
+
   /// The time at which the parameter was updated.
   final String updateTime;
 
@@ -62,7 +71,11 @@ class GetParametersParameter {
       'labels': labels,
       'name': name,
       'parameterId': parameterId,
-      'policyMembers': pulumi.Input.encodeList<GetParametersParameterPolicyMember, Map<String, dynamic>>(policyMembers, (value) => value.toMap()),
+      'policyMembers':
+          pulumi.Input.encodeList<
+            GetParametersParameterPolicyMember,
+            Map<String, dynamic>
+          >(policyMembers, (value) => value.toMap()),
       'project': project,
       'pulumiLabels': pulumiLabels,
       'updateTime': updateTime,
@@ -78,11 +91,16 @@ class GetParametersParameter {
       labels: (map['labels'] as Map).cast<String, String>(),
       name: map['name'] as String,
       parameterId: map['parameterId'] as String,
-      policyMembers: pulumi.Input.decodeList<GetParametersParameterPolicyMember>(map['policyMembers'], (value) => GetParametersParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>())),
+      policyMembers:
+          pulumi.Input.decodeList<GetParametersParameterPolicyMember>(
+            map['policyMembers'],
+            (value) => GetParametersParameterPolicyMember.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       project: map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

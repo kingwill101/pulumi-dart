@@ -8,20 +8,25 @@ class DomainOffPeakWindowOptionsOffPeakWindow {
 
   /// Creates a new [DomainOffPeakWindowOptionsOffPeakWindow].
   /// [windowStartTime] 10h window for updates
-  DomainOffPeakWindowOptionsOffPeakWindow({
-    this.windowStartTime,
-  });
+  DomainOffPeakWindowOptionsOffPeakWindow({this.windowStartTime});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'windowStartTime': ?windowStartTime == null ? null : windowStartTime!.toMap(),
+      'windowStartTime': ?windowStartTime == null
+          ? null
+          : windowStartTime!.toMap(),
     };
   }
 
-  factory DomainOffPeakWindowOptionsOffPeakWindow.fromMap(Map<String, dynamic> map) {
+  factory DomainOffPeakWindowOptionsOffPeakWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DomainOffPeakWindowOptionsOffPeakWindow(
-      windowStartTime: map['windowStartTime'] == null ? null : DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime.fromMap((map['windowStartTime'] as Map).cast<String, dynamic>()),
+      windowStartTime: map['windowStartTime'] == null
+          ? null
+          : DomainOffPeakWindowOptionsOffPeakWindowWindowStartTime.fromMap(
+              (map['windowStartTime'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

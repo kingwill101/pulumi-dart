@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message describing Azure Credentials using tenant ID, client ID and secret.
 class ClientSecretCredentialsResponse {
   /// Azure client ID.
   final String clientId;
+
   /// Input only. Azure client secret.
   final String clientSecret;
+
   /// Azure tenant ID.
   final String tenantId;
 
@@ -36,4 +37,3 @@ class ClientSecretCredentialsResponse {
     );
   }
 }
-

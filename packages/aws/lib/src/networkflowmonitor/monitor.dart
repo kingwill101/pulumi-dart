@@ -234,20 +234,27 @@ import 'monitor_timeouts.dart';
 class Monitor extends pulumi.CustomResource {
   /// The local resources to monitor. A local resource in a workload is the location of the hosts where the Network Flow Monitor agent is installed.
   late final pulumi.Output<List<MonitorLocalResource>> localResources;
+
   /// The Amazon Resource Name (ARN) of the monitor.
   late final pulumi.Output<String> monitorArn;
+
   /// The name of the monitor. Cannot be changed after creation.
   late final pulumi.Output<String> monitorName;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The remote resources to monitor. A remote resource is the other endpoint specified for the network flow of a workload, with a local resource.
   late final pulumi.Output<List<MonitorRemoteResource>?> remoteResources;
+
   /// The Amazon Resource Name (ARN) of the scope for the monitor. Cannot be changed after creation.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> scopeArn;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<MonitorTimeouts?> timeouts;
@@ -261,16 +268,20 @@ class Monitor extends pulumi.CustomResource {
     MonitorArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:networkflowmonitor/monitor:Monitor',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.localResources = registerOutput<List<MonitorLocalResource>>('localResources');
+         'aws:networkflowmonitor/monitor:Monitor',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.localResources = registerOutput<List<MonitorLocalResource>>(
+      'localResources',
+    );
     this.monitorArn = registerOutput<String>('monitorArn');
     this.monitorName = registerOutput<String>('monitorName');
     this.region = registerOutput<String>('region');
-    this.remoteResources = registerOutput<List<MonitorRemoteResource>?>('remoteResources');
+    this.remoteResources = registerOutput<List<MonitorRemoteResource>?>(
+      'remoteResources',
+    );
     this.scopeArn = registerOutput<String>('scopeArn');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');

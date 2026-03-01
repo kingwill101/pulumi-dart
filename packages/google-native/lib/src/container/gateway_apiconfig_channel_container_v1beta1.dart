@@ -14,7 +14,8 @@ enum GatewayAPIConfigChannelContainerV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown GatewayAPIConfigChannelContainerV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown GatewayAPIConfigChannelContainerV1beta1 value: $value',
+    );
   }
 }
-

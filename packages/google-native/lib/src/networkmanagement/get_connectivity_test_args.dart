@@ -13,11 +13,8 @@ class GetConnectivityTestArgs {
   /// Creates a new [GetConnectivityTestArgs].
   /// [connectivityTestId] Required.
   /// [project] Optional.
-  GetConnectivityTestArgs({
-    required String connectivityTestId,
-    String? project,
-  }) :
-      connectivityTestId = pulumi.Input.asInput<String>(connectivityTestId),
+  GetConnectivityTestArgs({required String connectivityTestId, String? project})
+    : connectivityTestId = pulumi.Input.asInput<String>(connectivityTestId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetConnectivityTestArgs {
     );
   }
 }
-

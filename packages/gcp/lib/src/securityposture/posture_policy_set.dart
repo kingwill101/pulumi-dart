@@ -6,9 +6,11 @@ import 'posture_policy_set_policy.dart';
 class PosturePolicySet {
   /// Description of the policy set.
   final String? description;
+
   /// List of security policy
   /// Structure is documented below.
   final List<PosturePolicySetPolicy> policies;
+
   /// ID of the policy set.
   final String policySetId;
 
@@ -25,17 +27,27 @@ class PosturePolicySet {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'description': ?description,
-      'policies': pulumi.Input.encodeList<PosturePolicySetPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
+      'policies':
+          pulumi.Input.encodeList<PosturePolicySetPolicy, Map<String, dynamic>>(
+            policies,
+            (value) => value.toMap(),
+          ),
       'policySetId': policySetId,
     };
   }
 
   factory PosturePolicySet.fromMap(Map<String, dynamic> map) {
     return PosturePolicySet(
-      description: map['description'] == null ? null : map['description'] as String,
-      policies: pulumi.Input.decodeList<PosturePolicySetPolicy>(map['policies'], (value) => PosturePolicySetPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      policies: pulumi.Input.decodeList<PosturePolicySetPolicy>(
+        map['policies'],
+        (value) => PosturePolicySetPolicy.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       policySetId: map['policySetId'] as String,
     );
   }
 }
-

@@ -8,8 +8,10 @@ import 'repair_rollout_rule_response.dart';
 class AutomationRuleResponse {
   /// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
   final AdvanceRolloutRuleResponse advanceRolloutRule;
+
   /// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
   final PromoteReleaseRuleResponse promoteReleaseRule;
+
   /// Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
   final RepairRolloutRuleResponse repairRolloutRule;
 
@@ -33,10 +35,15 @@ class AutomationRuleResponse {
 
   factory AutomationRuleResponse.fromMap(Map<String, dynamic> map) {
     return AutomationRuleResponse(
-      advanceRolloutRule: AdvanceRolloutRuleResponse.fromMap((map['advanceRolloutRule'] as Map).cast<String, dynamic>()),
-      promoteReleaseRule: PromoteReleaseRuleResponse.fromMap((map['promoteReleaseRule'] as Map).cast<String, dynamic>()),
-      repairRolloutRule: RepairRolloutRuleResponse.fromMap((map['repairRolloutRule'] as Map).cast<String, dynamic>()),
+      advanceRolloutRule: AdvanceRolloutRuleResponse.fromMap(
+        (map['advanceRolloutRule'] as Map).cast<String, dynamic>(),
+      ),
+      promoteReleaseRule: PromoteReleaseRuleResponse.fromMap(
+        (map['promoteReleaseRule'] as Map).cast<String, dynamic>(),
+      ),
+      repairRolloutRule: RepairRolloutRuleResponse.fromMap(
+        (map['repairRolloutRule'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

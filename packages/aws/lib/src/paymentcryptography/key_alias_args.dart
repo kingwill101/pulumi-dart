@@ -11,8 +11,10 @@ class KeyAliasArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> aliasName;
+
   /// ARN of the key.
   final pulumi.Input<String>? keyArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -20,12 +22,8 @@ class KeyAliasArgs {
   /// [aliasName] Name of the Key Alias.
   /// [keyArn] ARN of the key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  KeyAliasArgs({
-    required String aliasName,
-    String? keyArn,
-    String? region,
-  }) :
-      aliasName = pulumi.Input.asInput<String>(aliasName),
+  KeyAliasArgs({required String aliasName, String? keyArn, String? region})
+    : aliasName = pulumi.Input.asInput<String>(aliasName),
       keyArn = pulumi.Input.asOptionalInput<String>(keyArn),
       region = pulumi.Input.asOptionalInput<String>(region);
 
@@ -45,4 +43,3 @@ class KeyAliasArgs {
     );
   }
 }
-

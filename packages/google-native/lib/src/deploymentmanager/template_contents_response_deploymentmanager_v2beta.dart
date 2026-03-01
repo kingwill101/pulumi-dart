@@ -7,12 +7,16 @@ import 'import_file_response_deploymentmanager_v2beta.dart';
 class TemplateContentsResponseDeploymentmanagerV2beta {
   /// Import files referenced by the main template.
   final List<ImportFileResponseDeploymentmanagerV2beta> imports;
+
   /// Which interpreter (python or jinja) should be used during expansion.
   final String interpreter;
+
   /// The filename of the mainTemplate
   final String mainTemplate;
+
   /// The contents of the template schema.
   final String schema;
+
   /// The contents of the main template file.
   final String template;
 
@@ -32,7 +36,11 @@ class TemplateContentsResponseDeploymentmanagerV2beta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imports': pulumi.Input.encodeList<ImportFileResponseDeploymentmanagerV2beta, Map<String, dynamic>>(imports, (value) => value.toMap()),
+      'imports':
+          pulumi.Input.encodeList<
+            ImportFileResponseDeploymentmanagerV2beta,
+            Map<String, dynamic>
+          >(imports, (value) => value.toMap()),
       'interpreter': interpreter,
       'mainTemplate': mainTemplate,
       'schema': schema,
@@ -40,9 +48,17 @@ class TemplateContentsResponseDeploymentmanagerV2beta {
     };
   }
 
-  factory TemplateContentsResponseDeploymentmanagerV2beta.fromMap(Map<String, dynamic> map) {
+  factory TemplateContentsResponseDeploymentmanagerV2beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TemplateContentsResponseDeploymentmanagerV2beta(
-      imports: pulumi.Input.decodeList<ImportFileResponseDeploymentmanagerV2beta>(map['imports'], (value) => ImportFileResponseDeploymentmanagerV2beta.fromMap((value as Map).cast<String, dynamic>())),
+      imports:
+          pulumi.Input.decodeList<ImportFileResponseDeploymentmanagerV2beta>(
+            map['imports'],
+            (value) => ImportFileResponseDeploymentmanagerV2beta.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       interpreter: map['interpreter'] as String,
       mainTemplate: map['mainTemplate'] as String,
       schema: map['schema'] as String,
@@ -50,4 +66,3 @@ class TemplateContentsResponseDeploymentmanagerV2beta {
     );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetListenerRuleActionFixedResponse {
   /// Content type of the response.
   final String contentType;
+
   /// Message body of the response.
   final String messageBody;
+
   /// The HTTP redirect code.
   final String statusCode;
 
@@ -35,4 +36,3 @@ class GetListenerRuleActionFixedResponse {
     );
   }
 }
-

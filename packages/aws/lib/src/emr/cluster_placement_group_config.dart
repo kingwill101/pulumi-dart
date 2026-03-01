@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterPlacementGroupConfig {
   /// Role of the instance in the cluster. Valid Values: `MASTER`, `CORE`, `TASK`.
   final String instanceRole;
+
   /// EC2 Placement Group strategy associated with instance role. Valid Values: `SPREAD`, `PARTITION`, `CLUSTER`, `NONE`.
   final String? placementStrategy;
 
@@ -25,8 +25,9 @@ class ClusterPlacementGroupConfig {
   factory ClusterPlacementGroupConfig.fromMap(Map<String, dynamic> map) {
     return ClusterPlacementGroupConfig(
       instanceRole: map['instanceRole'] as String,
-      placementStrategy: map['placementStrategy'] == null ? null : map['placementStrategy'] as String,
+      placementStrategy: map['placementStrategy'] == null
+          ? null
+          : map['placementStrategy'] as String,
     );
   }
 }
-

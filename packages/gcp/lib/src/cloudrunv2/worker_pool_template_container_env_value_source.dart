@@ -9,9 +9,7 @@ class WorkerPoolTemplateContainerEnvValueSource {
 
   /// Creates a new [WorkerPoolTemplateContainerEnvValueSource].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.
-  WorkerPoolTemplateContainerEnvValueSource({
-    this.secretKeyRef,
-  });
+  WorkerPoolTemplateContainerEnvValueSource({this.secretKeyRef});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class WorkerPoolTemplateContainerEnvValueSource {
     };
   }
 
-  factory WorkerPoolTemplateContainerEnvValueSource.fromMap(Map<String, dynamic> map) {
+  factory WorkerPoolTemplateContainerEnvValueSource.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkerPoolTemplateContainerEnvValueSource(
-      secretKeyRef: map['secretKeyRef'] == null ? null : WorkerPoolTemplateContainerEnvValueSourceSecretKeyRef.fromMap((map['secretKeyRef'] as Map).cast<String, dynamic>()),
+      secretKeyRef: map['secretKeyRef'] == null
+          ? null
+          : WorkerPoolTemplateContainerEnvValueSourceSecretKeyRef.fromMap(
+              (map['secretKeyRef'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

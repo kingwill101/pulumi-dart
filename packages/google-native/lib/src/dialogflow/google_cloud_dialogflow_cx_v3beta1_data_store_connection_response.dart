@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A data store connection. It represents a data store in Discovery Engine and the type of the contents it contains.
 class GoogleCloudDialogflowCxV3beta1DataStoreConnectionResponse {
   /// The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`
   final String dataStore;
+
   /// The type of the connected data store.
   final String dataStoreType;
 
@@ -23,11 +23,12 @@ class GoogleCloudDialogflowCxV3beta1DataStoreConnectionResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3beta1DataStoreConnectionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3beta1DataStoreConnectionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3beta1DataStoreConnectionResponse(
       dataStore: map['dataStore'] as String,
       dataStoreType: map['dataStoreType'] as String,
     );
   }
 }
-

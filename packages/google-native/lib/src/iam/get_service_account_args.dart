@@ -13,11 +13,8 @@ class GetServiceAccountArgs {
   /// Creates a new [GetServiceAccountArgs].
   /// [project] Optional.
   /// [serviceAccountId] Required.
-  GetServiceAccountArgs({
-    String? project,
-    required String serviceAccountId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetServiceAccountArgs({String? project, required String serviceAccountId})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       serviceAccountId = pulumi.Input.asInput<String>(serviceAccountId);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetServiceAccountArgs {
     );
   }
 }
-

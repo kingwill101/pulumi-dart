@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ContainerPolicyArgs {
   /// The name of the container.
   final pulumi.Input<String> containerName;
+
   /// The contents of the policy.
   final pulumi.Input<String> policy;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -22,10 +24,9 @@ class ContainerPolicyArgs {
     required String containerName,
     required String policy,
     String? region,
-  }) :
-      containerName = pulumi.Input.asInput<String>(containerName),
-      policy = pulumi.Input.asInput<String>(policy),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : containerName = pulumi.Input.asInput<String>(containerName),
+       policy = pulumi.Input.asInput<String>(policy),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class ContainerPolicyArgs {
     );
   }
 }
-

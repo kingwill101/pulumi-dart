@@ -6,12 +6,16 @@ import 'source_numeric_filter_numeric_filter_option.dart';
 class SourceNumericFilter {
   /// Enum to set the option defining the datatypes numeric filter has to be applied to
   final SourceNumericFilterNumericFilterOption numericFilterOption;
+
   /// Optional. The filter will match columns with precision smaller than or equal to this number.
   final int? sourceMaxPrecisionFilter;
+
   /// Optional. The filter will match columns with scale smaller than or equal to this number.
   final int? sourceMaxScaleFilter;
+
   /// Optional. The filter will match columns with precision greater than or equal to this number.
   final int? sourceMinPrecisionFilter;
+
   /// Optional. The filter will match columns with scale greater than or equal to this number.
   final int? sourceMinScaleFilter;
 
@@ -41,12 +45,21 @@ class SourceNumericFilter {
 
   factory SourceNumericFilter.fromMap(Map<String, dynamic> map) {
     return SourceNumericFilter(
-      numericFilterOption: SourceNumericFilterNumericFilterOption.fromValue(map['numericFilterOption'] as String),
-      sourceMaxPrecisionFilter: map['sourceMaxPrecisionFilter'] == null ? null : map['sourceMaxPrecisionFilter'] as int,
-      sourceMaxScaleFilter: map['sourceMaxScaleFilter'] == null ? null : map['sourceMaxScaleFilter'] as int,
-      sourceMinPrecisionFilter: map['sourceMinPrecisionFilter'] == null ? null : map['sourceMinPrecisionFilter'] as int,
-      sourceMinScaleFilter: map['sourceMinScaleFilter'] == null ? null : map['sourceMinScaleFilter'] as int,
+      numericFilterOption: SourceNumericFilterNumericFilterOption.fromValue(
+        map['numericFilterOption'] as String,
+      ),
+      sourceMaxPrecisionFilter: map['sourceMaxPrecisionFilter'] == null
+          ? null
+          : map['sourceMaxPrecisionFilter'] as int,
+      sourceMaxScaleFilter: map['sourceMaxScaleFilter'] == null
+          ? null
+          : map['sourceMaxScaleFilter'] as int,
+      sourceMinPrecisionFilter: map['sourceMinPrecisionFilter'] == null
+          ? null
+          : map['sourceMinPrecisionFilter'] as int,
+      sourceMinScaleFilter: map['sourceMinScaleFilter'] == null
+          ? null
+          : map['sourceMinScaleFilter'] as int,
     );
   }
 }
-

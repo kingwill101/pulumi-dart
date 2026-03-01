@@ -10,20 +10,34 @@ class VmwareAdminClusterNetworkConfigStaticIpConfig {
 
   /// Creates a new [VmwareAdminClusterNetworkConfigStaticIpConfig].
   /// [ipBlocks] Represents the configuration values for static IP allocation to nodes.
-  VmwareAdminClusterNetworkConfigStaticIpConfig({
-    this.ipBlocks,
-  });
+  VmwareAdminClusterNetworkConfigStaticIpConfig({this.ipBlocks});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ipBlocks': ?ipBlocks == null ? null : pulumi.Input.encodeList<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock, Map<String, dynamic>>(ipBlocks!, (value) => value.toMap()),
+      'ipBlocks': ?ipBlocks == null
+          ? null
+          : pulumi.Input.encodeList<
+              VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock,
+              Map<String, dynamic>
+            >(ipBlocks!, (value) => value.toMap()),
     };
   }
 
-  factory VmwareAdminClusterNetworkConfigStaticIpConfig.fromMap(Map<String, dynamic> map) {
+  factory VmwareAdminClusterNetworkConfigStaticIpConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return VmwareAdminClusterNetworkConfigStaticIpConfig(
-      ipBlocks: map['ipBlocks'] == null ? null : pulumi.Input.decodeList<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock>(map['ipBlocks'], (value) => VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock.fromMap((value as Map).cast<String, dynamic>())),
+      ipBlocks: map['ipBlocks'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock
+            >(
+              map['ipBlocks'],
+              (value) =>
+                  VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

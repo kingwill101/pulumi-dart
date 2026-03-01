@@ -1,15 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstanceEffectiveReplicationReplica {
   /// Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   final String lastActiveSyncTime;
+
   /// The peer instance.
   final String peerInstance;
+
   /// Output only. The replica state
   final String state;
+
   /// Output only. Additional information about the replication state, if available.
   final List<String> stateReasons;
 
@@ -34,7 +36,9 @@ class GetInstanceEffectiveReplicationReplica {
     };
   }
 
-  factory GetInstanceEffectiveReplicationReplica.fromMap(Map<String, dynamic> map) {
+  factory GetInstanceEffectiveReplicationReplica.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstanceEffectiveReplicationReplica(
       lastActiveSyncTime: map['lastActiveSyncTime'] as String,
       peerInstance: map['peerInstance'] as String,
@@ -43,4 +47,3 @@ class GetInstanceEffectiveReplicationReplica {
     );
   }
 }
-

@@ -28,13 +28,12 @@ class GetTimeSeriesArgs {
     required String runId,
     required String tensorboardId,
     required String timeSeriesId,
-  }) :
-      experimentId = pulumi.Input.asInput<String>(experimentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runId = pulumi.Input.asInput<String>(runId),
-      tensorboardId = pulumi.Input.asInput<String>(tensorboardId),
-      timeSeriesId = pulumi.Input.asInput<String>(timeSeriesId);
+  }) : experimentId = pulumi.Input.asInput<String>(experimentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       runId = pulumi.Input.asInput<String>(runId),
+       tensorboardId = pulumi.Input.asInput<String>(tensorboardId),
+       timeSeriesId = pulumi.Input.asInput<String>(timeSeriesId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,4 +57,3 @@ class GetTimeSeriesArgs {
     );
   }
 }
-

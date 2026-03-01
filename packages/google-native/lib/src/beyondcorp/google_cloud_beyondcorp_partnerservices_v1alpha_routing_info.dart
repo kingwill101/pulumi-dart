@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Message contains the routing information to direct traffic to the proxy server.
 class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo {
   /// Proxy Auto-Configuration (PAC) URI.
@@ -13,15 +12,14 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'pacUri': pacUri,
-    };
+    return <String, dynamic>{'pacUri': pacUri};
   }
 
-  factory GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBeyondcorpPartnerservicesV1alphaRoutingInfo(
       pacUri: map['pacUri'] as String,
     );
   }
 }
-

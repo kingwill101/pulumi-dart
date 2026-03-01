@@ -13,11 +13,8 @@ class GetInstructionArgs {
   /// Creates a new [GetInstructionArgs].
   /// [instructionId] Required.
   /// [project] Optional.
-  GetInstructionArgs({
-    required String instructionId,
-    String? project,
-  }) :
-      instructionId = pulumi.Input.asInput<String>(instructionId),
+  GetInstructionArgs({required String instructionId, String? project})
+    : instructionId = pulumi.Input.asInput<String>(instructionId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetInstructionArgs {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GCPolicyMaxVersion {
   /// Number of version before applying the GC policy.
   ///
@@ -10,20 +9,13 @@ class GCPolicyMaxVersion {
 
   /// Creates a new [GCPolicyMaxVersion].
   /// [number] Number of version before applying the GC policy.
-  GCPolicyMaxVersion({
-    required this.number,
-  });
+  GCPolicyMaxVersion({required this.number});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'number': number,
-    };
+    return <String, dynamic>{'number': number};
   }
 
   factory GCPolicyMaxVersion.fromMap(Map<String, dynamic> map) {
-    return GCPolicyMaxVersion(
-      number: map['number'] as int,
-    );
+    return GCPolicyMaxVersion(number: map['number'] as int);
   }
 }
-

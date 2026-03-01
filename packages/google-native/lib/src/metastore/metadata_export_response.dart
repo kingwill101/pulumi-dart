@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The details of a metadata export operation.
 class MetadataExportResponse {
   /// The type of the database dump.
   final String databaseDumpType;
+
   /// A Cloud Storage URI of a folder that metadata are exported to, in the form of gs:////, where is automatically generated.
   final String destinationGcsUri;
+
   /// The time when the export ended.
   final String endTime;
+
   /// The time when the export started.
   final String startTime;
+
   /// The current state of the export.
   final String state;
 
@@ -48,4 +51,3 @@ class MetadataExportResponse {
     );
   }
 }
-

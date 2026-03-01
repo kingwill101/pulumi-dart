@@ -10,20 +10,26 @@ class StandardSqlStructTypeResponse {
 
   /// Creates a new [StandardSqlStructTypeResponse].
   /// [fields] Fields within the struct.
-  StandardSqlStructTypeResponse({
-    required this.fields,
-  });
+  StandardSqlStructTypeResponse({required this.fields});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fields': pulumi.Input.encodeList<StandardSqlFieldResponse, Map<String, dynamic>>(fields, (value) => value.toMap()),
+      'fields':
+          pulumi.Input.encodeList<
+            StandardSqlFieldResponse,
+            Map<String, dynamic>
+          >(fields, (value) => value.toMap()),
     };
   }
 
   factory StandardSqlStructTypeResponse.fromMap(Map<String, dynamic> map) {
     return StandardSqlStructTypeResponse(
-      fields: pulumi.Input.decodeList<StandardSqlFieldResponse>(map['fields'], (value) => StandardSqlFieldResponse.fromMap((value as Map).cast<String, dynamic>())),
+      fields: pulumi.Input.decodeList<StandardSqlFieldResponse>(
+        map['fields'],
+        (value) => StandardSqlFieldResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

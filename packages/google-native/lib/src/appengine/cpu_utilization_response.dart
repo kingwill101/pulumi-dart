@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Target scaling by CPU usage.
 class CpuUtilizationResponse {
   /// Period of time over which CPU utilization is calculated.
   final String aggregationWindowLength;
+
   /// Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
   final double targetUtilization;
 
@@ -30,4 +30,3 @@ class CpuUtilizationResponse {
     );
   }
 }
-

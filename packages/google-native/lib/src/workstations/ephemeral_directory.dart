@@ -6,16 +6,14 @@ import 'gce_persistent_disk.dart';
 class EphemeralDirectory {
   /// An EphemeralDirectory backed by a Compute Engine persistent disk.
   final GcePersistentDisk? gcePd;
+
   /// Location of this directory in the running workstation.
   final String mountPath;
 
   /// Creates a new [EphemeralDirectory].
   /// [gcePd] An EphemeralDirectory backed by a Compute Engine persistent disk.
   /// [mountPath] Location of this directory in the running workstation.
-  EphemeralDirectory({
-    this.gcePd,
-    required this.mountPath,
-  });
+  EphemeralDirectory({this.gcePd, required this.mountPath});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,12 @@ class EphemeralDirectory {
 
   factory EphemeralDirectory.fromMap(Map<String, dynamic> map) {
     return EphemeralDirectory(
-      gcePd: map['gcePd'] == null ? null : GcePersistentDisk.fromMap((map['gcePd'] as Map).cast<String, dynamic>()),
+      gcePd: map['gcePd'] == null
+          ? null
+          : GcePersistentDisk.fromMap(
+              (map['gcePd'] as Map).cast<String, dynamic>(),
+            ),
       mountPath: map['mountPath'] as String,
     );
   }
 }
-

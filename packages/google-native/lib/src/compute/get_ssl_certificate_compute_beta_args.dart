@@ -16,9 +16,8 @@ class GetSslCertificateComputeBetaArgs {
   GetSslCertificateComputeBetaArgs({
     String? project,
     required String sslCertificate,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sslCertificate = pulumi.Input.asInput<String>(sslCertificate);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       sslCertificate = pulumi.Input.asInput<String>(sslCertificate);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +33,3 @@ class GetSslCertificateComputeBetaArgs {
     );
   }
 }
-

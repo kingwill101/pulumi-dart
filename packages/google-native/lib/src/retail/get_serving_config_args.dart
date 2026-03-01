@@ -22,11 +22,10 @@ class GetServingConfigArgs {
     required String location,
     String? project,
     required String servingConfigId,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      servingConfigId = pulumi.Input.asInput<String>(servingConfigId);
+  }) : catalogId = pulumi.Input.asInput<String>(catalogId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       servingConfigId = pulumi.Input.asInput<String>(servingConfigId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetServingConfigArgs {
     );
   }
 }
-

@@ -9,20 +9,13 @@ class KeyData {
 
   /// Creates a new [KeyData].
   /// [keySpec] The specifications for the key.
-  KeyData({
-    required this.keySpec,
-  });
+  KeyData({required this.keySpec});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keySpec': keySpec.value,
-    };
+    return <String, dynamic>{'keySpec': keySpec.value};
   }
 
   factory KeyData.fromMap(Map<String, dynamic> map) {
-    return KeyData(
-      keySpec: KeyDataKeySpec.fromValue(map['keySpec'] as String),
-    );
+    return KeyData(keySpec: KeyDataKeySpec.fromValue(map['keySpec'] as String));
   }
 }
-

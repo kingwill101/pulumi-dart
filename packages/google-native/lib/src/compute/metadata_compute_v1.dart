@@ -10,20 +10,29 @@ class MetadataComputeV1 {
 
   /// Creates a new [MetadataComputeV1].
   /// [items] Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-  MetadataComputeV1({
-    this.items,
-  });
+  MetadataComputeV1({this.items});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'items': ?items == null ? null : pulumi.Input.encodeList<MetadataItemsItemComputeV1, Map<String, dynamic>>(items!, (value) => value.toMap()),
+      'items': ?items == null
+          ? null
+          : pulumi.Input.encodeList<
+              MetadataItemsItemComputeV1,
+              Map<String, dynamic>
+            >(items!, (value) => value.toMap()),
     };
   }
 
   factory MetadataComputeV1.fromMap(Map<String, dynamic> map) {
     return MetadataComputeV1(
-      items: map['items'] == null ? null : pulumi.Input.decodeList<MetadataItemsItemComputeV1>(map['items'], (value) => MetadataItemsItemComputeV1.fromMap((value as Map).cast<String, dynamic>())),
+      items: map['items'] == null
+          ? null
+          : pulumi.Input.decodeList<MetadataItemsItemComputeV1>(
+              map['items'],
+              (value) => MetadataItemsItemComputeV1.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

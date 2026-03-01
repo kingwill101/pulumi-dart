@@ -6,11 +6,15 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_card_button_response.dart
 /// The card response message.
 class GoogleCloudDialogflowV2beta1IntentMessageCardResponse {
   /// Optional. The collection of card buttons.
-  final List<GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse> buttons;
+  final List<GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse>
+  buttons;
+
   /// Optional. The public URI to an image file for the card.
   final String imageUri;
+
   /// Optional. The subtitle of the card.
   final String subtitle;
+
   /// Optional. The title of the card.
   final String title;
 
@@ -28,20 +32,34 @@ class GoogleCloudDialogflowV2beta1IntentMessageCardResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buttons': pulumi.Input.encodeList<GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse, Map<String, dynamic>>(buttons, (value) => value.toMap()),
+      'buttons':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse,
+            Map<String, dynamic>
+          >(buttons, (value) => value.toMap()),
       'imageUri': imageUri,
       'subtitle': subtitle,
       'title': title,
     };
   }
 
-  factory GoogleCloudDialogflowV2beta1IntentMessageCardResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2beta1IntentMessageCardResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2beta1IntentMessageCardResponse(
-      buttons: pulumi.Input.decodeList<GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse>(map['buttons'], (value) => GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse.fromMap((value as Map).cast<String, dynamic>())),
+      buttons:
+          pulumi.Input.decodeList<
+            GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse
+          >(
+            map['buttons'],
+            (value) =>
+                GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       imageUri: map['imageUri'] as String,
       subtitle: map['subtitle'] as String,
       title: map['title'] as String,
     );
   }
 }
-

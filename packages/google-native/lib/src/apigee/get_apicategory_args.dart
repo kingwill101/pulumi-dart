@@ -19,10 +19,9 @@ class GetApicategoryArgs {
     required String apicategoryId,
     required String organizationId,
     required String siteId,
-  }) :
-      apicategoryId = pulumi.Input.asInput<String>(apicategoryId),
-      organizationId = pulumi.Input.asInput<String>(organizationId),
-      siteId = pulumi.Input.asInput<String>(siteId);
+  }) : apicategoryId = pulumi.Input.asInput<String>(apicategoryId),
+       organizationId = pulumi.Input.asInput<String>(organizationId),
+       siteId = pulumi.Input.asInput<String>(siteId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetApicategoryArgs {
     );
   }
 }
-

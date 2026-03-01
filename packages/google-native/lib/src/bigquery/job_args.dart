@@ -11,6 +11,7 @@ import 'job_reference.dart';
 class JobArgs {
   /// [Required] Describes the job configuration.
   final pulumi.Input<JobConfiguration>? configuration;
+
   /// [Optional] Reference describing the unique-per-user name of the job.
   final pulumi.Input<JobReference>? jobReference;
   final pulumi.Input<String>? project;
@@ -26,16 +27,25 @@ class JobArgs {
     JobReference? jobReference,
     String? project,
     dynamic source,
-  }) :
-      configuration = pulumi.Input.asOptionalInput<JobConfiguration>(configuration),
-      jobReference = pulumi.Input.asOptionalInput<JobReference>(jobReference),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      source = pulumi.Input.asOptionalInput<dynamic>(source);
+  }) : configuration = pulumi.Input.asOptionalInput<JobConfiguration>(
+         configuration,
+       ),
+       jobReference = pulumi.Input.asOptionalInput<JobReference>(jobReference),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       source = pulumi.Input.asOptionalInput<dynamic>(source);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuration': ?pulumi.Input.mapOptionalInputValue<JobConfiguration, Map<String, dynamic>>(configuration, (value) => value.toMap()),
-      'jobReference': ?pulumi.Input.mapOptionalInputValue<JobReference, Map<String, dynamic>>(jobReference, (value) => value.toMap()),
+      'configuration':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobConfiguration,
+            Map<String, dynamic>
+          >(configuration, (value) => value.toMap()),
+      'jobReference':
+          ?pulumi.Input.mapOptionalInputValue<
+            JobReference,
+            Map<String, dynamic>
+          >(jobReference, (value) => value.toMap()),
       'project': ?project,
       'source': ?source,
     };
@@ -43,11 +53,18 @@ class JobArgs {
 
   factory JobArgs.fromMap(Map<String, dynamic> map) {
     return JobArgs(
-      configuration: map['configuration'] == null ? null : JobConfiguration.fromMap((map['configuration'] as Map).cast<String, dynamic>()),
-      jobReference: map['jobReference'] == null ? null : JobReference.fromMap((map['jobReference'] as Map).cast<String, dynamic>()),
+      configuration: map['configuration'] == null
+          ? null
+          : JobConfiguration.fromMap(
+              (map['configuration'] as Map).cast<String, dynamic>(),
+            ),
+      jobReference: map['jobReference'] == null
+          ? null
+          : JobReference.fromMap(
+              (map['jobReference'] as Map).cast<String, dynamic>(),
+            ),
       project: map['project'] == null ? null : map['project'] as String,
       source: map['source'] == null ? null : map['source'],
     );
   }
 }
-

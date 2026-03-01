@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class IamAuditConfigAuditLogConfig {
   /// Identities that do not cause logging for this type of permission.
   /// Each entry can have one of the following values:
@@ -9,16 +8,14 @@ class IamAuditConfigAuditLogConfig {
   /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
   /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
   final List<String>? exemptedMembers;
+
   /// Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
   final String logType;
 
   /// Creates a new [IamAuditConfigAuditLogConfig].
   /// [exemptedMembers] Identities that do not cause logging for this type of permission.
   /// [logType] Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-  IamAuditConfigAuditLogConfig({
-    this.exemptedMembers,
-    required this.logType,
-  });
+  IamAuditConfigAuditLogConfig({this.exemptedMembers, required this.logType});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +26,10 @@ class IamAuditConfigAuditLogConfig {
 
   factory IamAuditConfigAuditLogConfig.fromMap(Map<String, dynamic> map) {
     return IamAuditConfigAuditLogConfig(
-      exemptedMembers: map['exemptedMembers'] == null ? null : (map['exemptedMembers'] as List).cast<String>(),
+      exemptedMembers: map['exemptedMembers'] == null
+          ? null
+          : (map['exemptedMembers'] as List).cast<String>(),
       logType: map['logType'] as String,
     );
   }
 }
-

@@ -22,11 +22,12 @@ class GetRuntimeIamPolicyArgs {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String runtimeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      runtimeId = pulumi.Input.asInput<String>(runtimeId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       runtimeId = pulumi.Input.asInput<String>(runtimeId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,10 +41,12 @@ class GetRuntimeIamPolicyArgs {
   factory GetRuntimeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetRuntimeIamPolicyArgs(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       runtimeId: map['runtimeId'] as String,
     );
   }
 }
-

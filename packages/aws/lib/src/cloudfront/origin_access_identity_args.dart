@@ -12,15 +12,11 @@ class OriginAccessIdentityArgs {
 
   /// Creates a new [OriginAccessIdentityArgs].
   /// [comment] An optional comment for the origin access identity.
-  OriginAccessIdentityArgs({
-    String? comment,
-  }) :
-      comment = pulumi.Input.asOptionalInput<String>(comment);
+  OriginAccessIdentityArgs({String? comment})
+    : comment = pulumi.Input.asOptionalInput<String>(comment);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'comment': ?comment,
-    };
+    return <String, dynamic>{'comment': ?comment};
   }
 
   factory OriginAccessIdentityArgs.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class OriginAccessIdentityArgs {
     );
   }
 }
-

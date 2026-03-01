@@ -11,8 +11,10 @@ class EncryptionSpecArgs {
   /// A nested object resource.
   /// Structure is documented below.
   final pulumi.Input<EncryptionSpecEncryptionSpec> encryptionSpec;
+
   /// The location in which the encryptionSpec is to be initialized.
   final pulumi.Input<String> location;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -25,14 +27,19 @@ class EncryptionSpecArgs {
     required EncryptionSpecEncryptionSpec encryptionSpec,
     required String location,
     String? project,
-  }) :
-      encryptionSpec = pulumi.Input.asInput<EncryptionSpecEncryptionSpec>(encryptionSpec),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : encryptionSpec = pulumi.Input.asInput<EncryptionSpecEncryptionSpec>(
+         encryptionSpec,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'encryptionSpec': pulumi.Input.mapInputValue<EncryptionSpecEncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec':
+          pulumi.Input.mapInputValue<
+            EncryptionSpecEncryptionSpec,
+            Map<String, dynamic>
+          >(encryptionSpec, (value) => value.toMap()),
       'location': location,
       'project': ?project,
     };
@@ -40,10 +47,11 @@ class EncryptionSpecArgs {
 
   factory EncryptionSpecArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionSpecArgs(
-      encryptionSpec: EncryptionSpecEncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>()),
+      encryptionSpec: EncryptionSpecEncryptionSpec.fromMap(
+        (map['encryptionSpec'] as Map).cast<String, dynamic>(),
+      ),
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

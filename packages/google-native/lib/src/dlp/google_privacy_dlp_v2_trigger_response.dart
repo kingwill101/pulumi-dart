@@ -6,6 +6,7 @@ import 'google_privacy_dlp_v2_schedule_response.dart';
 class GooglePrivacyDlpV2TriggerResponse {
   /// For use with hybrid jobs. Jobs must be manually created and finished.
   final Map<String, dynamic> manual;
+
   /// Create a job on a repeating basis based on the elapse of time.
   final GooglePrivacyDlpV2ScheduleResponse schedule;
 
@@ -18,17 +19,15 @@ class GooglePrivacyDlpV2TriggerResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'manual': manual,
-      'schedule': schedule.toMap(),
-    };
+    return <String, dynamic>{'manual': manual, 'schedule': schedule.toMap()};
   }
 
   factory GooglePrivacyDlpV2TriggerResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2TriggerResponse(
       manual: (map['manual'] as Map).cast<String, dynamic>(),
-      schedule: GooglePrivacyDlpV2ScheduleResponse.fromMap((map['schedule'] as Map).cast<String, dynamic>()),
+      schedule: GooglePrivacyDlpV2ScheduleResponse.fromMap(
+        (map['schedule'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A floating point interval.
 class GoogleCloudRetailV2alphaInterval {
   /// Exclusive upper bound.
   final double? exclusiveMaximum;
+
   /// Exclusive lower bound.
   final double? exclusiveMinimum;
+
   /// Inclusive upper bound.
   final double? maximum;
+
   /// Inclusive lower bound.
   final double? minimum;
 
@@ -35,11 +37,14 @@ class GoogleCloudRetailV2alphaInterval {
 
   factory GoogleCloudRetailV2alphaInterval.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaInterval(
-      exclusiveMaximum: map['exclusiveMaximum'] == null ? null : map['exclusiveMaximum'] as double,
-      exclusiveMinimum: map['exclusiveMinimum'] == null ? null : map['exclusiveMinimum'] as double,
+      exclusiveMaximum: map['exclusiveMaximum'] == null
+          ? null
+          : map['exclusiveMaximum'] as double,
+      exclusiveMinimum: map['exclusiveMinimum'] == null
+          ? null
+          : map['exclusiveMinimum'] as double,
       maximum: map['maximum'] == null ? null : map['maximum'] as double,
       minimum: map['minimum'] == null ? null : map['minimum'] as double,
     );
   }
 }
-

@@ -7,29 +7,40 @@ import 'audit_log_config_networkconnectivity_v1alpha1.dart';
 class AuditConfigNetworkconnectivityV1alpha1 {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigNetworkconnectivityV1alpha1>? auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
   /// Creates a new [AuditConfigNetworkconnectivityV1alpha1].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigNetworkconnectivityV1alpha1({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfigNetworkconnectivityV1alpha1({this.auditLogConfigs, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<AuditLogConfigNetworkconnectivityV1alpha1, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'auditLogConfigs': ?auditLogConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              AuditLogConfigNetworkconnectivityV1alpha1,
+              Map<String, dynamic>
+            >(auditLogConfigs!, (value) => value.toMap()),
       'service': ?service,
     };
   }
 
-  factory AuditConfigNetworkconnectivityV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory AuditConfigNetworkconnectivityV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AuditConfigNetworkconnectivityV1alpha1(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<AuditLogConfigNetworkconnectivityV1alpha1>(map['auditLogConfigs'], (value) => AuditLogConfigNetworkconnectivityV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigs: map['auditLogConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<AuditLogConfigNetworkconnectivityV1alpha1>(
+              map['auditLogConfigs'],
+              (value) => AuditLogConfigNetworkconnectivityV1alpha1.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
-

@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstanceConnectionPoolConfig {
   /// Whether to enabled Managed Connection Pool.
   final bool enabled;
   final Map<String, String> flags;
+
   /// The number of running poolers per instance.
   final int poolerCount;
 
@@ -34,4 +34,3 @@ class GetInstanceConnectionPoolConfig {
     );
   }
 }
-

@@ -12,7 +12,8 @@ enum ResponsePolicyRuleBehaviorDnsV1beta2 {
         return item;
       }
     }
-    throw ArgumentError('Unknown ResponsePolicyRuleBehaviorDnsV1beta2 value: $value');
+    throw ArgumentError(
+      'Unknown ResponsePolicyRuleBehaviorDnsV1beta2 value: $value',
+    );
   }
 }
-

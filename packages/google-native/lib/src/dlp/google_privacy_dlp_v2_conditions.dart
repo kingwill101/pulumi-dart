@@ -10,20 +10,29 @@ class GooglePrivacyDlpV2Conditions {
 
   /// Creates a new [GooglePrivacyDlpV2Conditions].
   /// [conditions] A collection of conditions.
-  GooglePrivacyDlpV2Conditions({
-    this.conditions,
-  });
+  GooglePrivacyDlpV2Conditions({this.conditions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2Condition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?conditions == null
+          ? null
+          : pulumi.Input.encodeList<
+              GooglePrivacyDlpV2Condition,
+              Map<String, dynamic>
+            >(conditions!, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2Conditions.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2Conditions(
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2Condition>(map['conditions'], (value) => GooglePrivacyDlpV2Condition.fromMap((value as Map).cast<String, dynamic>())),
+      conditions: map['conditions'] == null
+          ? null
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2Condition>(
+              map['conditions'],
+              (value) => GooglePrivacyDlpV2Condition.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

@@ -1,24 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getLogGroup.
 class GetLogGroupResult {
   /// ARN of the Cloudwatch log group. Any `:*` suffix added by the API, denoting all CloudWatch Log Streams under the CloudWatch Log Group, is removed for greater compatibility with other AWS services that do not accept the suffix.
   final String arn;
+
   /// Creation time of the log group, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
   final int creationTime;
+
   /// Boolean to indicate whether deletion protection is enabled.
   final bool deletionProtectionEnabled;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// ARN of the KMS Key to use when encrypting log data.
   final String kmsKeyId;
+
   /// The log class of the log group.
   final String logGroupClass;
   final String name;
   final String region;
+
   /// Number of days log events retained in the specified log group.
   final int retentionInDays;
+
   /// Map of tags to assign to the resource.
   final Map<String, String> tags;
 
@@ -76,4 +82,3 @@ class GetLogGroupResult {
     );
   }
 }
-

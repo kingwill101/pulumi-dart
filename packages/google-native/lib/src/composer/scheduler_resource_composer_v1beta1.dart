@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for resources used by Airflow schedulers.
 class SchedulerResourceComposerV1beta1 {
   /// Optional. The number of schedulers.
   final int? count;
+
   /// Optional. CPU request and limit for a single Airflow scheduler replica.
   final double? cpu;
+
   /// Optional. Memory (GB) request and limit for a single Airflow scheduler replica.
   final double? memoryGb;
+
   /// Optional. Storage (GB) request and limit for a single Airflow scheduler replica.
   final double? storageGb;
 
@@ -42,4 +44,3 @@ class SchedulerResourceComposerV1beta1 {
     );
   }
 }
-

@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// For display only. Metadata associated with a Compute Engine instance.
 class InstanceInfoResponse {
   /// Name of a Compute Engine instance.
   final String displayName;
+
   /// External IP address of the network interface.
   final String externalIp;
+
   /// Name of the network interface of a Compute Engine instance.
   final String interface;
+
   /// Internal IP address of the network interface.
   final String internalIp;
+
   /// Network tags configured on the instance.
   final List<String> networkTags;
+
   /// URI of a Compute Engine network.
   final String networkUri;
+
   /// Service account authorized for the instance.
   final String serviceAccount;
+
   /// URI of a Compute Engine instance.
   final String uri;
 
@@ -66,4 +72,3 @@ class InstanceInfoResponse {
     );
   }
 }
-

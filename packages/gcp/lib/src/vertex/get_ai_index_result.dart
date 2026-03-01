@@ -15,6 +15,7 @@ class GetAiIndexResult {
   final Map<String, String> effectiveLabels;
   final List<GetAiIndexEncryptionSpec> encryptionSpecs;
   final String etag;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final List<GetAiIndexIndexStat> indexStats;
@@ -71,18 +72,34 @@ class GetAiIndexResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createTime': createTime,
-      'deployedIndexes': pulumi.Input.encodeList<GetAiIndexDeployedIndex, Map<String, dynamic>>(deployedIndexes, (value) => value.toMap()),
+      'deployedIndexes':
+          pulumi.Input.encodeList<
+            GetAiIndexDeployedIndex,
+            Map<String, dynamic>
+          >(deployedIndexes, (value) => value.toMap()),
       'description': description,
       'displayName': displayName,
       'effectiveLabels': effectiveLabels,
-      'encryptionSpecs': pulumi.Input.encodeList<GetAiIndexEncryptionSpec, Map<String, dynamic>>(encryptionSpecs, (value) => value.toMap()),
+      'encryptionSpecs':
+          pulumi.Input.encodeList<
+            GetAiIndexEncryptionSpec,
+            Map<String, dynamic>
+          >(encryptionSpecs, (value) => value.toMap()),
       'etag': etag,
       'id': id,
-      'indexStats': pulumi.Input.encodeList<GetAiIndexIndexStat, Map<String, dynamic>>(indexStats, (value) => value.toMap()),
+      'indexStats':
+          pulumi.Input.encodeList<GetAiIndexIndexStat, Map<String, dynamic>>(
+            indexStats,
+            (value) => value.toMap(),
+          ),
       'indexUpdateMethod': indexUpdateMethod,
       'labels': labels,
       'metadataSchemaUri': metadataSchemaUri,
-      'metadatas': pulumi.Input.encodeList<GetAiIndexMetadata, Map<String, dynamic>>(metadatas, (value) => value.toMap()),
+      'metadatas':
+          pulumi.Input.encodeList<GetAiIndexMetadata, Map<String, dynamic>>(
+            metadatas,
+            (value) => value.toMap(),
+          ),
       'name': name,
       'project': ?project,
       'pulumiLabels': pulumiLabels,
@@ -94,18 +111,36 @@ class GetAiIndexResult {
   factory GetAiIndexResult.fromMap(Map<String, dynamic> map) {
     return GetAiIndexResult(
       createTime: map['createTime'] as String,
-      deployedIndexes: pulumi.Input.decodeList<GetAiIndexDeployedIndex>(map['deployedIndexes'], (value) => GetAiIndexDeployedIndex.fromMap((value as Map).cast<String, dynamic>())),
+      deployedIndexes: pulumi.Input.decodeList<GetAiIndexDeployedIndex>(
+        map['deployedIndexes'],
+        (value) => GetAiIndexDeployedIndex.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      encryptionSpecs: pulumi.Input.decodeList<GetAiIndexEncryptionSpec>(map['encryptionSpecs'], (value) => GetAiIndexEncryptionSpec.fromMap((value as Map).cast<String, dynamic>())),
+      encryptionSpecs: pulumi.Input.decodeList<GetAiIndexEncryptionSpec>(
+        map['encryptionSpecs'],
+        (value) => GetAiIndexEncryptionSpec.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       etag: map['etag'] as String,
       id: map['id'] as String,
-      indexStats: pulumi.Input.decodeList<GetAiIndexIndexStat>(map['indexStats'], (value) => GetAiIndexIndexStat.fromMap((value as Map).cast<String, dynamic>())),
+      indexStats: pulumi.Input.decodeList<GetAiIndexIndexStat>(
+        map['indexStats'],
+        (value) =>
+            GetAiIndexIndexStat.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       indexUpdateMethod: map['indexUpdateMethod'] as String,
       labels: (map['labels'] as Map).cast<String, String>(),
       metadataSchemaUri: map['metadataSchemaUri'] as String,
-      metadatas: pulumi.Input.decodeList<GetAiIndexMetadata>(map['metadatas'], (value) => GetAiIndexMetadata.fromMap((value as Map).cast<String, dynamic>())),
+      metadatas: pulumi.Input.decodeList<GetAiIndexMetadata>(
+        map['metadatas'],
+        (value) =>
+            GetAiIndexMetadata.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       name: map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
       pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
@@ -114,4 +149,3 @@ class GetAiIndexResult {
     );
   }
 }
-

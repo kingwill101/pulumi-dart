@@ -9,20 +9,23 @@ class MetadataIntegration {
 
   /// Creates a new [MetadataIntegration].
   /// [dataCatalogConfig] Optional. The integration config for the Data Catalog service.
-  MetadataIntegration({
-    this.dataCatalogConfig,
-  });
+  MetadataIntegration({this.dataCatalogConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataCatalogConfig': ?dataCatalogConfig == null ? null : dataCatalogConfig!.toMap(),
+      'dataCatalogConfig': ?dataCatalogConfig == null
+          ? null
+          : dataCatalogConfig!.toMap(),
     };
   }
 
   factory MetadataIntegration.fromMap(Map<String, dynamic> map) {
     return MetadataIntegration(
-      dataCatalogConfig: map['dataCatalogConfig'] == null ? null : DataCatalogConfig.fromMap((map['dataCatalogConfig'] as Map).cast<String, dynamic>()),
+      dataCatalogConfig: map['dataCatalogConfig'] == null
+          ? null
+          : DataCatalogConfig.fromMap(
+              (map['dataCatalogConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

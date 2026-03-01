@@ -9,8 +9,10 @@ topics:
     - google-cloud
     - category-cloud
     - kind-native
+resolution: workspace
 environment:
     sdk: ^3.10.0
-resolution: workspace
 dependencies:
-    pulumi: ^1.0.0
+    pulumi: 0.0.1
+dev_dependencies:
+    lints: ^5.0.0

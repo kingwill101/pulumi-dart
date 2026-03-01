@@ -12,14 +12,19 @@ class NetworkPeeringConnectionArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> displayName;
+
   /// ARN of the ODB network that initiates the peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
   final pulumi.Input<String>? odbNetworkArn;
+
   /// The unique identifier of the ODB network that initiates the peering connection. A sample ID is `odbpcx-abcdefgh12345678`. Changing this will force Terraform to create a new resource.
   final pulumi.Input<String>? odbNetworkId;
+
   /// The unique identifier of the ODB peering connection. Changing this will force Terraform to create a new resource. Either odb_network_id or odb_network_arn should be used.
   final pulumi.Input<String> peerNetworkId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
   final pulumi.Input<NetworkPeeringConnectionTimeouts>? timeouts;
@@ -40,14 +45,14 @@ class NetworkPeeringConnectionArgs {
     String? region,
     Map<String, String>? tags,
     NetworkPeeringConnectionTimeouts? timeouts,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      odbNetworkArn = pulumi.Input.asOptionalInput<String>(odbNetworkArn),
-      odbNetworkId = pulumi.Input.asOptionalInput<String>(odbNetworkId),
-      peerNetworkId = pulumi.Input.asInput<String>(peerNetworkId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
-      timeouts = pulumi.Input.asOptionalInput<NetworkPeeringConnectionTimeouts>(timeouts);
+  }) : displayName = pulumi.Input.asInput<String>(displayName),
+       odbNetworkArn = pulumi.Input.asOptionalInput<String>(odbNetworkArn),
+       odbNetworkId = pulumi.Input.asOptionalInput<String>(odbNetworkId),
+       peerNetworkId = pulumi.Input.asInput<String>(peerNetworkId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags),
+       timeouts = pulumi
+           .Input.asOptionalInput<NetworkPeeringConnectionTimeouts>(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,20 +62,33 @@ class NetworkPeeringConnectionArgs {
       'peerNetworkId': peerNetworkId,
       'region': ?region,
       'tags': ?tags,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<NetworkPeeringConnectionTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            NetworkPeeringConnectionTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
   factory NetworkPeeringConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkPeeringConnectionArgs(
       displayName: map['displayName'] as String,
-      odbNetworkArn: map['odbNetworkArn'] == null ? null : map['odbNetworkArn'] as String,
-      odbNetworkId: map['odbNetworkId'] == null ? null : map['odbNetworkId'] as String,
+      odbNetworkArn: map['odbNetworkArn'] == null
+          ? null
+          : map['odbNetworkArn'] as String,
+      odbNetworkId: map['odbNetworkId'] == null
+          ? null
+          : map['odbNetworkId'] as String,
       peerNetworkId: map['peerNetworkId'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
-      timeouts: map['timeouts'] == null ? null : NetworkPeeringConnectionTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
+      timeouts: map['timeouts'] == null
+          ? null
+          : NetworkPeeringConnectionTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -5,6 +5,7 @@ import 'service_volume_configuration_managed_ebs_volume.dart';
 class ServiceVolumeConfiguration {
   /// Configuration for the Amazon EBS volume that Amazon ECS creates and manages on your behalf. See below.
   final ServiceVolumeConfigurationManagedEbsVolume managedEbsVolume;
+
   /// Name of the volume.
   final String name;
 
@@ -25,9 +26,10 @@ class ServiceVolumeConfiguration {
 
   factory ServiceVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return ServiceVolumeConfiguration(
-      managedEbsVolume: ServiceVolumeConfigurationManagedEbsVolume.fromMap((map['managedEbsVolume'] as Map).cast<String, dynamic>()),
+      managedEbsVolume: ServiceVolumeConfigurationManagedEbsVolume.fromMap(
+        (map['managedEbsVolume'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
     );
   }
 }
-

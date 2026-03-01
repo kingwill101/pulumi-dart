@@ -6,12 +6,16 @@ import 'get_patch_baseline_approval_rule_patch_filter.dart';
 class GetPatchBaselineApprovalRule {
   /// Number of days after the release date of each patch matched by the rule the patch is marked as approved in the patch baseline.
   final int approveAfterDays;
+
   /// Cutoff date for auto approval of released patches. Any patches released on or before this date are installed automatically. Date is formatted as `YYYY-MM-DD`. Conflicts with `approve_after_days`
   final String approveUntilDate;
+
   /// Compliance level for patches approved by this rule.
   final String complianceLevel;
+
   /// Boolean enabling the application of non-security updates.
   final bool enableNonSecurity;
+
   /// Patch filter group that defines the criteria for the rule.
   final List<GetPatchBaselineApprovalRulePatchFilter> patchFilters;
 
@@ -35,7 +39,11 @@ class GetPatchBaselineApprovalRule {
       'approveUntilDate': approveUntilDate,
       'complianceLevel': complianceLevel,
       'enableNonSecurity': enableNonSecurity,
-      'patchFilters': pulumi.Input.encodeList<GetPatchBaselineApprovalRulePatchFilter, Map<String, dynamic>>(patchFilters, (value) => value.toMap()),
+      'patchFilters':
+          pulumi.Input.encodeList<
+            GetPatchBaselineApprovalRulePatchFilter,
+            Map<String, dynamic>
+          >(patchFilters, (value) => value.toMap()),
     };
   }
 
@@ -45,8 +53,13 @@ class GetPatchBaselineApprovalRule {
       approveUntilDate: map['approveUntilDate'] as String,
       complianceLevel: map['complianceLevel'] as String,
       enableNonSecurity: map['enableNonSecurity'] as bool,
-      patchFilters: pulumi.Input.decodeList<GetPatchBaselineApprovalRulePatchFilter>(map['patchFilters'], (value) => GetPatchBaselineApprovalRulePatchFilter.fromMap((value as Map).cast<String, dynamic>())),
+      patchFilters:
+          pulumi.Input.decodeList<GetPatchBaselineApprovalRulePatchFilter>(
+            map['patchFilters'],
+            (value) => GetPatchBaselineApprovalRulePatchFilter.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

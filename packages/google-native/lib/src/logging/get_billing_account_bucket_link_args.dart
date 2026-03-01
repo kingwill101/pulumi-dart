@@ -22,11 +22,10 @@ class GetBillingAccountBucketLinkArgs {
     required String bucketId,
     required String linkId,
     required String location,
-  }) :
-      billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
-      bucketId = pulumi.Input.asInput<String>(bucketId),
-      linkId = pulumi.Input.asInput<String>(linkId),
-      location = pulumi.Input.asInput<String>(location);
+  }) : billingAccountId = pulumi.Input.asInput<String>(billingAccountId),
+       bucketId = pulumi.Input.asInput<String>(bucketId),
+       linkId = pulumi.Input.asInput<String>(linkId),
+       location = pulumi.Input.asInput<String>(location);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetBillingAccountBucketLinkArgs {
     );
   }
 }
-

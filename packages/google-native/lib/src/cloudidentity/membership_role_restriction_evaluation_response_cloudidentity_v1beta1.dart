@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The evaluated state of this restriction.
 class MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1 {
   /// The current state of the restriction
@@ -13,15 +12,14 @@ class MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1 {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'state': state,
-    };
+    return <String, dynamic>{'state': state};
   }
 
-  factory MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1.fromMap(Map<String, dynamic> map) {
+  factory MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1(
       state: map['state'] as String,
     );
   }
 }
-

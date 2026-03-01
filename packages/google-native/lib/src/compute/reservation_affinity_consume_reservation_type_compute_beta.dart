@@ -10,13 +10,17 @@ enum ReservationAffinityConsumeReservationTypeComputeBeta {
   const ReservationAffinityConsumeReservationTypeComputeBeta(this.value);
   final String value;
 
-  static ReservationAffinityConsumeReservationTypeComputeBeta fromValue(String value) {
-    for (final item in ReservationAffinityConsumeReservationTypeComputeBeta.values) {
+  static ReservationAffinityConsumeReservationTypeComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in ReservationAffinityConsumeReservationTypeComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ReservationAffinityConsumeReservationTypeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ReservationAffinityConsumeReservationTypeComputeBeta value: $value',
+    );
   }
 }
-

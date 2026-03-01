@@ -22,11 +22,10 @@ class GetModelArgs {
     required String location,
     required String modelId,
     String? project,
-  }) :
-      catalogId = pulumi.Input.asInput<String>(catalogId),
-      location = pulumi.Input.asInput<String>(location),
-      modelId = pulumi.Input.asInput<String>(modelId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : catalogId = pulumi.Input.asInput<String>(catalogId),
+       location = pulumi.Input.asInput<String>(location),
+       modelId = pulumi.Input.asInput<String>(modelId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetModelArgs {
     );
   }
 }
-

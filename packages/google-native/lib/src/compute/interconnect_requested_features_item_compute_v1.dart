@@ -10,7 +10,8 @@ enum InterconnectRequestedFeaturesItemComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown InterconnectRequestedFeaturesItemComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown InterconnectRequestedFeaturesItemComputeV1 value: $value',
+    );
   }
 }
-

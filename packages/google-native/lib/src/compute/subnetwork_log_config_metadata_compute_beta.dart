@@ -13,7 +13,8 @@ enum SubnetworkLogConfigMetadataComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown SubnetworkLogConfigMetadataComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown SubnetworkLogConfigMetadataComputeBeta value: $value',
+    );
   }
 }
-

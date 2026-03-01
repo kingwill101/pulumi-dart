@@ -10,10 +10,13 @@ import 'bucket_access_control_project_team.dart';
 class BucketAccessControlArgs {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// The domain associated with the entity, if any.
   final pulumi.Input<String>? domain;
+
   /// The email address associated with the entity, if any.
   final pulumi.Input<String>? email;
+
   /// The entity holding the permission, in one of the following forms:
   /// - user-userId
   /// - user-email
@@ -27,20 +30,28 @@ class BucketAccessControlArgs {
   /// - The group example@googlegroups.com would be group-example@googlegroups.com.
   /// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
   final pulumi.Input<String>? entity;
+
   /// The ID for the entity, if any.
   final pulumi.Input<String>? entityId;
+
   /// HTTP 1.1 Entity tag for the access-control entry.
   final pulumi.Input<String>? etag;
+
   /// The ID of the access-control entry.
   final pulumi.Input<String>? id;
+
   /// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
   final pulumi.Input<String>? kind;
+
   /// The project team associated with the entity, if any.
   final pulumi.Input<BucketAccessControlProjectTeam>? projectTeam;
+
   /// The access permission for the entity.
   final pulumi.Input<String>? role;
+
   /// The link to this access-control entry.
   final pulumi.Input<String>? selfLink;
+
   /// The project to be billed for this request. Required for Requester Pays buckets.
   final pulumi.Input<String>? userProject;
 
@@ -70,19 +81,19 @@ class BucketAccessControlArgs {
     String? role,
     String? selfLink,
     String? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      domain = pulumi.Input.asOptionalInput<String>(domain),
-      email = pulumi.Input.asOptionalInput<String>(email),
-      entity = pulumi.Input.asOptionalInput<String>(entity),
-      entityId = pulumi.Input.asOptionalInput<String>(entityId),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      id = pulumi.Input.asOptionalInput<String>(id),
-      kind = pulumi.Input.asOptionalInput<String>(kind),
-      projectTeam = pulumi.Input.asOptionalInput<BucketAccessControlProjectTeam>(projectTeam),
-      role = pulumi.Input.asOptionalInput<String>(role),
-      selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+  }) : bucket = pulumi.Input.asInput<String>(bucket),
+       domain = pulumi.Input.asOptionalInput<String>(domain),
+       email = pulumi.Input.asOptionalInput<String>(email),
+       entity = pulumi.Input.asOptionalInput<String>(entity),
+       entityId = pulumi.Input.asOptionalInput<String>(entityId),
+       etag = pulumi.Input.asOptionalInput<String>(etag),
+       id = pulumi.Input.asOptionalInput<String>(id),
+       kind = pulumi.Input.asOptionalInput<String>(kind),
+       projectTeam = pulumi
+           .Input.asOptionalInput<BucketAccessControlProjectTeam>(projectTeam),
+       role = pulumi.Input.asOptionalInput<String>(role),
+       selfLink = pulumi.Input.asOptionalInput<String>(selfLink),
+       userProject = pulumi.Input.asOptionalInput<String>(userProject);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,7 +105,11 @@ class BucketAccessControlArgs {
       'etag': ?etag,
       'id': ?id,
       'kind': ?kind,
-      'projectTeam': ?pulumi.Input.mapOptionalInputValue<BucketAccessControlProjectTeam, Map<String, dynamic>>(projectTeam, (value) => value.toMap()),
+      'projectTeam':
+          ?pulumi.Input.mapOptionalInputValue<
+            BucketAccessControlProjectTeam,
+            Map<String, dynamic>
+          >(projectTeam, (value) => value.toMap()),
       'role': ?role,
       'selfLink': ?selfLink,
       'userProject': ?userProject,
@@ -111,11 +126,16 @@ class BucketAccessControlArgs {
       etag: map['etag'] == null ? null : map['etag'] as String,
       id: map['id'] == null ? null : map['id'] as String,
       kind: map['kind'] == null ? null : map['kind'] as String,
-      projectTeam: map['projectTeam'] == null ? null : BucketAccessControlProjectTeam.fromMap((map['projectTeam'] as Map).cast<String, dynamic>()),
+      projectTeam: map['projectTeam'] == null
+          ? null
+          : BucketAccessControlProjectTeam.fromMap(
+              (map['projectTeam'] as Map).cast<String, dynamic>(),
+            ),
       role: map['role'] == null ? null : map['role'] as String,
       selfLink: map['selfLink'] == null ? null : map['selfLink'] as String,
-      userProject: map['userProject'] == null ? null : map['userProject'] as String,
+      userProject: map['userProject'] == null
+          ? null
+          : map['userProject'] as String,
     );
   }
 }
-

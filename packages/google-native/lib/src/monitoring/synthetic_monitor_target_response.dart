@@ -9,20 +9,17 @@ class SyntheticMonitorTargetResponse {
 
   /// Creates a new [SyntheticMonitorTargetResponse].
   /// [cloudFunctionV2] Target a Synthetic Monitor GCFv2 instance.
-  SyntheticMonitorTargetResponse({
-    required this.cloudFunctionV2,
-  });
+  SyntheticMonitorTargetResponse({required this.cloudFunctionV2});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cloudFunctionV2': cloudFunctionV2.toMap(),
-    };
+    return <String, dynamic>{'cloudFunctionV2': cloudFunctionV2.toMap()};
   }
 
   factory SyntheticMonitorTargetResponse.fromMap(Map<String, dynamic> map) {
     return SyntheticMonitorTargetResponse(
-      cloudFunctionV2: CloudFunctionV2TargetResponse.fromMap((map['cloudFunctionV2'] as Map).cast<String, dynamic>()),
+      cloudFunctionV2: CloudFunctionV2TargetResponse.fromMap(
+        (map['cloudFunctionV2'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

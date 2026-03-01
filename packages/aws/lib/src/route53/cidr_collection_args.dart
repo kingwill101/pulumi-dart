@@ -12,15 +12,11 @@ class CidrCollectionArgs {
 
   /// Creates a new [CidrCollectionArgs].
   /// [name] Unique name for the CIDR collection.
-  CidrCollectionArgs({
-    String? name,
-  }) :
-      name = pulumi.Input.asOptionalInput<String>(name);
+  CidrCollectionArgs({String? name})
+    : name = pulumi.Input.asOptionalInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-    };
+    return <String, dynamic>{'name': ?name};
   }
 
   factory CidrCollectionArgs.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class CidrCollectionArgs {
     );
   }
 }
-

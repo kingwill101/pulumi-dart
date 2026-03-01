@@ -8,9 +8,11 @@ class RegionSecurityPolicyRuleMatch {
   /// This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
   /// Structure is documented below.
   final RegionSecurityPolicyRuleMatchConfig? config;
+
   /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
   /// Structure is documented below.
   final RegionSecurityPolicyRuleMatchExpr? expr;
+
   /// Preconfigured versioned expression. If this field is specified, config must also be specified.
   /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
   /// Possible values are: `SRC_IPS_V1`.
@@ -20,11 +22,7 @@ class RegionSecurityPolicyRuleMatch {
   /// [config] The configuration options available when specifying versionedExpr.
   /// [expr] User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
   /// [versionedExpr] Preconfigured versioned expression. If this field is specified, config must also be specified.
-  RegionSecurityPolicyRuleMatch({
-    this.config,
-    this.expr,
-    this.versionedExpr,
-  });
+  RegionSecurityPolicyRuleMatch({this.config, this.expr, this.versionedExpr});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,10 +34,19 @@ class RegionSecurityPolicyRuleMatch {
 
   factory RegionSecurityPolicyRuleMatch.fromMap(Map<String, dynamic> map) {
     return RegionSecurityPolicyRuleMatch(
-      config: map['config'] == null ? null : RegionSecurityPolicyRuleMatchConfig.fromMap((map['config'] as Map).cast<String, dynamic>()),
-      expr: map['expr'] == null ? null : RegionSecurityPolicyRuleMatchExpr.fromMap((map['expr'] as Map).cast<String, dynamic>()),
-      versionedExpr: map['versionedExpr'] == null ? null : map['versionedExpr'] as String,
+      config: map['config'] == null
+          ? null
+          : RegionSecurityPolicyRuleMatchConfig.fromMap(
+              (map['config'] as Map).cast<String, dynamic>(),
+            ),
+      expr: map['expr'] == null
+          ? null
+          : RegionSecurityPolicyRuleMatchExpr.fromMap(
+              (map['expr'] as Map).cast<String, dynamic>(),
+            ),
+      versionedExpr: map['versionedExpr'] == null
+          ? null
+          : map['versionedExpr'] as String,
     );
   }
 }
-

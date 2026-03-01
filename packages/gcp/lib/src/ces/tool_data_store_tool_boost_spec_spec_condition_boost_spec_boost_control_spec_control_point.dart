@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint {
   /// Can be one of:
   /// 1. The numerical field value.
@@ -9,6 +8,7 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoi
   /// restricted subset of an ISO 8601 duration value). The pattern for
   /// this is: `nDnM]`.
   final String? attributeValue;
+
   /// The value between -1 to 1 by which to boost the score if the
   /// attribute_value evaluates to the value specified above.
   final double? boostAmount;
@@ -28,11 +28,16 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoi
     };
   }
 
-  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap(Map<String, dynamic> map) {
+  factory ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint(
-      attributeValue: map['attributeValue'] == null ? null : map['attributeValue'] as String,
-      boostAmount: map['boostAmount'] == null ? null : map['boostAmount'] as double,
+      attributeValue: map['attributeValue'] == null
+          ? null
+          : map['attributeValue'] as String,
+      boostAmount: map['boostAmount'] == null
+          ? null
+          : map['boostAmount'] as double,
     );
   }
 }
-

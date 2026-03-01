@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg {
   /// ARN of the Auto Scaling group.
   final String arn;
+
   /// ARN of the cross-account role to assume.
   final String? crossAccountRole;
+
   /// External ID for cross-account role assumption.
   final String? externalId;
 
@@ -27,12 +28,17 @@ class PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg {
     };
   }
 
-  factory PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg.fromMap(Map<String, dynamic> map) {
+  factory PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PlanWorkflowStepParallelConfigStepEc2AsgCapacityIncreaseConfigAsg(
       arn: map['arn'] as String,
-      crossAccountRole: map['crossAccountRole'] == null ? null : map['crossAccountRole'] as String,
-      externalId: map['externalId'] == null ? null : map['externalId'] as String,
+      crossAccountRole: map['crossAccountRole'] == null
+          ? null
+          : map['crossAccountRole'] as String,
+      externalId: map['externalId'] == null
+          ? null
+          : map['externalId'] as String,
     );
   }
 }
-

@@ -25,12 +25,11 @@ class GetObjectAccessControlArgs {
     String? generation,
     required String object,
     String? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      entity = pulumi.Input.asInput<String>(entity),
-      generation = pulumi.Input.asOptionalInput<String>(generation),
-      object = pulumi.Input.asInput<String>(object),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+  }) : bucket = pulumi.Input.asInput<String>(bucket),
+       entity = pulumi.Input.asInput<String>(entity),
+       generation = pulumi.Input.asOptionalInput<String>(generation),
+       object = pulumi.Input.asInput<String>(object),
+       userProject = pulumi.Input.asOptionalInput<String>(userProject);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,10 +45,13 @@ class GetObjectAccessControlArgs {
     return GetObjectAccessControlArgs(
       bucket: map['bucket'] as String,
       entity: map['entity'] as String,
-      generation: map['generation'] == null ? null : map['generation'] as String,
+      generation: map['generation'] == null
+          ? null
+          : map['generation'] as String,
       object: map['object'] as String,
-      userProject: map['userProject'] == null ? null : map['userProject'] as String,
+      userProject: map['userProject'] == null
+          ? null
+          : map['userProject'] as String,
     );
   }
 }
-

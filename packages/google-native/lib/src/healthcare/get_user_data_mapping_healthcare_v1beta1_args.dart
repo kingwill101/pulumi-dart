@@ -25,12 +25,11 @@ class GetUserDataMappingHealthcareV1beta1Args {
     required String location,
     String? project,
     required String userDataMappingId,
-  }) :
-      consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      userDataMappingId = pulumi.Input.asInput<String>(userDataMappingId);
+  }) : consentStoreId = pulumi.Input.asInput<String>(consentStoreId),
+       datasetId = pulumi.Input.asInput<String>(datasetId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       userDataMappingId = pulumi.Input.asInput<String>(userDataMappingId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +41,9 @@ class GetUserDataMappingHealthcareV1beta1Args {
     };
   }
 
-  factory GetUserDataMappingHealthcareV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetUserDataMappingHealthcareV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetUserDataMappingHealthcareV1beta1Args(
       consentStoreId: map['consentStoreId'] as String,
       datasetId: map['datasetId'] as String,
@@ -52,4 +53,3 @@ class GetUserDataMappingHealthcareV1beta1Args {
     );
   }
 }
-

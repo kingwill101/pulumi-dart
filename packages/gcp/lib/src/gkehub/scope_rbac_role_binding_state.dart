@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ScopeRbacRoleBindingState {
   /// (Output)
   /// Code describes the state of a RBAC Role Binding resource.
@@ -8,14 +7,10 @@ class ScopeRbacRoleBindingState {
 
   /// Creates a new [ScopeRbacRoleBindingState].
   /// [code] (Output)
-  ScopeRbacRoleBindingState({
-    this.code,
-  });
+  ScopeRbacRoleBindingState({this.code});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': ?code,
-    };
+    return <String, dynamic>{'code': ?code};
   }
 
   factory ScopeRbacRoleBindingState.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ScopeRbacRoleBindingState {
     );
   }
 }
-

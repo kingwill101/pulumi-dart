@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetFunctionDurableConfig {
   /// Maximum execution time in seconds for the durable function.
   final int executionTimeout;
+
   /// Number of days to retain the function's execution state.
   final int retentionPeriod;
 
@@ -29,4 +29,3 @@ class GetFunctionDurableConfig {
     );
   }
 }
-

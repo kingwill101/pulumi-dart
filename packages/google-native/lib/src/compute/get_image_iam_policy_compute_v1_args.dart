@@ -19,10 +19,11 @@ class GetImageIamPolicyComputeV1Args {
     int? optionsRequestedPolicyVersion,
     String? project,
     required String resource,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resource = pulumi.Input.asInput<String>(resource);
+  }) : optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       resource = pulumi.Input.asInput<String>(resource);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +35,12 @@ class GetImageIamPolicyComputeV1Args {
 
   factory GetImageIamPolicyComputeV1Args.fromMap(Map<String, dynamic> map) {
     return GetImageIamPolicyComputeV1Args(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       resource: map['resource'] as String,
     );
   }
 }
-

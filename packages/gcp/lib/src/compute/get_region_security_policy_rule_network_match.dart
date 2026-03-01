@@ -6,20 +6,28 @@ import 'get_region_security_policy_rule_network_match_user_defined_field.dart';
 class GetRegionSecurityPolicyRuleNetworkMatch {
   /// Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
   final List<String> destIpRanges;
+
   /// Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
   final List<String> destPorts;
+
   /// IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
   final List<String> ipProtocols;
+
   /// BGP Autonomous System Number associated with the source IP address.
   final List<int> srcAsns;
+
   /// Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
   final List<String> srcIpRanges;
+
   /// Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
   final List<String> srcPorts;
+
   /// Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
   final List<String> srcRegionCodes;
+
   /// User-defined fields. Each element names a defined field and lists the matching values for that field.
-  final List<GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField> userDefinedFields;
+  final List<GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField>
+  userDefinedFields;
 
   /// Creates a new [GetRegionSecurityPolicyRuleNetworkMatch].
   /// [destIpRanges] Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
@@ -50,11 +58,17 @@ class GetRegionSecurityPolicyRuleNetworkMatch {
       'srcIpRanges': srcIpRanges,
       'srcPorts': srcPorts,
       'srcRegionCodes': srcRegionCodes,
-      'userDefinedFields': pulumi.Input.encodeList<GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField, Map<String, dynamic>>(userDefinedFields, (value) => value.toMap()),
+      'userDefinedFields':
+          pulumi.Input.encodeList<
+            GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField,
+            Map<String, dynamic>
+          >(userDefinedFields, (value) => value.toMap()),
     };
   }
 
-  factory GetRegionSecurityPolicyRuleNetworkMatch.fromMap(Map<String, dynamic> map) {
+  factory GetRegionSecurityPolicyRuleNetworkMatch.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRegionSecurityPolicyRuleNetworkMatch(
       destIpRanges: (map['destIpRanges'] as List).cast<String>(),
       destPorts: (map['destPorts'] as List).cast<String>(),
@@ -63,8 +77,16 @@ class GetRegionSecurityPolicyRuleNetworkMatch {
       srcIpRanges: (map['srcIpRanges'] as List).cast<String>(),
       srcPorts: (map['srcPorts'] as List).cast<String>(),
       srcRegionCodes: (map['srcRegionCodes'] as List).cast<String>(),
-      userDefinedFields: pulumi.Input.decodeList<GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField>(map['userDefinedFields'], (value) => GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField.fromMap((value as Map).cast<String, dynamic>())),
+      userDefinedFields:
+          pulumi.Input.decodeList<
+            GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField
+          >(
+            map['userDefinedFields'],
+            (value) =>
+                GetRegionSecurityPolicyRuleNetworkMatchUserDefinedField.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

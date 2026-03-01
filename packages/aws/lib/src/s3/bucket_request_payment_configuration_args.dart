@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketRequestPaymentConfigurationArgs {
   /// Name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// Account ID of the expected bucket owner.
   final pulumi.Input<String>? expectedBucketOwner;
+
   /// Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   final pulumi.Input<String> payer;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,11 +29,12 @@ class BucketRequestPaymentConfigurationArgs {
     String? expectedBucketOwner,
     required String payer,
     String? region,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      payer = pulumi.Input.asInput<String>(payer),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : bucket = pulumi.Input.asInput<String>(bucket),
+       expectedBucketOwner = pulumi.Input.asOptionalInput<String>(
+         expectedBucketOwner,
+       ),
+       payer = pulumi.Input.asInput<String>(payer),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,13 +45,16 @@ class BucketRequestPaymentConfigurationArgs {
     };
   }
 
-  factory BucketRequestPaymentConfigurationArgs.fromMap(Map<String, dynamic> map) {
+  factory BucketRequestPaymentConfigurationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketRequestPaymentConfigurationArgs(
       bucket: map['bucket'] as String,
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : map['expectedBucketOwner'] as String,
+      expectedBucketOwner: map['expectedBucketOwner'] == null
+          ? null
+          : map['expectedBucketOwner'] as String,
       payer: map['payer'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

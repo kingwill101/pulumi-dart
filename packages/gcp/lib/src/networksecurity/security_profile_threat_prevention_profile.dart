@@ -8,15 +8,20 @@ import 'security_profile_threat_prevention_profile_threat_override.dart';
 class SecurityProfileThreatPreventionProfile {
   /// Defines what action to take for antivirus threats per protocol.
   /// Structure is documented below.
-  final List<SecurityProfileThreatPreventionProfileAntivirusOverride>? antivirusOverrides;
+  final List<SecurityProfileThreatPreventionProfileAntivirusOverride>?
+  antivirusOverrides;
+
   /// The configuration for overriding threats actions by severity match.
   /// Structure is documented below.
-  final List<SecurityProfileThreatPreventionProfileSeverityOverride>? severityOverrides;
+  final List<SecurityProfileThreatPreventionProfileSeverityOverride>?
+  severityOverrides;
+
   /// The configuration for overriding threats actions by threat id match.
   /// If a threat is matched both by configuration provided in severity overrides
   /// and threat overrides, the threat overrides action is applied.
   /// Structure is documented below.
-  final List<SecurityProfileThreatPreventionProfileThreatOverride>? threatOverrides;
+  final List<SecurityProfileThreatPreventionProfileThreatOverride>?
+  threatOverrides;
 
   /// Creates a new [SecurityProfileThreatPreventionProfile].
   /// [antivirusOverrides] Defines what action to take for antivirus threats per protocol.
@@ -30,18 +35,64 @@ class SecurityProfileThreatPreventionProfile {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'antivirusOverrides': ?antivirusOverrides == null ? null : pulumi.Input.encodeList<SecurityProfileThreatPreventionProfileAntivirusOverride, Map<String, dynamic>>(antivirusOverrides!, (value) => value.toMap()),
-      'severityOverrides': ?severityOverrides == null ? null : pulumi.Input.encodeList<SecurityProfileThreatPreventionProfileSeverityOverride, Map<String, dynamic>>(severityOverrides!, (value) => value.toMap()),
-      'threatOverrides': ?threatOverrides == null ? null : pulumi.Input.encodeList<SecurityProfileThreatPreventionProfileThreatOverride, Map<String, dynamic>>(threatOverrides!, (value) => value.toMap()),
+      'antivirusOverrides': ?antivirusOverrides == null
+          ? null
+          : pulumi.Input.encodeList<
+              SecurityProfileThreatPreventionProfileAntivirusOverride,
+              Map<String, dynamic>
+            >(antivirusOverrides!, (value) => value.toMap()),
+      'severityOverrides': ?severityOverrides == null
+          ? null
+          : pulumi.Input.encodeList<
+              SecurityProfileThreatPreventionProfileSeverityOverride,
+              Map<String, dynamic>
+            >(severityOverrides!, (value) => value.toMap()),
+      'threatOverrides': ?threatOverrides == null
+          ? null
+          : pulumi.Input.encodeList<
+              SecurityProfileThreatPreventionProfileThreatOverride,
+              Map<String, dynamic>
+            >(threatOverrides!, (value) => value.toMap()),
     };
   }
 
-  factory SecurityProfileThreatPreventionProfile.fromMap(Map<String, dynamic> map) {
+  factory SecurityProfileThreatPreventionProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SecurityProfileThreatPreventionProfile(
-      antivirusOverrides: map['antivirusOverrides'] == null ? null : pulumi.Input.decodeList<SecurityProfileThreatPreventionProfileAntivirusOverride>(map['antivirusOverrides'], (value) => SecurityProfileThreatPreventionProfileAntivirusOverride.fromMap((value as Map).cast<String, dynamic>())),
-      severityOverrides: map['severityOverrides'] == null ? null : pulumi.Input.decodeList<SecurityProfileThreatPreventionProfileSeverityOverride>(map['severityOverrides'], (value) => SecurityProfileThreatPreventionProfileSeverityOverride.fromMap((value as Map).cast<String, dynamic>())),
-      threatOverrides: map['threatOverrides'] == null ? null : pulumi.Input.decodeList<SecurityProfileThreatPreventionProfileThreatOverride>(map['threatOverrides'], (value) => SecurityProfileThreatPreventionProfileThreatOverride.fromMap((value as Map).cast<String, dynamic>())),
+      antivirusOverrides: map['antivirusOverrides'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              SecurityProfileThreatPreventionProfileAntivirusOverride
+            >(
+              map['antivirusOverrides'],
+              (value) =>
+                  SecurityProfileThreatPreventionProfileAntivirusOverride.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      severityOverrides: map['severityOverrides'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              SecurityProfileThreatPreventionProfileSeverityOverride
+            >(
+              map['severityOverrides'],
+              (value) =>
+                  SecurityProfileThreatPreventionProfileSeverityOverride.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      threatOverrides: map['threatOverrides'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              SecurityProfileThreatPreventionProfileThreatOverride
+            >(
+              map['threatOverrides'],
+              (value) =>
+                  SecurityProfileThreatPreventionProfileThreatOverride.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

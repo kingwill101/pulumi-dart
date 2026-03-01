@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice {
   /// The absolute file path in the container where the tmpfs volume is mounted.
   final String containerPath;
+
   /// The path for the device on the host container instance.
   final String hostPath;
+
   /// The explicit permissions to provide to the container for the device.
   final List<String> permissions;
 
@@ -27,7 +28,9 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice
     };
   }
 
-  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice.fromMap(Map<String, dynamic> map) {
+  factory GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice(
       containerPath: map['containerPath'] as String,
       hostPath: map['hostPath'] as String,
@@ -35,4 +38,3 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameterDevice
     );
   }
 }
-

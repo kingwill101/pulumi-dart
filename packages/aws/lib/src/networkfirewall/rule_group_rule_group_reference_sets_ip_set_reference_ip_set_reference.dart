@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference {
   /// Set of Managed Prefix IP ARN(s)
   final String referenceArn;
@@ -12,15 +11,14 @@ class RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'referenceArn': referenceArn,
-    };
+    return <String, dynamic>{'referenceArn': referenceArn};
   }
 
-  factory RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference.fromMap(Map<String, dynamic> map) {
+  factory RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RuleGroupRuleGroupReferenceSetsIpSetReferenceIpSetReference(
       referenceArn: map['referenceArn'] as String,
     );
   }
 }
-

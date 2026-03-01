@@ -6,6 +6,7 @@ import 'get_framework_control_set_control.dart';
 class GetFrameworkControlSet {
   final List<GetFrameworkControlSetControl> controls;
   final String id;
+
   /// Name of the framework.
   final String name;
 
@@ -21,7 +22,11 @@ class GetFrameworkControlSet {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'controls': pulumi.Input.encodeList<GetFrameworkControlSetControl, Map<String, dynamic>>(controls, (value) => value.toMap()),
+      'controls':
+          pulumi.Input.encodeList<
+            GetFrameworkControlSetControl,
+            Map<String, dynamic>
+          >(controls, (value) => value.toMap()),
       'id': id,
       'name': name,
     };
@@ -29,10 +34,14 @@ class GetFrameworkControlSet {
 
   factory GetFrameworkControlSet.fromMap(Map<String, dynamic> map) {
     return GetFrameworkControlSet(
-      controls: pulumi.Input.decodeList<GetFrameworkControlSetControl>(map['controls'], (value) => GetFrameworkControlSetControl.fromMap((value as Map).cast<String, dynamic>())),
+      controls: pulumi.Input.decodeList<GetFrameworkControlSetControl>(
+        map['controls'],
+        (value) => GetFrameworkControlSetControl.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       name: map['name'] as String,
     );
   }
 }
-

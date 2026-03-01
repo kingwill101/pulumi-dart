@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog {
   final String instanceUrl;
 
@@ -11,15 +10,14 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'instanceUrl': instanceUrl,
-    };
+    return <String, dynamic>{'instanceUrl': instanceUrl};
   }
 
-  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog.fromMap(Map<String, dynamic> map) {
+  factory ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesDatadog(
       instanceUrl: map['instanceUrl'] as String,
     );
   }
 }
-

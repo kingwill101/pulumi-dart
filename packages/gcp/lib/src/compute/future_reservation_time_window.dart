@@ -6,8 +6,10 @@ class FutureReservationTimeWindow {
   /// Duration of the future reservation
   /// Structure is documented below.
   final FutureReservationTimeWindowDuration? duration;
+
   /// End time of the future reservation in RFC3339 format.
   final String? endTime;
+
   /// Start time of the future reservation in RFC3339 format.
   final String startTime;
 
@@ -31,10 +33,13 @@ class FutureReservationTimeWindow {
 
   factory FutureReservationTimeWindow.fromMap(Map<String, dynamic> map) {
     return FutureReservationTimeWindow(
-      duration: map['duration'] == null ? null : FutureReservationTimeWindowDuration.fromMap((map['duration'] as Map).cast<String, dynamic>()),
+      duration: map['duration'] == null
+          ? null
+          : FutureReservationTimeWindowDuration.fromMap(
+              (map['duration'] as Map).cast<String, dynamic>(),
+            ),
       endTime: map['endTime'] == null ? null : map['endTime'] as String,
       startTime: map['startTime'] as String,
     );
   }
 }
-

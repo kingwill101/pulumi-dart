@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition {
   /// Description of the expression
   final String? description;
+
   /// Textual representation of an expression in Common Expression Language syntax.
   final String expression;
+
   /// String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
   final String? location;
+
   /// Title for the expression, i.e. a short string describing its purpose.
   final String? title;
 
@@ -32,13 +34,16 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition {
     };
   }
 
-  factory PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition.fromMap(Map<String, dynamic> map) {
+  factory PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       expression: map['expression'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       title: map['title'] == null ? null : map['title'] as String,
     );
   }
 }
-

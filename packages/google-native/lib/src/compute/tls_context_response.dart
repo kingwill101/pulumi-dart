@@ -7,6 +7,7 @@ import 'tls_validation_context_response.dart';
 class TlsContextResponse {
   /// Defines the mechanism to obtain the client or server certificate.
   final TlsCertificateContextResponse certificateContext;
+
   /// Defines the mechanism to obtain the Certificate Authority certificate to validate the client/server certificate. If omitted, the proxy will not validate the server or client certificate.
   final TlsValidationContextResponse validationContext;
 
@@ -27,9 +28,12 @@ class TlsContextResponse {
 
   factory TlsContextResponse.fromMap(Map<String, dynamic> map) {
     return TlsContextResponse(
-      certificateContext: TlsCertificateContextResponse.fromMap((map['certificateContext'] as Map).cast<String, dynamic>()),
-      validationContext: TlsValidationContextResponse.fromMap((map['validationContext'] as Map).cast<String, dynamic>()),
+      certificateContext: TlsCertificateContextResponse.fromMap(
+        (map['certificateContext'] as Map).cast<String, dynamic>(),
+      ),
+      validationContext: TlsValidationContextResponse.fromMap(
+        (map['validationContext'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

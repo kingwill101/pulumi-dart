@@ -35,25 +35,56 @@ class TaskDefinitionLinuxParameters {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'capabilities': ?capabilities == null ? null : capabilities!.toMap(),
-      'devices': ?devices == null ? null : pulumi.Input.encodeList<TaskDefinitionDevice, Map<String, dynamic>>(devices!, (value) => value.toMap()),
+      'devices': ?devices == null
+          ? null
+          : pulumi.Input.encodeList<TaskDefinitionDevice, Map<String, dynamic>>(
+              devices!,
+              (value) => value.toMap(),
+            ),
       'initProcessEnabled': ?initProcessEnabled,
       'maxSwap': ?maxSwap,
       'sharedMemorySize': ?sharedMemorySize,
       'swappiness': ?swappiness,
-      'tmpfs': ?tmpfs == null ? null : pulumi.Input.encodeList<TaskDefinitionTmpfs, Map<String, dynamic>>(tmpfs!, (value) => value.toMap()),
+      'tmpfs': ?tmpfs == null
+          ? null
+          : pulumi.Input.encodeList<TaskDefinitionTmpfs, Map<String, dynamic>>(
+              tmpfs!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory TaskDefinitionLinuxParameters.fromMap(Map<String, dynamic> map) {
     return TaskDefinitionLinuxParameters(
-      capabilities: map['capabilities'] == null ? null : TaskDefinitionKernelCapabilities.fromMap((map['capabilities'] as Map).cast<String, dynamic>()),
-      devices: map['devices'] == null ? null : pulumi.Input.decodeList<TaskDefinitionDevice>(map['devices'], (value) => TaskDefinitionDevice.fromMap((value as Map).cast<String, dynamic>())),
-      initProcessEnabled: map['initProcessEnabled'] == null ? null : map['initProcessEnabled'] as bool,
+      capabilities: map['capabilities'] == null
+          ? null
+          : TaskDefinitionKernelCapabilities.fromMap(
+              (map['capabilities'] as Map).cast<String, dynamic>(),
+            ),
+      devices: map['devices'] == null
+          ? null
+          : pulumi.Input.decodeList<TaskDefinitionDevice>(
+              map['devices'],
+              (value) => TaskDefinitionDevice.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      initProcessEnabled: map['initProcessEnabled'] == null
+          ? null
+          : map['initProcessEnabled'] as bool,
       maxSwap: map['maxSwap'] == null ? null : map['maxSwap'] as int,
-      sharedMemorySize: map['sharedMemorySize'] == null ? null : map['sharedMemorySize'] as int,
+      sharedMemorySize: map['sharedMemorySize'] == null
+          ? null
+          : map['sharedMemorySize'] as int,
       swappiness: map['swappiness'] == null ? null : map['swappiness'] as int,
-      tmpfs: map['tmpfs'] == null ? null : pulumi.Input.decodeList<TaskDefinitionTmpfs>(map['tmpfs'], (value) => TaskDefinitionTmpfs.fromMap((value as Map).cast<String, dynamic>())),
+      tmpfs: map['tmpfs'] == null
+          ? null
+          : pulumi.Input.decodeList<TaskDefinitionTmpfs>(
+              map['tmpfs'],
+              (value) => TaskDefinitionTmpfs.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

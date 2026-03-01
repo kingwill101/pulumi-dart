@@ -10,8 +10,10 @@ import 'get_container_recipes_filter.dart';
 class GetContainerRecipesArgs {
   /// Configuration block(s) for filtering. Detailed below.
   final pulumi.Input<List<GetContainerRecipesFilter>>? filters;
+
   /// Owner of the container recipes. Valid values are `Self`, `Shared`, `Amazon` and `ThirdParty`. Defaults to `Self`.
   final pulumi.Input<String>? owner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -23,14 +25,26 @@ class GetContainerRecipesArgs {
     List<GetContainerRecipesFilter>? filters,
     String? owner,
     String? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetContainerRecipesFilter>>(filters),
-      owner = pulumi.Input.asOptionalInput<String>(owner),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : filters = pulumi.Input.asOptionalInput<List<GetContainerRecipesFilter>>(
+         filters,
+       ),
+       owner = pulumi.Input.asOptionalInput<String>(owner),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetContainerRecipesFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetContainerRecipesFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetContainerRecipesFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetContainerRecipesFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'owner': ?owner,
       'region': ?region,
     };
@@ -38,10 +52,16 @@ class GetContainerRecipesArgs {
 
   factory GetContainerRecipesArgs.fromMap(Map<String, dynamic> map) {
     return GetContainerRecipesArgs(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetContainerRecipesFilter>(map['filters'], (value) => GetContainerRecipesFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<GetContainerRecipesFilter>(
+              map['filters'],
+              (value) => GetContainerRecipesFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       owner: map['owner'] == null ? null : map['owner'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

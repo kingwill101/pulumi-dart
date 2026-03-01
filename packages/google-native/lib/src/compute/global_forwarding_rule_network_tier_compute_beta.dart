@@ -14,7 +14,8 @@ enum GlobalForwardingRuleNetworkTierComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalForwardingRuleNetworkTierComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown GlobalForwardingRuleNetworkTierComputeBeta value: $value',
+    );
   }
 }
-

@@ -7,29 +7,35 @@ import 'client_info_detail_response.dart';
 class ClientInfoResponse {
   /// The list of detailed information about client.
   final List<ClientInfoDetailResponse> clientInfoDetails;
+
   /// Client name, such as gcloud.
   final String name;
 
   /// Creates a new [ClientInfoResponse].
   /// [clientInfoDetails] The list of detailed information about client.
   /// [name] Client name, such as gcloud.
-  ClientInfoResponse({
-    required this.clientInfoDetails,
-    required this.name,
-  });
+  ClientInfoResponse({required this.clientInfoDetails, required this.name});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clientInfoDetails': pulumi.Input.encodeList<ClientInfoDetailResponse, Map<String, dynamic>>(clientInfoDetails, (value) => value.toMap()),
+      'clientInfoDetails':
+          pulumi.Input.encodeList<
+            ClientInfoDetailResponse,
+            Map<String, dynamic>
+          >(clientInfoDetails, (value) => value.toMap()),
       'name': name,
     };
   }
 
   factory ClientInfoResponse.fromMap(Map<String, dynamic> map) {
     return ClientInfoResponse(
-      clientInfoDetails: pulumi.Input.decodeList<ClientInfoDetailResponse>(map['clientInfoDetails'], (value) => ClientInfoDetailResponse.fromMap((value as Map).cast<String, dynamic>())),
+      clientInfoDetails: pulumi.Input.decodeList<ClientInfoDetailResponse>(
+        map['clientInfoDetails'],
+        (value) => ClientInfoDetailResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       name: map['name'] as String,
     );
   }
 }
-

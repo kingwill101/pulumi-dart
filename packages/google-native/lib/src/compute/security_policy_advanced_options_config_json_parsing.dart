@@ -6,13 +6,16 @@ enum SecurityPolicyAdvancedOptionsConfigJsonParsing {
   const SecurityPolicyAdvancedOptionsConfigJsonParsing(this.value);
   final String value;
 
-  static SecurityPolicyAdvancedOptionsConfigJsonParsing fromValue(String value) {
+  static SecurityPolicyAdvancedOptionsConfigJsonParsing fromValue(
+    String value,
+  ) {
     for (final item in SecurityPolicyAdvancedOptionsConfigJsonParsing.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown SecurityPolicyAdvancedOptionsConfigJsonParsing value: $value');
+    throw ArgumentError(
+      'Unknown SecurityPolicyAdvancedOptionsConfigJsonParsing value: $value',
+    );
   }
 }
-

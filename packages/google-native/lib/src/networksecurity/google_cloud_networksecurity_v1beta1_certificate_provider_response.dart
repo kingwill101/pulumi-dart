@@ -6,7 +6,9 @@ import 'google_cloud_networksecurity_v1beta1_grpc_endpoint_response.dart';
 /// Specification of certificate provider. Defines the mechanism to obtain the certificate and private key for peer to peer authentication.
 class GoogleCloudNetworksecurityV1beta1CertificateProviderResponse {
   /// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
-  final CertificateProviderInstanceResponseNetworksecurityV1beta1 certificateProviderInstance;
+  final CertificateProviderInstanceResponseNetworksecurityV1beta1
+  certificateProviderInstance;
+
   /// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
   final GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse grpcEndpoint;
 
@@ -25,11 +27,18 @@ class GoogleCloudNetworksecurityV1beta1CertificateProviderResponse {
     };
   }
 
-  factory GoogleCloudNetworksecurityV1beta1CertificateProviderResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudNetworksecurityV1beta1CertificateProviderResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudNetworksecurityV1beta1CertificateProviderResponse(
-      certificateProviderInstance: CertificateProviderInstanceResponseNetworksecurityV1beta1.fromMap((map['certificateProviderInstance'] as Map).cast<String, dynamic>()),
-      grpcEndpoint: GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse.fromMap((map['grpcEndpoint'] as Map).cast<String, dynamic>()),
+      certificateProviderInstance:
+          CertificateProviderInstanceResponseNetworksecurityV1beta1.fromMap(
+            (map['certificateProviderInstance'] as Map).cast<String, dynamic>(),
+          ),
+      grpcEndpoint:
+          GoogleCloudNetworksecurityV1beta1GrpcEndpointResponse.fromMap(
+            (map['grpcEndpoint'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

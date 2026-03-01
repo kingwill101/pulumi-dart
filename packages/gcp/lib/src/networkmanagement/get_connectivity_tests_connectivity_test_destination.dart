@@ -1,28 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetConnectivityTestsConnectivityTestDestination {
   /// A Cloud SQL instance URI.
   final String cloudSqlInstance;
+
   /// Forwarding rule URI. Forwarding rules are frontends for load balancers,
   /// PSC endpoints, and Protocol Forwarding.
   final String forwardingRule;
+
   /// A DNS endpoint of Google Kubernetes Engine cluster control plane.
   final String fqdn;
+
   /// A cluster URI for Google Kubernetes Engine cluster control plane.
   final String gkeMasterCluster;
+
   /// A Compute Engine instance URI.
   final String instance;
+
   /// The IP address of the endpoint.
   final String ipAddress;
+
   /// A VPC network URI.
   final String network;
+
   /// The IP protocol port of the endpoint.
   final int port;
+
   /// Project ID where the endpoint is located.
   final String projectId;
+
   /// A Redis Cluster URI.
   final String redisCluster;
+
   /// A Redis Instance URI.
   final String redisInstance;
 
@@ -68,7 +77,9 @@ class GetConnectivityTestsConnectivityTestDestination {
     };
   }
 
-  factory GetConnectivityTestsConnectivityTestDestination.fromMap(Map<String, dynamic> map) {
+  factory GetConnectivityTestsConnectivityTestDestination.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetConnectivityTestsConnectivityTestDestination(
       cloudSqlInstance: map['cloudSqlInstance'] as String,
       forwardingRule: map['forwardingRule'] as String,
@@ -84,4 +95,3 @@ class GetConnectivityTestsConnectivityTestDestination {
     );
   }
 }
-

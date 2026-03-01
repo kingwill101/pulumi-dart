@@ -7,16 +7,14 @@ import 'workload_metadata_config_node_metadata.dart';
 class WorkloadMetadataConfigContainerV1beta1 {
   /// Mode is the configuration for how to expose metadata to workloads running on the node pool.
   final WorkloadMetadataConfigModeContainerV1beta1? mode;
+
   /// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
   final WorkloadMetadataConfigNodeMetadata? nodeMetadata;
 
   /// Creates a new [WorkloadMetadataConfigContainerV1beta1].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node pool.
   /// [nodeMetadata] NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-  WorkloadMetadataConfigContainerV1beta1({
-    this.mode,
-    this.nodeMetadata,
-  });
+  WorkloadMetadataConfigContainerV1beta1({this.mode, this.nodeMetadata});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,11 +23,20 @@ class WorkloadMetadataConfigContainerV1beta1 {
     };
   }
 
-  factory WorkloadMetadataConfigContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory WorkloadMetadataConfigContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WorkloadMetadataConfigContainerV1beta1(
-      mode: map['mode'] == null ? null : WorkloadMetadataConfigModeContainerV1beta1.fromValue(map['mode'] as String),
-      nodeMetadata: map['nodeMetadata'] == null ? null : WorkloadMetadataConfigNodeMetadata.fromValue(map['nodeMetadata'] as String),
+      mode: map['mode'] == null
+          ? null
+          : WorkloadMetadataConfigModeContainerV1beta1.fromValue(
+              map['mode'] as String,
+            ),
+      nodeMetadata: map['nodeMetadata'] == null
+          ? null
+          : WorkloadMetadataConfigNodeMetadata.fromValue(
+              map['nodeMetadata'] as String,
+            ),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'enterprise_crm_eventbus_proto_failure_policy_retry_strategy.dart';
 class EnterpriseCrmEventbusProtoFailurePolicy {
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the initial interval for backoff.
   final String? intervalInSeconds;
+
   /// Required if retry_strategy is FIXED_INTERVAL or LINEAR/EXPONENTIAL_BACKOFF/RESTART_WORKFLOW_WITH_BACKOFF. Defines the number of times the task will be retried if failed.
   final int? maxNumRetries;
+
   /// Defines what happens to the task upon failure.
   final EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy? retryStrategy;
 
@@ -29,12 +31,21 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoFailurePolicy.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoFailurePolicy.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoFailurePolicy(
-      intervalInSeconds: map['intervalInSeconds'] == null ? null : map['intervalInSeconds'] as String,
-      maxNumRetries: map['maxNumRetries'] == null ? null : map['maxNumRetries'] as int,
-      retryStrategy: map['retryStrategy'] == null ? null : EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy.fromValue(map['retryStrategy'] as String),
+      intervalInSeconds: map['intervalInSeconds'] == null
+          ? null
+          : map['intervalInSeconds'] as String,
+      maxNumRetries: map['maxNumRetries'] == null
+          ? null
+          : map['maxNumRetries'] as int,
+      retryStrategy: map['retryStrategy'] == null
+          ? null
+          : EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy.fromValue(
+              map['retryStrategy'] as String,
+            ),
     );
   }
 }
-

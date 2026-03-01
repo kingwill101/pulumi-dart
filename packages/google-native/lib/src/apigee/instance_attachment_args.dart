@@ -20,10 +20,9 @@ class InstanceAttachmentArgs {
     String? environment,
     required String instanceId,
     required String organizationId,
-  }) :
-      environment = pulumi.Input.asOptionalInput<String>(environment),
-      instanceId = pulumi.Input.asInput<String>(instanceId),
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  }) : environment = pulumi.Input.asOptionalInput<String>(environment),
+       instanceId = pulumi.Input.asInput<String>(instanceId),
+       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,10 +34,11 @@ class InstanceAttachmentArgs {
 
   factory InstanceAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return InstanceAttachmentArgs(
-      environment: map['environment'] == null ? null : map['environment'] as String,
+      environment: map['environment'] == null
+          ? null
+          : map['environment'] as String,
       instanceId: map['instanceId'] as String,
       organizationId: map['organizationId'] as String,
     );
   }
 }
-

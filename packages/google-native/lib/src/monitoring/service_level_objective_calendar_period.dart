@@ -18,7 +18,8 @@ enum ServiceLevelObjectiveCalendarPeriod {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceLevelObjectiveCalendarPeriod value: $value');
+    throw ArgumentError(
+      'Unknown ServiceLevelObjectiveCalendarPeriod value: $value',
+    );
   }
 }
-

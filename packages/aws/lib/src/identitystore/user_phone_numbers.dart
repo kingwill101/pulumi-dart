@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class UserPhoneNumbers {
   /// When `true`, this is the primary phone number associated with the user.
   final bool? primary;
+
   /// The type of phone number.
   final String? type;
+
   /// The user's phone number.
   final String? value;
 
@@ -13,11 +14,7 @@ class UserPhoneNumbers {
   /// [primary] When `true`, this is the primary phone number associated with the user.
   /// [type] The type of phone number.
   /// [value] The user's phone number.
-  UserPhoneNumbers({
-    this.primary,
-    this.type,
-    this.value,
-  });
+  UserPhoneNumbers({this.primary, this.type, this.value});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,4 +32,3 @@ class UserPhoneNumbers {
     );
   }
 }
-

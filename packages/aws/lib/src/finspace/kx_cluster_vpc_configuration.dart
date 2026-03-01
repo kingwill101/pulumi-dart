@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class KxClusterVpcConfiguration {
   /// IP address type for cluster network configuration parameters. The following type is available: IP_V4 - IP address version 4.
   final String ipAddressType;
+
   /// Unique identifier of the VPC security group applied to the VPC endpoint ENI for the cluster.
   /// * `subnet_ids `- (Required) Identifier of the subnet that the Privatelink VPC endpoint uses to connect to the cluster.
   final List<String> securityGroupIds;
   final List<String> subnetIds;
+
   /// Identifier of the VPC endpoint
   final String vpcId;
 
@@ -41,4 +42,3 @@ class KxClusterVpcConfiguration {
     );
   }
 }
-

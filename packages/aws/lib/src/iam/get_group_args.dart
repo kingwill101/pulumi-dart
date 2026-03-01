@@ -12,21 +12,14 @@ class GetGroupArgs {
 
   /// Creates a new [GetGroupArgs].
   /// [groupName] Friendly IAM group name to match.
-  GetGroupArgs({
-    required String groupName,
-  }) :
-      groupName = pulumi.Input.asInput<String>(groupName);
+  GetGroupArgs({required String groupName})
+    : groupName = pulumi.Input.asInput<String>(groupName);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'groupName': groupName,
-    };
+    return <String, dynamic>{'groupName': groupName};
   }
 
   factory GetGroupArgs.fromMap(Map<String, dynamic> map) {
-    return GetGroupArgs(
-      groupName: map['groupName'] as String,
-    );
+    return GetGroupArgs(groupName: map['groupName'] as String);
   }
 }
-

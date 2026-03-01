@@ -12,9 +12,11 @@ class EventActionArgs {
   /// Describes the action to take.
   /// Described in `action` Configuration Block below.
   final pulumi.Input<EventActionAction> action;
+
   /// Describes the event that triggers the `action`.
   /// Described in `event` Configuration Block below.
   final pulumi.Input<EventActionEvent> event;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,25 +28,35 @@ class EventActionArgs {
     required EventActionAction action,
     required EventActionEvent event,
     String? region,
-  }) :
-      action = pulumi.Input.asInput<EventActionAction>(action),
-      event = pulumi.Input.asInput<EventActionEvent>(event),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : action = pulumi.Input.asInput<EventActionAction>(action),
+       event = pulumi.Input.asInput<EventActionEvent>(event),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': pulumi.Input.mapInputValue<EventActionAction, Map<String, dynamic>>(action, (value) => value.toMap()),
-      'event': pulumi.Input.mapInputValue<EventActionEvent, Map<String, dynamic>>(event, (value) => value.toMap()),
+      'action':
+          pulumi.Input.mapInputValue<EventActionAction, Map<String, dynamic>>(
+            action,
+            (value) => value.toMap(),
+          ),
+      'event':
+          pulumi.Input.mapInputValue<EventActionEvent, Map<String, dynamic>>(
+            event,
+            (value) => value.toMap(),
+          ),
       'region': ?region,
     };
   }
 
   factory EventActionArgs.fromMap(Map<String, dynamic> map) {
     return EventActionArgs(
-      action: EventActionAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      event: EventActionEvent.fromMap((map['event'] as Map).cast<String, dynamic>()),
+      action: EventActionAction.fromMap(
+        (map['action'] as Map).cast<String, dynamic>(),
+      ),
+      event: EventActionEvent.fromMap(
+        (map['event'] as Map).cast<String, dynamic>(),
+      ),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

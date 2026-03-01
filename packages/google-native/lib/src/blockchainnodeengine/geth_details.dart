@@ -9,20 +9,23 @@ class GethDetails {
 
   /// Creates a new [GethDetails].
   /// [garbageCollectionMode] Immutable. Blockchain garbage collection mode.
-  GethDetails({
-    this.garbageCollectionMode,
-  });
+  GethDetails({this.garbageCollectionMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'garbageCollectionMode': ?garbageCollectionMode == null ? null : garbageCollectionMode!.value,
+      'garbageCollectionMode': ?garbageCollectionMode == null
+          ? null
+          : garbageCollectionMode!.value,
     };
   }
 
   factory GethDetails.fromMap(Map<String, dynamic> map) {
     return GethDetails(
-      garbageCollectionMode: map['garbageCollectionMode'] == null ? null : GethDetailsGarbageCollectionMode.fromValue(map['garbageCollectionMode'] as String),
+      garbageCollectionMode: map['garbageCollectionMode'] == null
+          ? null
+          : GethDetailsGarbageCollectionMode.fromValue(
+              map['garbageCollectionMode'] as String,
+            ),
     );
   }
 }
-

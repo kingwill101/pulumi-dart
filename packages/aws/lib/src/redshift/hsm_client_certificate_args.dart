@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class HsmClientCertificateArgs {
   /// The identifier of the HSM client certificate.
   final pulumi.Input<String> hsmClientCertificateIdentifier;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -22,10 +24,11 @@ class HsmClientCertificateArgs {
     required String hsmClientCertificateIdentifier,
     String? region,
     Map<String, String>? tags,
-  }) :
-      hsmClientCertificateIdentifier = pulumi.Input.asInput<String>(hsmClientCertificateIdentifier),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : hsmClientCertificateIdentifier = pulumi.Input.asInput<String>(
+         hsmClientCertificateIdentifier,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +40,12 @@ class HsmClientCertificateArgs {
 
   factory HsmClientCertificateArgs.fromMap(Map<String, dynamic> map) {
     return HsmClientCertificateArgs(
-      hsmClientCertificateIdentifier: map['hsmClientCertificateIdentifier'] as String,
+      hsmClientCertificateIdentifier:
+          map['hsmClientCertificateIdentifier'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

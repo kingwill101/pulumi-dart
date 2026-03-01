@@ -12,20 +12,28 @@ import 'response_plan_integration.dart';
 class ResponsePlanArgs {
   /// The actions that the response plan starts at the beginning of an incident.
   final pulumi.Input<ResponsePlanAction>? action;
+
   /// The Chatbot chat channel used for collaboration during an incident.
   final pulumi.Input<List<String>>? chatChannels;
+
   /// The long format of the response plan name. This field can contain spaces.
   final pulumi.Input<String>? displayName;
+
   /// The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
   final pulumi.Input<List<String>>? engagements;
+
   /// The `incident_template` configuration block is required and supports the following arguments:
   final pulumi.Input<ResponsePlanIncidentTemplate> incidentTemplate;
+
   /// Information about third-party services integrated into the response plan. The following values are supported:
   final pulumi.Input<ResponsePlanIntegration>? integration;
+
   /// The name of the response plan.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The tags applied to the response plan.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -49,25 +57,40 @@ class ResponsePlanArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  }) :
-      action = pulumi.Input.asOptionalInput<ResponsePlanAction>(action),
-      chatChannels = pulumi.Input.asOptionalInput<List<String>>(chatChannels),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      engagements = pulumi.Input.asOptionalInput<List<String>>(engagements),
-      incidentTemplate = pulumi.Input.asInput<ResponsePlanIncidentTemplate>(incidentTemplate),
-      integration = pulumi.Input.asOptionalInput<ResponsePlanIntegration>(integration),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : action = pulumi.Input.asOptionalInput<ResponsePlanAction>(action),
+       chatChannels = pulumi.Input.asOptionalInput<List<String>>(chatChannels),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       engagements = pulumi.Input.asOptionalInput<List<String>>(engagements),
+       incidentTemplate = pulumi.Input.asInput<ResponsePlanIncidentTemplate>(
+         incidentTemplate,
+       ),
+       integration = pulumi.Input.asOptionalInput<ResponsePlanIntegration>(
+         integration,
+       ),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': ?pulumi.Input.mapOptionalInputValue<ResponsePlanAction, Map<String, dynamic>>(action, (value) => value.toMap()),
+      'action':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResponsePlanAction,
+            Map<String, dynamic>
+          >(action, (value) => value.toMap()),
       'chatChannels': ?chatChannels,
       'displayName': ?displayName,
       'engagements': ?engagements,
-      'incidentTemplate': pulumi.Input.mapInputValue<ResponsePlanIncidentTemplate, Map<String, dynamic>>(incidentTemplate, (value) => value.toMap()),
-      'integration': ?pulumi.Input.mapOptionalInputValue<ResponsePlanIntegration, Map<String, dynamic>>(integration, (value) => value.toMap()),
+      'incidentTemplate':
+          pulumi.Input.mapInputValue<
+            ResponsePlanIncidentTemplate,
+            Map<String, dynamic>
+          >(incidentTemplate, (value) => value.toMap()),
+      'integration':
+          ?pulumi.Input.mapOptionalInputValue<
+            ResponsePlanIntegration,
+            Map<String, dynamic>
+          >(integration, (value) => value.toMap()),
       'name': ?name,
       'region': ?region,
       'tags': ?tags,
@@ -76,16 +99,33 @@ class ResponsePlanArgs {
 
   factory ResponsePlanArgs.fromMap(Map<String, dynamic> map) {
     return ResponsePlanArgs(
-      action: map['action'] == null ? null : ResponsePlanAction.fromMap((map['action'] as Map).cast<String, dynamic>()),
-      chatChannels: map['chatChannels'] == null ? null : (map['chatChannels'] as List).cast<String>(),
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      engagements: map['engagements'] == null ? null : (map['engagements'] as List).cast<String>(),
-      incidentTemplate: ResponsePlanIncidentTemplate.fromMap((map['incidentTemplate'] as Map).cast<String, dynamic>()),
-      integration: map['integration'] == null ? null : ResponsePlanIntegration.fromMap((map['integration'] as Map).cast<String, dynamic>()),
+      action: map['action'] == null
+          ? null
+          : ResponsePlanAction.fromMap(
+              (map['action'] as Map).cast<String, dynamic>(),
+            ),
+      chatChannels: map['chatChannels'] == null
+          ? null
+          : (map['chatChannels'] as List).cast<String>(),
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      engagements: map['engagements'] == null
+          ? null
+          : (map['engagements'] as List).cast<String>(),
+      incidentTemplate: ResponsePlanIncidentTemplate.fromMap(
+        (map['incidentTemplate'] as Map).cast<String, dynamic>(),
+      ),
+      integration: map['integration'] == null
+          ? null
+          : ResponsePlanIntegration.fromMap(
+              (map['integration'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

@@ -7,20 +7,17 @@ class ServerBindingComputeBeta {
 
   /// Creates a new [ServerBindingComputeBeta].
   /// [type] Optional.
-  ServerBindingComputeBeta({
-    this.type,
-  });
+  ServerBindingComputeBeta({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type == null ? null : type!.value,
-    };
+    return <String, dynamic>{'type': ?type == null ? null : type!.value};
   }
 
   factory ServerBindingComputeBeta.fromMap(Map<String, dynamic> map) {
     return ServerBindingComputeBeta(
-      type: map['type'] == null ? null : ServerBindingTypeComputeBeta.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : ServerBindingTypeComputeBeta.fromValue(map['type'] as String),
     );
   }
 }
-

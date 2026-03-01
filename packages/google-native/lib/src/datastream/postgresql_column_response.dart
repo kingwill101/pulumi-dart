@@ -1,22 +1,28 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// PostgreSQL Column.
 class PostgresqlColumnResponse {
   /// Column name.
   final String column;
+
   /// The PostgreSQL data type.
   final String dataType;
+
   /// Column length.
   final int length;
+
   /// Whether or not the column can accept a null value.
   final bool nullable;
+
   /// The ordinal position of the column in the table.
   final int ordinalPosition;
+
   /// Column precision.
   final int precision;
+
   /// Whether or not the column represents a primary key.
   final bool primaryKey;
+
   /// Column scale.
   final int scale;
 
@@ -66,4 +72,3 @@ class PostgresqlColumnResponse {
     );
   }
 }
-

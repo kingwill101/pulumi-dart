@@ -6,18 +6,25 @@ import 'secret.dart';
 class Oauth2AuthCodeFlow {
   /// Authorization code to be exchanged for access and refresh tokens.
   final String? authCode;
+
   /// Auth URL for Authorization Code Flow
   final String? authUri;
+
   /// Client ID for user-provided OAuth app.
   final String? clientId;
+
   /// Client secret for user-provided OAuth app.
   final Secret? clientSecret;
+
   /// Whether to enable PKCE when the user performs the auth code flow.
   final bool? enablePkce;
+
   /// PKCE verifier to be used during the auth code exchange.
   final String? pkceVerifier;
+
   /// Redirect URI to be provided during the auth code exchange.
   final String? redirectUri;
+
   /// Scopes the connection will request when the user performs the auth code flow.
   final List<String>? scopes;
 
@@ -59,12 +66,21 @@ class Oauth2AuthCodeFlow {
       authCode: map['authCode'] == null ? null : map['authCode'] as String,
       authUri: map['authUri'] == null ? null : map['authUri'] as String,
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : Secret.fromMap((map['clientSecret'] as Map).cast<String, dynamic>()),
+      clientSecret: map['clientSecret'] == null
+          ? null
+          : Secret.fromMap(
+              (map['clientSecret'] as Map).cast<String, dynamic>(),
+            ),
       enablePkce: map['enablePkce'] == null ? null : map['enablePkce'] as bool,
-      pkceVerifier: map['pkceVerifier'] == null ? null : map['pkceVerifier'] as String,
-      redirectUri: map['redirectUri'] == null ? null : map['redirectUri'] as String,
-      scopes: map['scopes'] == null ? null : (map['scopes'] as List).cast<String>(),
+      pkceVerifier: map['pkceVerifier'] == null
+          ? null
+          : map['pkceVerifier'] as String,
+      redirectUri: map['redirectUri'] == null
+          ? null
+          : map['redirectUri'] as String,
+      scopes: map['scopes'] == null
+          ? null
+          : (map['scopes'] as List).cast<String>(),
     );
   }
 }
-

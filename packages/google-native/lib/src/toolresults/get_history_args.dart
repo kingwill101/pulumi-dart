@@ -13,18 +13,12 @@ class GetHistoryArgs {
   /// Creates a new [GetHistoryArgs].
   /// [historyId] Required.
   /// [project] Optional.
-  GetHistoryArgs({
-    required String historyId,
-    String? project,
-  }) :
-      historyId = pulumi.Input.asInput<String>(historyId),
+  GetHistoryArgs({required String historyId, String? project})
+    : historyId = pulumi.Input.asInput<String>(historyId),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'historyId': historyId,
-      'project': ?project,
-    };
+    return <String, dynamic>{'historyId': historyId, 'project': ?project};
   }
 
   factory GetHistoryArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetHistoryArgs {
     );
   }
 }
-

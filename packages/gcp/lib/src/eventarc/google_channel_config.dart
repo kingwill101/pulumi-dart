@@ -291,13 +291,17 @@ import 'google_channel_config_args.dart';
 class GoogleChannelConfig extends pulumi.CustomResource {
   /// Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
   late final pulumi.Output<String?> cryptoKeyName;
+
   /// The location for the resource
   late final pulumi.Output<String> location;
+
   /// Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// Output only. The last-modified time.
   late final pulumi.Output<String> updateTime;
 
@@ -310,11 +314,11 @@ class GoogleChannelConfig extends pulumi.CustomResource {
     GoogleChannelConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:eventarc/googleChannelConfig:GoogleChannelConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:eventarc/googleChannelConfig:GoogleChannelConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.cryptoKeyName = registerOutput<String?>('cryptoKeyName');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

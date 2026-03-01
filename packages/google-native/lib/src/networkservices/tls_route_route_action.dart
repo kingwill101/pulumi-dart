@@ -10,20 +10,26 @@ class TlsRouteRouteAction {
 
   /// Creates a new [TlsRouteRouteAction].
   /// [destinations] The destination services to which traffic should be forwarded. At least one destination service is required.
-  TlsRouteRouteAction({
-    required this.destinations,
-  });
+  TlsRouteRouteAction({required this.destinations});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'destinations': pulumi.Input.encodeList<TlsRouteRouteDestination, Map<String, dynamic>>(destinations, (value) => value.toMap()),
+      'destinations':
+          pulumi.Input.encodeList<
+            TlsRouteRouteDestination,
+            Map<String, dynamic>
+          >(destinations, (value) => value.toMap()),
     };
   }
 
   factory TlsRouteRouteAction.fromMap(Map<String, dynamic> map) {
     return TlsRouteRouteAction(
-      destinations: pulumi.Input.decodeList<TlsRouteRouteDestination>(map['destinations'], (value) => TlsRouteRouteDestination.fromMap((value as Map).cast<String, dynamic>())),
+      destinations: pulumi.Input.decodeList<TlsRouteRouteDestination>(
+        map['destinations'],
+        (value) => TlsRouteRouteDestination.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

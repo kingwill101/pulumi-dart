@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetSubscriptionCloudStorageConfigAvroConfig {
   /// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
   final bool useTopicSchema;
+
   /// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
   final bool writeMetadata;
 
@@ -22,11 +22,12 @@ class GetSubscriptionCloudStorageConfigAvroConfig {
     };
   }
 
-  factory GetSubscriptionCloudStorageConfigAvroConfig.fromMap(Map<String, dynamic> map) {
+  factory GetSubscriptionCloudStorageConfigAvroConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSubscriptionCloudStorageConfigAvroConfig(
       useTopicSchema: map['useTopicSchema'] as bool,
       writeMetadata: map['writeMetadata'] as bool,
     );
   }
 }
-

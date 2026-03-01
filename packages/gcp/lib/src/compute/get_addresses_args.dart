@@ -30,9 +30,11 @@ class GetAddressesArgs {
   /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell")
   /// AND (scheduling.automaticRestart = true)
   final pulumi.Input<String>? filter;
+
   /// The google project in which addresses are listed.
   /// Defaults to provider's configuration if missing.
   final pulumi.Input<String>? project;
+
   /// Region that should be considered to search addresses.
   /// All regions are considered if missing.
   final pulumi.Input<String>? region;
@@ -41,12 +43,8 @@ class GetAddressesArgs {
   /// [filter] A filter expression that
   /// [project] The google project in which addresses are listed.
   /// [region] Region that should be considered to search addresses.
-  GetAddressesArgs({
-    String? filter,
-    String? project,
-    String? region,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
+  GetAddressesArgs({String? filter, String? project, String? region})
+    : filter = pulumi.Input.asOptionalInput<String>(filter),
       project = pulumi.Input.asOptionalInput<String>(project),
       region = pulumi.Input.asOptionalInput<String>(region);
 
@@ -66,4 +64,3 @@ class GetAddressesArgs {
     );
   }
 }
-

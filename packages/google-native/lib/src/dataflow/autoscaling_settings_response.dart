@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Settings for WorkerPool autoscaling.
 class AutoscalingSettingsResponse {
   /// The algorithm to use for autoscaling.
   final String algorithm;
+
   /// The maximum number of workers to cap scaling at.
   final int maxNumWorkers;
 
@@ -30,4 +30,3 @@ class AutoscalingSettingsResponse {
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'google_datastore_admin_v1_indexed_property_direction.dart';
 class GoogleDatastoreAdminV1IndexedProperty {
   /// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
   final GoogleDatastoreAdminV1IndexedPropertyDirection direction;
+
   /// The property name to index.
   final String name;
 
@@ -18,17 +19,17 @@ class GoogleDatastoreAdminV1IndexedProperty {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'direction': direction.value,
-      'name': name,
-    };
+    return <String, dynamic>{'direction': direction.value, 'name': name};
   }
 
-  factory GoogleDatastoreAdminV1IndexedProperty.fromMap(Map<String, dynamic> map) {
+  factory GoogleDatastoreAdminV1IndexedProperty.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleDatastoreAdminV1IndexedProperty(
-      direction: GoogleDatastoreAdminV1IndexedPropertyDirection.fromValue(map['direction'] as String),
+      direction: GoogleDatastoreAdminV1IndexedPropertyDirection.fromValue(
+        map['direction'] as String,
+      ),
       name: map['name'] as String,
     );
   }
 }
-

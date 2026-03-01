@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetSigningProfileRevocationRecord {
   final String revocationEffectiveFrom;
   final String revokedAt;
@@ -32,4 +31,3 @@ class GetSigningProfileRevocationRecord {
     );
   }
 }
-

@@ -12,13 +12,17 @@ enum GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding {
   const GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding(this.value);
   final String value;
 
-  static GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding fromValue(String value) {
-    for (final item in GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding.values) {
+  static GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding value: $value',
+    );
   }
 }
-

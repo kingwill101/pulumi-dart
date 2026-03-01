@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Binauthz policy that applies to this cluster.
 class PolicyBindingResponseGkehubV1beta {
   /// The relative resource name of the binauthz platform policy to audit. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
@@ -8,20 +7,13 @@ class PolicyBindingResponseGkehubV1beta {
 
   /// Creates a new [PolicyBindingResponseGkehubV1beta].
   /// [name] The relative resource name of the binauthz platform policy to audit. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
-  PolicyBindingResponseGkehubV1beta({
-    required this.name,
-  });
+  PolicyBindingResponseGkehubV1beta({required this.name});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
   factory PolicyBindingResponseGkehubV1beta.fromMap(Map<String, dynamic> map) {
-    return PolicyBindingResponseGkehubV1beta(
-      name: map['name'] as String,
-    );
+    return PolicyBindingResponseGkehubV1beta(name: map['name'] as String);
   }
 }
-

@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The Data Fusion version. This proto message stores information about certain Data Fusion version, which is used for Data Fusion version upgrade.
 class VersionResponse {
   /// Represents a list of available feature names for a given version.
   final List<String> availableFeatures;
+
   /// Whether this is currently the default version for Cloud Data Fusion
   final bool defaultVersion;
+
   /// Type represents the release availability of the version
   final String type;
+
   /// The version number of the Data Fusion instance, such as '6.0.1.0'.
   final String versionNumber;
 
@@ -42,4 +44,3 @@ class VersionResponse {
     );
   }
 }
-

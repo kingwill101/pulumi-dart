@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChannelInputSpecification {
   final String codec;
   final String inputResolution;
@@ -32,4 +31,3 @@ class ChannelInputSpecification {
     );
   }
 }
-

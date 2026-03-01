@@ -19,10 +19,9 @@ class GetSpokeNetworkconnectivityV1alpha1Args {
     required String location,
     String? project,
     required String spokeId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spokeId = pulumi.Input.asInput<String>(spokeId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       spokeId = pulumi.Input.asInput<String>(spokeId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetSpokeNetworkconnectivityV1alpha1Args {
     };
   }
 
-  factory GetSpokeNetworkconnectivityV1alpha1Args.fromMap(Map<String, dynamic> map) {
+  factory GetSpokeNetworkconnectivityV1alpha1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetSpokeNetworkconnectivityV1alpha1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +41,3 @@ class GetSpokeNetworkconnectivityV1alpha1Args {
     );
   }
 }
-

@@ -103,7 +103,8 @@ Future<GetDeploymentDeploymentmanagerV2Result> getDeploymentDeploymentmanagerV2(
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deploymentmanager_v2_get_deployment_iam_policy_deploymentmanager_v2_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentIamPolicyDeploymentmanagerV2Result> getDeploymentIamPolicyDeploymentmanagerV2(
+Future<GetDeploymentIamPolicyDeploymentmanagerV2Result>
+getDeploymentIamPolicyDeploymentmanagerV2(
   GetDeploymentIamPolicyDeploymentmanagerV2Args args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -119,7 +120,8 @@ Future<GetDeploymentIamPolicyDeploymentmanagerV2Result> getDeploymentIamPolicyDe
 /// Gets information about a specific composite type.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deploymentmanager_v2beta_get_composite_type_deploymentmanager_v2beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetCompositeTypeDeploymentmanagerV2betaResult> getCompositeTypeDeploymentmanagerV2beta(
+Future<GetCompositeTypeDeploymentmanagerV2betaResult>
+getCompositeTypeDeploymentmanagerV2beta(
   GetCompositeTypeDeploymentmanagerV2betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -135,7 +137,8 @@ Future<GetCompositeTypeDeploymentmanagerV2betaResult> getCompositeTypeDeployment
 /// Gets information about a specific deployment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deploymentmanager_v2beta_get_deployment_deploymentmanager_v2beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentDeploymentmanagerV2betaResult> getDeploymentDeploymentmanagerV2beta(
+Future<GetDeploymentDeploymentmanagerV2betaResult>
+getDeploymentDeploymentmanagerV2beta(
   GetDeploymentDeploymentmanagerV2betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -151,7 +154,8 @@ Future<GetDeploymentDeploymentmanagerV2betaResult> getDeploymentDeploymentmanage
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deploymentmanager_v2beta_get_deployment_iam_policy_deploymentmanager_v2beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetDeploymentIamPolicyDeploymentmanagerV2betaResult> getDeploymentIamPolicyDeploymentmanagerV2beta(
+Future<GetDeploymentIamPolicyDeploymentmanagerV2betaResult>
+getDeploymentIamPolicyDeploymentmanagerV2beta(
   GetDeploymentIamPolicyDeploymentmanagerV2betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -167,7 +171,8 @@ Future<GetDeploymentIamPolicyDeploymentmanagerV2betaResult> getDeploymentIamPoli
 /// Gets information about a specific type provider.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deploymentmanager_v2beta_get_type_provider_deploymentmanager_v2beta_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetTypeProviderDeploymentmanagerV2betaResult> getTypeProviderDeploymentmanagerV2beta(
+Future<GetTypeProviderDeploymentmanagerV2betaResult>
+getTypeProviderDeploymentmanagerV2beta(
   GetTypeProviderDeploymentmanagerV2betaArgs args, {
   pulumi.InvokeOptions? options,
 }) async {

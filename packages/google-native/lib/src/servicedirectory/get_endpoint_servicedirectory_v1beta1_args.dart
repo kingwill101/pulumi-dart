@@ -25,12 +25,11 @@ class GetEndpointServicedirectoryV1beta1Args {
     required String namespaceId,
     String? project,
     required String serviceId,
-  }) :
-      endpointId = pulumi.Input.asInput<String>(endpointId),
-      location = pulumi.Input.asInput<String>(location),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceId = pulumi.Input.asInput<String>(serviceId);
+  }) : endpointId = pulumi.Input.asInput<String>(endpointId),
+       location = pulumi.Input.asInput<String>(location),
+       namespaceId = pulumi.Input.asInput<String>(namespaceId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serviceId = pulumi.Input.asInput<String>(serviceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,7 +41,9 @@ class GetEndpointServicedirectoryV1beta1Args {
     };
   }
 
-  factory GetEndpointServicedirectoryV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetEndpointServicedirectoryV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEndpointServicedirectoryV1beta1Args(
       endpointId: map['endpointId'] as String,
       location: map['location'] as String,
@@ -52,4 +53,3 @@ class GetEndpointServicedirectoryV1beta1Args {
     );
   }
 }
-

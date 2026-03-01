@@ -2442,37 +2442,50 @@ import 'feature_state.dart';
 class Feature extends pulumi.CustomResource {
   /// Output only. When the Feature resource was created.
   late final pulumi.Output<String> createTime;
+
   /// Output only. When the Feature resource was deleted.
   late final pulumi.Output<String> deleteTime;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// Optional. Fleet Default Membership Configuration.
   /// Structure is documented below.
-  late final pulumi.Output<FeatureFleetDefaultMemberConfig?> fleetDefaultMemberConfig;
+  late final pulumi.Output<FeatureFleetDefaultMemberConfig?>
+  fleetDefaultMemberConfig;
+
   /// GCP labels for this Feature.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The location for the resource
   late final pulumi.Output<String> location;
+
   /// The full, unique name of this Feature resource
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// State of the Feature resource itself.
   /// Structure is documented below.
   late final pulumi.Output<List<FeatureResourceState>> resourceStates;
+
   /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
   /// Structure is documented below.
   late final pulumi.Output<FeatureSpec?> spec;
+
   /// (Output)
   /// Output only. The "running state" of the Feature in this Hub.
   /// Structure is documented below.
   late final pulumi.Output<List<FeatureState>> states;
+
   /// (Output)
   /// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   late final pulumi.Output<String> updateTime;
@@ -2486,21 +2499,28 @@ class Feature extends pulumi.CustomResource {
     FeatureArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:gkehub/feature:Feature',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:gkehub/feature:Feature',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createTime = registerOutput<String>('createTime');
     this.deleteTime = registerOutput<String>('deleteTime');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    this.fleetDefaultMemberConfig = registerOutput<FeatureFleetDefaultMemberConfig?>('fleetDefaultMemberConfig');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
+    this.fleetDefaultMemberConfig =
+        registerOutput<FeatureFleetDefaultMemberConfig?>(
+          'fleetDefaultMemberConfig',
+        );
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
     this.pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    this.resourceStates = registerOutput<List<FeatureResourceState>>('resourceStates');
+    this.resourceStates = registerOutput<List<FeatureResourceState>>(
+      'resourceStates',
+    );
     this.spec = registerOutput<FeatureSpec?>('spec');
     this.states = registerOutput<List<FeatureState>>('states');
     this.updateTime = registerOutput<String>('updateTime');

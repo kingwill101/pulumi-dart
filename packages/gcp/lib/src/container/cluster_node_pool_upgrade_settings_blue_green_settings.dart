@@ -5,11 +5,15 @@ import 'cluster_node_pool_upgrade_settings_blue_green_settings_standard_rollout_
 
 class ClusterNodePoolUpgradeSettingsBlueGreenSettings {
   /// Autoscaled rollout policy for blue-green upgrade.
-  final ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy? autoscaledRolloutPolicy;
+  final ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy?
+  autoscaledRolloutPolicy;
+
   /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   final String? nodePoolSoakDuration;
+
   /// Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
-  final ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy? standardRolloutPolicy;
+  final ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy?
+  standardRolloutPolicy;
 
   /// Creates a new [ClusterNodePoolUpgradeSettingsBlueGreenSettings].
   /// [autoscaledRolloutPolicy] Autoscaled rollout policy for blue-green upgrade.
@@ -23,18 +27,33 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscaledRolloutPolicy': ?autoscaledRolloutPolicy == null ? null : autoscaledRolloutPolicy!.toMap(),
+      'autoscaledRolloutPolicy': ?autoscaledRolloutPolicy == null
+          ? null
+          : autoscaledRolloutPolicy!.toMap(),
       'nodePoolSoakDuration': ?nodePoolSoakDuration,
-      'standardRolloutPolicy': ?standardRolloutPolicy == null ? null : standardRolloutPolicy!.toMap(),
+      'standardRolloutPolicy': ?standardRolloutPolicy == null
+          ? null
+          : standardRolloutPolicy!.toMap(),
     };
   }
 
-  factory ClusterNodePoolUpgradeSettingsBlueGreenSettings.fromMap(Map<String, dynamic> map) {
+  factory ClusterNodePoolUpgradeSettingsBlueGreenSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterNodePoolUpgradeSettingsBlueGreenSettings(
-      autoscaledRolloutPolicy: map['autoscaledRolloutPolicy'] == null ? null : ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap((map['autoscaledRolloutPolicy'] as Map).cast<String, dynamic>()),
-      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null ? null : map['nodePoolSoakDuration'] as String,
-      standardRolloutPolicy: map['standardRolloutPolicy'] == null ? null : ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap((map['standardRolloutPolicy'] as Map).cast<String, dynamic>()),
+      autoscaledRolloutPolicy: map['autoscaledRolloutPolicy'] == null
+          ? null
+          : ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicy.fromMap(
+              (map['autoscaledRolloutPolicy'] as Map).cast<String, dynamic>(),
+            ),
+      nodePoolSoakDuration: map['nodePoolSoakDuration'] == null
+          ? null
+          : map['nodePoolSoakDuration'] as String,
+      standardRolloutPolicy: map['standardRolloutPolicy'] == null
+          ? null
+          : ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy.fromMap(
+              (map['standardRolloutPolicy'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

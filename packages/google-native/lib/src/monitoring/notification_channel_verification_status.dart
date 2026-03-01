@@ -13,7 +13,8 @@ enum NotificationChannelVerificationStatus {
         return item;
       }
     }
-    throw ArgumentError('Unknown NotificationChannelVerificationStatus value: $value');
+    throw ArgumentError(
+      'Unknown NotificationChannelVerificationStatus value: $value',
+    );
   }
 }
-

@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getIpSet.
 class GetIpSetResult {
   /// An array of strings that specifies zero or more IP addresses or blocks of IP addresses in Classless Inter-Domain Routing (CIDR) notation.
   final List<String> addresses;
+
   /// ARN of the entity.
   final String arn;
+
   /// Description of the set that helps with identification.
   final String description;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// IP address version of the set.
   final String ipAddressVersion;
   final String name;
@@ -63,4 +66,3 @@ class GetIpSetResult {
     );
   }
 }
-

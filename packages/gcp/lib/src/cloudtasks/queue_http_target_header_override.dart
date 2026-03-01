@@ -9,20 +9,17 @@ class QueueHttpTargetHeaderOverride {
 
   /// Creates a new [QueueHttpTargetHeaderOverride].
   /// [header] Header embodying a key and a value.
-  QueueHttpTargetHeaderOverride({
-    required this.header,
-  });
+  QueueHttpTargetHeaderOverride({required this.header});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'header': header.toMap(),
-    };
+    return <String, dynamic>{'header': header.toMap()};
   }
 
   factory QueueHttpTargetHeaderOverride.fromMap(Map<String, dynamic> map) {
     return QueueHttpTargetHeaderOverride(
-      header: QueueHttpTargetHeaderOverrideHeader.fromMap((map['header'] as Map).cast<String, dynamic>()),
+      header: QueueHttpTargetHeaderOverrideHeader.fromMap(
+        (map['header'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

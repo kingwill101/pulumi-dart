@@ -11,20 +11,25 @@ class InterceptEndpointGroupAssociationArgs {
   /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
   final pulumi.Input<String> interceptEndpointGroup;
+
   /// The ID to use for the new association, which will become the final
   /// component of the endpoint group's resource name. If not provided, the
   /// server will generate a unique ID.
   final pulumi.Input<String>? interceptEndpointGroupAssociationId;
+
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>>? labels;
+
   /// The cloud location of the association, currently restricted to `global`.
   final pulumi.Input<String> location;
+
   /// The VPC network that is associated. for example:
   /// `projects/123456789/global/networks/my-network`.
   /// See https://google.aip.dev/124.
   final pulumi.Input<String> network;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -43,18 +48,21 @@ class InterceptEndpointGroupAssociationArgs {
     required String location,
     required String network,
     String? project,
-  }) :
-      interceptEndpointGroup = pulumi.Input.asInput<String>(interceptEndpointGroup),
-      interceptEndpointGroupAssociationId = pulumi.Input.asOptionalInput<String>(interceptEndpointGroupAssociationId),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asInput<String>(location),
-      network = pulumi.Input.asInput<String>(network),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : interceptEndpointGroup = pulumi.Input.asInput<String>(
+         interceptEndpointGroup,
+       ),
+       interceptEndpointGroupAssociationId = pulumi
+           .Input.asOptionalInput<String>(interceptEndpointGroupAssociationId),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asInput<String>(location),
+       network = pulumi.Input.asInput<String>(network),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'interceptEndpointGroup': interceptEndpointGroup,
-      'interceptEndpointGroupAssociationId': ?interceptEndpointGroupAssociationId,
+      'interceptEndpointGroupAssociationId':
+          ?interceptEndpointGroupAssociationId,
       'labels': ?labels,
       'location': location,
       'network': network,
@@ -62,15 +70,21 @@ class InterceptEndpointGroupAssociationArgs {
     };
   }
 
-  factory InterceptEndpointGroupAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory InterceptEndpointGroupAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InterceptEndpointGroupAssociationArgs(
       interceptEndpointGroup: map['interceptEndpointGroup'] as String,
-      interceptEndpointGroupAssociationId: map['interceptEndpointGroupAssociationId'] == null ? null : map['interceptEndpointGroupAssociationId'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      interceptEndpointGroupAssociationId:
+          map['interceptEndpointGroupAssociationId'] == null
+          ? null
+          : map['interceptEndpointGroupAssociationId'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] as String,
       network: map['network'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

@@ -15,12 +15,8 @@ class GetJobArgs {
   /// [jobId] Required.
   /// [location] Optional.
   /// [project] Optional.
-  GetJobArgs({
-    required String jobId,
-    String? location,
-    String? project,
-  }) :
-      jobId = pulumi.Input.asInput<String>(jobId),
+  GetJobArgs({required String jobId, String? location, String? project})
+    : jobId = pulumi.Input.asInput<String>(jobId),
       location = pulumi.Input.asOptionalInput<String>(location),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -40,4 +36,3 @@ class GetJobArgs {
     );
   }
 }
-

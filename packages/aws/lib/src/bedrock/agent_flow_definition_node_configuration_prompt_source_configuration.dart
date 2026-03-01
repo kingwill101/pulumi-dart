@@ -5,9 +5,12 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_res
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration {
   /// Contains configurations for a prompt that is defined inline. See Prompt Inline Configuration for more information.
-  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline? inline;
+  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline?
+  inline;
+
   /// Contains configurations for a prompt from Prompt management. See Prompt Resource Configuration for more information.
-  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource? resource;
+  final AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource?
+  resource;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration].
   /// [inline] Contains configurations for a prompt that is defined inline. See Prompt Inline Configuration for more information.
@@ -24,11 +27,20 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration {
     };
   }
 
-  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration(
-      inline: map['inline'] == null ? null : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline.fromMap((map['inline'] as Map).cast<String, dynamic>()),
-      resource: map['resource'] == null ? null : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource.fromMap((map['resource'] as Map).cast<String, dynamic>()),
+      inline: map['inline'] == null
+          ? null
+          : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline.fromMap(
+              (map['inline'] as Map).cast<String, dynamic>(),
+            ),
+      resource: map['resource'] == null
+          ? null
+          : AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationResource.fromMap(
+              (map['resource'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -6,12 +6,16 @@ import 'plan_trigger_condition.dart';
 class PlanTrigger {
   /// Action to trigger. Valid values: `activate`, `deactivate`.
   final String action;
+
   /// List of conditions that must be met. See Conditions below.
   final List<PlanTriggerCondition>? conditions;
+
   /// Description of the trigger.
   final String? description;
+
   /// Minimum delay in minutes between executions.
   final int minDelayMinutesBetweenExecutions;
+
   /// Target region for the trigger.
   final String targetRegion;
 
@@ -32,7 +36,12 @@ class PlanTrigger {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'action': action,
-      'conditions': ?conditions == null ? null : pulumi.Input.encodeList<PlanTriggerCondition, Map<String, dynamic>>(conditions!, (value) => value.toMap()),
+      'conditions': ?conditions == null
+          ? null
+          : pulumi.Input.encodeList<PlanTriggerCondition, Map<String, dynamic>>(
+              conditions!,
+              (value) => value.toMap(),
+            ),
       'description': ?description,
       'minDelayMinutesBetweenExecutions': minDelayMinutesBetweenExecutions,
       'targetRegion': targetRegion,
@@ -42,11 +51,20 @@ class PlanTrigger {
   factory PlanTrigger.fromMap(Map<String, dynamic> map) {
     return PlanTrigger(
       action: map['action'] as String,
-      conditions: map['conditions'] == null ? null : pulumi.Input.decodeList<PlanTriggerCondition>(map['conditions'], (value) => PlanTriggerCondition.fromMap((value as Map).cast<String, dynamic>())),
-      description: map['description'] == null ? null : map['description'] as String,
-      minDelayMinutesBetweenExecutions: map['minDelayMinutesBetweenExecutions'] as int,
+      conditions: map['conditions'] == null
+          ? null
+          : pulumi.Input.decodeList<PlanTriggerCondition>(
+              map['conditions'],
+              (value) => PlanTriggerCondition.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      minDelayMinutesBetweenExecutions:
+          map['minDelayMinutesBetweenExecutions'] as int,
       targetRegion: map['targetRegion'] as String,
     );
   }
 }
-

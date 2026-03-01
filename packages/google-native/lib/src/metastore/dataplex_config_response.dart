@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies how metastore metadata should be integrated with the Dataplex service.
 class DataplexConfigResponse {
   /// A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
@@ -8,14 +7,10 @@ class DataplexConfigResponse {
 
   /// Creates a new [DataplexConfigResponse].
   /// [lakeResources] A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
-  DataplexConfigResponse({
-    required this.lakeResources,
-  });
+  DataplexConfigResponse({required this.lakeResources});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'lakeResources': lakeResources,
-    };
+    return <String, dynamic>{'lakeResources': lakeResources};
   }
 
   factory DataplexConfigResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class DataplexConfigResponse {
     );
   }
 }
-

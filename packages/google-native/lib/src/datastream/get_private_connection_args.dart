@@ -19,10 +19,9 @@ class GetPrivateConnectionArgs {
     required String location,
     required String privateConnectionId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       privateConnectionId = pulumi.Input.asInput<String>(privateConnectionId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetPrivateConnectionArgs {
     );
   }
 }
-

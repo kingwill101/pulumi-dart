@@ -9,20 +9,32 @@ class GetFirewallFirewallStatusCapacityUsageSummary {
 
   /// Creates a new [GetFirewallFirewallStatusCapacityUsageSummary].
   /// [cidrs] Capacity usage of CIDR blocks used by IP set references in a firewall.
-  GetFirewallFirewallStatusCapacityUsageSummary({
-    required this.cidrs,
-  });
+  GetFirewallFirewallStatusCapacityUsageSummary({required this.cidrs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cidrs': pulumi.Input.encodeList<GetFirewallFirewallStatusCapacityUsageSummaryCidr, Map<String, dynamic>>(cidrs, (value) => value.toMap()),
+      'cidrs':
+          pulumi.Input.encodeList<
+            GetFirewallFirewallStatusCapacityUsageSummaryCidr,
+            Map<String, dynamic>
+          >(cidrs, (value) => value.toMap()),
     };
   }
 
-  factory GetFirewallFirewallStatusCapacityUsageSummary.fromMap(Map<String, dynamic> map) {
+  factory GetFirewallFirewallStatusCapacityUsageSummary.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFirewallFirewallStatusCapacityUsageSummary(
-      cidrs: pulumi.Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummaryCidr>(map['cidrs'], (value) => GetFirewallFirewallStatusCapacityUsageSummaryCidr.fromMap((value as Map).cast<String, dynamic>())),
+      cidrs:
+          pulumi.Input.decodeList<
+            GetFirewallFirewallStatusCapacityUsageSummaryCidr
+          >(
+            map['cidrs'],
+            (value) =>
+                GetFirewallFirewallStatusCapacityUsageSummaryCidr.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

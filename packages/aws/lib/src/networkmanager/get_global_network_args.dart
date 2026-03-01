@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetGlobalNetworkArgs {
   /// ID of the specific global network to retrieve.
   final pulumi.Input<String> globalNetworkId;
+
   /// Map of resource tags.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -18,22 +19,19 @@ class GetGlobalNetworkArgs {
   GetGlobalNetworkArgs({
     required String globalNetworkId,
     Map<String, String>? tags,
-  }) :
-      globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : globalNetworkId = pulumi.Input.asInput<String>(globalNetworkId),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'globalNetworkId': globalNetworkId,
-      'tags': ?tags,
-    };
+    return <String, dynamic>{'globalNetworkId': globalNetworkId, 'tags': ?tags};
   }
 
   factory GetGlobalNetworkArgs.fromMap(Map<String, dynamic> map) {
     return GetGlobalNetworkArgs(
       globalNetworkId: map['globalNetworkId'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

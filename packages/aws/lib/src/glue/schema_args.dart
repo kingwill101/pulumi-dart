@@ -9,18 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SchemaArgs {
   /// The compatibility mode of the schema. Values values are: `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, and `FULL_ALL`.
   final pulumi.Input<String> compatibility;
+
   /// The data format of the schema definition. Valid values are `AVRO`, `JSON` and `PROTOBUF`.
   final pulumi.Input<String> dataFormat;
+
   /// A description of the schema.
   final pulumi.Input<String>? description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ARN of the Glue Registry to create the schema in.
   final pulumi.Input<String>? registryArn;
+
   /// The schema definition using the `data_format` setting for `schema_name`.
   final pulumi.Input<String> schemaDefinition;
+
   /// The Name of the schema.
   final pulumi.Input<String> schemaName;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -42,15 +49,14 @@ class SchemaArgs {
     required String schemaDefinition,
     required String schemaName,
     Map<String, String>? tags,
-  }) :
-      compatibility = pulumi.Input.asInput<String>(compatibility),
-      dataFormat = pulumi.Input.asInput<String>(dataFormat),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      registryArn = pulumi.Input.asOptionalInput<String>(registryArn),
-      schemaDefinition = pulumi.Input.asInput<String>(schemaDefinition),
-      schemaName = pulumi.Input.asInput<String>(schemaName),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : compatibility = pulumi.Input.asInput<String>(compatibility),
+       dataFormat = pulumi.Input.asInput<String>(dataFormat),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       registryArn = pulumi.Input.asOptionalInput<String>(registryArn),
+       schemaDefinition = pulumi.Input.asInput<String>(schemaDefinition),
+       schemaName = pulumi.Input.asInput<String>(schemaName),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,13 +75,18 @@ class SchemaArgs {
     return SchemaArgs(
       compatibility: map['compatibility'] as String,
       dataFormat: map['dataFormat'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      registryArn: map['registryArn'] == null ? null : map['registryArn'] as String,
+      registryArn: map['registryArn'] == null
+          ? null
+          : map['registryArn'] as String,
       schemaDefinition: map['schemaDefinition'] as String,
       schemaName: map['schemaName'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

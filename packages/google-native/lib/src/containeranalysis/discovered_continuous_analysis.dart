@@ -16,4 +16,3 @@ enum DiscoveredContinuousAnalysis {
     throw ArgumentError('Unknown DiscoveredContinuousAnalysis value: $value');
   }
 }
-

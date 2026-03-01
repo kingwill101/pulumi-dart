@@ -191,19 +191,25 @@ import 'instant_snapshot_args.dart';
 class InstantSnapshot extends pulumi.CustomResource {
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
+
   /// An optional description of this resource.
   late final pulumi.Output<String?> description;
+
   /// Size of the snapshot, specified in GB.
   late final pulumi.Output<int> diskSizeGb;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// The fingerprint used for optimistic locking of this resource. Used
   /// internally during updates.
   late final pulumi.Output<String> labelFingerprint;
+
   /// Labels to apply to this InstantSnapshot.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// Name of the resource; provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -212,18 +218,24 @@ class InstantSnapshot extends pulumi.CustomResource {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// A reference to the disk used to create this instant snapshot.
   late final pulumi.Output<String> sourceDisk;
+
   /// The ID value of the disk used to create this InstantSnapshot.
   late final pulumi.Output<String> sourceDiskId;
+
   /// A reference to the zone where the disk is located.
   late final pulumi.Output<String> zone;
 
@@ -236,15 +248,17 @@ class InstantSnapshot extends pulumi.CustomResource {
     InstantSnapshotArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:compute/instantSnapshot:InstantSnapshot',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:compute/instantSnapshot:InstantSnapshot',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.creationTimestamp = registerOutput<String>('creationTimestamp');
     this.description = registerOutput<String?>('description');
     this.diskSizeGb = registerOutput<int>('diskSizeGb');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.labelFingerprint = registerOutput<String>('labelFingerprint');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

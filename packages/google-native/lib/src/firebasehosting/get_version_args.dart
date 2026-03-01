@@ -19,10 +19,9 @@ class GetVersionArgs {
     String? project,
     required String siteId,
     required String versionId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteId = pulumi.Input.asInput<String>(siteId),
-      versionId = pulumi.Input.asInput<String>(versionId);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       siteId = pulumi.Input.asInput<String>(siteId),
+       versionId = pulumi.Input.asInput<String>(versionId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetVersionArgs {
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'status_response.dart';
 class ScheduledReleaseRecordResponse {
   /// The name of the created compilation result, if one was successfully created. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
   final String compilationResult;
+
   /// The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
   final StatusResponse errorStatus;
+
   /// The timestamp of this release attempt.
   final String releaseTime;
 
@@ -32,9 +34,10 @@ class ScheduledReleaseRecordResponse {
   factory ScheduledReleaseRecordResponse.fromMap(Map<String, dynamic> map) {
     return ScheduledReleaseRecordResponse(
       compilationResult: map['compilationResult'] as String,
-      errorStatus: StatusResponse.fromMap((map['errorStatus'] as Map).cast<String, dynamic>()),
+      errorStatus: StatusResponse.fromMap(
+        (map['errorStatus'] as Map).cast<String, dynamic>(),
+      ),
       releaseTime: map['releaseTime'] as String,
     );
   }
 }
-

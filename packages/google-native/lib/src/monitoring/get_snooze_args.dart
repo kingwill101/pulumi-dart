@@ -13,18 +13,12 @@ class GetSnoozeArgs {
   /// Creates a new [GetSnoozeArgs].
   /// [project] Optional.
   /// [snoozeId] Required.
-  GetSnoozeArgs({
-    String? project,
-    required String snoozeId,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
+  GetSnoozeArgs({String? project, required String snoozeId})
+    : project = pulumi.Input.asOptionalInput<String>(project),
       snoozeId = pulumi.Input.asInput<String>(snoozeId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-      'snoozeId': snoozeId,
-    };
+    return <String, dynamic>{'project': ?project, 'snoozeId': snoozeId};
   }
 
   factory GetSnoozeArgs.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetSnoozeArgs {
     );
   }
 }
-

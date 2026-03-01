@@ -13,7 +13,8 @@ enum UriOverrideUriOverrideEnforceMode {
         return item;
       }
     }
-    throw ArgumentError('Unknown UriOverrideUriOverrideEnforceMode value: $value');
+    throw ArgumentError(
+      'Unknown UriOverrideUriOverrideEnforceMode value: $value',
+    );
   }
 }
-

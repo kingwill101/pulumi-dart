@@ -10,20 +10,29 @@ class AutomationResourceSelector {
 
   /// Creates a new [AutomationResourceSelector].
   /// [targets] Contains attributes about a target.
-  AutomationResourceSelector({
-    this.targets,
-  });
+  AutomationResourceSelector({this.targets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'targets': ?targets == null ? null : pulumi.Input.encodeList<TargetAttribute, Map<String, dynamic>>(targets!, (value) => value.toMap()),
+      'targets': ?targets == null
+          ? null
+          : pulumi.Input.encodeList<TargetAttribute, Map<String, dynamic>>(
+              targets!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory AutomationResourceSelector.fromMap(Map<String, dynamic> map) {
     return AutomationResourceSelector(
-      targets: map['targets'] == null ? null : pulumi.Input.decodeList<TargetAttribute>(map['targets'], (value) => TargetAttribute.fromMap((value as Map).cast<String, dynamic>())),
+      targets: map['targets'] == null
+          ? null
+          : pulumi.Input.decodeList<TargetAttribute>(
+              map['targets'],
+              (value) => TargetAttribute.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

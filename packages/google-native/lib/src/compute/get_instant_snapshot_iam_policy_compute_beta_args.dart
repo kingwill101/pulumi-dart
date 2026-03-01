@@ -22,11 +22,12 @@ class GetInstantSnapshotIamPolicyComputeBetaArgs {
     String? project,
     required String resource,
     required String zone,
-  }) :
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      resource = pulumi.Input.asInput<String>(resource),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       resource = pulumi.Input.asInput<String>(resource),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,13 +38,17 @@ class GetInstantSnapshotIamPolicyComputeBetaArgs {
     };
   }
 
-  factory GetInstantSnapshotIamPolicyComputeBetaArgs.fromMap(Map<String, dynamic> map) {
+  factory GetInstantSnapshotIamPolicyComputeBetaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInstantSnapshotIamPolicyComputeBetaArgs(
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       resource: map['resource'] as String,
       zone: map['zone'] as String,
     );
   }
 }
-

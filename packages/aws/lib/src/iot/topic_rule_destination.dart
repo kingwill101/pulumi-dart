@@ -123,12 +123,16 @@ import 'topic_rule_destination_vpc_configuration.dart';
 class TopicRuleDestination extends pulumi.CustomResource {
   /// The ARN of the topic rule destination
   late final pulumi.Output<String> arn;
+
   /// Whether or not to enable the destination. Default: `true`.
   late final pulumi.Output<bool?> enabled;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Configuration of the virtual private cloud (VPC) connection. For more info, see the [AWS documentation](https://docs.aws.amazon.com/iot/latest/developerguide/vpc-rule-action.html).
-  late final pulumi.Output<TopicRuleDestinationVpcConfiguration> vpcConfiguration;
+  late final pulumi.Output<TopicRuleDestinationVpcConfiguration>
+  vpcConfiguration;
 
   /// Creates a new [TopicRuleDestination].
   /// [name] The Pulumi resource name.
@@ -139,14 +143,17 @@ class TopicRuleDestination extends pulumi.CustomResource {
     TopicRuleDestinationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:iot/topicRuleDestination:TopicRuleDestination',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:iot/topicRuleDestination:TopicRuleDestination',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.enabled = registerOutput<bool?>('enabled');
     this.region = registerOutput<String>('region');
-    this.vpcConfiguration = registerOutput<TopicRuleDestinationVpcConfiguration>('vpcConfiguration');
+    this.vpcConfiguration =
+        registerOutput<TopicRuleDestinationVpcConfiguration>(
+          'vpcConfiguration',
+        );
   }
 }

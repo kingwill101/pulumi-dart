@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SpokeLinkedRouterApplianceInstancesInstance {
   /// The IP address on the VM to use for peering.
   final String ipAddress;
+
   /// The URI of the virtual machine resource
   final String virtualMachine;
 
@@ -22,11 +22,12 @@ class SpokeLinkedRouterApplianceInstancesInstance {
     };
   }
 
-  factory SpokeLinkedRouterApplianceInstancesInstance.fromMap(Map<String, dynamic> map) {
+  factory SpokeLinkedRouterApplianceInstancesInstance.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SpokeLinkedRouterApplianceInstancesInstance(
       ipAddress: map['ipAddress'] as String,
       virtualMachine: map['virtualMachine'] as String,
     );
   }
 }
-

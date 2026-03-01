@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RegionBackendServiceBackendCustomMetric {
   /// If true, the metric data is not used for load balancing.
   final bool dryRun;
+
   /// Optional parameter to define a target utilization for the Custom Metrics
   /// balancing mode. The valid range is <code>[0.0, 1.0]</code>.
   final double? maxUtilization;
+
   /// Name of a custom utilization signal. The name must be 1-64 characters
   /// long and match the regular expression a-z? which
   /// means the first character must be a lowercase letter, and all following
@@ -36,12 +37,15 @@ class RegionBackendServiceBackendCustomMetric {
     };
   }
 
-  factory RegionBackendServiceBackendCustomMetric.fromMap(Map<String, dynamic> map) {
+  factory RegionBackendServiceBackendCustomMetric.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionBackendServiceBackendCustomMetric(
       dryRun: map['dryRun'] as bool,
-      maxUtilization: map['maxUtilization'] == null ? null : map['maxUtilization'] as double,
+      maxUtilization: map['maxUtilization'] == null
+          ? null
+          : map['maxUtilization'] as double,
       name: map['name'] as String,
     );
   }
 }
-

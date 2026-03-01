@@ -1,19 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BotIntent {
   /// The name of the intent. Must be less than or equal to 100 characters in length.
   final String intentName;
+
   /// The version of the intent. Must be less than or equal to 64 characters in length.
   final String intentVersion;
 
   /// Creates a new [BotIntent].
   /// [intentName] The name of the intent. Must be less than or equal to 100 characters in length.
   /// [intentVersion] The version of the intent. Must be less than or equal to 64 characters in length.
-  BotIntent({
-    required this.intentName,
-    required this.intentVersion,
-  });
+  BotIntent({required this.intentName, required this.intentVersion});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,4 +26,3 @@ class BotIntent {
     );
   }
 }
-

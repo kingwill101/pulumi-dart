@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Disk encryption status for an instance.
 class DiskEncryptionStatusResponse {
   /// This is always `sql#diskEncryptionStatus`.
   final String kind;
+
   /// KMS key version used to encrypt the Cloud SQL instance resource
   final String kmsKeyVersionName;
 
@@ -30,4 +30,3 @@ class DiskEncryptionStatusResponse {
     );
   }
 }
-

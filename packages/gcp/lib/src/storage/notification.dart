@@ -322,18 +322,25 @@ import 'notification_args.dart';
 class Notification extends pulumi.CustomResource {
   /// The name of the bucket.
   late final pulumi.Output<String> bucket;
+
   /// A set of key/value attribute pairs to attach to each Cloud PubSub message published for this notification subscription
   late final pulumi.Output<Map<String, String>?> customAttributes;
+
   /// List of event type filters for this notification config. If not specified, Cloud Storage will send notifications for all event types. The valid types are: `"OBJECT_FINALIZE"`, `"OBJECT_METADATA_UPDATE"`, `"OBJECT_DELETE"`, `"OBJECT_ARCHIVE"`
   late final pulumi.Output<List<String>?> eventTypes;
+
   /// The ID of the created notification.
   late final pulumi.Output<String> notificationId;
+
   /// Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
   late final pulumi.Output<String?> objectNamePrefix;
+
   /// The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
   late final pulumi.Output<String> payloadFormat;
+
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
+
   /// The Cloud PubSub topic to which this subscription publishes. Expects either the
   /// topic name, assumed to belong to the default GCP provider project, or the project-level name,
   /// i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
@@ -351,13 +358,15 @@ class Notification extends pulumi.CustomResource {
     NotificationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:storage/notification:Notification',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:storage/notification:Notification',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.bucket = registerOutput<String>('bucket');
-    this.customAttributes = registerOutput<Map<String, String>?>('customAttributes');
+    this.customAttributes = registerOutput<Map<String, String>?>(
+      'customAttributes',
+    );
     this.eventTypes = registerOutput<List<String>?>('eventTypes');
     this.notificationId = registerOutput<String>('notificationId');
     this.objectNamePrefix = registerOutput<String?>('objectNamePrefix');

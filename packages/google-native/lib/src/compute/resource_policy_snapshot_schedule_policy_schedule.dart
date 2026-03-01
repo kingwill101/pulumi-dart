@@ -23,17 +23,34 @@ class ResourcePolicySnapshotSchedulePolicySchedule {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dailySchedule': ?dailySchedule == null ? null : dailySchedule!.toMap(),
-      'hourlySchedule': ?hourlySchedule == null ? null : hourlySchedule!.toMap(),
-      'weeklySchedule': ?weeklySchedule == null ? null : weeklySchedule!.toMap(),
+      'hourlySchedule': ?hourlySchedule == null
+          ? null
+          : hourlySchedule!.toMap(),
+      'weeklySchedule': ?weeklySchedule == null
+          ? null
+          : weeklySchedule!.toMap(),
     };
   }
 
-  factory ResourcePolicySnapshotSchedulePolicySchedule.fromMap(Map<String, dynamic> map) {
+  factory ResourcePolicySnapshotSchedulePolicySchedule.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourcePolicySnapshotSchedulePolicySchedule(
-      dailySchedule: map['dailySchedule'] == null ? null : ResourcePolicyDailyCycle.fromMap((map['dailySchedule'] as Map).cast<String, dynamic>()),
-      hourlySchedule: map['hourlySchedule'] == null ? null : ResourcePolicyHourlyCycle.fromMap((map['hourlySchedule'] as Map).cast<String, dynamic>()),
-      weeklySchedule: map['weeklySchedule'] == null ? null : ResourcePolicyWeeklyCycle.fromMap((map['weeklySchedule'] as Map).cast<String, dynamic>()),
+      dailySchedule: map['dailySchedule'] == null
+          ? null
+          : ResourcePolicyDailyCycle.fromMap(
+              (map['dailySchedule'] as Map).cast<String, dynamic>(),
+            ),
+      hourlySchedule: map['hourlySchedule'] == null
+          ? null
+          : ResourcePolicyHourlyCycle.fromMap(
+              (map['hourlySchedule'] as Map).cast<String, dynamic>(),
+            ),
+      weeklySchedule: map['weeklySchedule'] == null
+          ? null
+          : ResourcePolicyWeeklyCycle.fromMap(
+              (map['weeklySchedule'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

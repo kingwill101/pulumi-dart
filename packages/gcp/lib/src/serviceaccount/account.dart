@@ -129,28 +129,37 @@ class Account extends pulumi.CustomResource {
   /// must be 6-30 characters long, and match the regular expression `a-z`
   /// to comply with RFC1035. Changing this forces a new service account to be created.
   late final pulumi.Output<String> accountId;
+
   /// If set to true, skip service account creation if a service account with the same email already exists.
   late final pulumi.Output<bool?> createIgnoreAlreadyExists;
+
   /// A text description of the service account.
   /// Must be less than or equal to 256 UTF-8 bytes.
   late final pulumi.Output<String?> description;
+
   /// Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
   /// Must be set after creation to disable a service account.
   late final pulumi.Output<bool?> disabled;
+
   /// The display name for the service account.
   /// Can be updated without creating a new resource.
   late final pulumi.Output<String?> displayName;
+
   /// The e-mail address of the service account. This value
   /// should be referenced from any `gcp.organizations.getIAMPolicy` data sources
   /// that would grant the service account privileges.
   late final pulumi.Output<String> email;
+
   /// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
   late final pulumi.Output<String> member;
+
   /// The fully-qualified name of the service account.
   late final pulumi.Output<String> name;
+
   /// The ID of the project that the service account will be created in.
   /// Defaults to the provider project configuration.
   late final pulumi.Output<String> project;
+
   /// The unique id of the service account.
   late final pulumi.Output<String> uniqueId;
 
@@ -163,13 +172,15 @@ class Account extends pulumi.CustomResource {
     AccountArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:serviceaccount/account:Account',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:serviceaccount/account:Account',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.accountId = registerOutput<String>('accountId');
-    this.createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
+    this.createIgnoreAlreadyExists = registerOutput<bool?>(
+      'createIgnoreAlreadyExists',
+    );
     this.description = registerOutput<String?>('description');
     this.disabled = registerOutput<bool?>('disabled');
     this.displayName = registerOutput<String?>('displayName');

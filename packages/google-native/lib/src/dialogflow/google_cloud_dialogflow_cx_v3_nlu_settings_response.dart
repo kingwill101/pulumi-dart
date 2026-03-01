@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Settings related to NLU.
 class GoogleCloudDialogflowCxV3NluSettingsResponse {
   /// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
   final double classificationThreshold;
+
   /// Indicates NLU model training mode.
   final String modelTrainingMode;
+
   /// Indicates the type of NLU model.
   final String modelType;
 
@@ -28,7 +29,9 @@ class GoogleCloudDialogflowCxV3NluSettingsResponse {
     };
   }
 
-  factory GoogleCloudDialogflowCxV3NluSettingsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3NluSettingsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3NluSettingsResponse(
       classificationThreshold: map['classificationThreshold'] as double,
       modelTrainingMode: map['modelTrainingMode'] as String,
@@ -36,4 +39,3 @@ class GoogleCloudDialogflowCxV3NluSettingsResponse {
     );
   }
 }
-

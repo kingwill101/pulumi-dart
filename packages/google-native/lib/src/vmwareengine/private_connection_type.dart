@@ -18,4 +18,3 @@ enum PrivateConnectionType {
     throw ArgumentError('Unknown PrivateConnectionType value: $value');
   }
 }
-

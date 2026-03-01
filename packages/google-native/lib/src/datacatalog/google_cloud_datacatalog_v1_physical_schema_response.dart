@@ -8,14 +8,19 @@ import 'google_cloud_datacatalog_v1_physical_schema_thrift_schema_response.dart'
 class GoogleCloudDatacatalogV1PhysicalSchemaResponse {
   /// Schema in Avro JSON format.
   final GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse avro;
+
   /// Marks a CSV-encoded data source.
   final Map<String, dynamic> csv;
+
   /// Marks an ORC-encoded data source.
   final Map<String, dynamic> orc;
+
   /// Marks a Parquet-encoded data source.
   final Map<String, dynamic> parquet;
+
   /// Schema in protocol buffer format.
   final GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse protobuf;
+
   /// Schema in Thrift format.
   final GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse thrift;
 
@@ -46,15 +51,24 @@ class GoogleCloudDatacatalogV1PhysicalSchemaResponse {
     };
   }
 
-  factory GoogleCloudDatacatalogV1PhysicalSchemaResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1PhysicalSchemaResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1PhysicalSchemaResponse(
-      avro: GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse.fromMap((map['avro'] as Map).cast<String, dynamic>()),
+      avro: GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse.fromMap(
+        (map['avro'] as Map).cast<String, dynamic>(),
+      ),
       csv: (map['csv'] as Map).cast<String, dynamic>(),
       orc: (map['orc'] as Map).cast<String, dynamic>(),
       parquet: (map['parquet'] as Map).cast<String, dynamic>(),
-      protobuf: GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse.fromMap((map['protobuf'] as Map).cast<String, dynamic>()),
-      thrift: GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse.fromMap((map['thrift'] as Map).cast<String, dynamic>()),
+      protobuf:
+          GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaResponse.fromMap(
+            (map['protobuf'] as Map).cast<String, dynamic>(),
+          ),
+      thrift:
+          GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaResponse.fromMap(
+            (map['thrift'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

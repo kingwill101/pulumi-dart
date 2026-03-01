@@ -10,16 +10,25 @@ import 'customer_managed_policy_attachments_exclusive_timeouts.dart';
 /// {@macro pulumi_ssoadmin_customer_managed_policy_attachments_exclusive_customer_managed_policy_attachments_exclusive_args_doc}
 class CustomerManagedPolicyAttachmentsExclusiveArgs {
   /// Specifies the names and paths of the customer managed policies to attach. See Customer Managed Policy Reference below.
-  final pulumi.Input<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>>? customerManagedPolicyReferences;
+  final pulumi.Input<
+    List<
+      CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference
+    >
+  >?
+  customerManagedPolicyReferences;
+
   /// ARN of the SSO Instance.
   final pulumi.Input<String> instanceArn;
+
   /// ARN of the Permission Set.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> permissionSetArn;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
-  final pulumi.Input<CustomerManagedPolicyAttachmentsExclusiveTimeouts>? timeouts;
+  final pulumi.Input<CustomerManagedPolicyAttachmentsExclusiveTimeouts>?
+  timeouts;
 
   /// Creates a new [CustomerManagedPolicyAttachmentsExclusiveArgs].
   /// [customerManagedPolicyReferences] Specifies the names and paths of the customer managed policies to attach. See Customer Managed Policy Reference below.
@@ -28,36 +37,79 @@ class CustomerManagedPolicyAttachmentsExclusiveArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   CustomerManagedPolicyAttachmentsExclusiveArgs({
-    List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>? customerManagedPolicyReferences,
+    List<
+      CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference
+    >?
+    customerManagedPolicyReferences,
     required String instanceArn,
     required String permissionSetArn,
     String? region,
     CustomerManagedPolicyAttachmentsExclusiveTimeouts? timeouts,
-  }) :
-      customerManagedPolicyReferences = pulumi.Input.asOptionalInput<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>>(customerManagedPolicyReferences),
-      instanceArn = pulumi.Input.asInput<String>(instanceArn),
-      permissionSetArn = pulumi.Input.asInput<String>(permissionSetArn),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      timeouts = pulumi.Input.asOptionalInput<CustomerManagedPolicyAttachmentsExclusiveTimeouts>(timeouts);
+  }) : customerManagedPolicyReferences =
+           pulumi.Input.asOptionalInput<
+             List<
+               CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference
+             >
+           >(customerManagedPolicyReferences),
+       instanceArn = pulumi.Input.asInput<String>(instanceArn),
+       permissionSetArn = pulumi.Input.asInput<String>(permissionSetArn),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       timeouts =
+           pulumi.Input.asOptionalInput<
+             CustomerManagedPolicyAttachmentsExclusiveTimeouts
+           >(timeouts);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customerManagedPolicyReferences': ?pulumi.Input.mapOptionalInputValue<List<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>, List<Map<String, dynamic>>>(customerManagedPolicyReferences, (value) => pulumi.Input.encodeList<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'customerManagedPolicyReferences':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<
+              CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference
+            >,
+            List<Map<String, dynamic>>
+          >(
+            customerManagedPolicyReferences,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'instanceArn': instanceArn,
       'permissionSetArn': permissionSetArn,
       'region': ?region,
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<CustomerManagedPolicyAttachmentsExclusiveTimeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            CustomerManagedPolicyAttachmentsExclusiveTimeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
     };
   }
 
-  factory CustomerManagedPolicyAttachmentsExclusiveArgs.fromMap(Map<String, dynamic> map) {
+  factory CustomerManagedPolicyAttachmentsExclusiveArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CustomerManagedPolicyAttachmentsExclusiveArgs(
-      customerManagedPolicyReferences: map['customerManagedPolicyReferences'] == null ? null : pulumi.Input.decodeList<CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference>(map['customerManagedPolicyReferences'], (value) => CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference.fromMap((value as Map).cast<String, dynamic>())),
+      customerManagedPolicyReferences:
+          map['customerManagedPolicyReferences'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference
+            >(
+              map['customerManagedPolicyReferences'],
+              (value) =>
+                  CustomerManagedPolicyAttachmentsExclusiveCustomerManagedPolicyReference.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       instanceArn: map['instanceArn'] as String,
       permissionSetArn: map['permissionSetArn'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      timeouts: map['timeouts'] == null ? null : CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
+      timeouts: map['timeouts'] == null
+          ? null
+          : CustomerManagedPolicyAttachmentsExclusiveTimeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

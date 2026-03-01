@@ -8,12 +8,16 @@ import 'template_contents_interpreter.dart';
 class TemplateContents {
   /// Import files referenced by the main template.
   final List<ImportFile>? imports;
+
   /// Which interpreter (python or jinja) should be used during expansion.
   final TemplateContentsInterpreter? interpreter;
+
   /// The filename of the mainTemplate
   final String? mainTemplate;
+
   /// The contents of the template schema.
   final String? schema;
+
   /// The contents of the main template file.
   final String? template;
 
@@ -33,7 +37,12 @@ class TemplateContents {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'imports': ?imports == null ? null : pulumi.Input.encodeList<ImportFile, Map<String, dynamic>>(imports!, (value) => value.toMap()),
+      'imports': ?imports == null
+          ? null
+          : pulumi.Input.encodeList<ImportFile, Map<String, dynamic>>(
+              imports!,
+              (value) => value.toMap(),
+            ),
       'interpreter': ?interpreter == null ? null : interpreter!.value,
       'mainTemplate': ?mainTemplate,
       'schema': ?schema,
@@ -43,12 +52,21 @@ class TemplateContents {
 
   factory TemplateContents.fromMap(Map<String, dynamic> map) {
     return TemplateContents(
-      imports: map['imports'] == null ? null : pulumi.Input.decodeList<ImportFile>(map['imports'], (value) => ImportFile.fromMap((value as Map).cast<String, dynamic>())),
-      interpreter: map['interpreter'] == null ? null : TemplateContentsInterpreter.fromValue(map['interpreter'] as String),
-      mainTemplate: map['mainTemplate'] == null ? null : map['mainTemplate'] as String,
+      imports: map['imports'] == null
+          ? null
+          : pulumi.Input.decodeList<ImportFile>(
+              map['imports'],
+              (value) =>
+                  ImportFile.fromMap((value as Map).cast<String, dynamic>()),
+            ),
+      interpreter: map['interpreter'] == null
+          ? null
+          : TemplateContentsInterpreter.fromValue(map['interpreter'] as String),
+      mainTemplate: map['mainTemplate'] == null
+          ? null
+          : map['mainTemplate'] as String,
       schema: map['schema'] == null ? null : map['schema'] as String,
       template: map['template'] == null ? null : map['template'] as String,
     );
   }
 }
-

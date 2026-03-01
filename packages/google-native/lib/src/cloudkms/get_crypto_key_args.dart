@@ -22,11 +22,10 @@ class GetCryptoKeyArgs {
     required String keyRingId,
     required String location,
     String? project,
-  }) :
-      cryptoKeyId = pulumi.Input.asInput<String>(cryptoKeyId),
-      keyRingId = pulumi.Input.asInput<String>(keyRingId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : cryptoKeyId = pulumi.Input.asInput<String>(cryptoKeyId),
+       keyRingId = pulumi.Input.asInput<String>(keyRingId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetCryptoKeyArgs {
     );
   }
 }
-

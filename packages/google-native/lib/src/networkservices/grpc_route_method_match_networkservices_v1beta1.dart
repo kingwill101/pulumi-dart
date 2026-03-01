@@ -6,10 +6,13 @@ import 'grpc_route_method_match_type_networkservices_v1beta1.dart';
 class GrpcRouteMethodMatchNetworkservicesV1beta1 {
   /// Optional. Specifies that matches are case sensitive. The default value is true. case_sensitive must not be used with a type of REGULAR_EXPRESSION.
   final bool? caseSensitive;
+
   /// Name of the method to match against. If unspecified, will match all methods.
   final String grpcMethod;
+
   /// Name of the service to match against. If unspecified, will match all services.
   final String grpcService;
+
   /// Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
   final GrpcRouteMethodMatchTypeNetworkservicesV1beta1? type;
 
@@ -34,13 +37,20 @@ class GrpcRouteMethodMatchNetworkservicesV1beta1 {
     };
   }
 
-  factory GrpcRouteMethodMatchNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory GrpcRouteMethodMatchNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrpcRouteMethodMatchNetworkservicesV1beta1(
-      caseSensitive: map['caseSensitive'] == null ? null : map['caseSensitive'] as bool,
+      caseSensitive: map['caseSensitive'] == null
+          ? null
+          : map['caseSensitive'] as bool,
       grpcMethod: map['grpcMethod'] as String,
       grpcService: map['grpcService'] as String,
-      type: map['type'] == null ? null : GrpcRouteMethodMatchTypeNetworkservicesV1beta1.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : GrpcRouteMethodMatchTypeNetworkservicesV1beta1.fromValue(
+              map['type'] as String,
+            ),
     );
   }
 }
-

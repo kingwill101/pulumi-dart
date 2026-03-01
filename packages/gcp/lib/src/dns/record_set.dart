@@ -1920,18 +1920,23 @@ class RecordSet extends pulumi.CustomResource {
   /// The name of the zone in which this record set will
   /// reside.
   late final pulumi.Output<String> managedZone;
+
   /// The DNS name this record set will apply to.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The configuration for steering traffic based on query.
   /// Now you can specify either Weighted Round Robin(WRR) type or Geolocation(GEO) type.
   /// Structure is documented below.
   late final pulumi.Output<RecordSetRoutingPolicy?> routingPolicy;
   late final pulumi.Output<List<String>?> rrdatas;
+
   /// The time-to-live of this record set (seconds).
   late final pulumi.Output<int?> ttl;
+
   /// The DNS record set type.
   ///
   /// - - -
@@ -1946,15 +1951,17 @@ class RecordSet extends pulumi.CustomResource {
     RecordSetArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:dns/recordSet:RecordSet',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:dns/recordSet:RecordSet',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.managedZone = registerOutput<String>('managedZone');
     this.name = registerOutput<String>('name');
     this.project = registerOutput<String>('project');
-    this.routingPolicy = registerOutput<RecordSetRoutingPolicy?>('routingPolicy');
+    this.routingPolicy = registerOutput<RecordSetRoutingPolicy?>(
+      'routingPolicy',
+    );
     this.rrdatas = registerOutput<List<String>?>('rrdatas');
     this.ttl = registerOutput<int?>('ttl');
     this.type = registerOutput<String>('type');

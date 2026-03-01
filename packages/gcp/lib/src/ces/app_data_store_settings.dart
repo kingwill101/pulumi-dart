@@ -14,20 +14,29 @@ class AppDataStoreSettings {
 
   /// Creates a new [AppDataStoreSettings].
   /// [engines] (Output)
-  AppDataStoreSettings({
-    this.engines,
-  });
+  AppDataStoreSettings({this.engines});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'engines': ?engines == null ? null : pulumi.Input.encodeList<AppDataStoreSettingsEngine, Map<String, dynamic>>(engines!, (value) => value.toMap()),
+      'engines': ?engines == null
+          ? null
+          : pulumi.Input.encodeList<
+              AppDataStoreSettingsEngine,
+              Map<String, dynamic>
+            >(engines!, (value) => value.toMap()),
     };
   }
 
   factory AppDataStoreSettings.fromMap(Map<String, dynamic> map) {
     return AppDataStoreSettings(
-      engines: map['engines'] == null ? null : pulumi.Input.decodeList<AppDataStoreSettingsEngine>(map['engines'], (value) => AppDataStoreSettingsEngine.fromMap((value as Map).cast<String, dynamic>())),
+      engines: map['engines'] == null
+          ? null
+          : pulumi.Input.decodeList<AppDataStoreSettingsEngine>(
+              map['engines'],
+              (value) => AppDataStoreSettingsEngine.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

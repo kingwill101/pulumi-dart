@@ -6,6 +6,7 @@ import 'exec_step_config_response.dart';
 class ExecStepResponse {
   /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
   final ExecStepConfigResponse linuxExecStepConfig;
+
   /// The ExecStepConfig for all Windows VMs targeted by the PatchJob.
   final ExecStepConfigResponse windowsExecStepConfig;
 
@@ -26,9 +27,12 @@ class ExecStepResponse {
 
   factory ExecStepResponse.fromMap(Map<String, dynamic> map) {
     return ExecStepResponse(
-      linuxExecStepConfig: ExecStepConfigResponse.fromMap((map['linuxExecStepConfig'] as Map).cast<String, dynamic>()),
-      windowsExecStepConfig: ExecStepConfigResponse.fromMap((map['windowsExecStepConfig'] as Map).cast<String, dynamic>()),
+      linuxExecStepConfig: ExecStepConfigResponse.fromMap(
+        (map['linuxExecStepConfig'] as Map).cast<String, dynamic>(),
+      ),
+      windowsExecStepConfig: ExecStepConfigResponse.fromMap(
+        (map['windowsExecStepConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

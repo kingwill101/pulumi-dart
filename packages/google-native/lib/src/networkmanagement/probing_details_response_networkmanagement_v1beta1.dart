@@ -9,20 +9,28 @@ import 'status_response_networkmanagement_v1beta1.dart';
 class ProbingDetailsResponseNetworkmanagementV1beta1 {
   /// The reason probing was aborted.
   final String abortCause;
+
   /// The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the Google network. This will only be populated for a connectivity test which has an internet destination/source address. The absence of this field *must not* be used as an indication that the destination/source is part of the Google network.
   final EdgeLocationResponseNetworkmanagementV1beta1 destinationEgressLocation;
+
   /// The source and destination endpoints derived from the test input and used for active probing.
   final EndpointInfoResponseNetworkmanagementV1beta1 endpointInfo;
+
   /// Details about an internal failure or the cancellation of active probing.
   final StatusResponseNetworkmanagementV1beta1 error;
+
   /// Latency as measured by active probing in one direction: from the source to the destination endpoint.
   final LatencyDistributionResponseNetworkmanagementV1beta1 probingLatency;
+
   /// The overall result of active probing.
   final String result;
+
   /// Number of probes sent.
   final int sentProbeCount;
+
   /// Number of probes that reached the destination.
   final int successfulProbeCount;
+
   /// The time that reachability was assessed through active probing.
   final String verifyTime;
 
@@ -62,13 +70,25 @@ class ProbingDetailsResponseNetworkmanagementV1beta1 {
     };
   }
 
-  factory ProbingDetailsResponseNetworkmanagementV1beta1.fromMap(Map<String, dynamic> map) {
+  factory ProbingDetailsResponseNetworkmanagementV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ProbingDetailsResponseNetworkmanagementV1beta1(
       abortCause: map['abortCause'] as String,
-      destinationEgressLocation: EdgeLocationResponseNetworkmanagementV1beta1.fromMap((map['destinationEgressLocation'] as Map).cast<String, dynamic>()),
-      endpointInfo: EndpointInfoResponseNetworkmanagementV1beta1.fromMap((map['endpointInfo'] as Map).cast<String, dynamic>()),
-      error: StatusResponseNetworkmanagementV1beta1.fromMap((map['error'] as Map).cast<String, dynamic>()),
-      probingLatency: LatencyDistributionResponseNetworkmanagementV1beta1.fromMap((map['probingLatency'] as Map).cast<String, dynamic>()),
+      destinationEgressLocation:
+          EdgeLocationResponseNetworkmanagementV1beta1.fromMap(
+            (map['destinationEgressLocation'] as Map).cast<String, dynamic>(),
+          ),
+      endpointInfo: EndpointInfoResponseNetworkmanagementV1beta1.fromMap(
+        (map['endpointInfo'] as Map).cast<String, dynamic>(),
+      ),
+      error: StatusResponseNetworkmanagementV1beta1.fromMap(
+        (map['error'] as Map).cast<String, dynamic>(),
+      ),
+      probingLatency:
+          LatencyDistributionResponseNetworkmanagementV1beta1.fromMap(
+            (map['probingLatency'] as Map).cast<String, dynamic>(),
+          ),
       result: map['result'] as String,
       sentProbeCount: map['sentProbeCount'] as int,
       successfulProbeCount: map['successfulProbeCount'] as int,
@@ -76,4 +96,3 @@ class ProbingDetailsResponseNetworkmanagementV1beta1 {
     );
   }
 }
-

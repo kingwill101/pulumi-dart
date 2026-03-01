@@ -9,6 +9,7 @@ class GetTriggerBuildStep {
   ///
   /// If 'allowFailure' is also specified, this field will take precedence.
   final List<int> allowExitCodes;
+
   /// Allow this build step to fail without failing the entire build.
   /// If false, the entire build will fail if this step fails. Otherwise, the
   /// build will succeed, but this step will still have a failure status.
@@ -16,6 +17,7 @@ class GetTriggerBuildStep {
   ///
   /// 'allowExitCodes' takes precedence over this field.
   final bool allowFailure;
+
   /// A list of arguments that will be presented to the step when it is started.
   ///
   /// If the image used to run the step's container has an entrypoint, the args
@@ -23,6 +25,7 @@ class GetTriggerBuildStep {
   /// entrypoint, the first element in args is used as the entrypoint, and the
   /// remainder will be used as arguments.
   final List<String> args;
+
   /// Working directory to use when running this step's container.
   ///
   /// If this value is a relative path, it is relative to the build's working
@@ -35,19 +38,23 @@ class GetTriggerBuildStep {
   /// which specifies an absolute path, the 'RepoSource' 'dir' is ignored
   /// for the step's execution.
   final String dir;
+
   /// Entrypoint to be used instead of the build step image's
   /// default entrypoint.
   /// If unset, the image's default entrypoint is used
   final String entrypoint;
+
   /// A list of environment variable definitions to be used when
   /// running a step.
   ///
   /// The elements are of the form "KEY=VALUE" for the environment variable
   /// "KEY" being given the value "VALUE".
   final List<String> envs;
+
   /// Unique identifier for this build step, used in 'wait_for' to
   /// reference this build step as a dependency.
   final String id;
+
   /// The name of the container image that will run this particular build step.
   ///
   /// If the image is available in the host's Docker daemon's cache, it will be
@@ -65,22 +72,27 @@ class GetTriggerBuildStep {
   /// host's Docker daemon's cache and is available to use as the name for a
   /// later build step.
   final String name;
+
   /// A shell script to be executed in the step.
   /// When script is provided, the user cannot specify the entrypoint or args.
   final String script;
+
   /// A list of environment variables which are encrypted using
   /// a Cloud Key
   /// Management Service crypto key. These values must be specified in
   /// the build's 'Secret'.
   final List<String> secretEnvs;
+
   /// Time limit for executing this build step. If not defined,
   /// the step has no
   /// time limit and will be allowed to continue to run until either it
   /// completes or the build itself times out.
   final String timeout;
+
   /// Output only. Stores timing information for executing this
   /// build step.
   final String timing;
+
   /// List of volumes to mount into the build step.
   ///
   /// Each volume is created as an empty volume prior to execution of the
@@ -90,6 +102,7 @@ class GetTriggerBuildStep {
   /// Using a named volume in only one step is not valid as it is
   /// indicative of a build request with an incorrect configuration.
   final List<GetTriggerBuildStepVolume> volumes;
+
   /// The ID(s) of the step(s) that this build step depends on.
   ///
   /// This build step will not start until all the build steps in 'wait_for'
@@ -144,7 +157,11 @@ class GetTriggerBuildStep {
       'secretEnvs': secretEnvs,
       'timeout': timeout,
       'timing': timing,
-      'volumes': pulumi.Input.encodeList<GetTriggerBuildStepVolume, Map<String, dynamic>>(volumes, (value) => value.toMap()),
+      'volumes':
+          pulumi.Input.encodeList<
+            GetTriggerBuildStepVolume,
+            Map<String, dynamic>
+          >(volumes, (value) => value.toMap()),
       'waitFors': waitFors,
     };
   }
@@ -163,9 +180,13 @@ class GetTriggerBuildStep {
       secretEnvs: (map['secretEnvs'] as List).cast<String>(),
       timeout: map['timeout'] as String,
       timing: map['timing'] as String,
-      volumes: pulumi.Input.decodeList<GetTriggerBuildStepVolume>(map['volumes'], (value) => GetTriggerBuildStepVolume.fromMap((value as Map).cast<String, dynamic>())),
+      volumes: pulumi.Input.decodeList<GetTriggerBuildStepVolume>(
+        map['volumes'],
+        (value) => GetTriggerBuildStepVolume.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       waitFors: (map['waitFors'] as List).cast<String>(),
     );
   }
 }
-

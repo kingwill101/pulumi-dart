@@ -16,4 +16,3 @@ enum CloudSqlSettingsDataDiskType {
     throw ArgumentError('Unknown CloudSqlSettingsDataDiskType value: $value');
   }
 }
-

@@ -9,9 +9,7 @@ class GooglePrivacyDlpV2DataProfilePubSubCondition {
 
   /// Creates a new [GooglePrivacyDlpV2DataProfilePubSubCondition].
   /// [expressions] An expression.
-  GooglePrivacyDlpV2DataProfilePubSubCondition({
-    this.expressions,
-  });
+  GooglePrivacyDlpV2DataProfilePubSubCondition({this.expressions});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class GooglePrivacyDlpV2DataProfilePubSubCondition {
     };
   }
 
-  factory GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DataProfilePubSubCondition.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DataProfilePubSubCondition(
-      expressions: map['expressions'] == null ? null : GooglePrivacyDlpV2PubSubExpressions.fromMap((map['expressions'] as Map).cast<String, dynamic>()),
+      expressions: map['expressions'] == null
+          ? null
+          : GooglePrivacyDlpV2PubSubExpressions.fromMap(
+              (map['expressions'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

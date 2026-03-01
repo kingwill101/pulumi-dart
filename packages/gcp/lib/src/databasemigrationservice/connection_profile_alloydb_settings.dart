@@ -7,11 +7,15 @@ class ConnectionProfileAlloydbSettings {
   /// Required. Input only. Initial user to setup during cluster creation.
   /// Structure is documented below.
   final ConnectionProfileAlloydbSettingsInitialUser initialUser;
+
   /// Labels for the AlloyDB cluster created by DMS.
   final Map<String, String>? labels;
+
   /// Settings for the cluster's primary instance
   /// Structure is documented below.
-  final ConnectionProfileAlloydbSettingsPrimaryInstanceSettings? primaryInstanceSettings;
+  final ConnectionProfileAlloydbSettingsPrimaryInstanceSettings?
+  primaryInstanceSettings;
+
   /// Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
   /// It is specified in the form: 'projects/{project_number}/global/networks/{network_id}'. This is required to create a cluster.
   final String vpcNetwork;
@@ -32,18 +36,27 @@ class ConnectionProfileAlloydbSettings {
     return <String, dynamic>{
       'initialUser': initialUser.toMap(),
       'labels': ?labels,
-      'primaryInstanceSettings': ?primaryInstanceSettings == null ? null : primaryInstanceSettings!.toMap(),
+      'primaryInstanceSettings': ?primaryInstanceSettings == null
+          ? null
+          : primaryInstanceSettings!.toMap(),
       'vpcNetwork': vpcNetwork,
     };
   }
 
   factory ConnectionProfileAlloydbSettings.fromMap(Map<String, dynamic> map) {
     return ConnectionProfileAlloydbSettings(
-      initialUser: ConnectionProfileAlloydbSettingsInitialUser.fromMap((map['initialUser'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
-      primaryInstanceSettings: map['primaryInstanceSettings'] == null ? null : ConnectionProfileAlloydbSettingsPrimaryInstanceSettings.fromMap((map['primaryInstanceSettings'] as Map).cast<String, dynamic>()),
+      initialUser: ConnectionProfileAlloydbSettingsInitialUser.fromMap(
+        (map['initialUser'] as Map).cast<String, dynamic>(),
+      ),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
+      primaryInstanceSettings: map['primaryInstanceSettings'] == null
+          ? null
+          : ConnectionProfileAlloydbSettingsPrimaryInstanceSettings.fromMap(
+              (map['primaryInstanceSettings'] as Map).cast<String, dynamic>(),
+            ),
       vpcNetwork: map['vpcNetwork'] as String,
     );
   }
 }
-

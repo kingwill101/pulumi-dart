@@ -16,14 +16,25 @@ class EnterpriseCrmEventbusProtoCombinedConditionResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conditions': pulumi.Input.encodeList<EnterpriseCrmEventbusProtoConditionResponse, Map<String, dynamic>>(conditions, (value) => value.toMap()),
+      'conditions':
+          pulumi.Input.encodeList<
+            EnterpriseCrmEventbusProtoConditionResponse,
+            Map<String, dynamic>
+          >(conditions, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmEventbusProtoCombinedConditionResponse.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoCombinedConditionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoCombinedConditionResponse(
-      conditions: pulumi.Input.decodeList<EnterpriseCrmEventbusProtoConditionResponse>(map['conditions'], (value) => EnterpriseCrmEventbusProtoConditionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      conditions:
+          pulumi.Input.decodeList<EnterpriseCrmEventbusProtoConditionResponse>(
+            map['conditions'],
+            (value) => EnterpriseCrmEventbusProtoConditionResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

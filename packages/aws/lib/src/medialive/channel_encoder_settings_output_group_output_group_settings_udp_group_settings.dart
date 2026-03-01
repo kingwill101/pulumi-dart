@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings {
   /// Specifies behavior of last resort when input video os lost.
   final String? inputLossAction;
+
   /// Indicates ID3 frame that has the timecode.
   final String? timedMetadataId3Frame;
   final int? timedMetadataId3Period;
@@ -26,12 +26,19 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings {
     };
   }
 
-  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings.fromMap(Map<String, dynamic> map) {
+  factory ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings(
-      inputLossAction: map['inputLossAction'] == null ? null : map['inputLossAction'] as String,
-      timedMetadataId3Frame: map['timedMetadataId3Frame'] == null ? null : map['timedMetadataId3Frame'] as String,
-      timedMetadataId3Period: map['timedMetadataId3Period'] == null ? null : map['timedMetadataId3Period'] as int,
+      inputLossAction: map['inputLossAction'] == null
+          ? null
+          : map['inputLossAction'] as String,
+      timedMetadataId3Frame: map['timedMetadataId3Frame'] == null
+          ? null
+          : map['timedMetadataId3Frame'] as String,
+      timedMetadataId3Period: map['timedMetadataId3Period'] == null
+          ? null
+          : map['timedMetadataId3Period'] as int,
     );
   }
 }
-

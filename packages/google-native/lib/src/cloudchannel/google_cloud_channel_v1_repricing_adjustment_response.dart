@@ -19,10 +19,14 @@ class GoogleCloudChannelV1RepricingAdjustmentResponse {
     };
   }
 
-  factory GoogleCloudChannelV1RepricingAdjustmentResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1RepricingAdjustmentResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1RepricingAdjustmentResponse(
-      percentageAdjustment: GoogleCloudChannelV1PercentageAdjustmentResponse.fromMap((map['percentageAdjustment'] as Map).cast<String, dynamic>()),
+      percentageAdjustment:
+          GoogleCloudChannelV1PercentageAdjustmentResponse.fromMap(
+            (map['percentageAdjustment'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

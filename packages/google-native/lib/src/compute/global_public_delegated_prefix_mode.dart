@@ -12,7 +12,8 @@ enum GlobalPublicDelegatedPrefixMode {
         return item;
       }
     }
-    throw ArgumentError('Unknown GlobalPublicDelegatedPrefixMode value: $value');
+    throw ArgumentError(
+      'Unknown GlobalPublicDelegatedPrefixMode value: $value',
+    );
   }
 }
-

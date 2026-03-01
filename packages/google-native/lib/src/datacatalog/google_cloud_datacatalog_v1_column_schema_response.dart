@@ -7,22 +7,32 @@ import 'google_cloud_datacatalog_v1_column_schema_looker_column_spec_response.da
 class GoogleCloudDatacatalogV1ColumnSchemaResponse {
   /// Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
   final String column;
+
   /// Optional. Default value for the column.
   final String defaultValue;
+
   /// Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
   final String description;
+
   /// Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable.
   final String gcRule;
+
   /// Optional. Most important inclusion of this column.
   final String highestIndexingType;
+
   /// Looker specific column info of this column.
-  final GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse lookerColumnSpec;
+  final GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse
+  lookerColumnSpec;
+
   /// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
   final String mode;
+
   /// Optional. Ordinal position
   final int ordinalPosition;
+
   /// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
   final List<GoogleCloudDatacatalogV1ColumnSchemaResponse> subcolumns;
+
   /// Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.
   final String type;
 
@@ -60,24 +70,38 @@ class GoogleCloudDatacatalogV1ColumnSchemaResponse {
       'lookerColumnSpec': lookerColumnSpec.toMap(),
       'mode': mode,
       'ordinalPosition': ordinalPosition,
-      'subcolumns': pulumi.Input.encodeList<GoogleCloudDatacatalogV1ColumnSchemaResponse, Map<String, dynamic>>(subcolumns, (value) => value.toMap()),
+      'subcolumns':
+          pulumi.Input.encodeList<
+            GoogleCloudDatacatalogV1ColumnSchemaResponse,
+            Map<String, dynamic>
+          >(subcolumns, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory GoogleCloudDatacatalogV1ColumnSchemaResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatacatalogV1ColumnSchemaResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatacatalogV1ColumnSchemaResponse(
       column: map['column'] as String,
       defaultValue: map['defaultValue'] as String,
       description: map['description'] as String,
       gcRule: map['gcRule'] as String,
       highestIndexingType: map['highestIndexingType'] as String,
-      lookerColumnSpec: GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse.fromMap((map['lookerColumnSpec'] as Map).cast<String, dynamic>()),
+      lookerColumnSpec:
+          GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse.fromMap(
+            (map['lookerColumnSpec'] as Map).cast<String, dynamic>(),
+          ),
       mode: map['mode'] as String,
       ordinalPosition: map['ordinalPosition'] as int,
-      subcolumns: pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchemaResponse>(map['subcolumns'], (value) => GoogleCloudDatacatalogV1ColumnSchemaResponse.fromMap((value as Map).cast<String, dynamic>())),
+      subcolumns:
+          pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchemaResponse>(
+            map['subcolumns'],
+            (value) => GoogleCloudDatacatalogV1ColumnSchemaResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       type: map['type'] as String,
     );
   }
 }
-

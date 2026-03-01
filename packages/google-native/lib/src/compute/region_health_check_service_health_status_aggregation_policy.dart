@@ -6,13 +6,17 @@ enum RegionHealthCheckServiceHealthStatusAggregationPolicy {
   const RegionHealthCheckServiceHealthStatusAggregationPolicy(this.value);
   final String value;
 
-  static RegionHealthCheckServiceHealthStatusAggregationPolicy fromValue(String value) {
-    for (final item in RegionHealthCheckServiceHealthStatusAggregationPolicy.values) {
+  static RegionHealthCheckServiceHealthStatusAggregationPolicy fromValue(
+    String value,
+  ) {
+    for (final item
+        in RegionHealthCheckServiceHealthStatusAggregationPolicy.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionHealthCheckServiceHealthStatusAggregationPolicy value: $value');
+    throw ArgumentError(
+      'Unknown RegionHealthCheckServiceHealthStatusAggregationPolicy value: $value',
+    );
   }
 }
-

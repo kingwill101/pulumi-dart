@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// JWT claims used for the jwt-bearer authorization grant.
 class JwtClaimsResponse {
   /// Value for the "aud" claim.
   final String audience;
+
   /// Value for the "iss" claim.
   final String issuer;
+
   /// Value for the "sub" claim.
   final String subject;
 
@@ -36,4 +37,3 @@ class JwtClaimsResponse {
     );
   }
 }
-

@@ -20,49 +20,79 @@ import 'stateful_policy_compute_beta.dart';
 /// {@macro pulumi_compute_beta_region_instance_group_manager_compute_beta_args_doc}
 class RegionInstanceGroupManagerComputeBetaArgs {
   /// Specifies configuration that overrides the instance template configuration for the group.
-  final pulumi.Input<InstanceGroupManagerAllInstancesConfigComputeBeta>? allInstancesConfig;
+  final pulumi.Input<InstanceGroupManagerAllInstancesConfigComputeBeta>?
+  allInstancesConfig;
+
   /// The autohealing policy for this managed instance group. You can specify only one value.
-  final pulumi.Input<List<InstanceGroupManagerAutoHealingPolicyComputeBeta>>? autoHealingPolicies;
+  final pulumi.Input<List<InstanceGroupManagerAutoHealingPolicyComputeBeta>>?
+  autoHealingPolicies;
+
   /// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
   final pulumi.Input<String>? baseInstanceName;
+
   /// An optional description of this resource.
   final pulumi.Input<String>? description;
+
   /// Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
   final pulumi.Input<DistributionPolicyComputeBeta>? distributionPolicy;
+
   /// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
-  final pulumi.Input<RegionInstanceGroupManagerFailoverActionComputeBeta>? failoverAction;
+  final pulumi.Input<RegionInstanceGroupManagerFailoverActionComputeBeta>?
+  failoverAction;
+
   /// Instance flexibility allowing MIG to create VMs from multiple types of machines. Instance flexibility configuration on MIG overrides instance template configuration.
-  final pulumi.Input<InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta>? instanceFlexibilityPolicy;
+  final pulumi.Input<InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta>?
+  instanceFlexibilityPolicy;
+
   /// The repair policy for this managed instance group.
-  final pulumi.Input<InstanceGroupManagerInstanceLifecyclePolicyComputeBeta>? instanceLifecyclePolicy;
+  final pulumi.Input<InstanceGroupManagerInstanceLifecyclePolicyComputeBeta>?
+  instanceLifecyclePolicy;
+
   /// The URL of the instance template that is specified for this managed instance group. The group uses this template to create all new instances in the managed instance group. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE.
   final pulumi.Input<String>? instanceTemplate;
+
   /// Pagination behavior of the listManagedInstances API method for this managed instance group.
-  final pulumi.Input<RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta>? listManagedInstancesResults;
+  final pulumi.Input<
+    RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta
+  >?
+  listManagedInstancesResults;
+
   /// The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
   final pulumi.Input<String>? name;
+
   /// Named ports configured for the Instance Groups complementary to this Instance Group Manager.
   final pulumi.Input<List<NamedPortComputeBeta>>? namedPorts;
   final pulumi.Input<String>? project;
   final pulumi.Input<String> region;
+
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
   final pulumi.Input<String>? requestId;
+
   /// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
   final pulumi.Input<String>? serviceAccount;
+
   /// Standby policy for stopped and suspended instances.
-  final pulumi.Input<InstanceGroupManagerStandbyPolicyComputeBeta>? standbyPolicy;
+  final pulumi.Input<InstanceGroupManagerStandbyPolicyComputeBeta>?
+  standbyPolicy;
+
   /// Stateful configuration for this Instanced Group Manager
   final pulumi.Input<StatefulPolicyComputeBeta>? statefulPolicy;
+
   /// The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
   final pulumi.Input<List<String>>? targetPools;
+
   /// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
   final pulumi.Input<int>? targetSize;
+
   /// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
   final pulumi.Input<int>? targetStoppedSize;
+
   /// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
   final pulumi.Input<int>? targetSuspendedSize;
+
   /// The update policy for this managed instance group.
   final pulumi.Input<InstanceGroupManagerUpdatePolicyComputeBeta>? updatePolicy;
+
   /// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
   final pulumi.Input<List<InstanceGroupManagerVersionComputeBeta>>? versions;
 
@@ -98,10 +128,13 @@ class RegionInstanceGroupManagerComputeBetaArgs {
     String? description,
     DistributionPolicyComputeBeta? distributionPolicy,
     RegionInstanceGroupManagerFailoverActionComputeBeta? failoverAction,
-    InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta? instanceFlexibilityPolicy,
-    InstanceGroupManagerInstanceLifecyclePolicyComputeBeta? instanceLifecyclePolicy,
+    InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta?
+    instanceFlexibilityPolicy,
+    InstanceGroupManagerInstanceLifecyclePolicyComputeBeta?
+    instanceLifecyclePolicy,
     String? instanceTemplate,
-    RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta? listManagedInstancesResults,
+    RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta?
+    listManagedInstancesResults,
     String? name,
     List<NamedPortComputeBeta>? namedPorts,
     String? project,
@@ -116,88 +149,271 @@ class RegionInstanceGroupManagerComputeBetaArgs {
     int? targetSuspendedSize,
     InstanceGroupManagerUpdatePolicyComputeBeta? updatePolicy,
     List<InstanceGroupManagerVersionComputeBeta>? versions,
-  }) :
-      allInstancesConfig = pulumi.Input.asOptionalInput<InstanceGroupManagerAllInstancesConfigComputeBeta>(allInstancesConfig),
-      autoHealingPolicies = pulumi.Input.asOptionalInput<List<InstanceGroupManagerAutoHealingPolicyComputeBeta>>(autoHealingPolicies),
-      baseInstanceName = pulumi.Input.asOptionalInput<String>(baseInstanceName),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      distributionPolicy = pulumi.Input.asOptionalInput<DistributionPolicyComputeBeta>(distributionPolicy),
-      failoverAction = pulumi.Input.asOptionalInput<RegionInstanceGroupManagerFailoverActionComputeBeta>(failoverAction),
-      instanceFlexibilityPolicy = pulumi.Input.asOptionalInput<InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta>(instanceFlexibilityPolicy),
-      instanceLifecyclePolicy = pulumi.Input.asOptionalInput<InstanceGroupManagerInstanceLifecyclePolicyComputeBeta>(instanceLifecyclePolicy),
-      instanceTemplate = pulumi.Input.asOptionalInput<String>(instanceTemplate),
-      listManagedInstancesResults = pulumi.Input.asOptionalInput<RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta>(listManagedInstancesResults),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      namedPorts = pulumi.Input.asOptionalInput<List<NamedPortComputeBeta>>(namedPorts),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region),
-      requestId = pulumi.Input.asOptionalInput<String>(requestId),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      standbyPolicy = pulumi.Input.asOptionalInput<InstanceGroupManagerStandbyPolicyComputeBeta>(standbyPolicy),
-      statefulPolicy = pulumi.Input.asOptionalInput<StatefulPolicyComputeBeta>(statefulPolicy),
-      targetPools = pulumi.Input.asOptionalInput<List<String>>(targetPools),
-      targetSize = pulumi.Input.asOptionalInput<int>(targetSize),
-      targetStoppedSize = pulumi.Input.asOptionalInput<int>(targetStoppedSize),
-      targetSuspendedSize = pulumi.Input.asOptionalInput<int>(targetSuspendedSize),
-      updatePolicy = pulumi.Input.asOptionalInput<InstanceGroupManagerUpdatePolicyComputeBeta>(updatePolicy),
-      versions = pulumi.Input.asOptionalInput<List<InstanceGroupManagerVersionComputeBeta>>(versions);
+  }) : allInstancesConfig =
+           pulumi.Input.asOptionalInput<
+             InstanceGroupManagerAllInstancesConfigComputeBeta
+           >(allInstancesConfig),
+       autoHealingPolicies =
+           pulumi.Input.asOptionalInput<
+             List<InstanceGroupManagerAutoHealingPolicyComputeBeta>
+           >(autoHealingPolicies),
+       baseInstanceName = pulumi.Input.asOptionalInput<String>(
+         baseInstanceName,
+       ),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       distributionPolicy =
+           pulumi.Input.asOptionalInput<DistributionPolicyComputeBeta>(
+             distributionPolicy,
+           ),
+       failoverAction =
+           pulumi.Input.asOptionalInput<
+             RegionInstanceGroupManagerFailoverActionComputeBeta
+           >(failoverAction),
+       instanceFlexibilityPolicy =
+           pulumi.Input.asOptionalInput<
+             InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta
+           >(instanceFlexibilityPolicy),
+       instanceLifecyclePolicy =
+           pulumi.Input.asOptionalInput<
+             InstanceGroupManagerInstanceLifecyclePolicyComputeBeta
+           >(instanceLifecyclePolicy),
+       instanceTemplate = pulumi.Input.asOptionalInput<String>(
+         instanceTemplate,
+       ),
+       listManagedInstancesResults =
+           pulumi.Input.asOptionalInput<
+             RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta
+           >(listManagedInstancesResults),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       namedPorts = pulumi.Input.asOptionalInput<List<NamedPortComputeBeta>>(
+         namedPorts,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region),
+       requestId = pulumi.Input.asOptionalInput<String>(requestId),
+       serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
+       standbyPolicy =
+           pulumi.Input.asOptionalInput<
+             InstanceGroupManagerStandbyPolicyComputeBeta
+           >(standbyPolicy),
+       statefulPolicy = pulumi.Input.asOptionalInput<StatefulPolicyComputeBeta>(
+         statefulPolicy,
+       ),
+       targetPools = pulumi.Input.asOptionalInput<List<String>>(targetPools),
+       targetSize = pulumi.Input.asOptionalInput<int>(targetSize),
+       targetStoppedSize = pulumi.Input.asOptionalInput<int>(targetStoppedSize),
+       targetSuspendedSize = pulumi.Input.asOptionalInput<int>(
+         targetSuspendedSize,
+       ),
+       updatePolicy =
+           pulumi.Input.asOptionalInput<
+             InstanceGroupManagerUpdatePolicyComputeBeta
+           >(updatePolicy),
+       versions =
+           pulumi.Input.asOptionalInput<
+             List<InstanceGroupManagerVersionComputeBeta>
+           >(versions);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allInstancesConfig': ?pulumi.Input.mapOptionalInputValue<InstanceGroupManagerAllInstancesConfigComputeBeta, Map<String, dynamic>>(allInstancesConfig, (value) => value.toMap()),
-      'autoHealingPolicies': ?pulumi.Input.mapOptionalInputValue<List<InstanceGroupManagerAutoHealingPolicyComputeBeta>, List<Map<String, dynamic>>>(autoHealingPolicies, (value) => pulumi.Input.encodeList<InstanceGroupManagerAutoHealingPolicyComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'allInstancesConfig':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceGroupManagerAllInstancesConfigComputeBeta,
+            Map<String, dynamic>
+          >(allInstancesConfig, (value) => value.toMap()),
+      'autoHealingPolicies':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceGroupManagerAutoHealingPolicyComputeBeta>,
+            List<Map<String, dynamic>>
+          >(
+            autoHealingPolicies,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceGroupManagerAutoHealingPolicyComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'baseInstanceName': ?baseInstanceName,
       'description': ?description,
-      'distributionPolicy': ?pulumi.Input.mapOptionalInputValue<DistributionPolicyComputeBeta, Map<String, dynamic>>(distributionPolicy, (value) => value.toMap()),
-      'failoverAction': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerFailoverActionComputeBeta, String>(failoverAction, (value) => value.value),
-      'instanceFlexibilityPolicy': ?pulumi.Input.mapOptionalInputValue<InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta, Map<String, dynamic>>(instanceFlexibilityPolicy, (value) => value.toMap()),
-      'instanceLifecyclePolicy': ?pulumi.Input.mapOptionalInputValue<InstanceGroupManagerInstanceLifecyclePolicyComputeBeta, Map<String, dynamic>>(instanceLifecyclePolicy, (value) => value.toMap()),
+      'distributionPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            DistributionPolicyComputeBeta,
+            Map<String, dynamic>
+          >(distributionPolicy, (value) => value.toMap()),
+      'failoverAction':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionInstanceGroupManagerFailoverActionComputeBeta,
+            String
+          >(failoverAction, (value) => value.value),
+      'instanceFlexibilityPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta,
+            Map<String, dynamic>
+          >(instanceFlexibilityPolicy, (value) => value.toMap()),
+      'instanceLifecyclePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceGroupManagerInstanceLifecyclePolicyComputeBeta,
+            Map<String, dynamic>
+          >(instanceLifecyclePolicy, (value) => value.toMap()),
       'instanceTemplate': ?instanceTemplate,
-      'listManagedInstancesResults': ?pulumi.Input.mapOptionalInputValue<RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta, String>(listManagedInstancesResults, (value) => value.value),
+      'listManagedInstancesResults':
+          ?pulumi.Input.mapOptionalInputValue<
+            RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta,
+            String
+          >(listManagedInstancesResults, (value) => value.value),
       'name': ?name,
-      'namedPorts': ?pulumi.Input.mapOptionalInputValue<List<NamedPortComputeBeta>, List<Map<String, dynamic>>>(namedPorts, (value) => pulumi.Input.encodeList<NamedPortComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'namedPorts':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<NamedPortComputeBeta>,
+            List<Map<String, dynamic>>
+          >(
+            namedPorts,
+            (value) =>
+                pulumi.Input.encodeList<
+                  NamedPortComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'project': ?project,
       'region': region,
       'requestId': ?requestId,
       'serviceAccount': ?serviceAccount,
-      'standbyPolicy': ?pulumi.Input.mapOptionalInputValue<InstanceGroupManagerStandbyPolicyComputeBeta, Map<String, dynamic>>(standbyPolicy, (value) => value.toMap()),
-      'statefulPolicy': ?pulumi.Input.mapOptionalInputValue<StatefulPolicyComputeBeta, Map<String, dynamic>>(statefulPolicy, (value) => value.toMap()),
+      'standbyPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceGroupManagerStandbyPolicyComputeBeta,
+            Map<String, dynamic>
+          >(standbyPolicy, (value) => value.toMap()),
+      'statefulPolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            StatefulPolicyComputeBeta,
+            Map<String, dynamic>
+          >(statefulPolicy, (value) => value.toMap()),
       'targetPools': ?targetPools,
       'targetSize': ?targetSize,
       'targetStoppedSize': ?targetStoppedSize,
       'targetSuspendedSize': ?targetSuspendedSize,
-      'updatePolicy': ?pulumi.Input.mapOptionalInputValue<InstanceGroupManagerUpdatePolicyComputeBeta, Map<String, dynamic>>(updatePolicy, (value) => value.toMap()),
-      'versions': ?pulumi.Input.mapOptionalInputValue<List<InstanceGroupManagerVersionComputeBeta>, List<Map<String, dynamic>>>(versions, (value) => pulumi.Input.encodeList<InstanceGroupManagerVersionComputeBeta, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'updatePolicy':
+          ?pulumi.Input.mapOptionalInputValue<
+            InstanceGroupManagerUpdatePolicyComputeBeta,
+            Map<String, dynamic>
+          >(updatePolicy, (value) => value.toMap()),
+      'versions':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<InstanceGroupManagerVersionComputeBeta>,
+            List<Map<String, dynamic>>
+          >(
+            versions,
+            (value) =>
+                pulumi.Input.encodeList<
+                  InstanceGroupManagerVersionComputeBeta,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory RegionInstanceGroupManagerComputeBetaArgs.fromMap(Map<String, dynamic> map) {
+  factory RegionInstanceGroupManagerComputeBetaArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RegionInstanceGroupManagerComputeBetaArgs(
-      allInstancesConfig: map['allInstancesConfig'] == null ? null : InstanceGroupManagerAllInstancesConfigComputeBeta.fromMap((map['allInstancesConfig'] as Map).cast<String, dynamic>()),
-      autoHealingPolicies: map['autoHealingPolicies'] == null ? null : pulumi.Input.decodeList<InstanceGroupManagerAutoHealingPolicyComputeBeta>(map['autoHealingPolicies'], (value) => InstanceGroupManagerAutoHealingPolicyComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
-      baseInstanceName: map['baseInstanceName'] == null ? null : map['baseInstanceName'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      distributionPolicy: map['distributionPolicy'] == null ? null : DistributionPolicyComputeBeta.fromMap((map['distributionPolicy'] as Map).cast<String, dynamic>()),
-      failoverAction: map['failoverAction'] == null ? null : RegionInstanceGroupManagerFailoverActionComputeBeta.fromValue(map['failoverAction'] as String),
-      instanceFlexibilityPolicy: map['instanceFlexibilityPolicy'] == null ? null : InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta.fromMap((map['instanceFlexibilityPolicy'] as Map).cast<String, dynamic>()),
-      instanceLifecyclePolicy: map['instanceLifecyclePolicy'] == null ? null : InstanceGroupManagerInstanceLifecyclePolicyComputeBeta.fromMap((map['instanceLifecyclePolicy'] as Map).cast<String, dynamic>()),
-      instanceTemplate: map['instanceTemplate'] == null ? null : map['instanceTemplate'] as String,
-      listManagedInstancesResults: map['listManagedInstancesResults'] == null ? null : RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta.fromValue(map['listManagedInstancesResults'] as String),
+      allInstancesConfig: map['allInstancesConfig'] == null
+          ? null
+          : InstanceGroupManagerAllInstancesConfigComputeBeta.fromMap(
+              (map['allInstancesConfig'] as Map).cast<String, dynamic>(),
+            ),
+      autoHealingPolicies: map['autoHealingPolicies'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              InstanceGroupManagerAutoHealingPolicyComputeBeta
+            >(
+              map['autoHealingPolicies'],
+              (value) =>
+                  InstanceGroupManagerAutoHealingPolicyComputeBeta.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
+      baseInstanceName: map['baseInstanceName'] == null
+          ? null
+          : map['baseInstanceName'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      distributionPolicy: map['distributionPolicy'] == null
+          ? null
+          : DistributionPolicyComputeBeta.fromMap(
+              (map['distributionPolicy'] as Map).cast<String, dynamic>(),
+            ),
+      failoverAction: map['failoverAction'] == null
+          ? null
+          : RegionInstanceGroupManagerFailoverActionComputeBeta.fromValue(
+              map['failoverAction'] as String,
+            ),
+      instanceFlexibilityPolicy: map['instanceFlexibilityPolicy'] == null
+          ? null
+          : InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta.fromMap(
+              (map['instanceFlexibilityPolicy'] as Map).cast<String, dynamic>(),
+            ),
+      instanceLifecyclePolicy: map['instanceLifecyclePolicy'] == null
+          ? null
+          : InstanceGroupManagerInstanceLifecyclePolicyComputeBeta.fromMap(
+              (map['instanceLifecyclePolicy'] as Map).cast<String, dynamic>(),
+            ),
+      instanceTemplate: map['instanceTemplate'] == null
+          ? null
+          : map['instanceTemplate'] as String,
+      listManagedInstancesResults: map['listManagedInstancesResults'] == null
+          ? null
+          : RegionInstanceGroupManagerListManagedInstancesResultsComputeBeta.fromValue(
+              map['listManagedInstancesResults'] as String,
+            ),
       name: map['name'] == null ? null : map['name'] as String,
-      namedPorts: map['namedPorts'] == null ? null : pulumi.Input.decodeList<NamedPortComputeBeta>(map['namedPorts'], (value) => NamedPortComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
+      namedPorts: map['namedPorts'] == null
+          ? null
+          : pulumi.Input.decodeList<NamedPortComputeBeta>(
+              map['namedPorts'],
+              (value) => NamedPortComputeBeta.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       project: map['project'] == null ? null : map['project'] as String,
       region: map['region'] as String,
       requestId: map['requestId'] == null ? null : map['requestId'] as String,
-      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
-      standbyPolicy: map['standbyPolicy'] == null ? null : InstanceGroupManagerStandbyPolicyComputeBeta.fromMap((map['standbyPolicy'] as Map).cast<String, dynamic>()),
-      statefulPolicy: map['statefulPolicy'] == null ? null : StatefulPolicyComputeBeta.fromMap((map['statefulPolicy'] as Map).cast<String, dynamic>()),
-      targetPools: map['targetPools'] == null ? null : (map['targetPools'] as List).cast<String>(),
+      serviceAccount: map['serviceAccount'] == null
+          ? null
+          : map['serviceAccount'] as String,
+      standbyPolicy: map['standbyPolicy'] == null
+          ? null
+          : InstanceGroupManagerStandbyPolicyComputeBeta.fromMap(
+              (map['standbyPolicy'] as Map).cast<String, dynamic>(),
+            ),
+      statefulPolicy: map['statefulPolicy'] == null
+          ? null
+          : StatefulPolicyComputeBeta.fromMap(
+              (map['statefulPolicy'] as Map).cast<String, dynamic>(),
+            ),
+      targetPools: map['targetPools'] == null
+          ? null
+          : (map['targetPools'] as List).cast<String>(),
       targetSize: map['targetSize'] == null ? null : map['targetSize'] as int,
-      targetStoppedSize: map['targetStoppedSize'] == null ? null : map['targetStoppedSize'] as int,
-      targetSuspendedSize: map['targetSuspendedSize'] == null ? null : map['targetSuspendedSize'] as int,
-      updatePolicy: map['updatePolicy'] == null ? null : InstanceGroupManagerUpdatePolicyComputeBeta.fromMap((map['updatePolicy'] as Map).cast<String, dynamic>()),
-      versions: map['versions'] == null ? null : pulumi.Input.decodeList<InstanceGroupManagerVersionComputeBeta>(map['versions'], (value) => InstanceGroupManagerVersionComputeBeta.fromMap((value as Map).cast<String, dynamic>())),
+      targetStoppedSize: map['targetStoppedSize'] == null
+          ? null
+          : map['targetStoppedSize'] as int,
+      targetSuspendedSize: map['targetSuspendedSize'] == null
+          ? null
+          : map['targetSuspendedSize'] as int,
+      updatePolicy: map['updatePolicy'] == null
+          ? null
+          : InstanceGroupManagerUpdatePolicyComputeBeta.fromMap(
+              (map['updatePolicy'] as Map).cast<String, dynamic>(),
+            ),
+      versions: map['versions'] == null
+          ? null
+          : pulumi.Input.decodeList<InstanceGroupManagerVersionComputeBeta>(
+              map['versions'],
+              (value) => InstanceGroupManagerVersionComputeBeta.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

@@ -222,19 +222,24 @@ import 'schema_args.dart';
 class Schema extends pulumi.CustomResource {
   /// The unique id of the data store.
   late final pulumi.Output<String> dataStoreId;
+
   /// The JSON representation of the schema.
   late final pulumi.Output<String?> jsonSchema;
+
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   late final pulumi.Output<String> location;
+
   /// The unique full resource name of the schema. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/schemas/{schema_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+
   /// The unique id of the schema.
   late final pulumi.Output<String> schemaId;
 
@@ -242,16 +247,13 @@ class Schema extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Schema]. {@macro pulumi_discoveryengine_schema_schema_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Schema(
-    String name, {
-    SchemaArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:discoveryengine/schema:Schema',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+  Schema(String name, {SchemaArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:discoveryengine/schema:Schema',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
     this.dataStoreId = registerOutput<String>('dataStoreId');
     this.jsonSchema = registerOutput<String?>('jsonSchema');
     this.location = registerOutput<String>('location');

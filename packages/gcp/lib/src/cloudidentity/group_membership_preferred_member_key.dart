@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GroupMembershipPreferredMemberKey {
   /// The ID of the entity.
   /// For Google-managed entities, the id must be the email address of an existing
@@ -9,6 +8,7 @@ class GroupMembershipPreferredMemberKey {
   /// to the Identity Source's requirements.
   /// Must be unique within a namespace.
   final String id;
+
   /// The namespace in which the entity exists.
   /// If not specified, the EntityKey represents a Google-managed entity
   /// such as a Google user or a Google Group.
@@ -20,16 +20,10 @@ class GroupMembershipPreferredMemberKey {
   /// Creates a new [GroupMembershipPreferredMemberKey].
   /// [id] The ID of the entity.
   /// [namespace] The namespace in which the entity exists.
-  GroupMembershipPreferredMemberKey({
-    required this.id,
-    this.namespace,
-  });
+  GroupMembershipPreferredMemberKey({required this.id, this.namespace});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'namespace': ?namespace,
-    };
+    return <String, dynamic>{'id': id, 'namespace': ?namespace};
   }
 
   factory GroupMembershipPreferredMemberKey.fromMap(Map<String, dynamic> map) {
@@ -39,4 +33,3 @@ class GroupMembershipPreferredMemberKey {
     );
   }
 }
-

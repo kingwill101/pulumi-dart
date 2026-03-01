@@ -319,27 +319,35 @@ import 'hosting_channel_args.dart';
 class HostingChannel extends pulumi.CustomResource {
   /// Required. Immutable. A unique ID within the site that identifies the channel.
   late final pulumi.Output<String> channelId;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// The time at which the channel will be automatically deleted. If null, the channel
   /// will not be automatically deleted. This field is present in the output whether it's
   /// set directly or via the `ttl` field.
   late final pulumi.Output<String> expireTime;
+
   /// Text labels used for extra metadata and/or filtering
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The fully-qualified resource name for the channel, in the format:
   /// sites/SITE_ID/channels/CHANNEL_ID
   late final pulumi.Output<String> name;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// The number of previous releases to retain on the channel for rollback or other
   /// purposes. Must be a number between 1-100. Defaults to 10 for new channels.
   late final pulumi.Output<int> retainedReleaseCount;
+
   /// Required. The ID of the site in which to create this channel.
   late final pulumi.Output<String> siteId;
+
   /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided
   /// duration past the time of the request. A duration in seconds with up to nine fractional
   /// digits, terminated by 's'. Example: "86400s" (one day).
@@ -354,13 +362,15 @@ class HostingChannel extends pulumi.CustomResource {
     HostingChannelArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:firebase/hostingChannel:HostingChannel',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:firebase/hostingChannel:HostingChannel',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.channelId = registerOutput<String>('channelId');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.expireTime = registerOutput<String>('expireTime');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.name = registerOutput<String>('name');

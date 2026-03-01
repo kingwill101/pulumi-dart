@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AnalyticsApplicationInputsSchemaRecordColumn {
   /// The Mapping reference to the data element.
   final String? mapping;
+
   /// Name of the column.
   final String name;
+
   /// The SQL Type of the column.
   final String sqlType;
 
@@ -27,7 +28,9 @@ class AnalyticsApplicationInputsSchemaRecordColumn {
     };
   }
 
-  factory AnalyticsApplicationInputsSchemaRecordColumn.fromMap(Map<String, dynamic> map) {
+  factory AnalyticsApplicationInputsSchemaRecordColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalyticsApplicationInputsSchemaRecordColumn(
       mapping: map['mapping'] == null ? null : map['mapping'] as String,
       name: map['name'] as String,
@@ -35,4 +38,3 @@ class AnalyticsApplicationInputsSchemaRecordColumn {
     );
   }
 }
-

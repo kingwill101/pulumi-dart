@@ -13,7 +13,8 @@ enum FutureReservationPlanningStatus {
         return item;
       }
     }
-    throw ArgumentError('Unknown FutureReservationPlanningStatus value: $value');
+    throw ArgumentError(
+      'Unknown FutureReservationPlanningStatus value: $value',
+    );
   }
 }
-

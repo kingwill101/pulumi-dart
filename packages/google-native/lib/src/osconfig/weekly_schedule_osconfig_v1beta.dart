@@ -9,20 +9,17 @@ class WeeklyScheduleOsconfigV1beta {
 
   /// Creates a new [WeeklyScheduleOsconfigV1beta].
   /// [dayOfWeek] Day of the week.
-  WeeklyScheduleOsconfigV1beta({
-    required this.dayOfWeek,
-  });
+  WeeklyScheduleOsconfigV1beta({required this.dayOfWeek});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dayOfWeek': dayOfWeek.value,
-    };
+    return <String, dynamic>{'dayOfWeek': dayOfWeek.value};
   }
 
   factory WeeklyScheduleOsconfigV1beta.fromMap(Map<String, dynamic> map) {
     return WeeklyScheduleOsconfigV1beta(
-      dayOfWeek: WeeklyScheduleDayOfWeekOsconfigV1beta.fromValue(map['dayOfWeek'] as String),
+      dayOfWeek: WeeklyScheduleDayOfWeekOsconfigV1beta.fromValue(
+        map['dayOfWeek'] as String,
+      ),
     );
   }
 }
-

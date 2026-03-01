@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. At least one pattern must be specified. Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
 class GooglePrivacyDlpV2BigQueryRegexResponse {
   /// If unset, this property matches all datasets.
   final String datasetIdRegex;
+
   /// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
   final String projectIdRegex;
+
   /// If unset, this property matches all tables.
   final String tableIdRegex;
 
@@ -28,7 +29,9 @@ class GooglePrivacyDlpV2BigQueryRegexResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2BigQueryRegexResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2BigQueryRegexResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2BigQueryRegexResponse(
       datasetIdRegex: map['datasetIdRegex'] as String,
       projectIdRegex: map['projectIdRegex'] as String,
@@ -36,4 +39,3 @@ class GooglePrivacyDlpV2BigQueryRegexResponse {
     );
   }
 }
-

@@ -18,7 +18,8 @@ enum ResourcePolicyWeeklyCycleDayOfWeekDay {
         return item;
       }
     }
-    throw ArgumentError('Unknown ResourcePolicyWeeklyCycleDayOfWeekDay value: $value');
+    throw ArgumentError(
+      'Unknown ResourcePolicyWeeklyCycleDayOfWeekDay value: $value',
+    );
   }
 }
-

@@ -6,16 +6,14 @@ import 'fingerprint.dart';
 class ImageNote {
   /// Immutable. The fingerprint of the base image.
   final Fingerprint fingerprint;
+
   /// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
   final String resourceUrl;
 
   /// Creates a new [ImageNote].
   /// [fingerprint] Immutable. The fingerprint of the base image.
   /// [resourceUrl] Immutable. The resource_url for the resource representing the basis of associated occurrence images.
-  ImageNote({
-    required this.fingerprint,
-    required this.resourceUrl,
-  });
+  ImageNote({required this.fingerprint, required this.resourceUrl});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,9 +24,10 @@ class ImageNote {
 
   factory ImageNote.fromMap(Map<String, dynamic> map) {
     return ImageNote(
-      fingerprint: Fingerprint.fromMap((map['fingerprint'] as Map).cast<String, dynamic>()),
+      fingerprint: Fingerprint.fromMap(
+        (map['fingerprint'] as Map).cast<String, dynamic>(),
+      ),
       resourceUrl: map['resourceUrl'] as String,
     );
   }
 }
-

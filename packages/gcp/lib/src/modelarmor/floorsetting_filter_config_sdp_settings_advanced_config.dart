@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
   /// Optional Sensitive Data Protection Deidentify template resource name.
   /// If provided then DeidentifyContent action is performed during Sanitization
@@ -11,6 +10,7 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
   /// e.g.
   /// `projects/{project}/locations/{location}/deidentifyTemplates/{deidentify_template}`
   final String? deidentifyTemplate;
+
   /// Sensitive Data Protection inspect template resource name
   /// If only inspect template is provided (de-identify template not provided),
   /// then Sensitive Data Protection InspectContent action is performed during
@@ -35,11 +35,16 @@ class FloorsettingFilterConfigSdpSettingsAdvancedConfig {
     };
   }
 
-  factory FloorsettingFilterConfigSdpSettingsAdvancedConfig.fromMap(Map<String, dynamic> map) {
+  factory FloorsettingFilterConfigSdpSettingsAdvancedConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FloorsettingFilterConfigSdpSettingsAdvancedConfig(
-      deidentifyTemplate: map['deidentifyTemplate'] == null ? null : map['deidentifyTemplate'] as String,
-      inspectTemplate: map['inspectTemplate'] == null ? null : map['inspectTemplate'] as String,
+      deidentifyTemplate: map['deidentifyTemplate'] == null
+          ? null
+          : map['deidentifyTemplate'] as String,
+      inspectTemplate: map['inspectTemplate'] == null
+          ? null
+          : map['inspectTemplate'] as String,
     );
   }
 }
-

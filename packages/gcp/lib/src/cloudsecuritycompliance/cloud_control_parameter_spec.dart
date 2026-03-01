@@ -10,23 +10,31 @@ class CloudControlParameterSpec {
   /// Possible parameter value types.
   /// Structure is documented below.
   final CloudControlParameterSpecDefaultValue? defaultValue;
+
   /// The description of the parameter. The maximum length is 2000 characters.
   final String? description;
+
   /// The display name of the parameter. The maximum length is 200 characters.
   final String? displayName;
+
   /// if the parameter is required
   final bool isRequired;
+
   /// The name of the parameter.
   final String name;
+
   /// The parameter spec of the cloud control.
   /// Structure is documented below.
   final List<CloudControlParameterSpecSubParameter>? subParameters;
+
   /// List of parameter substitutions.
   /// Structure is documented below.
   final List<CloudControlParameterSpecSubstitutionRule>? substitutionRules;
+
   /// Validation of the parameter.
   /// Structure is documented below.
   final CloudControlParameterSpecValidation? validation;
+
   /// Parameter value type.
   /// Possible values:
   /// STRING
@@ -65,8 +73,18 @@ class CloudControlParameterSpec {
       'displayName': ?displayName,
       'isRequired': isRequired,
       'name': name,
-      'subParameters': ?subParameters == null ? null : pulumi.Input.encodeList<CloudControlParameterSpecSubParameter, Map<String, dynamic>>(subParameters!, (value) => value.toMap()),
-      'substitutionRules': ?substitutionRules == null ? null : pulumi.Input.encodeList<CloudControlParameterSpecSubstitutionRule, Map<String, dynamic>>(substitutionRules!, (value) => value.toMap()),
+      'subParameters': ?subParameters == null
+          ? null
+          : pulumi.Input.encodeList<
+              CloudControlParameterSpecSubParameter,
+              Map<String, dynamic>
+            >(subParameters!, (value) => value.toMap()),
+      'substitutionRules': ?substitutionRules == null
+          ? null
+          : pulumi.Input.encodeList<
+              CloudControlParameterSpecSubstitutionRule,
+              Map<String, dynamic>
+            >(substitutionRules!, (value) => value.toMap()),
       'validation': ?validation == null ? null : validation!.toMap(),
       'valueType': valueType,
     };
@@ -74,16 +92,41 @@ class CloudControlParameterSpec {
 
   factory CloudControlParameterSpec.fromMap(Map<String, dynamic> map) {
     return CloudControlParameterSpec(
-      defaultValue: map['defaultValue'] == null ? null : CloudControlParameterSpecDefaultValue.fromMap((map['defaultValue'] as Map).cast<String, dynamic>()),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      defaultValue: map['defaultValue'] == null
+          ? null
+          : CloudControlParameterSpecDefaultValue.fromMap(
+              (map['defaultValue'] as Map).cast<String, dynamic>(),
+            ),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
       isRequired: map['isRequired'] as bool,
       name: map['name'] as String,
-      subParameters: map['subParameters'] == null ? null : pulumi.Input.decodeList<CloudControlParameterSpecSubParameter>(map['subParameters'], (value) => CloudControlParameterSpecSubParameter.fromMap((value as Map).cast<String, dynamic>())),
-      substitutionRules: map['substitutionRules'] == null ? null : pulumi.Input.decodeList<CloudControlParameterSpecSubstitutionRule>(map['substitutionRules'], (value) => CloudControlParameterSpecSubstitutionRule.fromMap((value as Map).cast<String, dynamic>())),
-      validation: map['validation'] == null ? null : CloudControlParameterSpecValidation.fromMap((map['validation'] as Map).cast<String, dynamic>()),
+      subParameters: map['subParameters'] == null
+          ? null
+          : pulumi.Input.decodeList<CloudControlParameterSpecSubParameter>(
+              map['subParameters'],
+              (value) => CloudControlParameterSpecSubParameter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      substitutionRules: map['substitutionRules'] == null
+          ? null
+          : pulumi.Input.decodeList<CloudControlParameterSpecSubstitutionRule>(
+              map['substitutionRules'],
+              (value) => CloudControlParameterSpecSubstitutionRule.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      validation: map['validation'] == null
+          ? null
+          : CloudControlParameterSpecValidation.fromMap(
+              (map['validation'] as Map).cast<String, dynamic>(),
+            ),
       valueType: map['valueType'] as String,
     );
   }
 }
-

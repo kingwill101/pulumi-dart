@@ -19,10 +19,9 @@ class GetServiceBindingNetworkservicesV1beta1Args {
     required String location,
     String? project,
     required String serviceBindingId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      serviceBindingId = pulumi.Input.asInput<String>(serviceBindingId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       serviceBindingId = pulumi.Input.asInput<String>(serviceBindingId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetServiceBindingNetworkservicesV1beta1Args {
     };
   }
 
-  factory GetServiceBindingNetworkservicesV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetServiceBindingNetworkservicesV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetServiceBindingNetworkservicesV1beta1Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +41,3 @@ class GetServiceBindingNetworkservicesV1beta1Args {
     );
   }
 }
-

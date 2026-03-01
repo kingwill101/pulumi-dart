@@ -6,10 +6,13 @@ import 'blue_green_settings_response_container_v1beta1.dart';
 class UpgradeSettingsResponseContainerV1beta1 {
   /// Settings for blue-green upgrade strategy.
   final BlueGreenSettingsResponseContainerV1beta1 blueGreenSettings;
+
   /// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
   final int maxSurge;
+
   /// The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
   final int maxUnavailable;
+
   /// Update strategy of the node pool.
   final String strategy;
 
@@ -34,13 +37,16 @@ class UpgradeSettingsResponseContainerV1beta1 {
     };
   }
 
-  factory UpgradeSettingsResponseContainerV1beta1.fromMap(Map<String, dynamic> map) {
+  factory UpgradeSettingsResponseContainerV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return UpgradeSettingsResponseContainerV1beta1(
-      blueGreenSettings: BlueGreenSettingsResponseContainerV1beta1.fromMap((map['blueGreenSettings'] as Map).cast<String, dynamic>()),
+      blueGreenSettings: BlueGreenSettingsResponseContainerV1beta1.fromMap(
+        (map['blueGreenSettings'] as Map).cast<String, dynamic>(),
+      ),
       maxSurge: map['maxSurge'] as int,
       maxUnavailable: map['maxUnavailable'] as int,
       strategy: map['strategy'] as String,
     );
   }
 }
-

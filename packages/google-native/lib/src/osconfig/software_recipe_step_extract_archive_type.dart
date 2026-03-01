@@ -17,7 +17,8 @@ enum SoftwareRecipeStepExtractArchiveType {
         return item;
       }
     }
-    throw ArgumentError('Unknown SoftwareRecipeStepExtractArchiveType value: $value');
+    throw ArgumentError(
+      'Unknown SoftwareRecipeStepExtractArchiveType value: $value',
+    );
   }
 }
-

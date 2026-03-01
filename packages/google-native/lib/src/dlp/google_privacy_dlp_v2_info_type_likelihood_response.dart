@@ -6,6 +6,7 @@ import 'google_privacy_dlp_v2_info_type_response.dart';
 class GooglePrivacyDlpV2InfoTypeLikelihoodResponse {
   /// Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
   final GooglePrivacyDlpV2InfoTypeResponse infoType;
+
   /// Only returns findings equal to or above this threshold. This field is required or else the configuration fails.
   final String minLikelihood;
 
@@ -24,11 +25,14 @@ class GooglePrivacyDlpV2InfoTypeLikelihoodResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2InfoTypeLikelihoodResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InfoTypeLikelihoodResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2InfoTypeLikelihoodResponse(
-      infoType: GooglePrivacyDlpV2InfoTypeResponse.fromMap((map['infoType'] as Map).cast<String, dynamic>()),
+      infoType: GooglePrivacyDlpV2InfoTypeResponse.fromMap(
+        (map['infoType'] as Map).cast<String, dynamic>(),
+      ),
       minLikelihood: map['minLikelihood'] as String,
     );
   }
 }
-

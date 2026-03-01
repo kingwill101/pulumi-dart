@@ -6,16 +6,22 @@ import 'virtual_machine_preferences_response_migrationcenter_v1alpha1.dart';
 class GetPreferenceSetMigrationcenterV1alpha1Result {
   /// The timestamp when the preference set was created.
   final String createTime;
+
   /// A description of the preference set.
   final String description;
+
   /// User-friendly display name. Maximum length is 63 characters.
   final String displayName;
+
   /// Name of the preference set.
   final String name;
+
   /// The timestamp when the preference set was last updated.
   final String updateTime;
+
   /// A set of preferences that applies to all virtual machines in the context.
-  final VirtualMachinePreferencesResponseMigrationcenterV1alpha1 virtualMachinePreferences;
+  final VirtualMachinePreferencesResponseMigrationcenterV1alpha1
+  virtualMachinePreferences;
 
   /// Creates a new [GetPreferenceSetMigrationcenterV1alpha1Result].
   /// [createTime] The timestamp when the preference set was created.
@@ -44,15 +50,19 @@ class GetPreferenceSetMigrationcenterV1alpha1Result {
     };
   }
 
-  factory GetPreferenceSetMigrationcenterV1alpha1Result.fromMap(Map<String, dynamic> map) {
+  factory GetPreferenceSetMigrationcenterV1alpha1Result.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetPreferenceSetMigrationcenterV1alpha1Result(
       createTime: map['createTime'] as String,
       description: map['description'] as String,
       displayName: map['displayName'] as String,
       name: map['name'] as String,
       updateTime: map['updateTime'] as String,
-      virtualMachinePreferences: VirtualMachinePreferencesResponseMigrationcenterV1alpha1.fromMap((map['virtualMachinePreferences'] as Map).cast<String, dynamic>()),
+      virtualMachinePreferences:
+          VirtualMachinePreferencesResponseMigrationcenterV1alpha1.fromMap(
+            (map['virtualMachinePreferences'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

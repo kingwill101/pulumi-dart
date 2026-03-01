@@ -9,10 +9,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ApiKeyArgs {
   /// ID of the associated AppSync API
   final pulumi.Input<String> apiId;
+
   /// API key description. Defaults to "Managed by Pulumi".
   final pulumi.Input<String>? description;
+
   /// RFC3339 string representation of the expiry date. Rounded down to nearest hour. By default, it is 7 days from the date of creation.
   final pulumi.Input<String>? expires;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -26,11 +29,10 @@ class ApiKeyArgs {
     String? description,
     String? expires,
     String? region,
-  }) :
-      apiId = pulumi.Input.asInput<String>(apiId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      expires = pulumi.Input.asOptionalInput<String>(expires),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : apiId = pulumi.Input.asInput<String>(apiId),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       expires = pulumi.Input.asOptionalInput<String>(expires),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -44,10 +46,11 @@ class ApiKeyArgs {
   factory ApiKeyArgs.fromMap(Map<String, dynamic> map) {
     return ApiKeyArgs(
       apiId: map['apiId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       expires: map['expires'] == null ? null : map['expires'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

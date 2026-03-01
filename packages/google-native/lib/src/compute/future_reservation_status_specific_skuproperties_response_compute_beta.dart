@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Properties to be set for the Future Reservation.
 class FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta {
   /// ID of the instance template used to populate the Future Reservation properties.
@@ -18,10 +17,11 @@ class FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta {
     };
   }
 
-  factory FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationStatusSpecificSKUPropertiesResponseComputeBeta(
       sourceInstanceTemplateId: map['sourceInstanceTemplateId'] as String,
     );
   }
 }
-

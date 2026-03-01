@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CustomModelVpcConfig {
   /// VPC configuration security group IDs.
   final List<String> securityGroupIds;
+
   /// VPC configuration subnets.
   final List<String> subnetIds;
 
@@ -29,4 +29,3 @@ class CustomModelVpcConfig {
     );
   }
 }
-

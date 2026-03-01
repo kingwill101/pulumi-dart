@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 class StatusConditionResponse {
   /// Canonical code of the condition.
   final String canonicalCode;
+
   /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   final String code;
+
   /// Human-friendly representation of the condition
   final String message;
 
@@ -36,4 +37,3 @@ class StatusConditionResponse {
     );
   }
 }
-

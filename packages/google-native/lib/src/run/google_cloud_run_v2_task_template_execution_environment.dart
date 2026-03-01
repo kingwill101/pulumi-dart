@@ -7,13 +7,17 @@ enum GoogleCloudRunV2TaskTemplateExecutionEnvironment {
   const GoogleCloudRunV2TaskTemplateExecutionEnvironment(this.value);
   final String value;
 
-  static GoogleCloudRunV2TaskTemplateExecutionEnvironment fromValue(String value) {
-    for (final item in GoogleCloudRunV2TaskTemplateExecutionEnvironment.values) {
+  static GoogleCloudRunV2TaskTemplateExecutionEnvironment fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudRunV2TaskTemplateExecutionEnvironment.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudRunV2TaskTemplateExecutionEnvironment value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudRunV2TaskTemplateExecutionEnvironment value: $value',
+    );
   }
 }
-

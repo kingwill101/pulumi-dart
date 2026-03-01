@@ -9,20 +9,17 @@ class GoogleDomainsDnsDomainsV1beta1 {
 
   /// Creates a new [GoogleDomainsDnsDomainsV1beta1].
   /// [dsState] The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-  GoogleDomainsDnsDomainsV1beta1({
-    required this.dsState,
-  });
+  GoogleDomainsDnsDomainsV1beta1({required this.dsState});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'dsState': dsState.value,
-    };
+    return <String, dynamic>{'dsState': dsState.value};
   }
 
   factory GoogleDomainsDnsDomainsV1beta1.fromMap(Map<String, dynamic> map) {
     return GoogleDomainsDnsDomainsV1beta1(
-      dsState: GoogleDomainsDnsDsStateDomainsV1beta1.fromValue(map['dsState'] as String),
+      dsState: GoogleDomainsDnsDsStateDomainsV1beta1.fromValue(
+        map['dsState'] as String,
+      ),
     );
   }
 }
-

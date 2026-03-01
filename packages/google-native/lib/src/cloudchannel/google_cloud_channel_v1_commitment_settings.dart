@@ -9,20 +9,25 @@ class GoogleCloudChannelV1CommitmentSettings {
 
   /// Creates a new [GoogleCloudChannelV1CommitmentSettings].
   /// [renewalSettings] Optional. Renewal settings applicable for a commitment-based Offer.
-  GoogleCloudChannelV1CommitmentSettings({
-    this.renewalSettings,
-  });
+  GoogleCloudChannelV1CommitmentSettings({this.renewalSettings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'renewalSettings': ?renewalSettings == null ? null : renewalSettings!.toMap(),
+      'renewalSettings': ?renewalSettings == null
+          ? null
+          : renewalSettings!.toMap(),
     };
   }
 
-  factory GoogleCloudChannelV1CommitmentSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudChannelV1CommitmentSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudChannelV1CommitmentSettings(
-      renewalSettings: map['renewalSettings'] == null ? null : GoogleCloudChannelV1RenewalSettings.fromMap((map['renewalSettings'] as Map).cast<String, dynamic>()),
+      renewalSettings: map['renewalSettings'] == null
+          ? null
+          : GoogleCloudChannelV1RenewalSettings.fromMap(
+              (map['renewalSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRegionSslCertificate.
 class GetRegionSslCertificateResult {
   final String certificate;
@@ -8,6 +7,7 @@ class GetRegionSslCertificateResult {
   final String creationTimestamp;
   final String description;
   final String expireTime;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String name;
@@ -79,4 +79,3 @@ class GetRegionSslCertificateResult {
     );
   }
 }
-

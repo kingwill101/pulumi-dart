@@ -8,13 +8,17 @@ enum GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType {
   const GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType(this.value);
   final String value;
 
-  static GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType fromValue(String value) {
-    for (final item in GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType.values) {
+  static GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowCxV3DataStoreConnectionDataStoreType value: $value',
+    );
   }
 }
-

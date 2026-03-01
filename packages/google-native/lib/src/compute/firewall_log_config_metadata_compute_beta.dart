@@ -12,7 +12,8 @@ enum FirewallLogConfigMetadataComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown FirewallLogConfigMetadataComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown FirewallLogConfigMetadataComputeBeta value: $value',
+    );
   }
 }
-

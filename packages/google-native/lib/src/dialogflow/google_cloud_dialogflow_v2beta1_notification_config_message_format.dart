@@ -7,13 +7,17 @@ enum GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat {
   const GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat(this.value);
   final String value;
 
-  static GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat fromValue(String value) {
-    for (final item in GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat.values) {
+  static GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat fromValue(
+    String value,
+  ) {
+    for (final item
+        in GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat value: $value',
+    );
   }
 }
-

@@ -4,16 +4,22 @@ enum EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption {
   keyIsParameterName("KEY_IS_PARAMETER_NAME"),
   valueIsParameterName("VALUE_IS_PARAMETER_NAME");
 
-  const EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption(this.value);
+  const EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption(
+    this.value,
+  );
   final String value;
 
-  static EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption fromValue(String value) {
-    for (final item in EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption.values) {
+  static EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption
+  fromValue(String value) {
+    for (final item
+        in EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption value: $value');
+    throw ArgumentError(
+      'Unknown EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption value: $value',
+    );
   }
 }
-

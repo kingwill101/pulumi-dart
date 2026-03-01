@@ -10,16 +10,22 @@ import 'custom_connector_custom_connector_type.dart';
 class CustomConnectorArgs {
   /// Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource.
   final pulumi.Input<String> customConnectorId;
+
   /// Type of the custom connector.
   final pulumi.Input<CustomConnectorCustomConnectorType> customConnectorType;
+
   /// Optional. Description of the resource.
   final pulumi.Input<String>? description;
+
   /// Optional. Display name.
   final pulumi.Input<String>? displayName;
+
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
   final pulumi.Input<Map<String, String>>? labels;
+
   /// Optional. Logo of the resource.
   final pulumi.Input<String>? logo;
+
   /// Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -42,20 +48,26 @@ class CustomConnectorArgs {
     String? logo,
     String? name,
     String? project,
-  }) :
-      customConnectorId = pulumi.Input.asInput<String>(customConnectorId),
-      customConnectorType = pulumi.Input.asInput<CustomConnectorCustomConnectorType>(customConnectorType),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      logo = pulumi.Input.asOptionalInput<String>(logo),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : customConnectorId = pulumi.Input.asInput<String>(customConnectorId),
+       customConnectorType =
+           pulumi.Input.asInput<CustomConnectorCustomConnectorType>(
+             customConnectorType,
+           ),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       logo = pulumi.Input.asOptionalInput<String>(logo),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customConnectorId': customConnectorId,
-      'customConnectorType': pulumi.Input.mapInputValue<CustomConnectorCustomConnectorType, String>(customConnectorType, (value) => value.value),
+      'customConnectorType':
+          pulumi.Input.mapInputValue<
+            CustomConnectorCustomConnectorType,
+            String
+          >(customConnectorType, (value) => value.value),
       'description': ?description,
       'displayName': ?displayName,
       'labels': ?labels,
@@ -68,14 +80,21 @@ class CustomConnectorArgs {
   factory CustomConnectorArgs.fromMap(Map<String, dynamic> map) {
     return CustomConnectorArgs(
       customConnectorId: map['customConnectorId'] as String,
-      customConnectorType: CustomConnectorCustomConnectorType.fromValue(map['customConnectorType'] as String),
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      customConnectorType: CustomConnectorCustomConnectorType.fromValue(
+        map['customConnectorType'] as String,
+      ),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       logo: map['logo'] == null ? null : map['logo'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

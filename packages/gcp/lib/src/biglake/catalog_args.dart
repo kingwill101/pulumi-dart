@@ -9,9 +9,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogArgs {
   /// The geographic location where the Catalog should reside.
   final pulumi.Input<String> location;
+
   /// The name of the Catalog. Format:
   /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -20,12 +22,8 @@ class CatalogArgs {
   /// [location] The geographic location where the Catalog should reside.
   /// [name] The name of the Catalog. Format:
   /// [project] The ID of the project in which the resource belongs.
-  CatalogArgs({
-    required String location,
-    String? name,
-    String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
+  CatalogArgs({required String location, String? name, String? project})
+    : location = pulumi.Input.asInput<String>(location),
       name = pulumi.Input.asOptionalInput<String>(name),
       project = pulumi.Input.asOptionalInput<String>(project);
 
@@ -45,4 +43,3 @@ class CatalogArgs {
     );
   }
 }
-

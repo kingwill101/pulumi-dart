@@ -7,13 +7,17 @@ enum ServiceAttachmentConnectionPreferenceComputeBeta {
   const ServiceAttachmentConnectionPreferenceComputeBeta(this.value);
   final String value;
 
-  static ServiceAttachmentConnectionPreferenceComputeBeta fromValue(String value) {
-    for (final item in ServiceAttachmentConnectionPreferenceComputeBeta.values) {
+  static ServiceAttachmentConnectionPreferenceComputeBeta fromValue(
+    String value,
+  ) {
+    for (final item
+        in ServiceAttachmentConnectionPreferenceComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown ServiceAttachmentConnectionPreferenceComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown ServiceAttachmentConnectionPreferenceComputeBeta value: $value',
+    );
   }
 }
-

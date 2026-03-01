@@ -229,6 +229,7 @@ func (host *dartLanguageHost) GeneratePackage(
 	if shouldUseWorkspaceResolution(req.GetDirectory()) {
 		pubspec.Resolution = "workspace"
 	}
+	applyLocalPathPublishPolicy(&pubspec)
 	applyPackageMetadataToPubspec(&pubspec, spec)
 	if strings.TrimSpace(pubspec.Description) == "" {
 		pubspec.Description = fmt.Sprintf("A Pulumi SDK package for %s.", spec.Name)
@@ -254,27 +255,35 @@ func (host *dartLanguageHost) GeneratePackage(
 		if err != nil {
 			return nil, fmt.Errorf("failed to parse existing pubspec.yaml: %w", err)
 		}
+		didMutateExistingPubspec := applyGeneratedPulumiDependency(existingPubspec, &pubspec)
+		didMutateExistingPubspec = applyLocalPathPublishPolicy(existingPubspec) || didMutateExistingPubspec
+
 		missingDependencies := missingRequiredDependencies(existingPubspec, pubspec.Dependencies)
+		shouldWriteExistingPubspec := didMutateExistingPubspec
 		if len(missingDependencies) > 0 {
 			if shouldUpdateExistingPubspec() {
+				shouldWriteExistingPubspec = true
 				if existingPubspec.Dependencies == nil {
 					existingPubspec.Dependencies = map[string]interface{}{}
 				}
 				for _, name := range missingDependencies {
 					existingPubspec.Dependencies[name] = pubspec.Dependencies[name]
 				}
-				updatedPubspecBytes, err := yaml.Marshal(existingPubspec)
-				if err != nil {
-					return nil, fmt.Errorf("failed to marshal updated existing pubspec.yaml: %w", err)
-				}
-				if err := os.WriteFile(pubspecPath, updatedPubspecBytes, 0o600); err != nil {
-					return nil, fmt.Errorf("failed to update existing pubspec.yaml: %w", err)
-				}
 			} else {
 				return nil, fmt.Errorf(
 					"existing pubspec.yaml is missing required dependencies: %s (add to dependencies or dependency_overrides, or set PULUMI_DART_UPDATE_EXISTING_PUBSPEC=true)",
 					strings.Join(missingDependencies, ", "),
 				)
+			}
+		}
+
+		if shouldWriteExistingPubspec {
+			updatedPubspecBytes, err := yaml.Marshal(existingPubspec)
+			if err != nil {
+				return nil, fmt.Errorf("failed to marshal updated existing pubspec.yaml: %w", err)
+			}
+			if err := os.WriteFile(pubspecPath, updatedPubspecBytes, 0o600); err != nil {
+				return nil, fmt.Errorf("failed to update existing pubspec.yaml: %w", err)
 			}
 		}
 	} else if os.IsNotExist(err) {
@@ -363,6 +372,56 @@ func (host *dartLanguageHost) GeneratePackage(
 	return &pulumirpc.GeneratePackageResponse{
 		Diagnostics: rpcDiagnostics,
 	}, nil
+}
+
+func applyLocalPathPublishPolicy(existing *PubSpec) bool {
+	if existing == nil {
+		return false
+	}
+
+	if existing.Dependencies == nil {
+		return false
+	}
+
+	pulumiDependency, hasPulumiDependency := existing.Dependencies["pulumi"]
+	if !hasPulumiDependency || !isSourceDependencySpec(pulumiDependency) {
+		return false
+	}
+	if strings.TrimSpace(existing.PublishTo) != "" {
+		return false
+	}
+
+	existing.PublishTo = "none"
+	return true
+}
+
+func applyGeneratedPulumiDependency(existing *PubSpec, generated *PubSpec) bool {
+	if existing == nil || generated == nil {
+		return false
+	}
+	if strings.TrimSpace(os.Getenv("PULUMI_DART_PULUMI_DEPENDENCY_PATH")) == "" {
+		return false
+	}
+
+	pulumiDependency, hasPulumiDependency := generated.Dependencies["pulumi"]
+	if !hasPulumiDependency {
+		return false
+	}
+	if !isSourceDependencySpec(pulumiDependency) {
+		return false
+	}
+
+	if existing.Dependencies == nil {
+		existing.Dependencies = map[string]interface{}{}
+	}
+	existing.Dependencies["pulumi"] = pulumiDependency
+
+	if existing.DependencyOverrides == nil {
+		existing.DependencyOverrides = map[string]interface{}{}
+	}
+	existing.DependencyOverrides["pulumi"] = pulumiDependency
+
+	return true
 }
 
 func missingRequiredDependencies(existing *PubSpec, required map[string]interface{}) []string {

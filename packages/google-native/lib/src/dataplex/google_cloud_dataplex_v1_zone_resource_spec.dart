@@ -9,20 +9,19 @@ class GoogleCloudDataplexV1ZoneResourceSpec {
 
   /// Creates a new [GoogleCloudDataplexV1ZoneResourceSpec].
   /// [locationType] Immutable. The location type of the resources that are allowed to be attached to the assets within this zone.
-  GoogleCloudDataplexV1ZoneResourceSpec({
-    required this.locationType,
-  });
+  GoogleCloudDataplexV1ZoneResourceSpec({required this.locationType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'locationType': locationType.value,
-    };
+    return <String, dynamic>{'locationType': locationType.value};
   }
 
-  factory GoogleCloudDataplexV1ZoneResourceSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1ZoneResourceSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1ZoneResourceSpec(
-      locationType: GoogleCloudDataplexV1ZoneResourceSpecLocationType.fromValue(map['locationType'] as String),
+      locationType: GoogleCloudDataplexV1ZoneResourceSpecLocationType.fromValue(
+        map['locationType'] as String,
+      ),
     );
   }
 }
-

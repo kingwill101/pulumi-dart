@@ -12,7 +12,8 @@ enum TargetTcpProxyProxyHeaderComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetTcpProxyProxyHeaderComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown TargetTcpProxyProxyHeaderComputeBeta value: $value',
+    );
   }
 }
-

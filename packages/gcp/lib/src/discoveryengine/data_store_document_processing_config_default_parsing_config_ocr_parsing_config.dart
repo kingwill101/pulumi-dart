@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
   /// If true, will use native text instead of OCR text on pages containing native text.
   final bool? useNativeText;
@@ -12,15 +11,16 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'useNativeText': ?useNativeText,
-    };
+    return <String, dynamic>{'useNativeText': ?useNativeText};
   }
 
-  factory DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig.fromMap(Map<String, dynamic> map) {
+  factory DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig(
-      useNativeText: map['useNativeText'] == null ? null : map['useNativeText'] as bool,
+      useNativeText: map['useNativeText'] == null
+          ? null
+          : map['useNativeText'] as bool,
     );
   }
 }
-

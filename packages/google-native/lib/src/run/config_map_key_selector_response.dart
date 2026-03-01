@@ -6,10 +6,13 @@ import 'local_object_reference_response.dart';
 class ConfigMapKeySelectorResponse {
   /// Not supported by Cloud Run.
   final String key;
+
   /// Not supported by Cloud Run.
   final LocalObjectReferenceResponse localObjectReference;
+
   /// Not supported by Cloud Run.
   final String name;
+
   /// Not supported by Cloud Run.
   final bool optional;
 
@@ -37,10 +40,11 @@ class ConfigMapKeySelectorResponse {
   factory ConfigMapKeySelectorResponse.fromMap(Map<String, dynamic> map) {
     return ConfigMapKeySelectorResponse(
       key: map['key'] as String,
-      localObjectReference: LocalObjectReferenceResponse.fromMap((map['localObjectReference'] as Map).cast<String, dynamic>()),
+      localObjectReference: LocalObjectReferenceResponse.fromMap(
+        (map['localObjectReference'] as Map).cast<String, dynamic>(),
+      ),
       name: map['name'] as String,
       optional: map['optional'] as bool,
     );
   }
 }
-

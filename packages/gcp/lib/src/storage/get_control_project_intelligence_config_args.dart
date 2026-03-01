@@ -12,21 +12,16 @@ class GetControlProjectIntelligenceConfigArgs {
 
   /// Creates a new [GetControlProjectIntelligenceConfigArgs].
   /// [name] The name or number of the GCP project.
-  GetControlProjectIntelligenceConfigArgs({
-    required String name,
-  }) :
-      name = pulumi.Input.asInput<String>(name);
+  GetControlProjectIntelligenceConfigArgs({required String name})
+    : name = pulumi.Input.asInput<String>(name);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-    };
+    return <String, dynamic>{'name': name};
   }
 
-  factory GetControlProjectIntelligenceConfigArgs.fromMap(Map<String, dynamic> map) {
-    return GetControlProjectIntelligenceConfigArgs(
-      name: map['name'] as String,
-    );
+  factory GetControlProjectIntelligenceConfigArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
+    return GetControlProjectIntelligenceConfigArgs(name: map['name'] as String);
   }
 }
-

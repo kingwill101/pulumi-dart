@@ -7,14 +7,19 @@ import 'money_response_jobs_v4.dart';
 class CompensationEntryResponseJobsV4 {
   /// Compensation amount.
   final MoneyResponseJobsV4 amount;
+
   /// Compensation description. For example, could indicate equity terms or provide additional context to an estimated bonus.
   final String description;
+
   /// Expected number of units paid each year. If not specified, when Job.employment_types is FULLTIME, a default value is inferred based on unit. Default values: - HOURLY: 2080 - DAILY: 260 - WEEKLY: 52 - MONTHLY: 12 - ANNUAL: 1
   final double expectedUnitsPerYear;
+
   /// Compensation range.
   final CompensationRangeResponseJobsV4 range;
+
   /// Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
   final String type;
+
   /// Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
   final String unit;
 
@@ -47,13 +52,16 @@ class CompensationEntryResponseJobsV4 {
 
   factory CompensationEntryResponseJobsV4.fromMap(Map<String, dynamic> map) {
     return CompensationEntryResponseJobsV4(
-      amount: MoneyResponseJobsV4.fromMap((map['amount'] as Map).cast<String, dynamic>()),
+      amount: MoneyResponseJobsV4.fromMap(
+        (map['amount'] as Map).cast<String, dynamic>(),
+      ),
       description: map['description'] as String,
       expectedUnitsPerYear: map['expectedUnitsPerYear'] as double,
-      range: CompensationRangeResponseJobsV4.fromMap((map['range'] as Map).cast<String, dynamic>()),
+      range: CompensationRangeResponseJobsV4.fromMap(
+        (map['range'] as Map).cast<String, dynamic>(),
+      ),
       type: map['type'] as String,
       unit: map['unit'] as String,
     );
   }
 }
-

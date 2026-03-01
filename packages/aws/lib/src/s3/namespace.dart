@@ -135,16 +135,21 @@ import 'namespace_args.dart';
 class Namespace extends pulumi.CustomResource {
   /// Date and time when the namespace was created.
   late final pulumi.Output<String> createdAt;
+
   /// Account ID of the account that created the namespace.
   late final pulumi.Output<String> createdBy;
+
   /// Name of the namespace.
   /// Must be between 1 and 255 characters in length.
   /// Can consist of lowercase letters, numbers, and underscores, and must begin and end with a lowercase letter or number.
   late final pulumi.Output<String> namespace;
+
   /// Account ID of the account that owns the namespace.
   late final pulumi.Output<String> ownerAccountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// ARN referencing the Table Bucket that contains this Namespace.
   late final pulumi.Output<String> tableBucketArn;
 
@@ -157,11 +162,11 @@ class Namespace extends pulumi.CustomResource {
     NamespaceArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:s3tables/namespace:Namespace',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:s3tables/namespace:Namespace',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createdAt = registerOutput<String>('createdAt');
     this.createdBy = registerOutput<String>('createdBy');
     this.namespace = registerOutput<String>('namespace');

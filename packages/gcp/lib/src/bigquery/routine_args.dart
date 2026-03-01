@@ -15,43 +15,56 @@ class RoutineArgs {
   /// Input/output argument of a function or a stored procedure.
   /// Structure is documented below.
   final pulumi.Input<List<RoutineArgument>>? arguments;
+
   /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
   /// Possible values are: `DATA_MASKING`.
   final pulumi.Input<String>? dataGovernanceType;
+
   /// The ID of the dataset containing this routine
   final pulumi.Input<String> datasetId;
+
   /// The body of the routine. For functions, this is the expression in the AS clause.
   /// If language=SQL, it is the substring inside (but excluding) the parentheses.
   final pulumi.Input<String> definitionBody;
+
   /// The description of the routine if defined.
   final pulumi.Input<String>? description;
+
   /// The determinism level of the JavaScript UDF if defined.
   /// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
   final pulumi.Input<String>? determinismLevel;
+
   /// Options for the runtime of the external system.
   /// This field is only applicable for Python UDFs.
   /// Structure is documented below.
   final pulumi.Input<RoutineExternalRuntimeOptions>? externalRuntimeOptions;
+
   /// Optional. If language = "JAVASCRIPT", this field stores the path of the
   /// imported JAVASCRIPT libraries.
   final pulumi.Input<List<String>>? importedLibraries;
+
   /// The language of the routine.
   /// Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
   final pulumi.Input<String>? language;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// Options for a user-defined Python function.
   /// Structure is documented below.
   final pulumi.Input<RoutinePythonOptions>? pythonOptions;
+
   /// Remote function specific options.
   /// Structure is documented below.
   final pulumi.Input<RoutineRemoteFunctionOptions>? remoteFunctionOptions;
+
   /// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
   /// If absent, the return table type is inferred from definitionBody at query time in each query
   /// that references this routine. If present, then the columns in the evaluated table result will
   /// be cast to match the column types specificed in return table type, at query time.
   final pulumi.Input<String>? returnTableType;
+
   /// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
   /// If absent, the return type is inferred from definitionBody at query time in each query
   /// that references this routine. If present, then the evaluated result will be cast to
@@ -62,14 +75,18 @@ class RoutineArgs {
   /// cannot suppress the recurring diff this causes. As a workaround, we recommend using
   /// the schema as returned by the API.
   final pulumi.Input<String>? returnType;
+
   /// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
   final pulumi.Input<String> routineId;
+
   /// The type of routine.
   /// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
   final pulumi.Input<String> routineType;
+
   /// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
   /// Possible values are: `DEFINER`, `INVOKER`.
   final pulumi.Input<String>? securityMode;
+
   /// Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
   /// Structure is documented below.
   final pulumi.Input<RoutineSparkOptions>? sparkOptions;
@@ -112,70 +129,150 @@ class RoutineArgs {
     required String routineType,
     String? securityMode,
     RoutineSparkOptions? sparkOptions,
-  }) :
-      arguments = pulumi.Input.asOptionalInput<List<RoutineArgument>>(arguments),
-      dataGovernanceType = pulumi.Input.asOptionalInput<String>(dataGovernanceType),
-      datasetId = pulumi.Input.asInput<String>(datasetId),
-      definitionBody = pulumi.Input.asInput<String>(definitionBody),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      determinismLevel = pulumi.Input.asOptionalInput<String>(determinismLevel),
-      externalRuntimeOptions = pulumi.Input.asOptionalInput<RoutineExternalRuntimeOptions>(externalRuntimeOptions),
-      importedLibraries = pulumi.Input.asOptionalInput<List<String>>(importedLibraries),
-      language = pulumi.Input.asOptionalInput<String>(language),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      pythonOptions = pulumi.Input.asOptionalInput<RoutinePythonOptions>(pythonOptions),
-      remoteFunctionOptions = pulumi.Input.asOptionalInput<RoutineRemoteFunctionOptions>(remoteFunctionOptions),
-      returnTableType = pulumi.Input.asOptionalInput<String>(returnTableType),
-      returnType = pulumi.Input.asOptionalInput<String>(returnType),
-      routineId = pulumi.Input.asInput<String>(routineId),
-      routineType = pulumi.Input.asInput<String>(routineType),
-      securityMode = pulumi.Input.asOptionalInput<String>(securityMode),
-      sparkOptions = pulumi.Input.asOptionalInput<RoutineSparkOptions>(sparkOptions);
+  }) : arguments = pulumi.Input.asOptionalInput<List<RoutineArgument>>(
+         arguments,
+       ),
+       dataGovernanceType = pulumi.Input.asOptionalInput<String>(
+         dataGovernanceType,
+       ),
+       datasetId = pulumi.Input.asInput<String>(datasetId),
+       definitionBody = pulumi.Input.asInput<String>(definitionBody),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       determinismLevel = pulumi.Input.asOptionalInput<String>(
+         determinismLevel,
+       ),
+       externalRuntimeOptions =
+           pulumi.Input.asOptionalInput<RoutineExternalRuntimeOptions>(
+             externalRuntimeOptions,
+           ),
+       importedLibraries = pulumi.Input.asOptionalInput<List<String>>(
+         importedLibraries,
+       ),
+       language = pulumi.Input.asOptionalInput<String>(language),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       pythonOptions = pulumi.Input.asOptionalInput<RoutinePythonOptions>(
+         pythonOptions,
+       ),
+       remoteFunctionOptions =
+           pulumi.Input.asOptionalInput<RoutineRemoteFunctionOptions>(
+             remoteFunctionOptions,
+           ),
+       returnTableType = pulumi.Input.asOptionalInput<String>(returnTableType),
+       returnType = pulumi.Input.asOptionalInput<String>(returnType),
+       routineId = pulumi.Input.asInput<String>(routineId),
+       routineType = pulumi.Input.asInput<String>(routineType),
+       securityMode = pulumi.Input.asOptionalInput<String>(securityMode),
+       sparkOptions = pulumi.Input.asOptionalInput<RoutineSparkOptions>(
+         sparkOptions,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'arguments': ?pulumi.Input.mapOptionalInputValue<List<RoutineArgument>, List<Map<String, dynamic>>>(arguments, (value) => pulumi.Input.encodeList<RoutineArgument, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'arguments':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<RoutineArgument>,
+            List<Map<String, dynamic>>
+          >(
+            arguments,
+            (value) =>
+                pulumi.Input.encodeList<RoutineArgument, Map<String, dynamic>>(
+                  value,
+                  (value) => value.toMap(),
+                ),
+          ),
       'dataGovernanceType': ?dataGovernanceType,
       'datasetId': datasetId,
       'definitionBody': definitionBody,
       'description': ?description,
       'determinismLevel': ?determinismLevel,
-      'externalRuntimeOptions': ?pulumi.Input.mapOptionalInputValue<RoutineExternalRuntimeOptions, Map<String, dynamic>>(externalRuntimeOptions, (value) => value.toMap()),
+      'externalRuntimeOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoutineExternalRuntimeOptions,
+            Map<String, dynamic>
+          >(externalRuntimeOptions, (value) => value.toMap()),
       'importedLibraries': ?importedLibraries,
       'language': ?language,
       'project': ?project,
-      'pythonOptions': ?pulumi.Input.mapOptionalInputValue<RoutinePythonOptions, Map<String, dynamic>>(pythonOptions, (value) => value.toMap()),
-      'remoteFunctionOptions': ?pulumi.Input.mapOptionalInputValue<RoutineRemoteFunctionOptions, Map<String, dynamic>>(remoteFunctionOptions, (value) => value.toMap()),
+      'pythonOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoutinePythonOptions,
+            Map<String, dynamic>
+          >(pythonOptions, (value) => value.toMap()),
+      'remoteFunctionOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoutineRemoteFunctionOptions,
+            Map<String, dynamic>
+          >(remoteFunctionOptions, (value) => value.toMap()),
       'returnTableType': ?returnTableType,
       'returnType': ?returnType,
       'routineId': routineId,
       'routineType': routineType,
       'securityMode': ?securityMode,
-      'sparkOptions': ?pulumi.Input.mapOptionalInputValue<RoutineSparkOptions, Map<String, dynamic>>(sparkOptions, (value) => value.toMap()),
+      'sparkOptions':
+          ?pulumi.Input.mapOptionalInputValue<
+            RoutineSparkOptions,
+            Map<String, dynamic>
+          >(sparkOptions, (value) => value.toMap()),
     };
   }
 
   factory RoutineArgs.fromMap(Map<String, dynamic> map) {
     return RoutineArgs(
-      arguments: map['arguments'] == null ? null : pulumi.Input.decodeList<RoutineArgument>(map['arguments'], (value) => RoutineArgument.fromMap((value as Map).cast<String, dynamic>())),
-      dataGovernanceType: map['dataGovernanceType'] == null ? null : map['dataGovernanceType'] as String,
+      arguments: map['arguments'] == null
+          ? null
+          : pulumi.Input.decodeList<RoutineArgument>(
+              map['arguments'],
+              (value) => RoutineArgument.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      dataGovernanceType: map['dataGovernanceType'] == null
+          ? null
+          : map['dataGovernanceType'] as String,
       datasetId: map['datasetId'] as String,
       definitionBody: map['definitionBody'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      determinismLevel: map['determinismLevel'] == null ? null : map['determinismLevel'] as String,
-      externalRuntimeOptions: map['externalRuntimeOptions'] == null ? null : RoutineExternalRuntimeOptions.fromMap((map['externalRuntimeOptions'] as Map).cast<String, dynamic>()),
-      importedLibraries: map['importedLibraries'] == null ? null : (map['importedLibraries'] as List).cast<String>(),
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      determinismLevel: map['determinismLevel'] == null
+          ? null
+          : map['determinismLevel'] as String,
+      externalRuntimeOptions: map['externalRuntimeOptions'] == null
+          ? null
+          : RoutineExternalRuntimeOptions.fromMap(
+              (map['externalRuntimeOptions'] as Map).cast<String, dynamic>(),
+            ),
+      importedLibraries: map['importedLibraries'] == null
+          ? null
+          : (map['importedLibraries'] as List).cast<String>(),
       language: map['language'] == null ? null : map['language'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      pythonOptions: map['pythonOptions'] == null ? null : RoutinePythonOptions.fromMap((map['pythonOptions'] as Map).cast<String, dynamic>()),
-      remoteFunctionOptions: map['remoteFunctionOptions'] == null ? null : RoutineRemoteFunctionOptions.fromMap((map['remoteFunctionOptions'] as Map).cast<String, dynamic>()),
-      returnTableType: map['returnTableType'] == null ? null : map['returnTableType'] as String,
-      returnType: map['returnType'] == null ? null : map['returnType'] as String,
+      pythonOptions: map['pythonOptions'] == null
+          ? null
+          : RoutinePythonOptions.fromMap(
+              (map['pythonOptions'] as Map).cast<String, dynamic>(),
+            ),
+      remoteFunctionOptions: map['remoteFunctionOptions'] == null
+          ? null
+          : RoutineRemoteFunctionOptions.fromMap(
+              (map['remoteFunctionOptions'] as Map).cast<String, dynamic>(),
+            ),
+      returnTableType: map['returnTableType'] == null
+          ? null
+          : map['returnTableType'] as String,
+      returnType: map['returnType'] == null
+          ? null
+          : map['returnType'] as String,
       routineId: map['routineId'] as String,
       routineType: map['routineType'] as String,
-      securityMode: map['securityMode'] == null ? null : map['securityMode'] as String,
-      sparkOptions: map['sparkOptions'] == null ? null : RoutineSparkOptions.fromMap((map['sparkOptions'] as Map).cast<String, dynamic>()),
+      securityMode: map['securityMode'] == null
+          ? null
+          : map['securityMode'] as String,
+      sparkOptions: map['sparkOptions'] == null
+          ? null
+          : RoutineSparkOptions.fromMap(
+              (map['sparkOptions'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

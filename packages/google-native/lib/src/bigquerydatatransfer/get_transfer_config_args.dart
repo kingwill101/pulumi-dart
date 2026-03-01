@@ -19,10 +19,9 @@ class GetTransferConfigArgs {
     required String location,
     String? project,
     required String transferConfigId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      transferConfigId = pulumi.Input.asInput<String>(transferConfigId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       transferConfigId = pulumi.Input.asInput<String>(transferConfigId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTransferConfigArgs {
     );
   }
 }
-

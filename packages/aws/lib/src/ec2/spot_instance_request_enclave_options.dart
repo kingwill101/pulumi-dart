@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SpotInstanceRequestEnclaveOptions {
   /// Whether Nitro Enclaves will be enabled on the instance. Defaults to `false`.
   ///
@@ -9,14 +8,10 @@ class SpotInstanceRequestEnclaveOptions {
 
   /// Creates a new [SpotInstanceRequestEnclaveOptions].
   /// [enabled] Whether Nitro Enclaves will be enabled on the instance. Defaults to `false`.
-  SpotInstanceRequestEnclaveOptions({
-    this.enabled,
-  });
+  SpotInstanceRequestEnclaveOptions({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory SpotInstanceRequestEnclaveOptions.fromMap(Map<String, dynamic> map) {
@@ -25,4 +20,3 @@ class SpotInstanceRequestEnclaveOptions {
     );
   }
 }
-

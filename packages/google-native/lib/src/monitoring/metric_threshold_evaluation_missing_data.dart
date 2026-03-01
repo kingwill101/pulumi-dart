@@ -14,7 +14,8 @@ enum MetricThresholdEvaluationMissingData {
         return item;
       }
     }
-    throw ArgumentError('Unknown MetricThresholdEvaluationMissingData value: $value');
+    throw ArgumentError(
+      'Unknown MetricThresholdEvaluationMissingData value: $value',
+    );
   }
 }
-

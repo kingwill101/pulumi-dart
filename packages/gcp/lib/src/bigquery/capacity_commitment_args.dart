@@ -12,20 +12,27 @@ class CapacityCommitmentArgs {
   /// cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
   /// or merged.
   final pulumi.Input<String>? capacityCommitmentId;
+
   /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
   final pulumi.Input<String>? edition;
+
   /// If true, fail the request if another project in the organization has a capacity commitment.
   final pulumi.Input<String>? enforceSingleAdminProjectPerOrg;
+
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
   final pulumi.Input<String>? location;
+
   /// Capacity commitment plan. Valid values are at https://cloud.google.com/bigquery/docs/reference/reservations/rpc/google.cloud.bigquery.reservation.v1#commitmentplan
   final pulumi.Input<String> plan;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
   final pulumi.Input<String>? renewalPlan;
+
   /// Number of slots in this commitment.
   final pulumi.Input<int> slotCount;
 
@@ -47,15 +54,18 @@ class CapacityCommitmentArgs {
     String? project,
     String? renewalPlan,
     required int slotCount,
-  }) :
-      capacityCommitmentId = pulumi.Input.asOptionalInput<String>(capacityCommitmentId),
-      edition = pulumi.Input.asOptionalInput<String>(edition),
-      enforceSingleAdminProjectPerOrg = pulumi.Input.asOptionalInput<String>(enforceSingleAdminProjectPerOrg),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      plan = pulumi.Input.asInput<String>(plan),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      renewalPlan = pulumi.Input.asOptionalInput<String>(renewalPlan),
-      slotCount = pulumi.Input.asInput<int>(slotCount);
+  }) : capacityCommitmentId = pulumi.Input.asOptionalInput<String>(
+         capacityCommitmentId,
+       ),
+       edition = pulumi.Input.asOptionalInput<String>(edition),
+       enforceSingleAdminProjectPerOrg = pulumi.Input.asOptionalInput<String>(
+         enforceSingleAdminProjectPerOrg,
+       ),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       plan = pulumi.Input.asInput<String>(plan),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       renewalPlan = pulumi.Input.asOptionalInput<String>(renewalPlan),
+       slotCount = pulumi.Input.asInput<int>(slotCount);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,15 +82,21 @@ class CapacityCommitmentArgs {
 
   factory CapacityCommitmentArgs.fromMap(Map<String, dynamic> map) {
     return CapacityCommitmentArgs(
-      capacityCommitmentId: map['capacityCommitmentId'] == null ? null : map['capacityCommitmentId'] as String,
+      capacityCommitmentId: map['capacityCommitmentId'] == null
+          ? null
+          : map['capacityCommitmentId'] as String,
       edition: map['edition'] == null ? null : map['edition'] as String,
-      enforceSingleAdminProjectPerOrg: map['enforceSingleAdminProjectPerOrg'] == null ? null : map['enforceSingleAdminProjectPerOrg'] as String,
+      enforceSingleAdminProjectPerOrg:
+          map['enforceSingleAdminProjectPerOrg'] == null
+          ? null
+          : map['enforceSingleAdminProjectPerOrg'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       plan: map['plan'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      renewalPlan: map['renewalPlan'] == null ? null : map['renewalPlan'] as String,
+      renewalPlan: map['renewalPlan'] == null
+          ? null
+          : map['renewalPlan'] as String,
       slotCount: map['slotCount'] as int,
     );
   }
 }
-

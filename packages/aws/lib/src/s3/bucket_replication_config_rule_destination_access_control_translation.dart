@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BucketReplicationConfigRuleDestinationAccessControlTranslation {
   /// Specifies the replica ownership. For default and valid values, see [PUT bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) in the Amazon S3 API Reference. Valid values: `Destination`.
   final String owner;
@@ -12,15 +11,14 @@ class BucketReplicationConfigRuleDestinationAccessControlTranslation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'owner': owner,
-    };
+    return <String, dynamic>{'owner': owner};
   }
 
-  factory BucketReplicationConfigRuleDestinationAccessControlTranslation.fromMap(Map<String, dynamic> map) {
+  factory BucketReplicationConfigRuleDestinationAccessControlTranslation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketReplicationConfigRuleDestinationAccessControlTranslation(
       owner: map['owner'] as String,
     );
   }
 }
-

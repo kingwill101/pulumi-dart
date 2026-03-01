@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for a Memcached Node.
 class NodeConfig {
   /// Number of cpus per Memcached node.
   final int cpuCount;
+
   /// Memory size in MiB for each Memcached node.
   final int memorySizeMb;
 
   /// Creates a new [NodeConfig].
   /// [cpuCount] Number of cpus per Memcached node.
   /// [memorySizeMb] Memory size in MiB for each Memcached node.
-  NodeConfig({
-    required this.cpuCount,
-    required this.memorySizeMb,
-  });
+  NodeConfig({required this.cpuCount, required this.memorySizeMb});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,4 +27,3 @@ class NodeConfig {
     );
   }
 }
-

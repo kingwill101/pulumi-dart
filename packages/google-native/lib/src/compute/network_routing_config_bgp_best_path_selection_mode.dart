@@ -12,7 +12,8 @@ enum NetworkRoutingConfigBgpBestPathSelectionMode {
         return item;
       }
     }
-    throw ArgumentError('Unknown NetworkRoutingConfigBgpBestPathSelectionMode value: $value');
+    throw ArgumentError(
+      'Unknown NetworkRoutingConfigBgpBestPathSelectionMode value: $value',
+    );
   }
 }
-

@@ -8,6 +8,7 @@ import 'get_cluster_node_type_config.dart';
 class GetClusterResult {
   final List<GetClusterAutoscalingSetting> autoscalingSettings;
   final String createTime;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool management;
@@ -44,12 +45,20 @@ class GetClusterResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingSettings': pulumi.Input.encodeList<GetClusterAutoscalingSetting, Map<String, dynamic>>(autoscalingSettings, (value) => value.toMap()),
+      'autoscalingSettings':
+          pulumi.Input.encodeList<
+            GetClusterAutoscalingSetting,
+            Map<String, dynamic>
+          >(autoscalingSettings, (value) => value.toMap()),
       'createTime': createTime,
       'id': id,
       'management': management,
       'name': name,
-      'nodeTypeConfigs': pulumi.Input.encodeList<GetClusterNodeTypeConfig, Map<String, dynamic>>(nodeTypeConfigs, (value) => value.toMap()),
+      'nodeTypeConfigs':
+          pulumi.Input.encodeList<
+            GetClusterNodeTypeConfig,
+            Map<String, dynamic>
+          >(nodeTypeConfigs, (value) => value.toMap()),
       'parent': parent,
       'state': state,
       'uid': uid,
@@ -59,12 +68,23 @@ class GetClusterResult {
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      autoscalingSettings: pulumi.Input.decodeList<GetClusterAutoscalingSetting>(map['autoscalingSettings'], (value) => GetClusterAutoscalingSetting.fromMap((value as Map).cast<String, dynamic>())),
+      autoscalingSettings:
+          pulumi.Input.decodeList<GetClusterAutoscalingSetting>(
+            map['autoscalingSettings'],
+            (value) => GetClusterAutoscalingSetting.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       createTime: map['createTime'] as String,
       id: map['id'] as String,
       management: map['management'] as bool,
       name: map['name'] as String,
-      nodeTypeConfigs: pulumi.Input.decodeList<GetClusterNodeTypeConfig>(map['nodeTypeConfigs'], (value) => GetClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>())),
+      nodeTypeConfigs: pulumi.Input.decodeList<GetClusterNodeTypeConfig>(
+        map['nodeTypeConfigs'],
+        (value) => GetClusterNodeTypeConfig.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       parent: map['parent'] as String,
       state: map['state'] as String,
       uid: map['uid'] as String,
@@ -72,4 +92,3 @@ class GetClusterResult {
     );
   }
 }
-

@@ -16,9 +16,10 @@ class GetSearchApplicationArgs {
   GetSearchApplicationArgs({
     bool? debugOptionsEnableDebugging,
     required String searchapplicationId,
-  }) :
-      debugOptionsEnableDebugging = pulumi.Input.asOptionalInput<bool>(debugOptionsEnableDebugging),
-      searchapplicationId = pulumi.Input.asInput<String>(searchapplicationId);
+  }) : debugOptionsEnableDebugging = pulumi.Input.asOptionalInput<bool>(
+         debugOptionsEnableDebugging,
+       ),
+       searchapplicationId = pulumi.Input.asInput<String>(searchapplicationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -29,9 +30,10 @@ class GetSearchApplicationArgs {
 
   factory GetSearchApplicationArgs.fromMap(Map<String, dynamic> map) {
     return GetSearchApplicationArgs(
-      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null ? null : map['debugOptionsEnableDebugging'] as bool,
+      debugOptionsEnableDebugging: map['debugOptionsEnableDebugging'] == null
+          ? null
+          : map['debugOptionsEnableDebugging'] as bool,
       searchapplicationId: map['searchapplicationId'] as String,
     );
   }
 }
-

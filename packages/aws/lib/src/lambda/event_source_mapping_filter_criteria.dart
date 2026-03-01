@@ -9,20 +9,29 @@ class EventSourceMappingFilterCriteria {
 
   /// Creates a new [EventSourceMappingFilterCriteria].
   /// [filters] Set of up to 5 filter. If an event satisfies at least one, Lambda sends the event to the function or adds it to the next batch. See below.
-  EventSourceMappingFilterCriteria({
-    this.filters,
-  });
+  EventSourceMappingFilterCriteria({this.filters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<EventSourceMappingFilterCriteriaFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?filters == null
+          ? null
+          : pulumi.Input.encodeList<
+              EventSourceMappingFilterCriteriaFilter,
+              Map<String, dynamic>
+            >(filters!, (value) => value.toMap()),
     };
   }
 
   factory EventSourceMappingFilterCriteria.fromMap(Map<String, dynamic> map) {
     return EventSourceMappingFilterCriteria(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<EventSourceMappingFilterCriteriaFilter>(map['filters'], (value) => EventSourceMappingFilterCriteriaFilter.fromMap((value as Map).cast<String, dynamic>())),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<EventSourceMappingFilterCriteriaFilter>(
+              map['filters'],
+              (value) => EventSourceMappingFilterCriteriaFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

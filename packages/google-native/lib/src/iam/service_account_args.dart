@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceAccountArgs {
   /// The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
   final pulumi.Input<String> accountId;
+
   /// Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
   final pulumi.Input<String>? description;
+
   /// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
   final pulumi.Input<String>? displayName;
+
   /// Deprecated. Do not use.
   final pulumi.Input<String>? etag;
+
   /// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to access the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
@@ -33,13 +37,12 @@ class ServiceAccountArgs {
     String? etag,
     String? name,
     String? project,
-  }) :
-      accountId = pulumi.Input.asInput<String>(accountId),
-      description = pulumi.Input.asOptionalInput<String>(description),
-      displayName = pulumi.Input.asOptionalInput<String>(displayName),
-      etag = pulumi.Input.asOptionalInput<String>(etag),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : accountId = pulumi.Input.asInput<String>(accountId),
+       description = pulumi.Input.asOptionalInput<String>(description),
+       displayName = pulumi.Input.asOptionalInput<String>(displayName),
+       etag = pulumi.Input.asOptionalInput<String>(etag),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,12 +58,15 @@ class ServiceAccountArgs {
   factory ServiceAccountArgs.fromMap(Map<String, dynamic> map) {
     return ServiceAccountArgs(
       accountId: map['accountId'] as String,
-      description: map['description'] == null ? null : map['description'] as String,
-      displayName: map['displayName'] == null ? null : map['displayName'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
+      displayName: map['displayName'] == null
+          ? null
+          : map['displayName'] as String,
       etag: map['etag'] == null ? null : map['etag'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

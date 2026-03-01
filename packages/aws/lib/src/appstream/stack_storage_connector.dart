@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class StackStorageConnector {
   /// Type of storage connector.
   /// Valid values are `HOMEFOLDERS`, `GOOGLE_DRIVE`, or `ONE_DRIVE`.
   final String connectorType;
+
   /// Names of the domains for the account.
   final List<String>? domains;
+
   /// ARN of the storage connector.
   final String? resourceIdentifier;
 
@@ -31,9 +32,12 @@ class StackStorageConnector {
   factory StackStorageConnector.fromMap(Map<String, dynamic> map) {
     return StackStorageConnector(
       connectorType: map['connectorType'] as String,
-      domains: map['domains'] == null ? null : (map['domains'] as List).cast<String>(),
-      resourceIdentifier: map['resourceIdentifier'] == null ? null : map['resourceIdentifier'] as String,
+      domains: map['domains'] == null
+          ? null
+          : (map['domains'] as List).cast<String>(),
+      resourceIdentifier: map['resourceIdentifier'] == null
+          ? null
+          : map['resourceIdentifier'] as String,
     );
   }
 }
-

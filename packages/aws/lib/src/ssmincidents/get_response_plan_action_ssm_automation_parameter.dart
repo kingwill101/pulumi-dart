@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetResponsePlanActionSsmAutomationParameter {
   /// The name of the PagerDuty configuration.
   final String name;
+
   /// The values for the associated parameter name.
   final List<String> values;
 
@@ -16,17 +16,15 @@ class GetResponsePlanActionSsmAutomationParameter {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
-  factory GetResponsePlanActionSsmAutomationParameter.fromMap(Map<String, dynamic> map) {
+  factory GetResponsePlanActionSsmAutomationParameter.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetResponsePlanActionSsmAutomationParameter(
       name: map['name'] as String,
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
-

@@ -17,4 +17,3 @@ enum ServiceConfigIngressSettings {
     throw ArgumentError('Unknown ServiceConfigIngressSettings value: $value');
   }
 }
-

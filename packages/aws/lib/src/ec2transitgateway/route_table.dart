@@ -100,16 +100,22 @@ import 'route_table_args.dart';
 class RouteTable extends pulumi.CustomResource {
   /// EC2 Transit Gateway Route Table Amazon Resource Name (ARN).
   late final pulumi.Output<String> arn;
+
   /// Boolean whether this is the default association route table for the EC2 Transit Gateway.
   late final pulumi.Output<bool> defaultAssociationRouteTable;
+
   /// Boolean whether this is the default propagation route table for the EC2 Transit Gateway.
   late final pulumi.Output<bool> defaultPropagationRouteTable;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// Key-value tags for the EC2 Transit Gateway Route Table. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Identifier of EC2 Transit Gateway.
   late final pulumi.Output<String> transitGatewayId;
 
@@ -122,14 +128,18 @@ class RouteTable extends pulumi.CustomResource {
     RouteTableArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2transitgateway/routeTable:RouteTable',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ec2transitgateway/routeTable:RouteTable',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
-    this.defaultAssociationRouteTable = registerOutput<bool>('defaultAssociationRouteTable');
-    this.defaultPropagationRouteTable = registerOutput<bool>('defaultPropagationRouteTable');
+    this.defaultAssociationRouteTable = registerOutput<bool>(
+      'defaultAssociationRouteTable',
+    );
+    this.defaultPropagationRouteTable = registerOutput<bool>(
+      'defaultPropagationRouteTable',
+    );
     this.region = registerOutput<String>('region');
     this.tags = registerOutput<Map<String, String>?>('tags');
     this.tagsAll = registerOutput<Map<String, String>>('tagsAll');

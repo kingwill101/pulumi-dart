@@ -271,28 +271,37 @@ import 'entity_recognizer_vpc_config.dart';
 class EntityRecognizer extends pulumi.CustomResource {
   /// ARN of the Entity Recognizer version.
   late final pulumi.Output<String> arn;
+
   /// The ARN for an IAM Role which allows Comprehend to read the training and testing data.
   late final pulumi.Output<String> dataAccessRoleArn;
+
   /// Configuration for the training and testing data.
   /// See the `input_data_config` Configuration Block section below.
   late final pulumi.Output<EntityRecognizerInputDataConfig> inputDataConfig;
+
   /// Two-letter language code for the language.
   /// One of `en`, `es`, `fr`, `it`, `de`, or `pt`.
   late final pulumi.Output<String> languageCode;
+
   /// The ID or ARN of a KMS Key used to encrypt trained Entity Recognizers.
   late final pulumi.Output<String?> modelKmsKeyId;
+
   /// Name for the Entity Recognizer.
   /// Has a maximum length of 63 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// A map of tags to assign to the resource. If configured with a provider `default_tags` Configuration Block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+
   /// A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
+
   /// Name for the version of the Entity Recognizer.
   /// Each version must have a unique name within the Entity Recognizer.
   /// If omitted, the provider will assign a random, unique version name.
@@ -301,13 +310,16 @@ class EntityRecognizer extends pulumi.CustomResource {
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   /// Conflicts with `version_name_prefix`.
   late final pulumi.Output<String> versionName;
+
   /// Creates a unique version name beginning with the specified prefix.
   /// Has a maximum length of 37 characters.
   /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
   /// Conflicts with `version_name`.
   late final pulumi.Output<String> versionNamePrefix;
+
   /// ID or ARN of a KMS Key used to encrypt storage volumes during job processing.
   late final pulumi.Output<String?> volumeKmsKeyId;
+
   /// Configuration parameters for VPC to contain Entity Recognizer resources.
   /// See the `vpc_config` Configuration Block section below.
   late final pulumi.Output<EntityRecognizerVpcConfig?> vpcConfig;
@@ -321,14 +333,16 @@ class EntityRecognizer extends pulumi.CustomResource {
     EntityRecognizerArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:comprehend/entityRecognizer:EntityRecognizer',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:comprehend/entityRecognizer:EntityRecognizer',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.arn = registerOutput<String>('arn');
     this.dataAccessRoleArn = registerOutput<String>('dataAccessRoleArn');
-    this.inputDataConfig = registerOutput<EntityRecognizerInputDataConfig>('inputDataConfig');
+    this.inputDataConfig = registerOutput<EntityRecognizerInputDataConfig>(
+      'inputDataConfig',
+    );
     this.languageCode = registerOutput<String>('languageCode');
     this.modelKmsKeyId = registerOutput<String?>('modelKmsKeyId');
     this.name = registerOutput<String>('name');

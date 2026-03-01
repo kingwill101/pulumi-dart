@@ -6,8 +6,10 @@ import 'secret_metastore_v1beta.dart';
 class KerberosConfigMetastoreV1beta {
   /// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
   final SecretMetastoreV1beta? keytab;
+
   /// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
   final String? krb5ConfigGcsUri;
+
   /// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form primary/instance@REALM, but there is no exact format.
   final String? principal;
 
@@ -31,10 +33,15 @@ class KerberosConfigMetastoreV1beta {
 
   factory KerberosConfigMetastoreV1beta.fromMap(Map<String, dynamic> map) {
     return KerberosConfigMetastoreV1beta(
-      keytab: map['keytab'] == null ? null : SecretMetastoreV1beta.fromMap((map['keytab'] as Map).cast<String, dynamic>()),
-      krb5ConfigGcsUri: map['krb5ConfigGcsUri'] == null ? null : map['krb5ConfigGcsUri'] as String,
+      keytab: map['keytab'] == null
+          ? null
+          : SecretMetastoreV1beta.fromMap(
+              (map['keytab'] as Map).cast<String, dynamic>(),
+            ),
+      krb5ConfigGcsUri: map['krb5ConfigGcsUri'] == null
+          ? null
+          : map['krb5ConfigGcsUri'] as String,
       principal: map['principal'] == null ? null : map['principal'] as String,
     );
   }
 }
-

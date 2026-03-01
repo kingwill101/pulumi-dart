@@ -12,20 +12,27 @@ import 'google_cloud_aiplatform_v1_study_spec.dart';
 class HyperparameterTuningJobArgs {
   /// The display name of the HyperparameterTuningJob. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   final pulumi.Input<String> displayName;
+
   /// Customer-managed encryption key options for a HyperparameterTuningJob. If this is set, then all resources created by the HyperparameterTuningJob will be encrypted with the provided encryption key.
   final pulumi.Input<GoogleCloudAiplatformV1EncryptionSpec>? encryptionSpec;
+
   /// The labels with user-defined metadata to organize HyperparameterTuningJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
   final pulumi.Input<Map<String, String>>? labels;
   final pulumi.Input<String>? location;
+
   /// The number of failed Trials that need to be seen before failing the HyperparameterTuningJob. If set to 0, Vertex AI decides how many Trials must fail before the whole job fails.
   final pulumi.Input<int>? maxFailedTrialCount;
+
   /// The desired total number of Trials.
   final pulumi.Input<int> maxTrialCount;
+
   /// The desired number of Trials to run in parallel.
   final pulumi.Input<int> parallelTrialCount;
   final pulumi.Input<String>? project;
+
   /// Study configuration of the HyperparameterTuningJob.
   final pulumi.Input<GoogleCloudAiplatformV1StudySpec> studySpec;
+
   /// The spec of a trial job. The same spec applies to the CustomJobs created in all the trials.
   final pulumi.Input<GoogleCloudAiplatformV1CustomJobSpec> trialJobSpec;
 
@@ -51,46 +58,76 @@ class HyperparameterTuningJobArgs {
     String? project,
     required GoogleCloudAiplatformV1StudySpec studySpec,
     required GoogleCloudAiplatformV1CustomJobSpec trialJobSpec,
-  }) :
-      displayName = pulumi.Input.asInput<String>(displayName),
-      encryptionSpec = pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(encryptionSpec),
-      labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      maxFailedTrialCount = pulumi.Input.asOptionalInput<int>(maxFailedTrialCount),
-      maxTrialCount = pulumi.Input.asInput<int>(maxTrialCount),
-      parallelTrialCount = pulumi.Input.asInput<int>(parallelTrialCount),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      studySpec = pulumi.Input.asInput<GoogleCloudAiplatformV1StudySpec>(studySpec),
-      trialJobSpec = pulumi.Input.asInput<GoogleCloudAiplatformV1CustomJobSpec>(trialJobSpec);
+  }) : displayName = pulumi.Input.asInput<String>(displayName),
+       encryptionSpec =
+           pulumi.Input.asOptionalInput<GoogleCloudAiplatformV1EncryptionSpec>(
+             encryptionSpec,
+           ),
+       labels = pulumi.Input.asOptionalInput<Map<String, String>>(labels),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       maxFailedTrialCount = pulumi.Input.asOptionalInput<int>(
+         maxFailedTrialCount,
+       ),
+       maxTrialCount = pulumi.Input.asInput<int>(maxTrialCount),
+       parallelTrialCount = pulumi.Input.asInput<int>(parallelTrialCount),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       studySpec = pulumi.Input.asInput<GoogleCloudAiplatformV1StudySpec>(
+         studySpec,
+       ),
+       trialJobSpec = pulumi
+           .Input.asInput<GoogleCloudAiplatformV1CustomJobSpec>(trialJobSpec);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'displayName': displayName,
-      'encryptionSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudAiplatformV1EncryptionSpec, Map<String, dynamic>>(encryptionSpec, (value) => value.toMap()),
+      'encryptionSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudAiplatformV1EncryptionSpec,
+            Map<String, dynamic>
+          >(encryptionSpec, (value) => value.toMap()),
       'labels': ?labels,
       'location': ?location,
       'maxFailedTrialCount': ?maxFailedTrialCount,
       'maxTrialCount': maxTrialCount,
       'parallelTrialCount': parallelTrialCount,
       'project': ?project,
-      'studySpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1StudySpec, Map<String, dynamic>>(studySpec, (value) => value.toMap()),
-      'trialJobSpec': pulumi.Input.mapInputValue<GoogleCloudAiplatformV1CustomJobSpec, Map<String, dynamic>>(trialJobSpec, (value) => value.toMap()),
+      'studySpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1StudySpec,
+            Map<String, dynamic>
+          >(studySpec, (value) => value.toMap()),
+      'trialJobSpec':
+          pulumi.Input.mapInputValue<
+            GoogleCloudAiplatformV1CustomJobSpec,
+            Map<String, dynamic>
+          >(trialJobSpec, (value) => value.toMap()),
     };
   }
 
   factory HyperparameterTuningJobArgs.fromMap(Map<String, dynamic> map) {
     return HyperparameterTuningJobArgs(
       displayName: map['displayName'] as String,
-      encryptionSpec: map['encryptionSpec'] == null ? null : GoogleCloudAiplatformV1EncryptionSpec.fromMap((map['encryptionSpec'] as Map).cast<String, dynamic>()),
-      labels: map['labels'] == null ? null : (map['labels'] as Map).cast<String, String>(),
+      encryptionSpec: map['encryptionSpec'] == null
+          ? null
+          : GoogleCloudAiplatformV1EncryptionSpec.fromMap(
+              (map['encryptionSpec'] as Map).cast<String, dynamic>(),
+            ),
+      labels: map['labels'] == null
+          ? null
+          : (map['labels'] as Map).cast<String, String>(),
       location: map['location'] == null ? null : map['location'] as String,
-      maxFailedTrialCount: map['maxFailedTrialCount'] == null ? null : map['maxFailedTrialCount'] as int,
+      maxFailedTrialCount: map['maxFailedTrialCount'] == null
+          ? null
+          : map['maxFailedTrialCount'] as int,
       maxTrialCount: map['maxTrialCount'] as int,
       parallelTrialCount: map['parallelTrialCount'] as int,
       project: map['project'] == null ? null : map['project'] as String,
-      studySpec: GoogleCloudAiplatformV1StudySpec.fromMap((map['studySpec'] as Map).cast<String, dynamic>()),
-      trialJobSpec: GoogleCloudAiplatformV1CustomJobSpec.fromMap((map['trialJobSpec'] as Map).cast<String, dynamic>()),
+      studySpec: GoogleCloudAiplatformV1StudySpec.fromMap(
+        (map['studySpec'] as Map).cast<String, dynamic>(),
+      ),
+      trialJobSpec: GoogleCloudAiplatformV1CustomJobSpec.fromMap(
+        (map['trialJobSpec'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

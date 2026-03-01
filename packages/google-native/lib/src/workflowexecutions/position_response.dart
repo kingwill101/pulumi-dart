@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Position contains source position information about the stack trace element such as line number, column number and length of the code block in bytes.
 class PositionResponse {
   /// The source code column position (of the line) the current instruction was generated from.
   final String column;
+
   /// The number of bytes of source code making up this stack trace element.
   final String length;
+
   /// The source code line number the current instruction was generated from.
   final String line;
 
@@ -21,11 +22,7 @@ class PositionResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'column': column,
-      'length': length,
-      'line': line,
-    };
+    return <String, dynamic>{'column': column, 'length': length, 'line': line};
   }
 
   factory PositionResponse.fromMap(Map<String, dynamic> map) {
@@ -36,4 +33,3 @@ class PositionResponse {
     );
   }
 }
-

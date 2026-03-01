@@ -9,17 +9,22 @@ import 'google_cloud_dialogflow_cx_v3beta1_transition_route.dart';
 /// {@macro pulumi_dialogflow_v3beta1_transition_route_group_dialogflow_v3beta1_args_doc}
 class TransitionRouteGroupDialogflowV3beta1Args {
   final pulumi.Input<String> agentId;
+
   /// The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
   final pulumi.Input<String> displayName;
   final pulumi.Input<String> flowId;
+
   /// The language of the following fields in `TransitionRouteGroup`: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
   final pulumi.Input<String>? languageCode;
   final pulumi.Input<String>? location;
+
   /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Transition routes associated with the TransitionRouteGroup.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>>? transitionRoutes;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>>?
+  transitionRoutes;
 
   /// Creates a new [TransitionRouteGroupDialogflowV3beta1Args].
   /// [agentId] Required.
@@ -39,15 +44,17 @@ class TransitionRouteGroupDialogflowV3beta1Args {
     String? name,
     String? project,
     List<GoogleCloudDialogflowCxV3beta1TransitionRoute>? transitionRoutes,
-  }) :
-      agentId = pulumi.Input.asInput<String>(agentId),
-      displayName = pulumi.Input.asInput<String>(displayName),
-      flowId = pulumi.Input.asInput<String>(flowId),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asOptionalInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      transitionRoutes = pulumi.Input.asOptionalInput<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>>(transitionRoutes);
+  }) : agentId = pulumi.Input.asInput<String>(agentId),
+       displayName = pulumi.Input.asInput<String>(displayName),
+       flowId = pulumi.Input.asInput<String>(flowId),
+       languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
+       location = pulumi.Input.asOptionalInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       transitionRoutes =
+           pulumi.Input.asOptionalInput<
+             List<GoogleCloudDialogflowCxV3beta1TransitionRoute>
+           >(transitionRoutes);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,21 +65,44 @@ class TransitionRouteGroupDialogflowV3beta1Args {
       'location': ?location,
       'name': ?name,
       'project': ?project,
-      'transitionRoutes': ?pulumi.Input.mapOptionalInputValue<List<GoogleCloudDialogflowCxV3beta1TransitionRoute>, List<Map<String, dynamic>>>(transitionRoutes, (value) => pulumi.Input.encodeList<GoogleCloudDialogflowCxV3beta1TransitionRoute, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'transitionRoutes':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GoogleCloudDialogflowCxV3beta1TransitionRoute>,
+            List<Map<String, dynamic>>
+          >(
+            transitionRoutes,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GoogleCloudDialogflowCxV3beta1TransitionRoute,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
-  factory TransitionRouteGroupDialogflowV3beta1Args.fromMap(Map<String, dynamic> map) {
+  factory TransitionRouteGroupDialogflowV3beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return TransitionRouteGroupDialogflowV3beta1Args(
       agentId: map['agentId'] as String,
       displayName: map['displayName'] as String,
       flowId: map['flowId'] as String,
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
+      languageCode: map['languageCode'] == null
+          ? null
+          : map['languageCode'] as String,
       location: map['location'] == null ? null : map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      transitionRoutes: map['transitionRoutes'] == null ? null : pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1TransitionRoute>(map['transitionRoutes'], (value) => GoogleCloudDialogflowCxV3beta1TransitionRoute.fromMap((value as Map).cast<String, dynamic>())),
+      transitionRoutes: map['transitionRoutes'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              GoogleCloudDialogflowCxV3beta1TransitionRoute
+            >(
+              map['transitionRoutes'],
+              (value) => GoogleCloudDialogflowCxV3beta1TransitionRoute.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

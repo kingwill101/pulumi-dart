@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BucketAccessControlArgs {
   /// The name of the bucket.
   final pulumi.Input<String> bucket;
+
   /// The entity holding the permission, in one of the following forms:
   /// user-userId
   /// user-email
@@ -25,6 +26,7 @@ class BucketAccessControlArgs {
   /// To refer to all members of the Google Apps for Business domain
   /// example.com, the entity would be domain-example.com.
   final pulumi.Input<String> entity;
+
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`, `WRITER`.
   final pulumi.Input<String>? role;
@@ -37,17 +39,12 @@ class BucketAccessControlArgs {
     required String bucket,
     required String entity,
     String? role,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      entity = pulumi.Input.asInput<String>(entity),
-      role = pulumi.Input.asOptionalInput<String>(role);
+  }) : bucket = pulumi.Input.asInput<String>(bucket),
+       entity = pulumi.Input.asInput<String>(entity),
+       role = pulumi.Input.asOptionalInput<String>(role);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-      'entity': entity,
-      'role': ?role,
-    };
+    return <String, dynamic>{'bucket': bucket, 'entity': entity, 'role': ?role};
   }
 
   factory BucketAccessControlArgs.fromMap(Map<String, dynamic> map) {
@@ -58,4 +55,3 @@ class BucketAccessControlArgs {
     );
   }
 }
-

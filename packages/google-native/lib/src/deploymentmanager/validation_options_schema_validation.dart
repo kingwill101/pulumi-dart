@@ -14,7 +14,8 @@ enum ValidationOptionsSchemaValidation {
         return item;
       }
     }
-    throw ArgumentError('Unknown ValidationOptionsSchemaValidation value: $value');
+    throw ArgumentError(
+      'Unknown ValidationOptionsSchemaValidation value: $value',
+    );
   }
 }
-

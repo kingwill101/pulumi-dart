@@ -1,25 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BiEngineReasonResponse {
   /// High-level BI Engine reason for partial or disabled acceleration.
   final String code;
+
   /// Free form human-readable reason for partial or disabled acceleration.
   final String message;
 
   /// Creates a new [BiEngineReasonResponse].
   /// [code] High-level BI Engine reason for partial or disabled acceleration.
   /// [message] Free form human-readable reason for partial or disabled acceleration.
-  BiEngineReasonResponse({
-    required this.code,
-    required this.message,
-  });
+  BiEngineReasonResponse({required this.code, required this.message});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'code': code,
-      'message': message,
-    };
+    return <String, dynamic>{'code': code, 'message': message};
   }
 
   factory BiEngineReasonResponse.fromMap(Map<String, dynamic> map) {
@@ -29,4 +23,3 @@ class BiEngineReasonResponse {
     );
   }
 }
-

@@ -8,9 +8,11 @@ class InstanceDenyMaintenancePeriod {
   /// Required. Start date of the deny maintenance period
   /// Structure is documented below.
   final InstanceDenyMaintenancePeriodEndDate endDate;
+
   /// Required. Start date of the deny maintenance period
   /// Structure is documented below.
   final InstanceDenyMaintenancePeriodStartDate startDate;
+
   /// Required. Start time of the window in UTC time.
   /// Structure is documented below.
   final InstanceDenyMaintenancePeriodTime time;
@@ -35,10 +37,15 @@ class InstanceDenyMaintenancePeriod {
 
   factory InstanceDenyMaintenancePeriod.fromMap(Map<String, dynamic> map) {
     return InstanceDenyMaintenancePeriod(
-      endDate: InstanceDenyMaintenancePeriodEndDate.fromMap((map['endDate'] as Map).cast<String, dynamic>()),
-      startDate: InstanceDenyMaintenancePeriodStartDate.fromMap((map['startDate'] as Map).cast<String, dynamic>()),
-      time: InstanceDenyMaintenancePeriodTime.fromMap((map['time'] as Map).cast<String, dynamic>()),
+      endDate: InstanceDenyMaintenancePeriodEndDate.fromMap(
+        (map['endDate'] as Map).cast<String, dynamic>(),
+      ),
+      startDate: InstanceDenyMaintenancePeriodStartDate.fromMap(
+        (map['startDate'] as Map).cast<String, dynamic>(),
+      ),
+      time: InstanceDenyMaintenancePeriodTime.fromMap(
+        (map['time'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

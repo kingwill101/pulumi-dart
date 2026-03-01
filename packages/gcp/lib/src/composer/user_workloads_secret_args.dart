@@ -9,13 +9,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UserWorkloadsSecretArgs {
   /// A map of the secret data.
   final pulumi.Input<Map<String, String>>? data;
+
   /// Environment where the Kubernetes Secret will be stored and used.
   final pulumi.Input<String> environment;
+
   /// Name of the Kubernetes Secret.
   final pulumi.Input<String>? name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// The location or Compute Engine region for the environment.
   final pulumi.Input<String>? region;
 
@@ -31,12 +35,11 @@ class UserWorkloadsSecretArgs {
     String? name,
     String? project,
     String? region,
-  }) :
-      data = pulumi.Input.asOptionalInput<Map<String, String>>(data),
-      environment = pulumi.Input.asInput<String>(environment),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : data = pulumi.Input.asOptionalInput<Map<String, String>>(data),
+       environment = pulumi.Input.asInput<String>(environment),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -50,7 +53,9 @@ class UserWorkloadsSecretArgs {
 
   factory UserWorkloadsSecretArgs.fromMap(Map<String, dynamic> map) {
     return UserWorkloadsSecretArgs(
-      data: map['data'] == null ? null : (map['data'] as Map).cast<String, String>(),
+      data: map['data'] == null
+          ? null
+          : (map['data'] as Map).cast<String, String>(),
       environment: map['environment'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -58,4 +63,3 @@ class UserWorkloadsSecretArgs {
     );
   }
 }
-

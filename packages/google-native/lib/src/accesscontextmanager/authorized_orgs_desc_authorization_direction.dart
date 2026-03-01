@@ -13,7 +13,8 @@ enum AuthorizedOrgsDescAuthorizationDirection {
         return item;
       }
     }
-    throw ArgumentError('Unknown AuthorizedOrgsDescAuthorizationDirection value: $value');
+    throw ArgumentError(
+      'Unknown AuthorizedOrgsDescAuthorizationDirection value: $value',
+    );
   }
 }
-

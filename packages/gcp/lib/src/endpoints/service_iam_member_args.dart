@@ -9,6 +9,7 @@ import 'service_iam_member_condition.dart';
 /// {@macro pulumi_endpoints_service_iam_member_service_iam_member_args_doc}
 class ServiceIamMemberArgs {
   final pulumi.Input<ServiceIamMemberCondition>? condition;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -22,10 +23,12 @@ class ServiceIamMemberArgs {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   final pulumi.Input<String> member;
+
   /// The role that should be applied. Only one
   /// `gcp.endpoints.ServiceIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
   final pulumi.Input<String> role;
+
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> serviceName;
 
@@ -39,15 +42,20 @@ class ServiceIamMemberArgs {
     required String member,
     required String role,
     required String serviceName,
-  }) :
-      condition = pulumi.Input.asOptionalInput<ServiceIamMemberCondition>(condition),
-      member = pulumi.Input.asInput<String>(member),
-      role = pulumi.Input.asInput<String>(role),
-      serviceName = pulumi.Input.asInput<String>(serviceName);
+  }) : condition = pulumi.Input.asOptionalInput<ServiceIamMemberCondition>(
+         condition,
+       ),
+       member = pulumi.Input.asInput<String>(member),
+       role = pulumi.Input.asInput<String>(role),
+       serviceName = pulumi.Input.asInput<String>(serviceName);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'condition': ?pulumi.Input.mapOptionalInputValue<ServiceIamMemberCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'condition':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServiceIamMemberCondition,
+            Map<String, dynamic>
+          >(condition, (value) => value.toMap()),
       'member': member,
       'role': role,
       'serviceName': serviceName,
@@ -56,11 +64,14 @@ class ServiceIamMemberArgs {
 
   factory ServiceIamMemberArgs.fromMap(Map<String, dynamic> map) {
     return ServiceIamMemberArgs(
-      condition: map['condition'] == null ? null : ServiceIamMemberCondition.fromMap((map['condition'] as Map).cast<String, dynamic>()),
+      condition: map['condition'] == null
+          ? null
+          : ServiceIamMemberCondition.fromMap(
+              (map['condition'] as Map).cast<String, dynamic>(),
+            ),
       member: map['member'] as String,
       role: map['role'] as String,
       serviceName: map['serviceName'] as String,
     );
   }
 }
-

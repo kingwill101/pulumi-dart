@@ -7,14 +7,19 @@ import 'vm_attachment_details_response_vmmigration_v1alpha1.dart';
 class PersistentDiskDefaultsResponseVmmigrationV1alpha1 {
   /// A map of labels to associate with the Persistent Disk.
   final Map<String, String> additionalLabels;
+
   /// Optional. The name of the Persistent Disk to create.
   final String diskName;
+
   /// The disk type to use.
   final String diskType;
+
   /// Optional. The encryption to apply to the disk.
   final EncryptionResponseVmmigrationV1alpha1 encryption;
+
   /// The ordinal number of the source VM disk.
   final int sourceDiskNumber;
+
   /// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target VM.
   final VmAttachmentDetailsResponseVmmigrationV1alpha1 vmAttachmentDetails;
 
@@ -45,15 +50,21 @@ class PersistentDiskDefaultsResponseVmmigrationV1alpha1 {
     };
   }
 
-  factory PersistentDiskDefaultsResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory PersistentDiskDefaultsResponseVmmigrationV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PersistentDiskDefaultsResponseVmmigrationV1alpha1(
       additionalLabels: (map['additionalLabels'] as Map).cast<String, String>(),
       diskName: map['diskName'] as String,
       diskType: map['diskType'] as String,
-      encryption: EncryptionResponseVmmigrationV1alpha1.fromMap((map['encryption'] as Map).cast<String, dynamic>()),
+      encryption: EncryptionResponseVmmigrationV1alpha1.fromMap(
+        (map['encryption'] as Map).cast<String, dynamic>(),
+      ),
       sourceDiskNumber: map['sourceDiskNumber'] as int,
-      vmAttachmentDetails: VmAttachmentDetailsResponseVmmigrationV1alpha1.fromMap((map['vmAttachmentDetails'] as Map).cast<String, dynamic>()),
+      vmAttachmentDetails:
+          VmAttachmentDetailsResponseVmmigrationV1alpha1.fromMap(
+            (map['vmAttachmentDetails'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

@@ -18,15 +18,19 @@ class OccurenceArgs {
   /// which authority this attestation was intended to sign.
   /// Structure is documented below.
   final pulumi.Input<OccurenceAttestation> attestation;
+
   /// The analysis note associated with this occurrence, in the form of
   /// projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a
   /// filter in list requests.
   final pulumi.Input<String> noteName;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
+
   /// A description of actions that can be taken to remedy the note.
   final pulumi.Input<String>? remediation;
+
   /// Required. Immutable. A URI that represents the resource for which
   /// the occurrence applies. For example,
   /// https://gcr.io/project/image@sha256:123abc for a Docker image.
@@ -44,16 +48,19 @@ class OccurenceArgs {
     String? project,
     String? remediation,
     required String resourceUri,
-  }) :
-      attestation = pulumi.Input.asInput<OccurenceAttestation>(attestation),
-      noteName = pulumi.Input.asInput<String>(noteName),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      remediation = pulumi.Input.asOptionalInput<String>(remediation),
-      resourceUri = pulumi.Input.asInput<String>(resourceUri);
+  }) : attestation = pulumi.Input.asInput<OccurenceAttestation>(attestation),
+       noteName = pulumi.Input.asInput<String>(noteName),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       remediation = pulumi.Input.asOptionalInput<String>(remediation),
+       resourceUri = pulumi.Input.asInput<String>(resourceUri);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attestation': pulumi.Input.mapInputValue<OccurenceAttestation, Map<String, dynamic>>(attestation, (value) => value.toMap()),
+      'attestation':
+          pulumi.Input.mapInputValue<
+            OccurenceAttestation,
+            Map<String, dynamic>
+          >(attestation, (value) => value.toMap()),
       'noteName': noteName,
       'project': ?project,
       'remediation': ?remediation,
@@ -63,12 +70,15 @@ class OccurenceArgs {
 
   factory OccurenceArgs.fromMap(Map<String, dynamic> map) {
     return OccurenceArgs(
-      attestation: OccurenceAttestation.fromMap((map['attestation'] as Map).cast<String, dynamic>()),
+      attestation: OccurenceAttestation.fromMap(
+        (map['attestation'] as Map).cast<String, dynamic>(),
+      ),
       noteName: map['noteName'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      remediation: map['remediation'] == null ? null : map['remediation'] as String,
+      remediation: map['remediation'] == null
+          ? null
+          : map['remediation'] as String,
       resourceUri: map['resourceUri'] as String,
     );
   }
 }
-

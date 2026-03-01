@@ -7,6 +7,7 @@ import 'peripherals_config_response.dart';
 class EnvironmentConfigResponse {
   /// Optional. Execution configuration for a workload.
   final ExecutionConfigResponse executionConfig;
+
   /// Optional. Peripherals configuration that workload has access to.
   final PeripheralsConfigResponse peripheralsConfig;
 
@@ -27,9 +28,12 @@ class EnvironmentConfigResponse {
 
   factory EnvironmentConfigResponse.fromMap(Map<String, dynamic> map) {
     return EnvironmentConfigResponse(
-      executionConfig: ExecutionConfigResponse.fromMap((map['executionConfig'] as Map).cast<String, dynamic>()),
-      peripheralsConfig: PeripheralsConfigResponse.fromMap((map['peripheralsConfig'] as Map).cast<String, dynamic>()),
+      executionConfig: ExecutionConfigResponse.fromMap(
+        (map['executionConfig'] as Map).cast<String, dynamic>(),
+      ),
+      peripheralsConfig: PeripheralsConfigResponse.fromMap(
+        (map['peripheralsConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

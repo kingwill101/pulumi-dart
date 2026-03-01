@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// [TrustedTester] [Required] Defines the ranges for range partitioning.
 class RangePartitioningRangeResponse {
   /// [TrustedTester] [Required] The end of range partitioning, exclusive.
   final String end;
+
   /// [TrustedTester] [Required] The width of each interval.
   final String interval;
+
   /// [TrustedTester] [Required] The start of range partitioning, inclusive.
   final String start;
 
@@ -21,11 +22,7 @@ class RangePartitioningRangeResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'end': end,
-      'interval': interval,
-      'start': start,
-    };
+    return <String, dynamic>{'end': end, 'interval': interval, 'start': start};
   }
 
   factory RangePartitioningRangeResponse.fromMap(Map<String, dynamic> map) {
@@ -36,4 +33,3 @@ class RangePartitioningRangeResponse {
     );
   }
 }
-

@@ -16,6 +16,7 @@ class EntryGcsFilesetSpec {
   /// * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
   /// * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
   final List<String> filePatterns;
+
   /// (Output)
   /// Sample files contained in this fileset, not all files contained in this fileset are represented here.
   /// Structure is documented below.
@@ -27,23 +28,31 @@ class EntryGcsFilesetSpec {
   /// Creates a new [EntryGcsFilesetSpec].
   /// [filePatterns] Patterns to identify a set of files in Google Cloud Storage.
   /// [sampleGcsFileSpecs] (Output)
-  EntryGcsFilesetSpec({
-    required this.filePatterns,
-    this.sampleGcsFileSpecs,
-  });
+  EntryGcsFilesetSpec({required this.filePatterns, this.sampleGcsFileSpecs});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filePatterns': filePatterns,
-      'sampleGcsFileSpecs': ?sampleGcsFileSpecs == null ? null : pulumi.Input.encodeList<EntryGcsFilesetSpecSampleGcsFileSpec, Map<String, dynamic>>(sampleGcsFileSpecs!, (value) => value.toMap()),
+      'sampleGcsFileSpecs': ?sampleGcsFileSpecs == null
+          ? null
+          : pulumi.Input.encodeList<
+              EntryGcsFilesetSpecSampleGcsFileSpec,
+              Map<String, dynamic>
+            >(sampleGcsFileSpecs!, (value) => value.toMap()),
     };
   }
 
   factory EntryGcsFilesetSpec.fromMap(Map<String, dynamic> map) {
     return EntryGcsFilesetSpec(
       filePatterns: (map['filePatterns'] as List).cast<String>(),
-      sampleGcsFileSpecs: map['sampleGcsFileSpecs'] == null ? null : pulumi.Input.decodeList<EntryGcsFilesetSpecSampleGcsFileSpec>(map['sampleGcsFileSpecs'], (value) => EntryGcsFilesetSpecSampleGcsFileSpec.fromMap((value as Map).cast<String, dynamic>())),
+      sampleGcsFileSpecs: map['sampleGcsFileSpecs'] == null
+          ? null
+          : pulumi.Input.decodeList<EntryGcsFilesetSpecSampleGcsFileSpec>(
+              map['sampleGcsFileSpecs'],
+              (value) => EntryGcsFilesetSpecSampleGcsFileSpec.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

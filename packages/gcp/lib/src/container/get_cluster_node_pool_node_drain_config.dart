@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterNodePoolNodeDrainConfig {
   /// Whether to respect PodDisruptionBudget policy during node pool deletion.
   final bool respectPdbDuringNodePoolDeletion;
@@ -19,8 +18,8 @@ class GetClusterNodePoolNodeDrainConfig {
 
   factory GetClusterNodePoolNodeDrainConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeDrainConfig(
-      respectPdbDuringNodePoolDeletion: map['respectPdbDuringNodePoolDeletion'] as bool,
+      respectPdbDuringNodePoolDeletion:
+          map['respectPdbDuringNodePoolDeletion'] as bool,
     );
   }
 }
-

@@ -5,7 +5,8 @@ import 'google_cloud_aiplatform_v1beta1_sampling_strategy_random_sample_config_r
 /// Sampling Strategy for logging, can be for both training and prediction dataset.
 class GoogleCloudAiplatformV1beta1SamplingStrategyResponse {
   /// Random sample config. Will support more sampling strategies later.
-  final GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponse randomSampleConfig;
+  final GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponse
+  randomSampleConfig;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1SamplingStrategyResponse].
   /// [randomSampleConfig] Random sample config. Will support more sampling strategies later.
@@ -14,15 +15,17 @@ class GoogleCloudAiplatformV1beta1SamplingStrategyResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'randomSampleConfig': randomSampleConfig.toMap(),
-    };
+    return <String, dynamic>{'randomSampleConfig': randomSampleConfig.toMap()};
   }
 
-  factory GoogleCloudAiplatformV1beta1SamplingStrategyResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1beta1SamplingStrategyResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1beta1SamplingStrategyResponse(
-      randomSampleConfig: GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponse.fromMap((map['randomSampleConfig'] as Map).cast<String, dynamic>()),
+      randomSampleConfig:
+          GoogleCloudAiplatformV1beta1SamplingStrategyRandomSampleConfigResponse.fromMap(
+            (map['randomSampleConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

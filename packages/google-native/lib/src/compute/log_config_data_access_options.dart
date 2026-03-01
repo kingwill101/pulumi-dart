@@ -9,9 +9,7 @@ class LogConfigDataAccessOptions {
 
   /// Creates a new [LogConfigDataAccessOptions].
   /// [logMode] This is deprecated and has no effect. Do not use.
-  LogConfigDataAccessOptions({
-    this.logMode,
-  });
+  LogConfigDataAccessOptions({this.logMode});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,11 @@ class LogConfigDataAccessOptions {
 
   factory LogConfigDataAccessOptions.fromMap(Map<String, dynamic> map) {
     return LogConfigDataAccessOptions(
-      logMode: map['logMode'] == null ? null : LogConfigDataAccessOptionsLogMode.fromValue(map['logMode'] as String),
+      logMode: map['logMode'] == null
+          ? null
+          : LogConfigDataAccessOptionsLogMode.fromValue(
+              map['logMode'] as String,
+            ),
     );
   }
 }
-

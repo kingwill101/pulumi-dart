@@ -8,10 +8,13 @@ import 'google_firestore_admin_v1_vector_config.dart';
 class GoogleFirestoreAdminV1IndexField {
   /// Indicates that this field supports operations on `array_value`s.
   final GoogleFirestoreAdminV1IndexFieldArrayConfig? arrayConfig;
+
   /// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
   final String? fieldPath;
+
   /// Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
   final GoogleFirestoreAdminV1IndexFieldOrder? order;
+
   /// Indicates that this field supports nearest neighbors and distance operations on vector.
   final GoogleFirestoreAdminV1VectorConfig? vectorConfig;
 
@@ -38,11 +41,22 @@ class GoogleFirestoreAdminV1IndexField {
 
   factory GoogleFirestoreAdminV1IndexField.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1IndexField(
-      arrayConfig: map['arrayConfig'] == null ? null : GoogleFirestoreAdminV1IndexFieldArrayConfig.fromValue(map['arrayConfig'] as String),
+      arrayConfig: map['arrayConfig'] == null
+          ? null
+          : GoogleFirestoreAdminV1IndexFieldArrayConfig.fromValue(
+              map['arrayConfig'] as String,
+            ),
       fieldPath: map['fieldPath'] == null ? null : map['fieldPath'] as String,
-      order: map['order'] == null ? null : GoogleFirestoreAdminV1IndexFieldOrder.fromValue(map['order'] as String),
-      vectorConfig: map['vectorConfig'] == null ? null : GoogleFirestoreAdminV1VectorConfig.fromMap((map['vectorConfig'] as Map).cast<String, dynamic>()),
+      order: map['order'] == null
+          ? null
+          : GoogleFirestoreAdminV1IndexFieldOrder.fromValue(
+              map['order'] as String,
+            ),
+      vectorConfig: map['vectorConfig'] == null
+          ? null
+          : GoogleFirestoreAdminV1VectorConfig.fromMap(
+              (map['vectorConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -7,13 +7,17 @@ enum EndpointsApiServiceRolloutStrategyAppengineV1beta {
   const EndpointsApiServiceRolloutStrategyAppengineV1beta(this.value);
   final String value;
 
-  static EndpointsApiServiceRolloutStrategyAppengineV1beta fromValue(String value) {
-    for (final item in EndpointsApiServiceRolloutStrategyAppengineV1beta.values) {
+  static EndpointsApiServiceRolloutStrategyAppengineV1beta fromValue(
+    String value,
+  ) {
+    for (final item
+        in EndpointsApiServiceRolloutStrategyAppengineV1beta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown EndpointsApiServiceRolloutStrategyAppengineV1beta value: $value');
+    throw ArgumentError(
+      'Unknown EndpointsApiServiceRolloutStrategyAppengineV1beta value: $value',
+    );
   }
 }
-

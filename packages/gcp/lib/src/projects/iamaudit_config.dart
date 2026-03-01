@@ -2004,11 +2004,14 @@ import 'iamaudit_config_audit_log_config.dart';
 class IAMAuditConfig extends pulumi.CustomResource {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
   late final pulumi.Output<List<IAMAuditConfigAuditLogConfig>> auditLogConfigs;
+
   /// (Computed) The etag of the project's IAM policy.
   late final pulumi.Output<String> etag;
+
   /// The project id of the target project. This is not
   /// inferred from the provider.
   late final pulumi.Output<String> project;
+
   /// Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are gcp.projects.IAMAuditConfig resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `log_types` specified in each `audit_log_config` are enabled, and the `exempted_members` in each `audit_log_config` are exempted.
   late final pulumi.Output<String> service;
 
@@ -2021,12 +2024,14 @@ class IAMAuditConfig extends pulumi.CustomResource {
     IAMAuditConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:projects/iAMAuditConfig:IAMAuditConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.auditLogConfigs = registerOutput<List<IAMAuditConfigAuditLogConfig>>('auditLogConfigs');
+         'gcp:projects/iAMAuditConfig:IAMAuditConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.auditLogConfigs = registerOutput<List<IAMAuditConfigAuditLogConfig>>(
+      'auditLogConfigs',
+    );
     this.etag = registerOutput<String>('etag');
     this.project = registerOutput<String>('project');
     this.service = registerOutput<String>('service');

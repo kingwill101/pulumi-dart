@@ -25,12 +25,11 @@ class GetIntentArgs {
     String? languageCode,
     required String location,
     String? project,
-  }) :
-      intentId = pulumi.Input.asInput<String>(intentId),
-      intentView = pulumi.Input.asOptionalInput<String>(intentView),
-      languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : intentId = pulumi.Input.asInput<String>(intentId),
+       intentView = pulumi.Input.asOptionalInput<String>(intentView),
+       languageCode = pulumi.Input.asOptionalInput<String>(languageCode),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,11 +44,14 @@ class GetIntentArgs {
   factory GetIntentArgs.fromMap(Map<String, dynamic> map) {
     return GetIntentArgs(
       intentId: map['intentId'] as String,
-      intentView: map['intentView'] == null ? null : map['intentView'] as String,
-      languageCode: map['languageCode'] == null ? null : map['languageCode'] as String,
+      intentView: map['intentView'] == null
+          ? null
+          : map['intentView'] as String,
+      languageCode: map['languageCode'] == null
+          ? null
+          : map['languageCode'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

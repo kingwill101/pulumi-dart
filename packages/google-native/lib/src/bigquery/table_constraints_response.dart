@@ -7,6 +7,7 @@ import 'table_constraints_primary_key_response.dart';
 class TableConstraintsResponse {
   /// [Optional] The foreign keys of the tables.
   final List<TableConstraintsForeignKeysItemResponse> foreignKeys;
+
   /// [Optional] The primary key of the table.
   final TableConstraintsPrimaryKeyResponse primaryKey;
 
@@ -20,16 +21,27 @@ class TableConstraintsResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'foreignKeys': pulumi.Input.encodeList<TableConstraintsForeignKeysItemResponse, Map<String, dynamic>>(foreignKeys, (value) => value.toMap()),
+      'foreignKeys':
+          pulumi.Input.encodeList<
+            TableConstraintsForeignKeysItemResponse,
+            Map<String, dynamic>
+          >(foreignKeys, (value) => value.toMap()),
       'primaryKey': primaryKey.toMap(),
     };
   }
 
   factory TableConstraintsResponse.fromMap(Map<String, dynamic> map) {
     return TableConstraintsResponse(
-      foreignKeys: pulumi.Input.decodeList<TableConstraintsForeignKeysItemResponse>(map['foreignKeys'], (value) => TableConstraintsForeignKeysItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      primaryKey: TableConstraintsPrimaryKeyResponse.fromMap((map['primaryKey'] as Map).cast<String, dynamic>()),
+      foreignKeys:
+          pulumi.Input.decodeList<TableConstraintsForeignKeysItemResponse>(
+            map['foreignKeys'],
+            (value) => TableConstraintsForeignKeysItemResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      primaryKey: TableConstraintsPrimaryKeyResponse.fromMap(
+        (map['primaryKey'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

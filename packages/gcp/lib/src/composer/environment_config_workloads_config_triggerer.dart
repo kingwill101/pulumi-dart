@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EnvironmentConfigWorkloadsConfigTriggerer {
   /// The number of triggerers.
   final int count;
+
   /// CPU request and limit for a single Airflow triggerer replica.
   final double cpu;
+
   /// Memory (GB) request and limit for a single Airflow triggerer replica.
   final double memoryGb;
 
@@ -20,14 +21,12 @@ class EnvironmentConfigWorkloadsConfigTriggerer {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'count': count,
-      'cpu': cpu,
-      'memoryGb': memoryGb,
-    };
+    return <String, dynamic>{'count': count, 'cpu': cpu, 'memoryGb': memoryGb};
   }
 
-  factory EnvironmentConfigWorkloadsConfigTriggerer.fromMap(Map<String, dynamic> map) {
+  factory EnvironmentConfigWorkloadsConfigTriggerer.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnvironmentConfigWorkloadsConfigTriggerer(
       count: map['count'] as int,
       cpu: map['cpu'] as double,
@@ -35,4 +34,3 @@ class EnvironmentConfigWorkloadsConfigTriggerer {
     );
   }
 }
-

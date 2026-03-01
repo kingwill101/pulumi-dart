@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ContactsRotationRecurrenceDailySetting {
   /// (Required) The hour of the day.
   final int hourOfDay;
+
   /// (Required) The minutes of the hour.
   final int minuteOfHour;
 
@@ -22,11 +22,12 @@ class ContactsRotationRecurrenceDailySetting {
     };
   }
 
-  factory ContactsRotationRecurrenceDailySetting.fromMap(Map<String, dynamic> map) {
+  factory ContactsRotationRecurrenceDailySetting.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ContactsRotationRecurrenceDailySetting(
       hourOfDay: map['hourOfDay'] as int,
       minuteOfHour: map['minuteOfHour'] as int,
     );
   }
 }
-

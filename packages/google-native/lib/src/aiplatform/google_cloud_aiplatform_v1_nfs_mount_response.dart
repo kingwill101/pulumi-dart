@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a mount configuration for Network File System (NFS) to mount.
 class GoogleCloudAiplatformV1NfsMountResponse {
   /// Destination mount path. The NFS will be mounted for the user under /mnt/nfs/
   final String mountPoint;
+
   /// Source path exported from NFS server. Has to start with '/', and combined with the ip address, it indicates the source mount path in the form of `server:path`
   final String path;
+
   /// IP address of the NFS server.
   final String server;
 
@@ -28,7 +29,9 @@ class GoogleCloudAiplatformV1NfsMountResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1NfsMountResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1NfsMountResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1NfsMountResponse(
       mountPoint: map['mountPoint'] as String,
       path: map['path'] as String,
@@ -36,4 +39,3 @@ class GoogleCloudAiplatformV1NfsMountResponse {
     );
   }
 }
-

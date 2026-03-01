@@ -9,9 +9,7 @@ class GooglePrivacyDlpV2ReplaceDictionaryConfig {
 
   /// Creates a new [GooglePrivacyDlpV2ReplaceDictionaryConfig].
   /// [wordList] A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
-  GooglePrivacyDlpV2ReplaceDictionaryConfig({
-    this.wordList,
-  });
+  GooglePrivacyDlpV2ReplaceDictionaryConfig({this.wordList});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class GooglePrivacyDlpV2ReplaceDictionaryConfig {
     };
   }
 
-  factory GooglePrivacyDlpV2ReplaceDictionaryConfig.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2ReplaceDictionaryConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2ReplaceDictionaryConfig(
-      wordList: map['wordList'] == null ? null : GooglePrivacyDlpV2WordList.fromMap((map['wordList'] as Map).cast<String, dynamic>()),
+      wordList: map['wordList'] == null
+          ? null
+          : GooglePrivacyDlpV2WordList.fromMap(
+              (map['wordList'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

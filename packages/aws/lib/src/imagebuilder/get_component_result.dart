@@ -1,36 +1,49 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getComponent.
 class GetComponentResult {
   final String arn;
+
   /// Change description of the component.
   final String changeDescription;
+
   /// Data of the component.
   final String data;
+
   /// Date the component was created.
   final String dateCreated;
+
   /// Description of the component.
   final String description;
+
   /// Encryption status of the component.
   final bool encrypted;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// ARN of the Key Management Service (KMS) Key used to encrypt the component.
   final String kmsKeyId;
+
   /// Name of the component.
   final String name;
+
   /// Owner of the component.
   final String owner;
+
   /// Platform of the component.
   final String platform;
   final String region;
+
   /// Operating Systems (OSes) supported by the component.
   final List<String> supportedOsVersions;
+
   /// Key-value map of resource tags for the component.
   final Map<String, String> tags;
+
   /// Type of the component.
   final String type;
+
   /// Version of the component.
   final String version;
 
@@ -112,4 +125,3 @@ class GetComponentResult {
     );
   }
 }
-

@@ -8,8 +8,10 @@ import 'postgresql_rdbms.dart';
 class BackfillAllStrategy {
   /// MySQL data source objects to avoid backfilling.
   final MysqlRdbms? mysqlExcludedObjects;
+
   /// Oracle data source objects to avoid backfilling.
   final OracleRdbms? oracleExcludedObjects;
+
   /// PostgreSQL data source objects to avoid backfilling.
   final PostgresqlRdbms? postgresqlExcludedObjects;
 
@@ -25,18 +27,35 @@ class BackfillAllStrategy {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'mysqlExcludedObjects': ?mysqlExcludedObjects == null ? null : mysqlExcludedObjects!.toMap(),
-      'oracleExcludedObjects': ?oracleExcludedObjects == null ? null : oracleExcludedObjects!.toMap(),
-      'postgresqlExcludedObjects': ?postgresqlExcludedObjects == null ? null : postgresqlExcludedObjects!.toMap(),
+      'mysqlExcludedObjects': ?mysqlExcludedObjects == null
+          ? null
+          : mysqlExcludedObjects!.toMap(),
+      'oracleExcludedObjects': ?oracleExcludedObjects == null
+          ? null
+          : oracleExcludedObjects!.toMap(),
+      'postgresqlExcludedObjects': ?postgresqlExcludedObjects == null
+          ? null
+          : postgresqlExcludedObjects!.toMap(),
     };
   }
 
   factory BackfillAllStrategy.fromMap(Map<String, dynamic> map) {
     return BackfillAllStrategy(
-      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null ? null : MysqlRdbms.fromMap((map['mysqlExcludedObjects'] as Map).cast<String, dynamic>()),
-      oracleExcludedObjects: map['oracleExcludedObjects'] == null ? null : OracleRdbms.fromMap((map['oracleExcludedObjects'] as Map).cast<String, dynamic>()),
-      postgresqlExcludedObjects: map['postgresqlExcludedObjects'] == null ? null : PostgresqlRdbms.fromMap((map['postgresqlExcludedObjects'] as Map).cast<String, dynamic>()),
+      mysqlExcludedObjects: map['mysqlExcludedObjects'] == null
+          ? null
+          : MysqlRdbms.fromMap(
+              (map['mysqlExcludedObjects'] as Map).cast<String, dynamic>(),
+            ),
+      oracleExcludedObjects: map['oracleExcludedObjects'] == null
+          ? null
+          : OracleRdbms.fromMap(
+              (map['oracleExcludedObjects'] as Map).cast<String, dynamic>(),
+            ),
+      postgresqlExcludedObjects: map['postgresqlExcludedObjects'] == null
+          ? null
+          : PostgresqlRdbms.fromMap(
+              (map['postgresqlExcludedObjects'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

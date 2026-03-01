@@ -147,22 +147,29 @@ import 'azure_client_args.dart';
 class AzureClient extends pulumi.CustomResource {
   /// The Azure Active Directory Application ID.
   late final pulumi.Output<String> applicationId;
+
   /// Output only. The PEM encoded x509 certificate.
   late final pulumi.Output<String> certificate;
+
   /// Output only. The time at which this resource was created.
   late final pulumi.Output<String> createTime;
+
   /// The location for the resource
   late final pulumi.Output<String> location;
+
   /// The name of this resource.
   late final pulumi.Output<String> name;
+
   /// The project for the resource
   late final pulumi.Output<String> project;
+
   /// The Azure Active Directory Tenant ID.
   ///
   ///
   ///
   /// - - -
   late final pulumi.Output<String> tenantId;
+
   /// Output only. A globally unique identifier for the client.
   late final pulumi.Output<String> uid;
 
@@ -175,11 +182,11 @@ class AzureClient extends pulumi.CustomResource {
     AzureClientArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:container/azureClient:AzureClient',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:container/azureClient:AzureClient',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.applicationId = registerOutput<String>('applicationId');
     this.certificate = registerOutput<String>('certificate');
     this.createTime = registerOutput<String>('createTime');

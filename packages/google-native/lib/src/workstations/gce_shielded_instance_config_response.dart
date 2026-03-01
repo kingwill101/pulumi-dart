@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A set of Compute Engine Shielded instance options.
 class GceShieldedInstanceConfigResponse {
   /// Optional. Whether the instance has integrity monitoring enabled.
   final bool enableIntegrityMonitoring;
+
   /// Optional. Whether the instance has Secure Boot enabled.
   final bool enableSecureBoot;
+
   /// Optional. Whether the instance has the vTPM enabled.
   final bool enableVtpm;
 
@@ -36,4 +37,3 @@ class GceShieldedInstanceConfigResponse {
     );
   }
 }
-

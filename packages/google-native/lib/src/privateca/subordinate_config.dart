@@ -6,6 +6,7 @@ import 'subordinate_config_chain.dart';
 class SubordinateConfig {
   /// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
   final String certificateAuthority;
+
   /// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
   final SubordinateConfigChain pemIssuerChain;
 
@@ -27,8 +28,9 @@ class SubordinateConfig {
   factory SubordinateConfig.fromMap(Map<String, dynamic> map) {
     return SubordinateConfig(
       certificateAuthority: map['certificateAuthority'] as String,
-      pemIssuerChain: SubordinateConfigChain.fromMap((map['pemIssuerChain'] as Map).cast<String, dynamic>()),
+      pemIssuerChain: SubordinateConfigChain.fromMap(
+        (map['pemIssuerChain'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

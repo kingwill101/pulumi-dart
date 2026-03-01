@@ -19,10 +19,9 @@ class GetDefaultObjectAccessControlArgs {
     required String bucket,
     required String entity,
     String? userProject,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      entity = pulumi.Input.asInput<String>(entity),
-      userProject = pulumi.Input.asOptionalInput<String>(userProject);
+  }) : bucket = pulumi.Input.asInput<String>(bucket),
+       entity = pulumi.Input.asInput<String>(entity),
+       userProject = pulumi.Input.asOptionalInput<String>(userProject);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,8 +35,9 @@ class GetDefaultObjectAccessControlArgs {
     return GetDefaultObjectAccessControlArgs(
       bucket: map['bucket'] as String,
       entity: map['entity'] as String,
-      userProject: map['userProject'] == null ? null : map['userProject'] as String,
+      userProject: map['userProject'] == null
+          ? null
+          : map['userProject'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a list of words given by the customer All these words are synonyms of each other.
 class GoogleCloudContentwarehouseV1SynonymSetSynonym {
   /// For example: sale, invoice, bill, order
@@ -8,20 +7,19 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonym {
 
   /// Creates a new [GoogleCloudContentwarehouseV1SynonymSetSynonym].
   /// [words] For example: sale, invoice, bill, order
-  GoogleCloudContentwarehouseV1SynonymSetSynonym({
-    this.words,
-  });
+  GoogleCloudContentwarehouseV1SynonymSetSynonym({this.words});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'words': ?words,
-    };
+    return <String, dynamic>{'words': ?words};
   }
 
-  factory GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1SynonymSetSynonym.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1SynonymSetSynonym(
-      words: map['words'] == null ? null : (map['words'] as List).cast<String>(),
+      words: map['words'] == null
+          ? null
+          : (map['words'] as List).cast<String>(),
     );
   }
 }
-

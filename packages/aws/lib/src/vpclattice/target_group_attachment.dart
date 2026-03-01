@@ -122,8 +122,10 @@ import 'target_group_attachment_target.dart';
 class TargetGroupAttachment extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
+
   /// The target.
   late final pulumi.Output<TargetGroupAttachmentTarget> target;
+
   /// The ID or Amazon Resource Name (ARN) of the target group.
   late final pulumi.Output<String> targetGroupIdentifier;
 
@@ -136,13 +138,15 @@ class TargetGroupAttachment extends pulumi.CustomResource {
     TargetGroupAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:vpclattice/targetGroupAttachment:TargetGroupAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:vpclattice/targetGroupAttachment:TargetGroupAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.region = registerOutput<String>('region');
     this.target = registerOutput<TargetGroupAttachmentTarget>('target');
-    this.targetGroupIdentifier = registerOutput<String>('targetGroupIdentifier');
+    this.targetGroupIdentifier = registerOutput<String>(
+      'targetGroupIdentifier',
+    );
   }
 }

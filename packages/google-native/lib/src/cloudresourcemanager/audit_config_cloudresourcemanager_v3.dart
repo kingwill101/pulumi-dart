@@ -7,29 +7,38 @@ import 'audit_log_config_cloudresourcemanager_v3.dart';
 class AuditConfigCloudresourcemanagerV3 {
   /// The configuration for logging of each type of permission.
   final List<AuditLogConfigCloudresourcemanagerV3>? auditLogConfigs;
+
   /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String? service;
 
   /// Creates a new [AuditConfigCloudresourcemanagerV3].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigCloudresourcemanagerV3({
-    this.auditLogConfigs,
-    this.service,
-  });
+  AuditConfigCloudresourcemanagerV3({this.auditLogConfigs, this.service});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': ?auditLogConfigs == null ? null : pulumi.Input.encodeList<AuditLogConfigCloudresourcemanagerV3, Map<String, dynamic>>(auditLogConfigs!, (value) => value.toMap()),
+      'auditLogConfigs': ?auditLogConfigs == null
+          ? null
+          : pulumi.Input.encodeList<
+              AuditLogConfigCloudresourcemanagerV3,
+              Map<String, dynamic>
+            >(auditLogConfigs!, (value) => value.toMap()),
       'service': ?service,
     };
   }
 
   factory AuditConfigCloudresourcemanagerV3.fromMap(Map<String, dynamic> map) {
     return AuditConfigCloudresourcemanagerV3(
-      auditLogConfigs: map['auditLogConfigs'] == null ? null : pulumi.Input.decodeList<AuditLogConfigCloudresourcemanagerV3>(map['auditLogConfigs'], (value) => AuditLogConfigCloudresourcemanagerV3.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigs: map['auditLogConfigs'] == null
+          ? null
+          : pulumi.Input.decodeList<AuditLogConfigCloudresourcemanagerV3>(
+              map['auditLogConfigs'],
+              (value) => AuditLogConfigCloudresourcemanagerV3.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       service: map['service'] == null ? null : map['service'] as String,
     );
   }
 }
-

@@ -25,12 +25,13 @@ class GetRepositoryWorkspaceIamPolicyArgs {
     String? project,
     required String repositoryId,
     required String workspaceId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      repositoryId = pulumi.Input.asInput<String>(repositoryId),
-      workspaceId = pulumi.Input.asInput<String>(workspaceId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       repositoryId = pulumi.Input.asInput<String>(repositoryId),
+       workspaceId = pulumi.Input.asInput<String>(workspaceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,14 +43,18 @@ class GetRepositoryWorkspaceIamPolicyArgs {
     };
   }
 
-  factory GetRepositoryWorkspaceIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetRepositoryWorkspaceIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetRepositoryWorkspaceIamPolicyArgs(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       repositoryId: map['repositoryId'] as String,
       workspaceId: map['workspaceId'] as String,
     );
   }
 }
-

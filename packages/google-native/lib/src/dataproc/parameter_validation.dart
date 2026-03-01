@@ -7,16 +7,14 @@ import 'value_validation.dart';
 class ParameterValidation {
   /// Validation based on regular expressions.
   final RegexValidation? regex;
+
   /// Validation based on a list of allowed values.
   final ValueValidation? values;
 
   /// Creates a new [ParameterValidation].
   /// [regex] Validation based on regular expressions.
   /// [values] Validation based on a list of allowed values.
-  ParameterValidation({
-    this.regex,
-    this.values,
-  });
+  ParameterValidation({this.regex, this.values});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class ParameterValidation {
 
   factory ParameterValidation.fromMap(Map<String, dynamic> map) {
     return ParameterValidation(
-      regex: map['regex'] == null ? null : RegexValidation.fromMap((map['regex'] as Map).cast<String, dynamic>()),
-      values: map['values'] == null ? null : ValueValidation.fromMap((map['values'] as Map).cast<String, dynamic>()),
+      regex: map['regex'] == null
+          ? null
+          : RegexValidation.fromMap(
+              (map['regex'] as Map).cast<String, dynamic>(),
+            ),
+      values: map['values'] == null
+          ? null
+          : ValueValidation.fromMap(
+              (map['values'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ReceiptRuleSnsAction {
   /// The encoding to use for the email within the Amazon SNS notification. Default value is `UTF-8`.
   final String? encoding;
+
   /// The position of the action in the receipt rule
   final int position;
+
   /// The ARN of an SNS topic to notify
   final String topicArn;
 
@@ -35,4 +36,3 @@ class ReceiptRuleSnsAction {
     );
   }
 }
-

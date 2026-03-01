@@ -9,20 +9,17 @@ class LoggingConfigResponse {
 
   /// Creates a new [LoggingConfigResponse].
   /// [componentConfig] Logging components configuration
-  LoggingConfigResponse({
-    required this.componentConfig,
-  });
+  LoggingConfigResponse({required this.componentConfig});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'componentConfig': componentConfig.toMap(),
-    };
+    return <String, dynamic>{'componentConfig': componentConfig.toMap()};
   }
 
   factory LoggingConfigResponse.fromMap(Map<String, dynamic> map) {
     return LoggingConfigResponse(
-      componentConfig: LoggingComponentConfigResponse.fromMap((map['componentConfig'] as Map).cast<String, dynamic>()),
+      componentConfig: LoggingComponentConfigResponse.fromMap(
+        (map['componentConfig'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

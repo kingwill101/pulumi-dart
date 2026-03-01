@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PolicyAttachmentArgs {
   /// The unique identifier (ID) of the policy that you want to attach to the target.
   final pulumi.Input<String> policyId;
+
   /// If set to `true`, destroy will **not** detach the policy and instead just remove the resource from state. This can be useful in situations where the attachment must be preserved to meet the AWS minimum requirement of 1 attached policy.
   final pulumi.Input<bool>? skipDestroy;
+
   /// The unique identifier (ID) of the root, organizational unit, or account number that you want to attach the policy to.
   final pulumi.Input<String> targetId;
 
@@ -22,10 +24,9 @@ class PolicyAttachmentArgs {
     required String policyId,
     bool? skipDestroy,
     required String targetId,
-  }) :
-      policyId = pulumi.Input.asInput<String>(policyId),
-      skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
-      targetId = pulumi.Input.asInput<String>(targetId);
+  }) : policyId = pulumi.Input.asInput<String>(policyId),
+       skipDestroy = pulumi.Input.asOptionalInput<bool>(skipDestroy),
+       targetId = pulumi.Input.asInput<String>(targetId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,9 +39,10 @@ class PolicyAttachmentArgs {
   factory PolicyAttachmentArgs.fromMap(Map<String, dynamic> map) {
     return PolicyAttachmentArgs(
       policyId: map['policyId'] as String,
-      skipDestroy: map['skipDestroy'] == null ? null : map['skipDestroy'] as bool,
+      skipDestroy: map['skipDestroy'] == null
+          ? null
+          : map['skipDestroy'] as bool,
       targetId: map['targetId'] as String,
     );
   }
 }
-

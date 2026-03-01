@@ -1,17 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LoadBalancerListener {
   /// The port on the instance to route to
   final int instancePort;
+
   /// The protocol to use to the instance. Valid
   /// values are `HTTP`, `HTTPS`, `TCP`, or `SSL`
   final String instanceProtocol;
+
   /// The port to listen on for the load balancer
   final int lbPort;
+
   /// The protocol to listen on. Valid values are `HTTP`,
   /// `HTTPS`, `TCP`, or `SSL`
   final String lbProtocol;
+
   /// The ARN of an SSL certificate you have
   /// uploaded to AWS IAM. **Note ECDSA-specific restrictions below.  Only valid when `lb_protocol` is either HTTPS or SSL**
   final String? sslCertificateId;
@@ -46,8 +49,9 @@ class LoadBalancerListener {
       instanceProtocol: map['instanceProtocol'] as String,
       lbPort: map['lbPort'] as int,
       lbProtocol: map['lbProtocol'] as String,
-      sslCertificateId: map['sslCertificateId'] == null ? null : map['sslCertificateId'] as String,
+      sslCertificateId: map['sslCertificateId'] == null
+          ? null
+          : map['sslCertificateId'] as String,
     );
   }
 }
-

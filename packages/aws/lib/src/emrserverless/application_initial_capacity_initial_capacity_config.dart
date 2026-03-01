@@ -4,7 +4,9 @@ import 'application_initial_capacity_initial_capacity_config_worker_configuratio
 
 class ApplicationInitialCapacityInitialCapacityConfig {
   /// The resource configuration of the initial capacity configuration.
-  final ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration? workerConfiguration;
+  final ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration?
+  workerConfiguration;
+
   /// The number of workers in the initial capacity configuration.
   final int workerCount;
 
@@ -18,16 +20,23 @@ class ApplicationInitialCapacityInitialCapacityConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'workerConfiguration': ?workerConfiguration == null ? null : workerConfiguration!.toMap(),
+      'workerConfiguration': ?workerConfiguration == null
+          ? null
+          : workerConfiguration!.toMap(),
       'workerCount': workerCount,
     };
   }
 
-  factory ApplicationInitialCapacityInitialCapacityConfig.fromMap(Map<String, dynamic> map) {
+  factory ApplicationInitialCapacityInitialCapacityConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ApplicationInitialCapacityInitialCapacityConfig(
-      workerConfiguration: map['workerConfiguration'] == null ? null : ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap((map['workerConfiguration'] as Map).cast<String, dynamic>()),
+      workerConfiguration: map['workerConfiguration'] == null
+          ? null
+          : ApplicationInitialCapacityInitialCapacityConfigWorkerConfiguration.fromMap(
+              (map['workerConfiguration'] as Map).cast<String, dynamic>(),
+            ),
       workerCount: map['workerCount'] as int,
     );
   }
 }
-

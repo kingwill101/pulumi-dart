@@ -9,20 +9,17 @@ class RelationshipNote {
 
   /// Creates a new [RelationshipNote].
   /// [type] The type of relationship between the source and target SPDX elements
-  RelationshipNote({
-    this.type,
-  });
+  RelationshipNote({this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'type': ?type == null ? null : type!.value,
-    };
+    return <String, dynamic>{'type': ?type == null ? null : type!.value};
   }
 
   factory RelationshipNote.fromMap(Map<String, dynamic> map) {
     return RelationshipNote(
-      type: map['type'] == null ? null : RelationshipNoteType.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : RelationshipNoteType.fromValue(map['type'] as String),
     );
   }
 }
-

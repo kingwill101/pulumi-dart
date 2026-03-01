@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// ReplicatingStep contains specific step details.
 class ReplicatingStepResponse {
   /// The source disks replication rate for the last 30 minutes in bytes per second.
   final String lastThirtyMinutesAverageBytesPerSecond;
+
   /// The source disks replication rate for the last 2 minutes in bytes per second.
   final String lastTwoMinutesAverageBytesPerSecond;
+
   /// Replicated bytes in the step.
   final String replicatedBytes;
+
   /// Total bytes to be handled in the step.
   final String totalBytes;
 
@@ -26,8 +28,10 @@ class ReplicatingStepResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'lastThirtyMinutesAverageBytesPerSecond': lastThirtyMinutesAverageBytesPerSecond,
-      'lastTwoMinutesAverageBytesPerSecond': lastTwoMinutesAverageBytesPerSecond,
+      'lastThirtyMinutesAverageBytesPerSecond':
+          lastThirtyMinutesAverageBytesPerSecond,
+      'lastTwoMinutesAverageBytesPerSecond':
+          lastTwoMinutesAverageBytesPerSecond,
       'replicatedBytes': replicatedBytes,
       'totalBytes': totalBytes,
     };
@@ -35,11 +39,12 @@ class ReplicatingStepResponse {
 
   factory ReplicatingStepResponse.fromMap(Map<String, dynamic> map) {
     return ReplicatingStepResponse(
-      lastThirtyMinutesAverageBytesPerSecond: map['lastThirtyMinutesAverageBytesPerSecond'] as String,
-      lastTwoMinutesAverageBytesPerSecond: map['lastTwoMinutesAverageBytesPerSecond'] as String,
+      lastThirtyMinutesAverageBytesPerSecond:
+          map['lastThirtyMinutesAverageBytesPerSecond'] as String,
+      lastTwoMinutesAverageBytesPerSecond:
+          map['lastTwoMinutesAverageBytesPerSecond'] as String,
       replicatedBytes: map['replicatedBytes'] as String,
       totalBytes: map['totalBytes'] as String,
     );
   }
 }
-

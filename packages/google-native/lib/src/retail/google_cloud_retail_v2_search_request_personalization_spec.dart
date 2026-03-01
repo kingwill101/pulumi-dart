@@ -9,20 +9,21 @@ class GoogleCloudRetailV2SearchRequestPersonalizationSpec {
 
   /// Creates a new [GoogleCloudRetailV2SearchRequestPersonalizationSpec].
   /// [mode] Defaults to Mode.AUTO.
-  GoogleCloudRetailV2SearchRequestPersonalizationSpec({
-    this.mode,
-  });
+  GoogleCloudRetailV2SearchRequestPersonalizationSpec({this.mode});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'mode': ?mode == null ? null : mode!.value,
-    };
+    return <String, dynamic>{'mode': ?mode == null ? null : mode!.value};
   }
 
-  factory GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudRetailV2SearchRequestPersonalizationSpec(
-      mode: map['mode'] == null ? null : GoogleCloudRetailV2SearchRequestPersonalizationSpecMode.fromValue(map['mode'] as String),
+      mode: map['mode'] == null
+          ? null
+          : GoogleCloudRetailV2SearchRequestPersonalizationSpecMode.fromValue(
+              map['mode'] as String,
+            ),
     );
   }
 }
-

@@ -10,20 +10,31 @@ class GoogleCloudSecuritycenterV1CustomOutputSpec {
 
   /// Creates a new [GoogleCloudSecuritycenterV1CustomOutputSpec].
   /// [properties] A list of custom output properties to add to the finding.
-  GoogleCloudSecuritycenterV1CustomOutputSpec({
-    this.properties,
-  });
+  GoogleCloudSecuritycenterV1CustomOutputSpec({this.properties});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?properties == null ? null : pulumi.Input.encodeList<GoogleCloudSecuritycenterV1Property, Map<String, dynamic>>(properties!, (value) => value.toMap()),
+      'properties': ?properties == null
+          ? null
+          : pulumi.Input.encodeList<
+              GoogleCloudSecuritycenterV1Property,
+              Map<String, dynamic>
+            >(properties!, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudSecuritycenterV1CustomOutputSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudSecuritycenterV1CustomOutputSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudSecuritycenterV1CustomOutputSpec(
-      properties: map['properties'] == null ? null : pulumi.Input.decodeList<GoogleCloudSecuritycenterV1Property>(map['properties'], (value) => GoogleCloudSecuritycenterV1Property.fromMap((value as Map).cast<String, dynamic>())),
+      properties: map['properties'] == null
+          ? null
+          : pulumi.Input.decodeList<GoogleCloudSecuritycenterV1Property>(
+              map['properties'],
+              (value) => GoogleCloudSecuritycenterV1Property.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

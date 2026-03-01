@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DatabaseInstanceSettingsMaintenanceWindow {
   /// Day of week (`1-7`), starting on Monday
   final int? day;
+
   /// Hour of day (`0-23`), ignored if `day` not set
   final int? hour;
+
   /// Receive updates after one week (`canary`) or after two weeks (`stable`) or after five weeks (`week5`) of notification.
   final String? updateTrack;
 
@@ -27,12 +28,15 @@ class DatabaseInstanceSettingsMaintenanceWindow {
     };
   }
 
-  factory DatabaseInstanceSettingsMaintenanceWindow.fromMap(Map<String, dynamic> map) {
+  factory DatabaseInstanceSettingsMaintenanceWindow.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DatabaseInstanceSettingsMaintenanceWindow(
       day: map['day'] == null ? null : map['day'] as int,
       hour: map['hour'] == null ? null : map['hour'] as int,
-      updateTrack: map['updateTrack'] == null ? null : map['updateTrack'] as String,
+      updateTrack: map['updateTrack'] == null
+          ? null
+          : map['updateTrack'] as String,
     );
   }
 }
-

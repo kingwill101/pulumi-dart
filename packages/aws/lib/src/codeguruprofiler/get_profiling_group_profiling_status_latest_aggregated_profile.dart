@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetProfilingGroupProfilingStatusLatestAggregatedProfile {
   final String period;
   final String start;
@@ -14,17 +13,15 @@ class GetProfilingGroupProfilingStatusLatestAggregatedProfile {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'period': period,
-      'start': start,
-    };
+    return <String, dynamic>{'period': period, 'start': start};
   }
 
-  factory GetProfilingGroupProfilingStatusLatestAggregatedProfile.fromMap(Map<String, dynamic> map) {
+  factory GetProfilingGroupProfilingStatusLatestAggregatedProfile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetProfilingGroupProfilingStatusLatestAggregatedProfile(
       period: map['period'] as String,
       start: map['start'] as String,
     );
   }
 }
-

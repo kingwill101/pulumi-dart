@@ -7,8 +7,10 @@ import 'status_condition_code_container_v1beta1.dart';
 class StatusConditionContainerV1beta1 {
   /// Canonical code of the condition.
   final StatusConditionCanonicalCodeContainerV1beta1? canonicalCode;
+
   /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   final StatusConditionCodeContainerV1beta1? code;
+
   /// Human-friendly representation of the condition
   final String? message;
 
@@ -32,10 +34,17 @@ class StatusConditionContainerV1beta1 {
 
   factory StatusConditionContainerV1beta1.fromMap(Map<String, dynamic> map) {
     return StatusConditionContainerV1beta1(
-      canonicalCode: map['canonicalCode'] == null ? null : StatusConditionCanonicalCodeContainerV1beta1.fromValue(map['canonicalCode'] as String),
-      code: map['code'] == null ? null : StatusConditionCodeContainerV1beta1.fromValue(map['code'] as String),
+      canonicalCode: map['canonicalCode'] == null
+          ? null
+          : StatusConditionCanonicalCodeContainerV1beta1.fromValue(
+              map['canonicalCode'] as String,
+            ),
+      code: map['code'] == null
+          ? null
+          : StatusConditionCodeContainerV1beta1.fromValue(
+              map['code'] as String,
+            ),
       message: map['message'] == null ? null : map['message'] as String,
     );
   }
 }
-

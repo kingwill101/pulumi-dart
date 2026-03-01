@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FlexibleAppVersionAutomaticScalingRequestUtilization {
   /// Target number of concurrent requests.
   final double? targetConcurrentRequests;
+
   /// Target requests per second.
   final String? targetRequestCountPerSecond;
 
@@ -22,11 +22,16 @@ class FlexibleAppVersionAutomaticScalingRequestUtilization {
     };
   }
 
-  factory FlexibleAppVersionAutomaticScalingRequestUtilization.fromMap(Map<String, dynamic> map) {
+  factory FlexibleAppVersionAutomaticScalingRequestUtilization.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FlexibleAppVersionAutomaticScalingRequestUtilization(
-      targetConcurrentRequests: map['targetConcurrentRequests'] == null ? null : map['targetConcurrentRequests'] as double,
-      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null ? null : map['targetRequestCountPerSecond'] as String,
+      targetConcurrentRequests: map['targetConcurrentRequests'] == null
+          ? null
+          : map['targetConcurrentRequests'] as double,
+      targetRequestCountPerSecond: map['targetRequestCountPerSecond'] == null
+          ? null
+          : map['targetRequestCountPerSecond'] as String,
     );
   }
 }
-

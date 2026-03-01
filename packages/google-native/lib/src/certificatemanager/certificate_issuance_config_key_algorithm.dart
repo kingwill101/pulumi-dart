@@ -13,7 +13,8 @@ enum CertificateIssuanceConfigKeyAlgorithm {
         return item;
       }
     }
-    throw ArgumentError('Unknown CertificateIssuanceConfigKeyAlgorithm value: $value');
+    throw ArgumentError(
+      'Unknown CertificateIssuanceConfigKeyAlgorithm value: $value',
+    );
   }
 }
-

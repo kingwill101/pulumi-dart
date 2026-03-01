@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ResolverQueryLogConfigAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the Route 53 Resolver query logging configuration that you want to associate a VPC with.
   final pulumi.Input<String> resolverQueryLogConfigId;
+
   /// The ID of a VPC that you want this query logging configuration to log queries for.
   final pulumi.Input<String> resourceId;
 
@@ -22,10 +24,11 @@ class ResolverQueryLogConfigAssociationArgs {
     String? region,
     required String resolverQueryLogConfigId,
     required String resourceId,
-  }) :
-      region = pulumi.Input.asOptionalInput<String>(region),
-      resolverQueryLogConfigId = pulumi.Input.asInput<String>(resolverQueryLogConfigId),
-      resourceId = pulumi.Input.asInput<String>(resourceId);
+  }) : region = pulumi.Input.asOptionalInput<String>(region),
+       resolverQueryLogConfigId = pulumi.Input.asInput<String>(
+         resolverQueryLogConfigId,
+       ),
+       resourceId = pulumi.Input.asInput<String>(resourceId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -35,7 +38,9 @@ class ResolverQueryLogConfigAssociationArgs {
     };
   }
 
-  factory ResolverQueryLogConfigAssociationArgs.fromMap(Map<String, dynamic> map) {
+  factory ResolverQueryLogConfigAssociationArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResolverQueryLogConfigAssociationArgs(
       region: map['region'] == null ? null : map['region'] as String,
       resolverQueryLogConfigId: map['resolverQueryLogConfigId'] as String,
@@ -43,4 +48,3 @@ class ResolverQueryLogConfigAssociationArgs {
     );
   }
 }
-

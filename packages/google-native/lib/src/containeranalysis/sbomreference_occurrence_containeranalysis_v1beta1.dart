@@ -8,8 +8,10 @@ import 'sbom_reference_intoto_payload_containeranalysis_v1beta1.dart';
 class SBOMReferenceOccurrenceContaineranalysisV1beta1 {
   /// The actual payload that contains the SBOM reference data.
   final SbomReferenceIntotoPayloadContaineranalysisV1beta1? payload;
+
   /// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
   final String? payloadType;
+
   /// The signatures over the payload.
   final List<EnvelopeSignatureContaineranalysisV1beta1>? signatures;
 
@@ -27,16 +29,35 @@ class SBOMReferenceOccurrenceContaineranalysisV1beta1 {
     return <String, dynamic>{
       'payload': ?payload == null ? null : payload!.toMap(),
       'payloadType': ?payloadType,
-      'signatures': ?signatures == null ? null : pulumi.Input.encodeList<EnvelopeSignatureContaineranalysisV1beta1, Map<String, dynamic>>(signatures!, (value) => value.toMap()),
+      'signatures': ?signatures == null
+          ? null
+          : pulumi.Input.encodeList<
+              EnvelopeSignatureContaineranalysisV1beta1,
+              Map<String, dynamic>
+            >(signatures!, (value) => value.toMap()),
     };
   }
 
-  factory SBOMReferenceOccurrenceContaineranalysisV1beta1.fromMap(Map<String, dynamic> map) {
+  factory SBOMReferenceOccurrenceContaineranalysisV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SBOMReferenceOccurrenceContaineranalysisV1beta1(
-      payload: map['payload'] == null ? null : SbomReferenceIntotoPayloadContaineranalysisV1beta1.fromMap((map['payload'] as Map).cast<String, dynamic>()),
-      payloadType: map['payloadType'] == null ? null : map['payloadType'] as String,
-      signatures: map['signatures'] == null ? null : pulumi.Input.decodeList<EnvelopeSignatureContaineranalysisV1beta1>(map['signatures'], (value) => EnvelopeSignatureContaineranalysisV1beta1.fromMap((value as Map).cast<String, dynamic>())),
+      payload: map['payload'] == null
+          ? null
+          : SbomReferenceIntotoPayloadContaineranalysisV1beta1.fromMap(
+              (map['payload'] as Map).cast<String, dynamic>(),
+            ),
+      payloadType: map['payloadType'] == null
+          ? null
+          : map['payloadType'] as String,
+      signatures: map['signatures'] == null
+          ? null
+          : pulumi.Input.decodeList<EnvelopeSignatureContaineranalysisV1beta1>(
+              map['signatures'],
+              (value) => EnvelopeSignatureContaineranalysisV1beta1.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

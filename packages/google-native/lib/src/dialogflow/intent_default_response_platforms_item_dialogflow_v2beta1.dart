@@ -14,13 +14,17 @@ enum IntentDefaultResponsePlatformsItemDialogflowV2beta1 {
   const IntentDefaultResponsePlatformsItemDialogflowV2beta1(this.value);
   final String value;
 
-  static IntentDefaultResponsePlatformsItemDialogflowV2beta1 fromValue(String value) {
-    for (final item in IntentDefaultResponsePlatformsItemDialogflowV2beta1.values) {
+  static IntentDefaultResponsePlatformsItemDialogflowV2beta1 fromValue(
+    String value,
+  ) {
+    for (final item
+        in IntentDefaultResponsePlatformsItemDialogflowV2beta1.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown IntentDefaultResponsePlatformsItemDialogflowV2beta1 value: $value');
+    throw ArgumentError(
+      'Unknown IntentDefaultResponsePlatformsItemDialogflowV2beta1 value: $value',
+    );
   }
 }
-

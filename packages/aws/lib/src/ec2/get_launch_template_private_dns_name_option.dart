@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLaunchTemplatePrivateDnsNameOption {
   final bool enableResourceNameDnsARecord;
   final bool enableResourceNameDnsAaaaRecord;
@@ -24,12 +23,14 @@ class GetLaunchTemplatePrivateDnsNameOption {
     };
   }
 
-  factory GetLaunchTemplatePrivateDnsNameOption.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchTemplatePrivateDnsNameOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchTemplatePrivateDnsNameOption(
       enableResourceNameDnsARecord: map['enableResourceNameDnsARecord'] as bool,
-      enableResourceNameDnsAaaaRecord: map['enableResourceNameDnsAaaaRecord'] as bool,
+      enableResourceNameDnsAaaaRecord:
+          map['enableResourceNameDnsAaaaRecord'] as bool,
       hostnameType: map['hostnameType'] as String,
     );
   }
 }
-

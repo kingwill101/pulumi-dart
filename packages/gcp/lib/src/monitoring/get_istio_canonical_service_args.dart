@@ -14,12 +14,15 @@ class GetIstioCanonicalServiceArgs {
   ///
   /// Other optional fields include:
   final pulumi.Input<String> canonicalService;
+
   /// The namespace of the canonical service underlying this service.
   /// Corresponds to the destination_canonical_service_namespace metric label in Istio metrics.
   final pulumi.Input<String> canonicalServiceNamespace;
+
   /// Identifier for the mesh in which this Istio service is defined.
   /// Corresponds to the meshUid metric label in Istio metrics.
   final pulumi.Input<String> meshUid;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -34,11 +37,12 @@ class GetIstioCanonicalServiceArgs {
     required String canonicalServiceNamespace,
     required String meshUid,
     String? project,
-  }) :
-      canonicalService = pulumi.Input.asInput<String>(canonicalService),
-      canonicalServiceNamespace = pulumi.Input.asInput<String>(canonicalServiceNamespace),
-      meshUid = pulumi.Input.asInput<String>(meshUid),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : canonicalService = pulumi.Input.asInput<String>(canonicalService),
+       canonicalServiceNamespace = pulumi.Input.asInput<String>(
+         canonicalServiceNamespace,
+       ),
+       meshUid = pulumi.Input.asInput<String>(meshUid),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,4 +62,3 @@ class GetIstioCanonicalServiceArgs {
     );
   }
 }
-

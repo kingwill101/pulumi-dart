@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetAliasRoutingConfiguration {
   final String stateMachineVersionArn;
   final int weight;
@@ -27,4 +26,3 @@ class GetAliasRoutingConfiguration {
     );
   }
 }
-

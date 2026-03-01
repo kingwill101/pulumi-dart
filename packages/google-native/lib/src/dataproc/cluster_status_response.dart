@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The status of a cluster and its instances.
 class ClusterStatusResponse {
   /// Optional. Output only. Details of cluster's state.
   final String detail;
+
   /// The cluster's state.
   final String state;
+
   /// Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   final String stateStartTime;
+
   /// Additional state information that includes status reported by the agent.
   final String substate;
 
@@ -42,4 +44,3 @@ class ClusterStatusResponse {
     );
   }
 }
-

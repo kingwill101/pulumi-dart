@@ -6,8 +6,10 @@ import 'get_workgroup_endpoint_vpc_endpoint.dart';
 class GetWorkgroupEndpoint {
   /// The DNS address of the VPC endpoint.
   final String address;
+
   /// The port that Amazon Redshift Serverless listens on.
   final int port;
+
   /// The VPC endpoint or the Redshift Serverless workgroup. See `VPC Endpoint` below.
   final List<GetWorkgroupEndpointVpcEndpoint> vpcEndpoints;
 
@@ -25,7 +27,11 @@ class GetWorkgroupEndpoint {
     return <String, dynamic>{
       'address': address,
       'port': port,
-      'vpcEndpoints': pulumi.Input.encodeList<GetWorkgroupEndpointVpcEndpoint, Map<String, dynamic>>(vpcEndpoints, (value) => value.toMap()),
+      'vpcEndpoints':
+          pulumi.Input.encodeList<
+            GetWorkgroupEndpointVpcEndpoint,
+            Map<String, dynamic>
+          >(vpcEndpoints, (value) => value.toMap()),
     };
   }
 
@@ -33,8 +39,12 @@ class GetWorkgroupEndpoint {
     return GetWorkgroupEndpoint(
       address: map['address'] as String,
       port: map['port'] as int,
-      vpcEndpoints: pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpoint>(map['vpcEndpoints'], (value) => GetWorkgroupEndpointVpcEndpoint.fromMap((value as Map).cast<String, dynamic>())),
+      vpcEndpoints: pulumi.Input.decodeList<GetWorkgroupEndpointVpcEndpoint>(
+        map['vpcEndpoints'],
+        (value) => GetWorkgroupEndpointVpcEndpoint.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

@@ -1,26 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// This is deprecated and has no effect. Do not use.
 class LogConfigCounterOptionsCustomField {
   /// This is deprecated and has no effect. Do not use.
   final String? name;
+
   /// This is deprecated and has no effect. Do not use.
   final String? value;
 
   /// Creates a new [LogConfigCounterOptionsCustomField].
   /// [name] This is deprecated and has no effect. Do not use.
   /// [value] This is deprecated and has no effect. Do not use.
-  LogConfigCounterOptionsCustomField({
-    this.name,
-    this.value,
-  });
+  LogConfigCounterOptionsCustomField({this.name, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'value': ?value,
-    };
+    return <String, dynamic>{'name': ?name, 'value': ?value};
   }
 
   factory LogConfigCounterOptionsCustomField.fromMap(Map<String, dynamic> map) {
@@ -30,4 +24,3 @@ class LogConfigCounterOptionsCustomField {
     );
   }
 }
-

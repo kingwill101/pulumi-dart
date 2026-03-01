@@ -7,7 +7,8 @@ class ChannelInputAttachmentInputSettingsAudioSelector {
   ///
   /// The following arguments are optional:
   final String name;
-  final ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings? selectorSettings;
+  final ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings?
+  selectorSettings;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelector].
   /// [name] Name of the Channel.
@@ -20,15 +21,22 @@ class ChannelInputAttachmentInputSettingsAudioSelector {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'name': name,
-      'selectorSettings': ?selectorSettings == null ? null : selectorSettings!.toMap(),
+      'selectorSettings': ?selectorSettings == null
+          ? null
+          : selectorSettings!.toMap(),
     };
   }
 
-  factory ChannelInputAttachmentInputSettingsAudioSelector.fromMap(Map<String, dynamic> map) {
+  factory ChannelInputAttachmentInputSettingsAudioSelector.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ChannelInputAttachmentInputSettingsAudioSelector(
       name: map['name'] as String,
-      selectorSettings: map['selectorSettings'] == null ? null : ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings.fromMap((map['selectorSettings'] as Map).cast<String, dynamic>()),
+      selectorSettings: map['selectorSettings'] == null
+          ? null
+          : ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings.fromMap(
+              (map['selectorSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

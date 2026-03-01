@@ -12,21 +12,14 @@ class GetTagKeyIamPolicyArgs {
 
   /// Creates a new [GetTagKeyIamPolicyArgs].
   /// [tagKey] Used to find the parent resource to bind the IAM policy to
-  GetTagKeyIamPolicyArgs({
-    required String tagKey,
-  }) :
-      tagKey = pulumi.Input.asInput<String>(tagKey);
+  GetTagKeyIamPolicyArgs({required String tagKey})
+    : tagKey = pulumi.Input.asInput<String>(tagKey);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'tagKey': tagKey,
-    };
+    return <String, dynamic>{'tagKey': tagKey};
   }
 
   factory GetTagKeyIamPolicyArgs.fromMap(Map<String, dynamic> map) {
-    return GetTagKeyIamPolicyArgs(
-      tagKey: map['tagKey'] as String,
-    );
+    return GetTagKeyIamPolicyArgs(tagKey: map['tagKey'] as String);
   }
 }
-

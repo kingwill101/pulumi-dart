@@ -6,6 +6,7 @@ import 'google_cloud_dataplex_v1_job_response.dart';
 class GoogleCloudDataplexV1TaskExecutionStatusResponse {
   /// latest job execution
   final GoogleCloudDataplexV1JobResponse latestJob;
+
   /// Last update time of the status.
   final String updateTime;
 
@@ -24,11 +25,14 @@ class GoogleCloudDataplexV1TaskExecutionStatusResponse {
     };
   }
 
-  factory GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDataplexV1TaskExecutionStatusResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDataplexV1TaskExecutionStatusResponse(
-      latestJob: GoogleCloudDataplexV1JobResponse.fromMap((map['latestJob'] as Map).cast<String, dynamic>()),
+      latestJob: GoogleCloudDataplexV1JobResponse.fromMap(
+        (map['latestJob'] as Map).cast<String, dynamic>(),
+      ),
       updateTime: map['updateTime'] as String,
     );
   }
 }
-

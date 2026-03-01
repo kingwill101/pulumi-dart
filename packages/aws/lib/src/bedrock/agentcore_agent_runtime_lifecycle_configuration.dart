@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentcoreAgentRuntimeLifecycleConfiguration {
   /// Timeout in seconds for idle runtime sessions.
   final int idleRuntimeSessionTimeout;
+
   /// Maximum lifetime for the instance in seconds.
   final int maxLifetime;
 
@@ -22,11 +22,12 @@ class AgentcoreAgentRuntimeLifecycleConfiguration {
     };
   }
 
-  factory AgentcoreAgentRuntimeLifecycleConfiguration.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreAgentRuntimeLifecycleConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreAgentRuntimeLifecycleConfiguration(
       idleRuntimeSessionTimeout: map['idleRuntimeSessionTimeout'] as int,
       maxLifetime: map['maxLifetime'] as int,
     );
   }
 }
-

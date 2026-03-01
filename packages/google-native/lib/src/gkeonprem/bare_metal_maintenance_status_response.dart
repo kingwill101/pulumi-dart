@@ -9,20 +9,17 @@ class BareMetalMaintenanceStatusResponse {
 
   /// Creates a new [BareMetalMaintenanceStatusResponse].
   /// [machineDrainStatus] The maintenance status of node machines.
-  BareMetalMaintenanceStatusResponse({
-    required this.machineDrainStatus,
-  });
+  BareMetalMaintenanceStatusResponse({required this.machineDrainStatus});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'machineDrainStatus': machineDrainStatus.toMap(),
-    };
+    return <String, dynamic>{'machineDrainStatus': machineDrainStatus.toMap()};
   }
 
   factory BareMetalMaintenanceStatusResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalMaintenanceStatusResponse(
-      machineDrainStatus: BareMetalMachineDrainStatusResponse.fromMap((map['machineDrainStatus'] as Map).cast<String, dynamic>()),
+      machineDrainStatus: BareMetalMachineDrainStatusResponse.fromMap(
+        (map['machineDrainStatus'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

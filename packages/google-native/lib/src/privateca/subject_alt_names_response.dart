@@ -7,12 +7,16 @@ import 'x509_extension_response.dart';
 class SubjectAltNamesResponse {
   /// Contains additional subject alternative name values. For each custom_san, the `value` field must contain an ASN.1 encoded UTF8String.
   final List<X509ExtensionResponse> customSans;
+
   /// Contains only valid, fully-qualified host names.
   final List<String> dnsNames;
+
   /// Contains only valid RFC 2822 E-mail addresses.
   final List<String> emailAddresses;
+
   /// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
   final List<String> ipAddresses;
+
   /// Contains only valid RFC 3986 URIs.
   final List<String> uris;
 
@@ -32,7 +36,11 @@ class SubjectAltNamesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customSans': pulumi.Input.encodeList<X509ExtensionResponse, Map<String, dynamic>>(customSans, (value) => value.toMap()),
+      'customSans':
+          pulumi.Input.encodeList<X509ExtensionResponse, Map<String, dynamic>>(
+            customSans,
+            (value) => value.toMap(),
+          ),
       'dnsNames': dnsNames,
       'emailAddresses': emailAddresses,
       'ipAddresses': ipAddresses,
@@ -42,7 +50,12 @@ class SubjectAltNamesResponse {
 
   factory SubjectAltNamesResponse.fromMap(Map<String, dynamic> map) {
     return SubjectAltNamesResponse(
-      customSans: pulumi.Input.decodeList<X509ExtensionResponse>(map['customSans'], (value) => X509ExtensionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      customSans: pulumi.Input.decodeList<X509ExtensionResponse>(
+        map['customSans'],
+        (value) => X509ExtensionResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       dnsNames: (map['dnsNames'] as List).cast<String>(),
       emailAddresses: (map['emailAddresses'] as List).cast<String>(),
       ipAddresses: (map['ipAddresses'] as List).cast<String>(),
@@ -50,4 +63,3 @@ class SubjectAltNamesResponse {
     );
   }
 }
-

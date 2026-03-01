@@ -11,13 +11,17 @@ import 'bucket_lifecycle_configuration_v2_timeouts.dart';
 class BucketLifecycleConfigurationV2Args {
   /// Name of the source S3 bucket you want Amazon S3 to monitor.
   final pulumi.Input<String> bucket;
+
   /// Account ID of the expected bucket owner. If the bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error.
   final pulumi.Input<String>? expectedBucketOwner;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// List of configuration blocks describing the rules managing the replication. See below.
   final pulumi.Input<List<BucketLifecycleConfigurationV2Rule>>? rules;
   final pulumi.Input<BucketLifecycleConfigurationV2Timeouts>? timeouts;
+
   /// The default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `varies_by_storage_class`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `object_size_greater_than` or `object_size_less_than` value. Custom filters always take precedence over the default transition behavior.
   final pulumi.Input<String>? transitionDefaultMinimumObjectSize;
 
@@ -35,21 +39,44 @@ class BucketLifecycleConfigurationV2Args {
     List<BucketLifecycleConfigurationV2Rule>? rules,
     BucketLifecycleConfigurationV2Timeouts? timeouts,
     String? transitionDefaultMinimumObjectSize,
-  }) :
-      bucket = pulumi.Input.asInput<String>(bucket),
-      expectedBucketOwner = pulumi.Input.asOptionalInput<String>(expectedBucketOwner),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      rules = pulumi.Input.asOptionalInput<List<BucketLifecycleConfigurationV2Rule>>(rules),
-      timeouts = pulumi.Input.asOptionalInput<BucketLifecycleConfigurationV2Timeouts>(timeouts),
-      transitionDefaultMinimumObjectSize = pulumi.Input.asOptionalInput<String>(transitionDefaultMinimumObjectSize);
+  }) : bucket = pulumi.Input.asInput<String>(bucket),
+       expectedBucketOwner = pulumi.Input.asOptionalInput<String>(
+         expectedBucketOwner,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       rules =
+           pulumi.Input.asOptionalInput<
+             List<BucketLifecycleConfigurationV2Rule>
+           >(rules),
+       timeouts =
+           pulumi.Input.asOptionalInput<BucketLifecycleConfigurationV2Timeouts>(
+             timeouts,
+           ),
+       transitionDefaultMinimumObjectSize = pulumi
+           .Input.asOptionalInput<String>(transitionDefaultMinimumObjectSize);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'bucket': bucket,
       'expectedBucketOwner': ?expectedBucketOwner,
       'region': ?region,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<BucketLifecycleConfigurationV2Rule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<BucketLifecycleConfigurationV2Rule, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'timeouts': ?pulumi.Input.mapOptionalInputValue<BucketLifecycleConfigurationV2Timeouts, Map<String, dynamic>>(timeouts, (value) => value.toMap()),
+      'rules':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<BucketLifecycleConfigurationV2Rule>,
+            List<Map<String, dynamic>>
+          >(
+            rules,
+            (value) =>
+                pulumi.Input.encodeList<
+                  BucketLifecycleConfigurationV2Rule,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
+      'timeouts':
+          ?pulumi.Input.mapOptionalInputValue<
+            BucketLifecycleConfigurationV2Timeouts,
+            Map<String, dynamic>
+          >(timeouts, (value) => value.toMap()),
       'transitionDefaultMinimumObjectSize': ?transitionDefaultMinimumObjectSize,
     };
   }
@@ -57,12 +84,27 @@ class BucketLifecycleConfigurationV2Args {
   factory BucketLifecycleConfigurationV2Args.fromMap(Map<String, dynamic> map) {
     return BucketLifecycleConfigurationV2Args(
       bucket: map['bucket'] as String,
-      expectedBucketOwner: map['expectedBucketOwner'] == null ? null : map['expectedBucketOwner'] as String,
+      expectedBucketOwner: map['expectedBucketOwner'] == null
+          ? null
+          : map['expectedBucketOwner'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      rules: map['rules'] == null ? null : pulumi.Input.decodeList<BucketLifecycleConfigurationV2Rule>(map['rules'], (value) => BucketLifecycleConfigurationV2Rule.fromMap((value as Map).cast<String, dynamic>())),
-      timeouts: map['timeouts'] == null ? null : BucketLifecycleConfigurationV2Timeouts.fromMap((map['timeouts'] as Map).cast<String, dynamic>()),
-      transitionDefaultMinimumObjectSize: map['transitionDefaultMinimumObjectSize'] == null ? null : map['transitionDefaultMinimumObjectSize'] as String,
+      rules: map['rules'] == null
+          ? null
+          : pulumi.Input.decodeList<BucketLifecycleConfigurationV2Rule>(
+              map['rules'],
+              (value) => BucketLifecycleConfigurationV2Rule.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      timeouts: map['timeouts'] == null
+          ? null
+          : BucketLifecycleConfigurationV2Timeouts.fromMap(
+              (map['timeouts'] as Map).cast<String, dynamic>(),
+            ),
+      transitionDefaultMinimumObjectSize:
+          map['transitionDefaultMinimumObjectSize'] == null
+          ? null
+          : map['transitionDefaultMinimumObjectSize'] as String,
     );
   }
 }
-

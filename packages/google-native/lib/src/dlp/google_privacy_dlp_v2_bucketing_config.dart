@@ -10,20 +10,29 @@ class GooglePrivacyDlpV2BucketingConfig {
 
   /// Creates a new [GooglePrivacyDlpV2BucketingConfig].
   /// [buckets] Set of buckets. Ranges must be non-overlapping.
-  GooglePrivacyDlpV2BucketingConfig({
-    this.buckets,
-  });
+  GooglePrivacyDlpV2BucketingConfig({this.buckets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buckets': ?buckets == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2Bucket, Map<String, dynamic>>(buckets!, (value) => value.toMap()),
+      'buckets': ?buckets == null
+          ? null
+          : pulumi.Input.encodeList<
+              GooglePrivacyDlpV2Bucket,
+              Map<String, dynamic>
+            >(buckets!, (value) => value.toMap()),
     };
   }
 
   factory GooglePrivacyDlpV2BucketingConfig.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2BucketingConfig(
-      buckets: map['buckets'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2Bucket>(map['buckets'], (value) => GooglePrivacyDlpV2Bucket.fromMap((value as Map).cast<String, dynamic>())),
+      buckets: map['buckets'] == null
+          ? null
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2Bucket>(
+              map['buckets'],
+              (value) => GooglePrivacyDlpV2Bucket.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

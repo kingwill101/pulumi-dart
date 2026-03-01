@@ -19,10 +19,9 @@ class GetQueueIamPolicyCloudtasksV2beta3Args {
     required String location,
     String? project,
     required String queueId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queueId = pulumi.Input.asInput<String>(queueId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       queueId = pulumi.Input.asInput<String>(queueId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetQueueIamPolicyCloudtasksV2beta3Args {
     };
   }
 
-  factory GetQueueIamPolicyCloudtasksV2beta3Args.fromMap(Map<String, dynamic> map) {
+  factory GetQueueIamPolicyCloudtasksV2beta3Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetQueueIamPolicyCloudtasksV2beta3Args(
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
@@ -40,4 +41,3 @@ class GetQueueIamPolicyCloudtasksV2beta3Args {
     );
   }
 }
-

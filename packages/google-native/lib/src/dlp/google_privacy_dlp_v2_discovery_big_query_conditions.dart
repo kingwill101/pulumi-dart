@@ -8,10 +8,14 @@ import 'google_privacy_dlp_v2_or_conditions.dart';
 class GooglePrivacyDlpV2DiscoveryBigQueryConditions {
   /// BigQuery table must have been created after this date. Used to avoid backfilling.
   final String? createdAfter;
+
   /// At least one of the conditions must be true for a table to be scanned.
   final GooglePrivacyDlpV2OrConditions? orConditions;
+
   /// Restrict discovery to categories of table types.
-  final GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection? typeCollection;
+  final GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection?
+  typeCollection;
+
   /// Restrict discovery to specific table types.
   final GooglePrivacyDlpV2BigQueryTableTypes? types;
 
@@ -36,13 +40,28 @@ class GooglePrivacyDlpV2DiscoveryBigQueryConditions {
     };
   }
 
-  factory GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DiscoveryBigQueryConditions.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DiscoveryBigQueryConditions(
-      createdAfter: map['createdAfter'] == null ? null : map['createdAfter'] as String,
-      orConditions: map['orConditions'] == null ? null : GooglePrivacyDlpV2OrConditions.fromMap((map['orConditions'] as Map).cast<String, dynamic>()),
-      typeCollection: map['typeCollection'] == null ? null : GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection.fromValue(map['typeCollection'] as String),
-      types: map['types'] == null ? null : GooglePrivacyDlpV2BigQueryTableTypes.fromMap((map['types'] as Map).cast<String, dynamic>()),
+      createdAfter: map['createdAfter'] == null
+          ? null
+          : map['createdAfter'] as String,
+      orConditions: map['orConditions'] == null
+          ? null
+          : GooglePrivacyDlpV2OrConditions.fromMap(
+              (map['orConditions'] as Map).cast<String, dynamic>(),
+            ),
+      typeCollection: map['typeCollection'] == null
+          ? null
+          : GooglePrivacyDlpV2DiscoveryBigQueryConditionsTypeCollection.fromValue(
+              map['typeCollection'] as String,
+            ),
+      types: map['types'] == null
+          ? null
+          : GooglePrivacyDlpV2BigQueryTableTypes.fromMap(
+              (map['types'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

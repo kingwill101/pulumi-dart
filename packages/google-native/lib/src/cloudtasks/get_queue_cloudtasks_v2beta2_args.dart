@@ -22,11 +22,10 @@ class GetQueueCloudtasksV2beta2Args {
     String? project,
     required String queueId,
     String? readMask,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      queueId = pulumi.Input.asInput<String>(queueId),
-      readMask = pulumi.Input.asOptionalInput<String>(readMask);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       queueId = pulumi.Input.asInput<String>(queueId),
+       readMask = pulumi.Input.asOptionalInput<String>(readMask);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetQueueCloudtasksV2beta2Args {
     );
   }
 }
-

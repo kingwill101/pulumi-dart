@@ -6,6 +6,7 @@ import 'duration_response_compute_beta.dart';
 class HttpFaultDelayResponseComputeBeta {
   /// Specifies the value of the fixed delay interval.
   final DurationResponseComputeBeta fixedDelay;
+
   /// The percentage of traffic for connections, operations, or requests for which a delay is introduced as part of fault injection. The value must be from 0.0 to 100.0 inclusive.
   final double percentage;
 
@@ -26,9 +27,10 @@ class HttpFaultDelayResponseComputeBeta {
 
   factory HttpFaultDelayResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return HttpFaultDelayResponseComputeBeta(
-      fixedDelay: DurationResponseComputeBeta.fromMap((map['fixedDelay'] as Map).cast<String, dynamic>()),
+      fixedDelay: DurationResponseComputeBeta.fromMap(
+        (map['fixedDelay'] as Map).cast<String, dynamic>(),
+      ),
       percentage: map['percentage'] as double,
     );
   }
 }
-

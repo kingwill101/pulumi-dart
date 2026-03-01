@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Aggregated statistics about an issue model.
 class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse {
   /// Number of conversations the issue model has analyzed at this point in time.
   final String analyzedConversationsCount;
+
   /// Statistics on each issue. Key is the issue's resource name.
   final Map<String, String> issueStats;
+
   /// Number of analyzed conversations for which no issue was applicable at this point in time.
   final String unclassifiedConversationsCount;
 
@@ -28,12 +29,14 @@ class GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse {
     };
   }
 
-  factory GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse(
       analyzedConversationsCount: map['analyzedConversationsCount'] as String,
       issueStats: (map['issueStats'] as Map).cast<String, String>(),
-      unclassifiedConversationsCount: map['unclassifiedConversationsCount'] as String,
+      unclassifiedConversationsCount:
+          map['unclassifiedConversationsCount'] as String,
     );
   }
 }
-

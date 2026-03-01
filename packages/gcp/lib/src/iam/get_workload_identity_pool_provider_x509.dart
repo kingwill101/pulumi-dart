@@ -13,20 +13,30 @@ class GetWorkloadIdentityPoolProviderX509 {
 
   /// Creates a new [GetWorkloadIdentityPoolProviderX509].
   /// [trustStores] A Trust store, use this trust store as a wrapper to config the trust
-  GetWorkloadIdentityPoolProviderX509({
-    required this.trustStores,
-  });
+  GetWorkloadIdentityPoolProviderX509({required this.trustStores});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'trustStores': pulumi.Input.encodeList<GetWorkloadIdentityPoolProviderX509TrustStore, Map<String, dynamic>>(trustStores, (value) => value.toMap()),
+      'trustStores':
+          pulumi.Input.encodeList<
+            GetWorkloadIdentityPoolProviderX509TrustStore,
+            Map<String, dynamic>
+          >(trustStores, (value) => value.toMap()),
     };
   }
 
-  factory GetWorkloadIdentityPoolProviderX509.fromMap(Map<String, dynamic> map) {
+  factory GetWorkloadIdentityPoolProviderX509.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetWorkloadIdentityPoolProviderX509(
-      trustStores: pulumi.Input.decodeList<GetWorkloadIdentityPoolProviderX509TrustStore>(map['trustStores'], (value) => GetWorkloadIdentityPoolProviderX509TrustStore.fromMap((value as Map).cast<String, dynamic>())),
+      trustStores:
+          pulumi
+              .Input.decodeList<GetWorkloadIdentityPoolProviderX509TrustStore>(
+            map['trustStores'],
+            (value) => GetWorkloadIdentityPoolProviderX509TrustStore.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

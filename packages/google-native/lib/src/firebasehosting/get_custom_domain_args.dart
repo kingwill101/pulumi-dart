@@ -19,10 +19,9 @@ class GetCustomDomainArgs {
     required String customDomainId,
     String? project,
     required String siteId,
-  }) :
-      customDomainId = pulumi.Input.asInput<String>(customDomainId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      siteId = pulumi.Input.asInput<String>(siteId);
+  }) : customDomainId = pulumi.Input.asInput<String>(customDomainId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       siteId = pulumi.Input.asInput<String>(siteId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetCustomDomainArgs {
     );
   }
 }
-

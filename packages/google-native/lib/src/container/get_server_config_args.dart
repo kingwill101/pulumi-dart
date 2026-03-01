@@ -22,11 +22,10 @@ class GetServerConfigArgs {
     String? project,
     String? projectId,
     String? zone,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      projectId = pulumi.Input.asOptionalInput<String>(projectId),
-      zone = pulumi.Input.asOptionalInput<String>(zone);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       projectId = pulumi.Input.asOptionalInput<String>(projectId),
+       zone = pulumi.Input.asOptionalInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetServerConfigArgs {
     );
   }
 }
-

@@ -10,9 +10,11 @@ class GetInternetGatewayResult {
   final String arn;
   final List<GetInternetGatewayAttachment> attachments;
   final List<GetInternetGatewayFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String internetGatewayId;
+
   /// ID of the AWS account that owns the internet gateway.
   final String ownerId;
   final String region;
@@ -41,8 +43,17 @@ class GetInternetGatewayResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'arn': arn,
-      'attachments': pulumi.Input.encodeList<GetInternetGatewayAttachment, Map<String, dynamic>>(attachments, (value) => value.toMap()),
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetInternetGatewayFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'attachments':
+          pulumi.Input.encodeList<
+            GetInternetGatewayAttachment,
+            Map<String, dynamic>
+          >(attachments, (value) => value.toMap()),
+      'filters': ?filters == null
+          ? null
+          : pulumi.Input.encodeList<
+              GetInternetGatewayFilter,
+              Map<String, dynamic>
+            >(filters!, (value) => value.toMap()),
       'id': id,
       'internetGatewayId': internetGatewayId,
       'ownerId': ownerId,
@@ -54,8 +65,20 @@ class GetInternetGatewayResult {
   factory GetInternetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetInternetGatewayResult(
       arn: map['arn'] as String,
-      attachments: pulumi.Input.decodeList<GetInternetGatewayAttachment>(map['attachments'], (value) => GetInternetGatewayAttachment.fromMap((value as Map).cast<String, dynamic>())),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInternetGatewayFilter>(map['filters'], (value) => GetInternetGatewayFilter.fromMap((value as Map).cast<String, dynamic>())),
+      attachments: pulumi.Input.decodeList<GetInternetGatewayAttachment>(
+        map['attachments'],
+        (value) => GetInternetGatewayAttachment.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<GetInternetGatewayFilter>(
+              map['filters'],
+              (value) => GetInternetGatewayFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       id: map['id'] as String,
       internetGatewayId: map['internetGatewayId'] as String,
       ownerId: map['ownerId'] as String,
@@ -64,4 +87,3 @@ class GetInternetGatewayResult {
     );
   }
 }
-

@@ -6,6 +6,7 @@ import 'workload_config_response.dart';
 class ProtectConfigResponse {
   /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
   final WorkloadConfigResponse workloadConfig;
+
   /// Sets which mode to use for Protect workload vulnerability scanning feature.
   final String workloadVulnerabilityMode;
 
@@ -26,9 +27,10 @@ class ProtectConfigResponse {
 
   factory ProtectConfigResponse.fromMap(Map<String, dynamic> map) {
     return ProtectConfigResponse(
-      workloadConfig: WorkloadConfigResponse.fromMap((map['workloadConfig'] as Map).cast<String, dynamic>()),
+      workloadConfig: WorkloadConfigResponse.fromMap(
+        (map['workloadConfig'] as Map).cast<String, dynamic>(),
+      ),
       workloadVulnerabilityMode: map['workloadVulnerabilityMode'] as String,
     );
   }
 }
-

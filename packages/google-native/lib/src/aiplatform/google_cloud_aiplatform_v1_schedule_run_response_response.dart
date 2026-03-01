@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Status of a scheduled run.
 class GoogleCloudAiplatformV1ScheduleRunResponseResponse {
   /// The response of the scheduled run.
   final String runResponse;
+
   /// The scheduled run time based on the user-specified schedule.
   final String scheduledRunTime;
 
@@ -23,11 +23,12 @@ class GoogleCloudAiplatformV1ScheduleRunResponseResponse {
     };
   }
 
-  factory GoogleCloudAiplatformV1ScheduleRunResponseResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudAiplatformV1ScheduleRunResponseResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudAiplatformV1ScheduleRunResponseResponse(
       runResponse: map['runResponse'] as String,
       scheduledRunTime: map['scheduledRunTime'] as String,
     );
   }
 }
-

@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// VmwareSourceDetails message describes a specific source details for the vmware source type.
 class VmwareSourceDetailsResponse {
   /// Input only. The credentials password. This is write only and can not be read in a GET operation.
   final String password;
+
   /// The hostname of the vcenter.
   final String resolvedVcenterHost;
+
   /// The thumbprint representing the certificate for the vcenter.
   final String thumbprint;
+
   /// The credentials username.
   final String username;
+
   /// The ip address of the vcenter this Source represents.
   final String vcenterIp;
 
@@ -48,4 +51,3 @@ class VmwareSourceDetailsResponse {
     );
   }
 }
-

@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeploymentArgs {
   /// Description of the deployment.
   final pulumi.Input<String>? description;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// REST API identifier.
   final pulumi.Input<String> restApi;
+
   /// Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   final pulumi.Input<Map<String, String>>? triggers;
+
   /// Map to set on the related stage.
   final pulumi.Input<Map<String, String>>? variables;
 
@@ -30,12 +34,11 @@ class DeploymentArgs {
     required String restApi,
     Map<String, String>? triggers,
     Map<String, String>? variables,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      restApi = pulumi.Input.asInput<String>(restApi),
-      triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers),
-      variables = pulumi.Input.asOptionalInput<Map<String, String>>(variables);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       restApi = pulumi.Input.asInput<String>(restApi),
+       triggers = pulumi.Input.asOptionalInput<Map<String, String>>(triggers),
+       variables = pulumi.Input.asOptionalInput<Map<String, String>>(variables);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,12 +52,17 @@ class DeploymentArgs {
 
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       region: map['region'] == null ? null : map['region'] as String,
       restApi: map['restApi'] as String,
-      triggers: map['triggers'] == null ? null : (map['triggers'] as Map).cast<String, String>(),
-      variables: map['variables'] == null ? null : (map['variables'] as Map).cast<String, String>(),
+      triggers: map['triggers'] == null
+          ? null
+          : (map['triggers'] as Map).cast<String, String>(),
+      variables: map['variables'] == null
+          ? null
+          : (map['variables'] as Map).cast<String, String>(),
     );
   }
 }
-

@@ -273,11 +273,14 @@ import 'entity_type_entity.dart';
 class EntityType extends pulumi.CustomResource {
   /// The name of this entity type to be displayed on the console.
   late final pulumi.Output<String> displayName;
+
   /// Enables fuzzy entity extraction during classification.
   late final pulumi.Output<bool?> enableFuzzyExtraction;
+
   /// The collection of entity entries associated with the entity type.
   /// Structure is documented below.
   late final pulumi.Output<List<EntityTypeEntity>?> entities;
+
   /// Indicates the kind of entity type.
   /// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
   /// * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
@@ -285,9 +288,11 @@ class EntityType extends pulumi.CustomResource {
   /// * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
   /// Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
   late final pulumi.Output<String> kind;
+
   /// The unique identifier of the entity type.
   /// Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
   late final pulumi.Output<String> name;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -301,11 +306,11 @@ class EntityType extends pulumi.CustomResource {
     EntityTypeArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:diagflow/entityType:EntityType',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:diagflow/entityType:EntityType',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.displayName = registerOutput<String>('displayName');
     this.enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
     this.entities = registerOutput<List<EntityTypeEntity>?>('entities');

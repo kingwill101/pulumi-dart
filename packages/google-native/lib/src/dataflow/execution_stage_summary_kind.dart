@@ -22,4 +22,3 @@ enum ExecutionStageSummaryKind {
     throw ArgumentError('Unknown ExecutionStageSummaryKind value: $value');
   }
 }
-

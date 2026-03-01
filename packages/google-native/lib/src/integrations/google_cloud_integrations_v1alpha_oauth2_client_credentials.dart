@@ -8,16 +8,23 @@ import 'google_cloud_integrations_v1alpha_parameter_map.dart';
 class GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials {
   /// Access token fetched from the authorization server.
   final GoogleCloudIntegrationsV1alphaAccessToken? accessToken;
+
   /// The client's ID.
   final String? clientId;
+
   /// The client's secret.
   final String? clientSecret;
+
   /// Represent how to pass parameters to fetch access token
-  final GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType? requestType;
+  final GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType?
+  requestType;
+
   /// A space-delimited list of requested scope permissions.
   final String? scope;
+
   /// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
   final String? tokenEndpoint;
+
   /// Token parameters for the auth request.
   final GoogleCloudIntegrationsV1alphaParameterMap? tokenParams;
 
@@ -51,16 +58,33 @@ class GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials {
     };
   }
 
-  factory GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials(
-      accessToken: map['accessToken'] == null ? null : GoogleCloudIntegrationsV1alphaAccessToken.fromMap((map['accessToken'] as Map).cast<String, dynamic>()),
+      accessToken: map['accessToken'] == null
+          ? null
+          : GoogleCloudIntegrationsV1alphaAccessToken.fromMap(
+              (map['accessToken'] as Map).cast<String, dynamic>(),
+            ),
       clientId: map['clientId'] == null ? null : map['clientId'] as String,
-      clientSecret: map['clientSecret'] == null ? null : map['clientSecret'] as String,
-      requestType: map['requestType'] == null ? null : GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType.fromValue(map['requestType'] as String),
+      clientSecret: map['clientSecret'] == null
+          ? null
+          : map['clientSecret'] as String,
+      requestType: map['requestType'] == null
+          ? null
+          : GoogleCloudIntegrationsV1alphaOAuth2ClientCredentialsRequestType.fromValue(
+              map['requestType'] as String,
+            ),
       scope: map['scope'] == null ? null : map['scope'] as String,
-      tokenEndpoint: map['tokenEndpoint'] == null ? null : map['tokenEndpoint'] as String,
-      tokenParams: map['tokenParams'] == null ? null : GoogleCloudIntegrationsV1alphaParameterMap.fromMap((map['tokenParams'] as Map).cast<String, dynamic>()),
+      tokenEndpoint: map['tokenEndpoint'] == null
+          ? null
+          : map['tokenEndpoint'] as String,
+      tokenParams: map['tokenParams'] == null
+          ? null
+          : GoogleCloudIntegrationsV1alphaParameterMap.fromMap(
+              (map['tokenParams'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

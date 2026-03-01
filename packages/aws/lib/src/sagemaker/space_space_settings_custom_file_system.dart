@@ -8,20 +8,17 @@ class SpaceSpaceSettingsCustomFileSystem {
 
   /// Creates a new [SpaceSpaceSettingsCustomFileSystem].
   /// [efsFileSystem] A custom file system in Amazon EFS. See `efs_file_system` Block below.
-  SpaceSpaceSettingsCustomFileSystem({
-    required this.efsFileSystem,
-  });
+  SpaceSpaceSettingsCustomFileSystem({required this.efsFileSystem});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'efsFileSystem': efsFileSystem.toMap(),
-    };
+    return <String, dynamic>{'efsFileSystem': efsFileSystem.toMap()};
   }
 
   factory SpaceSpaceSettingsCustomFileSystem.fromMap(Map<String, dynamic> map) {
     return SpaceSpaceSettingsCustomFileSystem(
-      efsFileSystem: SpaceSpaceSettingsCustomFileSystemEfsFileSystem.fromMap((map['efsFileSystem'] as Map).cast<String, dynamic>()),
+      efsFileSystem: SpaceSpaceSettingsCustomFileSystemEfsFileSystem.fromMap(
+        (map['efsFileSystem'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

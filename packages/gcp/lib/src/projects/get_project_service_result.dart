@@ -1,11 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getProjectService.
 class GetProjectServiceResult {
   final bool checkIfServiceHasUsageOnDestroy;
   final bool disableDependentServices;
   final bool disableOnDestroy;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String? project;
@@ -40,7 +40,8 @@ class GetProjectServiceResult {
 
   factory GetProjectServiceResult.fromMap(Map<String, dynamic> map) {
     return GetProjectServiceResult(
-      checkIfServiceHasUsageOnDestroy: map['checkIfServiceHasUsageOnDestroy'] as bool,
+      checkIfServiceHasUsageOnDestroy:
+          map['checkIfServiceHasUsageOnDestroy'] as bool,
       disableDependentServices: map['disableDependentServices'] as bool,
       disableOnDestroy: map['disableOnDestroy'] as bool,
       id: map['id'] as String,
@@ -49,4 +50,3 @@ class GetProjectServiceResult {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration options for the Config Connector add-on.
 class ConfigConnectorConfig {
   /// Whether Cloud Connector is enabled for this cluster.
@@ -8,14 +7,10 @@ class ConfigConnectorConfig {
 
   /// Creates a new [ConfigConnectorConfig].
   /// [enabled] Whether Cloud Connector is enabled for this cluster.
-  ConfigConnectorConfig({
-    this.enabled,
-  });
+  ConfigConnectorConfig({this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': ?enabled,
-    };
+    return <String, dynamic>{'enabled': ?enabled};
   }
 
   factory ConfigConnectorConfig.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ConfigConnectorConfig {
     );
   }
 }
-

@@ -19,10 +19,9 @@ class GetDomainMappingArgs {
     required String domainmappingId,
     required String location,
     String? project,
-  }) :
-      domainmappingId = pulumi.Input.asInput<String>(domainmappingId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : domainmappingId = pulumi.Input.asInput<String>(domainmappingId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetDomainMappingArgs {
     );
   }
 }
-

@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetUserPoolEmailConfiguration {
   /// - Configuration set used for sending emails.
   final String configurationSet;
+
   /// - Email sending account.
   final String emailSendingAccount;
+
   /// - Email sender address.
   final String from;
+
   /// - Reply-to email address.
   final String replyToEmailAddress;
+
   /// - Source Amazon Resource Name (ARN) for emails.
   final String sourceArn;
 
@@ -47,4 +50,3 @@ class GetUserPoolEmailConfiguration {
     );
   }
 }
-

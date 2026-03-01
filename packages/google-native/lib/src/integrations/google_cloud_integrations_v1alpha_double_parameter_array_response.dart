@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// This message only contains a field of double number array.
 class GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse {
   /// Double number array.
@@ -13,15 +12,14 @@ class GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'doubleValues': doubleValues,
-    };
+    return <String, dynamic>{'doubleValues': doubleValues};
   }
 
-  factory GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse(
       doubleValues: (map['doubleValues'] as List).cast<double>(),
     );
   }
 }
-

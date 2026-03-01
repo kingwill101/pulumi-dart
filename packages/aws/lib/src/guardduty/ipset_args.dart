@@ -9,16 +9,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IPSetArgs {
   /// Specifies whether GuardDuty is to start using the uploaded IPSet.
   final pulumi.Input<bool> activate;
+
   /// The detector ID of the GuardDuty.
   final pulumi.Input<String> detectorId;
+
   /// The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
   final pulumi.Input<String> format;
+
   /// The URI of the file that contains the IPSet.
   final pulumi.Input<String> location;
+
   /// The friendly name to identify the IPSet.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>>? tags;
 
@@ -38,14 +44,13 @@ class IPSetArgs {
     String? name,
     String? region,
     Map<String, String>? tags,
-  }) :
-      activate = pulumi.Input.asInput<bool>(activate),
-      detectorId = pulumi.Input.asInput<String>(detectorId),
-      format = pulumi.Input.asInput<String>(format),
-      location = pulumi.Input.asInput<String>(location),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
+  }) : activate = pulumi.Input.asInput<bool>(activate),
+       detectorId = pulumi.Input.asInput<String>(detectorId),
+       format = pulumi.Input.asInput<String>(format),
+       location = pulumi.Input.asInput<String>(location),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       tags = pulumi.Input.asOptionalInput<Map<String, String>>(tags);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,8 +72,9 @@ class IPSetArgs {
       location: map['location'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
-      tags: map['tags'] == null ? null : (map['tags'] as Map).cast<String, String>(),
+      tags: map['tags'] == null
+          ? null
+          : (map['tags'] as Map).cast<String, String>(),
     );
   }
 }
-

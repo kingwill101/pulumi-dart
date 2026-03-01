@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterEncryptionInfo {
   /// Output only. Type of encryption.
   final String encryptionType;
+
   /// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
   final List<String> kmsKeyVersions;
 
@@ -29,4 +29,3 @@ class GetClusterEncryptionInfo {
     );
   }
 }
-

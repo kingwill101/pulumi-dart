@@ -12,13 +12,16 @@ enum RegionBackendServiceSessionAffinityComputeBeta {
   const RegionBackendServiceSessionAffinityComputeBeta(this.value);
   final String value;
 
-  static RegionBackendServiceSessionAffinityComputeBeta fromValue(String value) {
+  static RegionBackendServiceSessionAffinityComputeBeta fromValue(
+    String value,
+  ) {
     for (final item in RegionBackendServiceSessionAffinityComputeBeta.values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown RegionBackendServiceSessionAffinityComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown RegionBackendServiceSessionAffinityComputeBeta value: $value',
+    );
   }
 }
-

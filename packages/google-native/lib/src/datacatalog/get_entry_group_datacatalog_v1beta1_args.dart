@@ -22,11 +22,10 @@ class GetEntryGroupDatacatalogV1beta1Args {
     required String location,
     String? project,
     String? readMask,
-  }) :
-      entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      readMask = pulumi.Input.asOptionalInput<String>(readMask);
+  }) : entryGroupId = pulumi.Input.asInput<String>(entryGroupId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       readMask = pulumi.Input.asOptionalInput<String>(readMask);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,7 +36,9 @@ class GetEntryGroupDatacatalogV1beta1Args {
     };
   }
 
-  factory GetEntryGroupDatacatalogV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetEntryGroupDatacatalogV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetEntryGroupDatacatalogV1beta1Args(
       entryGroupId: map['entryGroupId'] as String,
       location: map['location'] as String,
@@ -46,4 +47,3 @@ class GetEntryGroupDatacatalogV1beta1Args {
     );
   }
 }
-

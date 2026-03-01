@@ -801,8 +801,10 @@ import 'policy_tag_iam_member_condition.dart';
 /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class PolicyTagIamMember extends pulumi.CustomResource {
   late final pulumi.Output<PolicyTagIamMemberCondition?> condition;
+
   /// (Computed) The etag of the IAM policy.
   late final pulumi.Output<String> etag;
+
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -816,8 +818,10 @@ class PolicyTagIamMember extends pulumi.CustomResource {
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
   late final pulumi.Output<String> member;
+
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> policyTag;
+
   /// The role that should be applied. Only one
   /// `gcp.datacatalog.PolicyTagIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -832,11 +836,11 @@ class PolicyTagIamMember extends pulumi.CustomResource {
     PolicyTagIamMemberArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:datacatalog/policyTagIamMember:PolicyTagIamMember',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:datacatalog/policyTagIamMember:PolicyTagIamMember',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.condition = registerOutput<PolicyTagIamMemberCondition?>('condition');
     this.etag = registerOutput<String>('etag');
     this.member = registerOutput<String>('member');

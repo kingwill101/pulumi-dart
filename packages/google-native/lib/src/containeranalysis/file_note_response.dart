@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
 class FileNoteResponse {
   /// Provide a unique identifier to match analysis information on each specific file in a package
   final List<String> checksum;
+
   /// This field provides information about the type of file identified
   final String fileType;
+
   /// Identify the full path and filename that corresponds to the file information in this section
   final String title;
 
@@ -36,4 +37,3 @@ class FileNoteResponse {
     );
   }
 }
-

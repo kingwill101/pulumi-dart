@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A list of queries to run on a cluster.
 class QueryListResponse {
   /// The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
@@ -8,20 +7,13 @@ class QueryListResponse {
 
   /// Creates a new [QueryListResponse].
   /// [queries] The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
-  QueryListResponse({
-    required this.queries,
-  });
+  QueryListResponse({required this.queries});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'queries': queries,
-    };
+    return <String, dynamic>{'queries': queries};
   }
 
   factory QueryListResponse.fromMap(Map<String, dynamic> map) {
-    return QueryListResponse(
-      queries: (map['queries'] as List).cast<String>(),
-    );
+    return QueryListResponse(queries: (map['queries'] as List).cast<String>());
   }
 }
-

@@ -16,4 +16,3 @@ enum InstanceConnectMode {
     throw ArgumentError('Unknown InstanceConnectMode value: $value');
   }
 }
-

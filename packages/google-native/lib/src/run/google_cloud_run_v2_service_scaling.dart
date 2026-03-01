@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Scaling settings applied at the service level rather than at the revision level.
 class GoogleCloudRunV2ServiceScaling {
   /// total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
@@ -8,20 +7,17 @@ class GoogleCloudRunV2ServiceScaling {
 
   /// Creates a new [GoogleCloudRunV2ServiceScaling].
   /// [minInstanceCount] total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. (ALPHA)
-  GoogleCloudRunV2ServiceScaling({
-    this.minInstanceCount,
-  });
+  GoogleCloudRunV2ServiceScaling({this.minInstanceCount});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'minInstanceCount': ?minInstanceCount,
-    };
+    return <String, dynamic>{'minInstanceCount': ?minInstanceCount};
   }
 
   factory GoogleCloudRunV2ServiceScaling.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRunV2ServiceScaling(
-      minInstanceCount: map['minInstanceCount'] == null ? null : map['minInstanceCount'] as int,
+      minInstanceCount: map['minInstanceCount'] == null
+          ? null
+          : map['minInstanceCount'] as int,
     );
   }
 }
-

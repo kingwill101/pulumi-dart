@@ -1,25 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class SelectionConditionStringEqual {
   /// Key for the filter.
   final String key;
+
   /// Value for the filter.
   final String value;
 
   /// Creates a new [SelectionConditionStringEqual].
   /// [key] Key for the filter.
   /// [value] Value for the filter.
-  SelectionConditionStringEqual({
-    required this.key,
-    required this.value,
-  });
+  SelectionConditionStringEqual({required this.key, required this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'key': key,
-      'value': value,
-    };
+    return <String, dynamic>{'key': key, 'value': value};
   }
 
   factory SelectionConditionStringEqual.fromMap(Map<String, dynamic> map) {
@@ -29,4 +23,3 @@ class SelectionConditionStringEqual {
     );
   }
 }
-

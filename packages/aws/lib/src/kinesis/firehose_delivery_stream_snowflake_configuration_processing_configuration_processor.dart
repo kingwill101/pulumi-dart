@@ -5,7 +5,11 @@ import 'firehose_delivery_stream_snowflake_configuration_processing_configuratio
 
 class FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor {
   /// Specifies the processor parameters as multiple blocks. See `parameters` block below for details.
-  final List<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessorParameter>? parameters;
+  final List<
+    FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessorParameter
+  >?
+  parameters;
+
   /// The type of processor. Valid Values: `RecordDeAggregation`, `Lambda`, `MetadataExtraction`, `AppendDelimiterToRecord`, `Decompression`, `CloudWatchLogProcessing`. Validation is done against [AWS SDK constants](https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/firehose/types#ProcessorType); so values not explicitly listed may also work.
   final String type;
 
@@ -19,16 +23,32 @@ class FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcess
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessorParameter, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?parameters == null
+          ? null
+          : pulumi.Input.encodeList<
+              FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessorParameter,
+              Map<String, dynamic>
+            >(parameters!, (value) => value.toMap()),
       'type': type,
     };
   }
 
-  factory FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor.fromMap(Map<String, dynamic> map) {
+  factory FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessor(
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessorParameter>(map['parameters'], (value) => FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessorParameter.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: map['parameters'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessorParameter
+            >(
+              map['parameters'],
+              (value) =>
+                  FirehoseDeliveryStreamSnowflakeConfigurationProcessingConfigurationProcessorParameter.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       type: map['type'] as String,
     );
   }
 }
-

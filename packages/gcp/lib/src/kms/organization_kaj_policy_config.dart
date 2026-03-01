@@ -153,7 +153,11 @@ class OrganizationKajPolicyConfig extends pulumi.CustomResource {
   /// created in this organization. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  late final pulumi.Output<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?> defaultKeyAccessJustificationPolicy;
+  late final pulumi.Output<
+    OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?
+  >
+  defaultKeyAccessJustificationPolicy;
+
   /// The organization number for which to retrieve config.
   late final pulumi.Output<String> organization;
 
@@ -166,12 +170,15 @@ class OrganizationKajPolicyConfig extends pulumi.CustomResource {
     OrganizationKajPolicyConfigArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.defaultKeyAccessJustificationPolicy = registerOutput<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy');
+         'gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.defaultKeyAccessJustificationPolicy =
+        registerOutput<
+          OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?
+        >('defaultKeyAccessJustificationPolicy');
     this.organization = registerOutput<String>('organization');
   }
 }

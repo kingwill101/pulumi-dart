@@ -7,15 +7,21 @@ import 'get_firewall_firewall_status_transit_gateway_attachment_sync_state.dart'
 
 class GetFirewallFirewallStatus {
   /// Aggregated count of all resources used by reference sets in a firewall.
-  final List<GetFirewallFirewallStatusCapacityUsageSummary> capacityUsageSummaries;
+  final List<GetFirewallFirewallStatusCapacityUsageSummary>
+  capacityUsageSummaries;
+
   /// Summary of sync states for all availability zones in which the firewall is configured.
   final String configurationSyncStateSummary;
+
   /// The current status of the firewall endpoint instantiation in the subnet.
   final String status;
+
   /// Set of subnets configured for use by the firewall.
   final List<GetFirewallFirewallStatusSyncState> syncStates;
+
   /// Set of transit gateway configured for use by the firewall.
-  final List<GetFirewallFirewallStatusTransitGatewayAttachmentSyncState> transitGatewayAttachmentSyncStates;
+  final List<GetFirewallFirewallStatusTransitGatewayAttachmentSyncState>
+  transitGatewayAttachmentSyncStates;
 
   /// Creates a new [GetFirewallFirewallStatus].
   /// [capacityUsageSummaries] Aggregated count of all resources used by reference sets in a firewall.
@@ -33,22 +39,55 @@ class GetFirewallFirewallStatus {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'capacityUsageSummaries': pulumi.Input.encodeList<GetFirewallFirewallStatusCapacityUsageSummary, Map<String, dynamic>>(capacityUsageSummaries, (value) => value.toMap()),
+      'capacityUsageSummaries':
+          pulumi.Input.encodeList<
+            GetFirewallFirewallStatusCapacityUsageSummary,
+            Map<String, dynamic>
+          >(capacityUsageSummaries, (value) => value.toMap()),
       'configurationSyncStateSummary': configurationSyncStateSummary,
       'status': status,
-      'syncStates': pulumi.Input.encodeList<GetFirewallFirewallStatusSyncState, Map<String, dynamic>>(syncStates, (value) => value.toMap()),
-      'transitGatewayAttachmentSyncStates': pulumi.Input.encodeList<GetFirewallFirewallStatusTransitGatewayAttachmentSyncState, Map<String, dynamic>>(transitGatewayAttachmentSyncStates, (value) => value.toMap()),
+      'syncStates':
+          pulumi.Input.encodeList<
+            GetFirewallFirewallStatusSyncState,
+            Map<String, dynamic>
+          >(syncStates, (value) => value.toMap()),
+      'transitGatewayAttachmentSyncStates':
+          pulumi.Input.encodeList<
+            GetFirewallFirewallStatusTransitGatewayAttachmentSyncState,
+            Map<String, dynamic>
+          >(transitGatewayAttachmentSyncStates, (value) => value.toMap()),
     };
   }
 
   factory GetFirewallFirewallStatus.fromMap(Map<String, dynamic> map) {
     return GetFirewallFirewallStatus(
-      capacityUsageSummaries: pulumi.Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummary>(map['capacityUsageSummaries'], (value) => GetFirewallFirewallStatusCapacityUsageSummary.fromMap((value as Map).cast<String, dynamic>())),
-      configurationSyncStateSummary: map['configurationSyncStateSummary'] as String,
+      capacityUsageSummaries:
+          pulumi
+              .Input.decodeList<GetFirewallFirewallStatusCapacityUsageSummary>(
+            map['capacityUsageSummaries'],
+            (value) => GetFirewallFirewallStatusCapacityUsageSummary.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
+      configurationSyncStateSummary:
+          map['configurationSyncStateSummary'] as String,
       status: map['status'] as String,
-      syncStates: pulumi.Input.decodeList<GetFirewallFirewallStatusSyncState>(map['syncStates'], (value) => GetFirewallFirewallStatusSyncState.fromMap((value as Map).cast<String, dynamic>())),
-      transitGatewayAttachmentSyncStates: pulumi.Input.decodeList<GetFirewallFirewallStatusTransitGatewayAttachmentSyncState>(map['transitGatewayAttachmentSyncStates'], (value) => GetFirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap((value as Map).cast<String, dynamic>())),
+      syncStates: pulumi.Input.decodeList<GetFirewallFirewallStatusSyncState>(
+        map['syncStates'],
+        (value) => GetFirewallFirewallStatusSyncState.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
+      transitGatewayAttachmentSyncStates:
+          pulumi.Input.decodeList<
+            GetFirewallFirewallStatusTransitGatewayAttachmentSyncState
+          >(
+            map['transitGatewayAttachmentSyncStates'],
+            (value) =>
+                GetFirewallFirewallStatusTransitGatewayAttachmentSyncState.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

@@ -1,16 +1,19 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// More info about Metric: https://docs.apigee.com/api-platform/analytics/analytics-reference#metrics
 class GoogleCloudApigeeV1QueryMetric {
   /// Alias for the metric. Alias will be used to replace metric name in query results.
   final String? alias;
+
   /// Aggregation function: avg, min, max, or sum.
   final String? function;
+
   /// Metric name.
   final String name;
+
   /// One of `+`, `-`, `/`, `%`, `*`.
   final String? operator;
+
   /// Operand value should be provided when operator is set.
   final String? value;
 
@@ -48,4 +51,3 @@ class GoogleCloudApigeeV1QueryMetric {
     );
   }
 }
-

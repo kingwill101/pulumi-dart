@@ -19,10 +19,11 @@ class GetWorkloadIdentityPoolArgs {
     required String location,
     String? project,
     required String workloadIdentityPoolId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      workloadIdentityPoolId = pulumi.Input.asInput<String>(workloadIdentityPoolId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       workloadIdentityPoolId = pulumi.Input.asInput<String>(
+         workloadIdentityPoolId,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetWorkloadIdentityPoolArgs {
     );
   }
 }
-

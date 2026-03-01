@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Contains the alias and the aliased resource name of processor version.
 class GoogleCloudDocumentaiV1ProcessorVersionAliasResponse {
   /// The alias in the form of `processor_version` resource name.
   final String alias;
+
   /// The resource name of aliased processor version.
   final String processorVersion;
 
@@ -23,11 +23,12 @@ class GoogleCloudDocumentaiV1ProcessorVersionAliasResponse {
     };
   }
 
-  factory GoogleCloudDocumentaiV1ProcessorVersionAliasResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDocumentaiV1ProcessorVersionAliasResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDocumentaiV1ProcessorVersionAliasResponse(
       alias: map['alias'] as String,
       processorVersion: map['processorVersion'] as String,
     );
   }
 }
-

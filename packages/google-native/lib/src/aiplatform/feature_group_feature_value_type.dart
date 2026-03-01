@@ -23,4 +23,3 @@ enum FeatureGroupFeatureValueType {
     throw ArgumentError('Unknown FeatureGroupFeatureValueType value: $value');
   }
 }
-

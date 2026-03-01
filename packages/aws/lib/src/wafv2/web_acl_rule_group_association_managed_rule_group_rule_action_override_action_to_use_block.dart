@@ -4,7 +4,8 @@ import 'web_acl_rule_group_association_managed_rule_group_rule_action_override_a
 
 class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlock {
   /// Custom response for blocked requests. See below.
-  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse? customResponse;
+  final WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse?
+  customResponse;
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlock].
   /// [customResponse] Custom response for blocked requests. See below.
@@ -14,14 +15,21 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlo
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'customResponse': ?customResponse == null ? null : customResponse!.toMap(),
+      'customResponse': ?customResponse == null
+          ? null
+          : customResponse!.toMap(),
     };
   }
 
-  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlock.fromMap(Map<String, dynamic> map) {
+  factory WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlock.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlock(
-      customResponse: map['customResponse'] == null ? null : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse.fromMap((map['customResponse'] as Map).cast<String, dynamic>()),
+      customResponse: map['customResponse'] == null
+          ? null
+          : WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponse.fromMap(
+              (map['customResponse'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

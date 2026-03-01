@@ -7,16 +7,14 @@ import 'grpc_route_fault_injection_policy_delay_networkservices_v1beta1.dart';
 class GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1 {
   /// The specification for aborting to client requests.
   final GrpcRouteFaultInjectionPolicyAbortNetworkservicesV1beta1? abort;
+
   /// The specification for injecting delay to client requests.
   final GrpcRouteFaultInjectionPolicyDelayNetworkservicesV1beta1? delay;
 
   /// Creates a new [GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1].
   /// [abort] The specification for aborting to client requests.
   /// [delay] The specification for injecting delay to client requests.
-  GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1({
-    this.abort,
-    this.delay,
-  });
+  GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1({this.abort, this.delay});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,11 +23,20 @@ class GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1 {
     };
   }
 
-  factory GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1.fromMap(Map<String, dynamic> map) {
+  factory GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrpcRouteFaultInjectionPolicyNetworkservicesV1beta1(
-      abort: map['abort'] == null ? null : GrpcRouteFaultInjectionPolicyAbortNetworkservicesV1beta1.fromMap((map['abort'] as Map).cast<String, dynamic>()),
-      delay: map['delay'] == null ? null : GrpcRouteFaultInjectionPolicyDelayNetworkservicesV1beta1.fromMap((map['delay'] as Map).cast<String, dynamic>()),
+      abort: map['abort'] == null
+          ? null
+          : GrpcRouteFaultInjectionPolicyAbortNetworkservicesV1beta1.fromMap(
+              (map['abort'] as Map).cast<String, dynamic>(),
+            ),
+      delay: map['delay'] == null
+          ? null
+          : GrpcRouteFaultInjectionPolicyDelayNetworkservicesV1beta1.fromMap(
+              (map['delay'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

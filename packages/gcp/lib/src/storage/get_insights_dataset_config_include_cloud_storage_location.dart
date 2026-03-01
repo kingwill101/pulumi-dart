@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInsightsDatasetConfigIncludeCloudStorageLocation {
   /// The list of cloud storage locations to include in the DatasetConfig.
   final List<String> locations;
@@ -12,15 +11,14 @@ class GetInsightsDatasetConfigIncludeCloudStorageLocation {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'locations': locations,
-    };
+    return <String, dynamic>{'locations': locations};
   }
 
-  factory GetInsightsDatasetConfigIncludeCloudStorageLocation.fromMap(Map<String, dynamic> map) {
+  factory GetInsightsDatasetConfigIncludeCloudStorageLocation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetInsightsDatasetConfigIncludeCloudStorageLocation(
       locations: (map['locations'] as List).cast<String>(),
     );
   }
 }
-

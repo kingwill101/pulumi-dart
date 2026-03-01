@@ -7,6 +7,7 @@ import 'google_privacy_dlp_v2_requested_deidentify_options_response.dart';
 class GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse {
   /// Stats about the de-identification operation.
   final GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse deidentifyStats;
+
   /// De-identification config used for the request.
   final GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse requestedOptions;
 
@@ -25,11 +26,18 @@ class GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse {
     };
   }
 
-  factory GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse(
-      deidentifyStats: GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse.fromMap((map['deidentifyStats'] as Map).cast<String, dynamic>()),
-      requestedOptions: GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse.fromMap((map['requestedOptions'] as Map).cast<String, dynamic>()),
+      deidentifyStats:
+          GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse.fromMap(
+            (map['deidentifyStats'] as Map).cast<String, dynamic>(),
+          ),
+      requestedOptions:
+          GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse.fromMap(
+            (map['requestedOptions'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

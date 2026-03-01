@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// PathOverride. Path message defines path override for HTTP targets.
 class PathOverride {
   /// The URI path (e.g., /users/1234). Default is an empty string.
@@ -8,14 +7,10 @@ class PathOverride {
 
   /// Creates a new [PathOverride].
   /// [path] The URI path (e.g., /users/1234). Default is an empty string.
-  PathOverride({
-    this.path,
-  });
+  PathOverride({this.path});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'path': ?path,
-    };
+    return <String, dynamic>{'path': ?path};
   }
 
   factory PathOverride.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class PathOverride {
     );
   }
 }
-

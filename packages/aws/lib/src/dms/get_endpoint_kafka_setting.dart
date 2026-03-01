@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetEndpointKafkaSetting {
   final String broker;
   final bool includeControlDetails;
@@ -112,4 +111,3 @@ class GetEndpointKafkaSetting {
     );
   }
 }
-

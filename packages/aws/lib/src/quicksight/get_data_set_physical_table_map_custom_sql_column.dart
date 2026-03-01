@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetDataSetPhysicalTableMapCustomSqlColumn {
   final String name;
   final String type;
@@ -14,17 +13,15 @@ class GetDataSetPhysicalTableMapCustomSqlColumn {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'type': type,
-    };
+    return <String, dynamic>{'name': name, 'type': type};
   }
 
-  factory GetDataSetPhysicalTableMapCustomSqlColumn.fromMap(Map<String, dynamic> map) {
+  factory GetDataSetPhysicalTableMapCustomSqlColumn.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetDataSetPhysicalTableMapCustomSqlColumn(
       name: map['name'] as String,
       type: map['type'] as String,
     );
   }
 }
-

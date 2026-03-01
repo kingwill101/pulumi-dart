@@ -13,11 +13,8 @@ class GetEnvgroupArgs {
   /// Creates a new [GetEnvgroupArgs].
   /// [envgroupId] Required.
   /// [organizationId] Required.
-  GetEnvgroupArgs({
-    required String envgroupId,
-    required String organizationId,
-  }) :
-      envgroupId = pulumi.Input.asInput<String>(envgroupId),
+  GetEnvgroupArgs({required String envgroupId, required String organizationId})
+    : envgroupId = pulumi.Input.asInput<String>(envgroupId),
       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetEnvgroupArgs {
     );
   }
 }
-

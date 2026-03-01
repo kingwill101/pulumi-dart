@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration {
   /// The Amazon Resource Name (ARN) of the destination Amazon CloudWatch Logs log group. The ARN must end with `:*`
   final String logGroupArn;
@@ -12,15 +11,14 @@ class ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'logGroupArn': logGroupArn,
-    };
+    return <String, dynamic>{'logGroupArn': logGroupArn};
   }
 
-  factory ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration.fromMap(Map<String, dynamic> map) {
+  factory ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration(
       logGroupArn: map['logGroupArn'] as String,
     );
   }
 }
-

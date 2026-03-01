@@ -11,21 +11,14 @@ class GetV1IamPolicyArgs {
 
   /// Creates a new [GetV1IamPolicyArgs].
   /// [v1Id] Required.
-  GetV1IamPolicyArgs({
-    required String v1Id,
-  }) :
-      v1Id = pulumi.Input.asInput<String>(v1Id);
+  GetV1IamPolicyArgs({required String v1Id})
+    : v1Id = pulumi.Input.asInput<String>(v1Id);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'v1Id': v1Id,
-    };
+    return <String, dynamic>{'v1Id': v1Id};
   }
 
   factory GetV1IamPolicyArgs.fromMap(Map<String, dynamic> map) {
-    return GetV1IamPolicyArgs(
-      v1Id: map['v1Id'] as String,
-    );
+    return GetV1IamPolicyArgs(v1Id: map['v1Id'] as String);
   }
 }
-

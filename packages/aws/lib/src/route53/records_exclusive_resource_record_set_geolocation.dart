@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RecordsExclusiveResourceRecordSetGeolocation {
   final String? continentCode;
   final String? countryCode;
@@ -24,12 +23,19 @@ class RecordsExclusiveResourceRecordSetGeolocation {
     };
   }
 
-  factory RecordsExclusiveResourceRecordSetGeolocation.fromMap(Map<String, dynamic> map) {
+  factory RecordsExclusiveResourceRecordSetGeolocation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RecordsExclusiveResourceRecordSetGeolocation(
-      continentCode: map['continentCode'] == null ? null : map['continentCode'] as String,
-      countryCode: map['countryCode'] == null ? null : map['countryCode'] as String,
-      subdivisionCode: map['subdivisionCode'] == null ? null : map['subdivisionCode'] as String,
+      continentCode: map['continentCode'] == null
+          ? null
+          : map['continentCode'] as String,
+      countryCode: map['countryCode'] == null
+          ? null
+          : map['countryCode'] as String,
+      subdivisionCode: map['subdivisionCode'] == null
+          ? null
+          : map['subdivisionCode'] as String,
     );
   }
 }
-

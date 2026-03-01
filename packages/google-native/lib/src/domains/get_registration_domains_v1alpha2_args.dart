@@ -19,10 +19,9 @@ class GetRegistrationDomainsV1alpha2Args {
     required String location,
     String? project,
     required String registrationId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      registrationId = pulumi.Input.asInput<String>(registrationId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       registrationId = pulumi.Input.asInput<String>(registrationId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegistrationDomainsV1alpha2Args {
     );
   }
 }
-

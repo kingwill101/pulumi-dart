@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
 class DsRecordResponseDomainsV1alpha2 {
   /// The algorithm used to generate the referenced DNSKEY.
   final String algorithm;
+
   /// The digest generated from the referenced DNSKEY.
   final String digest;
+
   /// The hash function used to generate the digest of the referenced DNSKEY.
   final String digestType;
+
   /// The key tag of the record. Must be set in range 0 -- 65535.
   final int keyTag;
 
@@ -42,4 +44,3 @@ class DsRecordResponseDomainsV1alpha2 {
     );
   }
 }
-

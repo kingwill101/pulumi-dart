@@ -147,8 +147,10 @@ import 'backup_policy_backup_policy.dart';
 class BackupPolicy extends pulumi.CustomResource {
   /// A backup_policy object (documented below).
   late final pulumi.Output<BackupPolicyBackupPolicy> backupPolicy;
+
   /// The ID of the EFS file system.
   late final pulumi.Output<String> fileSystemId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
 
@@ -161,12 +163,14 @@ class BackupPolicy extends pulumi.CustomResource {
     BackupPolicyArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:efs/backupPolicy:BackupPolicy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.backupPolicy = registerOutput<BackupPolicyBackupPolicy>('backupPolicy');
+         'aws:efs/backupPolicy:BackupPolicy',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
+    this.backupPolicy = registerOutput<BackupPolicyBackupPolicy>(
+      'backupPolicy',
+    );
     this.fileSystemId = registerOutput<String>('fileSystemId');
     this.region = registerOutput<String>('region');
   }

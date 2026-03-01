@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSiteArgs {
   /// Identifier of the Site.
   final pulumi.Input<String>? id;
+
   /// Name of the Site.
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -18,21 +20,13 @@ class GetSiteArgs {
   /// [id] Identifier of the Site.
   /// [name] Name of the Site.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetSiteArgs({
-    String? id,
-    String? name,
-    String? region,
-  }) :
-      id = pulumi.Input.asOptionalInput<String>(id),
+  GetSiteArgs({String? id, String? name, String? region})
+    : id = pulumi.Input.asOptionalInput<String>(id),
       name = pulumi.Input.asOptionalInput<String>(name),
       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': ?id,
-      'name': ?name,
-      'region': ?region,
-    };
+    return <String, dynamic>{'id': ?id, 'name': ?name, 'region': ?region};
   }
 
   factory GetSiteArgs.fromMap(Map<String, dynamic> map) {
@@ -43,4 +37,3 @@ class GetSiteArgs {
     );
   }
 }
-

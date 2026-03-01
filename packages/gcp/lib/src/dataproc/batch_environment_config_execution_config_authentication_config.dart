@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BatchEnvironmentConfigExecutionConfigAuthenticationConfig {
   /// Authentication type for the user workload running in containers.
   /// Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
@@ -18,10 +17,14 @@ class BatchEnvironmentConfigExecutionConfigAuthenticationConfig {
     };
   }
 
-  factory BatchEnvironmentConfigExecutionConfigAuthenticationConfig.fromMap(Map<String, dynamic> map) {
+  factory BatchEnvironmentConfigExecutionConfigAuthenticationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BatchEnvironmentConfigExecutionConfigAuthenticationConfig(
-      userWorkloadAuthenticationType: map['userWorkloadAuthenticationType'] == null ? null : map['userWorkloadAuthenticationType'] as String,
+      userWorkloadAuthenticationType:
+          map['userWorkloadAuthenticationType'] == null
+          ? null
+          : map['userWorkloadAuthenticationType'] as String,
     );
   }
 }
-

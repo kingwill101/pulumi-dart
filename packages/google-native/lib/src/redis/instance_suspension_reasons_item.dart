@@ -14,4 +14,3 @@ enum InstanceSuspensionReasonsItem {
     throw ArgumentError('Unknown InstanceSuspensionReasonsItem value: $value');
   }
 }
-

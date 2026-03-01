@@ -8,14 +8,19 @@ import 'date_shift_config_response_healthcare_v1beta1.dart';
 class InfoTypeTransformationResponseHealthcareV1beta1 {
   /// Config for character mask.
   final CharacterMaskConfigResponseHealthcareV1beta1 characterMaskConfig;
+
   /// Config for crypto hash.
   final CryptoHashConfigResponseHealthcareV1beta1 cryptoHashConfig;
+
   /// Config for date shift.
   final DateShiftConfigResponseHealthcareV1beta1 dateShiftConfig;
+
   /// `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
   final List<String> infoTypes;
+
   /// Config for text redaction.
   final Map<String, dynamic> redactConfig;
+
   /// Config for replace with InfoType.
   final Map<String, dynamic> replaceWithInfoTypeConfig;
 
@@ -46,15 +51,23 @@ class InfoTypeTransformationResponseHealthcareV1beta1 {
     };
   }
 
-  factory InfoTypeTransformationResponseHealthcareV1beta1.fromMap(Map<String, dynamic> map) {
+  factory InfoTypeTransformationResponseHealthcareV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InfoTypeTransformationResponseHealthcareV1beta1(
-      characterMaskConfig: CharacterMaskConfigResponseHealthcareV1beta1.fromMap((map['characterMaskConfig'] as Map).cast<String, dynamic>()),
-      cryptoHashConfig: CryptoHashConfigResponseHealthcareV1beta1.fromMap((map['cryptoHashConfig'] as Map).cast<String, dynamic>()),
-      dateShiftConfig: DateShiftConfigResponseHealthcareV1beta1.fromMap((map['dateShiftConfig'] as Map).cast<String, dynamic>()),
+      characterMaskConfig: CharacterMaskConfigResponseHealthcareV1beta1.fromMap(
+        (map['characterMaskConfig'] as Map).cast<String, dynamic>(),
+      ),
+      cryptoHashConfig: CryptoHashConfigResponseHealthcareV1beta1.fromMap(
+        (map['cryptoHashConfig'] as Map).cast<String, dynamic>(),
+      ),
+      dateShiftConfig: DateShiftConfigResponseHealthcareV1beta1.fromMap(
+        (map['dateShiftConfig'] as Map).cast<String, dynamic>(),
+      ),
       infoTypes: (map['infoTypes'] as List).cast<String>(),
       redactConfig: (map['redactConfig'] as Map).cast<String, dynamic>(),
-      replaceWithInfoTypeConfig: (map['replaceWithInfoTypeConfig'] as Map).cast<String, dynamic>(),
+      replaceWithInfoTypeConfig: (map['replaceWithInfoTypeConfig'] as Map)
+          .cast<String, dynamic>(),
     );
   }
 }
-

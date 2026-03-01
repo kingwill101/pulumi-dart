@@ -12,7 +12,8 @@ enum BackendBucketCompressionModeComputeBeta {
         return item;
       }
     }
-    throw ArgumentError('Unknown BackendBucketCompressionModeComputeBeta value: $value');
+    throw ArgumentError(
+      'Unknown BackendBucketCompressionModeComputeBeta value: $value',
+    );
   }
 }
-

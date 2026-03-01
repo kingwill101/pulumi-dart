@@ -25,12 +25,13 @@ class GetVmwareClusterVmwareNodePoolIamPolicyArgs {
     String? project,
     required String vmwareClusterId,
     required String vmwareNodePoolId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
-      vmwareNodePoolId = pulumi.Input.asInput<String>(vmwareNodePoolId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       vmwareClusterId = pulumi.Input.asInput<String>(vmwareClusterId),
+       vmwareNodePoolId = pulumi.Input.asInput<String>(vmwareNodePoolId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,14 +43,18 @@ class GetVmwareClusterVmwareNodePoolIamPolicyArgs {
     };
   }
 
-  factory GetVmwareClusterVmwareNodePoolIamPolicyArgs.fromMap(Map<String, dynamic> map) {
+  factory GetVmwareClusterVmwareNodePoolIamPolicyArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVmwareClusterVmwareNodePoolIamPolicyArgs(
       location: map['location'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
       vmwareClusterId: map['vmwareClusterId'] as String,
       vmwareNodePoolId: map['vmwareNodePoolId'] as String,
     );
   }
 }
-

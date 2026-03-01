@@ -230,8 +230,7 @@ Future<GetAccessKeysResult> getAccessKeys(
 ///   accountAlias: ${current.accountAlias}
 /// ```
 /// [options] Invoke options controlling this call.
-Future<GetAccountAliasResult> getAccountAlias(
-  {
+Future<GetAccountAliasResult> getAccountAlias({
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;

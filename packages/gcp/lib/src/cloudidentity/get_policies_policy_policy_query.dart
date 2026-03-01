@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetPoliciesPolicyPolicyQuery {
   /// The group that the policy applies to.
   final String group;
+
   /// The org unit that the policy applies to.
   final String orgUnit;
+
   /// The query that defines which entities the policy applies to.
   final String query;
+
   /// The sort order of the policy.
   final double sortOrder;
 
@@ -41,4 +43,3 @@ class GetPoliciesPolicyPolicyQuery {
     );
   }
 }
-

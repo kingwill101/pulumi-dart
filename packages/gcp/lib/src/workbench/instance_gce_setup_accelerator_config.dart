@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstanceGceSetupAcceleratorConfig {
   /// Optional. Count of cores of this accelerator.
   final String? coreCount;
+
   /// Optional. Type of this accelerator.
   /// Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
   final String? type;
@@ -11,16 +11,10 @@ class InstanceGceSetupAcceleratorConfig {
   /// Creates a new [InstanceGceSetupAcceleratorConfig].
   /// [coreCount] Optional. Count of cores of this accelerator.
   /// [type] Optional. Type of this accelerator.
-  InstanceGceSetupAcceleratorConfig({
-    this.coreCount,
-    this.type,
-  });
+  InstanceGceSetupAcceleratorConfig({this.coreCount, this.type});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'coreCount': ?coreCount,
-      'type': ?type,
-    };
+    return <String, dynamic>{'coreCount': ?coreCount, 'type': ?type};
   }
 
   factory InstanceGceSetupAcceleratorConfig.fromMap(Map<String, dynamic> map) {
@@ -30,4 +24,3 @@ class InstanceGceSetupAcceleratorConfig {
     );
   }
 }
-

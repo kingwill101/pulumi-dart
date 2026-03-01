@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
 class ConfidentialInstanceConfigResponse {
   /// Optional. Defines whether the instance should have confidential compute enabled.
@@ -8,9 +7,7 @@ class ConfidentialInstanceConfigResponse {
 
   /// Creates a new [ConfidentialInstanceConfigResponse].
   /// [enableConfidentialCompute] Optional. Defines whether the instance should have confidential compute enabled.
-  ConfidentialInstanceConfigResponse({
-    required this.enableConfidentialCompute,
-  });
+  ConfidentialInstanceConfigResponse({required this.enableConfidentialCompute});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -24,4 +21,3 @@ class ConfidentialInstanceConfigResponse {
     );
   }
 }
-

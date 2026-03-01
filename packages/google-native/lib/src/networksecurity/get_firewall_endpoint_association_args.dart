@@ -19,10 +19,11 @@ class GetFirewallEndpointAssociationArgs {
     required String firewallEndpointAssociationId,
     required String location,
     String? project,
-  }) :
-      firewallEndpointAssociationId = pulumi.Input.asInput<String>(firewallEndpointAssociationId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : firewallEndpointAssociationId = pulumi.Input.asInput<String>(
+         firewallEndpointAssociationId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,10 +35,10 @@ class GetFirewallEndpointAssociationArgs {
 
   factory GetFirewallEndpointAssociationArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallEndpointAssociationArgs(
-      firewallEndpointAssociationId: map['firewallEndpointAssociationId'] as String,
+      firewallEndpointAssociationId:
+          map['firewallEndpointAssociationId'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

@@ -10,20 +10,31 @@ class IdentityServiceMembershipSpecGkehubV1alpha {
 
   /// Creates a new [IdentityServiceMembershipSpecGkehubV1alpha].
   /// [authMethods] A member may support multiple auth methods.
-  IdentityServiceMembershipSpecGkehubV1alpha({
-    this.authMethods,
-  });
+  IdentityServiceMembershipSpecGkehubV1alpha({this.authMethods});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authMethods': ?authMethods == null ? null : pulumi.Input.encodeList<IdentityServiceAuthMethodGkehubV1alpha, Map<String, dynamic>>(authMethods!, (value) => value.toMap()),
+      'authMethods': ?authMethods == null
+          ? null
+          : pulumi.Input.encodeList<
+              IdentityServiceAuthMethodGkehubV1alpha,
+              Map<String, dynamic>
+            >(authMethods!, (value) => value.toMap()),
     };
   }
 
-  factory IdentityServiceMembershipSpecGkehubV1alpha.fromMap(Map<String, dynamic> map) {
+  factory IdentityServiceMembershipSpecGkehubV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdentityServiceMembershipSpecGkehubV1alpha(
-      authMethods: map['authMethods'] == null ? null : pulumi.Input.decodeList<IdentityServiceAuthMethodGkehubV1alpha>(map['authMethods'], (value) => IdentityServiceAuthMethodGkehubV1alpha.fromMap((value as Map).cast<String, dynamic>())),
+      authMethods: map['authMethods'] == null
+          ? null
+          : pulumi.Input.decodeList<IdentityServiceAuthMethodGkehubV1alpha>(
+              map['authMethods'],
+              (value) => IdentityServiceAuthMethodGkehubV1alpha.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
     );
   }
 }
-

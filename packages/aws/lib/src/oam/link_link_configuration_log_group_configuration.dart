@@ -1,26 +1,22 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class LinkLinkConfigurationLogGroupConfiguration {
   /// Filter string that specifies which log groups are to share their log events with the monitoring account. See [LogGroupConfiguration](https://docs.aws.amazon.com/OAM/latest/APIReference/API_LogGroupConfiguration.html) for details.
   final String filter;
 
   /// Creates a new [LinkLinkConfigurationLogGroupConfiguration].
   /// [filter] Filter string that specifies which log groups are to share their log events with the monitoring account. See [LogGroupConfiguration](https://docs.aws.amazon.com/OAM/latest/APIReference/API_LogGroupConfiguration.html) for details.
-  LinkLinkConfigurationLogGroupConfiguration({
-    required this.filter,
-  });
+  LinkLinkConfigurationLogGroupConfiguration({required this.filter});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': filter,
-    };
+    return <String, dynamic>{'filter': filter};
   }
 
-  factory LinkLinkConfigurationLogGroupConfiguration.fromMap(Map<String, dynamic> map) {
+  factory LinkLinkConfigurationLogGroupConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return LinkLinkConfigurationLogGroupConfiguration(
       filter: map['filter'] as String,
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption {
   /// The method used to add instances to a replacement environment.
   /// * `DISCOVER_EXISTING`: Use instances that already exist or will be created manually.
@@ -14,15 +13,14 @@ class DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'action': ?action,
-    };
+    return <String, dynamic>{'action': ?action};
   }
 
-  factory DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption.fromMap(Map<String, dynamic> map) {
+  factory DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption(
       action: map['action'] == null ? null : map['action'] as String,
     );
   }
 }
-

@@ -9,16 +9,22 @@ import 'destination_config.dart';
 class EventingConfig {
   /// Additional eventing related field values
   final List<ConfigVariable>? additionalVariables;
+
   /// Auth details for the webhook adapter.
   final AuthConfig? authConfig;
+
   /// Encryption key (can be either Google managed or CMEK).
   final ConfigVariable? encryptionKey;
+
   /// Enrichment Enabled.
   final bool? enrichmentEnabled;
+
   /// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
   final String? eventsListenerIngressEndpoint;
+
   /// Optional. Private Connectivity Enabled.
   final bool? privateConnectivityEnabled;
+
   /// Registration endpoint for auto registration.
   final DestinationConfig? registrationDestinationConfig;
 
@@ -42,26 +48,60 @@ class EventingConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalVariables': ?additionalVariables == null ? null : pulumi.Input.encodeList<ConfigVariable, Map<String, dynamic>>(additionalVariables!, (value) => value.toMap()),
+      'additionalVariables': ?additionalVariables == null
+          ? null
+          : pulumi.Input.encodeList<ConfigVariable, Map<String, dynamic>>(
+              additionalVariables!,
+              (value) => value.toMap(),
+            ),
       'authConfig': ?authConfig == null ? null : authConfig!.toMap(),
       'encryptionKey': ?encryptionKey == null ? null : encryptionKey!.toMap(),
       'enrichmentEnabled': ?enrichmentEnabled,
       'eventsListenerIngressEndpoint': ?eventsListenerIngressEndpoint,
       'privateConnectivityEnabled': ?privateConnectivityEnabled,
-      'registrationDestinationConfig': ?registrationDestinationConfig == null ? null : registrationDestinationConfig!.toMap(),
+      'registrationDestinationConfig': ?registrationDestinationConfig == null
+          ? null
+          : registrationDestinationConfig!.toMap(),
     };
   }
 
   factory EventingConfig.fromMap(Map<String, dynamic> map) {
     return EventingConfig(
-      additionalVariables: map['additionalVariables'] == null ? null : pulumi.Input.decodeList<ConfigVariable>(map['additionalVariables'], (value) => ConfigVariable.fromMap((value as Map).cast<String, dynamic>())),
-      authConfig: map['authConfig'] == null ? null : AuthConfig.fromMap((map['authConfig'] as Map).cast<String, dynamic>()),
-      encryptionKey: map['encryptionKey'] == null ? null : ConfigVariable.fromMap((map['encryptionKey'] as Map).cast<String, dynamic>()),
-      enrichmentEnabled: map['enrichmentEnabled'] == null ? null : map['enrichmentEnabled'] as bool,
-      eventsListenerIngressEndpoint: map['eventsListenerIngressEndpoint'] == null ? null : map['eventsListenerIngressEndpoint'] as String,
-      privateConnectivityEnabled: map['privateConnectivityEnabled'] == null ? null : map['privateConnectivityEnabled'] as bool,
-      registrationDestinationConfig: map['registrationDestinationConfig'] == null ? null : DestinationConfig.fromMap((map['registrationDestinationConfig'] as Map).cast<String, dynamic>()),
+      additionalVariables: map['additionalVariables'] == null
+          ? null
+          : pulumi.Input.decodeList<ConfigVariable>(
+              map['additionalVariables'],
+              (value) => ConfigVariable.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      authConfig: map['authConfig'] == null
+          ? null
+          : AuthConfig.fromMap(
+              (map['authConfig'] as Map).cast<String, dynamic>(),
+            ),
+      encryptionKey: map['encryptionKey'] == null
+          ? null
+          : ConfigVariable.fromMap(
+              (map['encryptionKey'] as Map).cast<String, dynamic>(),
+            ),
+      enrichmentEnabled: map['enrichmentEnabled'] == null
+          ? null
+          : map['enrichmentEnabled'] as bool,
+      eventsListenerIngressEndpoint:
+          map['eventsListenerIngressEndpoint'] == null
+          ? null
+          : map['eventsListenerIngressEndpoint'] as String,
+      privateConnectivityEnabled: map['privateConnectivityEnabled'] == null
+          ? null
+          : map['privateConnectivityEnabled'] as bool,
+      registrationDestinationConfig:
+          map['registrationDestinationConfig'] == null
+          ? null
+          : DestinationConfig.fromMap(
+              (map['registrationDestinationConfig'] as Map)
+                  .cast<String, dynamic>(),
+            ),
     );
   }
 }
-

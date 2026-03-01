@@ -5,7 +5,9 @@ import 'confidential_instance_config_confidential_instance_type_compute_beta.dar
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfigComputeBeta {
   /// Defines the type of technology used by the confidential instance.
-  final ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta? confidentialInstanceType;
+  final ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta?
+  confidentialInstanceType;
+
   /// Defines whether the instance should have confidential compute enabled.
   final bool? enableConfidentialCompute;
 
@@ -19,16 +21,25 @@ class ConfidentialInstanceConfigComputeBeta {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'confidentialInstanceType': ?confidentialInstanceType == null ? null : confidentialInstanceType!.value,
+      'confidentialInstanceType': ?confidentialInstanceType == null
+          ? null
+          : confidentialInstanceType!.value,
       'enableConfidentialCompute': ?enableConfidentialCompute,
     };
   }
 
-  factory ConfidentialInstanceConfigComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory ConfidentialInstanceConfigComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfidentialInstanceConfigComputeBeta(
-      confidentialInstanceType: map['confidentialInstanceType'] == null ? null : ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta.fromValue(map['confidentialInstanceType'] as String),
-      enableConfidentialCompute: map['enableConfidentialCompute'] == null ? null : map['enableConfidentialCompute'] as bool,
+      confidentialInstanceType: map['confidentialInstanceType'] == null
+          ? null
+          : ConfidentialInstanceConfigConfidentialInstanceTypeComputeBeta.fromValue(
+              map['confidentialInstanceType'] as String,
+            ),
+      enableConfidentialCompute: map['enableConfidentialCompute'] == null
+          ? null
+          : map['enableConfidentialCompute'] as bool,
     );
   }
 }
-

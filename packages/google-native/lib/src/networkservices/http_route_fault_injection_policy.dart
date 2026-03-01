@@ -7,16 +7,14 @@ import 'http_route_fault_injection_policy_delay.dart';
 class HttpRouteFaultInjectionPolicy {
   /// The specification for aborting to client requests.
   final HttpRouteFaultInjectionPolicyAbort? abort;
+
   /// The specification for injecting delay to client requests.
   final HttpRouteFaultInjectionPolicyDelay? delay;
 
   /// Creates a new [HttpRouteFaultInjectionPolicy].
   /// [abort] The specification for aborting to client requests.
   /// [delay] The specification for injecting delay to client requests.
-  HttpRouteFaultInjectionPolicy({
-    this.abort,
-    this.delay,
-  });
+  HttpRouteFaultInjectionPolicy({this.abort, this.delay});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,9 +25,16 @@ class HttpRouteFaultInjectionPolicy {
 
   factory HttpRouteFaultInjectionPolicy.fromMap(Map<String, dynamic> map) {
     return HttpRouteFaultInjectionPolicy(
-      abort: map['abort'] == null ? null : HttpRouteFaultInjectionPolicyAbort.fromMap((map['abort'] as Map).cast<String, dynamic>()),
-      delay: map['delay'] == null ? null : HttpRouteFaultInjectionPolicyDelay.fromMap((map['delay'] as Map).cast<String, dynamic>()),
+      abort: map['abort'] == null
+          ? null
+          : HttpRouteFaultInjectionPolicyAbort.fromMap(
+              (map['abort'] as Map).cast<String, dynamic>(),
+            ),
+      delay: map['delay'] == null
+          ? null
+          : HttpRouteFaultInjectionPolicyDelay.fromMap(
+              (map['delay'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

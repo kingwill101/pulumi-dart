@@ -7,8 +7,10 @@ import 'event_subscription_destination_type.dart';
 class EventSubscriptionDestination {
   /// OPTION 1: Hit an endpoint when we receive an event.
   final EndPoint? endpoint;
+
   /// Service account needed for runtime plane to trigger IP workflow.
   final String? serviceAccount;
+
   /// type of the destination
   final EventSubscriptionDestinationType? type;
 
@@ -16,11 +18,7 @@ class EventSubscriptionDestination {
   /// [endpoint] OPTION 1: Hit an endpoint when we receive an event.
   /// [serviceAccount] Service account needed for runtime plane to trigger IP workflow.
   /// [type] type of the destination
-  EventSubscriptionDestination({
-    this.endpoint,
-    this.serviceAccount,
-    this.type,
-  });
+  EventSubscriptionDestination({this.endpoint, this.serviceAccount, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,10 +30,15 @@ class EventSubscriptionDestination {
 
   factory EventSubscriptionDestination.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionDestination(
-      endpoint: map['endpoint'] == null ? null : EndPoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>()),
-      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
-      type: map['type'] == null ? null : EventSubscriptionDestinationType.fromValue(map['type'] as String),
+      endpoint: map['endpoint'] == null
+          ? null
+          : EndPoint.fromMap((map['endpoint'] as Map).cast<String, dynamic>()),
+      serviceAccount: map['serviceAccount'] == null
+          ? null
+          : map['serviceAccount'] as String,
+      type: map['type'] == null
+          ? null
+          : EventSubscriptionDestinationType.fromValue(map['type'] as String),
     );
   }
 }
-

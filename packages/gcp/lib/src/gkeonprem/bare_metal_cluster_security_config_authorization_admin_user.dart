@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class BareMetalClusterSecurityConfigAuthorizationAdminUser {
   /// The name of the user, e.g. `my-gcp-id@gmail.com`.
   final String username;
@@ -12,15 +11,14 @@ class BareMetalClusterSecurityConfigAuthorizationAdminUser {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'username': username,
-    };
+    return <String, dynamic>{'username': username};
   }
 
-  factory BareMetalClusterSecurityConfigAuthorizationAdminUser.fromMap(Map<String, dynamic> map) {
+  factory BareMetalClusterSecurityConfigAuthorizationAdminUser.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BareMetalClusterSecurityConfigAuthorizationAdminUser(
       username: map['username'] as String,
     );
   }
 }
-

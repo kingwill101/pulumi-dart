@@ -19,10 +19,9 @@ class GetConnectionProfileArgs {
     required String connectionProfileId,
     required String location,
     String? project,
-  }) :
-      connectionProfileId = pulumi.Input.asInput<String>(connectionProfileId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : connectionProfileId = pulumi.Input.asInput<String>(connectionProfileId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetConnectionProfileArgs {
     );
   }
 }
-

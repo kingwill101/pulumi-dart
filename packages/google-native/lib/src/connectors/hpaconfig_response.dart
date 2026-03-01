@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Autoscaling config for connector deployment system metrics.
 class HPAConfigResponse {
   /// Percent CPU utilization where HPA triggers autoscaling.
   final String cpuUtilizationThreshold;
+
   /// Percent Memory utilization where HPA triggers autoscaling.
   final String memoryUtilizationThreshold;
 
@@ -30,4 +30,3 @@ class HPAConfigResponse {
     );
   }
 }
-

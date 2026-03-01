@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8 will have their services ingested as this type.
 class MeshIstioResponse {
   /// Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
   final String meshUid;
+
   /// The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics.
   final String serviceName;
+
   /// The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
   final String serviceNamespace;
 
@@ -36,4 +37,3 @@ class MeshIstioResponse {
     );
   }
 }
-

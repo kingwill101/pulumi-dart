@@ -26,12 +26,16 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse {
     };
   }
 
-  factory GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(Map<String, dynamic> map) {
+  factory GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationResponse(
-      configSource: GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap((map['configSource'] as Map).cast<String, dynamic>()),
+      configSource:
+          GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse.fromMap(
+            (map['configSource'] as Map).cast<String, dynamic>(),
+          ),
       environment: (map['environment'] as Map).cast<String, String>(),
       parameters: (map['parameters'] as Map).cast<String, String>(),
     );
   }
 }
-

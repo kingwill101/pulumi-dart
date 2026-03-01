@@ -8,8 +8,10 @@ import 'log_config_data_access_options_response.dart';
 class LogConfigResponse {
   /// This is deprecated and has no effect. Do not use.
   final LogConfigCloudAuditOptionsResponse cloudAudit;
+
   /// This is deprecated and has no effect. Do not use.
   final LogConfigCounterOptionsResponse counter;
+
   /// This is deprecated and has no effect. Do not use.
   final LogConfigDataAccessOptionsResponse dataAccess;
 
@@ -33,10 +35,15 @@ class LogConfigResponse {
 
   factory LogConfigResponse.fromMap(Map<String, dynamic> map) {
     return LogConfigResponse(
-      cloudAudit: LogConfigCloudAuditOptionsResponse.fromMap((map['cloudAudit'] as Map).cast<String, dynamic>()),
-      counter: LogConfigCounterOptionsResponse.fromMap((map['counter'] as Map).cast<String, dynamic>()),
-      dataAccess: LogConfigDataAccessOptionsResponse.fromMap((map['dataAccess'] as Map).cast<String, dynamic>()),
+      cloudAudit: LogConfigCloudAuditOptionsResponse.fromMap(
+        (map['cloudAudit'] as Map).cast<String, dynamic>(),
+      ),
+      counter: LogConfigCounterOptionsResponse.fromMap(
+        (map['counter'] as Map).cast<String, dynamic>(),
+      ),
+      dataAccess: LogConfigDataAccessOptionsResponse.fromMap(
+        (map['dataAccess'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

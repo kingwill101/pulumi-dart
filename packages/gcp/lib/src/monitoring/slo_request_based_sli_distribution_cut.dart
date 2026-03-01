@@ -8,6 +8,7 @@ class SloRequestBasedSliDistributionCut {
   /// Must have ValueType = DISTRIBUTION and
   /// MetricKind = DELTA or MetricKind = CUMULATIVE.
   final String distributionFilter;
+
   /// Range of numerical values. The computed good_service
   /// will be the count of values x in the Distribution such
   /// that range.min <= x <= range.max. inclusive of min and
@@ -34,8 +35,9 @@ class SloRequestBasedSliDistributionCut {
   factory SloRequestBasedSliDistributionCut.fromMap(Map<String, dynamic> map) {
     return SloRequestBasedSliDistributionCut(
       distributionFilter: map['distributionFilter'] as String,
-      range: SloRequestBasedSliDistributionCutRange.fromMap((map['range'] as Map).cast<String, dynamic>()),
+      range: SloRequestBasedSliDistributionCutRange.fromMap(
+        (map['range'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

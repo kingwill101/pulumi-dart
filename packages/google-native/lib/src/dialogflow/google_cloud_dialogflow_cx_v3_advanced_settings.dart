@@ -8,10 +8,13 @@ import 'google_cloud_dialogflow_cx_v3_gcs_destination.dart';
 class GoogleCloudDialogflowCxV3AdvancedSettings {
   /// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
   final GoogleCloudDialogflowCxV3GcsDestination? audioExportGcsDestination;
+
   /// Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level.
   final GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings? dtmfSettings;
+
   /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
-  final GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings? loggingSettings;
+  final GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings?
+  loggingSettings;
 
   /// Creates a new [GoogleCloudDialogflowCxV3AdvancedSettings].
   /// [audioExportGcsDestination] If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
@@ -25,18 +28,35 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'audioExportGcsDestination': ?audioExportGcsDestination == null ? null : audioExportGcsDestination!.toMap(),
+      'audioExportGcsDestination': ?audioExportGcsDestination == null
+          ? null
+          : audioExportGcsDestination!.toMap(),
       'dtmfSettings': ?dtmfSettings == null ? null : dtmfSettings!.toMap(),
-      'loggingSettings': ?loggingSettings == null ? null : loggingSettings!.toMap(),
+      'loggingSettings': ?loggingSettings == null
+          ? null
+          : loggingSettings!.toMap(),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3AdvancedSettings.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3AdvancedSettings.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3AdvancedSettings(
-      audioExportGcsDestination: map['audioExportGcsDestination'] == null ? null : GoogleCloudDialogflowCxV3GcsDestination.fromMap((map['audioExportGcsDestination'] as Map).cast<String, dynamic>()),
-      dtmfSettings: map['dtmfSettings'] == null ? null : GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromMap((map['dtmfSettings'] as Map).cast<String, dynamic>()),
-      loggingSettings: map['loggingSettings'] == null ? null : GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromMap((map['loggingSettings'] as Map).cast<String, dynamic>()),
+      audioExportGcsDestination: map['audioExportGcsDestination'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3GcsDestination.fromMap(
+              (map['audioExportGcsDestination'] as Map).cast<String, dynamic>(),
+            ),
+      dtmfSettings: map['dtmfSettings'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromMap(
+              (map['dtmfSettings'] as Map).cast<String, dynamic>(),
+            ),
+      loggingSettings: map['loggingSettings'] == null
+          ? null
+          : GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromMap(
+              (map['loggingSettings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

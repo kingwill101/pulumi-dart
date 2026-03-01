@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Each logical network interface is effectively a network and IP pair.
 class LogicalNetworkInterfaceResponse {
   /// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
   final bool defaultGateway;
+
   /// IP address in the network
   final String ipAddress;
+
   /// Name of the network
   final String network;
+
   /// Type of network.
   final String networkType;
 
@@ -42,4 +44,3 @@ class LogicalNetworkInterfaceResponse {
     );
   }
 }
-

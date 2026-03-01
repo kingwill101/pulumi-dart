@@ -6,6 +6,7 @@ import 'google_rpc_status_response.dart';
 /// Records a failed evaluation job run.
 class GoogleCloudDatalabelingV1beta1AttemptResponse {
   final String attemptTime;
+
   /// Details of errors that occurred.
   final List<GoogleRpcStatusResponse> partialFailures;
 
@@ -20,15 +21,25 @@ class GoogleCloudDatalabelingV1beta1AttemptResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attemptTime': attemptTime,
-      'partialFailures': pulumi.Input.encodeList<GoogleRpcStatusResponse, Map<String, dynamic>>(partialFailures, (value) => value.toMap()),
+      'partialFailures':
+          pulumi.Input.encodeList<
+            GoogleRpcStatusResponse,
+            Map<String, dynamic>
+          >(partialFailures, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDatalabelingV1beta1AttemptResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDatalabelingV1beta1AttemptResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDatalabelingV1beta1AttemptResponse(
       attemptTime: map['attemptTime'] as String,
-      partialFailures: pulumi.Input.decodeList<GoogleRpcStatusResponse>(map['partialFailures'], (value) => GoogleRpcStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
+      partialFailures: pulumi.Input.decodeList<GoogleRpcStatusResponse>(
+        map['partialFailures'],
+        (value) => GoogleRpcStatusResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

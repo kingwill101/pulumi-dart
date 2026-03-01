@@ -22,11 +22,10 @@ class GetEnvironmentArgs {
     required String lakeId,
     required String location,
     String? project,
-  }) :
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      lakeId = pulumi.Input.asInput<String>(lakeId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : environmentId = pulumi.Input.asInput<String>(environmentId),
+       lakeId = pulumi.Input.asInput<String>(lakeId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetEnvironmentArgs {
     );
   }
 }
-

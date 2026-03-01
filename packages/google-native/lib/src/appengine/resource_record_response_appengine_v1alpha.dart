@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A DNS resource record.
 class ResourceRecordResponseAppengineV1alpha {
   /// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
   final String name;
+
   /// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
   final String rrdata;
+
   /// Resource record type. Example: AAAA.
   final String type;
 
@@ -21,14 +22,12 @@ class ResourceRecordResponseAppengineV1alpha {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'rrdata': rrdata,
-      'type': type,
-    };
+    return <String, dynamic>{'name': name, 'rrdata': rrdata, 'type': type};
   }
 
-  factory ResourceRecordResponseAppengineV1alpha.fromMap(Map<String, dynamic> map) {
+  factory ResourceRecordResponseAppengineV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ResourceRecordResponseAppengineV1alpha(
       name: map['name'] as String,
       rrdata: map['rrdata'] as String,
@@ -36,4 +35,3 @@ class ResourceRecordResponseAppengineV1alpha {
     );
   }
 }
-

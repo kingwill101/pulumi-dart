@@ -9,20 +9,23 @@ class TestTiming {
 
   /// Creates a new [TestTiming].
   /// [testProcessDuration] How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
-  TestTiming({
-    this.testProcessDuration,
-  });
+  TestTiming({this.testProcessDuration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'testProcessDuration': ?testProcessDuration == null ? null : testProcessDuration!.toMap(),
+      'testProcessDuration': ?testProcessDuration == null
+          ? null
+          : testProcessDuration!.toMap(),
     };
   }
 
   factory TestTiming.fromMap(Map<String, dynamic> map) {
     return TestTiming(
-      testProcessDuration: map['testProcessDuration'] == null ? null : Duration.fromMap((map['testProcessDuration'] as Map).cast<String, dynamic>()),
+      testProcessDuration: map['testProcessDuration'] == null
+          ? null
+          : Duration.fromMap(
+              (map['testProcessDuration'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

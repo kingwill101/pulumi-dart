@@ -16,14 +16,25 @@ class GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'webhookOverrides': pulumi.Input.encodeList<GoogleCloudDialogflowCxV3WebhookResponse, Map<String, dynamic>>(webhookOverrides, (value) => value.toMap()),
+      'webhookOverrides':
+          pulumi.Input.encodeList<
+            GoogleCloudDialogflowCxV3WebhookResponse,
+            Map<String, dynamic>
+          >(webhookOverrides, (value) => value.toMap()),
     };
   }
 
-  factory GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse(
-      webhookOverrides: pulumi.Input.decodeList<GoogleCloudDialogflowCxV3WebhookResponse>(map['webhookOverrides'], (value) => GoogleCloudDialogflowCxV3WebhookResponse.fromMap((value as Map).cast<String, dynamic>())),
+      webhookOverrides:
+          pulumi.Input.decodeList<GoogleCloudDialogflowCxV3WebhookResponse>(
+            map['webhookOverrides'],
+            (value) => GoogleCloudDialogflowCxV3WebhookResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

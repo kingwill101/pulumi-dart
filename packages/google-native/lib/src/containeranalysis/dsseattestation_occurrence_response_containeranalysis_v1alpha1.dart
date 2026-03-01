@@ -24,11 +24,16 @@ class DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1(
-      envelope: EnvelopeResponseContaineranalysisV1alpha1.fromMap((map['envelope'] as Map).cast<String, dynamic>()),
-      statement: InTotoStatementResponseContaineranalysisV1alpha1.fromMap((map['statement'] as Map).cast<String, dynamic>()),
+      envelope: EnvelopeResponseContaineranalysisV1alpha1.fromMap(
+        (map['envelope'] as Map).cast<String, dynamic>(),
+      ),
+      statement: InTotoStatementResponseContaineranalysisV1alpha1.fromMap(
+        (map['statement'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// A set of Shielded Instance options.
 class ShieldedInstanceConfigResponseComputeV1 {
   /// Defines whether the instance has integrity monitoring enabled. Enabled by default.
   final bool enableIntegrityMonitoring;
+
   /// Defines whether the instance has Secure Boot enabled. Disabled by default.
   final bool enableSecureBoot;
+
   /// Defines whether the instance has the vTPM enabled. Enabled by default.
   final bool enableVtpm;
 
@@ -28,7 +29,9 @@ class ShieldedInstanceConfigResponseComputeV1 {
     };
   }
 
-  factory ShieldedInstanceConfigResponseComputeV1.fromMap(Map<String, dynamic> map) {
+  factory ShieldedInstanceConfigResponseComputeV1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ShieldedInstanceConfigResponseComputeV1(
       enableIntegrityMonitoring: map['enableIntegrityMonitoring'] as bool,
       enableSecureBoot: map['enableSecureBoot'] as bool,
@@ -36,4 +39,3 @@ class ShieldedInstanceConfigResponseComputeV1 {
     );
   }
 }
-

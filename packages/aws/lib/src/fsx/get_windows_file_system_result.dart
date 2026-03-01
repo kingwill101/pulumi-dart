@@ -8,51 +8,72 @@ import 'get_windows_file_system_disk_iops_configuration.dart';
 class GetWindowsFileSystemResult {
   /// The ID for Microsoft Active Directory instance that the file system is join to.
   final String activeDirectoryId;
+
   /// An array DNS alias names associated with the Amazon FSx file system.
   final List<String> aliases;
+
   /// Amazon Resource Name of the file system.
   final String arn;
+
   /// The configuration that Amazon FSx for Windows File Server uses to audit and log user accesses of files, folders, and file shares on the Amazon FSx for Windows File Server file system.
   final List<GetWindowsFileSystemAuditLogConfiguration> auditLogConfigurations;
+
   /// The number of days to retain automatic backups.
   final int automaticBackupRetentionDays;
   final String backupId;
+
   /// A boolean flag indicating whether tags on the file system should be copied to backups.
   final bool copyTagsToBackups;
+
   /// The preferred time (in `HH:MM` format) to take daily automatic backups, in the UTC time zone.
   final String dailyAutomaticBackupStartTime;
+
   /// The file system deployment type.
   final String deploymentType;
+
   /// The SSD IOPS configuration for the file system.
   final List<GetWindowsFileSystemDiskIopsConfiguration> diskIopsConfigurations;
+
   /// DNS name for the file system (e.g. `fs-12345678.corp.example.com`).
   final String dnsName;
+
   /// Identifier of the file system (e.g. `fs-12345678`).
   final String id;
+
   /// ARN for the KMS Key to encrypt the file system at rest.
   final String kmsKeyId;
   final List<String> networkInterfaceIds;
+
   /// AWS account identifier that created the file system.
   final String ownerId;
+
   /// The IP address of the primary, or preferred, file server.
   final String preferredFileServerIp;
+
   /// Specifies the subnet in which you want the preferred file server to be located.
   final String preferredSubnetId;
   final String region;
   final List<String> securityGroupIds;
   final bool skipFinalBackup;
+
   /// The storage capacity of the file system in gibibytes (GiB).
   final int storageCapacity;
+
   /// The type of storage the file system is using. If set to `SSD`, the file system uses solid state drive storage. If set to `HDD`, the file system uses hard disk drive storage.
   final String storageType;
+
   /// Specifies the IDs of the subnets that the file system is accessible from.
   final List<String> subnetIds;
+
   /// The tags to associate with the file system.
   final Map<String, String> tags;
+
   /// Throughput (megabytes per second) of the file system in power of 2 increments. Minimum of `8` and maximum of `2048`.
   final int throughputCapacity;
+
   /// The ID of the primary virtual private cloud (VPC) for the file system.
   final String vpcId;
+
   /// The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
   final String weeklyMaintenanceStartTime;
 
@@ -119,13 +140,21 @@ class GetWindowsFileSystemResult {
       'activeDirectoryId': activeDirectoryId,
       'aliases': aliases,
       'arn': arn,
-      'auditLogConfigurations': pulumi.Input.encodeList<GetWindowsFileSystemAuditLogConfiguration, Map<String, dynamic>>(auditLogConfigurations, (value) => value.toMap()),
+      'auditLogConfigurations':
+          pulumi.Input.encodeList<
+            GetWindowsFileSystemAuditLogConfiguration,
+            Map<String, dynamic>
+          >(auditLogConfigurations, (value) => value.toMap()),
       'automaticBackupRetentionDays': automaticBackupRetentionDays,
       'backupId': backupId,
       'copyTagsToBackups': copyTagsToBackups,
       'dailyAutomaticBackupStartTime': dailyAutomaticBackupStartTime,
       'deploymentType': deploymentType,
-      'diskIopsConfigurations': pulumi.Input.encodeList<GetWindowsFileSystemDiskIopsConfiguration, Map<String, dynamic>>(diskIopsConfigurations, (value) => value.toMap()),
+      'diskIopsConfigurations':
+          pulumi.Input.encodeList<
+            GetWindowsFileSystemDiskIopsConfiguration,
+            Map<String, dynamic>
+          >(diskIopsConfigurations, (value) => value.toMap()),
       'dnsName': dnsName,
       'id': id,
       'kmsKeyId': kmsKeyId,
@@ -151,13 +180,26 @@ class GetWindowsFileSystemResult {
       activeDirectoryId: map['activeDirectoryId'] as String,
       aliases: (map['aliases'] as List).cast<String>(),
       arn: map['arn'] as String,
-      auditLogConfigurations: pulumi.Input.decodeList<GetWindowsFileSystemAuditLogConfiguration>(map['auditLogConfigurations'], (value) => GetWindowsFileSystemAuditLogConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigurations:
+          pulumi.Input.decodeList<GetWindowsFileSystemAuditLogConfiguration>(
+            map['auditLogConfigurations'],
+            (value) => GetWindowsFileSystemAuditLogConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       automaticBackupRetentionDays: map['automaticBackupRetentionDays'] as int,
       backupId: map['backupId'] as String,
       copyTagsToBackups: map['copyTagsToBackups'] as bool,
-      dailyAutomaticBackupStartTime: map['dailyAutomaticBackupStartTime'] as String,
+      dailyAutomaticBackupStartTime:
+          map['dailyAutomaticBackupStartTime'] as String,
       deploymentType: map['deploymentType'] as String,
-      diskIopsConfigurations: pulumi.Input.decodeList<GetWindowsFileSystemDiskIopsConfiguration>(map['diskIopsConfigurations'], (value) => GetWindowsFileSystemDiskIopsConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      diskIopsConfigurations:
+          pulumi.Input.decodeList<GetWindowsFileSystemDiskIopsConfiguration>(
+            map['diskIopsConfigurations'],
+            (value) => GetWindowsFileSystemDiskIopsConfiguration.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       dnsName: map['dnsName'] as String,
       id: map['id'] as String,
       kmsKeyId: map['kmsKeyId'] as String,
@@ -178,4 +220,3 @@ class GetWindowsFileSystemResult {
     );
   }
 }
-

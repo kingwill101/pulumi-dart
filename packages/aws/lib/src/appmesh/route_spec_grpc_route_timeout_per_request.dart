@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class RouteSpecGrpcRouteTimeoutPerRequest {
   /// Unit of time. Valid values: `ms`, `s`.
   final String unit;
+
   /// Number of time units. Minimum value of `0`.
   final int value;
 
@@ -16,17 +16,15 @@ class RouteSpecGrpcRouteTimeoutPerRequest {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'unit': unit,
-      'value': value,
-    };
+    return <String, dynamic>{'unit': unit, 'value': value};
   }
 
-  factory RouteSpecGrpcRouteTimeoutPerRequest.fromMap(Map<String, dynamic> map) {
+  factory RouteSpecGrpcRouteTimeoutPerRequest.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RouteSpecGrpcRouteTimeoutPerRequest(
       unit: map['unit'] as String,
       value: map['value'] as int,
     );
   }
 }
-

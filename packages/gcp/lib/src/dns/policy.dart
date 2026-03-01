@@ -320,25 +320,33 @@ class Policy extends pulumi.CustomResource {
   /// When specified, all DNS queries are forwarded to a name server that you choose.
   /// Names such as .internal are not available when an alternative name server is specified.
   /// Structure is documented below.
-  late final pulumi.Output<PolicyAlternativeNameServerConfig?> alternativeNameServerConfig;
+  late final pulumi.Output<PolicyAlternativeNameServerConfig?>
+  alternativeNameServerConfig;
+
   /// A textual description field. Defaults to 'Managed by Pulumi'.
   late final pulumi.Output<String?> description;
+
   /// Configurations related to DNS64 for this Policy.
   /// Structure is documented below.
   late final pulumi.Output<PolicyDns64Config> dns64Config;
+
   /// Allows networks bound to this policy to receive DNS queries sent
   /// by VMs or applications over VPN connections. When enabled, a
   /// virtual IP address will be allocated from each of the sub-networks
   /// that are bound to this policy.
   late final pulumi.Output<bool?> enableInboundForwarding;
+
   /// Controls whether logging is enabled for the networks bound to this policy.
   /// Defaults to no logging if not set.
   late final pulumi.Output<bool?> enableLogging;
+
   /// User assigned name for this policy.
   late final pulumi.Output<String> name;
+
   /// List of network names specifying networks to which this policy is applied.
   /// Structure is documented below.
   late final pulumi.Output<List<PolicyNetwork>?> networks;
+
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -347,20 +355,22 @@ class Policy extends pulumi.CustomResource {
   /// [name] The Pulumi resource name.
   /// [args] Arguments used to configure this [Policy]. {@macro pulumi_dns_policy_policy_args_doc}
   /// [options] Resource options controlling this resource's behavior.
-  Policy(
-    String name, {
-    PolicyArgs? args,
-    pulumi.CustomResourceOptions? options,
-  }) : super(
-          'gcp:dns/policy:Policy',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
-    this.alternativeNameServerConfig = registerOutput<PolicyAlternativeNameServerConfig?>('alternativeNameServerConfig');
+  Policy(String name, {PolicyArgs? args, pulumi.CustomResourceOptions? options})
+    : super(
+        'gcp:dns/policy:Policy',
+        name,
+        pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+        options ?? pulumi.CustomResourceOptions(),
+      ) {
+    this.alternativeNameServerConfig =
+        registerOutput<PolicyAlternativeNameServerConfig?>(
+          'alternativeNameServerConfig',
+        );
     this.description = registerOutput<String?>('description');
     this.dns64Config = registerOutput<PolicyDns64Config>('dns64Config');
-    this.enableInboundForwarding = registerOutput<bool?>('enableInboundForwarding');
+    this.enableInboundForwarding = registerOutput<bool?>(
+      'enableInboundForwarding',
+    );
     this.enableLogging = registerOutput<bool?>('enableLogging');
     this.name = registerOutput<String>('name');
     this.networks = registerOutput<List<PolicyNetwork>?>('networks');

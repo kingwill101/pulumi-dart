@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents a personal access token that authorized the Connection, and associated metadata.
 class UserCredentialResponse {
   /// A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   final String userTokenSecretVersion;
+
   /// The username associated to this token.
   final String username;
 
@@ -30,4 +30,3 @@ class UserCredentialResponse {
     );
   }
 }
-

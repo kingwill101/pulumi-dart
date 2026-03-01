@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetVirtualNodeSpecListenerTlCertificateFile {
   final String certificateChain;
   final String privateKey;
@@ -20,11 +19,12 @@ class GetVirtualNodeSpecListenerTlCertificateFile {
     };
   }
 
-  factory GetVirtualNodeSpecListenerTlCertificateFile.fromMap(Map<String, dynamic> map) {
+  factory GetVirtualNodeSpecListenerTlCertificateFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetVirtualNodeSpecListenerTlCertificateFile(
       certificateChain: map['certificateChain'] as String,
       privateKey: map['privateKey'] as String,
     );
   }
 }
-

@@ -9,9 +9,7 @@ class AnthosObservabilityFeatureSpecResponse {
 
   /// Creates a new [AnthosObservabilityFeatureSpecResponse].
   /// [defaultMembershipSpec] Default membership spec for unconfigured memberships
-  AnthosObservabilityFeatureSpecResponse({
-    required this.defaultMembershipSpec,
-  });
+  AnthosObservabilityFeatureSpecResponse({required this.defaultMembershipSpec});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,13 @@ class AnthosObservabilityFeatureSpecResponse {
     };
   }
 
-  factory AnthosObservabilityFeatureSpecResponse.fromMap(Map<String, dynamic> map) {
+  factory AnthosObservabilityFeatureSpecResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnthosObservabilityFeatureSpecResponse(
-      defaultMembershipSpec: AnthosObservabilityMembershipSpecResponse.fromMap((map['defaultMembershipSpec'] as Map).cast<String, dynamic>()),
+      defaultMembershipSpec: AnthosObservabilityMembershipSpecResponse.fromMap(
+        (map['defaultMembershipSpec'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

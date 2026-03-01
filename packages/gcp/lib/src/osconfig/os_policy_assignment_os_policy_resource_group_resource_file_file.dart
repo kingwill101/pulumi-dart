@@ -8,11 +8,14 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
   /// subject to validations based on the file type: Remote: A checksum must be
   /// specified. Cloud Storage: An object generation number must be specified.
   final bool? allowInsecure;
+
   /// A Cloud Storage object. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs? gcs;
+
   /// A local path within the VM to use.
   final String? localPath;
+
   /// A generic remote file. Structure is
   /// documented below.
   final OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote? remote;
@@ -38,13 +41,24 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile.fromMap(Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile(
-      allowInsecure: map['allowInsecure'] == null ? null : map['allowInsecure'] as bool,
-      gcs: map['gcs'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs.fromMap((map['gcs'] as Map).cast<String, dynamic>()),
+      allowInsecure: map['allowInsecure'] == null
+          ? null
+          : map['allowInsecure'] as bool,
+      gcs: map['gcs'] == null
+          ? null
+          : OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs.fromMap(
+              (map['gcs'] as Map).cast<String, dynamic>(),
+            ),
       localPath: map['localPath'] == null ? null : map['localPath'] as String,
-      remote: map['remote'] == null ? null : OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote.fromMap((map['remote'] as Map).cast<String, dynamic>()),
+      remote: map['remote'] == null
+          ? null
+          : OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote.fromMap(
+              (map['remote'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

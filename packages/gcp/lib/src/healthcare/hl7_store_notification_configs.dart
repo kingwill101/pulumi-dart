@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class Hl7StoreNotificationConfigs {
   /// Restricts notifications sent for messages matching a filter. If this is empty, all messages
   /// are matched. Syntax: https://cloud.google.com/appengine/docs/standard/python/search/query_strings
@@ -12,6 +11,7 @@ class Hl7StoreNotificationConfigs {
   /// * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
   /// * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
   final String? filter;
+
   /// The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
   /// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
   /// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message
@@ -24,16 +24,10 @@ class Hl7StoreNotificationConfigs {
   /// Creates a new [Hl7StoreNotificationConfigs].
   /// [filter] Restricts notifications sent for messages matching a filter. If this is empty, all messages
   /// [pubsubTopic] The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
-  Hl7StoreNotificationConfigs({
-    this.filter,
-    required this.pubsubTopic,
-  });
+  Hl7StoreNotificationConfigs({this.filter, required this.pubsubTopic});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': ?filter,
-      'pubsubTopic': pubsubTopic,
-    };
+    return <String, dynamic>{'filter': ?filter, 'pubsubTopic': pubsubTopic};
   }
 
   factory Hl7StoreNotificationConfigs.fromMap(Map<String, dynamic> map) {
@@ -43,4 +37,3 @@ class Hl7StoreNotificationConfigs {
     );
   }
 }
-

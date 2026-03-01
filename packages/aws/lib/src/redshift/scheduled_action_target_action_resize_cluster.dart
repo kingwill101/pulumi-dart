@@ -1,15 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ScheduledActionTargetActionResizeCluster {
   /// A boolean value indicating whether the resize operation is using the classic resize process. Default: `false`.
   final bool? classic;
+
   /// The unique identifier for the cluster to resize.
   final String clusterIdentifier;
+
   /// The new cluster type for the specified cluster.
   final String? clusterType;
+
   /// The new node type for the nodes you are adding.
   final String? nodeType;
+
   /// The new number of nodes for the cluster.
   final int? numberOfNodes;
 
@@ -37,14 +40,19 @@ class ScheduledActionTargetActionResizeCluster {
     };
   }
 
-  factory ScheduledActionTargetActionResizeCluster.fromMap(Map<String, dynamic> map) {
+  factory ScheduledActionTargetActionResizeCluster.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ScheduledActionTargetActionResizeCluster(
       classic: map['classic'] == null ? null : map['classic'] as bool,
       clusterIdentifier: map['clusterIdentifier'] as String,
-      clusterType: map['clusterType'] == null ? null : map['clusterType'] as String,
+      clusterType: map['clusterType'] == null
+          ? null
+          : map['clusterType'] as String,
       nodeType: map['nodeType'] == null ? null : map['nodeType'] as String,
-      numberOfNodes: map['numberOfNodes'] == null ? null : map['numberOfNodes'] as int,
+      numberOfNodes: map['numberOfNodes'] == null
+          ? null
+          : map['numberOfNodes'] as int,
     );
   }
 }
-

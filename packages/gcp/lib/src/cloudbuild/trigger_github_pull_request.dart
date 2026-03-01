@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TriggerGithubPullRequest {
   /// Regex of branches to match.
   final String branch;
+
   /// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
   /// Possible values are: `COMMENTS_DISABLED`, `COMMENTS_ENABLED`, `COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY`.
   final String? commentControl;
+
   /// If true, branches that do NOT match the git_ref will trigger a build.
   final bool? invertRegex;
 
@@ -31,9 +32,12 @@ class TriggerGithubPullRequest {
   factory TriggerGithubPullRequest.fromMap(Map<String, dynamic> map) {
     return TriggerGithubPullRequest(
       branch: map['branch'] as String,
-      commentControl: map['commentControl'] == null ? null : map['commentControl'] as String,
-      invertRegex: map['invertRegex'] == null ? null : map['invertRegex'] as bool,
+      commentControl: map['commentControl'] == null
+          ? null
+          : map['commentControl'] as String,
+      invertRegex: map['invertRegex'] == null
+          ? null
+          : map['invertRegex'] as bool,
     );
   }
 }
-

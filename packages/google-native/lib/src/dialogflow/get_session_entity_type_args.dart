@@ -28,13 +28,12 @@ class GetSessionEntityTypeArgs {
     String? project,
     required String sessionId,
     required String userId,
-  }) :
-      entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
-      environmentId = pulumi.Input.asInput<String>(environmentId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sessionId = pulumi.Input.asInput<String>(sessionId),
-      userId = pulumi.Input.asInput<String>(userId);
+  }) : entityTypeId = pulumi.Input.asInput<String>(entityTypeId),
+       environmentId = pulumi.Input.asInput<String>(environmentId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sessionId = pulumi.Input.asInput<String>(sessionId),
+       userId = pulumi.Input.asInput<String>(userId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,4 +57,3 @@ class GetSessionEntityTypeArgs {
     );
   }
 }
-

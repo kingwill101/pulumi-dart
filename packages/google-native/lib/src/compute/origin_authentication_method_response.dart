@@ -8,14 +8,10 @@ class OriginAuthenticationMethodResponse {
 
   /// Creates a new [OriginAuthenticationMethodResponse].
   /// [jwt] Required.
-  OriginAuthenticationMethodResponse({
-    required this.jwt,
-  });
+  OriginAuthenticationMethodResponse({required this.jwt});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'jwt': jwt.toMap(),
-    };
+    return <String, dynamic>{'jwt': jwt.toMap()};
   }
 
   factory OriginAuthenticationMethodResponse.fromMap(Map<String, dynamic> map) {
@@ -24,4 +20,3 @@ class OriginAuthenticationMethodResponse {
     );
   }
 }
-

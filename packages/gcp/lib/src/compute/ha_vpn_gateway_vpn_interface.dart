@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class HaVpnGatewayVpnInterface {
   /// The numeric ID of this VPN gateway interface.
   final int? id;
+
   /// URL of the interconnect attachment resource. When the value
   /// of this field is present, the VPN Gateway will be used for
   /// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
@@ -11,6 +11,7 @@ class HaVpnGatewayVpnInterface {
   /// specified interconnect attachment resource.
   /// Not currently available publicly.
   final String? interconnectAttachment;
+
   /// (Output)
   /// The external IP address for this VPN gateway interface.
   final String? ipAddress;
@@ -36,9 +37,10 @@ class HaVpnGatewayVpnInterface {
   factory HaVpnGatewayVpnInterface.fromMap(Map<String, dynamic> map) {
     return HaVpnGatewayVpnInterface(
       id: map['id'] == null ? null : map['id'] as int,
-      interconnectAttachment: map['interconnectAttachment'] == null ? null : map['interconnectAttachment'] as String,
+      interconnectAttachment: map['interconnectAttachment'] == null
+          ? null
+          : map['interconnectAttachment'] as String,
       ipAddress: map['ipAddress'] == null ? null : map['ipAddress'] as String,
     );
   }
 }
-

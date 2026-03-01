@@ -9,20 +9,26 @@ class GetClusterStateInfo {
 
   /// Creates a new [GetClusterStateInfo].
   /// [updateInfos] A nested object resource.
-  GetClusterStateInfo({
-    required this.updateInfos,
-  });
+  GetClusterStateInfo({required this.updateInfos});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'updateInfos': pulumi.Input.encodeList<GetClusterStateInfoUpdateInfo, Map<String, dynamic>>(updateInfos, (value) => value.toMap()),
+      'updateInfos':
+          pulumi.Input.encodeList<
+            GetClusterStateInfoUpdateInfo,
+            Map<String, dynamic>
+          >(updateInfos, (value) => value.toMap()),
     };
   }
 
   factory GetClusterStateInfo.fromMap(Map<String, dynamic> map) {
     return GetClusterStateInfo(
-      updateInfos: pulumi.Input.decodeList<GetClusterStateInfoUpdateInfo>(map['updateInfos'], (value) => GetClusterStateInfoUpdateInfo.fromMap((value as Map).cast<String, dynamic>())),
+      updateInfos: pulumi.Input.decodeList<GetClusterStateInfoUpdateInfo>(
+        map['updateInfos'],
+        (value) => GetClusterStateInfoUpdateInfo.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

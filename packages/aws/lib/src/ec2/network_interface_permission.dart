@@ -197,12 +197,16 @@ import 'network_interface_permission_timeouts.dart';
 class NetworkInterfacePermission extends pulumi.CustomResource {
   /// The Amazon Web Services account ID.
   late final pulumi.Output<String> awsAccountId;
+
   /// The ID of the network interface.
   late final pulumi.Output<String> networkInterfaceId;
+
   /// ENI permission ID.
   late final pulumi.Output<String> networkInterfacePermissionId;
+
   /// The type of permission to grant. Valid values are `INSTANCE-ATTACH` or `EIP-ASSOCIATE`.
   late final pulumi.Output<String> permission;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<NetworkInterfacePermissionTimeouts?> timeouts;
@@ -216,16 +220,20 @@ class NetworkInterfacePermission extends pulumi.CustomResource {
     NetworkInterfacePermissionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:ec2/networkInterfacePermission:NetworkInterfacePermission',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:ec2/networkInterfacePermission:NetworkInterfacePermission',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.awsAccountId = registerOutput<String>('awsAccountId');
     this.networkInterfaceId = registerOutput<String>('networkInterfaceId');
-    this.networkInterfacePermissionId = registerOutput<String>('networkInterfacePermissionId');
+    this.networkInterfacePermissionId = registerOutput<String>(
+      'networkInterfacePermissionId',
+    );
     this.permission = registerOutput<String>('permission');
     this.region = registerOutput<String>('region');
-    this.timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>('timeouts');
+    this.timeouts = registerOutput<NetworkInterfacePermissionTimeouts?>(
+      'timeouts',
+    );
   }
 }

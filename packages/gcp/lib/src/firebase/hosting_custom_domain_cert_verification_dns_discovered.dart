@@ -6,6 +6,7 @@ import 'hosting_custom_domain_cert_verification_dns_discovered_record.dart';
 class HostingCustomDomainCertVerificationDnsDiscovered {
   /// The domain name the record pertains to, e.g. `foo.bar.com.`.
   final String? domainName;
+
   /// Records on the domain
   /// Structure is documented below.
   final List<HostingCustomDomainCertVerificationDnsDiscoveredRecord>? records;
@@ -21,15 +22,33 @@ class HostingCustomDomainCertVerificationDnsDiscovered {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'domainName': ?domainName,
-      'records': ?records == null ? null : pulumi.Input.encodeList<HostingCustomDomainCertVerificationDnsDiscoveredRecord, Map<String, dynamic>>(records!, (value) => value.toMap()),
+      'records': ?records == null
+          ? null
+          : pulumi.Input.encodeList<
+              HostingCustomDomainCertVerificationDnsDiscoveredRecord,
+              Map<String, dynamic>
+            >(records!, (value) => value.toMap()),
     };
   }
 
-  factory HostingCustomDomainCertVerificationDnsDiscovered.fromMap(Map<String, dynamic> map) {
+  factory HostingCustomDomainCertVerificationDnsDiscovered.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return HostingCustomDomainCertVerificationDnsDiscovered(
-      domainName: map['domainName'] == null ? null : map['domainName'] as String,
-      records: map['records'] == null ? null : pulumi.Input.decodeList<HostingCustomDomainCertVerificationDnsDiscoveredRecord>(map['records'], (value) => HostingCustomDomainCertVerificationDnsDiscoveredRecord.fromMap((value as Map).cast<String, dynamic>())),
+      domainName: map['domainName'] == null
+          ? null
+          : map['domainName'] as String,
+      records: map['records'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              HostingCustomDomainCertVerificationDnsDiscoveredRecord
+            >(
+              map['records'],
+              (value) =>
+                  HostingCustomDomainCertVerificationDnsDiscoveredRecord.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
   /// Bucket of the Cloud Storage object.
   final String bucket;
+
   /// Generation number of the Cloud Storage object.
   final int? generation;
+
   /// Name of the Cloud Storage object.
   final String object;
 
@@ -27,7 +28,9 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
     };
   }
 
-  factory OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs.fromMap(Map<String, dynamic> map) {
+  factory OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs(
       bucket: map['bucket'] as String,
       generation: map['generation'] == null ? null : map['generation'] as int,
@@ -35,4 +38,3 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
     );
   }
 }
-

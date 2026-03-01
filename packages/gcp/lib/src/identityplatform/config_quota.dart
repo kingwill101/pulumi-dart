@@ -9,20 +9,23 @@ class ConfigQuota {
 
   /// Creates a new [ConfigQuota].
   /// [signUpQuotaConfig] Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
-  ConfigQuota({
-    this.signUpQuotaConfig,
-  });
+  ConfigQuota({this.signUpQuotaConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'signUpQuotaConfig': ?signUpQuotaConfig == null ? null : signUpQuotaConfig!.toMap(),
+      'signUpQuotaConfig': ?signUpQuotaConfig == null
+          ? null
+          : signUpQuotaConfig!.toMap(),
     };
   }
 
   factory ConfigQuota.fromMap(Map<String, dynamic> map) {
     return ConfigQuota(
-      signUpQuotaConfig: map['signUpQuotaConfig'] == null ? null : ConfigQuotaSignUpQuotaConfig.fromMap((map['signUpQuotaConfig'] as Map).cast<String, dynamic>()),
+      signUpQuotaConfig: map['signUpQuotaConfig'] == null
+          ? null
+          : ConfigQuotaSignUpQuotaConfig.fromMap(
+              (map['signUpQuotaConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

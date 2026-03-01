@@ -8,10 +8,13 @@ import 'virtual_gateway_spec_listener_tls.dart';
 class VirtualGatewaySpecListener {
   /// Connection pool information for the listener.
   final VirtualGatewaySpecListenerConnectionPool? connectionPool;
+
   /// Health check information for the listener.
   final VirtualGatewaySpecListenerHealthCheck? healthCheck;
+
   /// Port mapping information for the listener.
   final VirtualGatewaySpecListenerPortMapping portMapping;
+
   /// Transport Layer Security (TLS) properties for the listener
   final VirtualGatewaySpecListenerTls? tls;
 
@@ -29,7 +32,9 @@ class VirtualGatewaySpecListener {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'connectionPool': ?connectionPool == null ? null : connectionPool!.toMap(),
+      'connectionPool': ?connectionPool == null
+          ? null
+          : connectionPool!.toMap(),
       'healthCheck': ?healthCheck == null ? null : healthCheck!.toMap(),
       'portMapping': portMapping.toMap(),
       'tls': ?tls == null ? null : tls!.toMap(),
@@ -38,11 +43,24 @@ class VirtualGatewaySpecListener {
 
   factory VirtualGatewaySpecListener.fromMap(Map<String, dynamic> map) {
     return VirtualGatewaySpecListener(
-      connectionPool: map['connectionPool'] == null ? null : VirtualGatewaySpecListenerConnectionPool.fromMap((map['connectionPool'] as Map).cast<String, dynamic>()),
-      healthCheck: map['healthCheck'] == null ? null : VirtualGatewaySpecListenerHealthCheck.fromMap((map['healthCheck'] as Map).cast<String, dynamic>()),
-      portMapping: VirtualGatewaySpecListenerPortMapping.fromMap((map['portMapping'] as Map).cast<String, dynamic>()),
-      tls: map['tls'] == null ? null : VirtualGatewaySpecListenerTls.fromMap((map['tls'] as Map).cast<String, dynamic>()),
+      connectionPool: map['connectionPool'] == null
+          ? null
+          : VirtualGatewaySpecListenerConnectionPool.fromMap(
+              (map['connectionPool'] as Map).cast<String, dynamic>(),
+            ),
+      healthCheck: map['healthCheck'] == null
+          ? null
+          : VirtualGatewaySpecListenerHealthCheck.fromMap(
+              (map['healthCheck'] as Map).cast<String, dynamic>(),
+            ),
+      portMapping: VirtualGatewaySpecListenerPortMapping.fromMap(
+        (map['portMapping'] as Map).cast<String, dynamic>(),
+      ),
+      tls: map['tls'] == null
+          ? null
+          : VirtualGatewaySpecListenerTls.fromMap(
+              (map['tls'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

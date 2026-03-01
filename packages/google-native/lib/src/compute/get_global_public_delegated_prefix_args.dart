@@ -16,9 +16,10 @@ class GetGlobalPublicDelegatedPrefixArgs {
   GetGlobalPublicDelegatedPrefixArgs({
     String? project,
     required String publicDelegatedPrefix,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project),
-      publicDelegatedPrefix = pulumi.Input.asInput<String>(publicDelegatedPrefix);
+  }) : project = pulumi.Input.asOptionalInput<String>(project),
+       publicDelegatedPrefix = pulumi.Input.asInput<String>(
+         publicDelegatedPrefix,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,4 +35,3 @@ class GetGlobalPublicDelegatedPrefixArgs {
     );
   }
 }
-

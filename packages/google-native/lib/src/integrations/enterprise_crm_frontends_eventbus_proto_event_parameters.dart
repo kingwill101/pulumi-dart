@@ -10,20 +10,34 @@ class EnterpriseCrmFrontendsEventbusProtoEventParameters {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoEventParameters].
   /// [parameters] Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution.
-  EnterpriseCrmFrontendsEventbusProtoEventParameters({
-    this.parameters,
-  });
+  EnterpriseCrmFrontendsEventbusProtoEventParameters({this.parameters});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': ?parameters == null ? null : pulumi.Input.encodeList<EnterpriseCrmFrontendsEventbusProtoParameterEntry, Map<String, dynamic>>(parameters!, (value) => value.toMap()),
+      'parameters': ?parameters == null
+          ? null
+          : pulumi.Input.encodeList<
+              EnterpriseCrmFrontendsEventbusProtoParameterEntry,
+              Map<String, dynamic>
+            >(parameters!, (value) => value.toMap()),
     };
   }
 
-  factory EnterpriseCrmFrontendsEventbusProtoEventParameters.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmFrontendsEventbusProtoEventParameters.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmFrontendsEventbusProtoEventParameters(
-      parameters: map['parameters'] == null ? null : pulumi.Input.decodeList<EnterpriseCrmFrontendsEventbusProtoParameterEntry>(map['parameters'], (value) => EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: map['parameters'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              EnterpriseCrmFrontendsEventbusProtoParameterEntry
+            >(
+              map['parameters'],
+              (value) =>
+                  EnterpriseCrmFrontendsEventbusProtoParameterEntry.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
     );
   }
 }
-

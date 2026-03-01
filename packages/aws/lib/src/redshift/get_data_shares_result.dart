@@ -7,6 +7,7 @@ import 'get_data_shares_data_share.dart';
 class GetDataSharesResult {
   /// An array of all data shares in the current region. See `data_shares` below.
   final List<GetDataSharesDataShare> dataShares;
+
   /// AWS region.
   final String id;
   final String region;
@@ -23,7 +24,11 @@ class GetDataSharesResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataShares': pulumi.Input.encodeList<GetDataSharesDataShare, Map<String, dynamic>>(dataShares, (value) => value.toMap()),
+      'dataShares':
+          pulumi.Input.encodeList<GetDataSharesDataShare, Map<String, dynamic>>(
+            dataShares,
+            (value) => value.toMap(),
+          ),
       'id': id,
       'region': region,
     };
@@ -31,10 +36,14 @@ class GetDataSharesResult {
 
   factory GetDataSharesResult.fromMap(Map<String, dynamic> map) {
     return GetDataSharesResult(
-      dataShares: pulumi.Input.decodeList<GetDataSharesDataShare>(map['dataShares'], (value) => GetDataSharesDataShare.fromMap((value as Map).cast<String, dynamic>())),
+      dataShares: pulumi.Input.decodeList<GetDataSharesDataShare>(
+        map['dataShares'],
+        (value) => GetDataSharesDataShare.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       id: map['id'] as String,
       region: map['region'] as String,
     );
   }
 }
-

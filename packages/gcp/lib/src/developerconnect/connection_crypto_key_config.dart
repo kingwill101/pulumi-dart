@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ConnectionCryptoKeyConfig {
   /// Required. The name of the key which is used to encrypt/decrypt customer data. For key
   /// in Cloud KMS, the key should be in the format of
@@ -9,14 +8,10 @@ class ConnectionCryptoKeyConfig {
 
   /// Creates a new [ConnectionCryptoKeyConfig].
   /// [keyReference] Required. The name of the key which is used to encrypt/decrypt customer data. For key
-  ConnectionCryptoKeyConfig({
-    required this.keyReference,
-  });
+  ConnectionCryptoKeyConfig({required this.keyReference});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'keyReference': keyReference,
-    };
+    return <String, dynamic>{'keyReference': keyReference};
   }
 
   factory ConnectionCryptoKeyConfig.fromMap(Map<String, dynamic> map) {
@@ -25,4 +20,3 @@ class ConnectionCryptoKeyConfig {
     );
   }
 }
-

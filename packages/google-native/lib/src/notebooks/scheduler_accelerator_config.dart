@@ -6,16 +6,14 @@ import 'scheduler_accelerator_config_type.dart';
 class SchedulerAcceleratorConfig {
   /// Count of cores of this accelerator.
   final String? coreCount;
+
   /// Type of this accelerator.
   final SchedulerAcceleratorConfigType? type;
 
   /// Creates a new [SchedulerAcceleratorConfig].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Type of this accelerator.
-  SchedulerAcceleratorConfig({
-    this.coreCount,
-    this.type,
-  });
+  SchedulerAcceleratorConfig({this.coreCount, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,8 +25,9 @@ class SchedulerAcceleratorConfig {
   factory SchedulerAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return SchedulerAcceleratorConfig(
       coreCount: map['coreCount'] == null ? null : map['coreCount'] as String,
-      type: map['type'] == null ? null : SchedulerAcceleratorConfigType.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : SchedulerAcceleratorConfigType.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -7,6 +7,7 @@ import 'system_parameter_response.dart';
 class SystemParameterRuleResponse {
   /// Define parameters. Multiple names may be defined for a parameter. For a given method call, only one of them should be used. If multiple names are used the behavior is implementation-dependent. If none of the specified names are present the behavior is parameter-dependent.
   final List<SystemParameterResponse> parameters;
+
   /// Selects the methods to which this rule applies. Use '*' to indicate all methods in all APIs. Refer to selector for syntax details.
   final String selector;
 
@@ -20,16 +21,24 @@ class SystemParameterRuleResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'parameters': pulumi.Input.encodeList<SystemParameterResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'parameters':
+          pulumi.Input.encodeList<
+            SystemParameterResponse,
+            Map<String, dynamic>
+          >(parameters, (value) => value.toMap()),
       'selector': selector,
     };
   }
 
   factory SystemParameterRuleResponse.fromMap(Map<String, dynamic> map) {
     return SystemParameterRuleResponse(
-      parameters: pulumi.Input.decodeList<SystemParameterResponse>(map['parameters'], (value) => SystemParameterResponse.fromMap((value as Map).cast<String, dynamic>())),
+      parameters: pulumi.Input.decodeList<SystemParameterResponse>(
+        map['parameters'],
+        (value) => SystemParameterResponse.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
       selector: map['selector'] as String,
     );
   }
 }
-

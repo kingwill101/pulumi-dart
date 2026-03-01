@@ -13,11 +13,8 @@ class GetInstanceArgs {
   /// Creates a new [GetInstanceArgs].
   /// [instanceId] Required.
   /// [organizationId] Required.
-  GetInstanceArgs({
-    required String instanceId,
-    required String organizationId,
-  }) :
-      instanceId = pulumi.Input.asInput<String>(instanceId),
+  GetInstanceArgs({required String instanceId, required String organizationId})
+    : instanceId = pulumi.Input.asInput<String>(instanceId),
       organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
@@ -34,4 +31,3 @@ class GetInstanceArgs {
     );
   }
 }
-

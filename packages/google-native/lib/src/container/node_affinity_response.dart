@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
 class NodeAffinityResponse {
   /// Key for NodeAffinity.
   final String key;
+
   /// Operator for NodeAffinity.
   final String operator;
+
   /// Values for NodeAffinity.
   final List<String> values;
 
@@ -36,4 +37,3 @@ class NodeAffinityResponse {
     );
   }
 }
-

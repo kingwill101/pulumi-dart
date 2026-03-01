@@ -12,7 +12,8 @@ enum TargetTcpProxyProxyHeaderComputeV1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown TargetTcpProxyProxyHeaderComputeV1 value: $value');
+    throw ArgumentError(
+      'Unknown TargetTcpProxyProxyHeaderComputeV1 value: $value',
+    );
   }
 }
-

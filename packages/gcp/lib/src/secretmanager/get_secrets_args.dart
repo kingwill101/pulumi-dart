@@ -9,24 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretsArgs {
   /// Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed.
   final pulumi.Input<String>? filter;
+
   /// The ID of the project.
   final pulumi.Input<String>? project;
 
   /// Creates a new [GetSecretsArgs].
   /// [filter] Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed.
   /// [project] The ID of the project.
-  GetSecretsArgs({
-    String? filter,
-    String? project,
-  }) :
-      filter = pulumi.Input.asOptionalInput<String>(filter),
+  GetSecretsArgs({String? filter, String? project})
+    : filter = pulumi.Input.asOptionalInput<String>(filter),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'filter': ?filter,
-      'project': ?project,
-    };
+    return <String, dynamic>{'filter': ?filter, 'project': ?project};
   }
 
   factory GetSecretsArgs.fromMap(Map<String, dynamic> map) {
@@ -36,4 +31,3 @@ class GetSecretsArgs {
     );
   }
 }
-

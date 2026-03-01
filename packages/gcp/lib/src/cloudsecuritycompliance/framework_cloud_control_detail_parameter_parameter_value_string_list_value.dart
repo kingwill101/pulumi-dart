@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class FrameworkCloudControlDetailParameterParameterValueStringListValue {
   /// The strings in the list.
   final List<String> values;
@@ -12,15 +11,14 @@ class FrameworkCloudControlDetailParameterParameterValueStringListValue {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'values': values,
-    };
+    return <String, dynamic>{'values': values};
   }
 
-  factory FrameworkCloudControlDetailParameterParameterValueStringListValue.fromMap(Map<String, dynamic> map) {
+  factory FrameworkCloudControlDetailParameterParameterValueStringListValue.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FrameworkCloudControlDetailParameterParameterValueStringListValue(
       values: (map['values'] as List).cast<String>(),
     );
   }
 }
-

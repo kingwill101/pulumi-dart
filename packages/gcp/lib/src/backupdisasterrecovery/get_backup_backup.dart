@@ -1,17 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetBackupBackup {
   /// Id of the requesting object, Backup.
   final String backupId;
+
   /// The ID of the Backup Vault of the Data Source in which the Backup belongs.
   final String backupVaultId;
+
   /// The time when the backup was created.
   final String createTime;
+
   /// The ID of the Data Source in which the Backup belongs.
   final String dataSourceId;
+
   /// The location in which the Backup belongs.
   final String location;
+
   /// Name of the resource.
   final String name;
 
@@ -53,4 +57,3 @@ class GetBackupBackup {
     );
   }
 }
-

@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess {
   /// Determines whether read/write scope is enabled or disabled.
   final String authorization;
@@ -12,15 +11,14 @@ class IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'authorization': authorization,
-    };
+    return <String, dynamic>{'authorization': authorization};
   }
 
-  factory IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess.fromMap(Map<String, dynamic> map) {
+  factory IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return IdcApplicationServiceIntegrationS3AccessGrantsReadWriteAccess(
       authorization: map['authorization'] as String,
     );
   }
 }
-

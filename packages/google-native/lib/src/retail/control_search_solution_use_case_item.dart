@@ -12,7 +12,8 @@ enum ControlSearchSolutionUseCaseItem {
         return item;
       }
     }
-    throw ArgumentError('Unknown ControlSearchSolutionUseCaseItem value: $value');
+    throw ArgumentError(
+      'Unknown ControlSearchSolutionUseCaseItem value: $value',
+    );
   }
 }
-

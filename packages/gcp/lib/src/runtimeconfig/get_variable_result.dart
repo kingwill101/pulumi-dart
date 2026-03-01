@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getVariable.
 class GetVariableResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -54,4 +53,3 @@ class GetVariableResult {
     );
   }
 }
-

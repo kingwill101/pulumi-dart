@@ -16,4 +16,3 @@ enum CloudAuditOptionsLogName {
     throw ArgumentError('Unknown CloudAuditOptionsLogName value: $value');
   }
 }
-

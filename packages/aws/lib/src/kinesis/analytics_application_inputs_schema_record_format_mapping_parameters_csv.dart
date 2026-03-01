@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv {
   /// The Column Delimiter.
   final String recordColumnDelimiter;
+
   /// The Row Delimiter.
   final String recordRowDelimiter;
 
@@ -22,11 +22,12 @@ class AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv {
     };
   }
 
-  factory AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv.fromMap(Map<String, dynamic> map) {
+  factory AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AnalyticsApplicationInputsSchemaRecordFormatMappingParametersCsv(
       recordColumnDelimiter: map['recordColumnDelimiter'] as String,
       recordRowDelimiter: map['recordRowDelimiter'] as String,
     );
   }
 }
-

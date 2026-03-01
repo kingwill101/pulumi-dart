@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3 {
   /// Name of the S3 Bucket to send findings to.
   final String bucket;
@@ -12,15 +11,14 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinati
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'bucket': bucket,
-    };
+    return <String, dynamic>{'bucket': bucket};
   }
 
-  factory GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3.fromMap(Map<String, dynamic> map) {
+  factory GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3(
       bucket: map['bucket'] as String,
     );
   }
 }
-

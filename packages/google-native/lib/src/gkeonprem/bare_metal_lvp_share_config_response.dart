@@ -6,6 +6,7 @@ import 'bare_metal_lvp_config_response.dart';
 class BareMetalLvpShareConfigResponse {
   /// Defines the machine path and storage class for the LVP Share.
   final BareMetalLvpConfigResponse lvpConfig;
+
   /// The number of subdirectories to create under path.
   final int sharedPathPvCount;
 
@@ -26,9 +27,10 @@ class BareMetalLvpShareConfigResponse {
 
   factory BareMetalLvpShareConfigResponse.fromMap(Map<String, dynamic> map) {
     return BareMetalLvpShareConfigResponse(
-      lvpConfig: BareMetalLvpConfigResponse.fromMap((map['lvpConfig'] as Map).cast<String, dynamic>()),
+      lvpConfig: BareMetalLvpConfigResponse.fromMap(
+        (map['lvpConfig'] as Map).cast<String, dynamic>(),
+      ),
       sharedPathPvCount: map['sharedPathPvCount'] as int,
     );
   }
 }
-

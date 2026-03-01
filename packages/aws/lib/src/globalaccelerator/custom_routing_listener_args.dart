@@ -10,6 +10,7 @@ import 'custom_routing_listener_port_range.dart';
 class CustomRoutingListenerArgs {
   /// The Amazon Resource Name (ARN) of a custom routing accelerator.
   final pulumi.Input<String> acceleratorArn;
+
   /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
   final pulumi.Input<List<CustomRoutingListenerPortRange>> portRanges;
 
@@ -19,22 +20,38 @@ class CustomRoutingListenerArgs {
   CustomRoutingListenerArgs({
     required String acceleratorArn,
     required List<CustomRoutingListenerPortRange> portRanges,
-  }) :
-      acceleratorArn = pulumi.Input.asInput<String>(acceleratorArn),
-      portRanges = pulumi.Input.asInput<List<CustomRoutingListenerPortRange>>(portRanges);
+  }) : acceleratorArn = pulumi.Input.asInput<String>(acceleratorArn),
+       portRanges = pulumi.Input.asInput<List<CustomRoutingListenerPortRange>>(
+         portRanges,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'acceleratorArn': acceleratorArn,
-      'portRanges': pulumi.Input.mapInputValue<List<CustomRoutingListenerPortRange>, List<Map<String, dynamic>>>(portRanges, (value) => pulumi.Input.encodeList<CustomRoutingListenerPortRange, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'portRanges':
+          pulumi.Input.mapInputValue<
+            List<CustomRoutingListenerPortRange>,
+            List<Map<String, dynamic>>
+          >(
+            portRanges,
+            (value) =>
+                pulumi.Input.encodeList<
+                  CustomRoutingListenerPortRange,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
     };
   }
 
   factory CustomRoutingListenerArgs.fromMap(Map<String, dynamic> map) {
     return CustomRoutingListenerArgs(
       acceleratorArn: map['acceleratorArn'] as String,
-      portRanges: pulumi.Input.decodeList<CustomRoutingListenerPortRange>(map['portRanges'], (value) => CustomRoutingListenerPortRange.fromMap((value as Map).cast<String, dynamic>())),
+      portRanges: pulumi.Input.decodeList<CustomRoutingListenerPortRange>(
+        map['portRanges'],
+        (value) => CustomRoutingListenerPortRange.fromMap(
+          (value as Map).cast<String, dynamic>(),
+        ),
+      ),
     );
   }
 }
-

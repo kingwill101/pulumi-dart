@@ -125,15 +125,19 @@ import 'project_exclusion_args.dart';
 class ProjectExclusion extends pulumi.CustomResource {
   /// A human-readable description.
   late final pulumi.Output<String?> description;
+
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
   late final pulumi.Output<bool?> disabled;
+
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
   late final pulumi.Output<String> filter;
+
   /// The name of the logging exclusion.
   late final pulumi.Output<String> name;
+
   /// The project to create the exclusion in. If omitted, the project associated with the provider is
   /// used.
   late final pulumi.Output<String> project;
@@ -147,11 +151,11 @@ class ProjectExclusion extends pulumi.CustomResource {
     ProjectExclusionArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:logging/projectExclusion:ProjectExclusion',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:logging/projectExclusion:ProjectExclusion',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.description = registerOutput<String?>('description');
     this.disabled = registerOutput<bool?>('disabled');
     this.filter = registerOutput<String>('filter');

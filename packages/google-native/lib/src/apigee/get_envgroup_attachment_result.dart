@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getEnvgroupAttachment.
 class GetEnvgroupAttachmentResult {
   /// The time at which the environment group attachment was created as milliseconds since epoch.
   final String createdAt;
+
   /// ID of the attached environment.
   final String environment;
+
   /// ID of the environment group.
   final String environmentGroupId;
+
   /// ID of the environment group attachment.
   final String name;
 
@@ -42,4 +44,3 @@ class GetEnvgroupAttachmentResult {
     );
   }
 }
-

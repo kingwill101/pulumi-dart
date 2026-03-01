@@ -9,9 +9,7 @@ class EnterpriseCrmEventbusProtoTaskUiModuleConfig {
 
   /// Creates a new [EnterpriseCrmEventbusProtoTaskUiModuleConfig].
   /// [moduleId] ID of the config module.
-  EnterpriseCrmEventbusProtoTaskUiModuleConfig({
-    this.moduleId,
-  });
+  EnterpriseCrmEventbusProtoTaskUiModuleConfig({this.moduleId});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class EnterpriseCrmEventbusProtoTaskUiModuleConfig {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoTaskUiModuleConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoTaskUiModuleConfig(
-      moduleId: map['moduleId'] == null ? null : EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId.fromValue(map['moduleId'] as String),
+      moduleId: map['moduleId'] == null
+          ? null
+          : EnterpriseCrmEventbusProtoTaskUiModuleConfigModuleId.fromValue(
+              map['moduleId'] as String,
+            ),
     );
   }
 }
-

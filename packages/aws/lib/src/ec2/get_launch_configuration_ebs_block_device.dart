@@ -1,23 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetLaunchConfigurationEbsBlockDevice {
   /// Whether the EBS Volume will be deleted on instance termination.
   final bool deleteOnTermination;
+
   /// Name of the device.
   final String deviceName;
+
   /// Whether the volume is Encrypted.
   final bool encrypted;
+
   /// Provisioned IOPs of the volume.
   final int iops;
+
   /// Whether the device in the block device mapping of the AMI is suppressed.
   final bool noDevice;
+
   /// Snapshot ID of the mount.
   final String snapshotId;
+
   /// Throughput of the volume.
   final int throughput;
+
   /// Size of the volume.
   final int volumeSize;
+
   /// Type of the volume.
   final String volumeType;
 
@@ -57,7 +64,9 @@ class GetLaunchConfigurationEbsBlockDevice {
     };
   }
 
-  factory GetLaunchConfigurationEbsBlockDevice.fromMap(Map<String, dynamic> map) {
+  factory GetLaunchConfigurationEbsBlockDevice.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetLaunchConfigurationEbsBlockDevice(
       deleteOnTermination: map['deleteOnTermination'] as bool,
       deviceName: map['deviceName'] as String,
@@ -71,4 +80,3 @@ class GetLaunchConfigurationEbsBlockDevice {
     );
   }
 }
-

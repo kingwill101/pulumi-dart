@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetTableTtl {
   final String attributeName;
   final bool enabled;
@@ -8,10 +7,7 @@ class GetTableTtl {
   /// Creates a new [GetTableTtl].
   /// [attributeName] Required.
   /// [enabled] Required.
-  GetTableTtl({
-    required this.attributeName,
-    required this.enabled,
-  });
+  GetTableTtl({required this.attributeName, required this.enabled});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,4 +23,3 @@ class GetTableTtl {
     );
   }
 }
-

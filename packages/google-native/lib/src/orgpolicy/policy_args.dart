@@ -11,11 +11,14 @@ import 'google_cloud_orgpolicy_v2_policy_spec.dart';
 class PolicyArgs {
   /// Deprecated.
   final pulumi.Input<GoogleCloudOrgpolicyV2AlternatePolicySpec>? alternate;
+
   /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
   final pulumi.Input<GoogleCloudOrgpolicyV2PolicySpec>? dryRunSpec;
+
   /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
   final pulumi.Input<String>? name;
   final pulumi.Input<String>? project;
+
   /// Basic information about the Organization Policy.
   final pulumi.Input<GoogleCloudOrgpolicyV2PolicySpec>? spec;
 
@@ -31,31 +34,59 @@ class PolicyArgs {
     String? name,
     String? project,
     GoogleCloudOrgpolicyV2PolicySpec? spec,
-  }) :
-      alternate = pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2AlternatePolicySpec>(alternate),
-      dryRunSpec = pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(dryRunSpec),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      spec = pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(spec);
+  }) : alternate =
+           pulumi.Input.asOptionalInput<
+             GoogleCloudOrgpolicyV2AlternatePolicySpec
+           >(alternate),
+       dryRunSpec = pulumi
+           .Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(dryRunSpec),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       spec = pulumi.Input.asOptionalInput<GoogleCloudOrgpolicyV2PolicySpec>(
+         spec,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alternate': ?pulumi.Input.mapOptionalInputValue<GoogleCloudOrgpolicyV2AlternatePolicySpec, Map<String, dynamic>>(alternate, (value) => value.toMap()),
-      'dryRunSpec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudOrgpolicyV2PolicySpec, Map<String, dynamic>>(dryRunSpec, (value) => value.toMap()),
+      'alternate':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudOrgpolicyV2AlternatePolicySpec,
+            Map<String, dynamic>
+          >(alternate, (value) => value.toMap()),
+      'dryRunSpec':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudOrgpolicyV2PolicySpec,
+            Map<String, dynamic>
+          >(dryRunSpec, (value) => value.toMap()),
       'name': ?name,
       'project': ?project,
-      'spec': ?pulumi.Input.mapOptionalInputValue<GoogleCloudOrgpolicyV2PolicySpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            GoogleCloudOrgpolicyV2PolicySpec,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
     };
   }
 
   factory PolicyArgs.fromMap(Map<String, dynamic> map) {
     return PolicyArgs(
-      alternate: map['alternate'] == null ? null : GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap((map['alternate'] as Map).cast<String, dynamic>()),
-      dryRunSpec: map['dryRunSpec'] == null ? null : GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['dryRunSpec'] as Map).cast<String, dynamic>()),
+      alternate: map['alternate'] == null
+          ? null
+          : GoogleCloudOrgpolicyV2AlternatePolicySpec.fromMap(
+              (map['alternate'] as Map).cast<String, dynamic>(),
+            ),
+      dryRunSpec: map['dryRunSpec'] == null
+          ? null
+          : GoogleCloudOrgpolicyV2PolicySpec.fromMap(
+              (map['dryRunSpec'] as Map).cast<String, dynamic>(),
+            ),
       name: map['name'] == null ? null : map['name'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      spec: map['spec'] == null ? null : GoogleCloudOrgpolicyV2PolicySpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
+      spec: map['spec'] == null
+          ? null
+          : GoogleCloudOrgpolicyV2PolicySpec.fromMap(
+              (map['spec'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

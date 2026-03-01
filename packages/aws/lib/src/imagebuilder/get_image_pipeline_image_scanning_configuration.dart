@@ -5,7 +5,9 @@ import 'get_image_pipeline_image_scanning_configuration_ecr_configuration.dart';
 
 class GetImagePipelineImageScanningConfiguration {
   /// List if an object with ecr configuration for image scanning
-  final List<GetImagePipelineImageScanningConfigurationEcrConfiguration> ecrConfigurations;
+  final List<GetImagePipelineImageScanningConfigurationEcrConfiguration>
+  ecrConfigurations;
+
   /// Whether image scanning is enabled.
   final bool imageScanningEnabled;
 
@@ -19,16 +21,30 @@ class GetImagePipelineImageScanningConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ecrConfigurations': pulumi.Input.encodeList<GetImagePipelineImageScanningConfigurationEcrConfiguration, Map<String, dynamic>>(ecrConfigurations, (value) => value.toMap()),
+      'ecrConfigurations':
+          pulumi.Input.encodeList<
+            GetImagePipelineImageScanningConfigurationEcrConfiguration,
+            Map<String, dynamic>
+          >(ecrConfigurations, (value) => value.toMap()),
       'imageScanningEnabled': imageScanningEnabled,
     };
   }
 
-  factory GetImagePipelineImageScanningConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetImagePipelineImageScanningConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetImagePipelineImageScanningConfiguration(
-      ecrConfigurations: pulumi.Input.decodeList<GetImagePipelineImageScanningConfigurationEcrConfiguration>(map['ecrConfigurations'], (value) => GetImagePipelineImageScanningConfigurationEcrConfiguration.fromMap((value as Map).cast<String, dynamic>())),
+      ecrConfigurations:
+          pulumi.Input.decodeList<
+            GetImagePipelineImageScanningConfigurationEcrConfiguration
+          >(
+            map['ecrConfigurations'],
+            (value) =>
+                GetImagePipelineImageScanningConfigurationEcrConfiguration.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       imageScanningEnabled: map['imageScanningEnabled'] as bool,
     );
   }
 }
-

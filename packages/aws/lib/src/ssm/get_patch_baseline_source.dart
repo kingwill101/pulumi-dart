@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetPatchBaselineSource {
   /// Value of the yum repo configuration.
   final String configuration;
+
   /// Name specified to identify the patch source.
   final String name;
+
   /// Specific operating system versions a patch repository applies to.
   final List<String> products;
 
@@ -35,4 +36,3 @@ class GetPatchBaselineSource {
     );
   }
 }
-

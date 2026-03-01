@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt {
   /// Instructions for interpreting the contents of the document.
   final String parsingPromptString;
@@ -12,15 +11,14 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoun
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'parsingPromptString': parsingPromptString,
-    };
+    return <String, dynamic>{'parsingPromptString': parsingPromptString};
   }
 
-  factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt.fromMap(Map<String, dynamic> map) {
+  factory AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfigurationParsingPrompt(
       parsingPromptString: map['parsingPromptString'] as String,
     );
   }
 }
-

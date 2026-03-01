@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetClusterReleaseChannel {
   /// The selected release channel. Accepted values are:
   /// * UNSPECIFIED: Not set.
@@ -12,20 +11,13 @@ class GetClusterReleaseChannel {
 
   /// Creates a new [GetClusterReleaseChannel].
   /// [channel] The selected release channel. Accepted values are:
-  GetClusterReleaseChannel({
-    required this.channel,
-  });
+  GetClusterReleaseChannel({required this.channel});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'channel': channel,
-    };
+    return <String, dynamic>{'channel': channel};
   }
 
   factory GetClusterReleaseChannel.fromMap(Map<String, dynamic> map) {
-    return GetClusterReleaseChannel(
-      channel: map['channel'] as String,
-    );
+    return GetClusterReleaseChannel(channel: map['channel'] as String);
   }
 }
-

@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// The zip file information for a zip deployment.
 class ZipInfoAppengineV1beta {
   /// An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.
   final int? filesCount;
+
   /// URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
   final String? sourceUrl;
 
   /// Creates a new [ZipInfoAppengineV1beta].
   /// [filesCount] An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.
   /// [sourceUrl] URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
-  ZipInfoAppengineV1beta({
-    this.filesCount,
-    this.sourceUrl,
-  });
+  ZipInfoAppengineV1beta({this.filesCount, this.sourceUrl});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -30,4 +27,3 @@ class ZipInfoAppengineV1beta {
     );
   }
 }
-

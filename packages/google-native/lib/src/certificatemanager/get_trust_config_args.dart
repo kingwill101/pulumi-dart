@@ -19,10 +19,9 @@ class GetTrustConfigArgs {
     required String location,
     String? project,
     required String trustConfigId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      trustConfigId = pulumi.Input.asInput<String>(trustConfigId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       trustConfigId = pulumi.Input.asInput<String>(trustConfigId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetTrustConfigArgs {
     );
   }
 }
-

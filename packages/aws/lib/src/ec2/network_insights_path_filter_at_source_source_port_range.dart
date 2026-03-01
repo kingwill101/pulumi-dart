@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class NetworkInsightsPathFilterAtSourceSourcePortRange {
   /// The first port in the range.
   final int? fromPort;
+
   /// The last port in the range.
   final int? toPort;
 
@@ -16,17 +16,15 @@ class NetworkInsightsPathFilterAtSourceSourcePortRange {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'fromPort': ?fromPort,
-      'toPort': ?toPort,
-    };
+    return <String, dynamic>{'fromPort': ?fromPort, 'toPort': ?toPort};
   }
 
-  factory NetworkInsightsPathFilterAtSourceSourcePortRange.fromMap(Map<String, dynamic> map) {
+  factory NetworkInsightsPathFilterAtSourceSourcePortRange.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return NetworkInsightsPathFilterAtSourceSourcePortRange(
       fromPort: map['fromPort'] == null ? null : map['fromPort'] as int,
       toPort: map['toPort'] == null ? null : map['toPort'] as int,
     );
   }
 }
-

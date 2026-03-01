@@ -9,6 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IAMPolicyArgs {
   /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   final pulumi.Input<String> folder;
+
   /// The `gcp.organizations.getIAMPolicy` data source that represents
   /// the IAM policy that will be applied to the folder. The policy will be
   /// merged with any existing policy applied to the folder.
@@ -22,18 +23,12 @@ class IAMPolicyArgs {
   /// Creates a new [IAMPolicyArgs].
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   /// [policyData] The `gcp.organizations.getIAMPolicy` data source that represents
-  IAMPolicyArgs({
-    required String folder,
-    required String policyData,
-  }) :
-      folder = pulumi.Input.asInput<String>(folder),
+  IAMPolicyArgs({required String folder, required String policyData})
+    : folder = pulumi.Input.asInput<String>(folder),
       policyData = pulumi.Input.asInput<String>(policyData);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'folder': folder,
-      'policyData': policyData,
-    };
+    return <String, dynamic>{'folder': folder, 'policyData': policyData};
   }
 
   factory IAMPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -43,4 +38,3 @@ class IAMPolicyArgs {
     );
   }
 }
-

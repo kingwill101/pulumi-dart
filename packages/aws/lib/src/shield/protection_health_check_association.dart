@@ -327,6 +327,7 @@ import 'protection_health_check_association_args.dart';
 class ProtectionHealthCheckAssociation extends pulumi.CustomResource {
   /// The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
   late final pulumi.Output<String> healthCheckArn;
+
   /// The ID of the protected resource.
   late final pulumi.Output<String> shieldProtectionId;
 
@@ -339,11 +340,11 @@ class ProtectionHealthCheckAssociation extends pulumi.CustomResource {
     ProtectionHealthCheckAssociationArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'aws:shield/protectionHealthCheckAssociation:ProtectionHealthCheckAssociation',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.healthCheckArn = registerOutput<String>('healthCheckArn');
     this.shieldProtectionId = registerOutput<String>('shieldProtectionId');
   }

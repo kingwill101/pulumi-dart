@@ -6,8 +6,10 @@ import 'stack_trace_response_workflowexecutions_v1beta.dart';
 class ErrorResponseWorkflowexecutionsV1beta {
   /// Human-readable stack trace string.
   final String context;
+
   /// Error message and data returned represented as a JSON string.
   final String payload;
+
   /// Stack trace with detailed information of where error was generated.
   final StackTraceResponseWorkflowexecutionsV1beta stackTrace;
 
@@ -29,12 +31,15 @@ class ErrorResponseWorkflowexecutionsV1beta {
     };
   }
 
-  factory ErrorResponseWorkflowexecutionsV1beta.fromMap(Map<String, dynamic> map) {
+  factory ErrorResponseWorkflowexecutionsV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ErrorResponseWorkflowexecutionsV1beta(
       context: map['context'] as String,
       payload: map['payload'] as String,
-      stackTrace: StackTraceResponseWorkflowexecutionsV1beta.fromMap((map['stackTrace'] as Map).cast<String, dynamic>()),
+      stackTrace: StackTraceResponseWorkflowexecutionsV1beta.fromMap(
+        (map['stackTrace'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

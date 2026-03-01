@@ -4,9 +4,12 @@ import 'allocation_specific_skuallocation_reserved_instance_properties_response_
 
 class FutureReservationSpecificSKUPropertiesResponseComputeBeta {
   /// Properties of the SKU instances being reserved.
-  final AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBeta instanceProperties;
+  final AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBeta
+  instanceProperties;
+
   /// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
   final String sourceInstanceTemplate;
+
   /// Total number of instances for which capacity assurance is requested at a future time period.
   final String totalCount;
 
@@ -28,12 +31,16 @@ class FutureReservationSpecificSKUPropertiesResponseComputeBeta {
     };
   }
 
-  factory FutureReservationSpecificSKUPropertiesResponseComputeBeta.fromMap(Map<String, dynamic> map) {
+  factory FutureReservationSpecificSKUPropertiesResponseComputeBeta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return FutureReservationSpecificSKUPropertiesResponseComputeBeta(
-      instanceProperties: AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBeta.fromMap((map['instanceProperties'] as Map).cast<String, dynamic>()),
+      instanceProperties:
+          AllocationSpecificSKUAllocationReservedInstancePropertiesResponseComputeBeta.fromMap(
+            (map['instanceProperties'] as Map).cast<String, dynamic>(),
+          ),
       sourceInstanceTemplate: map['sourceInstanceTemplate'] as String,
       totalCount: map['totalCount'] as String,
     );
   }
 }
-

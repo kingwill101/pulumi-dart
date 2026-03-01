@@ -13,7 +13,8 @@ enum ConnectionProfileProviderDatamigrationV1beta1 {
         return item;
       }
     }
-    throw ArgumentError('Unknown ConnectionProfileProviderDatamigrationV1beta1 value: $value');
+    throw ArgumentError(
+      'Unknown ConnectionProfileProviderDatamigrationV1beta1 value: $value',
+    );
   }
 }
-

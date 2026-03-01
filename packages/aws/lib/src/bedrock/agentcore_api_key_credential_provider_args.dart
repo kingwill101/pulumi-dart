@@ -11,15 +11,19 @@ class AgentcoreApiKeyCredentialProviderArgs {
   ///
   /// **Write-Only API Key (choose one approach):**
   final pulumi.Input<String>? apiKey;
+
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Write-only API key value. Cannot be used with `api_key`. Must be used together with `api_key_wo_version`.
   final pulumi.Input<String>? apiKeyWo;
+
   /// Used together with `api_key_wo` to trigger an update. Increment this value when an update to `api_key_wo` is required.
   final pulumi.Input<int>? apiKeyWoVersion;
+
   /// Name of the API Key credential provider. Forces replacement when changed.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String>? name;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   ///
   /// **Standard API Key (choose one approach):**
@@ -37,12 +41,11 @@ class AgentcoreApiKeyCredentialProviderArgs {
     int? apiKeyWoVersion,
     String? name,
     String? region,
-  }) :
-      apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
-      apiKeyWo = pulumi.Input.asOptionalInput<String>(apiKeyWo),
-      apiKeyWoVersion = pulumi.Input.asOptionalInput<int>(apiKeyWoVersion),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : apiKey = pulumi.Input.asOptionalInput<String>(apiKey),
+       apiKeyWo = pulumi.Input.asOptionalInput<String>(apiKeyWo),
+       apiKeyWoVersion = pulumi.Input.asOptionalInput<int>(apiKeyWoVersion),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -54,14 +57,17 @@ class AgentcoreApiKeyCredentialProviderArgs {
     };
   }
 
-  factory AgentcoreApiKeyCredentialProviderArgs.fromMap(Map<String, dynamic> map) {
+  factory AgentcoreApiKeyCredentialProviderArgs.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return AgentcoreApiKeyCredentialProviderArgs(
       apiKey: map['apiKey'] == null ? null : map['apiKey'] as String,
       apiKeyWo: map['apiKeyWo'] == null ? null : map['apiKeyWo'] as String,
-      apiKeyWoVersion: map['apiKeyWoVersion'] == null ? null : map['apiKeyWoVersion'] as int,
+      apiKeyWoVersion: map['apiKeyWoVersion'] == null
+          ? null
+          : map['apiKeyWoVersion'] as int,
       name: map['name'] == null ? null : map['name'] as String,
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

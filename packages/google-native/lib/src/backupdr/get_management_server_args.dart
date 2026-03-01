@@ -19,10 +19,9 @@ class GetManagementServerArgs {
     required String location,
     required String managementServerId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      managementServerId = pulumi.Input.asInput<String>(managementServerId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       managementServerId = pulumi.Input.asInput<String>(managementServerId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetManagementServerArgs {
     );
   }
 }
-

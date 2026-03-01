@@ -9,20 +9,27 @@ class GetClusterNodePoolDefault {
 
   /// Creates a new [GetClusterNodePoolDefault].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
-  GetClusterNodePoolDefault({
-    required this.nodeConfigDefaults,
-  });
+  GetClusterNodePoolDefault({required this.nodeConfigDefaults});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nodeConfigDefaults': pulumi.Input.encodeList<GetClusterNodePoolDefaultNodeConfigDefault, Map<String, dynamic>>(nodeConfigDefaults, (value) => value.toMap()),
+      'nodeConfigDefaults':
+          pulumi.Input.encodeList<
+            GetClusterNodePoolDefaultNodeConfigDefault,
+            Map<String, dynamic>
+          >(nodeConfigDefaults, (value) => value.toMap()),
     };
   }
 
   factory GetClusterNodePoolDefault.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolDefault(
-      nodeConfigDefaults: pulumi.Input.decodeList<GetClusterNodePoolDefaultNodeConfigDefault>(map['nodeConfigDefaults'], (value) => GetClusterNodePoolDefaultNodeConfigDefault.fromMap((value as Map).cast<String, dynamic>())),
+      nodeConfigDefaults:
+          pulumi.Input.decodeList<GetClusterNodePoolDefaultNodeConfigDefault>(
+            map['nodeConfigDefaults'],
+            (value) => GetClusterNodePoolDefaultNodeConfigDefault.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

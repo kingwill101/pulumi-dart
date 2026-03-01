@@ -10,10 +10,14 @@ import 'permissions_boundary_attachment_permissions_boundary.dart';
 class PermissionsBoundaryAttachmentArgs {
   /// The Amazon Resource Name (ARN) of the SSO Instance under which the operation will be executed.
   final pulumi.Input<String> instanceArn;
+
   /// The Amazon Resource Name (ARN) of the Permission Set.
   final pulumi.Input<String> permissionSetArn;
+
   /// The permissions boundary policy. See below.
-  final pulumi.Input<PermissionsBoundaryAttachmentPermissionsBoundary> permissionsBoundary;
+  final pulumi.Input<PermissionsBoundaryAttachmentPermissionsBoundary>
+  permissionsBoundary;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -25,19 +29,26 @@ class PermissionsBoundaryAttachmentArgs {
   PermissionsBoundaryAttachmentArgs({
     required String instanceArn,
     required String permissionSetArn,
-    required PermissionsBoundaryAttachmentPermissionsBoundary permissionsBoundary,
+    required PermissionsBoundaryAttachmentPermissionsBoundary
+    permissionsBoundary,
     String? region,
-  }) :
-      instanceArn = pulumi.Input.asInput<String>(instanceArn),
-      permissionSetArn = pulumi.Input.asInput<String>(permissionSetArn),
-      permissionsBoundary = pulumi.Input.asInput<PermissionsBoundaryAttachmentPermissionsBoundary>(permissionsBoundary),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : instanceArn = pulumi.Input.asInput<String>(instanceArn),
+       permissionSetArn = pulumi.Input.asInput<String>(permissionSetArn),
+       permissionsBoundary =
+           pulumi.Input.asInput<
+             PermissionsBoundaryAttachmentPermissionsBoundary
+           >(permissionsBoundary),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'instanceArn': instanceArn,
       'permissionSetArn': permissionSetArn,
-      'permissionsBoundary': pulumi.Input.mapInputValue<PermissionsBoundaryAttachmentPermissionsBoundary, Map<String, dynamic>>(permissionsBoundary, (value) => value.toMap()),
+      'permissionsBoundary':
+          pulumi.Input.mapInputValue<
+            PermissionsBoundaryAttachmentPermissionsBoundary,
+            Map<String, dynamic>
+          >(permissionsBoundary, (value) => value.toMap()),
       'region': ?region,
     };
   }
@@ -46,9 +57,11 @@ class PermissionsBoundaryAttachmentArgs {
     return PermissionsBoundaryAttachmentArgs(
       instanceArn: map['instanceArn'] as String,
       permissionSetArn: map['permissionSetArn'] as String,
-      permissionsBoundary: PermissionsBoundaryAttachmentPermissionsBoundary.fromMap((map['permissionsBoundary'] as Map).cast<String, dynamic>()),
+      permissionsBoundary:
+          PermissionsBoundaryAttachmentPermissionsBoundary.fromMap(
+            (map['permissionsBoundary'] as Map).cast<String, dynamic>(),
+          ),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

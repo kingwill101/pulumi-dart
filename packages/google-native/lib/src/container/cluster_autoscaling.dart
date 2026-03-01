@@ -9,12 +9,16 @@ import 'resource_limit.dart';
 class ClusterAutoscaling {
   /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP.
   final List<String>? autoprovisioningLocations;
+
   /// AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
   final AutoprovisioningNodePoolDefaults? autoprovisioningNodePoolDefaults;
+
   /// Defines autoscaling behaviour.
   final ClusterAutoscalingAutoscalingProfile? autoscalingProfile;
+
   /// Enables automatic node pool creation and deletion.
   final bool? enableNodeAutoprovisioning;
+
   /// Contains global constraints regarding minimum and maximum amount of resources in the cluster.
   final List<ResourceLimit>? resourceLimits;
 
@@ -35,21 +39,50 @@ class ClusterAutoscaling {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoprovisioningLocations': ?autoprovisioningLocations,
-      'autoprovisioningNodePoolDefaults': ?autoprovisioningNodePoolDefaults == null ? null : autoprovisioningNodePoolDefaults!.toMap(),
-      'autoscalingProfile': ?autoscalingProfile == null ? null : autoscalingProfile!.value,
+      'autoprovisioningNodePoolDefaults':
+          ?autoprovisioningNodePoolDefaults == null
+          ? null
+          : autoprovisioningNodePoolDefaults!.toMap(),
+      'autoscalingProfile': ?autoscalingProfile == null
+          ? null
+          : autoscalingProfile!.value,
       'enableNodeAutoprovisioning': ?enableNodeAutoprovisioning,
-      'resourceLimits': ?resourceLimits == null ? null : pulumi.Input.encodeList<ResourceLimit, Map<String, dynamic>>(resourceLimits!, (value) => value.toMap()),
+      'resourceLimits': ?resourceLimits == null
+          ? null
+          : pulumi.Input.encodeList<ResourceLimit, Map<String, dynamic>>(
+              resourceLimits!,
+              (value) => value.toMap(),
+            ),
     };
   }
 
   factory ClusterAutoscaling.fromMap(Map<String, dynamic> map) {
     return ClusterAutoscaling(
-      autoprovisioningLocations: map['autoprovisioningLocations'] == null ? null : (map['autoprovisioningLocations'] as List).cast<String>(),
-      autoprovisioningNodePoolDefaults: map['autoprovisioningNodePoolDefaults'] == null ? null : AutoprovisioningNodePoolDefaults.fromMap((map['autoprovisioningNodePoolDefaults'] as Map).cast<String, dynamic>()),
-      autoscalingProfile: map['autoscalingProfile'] == null ? null : ClusterAutoscalingAutoscalingProfile.fromValue(map['autoscalingProfile'] as String),
-      enableNodeAutoprovisioning: map['enableNodeAutoprovisioning'] == null ? null : map['enableNodeAutoprovisioning'] as bool,
-      resourceLimits: map['resourceLimits'] == null ? null : pulumi.Input.decodeList<ResourceLimit>(map['resourceLimits'], (value) => ResourceLimit.fromMap((value as Map).cast<String, dynamic>())),
+      autoprovisioningLocations: map['autoprovisioningLocations'] == null
+          ? null
+          : (map['autoprovisioningLocations'] as List).cast<String>(),
+      autoprovisioningNodePoolDefaults:
+          map['autoprovisioningNodePoolDefaults'] == null
+          ? null
+          : AutoprovisioningNodePoolDefaults.fromMap(
+              (map['autoprovisioningNodePoolDefaults'] as Map)
+                  .cast<String, dynamic>(),
+            ),
+      autoscalingProfile: map['autoscalingProfile'] == null
+          ? null
+          : ClusterAutoscalingAutoscalingProfile.fromValue(
+              map['autoscalingProfile'] as String,
+            ),
+      enableNodeAutoprovisioning: map['enableNodeAutoprovisioning'] == null
+          ? null
+          : map['enableNodeAutoprovisioning'] as bool,
+      resourceLimits: map['resourceLimits'] == null
+          ? null
+          : pulumi.Input.decodeList<ResourceLimit>(
+              map['resourceLimits'],
+              (value) =>
+                  ResourceLimit.fromMap((value as Map).cast<String, dynamic>()),
+            ),
     );
   }
 }
-

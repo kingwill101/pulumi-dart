@@ -15,7 +15,8 @@ enum ProductAvailabilityRetailV2beta {
         return item;
       }
     }
-    throw ArgumentError('Unknown ProductAvailabilityRetailV2beta value: $value');
+    throw ArgumentError(
+      'Unknown ProductAvailabilityRetailV2beta value: $value',
+    );
   }
 }
-

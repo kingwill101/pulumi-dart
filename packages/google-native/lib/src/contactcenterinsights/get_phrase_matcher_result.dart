@@ -7,24 +7,35 @@ import 'google_cloud_contactcenterinsights_v1_phrase_match_rule_group_response.d
 class GetPhraseMatcherResult {
   /// The most recent time at which the activation status was updated.
   final String activationUpdateTime;
+
   /// Applies the phrase matcher only when it is active.
   final bool active;
+
   /// The human-readable name of the phrase matcher.
   final String displayName;
+
   /// The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
   final String name;
+
   /// A list of phase match rule groups that are included in this matcher.
-  final List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse> phraseMatchRuleGroups;
+  final List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>
+  phraseMatchRuleGroups;
+
   /// The timestamp of when the revision was created. It is also the create time when a new matcher is added.
   final String revisionCreateTime;
+
   /// Immutable. The revision ID of the phrase matcher. A new revision is committed whenever the matcher is changed, except when it is activated or deactivated. A server generated random ID will be used. Example: locations/global/phraseMatchers/my-first-matcher@1234567
   final String revisionId;
+
   /// The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript.
   final String roleMatch;
+
   /// The type of this phrase matcher.
   final String type;
+
   /// The most recent time at which the phrase matcher was updated.
   final String updateTime;
+
   /// The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
   final String versionTag;
 
@@ -60,7 +71,11 @@ class GetPhraseMatcherResult {
       'active': active,
       'displayName': displayName,
       'name': name,
-      'phraseMatchRuleGroups': pulumi.Input.encodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse, Map<String, dynamic>>(phraseMatchRuleGroups, (value) => value.toMap()),
+      'phraseMatchRuleGroups':
+          pulumi.Input.encodeList<
+            GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse,
+            Map<String, dynamic>
+          >(phraseMatchRuleGroups, (value) => value.toMap()),
       'revisionCreateTime': revisionCreateTime,
       'revisionId': revisionId,
       'roleMatch': roleMatch,
@@ -76,7 +91,16 @@ class GetPhraseMatcherResult {
       active: map['active'] as bool,
       displayName: map['displayName'] as String,
       name: map['name'] as String,
-      phraseMatchRuleGroups: pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>(map['phraseMatchRuleGroups'], (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
+      phraseMatchRuleGroups:
+          pulumi.Input.decodeList<
+            GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse
+          >(
+            map['phraseMatchRuleGroups'],
+            (value) =>
+                GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
       revisionCreateTime: map['revisionCreateTime'] as String,
       revisionId: map['revisionId'] as String,
       roleMatch: map['roleMatch'] as String,
@@ -86,4 +110,3 @@ class GetPhraseMatcherResult {
     );
   }
 }
-

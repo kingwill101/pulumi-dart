@@ -4,16 +4,22 @@ enum GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrain
   paused("PAUSED"),
   training("TRAINING");
 
-  const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState(this.value);
+  const GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState(
+    this.value,
+  );
   final String value;
 
-  static GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState fromValue(String value) {
-    for (final item in GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState.values) {
+  static GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState
+  fromValue(String value) {
+    for (final item
+        in GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState
+            .values) {
       if (item.value == value) {
         return item;
       }
     }
-    throw ArgumentError('Unknown GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState value: $value');
+    throw ArgumentError(
+      'Unknown GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfigTrainingState value: $value',
+    );
   }
 }
-

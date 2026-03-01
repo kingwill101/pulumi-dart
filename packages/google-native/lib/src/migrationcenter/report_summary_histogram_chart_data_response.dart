@@ -10,20 +10,30 @@ class ReportSummaryHistogramChartDataResponse {
 
   /// Creates a new [ReportSummaryHistogramChartDataResponse].
   /// [buckets] Buckets in the histogram. There will be `n+1` buckets matching `n` lower bounds in the request. The first bucket will be from -infinity to the first bound. Subsequent buckets will be between one bound and the next. The final bucket will be from the final bound to infinity.
-  ReportSummaryHistogramChartDataResponse({
-    required this.buckets,
-  });
+  ReportSummaryHistogramChartDataResponse({required this.buckets});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buckets': pulumi.Input.encodeList<ReportSummaryHistogramChartDataBucketResponse, Map<String, dynamic>>(buckets, (value) => value.toMap()),
+      'buckets':
+          pulumi.Input.encodeList<
+            ReportSummaryHistogramChartDataBucketResponse,
+            Map<String, dynamic>
+          >(buckets, (value) => value.toMap()),
     };
   }
 
-  factory ReportSummaryHistogramChartDataResponse.fromMap(Map<String, dynamic> map) {
+  factory ReportSummaryHistogramChartDataResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ReportSummaryHistogramChartDataResponse(
-      buckets: pulumi.Input.decodeList<ReportSummaryHistogramChartDataBucketResponse>(map['buckets'], (value) => ReportSummaryHistogramChartDataBucketResponse.fromMap((value as Map).cast<String, dynamic>())),
+      buckets:
+          pulumi
+              .Input.decodeList<ReportSummaryHistogramChartDataBucketResponse>(
+            map['buckets'],
+            (value) => ReportSummaryHistogramChartDataBucketResponse.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

@@ -11,8 +11,10 @@ class GetBackupVaultArgs {
   ///
   /// - - -
   final pulumi.Input<String> backupVaultId;
+
   /// The location in which the Backup Vault resource belongs.
   final pulumi.Input<String> location;
+
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   final pulumi.Input<String>? project;
@@ -25,10 +27,9 @@ class GetBackupVaultArgs {
     required String backupVaultId,
     required String location,
     String? project,
-  }) :
-      backupVaultId = pulumi.Input.asInput<String>(backupVaultId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : backupVaultId = pulumi.Input.asInput<String>(backupVaultId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +47,3 @@ class GetBackupVaultArgs {
     );
   }
 }
-

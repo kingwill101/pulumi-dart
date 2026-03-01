@@ -9,8 +9,10 @@ class GetSupportedDatabaseFlagsResult {
   final String id;
   final String location;
   final String? project;
+
   /// Contains a list of `flag`, which contains the details about a particular flag.
-  final List<GetSupportedDatabaseFlagsSupportedDatabaseFlag> supportedDatabaseFlags;
+  final List<GetSupportedDatabaseFlagsSupportedDatabaseFlag>
+  supportedDatabaseFlags;
 
   /// Creates a new [GetSupportedDatabaseFlagsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -29,7 +31,11 @@ class GetSupportedDatabaseFlagsResult {
       'id': id,
       'location': location,
       'project': ?project,
-      'supportedDatabaseFlags': pulumi.Input.encodeList<GetSupportedDatabaseFlagsSupportedDatabaseFlag, Map<String, dynamic>>(supportedDatabaseFlags, (value) => value.toMap()),
+      'supportedDatabaseFlags':
+          pulumi.Input.encodeList<
+            GetSupportedDatabaseFlagsSupportedDatabaseFlag,
+            Map<String, dynamic>
+          >(supportedDatabaseFlags, (value) => value.toMap()),
     };
   }
 
@@ -38,8 +44,14 @@ class GetSupportedDatabaseFlagsResult {
       id: map['id'] as String,
       location: map['location'] as String,
       project: map['project'] == null ? null : map['project'] as String,
-      supportedDatabaseFlags: pulumi.Input.decodeList<GetSupportedDatabaseFlagsSupportedDatabaseFlag>(map['supportedDatabaseFlags'], (value) => GetSupportedDatabaseFlagsSupportedDatabaseFlag.fromMap((value as Map).cast<String, dynamic>())),
+      supportedDatabaseFlags:
+          pulumi
+              .Input.decodeList<GetSupportedDatabaseFlagsSupportedDatabaseFlag>(
+            map['supportedDatabaseFlags'],
+            (value) => GetSupportedDatabaseFlagsSupportedDatabaseFlag.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

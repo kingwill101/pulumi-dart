@@ -9,20 +9,17 @@ class PythonSettingsResponse {
 
   /// Creates a new [PythonSettingsResponse].
   /// [common] Some settings.
-  PythonSettingsResponse({
-    required this.common,
-  });
+  PythonSettingsResponse({required this.common});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'common': common.toMap(),
-    };
+    return <String, dynamic>{'common': common.toMap()};
   }
 
   factory PythonSettingsResponse.fromMap(Map<String, dynamic> map) {
     return PythonSettingsResponse(
-      common: CommonLanguageSettingsResponse.fromMap((map['common'] as Map).cast<String, dynamic>()),
+      common: CommonLanguageSettingsResponse.fromMap(
+        (map['common'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

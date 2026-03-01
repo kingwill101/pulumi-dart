@@ -12,18 +12,25 @@ import 'ospolicy_resource_package_resource_zypper_response_osconfig_v1alpha.dart
 class OSPolicyResourcePackageResourceResponseOsconfigV1alpha {
   /// A package managed by Apt.
   final OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha apt;
+
   /// A deb package file.
   final OSPolicyResourcePackageResourceDebResponseOsconfigV1alpha deb;
+
   /// The desired state the agent should maintain for this package.
   final String desiredState;
+
   /// A package managed by GooGet.
   final OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha googet;
+
   /// An MSI package.
   final OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha msi;
+
   /// An rpm package file.
   final OSPolicyResourcePackageResourceRPMResponseOsconfigV1alpha rpm;
+
   /// A package managed by YUM.
   final OSPolicyResourcePackageResourceYUMResponseOsconfigV1alpha yum;
+
   /// A package managed by Zypper.
   final OSPolicyResourcePackageResourceZypperResponseOsconfigV1alpha zypper;
 
@@ -60,17 +67,34 @@ class OSPolicyResourcePackageResourceResponseOsconfigV1alpha {
     };
   }
 
-  factory OSPolicyResourcePackageResourceResponseOsconfigV1alpha.fromMap(Map<String, dynamic> map) {
+  factory OSPolicyResourcePackageResourceResponseOsconfigV1alpha.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return OSPolicyResourcePackageResourceResponseOsconfigV1alpha(
-      apt: OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha.fromMap((map['apt'] as Map).cast<String, dynamic>()),
-      deb: OSPolicyResourcePackageResourceDebResponseOsconfigV1alpha.fromMap((map['deb'] as Map).cast<String, dynamic>()),
+      apt: OSPolicyResourcePackageResourceAPTResponseOsconfigV1alpha.fromMap(
+        (map['apt'] as Map).cast<String, dynamic>(),
+      ),
+      deb: OSPolicyResourcePackageResourceDebResponseOsconfigV1alpha.fromMap(
+        (map['deb'] as Map).cast<String, dynamic>(),
+      ),
       desiredState: map['desiredState'] as String,
-      googet: OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha.fromMap((map['googet'] as Map).cast<String, dynamic>()),
-      msi: OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha.fromMap((map['msi'] as Map).cast<String, dynamic>()),
-      rpm: OSPolicyResourcePackageResourceRPMResponseOsconfigV1alpha.fromMap((map['rpm'] as Map).cast<String, dynamic>()),
-      yum: OSPolicyResourcePackageResourceYUMResponseOsconfigV1alpha.fromMap((map['yum'] as Map).cast<String, dynamic>()),
-      zypper: OSPolicyResourcePackageResourceZypperResponseOsconfigV1alpha.fromMap((map['zypper'] as Map).cast<String, dynamic>()),
+      googet:
+          OSPolicyResourcePackageResourceGooGetResponseOsconfigV1alpha.fromMap(
+            (map['googet'] as Map).cast<String, dynamic>(),
+          ),
+      msi: OSPolicyResourcePackageResourceMSIResponseOsconfigV1alpha.fromMap(
+        (map['msi'] as Map).cast<String, dynamic>(),
+      ),
+      rpm: OSPolicyResourcePackageResourceRPMResponseOsconfigV1alpha.fromMap(
+        (map['rpm'] as Map).cast<String, dynamic>(),
+      ),
+      yum: OSPolicyResourcePackageResourceYUMResponseOsconfigV1alpha.fromMap(
+        (map['yum'] as Map).cast<String, dynamic>(),
+      ),
+      zypper:
+          OSPolicyResourcePackageResourceZypperResponseOsconfigV1alpha.fromMap(
+            (map['zypper'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

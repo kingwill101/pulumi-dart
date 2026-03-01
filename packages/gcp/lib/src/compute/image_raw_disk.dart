@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ImageRawDisk {
   /// The format used to encode and transmit the block device, which
   /// should be TAR. This is just a container and transmission format
@@ -9,9 +8,11 @@ class ImageRawDisk {
   /// Default value is `TAR`.
   /// Possible values are: `TAR`.
   final String? containerType;
+
   /// An optional SHA1 checksum of the disk image before unpackaging.
   /// This is provided by the client when the disk image is created.
   final String? sha1;
+
   /// The full Google Cloud Storage URL where disk storage is stored
   /// You must provide either this property or the sourceDisk property
   /// but not both.
@@ -21,11 +22,7 @@ class ImageRawDisk {
   /// [containerType] The format used to encode and transmit the block device, which
   /// [sha1] An optional SHA1 checksum of the disk image before unpackaging.
   /// [source] The full Google Cloud Storage URL where disk storage is stored
-  ImageRawDisk({
-    this.containerType,
-    this.sha1,
-    required this.source,
-  });
+  ImageRawDisk({this.containerType, this.sha1, required this.source});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +34,11 @@ class ImageRawDisk {
 
   factory ImageRawDisk.fromMap(Map<String, dynamic> map) {
     return ImageRawDisk(
-      containerType: map['containerType'] == null ? null : map['containerType'] as String,
+      containerType: map['containerType'] == null
+          ? null
+          : map['containerType'] as String,
       sha1: map['sha1'] == null ? null : map['sha1'] as String,
       source: map['source'] as String,
     );
   }
 }
-

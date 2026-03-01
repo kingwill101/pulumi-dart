@@ -6,9 +6,11 @@ import 'instance_attachment_args.dart';
 class InstanceAttachment extends pulumi.CustomResource {
   /// Time the attachment was created in milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
+
   /// ID of the attached environment.
   late final pulumi.Output<String> environment;
   late final pulumi.Output<String> instanceId;
+
   /// ID of the attachment.
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> organizationId;
@@ -22,11 +24,11 @@ class InstanceAttachment extends pulumi.CustomResource {
     InstanceAttachmentArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'google-native:apigee/v1:InstanceAttachment',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'google-native:apigee/v1:InstanceAttachment',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.createdAt = registerOutput<String>('createdAt');
     this.environment = registerOutput<String>('environment');
     this.instanceId = registerOutput<String>('instanceId');

@@ -19,10 +19,9 @@ class GetNamespaceIamPolicyServicedirectoryV1beta1Args {
     required String location,
     required String namespaceId,
     String? project,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      namespaceId = pulumi.Input.asInput<String>(namespaceId),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : location = pulumi.Input.asInput<String>(location),
+       namespaceId = pulumi.Input.asInput<String>(namespaceId),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +31,9 @@ class GetNamespaceIamPolicyServicedirectoryV1beta1Args {
     };
   }
 
-  factory GetNamespaceIamPolicyServicedirectoryV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetNamespaceIamPolicyServicedirectoryV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetNamespaceIamPolicyServicedirectoryV1beta1Args(
       location: map['location'] as String,
       namespaceId: map['namespaceId'] as String,
@@ -40,4 +41,3 @@ class GetNamespaceIamPolicyServicedirectoryV1beta1Args {
     );
   }
 }
-

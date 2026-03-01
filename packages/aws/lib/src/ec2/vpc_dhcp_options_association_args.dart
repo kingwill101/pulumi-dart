@@ -9,8 +9,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcDhcpOptionsAssociationArgs {
   /// The ID of the DHCP Options Set to associate to the VPC.
   final pulumi.Input<String> dhcpOptionsId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
+
   /// The ID of the VPC to which we would like to associate a DHCP Options Set.
   final pulumi.Input<String> vpcId;
 
@@ -22,10 +24,9 @@ class VpcDhcpOptionsAssociationArgs {
     required String dhcpOptionsId,
     String? region,
     required String vpcId,
-  }) :
-      dhcpOptionsId = pulumi.Input.asInput<String>(dhcpOptionsId),
-      region = pulumi.Input.asOptionalInput<String>(region),
-      vpcId = pulumi.Input.asInput<String>(vpcId);
+  }) : dhcpOptionsId = pulumi.Input.asInput<String>(dhcpOptionsId),
+       region = pulumi.Input.asOptionalInput<String>(region),
+       vpcId = pulumi.Input.asInput<String>(vpcId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -43,4 +44,3 @@ class VpcDhcpOptionsAssociationArgs {
     );
   }
 }
-

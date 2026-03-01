@@ -9,9 +9,7 @@ class CloudSqlConnectionProfileDatamigrationV1beta1 {
 
   /// Creates a new [CloudSqlConnectionProfileDatamigrationV1beta1].
   /// [settings] Immutable. Metadata used to create the destination Cloud SQL database.
-  CloudSqlConnectionProfileDatamigrationV1beta1({
-    this.settings,
-  });
+  CloudSqlConnectionProfileDatamigrationV1beta1({this.settings});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -19,10 +17,15 @@ class CloudSqlConnectionProfileDatamigrationV1beta1 {
     };
   }
 
-  factory CloudSqlConnectionProfileDatamigrationV1beta1.fromMap(Map<String, dynamic> map) {
+  factory CloudSqlConnectionProfileDatamigrationV1beta1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CloudSqlConnectionProfileDatamigrationV1beta1(
-      settings: map['settings'] == null ? null : CloudSqlSettingsDatamigrationV1beta1.fromMap((map['settings'] as Map).cast<String, dynamic>()),
+      settings: map['settings'] == null
+          ? null
+          : CloudSqlSettingsDatamigrationV1beta1.fromMap(
+              (map['settings'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

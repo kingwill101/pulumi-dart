@@ -9,12 +9,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GatewayAssociationProposalArgs {
   /// VPC prefixes (CIDRs) to advertise to the Direct Connect gateway. Defaults to the CIDR block of the VPC associated with the Virtual Gateway. To enable drift detection, must be configured.
   final pulumi.Input<List<String>>? allowedPrefixes;
+
   /// The ID of the VGW or transit gateway with which to associate the Direct Connect gateway.
   final pulumi.Input<String> associatedGatewayId;
+
   /// Direct Connect Gateway identifier.
   final pulumi.Input<String> dxGatewayId;
+
   /// AWS Account identifier of the Direct Connect Gateway's owner.
   final pulumi.Input<String> dxGatewayOwnerAccountId;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -30,12 +34,15 @@ class GatewayAssociationProposalArgs {
     required String dxGatewayId,
     required String dxGatewayOwnerAccountId,
     String? region,
-  }) :
-      allowedPrefixes = pulumi.Input.asOptionalInput<List<String>>(allowedPrefixes),
-      associatedGatewayId = pulumi.Input.asInput<String>(associatedGatewayId),
-      dxGatewayId = pulumi.Input.asInput<String>(dxGatewayId),
-      dxGatewayOwnerAccountId = pulumi.Input.asInput<String>(dxGatewayOwnerAccountId),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : allowedPrefixes = pulumi.Input.asOptionalInput<List<String>>(
+         allowedPrefixes,
+       ),
+       associatedGatewayId = pulumi.Input.asInput<String>(associatedGatewayId),
+       dxGatewayId = pulumi.Input.asInput<String>(dxGatewayId),
+       dxGatewayOwnerAccountId = pulumi.Input.asInput<String>(
+         dxGatewayOwnerAccountId,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -49,7 +56,9 @@ class GatewayAssociationProposalArgs {
 
   factory GatewayAssociationProposalArgs.fromMap(Map<String, dynamic> map) {
     return GatewayAssociationProposalArgs(
-      allowedPrefixes: map['allowedPrefixes'] == null ? null : (map['allowedPrefixes'] as List).cast<String>(),
+      allowedPrefixes: map['allowedPrefixes'] == null
+          ? null
+          : (map['allowedPrefixes'] as List).cast<String>(),
       associatedGatewayId: map['associatedGatewayId'] as String,
       dxGatewayId: map['dxGatewayId'] as String,
       dxGatewayOwnerAccountId: map['dxGatewayOwnerAccountId'] as String,
@@ -57,4 +66,3 @@ class GatewayAssociationProposalArgs {
     );
   }
 }
-

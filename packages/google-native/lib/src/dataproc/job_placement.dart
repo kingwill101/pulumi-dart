@@ -1,20 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Dataproc job config.
 class JobPlacement {
   /// Optional. Cluster labels to identify a cluster where the job will be submitted.
   final Map<String, String>? clusterLabels;
+
   /// The name of the cluster where the job will be submitted.
   final String clusterName;
 
   /// Creates a new [JobPlacement].
   /// [clusterLabels] Optional. Cluster labels to identify a cluster where the job will be submitted.
   /// [clusterName] The name of the cluster where the job will be submitted.
-  JobPlacement({
-    this.clusterLabels,
-    required this.clusterName,
-  });
+  JobPlacement({this.clusterLabels, required this.clusterName});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,9 +22,10 @@ class JobPlacement {
 
   factory JobPlacement.fromMap(Map<String, dynamic> map) {
     return JobPlacement(
-      clusterLabels: map['clusterLabels'] == null ? null : (map['clusterLabels'] as Map).cast<String, String>(),
+      clusterLabels: map['clusterLabels'] == null
+          ? null
+          : (map['clusterLabels'] as Map).cast<String, String>(),
       clusterName: map['clusterName'] as String,
     );
   }
 }
-

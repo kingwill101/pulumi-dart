@@ -10,10 +10,13 @@ import 'get_instance_type_offering_filter.dart';
 class GetInstanceTypeOfferingArgs {
   /// One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html) for supported filters. Detailed below.
   final pulumi.Input<List<GetInstanceTypeOfferingFilter>>? filters;
+
   /// Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
   final pulumi.Input<String>? locationType;
+
   /// Ordered list of preferred EC2 Instance Types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
   final pulumi.Input<List<String>>? preferredInstanceTypes;
+
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String>? region;
 
@@ -27,15 +30,28 @@ class GetInstanceTypeOfferingArgs {
     String? locationType,
     List<String>? preferredInstanceTypes,
     String? region,
-  }) :
-      filters = pulumi.Input.asOptionalInput<List<GetInstanceTypeOfferingFilter>>(filters),
-      locationType = pulumi.Input.asOptionalInput<String>(locationType),
-      preferredInstanceTypes = pulumi.Input.asOptionalInput<List<String>>(preferredInstanceTypes),
-      region = pulumi.Input.asOptionalInput<String>(region);
+  }) : filters = pulumi
+           .Input.asOptionalInput<List<GetInstanceTypeOfferingFilter>>(filters),
+       locationType = pulumi.Input.asOptionalInput<String>(locationType),
+       preferredInstanceTypes = pulumi.Input.asOptionalInput<List<String>>(
+         preferredInstanceTypes,
+       ),
+       region = pulumi.Input.asOptionalInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'filters': ?pulumi.Input.mapOptionalInputValue<List<GetInstanceTypeOfferingFilter>, List<Map<String, dynamic>>>(filters, (value) => pulumi.Input.encodeList<GetInstanceTypeOfferingFilter, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'filters':
+          ?pulumi.Input.mapOptionalInputValue<
+            List<GetInstanceTypeOfferingFilter>,
+            List<Map<String, dynamic>>
+          >(
+            filters,
+            (value) =>
+                pulumi.Input.encodeList<
+                  GetInstanceTypeOfferingFilter,
+                  Map<String, dynamic>
+                >(value, (value) => value.toMap()),
+          ),
       'locationType': ?locationType,
       'preferredInstanceTypes': ?preferredInstanceTypes,
       'region': ?region,
@@ -44,11 +60,21 @@ class GetInstanceTypeOfferingArgs {
 
   factory GetInstanceTypeOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetInstanceTypeOfferingArgs(
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetInstanceTypeOfferingFilter>(map['filters'], (value) => GetInstanceTypeOfferingFilter.fromMap((value as Map).cast<String, dynamic>())),
-      locationType: map['locationType'] == null ? null : map['locationType'] as String,
-      preferredInstanceTypes: map['preferredInstanceTypes'] == null ? null : (map['preferredInstanceTypes'] as List).cast<String>(),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<GetInstanceTypeOfferingFilter>(
+              map['filters'],
+              (value) => GetInstanceTypeOfferingFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      locationType: map['locationType'] == null
+          ? null
+          : map['locationType'] as String,
+      preferredInstanceTypes: map['preferredInstanceTypes'] == null
+          ? null
+          : (map['preferredInstanceTypes'] as List).cast<String>(),
       region: map['region'] == null ? null : map['region'] as String,
     );
   }
 }
-

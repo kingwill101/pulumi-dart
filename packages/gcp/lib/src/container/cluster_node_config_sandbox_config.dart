@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterNodeConfigSandboxConfig {
   /// Which sandbox to use for pods in the node pool.
   /// Accepted values are:
@@ -10,14 +9,10 @@ class ClusterNodeConfigSandboxConfig {
 
   /// Creates a new [ClusterNodeConfigSandboxConfig].
   /// [sandboxType] Which sandbox to use for pods in the node pool.
-  ClusterNodeConfigSandboxConfig({
-    required this.sandboxType,
-  });
+  ClusterNodeConfigSandboxConfig({required this.sandboxType});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'sandboxType': sandboxType,
-    };
+    return <String, dynamic>{'sandboxType': sandboxType};
   }
 
   factory ClusterNodeConfigSandboxConfig.fromMap(Map<String, dynamic> map) {
@@ -26,4 +21,3 @@ class ClusterNodeConfigSandboxConfig {
     );
   }
 }
-

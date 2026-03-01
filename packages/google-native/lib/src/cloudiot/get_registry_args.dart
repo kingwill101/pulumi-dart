@@ -19,10 +19,9 @@ class GetRegistryArgs {
     required String location,
     String? project,
     required String registryId,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      registryId = pulumi.Input.asInput<String>(registryId);
+  }) : location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       registryId = pulumi.Input.asInput<String>(registryId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetRegistryArgs {
     );
   }
 }
-

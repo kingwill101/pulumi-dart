@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for fine-grained cost management feature.
 class CostManagementConfigResponse {
   /// Whether the feature is enabled or not.
@@ -8,20 +7,13 @@ class CostManagementConfigResponse {
 
   /// Creates a new [CostManagementConfigResponse].
   /// [enabled] Whether the feature is enabled or not.
-  CostManagementConfigResponse({
-    required this.enabled,
-  });
+  CostManagementConfigResponse({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
   factory CostManagementConfigResponse.fromMap(Map<String, dynamic> map) {
-    return CostManagementConfigResponse(
-      enabled: map['enabled'] as bool,
-    );
+    return CostManagementConfigResponse(enabled: map['enabled'] as bool);
   }
 }
-

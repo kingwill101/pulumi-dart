@@ -20,4 +20,3 @@ enum MessageNewTaskState {
     throw ArgumentError('Unknown MessageNewTaskState value: $value');
   }
 }
-

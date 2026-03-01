@@ -9,15 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SharedflowDeploymentArgs {
   /// The resource ID of the environment.
   final pulumi.Input<String> environment;
+
   /// The Apigee Organization associated with the Sharedflow
   final pulumi.Input<String> orgId;
+
   /// Revision of the Sharedflow to be deployed.
   ///
   ///
   /// - - -
   final pulumi.Input<String> revision;
+
   /// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
   final pulumi.Input<String>? serviceAccount;
+
   /// Id of the Sharedflow to be deployed.
   final pulumi.Input<String> sharedflowId;
 
@@ -33,12 +37,11 @@ class SharedflowDeploymentArgs {
     required String revision,
     String? serviceAccount,
     required String sharedflowId,
-  }) :
-      environment = pulumi.Input.asInput<String>(environment),
-      orgId = pulumi.Input.asInput<String>(orgId),
-      revision = pulumi.Input.asInput<String>(revision),
-      serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
-      sharedflowId = pulumi.Input.asInput<String>(sharedflowId);
+  }) : environment = pulumi.Input.asInput<String>(environment),
+       orgId = pulumi.Input.asInput<String>(orgId),
+       revision = pulumi.Input.asInput<String>(revision),
+       serviceAccount = pulumi.Input.asOptionalInput<String>(serviceAccount),
+       sharedflowId = pulumi.Input.asInput<String>(sharedflowId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,9 +58,10 @@ class SharedflowDeploymentArgs {
       environment: map['environment'] as String,
       orgId: map['orgId'] as String,
       revision: map['revision'] as String,
-      serviceAccount: map['serviceAccount'] == null ? null : map['serviceAccount'] as String,
+      serviceAccount: map['serviceAccount'] == null
+          ? null
+          : map['serviceAccount'] as String,
       sharedflowId: map['sharedflowId'] as String,
     );
   }
 }
-

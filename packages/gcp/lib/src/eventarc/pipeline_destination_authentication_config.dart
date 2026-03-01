@@ -10,6 +10,7 @@ class PipelineDestinationAuthenticationConfig {
   /// support Google OIDC.
   /// Structure is documented below.
   final PipelineDestinationAuthenticationConfigGoogleOidc? googleOidc;
+
   /// Contains information needed for generating an
   /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
   /// This type of authorization should generally only be used when calling
@@ -20,10 +21,7 @@ class PipelineDestinationAuthenticationConfig {
   /// Creates a new [PipelineDestinationAuthenticationConfig].
   /// [googleOidc] Represents a config used to authenticate with a Google OIDC token using
   /// [oauthToken] Contains information needed for generating an
-  PipelineDestinationAuthenticationConfig({
-    this.googleOidc,
-    this.oauthToken,
-  });
+  PipelineDestinationAuthenticationConfig({this.googleOidc, this.oauthToken});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,11 +30,20 @@ class PipelineDestinationAuthenticationConfig {
     };
   }
 
-  factory PipelineDestinationAuthenticationConfig.fromMap(Map<String, dynamic> map) {
+  factory PipelineDestinationAuthenticationConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return PipelineDestinationAuthenticationConfig(
-      googleOidc: map['googleOidc'] == null ? null : PipelineDestinationAuthenticationConfigGoogleOidc.fromMap((map['googleOidc'] as Map).cast<String, dynamic>()),
-      oauthToken: map['oauthToken'] == null ? null : PipelineDestinationAuthenticationConfigOauthToken.fromMap((map['oauthToken'] as Map).cast<String, dynamic>()),
+      googleOidc: map['googleOidc'] == null
+          ? null
+          : PipelineDestinationAuthenticationConfigGoogleOidc.fromMap(
+              (map['googleOidc'] as Map).cast<String, dynamic>(),
+            ),
+      oauthToken: map['oauthToken'] == null
+          ? null
+          : PipelineDestinationAuthenticationConfigOauthToken.fromMap(
+              (map['oauthToken'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

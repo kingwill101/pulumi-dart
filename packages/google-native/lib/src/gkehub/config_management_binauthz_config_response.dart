@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Configuration for Binauthz
 class ConfigManagementBinauthzConfigResponse {
   /// Whether binauthz is enabled in this cluster.
@@ -8,20 +7,17 @@ class ConfigManagementBinauthzConfigResponse {
 
   /// Creates a new [ConfigManagementBinauthzConfigResponse].
   /// [enabled] Whether binauthz is enabled in this cluster.
-  ConfigManagementBinauthzConfigResponse({
-    required this.enabled,
-  });
+  ConfigManagementBinauthzConfigResponse({required this.enabled});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'enabled': enabled,
-    };
+    return <String, dynamic>{'enabled': enabled};
   }
 
-  factory ConfigManagementBinauthzConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory ConfigManagementBinauthzConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ConfigManagementBinauthzConfigResponse(
       enabled: map['enabled'] as bool,
     );
   }
 }
-

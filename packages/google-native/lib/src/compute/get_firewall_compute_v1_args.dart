@@ -13,18 +13,12 @@ class GetFirewallComputeV1Args {
   /// Creates a new [GetFirewallComputeV1Args].
   /// [firewall] Required.
   /// [project] Optional.
-  GetFirewallComputeV1Args({
-    required String firewall,
-    String? project,
-  }) :
-      firewall = pulumi.Input.asInput<String>(firewall),
+  GetFirewallComputeV1Args({required String firewall, String? project})
+    : firewall = pulumi.Input.asInput<String>(firewall),
       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'firewall': firewall,
-      'project': ?project,
-    };
+    return <String, dynamic>{'firewall': firewall, 'project': ?project};
   }
 
   factory GetFirewallComputeV1Args.fromMap(Map<String, dynamic> map) {
@@ -34,4 +28,3 @@ class GetFirewallComputeV1Args {
     );
   }
 }
-

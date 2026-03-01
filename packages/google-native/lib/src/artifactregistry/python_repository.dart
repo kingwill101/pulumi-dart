@@ -9,20 +9,23 @@ class PythonRepository {
 
   /// Creates a new [PythonRepository].
   /// [publicRepository] One of the publicly available Python repositories supported by Artifact Registry.
-  PythonRepository({
-    this.publicRepository,
-  });
+  PythonRepository({this.publicRepository});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'publicRepository': ?publicRepository == null ? null : publicRepository!.value,
+      'publicRepository': ?publicRepository == null
+          ? null
+          : publicRepository!.value,
     };
   }
 
   factory PythonRepository.fromMap(Map<String, dynamic> map) {
     return PythonRepository(
-      publicRepository: map['publicRepository'] == null ? null : PythonRepositoryPublicRepository.fromValue(map['publicRepository'] as String),
+      publicRepository: map['publicRepository'] == null
+          ? null
+          : PythonRepositoryPublicRepository.fromValue(
+              map['publicRepository'] as String,
+            ),
     );
   }
 }
-

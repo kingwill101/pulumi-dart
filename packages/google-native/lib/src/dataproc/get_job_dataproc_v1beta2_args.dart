@@ -19,10 +19,9 @@ class GetJobDataprocV1beta2Args {
     required String jobId,
     String? project,
     required String region,
-  }) :
-      jobId = pulumi.Input.asInput<String>(jobId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      region = pulumi.Input.asInput<String>(region);
+  }) : jobId = pulumi.Input.asInput<String>(jobId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       region = pulumi.Input.asInput<String>(region);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetJobDataprocV1beta2Args {
     );
   }
 }
-

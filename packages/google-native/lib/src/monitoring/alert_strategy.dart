@@ -8,8 +8,10 @@ import 'notification_rate_limit.dart';
 class AlertStrategy {
   /// If an alert policy that was active has no data for this long, any open incidents will close
   final String? autoClose;
+
   /// Control how notifications will be sent out, on a per-channel basis.
   final List<NotificationChannelStrategy>? notificationChannelStrategy;
+
   /// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
   final NotificationRateLimit? notificationRateLimit;
 
@@ -26,17 +28,34 @@ class AlertStrategy {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoClose': ?autoClose,
-      'notificationChannelStrategy': ?notificationChannelStrategy == null ? null : pulumi.Input.encodeList<NotificationChannelStrategy, Map<String, dynamic>>(notificationChannelStrategy!, (value) => value.toMap()),
-      'notificationRateLimit': ?notificationRateLimit == null ? null : notificationRateLimit!.toMap(),
+      'notificationChannelStrategy': ?notificationChannelStrategy == null
+          ? null
+          : pulumi.Input.encodeList<
+              NotificationChannelStrategy,
+              Map<String, dynamic>
+            >(notificationChannelStrategy!, (value) => value.toMap()),
+      'notificationRateLimit': ?notificationRateLimit == null
+          ? null
+          : notificationRateLimit!.toMap(),
     };
   }
 
   factory AlertStrategy.fromMap(Map<String, dynamic> map) {
     return AlertStrategy(
       autoClose: map['autoClose'] == null ? null : map['autoClose'] as String,
-      notificationChannelStrategy: map['notificationChannelStrategy'] == null ? null : pulumi.Input.decodeList<NotificationChannelStrategy>(map['notificationChannelStrategy'], (value) => NotificationChannelStrategy.fromMap((value as Map).cast<String, dynamic>())),
-      notificationRateLimit: map['notificationRateLimit'] == null ? null : NotificationRateLimit.fromMap((map['notificationRateLimit'] as Map).cast<String, dynamic>()),
+      notificationChannelStrategy: map['notificationChannelStrategy'] == null
+          ? null
+          : pulumi.Input.decodeList<NotificationChannelStrategy>(
+              map['notificationChannelStrategy'],
+              (value) => NotificationChannelStrategy.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      notificationRateLimit: map['notificationRateLimit'] == null
+          ? null
+          : NotificationRateLimit.fromMap(
+              (map['notificationRateLimit'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

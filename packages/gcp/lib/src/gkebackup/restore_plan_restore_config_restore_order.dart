@@ -8,24 +8,37 @@ class RestorePlanRestoreConfigRestoreOrder {
   /// that is used by Backup for GKE to
   /// generate a group kind restore order.
   /// Structure is documented below.
-  final List<RestorePlanRestoreConfigRestoreOrderGroupKindDependency> groupKindDependencies;
+  final List<RestorePlanRestoreConfigRestoreOrderGroupKindDependency>
+  groupKindDependencies;
 
   /// Creates a new [RestorePlanRestoreConfigRestoreOrder].
   /// [groupKindDependencies] A list of group kind dependency pairs
-  RestorePlanRestoreConfigRestoreOrder({
-    required this.groupKindDependencies,
-  });
+  RestorePlanRestoreConfigRestoreOrder({required this.groupKindDependencies});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groupKindDependencies': pulumi.Input.encodeList<RestorePlanRestoreConfigRestoreOrderGroupKindDependency, Map<String, dynamic>>(groupKindDependencies, (value) => value.toMap()),
+      'groupKindDependencies':
+          pulumi.Input.encodeList<
+            RestorePlanRestoreConfigRestoreOrderGroupKindDependency,
+            Map<String, dynamic>
+          >(groupKindDependencies, (value) => value.toMap()),
     };
   }
 
-  factory RestorePlanRestoreConfigRestoreOrder.fromMap(Map<String, dynamic> map) {
+  factory RestorePlanRestoreConfigRestoreOrder.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return RestorePlanRestoreConfigRestoreOrder(
-      groupKindDependencies: pulumi.Input.decodeList<RestorePlanRestoreConfigRestoreOrderGroupKindDependency>(map['groupKindDependencies'], (value) => RestorePlanRestoreConfigRestoreOrderGroupKindDependency.fromMap((value as Map).cast<String, dynamic>())),
+      groupKindDependencies:
+          pulumi.Input.decodeList<
+            RestorePlanRestoreConfigRestoreOrderGroupKindDependency
+          >(
+            map['groupKindDependencies'],
+            (value) =>
+                RestorePlanRestoreConfigRestoreOrderGroupKindDependency.fromMap(
+                  (value as Map).cast<String, dynamic>(),
+                ),
+          ),
     );
   }
 }
-

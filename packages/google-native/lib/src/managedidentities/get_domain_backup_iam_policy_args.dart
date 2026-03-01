@@ -22,11 +22,12 @@ class GetDomainBackupIamPolicyArgs {
     required String domainId,
     int? optionsRequestedPolicyVersion,
     String? project,
-  }) :
-      backupId = pulumi.Input.asInput<String>(backupId),
-      domainId = pulumi.Input.asInput<String>(domainId),
-      optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(optionsRequestedPolicyVersion),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : backupId = pulumi.Input.asInput<String>(backupId),
+       domainId = pulumi.Input.asInput<String>(domainId),
+       optionsRequestedPolicyVersion = pulumi.Input.asOptionalInput<int>(
+         optionsRequestedPolicyVersion,
+       ),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +42,11 @@ class GetDomainBackupIamPolicyArgs {
     return GetDomainBackupIamPolicyArgs(
       backupId: map['backupId'] as String,
       domainId: map['domainId'] as String,
-      optionsRequestedPolicyVersion: map['optionsRequestedPolicyVersion'] == null ? null : map['optionsRequestedPolicyVersion'] as int,
+      optionsRequestedPolicyVersion:
+          map['optionsRequestedPolicyVersion'] == null
+          ? null
+          : map['optionsRequestedPolicyVersion'] as int,
       project: map['project'] == null ? null : map['project'] as String,
     );
   }
 }
-

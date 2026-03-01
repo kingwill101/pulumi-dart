@@ -1,11 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class EdgeCacheOriginAwsV4Authentication {
   /// The access key ID your origin uses to identify the key.
   final String accessKeyId;
+
   /// The name of the AWS region that your origin is in.
   final String originRegion;
+
   /// The Secret Manager secret version of the secret access key used by your origin.
   ///
   /// This is the resource name of the secret version in the format 'projects/*/secrets/*/versions/*' where the '*' values are replaced by the project, secret, and version you require.
@@ -37,4 +38,3 @@ class EdgeCacheOriginAwsV4Authentication {
     );
   }
 }
-

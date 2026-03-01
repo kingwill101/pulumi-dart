@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getDirectoryBuckets.
 class GetDirectoryBucketsResult {
   /// Bucket ARNs.
   final List<String> arns;
+
   /// Buckets names.
   final List<String> buckets;
   final String id;
@@ -40,4 +40,3 @@ class GetDirectoryBucketsResult {
     );
   }
 }
-

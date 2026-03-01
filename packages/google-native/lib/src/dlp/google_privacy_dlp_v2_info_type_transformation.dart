@@ -8,6 +8,7 @@ import 'google_privacy_dlp_v2_primitive_transformation.dart';
 class GooglePrivacyDlpV2InfoTypeTransformation {
   /// InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
   final List<GooglePrivacyDlpV2InfoType>? infoTypes;
+
   /// Primitive transformation to apply to the infoType.
   final GooglePrivacyDlpV2PrimitiveTransformation primitiveTransformation;
 
@@ -21,16 +22,32 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'infoTypes': ?infoTypes == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2InfoType, Map<String, dynamic>>(infoTypes!, (value) => value.toMap()),
+      'infoTypes': ?infoTypes == null
+          ? null
+          : pulumi.Input.encodeList<
+              GooglePrivacyDlpV2InfoType,
+              Map<String, dynamic>
+            >(infoTypes!, (value) => value.toMap()),
       'primitiveTransformation': primitiveTransformation.toMap(),
     };
   }
 
-  factory GooglePrivacyDlpV2InfoTypeTransformation.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2InfoTypeTransformation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2InfoTypeTransformation(
-      infoTypes: map['infoTypes'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(map['infoTypes'], (value) => GooglePrivacyDlpV2InfoType.fromMap((value as Map).cast<String, dynamic>())),
-      primitiveTransformation: GooglePrivacyDlpV2PrimitiveTransformation.fromMap((map['primitiveTransformation'] as Map).cast<String, dynamic>()),
+      infoTypes: map['infoTypes'] == null
+          ? null
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2InfoType>(
+              map['infoTypes'],
+              (value) => GooglePrivacyDlpV2InfoType.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      primitiveTransformation:
+          GooglePrivacyDlpV2PrimitiveTransformation.fromMap(
+            (map['primitiveTransformation'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

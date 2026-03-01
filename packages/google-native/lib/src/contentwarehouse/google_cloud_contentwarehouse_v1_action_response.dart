@@ -12,20 +12,30 @@ import 'google_cloud_contentwarehouse_v1_remove_from_folder_action_response.dart
 class GoogleCloudContentwarehouseV1ActionResponse {
   /// Action triggering access control operations.
   final GoogleCloudContentwarehouseV1AccessControlActionResponse accessControl;
+
   /// ID of the action. Managed internally.
   final String actionId;
+
   /// Action triggering create document link operation.
   final GoogleCloudContentwarehouseV1AddToFolderActionResponse addToFolder;
+
   /// Action triggering data update operations.
   final GoogleCloudContentwarehouseV1DataUpdateActionResponse dataUpdate;
+
   /// Action triggering data validation operations.
-  final GoogleCloudContentwarehouseV1DataValidationActionResponse dataValidation;
+  final GoogleCloudContentwarehouseV1DataValidationActionResponse
+  dataValidation;
+
   /// Action deleting the document.
-  final GoogleCloudContentwarehouseV1DeleteDocumentActionResponse deleteDocumentAction;
+  final GoogleCloudContentwarehouseV1DeleteDocumentActionResponse
+  deleteDocumentAction;
+
   /// Action publish to Pub/Sub operation.
   final GoogleCloudContentwarehouseV1PublishActionResponse publishToPubSub;
+
   /// Action removing a document from a folder.
-  final GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse removeFromFolderAction;
+  final GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse
+  removeFromFolderAction;
 
   /// Creates a new [GoogleCloudContentwarehouseV1ActionResponse].
   /// [accessControl] Action triggering access control operations.
@@ -60,17 +70,38 @@ class GoogleCloudContentwarehouseV1ActionResponse {
     };
   }
 
-  factory GoogleCloudContentwarehouseV1ActionResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudContentwarehouseV1ActionResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudContentwarehouseV1ActionResponse(
-      accessControl: GoogleCloudContentwarehouseV1AccessControlActionResponse.fromMap((map['accessControl'] as Map).cast<String, dynamic>()),
+      accessControl:
+          GoogleCloudContentwarehouseV1AccessControlActionResponse.fromMap(
+            (map['accessControl'] as Map).cast<String, dynamic>(),
+          ),
       actionId: map['actionId'] as String,
-      addToFolder: GoogleCloudContentwarehouseV1AddToFolderActionResponse.fromMap((map['addToFolder'] as Map).cast<String, dynamic>()),
-      dataUpdate: GoogleCloudContentwarehouseV1DataUpdateActionResponse.fromMap((map['dataUpdate'] as Map).cast<String, dynamic>()),
-      dataValidation: GoogleCloudContentwarehouseV1DataValidationActionResponse.fromMap((map['dataValidation'] as Map).cast<String, dynamic>()),
-      deleteDocumentAction: GoogleCloudContentwarehouseV1DeleteDocumentActionResponse.fromMap((map['deleteDocumentAction'] as Map).cast<String, dynamic>()),
-      publishToPubSub: GoogleCloudContentwarehouseV1PublishActionResponse.fromMap((map['publishToPubSub'] as Map).cast<String, dynamic>()),
-      removeFromFolderAction: GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse.fromMap((map['removeFromFolderAction'] as Map).cast<String, dynamic>()),
+      addToFolder:
+          GoogleCloudContentwarehouseV1AddToFolderActionResponse.fromMap(
+            (map['addToFolder'] as Map).cast<String, dynamic>(),
+          ),
+      dataUpdate: GoogleCloudContentwarehouseV1DataUpdateActionResponse.fromMap(
+        (map['dataUpdate'] as Map).cast<String, dynamic>(),
+      ),
+      dataValidation:
+          GoogleCloudContentwarehouseV1DataValidationActionResponse.fromMap(
+            (map['dataValidation'] as Map).cast<String, dynamic>(),
+          ),
+      deleteDocumentAction:
+          GoogleCloudContentwarehouseV1DeleteDocumentActionResponse.fromMap(
+            (map['deleteDocumentAction'] as Map).cast<String, dynamic>(),
+          ),
+      publishToPubSub:
+          GoogleCloudContentwarehouseV1PublishActionResponse.fromMap(
+            (map['publishToPubSub'] as Map).cast<String, dynamic>(),
+          ),
+      removeFromFolderAction:
+          GoogleCloudContentwarehouseV1RemoveFromFolderActionResponse.fromMap(
+            (map['removeFromFolderAction'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

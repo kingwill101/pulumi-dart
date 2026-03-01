@@ -12,13 +12,16 @@ class ServicePerimeterArgs {
   /// Description of the ServicePerimeter and its use. Does not affect
   /// behavior.
   final pulumi.Input<String>? description;
+
   /// Resource name for the ServicePerimeter. The short_name component must
   /// begin with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
   final pulumi.Input<String>? name;
+
   /// The AccessPolicy this ServicePerimeter lives in.
   /// Format: accessPolicies/{policy_id}
   final pulumi.Input<String> parent;
+
   /// Specifies the type of the Perimeter. There are two types: regular and
   /// bridge. Regular Service Perimeter contains resources, access levels,
   /// and restricted services. Every resource can be in at most
@@ -36,19 +39,23 @@ class ServicePerimeterArgs {
   /// Default value is `PERIMETER_TYPE_REGULAR`.
   /// Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
   final pulumi.Input<String>? perimeterType;
+
   /// Proposed (or dry run) ServicePerimeter configuration.
   /// This configuration allows to specify and test ServicePerimeter configuration
   /// without enforcing actual access restrictions. Only allowed to be set when
   /// the `useExplicitDryRunSpec` flag is set.
   /// Structure is documented below.
   final pulumi.Input<ServicePerimeterSpec>? spec;
+
   /// ServicePerimeter configuration. Specifies sets of resources,
   /// restricted services and access levels that determine
   /// perimeter content and boundaries.
   /// Structure is documented below.
   final pulumi.Input<ServicePerimeterStatus>? status;
+
   /// Human readable title. Must be unique within the Policy.
   final pulumi.Input<String> title;
+
   /// Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
   /// for all Service Perimeters, and that spec is identical to the status for those
   /// Service Perimeters. When this flag is set, it inhibits the generation of the
@@ -78,15 +85,16 @@ class ServicePerimeterArgs {
     ServicePerimeterStatus? status,
     required String title,
     bool? useExplicitDryRunSpec,
-  }) :
-      description = pulumi.Input.asOptionalInput<String>(description),
-      name = pulumi.Input.asOptionalInput<String>(name),
-      parent = pulumi.Input.asInput<String>(parent),
-      perimeterType = pulumi.Input.asOptionalInput<String>(perimeterType),
-      spec = pulumi.Input.asOptionalInput<ServicePerimeterSpec>(spec),
-      status = pulumi.Input.asOptionalInput<ServicePerimeterStatus>(status),
-      title = pulumi.Input.asInput<String>(title),
-      useExplicitDryRunSpec = pulumi.Input.asOptionalInput<bool>(useExplicitDryRunSpec);
+  }) : description = pulumi.Input.asOptionalInput<String>(description),
+       name = pulumi.Input.asOptionalInput<String>(name),
+       parent = pulumi.Input.asInput<String>(parent),
+       perimeterType = pulumi.Input.asOptionalInput<String>(perimeterType),
+       spec = pulumi.Input.asOptionalInput<ServicePerimeterSpec>(spec),
+       status = pulumi.Input.asOptionalInput<ServicePerimeterStatus>(status),
+       title = pulumi.Input.asInput<String>(title),
+       useExplicitDryRunSpec = pulumi.Input.asOptionalInput<bool>(
+         useExplicitDryRunSpec,
+       );
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -94,8 +102,16 @@ class ServicePerimeterArgs {
       'name': ?name,
       'parent': parent,
       'perimeterType': ?perimeterType,
-      'spec': ?pulumi.Input.mapOptionalInputValue<ServicePerimeterSpec, Map<String, dynamic>>(spec, (value) => value.toMap()),
-      'status': ?pulumi.Input.mapOptionalInputValue<ServicePerimeterStatus, Map<String, dynamic>>(status, (value) => value.toMap()),
+      'spec':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServicePerimeterSpec,
+            Map<String, dynamic>
+          >(spec, (value) => value.toMap()),
+      'status':
+          ?pulumi.Input.mapOptionalInputValue<
+            ServicePerimeterStatus,
+            Map<String, dynamic>
+          >(status, (value) => value.toMap()),
       'title': title,
       'useExplicitDryRunSpec': ?useExplicitDryRunSpec,
     };
@@ -103,15 +119,28 @@ class ServicePerimeterArgs {
 
   factory ServicePerimeterArgs.fromMap(Map<String, dynamic> map) {
     return ServicePerimeterArgs(
-      description: map['description'] == null ? null : map['description'] as String,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       name: map['name'] == null ? null : map['name'] as String,
       parent: map['parent'] as String,
-      perimeterType: map['perimeterType'] == null ? null : map['perimeterType'] as String,
-      spec: map['spec'] == null ? null : ServicePerimeterSpec.fromMap((map['spec'] as Map).cast<String, dynamic>()),
-      status: map['status'] == null ? null : ServicePerimeterStatus.fromMap((map['status'] as Map).cast<String, dynamic>()),
+      perimeterType: map['perimeterType'] == null
+          ? null
+          : map['perimeterType'] as String,
+      spec: map['spec'] == null
+          ? null
+          : ServicePerimeterSpec.fromMap(
+              (map['spec'] as Map).cast<String, dynamic>(),
+            ),
+      status: map['status'] == null
+          ? null
+          : ServicePerimeterStatus.fromMap(
+              (map['status'] as Map).cast<String, dynamic>(),
+            ),
       title: map['title'] as String,
-      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null ? null : map['useExplicitDryRunSpec'] as bool,
+      useExplicitDryRunSpec: map['useExplicitDryRunSpec'] == null
+          ? null
+          : map['useExplicitDryRunSpec'] as bool,
     );
   }
 }
-

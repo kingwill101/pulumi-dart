@@ -16,4 +16,3 @@ enum ArgumentArgumentKind {
     throw ArgumentError('Unknown ArgumentArgumentKind value: $value');
   }
 }
-

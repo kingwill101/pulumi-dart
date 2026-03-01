@@ -1,13 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class InstancePeriodicExportConfigStartTime {
   /// Hours of day in 24 hour format. Should be from 0 to 23.
   final int? hours;
+
   /// Minutes of hour of day. Must be from 0 to 59.
   final int? minutes;
+
   /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
   final int? nanos;
+
   /// Seconds of minutes of the time. Must normally be from 0 to 59.
   final int? seconds;
 
@@ -32,7 +34,9 @@ class InstancePeriodicExportConfigStartTime {
     };
   }
 
-  factory InstancePeriodicExportConfigStartTime.fromMap(Map<String, dynamic> map) {
+  factory InstancePeriodicExportConfigStartTime.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return InstancePeriodicExportConfigStartTime(
       hours: map['hours'] == null ? null : map['hours'] as int,
       minutes: map['minutes'] == null ? null : map['minutes'] as int,
@@ -41,4 +45,3 @@ class InstancePeriodicExportConfigStartTime {
     );
   }
 }
-

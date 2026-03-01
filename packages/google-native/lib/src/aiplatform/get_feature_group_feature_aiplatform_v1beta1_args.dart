@@ -22,11 +22,10 @@ class GetFeatureGroupFeatureAiplatformV1beta1Args {
     required String featureId,
     required String location,
     String? project,
-  }) :
-      featureGroupId = pulumi.Input.asInput<String>(featureGroupId),
-      featureId = pulumi.Input.asInput<String>(featureId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : featureGroupId = pulumi.Input.asInput<String>(featureGroupId),
+       featureId = pulumi.Input.asInput<String>(featureId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,7 +36,9 @@ class GetFeatureGroupFeatureAiplatformV1beta1Args {
     };
   }
 
-  factory GetFeatureGroupFeatureAiplatformV1beta1Args.fromMap(Map<String, dynamic> map) {
+  factory GetFeatureGroupFeatureAiplatformV1beta1Args.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetFeatureGroupFeatureAiplatformV1beta1Args(
       featureGroupId: map['featureGroupId'] as String,
       featureId: map['featureId'] as String,
@@ -46,4 +47,3 @@ class GetFeatureGroupFeatureAiplatformV1beta1Args {
     );
   }
 }
-

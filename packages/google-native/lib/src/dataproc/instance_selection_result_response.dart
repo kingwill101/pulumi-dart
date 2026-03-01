@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Defines a mapping from machine types to the number of VMs that are created with each machine type.
 class InstanceSelectionResultResponse {
   /// Full machine-type names, e.g. "n1-standard-16".
   final String machineType;
+
   /// Number of VM provisioned with the machine_type.
   final int vmCount;
 
@@ -17,10 +17,7 @@ class InstanceSelectionResultResponse {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'machineType': machineType,
-      'vmCount': vmCount,
-    };
+    return <String, dynamic>{'machineType': machineType, 'vmCount': vmCount};
   }
 
   factory InstanceSelectionResultResponse.fromMap(Map<String, dynamic> map) {
@@ -30,4 +27,3 @@ class InstanceSelectionResultResponse {
     );
   }
 }
-

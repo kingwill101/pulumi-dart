@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
   /// Must be specified if type is `INTEGER`. Maximum value of the parameter.
   final String? maxValue;
+
   /// Must be specified if type is `INTEGER`. Minimum value of the parameter.
   final String? minValue;
 
@@ -16,17 +16,15 @@ class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'maxValue': ?maxValue,
-      'minValue': ?minValue,
-    };
+    return <String, dynamic>{'maxValue': ?maxValue, 'minValue': ?minValue};
   }
 
-  factory GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec(
       maxValue: map['maxValue'] == null ? null : map['maxValue'] as String,
       minValue: map['minValue'] == null ? null : map['minValue'] as String,
     );
   }
 }
-

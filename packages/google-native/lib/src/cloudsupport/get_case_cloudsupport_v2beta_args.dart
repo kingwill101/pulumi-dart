@@ -19,10 +19,9 @@ class GetCaseCloudsupportV2betaArgs {
     required String caseId,
     required String v2betaId1,
     required String v2betumId,
-  }) :
-      caseId = pulumi.Input.asInput<String>(caseId),
-      v2betaId1 = pulumi.Input.asInput<String>(v2betaId1),
-      v2betumId = pulumi.Input.asInput<String>(v2betumId);
+  }) : caseId = pulumi.Input.asInput<String>(caseId),
+       v2betaId1 = pulumi.Input.asInput<String>(v2betaId1),
+       v2betumId = pulumi.Input.asInput<String>(v2betumId);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetCaseCloudsupportV2betaArgs {
     );
   }
 }
-

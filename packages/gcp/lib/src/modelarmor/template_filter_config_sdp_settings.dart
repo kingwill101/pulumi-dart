@@ -7,6 +7,7 @@ class TemplateFilterConfigSdpSettings {
   /// Sensitive Data Protection Advanced configuration.
   /// Structure is documented below.
   final TemplateFilterConfigSdpSettingsAdvancedConfig? advancedConfig;
+
   /// Sensitive Data Protection basic configuration.
   /// Structure is documented below.
   final TemplateFilterConfigSdpSettingsBasicConfig? basicConfig;
@@ -14,23 +15,29 @@ class TemplateFilterConfigSdpSettings {
   /// Creates a new [TemplateFilterConfigSdpSettings].
   /// [advancedConfig] Sensitive Data Protection Advanced configuration.
   /// [basicConfig] Sensitive Data Protection basic configuration.
-  TemplateFilterConfigSdpSettings({
-    this.advancedConfig,
-    this.basicConfig,
-  });
+  TemplateFilterConfigSdpSettings({this.advancedConfig, this.basicConfig});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'advancedConfig': ?advancedConfig == null ? null : advancedConfig!.toMap(),
+      'advancedConfig': ?advancedConfig == null
+          ? null
+          : advancedConfig!.toMap(),
       'basicConfig': ?basicConfig == null ? null : basicConfig!.toMap(),
     };
   }
 
   factory TemplateFilterConfigSdpSettings.fromMap(Map<String, dynamic> map) {
     return TemplateFilterConfigSdpSettings(
-      advancedConfig: map['advancedConfig'] == null ? null : TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap((map['advancedConfig'] as Map).cast<String, dynamic>()),
-      basicConfig: map['basicConfig'] == null ? null : TemplateFilterConfigSdpSettingsBasicConfig.fromMap((map['basicConfig'] as Map).cast<String, dynamic>()),
+      advancedConfig: map['advancedConfig'] == null
+          ? null
+          : TemplateFilterConfigSdpSettingsAdvancedConfig.fromMap(
+              (map['advancedConfig'] as Map).cast<String, dynamic>(),
+            ),
+      basicConfig: map['basicConfig'] == null
+          ? null
+          : TemplateFilterConfigSdpSettingsBasicConfig.fromMap(
+              (map['basicConfig'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

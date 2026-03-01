@@ -7,24 +7,33 @@ import 'get_connect_peer_filter.dart';
 class GetConnectPeerResult {
   /// EC2 Transit Gateway Connect Peer ARN
   final String arn;
+
   /// BGP ASN number assigned customer device
   final String bgpAsn;
+
   /// The IP address assigned to customer device, which is used as BGP IP address.
   final String bgpPeerAddress;
+
   /// The IP addresses assigned to Transit Gateway, which are used as BGP IP addresses.
   final List<String> bgpTransitGatewayAddresses;
   final List<GetConnectPeerFilter>? filters;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
+
   /// CIDR blocks that will be used for addressing within the tunnel.
   final List<String> insideCidrBlocks;
+
   /// IP addressed assigned to customer device, which is used as tunnel endpoint
   final String peerAddress;
   final String region;
+
   /// Key-value tags for the EC2 Transit Gateway Connect Peer
   final Map<String, String> tags;
+
   /// The IP address assigned to Transit Gateway, which is used as tunnel endpoint.
   final String transitGatewayAddress;
+
   /// The Transit Gateway Connect
   final String transitGatewayAttachmentId;
   final String transitGatewayConnectPeerId;
@@ -65,7 +74,12 @@ class GetConnectPeerResult {
       'bgpAsn': bgpAsn,
       'bgpPeerAddress': bgpPeerAddress,
       'bgpTransitGatewayAddresses': bgpTransitGatewayAddresses,
-      'filters': ?filters == null ? null : pulumi.Input.encodeList<GetConnectPeerFilter, Map<String, dynamic>>(filters!, (value) => value.toMap()),
+      'filters': ?filters == null
+          ? null
+          : pulumi.Input.encodeList<GetConnectPeerFilter, Map<String, dynamic>>(
+              filters!,
+              (value) => value.toMap(),
+            ),
       'id': id,
       'insideCidrBlocks': insideCidrBlocks,
       'peerAddress': peerAddress,
@@ -82,8 +96,16 @@ class GetConnectPeerResult {
       arn: map['arn'] as String,
       bgpAsn: map['bgpAsn'] as String,
       bgpPeerAddress: map['bgpPeerAddress'] as String,
-      bgpTransitGatewayAddresses: (map['bgpTransitGatewayAddresses'] as List).cast<String>(),
-      filters: map['filters'] == null ? null : pulumi.Input.decodeList<GetConnectPeerFilter>(map['filters'], (value) => GetConnectPeerFilter.fromMap((value as Map).cast<String, dynamic>())),
+      bgpTransitGatewayAddresses: (map['bgpTransitGatewayAddresses'] as List)
+          .cast<String>(),
+      filters: map['filters'] == null
+          ? null
+          : pulumi.Input.decodeList<GetConnectPeerFilter>(
+              map['filters'],
+              (value) => GetConnectPeerFilter.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
       id: map['id'] as String,
       insideCidrBlocks: (map['insideCidrBlocks'] as List).cast<String>(),
       peerAddress: map['peerAddress'] as String,
@@ -95,4 +117,3 @@ class GetConnectPeerResult {
     );
   }
 }
-

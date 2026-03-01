@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class DistributionDefaultCacheBehaviorFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request` or `viewer-response`.
   final String eventType;
+
   /// ARN of the CloudFront function.
   final String functionArn;
 
@@ -22,11 +22,12 @@ class DistributionDefaultCacheBehaviorFunctionAssociation {
     };
   }
 
-  factory DistributionDefaultCacheBehaviorFunctionAssociation.fromMap(Map<String, dynamic> map) {
+  factory DistributionDefaultCacheBehaviorFunctionAssociation.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return DistributionDefaultCacheBehaviorFunctionAssociation(
       eventType: map['eventType'] as String,
       functionArn: map['functionArn'] as String,
     );
   }
 }
-

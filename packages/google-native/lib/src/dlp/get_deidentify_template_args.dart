@@ -19,10 +19,11 @@ class GetDeidentifyTemplateArgs {
     required String deidentifyTemplateId,
     required String location,
     String? project,
-  }) :
-      deidentifyTemplateId = pulumi.Input.asInput<String>(deidentifyTemplateId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : deidentifyTemplateId = pulumi.Input.asInput<String>(
+         deidentifyTemplateId,
+       ),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +41,3 @@ class GetDeidentifyTemplateArgs {
     );
   }
 }
-

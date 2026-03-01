@@ -6,9 +6,12 @@ import 'google_cloud_dialogflow_v2_human_agent_handoff_config_salesforce_live_ag
 /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
 class GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse {
   /// Uses LivePerson (https://www.liveperson.com).
-  final GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse livePersonConfig;
+  final GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse
+  livePersonConfig;
+
   /// Uses Salesforce Live Agent.
-  final GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse salesforceLiveAgentConfig;
+  final GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse
+  salesforceLiveAgentConfig;
 
   /// Creates a new [GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse].
   /// [livePersonConfig] Uses LivePerson (https://www.liveperson.com).
@@ -25,11 +28,18 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse {
     };
   }
 
-  factory GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse(
-      livePersonConfig: GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse.fromMap((map['livePersonConfig'] as Map).cast<String, dynamic>()),
-      salesforceLiveAgentConfig: GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse.fromMap((map['salesforceLiveAgentConfig'] as Map).cast<String, dynamic>()),
+      livePersonConfig:
+          GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse.fromMap(
+            (map['livePersonConfig'] as Map).cast<String, dynamic>(),
+          ),
+      salesforceLiveAgentConfig:
+          GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse.fromMap(
+            (map['salesforceLiveAgentConfig'] as Map).cast<String, dynamic>(),
+          ),
     );
   }
 }
-

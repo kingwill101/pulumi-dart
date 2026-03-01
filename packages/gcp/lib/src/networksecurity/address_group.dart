@@ -549,38 +549,50 @@ import 'address_group_args.dart';
 class AddressGroup extends pulumi.CustomResource {
   /// Capacity of the Address Group.
   late final pulumi.Output<int> capacity;
+
   /// The timestamp when the resource was created.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
   late final pulumi.Output<String> createTime;
+
   /// Free-text description of the resource.
   late final pulumi.Output<String?> description;
+
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   late final pulumi.Output<Map<String, String>> effectiveLabels;
+
   /// List of items.
   late final pulumi.Output<List<String>?> items;
+
   /// Set of label tags associated with the AddressGroup resource.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effective_labels` for all of the labels present on the resource.
   late final pulumi.Output<Map<String, String>?> labels;
+
   /// The location of the gateway security policy.
   /// The default value is `global`.
   late final pulumi.Output<String> location;
+
   /// Name of the AddressGroup resource.
   late final pulumi.Output<String> name;
+
   /// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
   late final pulumi.Output<String?> parent;
+
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
+
   /// List of supported purposes of the Address Group.
   /// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
   late final pulumi.Output<List<String>> purposes;
+
   /// The type of the Address Group. Possible values are "IPV4" or "IPV6".
   /// Possible values are: `IPV4`, `IPV6`.
   late final pulumi.Output<String> type;
+
   /// The timestamp when the resource was updated.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -595,15 +607,17 @@ class AddressGroup extends pulumi.CustomResource {
     AddressGroupArgs? args,
     pulumi.CustomResourceOptions? options,
   }) : super(
-          'gcp:networksecurity/addressGroup:AddressGroup',
-          name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
-        ) {
+         'gcp:networksecurity/addressGroup:AddressGroup',
+         name,
+         pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+         options ?? pulumi.CustomResourceOptions(),
+       ) {
     this.capacity = registerOutput<int>('capacity');
     this.createTime = registerOutput<String>('createTime');
     this.description = registerOutput<String?>('description');
-    this.effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    this.effectiveLabels = registerOutput<Map<String, String>>(
+      'effectiveLabels',
+    );
     this.items = registerOutput<List<String>?>('items');
     this.labels = registerOutput<Map<String, String>?>('labels');
     this.location = registerOutput<String>('location');

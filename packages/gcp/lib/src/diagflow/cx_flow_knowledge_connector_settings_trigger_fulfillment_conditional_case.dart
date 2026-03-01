@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
   /// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
   /// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
@@ -13,15 +12,14 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase {
   });
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'cases': ?cases,
-    };
+    return <String, dynamic>{'cases': ?cases};
   }
 
-  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase.fromMap(Map<String, dynamic> map) {
+  factory CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CxFlowKnowledgeConnectorSettingsTriggerFulfillmentConditionalCase(
       cases: map['cases'] == null ? null : map['cases'] as String,
     );
   }
 }
-

@@ -5,8 +5,10 @@ import 'service_template_spec_container_env_value_from.dart';
 class ServiceTemplateSpecContainerEnv {
   /// Name of the environment variable.
   final String? name;
+
   /// Defaults to "".
   final String? value;
+
   /// Source for the environment variable's value. Only supports secret_key_ref.
   /// Structure is documented below.
   final ServiceTemplateSpecContainerEnvValueFrom? valueFrom;
@@ -15,11 +17,7 @@ class ServiceTemplateSpecContainerEnv {
   /// [name] Name of the environment variable.
   /// [value] Defaults to "".
   /// [valueFrom] Source for the environment variable's value. Only supports secret_key_ref.
-  ServiceTemplateSpecContainerEnv({
-    this.name,
-    this.value,
-    this.valueFrom,
-  });
+  ServiceTemplateSpecContainerEnv({this.name, this.value, this.valueFrom});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,8 +31,11 @@ class ServiceTemplateSpecContainerEnv {
     return ServiceTemplateSpecContainerEnv(
       name: map['name'] == null ? null : map['name'] as String,
       value: map['value'] == null ? null : map['value'] as String,
-      valueFrom: map['valueFrom'] == null ? null : ServiceTemplateSpecContainerEnvValueFrom.fromMap((map['valueFrom'] as Map).cast<String, dynamic>()),
+      valueFrom: map['valueFrom'] == null
+          ? null
+          : ServiceTemplateSpecContainerEnvValueFrom.fromMap(
+              (map['valueFrom'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

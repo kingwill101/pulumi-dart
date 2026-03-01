@@ -15,4 +15,3 @@ enum AppConnectionType {
     throw ArgumentError('Unknown AppConnectionType value: $value');
   }
 }
-

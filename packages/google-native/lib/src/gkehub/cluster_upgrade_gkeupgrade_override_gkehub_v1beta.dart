@@ -7,6 +7,7 @@ import 'cluster_upgrade_post_conditions_gkehub_v1beta.dart';
 class ClusterUpgradeGKEUpgradeOverrideGkehubV1beta {
   /// Post conditions to override for the specified upgrade (name + version). Required.
   final ClusterUpgradePostConditionsGkehubV1beta postConditions;
+
   /// Which upgrade to override. Required.
   final ClusterUpgradeGKEUpgradeGkehubV1beta upgrade;
 
@@ -25,11 +26,16 @@ class ClusterUpgradeGKEUpgradeOverrideGkehubV1beta {
     };
   }
 
-  factory ClusterUpgradeGKEUpgradeOverrideGkehubV1beta.fromMap(Map<String, dynamic> map) {
+  factory ClusterUpgradeGKEUpgradeOverrideGkehubV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return ClusterUpgradeGKEUpgradeOverrideGkehubV1beta(
-      postConditions: ClusterUpgradePostConditionsGkehubV1beta.fromMap((map['postConditions'] as Map).cast<String, dynamic>()),
-      upgrade: ClusterUpgradeGKEUpgradeGkehubV1beta.fromMap((map['upgrade'] as Map).cast<String, dynamic>()),
+      postConditions: ClusterUpgradePostConditionsGkehubV1beta.fromMap(
+        (map['postConditions'] as Map).cast<String, dynamic>(),
+      ),
+      upgrade: ClusterUpgradeGKEUpgradeGkehubV1beta.fromMap(
+        (map['upgrade'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

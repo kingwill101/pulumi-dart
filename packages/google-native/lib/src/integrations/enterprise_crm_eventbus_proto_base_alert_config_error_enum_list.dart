@@ -5,7 +5,8 @@ import 'enterprise_crm_eventbus_proto_base_alert_config_error_enum_list_filter_t
 /// List of error enums for alerts.
 class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
   final List<String>? enumStrings;
-  final EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType? filterType;
+  final EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType?
+  filterType;
 
   /// Creates a new [EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList].
   /// [enumStrings] Optional.
@@ -22,11 +23,18 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
     };
   }
 
-  factory EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromMap(Map<String, dynamic> map) {
+  factory EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList(
-      enumStrings: map['enumStrings'] == null ? null : (map['enumStrings'] as List).cast<String>(),
-      filterType: map['filterType'] == null ? null : EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType.fromValue(map['filterType'] as String),
+      enumStrings: map['enumStrings'] == null
+          ? null
+          : (map['enumStrings'] as List).cast<String>(),
+      filterType: map['filterType'] == null
+          ? null
+          : EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType.fromValue(
+              map['filterType'] as String,
+            ),
     );
   }
 }
-

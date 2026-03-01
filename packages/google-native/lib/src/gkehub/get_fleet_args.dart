@@ -19,10 +19,9 @@ class GetFleetArgs {
     required String fleetId,
     required String location,
     String? project,
-  }) :
-      fleetId = pulumi.Input.asInput<String>(fleetId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : fleetId = pulumi.Input.asInput<String>(fleetId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetFleetArgs {
     );
   }
 }
-

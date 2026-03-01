@@ -7,10 +7,13 @@ import 'ds_record_digest_type.dart';
 class DsRecord {
   /// The algorithm used to generate the referenced DNSKEY.
   final DsRecordAlgorithm? algorithm;
+
   /// The digest generated from the referenced DNSKEY.
   final String? digest;
+
   /// The hash function used to generate the digest of the referenced DNSKEY.
   final DsRecordDigestType? digestType;
+
   /// The key tag of the record. Must be set in range 0 -- 65535.
   final int? keyTag;
 
@@ -19,12 +22,7 @@ class DsRecord {
   /// [digest] The digest generated from the referenced DNSKEY.
   /// [digestType] The hash function used to generate the digest of the referenced DNSKEY.
   /// [keyTag] The key tag of the record. Must be set in range 0 -- 65535.
-  DsRecord({
-    this.algorithm,
-    this.digest,
-    this.digestType,
-    this.keyTag,
-  });
+  DsRecord({this.algorithm, this.digest, this.digestType, this.keyTag});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,11 +35,14 @@ class DsRecord {
 
   factory DsRecord.fromMap(Map<String, dynamic> map) {
     return DsRecord(
-      algorithm: map['algorithm'] == null ? null : DsRecordAlgorithm.fromValue(map['algorithm'] as String),
+      algorithm: map['algorithm'] == null
+          ? null
+          : DsRecordAlgorithm.fromValue(map['algorithm'] as String),
       digest: map['digest'] == null ? null : map['digest'] as String,
-      digestType: map['digestType'] == null ? null : DsRecordDigestType.fromValue(map['digestType'] as String),
+      digestType: map['digestType'] == null
+          ? null
+          : DsRecordDigestType.fromValue(map['digestType'] as String),
       keyTag: map['keyTag'] == null ? null : map['keyTag'] as int,
     );
   }
 }
-

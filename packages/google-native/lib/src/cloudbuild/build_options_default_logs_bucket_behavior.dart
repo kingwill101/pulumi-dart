@@ -1,6 +1,8 @@
 /// Optional. Option to specify how default logs buckets are setup.
 enum BuildOptionsDefaultLogsBucketBehavior {
-  defaultLogsBucketBehaviorUnspecified("DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED"),
+  defaultLogsBucketBehaviorUnspecified(
+    "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED",
+  ),
   regionalUserOwnedBucket("REGIONAL_USER_OWNED_BUCKET");
 
   const BuildOptionsDefaultLogsBucketBehavior(this.value);
@@ -12,7 +14,8 @@ enum BuildOptionsDefaultLogsBucketBehavior {
         return item;
       }
     }
-    throw ArgumentError('Unknown BuildOptionsDefaultLogsBucketBehavior value: $value');
+    throw ArgumentError(
+      'Unknown BuildOptionsDefaultLogsBucketBehavior value: $value',
+    );
   }
 }
-

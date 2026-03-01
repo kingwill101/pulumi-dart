@@ -7,10 +7,13 @@ import 'google_privacy_dlp_v2_chars_to_ignore.dart';
 class GooglePrivacyDlpV2CharacterMaskConfig {
   /// When masking a string, items in this list will be skipped when replacing characters. For example, if the input string is `555-555-5555` and you instruct Cloud DLP to skip `-` and mask 5 characters with `*`, Cloud DLP returns `***-**5-5555`.
   final List<GooglePrivacyDlpV2CharsToIgnore>? charactersToIgnore;
+
   /// Character to use to mask the sensitive values—for example, `*` for an alphabetic string such as a name, or `0` for a numeric string such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to `*` for strings, and `0` for digits.
   final String? maskingCharacter;
+
   /// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally. If `number_to_mask` is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values: - `masking_character` is `*` - `number_to_mask` is `-4` - `reverse_order` is `false` - `CharsToIgnore` includes `-` - Input string is `1234-5678-9012-3456` The resulting de-identified string is `****-****-****-3456`. Cloud DLP masks all but the last four characters. If `reverse_order` is `true`, all but the first four characters are masked as `1234-****-****-****`.
   final int? numberToMask;
+
   /// Mask characters in reverse order. For example, if `masking_character` is `0`, `number_to_mask` is `14`, and `reverse_order` is `false`, then the input string `1234-5678-9012-3456` is masked as `00000000000000-3456`. If `masking_character` is `*`, `number_to_mask` is `3`, and `reverse_order` is `true`, then the string `12345` is masked as `12***`.
   final bool? reverseOrder;
 
@@ -28,20 +31,39 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'charactersToIgnore': ?charactersToIgnore == null ? null : pulumi.Input.encodeList<GooglePrivacyDlpV2CharsToIgnore, Map<String, dynamic>>(charactersToIgnore!, (value) => value.toMap()),
+      'charactersToIgnore': ?charactersToIgnore == null
+          ? null
+          : pulumi.Input.encodeList<
+              GooglePrivacyDlpV2CharsToIgnore,
+              Map<String, dynamic>
+            >(charactersToIgnore!, (value) => value.toMap()),
       'maskingCharacter': ?maskingCharacter,
       'numberToMask': ?numberToMask,
       'reverseOrder': ?reverseOrder,
     };
   }
 
-  factory GooglePrivacyDlpV2CharacterMaskConfig.fromMap(Map<String, dynamic> map) {
+  factory GooglePrivacyDlpV2CharacterMaskConfig.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GooglePrivacyDlpV2CharacterMaskConfig(
-      charactersToIgnore: map['charactersToIgnore'] == null ? null : pulumi.Input.decodeList<GooglePrivacyDlpV2CharsToIgnore>(map['charactersToIgnore'], (value) => GooglePrivacyDlpV2CharsToIgnore.fromMap((value as Map).cast<String, dynamic>())),
-      maskingCharacter: map['maskingCharacter'] == null ? null : map['maskingCharacter'] as String,
-      numberToMask: map['numberToMask'] == null ? null : map['numberToMask'] as int,
-      reverseOrder: map['reverseOrder'] == null ? null : map['reverseOrder'] as bool,
+      charactersToIgnore: map['charactersToIgnore'] == null
+          ? null
+          : pulumi.Input.decodeList<GooglePrivacyDlpV2CharsToIgnore>(
+              map['charactersToIgnore'],
+              (value) => GooglePrivacyDlpV2CharsToIgnore.fromMap(
+                (value as Map).cast<String, dynamic>(),
+              ),
+            ),
+      maskingCharacter: map['maskingCharacter'] == null
+          ? null
+          : map['maskingCharacter'] as String,
+      numberToMask: map['numberToMask'] == null
+          ? null
+          : map['numberToMask'] as int,
+      reverseOrder: map['reverseOrder'] == null
+          ? null
+          : map['reverseOrder'] as bool,
     );
   }
 }
-

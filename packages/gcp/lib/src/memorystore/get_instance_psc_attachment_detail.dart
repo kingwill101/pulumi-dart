@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetInstancePscAttachmentDetail {
   /// Service attachment URI which your self-created PscConnection should use as target.
   final String connectionType;
+
   /// Service attachment URI which your self-created PscConnection should use as target.
   final String serviceAttachment;
 
@@ -29,4 +29,3 @@ class GetInstancePscAttachmentDetail {
     );
   }
 }
-

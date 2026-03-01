@@ -1,18 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getEngineVersion.
 class GetEngineVersionResult {
   /// Default character set for the engine version.
   final String defaultCharacterSet;
   final bool? defaultOnly;
   final String? engine;
+
   /// Description of the database engine.
   final String engineDescription;
+
   /// Set of log types that the database engine has available for export to CloudWatch Logs.
   final List<String> exportableLogTypes;
   final bool? hasMajorTarget;
   final bool? hasMinorTarget;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final bool? latest;
@@ -21,25 +23,35 @@ class GetEngineVersionResult {
   final List<String>? preferredUpgradeTargets;
   final List<String>? preferredVersions;
   final String region;
+
   /// Set of character sets supported by this engine version.
   final List<String> supportedCharacterSets;
+
   /// Set of time zones supported by this engine.
   final List<String> supportedTimezones;
+
   /// Whether the engine version supports global databases.
   final bool supportsGlobalDatabases;
+
   /// Whether the engine version supports exporting the log types specified by `exportable_log_types` to CloudWatch Logs.
   final bool supportsLogExportsToCloudwatch;
+
   /// Whether the database engine version supports read replicas.
   final bool supportsReadReplica;
+
   /// Set of valid major engine versions that this version can be upgraded to.
   final List<String> validMajorTargets;
+
   /// Set of valid minor engine versions that this version can be upgraded to.
   final List<String> validMinorTargets;
+
   /// Set of engine versions that this database engine version can be upgraded to.
   final List<String> validUpgradeTargets;
   final String version;
+
   /// Actual engine version returned by the API.
   final String versionActual;
+
   /// Description of the database engine version.
   final String versionDescription;
 
@@ -130,23 +142,37 @@ class GetEngineVersionResult {
   factory GetEngineVersionResult.fromMap(Map<String, dynamic> map) {
     return GetEngineVersionResult(
       defaultCharacterSet: map['defaultCharacterSet'] as String,
-      defaultOnly: map['defaultOnly'] == null ? null : map['defaultOnly'] as bool,
+      defaultOnly: map['defaultOnly'] == null
+          ? null
+          : map['defaultOnly'] as bool,
       engine: map['engine'] == null ? null : map['engine'] as String,
       engineDescription: map['engineDescription'] as String,
       exportableLogTypes: (map['exportableLogTypes'] as List).cast<String>(),
-      hasMajorTarget: map['hasMajorTarget'] == null ? null : map['hasMajorTarget'] as bool,
-      hasMinorTarget: map['hasMinorTarget'] == null ? null : map['hasMinorTarget'] as bool,
+      hasMajorTarget: map['hasMajorTarget'] == null
+          ? null
+          : map['hasMajorTarget'] as bool,
+      hasMinorTarget: map['hasMinorTarget'] == null
+          ? null
+          : map['hasMinorTarget'] as bool,
       id: map['id'] as String,
       latest: map['latest'] == null ? null : map['latest'] as bool,
       parameterGroupFamily: map['parameterGroupFamily'] as String,
-      preferredMajorTargets: map['preferredMajorTargets'] == null ? null : (map['preferredMajorTargets'] as List).cast<String>(),
-      preferredUpgradeTargets: map['preferredUpgradeTargets'] == null ? null : (map['preferredUpgradeTargets'] as List).cast<String>(),
-      preferredVersions: map['preferredVersions'] == null ? null : (map['preferredVersions'] as List).cast<String>(),
+      preferredMajorTargets: map['preferredMajorTargets'] == null
+          ? null
+          : (map['preferredMajorTargets'] as List).cast<String>(),
+      preferredUpgradeTargets: map['preferredUpgradeTargets'] == null
+          ? null
+          : (map['preferredUpgradeTargets'] as List).cast<String>(),
+      preferredVersions: map['preferredVersions'] == null
+          ? null
+          : (map['preferredVersions'] as List).cast<String>(),
       region: map['region'] as String,
-      supportedCharacterSets: (map['supportedCharacterSets'] as List).cast<String>(),
+      supportedCharacterSets: (map['supportedCharacterSets'] as List)
+          .cast<String>(),
       supportedTimezones: (map['supportedTimezones'] as List).cast<String>(),
       supportsGlobalDatabases: map['supportsGlobalDatabases'] as bool,
-      supportsLogExportsToCloudwatch: map['supportsLogExportsToCloudwatch'] as bool,
+      supportsLogExportsToCloudwatch:
+          map['supportsLogExportsToCloudwatch'] as bool,
       supportsReadReplica: map['supportsReadReplica'] as bool,
       validMajorTargets: (map['validMajorTargets'] as List).cast<String>(),
       validMinorTargets: (map['validMinorTargets'] as List).cast<String>(),
@@ -157,4 +183,3 @@ class GetEngineVersionResult {
     );
   }
 }
-

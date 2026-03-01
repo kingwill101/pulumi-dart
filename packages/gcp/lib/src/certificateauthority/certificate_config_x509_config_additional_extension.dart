@@ -6,9 +6,11 @@ class CertificateConfigX509ConfigAdditionalExtension {
   /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
   /// handle this extension, the client should consider this to be an error).
   final bool critical;
+
   /// Describes values that are relevant in a CA certificate.
   /// Structure is documented below.
   final CertificateConfigX509ConfigAdditionalExtensionObjectId objectId;
+
   /// The value of this X.509 extension. A base64-encoded string.
   final String value;
 
@@ -30,12 +32,15 @@ class CertificateConfigX509ConfigAdditionalExtension {
     };
   }
 
-  factory CertificateConfigX509ConfigAdditionalExtension.fromMap(Map<String, dynamic> map) {
+  factory CertificateConfigX509ConfigAdditionalExtension.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return CertificateConfigX509ConfigAdditionalExtension(
       critical: map['critical'] as bool,
-      objectId: CertificateConfigX509ConfigAdditionalExtensionObjectId.fromMap((map['objectId'] as Map).cast<String, dynamic>()),
+      objectId: CertificateConfigX509ConfigAdditionalExtensionObjectId.fromMap(
+        (map['objectId'] as Map).cast<String, dynamic>(),
+      ),
       value: map['value'] as String,
     );
   }
 }
-

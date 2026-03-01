@@ -6,6 +6,7 @@ import 'get_iampolicy_audit_config_audit_log_config.dart';
 class GetIAMPolicyAuditConfig {
   /// A nested block that defines the operations you'd like to log.
   final List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs;
+
   /// Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
   final String service;
 
@@ -19,16 +20,25 @@ class GetIAMPolicyAuditConfig {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'auditLogConfigs': pulumi.Input.encodeList<GetIAMPolicyAuditConfigAuditLogConfig, Map<String, dynamic>>(auditLogConfigs, (value) => value.toMap()),
+      'auditLogConfigs':
+          pulumi.Input.encodeList<
+            GetIAMPolicyAuditConfigAuditLogConfig,
+            Map<String, dynamic>
+          >(auditLogConfigs, (value) => value.toMap()),
       'service': service,
     };
   }
 
   factory GetIAMPolicyAuditConfig.fromMap(Map<String, dynamic> map) {
     return GetIAMPolicyAuditConfig(
-      auditLogConfigs: pulumi.Input.decodeList<GetIAMPolicyAuditConfigAuditLogConfig>(map['auditLogConfigs'], (value) => GetIAMPolicyAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>())),
+      auditLogConfigs:
+          pulumi.Input.decodeList<GetIAMPolicyAuditConfigAuditLogConfig>(
+            map['auditLogConfigs'],
+            (value) => GetIAMPolicyAuditConfigAuditLogConfig.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       service: map['service'] as String,
     );
   }
 }
-

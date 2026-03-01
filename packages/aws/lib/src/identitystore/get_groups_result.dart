@@ -7,6 +7,7 @@ import 'get_groups_group.dart';
 class GetGroupsResult {
   /// List of Identity Store Groups
   final List<GetGroupsGroup> groups;
+
   /// The provider-assigned unique ID for this managed resource.
   final String id;
   final String identityStoreId;
@@ -26,7 +27,10 @@ class GetGroupsResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'groups': pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(groups, (value) => value.toMap()),
+      'groups': pulumi.Input.encodeList<GetGroupsGroup, Map<String, dynamic>>(
+        groups,
+        (value) => value.toMap(),
+      ),
       'id': id,
       'identityStoreId': identityStoreId,
       'region': region,
@@ -35,11 +39,14 @@ class GetGroupsResult {
 
   factory GetGroupsResult.fromMap(Map<String, dynamic> map) {
     return GetGroupsResult(
-      groups: pulumi.Input.decodeList<GetGroupsGroup>(map['groups'], (value) => GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>())),
+      groups: pulumi.Input.decodeList<GetGroupsGroup>(
+        map['groups'],
+        (value) =>
+            GetGroupsGroup.fromMap((value as Map).cast<String, dynamic>()),
+      ),
       id: map['id'] as String,
       identityStoreId: map['identityStoreId'] as String,
       region: map['region'] as String,
     );
   }
 }
-

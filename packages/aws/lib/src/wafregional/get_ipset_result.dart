@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getIpset.
 class GetIpsetResult {
   /// The provider-assigned unique ID for this managed resource.
@@ -12,18 +11,10 @@ class GetIpsetResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetIpsetResult({
-    required this.id,
-    required this.name,
-    required this.region,
-  });
+  GetIpsetResult({required this.id, required this.name, required this.region});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'region': region,
-    };
+    return <String, dynamic>{'id': id, 'name': name, 'region': region};
   }
 
   factory GetIpsetResult.fromMap(Map<String, dynamic> map) {
@@ -34,4 +25,3 @@ class GetIpsetResult {
     );
   }
 }
-

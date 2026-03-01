@@ -1,14 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Represents results of a prediction job.
 class GoogleCloudMlV1PredictionOutputResponse {
   /// The number of data instances which resulted in errors.
   final String errorCount;
+
   /// Node hours used by the batch prediction job.
   final double nodeHours;
+
   /// The output Google Cloud Storage location provided at the job creation time.
   final String outputPath;
+
   /// The number of generated predictions.
   final String predictionCount;
 
@@ -33,7 +35,9 @@ class GoogleCloudMlV1PredictionOutputResponse {
     };
   }
 
-  factory GoogleCloudMlV1PredictionOutputResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudMlV1PredictionOutputResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudMlV1PredictionOutputResponse(
       errorCount: map['errorCount'] as String,
       nodeHours: map['nodeHours'] as double,
@@ -42,4 +46,3 @@ class GoogleCloudMlV1PredictionOutputResponse {
     );
   }
 }
-

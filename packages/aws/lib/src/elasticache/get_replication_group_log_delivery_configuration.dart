@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetReplicationGroupLogDeliveryConfiguration {
   final String destination;
   final String destinationType;
@@ -28,7 +27,9 @@ class GetReplicationGroupLogDeliveryConfiguration {
     };
   }
 
-  factory GetReplicationGroupLogDeliveryConfiguration.fromMap(Map<String, dynamic> map) {
+  factory GetReplicationGroupLogDeliveryConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GetReplicationGroupLogDeliveryConfiguration(
       destination: map['destination'] as String,
       destinationType: map['destinationType'] as String,
@@ -37,4 +38,3 @@ class GetReplicationGroupLogDeliveryConfiguration {
     );
   }
 }
-

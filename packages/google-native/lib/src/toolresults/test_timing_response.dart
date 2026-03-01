@@ -9,9 +9,7 @@ class TestTimingResponse {
 
   /// Creates a new [TestTimingResponse].
   /// [testProcessDuration] How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
-  TestTimingResponse({
-    required this.testProcessDuration,
-  });
+  TestTimingResponse({required this.testProcessDuration});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,8 +19,9 @@ class TestTimingResponse {
 
   factory TestTimingResponse.fromMap(Map<String, dynamic> map) {
     return TestTimingResponse(
-      testProcessDuration: DurationResponse.fromMap((map['testProcessDuration'] as Map).cast<String, dynamic>()),
+      testProcessDuration: DurationResponse.fromMap(
+        (map['testProcessDuration'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

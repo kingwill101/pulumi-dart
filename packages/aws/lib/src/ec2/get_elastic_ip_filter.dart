@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GetElasticIpFilter {
   final String name;
   final List<String> values;
@@ -8,16 +7,10 @@ class GetElasticIpFilter {
   /// Creates a new [GetElasticIpFilter].
   /// [name] Required.
   /// [values] Required.
-  GetElasticIpFilter({
-    required this.name,
-    required this.values,
-  });
+  GetElasticIpFilter({required this.name, required this.values});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'values': values,
-    };
+    return <String, dynamic>{'name': name, 'values': values};
   }
 
   factory GetElasticIpFilter.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class GetElasticIpFilter {
     );
   }
 }
-

@@ -1,26 +1,34 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// Result data returned by getRule.
 class GetRuleResult {
   /// Optional. CEL expression for matching on L7/application level criteria.
   final String applicationMatcher;
+
   /// Profile which tells what the primitive action should be.
   final String basicProfile;
+
   /// Time when the rule was created.
   final String createTime;
+
   /// Optional. Free-text description of the resource.
   final String description;
+
   /// Whether the rule is enforced.
   final bool enabled;
+
   /// Immutable. Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule} rule should match the pattern: (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
   final String name;
+
   /// Priority of the rule. Lower number corresponds to higher precedence.
   final int priority;
+
   /// CEL expression for matching on session criteria.
   final String sessionMatcher;
+
   /// Optional. Flag to enable TLS inspection of traffic matching on , can only be true if the parent GatewaySecurityPolicy references a TLSInspectionConfig.
   final bool tlsInspectionEnabled;
+
   /// Time when the rule was updated.
   final String updateTime;
 
@@ -78,4 +86,3 @@ class GetRuleResult {
     );
   }
 }
-

@@ -9,9 +9,11 @@ class OsPolicyAssignmentOsPolicy {
   /// are applicable for a VM. Set this value to `true` if the policy needs to be
   /// reported as compliant even if the policy has nothing to validate or enforce.
   final bool? allowNoResourceGroupMatch;
+
   /// Policy description. Length of the description is
   /// limited to 1024 characters.
   final String? description;
+
   /// The id of the OS policy with the following restrictions:
   ///
   /// *   Must contain only lowercase letters, numbers, and hyphens.
@@ -20,9 +22,11 @@ class OsPolicyAssignmentOsPolicy {
   /// *   Must end with a number or a letter.
   /// *   Must be unique within the assignment.
   final String id;
+
   /// Policy mode Possible values are: `MODE_UNSPECIFIED`,
   /// `VALIDATION`, `ENFORCEMENT`.
   final String mode;
+
   /// List of resource groups for the policy. For a
   /// particular VM, resource groups are evaluated in the order specified and the
   /// first resource group that is applicable is selected and the rest are
@@ -52,18 +56,31 @@ class OsPolicyAssignmentOsPolicy {
       'description': ?description,
       'id': id,
       'mode': mode,
-      'resourceGroups': pulumi.Input.encodeList<OsPolicyAssignmentOsPolicyResourceGroup, Map<String, dynamic>>(resourceGroups, (value) => value.toMap()),
+      'resourceGroups':
+          pulumi.Input.encodeList<
+            OsPolicyAssignmentOsPolicyResourceGroup,
+            Map<String, dynamic>
+          >(resourceGroups, (value) => value.toMap()),
     };
   }
 
   factory OsPolicyAssignmentOsPolicy.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicy(
-      allowNoResourceGroupMatch: map['allowNoResourceGroupMatch'] == null ? null : map['allowNoResourceGroupMatch'] as bool,
-      description: map['description'] == null ? null : map['description'] as String,
+      allowNoResourceGroupMatch: map['allowNoResourceGroupMatch'] == null
+          ? null
+          : map['allowNoResourceGroupMatch'] as bool,
+      description: map['description'] == null
+          ? null
+          : map['description'] as String,
       id: map['id'] as String,
       mode: map['mode'] as String,
-      resourceGroups: pulumi.Input.decodeList<OsPolicyAssignmentOsPolicyResourceGroup>(map['resourceGroups'], (value) => OsPolicyAssignmentOsPolicyResourceGroup.fromMap((value as Map).cast<String, dynamic>())),
+      resourceGroups:
+          pulumi.Input.decodeList<OsPolicyAssignmentOsPolicyResourceGroup>(
+            map['resourceGroups'],
+            (value) => OsPolicyAssignmentOsPolicyResourceGroup.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
     );
   }
 }
-

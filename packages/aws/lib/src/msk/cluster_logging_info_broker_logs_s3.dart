@@ -1,10 +1,10 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ClusterLoggingInfoBrokerLogsS3 {
   /// Name of the S3 bucket to deliver logs to.
   final String? bucket;
   final bool enabled;
+
   /// Prefix to append to the folder name.
   final String? prefix;
 
@@ -34,4 +34,3 @@ class ClusterLoggingInfoBrokerLogsS3 {
     );
   }
 }
-

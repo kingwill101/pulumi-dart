@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class TaskDefinitionKeyValuePair {
   final String? name;
   final String? value;
@@ -8,16 +7,10 @@ class TaskDefinitionKeyValuePair {
   /// Creates a new [TaskDefinitionKeyValuePair].
   /// [name] Optional.
   /// [value] Optional.
-  TaskDefinitionKeyValuePair({
-    this.name,
-    this.value,
-  });
+  TaskDefinitionKeyValuePair({this.name, this.value});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': ?name,
-      'value': ?value,
-    };
+    return <String, dynamic>{'name': ?name, 'value': ?value};
   }
 
   factory TaskDefinitionKeyValuePair.fromMap(Map<String, dynamic> map) {
@@ -27,4 +20,3 @@ class TaskDefinitionKeyValuePair {
     );
   }
 }
-

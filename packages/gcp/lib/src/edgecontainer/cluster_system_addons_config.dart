@@ -11,9 +11,7 @@ class ClusterSystemAddonsConfig {
 
   /// Creates a new [ClusterSystemAddonsConfig].
   /// [ingress] Config for the Ingress add-on which allows customers to create an Ingress
-  ClusterSystemAddonsConfig({
-    this.ingress,
-  });
+  ClusterSystemAddonsConfig({this.ingress});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,8 +21,11 @@ class ClusterSystemAddonsConfig {
 
   factory ClusterSystemAddonsConfig.fromMap(Map<String, dynamic> map) {
     return ClusterSystemAddonsConfig(
-      ingress: map['ingress'] == null ? null : ClusterSystemAddonsConfigIngress.fromMap((map['ingress'] as Map).cast<String, dynamic>()),
+      ingress: map['ingress'] == null
+          ? null
+          : ClusterSystemAddonsConfigIngress.fromMap(
+              (map['ingress'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 }
-

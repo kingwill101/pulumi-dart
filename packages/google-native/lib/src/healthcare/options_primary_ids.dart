@@ -16,4 +16,3 @@ enum OptionsPrimaryIds {
     throw ArgumentError('Unknown OptionsPrimaryIds value: $value');
   }
 }
-

@@ -13,15 +13,11 @@ class GetWebTypeComputeIamPolicyArgs {
 
   /// Creates a new [GetWebTypeComputeIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
-  GetWebTypeComputeIamPolicyArgs({
-    String? project,
-  }) :
-      project = pulumi.Input.asOptionalInput<String>(project);
+  GetWebTypeComputeIamPolicyArgs({String? project})
+    : project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'project': ?project,
-    };
+    return <String, dynamic>{'project': ?project};
   }
 
   factory GetWebTypeComputeIamPolicyArgs.fromMap(Map<String, dynamic> map) {
@@ -30,4 +26,3 @@ class GetWebTypeComputeIamPolicyArgs {
     );
   }
 }
-

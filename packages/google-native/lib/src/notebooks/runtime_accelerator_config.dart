@@ -6,16 +6,14 @@ import 'runtime_accelerator_config_type.dart';
 class RuntimeAcceleratorConfig {
   /// Count of cores of this accelerator.
   final String? coreCount;
+
   /// Accelerator model.
   final RuntimeAcceleratorConfigType? type;
 
   /// Creates a new [RuntimeAcceleratorConfig].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Accelerator model.
-  RuntimeAcceleratorConfig({
-    this.coreCount,
-    this.type,
-  });
+  RuntimeAcceleratorConfig({this.coreCount, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,8 +25,9 @@ class RuntimeAcceleratorConfig {
   factory RuntimeAcceleratorConfig.fromMap(Map<String, dynamic> map) {
     return RuntimeAcceleratorConfig(
       coreCount: map['coreCount'] == null ? null : map['coreCount'] as String,
-      type: map['type'] == null ? null : RuntimeAcceleratorConfigType.fromValue(map['type'] as String),
+      type: map['type'] == null
+          ? null
+          : RuntimeAcceleratorConfigType.fromValue(map['type'] as String),
     );
   }
 }
-

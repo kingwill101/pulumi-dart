@@ -25,12 +25,11 @@ class GetMigratingVmArgs {
     String? project,
     required String sourceId,
     String? view,
-  }) :
-      location = pulumi.Input.asInput<String>(location),
-      migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      sourceId = pulumi.Input.asInput<String>(sourceId),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : location = pulumi.Input.asInput<String>(location),
+       migratingVmId = pulumi.Input.asInput<String>(migratingVmId),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       sourceId = pulumi.Input.asInput<String>(sourceId),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -52,4 +51,3 @@ class GetMigratingVmArgs {
     );
   }
 }
-

@@ -6,7 +6,9 @@ import 'stream_backfill_all_oracle_excluded_objects_oracle_schema_oracle_table.d
 class StreamBackfillAllOracleExcludedObjectsOracleSchema {
   /// Tables in the database.
   /// Structure is documented below.
-  final List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>? oracleTables;
+  final List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>?
+  oracleTables;
+
   /// Schema name.
   final String schema;
 
@@ -20,16 +22,32 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchema {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'oracleTables': ?oracleTables == null ? null : pulumi.Input.encodeList<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable, Map<String, dynamic>>(oracleTables!, (value) => value.toMap()),
+      'oracleTables': ?oracleTables == null
+          ? null
+          : pulumi.Input.encodeList<
+              StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable,
+              Map<String, dynamic>
+            >(oracleTables!, (value) => value.toMap()),
       'schema': schema,
     };
   }
 
-  factory StreamBackfillAllOracleExcludedObjectsOracleSchema.fromMap(Map<String, dynamic> map) {
+  factory StreamBackfillAllOracleExcludedObjectsOracleSchema.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StreamBackfillAllOracleExcludedObjectsOracleSchema(
-      oracleTables: map['oracleTables'] == null ? null : pulumi.Input.decodeList<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>(map['oracleTables'], (value) => StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable.fromMap((value as Map).cast<String, dynamic>())),
+      oracleTables: map['oracleTables'] == null
+          ? null
+          : pulumi.Input.decodeList<
+              StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable
+            >(
+              map['oracleTables'],
+              (value) =>
+                  StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable.fromMap(
+                    (value as Map).cast<String, dynamic>(),
+                  ),
+            ),
       schema: map['schema'] as String,
     );
   }
 }
-

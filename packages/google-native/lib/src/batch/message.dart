@@ -8,8 +8,10 @@ import 'message_type.dart';
 class Message {
   /// The new job state.
   final MessageNewJobState? newJobState;
+
   /// The new task state.
   final MessageNewTaskState? newTaskState;
+
   /// The message type.
   final MessageType? type;
 
@@ -17,11 +19,7 @@ class Message {
   /// [newJobState] The new job state.
   /// [newTaskState] The new task state.
   /// [type] The message type.
-  Message({
-    this.newJobState,
-    this.newTaskState,
-    this.type,
-  });
+  Message({this.newJobState, this.newTaskState, this.type});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,10 +31,15 @@ class Message {
 
   factory Message.fromMap(Map<String, dynamic> map) {
     return Message(
-      newJobState: map['newJobState'] == null ? null : MessageNewJobState.fromValue(map['newJobState'] as String),
-      newTaskState: map['newTaskState'] == null ? null : MessageNewTaskState.fromValue(map['newTaskState'] as String),
-      type: map['type'] == null ? null : MessageType.fromValue(map['type'] as String),
+      newJobState: map['newJobState'] == null
+          ? null
+          : MessageNewJobState.fromValue(map['newJobState'] as String),
+      newTaskState: map['newTaskState'] == null
+          ? null
+          : MessageNewTaskState.fromValue(map['newTaskState'] as String),
+      type: map['type'] == null
+          ? null
+          : MessageType.fromValue(map['type'] as String),
     );
   }
 }
-

@@ -6,8 +6,10 @@ import 'position_response_workflowexecutions_v1beta.dart';
 class StackTraceElementResponseWorkflowexecutionsV1beta {
   /// The source position information of the stack trace element.
   final PositionResponseWorkflowexecutionsV1beta position;
+
   /// The routine where the error occurred.
   final String routine;
+
   /// The step the error occurred at.
   final String step;
 
@@ -29,12 +31,15 @@ class StackTraceElementResponseWorkflowexecutionsV1beta {
     };
   }
 
-  factory StackTraceElementResponseWorkflowexecutionsV1beta.fromMap(Map<String, dynamic> map) {
+  factory StackTraceElementResponseWorkflowexecutionsV1beta.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return StackTraceElementResponseWorkflowexecutionsV1beta(
-      position: PositionResponseWorkflowexecutionsV1beta.fromMap((map['position'] as Map).cast<String, dynamic>()),
+      position: PositionResponseWorkflowexecutionsV1beta.fromMap(
+        (map['position'] as Map).cast<String, dynamic>(),
+      ),
       routine: map['routine'] as String,
       step: map['step'] as String,
     );
   }
 }
-

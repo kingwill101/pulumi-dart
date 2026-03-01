@@ -6,6 +6,7 @@ import 'google_type_money_response_billingbudgets_v1beta1.dart';
 class GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse {
   /// Use the last period's actual spend as the budget for the present period. LastPeriodAmount can only be set when the budget's time period is a Filter.calendar_period. It cannot be set in combination with Filter.custom_period.
   final Map<String, dynamic> lastPeriodAmount;
+
   /// A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
   final GoogleTypeMoneyResponseBillingbudgetsV1beta1 specifiedAmount;
 
@@ -24,11 +25,15 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse {
     };
   }
 
-  factory GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse.fromMap(Map<String, dynamic> map) {
+  factory GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse(
-      lastPeriodAmount: (map['lastPeriodAmount'] as Map).cast<String, dynamic>(),
-      specifiedAmount: GoogleTypeMoneyResponseBillingbudgetsV1beta1.fromMap((map['specifiedAmount'] as Map).cast<String, dynamic>()),
+      lastPeriodAmount: (map['lastPeriodAmount'] as Map)
+          .cast<String, dynamic>(),
+      specifiedAmount: GoogleTypeMoneyResponseBillingbudgetsV1beta1.fromMap(
+        (map['specifiedAmount'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

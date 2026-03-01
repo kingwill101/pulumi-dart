@@ -1,12 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GlobalSecondaryIndexKeySchema {
   /// Name of the attribute.
   final String attributeName;
+
   /// Type of the attribute in the index.
   /// Valid values are `S` (string), `N` (number), or `B` (binary).
   final String attributeType;
+
   /// Key type.
   /// Valid values are `HASH` or `RANGE`.
   final String keyType;
@@ -37,4 +38,3 @@ class GlobalSecondaryIndexKeySchema {
     );
   }
 }
-

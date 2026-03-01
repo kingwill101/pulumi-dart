@@ -5,10 +5,14 @@ import 'bucket_metadata_configuration_metadata_configuration_inventory_table_con
 class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration {
   /// Configuration state of the inventory table, indicating whether the inventory table is enabled or disabled. Valid values: `ENABLED`, `DISABLED`.
   final String configurationState;
+
   /// Encryption configuration for the inventory table. See `encryption_configuration` Block for details.
-  final BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration? encryptionConfiguration;
+  final BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration?
+  encryptionConfiguration;
+
   /// Inventory table ARN.
   final String? tableArn;
+
   /// Inventory table name.
   final String? tableName;
 
@@ -27,19 +31,26 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'configurationState': configurationState,
-      'encryptionConfiguration': ?encryptionConfiguration == null ? null : encryptionConfiguration!.toMap(),
+      'encryptionConfiguration': ?encryptionConfiguration == null
+          ? null
+          : encryptionConfiguration!.toMap(),
       'tableArn': ?tableArn,
       'tableName': ?tableName,
     };
   }
 
-  factory BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration.fromMap(Map<String, dynamic> map) {
+  factory BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration(
       configurationState: map['configurationState'] as String,
-      encryptionConfiguration: map['encryptionConfiguration'] == null ? null : BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration.fromMap((map['encryptionConfiguration'] as Map).cast<String, dynamic>()),
+      encryptionConfiguration: map['encryptionConfiguration'] == null
+          ? null
+          : BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration.fromMap(
+              (map['encryptionConfiguration'] as Map).cast<String, dynamic>(),
+            ),
       tableArn: map['tableArn'] == null ? null : map['tableArn'] as String,
       tableName: map['tableName'] == null ? null : map['tableName'] as String,
     );
   }
 }
-

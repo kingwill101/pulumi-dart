@@ -19,10 +19,9 @@ class GetInstanceGroupComputeBetaArgs {
     required String instanceGroup,
     String? project,
     required String zone,
-  }) :
-      instanceGroup = pulumi.Input.asInput<String>(instanceGroup),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      zone = pulumi.Input.asInput<String>(zone);
+  }) : instanceGroup = pulumi.Input.asInput<String>(instanceGroup),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       zone = pulumi.Input.asInput<String>(zone);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,4 +39,3 @@ class GetInstanceGroupComputeBetaArgs {
     );
   }
 }
-

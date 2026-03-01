@@ -1,6 +1,5 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 /// State common to all model types. Includes publishing and validation information.
 class ModelState {
   /// Indicates if this model has been published.
@@ -8,14 +7,10 @@ class ModelState {
 
   /// Creates a new [ModelState].
   /// [published] Indicates if this model has been published.
-  ModelState({
-    this.published,
-  });
+  ModelState({this.published});
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'published': ?published,
-    };
+    return <String, dynamic>{'published': ?published};
   }
 
   factory ModelState.fromMap(Map<String, dynamic> map) {
@@ -24,4 +19,3 @@ class ModelState {
     );
   }
 }
-

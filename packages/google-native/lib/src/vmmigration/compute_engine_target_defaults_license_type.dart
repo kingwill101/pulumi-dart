@@ -13,7 +13,8 @@ enum ComputeEngineTargetDefaultsLicenseType {
         return item;
       }
     }
-    throw ArgumentError('Unknown ComputeEngineTargetDefaultsLicenseType value: $value');
+    throw ArgumentError(
+      'Unknown ComputeEngineTargetDefaultsLicenseType value: $value',
+    );
   }
 }
-

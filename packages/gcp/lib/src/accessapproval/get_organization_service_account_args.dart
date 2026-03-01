@@ -12,15 +12,11 @@ class GetOrganizationServiceAccountArgs {
 
   /// Creates a new [GetOrganizationServiceAccountArgs].
   /// [organizationId] The organization ID the service account was created for.
-  GetOrganizationServiceAccountArgs({
-    required String organizationId,
-  }) :
-      organizationId = pulumi.Input.asInput<String>(organizationId);
+  GetOrganizationServiceAccountArgs({required String organizationId})
+    : organizationId = pulumi.Input.asInput<String>(organizationId);
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'organizationId': organizationId,
-    };
+    return <String, dynamic>{'organizationId': organizationId};
   }
 
   factory GetOrganizationServiceAccountArgs.fromMap(Map<String, dynamic> map) {
@@ -29,4 +25,3 @@ class GetOrganizationServiceAccountArgs {
     );
   }
 }
-

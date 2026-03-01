@@ -10,20 +10,24 @@ class DataprocMetricConfigResponse {
 
   /// Creates a new [DataprocMetricConfigResponse].
   /// [metrics] Metrics sources to enable.
-  DataprocMetricConfigResponse({
-    required this.metrics,
-  });
+  DataprocMetricConfigResponse({required this.metrics});
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'metrics': pulumi.Input.encodeList<MetricResponse, Map<String, dynamic>>(metrics, (value) => value.toMap()),
+      'metrics': pulumi.Input.encodeList<MetricResponse, Map<String, dynamic>>(
+        metrics,
+        (value) => value.toMap(),
+      ),
     };
   }
 
   factory DataprocMetricConfigResponse.fromMap(Map<String, dynamic> map) {
     return DataprocMetricConfigResponse(
-      metrics: pulumi.Input.decodeList<MetricResponse>(map['metrics'], (value) => MetricResponse.fromMap((value as Map).cast<String, dynamic>())),
+      metrics: pulumi.Input.decodeList<MetricResponse>(
+        map['metrics'],
+        (value) =>
+            MetricResponse.fromMap((value as Map).cast<String, dynamic>()),
+      ),
     );
   }
 }
-

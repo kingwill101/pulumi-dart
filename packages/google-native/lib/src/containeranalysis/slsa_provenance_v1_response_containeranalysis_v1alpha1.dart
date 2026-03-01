@@ -23,11 +23,16 @@ class SlsaProvenanceV1ResponseContaineranalysisV1alpha1 {
     };
   }
 
-  factory SlsaProvenanceV1ResponseContaineranalysisV1alpha1.fromMap(Map<String, dynamic> map) {
+  factory SlsaProvenanceV1ResponseContaineranalysisV1alpha1.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return SlsaProvenanceV1ResponseContaineranalysisV1alpha1(
-      buildDefinition: BuildDefinitionResponseContaineranalysisV1alpha1.fromMap((map['buildDefinition'] as Map).cast<String, dynamic>()),
-      runDetails: RunDetailsResponseContaineranalysisV1alpha1.fromMap((map['runDetails'] as Map).cast<String, dynamic>()),
+      buildDefinition: BuildDefinitionResponseContaineranalysisV1alpha1.fromMap(
+        (map['buildDefinition'] as Map).cast<String, dynamic>(),
+      ),
+      runDetails: RunDetailsResponseContaineranalysisV1alpha1.fromMap(
+        (map['runDetails'] as Map).cast<String, dynamic>(),
+      ),
     );
   }
 }
-

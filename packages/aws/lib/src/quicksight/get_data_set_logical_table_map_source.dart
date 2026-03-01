@@ -21,7 +21,11 @@ class GetDataSetLogicalTableMapSource {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'dataSetArn': dataSetArn,
-      'joinInstructions': pulumi.Input.encodeList<GetDataSetLogicalTableMapSourceJoinInstruction, Map<String, dynamic>>(joinInstructions, (value) => value.toMap()),
+      'joinInstructions':
+          pulumi.Input.encodeList<
+            GetDataSetLogicalTableMapSourceJoinInstruction,
+            Map<String, dynamic>
+          >(joinInstructions, (value) => value.toMap()),
       'physicalTableId': physicalTableId,
     };
   }
@@ -29,9 +33,15 @@ class GetDataSetLogicalTableMapSource {
   factory GetDataSetLogicalTableMapSource.fromMap(Map<String, dynamic> map) {
     return GetDataSetLogicalTableMapSource(
       dataSetArn: map['dataSetArn'] as String,
-      joinInstructions: pulumi.Input.decodeList<GetDataSetLogicalTableMapSourceJoinInstruction>(map['joinInstructions'], (value) => GetDataSetLogicalTableMapSourceJoinInstruction.fromMap((value as Map).cast<String, dynamic>())),
+      joinInstructions:
+          pulumi
+              .Input.decodeList<GetDataSetLogicalTableMapSourceJoinInstruction>(
+            map['joinInstructions'],
+            (value) => GetDataSetLogicalTableMapSourceJoinInstruction.fromMap(
+              (value as Map).cast<String, dynamic>(),
+            ),
+          ),
       physicalTableId: map['physicalTableId'] as String,
     );
   }
 }
-

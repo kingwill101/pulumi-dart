@@ -22,11 +22,10 @@ class GetBareMetalClusterArgs {
     required String location,
     String? project,
     String? view,
-  }) :
-      bareMetalClusterId = pulumi.Input.asInput<String>(bareMetalClusterId),
-      location = pulumi.Input.asInput<String>(location),
-      project = pulumi.Input.asOptionalInput<String>(project),
-      view = pulumi.Input.asOptionalInput<String>(view);
+  }) : bareMetalClusterId = pulumi.Input.asInput<String>(bareMetalClusterId),
+       location = pulumi.Input.asInput<String>(location),
+       project = pulumi.Input.asOptionalInput<String>(project),
+       view = pulumi.Input.asOptionalInput<String>(view);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,4 +45,3 @@ class GetBareMetalClusterArgs {
     );
   }
 }
-

@@ -1,13 +1,14 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class GuestPoliciesRecipeInstallStepScriptRun {
   /// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
   final List<int>? allowedExitCodes;
+
   /// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly,
   /// which likely only succeed for scripts with shebang lines.
   /// Possible values are: `SHELL`, `POWERSHELL`.
   final String? interpreter;
+
   /// The shell script to be executed.
   final String script;
 
@@ -29,12 +30,17 @@ class GuestPoliciesRecipeInstallStepScriptRun {
     };
   }
 
-  factory GuestPoliciesRecipeInstallStepScriptRun.fromMap(Map<String, dynamic> map) {
+  factory GuestPoliciesRecipeInstallStepScriptRun.fromMap(
+    Map<String, dynamic> map,
+  ) {
     return GuestPoliciesRecipeInstallStepScriptRun(
-      allowedExitCodes: map['allowedExitCodes'] == null ? null : (map['allowedExitCodes'] as List).cast<int>(),
-      interpreter: map['interpreter'] == null ? null : map['interpreter'] as String,
+      allowedExitCodes: map['allowedExitCodes'] == null
+          ? null
+          : (map['allowedExitCodes'] as List).cast<int>(),
+      interpreter: map['interpreter'] == null
+          ? null
+          : map['interpreter'] as String,
       script: map['script'] as String,
     );
   }
 }
-

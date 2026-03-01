@@ -6,10 +6,13 @@ import 'target_response.dart';
 class CompilationErrorResponse {
   /// The identifier of the action where this error occurred, if available.
   final TargetResponse actionTarget;
+
   /// The error's top level message.
   final String message;
+
   /// The path of the file where this error occurred, if available, relative to the project root.
   final String path;
+
   /// The error's full stack trace.
   final String stack;
 
@@ -36,11 +39,12 @@ class CompilationErrorResponse {
 
   factory CompilationErrorResponse.fromMap(Map<String, dynamic> map) {
     return CompilationErrorResponse(
-      actionTarget: TargetResponse.fromMap((map['actionTarget'] as Map).cast<String, dynamic>()),
+      actionTarget: TargetResponse.fromMap(
+        (map['actionTarget'] as Map).cast<String, dynamic>(),
+      ),
       message: map['message'] as String,
       path: map['path'] as String,
       stack: map['stack'] as String,
     );
   }
 }
-

@@ -1,9 +1,9 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-
 class ScheduleTargetRetryPolicy {
   /// Maximum amount of time, in seconds, to continue to make retry attempts. Ranges from `60` to `86400` (default).
   final int? maximumEventAgeInSeconds;
+
   /// Maximum number of retry attempts to make before the request fails. Ranges from `0` to `185` (default).
   final int? maximumRetryAttempts;
 
@@ -24,9 +24,12 @@ class ScheduleTargetRetryPolicy {
 
   factory ScheduleTargetRetryPolicy.fromMap(Map<String, dynamic> map) {
     return ScheduleTargetRetryPolicy(
-      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null ? null : map['maximumEventAgeInSeconds'] as int,
-      maximumRetryAttempts: map['maximumRetryAttempts'] == null ? null : map['maximumRetryAttempts'] as int,
+      maximumEventAgeInSeconds: map['maximumEventAgeInSeconds'] == null
+          ? null
+          : map['maximumEventAgeInSeconds'] as int,
+      maximumRetryAttempts: map['maximumRetryAttempts'] == null
+          ? null
+          : map['maximumRetryAttempts'] as int,
     );
   }
 }
-

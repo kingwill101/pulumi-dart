@@ -11,8 +11,10 @@ class UsageExportBucketArgs {
   ///
   /// - - -
   final pulumi.Input<String> bucketName;
+
   /// A prefix for the reports, for instance, the project name.
   final pulumi.Input<String>? prefix;
+
   /// The project to set the export bucket on. If it is not provided, the provider project is used.
   final pulumi.Input<String>? project;
 
@@ -24,10 +26,9 @@ class UsageExportBucketArgs {
     required String bucketName,
     String? prefix,
     String? project,
-  }) :
-      bucketName = pulumi.Input.asInput<String>(bucketName),
-      prefix = pulumi.Input.asOptionalInput<String>(prefix),
-      project = pulumi.Input.asOptionalInput<String>(project);
+  }) : bucketName = pulumi.Input.asInput<String>(bucketName),
+       prefix = pulumi.Input.asOptionalInput<String>(prefix),
+       project = pulumi.Input.asOptionalInput<String>(project);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -45,4 +46,3 @@ class UsageExportBucketArgs {
     );
   }
 }
-
