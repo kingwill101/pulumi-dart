@@ -2,13 +2,14 @@ import 'package:pulumi_policy/pulumi_policy.dart';
 
 void main() {
   PolicyPack(
-    'config_schema_policy_pack',
+    'config-schema',
     PolicyPackArgs(
+      enforcementLevel: EnforcementLevel.advisory,
       policies: [
         ResourceValidationPolicy(
           name: 'validator',
           description: 'Verifies property matches config schema values.',
-          enforcementLevel: EnforcementLevel.mandatory,
+          enforcementLevel: EnforcementLevel.advisory,
           configSchema: PolicyConfigSchema(
             properties: {
               'value': {'type': 'boolean'},
@@ -22,6 +23,10 @@ void main() {
           ),
           validateResource: [
             (args, reportViolation) {
+              if (args.type != 'test:index:PolicyTarget') {
+                return;
+              }
+
               final config = args.getConfig<Map<String, Object?>>();
               final expected = config['value'];
               final names = (config['names'] as List<dynamic>?)
@@ -29,20 +34,14 @@ void main() {
                       .toList(growable: false) ??
                   const <String>[];
 
-              reportViolation(
-                'Property was ${args.props['value']} (expected $expected, names=${names.join(',')})',
-              );
+              if (names.contains(args.name) &&
+                  args.props['value'] != expected) {
+                reportViolation('Property was ${args.props['value']}');
+              }
             },
           ],
         ),
       ],
     ),
-    initialConfig: {
-      'validator': {
-        'enforcementLevel': 'mandatory',
-        'value': true,
-        'names': ['policy-target'],
-      },
-    },
   );
 }

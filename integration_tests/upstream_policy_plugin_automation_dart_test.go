@@ -217,16 +217,42 @@ func TestStackConfigPolicyPackDart(t *testing.T) {
 	defer cleanupPolicyStack(e)
 
 	configurePolicyDartProject(t, e, "stack_config_policy_pack")
-	e.RunCommand("pulumi", "config", "set", "value", "false")
-	e.RunCommand("pulumi", "config", "set", "policyExpected", "true")
 
-	stdout, _, err := e.GetCommandResults(
-		"pulumi", "up", "--skip-preview", "--yes",
-		"--policy-pack", "stack_config_policy_pack",
-	)
-	require.Error(t, err)
-	assert.Contains(t, stdout, "validate-stack-config-value")
-	assert.Contains(t, stdout, "Property was false")
+	testCases := []struct {
+		name           string
+		stackValue     string
+		policyExpected string
+		expectMessage  string
+	}{
+		{
+			name:           "false-when-true-expected",
+			stackValue:     "false",
+			policyExpected: "true",
+			expectMessage:  "Property was false",
+		},
+		{
+			name:           "true-when-false-expected",
+			stackValue:     "true",
+			policyExpected: "false",
+			expectMessage:  "Property was true",
+		},
+	}
+
+	for _, tc := range testCases {
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			e.RunCommand("pulumi", "config", "set", "value", tc.stackValue)
+			e.RunCommand("pulumi", "config", "set", "policyExpected", tc.policyExpected)
+
+			stdout, _, err := e.GetCommandResults(
+				"pulumi", "up", "--skip-preview", "--yes",
+				"--policy-pack", "stack_config_policy_pack",
+			)
+			require.Error(t, err)
+			assert.Contains(t, stdout, "validate-stack-config-value")
+			assert.Contains(t, stdout, tc.expectMessage)
+		})
+	}
 }
 
 func TestConfigSchemaPolicyPackDart(t *testing.T) {
@@ -235,15 +261,68 @@ func TestConfigSchemaPolicyPackDart(t *testing.T) {
 	defer cleanupPolicyStack(e)
 
 	configurePolicyDartProject(t, e, "config_schema_policy_pack")
-	e.RunCommand("pulumi", "config", "set", "value", "false")
+	e.RunCommand("pulumi", "config", "set", "value", "true")
 
-	stdout, _, err := e.GetCommandResults(
+	missingNames := writePolicyPackConfig(t, e, "config_schema_missing_names", map[string]any{
+		"validator": map[string]any{
+			"value": false,
+		},
+	})
+
+	stdout, stderr, err := e.GetCommandResults(
 		"pulumi", "up", "--skip-preview", "--yes",
 		"--policy-pack", "config_schema_policy_pack",
+		"--policy-pack-config", missingNames,
 	)
 	require.Error(t, err)
+	assert.Contains(t, stdout+stderr, "validating policy config")
+	assert.Contains(t, stdout+stderr, "names")
+
+	emptyNames := writePolicyPackConfig(t, e, "config_schema_empty_names", map[string]any{
+		"validator": map[string]any{
+			"value": false,
+			"names": []string{},
+		},
+	})
+
+	stdout, stderr, err = e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "config_schema_policy_pack",
+		"--policy-pack-config", emptyNames,
+	)
+	require.Error(t, err)
+	assert.Contains(t, stdout+stderr, "validating policy config")
+	assert.Contains(t, stdout+stderr, "Array must have at least 1 items")
+
+	validNoViolation := writePolicyPackConfig(t, e, "config_schema_valid_no_violation", map[string]any{
+		"validator": map[string]any{
+			"value": true,
+			"names": []string{"other-resource"},
+		},
+	})
+
+	stdout, stderr, err = e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "config_schema_policy_pack",
+		"--policy-pack-config", validNoViolation,
+	)
+	requireNoCommandError(t, err, stdout, stderr)
+
+	validViolation := writePolicyPackConfig(t, e, "config_schema_valid_violation", map[string]any{
+		"validator": map[string]any{
+			"value": false,
+			"names": []string{"policy-target"},
+		},
+	})
+
+	stdout, stderr, err = e.GetCommandResults(
+		"pulumi", "up", "--skip-preview", "--yes",
+		"--policy-pack", "config_schema_policy_pack",
+		"--policy-pack-config", validViolation,
+	)
+	requireNoCommandError(t, err, stdout, stderr)
 	assert.Contains(t, stdout, "validator")
-	assert.Contains(t, stdout, "Property was")
+	assert.Contains(t, stdout, "Property was true")
 }
 
 func TestDryRunPolicyPackDart(t *testing.T) {
@@ -285,13 +364,43 @@ func TestRemediatePolicyPackDart(t *testing.T) {
 	defer cleanupPolicyStack(e)
 
 	configurePolicyDartProject(t, e, "remediate_policy_pack")
-	e.RunCommand("pulumi", "config", "set", "value", "false")
 
-	stdout, stderr, err := e.GetCommandResults(
-		"pulumi", "up", "--skip-preview", "--yes",
-		"--policy-pack", "remediate_policy_pack",
-	)
-	requireNoCommandError(t, err, stdout, stderr)
+	t.Run("remediation-applies", func(t *testing.T) {
+		e.RunCommand("pulumi", "config", "set", "value", "false")
+
+		stdout, stderr, err := e.GetCommandResults(
+			"pulumi", "up", "--skip-preview", "--yes",
+			"--policy-pack", "remediate_policy_pack",
+		)
+		requireNoCommandError(t, err, stdout, stderr)
+		assert.Contains(t, stdout, "remediate-policy-pack")
+	})
+
+	t.Run("no-remediation-needed", func(t *testing.T) {
+		e.RunCommand("pulumi", "config", "set", "value", "true")
+
+		stdout, stderr, err := e.GetCommandResults(
+			"pulumi", "up", "--skip-preview", "--yes",
+			"--policy-pack", "remediate_policy_pack",
+		)
+		requireNoCommandError(t, err, stdout, stderr)
+	})
+
+	t.Run("remediation-disabled-causes-validation-failure", func(t *testing.T) {
+		e.RunCommand("pulumi", "config", "set", "value", "false")
+		policyConfigDisabled := writePolicyPackConfig(t, e, "remediate_policy_pack_disabled", map[string]any{
+			"remediate-policy-pack": "disabled",
+		})
+
+		stdout, _, err := e.GetCommandResults(
+			"pulumi", "up", "--skip-preview", "--yes",
+			"--policy-pack", "remediate_policy_pack",
+			"--policy-pack-config", policyConfigDisabled,
+		)
+		require.Error(t, err)
+		assert.Contains(t, stdout, "validate-remediated-value")
+		assert.Contains(t, stdout, "value was not remediated")
+	})
 }
 
 func TestConfigPolicyPackDart(t *testing.T) {
